@@ -1,10 +1,10 @@
-# Kiba – Három világ · 0.5
+# Kiba – Három világ · 0.6
 
 Böngészős 2D metroidvania Kiba eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut.
 
 ## Indítás és frissítés
 
-A 0.5 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
+A 0.6 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
 
 Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
 
@@ -14,7 +14,7 @@ Frissítéskor a csomag teljes tartalmát ugyanott cseréld le. A mentések bön
 
 | Világ | Felépítés | Fő feladat | Mellékutak |
 | --- | --- | --- | --- |
-| Japán | 10 400 széles, 1 700 magas játéktér | Szerezd meg a szél áldását, szólaltasd meg az erdei és falusi harangot, majd keresd fel a bambusztemplom őrzőjét. | Lombkorona, folyó fölötti út, föld alatti folyójárat és visszavezető lépcsők. |
+| Japán | 10 400 széles, 2 500 magas játéktér | Szerezd meg a szél áldását, szólaltasd meg az erdei és falusi harangot, majd keresd fel a bambusztemplom őrzőjét. | Lombkorona, folyó fölötti út, föld alatti folyójárat és visszavezető lépcsők. |
 | Yomi | 3 300 széles, 6 250 mély játéktér | Ereszkedj le a két fogoly lélekhez, győzd le őreiket, majd a világ fenekén az őrzőt. Az árnyék szentélye félúton ad szellemlépést. | Elfeledett sírkamra, árnyékfüggöny, veszélyes hamupárkányok. |
 | Takamagahara | 3 200 széles, 6 650 magas játéktér | Szélfolyamokkal, felhőszigetekkel és ugrásokkal emelkedj az őrzőhöz. A végső pecsétet karddal törd fel. Az apa még az őrző fölött vár. | Mozgó felhőplatformok, pecsét mögötti emlék, távoli alsó felhősziget. |
 
@@ -51,7 +51,7 @@ A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelke
 
 Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
 
-A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Kibával indulnak.
+A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Kibával indulnak.
 
 ## Ellenfelek
 
@@ -68,6 +68,8 @@ Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, 
 - **Ég, I. fázis:** fehér szárnyú angyal fénynyilakkal és szent nyílzáporral. 50% életerőnél átalakul.
 - **Ég, II. fázis:** fekete szárnyú sötét angyal célzott árnyéklövedékekkel, árnyéknóvával és árnyékzáporral. Az átalakulás nem gyógyítja vissza.
 - **Titkos III. fázis:** ha Japánban megtaláltad az angyali glóriát ÉS a démonlord szarvát, a II. alak legyőzése után teljes életerővel feléled. Egyszerre használ fényt és árnyékot, pokoltüzet és démonidézést. Az újjáéledés egy harcon belül egyszer történik; a győzelem és jutalom csak ezután jár.
+
+A két ereklyét a 0.6 változatban külön titkos hely és miniboss őrzi. A végső angyal 140 HP-val, a rejtett alak 180 HP-val rendelkezik, és mindhárom alak a varázslatai mellett előre jelzett közelharci vágásokat is használ. [Részletek a 0.6 leírásában](SECRETS-0.6.md).
 
 Kiba **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásakor történik a találat; futás és ugrás közben is látszik. Egy csapás egy célpontot egyszer sebez. Az ereklyéket E-vel veszed fel, a gyűjtemény és a mentés megőrzi őket a következő világokban.
 

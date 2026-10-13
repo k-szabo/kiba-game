@@ -49,14 +49,15 @@ function refreshTraining() {
   const s=kibaStats();
   $('vitalityValue').textContent=`${s.maxHp} életerő`;
   $('strengthValue').textContent=`${s.damage} kardsebzés`;
-  $('spiritValue').textContent=`${s.dashCooldown.toFixed(2)} mp szellemlépés-várakozás`;
+  $('spiritValue').textContent=abilities[1]?`${s.dashCooldown.toFixed(2)} mp szellemlépés-várakozás`:'Előbb szerezd meg a szellemlépést Yomiban';
   for(const key of ['vitality','strength','spirit']){
-    $('train-'+key).disabled=progression.points<=0||progression.stats[key]>=STAT_LIMIT;
-    $('train-'+key).textContent=progression.stats[key]>=STAT_LIMIT?'Maximális':'+1 pont';
+    const locked=key==='spirit'&&!abilities[1];
+    $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=STAT_LIMIT;
+    $('train-'+key).textContent=locked?'Képesség szükséges':progression.stats[key]>=STAT_LIMIT?'Maximális':'+1 pont';
   }
 }
 function spendPoint(key) {
-  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||progression.points<=0||progression.stats[key]>=STAT_LIMIT)return false;
+  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||key==='spirit'&&!abilities[1]||progression.points<=0||progression.stats[key]>=STAT_LIMIT)return false;
   progression.stats[key]++;progression.points--;
   const oldMax=player.maxHp;player.maxHp=kibaStats().maxHp;player.hp=Math.min(player.maxHp,player.hp+player.maxHp-oldMax);
   persist();updateHUD();refreshTraining();tone(660,.15);return true;

@@ -90,6 +90,9 @@ for(let i=1;i<7;i++)assert(run(`routeLink(lavaLedges[${i-1}],lavaLedges[${i}],tr
 console.log('PASS: all seven lava refuges have reachable jump connections.');
 
 // Both optional relic locations have actual physical routes from the Japan entrance.
-run("state='play';abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(0);var relicReach=reachableFrom('road0',true);");
+run("state='play';abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(0);var sealedRelicReach=reachableFrom('road0',true);flags[0].push('cultEntrance');var relicReach=reachableFrom('road0',true);");
 for(const id of ['halo-altar','horn-vault'])assert(run(`relicReach.includes('${id}')`),'Hidden relic route is unreachable: '+id);
-console.log('PASS: angel halo and demon horn routes are reachable in Japan.');
+assert(!run("sealedRelicReach.includes('horn-vault')"),'The sect chamber can be reached through the unbroken entrance wall');
+run("flags[0]=[];abilities=[false,false];enterRealm(0);var singleJumpSecrets=reachableFrom('road0',false);");assert(!run("singleJumpSecrets.includes('halo-altar')"),'The tower bypasses the double-jump platforming');
+run("abilities=[true,false];flags[0]=['cultEntrance'];enterRealm(0);var towerReturn=reachableFrom('halo-altar',true);var cultReturn=reachableFrom('horn-vault',true);");assert(run("towerReturn.includes('road2')"),'No return route from the tower');assert(run("cultReturn.includes('river-cave')&&cultReturn.includes('road4')"),'No return route from the cult cave');
+console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be bypassed; both relics and return paths have physical routes.');

@@ -1,6 +1,6 @@
 # Assetek és a repository rendbetétele
 
-Az útmutató a jelenlegi **0.5** forrás ellenőrzésén alapul. A képfájlok verziószámai együtt használt grafikai generációkat jelölnek, ezért egy teljes v3 vagy v4 készlet törlése eltörné a játékot.
+Az útmutató a jelenlegi **0.6** forrás ellenőrzésén alapul. A képfájlok verziószámai együtt használt grafikai generációkat jelölnek, ezért egy teljes v3 vagy v4 készlet törlése eltörné a játékot.
 
 ## Törölhető régi képek
 
@@ -14,7 +14,7 @@ assets/images/terrain-v3.png
 assets/images/props-v3.png
 ```
 
-Összesen **14 819 986 bájt**, körülbelül **14,13 MiB** a munkakönyvtárban és a következő publikált csomagban. Egy külön másolatból kihagyva őket mind a négy meglévő ellenőrzés sikeresen lefutott: `check-site.mjs`, `test-combat.cjs`, `test-v05.cjs`, `test-routes.cjs`.
+Összesen **14 819 986 bájt**, körülbelül **14,13 MiB** a munkakönyvtárban és a következő publikált csomagban. Egy külön másolatból kihagyva őket mind az öt ellenőrzés sikeresen lefutott: `check-site.mjs`, `test-combat.cjs`, `test-v05.cjs`, `test-v06.cjs`, `test-routes.cjs`.
 
 A törlés a korábbi Git-commitok méretét nem csökkenti: azokban a régi képek továbbra is megmaradnak. Nincs szükség az előzmények átírására.
 
@@ -26,9 +26,10 @@ A törlés a korábbi Git-commitok méretét nem csökkenti: azokban a régi ké
 | v3 hátterek | A `backgrounds/` mappa mindhárom képe: `japan-v3.png`, `yomi-v3.png`, `heaven-v3.png`. |
 | v4 terep és tárgyak | `terrain-v4.png`, `props-v4.png`. |
 | v4 ellenfelek | Mindhárom világ `*-walk-v4.png` és `*-attack-v4.png` animációi, valamint `bosses-v4.png`. |
+| v6 titkos területek | `old-angel-v6.png`, `old-cultist-v6.png`, valamint a háttérmappában `angel-ruins-v6.png` és `cult-cave-v6.png`. |
 | v5 kiegészítések | `kiba-slash-v5.png`, `relics-v5.png`, `samurai-v5.png` és az angyal három `angel-*-v5.png` alakja. |
 
-A jelenlegi játék összesen **19 képfájlt** tölt be. A listát az `assets/js/art-data.js` fájl `ART_MANIFEST` objektuma és a `game.js` Kiba-képre mutató hivatkozása határozza meg. Régi képekre a grafikai dokumentáció még hivatkozhat; ez történeti háttéranyag, nem a játék betöltési útvonala.
+A jelenlegi játék összesen **23 képfájlt** tölt be. A listát az `assets/js/art-data.js` fájl `ART_MANIFEST` objektuma és a `game.js` Kiba-képre mutató hivatkozása határozza meg. Régi képekre a grafikai dokumentáció még hivatkozhat; ez történeti háttéranyag, nem a játék betöltési útvonala.
 
 ## Egyéb fájlok
 

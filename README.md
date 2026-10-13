@@ -26,9 +26,9 @@ A **Kiba – Három világ** böngészőben játszható, 2D metroidvania: kardha
 
 - **Kard és szellemlépés:** animált kardcsapások, kitérés és eltérő támadási mintájú ellenfelek. Az őrzők előre jelzik a veszélyes támadásokat.
 - **Új képességek, új utak:** a kettős ugrás, a szellemlépés és a hajnalkard a kaland során válik elérhetővé.
-- **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Kiba életerejét, kardját és szellemerejét.
+- **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Kiba életerejét, kardját és szellemerejét. A szellemlépés fejlesztése a képesség megszerzése után nyílik meg.
 - **Szentélyek:** gyógyulás, mentőpontok és a térképről elérhető gyorsutazás. Gyógyuláskor a normál ellenfelek újraélednek.
-- **Felfedezés:** mellékutak, Haru emlékei és rejtett ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
+- **Felfedezés:** mellékutak, Haru emlékei, rejtett szentélyek és saját minibossokkal őrzött ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
 - **Helyi mentés:** a haladás a böngészőben megmarad; a főmenüben a Folytatás gombbal térhetsz vissza.
 
 ## Irányítás
@@ -61,4 +61,5 @@ A weboldal statikus, GitHub Pagesen fut. A játék indításához nincs szüksé
 - [Helyi futtatás, ellenőrzés és GitHub Pages](docs/DEVELOPMENT.md).
 - [Assetek és a repository rendbetétele](docs/ASSET-CLEANUP.md).
 - [Grafikai koncepció és assetek](docs/ART-DESIGN.md).
+- [A 0.6 titkos területei és harci frissítése](docs/SECRETS-0.6.md) – spoileres részletek lenyitható leírásban.
 - [A 0.5 harci és animációs frissítés](docs/BOSSES-0.5.md) – a titkos fázis leírását is tartalmazza.

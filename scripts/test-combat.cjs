@@ -3,7 +3,7 @@ const {run,snap,tick,press,release,place,elements,storage}=require('./test-harne
 
 // Reproduce the old clamped-edge chase bug for every normal enemy role in every realm.
 for(let realm=0;realm<3;realm++)for(const kind of ['guard','archer','shield','mage']){
-  run(`enterRealm(${realm});state='play';enemies=enemies.filter(e=>e.kind==='${kind}').slice(0,1);var e=enemies[0];e.x=e.patrolRight;e.face=1;e.patrolFace=-1;e.cd=999;player.x=e.patrolRight+220;player.y=e.y;player.inv=999;`);
+  run(`enterRealm(${realm});state='play';enemies=enemies.filter(e=>!e.miniboss&&e.kind==='${kind}').slice(0,1);var e=enemies[0];e.x=e.patrolRight;e.face=1;e.patrolFace=-1;e.cd=999;player.x=e.patrolRight+220;player.y=e.y;player.inv=999;`);
   let flips=0,lastFace=run('e.face'),minGap=999,lastFlip=-999;
   for(let i=0;i<1200;i++){run('updateEnemies(1/120);');const face=run('e.face');if(face!==lastFace){flips++;minGap=Math.min(minGap,i-lastFlip);lastFlip=i;}lastFace=face;}
   assert.equal(flips,0,`Spinning on ${realm}/${kind}`);
@@ -33,7 +33,7 @@ run('attackCooldown=0;melee();advanceSwordAttack(.17);attackCooldown=0;melee();a
 
 // Windup locks facing and does not release projectiles before the advertised tell.
 for(const kind of ['archer','mage']){
-  run(`enterRealm(0);state='play';var e=enemies.find(e=>e.kind==='${kind}');enemies=[e];player.x=e.x+180;player.y=e.y;e.cd=0;e.face=1;e.turnCooldown=0;projectiles=[];updateEnemies(.01);`);
+  run(`enterRealm(0);state='play';var e=enemies.find(e=>!e.miniboss&&e.kind==='${kind}');enemies=[e];player.x=e.x+180;player.y=e.y;e.cd=0;e.face=1;e.turnCooldown=0;projectiles=[];updateEnemies(.01);`);
   const duration=run('e.windupDuration');run(`updateEnemies(${duration-.04});`);assert.equal(run('projectiles.length'),0);run('updateEnemies(.05);');assert(run('projectiles.length>0'));assert(run('e.attackTime>0'));
 }
 

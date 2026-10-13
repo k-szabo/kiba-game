@@ -5,7 +5,7 @@ function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,d
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
 function foe(l,id,x,y,kind='guard',group=null,patrol=65){l.enemies.push({id,x,y,kind,group,patrol});}
 function zone(l,name,x,y,w,h){l.zones.push({name,x,y,w,h});}
-const japan=makeLevel('japan',10400,1700,{x:260,y:1000});
+const japan=makeLevel('japan',10400,2500,{x:260,y:1000});
 [[0,1000,1550],[1680,950,1640],[3400,1000,1500],[5100,920,1400],[6740,960,1160],[8150,1000,2250]].forEach((p,i)=>ledge(japan,'road'+i,...p,'ground',190));
 [
  ['wind-step',1980,855,150],['wind-roof',2160,760,370],['root-step',2890,900,140],
@@ -19,10 +19,27 @@ const japan=makeLevel('japan',10400,1700,{x:260,y:1000});
 japan.ability={x:2340,y:760,name:'A szél áldása'};
 rest(japan,'start',330,1000,'A falu széle');rest(japan,'river',3650,1000,'A kettős ösvény');rest(japan,'fields',5880,920,'Rizsföldek');rest(japan,'temple',8760,1000,'A templom kapuja');
 japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:'Az erdei harang'},{id:'villageBell',type:'bell',x:7240,y:715,name:'A falu harangja'},{id:'riverMemory',type:'memory',x:5550,y:1390,name:'Emlék a folyó alatt'},{id:'forestMemory',type:'memory',x:3830,y:620,name:'A lombok emléke'}];
-// Optional relic routes use existing double-jump access and persist through the normal flag save.
-ledge(japan,'halo-altar',4040,540,260);ledge(japan,'horn-vault',4870,1240,220);
-japan.objects.push({id:'angelHalo',type:'relic',x:4170,y:540,name:'Az angyali glória'},{id:'demonHorn',type:'relic',x:4980,y:1240,name:'A démonlord szarva'});
-japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:1700}];
+// Optional paths lie outside the quest route and remain absent from the map until discovered.
+japan.secrets=[
+ {id:'angelRuin',name:'Az ősi angyaltorony romjai',x:2440,y:0,w:1240,h:600,arena:{x:2510,y:470,w:510},guardian:'oldAngel',relic:'angelHalo'},
+ {id:'cultCave',name:'Az elfeledett szekta barlangja',x:2420,y:1740,w:1710,h:700,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
+];
+for(const p of [['tower-step1',3490,445,140],['tower-step2',3250,285,120],['tower-step3',3030,230,130],['halo-altar',2510,470,510]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='angelRuin';}
+for(const p of [['cult-mouth',4530,1510,180],['cult-stair1',4200,1680,200],['cult-stair2',3910,1850,190],['cult-stair3',3640,2010,180],['horn-vault',2650,2160,950]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='cultCave';}
+japan.objects.push(
+ {id:'angelHalo',type:'relic',x:2600,y:470,name:'Az angyali glória',secretArea:'angelRuin',guardian:'oldAngel'},
+ {id:'demonHorn',type:'relic',x:2760,y:2160,name:'A démonlord szarva',secretArea:'cultCave',guardian:'oldCultist'}
+);
+foe(japan,'oldAngel',2800,470,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:'A megőrült öreg angyal',secretArea:'angelRuin',factionOverride:'heaven'});
+foe(japan,'oldCultist',3070,2160,'mage',null,380);Object.assign(japan.enemies.at(-1),{miniboss:'cultist',name:'Az ősi szekta vén mestere',secretArea:'cultCave',factionOverride:'japan'});
+japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:2500}];
+// Cave ceiling and wall prevent falling straight into the relic chamber from the main road.
+japan.gates.push(
+ {id:'cultRoof',kind:'secretRock',x:2420,y:1740,w:1200,h:105,secretArea:'cultCave'},
+ {id:'cultWestWall',kind:'secretRock',x:2420,y:1740,w:65,h:760,secretArea:'cultCave'},
+ {id:'cultEastWall',kind:'secretRock',x:3620,y:1100,w:35,h:820,secretArea:'cultCave'},
+ {id:'cultEntrance',kind:'fragile',x:4450,y:1000,w:55,h:1500,secretArea:'cultCave'}
+);
 japan.arena={x:8770,y:1000,w:1550,restId:'temple'};japan.boss={x:9570,y:1000};japan.exit={x:10000,y:1000};
 [[930,1000],[1900,950],[2820,950],[3600,1000],[4140,1000],[4750,1000],[5450,920],[6200,920],[6930,960],[7550,960],[8390,1000]].forEach(([x,y],i)=>foe(japan,'road-'+i,x,y,i%4===2?'archer':'guard',null,Math.min(65,i===8?40:65)));
 foe(japan,'cave-guard',5260,1390,'guard');foe(japan,'cave-bat',6010,1310,'fly');foe(japan,'tree-bat',3900,690,'fly');
@@ -70,7 +87,7 @@ heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};hea
 zone(heaven,'A felhők kapuja',0,5450,3200,1200);zone(heaven,'A szél lépcsői',0,4250,3200,1200);zone(heaven,'A napudvar',0,3150,3200,1100);zone(heaven,'A csillagok hídja',0,2200,3200,950);zone(heaven,'A hajnal pereme',0,1100,3200,1100);zone(heaven,'Az ég teteje',0,0,3200,1100);
 // Faction art and role variations share the original, proven geometry.
 const fieldRoles=['guard','archer','shield','mage'];
-for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}
+for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group||enemy.miniboss)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}
 const lowerShield=yomi.enemies.find(e=>e.id==='soul-lower-a');lowerShield.kind='shield';
 const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage';
 // Low arena ledges are reachable with one jump and connect with ordinary/double jumps.

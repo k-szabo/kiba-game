@@ -89,6 +89,15 @@ const Visuals = (() => {
       }
     }
     ctx.fillStyle = realm === 1 ? '#140c2028' : realm === 2 ? '#24314820' : '#11252d30';
+    const secret=state!=='menu'&&player&&(level.secrets||[]).find(area=>overlap(player,area));
+    if(secret){
+      const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';
+      if(usable(key)){
+        const image=images[key],s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*s,height=image.naturalHeight*s;
+        const distance=Math.min(player.x-secret.x,secret.x+secret.w-player.x-player.w,player.y-secret.y,secret.y+secret.h-player.y-player.h);
+        ctx.save();ctx.globalAlpha=clamp(distance/90,0,1);ctx.drawImage(image,(viewW-width)/2,-(height-H)*.35,width,height);ctx.restore();
+      }
+    }
     ctx.fillRect(0, 0, viewW, H);
     // Fog layers and particles move at different speeds to retain depth.
     for (let layer = 0; layer < 3; layer++) {
@@ -117,8 +126,8 @@ const Visuals = (() => {
     ctx.restore();
   }
   function terrain(r, items) {
-    const row = ART_FRAMES.terrain[realm];
     for (const p of items) {
+      const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2 ? 90 : 70;
@@ -189,7 +198,7 @@ const Visuals = (() => {
   function objects(r) {
     for (const o of level.objects) {
       if (!visiblePoint(o)) continue;
-      const taken = hasFlag(o.id);
+      const taken = hasFlag(o.id);if(o.type==='relic'&&!relicUnlocked(o))continue;
       if (o.type === 'bell') {shadow(o.x, o.y, 45);prop('bell', o.x, o.y + 2, 158, taken ? .62 : 1);}
       else if (o.type === 'rescue') {if (!taken) prop('cage', o.x, o.y + 2, 125);drawSpirit(o.x, o.y - 58, r.gold);}
       else if(o.type==='relic'){if(!taken){shadow(o.x,o.y,33,.35);frame('relics',ART_FRAMES.relics[o.id],o.x,o.y+2,118);}}
@@ -201,12 +210,15 @@ const Visuals = (() => {
 
   function actor(e, r, isBoss = false) {
     const role=isBoss?'boss':enemyRole(e),feet=e.y+e.h,x=e.x+e.w/2;
-    const height=isBoss?[164,180,176][realm]:role==='shield'?102:role==='mage'?101:94;
+    const height=isBoss?[164,180,176][realm]:e.miniboss?(e.miniboss==='angel'?156:145):role==='shield'?102:role==='mage'?101:94;
     const face=isBoss&&e.autoPhase?e.autoFace:e.face;
     const actorFaction=e.factionOverride||faction();
-    const palette=e.factionOverride==='yomi'?realms[1]:r;
+    const palette=e.factionOverride==='yomi'?realms[1]:e.factionOverride==='heaven'?realms[2]:r;
     let index=0,key,rect;
-    if(isBoss){
+    if(e.miniboss){
+      index=e.phase==='windup'?(e.clock/e.phaseDuration>.5?1:2):e.phase==='strike'?(['holyFan','curse','sigils'].includes(e.move)?4:3):e.phase==='recover'?5:0;
+      key=e.miniboss==='angel'?'oldAngel':'oldCultist';rect=ART_FRAMES[key][index];
+    }else if(isBoss){
       const pose=e.autoPhase||e.phase,duration=e.autoPhase?e.autoDuration:e.phaseDuration,remaining=e.autoPhase?e.autoClock:e.clock;
       if(pose==='windup')index=1+Math.min(1,Math.floor(clamp(1-remaining/duration,0,1)*2));
       else if(pose==='strike')index=3+Math.min(1,Math.floor(clamp(1-remaining/duration,0,1)*2));
@@ -243,10 +255,48 @@ const Visuals = (() => {
       if(isBoss){
         ctx.save();ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#080512';ctx.shadowBlur=5;
         const labels={cleave:'KARDCSAPÁS',dash:'ROHAM',doubleCut:'KETTŐS VÁGÁS',hammer:'KALAPÁCSVÁGÁS',slam:'FÖLDRENGÉS',lava:'LÁVA · UGROJ A PLATFORMOKRA',embers:'PARÁZSZÁPOR',summon:'CSATLÓSOK IDÉZÉSE',lightArrows:'FÉNYNYILAK',holySweep:'SZENT NYÍLZÁPOR',shadowBolts:'ÁRNYÉKLÖVEDÉKEK',shadowNova:'ÁRNYÉKNÓVA',shadowRain:'ÁRNYÉKZÁPOR',eclipse:'NAPFOGYATKOZÁS',hellfire:'POKOLTŰZ ÉS FÉNY'};
-        ctx.fillText(e.autoPhase?'KALAPÁCSVÁGÁS':labels[e.move]||'TÁMADÁS',x,feet-height-38);ctx.restore();
+        ctx.fillText(e.autoPhase?(realm===2?'SZÁRNYVÁGÁS':'KALAPÁCSVÁGÁS'):labels[e.move]||'TÁMADÁS',x,feet-height-38);ctx.restore();
       }
     }
-    if(!isBoss&&e.hp<e.maxHp){ctx.fillStyle='#0a172bcc';ctx.fillRect(x-19,feet-height-17,38,3);ctx.fillStyle=e.kind==='shield'?'#ddba72':'#d99583';ctx.fillRect(x-19,feet-height-17,38*Math.max(0,e.hp/e.maxHp),3);}
+    if(e.miniboss)miniEffects(e,height);
+    if(!isBoss&&!e.miniboss&&e.hp<e.maxHp){ctx.fillStyle='#0a172bcc';ctx.fillRect(x-19,feet-height-17,38,3);ctx.fillStyle=e.kind==='shield'?'#ddba72':'#d99583';ctx.fillRect(x-19,feet-height-17,38*Math.max(0,e.hp/e.maxHp),3);}
+  }
+  function miniEffects(e,height){
+    const x=e.x+e.w/2,feet=e.y+e.h,color=e.miniboss==='angel'?'#ffe0a2':'#c39ae7';
+    ctx.save();
+    if(e.active){
+      ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);
+      ctx.font='bold 11px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(e.name,x,feet-height-43);
+      if(e.phase==='windup'){
+        const names={glaive:'AZ ŐSI PENGE',holyFan:'MEGTÖRT FÉNY',lunge:'ANGYALI ROHAM',staff:'RITUÁLIS VÁGÁS',curse:'ÁRNYÉKÁTOK',sigils:'A SZEKTA PECSÉTJEI'};
+        ctx.fillText(names[e.move],x,feet-height-63);
+        if(['glaive','staff','lunge'].includes(e.move)){ctx.shadowBlur=0;ctx.fillStyle=color+'25';const w=e.move==='lunge'?300:175;ctx.fillRect(e.face>0?x:x-w,feet-95,w,95);ctx.strokeStyle=color;ctx.setLineDash([7,6]);ctx.strokeRect(e.face>0?x:x-w,feet-95,w,95);ctx.setLineDash([]);}
+      }
+    }
+    for(const h of e.hazards){
+      ctx.fillStyle=h.active?'#9b62cb66':'#c28feb24';ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeStyle='#d4a5f3';ctx.lineWidth=h.active?4:2;ctx.shadowColor='#bf72ef';ctx.shadowBlur=12;
+      ctx.beginPath();ctx.ellipse(h.x+h.w/2,h.y+h.h-2,h.w*.55,9,0,0,Math.PI*2);ctx.stroke();
+      if(h.active){ctx.beginPath();ctx.moveTo(h.x+h.w/2,h.y+h.h);ctx.lineTo(h.x+h.w*.3,h.y+80);ctx.lineTo(h.x+h.w*.65,h.y+45);ctx.lineTo(h.x+h.w/2,h.y);ctx.stroke();}
+    }
+    ctx.restore();
+  }
+  function secretScenery(r){
+    if(realm!==0)return;
+    for(const area of level.secrets||[]){
+      if(area.x+area.w<camera||area.x>camera+viewW||area.y+area.h<cameraY||area.y>cameraY+H)continue;
+      ctx.save();
+      if(area.id==='angelRuin'){
+        prop('skyShrine',2600,470,88,.8);prop('foliage',3090,230,110,.75);
+        ctx.strokeStyle='#ead79566';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(2790,467,160,15,0,0,Math.PI*2);ctx.stroke();
+      }else{
+        prop('shrine',2760,2160,96,.65);
+        for(const px of [2860,3100,3450]){
+          ctx.fillStyle='#b5a777';ctx.fillRect(px-4,2140,8,21);const flame=ctx.createRadialGradient(px,2137,0,px,2137,70);flame.addColorStop(0,'#f6a47580');flame.addColorStop(1,'#dd744a00');ctx.fillStyle=flame;ctx.fillRect(px-70,2067,140,140);ctx.fillStyle='#ffe2a0';ctx.beginPath();ctx.ellipse(px,2133+Math.sin(time*6+px)*2,3,7,0,0,Math.PI*2);ctx.fill();
+        }
+        ctx.strokeStyle='#9b626b88';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(3115,2161,190,21,0,0,Math.PI*2);ctx.stroke();
+      }
+      ctx.restore();
+    }
   }
   function kibaSlash(x,feet,height,elapsed,face){
     const index=Math.min(7,Math.floor(clamp(elapsed/SWORD_DURATION,0,.999)*8));
@@ -299,9 +349,10 @@ const Visuals = (() => {
       ctx.font='bold 10px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7c0a4';ctx.fillText('IDÉZÉS',x,y-77);ctx.shadowBlur=0;
     }
     if(boss.autoPhase==='windup'){
-      const x=boss.autoFace>0?boss.x+boss.w*.4:boss.x-180;
-      ctx.fillStyle='#ff9c6238';ctx.fillRect(x,boss.y-55,238,205);ctx.strokeStyle='#ffb889';ctx.lineWidth=2;ctx.setLineDash([9,6]);ctx.strokeRect(x,boss.y-55,238,205);ctx.setLineDash([]);
+      const x=boss.autoFace>0?boss.x+boss.w*.4:boss.x-175;
+      ctx.fillStyle=realm===2?'#f2dbac38':'#ff9c6238';ctx.fillRect(x,boss.y-55,238,205);ctx.strokeStyle='#ffb889';ctx.lineWidth=2;ctx.setLineDash([9,6]);ctx.strokeRect(x,boss.y-55,238,205);ctx.setLineDash([]);
     }
+    if(realm===2&&boss.autoPhase==='strike'){const x=boss.x+boss.w/2,y=boss.y+35;ctx.strokeStyle=boss.stage===2?'#bf8cfa':'#ffeab0';ctx.shadowColor=ctx.strokeStyle;ctx.shadowBlur=18;ctx.lineWidth=8;ctx.beginPath();ctx.ellipse(x+boss.autoFace*60,y,145,90,0,boss.autoFace>0?-1.2:1.9,boss.autoFace>0?1.2:4.3);ctx.stroke();ctx.shadowBlur=0;}
     if(boss.phase==='windup'&&['cleave','dash','doubleCut'].includes(boss.move)){
       const x=boss.face>0?boss.x+40:boss.x-220,width=boss.move==='dash'?460:240;
       ctx.fillStyle='#ffe0a229';ctx.fillRect(boss.face>0?x:x-width+240,boss.y+30,width,85);
@@ -345,6 +396,13 @@ const Visuals = (() => {
   function gates(r) {
     for (const g of level.gates) {
       if (gatePass(g) || g.x + g.w < camera - 80 || g.x > camera + viewW + 80 || g.y + g.h < cameraY - 80 || g.y > cameraY + H + 80) continue;
+      if(g.kind==='secretRock'||g.kind==='fragile'){
+        ctx.save();ctx.beginPath();ctx.rect(g.x,g.y,g.w,g.h);ctx.clip();
+        const stone=ctx.createLinearGradient(g.x,0,g.x+g.w,0);stone.addColorStop(0,'#142026');stone.addColorStop(.5,'#3e4641');stone.addColorStop(1,'#1c292b');ctx.fillStyle=stone;ctx.fillRect(g.x,g.y,g.w,g.h);
+        for(let y=Math.max(g.y,Math.floor(cameraY/38)*38);y<Math.min(g.y+g.h,cameraY+H+40);y+=38){ctx.strokeStyle='#81908230';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(g.x,y);ctx.lineTo(g.x+g.w,y+Math.sin(y)*7);ctx.stroke();for(let x=g.x+12;x<g.x+g.w;x+=70){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+9,y+38);ctx.stroke();}}
+        if(g.kind==='fragile'){ctx.strokeStyle='#b7b49b88';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(g.x+30,g.y+300);ctx.lineTo(g.x+12,g.y+380);ctx.lineTo(g.x+38,g.y+470);ctx.lineTo(g.x+17,g.y+560);ctx.stroke();}
+        ctx.restore();continue;
+      }
       if (g.kind === 'root') {
         const rect = ART_FRAMES.terrain[0][1];
         tile(rect,g.x-4,g.y,g.w+8,g.h+40);
@@ -389,5 +447,5 @@ const Visuals = (() => {
     }
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdrop,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,kibaSlash};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdrop,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,kibaSlash,secretScenery};
 })();

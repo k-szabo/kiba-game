@@ -4,6 +4,7 @@ function createEnemies() {
   return level.enemies.map(createEnemy);
 }
 function createEnemy(spec,i=0) {
+    if(spec.miniboss)return createMiniboss(spec,i);
     const h=spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.kind==='shield'?48:40;
     const maxHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
@@ -20,6 +21,7 @@ function respawnEnemies() {
 }
 function killEnemy(e) {
   if(e.dead)return;
+  if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
   const role=enemyRole(e);
   awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
@@ -61,6 +63,7 @@ function releaseEnemyAttack(e) {
 function updateEnemies(dt) {
   for(const e of enemies){
     if(e.dead)continue;
+    if(e.miniboss){updateMiniboss(e,dt);continue;}
     for(const key of ['stun','cd','contactCd','recovery','guardBreak','blockFlash','turnCooldown','edgePause'])e[key]=Math.max(0,e[key]-dt);
     e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
     const dx=player.x+player.w/2-e.x-e.w/2,dy=player.y+player.h*.5-e.y-e.h*.5,role=enemyRole(e);
@@ -106,8 +109,9 @@ function updateEnemies(dt) {
 
 /* Phase-aware bosses. All transitions and summons belong to one encounter. */
 function relicRitualReady(){return flags[0].includes('angelHalo')&&flags[0].includes('demonHorn');}
+const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
 function createBoss(){
-  const max=[28,48,50][realm];
+  const max=[28,48,ANGEL_HEALTH][realm];
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
@@ -132,7 +136,8 @@ function bossName(){
 }
 function transformAngel(stage){
   clearEncounterEffects();boss.stage=stage;boss.cycles=0;boss.move=null;boss.attackStep=0;boss.inv=1.8;
-  if(stage===3){boss.secretTriggered=true;boss.hp=boss.max;}
+  boss.autoCooldown=1.1;
+  if(stage===3){boss.secretTriggered=true;boss.max=ECLIPSE_HEALTH;boss.hp=boss.max;}
   else boss.hp=Math.max(1,boss.hp);
   setBossPhase('transform',1.8);shake=.25;
   burst(boss.x+boss.w/2,boss.y+30,stage===2?'#c89aff':'#ffe1a1',55);
@@ -262,6 +267,23 @@ function demonAutoAttack(dt){
   else if(boss.autoPhase==='strike'&&boss.autoClock<=0){boss.autoPhase='recover';boss.autoClock=.6;boss.autoDuration=.6;}
   else if(boss.autoPhase==='recover'&&boss.autoClock<=0){boss.autoPhase=null;boss.autoCooldown=1.7;}
 }
+function angelAutoAttack(dt){
+  if(realm!==2||boss.phase==='transform')return;
+  boss.autoCooldown=Math.max(0,boss.autoCooldown-dt);
+  const dx=player.x+player.w/2-boss.x-boss.w/2,dy=player.y+player.h-(boss.y+boss.h);
+  if(!boss.autoPhase){
+    if(boss.autoCooldown<=0&&Math.abs(dx)<245&&Math.abs(dy)<150){
+      boss.autoPhase='windup';boss.autoClock=boss.stage===3?.65:.8;boss.autoDuration=boss.autoClock;boss.autoFace=Math.sign(dx)||boss.face;
+    }
+    return;
+  }
+  boss.autoClock-=dt;
+  if(boss.autoPhase==='windup'&&boss.autoClock<=0){
+    boss.autoPhase='strike';boss.autoClock=.3;boss.autoDuration=.3;
+    bossMelee(175,125,boss.stage===3?3:2,30,boss.autoFace);shake=.1;
+  }else if(boss.autoPhase==='strike'&&boss.autoClock<=0){boss.autoPhase='recover';boss.autoClock=.45;boss.autoDuration=.45;}
+  else if(boss.autoPhase==='recover'&&boss.autoClock<=0){boss.autoPhase=null;boss.autoCooldown=[0,1.6,1.3,1.05][boss.stage];}
+}
 function updateBossHazards(dt){
   for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);}
   boss.hazards=boss.hazards.filter(h=>h.life>0);
@@ -276,9 +298,10 @@ function updateBoss(dt){
   if(boss.phase==='transform'){if(boss.clock<=0)setBossPhase('wait',.85);return;}
   updateBossHazards(dt);if(!bossStarted||boss.dead)return;
   demonAutoAttack(dt);
+  angelAutoAttack(dt);
   if(!bossStarted||boss.dead)return;
   if(boss.phase==='wait'){
-    if((realm===0||realm===1)&&!boss.autoPhase&&Math.abs(player.x-boss.x)>165)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*(realm===1?95:65)*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
+    if(!boss.autoPhase&&Math.abs(player.x-boss.x)>165)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*(realm===1?95:realm===2?85+boss.stage*10:65)*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
     if(boss.clock<=0&&!boss.autoPhase)chooseBossMove();
   }else if(boss.phase==='windup'){if(boss.clock<=0)startBossAttack();}
   else if(boss.phase==='strike'){
@@ -287,3 +310,74 @@ function updateBoss(dt){
   }else if(boss.phase==='recover'&&boss.clock<=0&&!boss.autoPhase)setBossPhase('wait',.6);
   if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava')damage(1,player.x>boss.x?1:-1);
 }
+/* Optional encounters are saved independently of the three realm guardians. */
+function minibossFlag(id){return 'guardian:'+id;}
+function secretKnown(id){return flags[realm].includes('discovered:'+id);}
+function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
+function createMiniboss(spec,i){
+  const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,h=94,w=68,maxHp=spec.miniboss==='angel'?36:42;
+  return {...spec,x:spec.x,y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,hp:maxHp,maxHp,
+    patrolLeft:a.x+25,patrolRight:a.x+a.w-w-25,face:-1,patrolFace:-1,phase:'wait',clock:1.2,phaseDuration:1.2,
+    cycles:0,move:null,active:false,dead:flags[realm].includes(minibossFlag(spec.id)),inv:0,stun:0,
+    windup:0,windupDuration:1,attackTime:0,attackDuration:.5,attackElapsed:0,recovery:0,animTime:0,walkSpeed:0,
+    turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
+}
+function resetMiniboss(e){
+  e.x=e.origin;e.y=e.baseY;e.hp=e.maxHp;e.active=false;e.phase='wait';e.clock=1.2;e.phaseDuration=1.2;
+  e.cycles=0;e.move=null;e.windup=0;e.inv=0;e.stun=0;e.hazards=[];e.hitDone=false;e.walkSpeed=0;
+  projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
+}
+function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.dead)resetMiniboss(e);}
+function discoverSecrets(){
+  for(const area of level.secrets||[])if(!secretKnown(area.id)&&overlap(player,area)&&
+    (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){
+    flags[realm].push('discovered:'+area.id);persist();toast('Rejtett hely: '+area.name);
+  }
+}
+function defeatMiniboss(e){
+  if(e.dead)return;
+  e.dead=true;e.active=false;e.hazards=[];projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
+  const flag=minibossFlag(e.id),first=!flags[realm].includes(flag);
+  if(first){flags[realm].push(flag);shards+=8;awardXP(e.miniboss==='angel'?80:95);persist();}
+  burst(e.x+e.w/2,e.y+35,e.miniboss==='angel'?'#ffe9aa':'#cf8aff',36);
+  toast('Az ősi őrző megpihen. Az oltár pecsétje megszűnt.');updateHUD();
+}
+function setMiniPhase(e,phase,duration){e.phase=phase;e.clock=duration;e.phaseDuration=duration;e.windup=phase==='windup'?duration:0;e.windupDuration=duration;e.hitDone=false;}
+function miniMelee(e,width,amount=2){
+  const hit={x:e.face>0?e.x+e.w*.4:e.x-width,y:e.y-8,w:width+e.w*.6,h:e.h+20};
+  if(overlap(player,hit))damage(amount,e.face);
+}
+function miniShot(e,angle,speed,kind,color){
+  shoot(e.x+e.w/2,e.y+30,Math.cos(angle)*speed,Math.sin(angle)*speed,color,4,kind);
+  Object.assign(projectiles.at(-1),{source:'mini:'+e.id,damage:1,radius:kind==='holyArrow'?9:8});
+}
+function releaseMiniAttack(e){
+  setMiniPhase(e,'strike',e.move==='lunge'?.45:.6);
+  const angle=Math.atan2(e.targetY-e.y-30,e.targetX-e.x-e.w/2);
+  if(e.move==='holyFan')for(const spread of [-.27,0,.27])miniShot(e,angle+spread,255,'holyArrow','#ffe6a2');
+  if(e.move==='curse')for(const spread of [-.15,.15])miniShot(e,angle+spread,225,'shadowBolt','#b087dd');
+  if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
+  if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
+}
+function updateMiniboss(e,dt){
+  const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
+  if(!inside){if(e.active)resetMiniboss(e);return;}
+  if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+' · Figyeld az előjelzést!');}
+  e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.clock-=dt;e.animTime+=dt;e.walkSpeed=0;
+  for(const hazard of e.hazards){hazard.warning-=dt;hazard.life-=dt;hazard.active=hazard.warning<=0;if(hazard.active&&overlap(player,hazard)){damage(1,player.x>hazard.x?1:-1);if(!e.active)return;}}
+  e.hazards=e.hazards.filter(h=>h.life>0);
+  if(e.phase==='wait'){
+    const dx=player.x+player.w/2-e.x-e.w/2;
+    if(Math.abs(dx)>100){e.face=Math.sign(dx);const old=e.x;e.x=clamp(e.x+e.face*(e.miniboss==='angel'?65:48)*dt,e.patrolLeft,e.patrolRight);e.walkSpeed=(e.x-old)/dt;}
+    if(e.clock<=0){
+      const moves=e.miniboss==='angel'?['glaive','holyFan','lunge']:['staff','curse','sigils'];e.move=moves[e.cycles++%moves.length];
+      e.face=Math.sign(dx)||e.face;e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;
+      setMiniPhase(e,'windup',e.move==='sigils'?1.15:e.move==='holyFan'||e.move==='curse'?1:.8);
+    }
+  }else if(e.phase==='windup'){e.windup=Math.max(0,e.clock);if(e.clock<=0)releaseMiniAttack(e);}
+  else if(e.phase==='strike'){
+    if(e.move==='lunge'){e.x=clamp(e.x+e.face*400*dt,e.patrolLeft,e.patrolRight);if(!e.hitDone){const hp=player.hp;miniMelee(e,105);e.hitDone=player.hp<hp;if(!e.active)return;}}
+    if(e.clock<=0)setMiniPhase(e,'recover',e.move==='sigils'?.85:.65);
+  }else if(e.phase==='recover'&&e.clock<=0)setMiniPhase(e,'wait',.45);
+}
+

@@ -35,6 +35,7 @@ A workflow Node.js 24-et használ. A repository gyökeréből ugyanazok az ellen
 node scripts/check-site.mjs
 node scripts/test-combat.cjs
 node scripts/test-v05.cjs
+node scripts/test-v06.cjs
 node scripts/test-routes.cjs
 ```
 
@@ -49,7 +50,7 @@ Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás tová
 
 Az élő játék: **[k-szabo.github.io/kiba-game](https://k-szabo.github.io/kiba-game/)**.
 
-A mellékelt workflow az alapértelmezett branchre érkező push után, illetve kézi indítással fut. Először végrehajtja a négy ellenőrzést, majd kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
+A mellékelt workflow az alapértelmezett branchre érkező push után, illetve kézi indítással fut. Először végrehajtja az öt ellenőrzést, majd kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
 
 A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztatni. Új repository esetén a **Settings → Pages → Build and deployment → Source → GitHub Actions** beállítás használható a mellékelt workflow-val. Lásd a [GitHub hivatalos workflow-útmutatóját](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
@@ -59,11 +60,13 @@ A játék relatív útvonalakat használ. Az `index.html` maradjon a repository 
 
 A mentés az adott webcímhez tartozó böngészőtárhelyen, `localStorage`-ban él. A helyi fájlból indított játék mentése nem kerül át automatikusan a GitHub Pages-oldalra. Az oldaladatok törlése a mentést is törli.
 
-A 0.2–0.4 mentések tovább használhatók a 0.5 változatban ugyanazon a címen; a korábban megszerzett XP és fejlesztések megmaradnak. A Japánban megjelent új ereklyék kereséséhez indíts új utazást, ha a mentésedben már túljutottál azon a birodalmon. A már legyőzött végső őrző győzelme megmarad.
+A 0.2–0.5 mentések tovább használhatók a 0.6 változatban ugyanazon a címen; a korábban megszerzett XP és fejlesztések megmaradnak. A Japánban megjelent új ereklyék kereséséhez indíts új utazást, ha a mentésedben már túljutottál azon a birodalmon. A már legyőzött végső őrző győzelme megmarad.
 
-Ha frissítés után régi tartalmat látsz, próbálj teljes újratöltést (Ctrl+F5). A főmenüben a V0.5 jelzi ezt a változatot.
+Ha frissítés után régi tartalmat látsz, próbálj teljes újratöltést (Ctrl+F5). A főmenüben a V0.6 jelzi ezt a változatot.
 
 ## Képek cseréje
+
+A titkos területek és minibossok a 0.6 változatban négy új képet használnak; lásd az [új változat leírását](SECRETS-0.6.md).
 
 A képek verziószáma nem jelenti, hogy elavultak: a 0.5 játék v3 háttereket, v4 animációkat és v5 kiegészítéseket együtt használ. A ténylegesen betöltött képeket az `ART_MANIFEST` sorolja fel az `assets/js/art-data.js` fájlban; az eredeti `kiba.png` külön töltődik be a `game.js` fájlból.
 

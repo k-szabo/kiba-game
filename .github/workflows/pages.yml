@@ -39,6 +39,7 @@ jobs:
           node scripts/check-site.mjs
           node scripts/test-combat.cjs
           node scripts/test-v05.cjs
+          node scripts/test-v06.cjs
           node scripts/test-routes.cjs
 
       - name: Configure Pages
