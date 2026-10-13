@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "terrain-atlas",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset type: detailed painted platform tiles for a 2D side-view fantasy game. Transparent PNG 1536x1024, exact THREE equal columns and THREE equal rows (512x341.33 cells). Nine isolated platform pieces. In each row: left end-cap, repeatable middle segment, right end-cap. TOP ROW Japan: mossy rocky earth ledges with rich grass, red maple leaves, exposed layered soil, vines and roots hanging below. MIDDLE ROW Yomi: jagged dark basalt shrine ledges with carved weathered stone blocks, crimson cracks, violet moss, dangling dead roots and chains. BOTTOM ROW heaven: ornate ivory-and-gold marble platform pieces with engraved borders, small pearl-blue crystals, hanging vines and soft cloud wisps. Flat horizontal WALKABLE TOP at exactly 20 percent of each cell height. Platform thickness extends to 80 percent of cell height. Side elevation, NOT isometric. Three segments per row share identical height and their flat material edges match. Detailed high-quality painterly texture, smooth shading, organic silhouettes, crisp readable surfaces. Entire pieces contained in their cells with padding, no backgrounds except actual transparent alpha, no labels, no grid, no characters, no UI, no watermark."
+    },
+    {
+      "id": "props-atlas",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Asset type: hand-painted 2D side-view game scenery props on truly transparent alpha. Landscape PNG 1536x1024, STRICT FOUR columns by TWO rows, eight equal 384x512 cells, ONE complete isolated prop in each cell, no cropping or overlap, generous padding, aligned ground line at 90 percent cell height. TOP ROW left to right: ornate weathered red Japanese torii gate with thick natural wooden posts, shimenawa rope and paper charms; mossy Japanese stone lantern rest shrine with amber inner light and tiny steps; large bronze temple bell hanging in an ornate red wooden bell-frame with detailed carvings; rustic Japanese village house with tile roof, timber walls, lattice windows and warm lantern. BOTTOM ROW left to right: sinister rusted underworld spirit cage with curved iron bars, a purple spirit glow, stone base and chain; elegant heavenly ivory and gold torii arch with clouds and fine floral relief; celestial white stone shrine lantern with golden trim, hanging crystal and blue-white flame; lush bamboo and fern cluster with red maple leaves and textured mossy rocks. Matching detailed hand-painted fantasy illustration, organic material textures and softly shaded outlines, polished indie game quality, not vector, not pixel art, no characters, no labels, no gridlines, no watermark, no opaque background."
+    }
+  ]
+}

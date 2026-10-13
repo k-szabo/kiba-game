@@ -65,5 +65,10 @@ heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};hea
 [[1200,5230],[1850,4960],[1510,3990],[1170,3860],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));
 [[1240,5500],[1580,4600],[970,3500],[1370,2900],[1650,1960]].forEach(([x,y],i)=>foe(heaven,'skybat-'+i,x,y,'fly',null,110));
 zone(heaven,'A felhők kapuja',0,5450,3200,1200);zone(heaven,'A szél lépcsői',0,4250,3200,1200);zone(heaven,'A napudvar',0,3150,3200,1100);zone(heaven,'A csillagok hídja',0,2200,3200,950);zone(heaven,'A hajnal pereme',0,1100,3200,1100);zone(heaven,'Az ég teteje',0,0,3200,1100);
+// Faction art and role variations share the original, proven geometry.
+const fieldRoles=['guard','archer','shield','mage'];
+for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}
+const lowerShield=yomi.enemies.find(e=>e.id==='soul-lower-a');lowerShield.kind='shield';
+const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage';
 const levels=[japan,yomi,heaven];
 

@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import vm from 'node:vm';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
@@ -11,6 +12,9 @@ const game=fs.readFileSync(path.join(root,'assets/js/game.js'),'utf8');
 const sprite=game.match(/sheet\.src\s*=\s*['"]([^'"]+)['"]/);
 assert(sprite,'Kiba sprite reference is missing.');
 refs.push(sprite[1]);
+const artFile=path.join(root,'assets/js/art-data.js');
+const manifest=vm.runInNewContext(fs.readFileSync(artFile,'utf8')+'\nART_MANIFEST');
+refs.push(...Object.values(manifest));
 
 for(const ref of refs){
   assert(!ref.startsWith('/'),`A root-relative URL would break project Pages: ${ref}`);
@@ -21,14 +25,15 @@ for(const ref of refs){
   }
   // Linux hosting is case-sensitive, even when local Windows paths are not.
   let directory=root;
-  for(const segment of ref.split('/')){
+  const assetPath=new URL(ref,'https://example.github.io/').pathname.slice(1);
+  for(const segment of assetPath.split('/')){
     assert(fs.readdirSync(directory).includes(segment),`Missing asset or wrong case: ${ref}`);
     directory=path.join(directory,segment);
   }
   assert(fs.statSync(directory).isFile(),`Expected a static file: ${ref}`);
 }
 
-for(const file of ['assets/js/levels.js','assets/js/game.js']){
+for(const file of ['assets/js/levels.js','assets/js/art-data.js','assets/js/graphics.js','assets/js/game.js']){
   const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
   assert.equal(result.status,0,result.stderr||`JavaScript syntax check failed: ${file}`);
 }
