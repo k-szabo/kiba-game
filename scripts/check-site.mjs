@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1]).filter(r=>!/^https?:/.test(r));
+const game=fs.readFileSync(path.join(root,'assets/js/game.js'),'utf8');
+const sprite=game.match(/sheet\.src\s*=\s*['"]([^'"]+)['"]/);
+assert(sprite,'Kiba sprite reference is missing.');
+refs.push(sprite[1]);
+
+for(const ref of refs){
+  assert(!ref.startsWith('/'),`A root-relative URL would break project Pages: ${ref}`);
+  assert(!ref.includes('..'),`Unexpected parent-relative asset URL: ${ref}`);
+  for(const base of ['https://example.github.io/','https://example.github.io/kiba-game/']){
+    const resolved=new URL(ref,new URL('index.html',base));
+    assert(resolved.href.startsWith(base),`Asset leaves the site prefix: ${ref}`);
+  }
+  // Linux hosting is case-sensitive, even when local Windows paths are not.
+  let directory=root;
+  for(const segment of ref.split('/')){
+    assert(fs.readdirSync(directory).includes(segment),`Missing asset or wrong case: ${ref}`);
+    directory=path.join(directory,segment);
+  }
+  assert(fs.statSync(directory).isFile(),`Expected a static file: ${ref}`);
+}
+
+for(const file of ['assets/js/levels.js','assets/js/game.js']){
+  const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
+  assert.equal(result.status,0,result.stderr||`JavaScript syntax check failed: ${file}`);
+}
+const png=fs.readFileSync(path.join(root,sprite[1]));
+assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a','Kiba must be a valid PNG.');
+assert.equal(png.readUInt32BE(16),1536);assert.equal(png.readUInt32BE(20),2288);
+assert(fs.existsSync(path.join(root,'.nojekyll')));
+assert(fs.existsSync(path.join(root,'.github/workflows/pages.yml')));
+console.log('PASS: static entrypoint, all assets, Linux filename case, root and repository-subpath URLs, JavaScript syntax, Kiba sprite dimensions.');

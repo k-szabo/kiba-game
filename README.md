@@ -1,37 +1,73 @@
 # Kiba – Három világ
 
-Játszható, böngészős 2D metroidvania prototípus. Kiba eredeti pet sprite sheetjével.
+GitHub Pagesre előkészített, telepítés és build nélkül működő 2D metroidvania. Kiba, a kis shiba szamuráj Japánon, Yomi mélységein és az égi birodalmon át keresi édesapját.
 
-Kiba édesapját, Harut három birodalom őrzői tartják fogva. A kis shiba szamuráj Japán köderdején, Yomi alvilágán és Takamagahara égi birodalmán át gyűjti össze apja lelkének emlékeit.
+## Mappaszerkezet
 
-## Indítás
+```text
+.
+├── index.html
+├── .nojekyll
+├── .gitignore
+├── .gitattributes
+├── .github/
+│   └── workflows/
+│       └── pages.yml
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── levels.js
+│   │   └── game.js
+│   └── images/
+│       └── kiba.png
+├── scripts/
+│   └── check-site.mjs
+└── docs/
+    └── GAMEPLAY.md
+```
 
-A `dist/index.html` közvetlenül megnyitható böngészőben. A játékhoz nincs szükség telepítésre vagy buildre. A helyi mentés működéséhez ajánlott HTTP-kiszolgálót használni; a mentések böngészőnként és címenként különböznek.
+Az **index.html a repository gyökerében legyen**, az assets, scripts és .github mappák mellette. A ZIP kibontott tartalmát tedd a repositoryba, ne egy új kiba-github-pages almappába. A játék relatív hivatkozásokat használ, ezért a `https://FELHASZNALO.github.io/REPOSITORY/` és a saját domain gyökeréből is működik.
 
-## Irányítás
+## GitHub Pages: automatikus telepítés
 
-| Billentyű | Művelet |
-| --- | --- |
-| A / D, bal / jobb nyíl | Mozgás |
-| Space, W, fel nyíl | Ugrás; a szél áldása után második ugrás |
-| J vagy Z | Kardcsapás |
-| K vagy Shift | Szellemlépés az árnyék szentélye után |
-| E | Pihenés, képesség, kapu, történet |
-| M | Térkép |
-| Esc | Szünet |
+1. Csomagold ki a ZIP-et, és tedd a tartalmát egy GitHub repository gyökerébe. A rejtett **.github** mappa és **.nojekyll** fájl is kerüljön fel.
+2. A repositoryban nyisd meg: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+3. Pushold a fájlokat a repository alapértelmezett branchére. A workflow ennek a branchnek a nevét automatikusan követi, így main és master esetén is működik.
+4. Az **Actions → Deploy Kiba to GitHub Pages** futás mutatja a telepítés eredményét és a játék URL-jét. A workflow a **Run workflow** gombbal is indítható az alapértelmezett branchről.
 
-Érintőképernyőn a képernyő gombjai használhatók. A hang a felső gombbal kapcsolható.
+A workflow ellenőrzi a fájlokat és a hivatkozásokat, majd az index.html-t, a .nojekyll fájlt és az assets mappát telepíti. Nincs npm install vagy build, és nem kell saját titkos kulcsot megadni.
 
-## Az ösvény
+[Hivatalos GitHub Pages workflow-útmutató](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
-1. Japán: indulj nyugatra, a három lépcsőplatformon juss el a szél szentélyéhez. E-vel szerezd meg a kettős ugrást: nyomd meg a Space-t, engedd fel, majd a levegőben nyomd meg újra. Az első őrző legyőzése is megadja ezt a képességet, ha a szentély kimaradt. A győzelem után a gyökérfal eltűnik, és az udvar keleti végén fénylő torii jelenik meg. Állj a kapu alá a földön, és nyomj E-t. A középső torii is használható; nem kell felugrani az oszlopokra.
-2. Yomi: a nyugati szentélyben kapod meg a szellemlépést. K-val suhanj át a keleti pecséten. Az őrző legyőzése felébreszti a hajnalkardot és megszünteti az árnypecsétet. A jobb oldali vagy középső kapu alatt E-vel jutsz az égbe.
-3. Takamagahara: J-vel törd fel az arany pecsétet. Győzd le az utolsó őrzőt, majd keleten E-vel köszöntsd Harut.
+## Egyszerűbb, branch alapú publikálás
 
-A középső kőszentély feltölti az életerőt. Halál után a legutóbbi pihenőhelyhez vagy őrző előtti ponthoz térsz vissza. A képességek, legyőzött őrzők, birodalom és lélektöredékek helyben automatikusan mentődnek.
+Ha Actions-workflow helyett branchből szeretnél publikálni, hagyd ki a **.github/workflows/pages.yml** fájlt. Ezután válaszd a **Settings → Pages → Source → Deploy from a branch** lehetőséget, az alapértelmezett branchet és a **/(root)** mappát, majd mentsd el. A gyökérben lévő .nojekyll fájl kikapcsolja a Jekyll feldolgozását.
 
-A 0.1.1 verzió a régi mentésekben is pótolja a kettős ugrást, ha az első őrzőt már legyőzted. Frissítéskor az offline HTML-fájlt ugyanazon a helyen, ugyanazzal a névvel cseréld le, és válaszd a Folytatást. A mentés elérhetősége a böngésző fájlokhoz tartozó tárolási szabályaitól függ.
+[Hivatalos publikálási beállítások](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
-## Technika és korlátok
+## Helyi indítás és ellenőrzés
 
-HTML/CSS és függőség nélküli Canvas 2D JavaScript. Az eredeti 1536×2288 méretű Kiba-képlap a `dist/assets/kiba.png`. A hátterek és ellenfelek programból rajzolt prototípusgrafikák. A pet állapotanimációkat használjuk mozgáshoz és ugráshoz; a kardcsapást a játék rajzolja. Ez rövid, három birodalmat felölelő prototípus, nem kész, kereskedelmi méretű játék. A böngészős mentés törlődhet az oldaladatok törlésével.
+Az **index.html** közvetlenül megnyitható böngészőben. HTTP-előnézethez a repository gyökerében például:
+
+```sh
+python -m http.server 8000
+```
+
+Ezután nyisd meg a `http://localhost:8000/` címet.
+
+A strukturális ellenőrzés Node.js 24-gyel futtatható:
+
+```sh
+node scripts/check-site.mjs
+```
+
+Az ellenőrzőscript a fájlhivatkozásokat, a kis- és nagybetűket, a repository alatti URL-eket, a JavaScript szintaxisát és Kiba képét ellenőrzi.
+
+## Játék
+
+**A/D:** mozgás · **Space:** ugrás · **J:** kard · **K:** szellemlépés · **E:** interakció · **M:** térkép · **S + Space:** leugrás.
+
+[A pályák, irányítás és mentés részletes leírása](docs/GAMEPLAY.md).
+
+A mentés a böngészőben, az oldal címéhez tartozó localStorage-ban található. A korábbi offline fájl mentése nem kerül át automatikusan a GitHub Pages címére. A játékhoz nem kell szerveroldali kód vagy adatbázis.
