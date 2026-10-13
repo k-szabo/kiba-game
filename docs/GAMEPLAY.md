@@ -1,10 +1,10 @@
-# Kiba – Három világ · 0.4
+# Kiba – Három világ · 0.5
 
 Böngészős 2D metroidvania Kiba eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut.
 
 ## Indítás és frissítés
 
-A 0.4 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
+A 0.5 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
 
 Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
 
@@ -64,8 +64,12 @@ Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, 
 ## Az őrzők támadásai
 
 - **Japán:** széles kardvágás, előre jelzett roham és két egymást követő csapás. A felemelt kard előjelzés, a leengedett kard a visszatámadás ideje.
-- **Yomi:** kalapácscsapásból feltörő lávaoszlopok, parázsszórás és az egész arénát érintő láva. A nagy lávafázis előtt 1,8 másodperc figyelmeztetést kapsz. Ugorj a hét alacsony kőszigetre; balról jobbra repedeznek és omlanak le. A repedés egy másodperccel az omlás előtt látható, az utolsó sziget a láva visszahúzódásáig biztonságos. Halálkor és győzelemkor a platformok visszaállnak.
-- **Ég:** a megrontott szeráf felülről érkező óriási fénynyilakat, célzott árnyéklövedékeket és a kettőt kombináló napfogyatkozást használ. Az arany oszlop körvonalából lépj ki, az ibolyaszínű lövedékeket ugrással vagy szellemlépéssel kerüld.
+- **Yomi:** közelharci kalapácsvágás, kalapácscsapásból feltörő lávaoszlopok, parázsszórás, csatlósok idézése és az egész arénát érintő láva. A lávafázis alatt is rád csaphat a kalapáccsal. Az idézési kapuk megjelenése után csaknem egy másodperced van kitérni; egyszerre legfeljebb négy csatlós élhet. A nagy lávafázis előtt 1,8 másodperc figyelmeztetést kapsz. Ugorj a hét alacsony kőszigetre; balról jobbra repedeznek és omlanak le. A repedés egy másodperccel az omlás előtt látható, az utolsó sziget a láva visszahúzódásáig biztonságos. Halálkor és győzelemkor a platformok és idézett ellenfelek visszaállnak.
+- **Ég, I. fázis:** fehér szárnyú angyal fénynyilakkal és szent nyílzáporral. 50% életerőnél átalakul.
+- **Ég, II. fázis:** fekete szárnyú sötét angyal célzott árnyéklövedékekkel, árnyéknóvával és árnyékzáporral. Az átalakulás nem gyógyítja vissza.
+- **Titkos III. fázis:** ha Japánban megtaláltad az angyali glóriát ÉS a démonlord szarvát, a II. alak legyőzése után teljes életerővel feléled. Egyszerre használ fényt és árnyékot, pokoltüzet és démonidézést. Az újjáéledés egy harcon belül egyszer történik; a győzelem és jutalom csak ezután jár.
+
+Kiba **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásakor történik a találat; futás és ugrás közben is látszik. Egy csapás egy célpontot egyszer sebez. Az ereklyéket E-vel veszed fel, a gyűjtemény és a mentés megőrzi őket a következő világokban.
 
 ## Forrás
 

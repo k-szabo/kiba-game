@@ -13,13 +13,13 @@ run('abilities[0]=true;');press(' ');tick(25);release(' ');press(' ');tick();ass
 assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),false);
 for(const id of ['forestBell','villageBell']){const o=run(`level.objects.find(o=>o.id==='${id}')`);place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[0].includes(id));dismiss();if(id==='forestBell')assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),false);}
 assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),true);
-function defeat(){const p=run('level.boss');place(p.x-60,p.y);run('bossStarted=true;boss.phase="recover";boss.clock=999;player.face=1;player.inv=999;');for(let i=0;i<40&&!snap().boss.dead;i++){press('j');tick(44);release('j');}assert(snap().boss.dead);dismiss();}
+function defeat(){const p=run('level.boss');place(p.x-60,p.y);run('bossStarted=true;boss.phase="recover";boss.clock=999;player.face=1;player.inv=999;');for(let i=0;i<80&&!snap().boss.dead;i++){press('j');tick(60);release('j');}assert(snap().boss.dead);dismiss();}
 defeat();let exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('e');assert.equal(snap().realm,1);dismiss();assert.equal(snap().world.height,6250);
 // Descend through a stone platform with S + Space. It cannot drop through a seal.
 place(1530,450);tick();run("player.support='entry';keys.add('s');");press(' ');tick(35);release(' ');release('s');assert(snap().player.y+69>475);
 // Cages remain locked while their assigned guards are alive.
 const soul=run("level.objects.find(o=>o.id==='soulUpper')");place(soul.x,soul.y);press('e');tick();release('e');assert(!snap().flags[1].includes(soul.id));
-for(const id of ['soulUpper','soulLower']){const o=run(`level.objects.find(o=>o.id==='${id}')`);const guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>({id:e.id,x:e.x,y:e.y+e.h,kind:e.kind}))`);for(const e of guards){place(e.x-55,e.y);run('player.face=1;');for(let i=0;i<4;i++){if(e.kind==='shield'){place(e.x-40,e.y-58);run('player.face=1;player.onGround=false;');}press('j');tick(45);release('j');}}place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();}
+for(const id of ['soulUpper','soulLower']){const o=run(`level.objects.find(o=>o.id==='${id}')`);const guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>({id:e.id,x:e.x,y:e.y+e.h,kind:e.kind}))`);for(const e of guards){place(e.x-55,e.y);run('player.face=1;');for(let i=0;i<4;i++){if(e.kind==='shield'){place(e.x-40,e.y-58);run('player.face=1;player.onGround=false;');}press('j');tick(60);release('j');}}place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();}
 assert(run("gatePass(level.gates.find(g=>g.kind==='souls'))"));const shrine=run('level.ability');place(shrine.x,shrine.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
 // Checkpoint maps travel vertically and reset camera, including legacy saves.
 run("visitedRests[1].push('shadow');fastTravel(level.rests.find(r=>r.id==='shadow'));draw();");assert.equal(snap().player.y+69,2700);assert(snap().cameraY>1700);
@@ -27,7 +27,7 @@ defeat();exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('
 // Wind is a real physical lift; the ascending camera follows it.
 place(635,6300);press(' ');tick(180);release(' ');assert(snap().player.y+69<5900);assert(snap().cameraY<5500);
 // The horizontal dawn seal blocks upward travel and can be cut FROM BELOW.
-place(1980,1130);run('player.y=1078;player.onGround=false;');press('j');tick();release('j');assert(snap().flags[2].includes('dawnSeal'));
+place(1980,1130);run('player.y=1078;player.onGround=false;');press('j');tick(30);release('j');assert(snap().flags[2].includes('dawnSeal'));
 // Moving clouds carry a grounded player, rather than moving out from under them.
 run("const cloud=platforms.find(p=>p.kind==='moving');initPlayer({x:cloud.x+90,y:cloud.y});player.onGround=true;player.support=cloud.id;");const cloudBefore=snap().player.x;run('movingPlatforms(.25);');assert.notEqual(snap().player.x,cloudBefore);
 defeat();const father=run('level.father');place(father.x,father.y);press('e');tick();release('e');assert.equal(JSON.parse(storage.get('kiba-three-worlds-v1')).won,true);dismiss();assert.equal(snap().state,'won');
@@ -88,3 +88,8 @@ run("defeated[1]=false;flags[1]=['soulUpper','soulLower'];abilities=[true,true];
 assert(run("routeLink(platforms.find(p=>p.id==='bottom'),lavaLedges[0],false,null)"),'First lava refuge cannot be reached with a single jump');
 for(let i=1;i<7;i++)assert(run(`routeLink(lavaLedges[${i-1}],lavaLedges[${i}],true,null)`),'Broken lava escape route: '+i);
 console.log('PASS: all seven lava refuges have reachable jump connections.');
+
+// Both optional relic locations have actual physical routes from the Japan entrance.
+run("state='play';abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(0);var relicReach=reachableFrom('road0',true);");
+for(const id of ['halo-altar','horn-vault'])assert(run(`relicReach.includes('${id}')`),'Hidden relic route is unreachable: '+id);
+console.log('PASS: angel halo and demon horn routes are reachable in Japan.');

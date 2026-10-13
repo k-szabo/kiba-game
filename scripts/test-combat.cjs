@@ -28,8 +28,8 @@ assert.equal(run('normalizeProgression({level:3,points:999,stats:{vitality:99,st
 
 // A shield gives readable blocking, guard-break and rear/air punish windows.
 run("enterRealm(0);state='play';var e=enemies.find(e=>e.kind==='shield');enemies=[e];e.face=1;e.turnCooldown=999;e.cd=999;");
-place(run('e.x+e.w+15'),run('e.y+e.h'));run('player.face=-1;attackCooldown=0;melee();');assert.equal(run('e.hp'),6);
-run('attackCooldown=0;melee();attackCooldown=0;melee();');assert(run('e.guardBreak>0'));run('attackCooldown=0;melee();');assert(run('e.hp<6'));
+place(run('e.x+e.w+15'),run('e.y+e.h'));run('player.face=-1;attackCooldown=0;melee();advanceSwordAttack(.17);');assert.equal(run('e.hp'),6);
+run('attackCooldown=0;melee();advanceSwordAttack(.17);attackCooldown=0;melee();advanceSwordAttack(.17);');assert(run('e.guardBreak>0'));run('attackCooldown=0;melee();advanceSwordAttack(.17);');assert(run('e.hp<6'));
 
 // Windup locks facing and does not release projectiles before the advertised tell.
 for(const kind of ['archer','mage']){
@@ -48,25 +48,25 @@ for(let realm=0;realm<3;realm++){
     run(`updateBoss(${windup-.02});`);assert.equal(run('boss.phase'),'windup');assert(run('!boss.lava||!boss.lava.active'));
     run('updateBoss(.03);');assert.equal(run('boss.phase'),'strike');run('finishBossBattle();projectiles=[];');
   }
-  assert.equal(new Set(found).size,3);moves.push(found);
+  assert.equal(new Set(found).size,realm===2?2:3);moves.push(found);
 }
-assert.deepEqual(moves,[['cleave','dash','doubleCut'],['slam','lava','embers'],['lightArrows','shadowBolts','eclipse']]);
+assert.deepEqual(moves,[['cleave','dash','doubleCut'],['summon','hammer','slam'],['lightArrows','holySweep','lightArrows']]);
 
 // Lava islands collapse in order, retain a safe final refuge, and reset after death/victory.
-run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;boss.cycles=1;chooseBossMove();player.inv=999;startBossAttack();");
+run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;boss.cycles=4;chooseBossMove();player.inv=999;startBossAttack();");
 const first=run('boss.platformOrder[0]'),last=run('boss.platformOrder.at(-1)');
 run('for(let i=0;i<252;i++)updateBoss(1/120);');assert(run(`platforms.find(p=>p.id==='${first}').broken`));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
 run('for(let i=0;i<400;i++)updateBoss(1/120);');assert(run('boss.destroyedCount>=4'));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
 run('resetBossBattle();');assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken&&!p.crumble)'));assert.equal(run('boss.lava'),null);assert(!run('bossStarted'));
 // The refuge is safe with actual gravity/collision and no invulnerability cheat.
-run("state='play';bossStarted=true;boss.cycles=1;chooseBossMove();var refuge=platforms.find(p=>p.id===boss.platformOrder.at(-1));initPlayer({x:refuge.x+refuge.w/2,y:refuge.y});player.inv=0;player.onGround=true;player.support=refuge.id;keys.clear();pressed.clear();startBossAttack();var safeHp=player.hp;for(let i=0;i<810;i++){movePlayer(1/120);updateBoss(1/120);player.inv=Math.max(0,player.inv-1/120);}");assert.equal(snap().player.hp,run('safeHp'));assert.equal(snap().player.support,run('refuge.id'));
+run("state='play';bossStarted=true;boss.cycles=4;chooseBossMove();var refuge=platforms.find(p=>p.id===boss.platformOrder.at(-1));initPlayer({x:refuge.x+refuge.w/2,y:refuge.y});player.inv=0;player.onGround=true;player.support=refuge.id;keys.clear();pressed.clear();startBossAttack();var safeHp=player.hp;for(let i=0;i<810;i++){movePlayer(1/120);updateBoss(1/120);player.inv=Math.max(0,player.inv-1/120);}");assert.equal(snap().player.hp,run('safeHp'));assert.equal(snap().player.support,run('refuge.id'));
 // A destroyed ledge ceases to support the player immediately.
 run('var p=platforms.find(p=>p.bossPlatform);p.broken=true;initPlayer({x:p.x+120,y:p.y});player.onGround=true;player.support=p.id;movePlayer(.15);');assert(snap().player.y+69>run('p.y'));assert.notEqual(snap().player.support,run('p.id'));
 run("bossStarted=true;boss.lava={active:true};platforms.find(p=>p.bossPlatform).broken=true;boss.hazards=[{life:9}];guardianDefeated();");assert(run('boss.dead'));assert.equal(run('boss.hazards.length'),0);assert.equal(run('boss.lava'),null);assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken)'));
 
 // Corrupted angel combines huge descending light arrows and aimed shadow bolts.
 run("defeated[2]=false;enterRealm(2);state='play';bossStarted=true;boss.cycles=0;chooseBossMove();startBossAttack();updateBoss(.05);");assert.equal(run('boss.hazards[0].kind'),'lightPillar');assert(run('boss.hazards[0].h>=480'));assert(run('boss.hazards[0].warning>0'));
-run("boss.cycles=1;chooseBossMove();startBossAttack();updateBoss(.05);");assert(run("projectiles.some(p=>p.kind==='shadowBolt'&&p.source==='boss')"));
+run("boss.stage=2;boss.cycles=0;chooseBossMove();startBossAttack();updateBoss(.05);");assert(run("projectiles.some(p=>p.kind==='shadowBolt'&&p.source==='boss')"));
 
 // Atlas frames remain valid; each role has six movement and six attack pictures.
 const art=run('({manifest:ART_MANIFEST,frames:ART_FRAMES})');

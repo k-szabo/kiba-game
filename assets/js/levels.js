@@ -19,6 +19,9 @@ const japan=makeLevel('japan',10400,1700,{x:260,y:1000});
 japan.ability={x:2340,y:760,name:'A szél áldása'};
 rest(japan,'start',330,1000,'A falu széle');rest(japan,'river',3650,1000,'A kettős ösvény');rest(japan,'fields',5880,920,'Rizsföldek');rest(japan,'temple',8760,1000,'A templom kapuja');
 japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:'Az erdei harang'},{id:'villageBell',type:'bell',x:7240,y:715,name:'A falu harangja'},{id:'riverMemory',type:'memory',x:5550,y:1390,name:'Emlék a folyó alatt'},{id:'forestMemory',type:'memory',x:3830,y:620,name:'A lombok emléke'}];
+// Optional relic routes use existing double-jump access and persist through the normal flag save.
+ledge(japan,'halo-altar',4040,540,260);ledge(japan,'horn-vault',4870,1240,220);
+japan.objects.push({id:'angelHalo',type:'relic',x:4170,y:540,name:'Az angyali glória'},{id:'demonHorn',type:'relic',x:4980,y:1240,name:'A démonlord szarva'});
 japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:1700}];
 japan.arena={x:8770,y:1000,w:1550,restId:'temple'};japan.boss={x:9570,y:1000};japan.exit={x:10000,y:1000};
 [[930,1000],[1900,950],[2820,950],[3600,1000],[4140,1000],[4750,1000],[5450,920],[6200,920],[6930,960],[7550,960],[8390,1000]].forEach(([x,y],i)=>foe(japan,'road-'+i,x,y,i%4===2?'archer':'guard',null,Math.min(65,i===8?40:65)));

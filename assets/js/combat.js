@@ -1,7 +1,9 @@
 /* Explicit movement and attack states; an enemy never flips every frame at a patrol edge. */
 'use strict';
 function createEnemies() {
-  return level.enemies.map((spec,i)=>{
+  return level.enemies.map(createEnemy);
+}
+function createEnemy(spec,i=0) {
     const h=spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.kind==='shield'?48:40;
     const maxHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
@@ -11,7 +13,6 @@ function createEnemies() {
       stun:0,cd:1+i*.13,contactCd:0,windup:0,windupDuration:0,attackTime:0,attackDuration:.42,
       recovery:0,turnCooldown:0,edgePause:0,blocks:0,guardBreak:0,blockFlash:0,walkSpeed:0,
       animTime:i*.17,attackElapsed:0,dead:false};
-  });
 }
 function respawnEnemies() {
   enemies=createEnemies();projectiles=projectiles.filter(p=>p.source==='boss');
@@ -19,9 +20,9 @@ function respawnEnemies() {
 }
 function killEnemy(e) {
   if(e.dead)return;
-  e.dead=true;shards+=2;
+  e.dead=true;shards+=e.summoned?1:2;
   const role=enemyRole(e);
-  awardXP({guard:20,archer:18,shield:26,mage:24}[role]||18);
+  awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
   updateHUD();
 }
 function enemyRole(e) {return e.kind==='fly'?(realm===0?'mage':'archer'):e.kind;}
@@ -40,19 +41,22 @@ function moveEnemy(e,velocity,dt,patrolling=false) {
   }else{e.x=next;e.walkSpeed=velocity;e.animTime+=dt*Math.min(1.5,Math.abs(velocity)/45);}
 }
 function releaseEnemyAttack(e) {
+  const shotsBefore=projectiles.length;
+  const palette=e.factionOverride==='yomi'?realms[1]:realms[realm];
   const role=enemyRole(e);e.attackTime=e.attackDuration;e.attackElapsed=0;
   e.recovery=e.kind==='shield'?.9:role==='mage'?.55:.35;
   if(role==='archer'){
     const x=e.x+e.w/2,y=e.y+24,dx=e.targetX-x,dy=e.targetY-y;
     const flight=Math.max(.2,Math.abs(dx)/330),angle=Math.atan2(dy-27.5*flight*flight,dx);
-    shoot(x,y,Math.cos(angle)*330,Math.sin(angle)*330,realms[realm].gold,4,'arrow');e.cd=2.4;
+    shoot(x,y,Math.cos(angle)*330,Math.sin(angle)*330,palette.gold,4,'arrow');e.cd=2.4;
   }else if(role==='mage'){
     const angle=Math.atan2(e.targetY-(e.y+20),e.targetX-(e.x+e.w/2)),count=realm===0?1:2;
-    for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,realms[realm].accent,4.5,'magic');}e.cd=3.3;
+    for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,'magic');}e.cd=3.3;
   }else{
     const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
     if(overlap(player,hit))damage(1,e.face);e.cd=e.kind==='shield'?2.5:1.8;
   }
+  if(e.summoned)for(let i=shotsBefore;i<projectiles.length;i++)projectiles[i].source='minion';
 }
 function updateEnemies(dt) {
   for(const e of enemies){
@@ -90,6 +94,7 @@ function updateEnemies(dt) {
       }
     }
     if(e.kind==='fly')e.y=e.baseY+Math.sin(time*2+e.origin)*18;
+    if(e.summoned&&e.supportId){const p=platforms.find(p=>p.id===e.supportId);if(p?.broken){e.supportId='bottom';e.baseY=level.arena.y-e.h;e.y=e.baseY;e.patrolLeft=level.arena.x+8;e.patrolRight=level.arena.x+level.arena.w-e.w-8;}}
     if(overlap(player,e)&&e.contactCd<=0){damage(1,dx>0?1:-1);e.contactCd=1.1;}
     if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
@@ -99,114 +104,186 @@ function updateEnemies(dt) {
   }
 }
 
-/* Three different boss state machines share explicit anticipation and recovery windows. */
-function createBoss() {
-  const max=[28,42,50][realm];
+/* Phase-aware bosses. All transitions and summons belong to one encounter. */
+function relicRitualReady(){return flags[0].includes('angelHalo')&&flags[0].includes('demonHorn');}
+function createBoss(){
+  const max=[28,48,50][realm];
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
-    hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0};
+    hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
+    secretEligible:realm===2&&relicRitualReady(),secretTriggered:false,summons:[],summonSerial:0,
+    autoPhase:null,autoClock:0,autoDuration:0,autoCooldown:1.5,autoFace:-1,extraCast:false};
 }
-function setBossPhase(phase,duration) {boss.phase=phase;boss.clock=duration;boss.phaseDuration=duration;boss.animClock=0;}
-function resetBossBattle() {
-  boss=createBoss();bossStarted=false;
+function setBossPhase(phase,duration){boss.phase=phase;boss.clock=duration;boss.phaseDuration=duration;boss.animClock=0;}
+function clearEncounterEffects(){
+  boss.hazards=[];boss.lava=null;boss.summons=[];boss.autoPhase=null;
+  enemies=enemies.filter(e=>!e.summoned);
   for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
-  projectiles=projectiles.filter(p=>p.source!=='boss');$('bossHud').hidden=true;
+  projectiles=projectiles.filter(p=>p.source!=='boss'&&p.source!=='minion');
 }
-function finishBossBattle() {
-  boss.hazards=[];boss.lava=null;
-  for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
-  projectiles=projectiles.filter(p=>p.source!=='boss');
-}
-function bossProjectile(x,y,vx,vy,color,kind,life=5,extra={}) {
+function resetBossBattle(){clearEncounterEffects();boss=createBoss();bossStarted=false;$('bossHud').hidden=true;}
+function finishBossBattle(){clearEncounterEffects();}
+function bossProjectile(x,y,vx,vy,color,kind,life=5,extra={}){
   shoot(x,y,vx,vy,color,life,kind);Object.assign(projectiles[projectiles.length-1],{source:'boss',...extra});
 }
-function chooseBossMove() {
-  const patterns=realm===0?['cleave','dash','doubleCut']:realm===1?['slam','lava','embers']:['lightArrows','shadowBolts','eclipse'];
-  boss.move=patterns[boss.cycles%patterns.length];boss.cycles++;
+function bossName(){
+  if(realm!==2)return realms[realm].boss;
+  return ['','A hajnal angyala · I. fázis','A sötét angyal · II. fázis','A két világ ura · TITKOS III. FÁZIS'][boss.stage];
+}
+function transformAngel(stage){
+  clearEncounterEffects();boss.stage=stage;boss.cycles=0;boss.move=null;boss.attackStep=0;boss.inv=1.8;
+  if(stage===3){boss.secretTriggered=true;boss.hp=boss.max;}
+  else boss.hp=Math.max(1,boss.hp);
+  setBossPhase('transform',1.8);shake=.25;
+  burst(boss.x+boss.w/2,boss.y+30,stage===2?'#c89aff':'#ffe1a1',55);
+  toast(stage===2?'A glória megreped! Az angyal árnyékmágiára vált.':'A glória és a démonlord szarva felébreszti a titkos alakot! Az életereje teljesen visszatöltődött.');
+}
+function checkBossHealth(){
+  if(boss.dead)return;
+  if(realm===2&&boss.stage===1&&boss.hp<=boss.max*.5){transformAngel(2);return;}
+  if(boss.hp>0)return;
+  if(realm===2&&boss.stage===2&&boss.secretEligible&&!boss.secretTriggered){transformAngel(3);return;}
+  guardianDefeated();
+}
+function hitBoss(amount){
+  if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform')return false;
+  boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();return true;
+}
+function bossMoves(){
+  if(realm===0)return ['cleave','dash','doubleCut'];
+  if(realm===1)return ['summon','hammer','slam','hammer','lava','hammer','embers','summon'];
+  if(boss.stage===1)return ['lightArrows','holySweep','lightArrows'];
+  if(boss.stage===2)return ['shadowBolts','shadowNova','shadowRain'];
+  return ['eclipse','hellfire','lightArrows','shadowBolts','summon'];
+}
+function chooseBossMove(){
+  const patterns=bossMoves();boss.move=patterns[boss.cycles%patterns.length];boss.cycles++;
   boss.face=Math.abs(player.x+player.w/2-boss.x-boss.w/2)>20?Math.sign(player.x+player.w/2-boss.x-boss.w/2):boss.face;
-  boss.vx=boss.face;boss.targetX=player.x+player.w/2;boss.attackStep=0;
-  const duration={cleave:.9,dash:1,doubleCut:.85,slam:1,lava:1.8,embers:1,lightArrows:1.35,shadowBolts:1,eclipse:1.5}[boss.move];
+  boss.vx=boss.face;boss.targetX=player.x+player.w/2;boss.attackStep=0;boss.extraCast=false;
+  const duration={cleave:.9,dash:1,doubleCut:.85,hammer:.8,slam:1,lava:1.8,embers:1,summon:1.1,
+    lightArrows:1.35,holySweep:1.05,shadowBolts:1,shadowNova:1.15,shadowRain:1.2,eclipse:1.5,hellfire:1.3}[boss.move];
   if(boss.move==='lava'){
-    const available=platforms.filter(p=>p.bossPlatform&&!p.broken).sort((a,b)=>a.x-b.x);
+    let available=platforms.filter(p=>p.bossPlatform&&!p.broken).sort((a,b)=>a.x-b.x);
+    if(available.length<3){for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}available=platforms.filter(p=>p.bossPlatform).sort((a,b)=>a.x-b.x);}
     boss.platformOrder=available.map(p=>p.id);boss.destroyedCount=0;
-    // New safe ledges return before every lava cycle. The floor stays solid beneath the lava.
-    if(available.length<3){for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}boss.platformOrder=platforms.filter(p=>p.bossPlatform).sort((a,b)=>a.x-b.x).map(p=>p.id);}
     boss.lava={x:level.arena.x,y:level.arena.y-22,w:level.arena.w,h:35,active:false,warning:duration};
-    toast('Láva tör fel! Ugorj a kőszigetekre; a repedező platformról időben lépj tovább.');
+    toast('Láva tör fel! Ugorj a kőszigetekre, és a kalapácsra is figyelj!');
   }
   setBossPhase('windup',duration);
 }
-function startBossAttack() {
-  const duration={cleave:.28,dash:.55,doubleCut:.9,slam:.3,lava:6.8,embers:1.2,lightArrows:1.4,shadowBolts:1.35,eclipse:1.65}[boss.move];
+function scheduleMinions(){
+  const living=enemies.filter(e=>e.summoned&&!e.dead).length;
+  const slots=Math.min(2,4-living-boss.summons.length);if(slots<=0)return;
+  for(let i=0;i<slots;i++){
+    const wanted=clamp(boss.targetX+(i?230:-230),level.arena.x+60,level.arena.x+level.arena.w-100);
+    const refuge=realm===1&&player.y+player.h<level.arena.y-50?platforms.filter(p=>p.bossPlatform&&!p.broken).sort((a,b)=>Math.abs(a.x+a.w/2-wanted)-Math.abs(b.x+b.w/2-wanted))[0]:null;
+    const x=refuge?clamp(wanted,refuge.x+10,refuge.x+refuge.w-55):wanted;
+    boss.summons.push({x,y:refuge?refuge.y:level.arena.y,kind:i?'mage':'guard',warning:.95,life:.95,supportId:refuge?.id||null});
+  }
+  toast('A démon csatlósokat idéz! A vörös kapukból lépj ki.');
+}
+function updateSummons(dt){
+  for(const portal of boss.summons){
+    portal.warning-=dt;if(portal.warning>0)continue;
+    const support=platforms.find(p=>p.id===portal.supportId),feet=support?.broken?level.arena.y:portal.y;
+    const minion=createEnemy({id:'summon-'+(++boss.summonSerial),x:portal.x,y:feet,kind:portal.kind,patrol:230,group:null},boss.summonSerial);
+    Object.assign(minion,{summoned:true,factionOverride:'yomi',supportId:support?.broken?null:portal.supportId,hp:portal.kind==='mage'?3:4,maxHp:portal.kind==='mage'?3:4,cd:1.2,stun:.25});
+    enemies.push(minion);burst(portal.x+20,feet-30,'#df8568',22);
+  }
+  boss.summons=boss.summons.filter(p=>p.warning>0);
+}
+function startBossAttack(){
+  const duration={cleave:.28,dash:.55,doubleCut:.9,hammer:.35,slam:.3,lava:6.8,embers:1.2,summon:.45,
+    lightArrows:1.4,holySweep:.85,shadowBolts:1.35,shadowNova:.7,shadowRain:1.4,eclipse:1.65,hellfire:1.5}[boss.move];
   setBossPhase('strike',duration);shake=.12;tone(realm===2?600:75,.2,'triangle',.04);
-  if(boss.move==='lava')boss.lava.active=true;
-  if(boss.move==='slam'){
+  if(boss.move==='lava'&&boss.lava)boss.lava.active=true;
+  if(boss.move==='summon')scheduleMinions();
+  if(boss.move==='slam'||boss.move==='hellfire'){
     const x=clamp(boss.targetX,level.arena.x+100,level.arena.x+level.arena.w-100);
-    for(const d of [-1,0,1])boss.hazards.push({kind:'eruption',x:x+d*170-40,y:level.arena.y-130,w:80,h:130,warning:.55+Math.abs(d)*.18,life:1.6,active:false});
+    for(const d of [-1,0,1])boss.hazards.push({kind:'eruption',x:x+d*170-40,y:level.arena.y-130,w:80,h:130,warning:.75+Math.abs(d)*.18,life:1.85,active:false});
+    if(boss.move==='hellfire')for(const d of [-1,1])lightArrowAt(x+d*330,.9);
   }
 }
-function bossMelee(width=145,height=115,amount=2) {
-  const hit={x:boss.face>0?boss.x+boss.w*.4:boss.x-width,y:boss.y+10,w:width+boss.w*.6,h:height};
-  if(overlap(player,hit))damage(amount,boss.face);
+function bossMelee(width=145,height=115,amount=2,lift=0,face=boss.face){
+  const hit={x:face>0?boss.x+boss.w*.4:boss.x-width,y:boss.y+10-lift,w:width+boss.w*.6,h:height+lift};
+  if(overlap(player,hit))damage(amount,face);
 }
-function executeBossMove(dt) {
+function lightArrowAt(x,warning=.7){
+  boss.hazards.push({kind:'lightPillar',x:clamp(x,level.arena.x+50,level.arena.x+level.arena.w-50)-18,y:level.arena.y-490,w:36,h:490,warning,life:warning+.7,active:false});
+}
+function aimedShadowPair(cx,cy,speed=245){
+  const angle=Math.atan2(player.y+player.h*.5-cy,player.x+player.w/2-cx);
+  for(const spread of [-.17,.17])bossProjectile(cx,cy,Math.cos(angle+spread)*speed,Math.sin(angle+spread)*speed,'#bb87f8','shadowBolt',5,{damage:1,radius:10});
+}
+function executeBossMove(dt){
   const elapsed=boss.phaseDuration-boss.clock,cx=boss.x+boss.w/2,cy=boss.y+35;
-  if(boss.move==='dash'){
-    boss.x=clamp(boss.x+boss.face*560*dt,level.arena.x+40,level.arena.x+level.arena.w-boss.w-40);bossMelee(90,100);
-  }else if(boss.move==='cleave')bossMelee(180,110);
-  else if(boss.move==='doubleCut'){
-    if(elapsed<.2||elapsed>.58&&elapsed<.8)bossMelee(140,100);
-  }else if(boss.move==='slam')bossMelee(145,110);
+  if(boss.move==='dash'){boss.x=clamp(boss.x+boss.face*560*dt,level.arena.x+40,level.arena.x+level.arena.w-boss.w-40);bossMelee(90,100);}
+  else if(boss.move==='cleave')bossMelee(180,110);
+  else if(boss.move==='doubleCut'){if(elapsed<.2||elapsed>.58&&elapsed<.8)bossMelee(140,100);}
+  else if(boss.move==='hammer')bossMelee(180,140,2,65);
+  else if(boss.move==='slam')bossMelee(145,110);
   else if(boss.move==='lava'){
     for(let i=0;i<boss.platformOrder.length;i++){
-      const p=platforms.find(p=>p.id===boss.platformOrder[i]);
-      const collapseAt=1.9+i*.95;
-      if(!p.broken){p.crumble=clamp((elapsed-(collapseAt-1.05))/1.05,0,1);if(elapsed>=collapseAt){p.broken=true;boss.destroyedCount++;burst(p.x+p.w/2,p.y,'#ffae60',22);}}
+      const p=platforms.find(p=>p.id===boss.platformOrder[i]),collapseAt=1.9+i*.95;
+      if(p&&!p.broken){p.crumble=clamp((elapsed-(collapseAt-1.05))/1.05,0,1);if(elapsed>=collapseAt){p.broken=true;boss.destroyedCount++;burst(p.x+p.w/2,p.y,'#ffae60',22);}}
     }
-    // The final safe ledge lasts until the lava recedes, even if all previous ones broke.
     const last=platforms.find(p=>p.id===boss.platformOrder.at(-1));if(last&&elapsed>5.6){last.broken=false;last.crumble=.6;}
   }else if(boss.move==='embers'){
-    if(elapsed>=boss.attackStep*.36&&boss.attackStep<3){
-      const n=boss.attackStep++;for(const dir of [-1,1])bossProjectile(cx,boss.y+85,dir*(175+n*25),-90-n*18,'#ff9b51','ember',4,{gravity:160,damage:1});
-    }
+    if(elapsed>=boss.attackStep*.36&&boss.attackStep<3){const n=boss.attackStep++;for(const dir of [-1,1])bossProjectile(cx,boss.y+85,dir*(175+n*25),-90-n*18,'#ff9b51','ember',4,{gravity:160,damage:1});}
   }else if(boss.move==='lightArrows'){
-    if(elapsed>=boss.attackStep*.36&&boss.attackStep<3){
-      const x=clamp(boss.targetX+(boss.attackStep++-1)*220,level.arena.x+70,level.arena.x+level.arena.w-70);
-      boss.hazards.push({kind:'lightPillar',x:x-18,y:level.arena.y-490,w:36,h:490,warning:.7,life:1.4,active:false});
-    }
+    if(elapsed>=boss.attackStep*.36&&boss.attackStep<3)lightArrowAt(boss.targetX+(boss.attackStep++-1)*220);
+    if(boss.stage===3&&!boss.extraCast){aimedShadowPair(cx,cy);boss.extraCast=true;}
+  }else if(boss.move==='holySweep'){
+    if(elapsed>=boss.attackStep*.23&&boss.attackStep<3){boss.attackStep++;for(const dy of [-100,50])bossProjectile(cx,cy,boss.face*270,dy,'#fff0a5','holyArrow',4,{damage:1,radius:10});}
   }else if(boss.move==='shadowBolts'){
-    if(elapsed>=boss.attackStep*.3&&boss.attackStep<4){
-      boss.attackStep++;const angle=Math.atan2(player.y+player.h*.5-cy,player.x+player.w/2-cx);
-      for(const spread of [-.17,.17])bossProjectile(cx,cy,Math.cos(angle+spread)*245,Math.sin(angle+spread)*245,'#bb87f8','shadowBolt',5,{damage:1,radius:10});
-    }
+    if(elapsed>=boss.attackStep*.3&&boss.attackStep<4){boss.attackStep++;aimedShadowPair(cx,cy);}
+    if(boss.stage===3&&!boss.extraCast){lightArrowAt(boss.targetX+180,.85);boss.extraCast=true;}
+  }else if(boss.move==='shadowNova'){
+    if(!boss.attackStep){boss.attackStep=1;for(let i=0;i<8;i++){const angle=i*Math.PI/4+.2;bossProjectile(cx,cy,Math.cos(angle)*195,Math.sin(angle)*195,'#bb87f8','shadowBolt',4,{damage:1,radius:9});}}
+  }else if(boss.move==='shadowRain'){
+    if(elapsed>=boss.attackStep*.32&&boss.attackStep<4){const x=clamp(boss.targetX+(boss.attackStep++-1.5)*135,level.arena.x+70,level.arena.x+level.arena.w-70);boss.hazards.push({kind:'shadowPillar',x:x-16,y:level.arena.y-420,w:32,h:420,warning:.75,life:1.3,active:false});}
   }else if(boss.move==='eclipse'){
-    if(!boss.attackStep){
-      boss.attackStep=1;
-      for(const d of [-1,1])bossProjectile(cx,boss.y+95,d*260,-22,'#b490ef','shadowBolt',5,{damage:1,radius:11});
-      for(const d of [-1,1])boss.hazards.push({kind:'lightPillar',x:clamp(boss.targetX+d*170,level.arena.x+60,level.arena.x+level.arena.w-60)-18,y:level.arena.y-480,w:36,h:480,warning:.85,life:1.55,active:false});
-    }
-  }
+    if(!boss.attackStep){boss.attackStep=1;for(const d of [-1,1])bossProjectile(cx,boss.y+75,d*260,-22,'#b490ef','shadowBolt',5,{damage:1,radius:11});for(const d of [-1,1])lightArrowAt(boss.targetX+d*170,.85);}
+  }else if(boss.move==='hellfire'){
+    if(!boss.attackStep){boss.attackStep=1;aimedShadowPair(cx,cy,215);}
+  }else if(boss.move==='summon'&&boss.stage===3&&!boss.extraCast){lightArrowAt(boss.targetX,.95);boss.extraCast=true;}
 }
-function updateBossHazards(dt) {
-  for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;
-    if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);
+function demonAutoAttack(dt){
+  if(realm!==1)return;
+  boss.autoCooldown=Math.max(0,boss.autoCooldown-dt);
+  const dx=player.x+player.w/2-boss.x-boss.w/2;
+  const canAttack=boss.phase==='wait'||boss.phase==='recover'||boss.phase==='strike'&&boss.move==='lava';
+  if(!boss.autoPhase){
+    if(canAttack&&boss.autoCooldown<=0&&Math.abs(dx)<235&&Math.abs(player.y+player.h-level.arena.y)<220){boss.autoPhase='windup';boss.autoClock=.7;boss.autoDuration=.7;boss.autoFace=Math.sign(dx)||boss.face;}
+    return;
   }
+  boss.autoClock-=dt;
+  if(boss.autoPhase==='windup'&&boss.autoClock<=0){boss.autoPhase='strike';boss.autoClock=.28;boss.autoDuration=.28;bossMelee(180,140,2,65,boss.autoFace);shake=.12;}
+  else if(boss.autoPhase==='strike'&&boss.autoClock<=0){boss.autoPhase='recover';boss.autoClock=.6;boss.autoDuration=.6;}
+  else if(boss.autoPhase==='recover'&&boss.autoClock<=0){boss.autoPhase=null;boss.autoCooldown=1.7;}
+}
+function updateBossHazards(dt){
+  for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);}
   boss.hazards=boss.hazards.filter(h=>h.life>0);
   if(boss.lava){boss.lava.warning=Math.max(0,boss.lava.warning-dt);if(boss.lava.active&&overlap(player,boss.lava))damage(2,player.x>boss.x?1:-1);}
+  updateSummons(dt);
 }
-function updateBoss(dt) {
+function updateBoss(dt){
   $('bossHud').hidden=!bossStarted||boss.dead;if(!bossStarted||boss.dead)return;
-  $('bossName').textContent=realms[realm].boss;$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
+  if(realm===2&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
+  $('bossName').textContent=bossName();$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
   boss.inv=Math.max(0,boss.inv-dt);boss.clock-=dt;boss.animClock+=dt;
-  updateBossHazards(dt);
+  if(boss.phase==='transform'){if(boss.clock<=0)setBossPhase('wait',.85);return;}
+  updateBossHazards(dt);if(!bossStarted||boss.dead)return;
+  demonAutoAttack(dt);
+  if(!bossStarted||boss.dead)return;
   if(boss.phase==='wait'){
-    // Samurai repositions; the demon guards the floor; the angel glides above its altar.
-    if(realm===0&&Math.abs(player.x-boss.x)>190)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*65*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
-    if(boss.clock<=0)chooseBossMove();
+    if((realm===0||realm===1)&&!boss.autoPhase&&Math.abs(player.x-boss.x)>165)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*(realm===1?95:65)*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
+    if(boss.clock<=0&&!boss.autoPhase)chooseBossMove();
   }else if(boss.phase==='windup'){if(boss.clock<=0)startBossAttack();}
   else if(boss.phase==='strike'){
-    executeBossMove(dt);
-    if(boss.clock<=0){boss.lava=null;setBossPhase('recover',realm===1?1.5:1.25);}
-  }else if(boss.phase==='recover'&&boss.clock<=0)setBossPhase('wait',.75);
+    if(realm===1&&boss.move==='lava'&&!boss.autoPhase&&Math.abs(player.x-boss.x)>180)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*55*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
+    executeBossMove(dt);if(boss.clock<=0){boss.lava=null;setBossPhase('recover',realm===1?1.25:1.1);}
+  }else if(boss.phase==='recover'&&boss.clock<=0&&!boss.autoPhase)setBossPhase('wait',.6);
   if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava')damage(1,player.x>boss.x?1:-1);
 }

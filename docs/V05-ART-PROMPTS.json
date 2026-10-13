@@ -1,0 +1,50 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "id": "samurai",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/bosses-v4.png"
+      ],
+      "prompt": "Use case: stylized-concept. Input image is a DESIGN reference, not a target to edit. Create a NEW standalone animation sheet of ONLY the red-black Japanese SAMURAI WARLORD in the FIRST ROW of the reference. Same gold horned helmet, red-black armor, red cape, fierce face and curved silver katana. Transparent PNG landscape1536x1024, EXACT THREE COLUMNS and TWO ROWS, SIX separate full-body sprites. Each cell512x512 has at least48pixels empty padding on ALL sides. Body standing height about280pixels, consistent feet baseline at85percent cell height, same body center and scale in every frame. Every weapon tip, wing, hair, halo, spark and foot must be COMPLETE and entirely inside its cell. Never overlap or connect adjacent frames. All face RIGHT. Ordered frames reading left-to-right top then bottom: neutral, weapon/arms raising, maximum anticipation, strike/cast, follow-through, recovery. Detailed polished painted chibi 2D game art. No text, no grid, no background except real transparent alpha0. Very important: the katana in the FOLLOW-THROUGH and RECOVERY frames must retain its FULL SILVER SHARP TIP, just as in neutral. Use a blade150pixels long maximum so the tip stays far from the cell boundary; do not substitute a stump or scabbard. Complete blade even when pointing forward or diagonally down. Raised katana and compact red slash effect. Do not include oni or angels."
+    },
+    {
+      "id": "kiba-slash",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/kiba.png"
+      ],
+      "prompt": "Use case: stylized-concept. Use supplied Kiba pet sheet as EXACT CHARACTER IDENTITY reference. Create NEW real katana attack animation for Kiba, the adorable orange/cream SHIBA INU samurai, pointed shiba ears, curled fluffy tail, red hachimaki headband, navy/gold Japanese armor, red belt and sword scabbard. Same big friendly brown eyes and proportions from reference, not a human. Transparent PNG1536x1024 with EXACT FOUR COLUMNS and TWO ROWS, EIGHT consecutive FULL-BODY frames. Each cell384x512, every sword tip and tail fully inside with at least32pixels padding. All face RIGHT in side-three-quarter profile. SAME scale/body center and feet baseline at85percent cell height; standing dog body including ears about260pixels. 1 paw on katana hilt, 2 unsheath and draw back, 3 katana raised overhead with both paws, 4 strong forward diagonal slash with both paws and visible COMPLETE steel blade, 5 extended follow-through, 6 pull sword back, 7 resheath, 8 settled ready stance with paw on hilt. Real limb and body motion, headband/tail follow-through, eight distinct coherent poses. Sword is in paws, never floating or disappearing, silver blade120pixels maximum to stay fully inside each cell. Compact slash arc only on4/5. Preserve original Kiba design and expressive painted style. No background, no labels, no grid, actual transparent alpha0."
+    },
+    {
+      "id": "angel-light",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/heaven-v3.png"
+      ],
+      "prompt": "Use case: stylized-concept. Design reference is provided sheet; use ONLY the majestic crowned angel BOSS in last column. Create new standalone six-frame animation of this NORMAL ANGEL boss: blond hair, ornate white-gold armor, intact golden halo, TWO IVORY FEATHER WINGS, beautiful calm face. Holds complete compact glowing gold sword and casts HOLY LIGHT ONLY. No violet darkness, no black wings or demonic traits. Transparent PNG landscape1536x1024, EXACT THREE COLUMNS and TWO ROWS, SIX separate full-body sprites. Each cell512x512 has at least48pixels empty padding on ALL sides. Body standing height about280pixels, consistent feet baseline at85percent cell height, same body center and scale in every frame. Every weapon tip, wing, hair, halo, spark and foot must be COMPLETE and entirely inside its cell. Never overlap or connect adjacent frames. All face RIGHT. Ordered frames reading left-to-right top then bottom: neutral, weapon/arms raising, maximum anticipation, strike/cast, follow-through, recovery. Detailed polished painted chibi 2D game art. No text, no grid, no background except real transparent alpha0. Wings must be folded enough to remain entirely inside each512pixel cell. All six frames same identity. Raised sword/left palm charging a golden light arrow; strike frame casts golden light, recovery sword lowered with full tip."
+    },
+    {
+      "id": "angel-dark",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/bosses-v4.png"
+      ],
+      "prompt": "Use case: stylized-concept. Reference is existing boss sheet, use ONLY its third-row angel identity. Create new standalone six-frame DARK CORRUPTED ANGEL boss: same blond face/hair/crown silhouette as reference, cracked golden halo, TWO CHARCOAL BLACK FEATHER WINGS, dark navy/violet armor with muted gold edging, vivid violet eyes, purple shadow magic in left palm and complete compact shadow-dark sword in right. No white wings. Transparent PNG landscape1536x1024, EXACT THREE COLUMNS and TWO ROWS, SIX separate full-body sprites. Each cell512x512 has at least48pixels empty padding on ALL sides. Body standing height about280pixels, consistent feet baseline at85percent cell height, same body center and scale in every frame. Every weapon tip, wing, hair, halo, spark and foot must be COMPLETE and entirely inside its cell. Never overlap or connect adjacent frames. All face RIGHT. Ordered frames reading left-to-right top then bottom: neutral, weapon/arms raising, maximum anticipation, strike/cast, follow-through, recovery. Detailed polished painted chibi 2D game art. No text, no grid, no background except real transparent alpha0. Six frames depict idle, raise sword and purple casting hand, charge, release SHADOW BOLT, follow-through, recovery. Keep wings fully contained by folding. No giant surrounding effects. Dark phase is visibly different but recognizably same angel."
+    },
+    {
+      "id": "angel-eclipse",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/bosses-v4.png"
+      ],
+      "prompt": "Use case: stylized-concept. Reference is existing boss sheet, use only third-row angel identity. Create new standalone six-frame secret final boss form of the same blond angel: one IVORY wing and one BLACK wing, split white-gold and dark-violet armor, crown with TWO curved demon horns, double halo of gold and purple. Gold radiant compact sword in one hand, violet flame in other. This combines ANGELIC and DEMON LORD power, majestic and dangerous. Transparent PNG landscape1536x1024, EXACT THREE COLUMNS and TWO ROWS, SIX separate full-body sprites. Each cell512x512 has at least48pixels empty padding on ALL sides. Body standing height about280pixels, consistent feet baseline at85percent cell height, same body center and scale in every frame. Every weapon tip, wing, hair, halo, spark and foot must be COMPLETE and entirely inside its cell. Never overlap or connect adjacent frames. All face RIGHT. Ordered frames reading left-to-right top then bottom: neutral, weapon/arms raising, maximum anticipation, strike/cast, follow-through, recovery. Detailed polished painted chibi 2D game art. No text, no grid, no background except real transparent alpha0. Sequence is ready, both powers lifting, maximum charge with glowing sword and purple hand, simultaneous golden light arrow and shadow spell release, follow-through, recovery. Same face in every frame. All wings/horns/blade tips complete with generous empty margins."
+    },
+    {
+      "id": "relics",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Two collectible relic sprites for a painted Japanese fantasy 2D game, transparent PNG1536x1024, EXACT TWO COLUMNS by ONE ROW, separate sprites fully contained in each768x1024cell with100pixels padding. LEFT: ANGEL HALO, ornate intact gold circular halo tilted in three-quarter view, pearl-white gems and tiny feather motifs, floating above small weathered Japanese stone pedestal, warm local golden glow. RIGHT: DEMON LORD HORN, one complete curved black obsidian horn, glowing crimson lava fissures and gold base band, floating above a matching weathered stone pedestal, compact violet/red glow. Side-view collectible objects, detailed polished painterly texture, no characters. Complete object tips and pedestal bases, no cut edges, no background haze outside small glow, no text, no labels, no grid, actual transparent alpha0."
+    }
+  ]
+}

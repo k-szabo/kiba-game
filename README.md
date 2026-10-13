@@ -1,102 +1,64 @@
-# Kiba – Három világ · 0.4
+# Kiba – Három világ
 
-GitHub Pagesre előkészített, telepítés és build nélkül működő 2D metroidvania. Kiba, a kis shiba szamuráj Japánon, Yomi mélységein és az égi birodalmon át keresi édesapját.
+Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
-A 0.4 változat hatképkockás ellenfélmozgást és támadásokat, három külön boss-movesetet, lávát és pusztuló platformokat, megrontott angyalt, szentélyes újraéledést és XP-alapú fejlesztéseket ad a részletes három világhoz. Kiba eredeti animációi megmaradtak. [A változások és a tesztek részletei](docs/POLISH-0.4.md).
+**[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)
 
-## Meglévő GitHub Pages-oldal frissítése
+![Kiba karddal küzd a japán templom őrzőjével](docs/images/kiba-game.png)
 
-A ZIP teljes tartalmával frissítsd a repository megfelelő fájljait és mappáit, majd commitold és pushold a változást. Az új **assets/images** képek, valamint az **art-data.js**, **graphics.js**, **progression.js** és **combat.js** is szükségesek. A helyi **.git** mappát őrizd meg; a csomag nem tartalmaz Git-előzményeket. A már működő Pages-beállítást nem kell átállítani.
+*Előnézet a játék saját Canvas-rajzolókódjával renderelve.*
 
-A 0.2 és 0.3 mentések ugyanazon a GitHub Pages-címen tovább használhatók; az új XP-rendszer ezeknél 1. szintről indul. Ha a böngésző még a régi menüt mutatja, frissíts Ctrl+F5-tel. A menüben **V0.4** jelzi az új változatot.
+## A történet
 
-## Mappaszerkezet
+Kiba, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, Harut. Japán erdei és templomai után a japán alvilág mélységeibe ereszkedik, majd a felhők fölé emelkedik az égi birodalomban. Az utat őrzők, elfeledett emlékek és új képességekkel megnyíló ösvények kísérik.
 
-```text
-.
-├── index.html
-├── .nojekyll
-├── .gitignore
-├── .gitattributes
-├── .github/
-│   └── workflows/
-│       └── pages.yml
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   ├── levels.js
-│   │   ├── art-data.js
-│   │   ├── graphics.js
-│   │   ├── progression.js
-│   │   ├── combat.js
-│   │   └── game.js
-│   └── images/
-│       ├── kiba.png
-│       ├── backgrounds/       # három birodalom tájai
-│       ├── enemies/           # mozgás-, támadás- és boss-animációk
-│       ├── terrain-v4.png
-│       └── props-v4.png
-├── scripts/
-│   ├── check-site.mjs
-│   ├── test-harness.cjs
-│   ├── test-combat.cjs
-│   └── test-routes.cjs
-└── docs/
-    ├── GAMEPLAY.md
-    ├── ART-DESIGN.md
-    ├── ART-PROMPTS.json
-    ├── POLISH-0.4.md
-    └── *PROMPTS.json
-```
+A **Kiba – Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
 
-Az **index.html a repository gyökerében legyen**, az assets, scripts és .github mappák mellette. A ZIP kibontott tartalmát tedd a repositoryba, ne egy új kiba-github-pages almappába. A játék relatív hivatkozásokat használ, ezért a `https://FELHASZNALO.github.io/REPOSITORY/` és a saját domain gyökeréből is működik.
+## Három világ, háromféle kaland
 
-## GitHub Pages: automatikus telepítés
+| Birodalom | Az utazás | Ellenfelek |
+| --- | --- | --- |
+| **Japán – A harangok útja** | Hosszú erdei ösvények, falusi tetők, folyójáratok és egy bambusztemplom. Két harang hangja mutatja a továbbvezető utat. | Szamurájok, íjászok, pajzsos katonák és onmyoji varázslók. |
+| **Yomi – Az alvilág** | Ereszkedés a mélybe, fogoly lelkek, hamupárkányok és lávával elárasztott termek. | Oni démonok, tenguk és egy csatlósokat idéző démoni őrző. |
+| **Takamagahara – Az égi birodalom** | Emelkedés szélfolyamokkal, mozgó felhőszigetekkel és égi pecsétekkel. | Szárnyas angyalok és egy több alakot öltő szeráf. |
 
-1. Csomagold ki a ZIP-et, és tedd a tartalmát egy GitHub repository gyökerébe. A rejtett **.github** mappa és **.nojekyll** fájl is kerüljön fel.
-2. A repositoryban nyisd meg: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-3. Pushold a fájlokat a repository alapértelmezett branchére. A workflow ennek a branchnek a nevét automatikusan követi, így main és master esetén is működik.
-4. Az **Actions → Deploy Kiba to GitHub Pages** futás mutatja a telepítés eredményét és a játék URL-jét. A workflow a **Run workflow** gombbal is indítható az alapértelmezett branchről.
+## Játékmenet
 
-A workflow ellenőrzi a fájlokat és a hivatkozásokat, majd az index.html-t, a .nojekyll fájlt és az assets mappát telepíti. Nincs npm install vagy build, és nem kell saját titkos kulcsot megadni.
+- **Kard és szellemlépés:** animált kardcsapások, kitérés és eltérő támadási mintájú ellenfelek. Az őrzők előre jelzik a veszélyes támadásokat.
+- **Új képességek, új utak:** a kettős ugrás, a szellemlépés és a hajnalkard a kaland során válik elérhetővé.
+- **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Kiba életerejét, kardját és szellemerejét.
+- **Szentélyek:** gyógyulás, mentőpontok és a térképről elérhető gyorsutazás. Gyógyuláskor a normál ellenfelek újraélednek.
+- **Felfedezés:** mellékutak, Haru emlékei és rejtett ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
+- **Helyi mentés:** a haladás a böngészőben megmarad; a főmenüben a Folytatás gombbal térhetsz vissza.
 
-[Hivatalos GitHub Pages workflow-útmutató](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+## Irányítás
 
-## Egyszerűbb, branch alapú publikálás
+| Billentyű | Művelet |
+| --- | --- |
+| A / D vagy ← / → | Mozgás |
+| Space, W vagy ↑ | Ugrás; felengedés után újra megnyomva kettős ugrás* |
+| J vagy Z | Kardcsapás |
+| K vagy Shift | Szellemlépés* |
+| E | Interakció, gyógyulás, kapuk és tárgyak használata |
+| U | Fejlesztés a pihenőszentélynél |
+| M | Térkép és gyorsutazás |
+| S + Space | Leugrás a párkányról |
+| Esc | Szünet |
 
-Ha Actions-workflow helyett branchből szeretnél publikálni, hagyd ki a **.github/workflows/pages.yml** fájlt. Ezután válaszd a **Settings → Pages → Source → Deploy from a branch** lehetőséget, az alapértelmezett branchet és a **/(root)** mappát, majd mentsd el. A gyökérben lévő .nojekyll fájl kikapcsolja a Jekyll feldolgozását.
+\* A megfelelő képesség megszerzése után. Érintőképernyőn a képernyőn megjelenő gombok is használhatók.
 
-[Hivatalos publikálási beállítások](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+**Tipp:** a torii kapu alá állva nyomj E-t; a szélfolyamokba ugorj bele, hogy magasba emeljenek.
 
-## Helyi indítás és ellenőrzés
+## A projektről
 
-Az **index.html** közvetlenül megnyitható böngészőben. HTTP-előnézethez a repository gyökerében például:
+A játék **HTML5 Canvas**, **JavaScript** és **CSS** használatával készült. Kiba eredeti animált pet sprite sheetjére épül, illusztrált tájakkal, külön mozgási és támadási animációkkal, valamint a játékban rajzolt fény- és részecskehatásokkal.
 
-```sh
-python -m http.server 8000
-```
+A weboldal statikus, GitHub Pagesen fut. A játék indításához nincs szükség telepítésre, felhasználói fiókra vagy buildre. Helyben az `index.html` megnyitásával is kipróbálható; HTTP-előnézethez és ellenőrzéshez lásd a [fejlesztői útmutatót](docs/DEVELOPMENT.md).
 
-Ezután nyisd meg a `http://localhost:8000/` címet.
+## Dokumentáció
 
-A strukturális ellenőrzés Node.js 24-gyel futtatható:
-
-```sh
-node scripts/check-site.mjs
-node scripts/test-combat.cjs
-node scripts/test-routes.cjs
-```
-
-Az ellenőrzőscript a fájlhivatkozásokat, a kis- és nagybetűket, a repository alatti URL-eket, a JavaScript szintaxisát és Kiba képét ellenőrzi.
-
-A két játékteszt a harci állapotokat, az XP-t, mentést, szentélyes újraéledést, boss-mechanikákat és a tényleges fizikai útvonalakat vizsgálja. Ezek a GitHub Actions telepítés előtt is lefutnak. Külső npm-csomag nem kell hozzájuk.
-
-## Játék
-
-**A/D:** mozgás · **Space:** ugrás · **J:** kard · **K:** szellemlépés · **E:** interakció · **U:** fejlesztés a szentélynél · **M:** térkép · **S + Space:** leugrás.
-
-[A pályák, irányítás és mentés részletes leírása](docs/GAMEPLAY.md).
-
-[A grafikai frissítés, az assetek és a képgenerálási promptok leírása](docs/ART-DESIGN.md).
-
-A mentés a böngészőben, az oldal címéhez tartozó localStorage-ban található. A korábbi offline fájl mentése nem kerül át automatikusan a GitHub Pages címére. A játékhoz nem kell szerveroldali kód vagy adatbázis.
+- [Játékmenet, képességek és mentés](docs/GAMEPLAY.md) – részletes segítség, később boss- és titokleírásokkal.
+- [Helyi futtatás, ellenőrzés és GitHub Pages](docs/DEVELOPMENT.md).
+- [Assetek és a repository rendbetétele](docs/ASSET-CLEANUP.md).
+- [Grafikai koncepció és assetek](docs/ART-DESIGN.md).
+- [A 0.5 harci és animációs frissítés](docs/BOSSES-0.5.md) – a titkos fázis leírását is tartalmazza.
