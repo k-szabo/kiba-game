@@ -35,7 +35,10 @@ jobs:
           package-manager-cache: false
 
       - name: Validate files and project-site paths
-        run: node scripts/check-site.mjs
+        run: |
+          node scripts/check-site.mjs
+          node scripts/test-combat.cjs
+          node scripts/test-routes.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

@@ -70,5 +70,8 @@ const fieldRoles=['guard','archer','shield','mage'];
 for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}
 const lowerShield=yomi.enemies.find(e=>e.id==='soul-lower-a');lowerShield.kind='shield';
 const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage';
+// Low arena ledges are reachable with one jump and connect with ordinary/double jumps.
+for(let i=0;i<7;i++){ledge(yomi,'lava-island-'+i,440+i*350,5695,275,'stone',32);Object.assign(yomi.platforms.at(-1),{bossPlatform:true,broken:false,crumble:0});}
+japan.arena.triggerX=9120;yomi.arena.triggerX=1000;heaven.arena.triggerX=2050;
 const levels=[japan,yomi,heaven];
 

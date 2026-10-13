@@ -33,7 +33,7 @@ for(const ref of refs){
   assert(fs.statSync(directory).isFile(),`Expected a static file: ${ref}`);
 }
 
-for(const file of ['assets/js/levels.js','assets/js/art-data.js','assets/js/graphics.js','assets/js/game.js']){
+for(const file of ['assets/js/levels.js','assets/js/art-data.js','assets/js/graphics.js','assets/js/progression.js','assets/js/combat.js','assets/js/game.js']){
   const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
   assert.equal(result.status,0,result.stderr||`JavaScript syntax check failed: ${file}`);
 }

@@ -1,14 +1,14 @@
-# Kiba – Három világ · 0.3
+# Kiba – Három világ · 0.4
 
 GitHub Pagesre előkészített, telepítés és build nélkül működő 2D metroidvania. Kiba, a kis shiba szamuráj Japánon, Yomi mélységein és az égi birodalmon át keresi édesapját.
 
-A 0.3 változat részletes, illusztrált tájakat, textúrázott platformokat és birodalmanként eltérő katonákat, démonokat és angyalokat hoz. Az íjászok, pajzsosok és varázslók saját harci viselkedést kaptak. Kiba eredeti animációi megmaradtak.
+A 0.4 változat hatképkockás ellenfélmozgást és támadásokat, három külön boss-movesetet, lávát és pusztuló platformokat, megrontott angyalt, szentélyes újraéledést és XP-alapú fejlesztéseket ad a részletes három világhoz. Kiba eredeti animációi megmaradtak. [A változások és a tesztek részletei](docs/POLISH-0.4.md).
 
 ## Meglévő GitHub Pages-oldal frissítése
 
-A ZIP teljes tartalmával frissítsd a repository megfelelő fájljait és mappáit, majd commitold és pushold a változást. Az új **assets/images** almappák, az **art-data.js** és a **graphics.js** is szükségesek. A helyi **.git** mappát őrizd meg; a csomag nem tartalmaz Git-előzményeket. A már működő Pages-beállítást nem kell átállítani.
+A ZIP teljes tartalmával frissítsd a repository megfelelő fájljait és mappáit, majd commitold és pushold a változást. Az új **assets/images** képek, valamint az **art-data.js**, **graphics.js**, **progression.js** és **combat.js** is szükségesek. A helyi **.git** mappát őrizd meg; a csomag nem tartalmaz Git-előzményeket. A már működő Pages-beállítást nem kell átállítani.
 
-A 0.2 mentések ugyanazon a GitHub Pages-címen tovább használhatók. A 0.3 új fájlnevekkel és verziózott script-hivatkozásokkal frissíti a grafikát; ha a böngésző még a régi menüt mutatja, frissíts Ctrl+F5-tel. A menüben **V0.3** jelzi az új változatot.
+A 0.2 és 0.3 mentések ugyanazon a GitHub Pages-címen tovább használhatók; az új XP-rendszer ezeknél 1. szintről indul. Ha a böngésző még a régi menüt mutatja, frissíts Ctrl+F5-tel. A menüben **V0.4** jelzi az új változatot.
 
 ## Mappaszerkezet
 
@@ -28,20 +28,26 @@ A 0.2 mentések ugyanazon a GitHub Pages-címen tovább használhatók. A 0.3 ú
 │   │   ├── levels.js
 │   │   ├── art-data.js
 │   │   ├── graphics.js
+│   │   ├── progression.js
+│   │   ├── combat.js
 │   │   └── game.js
 │   └── images/
 │       ├── kiba.png
 │       ├── backgrounds/       # három birodalom tájai
-│       ├── enemies/           # három ellenfél-sprite sheet
-│       ├── terrain-v3.png
-│       └── props-v3.png
+│       ├── enemies/           # mozgás-, támadás- és boss-animációk
+│       ├── terrain-v4.png
+│       └── props-v4.png
 ├── scripts/
-│   └── check-site.mjs
+│   ├── check-site.mjs
+│   ├── test-harness.cjs
+│   ├── test-combat.cjs
+│   └── test-routes.cjs
 └── docs/
     ├── GAMEPLAY.md
     ├── ART-DESIGN.md
     ├── ART-PROMPTS.json
-    └── SCENERY-PROMPTS.json
+    ├── POLISH-0.4.md
+    └── *PROMPTS.json
 ```
 
 Az **index.html a repository gyökerében legyen**, az assets, scripts és .github mappák mellette. A ZIP kibontott tartalmát tedd a repositoryba, ne egy új kiba-github-pages almappába. A játék relatív hivatkozásokat használ, ezért a `https://FELHASZNALO.github.io/REPOSITORY/` és a saját domain gyökeréből is működik.
@@ -77,13 +83,17 @@ A strukturális ellenőrzés Node.js 24-gyel futtatható:
 
 ```sh
 node scripts/check-site.mjs
+node scripts/test-combat.cjs
+node scripts/test-routes.cjs
 ```
 
 Az ellenőrzőscript a fájlhivatkozásokat, a kis- és nagybetűket, a repository alatti URL-eket, a JavaScript szintaxisát és Kiba képét ellenőrzi.
 
+A két játékteszt a harci állapotokat, az XP-t, mentést, szentélyes újraéledést, boss-mechanikákat és a tényleges fizikai útvonalakat vizsgálja. Ezek a GitHub Actions telepítés előtt is lefutnak. Külső npm-csomag nem kell hozzájuk.
+
 ## Játék
 
-**A/D:** mozgás · **Space:** ugrás · **J:** kard · **K:** szellemlépés · **E:** interakció · **M:** térkép · **S + Space:** leugrás.
+**A/D:** mozgás · **Space:** ugrás · **J:** kard · **K:** szellemlépés · **E:** interakció · **U:** fejlesztés a szentélynél · **M:** térkép · **S + Space:** leugrás.
 
 [A pályák, irányítás és mentés részletes leírása](docs/GAMEPLAY.md).
 

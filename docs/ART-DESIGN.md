@@ -1,5 +1,7 @@
 # Kiba – grafikai frissítés · 0.3
 
+A 0.3 látványvilágának leírása. A legújabb animációk, javított atlaszok, bossok és az XP-rendszer a [0.4 változat dokumentációjában](POLISH-0.4.md) szerepelnek.
+
 A frissítés részletes, festett japán fantasy környezetet ad a három birodalomnak. Kiba eredeti, 1536×2288 méretű sprite sheetje változatlan maradt; a tájak és ellenfelek köré épültek. A pályák méretei, ugrási fizikája és küldetései megmaradtak, a 0.2 mentések tovább használhatók.
 
 ## Tájak és kellékek

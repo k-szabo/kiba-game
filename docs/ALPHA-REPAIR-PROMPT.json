@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "asset": {
+    "id": "yomi-alpha-repair",
+    "referenced_image_paths": [
+      "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/yomi-attack-v4.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: background-extraction. This is an EDIT of the supplied sprite sheet, NOT a redesign. Remove ALL residual brown/gray background haze from between and around the sprites. Output actual transparent PNG with EXACTLY ZERO ALPHA in the empty gutters, outer margins and between frames. Preserve EVERY existing character pixel, complete armor, shield, weapon, hair, feet, gold sparks and violet magic contours. Preserve the supplied 1536x1024 canvas, EXACT six columns four rows, all poses and their positions. No sprite should move, resize or change identity. The blue oni's shield stays intact in all six frames. Do not create brown translucent rectangles or a gradient backdrop; the area surrounding figures must be fully invisible at alpha0. Do not crop any figures. Keep magical glows local to the individual sprite, separated from neighboring figures. Return only the clean alpha sprite atlas, no labels, no watermark."
+  }
+}

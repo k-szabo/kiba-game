@@ -1,10 +1,10 @@
-# Kiba – Három világ · 0.3
+# Kiba – Három világ · 0.4
 
 Böngészős 2D metroidvania Kiba eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut.
 
 ## Indítás és frissítés
 
-A 0.3 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
+A 0.4 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
 
 Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
 
@@ -31,6 +31,7 @@ Japán 2,6-szor szélesebb az előző változatnál. Yomi és az ég több mint 
 | J vagy Z | Kardcsapás; a hajnalkarddal pecsétek feltörése |
 | K vagy Shift | Szellemlépés az árnyék szentélye után |
 | E | Harang, lélek, emlék, szentély, torii, apa |
+| U / Fejlesztés gomb | Fejlesztéspontok elköltése a pihenőszentélynél |
 | M | Térkép és gyorsutazás az ismert pihenőhelyekhez |
 | Esc | Szünet |
 
@@ -44,6 +45,14 @@ A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá v�
 
 A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. Az első és második őrző a kihagyott szentélyképességet is megadja, hogy ne záródjon el a továbbjutás.
 
+**E-vel gyógyuláskor a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok, kiszabadított lelkek és megnyitott utak megmaradnak. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
+
+## XP és fejlesztés
+
+Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
+
+A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Kibával indulnak.
+
 ## Ellenfelek
 
 Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, a mennyországban szárnyas angyalok őrzik az utakat. Mindhárom birodalomban vannak közelharcosok, íjászok, pajzsosok és varázslók; az őrzők külön megjelenést kaptak.
@@ -52,16 +61,24 @@ Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, 
 - **Pajzsos:** elölről véd. Kerülj mögé, támadj felülről, vagy három blokkolt csapással törd meg rövid időre a védelmét. A szellemlépéses roham is áttörhet rajta.
 - **Varázsló:** lassabb, fényjelzéssel előkészített szellemlövedéket indít. Yomiban és az égben szórt lövedékeket is használ.
 
+## Az őrzők támadásai
+
+- **Japán:** széles kardvágás, előre jelzett roham és két egymást követő csapás. A felemelt kard előjelzés, a leengedett kard a visszatámadás ideje.
+- **Yomi:** kalapácscsapásból feltörő lávaoszlopok, parázsszórás és az egész arénát érintő láva. A nagy lávafázis előtt 1,8 másodperc figyelmeztetést kapsz. Ugorj a hét alacsony kőszigetre; balról jobbra repedeznek és omlanak le. A repedés egy másodperccel az omlás előtt látható, az utolsó sziget a láva visszahúzódásáig biztonságos. Halálkor és győzelemkor a platformok visszaállnak.
+- **Ég:** a megrontott szeráf felülről érkező óriási fénynyilakat, célzott árnyéklövedékeket és a kettőt kombináló napfogyatkozást használ. Az arany oszlop körvonalából lépj ki, az ibolyaszínű lövedékeket ugrással vagy szellemlépéssel kerüld.
+
 ## Forrás
 
 - **assets/js/levels.js**: a három pálya, szigetek, pihenők, mellékutak, kapuk, szélfolyamok és ellenfelek.
 - **assets/js/game.js**: mozgás, harc, kétirányú kamera, küldetések, térkép, mentés és rajzolás.
 - **assets/js/graphics.js**: képek betöltése, tájak, textúrázott terep, ellenfélpózok és grafikai effektek.
 - **assets/js/art-data.js**: képútvonalak, sprite-kivágások és illesztési pontok.
+- **assets/js/combat.js**: járőrözés, szerepkörök, bossok, láva és pusztuló platformok.
+- **assets/js/progression.js**: XP, szintek, fejlesztési menü és statok.
 - **assets/css/style.css**: kezelőfelület.
 - **assets/images/kiba.png**: Kiba eredeti, 1536×2288 méretű pet sprite sheetje.
 
-Telepítés és build nem szükséges. A forrás változat HTTP-kiszolgálóval is használható. A 0.3 hátterei, tereptextúrái és ellenfelei illusztrált képek; a köd, fények, részecskék és mozgás a játékban készülnek. Az ellenfelek két rajzolt pózt és programozott mozgást használnak. A helyi mentés törlődik az oldaladatok törlésével.
+Telepítés és build nem szükséges. A forrás változat HTTP-kiszolgálóval is használható. A tájak és szereplők illusztrált képek; a köd, fények és részecskék a játékban készülnek. A normál ellenfelek hat mozgási és hat támadási képkockát használnak szerepkörönként és birodalmanként. A helyi mentés törlődik az oldaladatok törlésével.
 
 ## Ellenőrzés
 
@@ -69,4 +86,4 @@ A játékfolyamat ellenőrzése kiterjed a billentyűeseményekre, a kettős ugr
 
 A fizikai útvonalkeresés a játék tényleges ugrás-, gravitáció-, leszállás- és szélfolyam-függvényeivel ellenőrzi a fontos pályarészek elérhetőségét és a folyójáratból való visszatérést. A 0.3 ellenőrzése a szerepköröket, pajzsblokkolást, védelmi törést, támadási előkészítést és a sprite-kivágások képen belüli helyzetét is lefedi.
 
-A három birodalom vizuális előnézete a játék tényleges rajzolókódjával és Canvas-képkönyvtárral készült. Az új változat teljes böngészős végigjátszását ebben a környezetben nem lehetett elvégezni.
+A három birodalom, az animációs ciklusok, a bossok és az erősebb széláramlat vizuális előnézete a játék tényleges rajzolókódjával és Canvas-képkönyvtárral készült. A 0.4 tesztjei a szentélyes újraéledést, XP-t, fejlesztést, mentést, boss-támadásokat és a hét lávasziget fizikai elérhetőségét is lefedik. Az új változat teljes böngészős végigjátszását ebben a környezetben nem lehetett elvégezni.
