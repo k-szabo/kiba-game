@@ -190,7 +190,7 @@ const Visuals = (() => {
       ctx.strokeStyle = r.gold + '90';ctx.lineWidth = 1.5;
       for (let i = 0; i < 3; i++) {ctx.beginPath();ctx.ellipse(x, feet - 100, 46 + i * 5, 88 + i * 6, 0, 0, Math.PI * 2);ctx.stroke();}
       ctx.font = 'bold 12px Manrope, sans-serif';ctx.fillStyle = r.gold;ctx.textAlign = 'center';
-      ctx.fillText(I18n.t((realm < 2 ? realms[realm + 1].short : I18n.t("text.passage")).toUpperCase() + ' · E'), x, feet - 145);
+      ctx.fillText(I18n.t((realm < 2 ? realms[realm + 1].short : I18n.t("text.passage")).toUpperCase()) + ' · ' + bindingKeyLabel(Bindings.read('interact')[0]), x, feet - 145);
       ctx.font = '10px Manrope, sans-serif';ctx.fillText(I18n.t("text.stand.beneath.the.gate"), x, feet - 126);
       ctx.restore();
     }
@@ -308,14 +308,20 @@ const Visuals = (() => {
       if(area.x+area.w<camera||area.x>camera+viewW||area.y+area.h<cameraY||area.y>cameraY+H)continue;
       ctx.save();
       if(area.id==='angelRuin'){
-        prop('skyShrine',2585,310,82,.65);
-        for(const [x,height] of [[2555,125],[2985,105]]){
-          ctx.fillStyle='#4d657195';ctx.fillRect(x,310-height,24,height);
-          ctx.fillStyle='#d2d2bdc8';ctx.fillRect(x+4,310-height,15,height);
-          ctx.fillStyle='#e0c88b';ctx.fillRect(x-7,310-height-5,38,7);
-          ctx.strokeStyle='#52636b';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+7,310-height+28);ctx.lineTo(x+14,310-height+42);ctx.lineTo(x+10,310-height+59);ctx.stroke();
+        for(const [x,y,width,height] of [[2700,-500,220,68],[3020,-330,180,53],[2820,-145,175,49]]){
+          const cloud=ctx.createRadialGradient(x,y,8,x,y,width);
+          cloud.addColorStop(0,'#f2eee5b8');cloud.addColorStop(.65,'#dae4df66');cloud.addColorStop(1,'#d2e3e000');
+          ctx.fillStyle=cloud;ctx.beginPath();ctx.ellipse(x,y,width,height,0,0,Math.PI*2);ctx.fill();
         }
-        ctx.strokeStyle='#8b764eaa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(2790,308,160,15,0,0,Math.PI*2);ctx.stroke();
+        const altarY=area.arena.y;
+        prop('skyShrine',2585,altarY,82,.65);
+        for(const [x,height] of [[2555,125],[2985,105]]){
+          ctx.fillStyle='#4d657195';ctx.fillRect(x,altarY-height,24,height);
+          ctx.fillStyle='#d2d2bdc8';ctx.fillRect(x+4,altarY-height,15,height);
+          ctx.fillStyle='#e0c88b';ctx.fillRect(x-7,altarY-height-5,38,7);
+          ctx.strokeStyle='#52636b';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+7,altarY-height+28);ctx.lineTo(x+14,altarY-height+42);ctx.lineTo(x+10,altarY-height+59);ctx.stroke();
+        }
+        ctx.strokeStyle='#8b764eaa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(2790,altarY-2,160,15,0,0,Math.PI*2);ctx.stroke();
       }else{
         prop('shrine',2760,2160,96,.65);
         for(const px of [2860,3100,3450]){

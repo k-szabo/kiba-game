@@ -6,6 +6,7 @@ function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
 function foe(l,id,x,y,kind='guard',group=null,patrol=65){l.enemies.push({id,x,y,kind,group,patrol});}
 function zone(l,name,x,y,w,h){l.zones.push({name,x,y,w,h});}
 const japan=makeLevel('japan',10400,2500,{x:260,y:1000});
+japan.top=-1100; // The optional angel tower rises above the ordinary camera range.
 [[0,1000,1550],[1680,950,1640],[3400,1000,1500],[5100,920,1400],[6740,960,1160],[8150,1000,2250]].forEach((p,i)=>ledge(japan,'road'+i,...p,'ground',190));
 [
  ['wind-step',1980,855,150],['wind-roof',2160,760,370],['root-step',2890,900,140],
@@ -21,16 +22,20 @@ rest(japan,'start',330,1000,I18n.t("text.village.outskirts"));rest(japan,'river'
 japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:I18n.t('place.forest.bell')},{id:'villageBell',type:'bell',x:7240,y:715,name:I18n.t('place.village.bell')},{id:'riverMemory',type:'memory',x:5550,y:1390,name:I18n.t("text.a.memory.beneath.the.river")},{id:'forestMemory',type:'memory',x:3830,y:620,name:I18n.t("text.a.memory.in.the.canopy")}];
 // Optional paths lie outside the quest route and remain absent from the map until discovered.
 japan.secrets=[
- {id:'angelRuin',name:I18n.t("text.ruins.of.the.ancient.angel.tower"),x:2440,y:0,w:1240,h:600,arena:{x:2510,y:310,w:510},guardian:'oldAngel',relic:'angelHalo'},
+ {id:'angelRuin',name:I18n.t("text.ruins.of.the.ancient.angel.tower"),x:2440,y:-1000,w:1240,h:1550,arena:{x:2510,y:-690,w:510},guardian:'oldAngel',relic:'angelHalo'},
  {id:'cultCave',name:I18n.t("text.cave.of.the.forgotten.cult"),x:2420,y:1740,w:1710,h:700,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
 ];
-for(const p of [['tower-step1',3490,445,140],['tower-step2',3250,285,120],['tower-step3',3030,230,130],['halo-altar',2510,310,510]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='angelRuin';}
+for(const p of [
+ ['tower-step1',3490,445,140],['tower-step2',3250,285,120],['tower-step3',3030,230,130],
+ ['tower-step4',2810,80,150],['tower-step5',3000,-80,150],['tower-step6',2780,-240,150],
+ ['tower-step7',3010,-400,160],['tower-step8',2780,-560,160],['halo-altar',2510,-690,510]
+]){ledge(japan,...p);japan.platforms.at(-1).secretArea='angelRuin';}
 for(const p of [['cult-mouth',4530,1510,180],['cult-stair1',4200,1680,200],['cult-stair2',3910,1850,190],['cult-stair3',3640,2010,180],['horn-vault',2650,2160,950]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='cultCave';}
 japan.objects.push(
- {id:'angelHalo',type:'relic',x:2600,y:310,name:I18n.t("text.the.angel.s.halo"),secretArea:'angelRuin',guardian:'oldAngel'},
+ {id:'angelHalo',type:'relic',x:2600,y:-690,name:I18n.t("text.the.angel.s.halo"),secretArea:'angelRuin',guardian:'oldAngel'},
  {id:'demonHorn',type:'relic',x:2760,y:2160,name:I18n.t("text.the.demon.lord.s.horn"),secretArea:'cultCave',guardian:'oldCultist'}
 );
-foe(japan,'oldAngel',2800,310,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:I18n.t("text.the.mad.elder.angel"),secretArea:'angelRuin',factionOverride:'heaven'});
+foe(japan,'oldAngel',2800,-690,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:I18n.t("text.the.mad.elder.angel"),secretArea:'angelRuin',factionOverride:'heaven'});
 foe(japan,'oldCultist',3070,2160,'mage',null,380);Object.assign(japan.enemies.at(-1),{miniboss:'cultist',name:I18n.t("text.the.ancient.cult.s.elder"),secretArea:'cultCave',factionOverride:'japan'});
 japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:2500}];
 // Cave ceiling and wall prevent falling straight into the relic chamber from the main road.

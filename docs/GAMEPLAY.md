@@ -14,11 +14,11 @@ Frissítéskor a csomag teljes tartalmát ugyanott cseréld le. A mentések bön
 
 | Világ | Felépítés | Fő feladat | Mellékutak |
 | --- | --- | --- | --- |
-| Japán | 10 400 széles, 2 500 magas játéktér | Szerezd meg a szél áldását, szólaltasd meg az erdei és falusi harangot, majd keresd fel a bambusztemplom őrzőjét. | Lombkorona, folyó fölötti út, föld alatti folyójárat és visszavezető lépcsők. |
+| Japán | 10 400 széles, 3 600 magas játéktér | Szerezd meg a szél áldását, szólaltasd meg az erdei és falusi harangot, majd keresd fel a bambusztemplom őrzőjét. | Lombkorona, folyó fölötti út, föld alatti folyójárat, visszavezető lépcsők és a felhők fölé rejtett ősi angyaltorony. |
 | Yomi | 3 300 széles, 6 250 mély játéktér | Ereszkedj le a két fogoly lélekhez, győzd le őreiket, majd a világ fenekén az őrzőt. Az árnyék szentélye félúton ad szellemlépést. | Elfeledett sírkamra, árnyékfüggöny, veszélyes hamupárkányok. |
 | Takamagahara | 3 200 széles, 6 650 magas játéktér | Szélfolyamokkal, felhőszigetekkel és ugrásokkal emelkedj az őrzőhöz. A végső pecsétet karddal törd fel. Az apa még az őrző fölött vár. | Mozgó felhőplatformok, pecsét mögötti emlék, távoli alsó felhősziget. |
 
-Japán 2,6-szor szélesebb az előző változatnál. Yomi és az ég több mint nyolc képernyőnyi függőleges pályateret kapott. A kamera mindkét tengelyen követi Kibát.
+Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külön, felfelé vezető szakaszát a fő útról nem lehet belátni. Yomi és az ég több mint nyolc képernyőnyi függőleges pályateret kapott. A kamera mindkét tengelyen követi Momót.
 
 ## Irányítás
 
@@ -36,6 +36,8 @@ Japán 2,6-szor szélesebb az előző változatnál. Yomi és az ég több mint 
 | Esc | Szünet |
 
 Érintőképernyőn a képernyő gombjai használhatók. A leugráshoz a lefelé és az ugrás gombot együtt kell használni. A hang a felső gombbal kapcsolható.
+
+A főmenüből és a szünetmenüből a **Hogyan játszunk** ablak nyitja a tagolt játékleírást és a billentyűkiosztás szerkesztőjét. Az alapértelmezett, brit QWERTY és francia AZERTY profil közül választhatsz, majd egy-egy művelet billentyűjét külön átállíthatod. Az egyéni módosításokat a böngésző megjegyzi; a teljes kiosztás JSON-fájlként exportálható és importálható.
 
 A szélfolyamokba **bele kell ugrani**. Maguktól magasba emelnek; oldalirányú mozgással szállhatsz ki belőlük a felhőszigetekre. A torii használatához állj a kapu alá, és nyomj E-t; az oszlopaira nem kell felugrani.
 

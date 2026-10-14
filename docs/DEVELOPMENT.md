@@ -22,6 +22,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
+| `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés és a régi mentés egyszeri átvétele. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
@@ -41,6 +42,7 @@ node scripts/test-combat.cjs
 node scripts/test-v05.cjs
 node scripts/test-v06.cjs
 node scripts/test-routes.cjs
+node scripts/test-bindings.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
@@ -48,10 +50,13 @@ node scripts/test-routes.cjs
 - A harci tesztek az ellenfelek viselkedését, az XP-t, a fejlesztéseket, a mentést és a szentélynél történő újraéledést ellenőrzik.
 - A 0.5 tesztjei a kardtalálat időzítését, a boss-fázisokat, az idézést és az ereklyéket vizsgálják.
 - Az útvonalteszt a tényleges játékfizikával ellenőrzi a továbbjutást és a fontos platformok elérhetőségét.
+- A kiosztásteszt a profilváltást, ütköző billentyűk kezelését, mentést, JSON-átvitelt és a francia mozgásbillentyűket ellenőrzi.
 
 Forrásmódosítás után `npm run build` szükséges a futó fájl újragenerálásához. A build Node.js-en kívül nem igényel csomagokat; a kész Pages-csomag továbbra is statikus.
 
 Az összes fordítás és a nyelvválasztó metaadata az `assets/i18n/locales.json` fájlban van. A felső szintű kulcs a kétbetűs ISO nyelvkód (`hu`, `en`); minden nyelvben `flag` (SVG data URL), `lang_orig` (saját nyelvű név), `lang_en` (angol név) és `dict` (szövegazonosító → fordítás) szerepel. A választó a két nevet együtt mutatja, ha különböznek. Új nyelvhez adj hozzá egy ilyen objektumot az összes meglévő `dict`-azonosító fordításával, majd futtasd az `npm run build` és `npm test` parancsot. A választó automatikusan felveszi az új nyelvet. A változó részeket `{0}`, `{1}` jelöli; ezeknek minden fordításban egyezniük kell.
+
+Az `assets/config/keybindings.json` tartalmazza az eredeti kiosztást (`original`), a profilokat (`presets`) és az induló módosításokat (`modified`). A statikus GitHub Pages nem tudja átírni ezt a fájlt futás közben, ezért a játékos módosításai böngészőnként a `localStorage` területén maradnak. A súgó JSON-exportja és importja hordozható mentést ad a kiosztáshoz. Az új kiosztásokat és alapértékeket a forrás JSON-ban lehet bővíteni; ehhez új build szükséges.
 
 Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás további vizuális és kezelési hibákat is feltárhat.
 
@@ -59,7 +64,7 @@ Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás tová
 
 Az élő játék: **[k-szabo.github.io/kiba-game](https://k-szabo.github.io/kiba-game/)**.
 
-A mellékelt workflow az alapértelmezett branchre érkező push után, illetve kézi indítással fut. Először végrehajtja az öt ellenőrzést, majd kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
+A mellékelt workflow az alapértelmezett branchre érkező push után, illetve kézi indítással fut. Először végrehajtja az ellenőrzéseket, majd kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
 
 A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztatni. Új repository esetén a **Settings → Pages → Build and deployment → Source → GitHub Actions** beállítás használható a mellékelt workflow-val. Lásd a [GitHub hivatalos workflow-útmutatóját](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 

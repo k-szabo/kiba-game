@@ -12,6 +12,7 @@ const game=fs.readFileSync(path.join(root,'assets/js/game.js'),'utf8');
 const sprite=game.match(/sheet\.src\s*=\s*['"]([^'"]+)['"]/);
 assert(sprite,'Momo sprite reference is missing.');
 refs.push(sprite[1]);
+refs.push('assets/config/keybindings.json');
 const menuSprite=game.match(/menuSheet\.src\s*=\s*['"]([^'"]+)['"]/);
 assert(menuSprite,'Menu idle sprite reference is missing.');
 refs.push(menuSprite[1]);
@@ -36,7 +37,7 @@ for(const ref of refs){
   assert(fs.statSync(directory).isFile(),`Expected a static file: ${ref}`);
 }
 
-const sourceFiles=['assets/js/i18n.js','assets/js/levels.js','assets/js/art-data.js','assets/js/save-vault.js','assets/js/graphics.js','assets/js/progression.js','assets/js/combat.js','assets/js/game.js'];
+const sourceFiles=['assets/js/i18n.js','assets/js/keybindings.js','assets/js/levels.js','assets/js/art-data.js','assets/js/save-vault.js','assets/js/graphics.js','assets/js/progression.js','assets/js/combat.js','assets/js/game.js'];
 for(const file of [...sourceFiles,'assets/js/runtime.js']){
   const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
   assert.equal(result.status,0,result.stderr||`JavaScript syntax check failed: ${file}`);

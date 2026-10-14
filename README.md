@@ -30,6 +30,7 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 - **Szentélyek:** gyógyulás, mentőpontok és a térképről elérhető gyorsutazás. Gyógyuláskor a normál ellenfelek újraélednek.
 - **Felfedezés:** mellékutak, Haru emlékei, rejtett szentélyek és saját minibossokkal őrzött ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
 - **Magyar és angol nyelv:** a zászlós választó a nyelvek saját és angol nevét mutatja; a választást a böngésző megjegyzi.
+- **Állítható irányítás:** a „Hogyan játszunk” ablakban brit és francia kiosztás választható, az egyes műveletek billentyűi átállíthatók, a beállítások JSON-fájlként exportálhatók és importálhatók.
 - **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. A korábbi mentéseket első indításkor átveszi.
 
 ## Irányítás
@@ -47,6 +48,8 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 | Esc | Szünet |
 
 \* A megfelelő képesség megszerzése után. Érintőképernyőn a képernyőn megjelenő gombok is használhatók.
+
+Az alapértelmezett kiosztást az `assets/config/keybindings.json` tartalmazza. A főmenü vagy a szünetmenü **Hogyan játszunk** gombjával nyithatod meg a kiosztásválasztót és a billentyűk átállítását. A személyes módosításokat a böngésző helyben tárolja; a JSON-exporttal átviheted őket másik böngészőbe, majd az importtal visszatöltheted.
 
 **Tipp:** a torii kapu alá állva nyomj E-t; a szélfolyamokba ugorj bele, hogy magasba emeljenek.
 

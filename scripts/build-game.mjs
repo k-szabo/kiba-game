@@ -5,8 +5,11 @@ import {createHash} from 'node:crypto';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const localePath='assets/i18n/locales.json';
+const bindingPath='assets/config/keybindings.json';
 const readSource=file=>fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n?/g,'\n');
 const locales=JSON.parse(readSource(localePath));
+const bindings=JSON.parse(readSource(bindingPath));
+if(bindings.version!==1||!bindings.original||!bindings.profiles?.uk||!bindings.profiles?.fr||!bindings.modified)throw Error('Key binding profiles are incomplete.');
 const languages=Object.keys(locales);
 if(!languages.includes('hu')||!languages.includes('en'))throw Error('Both hu and en locales are required.');
 const ids=Object.keys(locales.hu.dict);
@@ -25,13 +28,13 @@ for(const language of languages){
     if(placeholders(entries[id])!==placeholders(locales.hu.dict[id]))throw Error(`Placeholder mismatch: ${language}.${id}`);
   }
 }
-const files=['i18n','levels','art-data','save-vault','graphics','progression','combat','game'];
+const files=['i18n','keybindings','levels','art-data','save-vault','graphics','progression','combat','game'];
 const digest=createHash('sha256');
-for(const file of [localePath,...files.map(name=>'assets/js/'+name+'.js')]){
+for(const file of [localePath,bindingPath,...files.map(name=>'assets/js/'+name+'.js')]){
   digest.update(file);digest.update('\0');digest.update(readSource(file));digest.update('\0');
 }
 const sourceHash=digest.digest('hex');
-let runtime=`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${sourceHash} */\n(()=>{'use strict';\nconst LOCALES=${JSON.stringify(locales)};\n`;
+let runtime=`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${sourceHash} */\n(()=>{'use strict';\nconst LOCALES=${JSON.stringify(locales)};\nconst KEY_BINDINGS=${JSON.stringify(bindings)};\n`;
 for(const name of files)runtime+=`\n/* ${name}.js */\n${readSource('assets/js/'+name+'.js')}\n`;
 runtime+='})();\n';
 const output=path.join(root,'assets/js/runtime.js');

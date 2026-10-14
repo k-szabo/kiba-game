@@ -41,6 +41,7 @@ jobs:
           node scripts/test-v05.cjs
           node scripts/test-v06.cjs
           node scripts/test-routes.cjs
+          node scripts/test-bindings.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

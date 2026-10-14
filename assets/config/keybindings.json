@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "original": {
+    "moveLeft": ["a", "arrowleft"],
+    "moveRight": ["d", "arrowright"],
+    "jump": [" ", "w", "arrowup"],
+    "drop": ["s", "arrowdown"],
+    "attack": ["j", "z"],
+    "dash": ["k", "shift"],
+    "interact": ["e"],
+    "map": ["m"],
+    "train": ["u"],
+    "pause": ["escape"]
+  },
+  "profiles": {
+    "uk": {
+      "name": "UK QWERTY",
+      "bindings": {}
+    },
+    "fr": {
+      "name": "FR AZERTY",
+      "bindings": {
+        "moveLeft": ["q", "arrowleft"],
+        "jump": [" ", "z", "arrowup"],
+        "attack": ["j"]
+      }
+    }
+  },
+  "modified": {}
+}
