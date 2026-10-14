@@ -39,7 +39,7 @@ const Prologue=(()=>{
   }
   function reveal(){
     phase='reveal';clock=0;player.vx=0;keys.clear();pressed.clear();bossStarted=true;
-    toast(I18n.t('prologue.warning.arrival'));tone(45,2,'sine',.035);
+    tone(45,2,'sine',.035);
   }
   function lose(){
     if(!active()||['death','awakening'].includes(phase))return;

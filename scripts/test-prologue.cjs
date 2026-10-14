@@ -8,7 +8,10 @@ const x=snap().player.x;press('d');tick(300);release('d');assert(snap().player.x
 assert.equal(run('Prologue.phase'),'walk');assert.equal(run('bossStarted'),false);
 press('m');press('u');tick();assert.equal(snap().state,'play','Dream has no map, travel or training');
 run('mainMenu();startGame(true);');assert.equal(run('Prologue.phase'),'walk','An interrupted dream restarts safely');
-place(3160,720);tick();assert.equal(run('Prologue.phase'),'reveal');tick(350);
+place(3160,720);tick();assert.equal(run('Prologue.phase'),'reveal');
+assert(run("!$('prompt').hidden&&$('prompt').textContent===I18n.t('prologue.warning.arrival')"),'Arrival appears in its dedicated warning');
+assert(!run("toastTimer>0&&$('toast').textContent===I18n.t('prologue.warning.arrival')"),'Arrival must not also appear as a toast');
+tick(350);
 assert.equal(run('Prologue.phase'),'battle');assert.equal(snap().boss.max,100000);
 run('pause();');const hp=snap().boss.hp;tick(500);assert.equal(snap().boss.hp,hp);assert.equal(run('Prologue.phase'),'battle');run('pause();');
 place(3420,720);press('j');tick(26);release('j');assert(snap().boss.hp<snap().boss.max,'Momo can visibly strike the entity');
