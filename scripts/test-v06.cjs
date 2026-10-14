@@ -42,7 +42,7 @@ for(const id of ['oldAngel','oldCultist']){
     run('updateMiniboss(mini,.03);');assert.equal(run('mini.phase'),'strike');run('draw();');
   }
   assert.equal(new Set(moves).size,3);assert(run("projectiles.some(p=>p.source==='mini:'+mini.id)"));if(id==='oldCultist')assert.equal(run('mini.hazards.length'),3);
-  run('mini.hp=4;mini.hazards.push({warning:5,life:5});revive();');assert.equal(run('mini.hp'),run('mini.maxHp'));assert.equal(run('mini.hazards.length'),0);assert(!run('mini.active'));assert(!run("projectiles.some(p=>p.source.startsWith('mini:'))"));
+  run('mini.hp=4;mini.hazards.push({warning:5,life:5});revive();mini=enemies.find(e=>e.id===mini.id);');assert.equal(run('mini.hp'),run('mini.maxHp'));assert.equal(run('mini.hazards.length'),0);assert(!run('mini.active'));assert(!run("projectiles.some(p=>p.source.startsWith('mini:'))"));
 }
 
 // All angel forms have independent, telegraphed melee while the spell cycle continues.

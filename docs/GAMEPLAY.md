@@ -49,7 +49,7 @@ A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá v�
 
 A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. Az első és második őrző a kihagyott szentélyképességet is megadja, hogy ne záródjon el a továbbjutás.
 
-**E-vel gyógyuláskor a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok, kiszabadított lelkek és megnyitott utak megmaradnak. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
+**E-vel gyógyuláskor és halál után a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok és minibossok, kiszabadított lelkek és megnyitott utak megmaradnak. Az életerő-vesztéssel járó, nem halálos leesés nem éleszti újra a normál ellenfeleket. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
 
 ## XP és fejlesztés
 

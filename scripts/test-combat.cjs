@@ -18,6 +18,31 @@ run("enterRealm(1);state='play';flags[1]=['soulUpper'];defeated[0]=true;progress
 place(1810,1790);run('awardXP(160);');const levelBefore=snap().progression.level;press('e');tick();release('e');
 assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('projectiles.length'),0);assert(snap().flags[1].includes('soulUpper'));assert(snap().defeated[0]);assert.equal(snap().progression.level,levelBefore);assert.equal(snap().player.hp,snap().player.maxHp);
 
+// Lethal damage resets normal enemies in every realm, preserving permanent progress.
+{
+  const deathTest=require('./test-harness.cjs')();
+  for(let r=0;r<3;r++)for(const guardianDead of [false,true]){
+    deathTest.run(`flags=[['forestBell','guardian:oldAngel'],['soulUpper'],['dawnSeal']];abilities=[true,true];defeated=[false,false,false];defeated[${r}]=${guardianDead};progression=freshProgression();enterRealm(${r});state='play';awardXP(160);checkpoint={...level.rests[1]};enemies.filter(e=>!e.miniboss).forEach((e,i)=>{e.dead=i!==0;e.hp=i===0?1:0;});projectiles=[{source:'enemy',life:3},{source:'boss',life:3}];player.hp=1;player.inv=0;`);
+    const before=deathTest.snap();
+    deathTest.run('damage(100);');
+    const after=deathTest.snap();
+    assert(deathTest.run('enemies.filter(e=>!e.miniboss).every(e=>!e.dead&&e.hp===e.maxHp)'),`Death respawn in realm ${r}`);
+    assert.equal(after.player.hp,after.player.maxHp);
+    assert.equal(after.player.x+after.player.w/2,before.checkpoint.x);
+    assert.equal(after.player.y+after.player.h,before.checkpoint.y);
+    assert.deepEqual(after.progression,before.progression);
+    assert.deepEqual(after.flags,before.flags);
+    assert.deepEqual(after.abilities,before.abilities);
+    assert.deepEqual(after.defeated,before.defeated);
+    assert.equal(after.boss.dead,guardianDead);
+    assert.equal(deathTest.run('projectiles.length'),0);
+    if(r===0)assert(deathTest.run("enemies.find(e=>e.id==='oldAngel').dead"),'Defeated miniboss stays defeated');
+  }
+  deathTest.run('enemies.find(e=>!e.miniboss).dead=true;player.hp=3;revive(true);');
+  assert(deathTest.run('enemies.some(e=>!e.miniboss&&e.dead)'),'A nonlethal fall does not reset normal enemies');
+  assert.equal(deathTest.snap().player.hp,2);
+}
+
 // XP awards exactly once per kill; the player chooses real stats at a nearby shrine.
 run('progression=freshProgression();var e=enemies[0];e.dead=false;e.hp=0;killEnemy(e);killEnemy(e);');assert.equal(snap().progression.totalXp,20);
 run('awardXP(140);');assert.equal(snap().progression.level,3);assert.equal(snap().progression.points,2);
