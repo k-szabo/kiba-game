@@ -113,3 +113,43 @@ assert(!run("sealedRelicReach.includes('horn-vault')"),'The sect chamber can be 
 run("flags[0]=[];abilities=[false,false];enterRealm(0);var singleJumpSecrets=reachableFrom('road0',false);");assert(!run("singleJumpSecrets.includes('halo-altar')"),'The tower bypasses the double-jump platforming');
 run("abilities=[true,false];flags[0]=['cultEntrance'];enterRealm(0);var towerReturn=reachableFrom('halo-altar',true);var cultReturn=reachableFrom('horn-vault',true);");assert(run("towerReturn.includes('road2')"),'No return route from the tower');assert(run("cultReturn.includes('river-cave')&&cultReturn.includes('road4')"),'No return route from the cult cave');
 console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be bypassed; both relics and return paths have physical routes.');
+
+// A dash may expire inside the shadow veil: materialization must not trap Momo.
+{
+ const {run,press,release}=require('./test-harness.cjs')();
+ for(const dt of [1/120,1/60,1/30])for(const face of [-1,1])for(const gap of [150,180,200])for(const keepMoving of [false,true]){
+  run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3650});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
+  if(keepMoving)press(face>0?'d':'a');
+  press('k');run(`update(${dt});`);release('k');
+  let overlapped=false;
+  for(let i=0;i<40;i++){
+   if(run('dash<=0'))break;
+   overlapped ||= run('overlap(player,veil)');
+   run(`update(${dt});`);
+  }
+  assert(overlapped,'Fixture must actually phase into the veil');
+  assert.equal(run('dash'),0);
+  assert(!run('overlap(player,veil)'),`Dash expiry left Momo inside the veil: dt=${dt}, face=${face}, gap=${gap}`);
+  const side=run('player.x<veil.x?-1:1'),startX=run('player.x');
+  release('a');release('d');press(side>0?'d':'a');
+  run(`for(let i=0;i<12;i++)update(${dt});`);
+  assert(run(`(player.x-${startX})*${side}>5`),'Momo cannot walk away after materializing');
+  press(' ');run(`update(${dt});`);release(' ');
+  assert(run('player.vy<0'),'Momo cannot jump after materializing');
+  assert(!run('overlap(player,veil)'));
+ }
+ // A full dash still crosses in both directions; walking without dash cannot.
+ for(const face of [-1,1]){
+  run(`enterRealm(1);state='play';enemies=[];initPlayer({x:${face}>0?veil.x-31.5:veil.x+veil.w+31.5,y:3650});player.face=${face};player.onGround=false;keys.clear();pressed.clear();`);
+  press(face>0?'d':'a');run('for(let i=0;i<20;i++)update(1/120);');
+  assert(run(face>0?'player.x+player.w<=veil.x':'player.x>=veil.x+veil.w'),'Closed veil must block normal movement');
+  press('k');run('for(let i=0;i<24;i++)update(1/120);');release('k');
+  assert(run(face>0?'player.x>=veil.x+veil.w':'player.x+player.w<=veil.x'),'Active dash must cross the veil');
+ }
+ // Pause must keep a phased player frozen, then resolve safely on resuming.
+ run("initPlayer({x:1940,y:3650});player.onGround=false;keys.clear();pressed.clear();dash=.004;pause();var frozenVeilPlayer=JSON.stringify(player);");
+ run('for(let i=0;i<60;i++)update(1/60);');
+ assert(run('JSON.stringify(player)===frozenVeilPlayer&&dash===.004'));
+ run('pause();update(1/60);');assert(!run('overlap(player,veil)'));
+}
+console.log('PASS: shadow veil resolves dash expiry at 30/60/120 FPS in both directions, allows walking/jumping away, preserves normal blocking/full-dash passage and freezes during pause.');
