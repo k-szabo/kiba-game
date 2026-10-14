@@ -25,7 +25,7 @@
 - A new task's first implementation does not require this gate unless QA rejected the work. Real external authorization requirements remain separate.
 
 ## Product invariants
-- Preserve existing saves; save structure changes need intentional migration and relevant checks.
+- During alpha/beta, every published version changes assets/config/release.json and resets previous-release progress. Preserve saves only within the same release; do not restore/migrate earlier-release progress. Keep language/keybinding preferences across resets.
 - Preserve defeated guardians/minibosses, quest flags, abilities, XP, and upgrades across normal death/respawn unless the requested design says otherwise.
 - Art-only work preserves attack timing, damage, hitboxes, and traversable geometry unless mechanics are explicitly in scope.
 - Preserve source image alpha; check crop bounds, grounding/registration, complete weapons, readable telegraphs, and animation continuity. Old v3/v4 assets may remain active; check the manifest before deleting them.

@@ -18,6 +18,7 @@ for(const id of ['angelHalo','demonHorn']){
 }
 run("enterRealm(1);persist();mainMenu();startGame(true);");assert.deepEqual(Array.from(snap().relics),['angelHalo','demonHorn']);assert.equal(snap().realm,1);assert(run('relicRitualReady()'));
 run("mainMenu();saved={version:1,layout:2,realm:0,abilities:[false,false],defeated:[false,false,false],flags:[[],[],[]],visitedRests:[[],[],[]],shards:0,progression:freshProgression()};startGame(true);");assert.equal(snap().relics.length,0);
+assert(run('Prologue.active'),'A pre-release-policy save starts a new dream');run('Prologue.stop();');
 
 // Oni has both normal hammer offense and spells. Lava does not disable the normal attack.
 run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;var oniMoves=bossMoves();");

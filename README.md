@@ -32,7 +32,7 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 - **Felfedezés:** mellékutak, Haru emlékei, rejtett szentélyek és saját minibossokkal őrzött ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
 - **Magyar és angol nyelv:** a zászlós választó a nyelvek saját és angol nevét mutatja; a választást a böngésző megjegyzi.
 - **Állítható irányítás:** a „Hogyan játszunk” ablakban brit és francia kiosztás választható, az egyes műveletek billentyűi átállíthatók, a beállítások JSON-fájlként exportálhatók és importálhatók.
-- **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. A korábbi mentéseket első indításkor átveszi.
+- **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. Az alfa/béta időszakban új játékverziónál a haladás törlődik; a nyelv és a billentyűkiosztás megmarad.
 
 ## Irányítás
 
@@ -62,6 +62,7 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 
 ## Dokumentáció
 
+- [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md) – láncos kapu, csontkulcs és egy üres démoni kastélybelső.
 - [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md) – projektspecialisták, fájlfelelősségek és kötelező javítási terv QA-visszadobás után.
 
 - [A 0.8.4 boss-effektusai](docs/BOSS-VFX-0.8.4.md) – részletes láva, földrengés, kardcsóvák, árnymágia és idézés.

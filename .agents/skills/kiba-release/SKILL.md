@@ -4,7 +4,8 @@ description: Integrate and validate Kiba changes for the static GitHub Pages pac
 ---
 
 - Act as assigned integrator after relevant parallel source edits finish. Resolve outstanding QA findings with both repair-plan approval and implementation acceptance.
-- Run npm run build for source/locale/binding changes. Keep generated assets/js/runtime.js in Git; never repair it by hand.
+- Before each published alpha/beta version, bump assets/config/release.json. Every version change resets previous-release progress, preserving language/keybinding preferences. Validate same-release reload and version-change reset.
+- Run npm run build for source/locale/binding changes; the build synchronizes entrypoint cache URLs and the menu version badge. Keep generated assets/js/runtime.js in Git; never repair it by hand.
 - Refresh/check python scripts/export-colormaps.py after image/crop/palette changes, with --node when needed. Do not regenerate it for unrelated changes.
 - Run relevant checks and npm test before release. Use kiba-browser-qa for UI/rendering/real-storage claims; VM success is not a full browser playthrough.
 - Check references/case, cache queries for changed served files, intended docs, and git diff --check. Preserve user changes.

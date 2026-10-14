@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in image_gen",
+  "styleReferences": [
+    "assets/images/backgrounds/yomi-v3.png",
+    "assets/images/props-v4.png"
+  ],
+  "assets": [
+    {
+      "path": "assets/images/council-gate-closed-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated transparent game prop for Kiba, detailed painted Japanese dark fantasy side scrolling game. Primary request: ONE imposing ancient Japanese castle double gate sealed by two massive iron chains crossing in an X and a central heavy lock carved with four small oni councillor faces. Entire gate, complete tiled roof, heavy side posts and stone threshold visible, front elevation, symmetrical, no perspective floor. Dark weathered wood planks, iron studs and rust, subtly carved oni and cloud motifs, warped charred timber, desaturated purple-black shadows and restrained warm amber edge light to fit an underworld cavern. Painterly high-detail natural material rendering, luminous edge highlights readable against dark game scenery, like a high quality hand painted Japanese fantasy game prop. Composition: gate centered, roughly square canvas, full silhouette with 5 percent transparent margin on every side; broad substantial frame taller than a man, doors shut, chains clearly readable. Clean authentic transparent background with preserved alpha around outer silhouette; no background scenery, no ground plane beyond narrow attached stone threshold. No text, no letters, no watermark, no characters. This is a new prop matching the previously inspected Kiba painted Yomi and prop style."
+    },
+    {
+      "path": "assets/images/council-gate-open-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target: this single chained wooden Japanese castle gate. Create its OPEN state. Keep the EXACT outer roof, oni carvings, thick side posts, stone threshold, weathered dark purple-brown wood, rusty metal, painterly lighting, front-facing camera and full framing. Change ONLY door state: chains unlocked and no longer across the opening, double doors swing fully outward to left and right with visibly painted narrow foreshortened panels by the posts, central entry is a deep near-black dark doorway, faint amber/red light within. No new objects or characters. Output isolated gate on a genuinely transparent alpha background; keep doorway interior near-black opaque so player reads an entrance. Enlarge transparent canvas/margins slightly to ensure ALL roof tips, swung doors, posts and full stone base visible and nothing touches image edges. No ground plane, no background scenery, no text, no watermark.",
+      "editTarget": "assets/images/council-gate-closed-v1.png"
+    },
+    {
+      "path": "assets/images/council-key-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent game collectible bone key, called Key of the Four Councillors, for detailed painted Japanese dark fantasy game Kiba. Primary request: a beautifully crafted long antique key carved from aged ivory bone, the broad circular bow contains exactly four small sinister Japanese oni councillor mask reliefs arranged around a central finger hole like four points of a compass; slim bone shaft with subtle joint/rib engraving, sturdy asymmetrical four-prong bitting. One complete key only, vertical orientation with bow at top, teeth at lower right. Painterly high-detail material rendering, restrained weathered gold wire bindings, tiny crimson accents inside the four mask eyes; warm pale bone silhouette readable at small size against purple black underworld. Entire object visible with generous transparent margins, no base or stand, no scene, no shadow outside the object, no text, no watermark. Key clearly recognizable even when downscaled. Dark Japanese fantasy materials matching painted Kiba Yomi scenery."
+    },
+    {
+      "path": "assets/images/backgrounds/council-hall-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: complete landscape environment painting for a side-scrolling Japanese dark fantasy game, a haunted demonic Japanese castle interior, absolutely no characters or enemies. Primary request: an expansive ancient audience hall of the Four Councillors deep in Yomi. Architectural beauty with colossal blackened wooden columns and intricate carved bracket beams, dim lattice shoji, tattered brocade screens with elegant faded oni and cloud motifs, iron hanging chains, paired ritual lanterns, incense braziers glowing deep red and amber, distant layered chamber recesses under heavy ceiling rafters. Four empty carved ceremonial seats in deep background subtly suggest the councillors. Rich tactile weathered timber, stone threshold, dust and thin smoky atmosphere, desaturated violet shadows with warm amber pools of light. Painterly high detail Japanese fantasy game scenery, no flat vector primitives, no HUD, no lettering, no watermark. Composition: very wide horizontal 2400 by 1100 conceptual canvas; side-on view of an uninterrupted long grand hall. Floor is a level horizontal worn wooden walkway, meeting back wall at EXACTLY 74.5 percent down image, then extending evenly to bottom edge with shallow side-view perspective. Keep the floor free of large obstacles, steps, pits, enemies, furnishings or foreground obstructions. Show ceiling and room edges fully. The painting must span a single coherent horizontal room for 2400 world units by 1100 tall and player will walk with feet at y820. No daylight, no outdoor landscape, haunted but no bodies. Similar realistic hand-painted detail, dim violet black shadows and orange ember highlights as Kiba Yomi cavern art."
+    }
+  ],
+  "registration": {
+    "hall": {
+      "width": 1852,
+      "height": 849,
+      "sourceFloorY": 690,
+      "worldFloorY": 820,
+      "note": "Draw wall and floor source rectangles separately, meeting at the collision floor. Full source preserved."
+    },
+    "alpha": "Original generated RGBA copied without pixel changes; source RGB in transparent areas is not composited."
+  },
+  "discardedIterations": [
+    {
+      "reason": "Extraction variant was brighter and did not improve original correct alpha.",
+      "prompt": "Use case: background-extraction. Edit target: attached bone key image. Keep the exact painted key design and its four councillor masks, colors, material detail and silhouette. Remove ALL the brown/black background, vignette, aura, halo, ground shadow and external glow so ONLY the bone-and-gold key remains on true alpha transparency. Also remove the background inside the central hole and every small hole between the carved bone, preserving those openings as fully transparent holes. Fit the complete key within the frame with 5 percent transparent margin on all four sides so no tip touches the canvas edge. Do not add any scenery, haze, blur, glow, letters, text or watermark. Preserve every part of key. Entire image outside the physical key must have alpha zero, not painted black or brown."
+    }
+  ]
+}

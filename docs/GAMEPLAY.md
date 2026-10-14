@@ -12,7 +12,7 @@ Frissítéskor a csomag teljes tartalmát ugyanott cseréld le. A mentések bön
 
 ## Három eltérő kaland
 
-Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. A korábbi mentések folytatásához nem kell újrajátszani a prológust. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
+Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. Ugyanazon verzión belül a Folytatás visszatölt; új alfa/béta verziónál a haladás törlődik és újra a prológusban kezdhetsz. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
 
 | Világ | Felépítés | Fő feladat | Mellékutak |
 | --- | --- | --- | --- |
@@ -50,6 +50,10 @@ A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá v�
 A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. Az első és második őrző a kihagyott szentélyképességet is megadja, hogy ne záródjon el a továbbjutás.
 
 **E-vel gyógyuláskor és halál után a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok és minibossok, kiszabadított lelkek és megnyitott utak megmaradnak. Az életerő-vesztéssel járó, nem halálos leesés nem éleszti újra a normál ellenfeleket. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
+
+## Yomi opcionális oldalága
+
+Yomi középső mélységének jobb oldalán egy [láncos kapu és opcionális kastélybelső](COUNCIL-BRANCH.md) is felfedezhető. A kapu kulcsát az őrző dobja, ha egyetlen boss-harcban legalább négy megidézett szolgáját legyőzted. A boss nem hívható vissza: ha a feltétel kimarad, az opcionális kastély csak új játékban érhető el. A kulcs a kapu első kinyitásakor megsemmisül, a kapu ezután nyitva marad.
 
 ## XP és fejlesztés
 
@@ -90,11 +94,11 @@ Momo **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásak
 
 A kész játékhoz telepítés és build nem szükséges. Helyi kipróbáláshoz HTTP-kiszolgálót használj. A tájak és szereplők illusztrált képek; a köd, fények és Kiba-áramlatok a játékban készülnek. A normál ellenfelek hat mozgási és hat támadási képkockát használnak szerepkörönként és birodalmanként. A helyi mentés törlődik az oldaladatok törlésével.
 
-A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol között. A titkosított mentés az adott böngészőprofilban tölthető vissza; a korábbi érvényes mentést a játék az első indításkor átveszi.
+A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol között. A titkosított mentés az adott böngészőprofilban tölthető vissza; az alfa/béta időszakban minden új játékverzió törli a korábbi haladást. A nyelv- és billentyűbeállítások megmaradnak.
 
 ## Ellenőrzés
 
-A játékfolyamat ellenőrzése kiterjed a billentyűeseményekre, a kettős ugrásra, a leugrásra, a harangokra, a fogoly őrök elleni harcra, a három őrzőre, az átjárókra, a szélfolyamokra, a függőleges kamerára, a mozgó platformokra, a pecsétekre, a gyorsutazásra, az apa megmentésére és a régi mentések átvételére.
+A játékfolyamat ellenőrzése kiterjed a billentyűeseményekre, a kettős ugrásra, a leugrásra, a harangokra, a fogoly őrök elleni harcra, a három őrzőre, az átjárókra, a szélfolyamokra, a függőleges kamerára, a mozgó platformokra, a pecsétekre, a gyorsutazásra, az apa megmentésére és a verzióváltásos mentésresetre.
 
 A fizikai útvonalkeresés a játék tényleges ugrás-, gravitáció-, leszállás- és szélfolyam-függvényeivel ellenőrzi a fontos pályarészek elérhetőségét és a folyójáratból való visszatérést. A 0.3 ellenőrzése a szerepköröket, pajzsblokkolást, védelmi törést, támadási előkészítést és a sprite-kivágások képen belüli helyzetét is lefedi.
 

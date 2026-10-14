@@ -36,16 +36,17 @@ for(const level of run('polishLevels')){
 assert.deepEqual(Array.from(run('heaven.rests.map(r=>r.id)')),['start','third','arena']);
 assert(run('heaven.rests.every(r=>heaven.winds.filter(w=>!w.afterBoss).every(w=>Math.abs(r.x-(w.x+w.w/2))>w.w/2+105||r.y<w.y||r.y>w.y+w.h))'),'An ascent wind automatically carries Momo through a shrine');
 
-// Validate real old encrypted payload shapes against the production validator.
+// Current-release locations remain strict; previous-release saves are reset, not migrated.
 const validate=require('./test-save-validation.cjs');
 run("state='play';abilities=[true,true];defeated=[true,true,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];enterRealm(2);persist();");
 const saved=JSON.parse(JSON.stringify(run('saved')));
 for(const [id,x,y,replacement] of [['first',830,5370,'start'],['second',2070,4120,'start'],['third',810,2770,'third'],['fourth',2170,1470,'third']]){
  const old=JSON.parse(JSON.stringify(saved));old.checkpoint={id,x,y,name:id};old.visitedRests[2]=['start',id].filter((v,i,a)=>a.indexOf(v)===i);
- const migrated=validate(old);assert.equal(migrated.checkpoint.id,replacement);assert(migrated.visitedRests[2].includes(replacement));
- old.checkpoint.x+=37;assert.throws(()=>validate(old),/Invalid save location/,'Unknown old coordinates must still fail');
+ assert.throws(()=>validate(old),/Invalid checkpoints|Invalid save location/,'Historical coordinates are not migrated into the current release');
+ old.release='0.8.2';assert.throws(()=>validate(old),/release|schema/i,'A previous release cannot be restored');
 }
 const full=JSON.parse(JSON.stringify(saved));full.visitedRests[2]=['start','first','second','third','fourth','arena'];
-assert.deepEqual(Array.from(validate(full).visitedRests[2]),['start','third','arena']);
+assert.throws(()=>validate(full),/Invalid checkpoints/);
 full.visitedRests[2].push('unknown');assert.throws(()=>validate(full),/Invalid checkpoints/);
-console.log('PASS: grounded spawns, continuous protection visibility, frozen pause/interaction poses, velocity-driven air poses, three story paragraphs, no platform overlaps throughout motion, three intentional sky shrines and strict old-shrine save migration.');
+assert(validate(saved));
+console.log('PASS: grounded spawns, continuous protection visibility, frozen pause/interaction poses, velocity-driven air poses, three story paragraphs, no platform overlaps, three intentional sky shrines and strict current-release checkpoint validation.');

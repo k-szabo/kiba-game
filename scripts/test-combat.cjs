@@ -104,4 +104,4 @@ for(let realm=0;realm<3;realm++){run(`enterRealm(${realm});state='play';bossStar
 // Check the real HTML declares every fixed DOM target rather than relying on permissive stubs.
 const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8'),ids=new Set([...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]));
 for(const file of ['game','progression','combat'])for(const m of fs.readFileSync(path.join(__dirname,'../assets/js',file+'.js'),'utf8').matchAll(/\$\('([^']+)'\)/g))assert(ids.has(m[1]),`Missing HTML element ${m[1]}`);
-console.log('PASS: stable edge chase and patrol turns for all factions/roles, shrine respawns, XP-once, training and save migration, shields, attack windups, three distinct boss movesets, sequential lava-platform collapse/reset, corrupted angel spells and animation-frame bounds.');
+console.log('PASS: stable edge chase and patrol turns for all factions/roles, shrine respawns, XP-once, training and saved progression, shields, attack windups, three distinct boss movesets, sequential lava-platform collapse/reset, corrupted angel spells and animation-frame bounds.');

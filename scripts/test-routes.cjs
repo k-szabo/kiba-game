@@ -22,7 +22,7 @@ place(1530,450);tick();run("player.support='entry';keys.add('s');");press(' ');t
 const soul=run("level.objects.find(o=>o.id==='soulUpper')");place(soul.x,soul.y);press('e');tick();release('e');assert(!snap().flags[1].includes(soul.id));
 for(const id of ['soulUpper','soulLower']){const o=run(`level.objects.find(o=>o.id==='${id}')`);const guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>({id:e.id,x:e.x,y:e.y+e.h,kind:e.kind}))`);for(const e of guards){place(e.x-55,e.y);run('player.face=1;');for(let i=0;i<4;i++){if(e.kind==='shield'){place(e.x-40,e.y-58);run('player.face=1;player.onGround=false;');}press('j');tick(60);release('j');}}place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();}
 assert(run("gatePass(level.gates.find(g=>g.kind==='souls'))"));const shrine=run('level.ability');place(shrine.x,shrine.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
-// Checkpoint maps travel vertically and reset camera, including legacy saves.
+// Checkpoint maps travel vertically and reset camera, including old-release reset.
 run("visitedRests[1].push('shadow');fastTravel(level.rests.find(r=>r.id==='shadow'));draw();");assert.equal(snap().player.y+69,2700);assert(snap().cameraY>1700);
 defeat();exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('e');assert.equal(snap().realm,2);dismiss();assert.equal(snap().world.height,6650);
 // Wind is a real physical lift; the ascending camera follows it.
@@ -33,9 +33,9 @@ place(1980,1130);run('player.y=1078;player.onGround=false;');press('j');tick(30)
 run("const cloud=platforms.find(p=>p.kind==='moving');initPlayer({x:cloud.x+90,y:cloud.y});player.onGround=true;player.support=cloud.id;");const cloudBefore=snap().player.x;run('movingPlatforms(.25);');assert.notEqual(snap().player.x,cloudBefore);
 defeat();const father=run('level.father');place(father.x,father.y);press('e');tick();release('e');assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).won,true);dismiss();assert.equal(snap().state,'won');
 const validateSave=require('./test-save-validation.cjs');for(const [index,record] of sandbox.__saveSnapshots.entries()){try{validateSave(JSON.parse(record));}catch(error){throw Error(`Game save #${index} failed production validation: ${error.message}`);}}
-run('mainMenu();saved={version:1,realm:1,abilities:[false,false],defeated:[true,false,false],shards:21,checkpoint:2830};startGame(true);');assert(snap().abilities[0]);assert.equal(snap().player.y+69,450);assert.equal(snap().shards,21);assert.equal(snap().checkpoint.id,'start');
-run('showMap();');assert(elements.get('mapContent').children.length>=3);run('closeMap();draw();');
-console.log('PASS: double jump, both Japan bells, all three guardians and exits, cage combat/rescues, descent/drop-through, wind lift and vertical camera, upward seal strike, moving-cloud carry, map fast travel, summit ending, old-save migration.');
+run('mainMenu();saved={version:1,realm:1,abilities:[false,false],defeated:[true,false,false],shards:21,checkpoint:2830};startGame(true);');assert(run('Prologue.active'));assert(!snap().abilities[0]);assert.equal(snap().shards,0);assert.equal(snap().realm,0);assert.equal(snap().checkpoint.id,'start');
+run("Prologue.stop();enterRealm(0);state='play';showMap();");assert(elements.get('mapContent').children.length>=3);run('closeMap();draw();');
+console.log('PASS: double jump, both Japan bells, all three guardians and exits, cage combat/rescues, descent/drop-through, wind lift and vertical camera, upward seal strike, moving-cloud carry, map fast travel, summit ending, old-release reset.');
 
 // Reachability search uses the actual input/gravity/landing/wind functions.
 run(`

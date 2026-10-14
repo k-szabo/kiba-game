@@ -133,6 +133,30 @@ const Visuals = (() => {
       ctx.beginPath();ctx.ellipse(x, y, realm === 0 ? 2.6 : 1.4, 1.2, time + i, 0, Math.PI * 2);ctx.fill();ctx.restore();
     }
   }
+  function councilBackdrop() {
+    const art=ART_COUNCIL.hall;
+    ctx.fillStyle='#160f16';ctx.fillRect(0,0,viewW,H);
+    if(!usable(art.image))return;
+    const floor=art.worldFloorY,width=level.width,height=level.height;
+    // Anchor the painted wall/floor join to the real walking surface. Both
+    // original source regions remain visible as the camera follows the room.
+    ctx.drawImage(images[art.image],0,0,art.w,art.floorY,-camera,-cameraY,width,floor);
+    ctx.drawImage(images[art.image],0,art.floorY,art.w,art.h-art.floorY,
+      -camera,floor-cameraY,width,Math.max(1,height-floor));
+  }
+  function councilGate(g,open=false) {
+    const art=open?ART_COUNCIL.gateOpen:ART_COUNCIL.gateClosed;
+    if(!usable(art.image))return;
+    const height=g.h??415,width=g.w??height*art.inkWidth/art.bodyHeight;
+    const sx=width/art.inkWidth,sy=height/art.bodyHeight;
+    ctx.drawImage(images[art.image],g.x-art.anchorX*sx,g.y-art.anchorY*sy,art.w*sx,art.h*sy);
+  }
+  function councilKey(x,feet,size=48) {
+    const art=ART_COUNCIL.key;
+    if(!usable(art.image))return;
+    const scale=size/art.bodyHeight;
+    ctx.drawImage(images[art.image],x-art.anchorX*scale,feet-art.anchorY*scale,art.w*scale,art.h*scale);
+  }
   function tile(rect, x, y, width, height) {
     if (!usable('terrain') || width <= 0) return;
     const top=y-((rect.surfaceY??rect.y)-rect.y)*height/rect.h;
@@ -224,14 +248,17 @@ const Visuals = (() => {
   }
   function objects(r) {
     for (const o of level.objects) {
+      if(!objectVisible(o))continue;
       if (!visiblePoint(o)) continue;
       const taken = hasFlag(o.id);if(o.type==='relic'&&!relicUnlocked(o))continue;
+      if(o.type==='councilKey'&&taken)continue;
       if(realm===2&&!taken){
         const cy=o.type==='bell'?o.y-80:o.y-42;
         ctx.save();ctx.fillStyle='#193549b8';ctx.strokeStyle='#f5df9f';ctx.lineWidth=2;
         ctx.beginPath();ctx.ellipse(o.x,cy,o.type==='bell'?62:37,o.type==='bell'?75:42,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
       }
-      if (o.type === 'bell') {shadow(o.x, o.y, 45);prop('bell', o.x, o.y + 2, 158, taken ? .62 : 1);}
+      if (o.type === 'councilKey') {shadow(o.x,o.y,28,.35);councilKey(o.x,o.y,92);}
+      else if (o.type === 'bell') {shadow(o.x, o.y, 45);prop('bell', o.x, o.y + 2, 158, taken ? .62 : 1);}
       else if (o.type === 'rescue') {if (!taken) prop('cage', o.x, o.y + 2, 125);drawSpirit(o.x, o.y - 58, r.gold);}
       else if(o.type==='relic'){if(!taken){shadow(o.x,o.y,33,.35);frame('relics',ART_FRAMES.relics[o.id],o.x,o.y+2,118);}}
       else drawSpirit(o.x, o.y - 35, r.gold);
@@ -449,6 +476,10 @@ const Visuals = (() => {
   }
   function gates(r) {
     for (const g of level.gates) {
+      if(g.kind==='council'){
+        if(level.councilGate)councilGate(level.councilGate,hasFlag('councilGateOpen'));
+        continue;
+      }
       if (gatePass(g) || g.x + g.w < camera - 80 || g.x > camera + viewW + 80 || g.y + g.h < cameraY - 80 || g.y > cameraY + H + 80) continue;
       if(g.kind==='secretRock'||g.kind==='fragile'){
         ctx.save();ctx.beginPath();ctx.rect(g.x,g.y,g.w,g.h);ctx.clip();
@@ -513,5 +544,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,backdrop,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,backdrop,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,secretScenery};
 })();

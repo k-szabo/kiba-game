@@ -35,6 +35,8 @@ const I18n=(()=>{
   while((node=walker.nextNode())){if(['SCRIPT','STYLE','KBD','OPTION'].includes(node.parentElement?.tagName))continue;const source=node.nodeValue,trim=source.trim();if(trim)node.nodeValue=source.replace(trim,t(trim));}
   for(const element of document.querySelectorAll('[title],[aria-label],meta[name="description"]'))for(const attr of ['title','aria-label','content'])if(element.hasAttribute(attr))element.setAttribute(attr,t(element.getAttribute(attr)));
   document.title=t(document.title);
+  const releaseBadge=document.querySelector('#menu .menu-note');
+  if(releaseBadge)releaseBadge.textContent=format('menu.version',[GAME_RELEASE.version]);
   for(const picker of document.querySelectorAll('.language-picker')){
    const select=picker.querySelector('select'),details=picker.querySelector('.language-chooser');
    if(!select)continue;

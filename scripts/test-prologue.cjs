@@ -36,4 +36,4 @@ run('persist();mainMenu();startGame(true);');assert.equal(run('Prologue.active')
 run('delete saved.prologueComplete;mainMenu();startGame(true);');assert.equal(run('Prologue.active'),false,'Existing saves bypass the new prologue');
 const lethal=require('./test-harness.cjs')({prologue:true});lethal.place(3160,720);lethal.tick(352);lethal.run('player.inv=0;damage(5);');
 assert.equal(lethal.run('Prologue.phase'),'death');assert.equal(lethal.snap().player.hp,0,'A lethal regular boss hit also ends the dream instead of healing Momo');
-console.log('PASS: empty playable nightmare, safe interrupted/legacy saves, sword hits without rewards, mixed auto/magic/AOE attacks, inevitable defeat through invulnerability, awakening into Japan and normal shrine respawn afterwards.');
+console.log('PASS: empty playable nightmare, safe interrupted/current-release saves, sword hits without rewards, mixed auto/magic/AOE attacks, inevitable defeat through invulnerability, awakening into Japan and normal shrine respawn afterwards.');

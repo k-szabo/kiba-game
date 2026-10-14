@@ -23,6 +23,7 @@ function killEnemy(e) {
   if(e.dead||e.hp>0)return;
   if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
+  if(e.summoned&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
   const role=enemyRole(e);
   awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
   updateHUD();
@@ -115,7 +116,7 @@ function createBoss(){
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
-    secretEligible:realm===2&&relicRitualReady(),secretTriggered:false,summons:[],summonSerial:0,
+    secretEligible:realm===2&&relicRitualReady(),secretTriggered:false,summons:[],summonSerial:0,councilMinionKills:0,
     autoPhase:null,autoClock:0,autoDuration:0,autoCooldown:1.5,autoFace:-1,extraCast:false};
 }
 function setBossPhase(phase,duration){boss.phase=phase;boss.clock=duration;boss.phaseDuration=duration;boss.animClock=0;}
@@ -127,10 +128,15 @@ function clearEncounterEffects(){
 }
 function resetBossBattle(){clearEncounterEffects();boss=createBoss();bossStarted=false;$('bossHud').hidden=true;}
 function finishBossBattle(){clearEncounterEffects();}
+function awardCouncilKeyDrop(){
+  if(realm!==1||level!==levels[1]||defeated[1]||!bossStarted||boss.dead||boss.hp>0||boss.councilMinionKills<4||flags[1].includes('councilKeyEarned'))return false;
+  flags[1].push('councilKeyEarned');return true;
+}
 function bossProjectile(x,y,vx,vy,color,kind,life=5,extra={}){
   shoot(x,y,vx,vy,color,life,kind);Object.assign(projectiles[projectiles.length-1],{source:'boss',...extra});
 }
 function bossName(){
+  if(realm===1&&!defeated[1]&&bossStarted&&!boss.dead&&!flags[1].includes('councilKeyEarned'))return I18n.format('council.boss.counter',[realms[1].boss,Math.min(4,boss.councilMinionKills||0)]);
   if(realm!==2)return realms[realm].boss;
   return ['',I18n.t("text.angel.of.dawn.phase.i"),I18n.t("text.the.dark.angel.phase.ii"),I18n.t("text.lord.of.two.worlds.hidden.phase.iii")][boss.stage];
 }

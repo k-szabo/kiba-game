@@ -66,11 +66,24 @@ rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',181
 yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:I18n.t("text.the.remembering.soul")},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:I18n.t("text.the.homesick.soul")},{id:'tombMemory',type:'memory',x:510,y:2350,name:I18n.t("text.a.memory.in.the.tombs")}];
 yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
+yomi.progressFlags=['councilKeyEarned','councilGateOpen'];
+yomi.councilGate={x:2770,y:3400,w:420,h:415};
+yomi.gates.push({id:'councilGate',kind:'council',x:2815,y:2985,w:70,h:415});
+yomi.objects.push({id:'councilKey',type:'councilKey',x:1490,y:5800,name:I18n.t('council.key.name'),requiresFlag:'councilKeyEarned'});
 yomi.arena={x:260,y:5800,w:2750,restId:'arena'};yomi.boss={x:1430,y:5800};yomi.exit={x:2790,y:5800};
 foe(yomi,'soul-upper-a',480,1510,'guard','upperSoul',60);foe(yomi,'soul-upper-b',1040,1510,'archer','upperSoul',65);foe(yomi,'soul-lower-a',2230,3900,'guard','lowerSoul',60);foe(yomi,'soul-lower-b',2770,3900,'guard','lowerSoul',60);
 [[1770,1030],[1920,1790],[1470,2110],[690,3040],[2570,3400],[1420,4230],[1780,4640],[2370,5040]].forEach(([x,y],i)=>foe(yomi,'deep-'+i,x,y,i%3===1?'archer':'guard'));
 [[1220,600],[1370,1340],[1720,2480],[1430,3240],[1830,4380],[990,4950]].forEach(([x,y],i)=>foe(yomi,'bat-'+i,x,y,'fly',null,120));
 zone(yomi,I18n.t("text.the.silent.well"),0,0,3300,1300);zone(yomi,I18n.t("text.the.captive.memory"),0,1300,3300,900);zone(yomi,I18n.t("text.ash.and.shadow"),0,2200,3300,950);zone(yomi,I18n.t("text.the.silent.river"),0,3150,3300,950);zone(yomi,I18n.t("text.forgotten.tombs"),0,4100,3300,1000);zone(yomi,I18n.t("text.the.bottom.of.the.world"),0,5100,3300,1150);
+
+// An optional interior shares Yomi's progression, but not its geometry or save checkpoint.
+const councilHall=makeLevel('councilHall',2400,1100,{x:230,y:820});
+ledge(councilHall,'council-floor',0,820,2400,'ground',280);
+councilHall.returnPoint={x:140,y:820};
+councilHall.inscription={x:2060,y:820};
+councilHall.arena={x:-10000,y:820,w:0,restId:'arena'};
+councilHall.boss={x:-10000,y:820};
+zone(councilHall,I18n.t('council.hall.name'),0,0,2400,1100);
 
 const heaven=makeLevel('heaven',3200,6650,{x:350,y:6300});
 ledge(heaven,'cloud-base',80,6300,2900,'cloud',90);

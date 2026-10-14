@@ -28,7 +28,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
-| `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés és a régi mentés egyszeri átvétele. |
+| `assets/js/save-vault.js` | Titkosított, profilhoz és kiadáshoz kötött mentés, verzióváltáskor haladásreset. |
+| `assets/config/release.json` | Közös játékverzió és alfa/béta mentésreset-politika. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `assets/css/style.css` | A kezelőfelület megjelenése. |
@@ -55,6 +56,8 @@ node scripts/test-shadow-animation.cjs
 node scripts/test-polish.cjs
 node scripts/test-angel-art.cjs
 node scripts/test-boss-vfx.cjs
+node scripts/test-council-branch.cjs
+node scripts/test-save-release.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
@@ -65,9 +68,11 @@ node scripts/test-boss-vfx.cjs
 - A kiosztásteszt a profilváltást, ütköző billentyűk kezelését, mentést, JSON-átvitelt és a francia mozgásbillentyűket ellenőrzi.
 - A prológusteszt az üres álompályát, a harci támadásokat, az elkerülhetetlen vereséget, az ébredést és a mentések kompatibilitását ellenőrzi.
 - Árnyék animációtesztje a 24 pózt, a szemek illesztését, az előjelzések és találatok időzítését, a szünetet és az elnyelés végső pózát vizsgálja.
-- A polish teszt a stabil spawn-, szünet- és interakciós képkockákat, a platformok átfedését, az égi szentélyek ritkítását és a régi mentések átvételét vizsgálja; lásd a [0.8.2 javításait](POLISH-0.8.2.md).
+- A polish teszt a stabil spawn-, szünet- és interakciós képkockákat, a platformok átfedését, az égi szentélyek ritkítását és az aktuális kiadás mentőpont-validációját vizsgálja; a látványjavítások történetét lásd a [0.8.2 leírásában](POLISH-0.8.2.md).
 - Az angyali grafika tesztje a festett lövedékek illesztését, a fázisfüggő háttereket, az áttűnés szünetét és a világos ég visszaállítását vizsgálja; lásd a [0.8.3 grafikáit](ANGEL-ART-0.8.3.md).
 - A boss-effektus teszt minden támadáscsaládot és a rajzolás alatt változatlan harci állapotot ellenőrzi; lásd a [0.8.4 effektuscsomagját](BOSS-VFX-0.8.4.md).
+- A tanácsosi oldalág tesztje a minionfeltételt, az egyszer megszerezhető és elhasználódó csontkulcsot, a visszahívás hiányát és az üres kastélyból visszatérést ellenőrzi; lásd az [oldalág leírását](COUNCIL-BRANCH.md).
+- A mentésverzió tesztje valódi Node WebCryptóval és szimulált IndexedDB-tranzakciókkal ellenőrzi a resetet, az azonos verzión belüli folytatást, a beállítások megtartását és a régebbi lapok írásának elutasítását. A valódi böngészős tárolást külön QA ellenőrzi.
 
 Forrásmódosítás után `npm run build` szükséges a futó fájl újragenerálásához. A build Node.js-en kívül nem igényel csomagokat; a kész Pages-csomag továbbra is statikus.
 
@@ -89,13 +94,13 @@ A játék relatív útvonalakat használ. Az `index.html` maradjon a repository 
 
 ## Frissítés és mentések
 
-A 0.8 új játékai a prológusban kezdődnek. A mentés opcionális `prologueComplete` mezője jelzi, hogy Momo már felébredt-e. Megszakított álomnál a Folytatás az álompálya elejére visz; az ébredéstől a megszokott szentélyes mentés működik. A mezőt még nem tartalmazó régi mentések a korábbi kalandhoz térnek vissza. A három normál birodalom sorszáma és mentési adatszerkezete megmaradt.
+Az alfa/béta időszakban minden új játékverzió törli a korábbi haladást. A közös verzió és a resetpolitika az `assets/config/release.json` fájlban van; kiadáskor növeld a verziót, majd futtasd az `npm run build` parancsot. Ez a runtime mellett a főmenü verziójelzését és az index cache-azonosítóit is frissíti. A mentés, a titkosított rekord és a helyi profil a pontos kiadáshoz kötött.
 
 A mentés AES-GCM titkosított rekordként kerül az IndexedDB tárhelyére, minden mentéshez új sóval és nonce-szal. A feloldáshoz szükséges, nem exportálható kulcsot ugyanabban a böngészőprofilban tárolja; a `localStorage` csak a titkosított rekord másolatát tartalmazza. A másolat átmásolása önmagában nem ad használható mentést egy másik profilban. Az oldaladatok törlése a mentést is törli.
 
-A 0.6 és a régebbi, érvényes mentéseket a 0.7 egyszer átveszi és titkosítja ugyanazon a címen; a régi rekordot érintetlenül hagyja tartalékként. Az új mentések már csak a v2 formátumot használják. A böngészőprofil, a webcím vagy az oldaladatok cseréje új utazást jelent.
+Verzióváltáskor az alkalmazás eltávolítja a korábbi játékmentést és helyi másolatait, és új, nem exportálható profilkulcsot készít. Korábbi titkosított vagy nyílt v1 mentést nem vesz át. A nyelv és a billentyűkiosztás megmarad. Ugyanazon verzió újratöltése nem törli a haladást. Az új szabályt ismerő régebbi lap nem írhatja felül az új verzió profilját; korábban már kiszolgált, még verzióellenőrzés nélküli kódot frissíteni/bezárni kell.
 
-Ha frissítés után régi tartalmat látsz, próbálj teljes újratöltést (Ctrl+F5). A főmenüben a V0.8 jelzi ezt a változatot.
+Az új játék a prológusban kezdődik. Ugyanazon verzión belül a `prologueComplete` jelzi az ébredést; megszakított álom az elejéről indul. Ha frissítés után régi tartalmat látsz, használj teljes újratöltést (Ctrl+F5); a főmenüben a közös kiadási verzió látható.
 
 ## Képek cseréje
 
