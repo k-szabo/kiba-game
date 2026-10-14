@@ -3,13 +3,14 @@ const {run,snap,tick,press,release,place,elements,dismiss}=require('./test-harne
 
 // Both UI and direct purchase reject spirit training until the actual ability is acquired.
 run("abilities=[true,false];progression=freshProgression();awardXP(160);enterRealm(0);state='play';");place(330,1000);press('u');tick();release('u');
-assert(elements.get('train-spirit').disabled);assert.match(elements.get('spiritValue').textContent,/Előbb/);
+assert.match(fs.readFileSync(path.join(__dirname,'../index.html'),'utf8'),/id="spiritTraining" hidden/);
+assert(elements.get('spiritTraining').hidden);assert(elements.get('train-spirit').disabled);
 const points=snap().progression.points;assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.points,points);assert.equal(snap().progression.stats.spirit,0);
 assert(run("spendPoint('strength')"));run("closeTraining();enterRealm(1);state='play';");const ability=run('level.ability');place(ability.x,ability.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
-place(1730,2700);press('u');tick();release('u');assert(!elements.get('train-spirit').disabled);assert(run("spendPoint('spirit')"));run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().progression.stats.spirit,1);
+place(1730,2700);press('u');tick();release('u');assert(!elements.get('spiritTraining').hidden);assert(!elements.get('train-spirit').disabled);assert(run("spendPoint('spirit')"));run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().progression.stats.spirit,1);
 
 // A legacy spirit investment survives, but cannot be extended without owning dash.
-run("abilities=[false,false];progression=normalizeProgression({level:4,stats:{spirit:1}});enterRealm(0);state='play';");place(330,1000);run("showTraining();");assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.stats.spirit,1);run('closeTraining();');
+run("abilities=[false,false];progression=normalizeProgression({level:4,stats:{spirit:1}});enterRealm(0);state='play';");place(330,1000);run("showTraining();");assert(elements.get('spiritTraining').hidden);assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.stats.spirit,1);run('closeTraining();');
 
 // Optional relics are off the initial map and cannot be collected before their guardian dies.
 run("flags=[[],[],[]];defeated=[false,false,false];abilities=[true,false];enterRealm(0);state='play';showMap();var initialMap=$('mapContent').children[0].innerHTML;closeMap();");

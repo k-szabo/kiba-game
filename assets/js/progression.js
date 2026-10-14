@@ -49,7 +49,8 @@ function refreshTraining() {
   const s=momoStats();
   $('vitalityValue').textContent=I18n.format("message.arg0.health",[s.maxHp]);
   $('strengthValue').textContent=I18n.format("message.arg0.sword.damage",[s.damage]);
-  $('spiritValue').textContent=I18n.t(abilities[1]?I18n.format("message.arg0.s.spirit.dash.cooldown",[s.dashCooldown.toFixed(2)]):I18n.t("text.first.acquire.spirit.dash.in.yomi"));
+  $('spiritTraining').hidden=!abilities[1];
+  if(abilities[1])$('spiritValue').textContent=I18n.format("message.arg0.s.spirit.dash.cooldown",[s.dashCooldown.toFixed(2)]);
   for(const key of ['vitality','strength','spirit']){
     const locked=key==='spirit'&&!abilities[1];
     $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=STAT_LIMIT;

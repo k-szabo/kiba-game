@@ -40,3 +40,16 @@
 .language-picker select{min-height:50px;padding:9px 12px;font-size:15px}
 @media(max-width:800px){.menu-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;bottom:14px;left:16px;right:16px}.menu-bottom>span{grid-column:1/-1;max-width:none;text-align:center;font-size:10px}.menu-bottom .language-picker{justify-self:start}.menu-bottom>button#helpButton{justify-self:end}.language-chooser{min-width:min(190px,42vw)}}
 @media(max-width:480px){.menu-bottom .language-caption{display:none}.menu-bottom>button#helpButton{font-size:14px;padding:9px 12px}.menu-bottom .language-chooser{min-width:min(185px,43vw)}.language-options{min-width:220px}}
+/* Readable controls and status text across the three very different backdrops. */
+.training-stats{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.hud-right button,.training-stats button,.travel-grid button{min-height:44px}
+.eyebrow,.menu-note,.map-legend,.travel-label,#controls,#controls .area,.kiba-current{font-size:12px!important}
+#quest p,.map-node,.training-stats b,#relicInventory{font-size:12px}
+.map-node.locked{opacity:.62}
+#bossHud{padding:8px 12px;background:#102639d9;border:1px solid #e2c7928a;border-radius:8px;text-shadow:0 2px 4px #07131d}
+#prompt{color:#fff2cf;border-color:#e2c68e;background:#132c3df2}
+#quest{padding:10px 13px;background:#112a3cde;border:1px solid #e3cb9180;border-radius:7px;box-shadow:0 5px 18px #07131d55}
+#quest p{color:#f4f2e8;text-shadow:0 1px 3px #06111b}
+@media(max-width:800px){.training-stats{grid-template-columns:1fr}.eyebrow,.menu-note,.map-legend,.travel-label,#controls,#controls .area,.kiba-current{font-size:11px!important}.hud-right button{min-height:40px}#quest p,.map-node,#relicInventory{font-size:11px}}
+@media(max-width:650px){#quest{left:12px;top:96px;max-width:calc(100% - 155px);padding:8px 10px}#quest p{font-size:12px;line-height:1.5}#bossHud{left:16px;right:16px;top:225px}#controls{flex-wrap:wrap;justify-content:center;gap:5px 8px;padding:8px 6px}#controls>span{font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){button,#toast,#bossHealth{transition:none!important}}
