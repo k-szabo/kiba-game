@@ -40,6 +40,8 @@ console.log('PASS: double jump, both Japan bells, all three guardians and exits,
 // Reachability search uses the actual input/gravity/landing/wind functions.
 run(`
 function routeLink(a,b,jumpTwice,wind){
+ for(const startTime of a.kind==='moving'||b.kind==='moving'?[0,1,2,3]:[0]){
+ levelTime=startTime;movingPlatforms(0);
  const startPoints=wind?[wind.x+wind.w/2]:[clamp(b.x+b.w/2,a.x+25,a.x+a.w-25),a.x+25,a.x+a.w-25];
  for(const start of startPoints){
   if(start<a.x||start>a.x+a.w)continue;
@@ -48,6 +50,7 @@ function routeLink(a,b,jumpTwice,wind){
   if(!wind&&b.y>a.y+100&&!a.drop&&start>=b.x&&start<=b.x+b.w){const edges=[a.x-85,a.x+a.w+85].filter(x=>x>b.x+20&&x<b.x+b.w-20);if(edges.length)targetX=edges.sort((x,y)=>Math.abs(x-start)-Math.abs(y-start))[0];}
   initPlayer({x:start,y:a.y});player.onGround=true;player.support=a.id;keys.clear();pressed.clear();if(dropping)keys.add('s');pressed.add(' ');let second=false;
   for(let i=0;i<660;i++){
+   movingPlatforms(1/120);if(b.kind==='moving')targetX=b.x+b.w/2;
    const foot=player.y+69;const moving=(!wind||foot<b.y+85);
    keys.delete('a');keys.delete('d');const delta=targetX-(player.x+21.5);if(moving&&Math.abs(delta)>7)keys.add(delta>0?'d':'a');
    if(jumpTwice&&b.y<=a.y&&!wind&&!second&&i>24&&player.vy>-10&&!player.onGround){pressed.add(' ');second=true;}
@@ -56,11 +59,12 @@ function routeLink(a,b,jumpTwice,wind){
    if(!wind&&player.y>b.y+600||i>80&&player.onGround&&player.support!==a.id&&player.support!==b.id)break;
   }
  }
+ }
  return false;
 }
 function reachableFrom(startId,jumpTwice){
  const seen=new Set([startId]),queue=[startId];
- while(queue.length){const current=queue.shift();const a=platforms.find(p=>p.id===current);for(const b of platforms){if(seen.has(b.id)||b.kind==='moving')continue;const gap=Math.max(0,b.x-a.x-a.w,a.x-b.x-b.w);const wind=level.winds.find(w=>(!w.afterBoss||defeated[realm])&&w.x+w.w/2>=a.x&&w.x+w.w/2<=a.x+a.w&&Math.abs((w.y+w.h)-a.y)<140&&Math.abs(w.y-b.y)<220);
+ while(queue.length){const current=queue.shift();const a=platforms.find(p=>p.id===current);for(const b of platforms){if(seen.has(b.id))continue;const gap=Math.max(0,b.x-a.x-a.w,a.x-b.x-b.w);const wind=level.winds.find(w=>(!w.afterBoss||defeated[realm])&&w.x+w.w/2>=a.x&&w.x+w.w/2<=a.x+a.w&&Math.abs((w.y+w.h)-a.y)<140&&Math.abs(w.y-b.y)<220);
   if(!wind&&(a.y-b.y>(jumpTwice?250:115)||b.y-a.y>1400||gap>600))continue;
   if(routeLink(a,b,jumpTwice,wind)){seen.add(b.id);queue.push(b.id);}
  }}return [...seen];
@@ -77,6 +81,15 @@ run("abilities=[true,true];flags[1]=['soulUpper','soulLower'];enterRealm(1);var 
 run("flags[2]=['dawnSeal','memorySeal'];defeated[2]=false;enterRealm(2);var heavenReach=reachableFrom('cloud-base',true);");reach=run('heavenReach');for(const id of ['first-island','second-launch','second-island','third-launch','third-island','fourth-launch','fourth-island','dawn-arena'])assert(reach.includes(id),'Heaven ascent disconnected: '+id+'; reached '+reach.join(', '));
 run("defeated[2]=true;var summitReach=reachableFrom('dawn-arena',true);");assert(run("summitReach.includes('father-island')"),'Father summit inaccessible from the guardian arena');
 console.log('PASS: physics-based route search reaches the wind shrine, both Japan bells and cave return, both Yomi cages and bottom arena, all five sky lifts, and the father summit.');
+
+// Missing either captive soul must never trap Momo on the closed abyss seal.
+for(const released of [[],['soulUpper'],['soulLower']]){
+ run(`flags[1]=${JSON.stringify(released)};defeated[1]=false;abilities=[true,false];enterRealm(1);`);
+ assert(!run("gatePass(level.gates.find(g=>g.id==='abyssOath'))"));
+ assert(run("routeLink({id:'gate:abyssOath',x:0,y:5300,w:3300,drop:false},platforms.find(p=>p.id==='seal-return'),true,null)"),'No jump from the locked seal to its return ledge');
+ assert(run("routeLink(platforms.find(p=>p.id==='seal-return'),platforms.find(p=>p.id==='last-ledge'),true,null)"),'No return from the seal to the abyss shrine');
+}
+console.log('PASS: closed abyss seal has a physical return route with zero or one rescued soul, without dash.');
 
 
 

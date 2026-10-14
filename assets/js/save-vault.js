@@ -17,7 +17,23 @@ const SaveVault=(()=>{
   let xp=p.totalXp,level=1;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
   return level===p.level&&p.xp===(level===12?0:xp);
  }
+ function migrateHeavenRests(data){
+  // Only historical shrine IDs/coordinates are accepted; other invalid saves still fail validation.
+  const previous={first:{x:830,y:5370,to:'start'},second:{x:2070,y:4120,to:'start'},third:{x:810,y:2770,to:'third'},fourth:{x:2170,y:1470,to:'third'}};
+  const visited=data?.visitedRests?.[2];
+  if(!Array.isArray(visited)||new Set(visited).size!==visited.length)return data;
+  const current=new Set(levels[2].rests.map(r=>r.id));
+  if(visited.some(id=>!current.has(id)&&!Object.hasOwn(previous,id)))return data;
+  const copy=JSON.parse(JSON.stringify(data));
+  if(data.realm===2&&Object.hasOwn(previous,data.checkpoint?.id)){
+   const old=previous[data.checkpoint.id];
+   if(data.checkpoint.x===old.x&&data.checkpoint.y===old.y&&visited.includes(data.checkpoint.id))copy.checkpoint={...levels[2].rests.find(r=>r.id===old.to)};
+  }
+  copy.visitedRests[2]=[...new Set(visited.map(id=>Object.hasOwn(previous,id)?previous[id].to:id))];
+  return copy;
+ }
  function validate(data){
+  data=migrateHeavenRests(data);
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data?.prologueComplete===false&&(data.realm!==0||data.won||data.defeated?.some(Boolean)||data.abilities?.some(Boolean)||data.flags?.some(f=>f.length)||data.progression?.totalXp))throw Error('Invalid dream progress');
   if(!data||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean'||!validProgress(data.progression))throw Error('Invalid save schema');

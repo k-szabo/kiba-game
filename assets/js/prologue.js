@@ -228,10 +228,21 @@ const Prologue=(()=>{
     if(clock<2.25&&menuSheet.complete&&menuSheet.naturalWidth)ctx.drawImage(menuSheet,1024,512,512,512,mx-size/2,feet-450*size/512,size,size);
     else drawMomo(mx,feet,size*.85,0,0,1);
     const shade=clamp(1-clock/1.6,0,1);ctx.fillStyle=`rgba(0,0,0,${shade})`;ctx.fillRect(0,0,viewW,H);
-    caption(I18n.t(clock<2?'prologue.awakening.dream':'prologue.awakening.screams'),H*.14);
+    caption(I18n.t(clock<2?'prologue.awakening.dream':'prologue.awakening.screams'),H*.14,true);
   }
-  function caption(text,y){
-    ctx.save();ctx.textAlign='center';ctx.font=`600 ${Math.min(26,Math.max(16,viewW*.035))}px Manrope, sans-serif`;ctx.strokeStyle='#070b16';ctx.lineWidth=5;ctx.strokeText(text,viewW/2,y);ctx.fillStyle='#efddff';ctx.fillText(text,viewW/2,y);ctx.restore();
+  function caption(text,y,dawn=false){
+    ctx.save();ctx.textAlign='center';
+    const size=Math.min(24,Math.max(16,viewW*.035)),width=Math.min(660,viewW-36),maxText=width-36;
+    ctx.font=`600 ${size}px Manrope, sans-serif`;
+    const lines=[];let line='';
+    for(const word of text.split(/\s+/)){const next=line?line+' '+word:word;const measured=ctx.measureText(next)?.width??next.length*size*.55;if(line&&measured>maxText){lines.push(line);line=word;}else line=next;}if(line)lines.push(line);
+    if(dawn){
+      ctx.fillStyle='#132a32ed';ctx.fillRect((viewW-width)/2,y-38,width,lines.length*(size+9)+48);
+      ctx.strokeStyle='#d9ba7b99';ctx.lineWidth=1;ctx.strokeRect((viewW-width)/2,y-38,width,lines.length*(size+9)+48);
+      ctx.fillStyle='#d9ba7b';ctx.font='600 11px Manrope, sans-serif';ctx.fillText(I18n.t('prologue.wake.label'),viewW/2,y-15,maxText);ctx.font=`600 ${size}px Manrope, sans-serif`;
+    }
+    lines.forEach((value,index)=>{const baseline=y+16+index*(size+9);if(!dawn){ctx.strokeStyle='#070b16';ctx.lineWidth=5;ctx.strokeText(value,viewW/2,baseline);}ctx.fillStyle=dawn?'#f2e6cc':'#efddff';ctx.fillText(value,viewW/2,baseline);});
+    ctx.restore();
   }
   function draw(){
     ctx.fillStyle='#03040b';ctx.fillRect(0,0,viewW,H);

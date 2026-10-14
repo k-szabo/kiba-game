@@ -3,6 +3,6 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-game.mjs",
-    "test": "node scripts/check-site.mjs && node scripts/test-combat.cjs && node scripts/test-v05.cjs && node scripts/test-v06.cjs && node scripts/test-routes.cjs && node scripts/test-bindings.cjs && node scripts/test-prologue.cjs && node scripts/test-shadow-animation.cjs"
+    "test": "node scripts/check-site.mjs && node scripts/test-combat.cjs && node scripts/test-v05.cjs && node scripts/test-v06.cjs && node scripts/test-routes.cjs && node scripts/test-bindings.cjs && node scripts/test-prologue.cjs && node scripts/test-shadow-animation.cjs && node scripts/test-polish.cjs"
   }
 }

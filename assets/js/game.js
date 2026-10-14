@@ -31,7 +31,7 @@ function saveFailed(){if(!saveWarning){saveWarning=true;toast(I18n.t("text.savin
 function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add('visible');toastTimer=5;}
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
 function burst(x,y,color,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(noise(time*100+i)-.5)*280,vy:-noise(time*200+i)*230,life:.4+noise(i+time)*.5,color,size:2+noise(i)*4});}
-function initPlayer(point=level.start){player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,onGround:false,jumps:0,support:null};attack=0;attackElapsed=0;attackFace=1;attackHit=false;dash=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;}
+function initPlayer(point=level.start){const support=platforms.find(p=>!p.broken&&Math.abs(p.y-point.y)<1&&point.x+21.5>p.x&&point.x-21.5<p.x+p.w);player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,onGround:!!support,jumps:0,support:support?.id??null,animationTime:0};attack=0;attackElapsed=0;attackFace=1;attackHit=false;dash=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;shake=0;}
 function resetCamera(){camera=clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW));cameraY=clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H));}
 function enterRealm(n,point=null){realm=n;level=levels[n];platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;checkpoint={...(level.rests.find(r=>r.id===point?.id)||level.rests[0])};initPlayer(checkpoint);bossStarted=false;particles=[];drops=[];projectiles=[];visits=new Set();
  enemies=createEnemies();boss=createBoss();if(!visitedRests[n].includes('start'))visitedRests[n].push('start');resetCamera();updateHUD();}
@@ -40,7 +40,7 @@ function startGame(resume=false){if(!storageReady){toast(I18n.t("text.the.save.i
  if(old&&old.layout!==2){if(defeated[0])flags[0].push('forestBell','villageBell');if(defeated[1])flags[1].push('soulUpper','soulLower');}
  const point=old?.layout===2?old.checkpoint:null;Prologue.stop();enterRealm(r,point);state='play';$('menu').hidden=true;showHUD(true);if(!old||old.prologueComplete===false){Prologue.start();persist();}else{persist();toast(old?.layout!==2?I18n.t("text.your.progress.has.been.preserved.continue.from.the.entrance"):I18n.t("text.your.journey.continues.where.you.last.rested"));}}
 function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on;$('relicInventory').hidden=!on||!collectedRelics().length;$('touchControls').hidden=!on||!matchMedia('(pointer:coarse)').matches;}
-function story(label,title,text,onClose){state='dialog';keys.clear();pressed.clear();$('dialogLabel').textContent=I18n.t(label);$('dialogTitle').textContent=I18n.t(title);$('dialogText').replaceChildren();const p=document.createElement('p');p.textContent=I18n.t(text);$('dialogText').append(p);$('dialog').hidden=false;$('dialogOk').textContent=I18n.t("text.next.0ed851");$('dialogOk').onclick=()=>{$('dialog').hidden=true;state='play';onClose?.();};$('dialogOk').focus();}
+function story(label,title,text,onClose){state='dialog';keys.clear();pressed.clear();$('dialogLabel').textContent=I18n.t(label);$('dialogTitle').textContent=I18n.t(title);$('dialogText').replaceChildren();for(const paragraph of I18n.t(text).split(/\n\s*\n/)){const p=document.createElement('p');p.textContent=paragraph;$('dialogText').append(p);}$('dialog').hidden=false;$('dialogOk').textContent=I18n.t("text.next.0ed851");$('dialogOk').onclick=()=>{$('dialog').hidden=true;state='play';onClose?.();};$('dialogOk').focus();}
 function pointNear(p,dx=100,dy=90){return Math.abs(player.x+player.w/2-p.x)<dx&&Math.abs(player.y+player.h-p.y)<dy;}
 function direction(p){const dx=p.x-player.x,dy=p.y-(player.y+player.h);return Math.abs(dy)>Math.abs(dx)*.6?(dy>0?'↓':'↑'):(dx>0?'→':'←');}
 function nextObjective(){if(defeated[realm])return{point:realm===2?level.father:level.exit,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
@@ -87,7 +87,7 @@ function movePlayer(dt){const before={x:player.x,y:player.y},wasGround=player.on
  if(wasGround&&!player.onGround&&player.vy>=0)coyote=.1;if(player.y>level.height+180)revive(true);}
 function shoot(x,y,vx,vy,color,life=4,kind='orb'){projectiles.push({x,y,vx,vy,color,life,kind});}
 
-function update(dt){time+=dt;toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play')return;if(Prologue.active){Prologue.update(dt);pressed.clear();return;}attack=Math.max(0,attack-dt);attackCooldown-=dt;dash=Math.max(0,dash-dt);dashCooldown-=dt;jumpBuffer-=dt;coyote-=dt;dropTimer-=dt;player.inv=Math.max(0,player.inv-dt);shake=Math.max(0,shake-dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
+function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}time+=dt;player.animationTime+=dt;if(Prologue.active){Prologue.update(dt);pressed.clear();return;}attack=Math.max(0,attack-dt);attackCooldown-=dt;dash=Math.max(0,dash-dt);dashCooldown-=dt;jumpBuffer-=dt;coyote-=dt;dropTimer-=dt;player.inv=Math.max(0,player.inv-dt);shake=Math.max(0,shake-dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
  for(const h of level.hazards)if(overlap(player,h))damage(1,player.vx>=0?-1:1);
  const a=level.arena;if(!boss.dead&&player.x+player.w>(a.triggerX??a.x)&&player.x<a.x+a.w&&Math.abs(player.y+player.h-a.y)<160){bossStarted=true;if(!visits.has('boss')){visits.add('boss');checkpoint={...level.rests.find(r=>r.id===a.restId)};if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);persist();toast(realm===0?I18n.t("text.raised.sword.dodge.the.guardian.is.vulnerable.after.the"):realm===1?I18n.t("text.watch.for.cracks.in.the.ground.when.lava.rises"):I18n.t("text.gold.signals.light.arrows.violet.signals.shadow.magic.keep"));}}
  updateBoss(dt);for(const p of projectiles){p.life-=dt;if(p.kind==='arrow')p.vy+=55*dt;if(p.gravity)p.vy+=p.gravity*dt;const beforeX=p.x,beforeY=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;const radius=p.radius||7;const swept={x:Math.min(beforeX,p.x)-radius,y:Math.min(beforeY,p.y)-radius,w:Math.abs(p.x-beforeX)+radius*2,h:Math.abs(p.y-beforeY)+radius*2};if(p.life>0&&overlap(player,swept)){damage(p.damage||1,p.vx>0?1:-1);p.life=0;}}projectiles=projectiles.filter(p=>p.life>0);
@@ -209,7 +209,9 @@ function drawTorii(x,y,r){Visuals.torii(x,y,r);}
 
 function drawShrine(x,y,r,ability){Visuals.shrine(x,y,r,ability);}
 
-function drawMomo(x,feet,size,row,frame,face){if(!sheet.complete||!sheet.naturalWidth)return;ctx.save();ctx.translate(x,feet);if(row!==1&&row!==2&&face<0)ctx.scale(-1,1);const hh=size*208/192;ctx.drawImage(sheet,frame*192,row*208,192,208,-size/2,-hh,size,hh);ctx.restore();}
+// Solid paw baselines measured from the original sheet; animation cannot move the collision feet.
+const MOMO_FRAME_BOTTOM=[[202,201,202,202,201,201],[198,201,198,199,199,201,199,192],[193,200,194,199,192,201,194,198],[202,202,202,202],[199,198,171,197,202],[201,201,201,201,201,201,201,201],[201,201,202,202,202,202],[202,202,202,202,202,202],[202,202,202,202,202,202],[202,202,202,202,202,202,202,202],[202,202,202,202,202,202,202,202]];
+function drawMomo(x,feet,size,row,frame,face){if(!sheet.complete||!sheet.naturalWidth)return;ctx.save();ctx.translate(x,feet);if(row!==1&&row!==2&&face<0)ctx.scale(-1,1);const hh=size*208/192,baseline=MOMO_FRAME_BOTTOM[row]?.[frame]??208;ctx.drawImage(sheet,frame*192,row*208,192,208,-size/2,-baseline*size/192,size,hh);ctx.restore();}
 function drawMenuMomo(x,feet,size){
  ctx.save();ctx.fillStyle='#08141166';ctx.beginPath();ctx.ellipse(x,feet+2,size*.34,size*.065,0,0,Math.PI*2);ctx.fill();
  if(!menuSheet.complete||!menuSheet.naturalWidth){drawMomo(x,feet,size*.8,0,0,1);ctx.restore();return;}
@@ -236,11 +238,16 @@ for(const key of ['vitality','strength','spirit'])$('train-'+key).onclick=()=>sp
 
 
 function drawPlayer(){
- const feet=player.y+player.h+5,x=player.x+player.w/2;
- const row=!player.onGround?4:Math.abs(player.vx)>35?(player.face>0?1:2):0,counts=[6,8,8,4,5,8,6,6,6],frame=Math.floor(time*(row===1||row===2?12:5))%counts[row];
+ const feet=player.y+player.h+1,x=player.x+player.w/2;
+ const row=!player.onGround?4:Math.abs(player.vx)>35?(player.face>0?1:2):0;
+ const frame=row===4?(player.vy< -260?1:player.vy<100?2:3):Math.floor(player.animationTime*(row===0?5:12))%(row===0?6:8);
+ ctx.save();
  if(dash>0){ctx.globalAlpha=.2;if(attack>0)Visuals.momoSlash(x-player.face*50,feet,92,attackElapsed,attackFace);else drawMomo(x-player.face*50,feet,92,row,frame,player.face);ctx.globalAlpha=1;}
- if(!(player.inv>0&&Math.floor(time*14)%2)){if(attack>0)Visuals.momoSlash(x,feet,96,attackElapsed,attackFace);else drawMomo(x,feet,96,row,frame,player.face);}
+ // Protection is a steady translucent cue rather than a flashing disappearing sprite.
+ ctx.globalAlpha=player.inv>0&&state==='play'?.82:1;
+ if(attack>0)Visuals.momoSlash(x,feet,96,attackElapsed,attackFace);else drawMomo(x,feet,96,row,frame,player.face);
  if(attack>0&&attackElapsed>=SWORD_IMPACT&&attackElapsed<.3)drawSlash();
+ ctx.restore();
 }
 function collectedRelics(){return ['angelHalo','demonHorn'].filter(id=>flags[0].includes(id));}
 function updateRelicHUD(){const items=collectedRelics();$('relicInventory').hidden=!items.length;$('relicInventory').textContent=I18n.t(items.map(id=>id==='angelHalo'?I18n.t("text.angel.s.halo"):I18n.t("text.demon.lord.s.horn")).join(' · '));}

@@ -308,10 +308,9 @@ const Visuals = (() => {
       if(area.x+area.w<camera||area.x>camera+viewW||area.y+area.h<cameraY||area.y>cameraY+H)continue;
       ctx.save();
       if(area.id==='angelRuin'){
-        for(const [x,y,width,height] of [[2700,-500,220,68],[3020,-330,180,53],[2820,-145,175,49]]){
-          const cloud=ctx.createRadialGradient(x,y,8,x,y,width);
-          cloud.addColorStop(0,'#f2eee5b8');cloud.addColorStop(.65,'#dae4df66');cloud.addColorStop(1,'#d2e3e000');
-          ctx.fillStyle=cloud;ctx.beginPath();ctx.ellipse(x,y,width,height,0,0,Math.PI*2);ctx.fill();
+        if(usable('japanClouds'))for(const [x,y,width,height,flip] of [[2700,-500,610,260,1],[3040,-330,510,220,-1],[2800,-145,550,235,1]]){
+          ctx.save();ctx.globalAlpha*=.82;ctx.translate(x,y);ctx.scale(flip,1);
+          ctx.drawImage(images.japanClouds,-width/2,-height/2,width,height);ctx.restore();
         }
         const altarY=area.arena.y;
         prop('skyShrine',2585,altarY,82,.65);

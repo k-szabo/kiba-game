@@ -44,6 +44,7 @@ jobs:
           node scripts/test-bindings.cjs
           node scripts/test-prologue.cjs
           node scripts/test-shadow-animation.cjs
+          node scripts/test-polish.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

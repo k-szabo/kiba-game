@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "reference": "assets/images/backgrounds/japan-v3.png",
+  "output": "assets/images/japan-clouds-v1.png",
+  "prompt": "Use case: stylized-concept. Asset type: transparent atmospheric cloud sprite for a richly painted 2D Japanese fantasy metroidvania. The input is STYLE AND LIGHTING REFERENCE ONLY, do not reproduce its scenery. Create one broad, naturally irregular bank of high-altitude Japanese mountain mist/cloud, isolated on genuine transparent PNG background. Long horizontal formation, subtle asymmetrical rolling billows, detailed painterly vapour with fine wisps and layered volume. Blue-grey and desaturated sage-grey shadows, soft warm ivory highlights along upper crests matching the reference landscape's dawn atmosphere. Restrained realistic fantasy illustration, the same polished hand-painted quality as the mountains and fog in the reference. Dense central sections can veil an ancient ruined tower behind them, but outer wisps and underside must fade gradually into true transparent alpha, no hard rectangle or crop. Wide landscape canvas, cloud occupies central 75 percent width and middle 45 percent height with generous fully transparent margins on ALL sides. No sky, no ground, no buildings, no gold trim, no characters, no text, no cartoon white bubbles, no repeated ellipses, no opaque grey backdrop, no checkerboard. Preserve soft semi-transparent cloud edges."
+}

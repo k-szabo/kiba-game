@@ -352,11 +352,11 @@
       "prologue.warning.wave": "Sötét hullám söpör végig a talajon.",
       "prologue.warning.devour": "A fekete lyuk elnyeli az egész világot.",
       "prologue.death": "Az árnyék elnyel.",
-      "prologue.awakening.dream": "Csak egy álom…",
-      "prologue.awakening.screams": "Sikolyok a faluból.",
-      "prologue.wake.label": "ÉBREDÉS · JAPÁN",
-      "prologue.wake.title": "A falu megtámadva",
-      "prologue.wake.story": "Momo zihálva ébred. A fekete lyuk, a lila szemek, az őt elnyelő árnyék — mind csak álom volt. Aztán sikoly hasít a hajnalba. A falut katonák támadták meg. Haru sehol. Momo felkapja a kardját, és kiront az ösvényre. Meg kell találnia az édesapját.",
+      "prologue.awakening.dream": "Csak álom volt. A hidege még itt maradt.",
+      "prologue.awakening.screams": "A hajnal csendjét sikoly töri meg.",
+      "prologue.wake.label": "I. FEJEZET · A HARANGOK ÚTJA",
+      "prologue.wake.title": "A harangok hallgatnak",
+      "prologue.wake.story": "A papírfalakon már átszűrődik a hajnal. Momo a saját szobájában ébred, de még érzi a sötétség hidegét a mellkasában. Csak álom volt, mondja magának. A lila szemek emléke nem halványul.\n\nHaru mindig azt mondta: ahol a Kiba áramlik, ott hazatalálunk. Most az amulett néma. Apja megszokott lépteit sem hallja a szomszédos szobából.\n\nOdakint sikoly hasít a csendbe. Füst száll a háztetők fölé, katonák járják a falut, a harangok pedig hallgatnak. Haru sehol. Momo magához veszi a kardját, amelynek súlyát apja tanította meg viselni. Először a falut kell elérnie. Aztán követni minden nyomot, amely hazavezetheti Harut.",
       "text.v0.8.prologue": "V0.8 · PROLÓGUS"
     }
   },
@@ -713,11 +713,11 @@
       "prologue.warning.wave": "A dark wave sweeps across the ground.",
       "prologue.warning.devour": "The black hole is swallowing the whole world.",
       "prologue.death": "The shadow consumes you.",
-      "prologue.awakening.dream": "Only a dream…",
-      "prologue.awakening.screams": "Screams from the village.",
-      "prologue.wake.label": "AWAKENING · JAPAN",
-      "prologue.wake.title": "The village is under attack",
-      "prologue.wake.story": "Momo wakes, gasping. The black hole, the violet eyes, the shadow that consumed him — it was all a dream. Then a scream tears through the dawn. Soldiers have attacked the village. Haru is nowhere to be found. Momo grabs his sword and rushes onto the path. He must find his father.",
+      "prologue.awakening.dream": "Only a dream. Its cold still lingers.",
+      "prologue.awakening.screams": "A scream breaks the silence of dawn.",
+      "prologue.wake.label": "CHAPTER I · THE PATH OF BELLS",
+      "prologue.wake.title": "The bells are silent",
+      "prologue.wake.story": "Dawn is already filtering through the paper walls. Momo wakes in his own room, yet the cold of the darkness still presses against his chest. Only a dream, he tells himself. The memory of those violet eyes will not fade.\n\nHaru always said: where Kiba flows, we can find our way home. Now the amulet is silent. Nor can Momo hear his father's familiar footsteps in the next room.\n\nOutside, a scream tears through the quiet. Smoke rises above the rooftops. Soldiers stalk the village, and the bells are silent. Haru is nowhere. Momo takes up the sword his father taught him to carry. First, he must reach the village. Then follow every trace that might bring Haru home.",
       "text.v0.8.prologue": "V0.8 · PROLOGUE"
     }
   }

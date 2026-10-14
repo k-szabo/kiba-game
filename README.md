@@ -62,6 +62,7 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 
 ## Dokumentáció
 
+- [A 0.8.2 pálya- és animációjavításai](docs/POLISH-0.8.2.md) – stabil Momo, rendezett platformok, festett felhők és átdolgozott ébredés.
 - [A 0.8 prológusa](docs/PROLOGUE.md) – az új kezdés, Árnyék és az ébredési átvezetés; spoileres történetrész lenyitható leírásban.
 - [Játékmenet, képességek és mentés](docs/GAMEPLAY.md) – részletes segítség, később boss- és titokleírásokkal.
 - [Helyi futtatás, ellenőrzés és GitHub Pages](docs/DEVELOPMENT.md).

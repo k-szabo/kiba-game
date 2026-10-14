@@ -11,7 +11,7 @@ A fekete lyuknál **Árnyék / Shadow** jelenik meg. A festett felsőtest négy 
 
 Aki sokáig kitér, az egész arénát elnyelő támadással találkozik. Ezt 2,8 másodpercnyi erős előjelzés vezeti be; a levegőt és a földet is eléri, ezért a harc legkésőbb ekkor vereséggel zárul. Nem ad XP-t, lélektöredéket vagy boss-jutalmat, és nem nyitja meg a japán kapukat.
 
-Momo összeesik, a kép elsötétül. Az ébredés egy festett japán szobában történik, először a „Csak egy álom…” szöveggel. Utána sikolyokat hall; bekapcsolt hang mellett szintetizált hanghatás is megszólal. Momo feláll, majd megtudjuk, hogy katonák támadták meg a falut, Haru pedig eltűnt. Teljes élettel és az eredeti kezdő képességekkel kerül a japán pálya elejére. A falu körüli füst és parázs jelzi a támadást.
+Momo összeesik, a kép elsötétül. Az ébredés egy festett japán szobában történik. Meleg színű feliratkártya idézi fel az álom hidegét, majd a hajnal csendjét megtörő sikolyt; bekapcsolt hang mellett szintetizált hanghatás is megszólal. Momo feláll. Az „A harangok hallgatnak” jelenet három bekezdésben kapcsolja össze az álom emlékét, Haru tanítását a Kibáról és a falut ért támadást. Teljes élettel és az eredeti kezdő képességekkel kerül a japán pálya elejére. A falu körüli füst és parázs jelzi a támadást.
 
 </details>
 

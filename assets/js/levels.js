@@ -9,12 +9,12 @@ const japan=makeLevel('japan',10400,2500,{x:260,y:1000});
 japan.top=-1100; // The optional angel tower rises above the ordinary camera range.
 [[0,1000,1550],[1680,950,1640],[3400,1000,1500],[5100,920,1400],[6740,960,1160],[8150,1000,2250]].forEach((p,i)=>ledge(japan,'road'+i,...p,'ground',190));
 [
- ['wind-step',1980,855,150],['wind-roof',2160,760,370],['root-step',2890,900,140],
+ ['wind-step',1980,855,150],['wind-roof',2160,760,370],
  ['forest-step',3900,905,180],['forest-mid',4090,810,180],['forest-bell',4300,715,260],
- ['river-bridge',4820,835,200],['river-roof',5150,760,300],['river-rest',5590,815,220],
- ['rice-bridge',6530,850,190],['village-step',6770,855,180],['village-mid',6930,790,170],['village-bell',7100,715,290],
- ['bamboo-bridge',7900,840,180],['temple-roof',8290,850,280],
- ['river-cave',4850,1390,1550],['cave-exit1',6220,1290,160],['cave-exit2',6400,1190,160],['cave-exit3',6580,1090,160],['cave-exit4',6760,995,180],
+ ['river-bridge',4820,835,200],
+ ['rice-bridge',6530,850,190],['village-step',6720,855,155],['village-mid',6930,790,170],['village-bell',7100,715,290],
+ ['bamboo-bridge',7900,840,180],
+ ['river-cave',4850,1390,1550],['cave-exit1',6220,1290,160],['cave-exit2',6400,1190,160],['cave-exit3',6580,1090,160],
  ['forest-secret1',3550,800,200],['forest-secret2',3720,620,230]
 ].forEach(p=>ledge(japan,...p));
 japan.ability={x:2340,y:760,name:I18n.t("text.blessing.of.the.wind")};
@@ -57,7 +57,8 @@ const yomi=makeLevel('yomi',3300,6250,{x:1560,y:450});
  ['ash-shrine',1220,2700,950],['west-fire',360,3040,1030],['east-river',1990,3400,900],
  ['cage-right',2050,3900,1050],['west-tomb',440,4230,1200],['deep-center',1110,4640,1050],
  ['last-ledge',1450,5040,1280],['bottom',220,5800,2860],
- ['rescue-left-stair',1510,1420,180],['river-lip',1800,3710,210],['deep-left',320,4740,450],
+ ['rescue-left-stair',1510,1420,180],['river-lip',1800,3710,210],
+ ['seal-return',1320,5180,300],
  ['secret-tomb',230,2350,600],['secret-step',680,2240,250]
 ].forEach(p=>ledge(yomi,...p,'stone',32));
 yomi.ability={x:1570,y:2700,name:I18n.t("text.spirit.dash")};
@@ -74,20 +75,21 @@ zone(yomi,I18n.t("text.the.silent.well"),0,0,3300,1300);zone(yomi,I18n.t("text.t
 const heaven=makeLevel('heaven',3200,6650,{x:350,y:6300});
 ledge(heaven,'cloud-base',80,6300,2900,'cloud',90);
 [
- ['first-island',470,5370,520],['first-arc1',1120,5230,240],['first-arc2',1410,5080,240],['second-launch',1700,4960,510],
- ['second-island',1720,4120,510],['second-arc1',1390,3990,230],['second-arc2',1110,3860,230],['third-launch',550,3750,380],
+ ['first-island',470,5370,520],['first-arc1',1120,5230,240],['second-launch',1700,4960,510],
+ ['second-island',1720,4120,510],['second-arc1',1390,3990,230],['third-launch',550,3750,380],
  ['third-island',470,2770,540],['third-arc1',1120,2630,220],['third-arc2',1400,2470,230],['fourth-launch',1740,2340,540],
  ['fourth-island',1740,1470,520],['dawn-arena',1090,850,1920],['father-island',1210,260,660],
  ['sky-memory',2310,3970,480],['lower-secret',2360,5630,520]
 ].forEach(p=>ledge(heaven,...p,'cloud',38));
-ledge(heaven,'moving-cloud',1510,5020,210,'moving',32);Object.assign(heaven.platforms.at(-1),{range:115,speed:.7,phase:.8});
-ledge(heaven,'moving-cloud-west',900,3770,200,'moving',32);Object.assign(heaven.platforms.at(-1),{range:90,speed:.85,phase:.2});
+// Each moving island replaces a static step, with clearance throughout its whole sweep.
+ledge(heaven,'moving-cloud',1410,5080,210,'moving',32);Object.assign(heaven.platforms.at(-1),{range:70,speed:.7,phase:.8});
+ledge(heaven,'moving-cloud-west',1110,3860,230,'moving',32);Object.assign(heaven.platforms.at(-1),{range:55,speed:.85,phase:.2});
 heaven.winds=[{id:'wind1',x:550,y:5330,w:170,h:970},{id:'wind2',x:1800,y:4080,w:170,h:900},{id:'wind3',x:620,y:2730,w:170,h:1040},{id:'wind4',x:1910,y:1430,w:170,h:930},{id:'wind5',x:1910,y:680,w:170,h:800},{id:'homeWind',x:1390,y:170,w:160,h:700,afterBoss:true}];
-rest(heaven,'start',420,6300,I18n.t("text.gate.of.clouds"));rest(heaven,'first',830,5370,I18n.t("text.first.wind.terrace"));rest(heaven,'second',2070,4120,I18n.t('place.sun.court'));rest(heaven,'third',810,2770,I18n.t("text.bridge.of.stars"));rest(heaven,'fourth',2170,1470,I18n.t('place.dawns.edge'));rest(heaven,'arena',1600,850,I18n.t("text.the.final.oath"));
+rest(heaven,'start',420,6300,I18n.t("text.gate.of.clouds"));rest(heaven,'third',930,2770,I18n.t("text.bridge.of.stars"));rest(heaven,'arena',1600,850,I18n.t("text.the.final.oath"));
 heaven.objects=[{id:'skyMemory',type:'memory',x:2620,y:3970,name:I18n.t("text.a.memory.of.heaven")},{id:'cloudMemory',type:'memory',x:2630,y:5630,name:I18n.t("text.a.memory.in.the.clouds")}];
 heaven.gates=[{id:'memorySeal',kind:'fire',x:2280,y:3730,w:35,h:290},{id:'dawnSeal',kind:'fire',x:0,y:1050,w:3200,h:28}];
 heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};heaven.father={x:1570,y:260};
-[[1200,5230],[1850,4960],[1510,3990],[1170,3860],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));
+[[1200,5230],[1850,4960],[1510,3990],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));
 [[1240,5500],[1580,4600],[970,3500],[1370,2900],[1650,1960]].forEach(([x,y],i)=>foe(heaven,'skybat-'+i,x,y,'fly',null,110));
 zone(heaven,I18n.t("text.gate.of.clouds"),0,5450,3200,1200);zone(heaven,I18n.t("text.stairway.of.winds"),0,4250,3200,1200);zone(heaven,I18n.t('place.sun.court'),0,3150,3200,1100);zone(heaven,I18n.t("text.bridge.of.stars"),0,2200,3200,950);zone(heaven,I18n.t('place.dawns.edge'),0,1100,3200,1100);zone(heaven,I18n.t("text.the.summit.of.heaven"),0,0,3200,1100);
 // Faction art and role variations share the original, proven geometry.

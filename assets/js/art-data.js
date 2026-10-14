@@ -7,6 +7,7 @@ const ART_MANIFEST = {
   "shadowCast": "assets/images/enemies/shadow-cast-v2.png",
   "shadowDevour": "assets/images/enemies/shadow-devour-v2.png",
   "japanBackdrop": "assets/images/backgrounds/japan-v3.png",
+  "japanClouds": "assets/images/japan-clouds-v1.png",
   "yomiBackdrop": "assets/images/backgrounds/yomi-v3.png",
   "heavenBackdrop": "assets/images/backgrounds/heaven-v3.png",
   "terrain": "assets/images/terrain-v4.png",
