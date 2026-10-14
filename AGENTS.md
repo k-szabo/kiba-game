@@ -1,0 +1,43 @@
+# Kiba development instructions
+
+## Project
+- Static HTML/CSS/Canvas JavaScript game on GitHub Pages; no application backend or production npm dependencies.
+- Momo is the playable shiba samurai, Haru is his father, and Kiba is the energy flowing through the world.
+- Read docs/DEVELOPMENT.md for the module map and task-relevant design documents as needed.
+- Edit source modules in assets/js/. Never hand-edit assets/js/runtime.js; generate it with node scripts/build-game.mjs.
+- Keep asset URLs relative and filenames correct on case-sensitive hosting.
+
+## Coordination
+- The main agent coordinates and integrates; specialists are defined in .codex/agents/.
+- You may delegate useful independent subtasks without another user confirmation. Keep small or tightly dependent changes in one agent.
+- Use at most three simultaneous subagents; lower runtime limits take precedence. Do not spawn nested teams.
+- Assign an outcome, acceptance criteria, allowed files, and a compact handoff. Exactly one agent may edit a file at a time, including shared game.js, graphics.js, and locale JSON.
+- Independent edits may share the checkout with explicit ownership. Serialize overlapping work or use an isolated worktree when warranted. Preserve other agents' and the user's changes.
+- Only the integrator regenerates runtime.js and colormaps.json, after relevant source edits finish.
+- Return changed paths, outcomes, checks, and unresolved issues; do not exchange full transcripts.
+
+## Mandatory QA rework gate
+- When QA rejects work, the developer submits a short repair plan before editing source, tests, generated files, or assets for that finding. Read-only investigation is allowed.
+- Apply kiba-qa-rework and docs/AGENT-WORKFLOW.md#qa-rework. The coordinator follows the same gate if implementing a repair.
+- Approval must explicitly name the finding ID and exact plan revision. Silence, requested revisions, a coordinator opinion, or another plan's approval is not approval.
+- Material scope changes require a revised plan and renewed QA approval. A developer cannot approve their own plan by switching roles.
+- After two rejected plan revisions, the coordinator resolves the disagreement with QA; explicit QA approval remains required. Routine internal review does not require human confirmation.
+- A new task's first implementation does not require this gate unless QA rejected the work. Real external authorization requirements remain separate.
+
+## Product invariants
+- Preserve existing saves; save structure changes need intentional migration and relevant checks.
+- Preserve defeated guardians/minibosses, quest flags, abilities, XP, and upgrades across normal death/respawn unless the requested design says otherwise.
+- Art-only work preserves attack timing, damage, hitboxes, and traversable geometry unless mechanics are explicitly in scope.
+- Preserve source image alpha; check crop bounds, grounding/registration, complete weapons, readable telegraphs, and animation continuity. Old v3/v4 assets may remain active; check the manifest before deleting them.
+- New text belongs in assets/i18n/locales.json in both hu and en with matching placeholders. Preserve language metadata and the dict schema.
+- Key bindings belong in assets/config/keybindings.json; use action bindings rather than new hardcoded gameplay keys.
+- UI changes need readable contrast, visible keyboard focus, usable touch targets, and reachable controls on small/zoomed displays. Respect reduced motion and freeze gameplay effects during pause/dialogs.
+
+## Validation and delivery
+- For source/locale/binding changes: npm run build, then relevant checks. Run npm test before release or after changes spanning gameplay systems.
+- VM tests with mocked Canvas/storage do not prove visual quality or actual browser save behavior; use real-browser evidence for those claims.
+- After image/crop/palette/color changes, refresh python scripts/export-colormaps.py and check with --check (Pillow, NumPy, Node required; use --node if needed).
+- Update cache query versions in index.html for changed served files. Keep generated runtime.js in Git.
+- Scratch plans/reports/screenshots go in ignored .codex/work/; deliberate public images go in docs/images/.
+- Commit project instructions, agent definitions, skills, and shared config. Keep credentials, personal paths, browser profiles, and private saves out of them.
+- See docs/AGENT-WORKFLOW.md for ownership and handoffs. Adding this setup does not itself authorize a push, PR, or deployment.

@@ -4,3 +4,11 @@ _site/
 Thumbs.db
 Desktop.ini
 *.log
+
+# Local work only; shared .codex/ and .agents/ setup belongs in Git.
+/.codex/work/
+/test-results/
+/playwright-report/
+.env
+.env.*
+!.env.example

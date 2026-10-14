@@ -1,5 +1,7 @@
 # Fejlesztői útmutató
 
+Agentekkel végzett munkához lásd az [agentfolyamatot](AGENT-WORKFLOW.md), a gyökérben lévő AGENTS.md szabályait és a .agents/skills/ saját skilljeit. A QA által visszadobott javítások csak az adott tervverzió kifejezett QA-jóváhagyása után indulhatnak.
+
 ## Helyi indítás
 
 A repository gyökerében az `index.html` és a mellette lévő `assets/` alkotja a játékot. A mentés a böngésző biztonságos tárhelyét használja, ezért helyi fejlesztéshez indíts HTTP-előnézetet:

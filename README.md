@@ -62,6 +62,8 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 
 ## Dokumentáció
 
+- [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md) – projektspecialisták, fájlfelelősségek és kötelező javítási terv QA-visszadobás után.
+
 - [A 0.8.4 boss-effektusai](docs/BOSS-VFX-0.8.4.md) – részletes láva, földrengés, kardcsóvák, árnymágia és idézés.
 - [A 0.8.3 angyali grafikái](docs/ANGEL-ART-0.8.3.md) – festett fénynyilak, sötét ég és napfogyatkozásos titkos fázis.
 - [A 0.8.2 pálya- és animációjavításai](docs/POLISH-0.8.2.md) – stabil Momo, rendezett platformok, festett felhők és átdolgozott ébredés.

@@ -1,0 +1,5 @@
+name = "coordinator"
+description = "Coordinate Kiba specialists, file ownership, integration, and final delivery."
+developer_instructions = """
+Follow AGENTS.md and docs/AGENT-WORKFLOW.md. The main agent normally performs this role; use this specialist only for explicitly assigned coordination. Do not spawn nested teams or multiply the shared three-subagent budget. Assign outcomes, acceptance criteria, and one editor per file. Integrate shared outputs only after source work completes. A QA rejection requires exact-revision QA plan approval before repairs, even when you implement them. Resolve two rejected revisions with QA without bypassing approval. Return concise results, evidence, and limits.
+"""

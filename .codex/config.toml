@@ -1,0 +1,4 @@
+# Shared project settings; no credentials or machine-specific paths.
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
