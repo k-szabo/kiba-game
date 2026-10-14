@@ -18,6 +18,8 @@ const SaveVault=(()=>{
   return level===p.level&&p.xp===(level===12?0:xp);
  }
  function validate(data){
+  if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
+  if(data?.prologueComplete===false&&(data.realm!==0||data.won||data.defeated?.some(Boolean)||data.abilities?.some(Boolean)||data.flags?.some(f=>f.length)||data.progression?.totalXp))throw Error('Invalid dream progress');
   if(!data||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean'||!validProgress(data.progression))throw Error('Invalid save schema');
   for(const [key,length] of [['abilities',2],['defeated',3]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
   for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==3)throw Error('Invalid world progress');

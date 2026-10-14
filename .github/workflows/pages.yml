@@ -42,6 +42,8 @@ jobs:
           node scripts/test-v06.cjs
           node scripts/test-routes.cjs
           node scripts/test-bindings.cjs
+          node scripts/test-prologue.cjs
+          node scripts/test-shadow-animation.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

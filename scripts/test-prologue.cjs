@@ -1,0 +1,36 @@
+const assert=require('node:assert/strict');
+const {run,snap,tick,press,release,place,dismiss,storage}=require('./test-harness.cjs')({prologue:true});
+assert.equal(run('Prologue.phase'),'walk');assert.equal(run('level.id'),'dream');
+assert.equal(run('enemies.length'),0);assert.equal(run('level.rests.length+level.objects.length'),0);
+assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).prologueComplete,false);
+assert.equal(snap().checkpoint.id,'start');assert.equal(snap().checkpoint.y,1000,'Dream saves use a valid Japan checkpoint');
+const x=snap().player.x;press('d');tick(300);release('d');assert(snap().player.x>x+500);
+assert.equal(run('Prologue.phase'),'walk');assert.equal(run('bossStarted'),false);
+press('m');press('u');tick();assert.equal(snap().state,'play','Dream has no map, travel or training');
+run('mainMenu();startGame(true);');assert.equal(run('Prologue.phase'),'walk','An interrupted dream restarts safely');
+place(3160,720);tick();assert.equal(run('Prologue.phase'),'reveal');tick(350);
+assert.equal(run('Prologue.phase'),'battle');assert.equal(snap().boss.max,100000);
+run('pause();');const hp=snap().boss.hp;tick(500);assert.equal(snap().boss.hp,hp);assert.equal(run('Prologue.phase'),'battle');run('pause();');
+place(3420,720);press('j');tick(26);release('j');assert(snap().boss.hp<snap().boss.max,'Momo can visibly strike the entity');
+assert.equal(snap().progression.totalXp,0);assert.equal(snap().shards,0);assert(!snap().defeated.some(Boolean));
+run('boss.inv=0;hitBoss(Number.MAX_SAFE_INTEGER);guardianDefeated();');assert(snap().boss.hp>0);assert(!snap().boss.dead);assert(!snap().defeated[0]);
+const moves=new Set();let sawAuto=false,sawAOE=false,sawBolt=false;
+run('player.inv=999;');
+for(let i=0;i<4000&&run('Prologue.phase')==='battle';i++){
+  tick();const b=snap().boss;if(b.move)moves.add(b.move);sawAuto ||= b.autoPhase==='windup';sawAOE ||= !!b.hazards?.length;sawBolt ||= !!b.projectiles?.length;
+  if(b.move==='devour')run('player.y=100;player.vy=0;player.onGround=false;');
+}
+for(const move of ['bolts','rifts','storm','wave','devour'])assert(moves.has(move),'Missing dream attack: '+move);
+assert(sawAuto&&sawAOE&&sawBolt,'The apparition uses melee, magic and area attacks together');
+assert.equal(run('Prologue.phase'),'death','The arena-wide final attack also defeats airborne/invulnerable Momo');
+assert.equal(snap().player.hp,0);assert(!snap().defeated.some(Boolean));assert.equal(snap().progression.totalXp,0);
+tick(320);assert.equal(run('Prologue.phase'),'awakening');tick(530);
+assert.equal(run('Prologue.active'),false);assert.equal(run('level.id'),'japan');assert.equal(snap().state,'dialog');
+assert.equal(snap().player.hp,snap().player.maxHp);assert.deepEqual(Array.from(snap().abilities),[false,false]);
+assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).prologueComplete,true);
+dismiss();run('player.inv=0;damage(100);');assert.equal(run('level.id'),'japan');assert.equal(snap().player.hp,5,'Normal deaths still respawn at a shrine');
+run('persist();mainMenu();startGame(true);');assert.equal(run('Prologue.active'),false);
+run('delete saved.prologueComplete;mainMenu();startGame(true);');assert.equal(run('Prologue.active'),false,'Existing saves bypass the new prologue');
+const lethal=require('./test-harness.cjs')({prologue:true});lethal.place(3160,720);lethal.tick(352);lethal.run('player.inv=0;damage(5);');
+assert.equal(lethal.run('Prologue.phase'),'death');assert.equal(lethal.snap().player.hp,0,'A lethal regular boss hit also ends the dream instead of healing Momo');
+console.log('PASS: empty playable nightmare, safe interrupted/legacy saves, sword hits without rewards, mixed auto/magic/AOE attacks, inevitable defeat through invulnerability, awakening into Japan and normal shrine respawn afterwards.');

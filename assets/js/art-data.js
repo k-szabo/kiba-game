@@ -1,5 +1,11 @@
 /* Illustrated animation atlas metadata. */
 const ART_MANIFEST = {
+  "shadowBackdrop": "assets/images/backgrounds/shadow-world-v1.png",
+  "momoRoom": "assets/images/backgrounds/momo-room-v1.png",
+  "shadowIdle": "assets/images/enemies/shadow-idle-v2.png",
+  "shadowMelee": "assets/images/enemies/shadow-melee-v2.png",
+  "shadowCast": "assets/images/enemies/shadow-cast-v2.png",
+  "shadowDevour": "assets/images/enemies/shadow-devour-v2.png",
   "japanBackdrop": "assets/images/backgrounds/japan-v3.png",
   "yomiBackdrop": "assets/images/backgrounds/yomi-v3.png",
   "heavenBackdrop": "assets/images/backgrounds/heaven-v3.png",

@@ -151,6 +151,7 @@ function checkBossHealth(){
   guardianDefeated();
 }
 function hitBoss(amount){
+  if(Prologue.active)return Prologue.hit(amount);
   if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform')return false;
   boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();return true;
 }

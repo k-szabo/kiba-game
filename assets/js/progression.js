@@ -39,7 +39,7 @@ function updateProgressHUD() {
 }
 function trainingRest() {return level.rests.find(r=>pointNear(r,100,85));}
 function showTraining() {
-  if(state!=='play')return;
+  if(state!=='play'||Prologue.active)return;
   if(!trainingRest()){toast(I18n.t("text.train.at.a.resting.shrine.stand.beside.it.and"));return;}
   if(bossStarted&&!boss.dead){toast(I18n.t("text.you.cannot.train.during.a.guardian.battle"));return;}
   state='training';keys.clear();pressed.clear();$('training').hidden=false;refreshTraining();$('closeTraining').focus();

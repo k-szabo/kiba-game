@@ -28,7 +28,7 @@ for(const language of languages){
     if(placeholders(entries[id])!==placeholders(locales.hu.dict[id]))throw Error(`Placeholder mismatch: ${language}.${id}`);
   }
 }
-const files=['i18n','keybindings','levels','art-data','save-vault','graphics','progression','combat','game'];
+const files=['i18n','keybindings','levels','art-data','save-vault','graphics','progression','combat','shadow-animation','prologue','game'];
 const digest=createHash('sha256');
 for(const file of [localePath,bindingPath,...files.map(name=>'assets/js/'+name+'.js')]){
   digest.update(file);digest.update('\0');digest.update(readSource(file));digest.update('\0');

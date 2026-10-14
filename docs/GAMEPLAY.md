@@ -1,16 +1,18 @@
-# Kiba: Három világ · 0.7
+# Kiba: Három világ · 0.8
 
 Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 
 ## Indítás és frissítés
 
-A 0.7 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel. A korábbi külön csomagolt HTML még a 0.2 változatot tartalmazza.
+A 0.8 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel. A korábbi külön csomagolt HTML még a 0.2 változatot tartalmazza.
 
 Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
 
 Frissítéskor a csomag teljes tartalmát ugyanott cseréld le. A mentések böngészőnként és címenként különböznek; a fájlokhoz tartozó helyi tárolás viselkedése a böngészőtől függ.
 
 ## Három eltérő kaland
+
+Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. A korábbi mentések folytatásához nem kell újrajátszani a prológust. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
 
 | Világ | Felépítés | Fő feladat | Mellékutak |
 | --- | --- | --- | --- |

@@ -24,6 +24,7 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 
 ## Játékmenet
 
+- **Játszható prológus:** egy néma árnyvilágban Momo egyedül keresi a továbbvezető utat. A fekete lyuknál egy hatalmas, füstbe burkolózó entitás, Árnyék vár rá.
 - **Kard és szellemlépés:** animált kardcsapások, kitérés és eltérő támadási mintájú ellenfelek. Az őrzők előre jelzik a veszélyes támadásokat.
 - **Új képességek, új utak:** a kettős ugrás, a szellemlépés és a hajnalkard a kaland során válik elérhetővé.
 - **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Momo életerejét, kardját és szellemerejét. A szellemlépés fejlesztése a képesség megszerzése után nyílik meg.
@@ -61,9 +62,11 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 
 ## Dokumentáció
 
+- [A 0.8 prológusa](docs/PROLOGUE.md) – az új kezdés, Árnyék és az ébredési átvezetés; spoileres történetrész lenyitható leírásban.
 - [Játékmenet, képességek és mentés](docs/GAMEPLAY.md) – részletes segítség, később boss- és titokleírásokkal.
 - [Helyi futtatás, ellenőrzés és GitHub Pages](docs/DEVELOPMENT.md).
 - [Assetek és a repository rendbetétele](docs/ASSET-CLEANUP.md).
 - [Grafikai koncepció és assetek](docs/ART-DESIGN.md).
+- [Karakterek és assetek színpaletta-referenciája](assets/config/colormaps.json) – HEX-paletták, boss-formák, környezet és effektusszínek.
 - [A 0.6 titkos területei és harci frissítése](docs/SECRETS-0.6.md) – spoileres részletek lenyitható leírásban.
 - [A 0.5 harci és animációs frissítés](docs/BOSSES-0.5.md) – a titkos fázis leírását is tartalmazza.
