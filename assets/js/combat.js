@@ -292,6 +292,7 @@ function updateBossHazards(dt){
   updateSummons(dt);
 }
 function updateBoss(dt){
+  Visuals.updateAtmosphere(dt);
   $('bossHud').hidden=!bossStarted||boss.dead;if(!bossStarted||boss.dead)return;
   if(realm===2&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
   $('bossName').textContent=I18n.t(bossName());$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;

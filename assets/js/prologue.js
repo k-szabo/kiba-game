@@ -196,30 +196,17 @@ const Prologue=(()=>{
   }
   function drawHazards(){
     if(auto?.stage==='recover'&&auto.remaining>auto.duration-SHADOW_ATTACK_TIMING.meleeStrike){
-      const strength=(auto.remaining-auto.duration+SHADOW_ATTACK_TIMING.meleeStrike)/SHADOW_ATTACK_TIMING.meleeStrike;
-      ctx.save();ctx.lineCap='round';ctx.strokeStyle='#9a70c877';ctx.lineWidth=35*strength;
-      ctx.beginPath();ctx.moveTo(SHADOW_X-430,FLOOR-130);ctx.quadraticCurveTo(auto.targetX+100,FLOOR-175,auto.targetX-160,FLOOR-60);ctx.stroke();
-      ctx.restore();
+      const progress=(auto.duration-auto.remaining)/SHADOW_ATTACK_TIMING.meleeStrike;
+      BossVFX.slash('slashShadow',auto.targetX,FLOOR-80,420,145,-1,progress);
     }
     for(const h of hazards){
-      ctx.save();const warning=!h.active;
-      ctx.fillStyle=warning?'#27133599':'#4b247bba';ctx.strokeStyle=warning?'#e0b7ff':'#f2d7ff';ctx.lineWidth=warning?2:4;
-      if(h.kind==='devour'){ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeRect(h.x,FLOOR-9,h.w,8);}
-      else if(h.kind==='sweep'){
-        for(let i=0;i<3;i++){ctx.beginPath();ctx.moveTo(h.x,FLOOR-15-i*16);ctx.quadraticCurveTo(h.x+h.w*.5,h.y-75-i*12,h.x+h.w,FLOOR-15-i*16);ctx.stroke();}
-      }else{
-        ctx.fillRect(h.x,warning?FLOOR-18:h.y,h.w,warning?18:h.h);ctx.strokeRect(h.x,warning?FLOOR-18:h.y,h.w,warning?18:h.h);
-        for(let j=0;j<3;j++){ctx.beginPath();ctx.moveTo(h.x+12+j*22,FLOOR);ctx.lineTo(h.x+18+j*22,warning?FLOOR-45:h.y+25);ctx.stroke();}
-      }
-      ctx.restore();
+      if(h.kind==='devour')BossVFX.devour(h);
+      else if(h.kind!=='sweep')BossVFX.column(h);
     }
     if(auto?.stage==='windup'){
       ctx.save();ctx.strokeStyle='#e6c1ff';ctx.lineWidth=3;ctx.setLineDash([12,7]);ctx.beginPath();ctx.ellipse(auto.targetX,FLOOR-8,205,20,0,0,Math.PI*2);ctx.stroke();ctx.restore();
     }
-    for(const p of bolts){
-      if(p.kind==='wave'){ctx.save();ctx.fillStyle='#312049';ctx.strokeStyle='#dfbdff';ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(p.x,p.y,36,42,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();}
-      else Visuals.projectile(p);
-    }
+    for(const p of bolts)Visuals.projectile(p);
   }
   function awakening(){
     cover(Visuals.images.momoRoom);ctx.fillStyle='#09131933';ctx.fillRect(0,0,viewW,H);

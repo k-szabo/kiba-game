@@ -1,0 +1,35 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "key": "holyArrow",
+      "file": "assets/images/effects/holy-arrow-v1.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production transparent PNG game VFX asset for a highly detailed painterly Japanese mythic metroidvania with ivory temples and winged angels. Paint ONE horizontal holy energy arrow pointing strictly RIGHT, tip at 82 percent canvas width, its center line at exactly 50 percent canvas height. Wide landscape canvas. Fine ornate spectral gold arrowhead, white-gold luminous crystalline core, engraved celestial filigree at its base, delicate wing-like feather vanes toward the rear, flowing thin golden vapor trail trailing LEFT, hand-painted light motes and curling warm light ribbons. This is a sacred magical arrow, not a ordinary wooden arrow or a cartoon lightning bolt. Rich painterly textured brushwork and polished fantasy spell illustration. Strong warm ivory-gold core, subtle dark blue-grey rim on solid arrowhead and shaft to read against a bright white/gold sky as well as darkness, soft restrained amber outer glow. Keep the solid magical head narrow, precise and unmistakably directional. No opaque rectangle, no background scene, no character, no bow, no text, no UI, no large white flash. Entire arrow and soft trail fully inside canvas, generous transparent margins on ALL sides, no clipping or hard-edged glow. Genuine transparent alpha and softly transparent painted glow, no checkerboard."
+    },
+    {
+      "key": "holyLance",
+      "file": "assets/images/effects/holy-lance-v1.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production transparent PNG game VFX asset for a richly hand-painted Japanese fantasy angel boss. Tall portrait composition, ONE colossal sacred LIGHT ARROW descending straight DOWN from the sky. Tip at 86 percent canvas height, center line at 50 percent canvas width. Long narrow ivory-gold luminous spear shaft extending upward into gently fading golden vapor, embossed spectral celestial runes integrated into the shaft, intricate gilded crystalline arrowhead near bottom, small feather-like gold vanes near the upper third. Painterly volumetric fire-like light, hand-painted wisps and little radiant motes, finely textured white-gold core, warm amber bloom, subtle dark blue-grey shading/rim on the solid arrowhead for visibility against a bright heavenly background. It must look like an elaborately illustrated magical arrow/spear descending from heaven, NOT a flat triangle attached to a rectangle or a plain laser beam. Narrow central solid head and shaft, decoration tapering away into true semitransparent alpha. Entire arrow, point and glow fully contained within the canvas with 10 percent transparent margin on ALL sides; no background, no floor, no impact crater, no characters, no writing, no UI, no opaque backdrop or checkerboard. Preserve genuine PNG transparency."
+    },
+    {
+      "key": "heavenDark",
+      "file": "assets/images/backgrounds/heaven-dark-v1.png",
+      "transparent": false,
+      "refs": [
+        "assets/images/backgrounds/heaven-v3.png"
+      ],
+      "prompt": "Use case: lighting-weather. EDIT the reference heavenly Japanese fantasy game background into its DARK CORRUPTED ANGEL phase. This must be the EXACT SAME PLACE and the EXACT SAME CAMERA, preserve the complete portrait composition, the outlines and positions of every floating island, terrace, bridge, pagoda, shrine, giant circular heavenly arch, hanging crystal, foreground tree and mountain. Change the lighting, sky and atmosphere ONLY: sun hidden behind a heavy veil of indigo storm cloud, deep blue-violet twilight, moonless ominous darkness, muted antique gold details, cold desaturated marble, purple mist flowing between islands, subtly corrupted dark violet crystal glow. Keep architectural silhouettes readable with restrained cool rim light and small warm temple lamps. Rich detailed painterly style exactly matching the original, preserve depth and brushwork. No new characters, no UI or text, no rearranged architecture, no new foreground obstacles, no collage, no black silhouettes swallowing all detail. Render as one complete opaque portrait background matching the original 1024x1536 dimensions."
+    },
+    {
+      "key": "heavenEclipse",
+      "file": "assets/images/backgrounds/heaven-eclipse-v1.png",
+      "transparent": false,
+      "refs": [
+        "assets/images/backgrounds/heaven-v3.png"
+      ],
+      "prompt": "Use case: lighting-weather. EDIT this exact Japanese celestial realm game background into the secret APOCALYPSE / ECLIPSE angel-demon boss phase. Preserve the EXACT SAME portrait camera, every existing floating island, platform, bridge, pagoda, tower, shrine, gigantic sacred circular arch, tree and hanging crystal in its original location and size. The world is ending in this SAME recognizable place. Replace the bright sun in the upper central sky with a clearly visible TOTAL SOLAR ECLIPSE, pitch-black sun surrounded by a narrow fiery gold-red corona, visible near and slightly above the original sun position so the upper boss-arena camera can see it. Ominous crimson and deep violet storm clouds tear across the sky, slender distant falling embers/meteors, tiny falling rubble below existing distant islands, spectral hairline fractures through the great distant arch and ominous red light within the hanging crystals. Restrained apocalyptic atmosphere with subtle tectonic cracks, islands still recognizable and in place. Cool charcoal marble with thin red-gold edge light; sacred light and demonic darkness mixing in the sky. Painterly rich fantasy illustration exactly matching the reference's polished detail, no giant featureless red wash, no flood of bright white, retain value contrast for game characters. No new character, text, UI, foreground obstacle or rearranged architecture. One opaque portrait background at original 1024x1536 size."
+    }
+  ]
+}

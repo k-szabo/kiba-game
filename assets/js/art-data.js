@@ -1,5 +1,16 @@
 /* Illustrated animation atlas metadata. */
+// Painted spell sprites: the tip is registered to the projectile/ground impact point.
+const ART_EFFECTS={
+  holyArrow:{image:'holyArrow',w:2006,h:784,tipX:1948,tipY:382,start:70,inkHeight:415},
+  holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
+};
 const ART_MANIFEST = {
+  "fxLava": "assets/images/effects/lava-surface-v1.png",
+  "fxImpact": "assets/images/effects/earth-impact-v1.png",
+  "fxFissure": "assets/images/effects/ground-fissure-v1.png",
+  "fxSlashes": "assets/images/effects/boss-slashes-v1.png",
+  "fxDarkMagic": "assets/images/effects/dark-magic-v1.png",
+  "fxEmber": "assets/images/effects/ember-bolt-v1.png",
   "shadowBackdrop": "assets/images/backgrounds/shadow-world-v1.png",
   "momoRoom": "assets/images/backgrounds/momo-room-v1.png",
   "shadowIdle": "assets/images/enemies/shadow-idle-v2.png",
@@ -10,6 +21,10 @@ const ART_MANIFEST = {
   "japanClouds": "assets/images/japan-clouds-v1.png",
   "yomiBackdrop": "assets/images/backgrounds/yomi-v3.png",
   "heavenBackdrop": "assets/images/backgrounds/heaven-v3.png",
+  "heavenDarkBackdrop": "assets/images/backgrounds/heaven-dark-v1.png",
+  "heavenEclipseBackdrop": "assets/images/backgrounds/heaven-eclipse-v1.png",
+  "holyArrow": "assets/images/effects/holy-arrow-v1.png",
+  "holyLance": "assets/images/effects/holy-lance-v1.png",
   "terrain": "assets/images/terrain-v4.png",
   "props": "assets/images/props-v4.png",
   "japanWalk": "assets/images/enemies/japan-walk-v4.png",

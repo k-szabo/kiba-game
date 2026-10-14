@@ -22,8 +22,9 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
+art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
 art.realms=vm.runInNewContext(game.match(/const realms=(\[[\s\S]*?\n\]);/)[1],{I18n:{t:x=>x}});
 process.stdout.write(JSON.stringify(art));
@@ -150,6 +151,13 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+for name, definition in atlas['bossEffects'].items():
+    objects['bossFX.' + name] = {'kind': 'boss-effect',
+        'paletteGroup': group('effect.' + name, manifest[definition['image']], definition['rect'], 'BOSS_FX_ART.' + name),
+        'registration': {'anchorX': definition['anchorX'], 'anchorY': definition['anchorY']}}
+for name, definition in atlas['effects'].items():
+    objects[name] = {'kind': 'spell-effect', 'asset': manifest[definition['image']],
+                     'registration': {k: v for k, v in definition.items() if k != 'image'}}
 for family in ('props', 'relics'):
     for name, rect in atlas['frames'][family].items():
         objects[name] = {'paletteGroup': group('object.' + name, manifest[family], rect, f'ART_FRAMES.{family}.{name}')}

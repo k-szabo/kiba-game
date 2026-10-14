@@ -45,6 +45,8 @@ jobs:
           node scripts/test-prologue.cjs
           node scripts/test-shadow-animation.cjs
           node scripts/test-polish.cjs
+          node scripts/test-angel-art.cjs
+          node scripts/test-boss-vfx.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
