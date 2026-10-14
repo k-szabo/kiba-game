@@ -1,18 +1,18 @@
-# Kiba – Három világ
+# Momo – Kiba: Három világ
 
 Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
 **[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)
 
-![Kiba karddal küzd a japán templom őrzőjével](docs/images/kiba-game.png)
+![Momo karddal küzd a japán templom őrzőjével](docs/images/kiba-game.png)
 
 *Előnézet a játék saját Canvas-rajzolókódjával renderelve.*
 
 ## A történet
 
-Kiba, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, Harut. Japán erdei és templomai után a japán alvilág mélységeibe ereszkedik, majd a felhők fölé emelkedik az égi birodalomban. Az utat őrzők, elfeledett emlékek és új képességekkel megnyíló ösvények kísérik.
+Momo, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, Harut. Japán erdei és templomai után a japán alvilág mélységeibe ereszkedik, majd a felhők fölé emelkedik az égi birodalomban. A **Kiba** az egész világot átszövő energia: táplálhat, pusztíthat, és minden vidéken másként áramlik. Japánban a szentélyek körül éltető, a föld alatti járatokban elhalványul, Yomiban eltorzul, az ég szélfolyamaiban pedig felerősödik.
 
-A **Kiba – Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
+A **Momo – Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
 
 ## Három világ, háromféle kaland
 
@@ -26,10 +26,11 @@ A **Kiba – Három világ** böngészőben játszható, 2D metroidvania: kardha
 
 - **Kard és szellemlépés:** animált kardcsapások, kitérés és eltérő támadási mintájú ellenfelek. Az őrzők előre jelzik a veszélyes támadásokat.
 - **Új képességek, új utak:** a kettős ugrás, a szellemlépés és a hajnalkard a kaland során válik elérhetővé.
-- **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Kiba életerejét, kardját és szellemerejét. A szellemlépés fejlesztése a képesség megszerzése után nyílik meg.
+- **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Momo életerejét, kardját és szellemerejét. A szellemlépés fejlesztése a képesség megszerzése után nyílik meg.
 - **Szentélyek:** gyógyulás, mentőpontok és a térképről elérhető gyorsutazás. Gyógyuláskor a normál ellenfelek újraélednek.
 - **Felfedezés:** mellékutak, Haru emlékei, rejtett szentélyek és saját minibossokkal őrzött ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
-- **Helyi mentés:** a haladás a böngészőben megmarad; a főmenüben a Folytatás gombbal térhetsz vissza.
+- **Magyar és angol nyelv:** a főmenüben és a szünetmenüben válthatsz; a választást a böngésző megjegyzi.
+- **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. A korábbi mentéseket első indításkor átveszi.
 
 ## Irányítás
 
@@ -51,9 +52,9 @@ A **Kiba – Három világ** böngészőben játszható, 2D metroidvania: kardha
 
 ## A projektről
 
-A játék **HTML5 Canvas**, **JavaScript** és **CSS** használatával készült. Kiba eredeti animált pet sprite sheetjére épül, illusztrált tájakkal, külön mozgási és támadási animációkkal, valamint a játékban rajzolt fény- és részecskehatásokkal.
+A játék **HTML5 Canvas**, **JavaScript** és **CSS** használatával készült. Momo eredeti animált pet sprite sheetjére épül, illusztrált tájakkal, külön mozgási és támadási animációkkal, valamint a játékban rajzolt fény- és részecskehatásokkal.
 
-A weboldal statikus, GitHub Pagesen fut. A játék indításához nincs szükség telepítésre, felhasználói fiókra vagy buildre. Helyben az `index.html` megnyitásával is kipróbálható; HTTP-előnézethez és ellenőrzéshez lásd a [fejlesztői útmutatót](docs/DEVELOPMENT.md).
+A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhasználói fiókra vagy szerveroldali alkalmazásra. Helyi kipróbáláshoz HTTP-kiszolgálót használj, hogy a böngésző biztonságos tárhelye és a mentés is működjön; az elkészült `runtime.js` a repository része. A fejlesztés és az ellenőrzés lépései a [fejlesztői útmutatóban](docs/DEVELOPMENT.md) vannak.
 
 ## Dokumentáció
 

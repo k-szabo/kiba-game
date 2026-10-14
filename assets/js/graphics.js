@@ -298,9 +298,9 @@ const Visuals = (() => {
       ctx.restore();
     }
   }
-  function kibaSlash(x,feet,height,elapsed,face){
+  function momoSlash(x,feet,height,elapsed,face){
     const index=Math.min(7,Math.floor(clamp(elapsed/SWORD_DURATION,0,.999)*8));
-    frame('kibaSlash',ART_FRAMES.kibaSlash[index],x,feet,height,face);
+    frame('momoSlash',ART_FRAMES.momoSlash[index],x,feet,height,face);
   }
   function winds(r) {
     for(const w of level.winds){
@@ -447,5 +447,5 @@ const Visuals = (() => {
     }
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdrop,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,kibaSlash,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdrop,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,secretScenery};
 })();

@@ -1,10 +1,10 @@
 # Assetek és a repository rendbetétele
 
-Az útmutató a jelenlegi **0.6** forrás ellenőrzésén alapul. A képfájlok verziószámai együtt használt grafikai generációkat jelölnek, ezért egy teljes v3 vagy v4 készlet törlése eltörné a játékot.
+Az útmutató a jelenlegi **0.7** forrás ellenőrzésén alapul. A képfájlok verziószámai együtt használt grafikai generációkat jelölnek, ezért egy teljes v3 vagy v4 készlet törlése eltörné a játékot.
 
 ## Törölhető régi képek
 
-A következő öt PNG nincs a játék betöltési listájában, és az eredeti Kiba-kép külön betöltése sem hivatkozik rájuk:
+A következő öt PNG nincs a játék betöltési listájában, és az eredeti Momo-kép külön betöltése sem hivatkozik rájuk:
 
 ```text
 assets/images/enemies/japan-v3.png
@@ -22,14 +22,14 @@ A törlés a korábbi Git-commitok méretét nem csökkenti: azokban a régi ké
 
 | Készlet | Mit használ a játék? |
 | --- | --- |
-| Eredeti Kiba | `assets/images/kiba.png` |
+| Eredeti Momo | `assets/images/momo.png` |
 | v3 hátterek | A `backgrounds/` mappa mindhárom képe: `japan-v3.png`, `yomi-v3.png`, `heaven-v3.png`. |
 | v4 terep és tárgyak | `terrain-v4.png`, `props-v4.png`. |
 | v4 ellenfelek | Mindhárom világ `*-walk-v4.png` és `*-attack-v4.png` animációi, valamint `bosses-v4.png`. |
 | v6 titkos területek | `old-angel-v6.png`, `old-cultist-v6.png`, valamint a háttérmappában `angel-ruins-v6.png` és `cult-cave-v6.png`. |
-| v5 kiegészítések | `kiba-slash-v5.png`, `relics-v5.png`, `samurai-v5.png` és az angyal három `angel-*-v5.png` alakja. |
+| v5 kiegészítések | `momo-slash-v5.png`, `relics-v5.png`, `samurai-v5.png` és az angyal három `angel-*-v5.png` alakja. |
 
-A jelenlegi játék összesen **23 képfájlt** tölt be. A listát az `assets/js/art-data.js` fájl `ART_MANIFEST` objektuma és a `game.js` Kiba-képre mutató hivatkozása határozza meg. Régi képekre a grafikai dokumentáció még hivatkozhat; ez történeti háttéranyag, nem a játék betöltési útvonala.
+A jelenlegi játék összesen **23 képfájlt** tölt be. A listát az `assets/js/art-data.js` fájl `ART_MANIFEST` objektuma és a `game.js` Momo-képre mutató hivatkozása határozza meg. Régi képekre a grafikai dokumentáció még hivatkozhat; ez történeti háttéranyag, nem a játék betöltési útvonala.
 
 ## Egyéb fájlok
 

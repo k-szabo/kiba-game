@@ -1,0 +1,7 @@
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const context={TextEncoder,TextDecoder,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob};vm.createContext(context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
+const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8').replace('return Object.freeze({ready,','globalThis.__validateSave=validate;return Object.freeze({ready,');
+if(!source.includes('globalThis.__validateSave=validate'))throw Error('Validator test seam failed');
+vm.runInContext(source,context);
+module.exports=data=>{context.snapshot=JSON.parse(JSON.stringify(data));return vm.runInContext('__validateSave(snapshot)',context);};

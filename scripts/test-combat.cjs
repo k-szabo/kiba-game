@@ -19,7 +19,7 @@ place(1810,1790);run('awardXP(160);');const levelBefore=snap().progression.level
 assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('projectiles.length'),0);assert(snap().flags[1].includes('soulUpper'));assert(snap().defeated[0]);assert.equal(snap().progression.level,levelBefore);assert.equal(snap().player.hp,snap().player.maxHp);
 
 // XP awards exactly once per kill; the player chooses real stats at a nearby shrine.
-run('progression=freshProgression();var e=enemies[0];e.dead=false;killEnemy(e);killEnemy(e);');assert.equal(snap().progression.totalXp,20);
+run('progression=freshProgression();var e=enemies[0];e.dead=false;e.hp=0;killEnemy(e);killEnemy(e);');assert.equal(snap().progression.totalXp,20);
 run('awardXP(140);');assert.equal(snap().progression.level,3);assert.equal(snap().progression.points,2);
 press('u');tick();release('u');assert.equal(snap().state,'training');assert(run("spendPoint('vitality')"));assert(run("spendPoint('strength')"));assert(!run("spendPoint('spirit')"));assert.equal(snap().player.maxHp,6);assert.equal(snap().stats.damage,2.5);
 run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().player.maxHp,6);assert.equal(snap().progression.stats.strength,1);assert.equal(snap().progression.points,0);
@@ -62,7 +62,7 @@ run('resetBossBattle();');assert(run('platforms.filter(p=>p.bossPlatform).every(
 run("state='play';bossStarted=true;boss.cycles=4;chooseBossMove();var refuge=platforms.find(p=>p.id===boss.platformOrder.at(-1));initPlayer({x:refuge.x+refuge.w/2,y:refuge.y});player.inv=0;player.onGround=true;player.support=refuge.id;keys.clear();pressed.clear();startBossAttack();var safeHp=player.hp;for(let i=0;i<810;i++){movePlayer(1/120);updateBoss(1/120);player.inv=Math.max(0,player.inv-1/120);}");assert.equal(snap().player.hp,run('safeHp'));assert.equal(snap().player.support,run('refuge.id'));
 // A destroyed ledge ceases to support the player immediately.
 run('var p=platforms.find(p=>p.bossPlatform);p.broken=true;initPlayer({x:p.x+120,y:p.y});player.onGround=true;player.support=p.id;movePlayer(.15);');assert(snap().player.y+69>run('p.y'));assert.notEqual(snap().player.support,run('p.id'));
-run("bossStarted=true;boss.lava={active:true};platforms.find(p=>p.bossPlatform).broken=true;boss.hazards=[{life:9}];guardianDefeated();");assert(run('boss.dead'));assert.equal(run('boss.hazards.length'),0);assert.equal(run('boss.lava'),null);assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken)'));
+run("bossStarted=true;boss.hp=0;boss.lava={active:true};platforms.find(p=>p.bossPlatform).broken=true;boss.hazards=[{life:9}];guardianDefeated();");assert(run('boss.dead'));assert.equal(run('boss.hazards.length'),0);assert.equal(run('boss.lava'),null);assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken)'));
 
 // Corrupted angel combines huge descending light arrows and aimed shadow bolts.
 run("defeated[2]=false;enterRealm(2);state='play';bossStarted=true;boss.cycles=0;chooseBossMove();startBossAttack();updateBoss(.05);");assert.equal(run('boss.hazards[0].kind'),'lightPillar');assert(run('boss.hazards[0].h>=480'));assert(run('boss.hazards[0].warning>0'));

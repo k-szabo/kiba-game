@@ -1,8 +1,8 @@
-# Kiba – grafikai frissítés · 0.3
+# Momo – grafikai frissítés · 0.3
 
 A 0.3 látványvilágának leírása. A legújabb animációk, javított atlaszok, bossok és az XP-rendszer a [0.4 változat dokumentációjában](POLISH-0.4.md) szerepelnek.
 
-A frissítés részletes, festett japán fantasy környezetet ad a három birodalomnak. Kiba eredeti, 1536×2288 méretű sprite sheetje változatlan maradt; a tájak és ellenfelek köré épültek. A pályák méretei, ugrási fizikája és küldetései megmaradtak, a 0.2 mentések tovább használhatók.
+A frissítés részletes, festett japán fantasy környezetet ad a három birodalomnak. Momo eredeti, 1536×2288 méretű sprite sheetje változatlan maradt; a tájak és ellenfelek köré épültek. A pályák méretei, ugrási fizikája és küldetései megmaradtak, a 0.2 mentések tovább használhatók.
 
 ## Tájak és kellékek
 
@@ -45,6 +45,6 @@ A `graphics.js` tölti be és rajzolja a képeket, az `art-data.js` a sprite-kiv
 
 ## Ellenőrzés
 
-A statikus oldallellenőrzés, a három világ küldetés- és fizikai útvonaltesztje, valamint az új harci szerepkörök tesztje sikeres. A tényleges rajzolókód mindhárom világhoz Canvas-előnézetet készített; ellenőrizve az áttetszőség, a méretarány és a platformok illeszkedése. Kiba fájljának SHA256-értéke változatlan: `662cb7c1ade03bd801be53fd459fef5ecce04b13ca20bb857a8614adf77fcb85`.
+A statikus oldallellenőrzés, a három világ küldetés- és fizikai útvonaltesztje, valamint az új harci szerepkörök tesztje sikeres. A tényleges rajzolókód mindhárom világhoz Canvas-előnézetet készített; ellenőrizve az áttetszőség, a méretarány és a platformok illeszkedése. Momo fájljának SHA256-értéke változatlan: `662cb7c1ade03bd801be53fd459fef5ecce04b13ca20bb857a8614adf77fcb85`.
 
 A 0.3 teljes böngészős végigjátszása ebben a környezetben nem történt meg. A csomag a korábban működő GitHub Pages-szerkezetet használja; az éles oldalhoz a repository fájljait frissíteni kell.

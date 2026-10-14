@@ -1,10 +1,10 @@
-# Kiba – Három világ · 0.6
+# Momo – Kiba: Három világ · 0.7
 
-Böngészős 2D metroidvania Kiba eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut.
+Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 
 ## Indítás és frissítés
 
-A 0.6 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. Közvetlenül is megnyitható böngészőben, vagy GitHub Pagesen hosztolható. A korábbi külön csomagolt **Kiba-Harom-vilag.html** még a 0.2 változatot tartalmazza.
+A 0.7 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel. A korábbi külön csomagolt HTML még a 0.2 változatot tartalmazza.
 
 Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
 
@@ -51,7 +51,7 @@ A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelke
 
 Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
 
-A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Kibával indulnak.
+A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Momóval indulnak.
 
 ## Ellenfelek
 
@@ -71,7 +71,7 @@ Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, 
 
 A két ereklyét a 0.6 változatban külön titkos hely és miniboss őrzi. A végső angyal 140 HP-val, a rejtett alak 180 HP-val rendelkezik, és mindhárom alak a varázslatai mellett előre jelzett közelharci vágásokat is használ. [Részletek a 0.6 leírásában](SECRETS-0.6.md).
 
-Kiba **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásakor történik a találat; futás és ugrás közben is látszik. Egy csapás egy célpontot egyszer sebez. Az ereklyéket E-vel veszed fel, a gyűjtemény és a mentés megőrzi őket a következő világokban.
+Momo **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásakor történik a találat; futás és ugrás közben is látszik. Egy csapás egy célpontot egyszer sebez. Az ereklyéket E-vel veszed fel, a gyűjtemény és a mentés megőrzi őket a következő világokban.
 
 ## Forrás
 
@@ -82,9 +82,11 @@ Kiba **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásak
 - **assets/js/combat.js**: járőrözés, szerepkörök, bossok, láva és pusztuló platformok.
 - **assets/js/progression.js**: XP, szintek, fejlesztési menü és statok.
 - **assets/css/style.css**: kezelőfelület.
-- **assets/images/kiba.png**: Kiba eredeti, 1536×2288 méretű pet sprite sheetje.
+- **assets/images/momo.png**: Momo eredeti, 1536×2288 méretű pet sprite sheetje.
 
-Telepítés és build nem szükséges. A forrás változat HTTP-kiszolgálóval is használható. A tájak és szereplők illusztrált képek; a köd, fények és részecskék a játékban készülnek. A normál ellenfelek hat mozgási és hat támadási képkockát használnak szerepkörönként és birodalmanként. A helyi mentés törlődik az oldaladatok törlésével.
+A kész játékhoz telepítés és build nem szükséges. Helyi kipróbáláshoz HTTP-kiszolgálót használj. A tájak és szereplők illusztrált képek; a köd, fények és Kiba-áramlatok a játékban készülnek. A normál ellenfelek hat mozgási és hat támadási képkockát használnak szerepkörönként és birodalmanként. A helyi mentés törlődik az oldaladatok törlésével.
+
+A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol között. A titkosított mentés az adott böngészőprofilban tölthető vissza; a korábbi érvényes mentést a játék az első indításkor átveszi.
 
 ## Ellenőrzés
 

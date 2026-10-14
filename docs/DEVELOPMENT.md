@@ -2,34 +2,38 @@
 
 ## Helyi indítás
 
-A repository gyökerében az `index.html` és a mellette lévő `assets/` alkotja a játékot. Az HTML közvetlenül megnyitható böngészőben. HTTP-előnézethez Python használatával:
+A repository gyökerében az `index.html` és a mellette lévő `assets/` alkotja a játékot. A mentés a böngésző biztonságos tárhelyét használja, ezért helyi fejlesztéshez indíts HTTP-előnézetet:
 
 ```sh
 python -m http.server 8000
 ```
 
-Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A játékhoz nem kell npm install, build, szerveroldali alkalmazás vagy adatbázis.
+Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált `assets/js/runtime.js` a repository része, így a játékhoz nincs telepítés vagy szerveroldali alkalmazás. A `file://` címről futtatott változat mentése böngészőtől függően nem érhető el.
 
 ## A forrás felépítése
 
 | Útvonal | Feladat |
 | --- | --- |
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
-| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép, mentés és a fő játékciklus. |
+| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
 | `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
 | `assets/js/progression.js` | XP, szintek és fejlesztések. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
+| `assets/js/i18n.js`, `assets/i18n/en.json` | Futás közbeni nyelvváltás és angol fordítások. |
+| `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés és a régi mentés egyszeri átvétele. |
+| `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
+| `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `assets/css/style.css` | A kezelőfelület megjelenése. |
-| `assets/images/` | Kiba, a világok, az ellenfelek és a tárgyak képei. |
+| `assets/images/` | Momo, a világok, az ellenfelek és a tárgyak képei. |
 | `scripts/` | Strukturális és játékmeneti ellenőrzések. |
 | `.github/workflows/pages.yml` | Ellenőrzés és GitHub Pages publikálás. |
 | `docs/` | Játékleírás, fejlesztési dokumentáció és grafikai háttéranyagok. |
 
 ## Ellenőrzés
 
-A workflow Node.js 24-et használ. A repository gyökeréből ugyanazok az ellenőrzések kézzel is futtathatók, külső npm-csomagok nélkül:
+A workflow Node.js 24-et használ. A repository gyökeréből az ellenőrzések külső npm-csomagok nélkül futtathatók:
 
 ```sh
 node scripts/check-site.mjs
@@ -39,10 +43,13 @@ node scripts/test-v06.cjs
 node scripts/test-routes.cjs
 ```
 
-- A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Kiba sprite sheetjét vizsgálja.
+- A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
+- A generált `runtime.js` forráslenyomatát is ellenőrzi, így elmaradt builddel nem publikálható frissítés.
 - A harci tesztek az ellenfelek viselkedését, az XP-t, a fejlesztéseket, a mentést és a szentélynél történő újraéledést ellenőrzik.
 - A 0.5 tesztjei a kardtalálat időzítését, a boss-fázisokat, az idézést és az ereklyéket vizsgálják.
 - Az útvonalteszt a tényleges játékfizikával ellenőrzi a továbbjutást és a fontos platformok elérhetőségét.
+
+Forrásmódosítás után `npm install`, majd `npm run build` szükséges a futó fájl újragenerálásához. Ez csak fejlesztéskor kell; a kész Pages-csomag továbbra is statikus. A build a Babel elemzőt használja, és az angol szövegeket a forráskódban szereplő magyar mondatokhoz társítja.
 
 Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás további vizuális és kezelési hibákat is feltárhat.
 
@@ -58,16 +65,16 @@ A játék relatív útvonalakat használ. Az `index.html` maradjon a repository 
 
 ## Frissítés és mentések
 
-A mentés az adott webcímhez tartozó böngészőtárhelyen, `localStorage`-ban él. A helyi fájlból indított játék mentése nem kerül át automatikusan a GitHub Pages-oldalra. Az oldaladatok törlése a mentést is törli.
+A mentés AES-GCM titkosított rekordként kerül az IndexedDB tárhelyére, minden mentéshez új sóval és nonce-szal. A feloldáshoz szükséges, nem exportálható kulcsot ugyanabban a böngészőprofilban tárolja; a `localStorage` csak a titkosított rekord másolatát tartalmazza. A másolat átmásolása önmagában nem ad használható mentést egy másik profilban. Az oldaladatok törlése a mentést is törli.
 
-A 0.2–0.5 mentések tovább használhatók a 0.6 változatban ugyanazon a címen; a korábban megszerzett XP és fejlesztések megmaradnak. A Japánban megjelent új ereklyék kereséséhez indíts új utazást, ha a mentésedben már túljutottál azon a birodalmon. A már legyőzött végső őrző győzelme megmarad.
+A 0.6 és a régebbi, érvényes mentéseket a 0.7 egyszer átveszi és titkosítja ugyanazon a címen; a régi rekordot érintetlenül hagyja tartalékként. Az új mentések már csak a v2 formátumot használják. A böngészőprofil, a webcím vagy az oldaladatok cseréje új utazást jelent.
 
-Ha frissítés után régi tartalmat látsz, próbálj teljes újratöltést (Ctrl+F5). A főmenüben a V0.6 jelzi ezt a változatot.
+Ha frissítés után régi tartalmat látsz, próbálj teljes újratöltést (Ctrl+F5). A főmenüben a V0.7 jelzi ezt a változatot.
 
 ## Képek cseréje
 
 A titkos területek és minibossok a 0.6 változatban négy új képet használnak; lásd az [új változat leírását](SECRETS-0.6.md).
 
-A képek verziószáma nem jelenti, hogy elavultak: a 0.5 játék v3 háttereket, v4 animációkat és v5 kiegészítéseket együtt használ. A ténylegesen betöltött képeket az `ART_MANIFEST` sorolja fel az `assets/js/art-data.js` fájlban; az eredeti `kiba.png` külön töltődik be a `game.js` fájlból.
+A képek verziószáma nem jelenti, hogy elavultak: a játék v3 háttereket, v4 animációkat és v5/v6 kiegészítéseket együtt használ. A ténylegesen betöltött képeket az `ART_MANIFEST` sorolja fel az `assets/js/art-data.js` fájlban; Momo eredeti sprite lapja `assets/images/momo.png`.
 
 Képcsere után a kivágások és illesztési pontok is ellenőrzendők. A törölhető régi képek listáját az [asset-útmutató](ASSET-CLEANUP.md) tartalmazza.

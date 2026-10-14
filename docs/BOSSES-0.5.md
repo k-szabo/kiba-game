@@ -1,10 +1,10 @@
-# Kiba – Fény és árnyék · 0.5
+# Momo – Fény és árnyék · 0.5
 
 ## Kardok
 
 A szamuráj boss hat külön, nagyobb helyet biztosító animációs képkockát kapott. A lecsengő és nyugalmi pózok a teljes pengét tartalmazzák. Ezeket a képkivágásokat külön ellenőrzött forrásterületek adják, nem a korábbi közös boss-atlasz szűk oszlopai. A kard hegye mindkét irányban renderelve ellenőrzött.
 
-Kiba új, nyolcképkockás támadási sorozata kihúzza, felemeli és előrevágja a katanát, majd visszatér az alapállásba. A támadás rajzolása elsőbbséget kap a futással és ugrással szemben. A csapás iránya a gombnyomáskor rögzül; a találat a 0,16 másodperces vágási ponton egyszer történik, nem már a fegyver előkészítésekor. Az eredeti 0,34 másodperces újratámadási idő megmarad. Az új csapás megszakíthatja az előző csapás lecsengését. Kiba eredeti pet-képfájlja változatlan.
+Momo új, nyolcképkockás támadási sorozata kihúzza, felemeli és előrevágja a katanát, majd visszatér az alapállásba. A támadás rajzolása elsőbbséget kap a futással és ugrással szemben. A csapás iránya a gombnyomáskor rögzül; a találat a 0,16 másodperces vágási ponton egyszer történik, nem már a fegyver előkészítésekor. Az eredeti 0,34 másodperces újratámadási idő megmarad. Az új csapás megszakíthatja az előző csapás lecsengését. Momo eredeti pet-képfájlja változatlan.
 
 ## Az oni harca
 
@@ -39,14 +39,14 @@ A 0.2–0.4 mentések képességei, tárgyállapotai és XP-je tovább használh
 
 A hat új atlasz a beépített **ImageGen** eszközzel készült. A teljes promptkészlet és referencia-szerepek: [V05-ART-PROMPTS.json](V05-ART-PROMPTS.json).
 
-- `assets/images/kiba-slash-v5.png`: nyolc kardcsapási képkocka.
+- `assets/images/momo-slash-v5.png`: nyolc kardcsapási képkocka.
 - `assets/images/enemies/samurai-v5.png`: hat teljes kardpóz.
 - `assets/images/enemies/angel-light-v5.png`: hat angyali fénypóz.
 - `assets/images/enemies/angel-dark-v5.png`: hat sötét angyali póz.
 - `assets/images/enemies/angel-eclipse-v5.png`: hat titkos, vegyes póz.
 - `assets/images/relics-v5.png`: a két ereklye.
 
-A forrás-PNG-k alfa-csatornája megmarad. Kiba és az angyalok hosszú fegyverei mellett a kivágási útvonal az áttetsző hézagot követi, hogy a szomszédos figura ne rajzolódjon bele a támadásba.
+A forrás-PNG-k alfa-csatornája megmarad. Momo és az angyalok hosszú fegyverei mellett a kivágási útvonal az áttetsző hézagot követi, hogy a szomszédos figura ne rajzolódjon bele a támadásba.
 
 ## Ellenőrzés
 

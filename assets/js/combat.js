@@ -20,7 +20,7 @@ function respawnEnemies() {
   burst(player.x+20,player.y+30,realms[realm].gold,22);
 }
 function killEnemy(e) {
-  if(e.dead)return;
+  if(e.dead||e.hp>0)return;
   if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
   const role=enemyRole(e);

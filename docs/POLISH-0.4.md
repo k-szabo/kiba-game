@@ -1,8 +1,8 @@
-# Kiba – A kard útja · 0.4
+# Momo – A kard útja · 0.4
 
 ## Animáció és hibajavítás
 
-A tizenkét normál ellenfélszereplő hat mozgási és hat támadási képkockát kapott: összesen 144 új animációs képkockát. A mozgási ciklus a megtett úthoz igazodik, a támadó sorozat előkészítésből, fegyveremelésből vagy célzásból, elengedésből és lecsengésből áll. A támadás előjelzése alatt az irány rögzített. Kiba eredeti képfájlja változatlan.
+A tizenkét normál ellenfélszereplő hat mozgási és hat támadási képkockát kapott: összesen 144 új animációs képkockát. A mozgási ciklus a megtett úthoz igazodik, a támadó sorozat előkészítésből, fegyveremelésből vagy célzásból, elengedésből és lecsengésből áll. A támadás előjelzése alatt az irány rögzített. Momo eredeti képfájlja változatlan.
 
 A forgó beakadás oka a játékos követése és a járőrhatáron történő visszafordulás közötti verseny volt. Az új mozgás külön kezeli a járőrözést és az üldözést, fordulási késleltetést és holtsávot használ. A járőrtartomány a platform járható területén belül marad. A tartományon túli célpontot a szélről figyeli, képkockánkénti irányváltás nélkül.
 

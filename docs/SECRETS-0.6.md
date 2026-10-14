@@ -31,7 +31,7 @@ Mindkét minibossnak saját, hat pózból álló animációs készlete és helyi
 
 ## Fejlesztés
 
-A **Szellem** fejlesztés gombja zárolt, amíg Kiba nem szerzi meg a szellemlépést. A menü megmutatja a feltételt, és a pontköltés logikája is ellenőrzi a képességet. Életerőt és kardot továbbra is lehet fejleszteni előtte. A korábbi mentésben már kiosztott szellempontok megmaradnak.
+A **Szellem** fejlesztés gombja zárolt, amíg Momo nem szerzi meg a szellemlépést. A menü megmutatja a feltételt, és a pontköltés logikája is ellenőrzi a képességet. Életerőt és kardot továbbra is lehet fejleszteni előtte. A korábbi mentésben már kiosztott szellempontok megmaradnak.
 
 ## Az angyal őrző
 

@@ -1,4 +1,4 @@
-name: Deploy Kiba to GitHub Pages
+name: Deploy Momo to GitHub Pages
 
 on:
   push:

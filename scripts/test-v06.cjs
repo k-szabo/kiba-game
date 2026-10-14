@@ -19,7 +19,7 @@ for(const id of ['angelHalo','demonHorn']){
   const enemy=run(`enemies.find(e=>e.id==='${o.guardian}')`);assert(enemy.miniboss);assert(enemy.hp>=36);assert(run(`secretKnown('${o.secretArea}')`));
   const before=snap().progression.totalXp;run(`var guard=enemies.find(e=>e.id==='${o.guardian}');guard.phase='wait';guard.clock=999;`);place(run('guard.x-65'),run('guard.y+guard.h'));run('player.face=1;');
   for(let i=0;i<30&&!run('guard.dead');i++){press('j');tick(60);release('j');}
-  assert(run('guard.dead'),'Timed Kiba sword hits cannot defeat '+o.guardian);run('killEnemy(guard);');place(o.x,o.y);
+  assert(run('guard.dead'),'Timed Momo sword hits cannot defeat '+o.guardian);run('killEnemy(guard);');place(o.x,o.y);
   assert.equal(snap().progression.totalXp-before,id==='angelHalo'?80:95);
   press('e');tick();release('e');assert(snap().relics.includes(id));dismiss();
 }
