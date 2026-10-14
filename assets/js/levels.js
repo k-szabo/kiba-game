@@ -16,22 +16,22 @@ const japan=makeLevel('japan',10400,2500,{x:260,y:1000});
  ['river-cave',4850,1390,1550],['cave-exit1',6220,1290,160],['cave-exit2',6400,1190,160],['cave-exit3',6580,1090,160],['cave-exit4',6760,995,180],
  ['forest-secret1',3550,800,200],['forest-secret2',3720,620,230]
 ].forEach(p=>ledge(japan,...p));
-japan.ability={x:2340,y:760,name:'A szél áldása'};
-rest(japan,'start',330,1000,'A falu széle');rest(japan,'river',3650,1000,'A kettős ösvény');rest(japan,'fields',5880,920,'Rizsföldek');rest(japan,'temple',8760,1000,'A templom kapuja');
-japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:'Az erdei harang'},{id:'villageBell',type:'bell',x:7240,y:715,name:'A falu harangja'},{id:'riverMemory',type:'memory',x:5550,y:1390,name:'Emlék a folyó alatt'},{id:'forestMemory',type:'memory',x:3830,y:620,name:'A lombok emléke'}];
+japan.ability={x:2340,y:760,name:I18n.t("text.blessing.of.the.wind")};
+rest(japan,'start',330,1000,I18n.t("text.village.outskirts"));rest(japan,'river',3650,1000,I18n.t("text.the.forked.path"));rest(japan,'fields',5880,920,I18n.t("text.rice.fields"));rest(japan,'temple',8760,1000,I18n.t('place.temple.gate'));
+japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:I18n.t('place.forest.bell')},{id:'villageBell',type:'bell',x:7240,y:715,name:I18n.t('place.village.bell')},{id:'riverMemory',type:'memory',x:5550,y:1390,name:I18n.t("text.a.memory.beneath.the.river")},{id:'forestMemory',type:'memory',x:3830,y:620,name:I18n.t("text.a.memory.in.the.canopy")}];
 // Optional paths lie outside the quest route and remain absent from the map until discovered.
 japan.secrets=[
- {id:'angelRuin',name:'Az ősi angyaltorony romjai',x:2440,y:0,w:1240,h:600,arena:{x:2510,y:470,w:510},guardian:'oldAngel',relic:'angelHalo'},
- {id:'cultCave',name:'Az elfeledett szekta barlangja',x:2420,y:1740,w:1710,h:700,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
+ {id:'angelRuin',name:I18n.t("text.ruins.of.the.ancient.angel.tower"),x:2440,y:0,w:1240,h:600,arena:{x:2510,y:470,w:510},guardian:'oldAngel',relic:'angelHalo'},
+ {id:'cultCave',name:I18n.t("text.cave.of.the.forgotten.cult"),x:2420,y:1740,w:1710,h:700,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
 ];
 for(const p of [['tower-step1',3490,445,140],['tower-step2',3250,285,120],['tower-step3',3030,230,130],['halo-altar',2510,470,510]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='angelRuin';}
 for(const p of [['cult-mouth',4530,1510,180],['cult-stair1',4200,1680,200],['cult-stair2',3910,1850,190],['cult-stair3',3640,2010,180],['horn-vault',2650,2160,950]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='cultCave';}
 japan.objects.push(
- {id:'angelHalo',type:'relic',x:2600,y:470,name:'Az angyali glória',secretArea:'angelRuin',guardian:'oldAngel'},
- {id:'demonHorn',type:'relic',x:2760,y:2160,name:'A démonlord szarva',secretArea:'cultCave',guardian:'oldCultist'}
+ {id:'angelHalo',type:'relic',x:2600,y:470,name:I18n.t("text.the.angel.s.halo"),secretArea:'angelRuin',guardian:'oldAngel'},
+ {id:'demonHorn',type:'relic',x:2760,y:2160,name:I18n.t("text.the.demon.lord.s.horn"),secretArea:'cultCave',guardian:'oldCultist'}
 );
-foe(japan,'oldAngel',2800,470,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:'A megőrült öreg angyal',secretArea:'angelRuin',factionOverride:'heaven'});
-foe(japan,'oldCultist',3070,2160,'mage',null,380);Object.assign(japan.enemies.at(-1),{miniboss:'cultist',name:'Az ősi szekta vén mestere',secretArea:'cultCave',factionOverride:'japan'});
+foe(japan,'oldAngel',2800,470,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:I18n.t("text.the.mad.elder.angel"),secretArea:'angelRuin',factionOverride:'heaven'});
+foe(japan,'oldCultist',3070,2160,'mage',null,380);Object.assign(japan.enemies.at(-1),{miniboss:'cultist',name:I18n.t("text.the.ancient.cult.s.elder"),secretArea:'cultCave',factionOverride:'japan'});
 japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:2500}];
 // Cave ceiling and wall prevent falling straight into the relic chamber from the main road.
 japan.gates.push(
@@ -43,7 +43,7 @@ japan.gates.push(
 japan.arena={x:8770,y:1000,w:1550,restId:'temple'};japan.boss={x:9570,y:1000};japan.exit={x:10000,y:1000};
 [[930,1000],[1900,950],[2820,950],[3600,1000],[4140,1000],[4750,1000],[5450,920],[6200,920],[6930,960],[7550,960],[8390,1000]].forEach(([x,y],i)=>foe(japan,'road-'+i,x,y,i%4===2?'archer':'guard',null,Math.min(65,i===8?40:65)));
 foe(japan,'cave-guard',5260,1390,'guard');foe(japan,'cave-bat',6010,1310,'fly');foe(japan,'tree-bat',3900,690,'fly');
-zone(japan,'A köd erdeje',0,0,3300,1250);zone(japan,'Az erdei harang',3300,0,1600,1200);zone(japan,'A folyó alatti járat',4800,1150,2200,550);zone(japan,'Folyó és rizsföldek',4800,0,2000,1150);zone(japan,'A csendes falu',6800,0,1500,1150);zone(japan,'A bambusztemplom',8300,0,2100,1200);
+zone(japan,I18n.t("text.forest.of.mist"),0,0,3300,1250);zone(japan,I18n.t('place.forest.bell'),3300,0,1600,1200);zone(japan,I18n.t("text.passage.beneath.the.river"),4800,1150,2200,550);zone(japan,I18n.t("text.river.and.rice.fields"),4800,0,2000,1150);zone(japan,I18n.t('place.quiet.village'),6800,0,1500,1150);zone(japan,I18n.t('place.bamboo.temple'),8300,0,2100,1200);
 
 const yomi=makeLevel('yomi',3300,6250,{x:1560,y:450});
 [
@@ -55,16 +55,16 @@ const yomi=makeLevel('yomi',3300,6250,{x:1560,y:450});
  ['rescue-left-stair',1510,1420,180],['river-lip',1800,3710,210],['deep-left',320,4740,450],
  ['secret-tomb',230,2350,600],['secret-step',680,2240,250]
 ].forEach(p=>ledge(yomi,...p,'stone',32));
-yomi.ability={x:1570,y:2700,name:'A szellemlépés'};
-rest(yomi,'start',1530,450,'A néma kút');rest(yomi,'upper',1810,1790,'A hamu párkánya');rest(yomi,'shadow',1730,2700,'Az árnyék szentélye');rest(yomi,'lower',2470,3900,'A néma folyó');rest(yomi,'abyss',1860,5040,'A mélység pereme');rest(yomi,'arena',620,5800,'A lélekfenék');
-yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:'Az emlékező lélek'},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:'A hazavágyó lélek'},{id:'tombMemory',type:'memory',x:510,y:2350,name:'A sírok emléke'}];
+yomi.ability={x:1570,y:2700,name:I18n.t("text.spirit.dash")};
+rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',1810,1790,I18n.t("text.ash.ledge"));rest(yomi,'shadow',1730,2700,I18n.t("text.shrine.of.shadows"));rest(yomi,'lower',2470,3900,I18n.t("text.the.silent.river"));rest(yomi,'abyss',1860,5040,I18n.t("text.edge.of.the.abyss"));rest(yomi,'arena',620,5800,I18n.t("text.the.soul.s.depths"));
+yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:I18n.t("text.the.remembering.soul")},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:I18n.t("text.the.homesick.soul")},{id:'tombMemory',type:'memory',x:510,y:2350,name:I18n.t("text.a.memory.in.the.tombs")}];
 yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
 yomi.arena={x:260,y:5800,w:2750,restId:'arena'};yomi.boss={x:1430,y:5800};yomi.exit={x:2790,y:5800};
 foe(yomi,'soul-upper-a',480,1510,'guard','upperSoul',60);foe(yomi,'soul-upper-b',1040,1510,'archer','upperSoul',65);foe(yomi,'soul-lower-a',2230,3900,'guard','lowerSoul',60);foe(yomi,'soul-lower-b',2770,3900,'guard','lowerSoul',60);
 [[1770,1030],[1920,1790],[1470,2110],[690,3040],[2570,3400],[1420,4230],[1780,4640],[2370,5040]].forEach(([x,y],i)=>foe(yomi,'deep-'+i,x,y,i%3===1?'archer':'guard'));
 [[1220,600],[1370,1340],[1720,2480],[1430,3240],[1830,4380],[990,4950]].forEach(([x,y],i)=>foe(yomi,'bat-'+i,x,y,'fly',null,120));
-zone(yomi,'A néma kút',0,0,3300,1300);zone(yomi,'A fogoly emlék',0,1300,3300,900);zone(yomi,'Hamu és árnyék',0,2200,3300,950);zone(yomi,'A néma folyó',0,3150,3300,950);zone(yomi,'Az elfeledett sírok',0,4100,3300,1000);zone(yomi,'A világ feneke',0,5100,3300,1150);
+zone(yomi,I18n.t("text.the.silent.well"),0,0,3300,1300);zone(yomi,I18n.t("text.the.captive.memory"),0,1300,3300,900);zone(yomi,I18n.t("text.ash.and.shadow"),0,2200,3300,950);zone(yomi,I18n.t("text.the.silent.river"),0,3150,3300,950);zone(yomi,I18n.t("text.forgotten.tombs"),0,4100,3300,1000);zone(yomi,I18n.t("text.the.bottom.of.the.world"),0,5100,3300,1150);
 
 const heaven=makeLevel('heaven',3200,6650,{x:350,y:6300});
 ledge(heaven,'cloud-base',80,6300,2900,'cloud',90);
@@ -78,13 +78,13 @@ ledge(heaven,'cloud-base',80,6300,2900,'cloud',90);
 ledge(heaven,'moving-cloud',1510,5020,210,'moving',32);Object.assign(heaven.platforms.at(-1),{range:115,speed:.7,phase:.8});
 ledge(heaven,'moving-cloud-west',900,3770,200,'moving',32);Object.assign(heaven.platforms.at(-1),{range:90,speed:.85,phase:.2});
 heaven.winds=[{id:'wind1',x:550,y:5330,w:170,h:970},{id:'wind2',x:1800,y:4080,w:170,h:900},{id:'wind3',x:620,y:2730,w:170,h:1040},{id:'wind4',x:1910,y:1430,w:170,h:930},{id:'wind5',x:1910,y:680,w:170,h:800},{id:'homeWind',x:1390,y:170,w:160,h:700,afterBoss:true}];
-rest(heaven,'start',420,6300,'A felhők kapuja');rest(heaven,'first',830,5370,'Az első szélterasz');rest(heaven,'second',2070,4120,'A napudvar');rest(heaven,'third',810,2770,'A csillagok hídja');rest(heaven,'fourth',2170,1470,'A hajnal pereme');rest(heaven,'arena',1600,850,'Az utolsó eskü');
-heaven.objects=[{id:'skyMemory',type:'memory',x:2620,y:3970,name:'Az ég emléke'},{id:'cloudMemory',type:'memory',x:2630,y:5630,name:'A felhők emléke'}];
+rest(heaven,'start',420,6300,I18n.t("text.gate.of.clouds"));rest(heaven,'first',830,5370,I18n.t("text.first.wind.terrace"));rest(heaven,'second',2070,4120,I18n.t('place.sun.court'));rest(heaven,'third',810,2770,I18n.t("text.bridge.of.stars"));rest(heaven,'fourth',2170,1470,I18n.t('place.dawns.edge'));rest(heaven,'arena',1600,850,I18n.t("text.the.final.oath"));
+heaven.objects=[{id:'skyMemory',type:'memory',x:2620,y:3970,name:I18n.t("text.a.memory.of.heaven")},{id:'cloudMemory',type:'memory',x:2630,y:5630,name:I18n.t("text.a.memory.in.the.clouds")}];
 heaven.gates=[{id:'memorySeal',kind:'fire',x:2280,y:3730,w:35,h:290},{id:'dawnSeal',kind:'fire',x:0,y:1050,w:3200,h:28}];
 heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};heaven.father={x:1570,y:260};
 [[1200,5230],[1850,4960],[1510,3990],[1170,3860],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));
 [[1240,5500],[1580,4600],[970,3500],[1370,2900],[1650,1960]].forEach(([x,y],i)=>foe(heaven,'skybat-'+i,x,y,'fly',null,110));
-zone(heaven,'A felhők kapuja',0,5450,3200,1200);zone(heaven,'A szél lépcsői',0,4250,3200,1200);zone(heaven,'A napudvar',0,3150,3200,1100);zone(heaven,'A csillagok hídja',0,2200,3200,950);zone(heaven,'A hajnal pereme',0,1100,3200,1100);zone(heaven,'Az ég teteje',0,0,3200,1100);
+zone(heaven,I18n.t("text.gate.of.clouds"),0,5450,3200,1200);zone(heaven,I18n.t("text.stairway.of.winds"),0,4250,3200,1200);zone(heaven,I18n.t('place.sun.court'),0,3150,3200,1100);zone(heaven,I18n.t("text.bridge.of.stars"),0,2200,3200,950);zone(heaven,I18n.t('place.dawns.edge'),0,1100,3200,1100);zone(heaven,I18n.t("text.the.summit.of.heaven"),0,0,3200,1100);
 // Faction art and role variations share the original, proven geometry.
 const fieldRoles=['guard','archer','shield','mage'];
 for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group||enemy.miniboss)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}

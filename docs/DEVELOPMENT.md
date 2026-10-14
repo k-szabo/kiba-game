@@ -21,7 +21,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/progression.js` | XP, szintek és fejlesztések. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
-| `assets/js/i18n.js`, `assets/i18n/en.json` | Futás közbeni nyelvváltás és angol fordítások. |
+| `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés és a régi mentés egyszeri átvétele. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
@@ -49,7 +49,9 @@ node scripts/test-routes.cjs
 - A 0.5 tesztjei a kardtalálat időzítését, a boss-fázisokat, az idézést és az ereklyéket vizsgálják.
 - Az útvonalteszt a tényleges játékfizikával ellenőrzi a továbbjutást és a fontos platformok elérhetőségét.
 
-Forrásmódosítás után `npm install`, majd `npm run build` szükséges a futó fájl újragenerálásához. Ez csak fejlesztéskor kell; a kész Pages-csomag továbbra is statikus. A build a Babel elemzőt használja, és az angol szövegeket a forráskódban szereplő magyar mondatokhoz társítja.
+Forrásmódosítás után `npm run build` szükséges a futó fájl újragenerálásához. A build Node.js-en kívül nem igényel csomagokat; a kész Pages-csomag továbbra is statikus.
+
+Az összes fordítás az `assets/i18n/locales.json` fájlban van. A felső szintű kulcs a kétbetűs ISO nyelvkód (`hu`, `en`), alatta ugyanazok a stabil szövegazonosítók szerepelnek. Új nyelvhez adj hozzá egy új nyelvi objektumot az összes meglévő azonosító fordításával, majd futtasd az `npm run build` és `npm test` parancsot. A nyelvválasztó automatikusan felveszi az új nyelvet. A változó részeket `{0}`, `{1}` jelöli; ezeknek minden fordításban egyezniük kell.
 
 Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás további vizuális és kezelési hibákat is feltárhat.
 

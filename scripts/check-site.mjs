@@ -39,14 +39,25 @@ for(const file of [...sourceFiles,'assets/js/runtime.js']){
   const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
   assert.equal(result.status,0,result.stderr||`JavaScript syntax check failed: ${file}`);
 }
-const digest=createHash('sha256');for(const file of ['assets/i18n/en.json',...sourceFiles]){digest.update(file);digest.update('\0');digest.update(fs.readFileSync(path.join(root,file)));digest.update('\0');}
+const digest=createHash('sha256');for(const file of ['assets/i18n/locales.json',...sourceFiles]){digest.update(file);digest.update('\0');digest.update(fs.readFileSync(path.join(root,file)));digest.update('\0');}
 const runtime=fs.readFileSync(path.join(root,'assets/js/runtime.js'),'utf8');
 assert(runtime.startsWith(`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${digest.digest('hex')} */`),'runtime.js is stale; rebuild before publishing.');
 assert(!runtime.includes('window.momo='),'Production runtime must not expose mutable game state.');
-const english=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/en.json'),'utf8'));assert(Object.keys(english).length>250,'English locale is incomplete.');
+const locales=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/locales.json'),'utf8'));
+assert(locales.hu&&locales.en,'Both hu and en locales are required.');
+const ids=Object.keys(locales.hu);assert(ids.length>250,'Locale catalog is incomplete.');
+for(const [language,translations] of Object.entries(locales)){
+  assert(/^[a-z]{2}$/.test(language),`Invalid ISO language: ${language}`);
+  assert.equal(Object.keys(translations).length,ids.length,`Missing locale keys: ${language}`);
+  for(const id of ids){
+    assert.equal(typeof translations[id],'string',`Missing translation: ${language}.${id}`);
+    const placeholders=value=>[...value.matchAll(/\{(\d+)\}/g)].map(match=>match[1]).sort().join(',');
+    assert.equal(placeholders(translations[id]),placeholders(locales.hu[id]),`Placeholder mismatch: ${language}.${id}`);
+  }
+}
 const png=fs.readFileSync(path.join(root,sprite[1]));
 assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a','Momo must be a valid PNG.');
 assert.equal(png.readUInt32BE(16),1536);assert.equal(png.readUInt32BE(20),2288);
 assert(fs.existsSync(path.join(root,'.nojekyll')));
 assert(fs.existsSync(path.join(root,'.github/workflows/pages.yml')));
-console.log('PASS: static entrypoint, all assets, Linux filename case, root and repository-subpath URLs, JavaScript syntax, current private runtime, English locale, Momo sprite dimensions.');
+console.log('PASS: static entrypoint, all assets, Linux filename case, root and repository-subpath URLs, JavaScript syntax, current private runtime, complete locales, Momo sprite dimensions.');

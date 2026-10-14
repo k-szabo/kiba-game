@@ -16,9 +16,9 @@ const Visuals = (() => {
   const entries = Object.entries(ART_MANIFEST);
   function progress() {
     const button = document.getElementById('startButton');
-    if (button) button.innerHTML = completed === entries.length
-      ? 'Az utazás kezdete <span>→</span>'
-      : `Grafika betöltése · ${completed}/${entries.length}`;
+    if (button) button.innerHTML = I18n.t(completed === entries.length
+      ? I18n.t("text.begin.the.journey")
+      : I18n.format("message.loading.artwork.arg0.arg1",[completed,entries.length]));
   }
   const ready = Promise.all(entries.map(([key, src]) => new Promise(resolve => {
     const image = new Image();
@@ -179,8 +179,8 @@ const Visuals = (() => {
       ctx.strokeStyle = r.gold + '90';ctx.lineWidth = 1.5;
       for (let i = 0; i < 3; i++) {ctx.beginPath();ctx.ellipse(x, feet - 100, 46 + i * 5, 88 + i * 6, 0, 0, Math.PI * 2);ctx.stroke();}
       ctx.font = 'bold 12px Manrope, sans-serif';ctx.fillStyle = r.gold;ctx.textAlign = 'center';
-      ctx.fillText((realm < 2 ? realms[realm + 1].short : 'ÁTJÁRÓ').toUpperCase() + ' · E', x, feet - 145);
-      ctx.font = '10px Manrope, sans-serif';ctx.fillText('Lépj a kapu alá', x, feet - 126);
+      ctx.fillText(I18n.t((realm < 2 ? realms[realm + 1].short : I18n.t("text.passage")).toUpperCase() + ' · E'), x, feet - 145);
+      ctx.font = '10px Manrope, sans-serif';ctx.fillText(I18n.t("text.stand.beneath.the.gate"), x, feet - 126);
       ctx.restore();
     }
     shadow(x, feet, 95, .3);
@@ -192,7 +192,7 @@ const Visuals = (() => {
     shadow(x, feet, 31, .3);prop(realm === 2 ? 'skyShrine' : 'shrine', x, feet + 3, ability ? 120 : 105);
     if (ability) {
       ctx.save();ctx.fillStyle = r.gold;ctx.textAlign = 'center';ctx.font = '20px serif';
-      ctx.fillText(realm === 0 ? '風' : '影', x, feet - 136 + Math.sin(time * 2) * 3);ctx.restore();
+      ctx.fillText(I18n.t(realm === 0 ? '風' : '影'), x, feet - 136 + Math.sin(time * 2) * 3);ctx.restore();
     }
   }
   function objects(r) {
@@ -204,7 +204,7 @@ const Visuals = (() => {
       else if(o.type==='relic'){if(!taken){shadow(o.x,o.y,33,.35);frame('relics',ART_FRAMES.relics[o.id],o.x,o.y+2,118);}}
       else drawSpirit(o.x, o.y - 35, r.gold);
       ctx.save();ctx.font = '10px Manrope, sans-serif';ctx.fillStyle = r.gold;ctx.textAlign = 'center';
-      ctx.fillText(taken ? '✓' : o.name, o.x, o.y - (o.type === 'bell' ? 175 : 148));ctx.restore();
+      ctx.fillText(I18n.t(taken ? '✓' : o.name), o.x, o.y - (o.type === 'bell' ? 175 : 148));ctx.restore();
     }
   }
 
@@ -254,8 +254,8 @@ const Visuals = (() => {
       ctx.fillStyle=glow;ctx.fillRect(handX-60,handY-60,120,120);ctx.restore();
       if(isBoss){
         ctx.save();ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#080512';ctx.shadowBlur=5;
-        const labels={cleave:'KARDCSAPÁS',dash:'ROHAM',doubleCut:'KETTŐS VÁGÁS',hammer:'KALAPÁCSVÁGÁS',slam:'FÖLDRENGÉS',lava:'LÁVA · UGROJ A PLATFORMOKRA',embers:'PARÁZSZÁPOR',summon:'CSATLÓSOK IDÉZÉSE',lightArrows:'FÉNYNYILAK',holySweep:'SZENT NYÍLZÁPOR',shadowBolts:'ÁRNYÉKLÖVEDÉKEK',shadowNova:'ÁRNYÉKNÓVA',shadowRain:'ÁRNYÉKZÁPOR',eclipse:'NAPFOGYATKOZÁS',hellfire:'POKOLTŰZ ÉS FÉNY'};
-        ctx.fillText(e.autoPhase?(realm===2?'SZÁRNYVÁGÁS':'KALAPÁCSVÁGÁS'):labels[e.move]||'TÁMADÁS',x,feet-height-38);ctx.restore();
+        const labels={cleave:I18n.t("text.sword.slash"),dash:'ROHAM',doubleCut:I18n.t("text.double.slash"),hammer:I18n.t("text.hammer.swing"),slam:I18n.t("text.earthquake"),lava:I18n.t("text.lava.jump.onto.the.platforms"),embers:I18n.t("text.ember.rain"),summon:I18n.t("text.summoning.minions"),lightArrows:I18n.t("text.light.arrows"),holySweep:I18n.t("text.holy.arrow.rain"),shadowBolts:I18n.t("text.shadow.bolts"),shadowNova:I18n.t("text.shadow.nova"),shadowRain:I18n.t("text.shadow.rain"),eclipse:I18n.t("text.eclipse"),hellfire:I18n.t("text.hellfire.and.light")};
+        ctx.fillText(I18n.t(e.autoPhase?(realm===2?I18n.t("text.wing.slash"):I18n.t("text.hammer.swing")):labels[e.move]||I18n.t("text.attack")),x,feet-height-38);ctx.restore();
       }
     }
     if(e.miniboss)miniEffects(e,height);
@@ -266,10 +266,10 @@ const Visuals = (() => {
     ctx.save();
     if(e.active){
       ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);
-      ctx.font='bold 11px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(e.name,x,feet-height-43);
+      ctx.font='bold 11px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
       if(e.phase==='windup'){
-        const names={glaive:'AZ ŐSI PENGE',holyFan:'MEGTÖRT FÉNY',lunge:'ANGYALI ROHAM',staff:'RITUÁLIS VÁGÁS',curse:'ÁRNYÉKÁTOK',sigils:'A SZEKTA PECSÉTJEI'};
-        ctx.fillText(names[e.move],x,feet-height-63);
+        const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};
+        ctx.fillText(I18n.t(names[e.move]),x,feet-height-63);
         if(['glaive','staff','lunge'].includes(e.move)){ctx.shadowBlur=0;ctx.fillStyle=color+'25';const w=e.move==='lunge'?300:175;ctx.fillRect(e.face>0?x:x-w,feet-95,w,95);ctx.strokeStyle=color;ctx.setLineDash([7,6]);ctx.strokeRect(e.face>0?x:x-w,feet-95,w,95);ctx.setLineDash([]);}
       }
     }
@@ -328,7 +328,7 @@ const Visuals = (() => {
       ctx.restore();
       if(w.y+w.h>cameraY&&w.y+w.h<cameraY+H+100){
         ctx.save();ctx.strokeStyle='#ffe8a6';ctx.lineWidth=3;ctx.shadowColor='#ffe8a6';ctx.shadowBlur=18;ctx.beginPath();ctx.ellipse(cx,w.y+w.h-8,w.w*.53,13,0,0,Math.PI*2);ctx.stroke();
-        ctx.shadowBlur=0;ctx.fillStyle='#163847dd';ctx.fillRect(cx-122,w.y+w.h-49,244,27);ctx.fillStyle='#fff4c9';ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText('UGORJ A SZÉLÁRAMLATBA',cx,w.y+w.h-30);ctx.restore();
+        ctx.shadowBlur=0;ctx.fillStyle='#163847dd';ctx.fillRect(cx-122,w.y+w.h-49,244,27);ctx.fillStyle='#fff4c9';ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t("text.jump.into.the.wind.stream"),cx,w.y+w.h-30);ctx.restore();
       }
     }
   }
@@ -339,14 +339,14 @@ const Visuals = (() => {
       const x=boss.x+boss.w/2,y=boss.y+45,pulse=1-boss.clock/boss.phaseDuration;
       const g=ctx.createRadialGradient(x,y,5,x,y,210);g.addColorStop(0,boss.stage===2?'#c596ffad':'#ffe6adbb');g.addColorStop(.45,'#ab83d955');g.addColorStop(1,'#aa77dd00');ctx.fillStyle=g;ctx.fillRect(x-210,y-210,420,420);
       for(let i=0;i<3;i++){ctx.strokeStyle=i%2?'#c995ff':'#ffe4a4';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,y,45+pulse*100+i*22,80+pulse*40+i*10,time+i,0,Math.PI*2);ctx.stroke();}
-      ctx.fillStyle='#fff0ce';ctx.font='bold 16px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText(boss.stage===2?'A FÉNY ÁRNYÉKKÁ VÁLIK':'A GLÓRIA ÉS A SZARV SZERTARTÁSA',x,boss.y-105);
+      ctx.fillStyle='#fff0ce';ctx.font='bold 16px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t(boss.stage===2?I18n.t("text.light.turns.to.shadow"):I18n.t("text.the.ritual.of.halo.and.horn")),x,boss.y-105);
     }
     for(const portal of boss.summons){
       const x=portal.x+20,y=portal.y,charge=1-portal.warning/portal.life;
       ctx.strokeStyle='#fa9a86';ctx.lineWidth=3;ctx.shadowColor='#e8526b';ctx.shadowBlur=18;ctx.fillStyle='#771e4544';
       ctx.beginPath();ctx.ellipse(x,y-3,34+charge*12,10+charge*6,0,0,Math.PI*2);ctx.fill();ctx.stroke();
       ctx.strokeStyle='#d8a0ff';ctx.beginPath();ctx.ellipse(x,y-35,24+charge*8,30+charge*8,0,0,Math.PI*2);ctx.stroke();
-      ctx.font='bold 10px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7c0a4';ctx.fillText('IDÉZÉS',x,y-77);ctx.shadowBlur=0;
+      ctx.font='bold 10px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7c0a4';ctx.fillText(I18n.t("text.summoning"),x,y-77);ctx.shadowBlur=0;
     }
     if(boss.autoPhase==='windup'){
       const x=boss.autoFace>0?boss.x+boss.w*.4:boss.x-175;

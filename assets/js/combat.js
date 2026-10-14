@@ -101,8 +101,8 @@ function updateEnemies(dt) {
     if(overlap(player,e)&&e.contactCd<=0){damage(1,dx>0?1:-1);e.contactCd=1.1;}
     if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
-      if(e.kind==='shield')toast('Pajzsos: támadj felülről vagy hátulról; három csapás megtöri a pajzsát.');
-      if(e.kind==='mage')toast('Varázsló: a feltöltődő fény támadást jelez. Mozdulj el, mielőtt elsül.');
+      if(e.kind==='shield')toast(I18n.t("text.shield.bearer.strike.from.above.or.behind.three.blocked"));
+      if(e.kind==='mage')toast(I18n.t("text.mage.a.gathering.glow.signals.an.attack.move.before"));
     }
   }
 }
@@ -132,7 +132,7 @@ function bossProjectile(x,y,vx,vy,color,kind,life=5,extra={}){
 }
 function bossName(){
   if(realm!==2)return realms[realm].boss;
-  return ['','A hajnal angyala · I. fázis','A sötét angyal · II. fázis','A két világ ura · TITKOS III. FÁZIS'][boss.stage];
+  return ['',I18n.t("text.angel.of.dawn.phase.i"),I18n.t("text.the.dark.angel.phase.ii"),I18n.t("text.lord.of.two.worlds.hidden.phase.iii")][boss.stage];
 }
 function transformAngel(stage){
   clearEncounterEffects();boss.stage=stage;boss.cycles=0;boss.move=null;boss.attackStep=0;boss.inv=1.8;
@@ -141,7 +141,7 @@ function transformAngel(stage){
   else boss.hp=Math.max(1,boss.hp);
   setBossPhase('transform',1.8);shake=.25;
   burst(boss.x+boss.w/2,boss.y+30,stage===2?'#c89aff':'#ffe1a1',55);
-  toast(stage===2?'A glória megreped! Az angyal árnyékmágiára vált.':'A glória és a démonlord szarva felébreszti a titkos alakot! Az életereje teljesen visszatöltődött.');
+  toast(stage===2?I18n.t("text.the.halo.cracks.the.angel.turns.to.shadow.magic"):I18n.t("text.the.halo.and.the.demon.lord.s.horn.awaken"));
 }
 function checkBossHealth(){
   if(boss.dead)return;
@@ -172,7 +172,7 @@ function chooseBossMove(){
     if(available.length<3){for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}available=platforms.filter(p=>p.bossPlatform).sort((a,b)=>a.x-b.x);}
     boss.platformOrder=available.map(p=>p.id);boss.destroyedCount=0;
     boss.lava={x:level.arena.x,y:level.arena.y-22,w:level.arena.w,h:35,active:false,warning:duration};
-    toast('Láva tör fel! Ugorj a kőszigetekre, és a kalapácsra is figyelj!');
+    toast(I18n.t("text.lava.is.rising.jump.onto.the.stone.islands.and"));
   }
   setBossPhase('windup',duration);
 }
@@ -185,7 +185,7 @@ function scheduleMinions(){
     const x=refuge?clamp(wanted,refuge.x+10,refuge.x+refuge.w-55):wanted;
     boss.summons.push({x,y:refuge?refuge.y:level.arena.y,kind:i?'mage':'guard',warning:.95,life:.95,supportId:refuge?.id||null});
   }
-  toast('A démon csatlósokat idéz! A vörös kapukból lépj ki.');
+  toast(I18n.t("text.the.demon.is.summoning.minions.move.away.from.the"));
 }
 function updateSummons(dt){
   for(const portal of boss.summons){
@@ -293,7 +293,7 @@ function updateBossHazards(dt){
 function updateBoss(dt){
   $('bossHud').hidden=!bossStarted||boss.dead;if(!bossStarted||boss.dead)return;
   if(realm===2&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
-  $('bossName').textContent=bossName();$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
+  $('bossName').textContent=I18n.t(bossName());$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
   boss.inv=Math.max(0,boss.inv-dt);boss.clock-=dt;boss.animClock+=dt;
   if(boss.phase==='transform'){if(boss.clock<=0)setBossPhase('wait',.85);return;}
   updateBossHazards(dt);if(!bossStarted||boss.dead)return;
@@ -331,7 +331,7 @@ function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.dead)resetMi
 function discoverSecrets(){
   for(const area of level.secrets||[])if(!secretKnown(area.id)&&overlap(player,area)&&
     (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){
-    flags[realm].push('discovered:'+area.id);persist();toast('Rejtett hely: '+area.name);
+    flags[realm].push('discovered:'+area.id);persist();toast(I18n.t('hint.hidden.area.prefix')+area.name);
   }
 }
 function defeatMiniboss(e){
@@ -340,7 +340,7 @@ function defeatMiniboss(e){
   const flag=minibossFlag(e.id),first=!flags[realm].includes(flag);
   if(first){flags[realm].push(flag);shards+=8;awardXP(e.miniboss==='angel'?80:95);persist();}
   burst(e.x+e.w/2,e.y+35,e.miniboss==='angel'?'#ffe9aa':'#cf8aff',36);
-  toast('Az ősi őrző megpihen. Az oltár pecsétje megszűnt.');updateHUD();
+  toast(I18n.t("text.the.ancient.guardian.rests.the.altar.s.seal.has"));updateHUD();
 }
 function setMiniPhase(e,phase,duration){e.phase=phase;e.clock=duration;e.phaseDuration=duration;e.windup=phase==='windup'?duration:0;e.windupDuration=duration;e.hitDone=false;}
 function miniMelee(e,width,amount=2){
@@ -362,7 +362,7 @@ function releaseMiniAttack(e){
 function updateMiniboss(e,dt){
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
-  if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+' · Figyeld az előjelzést!');}
+  if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}
   e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.clock-=dt;e.animTime+=dt;e.walkSpeed=0;
   for(const hazard of e.hazards){hazard.warning-=dt;hazard.life-=dt;hazard.active=hazard.warning<=0;if(hazard.active&&overlap(player,hazard)){damage(1,player.x>hazard.x?1:-1);if(!e.active)return;}}
   e.hazards=e.hazards.filter(h=>h.life>0);

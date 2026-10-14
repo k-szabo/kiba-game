@@ -28,32 +28,32 @@ function awardXP(amount) {
     progression.xp-=xpForLevel(progression.level);progression.level++;progression.points++;gained++;
   }
   if(progression.level===LEVEL_LIMIT)progression.xp=0;
-  if(gained){burst(player.x+player.w/2,player.y+25,'#ffe59a',35);tone(880,.5);toast(`Szintlépés! Momo ${progression.level}. szintű · ${progression.points} fejlesztéspont. A szentélynél U: fejlesztés.`);}
+  if(gained){burst(player.x+player.w/2,player.y+25,'#ffe59a',35);tone(880,.5);toast(I18n.format("message.level.up.momo.is.level.arg0.arg1.training.points",[progression.level,progression.points]));}
   updateProgressHUD();persist();
 }
 function updateProgressHUD() {
-  $('levelLabel').textContent=`${progression.level}. szint`;
-  $('xpLabel').textContent=progression.level===LEVEL_LIMIT?'MAX':`${progression.xp} / ${xpForLevel(progression.level)} XP`;
+  $('levelLabel').textContent=I18n.format("message.level.arg0",[progression.level]);
+  $('xpLabel').textContent=I18n.t(progression.level===LEVEL_LIMIT?'MAX':`${progression.xp} / ${xpForLevel(progression.level)} XP`);
   $('xpFill').style.width=`${progression.level===LEVEL_LIMIT?100:progression.xp/xpForLevel(progression.level)*100}%`;
-  $('trainButton').textContent=progression.points?`Fejlesztés (${progression.points})`:'Fejlesztés';
+  $('trainButton').textContent=I18n.t(progression.points?I18n.format("message.training.arg0",[progression.points]):I18n.t("text.training"));
 }
 function trainingRest() {return level.rests.find(r=>pointNear(r,100,85));}
 function showTraining() {
   if(state!=='play')return;
-  if(!trainingRest()){toast('Fejleszteni a pihenőszentélynél tudsz. Lépj mellé, majd nyomj U-t.');return;}
-  if(bossStarted&&!boss.dead){toast('Az őrző harca alatt nincs idő fejlesztésre.');return;}
+  if(!trainingRest()){toast(I18n.t("text.train.at.a.resting.shrine.stand.beside.it.and"));return;}
+  if(bossStarted&&!boss.dead){toast(I18n.t("text.you.cannot.train.during.a.guardian.battle"));return;}
   state='training';keys.clear();pressed.clear();$('training').hidden=false;refreshTraining();$('closeTraining').focus();
 }
 function refreshTraining() {
-  $('trainingPoints').textContent=`${progression.level}. szint · ${progression.points} elkölthető pont`;
+  $('trainingPoints').textContent=I18n.format("message.level.arg0.arg1.available.points",[progression.level,progression.points]);
   const s=momoStats();
-  $('vitalityValue').textContent=`${s.maxHp} életerő`;
-  $('strengthValue').textContent=`${s.damage} kardsebzés`;
-  $('spiritValue').textContent=abilities[1]?`${s.dashCooldown.toFixed(2)} mp szellemlépés-várakozás`:'Előbb szerezd meg a szellemlépést Yomiban';
+  $('vitalityValue').textContent=I18n.format("message.arg0.health",[s.maxHp]);
+  $('strengthValue').textContent=I18n.format("message.arg0.sword.damage",[s.damage]);
+  $('spiritValue').textContent=I18n.t(abilities[1]?I18n.format("message.arg0.s.spirit.dash.cooldown",[s.dashCooldown.toFixed(2)]):I18n.t("text.first.acquire.spirit.dash.in.yomi"));
   for(const key of ['vitality','strength','spirit']){
     const locked=key==='spirit'&&!abilities[1];
     $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=STAT_LIMIT;
-    $('train-'+key).textContent=locked?'Képesség szükséges':progression.stats[key]>=STAT_LIMIT?'Maximális':'+1 pont';
+    $('train-'+key).textContent=I18n.t(locked?I18n.t("text.ability.required"):progression.stats[key]>=STAT_LIMIT?I18n.t("text.maximum"):I18n.t("text.1.point"));
   }
 }
 function spendPoint(key) {
