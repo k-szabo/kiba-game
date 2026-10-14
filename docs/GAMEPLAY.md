@@ -1,4 +1,4 @@
-# Momo – Kiba: Három világ · 0.7
+# Kiba: Három világ · 0.7
 
 Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 

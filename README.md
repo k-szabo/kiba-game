@@ -1,4 +1,4 @@
-# Momo – Kiba: Három világ
+# Kiba: Három világ
 
 Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
@@ -12,7 +12,7 @@ Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
 Momo, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, Harut. Japán erdei és templomai után a japán alvilág mélységeibe ereszkedik, majd a felhők fölé emelkedik az égi birodalomban. A **Kiba** az egész világot átszövő energia: táplálhat, pusztíthat, és minden vidéken másként áramlik. Japánban a szentélyek körül éltető, a föld alatti járatokban elhalványul, Yomiban eltorzul, az ég szélfolyamaiban pedig felerősödik.
 
-A **Momo – Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
+A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
 
 ## Három világ, háromféle kaland
 
@@ -29,7 +29,7 @@ A **Momo – Kiba: Három világ** böngészőben játszható, 2D metroidvania: 
 - **XP és fejlődés:** az ellenfelek legyőzésével szintet léphetsz, majd a szentélyeknél fejlesztheted Momo életerejét, kardját és szellemerejét. A szellemlépés fejlesztése a képesség megszerzése után nyílik meg.
 - **Szentélyek:** gyógyulás, mentőpontok és a térképről elérhető gyorsutazás. Gyógyuláskor a normál ellenfelek újraélednek.
 - **Felfedezés:** mellékutak, Haru emlékei, rejtett szentélyek és saját minibossokkal őrzött ereklyék jutalmazzák a kíváncsiságot. Egyes titkok a végső összecsapást is megváltoztatják.
-- **Magyar és angol nyelv:** a főmenüben és a szünetmenüben válthatsz; a választást a böngésző megjegyzi.
+- **Magyar és angol nyelv:** a zászlós választó a nyelvek saját és angol nevét mutatja; a választást a böngésző megjegyzi.
 - **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. A korábbi mentéseket első indításkor átveszi.
 
 ## Irányítás

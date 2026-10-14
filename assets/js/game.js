@@ -1,7 +1,10 @@
-/* MOMO · Kiba: Három világ — v0.7. */
+/* Kiba: Három világ — v0.7. */
 'use strict';
 const $=id=>document.getElementById(id),canvas=$('world'),ctx=canvas.getContext('2d');
 const sheet=new Image();sheet.src = 'assets/images/momo.png';
+const menuSheet=new Image();menuSheet.src='assets/images/momo-menu-idle-v2.png';
+const menuFrameBottom=[500,491,498,451,451,450];
+const reducedMotion=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
 const SWORD_DURATION=.42,SWORD_IMPACT=.16;
 const H=720;
 let viewW=1280,scale=1,camera=0,cameraY=0,time=0,levelTime=0,last=0,state='menu',realm=0,level=levels[0],platforms=[];
@@ -93,7 +96,7 @@ function update(dt){time+=dt;toastTimer-=dt;if(toastTimer<=0)$('toast').classLis
  camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=I18n.t(context.text);const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t((region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):''));updateHUD();
  if(sound){musicClock-=dt;if(musicClock<=0){const notes=[220,261.63,293.66,329.63,392];tone(notes[Math.floor(time*.3)%5]*(realm===2?2:1),1.8,'sine',.02);musicClock=1.6;}}pressed.clear();}
-function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);const r=realms[realm];background(r);if(state==='menu'){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMomo(Math.min(viewW*.77,1150),535,150,0,Math.floor(time*4)%6,1);ctx.restore();return;}
+function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);const r=realms[realm];background(r);if(state==='menu'){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
  ctx.save();ctx.translate(-camera+(shake>0?(noise(time*500)-.5)*10:0),-cameraY);Visuals.secretScenery(r);drawLandscape(r,platforms);drawKibaCurrent();drawWinds(r);for(const rest of level.rests)if(visiblePoint(rest))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);drawObjects(r);drawHazards(r);Visuals.bossEffects(r);
  for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){drawMomo(level.father.x,level.father.y+4,90,0,Math.floor(time*3)%6,1);ctx.font='11px Manrope, sans-serif';ctx.fillStyle=r.gold;ctx.textAlign='center';ctx.fillText(I18n.t('HARU'),level.father.x,level.father.y-105);}
@@ -127,7 +130,7 @@ $('startButton').onclick=()=>startGame(false);$('continueButton').onclick=()=>st
 $('helpButton').onclick=()=>story(I18n.t("text.rules.of.the.path"),I18n.t("text.three.worlds.three.directions.db9129"),I18n.t("story.a.d.or.arrow.keys.move.space.jump.after"),mainMenu);
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
 function keyName(e){return e.code==='Space'||e.key==='Spacebar'?' ':e.key.toLowerCase();}
-function handleKeyDown(e){const k=keyName(e);if([' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();if(e.repeat)return;if(k==='escape'){if(state==='training'){closeTraining();return;}if(state==='map')closeMap();else pause();return;}if(k==='m'){if(state==='map')closeMap();else showMap();return;}if(state==='play'){keys.add(k);pressed.add(k);}}
+function handleKeyDown(e){const k=keyName(e);if(e.target?.closest?.('button,summary,select,input,textarea,a')&&[' ','enter','arrowup','arrowdown','arrowleft','arrowright'].includes(k))return;if(state==='play'&&[' ','arrowup','arrowdown','arrowleft','arrowright'].includes(k))e.preventDefault();if(e.repeat)return;if(k==='escape'){if(state==='training'){closeTraining();return;}if(state==='map')closeMap();else pause();return;}if(k==='m'){if(state==='map')closeMap();else showMap();return;}if(state==='play'){keys.add(k);pressed.add(k);}}
 function handleKeyUp(e){keys.delete(keyName(e));}
 addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);addEventListener('blur',()=>{keys.clear();pressed.clear();if(state==='play')pause();});
 document.querySelectorAll('[data-key]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();if(state!=='play')return;b.setPointerCapture(e.pointerId);keys.add(b.dataset.key);pressed.add(b.dataset.key);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>keys.delete(b.dataset.key));});
@@ -144,6 +147,20 @@ function drawTorii(x,y,r){Visuals.torii(x,y,r);}
 function drawShrine(x,y,r,ability){Visuals.shrine(x,y,r,ability);}
 
 function drawMomo(x,feet,size,row,frame,face){if(!sheet.complete||!sheet.naturalWidth)return;ctx.save();ctx.translate(x,feet);if(row!==1&&row!==2&&face<0)ctx.scale(-1,1);const hh=size*208/192;ctx.drawImage(sheet,frame*192,row*208,192,208,-size/2,-hh,size,hh);ctx.restore();}
+function drawMenuMomo(x,feet,size){
+ ctx.save();ctx.fillStyle='#08141166';ctx.beginPath();ctx.ellipse(x,feet+2,size*.34,size*.065,0,0,Math.PI*2);ctx.fill();
+ if(!menuSheet.complete||!menuSheet.naturalWidth){drawMomo(x,feet,size*.8,0,0,1);ctx.restore();return;}
+ const phase=time%6;let frame=0;
+ if(reducedMotion.matches)frame=5;
+ else if(phase<2)frame=0;
+ else if(phase<2.35)frame=1;
+ else if(phase<2.85)frame=2;
+ else if(phase<4.75)frame=Math.floor((phase-2.85)/.23)%2?4:3;
+ else if(phase<5.45)frame=5;
+ else frame=1;
+ ctx.drawImage(menuSheet,(frame%3)*512,Math.floor(frame/3)*512,512,512,x-size/2,feet-menuFrameBottom[frame]*size/512,size,size);
+ ctx.restore();
+}
 function drawEnemy(e,r){Visuals.actor(e,r);}
 
 function drawBoss(r){Visuals.actor(boss,r,true);}

@@ -18,3 +18,25 @@
 .panel .language-picker{margin-top:12px}
 @media(max-width:800px){.kiba-current{font-size:8px}.kiba-lore{font-size:10px}.menu-bottom{gap:8px}.menu-bottom>span{max-width:48%;line-height:1.7}}
 @media(max-width:650px){.kiba-current{max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+
+/* Language choices keep native names visible alongside the active language. */
+.language-picker{display:inline-flex;align-items:center;gap:10px;font-size:14px;letter-spacing:0}
+.language-caption{font-weight:700;color:#f1deb0}
+.language-chooser{position:relative;min-width:210px}
+.language-chooser summary{display:flex;align-items:center;gap:10px;min-height:50px;padding:9px 12px;border:1px solid #d9ba7ba8;border-radius:6px;background:#13272ded;color:#fff1d3;font-size:15px;font-weight:700;cursor:pointer;list-style:none}
+.language-chooser summary::-webkit-details-marker{display:none}
+.language-chooser summary:focus-visible,.language-option:focus-visible,#helpButton:focus-visible{outline:3px solid #f7d78e;outline-offset:3px}
+.language-flag{width:30px;height:22px;flex:none;object-fit:contain}
+.language-current{flex:1;text-align:left}
+.language-chevron{width:9px;height:9px;flex:none;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin:0 3px 5px}
+.language-chooser[open] .language-chevron{transform:rotate(225deg);margin:5px 3px 0}
+.language-options{position:absolute;left:0;right:0;bottom:calc(100% + 8px);z-index:20;min-width:max-content;padding:5px;background:#13272df7;border:1px solid #d9ba7ba8;border-radius:6px;box-shadow:0 15px 35px #000a}
+.language-option,.menu-bottom .language-option{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:9px 12px;border:0;border-radius:4px;background:transparent;color:#f4e3bf;font-size:14px;text-align:left;white-space:nowrap}
+.language-option:hover,.language-option[aria-pressed="true"]{background:#3a4b49;color:#fff5d8}
+.menu-bottom>button#helpButton{min-height:50px;padding:10px 17px;border:1px solid #d9ba7ba8;border-radius:6px;background:#13272ded;color:#f4e3bf;font-size:15px;font-weight:700;letter-spacing:0}
+.menu-bottom>button#helpButton:hover{background:#344744}
+.panel .language-picker{margin-top:18px}
+.panel .language-options{top:calc(100% + 8px);bottom:auto}
+.language-picker select{min-height:50px;padding:9px 12px;font-size:15px}
+@media(max-width:800px){.menu-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;bottom:14px;left:16px;right:16px}.menu-bottom>span{grid-column:1/-1;max-width:none;text-align:center;font-size:10px}.menu-bottom .language-picker{justify-self:start}.menu-bottom>button#helpButton{justify-self:end}.language-chooser{min-width:min(190px,42vw)}}
+@media(max-width:480px){.menu-bottom .language-caption{display:none}.menu-bottom>button#helpButton{font-size:14px;padding:9px 12px}.menu-bottom .language-chooser{min-width:min(185px,43vw)}.language-options{min-width:220px}}

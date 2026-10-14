@@ -5,29 +5,34 @@ import {createHash} from 'node:crypto';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const localePath='assets/i18n/locales.json';
-const locales=JSON.parse(fs.readFileSync(path.join(root,localePath),'utf8'));
+const readSource=file=>fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n?/g,'\n');
+const locales=JSON.parse(readSource(localePath));
 const languages=Object.keys(locales);
 if(!languages.includes('hu')||!languages.includes('en'))throw Error('Both hu and en locales are required.');
-const ids=Object.keys(locales.hu);
+const ids=Object.keys(locales.hu.dict);
 if(ids.length<250)throw Error('The Hungarian locale is incomplete.');
 for(const language of languages){
-  if(!/^[a-z]{2}$/.test(language)||!locales[language]||Array.isArray(locales[language])||typeof locales[language]!=='object')throw Error(`Invalid ISO language: ${language}`);
-  const entries=locales[language];
+  const record=locales[language];
+  if(!/^[a-z]{2}$/.test(language)||!record||Array.isArray(record)||typeof record!=='object')throw Error(`Invalid ISO language: ${language}`);
+  if(!record.flag?.startsWith('data:image/svg+xml;base64,')||!Buffer.from(record.flag.split(',')[1],'base64').toString('utf8').includes('<svg'))throw Error(`Invalid SVG flag: ${language}`);
+  if(!record.lang_en?.trim()||!record.lang_orig?.trim())throw Error(`Language names are missing: ${language}`);
+  const entries=record.dict;
+  if(!entries||Array.isArray(entries)||typeof entries!=='object')throw Error(`Missing dictionary: ${language}`);
   if(Object.keys(entries).length!==ids.length)throw Error(`Locale ${language} does not have the same keys as hu.`);
   for(const id of ids){
     if(typeof entries[id]!=='string')throw Error(`Missing translation: ${language}.${id}`);
     const placeholders=value=>[...value.matchAll(/\{(\d+)\}/g)].map(match=>match[1]).sort().join(',');
-    if(placeholders(entries[id])!==placeholders(locales.hu[id]))throw Error(`Placeholder mismatch: ${language}.${id}`);
+    if(placeholders(entries[id])!==placeholders(locales.hu.dict[id]))throw Error(`Placeholder mismatch: ${language}.${id}`);
   }
 }
 const files=['i18n','levels','art-data','save-vault','graphics','progression','combat','game'];
 const digest=createHash('sha256');
 for(const file of [localePath,...files.map(name=>'assets/js/'+name+'.js')]){
-  digest.update(file);digest.update('\0');digest.update(fs.readFileSync(path.join(root,file)));digest.update('\0');
+  digest.update(file);digest.update('\0');digest.update(readSource(file));digest.update('\0');
 }
 const sourceHash=digest.digest('hex');
 let runtime=`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${sourceHash} */\n(()=>{'use strict';\nconst LOCALES=${JSON.stringify(locales)};\n`;
-for(const name of files)runtime+=`\n/* ${name}.js */\n${fs.readFileSync(path.join(root,'assets/js',name+'.js'),'utf8')}\n`;
+for(const name of files)runtime+=`\n/* ${name}.js */\n${readSource('assets/js/'+name+'.js')}\n`;
 runtime+='})();\n';
 const output=path.join(root,'assets/js/runtime.js');
 if(process.argv.includes('--check')){

@@ -1,5 +1,5 @@
 {
-  "name": "momo-kiba-game",
+  "name": "kiba-game",
   "private": true,
   "scripts": {
     "build": "node scripts/build-game.mjs",
