@@ -26,6 +26,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/progression.js` | XP, szintek és fejlesztések. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/boss-vfx.js` | A festett boss-effektusok kivágásai, illesztése, láva, csapások, árnymágia és idézés. |
+| `assets/config/lava-serpent-art.json` | A 12 festett lávakígyópóz kivágása, kontúrja és illesztése; szinkronban az ART_SERPENT metaadattal. A [pokolboss harca](YOMI-BOSS.md). |
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
@@ -67,6 +68,8 @@ node scripts/test-realm-travel.cjs
 node scripts/test-inventory.cjs
 node scripts/test-release-ids.mjs
 node scripts/test-eclipse-relic.cjs
+node scripts/test-yomi-redesign.cjs
+node scripts/test-serpent-art.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.

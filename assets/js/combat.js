@@ -21,9 +21,10 @@ function respawnEnemies() {
 }
 function killEnemy(e) {
   if(e.dead||e.hp>0)return;
+  if(e.serpent){defeatLavaSerpent(e);return;}
   if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
-  if(e.summoned&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
+  if(e.summoned&&e.councilEligible&&e.encounterId===boss.encounterId&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
   const role=enemyRole(e);
   awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
   updateHUD();
@@ -64,6 +65,7 @@ function releaseEnemyAttack(e) {
 function updateEnemies(dt) {
   for(const e of enemies){
     if(e.dead)continue;
+    if(e.serpent){updateLavaSerpent(e,dt);continue;}
     if(e.miniboss){updateMiniboss(e,dt);continue;}
     for(const key of ['stun','cd','contactCd','recovery','guardBreak','blockFlash','turnCooldown','edgePause'])e[key]=Math.max(0,e[key]-dt);
     e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
@@ -116,32 +118,33 @@ function uniteVictoryRelics(){
   flags[2].push('eclipseRelic');return true;
 }
 const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
+let yomiEncounterSerial=0;
 function createBoss(){
   const max=[28,48,ANGEL_HEALTH][realm];
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
     secretEligible:realm===2&&relicRitualReady(),secretTriggered:false,summons:[],summonSerial:0,councilMinionKills:0,
-    autoPhase:null,autoClock:0,autoDuration:0,autoCooldown:1.5,autoFace:-1,extraCast:false};
+    autoPhase:null,autoClock:0,autoDuration:0,autoCooldown:1.5,autoFace:-1,extraCast:false,
+    encounterId:realm===1?++yomiEncounterSerial:0,summonThresholds:[],yomiStage:'normal',shelterTriggered:false,raceTriggered:false,serpent:null,waveClock:0,waveWarning:0};
 }
 function setBossPhase(phase,duration){boss.phase=phase;boss.clock=duration;boss.phaseDuration=duration;boss.animClock=0;}
 function clearEncounterEffects(){
   boss.hazards=[];boss.lava=null;boss.summons=[];boss.autoPhase=null;
-  enemies=enemies.filter(e=>!e.summoned);
+  enemies=enemies.filter(e=>!e.summoned&&!e.serpent);boss.serpent=null;
   for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
-  projectiles=projectiles.filter(p=>p.source!=='boss'&&p.source!=='minion');
+  projectiles=projectiles.filter(p=>p.source!=='boss'&&p.source!=='minion'&&!p.source?.startsWith('serpent:'));
 }
 function resetBossBattle(){clearEncounterEffects();boss=createBoss();bossStarted=false;$('bossHud').hidden=true;}
 function finishBossBattle(){clearEncounterEffects();}
 function awardCouncilKeyDrop(){
-  if(realm!==1||level!==levels[1]||defeated[1]||!bossStarted||boss.dead||boss.hp>0||boss.councilMinionKills<4||flags[1].includes('councilKeyEarned'))return false;
+  if(realm!==1||level!==levels[1]||defeated[1]||!bossStarted||boss.dead||boss.hp>0||boss.councilMinionKills<8||flags[1].includes('councilKeyEarned'))return false;
   flags[1].push('councilKeyEarned');return true;
 }
 function bossProjectile(x,y,vx,vy,color,kind,life=5,extra={}){
   shoot(x,y,vx,vy,color,life,kind);Object.assign(projectiles[projectiles.length-1],{source:'boss',...extra});
 }
 function bossName(){
-  if(realm===1&&!defeated[1]&&bossStarted&&!boss.dead&&!flags[1].includes('councilKeyEarned'))return I18n.format('council.boss.counter',[realms[1].boss,Math.min(4,boss.councilMinionKills||0)]);
   if(realm!==2)return realms[realm].boss;
   return ['',I18n.t("text.angel.of.dawn.phase.i"),I18n.t("text.the.dark.angel.phase.ii"),I18n.t("text.lord.of.two.worlds.hidden.phase.iii")][boss.stage];
 }
@@ -156,6 +159,13 @@ function transformAngel(stage){
 }
 function checkBossHealth(){
   if(boss.dead)return;
+  if(realm===1&&level===levels[1]&&bossStarted&&!defeated[1]){
+    // This also protects scripted/oversized damage paths that call health checks.
+    if(!boss.shelterTriggered&&boss.hp<=boss.max*.5){boss.hp=boss.max*.5;queueYomiThresholds();startYomiLavaWave('shelter');return;}
+    if(boss.yomiStage==='shelter'){boss.hp=Math.max(boss.max*.5,boss.hp);return;}
+    if(!boss.raceTriggered&&boss.hp<=boss.max*.1){boss.hp=boss.max*.1;queueYomiThresholds();startYomiLavaWave('race');return;}
+    queueYomiThresholds();
+  }
   if(realm===2&&boss.stage===1&&boss.hp<=boss.max*.5){transformAngel(2);return;}
   if(boss.hp>0)return;
   if(realm===2&&boss.stage===2&&boss.secretEligible&&!boss.secretTriggered){transformAngel(3);return;}
@@ -163,12 +173,12 @@ function checkBossHealth(){
 }
 function hitBoss(amount){
   if(Prologue.active)return Prologue.hit(amount);
-  if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform')return false;
+  if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform'||realm===1&&boss.yomiStage==='shelter')return false;
   boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();return true;
 }
 function bossMoves(){
   if(realm===0)return ['cleave','dash','doubleCut'];
-  if(realm===1)return ['summon','hammer','slam','hammer','lava','hammer','embers','summon'];
+  if(realm===1)return ['hammer','slam','hammer','embers'];
   if(boss.stage===1)return ['lightArrows','holySweep','lightArrows'];
   if(boss.stage===2)return ['shadowBolts','shadowNova','shadowRain'];
   return ['eclipse','hellfire','lightArrows','shadowBolts','summon'];
@@ -188,14 +198,19 @@ function chooseBossMove(){
   }
   setBossPhase('windup',duration);
 }
-function scheduleMinions(){
+function scheduleMinions(threshold=null){
   const living=enemies.filter(e=>e.summoned&&!e.dead).length;
-  const slots=Math.min(2,4-living-boss.summons.length);if(slots<=0)return;
+  // Only the four health milestones summon in Yomi. Other realms keep their cap.
+  if(realm===1){
+    if(![.8,.6,.4,.2].includes(threshold)||level!==levels[1]||!bossStarted||boss.dead||defeated[1]||boss.hp>boss.max*threshold||boss.summonThresholds.includes(threshold))return;
+    boss.summonThresholds.push(threshold);
+  }
+  const slots=realm===1?2:Math.min(2,4-living-boss.summons.length);if(slots<=0)return;
   for(let i=0;i<slots;i++){
     const wanted=clamp(boss.targetX+(i?230:-230),level.arena.x+60,level.arena.x+level.arena.w-100);
     const refuge=realm===1&&player.y+player.h<level.arena.y-50?platforms.filter(p=>p.bossPlatform&&!p.broken).sort((a,b)=>Math.abs(a.x+a.w/2-wanted)-Math.abs(b.x+b.w/2-wanted))[0]:null;
     const x=refuge?clamp(wanted,refuge.x+10,refuge.x+refuge.w-55):wanted;
-    boss.summons.push({x,y:refuge?refuge.y:level.arena.y,kind:i?'mage':'guard',warning:.95,life:.95,supportId:refuge?.id||null});
+    boss.summons.push({x,y:refuge?refuge.y:level.arena.y,kind:i?'mage':'guard',warning:.95,life:.95,supportId:refuge?.id||null,councilEligible:realm===1&&bossStarted&&level===levels[1]&&!defeated[1],encounterId:boss.encounterId,threshold});
   }
   toast(I18n.t("text.the.demon.is.summoning.minions.move.away.from.the"));
 }
@@ -204,10 +219,105 @@ function updateSummons(dt){
     portal.warning-=dt;if(portal.warning>0)continue;
     const support=platforms.find(p=>p.id===portal.supportId),feet=support?.broken?level.arena.y:portal.y;
     const minion=createEnemy({id:'summon-'+(++boss.summonSerial),x:portal.x,y:feet,kind:portal.kind,patrol:230,group:null},boss.summonSerial);
-    Object.assign(minion,{summoned:true,factionOverride:'yomi',supportId:support?.broken?null:portal.supportId,hp:portal.kind==='mage'?3:4,maxHp:portal.kind==='mage'?3:4,cd:1.2,stun:.25});
+    Object.assign(minion,{summoned:true,factionOverride:'yomi',supportId:support?.broken?null:portal.supportId,hp:portal.kind==='mage'?3:4,maxHp:portal.kind==='mage'?3:4,cd:1.2,stun:.25,councilEligible:portal.councilEligible,encounterId:portal.encounterId,threshold:portal.threshold});
     enemies.push(minion);burst(portal.x+20,feet-30,'#df8568',22);
   }
   boss.summons=boss.summons.filter(p=>p.warning>0);
+}
+function queueYomiThresholds(){
+  if(realm!==1||level!==levels[1]||!bossStarted||boss.dead||defeated[1])return;
+  for(const threshold of [.8,.6,.4,.2])if(boss.hp<=boss.max*threshold&&!boss.summonThresholds.includes(threshold)){
+    boss.targetX=player.x+player.w/2;scheduleMinions(threshold);
+  }
+}
+function createLavaSerpent(){
+  const feet=platforms.find(p=>p.bossPlatform)?.y||level.arena.y-105;
+  return {id:'lava-serpent-'+boss.encounterId,name:I18n.t('yomi.serpent.name'),serpent:true,miniboss:'serpent',kind:'serpent',
+    x:clamp(player.x+180,level.arena.x+30,level.arena.x+level.arena.w-150),y:feet-84,w:120,h:84,
+    hp:24,maxHp:24,active:true,dead:false,phase:'windup',clock:1.1,phaseDuration:1.1,move:'emberFan',
+    face:-1,inv:0,stun:0,animTime:0,walkSpeed:0,windup:1.1,windupDuration:1.1,attackTime:0,attackDuration:.42,attackElapsed:0,
+    recovery:0,cycles:0,targetX:player.x+player.w/2,targetY:player.y+player.h*.5,encounterId:boss.encounterId,hazards:[]};
+}
+function startYomiLavaWave(stage){
+  if(realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
+  boss.yomiStage=stage;boss[stage==='shelter'?'shelterTriggered':'raceTriggered']=true;
+  boss.hazards=[];boss.autoPhase=null;boss.autoCooldown=1.1;boss.move='lava';boss.attackStep=0;
+  boss.waveWarning=2;boss.waveClock=0;boss.destroyedCount=0;
+  const islands=platforms.filter(p=>p.bossPlatform).sort((a,b)=>a.x-b.x);
+  for(const p of islands){p.broken=false;p.crumble=0;}
+  boss.platformOrder=islands.map(p=>p.id);
+  boss.lava={x:level.arena.x,y:level.arena.y-22,w:level.arena.w,h:35,active:false,warning:2,lethal:stage==='race',wave:stage};
+  // Floating above the final refuge keeps both the demon and Momo's sword at
+  // the same height during the race, rather than stranding the boss below it.
+  const last=islands.at(-1);
+  if(last){boss.x=last.x+last.w/2-boss.w/2;boss.y=last.y-boss.h;}
+  if(stage==='shelter'){
+    boss.serpent=createLavaSerpent();enemies.push(boss.serpent);
+  }else if(boss.serpent&&!boss.serpent.dead){
+    const e=boss.serpent;e.active=true;e.phase='windup';e.move='emberFan';e.clock=1.1;e.phaseDuration=1.1;e.windup=1.1;e.inv=.35;
+    e.x=clamp(player.x+180,level.arena.x+30,level.arena.x+level.arena.w-e.w-30);e.y=(last?.y||level.arena.y)-e.h;
+    toast(I18n.t('yomi.phase.return'));
+  }
+  projectiles=projectiles.filter(p=>p.source!=='boss'&&!p.source?.startsWith('serpent:'));
+  setBossPhase('windup',2);toast(I18n.t(stage==='shelter'?'yomi.phase.shelter':'yomi.phase.race'));
+}
+function endYomiShelter(){
+  if(boss.yomiStage!=='shelter'||boss.dead)return;
+  if(boss.serpent&&!boss.serpent.dead){boss.serpent.active=false;boss.serpent.phase='dormant';boss.serpent.windup=0;}
+  projectiles=projectiles.filter(p=>!p.source?.startsWith('serpent:'));
+  boss.yomiStage='normal';boss.lava=null;boss.move=null;boss.autoPhase=null;boss.autoCooldown=1;
+  boss.y=level.arena.y-boss.h;boss.inv=.6;
+  for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
+  setBossPhase('recover',1.1);
+}
+function updateYomiWave(dt){
+  const fight=boss;
+  if(boss.waveWarning>0){
+    boss.waveWarning=Math.max(0,boss.waveWarning-dt);
+    if(boss.lava)boss.lava.warning=boss.waveWarning;
+    if(boss.waveWarning===0){boss.lava.active=true;boss.waveClock=0;setBossPhase('strike',12.5);}
+  }else{
+    boss.waveClock+=dt;
+    const count=boss.platformOrder.length-(boss.yomiStage==='shelter'?1:0);
+    for(let i=0;i<count;i++){
+      const p=platforms.find(p=>p.id===boss.platformOrder[i]),collapseAt=2+i*1.45;
+      if(p&&!p.broken){p.crumble=clamp((boss.waveClock-collapseAt+1.1)/1.1,0,1);if(boss.waveClock>=collapseAt){p.broken=true;boss.destroyedCount++;burst(p.x+p.w/2,p.y,'#ffae60',22);}}
+    }
+    if(boss.yomiStage==='shelter'&&boss.destroyedCount>=count)endYomiShelter();
+  }
+  if(boss!==fight||!bossStarted||boss.dead)return;
+  demonAutoAttack(dt);
+}
+function defeatLavaSerpent(e){
+  if(e.dead||e!==boss.serpent||!e.active||realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
+  e.dead=true;e.active=false;e.phase='dead';e.hazards=[];
+  projectiles=projectiles.filter(p=>p.source!=='serpent:'+e.id);
+  if(!flags[1].includes('serpentScale')){flags[1].push('serpentScale');awardXP(70);persist();updateHUD();toast(I18n.t('yomi.serpent.scale.gained'));}
+  burst(e.x+e.w/2,e.y+e.h*.5,'#ffbd69',36);
+  if(boss.yomiStage==='shelter')endYomiShelter();
+}
+function updateLavaSerpent(e,dt){
+  if(!e.active||e.dead||e!==boss.serpent||realm!==1||!bossStarted||boss.dead)return;
+  e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.clock-=dt;e.animTime+=dt;e.walkSpeed=0;
+  if(e.phase==='wait'){
+    const dx=player.x+player.w/2-e.x-e.w/2;e.face=Math.sign(dx)||e.face;
+    const feet=clamp(player.y+player.h,level.arena.y-220,level.arena.y-75);
+    e.y+=(feet-e.h-e.y)*Math.min(1,dt*3);
+    if(Math.abs(dx)>135){const old=e.x;e.x=clamp(e.x+e.face*115*dt,level.arena.x+25,level.arena.x+level.arena.w-e.w-25);e.walkSpeed=(e.x-old)/dt;}
+    if(e.clock<=0){e.move=e.cycles++%2?'bite':'emberFan';e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;setMiniPhase(e,'windup',e.move==='bite'?.8:1.1);}
+  }else if(e.phase==='windup'){
+    e.windup=Math.max(0,e.clock);
+    if(e.clock<=0){
+      setMiniPhase(e,'strike',.42);e.attackTime=.42;e.attackElapsed=0;
+      if(e.move==='bite')miniMelee(e,125,2);
+      else{
+        const angle=Math.atan2(e.targetY-e.y-e.h*.5,e.targetX-e.x-e.w*.5);
+        for(const spread of [-.22,0,.22]){shoot(e.x+e.w/2,e.y+e.h*.5,Math.cos(angle+spread)*240,Math.sin(angle+spread)*240,'#ffa465',4,'ember');Object.assign(projectiles.at(-1),{source:'serpent:'+e.id,damage:1,radius:9});}
+      }
+      if(e!==boss.serpent||!bossStarted)return;
+    }
+  }else if(e.phase==='strike'){e.attackElapsed+=dt;if(e.clock<=0){e.attackTime=0;setMiniPhase(e,'recover',.65);}}
+  else if(e.phase==='recover'&&e.clock<=0)setMiniPhase(e,'wait',.7);
 }
 function startBossAttack(){
   const duration={cleave:.28,dash:.55,doubleCut:.9,hammer:.35,slam:.3,lava:6.8,embers:1.2,summon:.45,
@@ -299,17 +409,21 @@ function angelAutoAttack(dt){
 function updateBossHazards(dt){
   for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);}
   boss.hazards=boss.hazards.filter(h=>h.life>0);
-  if(boss.lava){boss.lava.warning=Math.max(0,boss.lava.warning-dt);if(boss.lava.active&&overlap(player,boss.lava))damage(2,player.x>boss.x?1:-1);}
+  if(boss.lava){boss.lava.warning=Math.max(0,boss.lava.warning-dt);if(boss.lava.active&&overlap(player,boss.lava)){
+    if(boss.lava.lethal){player.hp=0;revive();return;}
+    damage(2,player.x>boss.x?1:-1);
+  }}
   updateSummons(dt);
 }
 function updateBoss(dt){
   Visuals.updateAtmosphere(dt);
   $('bossHud').hidden=!bossStarted||boss.dead;if(!bossStarted||boss.dead)return;
-  if(realm===2&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
+  if((realm===1||realm===2)&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
   $('bossName').textContent=I18n.t(bossName());$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
   boss.inv=Math.max(0,boss.inv-dt);boss.clock-=dt;boss.animClock+=dt;
   if(boss.phase==='transform'){if(boss.clock<=0)setBossPhase('wait',.85);return;}
   updateBossHazards(dt);if(!bossStarted||boss.dead)return;
+  if(realm===1&&boss.yomiStage!=='normal'){updateYomiWave(dt);return;}
   demonAutoAttack(dt);
   angelAutoAttack(dt);
   if(!bossStarted||boss.dead)return;
@@ -340,7 +454,7 @@ function resetMiniboss(e){
   e.cycles=0;e.move=null;e.windup=0;e.inv=0;e.stun=0;e.hazards=[];e.hitDone=false;e.walkSpeed=0;
   projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
 }
-function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.dead)resetMiniboss(e);}
+function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.serpent&&!e.dead)resetMiniboss(e);}
 function discoverSecrets(){
   for(const area of level.secrets||[])if(!secretKnown(area.id)&&overlap(player,area)&&
     (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){

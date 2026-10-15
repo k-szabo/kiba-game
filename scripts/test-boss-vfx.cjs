@@ -19,13 +19,13 @@ for(const [realm,moves]of [[0,['cleave','dash','doubleCut']],[1,['hammer','slam'
  for(const move of moves){
   run(`abilities=[true,true];flags=[['angelHalo','demonHorn'],[],[]];defeated=[false,false,false];state='play';enterRealm(${realm});bossStarted=true;initPlayer({x:level.boss.x-200,y:level.arena.y});player.inv=999;boss.stage=${realm===2?3:1};boss.cycles=bossMoves().indexOf('${move}');chooseBossMove();`);
   // Explicit moves after choosing still use the real cast initialization and timings.
-  run(`boss.move='${move}';startBossAttack();executeBossMove(.01);updateBossHazards(.96);`);
+  run(`boss.move='${move}';if(realm===1&&'${move}'==='lava')startYomiLavaWave('shelter');startBossAttack();executeBossMove(.01);updateBossHazards(.96);`);
   const used=paint('Visuals.bossEffects(realms[realm]);for(const p of projectiles)Visuals.projectile(p);');
   if(realm===0)assert(used.includes('fxSlashes'),`Missing samurai slash ${move}`);
   if(realm===1&&['hammer','slam'].includes(move))assert(used.includes('fxImpact'),`Missing earth impact ${move}`);
   if(move==='lava')assert(used.includes('fxLava'),'Lava is still a primitive strip');
   if(move==='embers')assert(used.includes('fxEmber'),'Ember missiles are still flat circles');
-  if(move==='summon'){run('scheduleMinions()');assert(paint('Visuals.bossEffects(realms[realm])').includes('fxDarkMagic'));}
+  if(move==='summon'){run(realm===1?'boss.hp=boss.max*.8;queueYomiThresholds();':'scheduleMinions()');assert(paint('Visuals.bossEffects(realms[realm])').includes('fxDarkMagic'));}
   if(['shadowBolts','shadowNova','shadowRain'].includes(move))assert(used.includes('fxDarkMagic'),`Missing painted dark spell ${move}`);
  }
 }

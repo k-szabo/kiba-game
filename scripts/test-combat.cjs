@@ -74,18 +74,18 @@ for(let realm=0;realm<3;realm++){
     run(`updateBoss(${windup-.02});`);assert.equal(run('boss.phase'),'windup');assert(run('!boss.lava||!boss.lava.active'));
     run('updateBoss(.03);');assert.equal(run('boss.phase'),'strike');run('finishBossBattle();projectiles=[];');
   }
-  assert.equal(new Set(found).size,realm===2?2:3);moves.push(found);
+  assert.equal(new Set(found).size,realm===0?3:2);moves.push(found);
 }
-assert.deepEqual(moves,[['cleave','dash','doubleCut'],['summon','hammer','slam'],['lightArrows','holySweep','lightArrows']]);
+assert.deepEqual(moves,[['cleave','dash','doubleCut'],['hammer','slam','hammer'],['lightArrows','holySweep','lightArrows']]);
 
 // Lava islands collapse in order, retain a safe final refuge, and reset after death/victory.
-run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;boss.cycles=4;chooseBossMove();player.inv=999;startBossAttack();");
+run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;startYomiLavaWave('shelter');player.inv=999;boss.autoCooldown=999;boss.serpent.active=false;");
 const first=run('boss.platformOrder[0]'),last=run('boss.platformOrder.at(-1)');
-run('for(let i=0;i<252;i++)updateBoss(1/120);');assert(run(`platforms.find(p=>p.id==='${first}').broken`));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
-run('for(let i=0;i<400;i++)updateBoss(1/120);');assert(run('boss.destroyedCount>=4'));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
+run('for(let i=0;i<492;i++)updateBoss(1/120);');assert(run(`platforms.find(p=>p.id==='${first}').broken`));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
+run('for(let i=0;i<600;i++)updateBoss(1/120);');assert(run('boss.destroyedCount>=4'));assert(!run(`platforms.find(p=>p.id==='${last}').broken`));
 run('resetBossBattle();');assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken&&!p.crumble)'));assert.equal(run('boss.lava'),null);assert(!run('bossStarted'));
 // The refuge is safe with actual gravity/collision and no invulnerability cheat.
-run("state='play';bossStarted=true;boss.cycles=4;chooseBossMove();var refuge=platforms.find(p=>p.id===boss.platformOrder.at(-1));initPlayer({x:refuge.x+refuge.w/2,y:refuge.y});player.inv=0;player.onGround=true;player.support=refuge.id;keys.clear();pressed.clear();startBossAttack();var safeHp=player.hp;for(let i=0;i<810;i++){movePlayer(1/120);updateBoss(1/120);player.inv=Math.max(0,player.inv-1/120);}");assert.equal(snap().player.hp,run('safeHp'));assert.equal(snap().player.support,run('refuge.id'));
+run("state='play';bossStarted=true;startYomiLavaWave('shelter');boss.autoCooldown=999;boss.serpent.active=false;var refuge=platforms.find(p=>p.id===boss.platformOrder.at(-1));initPlayer({x:refuge.x+refuge.w/2,y:refuge.y});player.inv=0;player.onGround=true;player.support=refuge.id;keys.clear();pressed.clear();var safeHp=player.hp;for(let i=0;i<810;i++){movePlayer(1/120);updateBoss(1/120);player.inv=Math.max(0,player.inv-1/120);}");assert.equal(snap().player.hp,run('safeHp'));assert.equal(snap().player.support,run('refuge.id'));
 // A destroyed ledge ceases to support the player immediately.
 run('var p=platforms.find(p=>p.bossPlatform);p.broken=true;initPlayer({x:p.x+120,y:p.y});player.onGround=true;player.support=p.id;movePlayer(.15);');assert(snap().player.y+69>run('p.y'));assert.notEqual(snap().player.support,run('p.id'));
 run("bossStarted=true;boss.hp=0;boss.lava={active:true};platforms.find(p=>p.bossPlatform).broken=true;boss.hazards=[{life:9}];guardianDefeated();");assert(run('boss.dead'));assert.equal(run('boss.hazards.length'),0);assert.equal(run('boss.lava'),null);assert(run('platforms.filter(p=>p.bossPlatform).every(p=>!p.broken)'));

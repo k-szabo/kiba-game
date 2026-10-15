@@ -3,7 +3,7 @@ const bootstrap=require('./test-only-bootstrap.cjs');
 module.exports=function harness({prologue=false}={}){
   const elements=new Map(),storage=new Map();
   const element=()=>({hidden:false,disabled:false,textContent:'',innerHTML:'',style:{},dataset:{},children:[],classList:{add(){},remove(){}},setAttribute(){},getContext:()=>draw,replaceChildren(){this.children=[];},append(...items){this.children.push(...items);},focus(){},addEventListener(){}});
-  const draw=new Proxy({createLinearGradient:()=>({addColorStop(){}}),createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]||(()=>{})});
+  const draw=new Proxy({measureText:text=>({width:String(text).length*7}),createLinearGradient:()=>({addColorStop(){}}),createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]||(()=>{})});
   const sandbox={console,Math,Set,JSON,Promise,Image:class{complete=true;naturalWidth=1536;addEventListener(){}},document:{getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id);},createElement:element,querySelectorAll:()=>[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},innerWidth:1280,innerHeight:720,devicePixelRatio:1,addEventListener(){},matchMedia:()=>({matches:false}),requestAnimationFrame(){}};
   sandbox.window=sandbox;sandbox.document.getElementById('world').getContext=()=>draw;vm.createContext(sandbox);
   vm.runInContext(bootstrap.before,sandbox);

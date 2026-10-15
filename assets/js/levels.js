@@ -66,7 +66,7 @@ rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',181
 yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:I18n.t("text.the.remembering.soul")},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:I18n.t("text.the.homesick.soul")},{id:'tombMemory',type:'memory',x:510,y:2350,name:I18n.t("text.a.memory.in.the.tombs")}];
 yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
-yomi.progressFlags=['councilKeyEarned','councilGateOpen'];
+yomi.progressFlags=['councilKeyEarned','councilGateOpen','serpentScale'];
 yomi.councilGate={x:2770,y:3400,w:420,h:415};
 yomi.gates.push({id:'councilGate',kind:'council',x:2815,y:2985,w:70,h:415});
 yomi.objects.push({id:'councilKey',type:'councilKey',x:1490,y:5800,name:I18n.t('council.key.name'),requiresFlag:'councilKeyEarned'});

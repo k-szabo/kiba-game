@@ -1,6 +1,6 @@
 # Kiadások és visszakereshető hibajavítások
 
-Új funkcióhoz továbbra is egyszerű `major.minor.patch` verziót használunk, például `0.9.10`. Kisebb hibajavításhoz ugyanez az alap kap egy aláhúzást és nyolc karaktert: `0.9.10_8as86fg7` a formátum példája. A generátor `0–9`, `a–f` karaktereket használ, így minden kód nyolc kisbetűs alfanumerikus karakterből áll.
+Új funkcióhoz továbbra is egyszerű `major.minor.patch` verziót használunk, például `0.9.10`. Kisebb hibajavításhoz ugyanez az alap kap egy aláhúzást és nyolc karaktert: `0.9.10_8a586f97` a formátum példája. A generátor `0–9`, `a–f` karaktereket használ, így minden kód nyolc kisbetűs hexadecimális karakterből áll.
 
 A kód a javítás **rögzített leírásának** SHA-256 lenyomatából az első nyolc hexadecimális karakter. Nem véletlenszám, dátum, gépfüggő adat vagy a generált runtime hash-e. Azonos metaadatból minden gépen ugyanaz lesz; a build nem készít új verziót. A javítás tartalmát a leírás és a Git-diff együtt azonosítja; a rövid kód nem biztonsági ellenőrzőösszeg.
 
@@ -38,11 +38,11 @@ A JSON mezősorrendje és a szélső szóközök nem módosítják a kódot. A s
 ## Visszakeresés
 
 ```sh
-node scripts/release.mjs lookup 1234abcd
-node scripts/release.mjs lookup 0.9.10_1234abcd
+node scripts/release.mjs lookup 5434103e
+node scripts/release.mjs lookup 0.9.11_5434103e
 ```
 
-Ezek szintén formátumpéldák: tényleges, korábban generált kódot adj meg. Az eredmény az alapverziót, a `slug` azonosítót és az összes javítást kiírja. A `docs/releases.json` ember által is olvasható és Gitben követett; **korábbi rekordot ne írj át és ne törölj**, új javításhoz új rekord kell. Ez a nyilvántartás a rendszer bevezetése utáni kódos hibajavításokat tartalmazza; a korábbi egyszerű verziók a főmenü változásnaplójában és a Git történetében maradnak visszakereshetők.
+Az aktuális kód példaként szerepel; később a ténylegesen keresett kódot add meg. Az eredmény az alapverziót, a `slug` azonosítót és az összes javítást kiírja. A `docs/releases.json` ember által is olvasható és Gitben követett; **korábbi rekordot ne írj át és ne törölj**, új javításhoz új rekord kell. Ez a nyilvántartás a rendszer bevezetése utáni kódos hibajavításokat tartalmazza; a korábbi egyszerű verziók a főmenü változásnaplójában és a Git történetében maradnak visszakereshetők.
 
 ## Build és publikálás
 

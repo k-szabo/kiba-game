@@ -2,7 +2,7 @@
 
 Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett bőrhátizsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a fegyver helyét mutatja. Kis kijelzőn a panelek egymás alá kerülnek, és az ablak görgethető.
 
-A jelenlegi tárgytípusok egyedi küldetéstárgyak: angyalglória, démon szarv és a négy tanácsos csontkulcsa. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Nincs második tárgypéldány-adatbázis vagy új mentésmező. A kapunyitáskor elfogyasztott kulcs eltűnik; a glória és a szarv megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
+Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Nincs második tárgypéldány-adatbázis vagy új mentésmező. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét és a pikkely megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
 
 A felszerelt fegyver Momo katanája, Yomi őrzőjének legyőzése után a Hajnalkard. A fegyver részletei a tényleges fejlesztésekből számított sebzést mutatják. A megjelenítés nem módosítja a harcot.
 
@@ -37,3 +37,5 @@ A glória és a démonúr szarva csak a titkos harmadik bossforma végleges legy
 A mentett `flags[2].eclipseRelic` jelző az egyesült ereklyét birtokolja. A két eredeti gyűjtési jelző történeti adatként megmarad, hogy Japánban ne jelenjenek meg újra a felvett tárgyak; birtokolt tárgyként azonban a hátizsák és a HUD csak a Pecsétet mutatja. Halál, visszautazás és azonos kiadáson belüli újratöltés megőrzi. A validátor az utolsó boss legyőzését és a két őrzött ereklye megszerzését is megköveteli.
 
 A katalógus `realm` mezője adja meg a birtoklási jelző birodalmát. Az opcionális `consumedBy: {realm, id}` a felhasznált tárgyat elrejti, így a kulcsfogyasztás és az ereklyeegyesítés ugyanazt a közös inventory-megjelenítést használja. Az új grafika és prompt: `assets/images/ui/eclipse-relic-v1.png`, [generálási adatok](art-prompts/eclipse-relic-v1.json).
+
+A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpentScale`, Yomi) is megjelenik. A megölt kígyótól automatikusan bekerül a hátizsákba, és a félbemaradt bosskísérlet után is megmarad. Jelenleg nincs felhasználása vagy statbónusza. A közös kontrasztos ikonkatalógust használja; [a harc szabályai](YOMI-BOSS.md).

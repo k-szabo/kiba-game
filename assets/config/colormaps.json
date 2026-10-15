@@ -213,6 +213,24 @@
       "faction": "yomi",
       "paletteGroup": "npc.demonLord"
     },
+    "lavaSerpent": {
+      "role": "miniboss",
+      "faction": "yomi",
+      "variants": {
+        "idle": {
+          "paletteGroup": "npc.lavaSerpent.idle"
+        },
+        "windup": {
+          "paletteGroup": "npc.lavaSerpent.windup"
+        },
+        "strike": {
+          "paletteGroup": "npc.lavaSerpent.strike"
+        },
+        "recover": {
+          "paletteGroup": "npc.lavaSerpent.recover"
+        }
+      }
+    },
     "shadow": {
       "name": {
         "hu": "Árnyék",
@@ -255,6 +273,10 @@
     "inventoryItem.eclipseRelic": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.eclipseRelic"
+    },
+    "inventoryItem.serpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.serpentScale"
     },
     "secretWall.angel": {
       "kind": "scenery",
@@ -3931,6 +3953,410 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "npc.lavaSerpent.idle": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.idle",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341312",
+            "coveragePercent": 14.3777
+          },
+          {
+            "hex": "#482625",
+            "coveragePercent": 11.945
+          },
+          {
+            "hex": "#540f0a",
+            "coveragePercent": 11.3206
+          },
+          {
+            "hex": "#7f0d06",
+            "coveragePercent": 9.3392
+          },
+          {
+            "hex": "#ae0b05",
+            "coveragePercent": 8.6541
+          },
+          {
+            "hex": "#633a36",
+            "coveragePercent": 7.2764
+          },
+          {
+            "hex": "#802a1a",
+            "coveragePercent": 6.4661
+          },
+          {
+            "hex": "#dc0c03",
+            "coveragePercent": 6.1631
+          },
+          {
+            "hex": "#1e0707",
+            "coveragePercent": 6.0735
+          },
+          {
+            "hex": "#be320f",
+            "coveragePercent": 4.8421
+          },
+          {
+            "hex": "#ee2f05",
+            "coveragePercent": 4.2628
+          },
+          {
+            "hex": "#ef5d0d",
+            "coveragePercent": 3.1079
+          },
+          {
+            "hex": "#a55537",
+            "coveragePercent": 2.1268
+          },
+          {
+            "hex": "#f79019",
+            "coveragePercent": 2.036
+          },
+          {
+            "hex": "#f8c537",
+            "coveragePercent": 1.2803
+          },
+          {
+            "hex": "#f7dd89",
+            "coveragePercent": 0.7286
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ca0e04",
+            "coveragePercent": 26.8298
+          },
+          {
+            "hex": "#961108",
+            "coveragePercent": 26.2499
+          },
+          {
+            "hex": "#e93207",
+            "coveragePercent": 18.5388
+          },
+          {
+            "hex": "#a13e23",
+            "coveragePercent": 13.9811
+          },
+          {
+            "hex": "#f27815",
+            "coveragePercent": 9.5302
+          },
+          {
+            "hex": "#f7c442",
+            "coveragePercent": 4.8702
+          }
+        ],
+        "visibleSamples": 260828,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.lavaSerpent.windup": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.windup",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331817",
+            "coveragePercent": 12.7657
+          },
+          {
+            "hex": "#4d2827",
+            "coveragePercent": 12.6071
+          },
+          {
+            "hex": "#4d0d09",
+            "coveragePercent": 9.9312
+          },
+          {
+            "hex": "#750e07",
+            "coveragePercent": 9.9223
+          },
+          {
+            "hex": "#210808",
+            "coveragePercent": 7.829
+          },
+          {
+            "hex": "#a30c06",
+            "coveragePercent": 7.7007
+          },
+          {
+            "hex": "#ce0904",
+            "coveragePercent": 7.4987
+          },
+          {
+            "hex": "#832b1b",
+            "coveragePercent": 6.0411
+          },
+          {
+            "hex": "#663d39",
+            "coveragePercent": 5.8739
+          },
+          {
+            "hex": "#eb2405",
+            "coveragePercent": 5.6087
+          },
+          {
+            "hex": "#ba3311",
+            "coveragePercent": 4.4587
+          },
+          {
+            "hex": "#f05a0c",
+            "coveragePercent": 3.9713
+          },
+          {
+            "hex": "#f8a018",
+            "coveragePercent": 2.0825
+          },
+          {
+            "hex": "#ac5d3a",
+            "coveragePercent": 1.7203
+          },
+          {
+            "hex": "#f4c850",
+            "coveragePercent": 1.2906
+          },
+          {
+            "hex": "#f6e4a6",
+            "coveragePercent": 0.698
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c10d05",
+            "coveragePercent": 24.9403
+          },
+          {
+            "hex": "#941308",
+            "coveragePercent": 24.8085
+          },
+          {
+            "hex": "#e82405",
+            "coveragePercent": 20.3746
+          },
+          {
+            "hex": "#a44124",
+            "coveragePercent": 12.7043
+          },
+          {
+            "hex": "#f06a10",
+            "coveragePercent": 11.0943
+          },
+          {
+            "hex": "#f6bf3b",
+            "coveragePercent": 6.0781
+          }
+        ],
+        "visibleSamples": 209123,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.lavaSerpent.strike": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.strike",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#452424",
+            "coveragePercent": 13.3405
+          },
+          {
+            "hex": "#321211",
+            "coveragePercent": 12.7117
+          },
+          {
+            "hex": "#530c08",
+            "coveragePercent": 9.9476
+          },
+          {
+            "hex": "#b00c05",
+            "coveragePercent": 9.0694
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 8.8729
+          },
+          {
+            "hex": "#df0c04",
+            "coveragePercent": 7.1196
+          },
+          {
+            "hex": "#6c2419",
+            "coveragePercent": 7.0262
+          },
+          {
+            "hex": "#643c38",
+            "coveragePercent": 6.9002
+          },
+          {
+            "hex": "#1e0708",
+            "coveragePercent": 6.5119
+          },
+          {
+            "hex": "#e23407",
+            "coveragePercent": 5.6485
+          },
+          {
+            "hex": "#a03116",
+            "coveragePercent": 4.7717
+          },
+          {
+            "hex": "#f2640d",
+            "coveragePercent": 3.0483
+          },
+          {
+            "hex": "#f9a71c",
+            "coveragePercent": 1.7821
+          },
+          {
+            "hex": "#b3623b",
+            "coveragePercent": 1.5424
+          },
+          {
+            "hex": "#f1c15c",
+            "coveragePercent": 1.1664
+          },
+          {
+            "hex": "#f8e7a8",
+            "coveragePercent": 0.5407
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#981107",
+            "coveragePercent": 28.1394
+          },
+          {
+            "hex": "#ce0c04",
+            "coveragePercent": 27.6019
+          },
+          {
+            "hex": "#e93407",
+            "coveragePercent": 17.763
+          },
+          {
+            "hex": "#a14023",
+            "coveragePercent": 12.6666
+          },
+          {
+            "hex": "#f17914",
+            "coveragePercent": 8.6331
+          },
+          {
+            "hex": "#f4bf47",
+            "coveragePercent": 5.196
+          }
+        ],
+        "visibleSamples": 170571,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.lavaSerpent.recover": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.recover",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331413",
+            "coveragePercent": 14.4142
+          },
+          {
+            "hex": "#482727",
+            "coveragePercent": 13.16
+          },
+          {
+            "hex": "#540e09",
+            "coveragePercent": 10.2172
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 8.9812
+          },
+          {
+            "hex": "#b10a05",
+            "coveragePercent": 8.617
+          },
+          {
+            "hex": "#dd0c04",
+            "coveragePercent": 7.5692
+          },
+          {
+            "hex": "#1d0708",
+            "coveragePercent": 6.5826
+          },
+          {
+            "hex": "#693e39",
+            "coveragePercent": 6.2539
+          },
+          {
+            "hex": "#752619",
+            "coveragePercent": 6.0002
+          },
+          {
+            "hex": "#e73407",
+            "coveragePercent": 5.3187
+          },
+          {
+            "hex": "#a92f13",
+            "coveragePercent": 5.1765
+          },
+          {
+            "hex": "#f3620c",
+            "coveragePercent": 2.797
+          },
+          {
+            "hex": "#f99b18",
+            "coveragePercent": 1.752
+          },
+          {
+            "hex": "#b3613d",
+            "coveragePercent": 1.5259
+          },
+          {
+            "hex": "#f9cd3d",
+            "coveragePercent": 1.0554
+          },
+          {
+            "hex": "#f7de93",
+            "coveragePercent": 0.579
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#cb0b05",
+            "coveragePercent": 27.7708
+          },
+          {
+            "hex": "#971108",
+            "coveragePercent": 27.0745
+          },
+          {
+            "hex": "#e82f06",
+            "coveragePercent": 18.2852
+          },
+          {
+            "hex": "#a03f25",
+            "coveragePercent": 12.6044
+          },
+          {
+            "hex": "#f27312",
+            "coveragePercent": 9.3028
+          },
+          {
+            "hex": "#f7c23c",
+            "coveragePercent": 4.9623
+          }
+        ],
+        "visibleSamples": 187071,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "npc.shadow.idle": {
       "source": "assets/images/enemies/shadow-idle-v2.png",
       "frameMetadata": "SHADOW_CLIPS.idle",
@@ -4838,6 +5264,107 @@
         ],
         "visibleSamples": 691865,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.serpentScale": {
+      "source": "assets/images/ui/serpent-scale-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.serpentScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#231416",
+            "coveragePercent": 15.6534
+          },
+          {
+            "hex": "#0f0404",
+            "coveragePercent": 13.0674
+          },
+          {
+            "hex": "#39292e",
+            "coveragePercent": 11.669
+          },
+          {
+            "hex": "#460d07",
+            "coveragePercent": 10.1205
+          },
+          {
+            "hex": "#6f180c",
+            "coveragePercent": 9.562
+          },
+          {
+            "hex": "#50424d",
+            "coveragePercent": 7.1313
+          },
+          {
+            "hex": "#f10c02",
+            "coveragePercent": 6.3583
+          },
+          {
+            "hex": "#9f4723",
+            "coveragePercent": 4.7395
+          },
+          {
+            "hex": "#a90a04",
+            "coveragePercent": 4.6839
+          },
+          {
+            "hex": "#726675",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#ea8825",
+            "coveragePercent": 3.3573
+          },
+          {
+            "hex": "#f0450a",
+            "coveragePercent": 2.671
+          },
+          {
+            "hex": "#fce10e",
+            "coveragePercent": 2.2866
+          },
+          {
+            "hex": "#f9d771",
+            "coveragePercent": 1.818
+          },
+          {
+            "hex": "#f0ede1",
+            "coveragePercent": 1.7763
+          },
+          {
+            "hex": "#a49aaf",
+            "coveragePercent": 1.4643
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a200f",
+            "coveragePercent": 32.079
+          },
+          {
+            "hex": "#ee1203",
+            "coveragePercent": 31.4663
+          },
+          {
+            "hex": "#db6b20",
+            "coveragePercent": 19.3233
+          },
+          {
+            "hex": "#fcd80b",
+            "coveragePercent": 9.5538
+          },
+          {
+            "hex": "#f7c959",
+            "coveragePercent": 7.4121
+          },
+          {
+            "hex": "#6180c1",
+            "coveragePercent": 0.1655
+          }
+        ],
+        "visibleSamples": 696637,
+        "dominantCoveragePercent": 100.0
       }
     },
     "object.secretWall.angel": {
@@ -11910,6 +12437,111 @@
         "dominantCoveragePercent": 100.0003
       }
     },
+    "assets/images/enemies/lava-serpent-v1.png": {
+      "sha256": "55120d9f44d97168ef13af500f48d31706deb062e9b4cc2869b5baac8f023d0e",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "lavaSerpent"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331413",
+            "coveragePercent": 14.4211
+          },
+          {
+            "hex": "#482726",
+            "coveragePercent": 12.9185
+          },
+          {
+            "hex": "#540e09",
+            "coveragePercent": 10.5813
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 9.027
+          },
+          {
+            "hex": "#b00a05",
+            "coveragePercent": 8.3188
+          },
+          {
+            "hex": "#de0d04",
+            "coveragePercent": 7.4534
+          },
+          {
+            "hex": "#1e0708",
+            "coveragePercent": 6.357
+          },
+          {
+            "hex": "#673d39",
+            "coveragePercent": 6.2065
+          },
+          {
+            "hex": "#75271a",
+            "coveragePercent": 6.1302
+          },
+          {
+            "hex": "#e73808",
+            "coveragePercent": 5.3358
+          },
+          {
+            "hex": "#aa2e12",
+            "coveragePercent": 5.1996
+          },
+          {
+            "hex": "#f36a0e",
+            "coveragePercent": 2.9315
+          },
+          {
+            "hex": "#ad5b38",
+            "coveragePercent": 1.8329
+          },
+          {
+            "hex": "#f9ac1b",
+            "coveragePercent": 1.7148
+          },
+          {
+            "hex": "#f2c458",
+            "coveragePercent": 1.0555
+          },
+          {
+            "hex": "#f8e6a4",
+            "coveragePercent": 0.5161
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#cc0d04",
+            "coveragePercent": 28.1904
+          },
+          {
+            "hex": "#971107",
+            "coveragePercent": 26.9487
+          },
+          {
+            "hex": "#e83407",
+            "coveragePercent": 17.6386
+          },
+          {
+            "hex": "#a13f23",
+            "coveragePercent": 13.2858
+          },
+          {
+            "hex": "#f17814",
+            "coveragePercent": 8.9287
+          },
+          {
+            "hex": "#f6c341",
+            "coveragePercent": 5.0078
+          }
+        ],
+        "visibleSamples": 762240,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/enemies/old-angel-v6.png": {
       "sha256": "aa85ffd2c6aeff84b3317332fed83ba279c6e63fd13df3573afa6701c9afdc22",
       "width": 1536,
@@ -14108,6 +14740,111 @@
         "visibleSamples": 891827,
         "dominantCoveragePercent": 99.9999
       }
+    },
+    "assets/images/ui/serpent-scale-v1.png": {
+      "sha256": "f691739e8eb2e56e2fc9581709e567fa91926d171fe4942c150f70e8400e42a9",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "serpentScale"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#231416",
+            "coveragePercent": 15.6534
+          },
+          {
+            "hex": "#0f0404",
+            "coveragePercent": 13.0674
+          },
+          {
+            "hex": "#39292e",
+            "coveragePercent": 11.669
+          },
+          {
+            "hex": "#460d07",
+            "coveragePercent": 10.1205
+          },
+          {
+            "hex": "#6f180c",
+            "coveragePercent": 9.562
+          },
+          {
+            "hex": "#50424d",
+            "coveragePercent": 7.1313
+          },
+          {
+            "hex": "#f10c02",
+            "coveragePercent": 6.3583
+          },
+          {
+            "hex": "#9f4723",
+            "coveragePercent": 4.7395
+          },
+          {
+            "hex": "#a90a04",
+            "coveragePercent": 4.6839
+          },
+          {
+            "hex": "#726675",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#ea8825",
+            "coveragePercent": 3.3573
+          },
+          {
+            "hex": "#f0450a",
+            "coveragePercent": 2.671
+          },
+          {
+            "hex": "#fce10e",
+            "coveragePercent": 2.2866
+          },
+          {
+            "hex": "#f9d771",
+            "coveragePercent": 1.818
+          },
+          {
+            "hex": "#f0ede1",
+            "coveragePercent": 1.7763
+          },
+          {
+            "hex": "#a49aaf",
+            "coveragePercent": 1.4643
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a200f",
+            "coveragePercent": 32.079
+          },
+          {
+            "hex": "#ee1203",
+            "coveragePercent": 31.4663
+          },
+          {
+            "hex": "#db6b20",
+            "coveragePercent": 19.3233
+          },
+          {
+            "hex": "#fcd80b",
+            "coveragePercent": 9.5538
+          },
+          {
+            "hex": "#f7c959",
+            "coveragePercent": 7.4121
+          },
+          {
+            "hex": "#6180c1",
+            "coveragePercent": 0.1655
+          }
+        ],
+        "visibleSamples": 696637,
+        "dominantCoveragePercent": 100.0
+      }
     }
   },
   "realmColors": {
@@ -15572,85 +16309,100 @@
       {
         "value": "#b087dd",
         "lines": [
-          371
+          485
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          263
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          233,
-          259
+          343,
+          369
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          154
+          157
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          355
+          469
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          208
+          223
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          249
+          359
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffa465",
+        "lines": [
+          315
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          245
+          284,
+          355
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbd69",
+        "lines": [
+          296
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          154
+          157
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          370
+          484
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          355
+          469
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          254
+          364
         ],
         "dynamic": false
       }
@@ -16052,37 +16804,52 @@
         "dynamic": false
       },
       {
+        "value": "#070e18",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#07111c",
         "lines": [
-          347
+          380
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          331
+          339
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          346
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          339
+          347
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          475
+          508
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10283fee",
+        "lines": [
+          359,
+          365
         ],
         "dynamic": false
       },
@@ -16094,16 +16861,23 @@
         "dynamic": false
       },
       {
+        "value": "#112b3fee",
+        "lines": [
+          321
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#122739df",
         "lines": [
-          345
+          378
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          509
+          542
         ],
         "dynamic": false
       },
@@ -16117,7 +16891,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          584
+          617
         ],
         "dynamic": false
       },
@@ -16131,21 +16905,21 @@
       {
         "value": "#163847dd",
         "lines": [
-          458
+          491
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          334
+          342
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          394
+          427
         ],
         "dynamic": false
       },
@@ -16166,7 +16940,7 @@
       {
         "value": "#234559cc",
         "lines": [
-          447
+          480
         ],
         "dynamic": false
       },
@@ -16180,28 +16954,28 @@
       {
         "value": "#251339",
         "lines": [
-          572
+          605
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          479
+          512
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          325
+          333
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          434
+          467
         ],
         "dynamic": false
       },
@@ -16222,7 +16996,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          434
+          467
         ],
         "dynamic": false
       },
@@ -16236,14 +17010,14 @@
       {
         "value": "#8b764eaa",
         "lines": [
-          372
+          405
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          379
+          412
         ],
         "dynamic": false
       },
@@ -16264,14 +17038,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          438
+          471
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          467
+          500
         ],
         "dynamic": false
       },
@@ -16285,7 +17059,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          467
+          500
         ],
         "dynamic": false
       },
@@ -16299,49 +17073,49 @@
       {
         "value": "#b5a777",
         "lines": [
-          377
+          410
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          572
+          605
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          538
+          571
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          323
+          331
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          342
+          375
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          467
+          500
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          448
+          481
         ],
         "dynamic": false
       },
@@ -16355,14 +17129,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          568
+          601
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          453
+          486
         ],
         "dynamic": false
       },
@@ -16376,14 +17150,14 @@
       {
         "value": "#d1c9acaf",
         "lines": [
-          405
+          438
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          512
+          545
         ],
         "dynamic": false
       },
@@ -16397,49 +17171,49 @@
       {
         "value": "#d99583",
         "lines": [
-          339
+          347
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          572
+          605
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          570
+          603
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          377
+          410
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          339
+          347
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          558
+          591
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          440
+          473
         ],
         "dynamic": false
       },
@@ -16453,21 +17227,21 @@
       {
         "value": "#e7616355",
         "lines": [
-          557
+          590
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          557
+          590
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          538
+          571
         ],
         "dynamic": false
       },
@@ -16481,14 +17255,14 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          569
+          602
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          557
+          590
         ],
         "dynamic": false
       },
@@ -16502,14 +17276,14 @@
       {
         "value": "#f6a47580",
         "lines": [
-          377
+          410
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          475
+          508
         ],
         "dynamic": false
       },
@@ -16523,7 +17297,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          479
+          512
         ],
         "dynamic": false
       },
@@ -16537,85 +17311,92 @@
       {
         "value": "#ffb385",
         "lines": [
-          323
+          331
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          479
+          512
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcc89",
+        "lines": [
+          362
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          558
+          591
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          323
+          331
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          342
+          375
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          501
+          534
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          377,
-          502
+          410,
+          535
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          509
+          542
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          434
+          467
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          440
+          473
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          467
+          500
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          457
+          490
         ],
         "dynamic": false
       },
@@ -16629,8 +17410,8 @@
       {
         "value": "#fff0b3",
         "lines": [
-          317,
-          453
+          325,
+          486
         ],
         "dynamic": false
       },
@@ -16642,44 +17423,55 @@
         "dynamic": false
       },
       {
+        "value": "#fff0bc",
+        "lines": [
+          322
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#fff0bd",
         "lines": [
-          479
+          360,
+          365,
+          366,
+          369,
+          512
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          470
+          503
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          573
+          606
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          458
+          491
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          447
+          480
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          328
+          336
         ],
         "dynamic": false
       }

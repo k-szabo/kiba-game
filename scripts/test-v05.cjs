@@ -20,19 +20,19 @@ run("enterRealm(1);persist();mainMenu();startGame(true);");assert.deepEqual(Arra
 run("mainMenu();saved={version:1,layout:2,realm:0,abilities:[false,false],defeated:[false,false,false],flags:[[],[],[]],visitedRests:[[],[],[]],shards:0,progression:freshProgression()};startGame(true);");assert.equal(snap().relics.length,0);
 assert(run('Prologue.active'),'A pre-release-policy save starts a new dream');run('Prologue.stop();');
 
-// Oni has both normal hammer offense and spells. Lava does not disable the normal attack.
-run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;var oniMoves=bossMoves();");
-for(const move of ['hammer','slam','lava','embers','summon'])assert(run(`oniMoves.includes('${move}')`));
-place(run('boss.x+180'),5695);run("player.inv=0;boss.phase='strike';boss.move='lava';boss.clock=6.8;boss.phaseDuration=6.8;boss.autoCooldown=0;demonAutoAttack(.01);");
-assert.equal(run('boss.autoPhase'),'windup');const hp=snap().player.hp;run('demonAutoAttack(.68);');assert.equal(snap().player.hp,hp);run('demonAutoAttack(.03);');assert.equal(snap().player.hp,hp-2);assert.equal(run('boss.move'),'lava');assert.equal(run('boss.autoPhase'),'strike');
-
-// Portal warning, guard+mage summons, cap, reduced XP-once, and cleanup after death/travel.
-run("resetBossBattle();state='play';bossStarted=true;boss.cycles=0;chooseBossMove();startBossAttack();");assert.equal(run('boss.move'),'summon');assert.equal(run('boss.summons.length'),2);assert.equal(run('enemies.filter(e=>e.summoned).length'),0);
-run('updateSummons(.9);');assert.equal(run('enemies.filter(e=>e.summoned).length'),0);run('updateSummons(.1);');assert.equal(run('enemies.filter(e=>e.summoned&&!e.dead).length'),2);
+// Yomi keeps hammer offense during its scripted lava wave; summons use HP milestones.
+run("defeated[1]=false;enterRealm(1);state='play';bossStarted=true;");
+for(const move of ['hammer','slam','embers'])assert(run(`bossMoves().includes('${move}')`));
+assert(!run("bossMoves().includes('summon')||bossMoves().includes('lava')"));
+run("startYomiLavaWave('shelter');updateYomiWave(2.01);");
+place(run('boss.x+180'),5695);run("player.inv=0;boss.autoCooldown=0;demonAutoAttack(.01);");
+assert.equal(run('boss.autoPhase'),'windup');const hp=snap().player.hp;run('demonAutoAttack(.68);');assert.equal(snap().player.hp,hp);run('demonAutoAttack(.03);');assert.equal(snap().player.hp,hp-2);assert.equal(run('boss.move'),'lava');
+run("resetBossBattle();state='play';bossStarted=true;boss.inv=0;hitBoss(boss.max*.2);updateSummons(1);");
+assert.equal(run('enemies.filter(e=>e.summoned&&!e.dead).length'),2);
 assert(run("enemies.some(e=>e.summoned&&e.kind==='mage')&&enemies.some(e=>e.summoned&&e.kind==='guard')"));
-run('scheduleMinions();updateSummons(1);scheduleMinions();updateSummons(1);');assert.equal(run('enemies.filter(e=>e.summoned&&!e.dead).length'),4);assert.equal(run('boss.summons.length'),0);
+run('boss.inv=0;hitBoss(boss.max*.2);updateSummons(1);');assert.equal(run('enemies.filter(e=>e.summoned&&!e.dead).length'),4);
 const xpBefore=snap().progression.totalXp;run('var minion=enemies.find(e=>e.summoned);minion.hp=0;killEnemy(minion);killEnemy(minion);');assert.equal(snap().progression.totalXp,xpBefore+8);
-run("projectiles.push({source:'minion',life:5});scheduleMinions();resetBossBattle();");assert.equal(run('enemies.filter(e=>e.summoned).length'),0);assert.equal(run('boss.summons.length'),0);assert(!run("projectiles.some(p=>p.source==='minion')"));
+run("projectiles.push({source:'minion',life:5});resetBossBattle();");assert.equal(run('enemies.filter(e=>e.summoned).length'),0);assert.equal(run('boss.summons.length'),0);assert(!run("projectiles.some(p=>p.source==='minion')"));
 
 // Normal angel has only holy attacks; 50% changes form without refilling health or paying XP.
 run("flags=[[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;");assert.equal(run('boss.stage'),1);assert(run("bossMoves().every(m=>m==='lightArrows'||m==='holySweep')"));

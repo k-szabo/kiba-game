@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -148,6 +148,10 @@ for key in ('samurai', 'angelLight', 'angelDark', 'angelEclipse', 'oldAngel', 'o
     npcs[key] = {'role': 'miniboss' if key.startswith('old') else 'boss',
                  'paletteGroup': group(identifier, manifest[key], atlas['frames'][key], 'ART_FRAMES.' + key)}
 npcs['demonLord'] = {'role': 'boss', 'faction': 'yomi', 'paletteGroup': group('npc.demonLord', manifest['bosses'], atlas['frames']['bosses'][1], 'ART_FRAMES.bosses[1]')}
+npcs['lavaSerpent'] = {'role': 'miniboss', 'faction': 'yomi', 'variants': {}}
+for action, indices in atlas['serpent']['clips'].items():
+    rects = [atlas['serpent']['frames'][i] for i in indices]
+    npcs['lavaSerpent']['variants'][action] = {'paletteGroup': group('npc.lavaSerpent.' + action, manifest[atlas['serpent']['image']], rects, 'ART_SERPENT.clips.' + action)}
 npcs['shadow'] = {'name': {'hu': 'Árnyék', 'en': 'Shadow'}, 'role': 'prologue-boss', 'variants': {}}
 for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
@@ -228,7 +232,7 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 21, 'Missing current character entry'
+assert len(npcs) == 22, 'Missing current character entry'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'

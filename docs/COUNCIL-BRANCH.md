@@ -4,13 +4,13 @@ Yomi középső mélységének jobb oldalán, a keleti folyópárkányon egy nag
 
 ## A csontkulcs
 
-- Egyetlen démonboss-harc során legalább **négy megidézett miniont** kell legyőzni, majd magát a bosst.
-- A boss életerősávjánál megjelenő számláló mutatja a feltétel teljesítését. Csak az aktív Yomi-összecsapás idézett ellenfelei számítanak; a normál katonák és ugyanazon holttest ismételt találatai nem.
-- Négy vagy több minion után a boss legyőzése megjeleníti a **4 tanácsos kulcsát** a boss termének közepén. Ez külön felvehető, csontból készült tárgy; az interakciógombbal kell megszerezni.
+- Egyetlen démonboss-harc során **nyolc megidézett miniont** kell legyőzni, majd magát a bosst. Két-két minion a boss 80/60/40/20%-os HP-küszöbén érkezik.
+- A feltétel titkos: nincs képernyős számláló, pontos kapunyitási recept vagy elmaradt jutalomra utaló győzelmi üzenet. Csak az aktív Yomi-összecsapás saját idézett ellenfelei számítanak; a normál katonák és ugyanazon holttest ismételt találatai nem.
+- Nyolc minion után a boss legyőzése megjeleníti a **4 tanácsos kulcsát** a boss termének közepén. Ez külön felvehető, csontból készült tárgy; az interakciógombbal kell megszerezni.
 - Halál, szentélypihenés vagy az összecsapás elhagyása új próbát jelent. A külön harcok ölési számai nem adódnak össze.
 - A kulcsdobás jogosultsága és a kapu feloldása az adott verzión belül mentődik, halál után is megmarad. Az első kapunyitáskor a kulcs elporlad és eltűnik a tárgyak közül; a nyitott kapun később kulcs nélkül is átjárhatsz.
 
-A boss nem hívható vissza. Ha a győzelemkor nem volt meg a négy minion, az opcionális ág azon az utazáson kimarad; új játékban próbálható ismét. A fő történet továbbra is végigjátszható.
+A boss nem hívható vissza. Ha a győzelemkor nem volt meg a nyolc minion, az opcionális ág azon az utazáson kimarad; új játékban próbálható ismét. A fő történet továbbra is végigjátszható.
 
 ## A kastély
 
@@ -34,6 +34,6 @@ Az ART_COUNCIL metaadatok őrzik a méreteket és illesztési pontokat. A kasté
 
 ## Ellenőrzés
 
-A scripts/test-council-branch.cjs a 0/3/4/5 minionos feltételt, tényleges kardtalálatos minionölést, számláló-visszaállítást, a végleg kimaradt kulcsot, a visszahívás hiányát, egyszeri bossjutalmat, tárgyfelvételt, mentési láncot, verzióhoz kötött mentéseket, az üres belső pályát és a visszatérési útvonalakat ellenőrzi. Része az npm test parancsnak és a Pages workflow-nak; a képméreteket, alfát és padlóregisztrációt is vizsgálja.
+A scripts/test-council-branch.cjs a 0/7/8 minionos feltételt, tényleges kardtalálatos minionölést, belső számláló-visszaállítást és rejtettséget, a végleg kimaradt kulcsot, a visszahívás hiányát, egyszeri bossjutalmat, tárgyfelvételt, mentési láncot, verzióhoz kötött mentéseket, az üres belső pályát és a visszatérési útvonalakat ellenőrzi. Része az npm test parancsnak és a Pages workflow-nak; a képméreteket, alfát és padlóregisztrációt is vizsgálja.
 
 A független Chrome QA HU/EN asztali és mobilnézetben ellenőrizte a kaput, a kulcsot, az átjárást, a feliratot, a szünetet, a térképes visszatérést és a valódi titkosított IndexedDB-mentés újratöltését. A böngészős teszt szintetikus haladási adatot, pozicionálást és sebzést használt egy kizárólag tesztként kiszolgált példányban; a valódi idézést, öléskezelést, bossgyőzelmet és interakciókat futtatta. A kardtalálat időzítését külön a VM-teszt ellenőrzi. Ez nem teljes, kézi végigjátszás.

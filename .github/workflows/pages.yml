@@ -56,6 +56,8 @@ jobs:
           node scripts/test-inventory.cjs
           node scripts/test-release-ids.mjs
           node scripts/test-eclipse-relic.cjs
+          node scripts/test-yomi-redesign.cjs
+          node scripts/test-serpent-art.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

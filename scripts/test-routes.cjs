@@ -14,7 +14,15 @@ run('abilities[0]=true;');press(' ');tick(25);release(' ');press(' ');tick();ass
 assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),false);
 for(const id of ['forestBell','villageBell']){const o=run(`level.objects.find(o=>o.id==='${id}')`);place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[0].includes(id));dismiss();if(id==='forestBell')assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),false);}
 assert.equal(run("gatePass(level.gates.find(g=>g.kind==='bells'))"),true);
-function defeat(){const p=run('level.boss');place(p.x-60,p.y);run('bossStarted=true;boss.phase="recover";boss.clock=999;player.face=1;player.inv=999;');for(let i=0;i<80&&!snap().boss.dead;i++){press('j');tick(60);release('j');}assert(snap().boss.dead);dismiss();}
+function defeat(){
+ const p=run('level.boss');place(p.x-60,p.y);run('bossStarted=true;boss.phase="recover";boss.clock=999;player.face=1;player.inv=999;');
+ for(let i=0;i<100&&!snap().boss.dead;i++){
+  // The route fixture relocates between authored combat surfaces, as it does
+  // between checkpoints; hits still use the real key, sword timing and damage.
+  if(snap().realm===1){const target=run("boss.yomiStage==='shelter'?boss.serpent:boss");place(target.x-60,target.y+target.h);run('player.face=1;');}
+  press('j');tick(60);release('j');
+ }assert(snap().boss.dead);dismiss();
+}
 defeat();let exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('e');assert.equal(snap().realm,1);dismiss();assert.equal(snap().world.height,6250);
 // Descend through a stone platform with S + Space. It cannot drop through a seal.
 place(1530,450);tick();run("player.support='entry';keys.add('s');");press(' ');tick(35);release(' ');release('s');assert(snap().player.y+69>475);

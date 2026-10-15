@@ -33,6 +33,7 @@ const SaveVault=(()=>{
   const council=data.flags[1];
   const earned=council.includes('councilKeyEarned'),held=council.includes('councilKey'),gateOpen=council.includes('councilGateOpen');
   if(earned&&!data.defeated[1]||held&&(!earned||gateOpen)||gateOpen&&(!earned||held))throw Error('Invalid council progress');
+  if(council.includes('serpentScale')&&(!data.defeated[0]||!['soulUpper','soulLower'].every(id=>council.includes(id))))throw Error('Invalid serpent reward');
   if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won&&(!data.defeated[2]||data.realm!==2))throw Error('Invalid victory');
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');

@@ -1,5 +1,7 @@
 # Kiba: Három világ
 
+[English](README.en.md)
+
 Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
 **[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)
@@ -63,6 +65,8 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 ## Dokumentáció
 
 - [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md) – láncos kapu, csontkulcs és egy üres démoni kastélybelső.
+- [A Yomi boss és a lávakígyó](docs/YOMI-BOSS.md) – a minionküszöbök, a két lávaszakasz és a pikkely részletes szabályai.
+- [Inventory és tárgyak](docs/INVENTORY.md) – hátizsák, felszerelés, ereklyék és tárgyikonok.
 - [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md) – projektspecialisták, fájlfelelősségek és kötelező javítási terv QA-visszadobás után.
 
 - [A 0.8.4 boss-effektusai](docs/BOSS-VFX-0.8.4.md) – részletes láva, földrengés, kardcsóvák, árnymágia és idézés.

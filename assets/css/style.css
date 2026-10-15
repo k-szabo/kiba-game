@@ -92,7 +92,7 @@
 #menu .release-notes>.menu-note::after{content:"";width:9px;height:9px;flex:none;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-bottom:5px}
 #menu .release-notes[open]>.menu-note::after{transform:rotate(225deg);margin-bottom:-4px}
 #menu .release-notes>.menu-note:hover{background:#243e48}
-.release-notes-panel{position:absolute;top:calc(100% + 8px);right:0;width:min(440px,calc(100vw - 40px));max-height:min(540px,calc(100dvh - 98px));overflow:auto;overscroll-behavior:contain;padding:20px 22px;background:#10242ff7;color:#f3eddd;border:1px solid #d9ba7b;border-radius:8px;box-shadow:0 16px 45px #0009;text-align:left;line-height:1.6;letter-spacing:0;scrollbar-gutter:stable;overflow-wrap:anywhere}
+.release-notes-panel{position:absolute;top:calc(100% + 8px);right:0;width:min(440px,calc(100vw - 40px));max-height:min(540px,calc(100dvh - max(14px,env(safe-area-inset-top)) - var(--release-badge-height,68px) - 22px));overflow:auto;overscroll-behavior:contain;padding:20px 22px;background:#10242ff7;color:#f3eddd;border:1px solid #d9ba7b;border-radius:8px;box-shadow:0 16px 45px #0009;text-align:left;line-height:1.6;letter-spacing:0;scrollbar-gutter:stable;overflow-wrap:anywhere}
 .release-notes-panel:focus-visible{outline:3px solid #ffe3a2;outline-offset:2px}
 .release-notes-panel h2{font-family:Manrope,Segoe UI,sans-serif;font-size:22px;line-height:1.3;margin:0 0 20px;color:#fff0c8}
 .release-notes-panel section+section{margin-top:20px;padding-top:16px;border-top:1px solid #d9ba7b70}
@@ -164,4 +164,11 @@
  #inventoryMomo{width:min(100%,240px)}
  .inventory-weapon-slot{position:static;align-self:flex-end;transform:none;width:140px;max-width:100%}
  .inventory-weapon-slot::before{display:none}
+}
+/* Compact battle HUD leaves the world-space attack tells unobstructed. */
+@media(max-width:650px){
+ #game.encounter-active #quest,#game.encounter-active #relicInventory{display:none}
+ #game.encounter-active #bossHud{top:125px;left:12px;right:12px;padding:5px 8px}
+ #game.encounter-active #bossName{display:block;font-size:14px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #game.encounter-active #bossHud>div{height:4px;margin-top:4px}
 }

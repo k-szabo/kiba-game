@@ -1,0 +1,37 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "assets/images/enemies/lava-serpent-v1.png",
+      "reference_images": [
+        "assets/images/enemies/bosses-v4.png",
+        "assets/images/effects/lava-surface-v1.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: REAL TWELVE-FRAME combat animation sprite atlas for a giant lava serpent boss in Kiba, a detailed painted Japanese fantasy side-scroller.\nReferences: image1 gives the game's crisp richly painted demonic black rock, orange magma cracks, dark outlined detail; use its MIDDLE demon boss row for style/material only, not the humanoid anatomy. Image2 gives restrained molten rock colors only, not a background.\nCreate ONE animation atlas, exactly 4 equal columns and 3 equal rows, 12 separate same-size cells. Preferred native canvas2048\u0102\u20141536, cells512\u0102\u2014512, at least384\u0102\u2014384 native percell. No drawn grid or labels. Every cell contains exactly one complete version of the SAME massive serpentine lava demon facing LEFT, including full head, coiled long limbless body and tapered tail. Tail on RIGHT, eye on LEFT. No legs, hands, wings, held weapons or humanoid torso. Dark cool obsidian overlapping scale plates, narrow molten orange cracks between some plates, red ember fins along spine, pale slate-gray edge highlights, gold-yellow eyes, pale curved fangs. Most body stays cool dark rock so readable above red lava. Crisp inked edges and dense painted shading like reference enemies, NOT flat vector or simple cartoon.\nMaintain consistent identity, scale, facing direction, coil base ground line at roughly86% of each cell, head/eye around35% fromleft and35% fromtop in resting poses. Full horns, jaw, tailtip and every fin stay inside their own cell with at least5% transparent gutters; no sprite overlaps or surrounding flame cloud.\nFrames left-to-right, top-to-bottom, clearly different body, head and jaw deformation, not copies:\nRow1 = 1 breathing idle coils low mouth closed; 2 idle neck lifted slightly jaw still closed tail flexed; 3 idle relaxed exhale neck lower; 4 attack windup neck retracts and head draws back, eyes narrow.\nRow2 = 5 stronger windup neck curved far back and jaw halfopen; 6 maximum windup raised head and widely open jaw exposing fangs; 7 bite release head lunges sharply LEFT and downward, mouth open; 8 full bite extension jaws snap nearly shut neck stretches and coil tightens.\nRow3 = 9 bite completion jaws closed head low and forward, tail whipped; 10 recovery head lifts and jaw relaxes; 11 recovery coils reform neck retracts; 12 back to neutral coil, near frame1 for smooth loop.\nThis must be a useable production sprite sheet, NOT a concept page, no scenery/pedestal/ground, no title/numbers/typography/watermark. Fully transparent alpha across all background and gutters; only the serpent itself. No orange backdrop, no drop shadow plate, no white flash or effect obscuring anatomy.",
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "animationMetadata": "assets/config/lava-serpent-art.json",
+      "note": "Original RGBA copied byte-for-byte. Twelve separate painted poses. Rectangles preserve complete tails beyond nominal362pxcells. Each exact source-coordinate pixel-square hull outline has0.1px outward padding; Canvas pixel-center raster proof includes all own >8alpha component pixels and zero foreign component pixels. No source image pixels edited."
+    },
+    {
+      "path": "assets/images/ui/serpent-scale-v1.png",
+      "reference_images": [
+        "assets/images/enemies/lava-serpent-v1.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: standalone loot inventory icon for Kiba illustrated Japanese fantasy game. Image1 is the lava serpent character reference: preserve its cool black volcanic armor-scale and narrow hot magma fissure materials. Generate ONE single shed lava serpent scale, not the serpent or a pile. A broad pointed teardrop/diamond obsidian scale, subtly curved, faceted and ridged like dark polished volcanic armor, with a deep orange-red molten core glimpsed through three narrow branching cracks. A restrained antique-gold mineral rim follows part of the dark scale perimeter, plus pale cool slate edge highlights so the item reads clearly on blue-gray inventory tile at60pixels. Strong compact single-object silhouette. Rich detailed hand-painted game prop style, crisp dark inked contours, textured rock plates and warm reflected magma, NOT flat vector, NOT photoreal product photography. Native1024\u0102\u20141024orhigher. Entirescale includingpoint andrim fullyinsideframe with8%transparentmargin. True transparent alpha background. NO floor/pedestal/magma pool, flame cloud, surrounding glow haze, rectangular background, UI/frame, lettering, watermark, extra scales, wings or humanoid parts. Molten red detail is confined within scale, most surface remains dark obsidian.",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "recommendedCrop": {
+        "x": 125,
+        "y": 40,
+        "w": 1104,
+        "h": 1184
+      },
+      "note": "Original RGBA copied byte-for-byte; alpha0..255, >8alpha bbox(141,56)-(1213,1208)."
+    }
+  ]
+}

@@ -7,34 +7,39 @@ function freshYomi(defeatedBoss=false){
  place(1500,5800);
 }
 function killSummons(count){
- for(let i=0;i<count;i+=2){
-  run('boss.targetX=1500;scheduleMinions();updateSummons(1);');
-  const living=run('enemies.filter(e=>e.summoned&&!e.dead).map(e=>e.id)');
-  for(const id of living.slice(0,Math.min(2,count-i)))run(`var councilVictim=enemies.find(e=>e.id===${JSON.stringify(id)});councilVictim.hp=0;killEnemy(councilVictim);`);
+ let remaining=count;
+ while(remaining>0){
+  let living=Array.from(run('enemies.filter(e=>e.summoned&&!e.dead).map(e=>e.id)'));
+  if(!living.length){
+   const target=[.8,.6,.4,.2][run('boss.summonThresholds.length')];assert(target,'Only eight minions exist in one fight');
+   run(`boss.inv=0;hitBoss(Math.max(0,boss.hp-boss.max*${target}));`);
+   if(run("boss.yomiStage==='shelter'"))run('boss.waveWarning=0;boss.lava.active=true;updateYomiWave(12);');
+   run(`boss.inv=0;hitBoss(Math.max(0,boss.hp-boss.max*${target}));updateSummons(1);`);
+   living=Array.from(run('enemies.filter(e=>e.summoned&&!e.dead).map(e=>e.id)'));assert(living.length);
+  }
+  for(const id of living.slice(0,remaining)){run(`var councilVictim=enemies.find(e=>e.id===${JSON.stringify(id)});councilVictim.hp=0;killEnemy(councilVictim);`);remaining--;}
  }
 }
-function defeatBoss(){run('boss.inv=0;hitBoss(boss.hp);');dismiss();}
+function defeatBoss(){
+ for(let i=0;i<5&&!run('boss.dead');i++)run("if(boss.yomiStage==='shelter'){boss.waveWarning=0;boss.lava.active=true;updateYomiWave(12);}else{boss.inv=0;hitBoss(100000);}");
+ assert(run('boss.dead'));dismiss();
+}
 function useAt(point){const hp=snap().player.hp;place(point.x,point.y);run(`player.hp=${hp};`);press('e');tick();release('e');dismiss();}
 
-// A real summon dies to the timed sword impact and updates the visible objective.
+// Real sword kills count privately; boss label never exposes the secret condition.
 freshYomi();const baseBossName=run('bossName()');
-run('bossStarted=true;');const zeroCounter=run('bossName()');assert.notEqual(zeroCounter,baseBossName);
-run('boss.targetX=1500;scheduleMinions();updateSummons(1);var swordMinion=enemies.find(e=>e.summoned);');
-assert.equal(run('boss.councilMinionKills'),0);
+run('bossStarted=true;boss.inv=0;hitBoss(boss.max*.2);updateSummons(1);var swordMinion=enemies.find(e=>e.summoned);');
+assert.equal(run('bossName()'),baseBossName);assert.equal(run('boss.councilMinionKills'),0);
 place(run('swordMinion.x-35'),run('swordMinion.y+swordMinion.h'));run('player.face=1;');
 for(let i=0;i<8&&!run('swordMinion.dead');i++)run('attackCooldown=0;melee();advanceSwordAttack(SWORD_IMPACT);');
-assert(run('swordMinion.dead'));assert.equal(run('boss.councilMinionKills'),1);assert.notEqual(run('bossName()'),zeroCounter);
-assert.equal(run('bossName()'),run("I18n.format('council.boss.counter',[realms[1].boss,1])"));
-run('boss.councilMinionKills=8;');assert.equal(run('bossName()'),run("I18n.format('council.boss.counter',[realms[1].boss,4])"));
-run('boss.dead=true;');assert.equal(run('bossName()'),baseBossName);
-run('boss.dead=false;bossStarted=false;');assert.equal(run('bossName()'),baseBossName);
-run("bossStarted=true;flags[1].push('councilKeyEarned');");assert.equal(run('bossName()'),baseBossName);
+assert(run('swordMinion.dead'));assert.equal(run('boss.councilMinionKills'),1);assert.equal(run('bossName()'),baseBossName);
+run('boss.councilMinionKills=8;');assert.equal(run('bossName()'),baseBossName);
 
 // Count only newly killed summons during one active, outdoor Yomi attempt.
 freshYomi();
 assert.equal(run('typeof startCouncilRematch'),'undefined','The removed boss retry API must stay absent');
 assert(!run("Object.hasOwn(boss,'rematch')"));
-killSummons(2);assert.equal(run('boss.councilMinionKills'),0,'Pre-encounter summons cannot count');
+run('scheduleMinions(.8);updateSummons(1);');assert.equal(run('enemies.filter(e=>e.summoned).length'),0,'Pre-encounter summons are forbidden');
 run('resetBossBattle();bossStarted=true;');killSummons(2);
 assert.equal(run('boss.councilMinionKills'),2);
 const xp=snap().progression.totalXp,shards=snap().shards;
@@ -43,12 +48,12 @@ assert.equal(run('boss.councilMinionKills'),2);assert.equal(snap().progression.t
 run('var ordinary=enemies.find(e=>!e.summoned&&!e.miniboss);ordinary.hp=0;killEnemy(ordinary);');
 assert.equal(run('boss.councilMinionKills'),2,'Ordinary Yomi guards cannot count');
 assert(!run('awardCouncilKeyDrop()'),'A living boss cannot drop the key');
-run('boss.dead=true;');killSummons(2);assert.equal(run('boss.councilMinionKills'),2,'Post-victory minions cannot count');
+run('boss.dead=true;scheduleMinions(.6);updateSummons(1);');assert.equal(run('boss.councilMinionKills'),2,'Post-victory minions cannot count');
 run('resetBossBattle();');assert.equal(run('boss.councilMinionKills'),0);
-run('enterRealm(0);bossStarted=true;');killSummons(2);assert.equal(run('boss.councilMinionKills'),0,'Other realm summons cannot count');
+run('enterRealm(0);bossStarted=true;scheduleMinions();updateSummons(1);for(const e of enemies.filter(e=>e.summoned)){e.hp=0;killEnemy(e);}');assert.equal(run('boss.councilMinionKills'),0,'Other realm summons cannot count');
 
-// The fourth kill qualifies, but only the boss victory makes the drop permanent.
-for(const count of [0,3,4,5]){
+// The eighth kill qualifies, but only the boss victory makes the drop permanent.
+for(const count of [0,7,8]){
  freshYomi();run('bossStarted=true;');killSummons(count);
  assert.equal(run('boss.councilMinionKills'),count);
  assert(!snap().flags[1].includes('councilKeyEarned'));
@@ -56,9 +61,9 @@ for(const count of [0,3,4,5]){
  assert.equal(snap().progression.totalXp,firstVictory.progression.totalXp+150);
  assert.equal(snap().shards,firstVictory.shards+20);
  assert(snap().defeated[1]);
- assert.equal(snap().flags[1].includes('councilKeyEarned'),count>=4,`${count} summon kills produced the wrong key result`);
+ assert.equal(snap().flags[1].includes('councilKeyEarned'),count>=8,`${count} summon kills produced the wrong key result`);
  assert(!run('awardCouncilKeyDrop()'),'Repeated victory callbacks must not award another key');
- assert.equal(snap().flags[1].filter(f=>f==='councilKeyEarned').length,count>=4?1:0);
+ assert.equal(snap().flags[1].filter(f=>f==='councilKeyEarned').length,count>=8?1:0);
  validate(run('saved'));
 }
 
@@ -79,12 +84,12 @@ for(const reset of ['revive();','resetBossBattle();','persist();mainMenu();start
  assert.equal(JSON.stringify(snap().progression),missedProgress);assert.equal(snap().shards,missedShards);
  assert(!run('enterCouncilHall()'));
 }
-run('boss.councilMinionKills=4;boss.hp=0;');assert(!run('awardCouncilKeyDrop()'));
+run('boss.councilMinionKills=8;boss.hp=0;');assert(!run('awardCouncilKeyDrop()'));
 run('startGame();');assert(run('Prologue.active'));assert(snap().defeated.every(v=>!v));assert(snap().flags.every(f=>!f.length));
 run('Prologue.wake();');dismiss();
 
 // The pickup survives a reload. The chained gate needs the actual key item.
-freshYomi();run('bossStarted=true;');killSummons(4);defeatBoss();
+freshYomi();run('bossStarted=true;');killSummons(8);defeatBoss();
 run('persist();mainMenu();startGame(true);');dismiss();
 assert(snap().flags[1].includes('councilKeyEarned'));
 const key=run("level.objects.find(o=>o.id==='councilKey')");assert(key);

@@ -1,44 +1,28 @@
-# Assetek és a repository rendbetétele
+# Projektleltár és takarítás
 
-Az útmutató a jelenlegi **0.7** forrás ellenőrzésén alapul. A képfájlok verziószámai együtt használt grafikai generációkat jelölnek, ezért egy teljes v3 vagy v4 készlet törlése eltörné a játékot.
+Az ellenőrzés dátuma: **2026-10-15**, a 0.9.11-re épülő bugfix-kiadás. A teljes kiadásazonosítót az `assets/config/release.json`, a javításlistát a [kiadási nyilvántartás](releases.json) tartalmazza.
 
-## Törölhető régi képek
+## Képek és hivatkozások
 
-A következő öt PNG nincs a játék betöltési listájában, és az eredeti Momo-kép külön betöltése sem hivatkozik rájuk:
+Az `assets/images/` jelenlegi 54 PNG-jéből 51 az `ART_MANIFEST` listából töltődik be. Momo alapképe és menüanimációja két közvetlen `Image.src` hivatkozás. A fennmaradó `enemies/shadow-prologue-v1.png` az Árnyék-animációk dokumentált eredeti karakterreferenciája; a [prológus](PROLOGUE.md) és a [generálási prompt](art-prompts/shadow-combat-v2.json) használja.
 
-```text
-assets/images/enemies/japan-v3.png
-assets/images/enemies/yomi-v3.png
-assets/images/enemies/heaven-v3.png
-assets/images/terrain-v3.png
-assets/images/props-v3.png
-```
+A fájlnevekben a v3/v4 grafikai generációt jelent. A v3 tájak, v4 terep, tárgyak és ellenfélanimációk továbbra is aktívak. A korábban eltávolított v3 ellenfélképek, terep és tárgylapok nincsenek már a projektben. Verziószám alapján ne törölj készleteket.
 
-Összesen **14 819 986 bájt**, körülbelül **14,13 MiB** a munkakönyvtárban és a következő publikált csomagban. Egy külön másolatból kihagyva őket mind az öt ellenőrzés sikeresen lefutott: `check-site.mjs`, `test-combat.cjs`, `test-v05.cjs`, `test-v06.cjs`, `test-routes.cjs`.
+Az asset- és dokumentációs képek között nincs byte-azonos duplikátum. A `docs/images/` három képe a README és a titkos területek illusztrációja; a helyi dokumentációs linkeket is ellenőriztük.
 
-A törlés a korábbi Git-commitok méretét nem csökkenti: azokban a régi képek továbbra is megmaradnak. Nincs szükség az előzmények átírására.
+## A működéshez és fejlesztéshez szükséges fájlok
 
-## Megtartandó képek
+- Az `index.html`, `.nojekyll` és `assets/` a statikus GitHub Pages-csomag.
+- Az `assets/js/` forrásmoduljai a generált `runtime.js` újraépítéséhez szükségesek. A runtime is Gitben marad, mert ezt szolgálja ki a játék.
+- A `scripts/` összes fájlja build, kiadáskezelő, palette-export, teszt vagy ezek importált segédmodulja. Mind a 22 tesztcsomag npm- és CI-ellenőrzés része.
+- A `.github/workflows/pages.yml` végzi az ellenőrzést és a publikálást. A Git-előzmények, `.gitignore`, `.gitattributes` és `package.json` a repository működéséhez kellenek.
+- Az `AGENTS.md`, `.codex/config.toml`, `.codex/agents/`, `.agents/skills/` és `docs/` a közös fejlesztési folyamat, QA, lokalizáció, grafikai referencia és kiadáskezelés része.
+- A `colormaps.json` a kért színreferencia; a `lava-serpent-art.json` a natív képkockák kivágásainak és kontúrjainak ellenőrzött referenciája.
 
-| Készlet | Mit használ a játék? |
-| --- | --- |
-| Eredeti Momo | `assets/images/momo.png` |
-| v3 hátterek | A `backgrounds/` mappa mindhárom képe: `japan-v3.png`, `yomi-v3.png`, `heaven-v3.png`. |
-| v4 terep és tárgyak | `terrain-v4.png`, `props-v4.png`. |
-| v4 ellenfelek | Mindhárom világ `*-walk-v4.png` és `*-attack-v4.png` animációi, valamint `bosses-v4.png`. |
-| v6 titkos területek | `old-angel-v6.png`, `old-cultist-v6.png`, valamint a háttérmappában `angel-ruins-v6.png` és `cult-cave-v6.png`. |
-| v5 kiegészítések | `momo-slash-v5.png`, `relics-v5.png`, `samurai-v5.png` és az angyal három `angel-*-v5.png` alakja. |
+A projektben nincs fölösleges `dist/`, `_site/`, `node_modules/` vagy elhagyott `.tmp`, `.bak`, `.orig`, `.rej`, `.pyc` fájl. Új törlés előtt a manifest, közvetlen HTML/JS/CSS-hivatkozások, importok, tesztek és dokumentáció együtt vizsgálandó.
 
-A jelenlegi játék összesen **23 képfájlt** tölt be. A listát az `assets/js/art-data.js` fájl `ART_MANIFEST` objektuma és a `game.js` Momo-képre mutató hivatkozása határozza meg. Régi képekre a grafikai dokumentáció még hivatkozhat; ez történeti háttéranyag, nem a játék betöltési útvonala.
+## Eltávolított helyi maradványok
 
-## Egyéb fájlok
+A korábbi, ignorált `.codex/work/` munkaterületről **2047 fájlt, 1 237 911 205 bájtot** töröltünk: régi QA-futtatások saját profiljait, screenshotokat, jelentéseket, átmeneti képelemzéseket és másolt tesztprojekteket. Ezek a jelenlegi játékhoz és a verziókezelt fejlesztési folyamathoz már nem szükségesek. A mostani ellenőrzés külön `current-cleanup/` almappában marad meg.
 
-- **Tartsd meg:** `index.html`, az `assets/js/` összes fájlja, `assets/css/style.css` és a fenti aktív képek.
-- **Tartsd meg a jelenlegi ellenőrzéshez és publikáláshoz:** `.github/workflows/pages.yml`, `.nojekyll` és a teljes `scripts/` mappa. A workflow közvetlenül futtatja a teszteket, amelyek a közös `test-harness.cjs` fájlt is használják.
-- **Érdemes megtartani:** `.gitignore`, `.gitattributes`, a README és a dokumentáció. Nem futtatnak játéklogikát, de segítenek a repository karbantartásában.
-- **A helyi `.git` mappát őrizd meg:** ez tárolja a repository előzményeit és beállításait. Kézi GitHub-feltöltéshez nem kell külön feltölteni.
-- **Opcionális háttéranyag:** a `docs/*PROMPTS.json`, `docs/ART-DESIGN.md`, `docs/POLISH-0.4.md` és `docs/BOSSES-0.5.md` a játék működéséhez nem szükséges. Ha ezekből törölsz, frissítsd a rájuk mutató dokumentációs hivatkozásokat is. Az új README az ART-DESIGN és BOSSES leírásokra hivatkozik.
-
-Ha a repositoryban vannak helyi ZIP-ek, régi teljes játékcsomagok vagy `_site/` kimenetek, és semmi nem hivatkozik rájuk, ezeknek nem kell a verziókezelt forrásban szerepelniük. Az ellenőrzött jelenlegi forrásban nem volt szükséges `dist/` mappa.
-
-Az itt elkészített dokumentációfrissítés nem töröl automatikusan semmilyen assetet.
+Ez a helyi takarítás nem csökkenti a Git előzményeinek méretét: a munkaterület eleve ignorált volt. A GitHub Pages workflow továbbra is kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát publikálja. Személyes böngészőprofil vagy mentés a projektmappán kívül nem része a takarításnak.

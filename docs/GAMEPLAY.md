@@ -1,14 +1,14 @@
-# Kiba: Három világ · 0.8
+# Kiba: Három világ · Játékmenet és segítség
+
+[English gameplay guide](GAMEPLAY.en.md)
 
 Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 
 ## Indítás és frissítés
 
-A 0.8 csomagban az **index.html** indítja a játékot, a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel. A korábbi külön csomagolt HTML még a 0.2 változatot tartalmazza.
+Az **index.html** indítja a játékot a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel; a generált runtime már a repository része.
 
-Új végigjátszáshoz válaszd **Az utazás kezdetét**. A **Folytatás** megőrzi a régi képességeket, legyőzött őrzőket és lélektöredékeket, de a 0.1 változat helykoordinátái helyett az adott új birodalom bejáratához helyez. A 0.2 és 0.3 mentések közös pihenőhelyeket használnak; a grafikai frissítés miatt nem kell új játékot kezdeni.
-
-Frissítéskor a csomag teljes tartalmát ugyanott cseréld le. A mentések böngészőnként és címenként különböznek; a fájlokhoz tartozó helyi tárolás viselkedése a böngészőtől függ.
+Új utazáshoz válaszd **Az utazás kezdetét**, a korábbi mentés folytatásához pedig a **Folytatás** gombot. Az alfa/béta időszakban minden új játékverzió alaphelyzetbe állítja a haladást, hogy a változó pályák és mentési szabályok ne keveredjenek. A nyelv- és billentyűbeállítások megmaradnak. Azonos verzió újratöltése megőrzi a mentést; részletek a [fejlesztői útmutatóban](DEVELOPMENT.md).
 
 ## Három eltérő kaland
 
@@ -54,13 +54,13 @@ A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelke
 
 ## Yomi opcionális oldalága
 
-Yomi középső mélységének jobb oldalán egy [láncos kapu és opcionális kastélybelső](COUNCIL-BRANCH.md) is felfedezhető. A kapu kulcsát az őrző dobja, ha egyetlen boss-harcban legalább négy megidézett szolgáját legyőzted. A boss nem hívható vissza: ha a feltétel kimarad, az opcionális kastély csak új játékban érhető el. A kulcs a kapu első kinyitásakor megsemmisül, a kapu ezután nyitva marad.
+Yomi középső mélységének jobb oldalán egy [láncos kapu és opcionális kastélybelső](COUNCIL-BRANCH.md) is felfedezhető. A kulcs titkos feltétele, hogy egyetlen boss-harcban mind a **nyolc** megidézett szolgát legyőzd, majd magát a bosst is. A boss nem hívható vissza: ha a feltétel kimarad, az opcionális kastély azon az utazáson elérhetetlenné válik. A kulcs a kapu első kinyitásakor megsemmisül, a kapu ezután nyitva marad.
 
 ## XP és fejlesztés
 
 Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
 
-A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek. A 0.2/0.3 mentések első betöltéskor 1. szintű Momóval indulnak.
+A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek.
 
 ## Ellenfelek
 
@@ -73,12 +73,12 @@ Japánban szamurájok és onmyoji varázslók, Yomiban oni démonok és tenguk, 
 ## Az őrzők támadásai
 
 - **Japán:** széles kardvágás, előre jelzett roham és két egymást követő csapás. A felemelt kard előjelzés, a leengedett kard a visszatámadás ideje.
-- **Yomi:** közelharci kalapácsvágás, kalapácscsapásból feltörő lávaoszlopok, parázsszórás, csatlósok idézése és az egész arénát érintő láva. A lávafázis alatt is rád csaphat a kalapáccsal. Az idézési kapuk megjelenése után csaknem egy másodperced van kitérni; egyszerre legfeljebb négy csatlós élhet. A nagy lávafázis előtt 1,8 másodperc figyelmeztetést kapsz. Ugorj a hét alacsony kőszigetre; balról jobbra repedeznek és omlanak le. A repedés egy másodperccel az omlás előtt látható, az utolsó sziget a láva visszahúzódásáig biztonságos. Halálkor és győzelemkor a platformok és idézett ellenfelek visszaállnak.
+- **Yomi:** közelharci kalapácsvágás, kalapácscsapásból feltörő lávaoszlopok, parázsszórás és csatlósok idézése. 80%, 60%, 40% és 20% életerőnél két-két minion jelenik meg. 50%-nál a boss sebezhetetlenné válik, és a lávaszakaszban egy lávakígyó minibosst kell legyőznöd vagy túl kell élned, amíg az utolsó előtti platform is leomlik. A boss a láva alatt is támad. 10%-nál újabb, ezúttal halálos lávahullám kezdődik: a boss sebezhető marad, az utolsó sziget is összeomlik, és a kígyó visszatér, ha a korábbi szakaszban életben hagytad. A pikkelyért és a kulcs feltételéért lásd a [pokolboss útmutatóját](YOMI-BOSS.md) és a [tanácsosok oldalágát](COUNCIL-BRANCH.md). Halálkor a harc és a platformok újrakezdődnek.
 - **Ég, I. fázis:** fehér szárnyú angyal fénynyilakkal és szent nyílzáporral. 50% életerőnél átalakul.
 - **Ég, II. fázis:** fekete szárnyú sötét angyal célzott árnyéklövedékekkel, árnyéknóvával és árnyékzáporral. Az átalakulás nem gyógyítja vissza.
 - **Titkos III. fázis:** ha Japánban megtaláltad az angyali glóriát ÉS a démonlord szarvát, a II. alak legyőzése után teljes életerővel feléled. Egyszerre használ fényt és árnyékot, pokoltüzet és démonidézést. Az újjáéledés egy harcon belül egyszer történik; a győzelem és jutalom csak ezután jár.
 
-A két ereklyét a 0.6 változatban külön titkos hely és miniboss őrzi. A végső angyal 140 HP-val, a rejtett alak 180 HP-val rendelkezik, és mindhárom alak a varázslatai mellett előre jelzett közelharci vágásokat is használ. [Részletek a 0.6 leírásában](SECRETS-0.6.md).
+A glóriát és a démonúr szarvát külön titkos helyen minibossok őrzik. Ha mindkettőt megszerezted, a végső boss titkos harmadik formája teljes életerővel éled újjá, és fény- valamint árnyéktámadásokat vegyít. Minden alak varázslatai mellett előre jelzett közelharci vágásokat is használ. [Részletek a rejtett helyekről](SECRETS-0.6.md).
 
 Momo **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásakor történik a találat; futás és ugrás közben is látszik. Egy csapás egy célpontot egyszer sebez. Az ereklyéket E-vel veszed fel, a gyűjtemény és a mentés megőrzi őket a következő világokban.
 
@@ -99,8 +99,6 @@ A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol köz�
 
 ## Ellenőrzés
 
-A játékfolyamat ellenőrzése kiterjed a billentyűeseményekre, a kettős ugrásra, a leugrásra, a harangokra, a fogoly őrök elleni harcra, a három őrzőre, az átjárókra, a szélfolyamokra, a függőleges kamerára, a mozgó platformokra, a pecsétekre, a gyorsutazásra, az apa megmentésére és a verzióváltásos mentésresetre.
+A fejlesztői ellenőrzések a játékfolyamatot, a három világ útvonalait, a harcot és bossfázisokat, a mentést, az inventoryt, a fordításokat, a grafikai kivágásokat és a generált Pages-csomagot fedik le. A futtatási parancsokat és azok szerepét a [fejlesztői útmutató](DEVELOPMENT.md) sorolja fel.
 
-A fizikai útvonalkeresés a játék tényleges ugrás-, gravitáció-, leszállás- és szélfolyam-függvényeivel ellenőrzi a fontos pályarészek elérhetőségét és a folyójáratból való visszatérést. A 0.3 ellenőrzése a szerepköröket, pajzsblokkolást, védelmi törést, támadási előkészítést és a sprite-kivágások képen belüli helyzetét is lefedi.
-
-A három birodalom, az animációs ciklusok, a bossok és az erősebb széláramlat vizuális előnézete a játék tényleges rajzolókódjával és Canvas-képkönyvtárral készült. A 0.4 tesztjei a szentélyes újraéledést, XP-t, fejlesztést, mentést, boss-támadásokat és a hét lávasziget fizikai elérhetőségét is lefedik. Az új változat teljes böngészős végigjátszását ebben a környezetben nem lehetett elvégezni.
+A mockolt játékteszt nem ellenőrzi a tényleges böngészőmegjelenítést vagy a profilhoz kötött mentést. Képernyőméret, fókusz, billentyűzet, grafikai olvashatóság és valós böngészős mentés ellenőrzéséhez külön, friss Chrome-profillal végzett QA szükséges.

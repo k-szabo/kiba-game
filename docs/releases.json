@@ -1,4 +1,29 @@
 {
   "schemaVersion": 1,
-  "bugfixes": []
+  "bugfixes": [
+    {
+      "version": "0.9.11_5434103e",
+      "code": "5434103e",
+      "baseVersion": "0.9.11",
+      "slug": "visible-build-id-and-project-cleanup",
+      "summary": {
+        "hu": "Látható bugfix-azonosító és projekt-takarítás",
+        "en": "Visible bugfix identifier and project cleanup"
+      },
+      "fixes": [
+        {
+          "hu": "A főmenü verziójelzése a nyolckarakteres javításazonosítót is tartalmazza.",
+          "en": "The main menu version badge includes the eight-character bugfix identifier."
+        },
+        {
+          "hu": "A teljes azonosító megjelenését magyar és angol nyelven, keskeny nézetben is ellenőrizzük.",
+          "en": "The complete identifier is checked in Hungarian and English, including narrow displays."
+        },
+        {
+          "hu": "Töröltük a korábbi helyi QA-futtatások, képernyőképek és ideiglenes projektmásolatok maradványait.",
+          "en": "Removed remnants of earlier local QA runs, screenshots and temporary project copies."
+        }
+      ]
+    }
+  ]
 }

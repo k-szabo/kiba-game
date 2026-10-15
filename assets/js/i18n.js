@@ -28,6 +28,13 @@ const I18n=(()=>{
   const {lang_orig:native,lang_en:translated}=LOCALES[code];
   return native===translated?native:`${native} | ${translated}`;
  };
+ let releaseBadgeObserver;
+ function sizeReleaseNotes(badge){
+  if(!badge.getBoundingClientRect||!badge.parentElement?.style)return;
+  const measure=()=>{const height=badge.getBoundingClientRect().height;if(height>0)badge.parentElement.style.setProperty('--release-badge-height',`${height}px`);};
+  measure();
+  if(!releaseBadgeObserver&&typeof ResizeObserver!=='undefined'){releaseBadgeObserver=new ResizeObserver(measure);releaseBadgeObserver.observe(badge);}
+ }
  function applyDOM(){
   if(document.documentElement)document.documentElement.lang=locale;
   if(!document.createTreeWalker)return;
@@ -36,7 +43,7 @@ const I18n=(()=>{
   for(const element of document.querySelectorAll('[title],[aria-label],meta[name="description"]'))for(const attr of ['title','aria-label','content'])if(element.hasAttribute(attr))element.setAttribute(attr,t(element.getAttribute(attr)));
   document.title=t(document.title);
   const releaseBadge=document.querySelector('#menu .menu-note');
-  if(releaseBadge){releaseBadge.textContent=format('menu.version',[GAME_RELEASE.version]);releaseBadge.setAttribute('aria-label',format('menu.changelog.toggle',[GAME_RELEASE.version]));}
+  if(releaseBadge){releaseBadge.textContent=format('menu.version',[GAME_RELEASE.version]);releaseBadge.setAttribute('aria-label',format('menu.changelog.toggle',[GAME_RELEASE.version]));sizeReleaseNotes(releaseBadge);}
   for(const picker of document.querySelectorAll('.language-picker')){
    const select=picker.querySelector('select'),details=picker.querySelector('.language-chooser');
    if(!select)continue;

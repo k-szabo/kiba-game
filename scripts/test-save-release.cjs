@@ -82,6 +82,12 @@ async function main(){
  }
  const unearned=copy(council);unearned.defeated[1]=false;unearned.flags[1].push('councilKeyEarned');assert.throws(()=>councilClient.vault.write(unearned),/Invalid council progress/);
 
+ // Snake loot can be earned before the guardian dies, even without collecting
+ // the optional dash shrine first. It is permanent across encrypted reloads.
+ const scale=copy(council);scale.abilities[1]=false;scale.defeated[1]=false;scale.flags[1].push('serpentScale');
+ await councilClient.vault.write(scale);assert.deepEqual(plain(await client(env).vault.ready),scale);
+ const invalidScale=copy(scale);invalidScale.flags[1]=['serpentScale'];assert.throws(()=>councilClient.vault.write(invalidScale),/Invalid serpent reward/);
+
  // The united relic survives actual AES-GCM roundtrips and realm changes.
  const united=fixture();Object.assign(united,{realm:2,abilities:[true,true],defeated:[true,true,true],flags:[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal','eclipseRelic']],visitedRests:[['start'],['start'],['start']],checkpoint:{id:'start',x:420,y:6300}});
  await reload.vault.write(united);assert.deepEqual(plain(await client(env).vault.ready),united);
