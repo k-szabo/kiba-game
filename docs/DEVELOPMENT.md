@@ -58,6 +58,9 @@ node scripts/test-angel-art.cjs
 node scripts/test-boss-vfx.cjs
 node scripts/test-council-branch.cjs
 node scripts/test-save-release.cjs
+node scripts/test-visual-polish.cjs
+node scripts/test-secret-art.cjs
+node scripts/test-changelog.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
@@ -91,6 +94,8 @@ A mellékelt workflow az alapértelmezett branchre érkező push után, illetve 
 A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztatni. Új repository esetén a **Settings → Pages → Build and deployment → Source → GitHub Actions** beállítás használható a mellékelt workflow-val. Lásd a [GitHub hivatalos workflow-útmutatóját](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 A játék relatív útvonalakat használ. Az `index.html` maradjon a repository gyökerében, az `assets/`, `scripts/` és `.github/` mappákkal együtt. A `.nojekyll` fájlt is őrizd meg.
+
+A 0.9.3 vizuális javításai és a változásnapló: [részletes leírás](VISUAL-POLISH-0.9.3.md). A három új regresszióteszt az ugrópózok valódi alfa-méretét, a titkos helyszínek grafikáját és a változásnapló működését ellenőrzi.
 
 ## Frissítés és mentések
 

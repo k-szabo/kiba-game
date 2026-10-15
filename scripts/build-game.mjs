@@ -43,7 +43,7 @@ runtime+='})();\n';
 const output=path.join(root,'assets/js/runtime.js');
 const entryPath=path.join(root,'index.html'),entry=fs.readFileSync(entryPath,'utf8');
 const updatedEntry=entry.replace(/(assets\/(?:js\/runtime\.js|css\/style\.css)\?v=)[0-9.]+/g,(_,prefix)=>prefix+release.version)
-  .replace(/(<p class="menu-note">)[^<]*(<\/p>)/,(_,before,after)=>before+locales.hu.dict['menu.version'].replace('{0}',release.version)+after);
+  .replace(/(<summary class="menu-note"[^>]*>)[^<]*(<\/summary>)/,(_,before,after)=>before+locales.hu.dict['menu.version'].replace('{0}',release.version)+after);
 if(process.argv.includes('--check')){
   if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==runtime){console.error('runtime.js is out of date; run node scripts/build-game.mjs');process.exitCode=1;}
   else console.log('PASS: generated runtime is current.');

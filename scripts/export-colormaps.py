@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -151,6 +151,15 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+for name, definition in atlas['secretWalls'].items():
+    rect = {'x': 0, 'y': 0, 'w': definition['w'], 'h': definition['h']}
+    objects['secretWall.' + name] = {'kind': 'scenery',
+        'paletteGroup': group('object.secretWall.' + name, manifest[definition['image']], rect, 'ART_SECRET_WALLS.' + name),
+        'registration': {k: v for k, v in definition.items() if k != 'image'}}
+    if 'material' in definition:
+        group('object.secretWall.' + name + '.material', manifest[definition['image']], definition['material'], 'ART_SECRET_WALLS.' + name + '.material')
+objects['dashTrail'] = {'kind': 'movement-effect', 'paletteRef': 'effect.shadowBolt',
+    'note': 'Reuses the original painted shadowBolt palette with fading alpha; no recoloring.'}
 for name, definition in atlas['council'].items():
     rect = {'x': 0, 'y': 0, 'w': definition['w'], 'h': definition['h']}
     objects['council.' + name] = {'kind': 'side-area' if name == 'hall' else 'quest-item' if name == 'key' else 'gate',

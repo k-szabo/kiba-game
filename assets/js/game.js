@@ -12,7 +12,7 @@ let abilities=[false,false],defeated=[false,false,false],flags=[[],[],[]],visite
 let player,enemies=[],boss,particles=[],drops=[],projectiles=[],checkpoint=null,visits=new Set();
 let councilReturn=null;
 let attackElapsed=0,attackFace=1,attackHit=false;
-let attack=0,attackCooldown=0,dash=0,dashCooldown=0,jumpBuffer=0,coyote=0,dropTimer=0;
+let attack=0,attackCooldown=0,dash=0,dashCooldown=0,dashTrailClock=0,jumpBuffer=0,coyote=0,dropTimer=0;
 let toastTimer=0,shake=0,sound=false,audio,musicClock=0,context=null,bossStarted=false,loadingReady=false,storageReady=false,saveWarning=false;
 const keys=new Set(),pressed=new Set();
 const realms=[
@@ -33,7 +33,8 @@ function saveFailed(){if(!saveWarning){saveWarning=true;toast(I18n.t("text.savin
 function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add('visible');toastTimer=5;}
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
 function burst(x,y,color,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(noise(time*100+i)-.5)*280,vy:-noise(time*200+i)*230,life:.4+noise(i+time)*.5,color,size:2+noise(i)*4});}
-function initPlayer(point=level.start){const support=platforms.find(p=>!p.broken&&Math.abs(p.y-point.y)<1&&point.x+21.5>p.x&&point.x-21.5<p.x+p.w);player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,onGround:!!support,jumps:0,support:support?.id??null,animationTime:0};attack=0;attackElapsed=0;attackFace=1;attackHit=false;dash=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;shake=0;}
+function emitDashWisp(){if(reducedMotion.matches)return;particles.push({kind:'dashWisp',x:player.x+player.w/2-player.face*12,y:player.y+player.h*.55,vx:-player.face*50,vy:0,life:.32,maxLife:.32,face:player.face});}
+function initPlayer(point=level.start){const support=platforms.find(p=>!p.broken&&Math.abs(p.y-point.y)<1&&point.x+21.5>p.x&&point.x-21.5<p.x+p.w);player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,onGround:!!support,jumps:0,support:support?.id??null,animationTime:0};attack=0;attackElapsed=0;attackFace=1;attackHit=false;dash=0;dashTrailClock=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;shake=0;}
 function resetCamera(){camera=clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW));cameraY=clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H));}
 function enterRealm(n,point=null){councilReturn=null;realm=n;level=levels[n];platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;checkpoint={...(level.rests.find(r=>r.id===point?.id)||level.rests[0])};initPlayer(checkpoint);bossStarted=false;particles=[];drops=[];projectiles=[];visits=new Set();
  enemies=createEnemies();boss=createBoss();Visuals.resetAtmosphere();if(!visitedRests[n].includes('start'))visitedRests[n].push('start');resetCamera();updateHUD();}
@@ -128,7 +129,7 @@ function input(dt){const move=(Bindings.has('moveRight',keys)?1:0)-(Bindings.has
  const support=platforms.find(p=>p.id===player.support);
  if(jumpBuffer>0&&Bindings.has('drop',keys)&&player.onGround&&support?.drop){dropTimer=.22;player.y+=8;player.vy=100;player.onGround=false;player.support=null;player.jumps=1;jumpBuffer=0;coyote=0;}
  const grounded=player.onGround||coyote>0;if(jumpBuffer>0&&(grounded||(abilities[0]&&player.jumps<2))){const airJump=!grounded;player.vy=airJump?-650:-590;player.jumps=airJump?2:1;player.onGround=false;player.support=null;coyote=0;jumpBuffer=0;burst(player.x+20,player.y+69,airJump?'#f0df9c':'#d8e3c9',airJump?16:7);tone(airJump?550:380,.12);}
- if(Bindings.has('attack',pressed))melee();if(Bindings.has('dash',pressed)&&abilities[1]&&dashCooldown<=0){dash=.2;dashCooldown=momoStats().dashCooldown;player.vy=0;burst(player.x+20,player.y+30,'#c8a8ed',14);tone(180,.2,'triangle',.035);}if(Bindings.has('interact',pressed))interact();if(Bindings.has('train',pressed))showTraining();const target=move*285;player.vx=dash>0?player.face*1100:player.vx+(target-player.vx)*Math.min(1,dt*13);}
+ if(Bindings.has('attack',pressed))melee();if(Bindings.has('dash',pressed)&&abilities[1]&&dashCooldown<=0){dash=.2;dashCooldown=momoStats().dashCooldown;player.vy=0;dashTrailClock=.035;emitDashWisp();tone(180,.2,'triangle',.035);}if(Bindings.has('interact',pressed))interact();if(Bindings.has('train',pressed))showTraining();const target=move*285;player.vx=dash>0?player.face*1100:player.vx+(target-player.vx)*Math.min(1,dt*13);}
 function movingPlatforms(dt){levelTime+=dt;for(const p of platforms){const oldX=p.x;if(p.kind==='moving')p.x=p.baseX+Math.sin(levelTime*p.speed+p.phase)*p.range;p.dx=p.x-oldX;if(player.onGround&&player.support===p.id)player.x+=p.dx;}}
 function movePlayer(dt){const before={x:player.x,y:player.y},wasGround=player.onGround;player.x=clamp(player.x+player.vx*dt,0,level.width-player.w);
  for(const g of level.gates){if(gatePass(g)||!overlap(player,g))continue;if(before.x+player.w<=g.x+1){player.x=g.x-player.w;player.vx=0;}else if(before.x>=g.x+g.w-1){player.x=g.x+g.w;player.vx=0;}else if(g.kind==='shadow'){player.x=player.x+player.w/2<g.x+g.w/2?g.x-player.w:g.x+g.w;player.vx=0;}}
@@ -139,11 +140,11 @@ function movePlayer(dt){const before={x:player.x,y:player.y},wasGround=player.on
  if(wasGround&&!player.onGround&&player.vy>=0)coyote=.1;if(player.y>level.height+180)revive(true);}
 function shoot(x,y,vx,vy,color,life=4,kind='orb'){projectiles.push({x,y,vx,vy,color,life,kind});}
 
-function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}time+=dt;player.animationTime+=dt;if(Prologue.active){Prologue.update(dt);pressed.clear();return;}attack=Math.max(0,attack-dt);attackCooldown-=dt;dash=Math.max(0,dash-dt);dashCooldown-=dt;jumpBuffer-=dt;coyote-=dt;dropTimer-=dt;player.inv=Math.max(0,player.inv-dt);shake=Math.max(0,shake-dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
+function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}time+=dt;player.animationTime+=dt;if(Prologue.active){Prologue.update(dt);pressed.clear();return;}attack=Math.max(0,attack-dt);attackCooldown-=dt;dash=Math.max(0,dash-dt);dashCooldown-=dt;jumpBuffer-=dt;coyote-=dt;dropTimer-=dt;player.inv=Math.max(0,player.inv-dt);shake=Math.max(0,shake-dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
  for(const h of level.hazards)if(overlap(player,h))damage(1,player.vx>=0?-1:1);
  const a=level.arena;if(!boss.dead&&player.x+player.w>(a.triggerX??a.x)&&player.x<a.x+a.w&&Math.abs(player.y+player.h-a.y)<160){bossStarted=true;if(!visits.has('boss')){visits.add('boss');checkpoint={...level.rests.find(r=>r.id===a.restId)};if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);persist();toast(realm===0?I18n.t("text.raised.sword.dodge.the.guardian.is.vulnerable.after.the"):realm===1?I18n.t("text.watch.for.cracks.in.the.ground.when.lava.rises"):I18n.t("text.gold.signals.light.arrows.violet.signals.shadow.magic.keep"));}}
  updateBoss(dt);for(const p of projectiles){p.life-=dt;if(p.kind==='arrow')p.vy+=55*dt;if(p.gravity)p.vy+=p.gravity*dt;const beforeX=p.x,beforeY=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;const radius=p.radius||7;const swept={x:Math.min(beforeX,p.x)-radius,y:Math.min(beforeY,p.y)-radius,w:Math.abs(p.x-beforeX)+radius*2,h:Math.abs(p.y-beforeY)+radius*2};if(p.life>0&&overlap(player,swept)){damage(p.damage||1,p.vx>0?1:-1);p.life=0;}}projectiles=projectiles.filter(p=>p.life>0);
- for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=500*dt;}particles=particles.filter(p=>p.life>0);
+ for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.kind!=='dashWisp')p.vy+=500*dt;}particles=particles.filter(p=>p.life>0);
  for(const r of level.rests)if(pointNear(r,105,85)&&!visitedRests[realm].includes(r.id)){visitedRests[realm].push(r.id);checkpoint={...r};persist();toast(I18n.t("text.new.shrine")+r.name+I18n.t("text.fast.travel.here.from.the.map"));}
  camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=keyedInstruction(I18n.t(context.text));const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t((region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):''));updateHUD();
@@ -157,7 +158,7 @@ function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prolog
  for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){drawMomo(level.father.x,level.father.y+4,90,0,Math.floor(time*3)%6,1);ctx.font='11px Manrope, sans-serif';ctx.fillStyle=r.gold;ctx.textAlign='center';ctx.fillText(I18n.t('HARU'),level.father.x,level.father.y-105);}
  for(const p of projectiles)Visuals.projectile(p);
- for(const p of particles){ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;
+ for(const p of particles){if(p.kind==='dashWisp'){ctx.globalAlpha=1;Visuals.dashTrail(p.x,p.y,p.face,1-p.life/p.maxLife);continue;}ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;
  drawPlayer();ctx.restore();const v=ctx.createLinearGradient(0,0,0,H);v.addColorStop(0,'#08121945');v.addColorStop(.3,'#08121900');v.addColorStop(.75,'#08121900');v.addColorStop(1,'#08121988');ctx.fillStyle=v;ctx.fillRect(0,0,viewW,H);ctx.restore();}
 function visiblePoint(p,margin=280){return p.x>camera-margin&&p.x<camera+viewW+margin&&p.y>cameraY-margin&&p.y<cameraY+H+margin;}
 function drawKibaCurrent(){const weak=realm===0&&player.y>1150;ctx.save();ctx.lineWidth=realm===1?2:1.5;ctx.strokeStyle=realm===1?'#c872b8':realm===2?'#e8d89b':'#addbb5';for(let i=0;i<(weak?7:22);i++){const x=camera+noise(i*14.7+realm)*viewW+Math.sin(time*.7+i)*18,y=cameraY+noise(i*29.3+realm*17)*H;ctx.globalAlpha=(weak?.14:.24)+Math.sin(time*2+i)*.08;ctx.beginPath();ctx.moveTo(x,y);if(realm===1){ctx.lineTo(x+8,y-9);ctx.lineTo(x+2,y-18);}else{ctx.quadraticCurveTo(x+8+Math.sin(time+i)*5,y-12,x+6,y-26);}ctx.stroke();}ctx.restore();}
@@ -267,7 +268,9 @@ function drawShrine(x,y,r,ability){Visuals.shrine(x,y,r,ability);}
 
 // Solid paw baselines measured from the original sheet; animation cannot move the collision feet.
 const MOMO_FRAME_BOTTOM=[[202,201,202,202,201,201],[198,201,198,199,199,201,199,192],[193,200,194,199,192,201,194,198],[202,202,202,202],[199,198,171,197,202],[201,201,201,201,201,201,201,201],[201,201,202,202,202,202],[202,202,202,202,202,202],[202,202,202,202,202,202],[202,202,202,202,202,202,202,202],[202,202,202,202,202,202,202,202]];
-function drawMomo(x,feet,size,row,frame,face){if(!sheet.complete||!sheet.naturalWidth)return;ctx.save();ctx.translate(x,feet);if(row!==1&&row!==2&&face<0)ctx.scale(-1,1);const hh=size*208/192,baseline=MOMO_FRAME_BOTTOM[row]?.[frame]??208;ctx.drawImage(sheet,frame*192,row*208,192,208,-size/2,-baseline*size/192,size,hh);ctx.restore();}
+// Visible ink heights measured from the source alpha; keep aerial poses at the standing body scale.
+const MOMO_AIR_INK_HEIGHT=[138,165,168,159,147];
+function drawMomo(x,feet,size,row,frame,face){if(row===4)size*=198/MOMO_AIR_INK_HEIGHT[frame];if(!sheet.complete||!sheet.naturalWidth)return;ctx.save();ctx.translate(x,feet);if(row!==1&&row!==2&&face<0)ctx.scale(-1,1);const hh=size*208/192,baseline=MOMO_FRAME_BOTTOM[row]?.[frame]??208;ctx.drawImage(sheet,frame*192,row*208,192,208,-size/2,-baseline*size/192,size,hh);ctx.restore();}
 function drawMenuMomo(x,feet,size){
  ctx.save();ctx.fillStyle='#08141166';ctx.beginPath();ctx.ellipse(x,feet+2,size*.34,size*.065,0,0,Math.PI*2);ctx.fill();
  if(!menuSheet.complete||!menuSheet.naturalWidth){drawMomo(x,feet,size*.8,0,0,1);ctx.restore();return;}
@@ -298,7 +301,7 @@ function drawPlayer(){
  const row=!player.onGround?4:Math.abs(player.vx)>35?(player.face>0?1:2):0;
  const frame=row===4?(player.vy< -260?1:player.vy<100?2:3):Math.floor(player.animationTime*(row===0?5:12))%(row===0?6:8);
  ctx.save();
- if(dash>0){ctx.globalAlpha=.2;if(attack>0)Visuals.momoSlash(x-player.face*50,feet,92,attackElapsed,attackFace);else drawMomo(x-player.face*50,feet,92,row,frame,player.face);ctx.globalAlpha=1;}
+ if(dash>0&&!reducedMotion.matches){ctx.globalAlpha=.2;if(attack>0)Visuals.momoSlash(x-player.face*50,feet,92,attackElapsed,attackFace);else drawMomo(x-player.face*50,feet,92,row,frame,player.face);ctx.globalAlpha=1;}
  // Protection is a steady translucent cue rather than a flashing disappearing sprite.
  ctx.globalAlpha=player.inv>0&&state==='play'?.82:1;
  if(attack>0)Visuals.momoSlash(x,feet,96,attackElapsed,attackFace);else drawMomo(x,feet,96,row,frame,player.face);

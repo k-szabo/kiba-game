@@ -381,7 +381,18 @@
       "text.save.reset.new.version": "Új alfa/béta verzió érkezett. A korábbi játékhaladás törlődött; új utazást kezdhetsz. A nyelv- és billentyűbeállításaid megmaradtak.",
       "text.save.unavailable": "A mentés most nem érhető el. Az utazás elindítható, de ebben a munkamenetben nem tudunk menteni.",
       "text.save.recovered": "A módosított vagy régebbi másolat helyett az utolsó érvényes mentést töltöttük be.",
-      "text.save.newer.version": "Ez a mentés a játék egy újabb verziójához tartozik. Frissítsd az oldalt; a régebbi verzió nem írhatja felül."
+      "text.save.newer.version": "Ez a mentés a játék egy újabb verziójához tartozik. Frissítsd az oldalt; a régebbi verzió nem írhatja felül.",
+      "menu.changelog.toggle": "V{0}: változásnapló megnyitása vagy bezárása",
+      "menu.changelog.title": "Változásnapló",
+      "menu.changelog.current": "Jelenlegi kiadás",
+      "menu.changelog.093.momo": "Momo mérete ugrás közben is állandó marad.",
+      "menu.changelog.093.arena": "Az öreg angyal arénájának háttere ugrás közben is megmarad.",
+      "menu.changelog.093.art": "Részletesebb falak az angyali romokban és a kultista barlangban; új szellemlépés-effektus.",
+      "menu.changelog.093.menu": "A főmenü verziójelzése alatt megnyitható a változásnapló.",
+      "menu.changelog.092.dash": "Momo nem ragad bele a pokol lila oszlopaiba, ha átsuhan rajtuk.",
+      "menu.changelog.091.branch": "Új, opcionális pokolbéli oldalág: a négy tanácsos démoni kastélya.",
+      "menu.changelog.091.key": "A boss harca alatt négy idézett minion legyőzéséért csontkulcs jár. A kulcs a kapu nyitásakor megsemmisül.",
+      "menu.changelog.091.reset": "Az alfa/béta kiadások között a haladás újraindul; a nyelv és a billentyűkiosztás megmarad."
     }
   },
   "en": {
@@ -766,7 +777,18 @@
       "text.save.reset.new.version": "A new alpha/beta version has arrived. Previous game progress has been reset; a new journey awaits. Your language and key bindings have been kept.",
       "text.save.unavailable": "Saving is currently unavailable. You can start a journey, but progress cannot be saved in this session.",
       "text.save.recovered": "The last valid save was loaded instead of the modified or older copy.",
-      "text.save.newer.version": "This save belongs to a newer game version. Refresh the page; an older version cannot overwrite it."
+      "text.save.newer.version": "This save belongs to a newer game version. Refresh the page; an older version cannot overwrite it.",
+      "menu.changelog.toggle": "V{0}: open or close release notes",
+      "menu.changelog.title": "Release notes",
+      "menu.changelog.current": "Current release",
+      "menu.changelog.093.momo": "Momo keeps a consistent size while jumping.",
+      "menu.changelog.093.arena": "The elder angel arena backdrop stays in place while jumping.",
+      "menu.changelog.093.art": "More detailed walls in the angel ruins and cultist cave, plus a new spirit dash effect.",
+      "menu.changelog.093.menu": "Open these release notes from the version badge in the main menu.",
+      "menu.changelog.092.dash": "Dashing through the purple pillars in Yomi no longer traps Momo.",
+      "menu.changelog.091.branch": "A new optional Yomi branch: the demonic castle of the four councillors.",
+      "menu.changelog.091.key": "Defeat four summoned minions during the boss fight to earn a bone key. Opening the gate consumes the key.",
+      "menu.changelog.091.reset": "Progress resets between alpha/beta releases; language and key bindings are kept."
     }
   }
 }

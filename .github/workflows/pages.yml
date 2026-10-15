@@ -49,6 +49,9 @@ jobs:
           node scripts/test-boss-vfx.cjs
           node scripts/test-council-branch.cjs
           node scripts/test-save-release.cjs
+          node scripts/test-visual-polish.cjs
+          node scripts/test-changelog.cjs
+          node scripts/test-secret-art.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

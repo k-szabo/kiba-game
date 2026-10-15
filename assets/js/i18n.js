@@ -36,7 +36,7 @@ const I18n=(()=>{
   for(const element of document.querySelectorAll('[title],[aria-label],meta[name="description"]'))for(const attr of ['title','aria-label','content'])if(element.hasAttribute(attr))element.setAttribute(attr,t(element.getAttribute(attr)));
   document.title=t(document.title);
   const releaseBadge=document.querySelector('#menu .menu-note');
-  if(releaseBadge)releaseBadge.textContent=format('menu.version',[GAME_RELEASE.version]);
+  if(releaseBadge){releaseBadge.textContent=format('menu.version',[GAME_RELEASE.version]);releaseBadge.setAttribute('aria-label',format('menu.changelog.toggle',[GAME_RELEASE.version]));}
   for(const picker of document.querySelectorAll('.language-picker')){
    const select=picker.querySelector('select'),details=picker.querySelector('.language-chooser');
    if(!select)continue;
@@ -71,7 +71,11 @@ const I18n=(()=>{
    }
   }
  }
- document.addEventListener('pointerdown',event=>{for(const chooser of document.querySelectorAll('.language-chooser[open]'))if(!chooser.contains(event.target))chooser.open=false;});
+ document.addEventListener('pointerdown',event=>{for(const chooser of document.querySelectorAll('.language-chooser[open],#releaseNotes[open]'))if(!chooser.contains(event.target))chooser.open=false;});
+ document.addEventListener('keydown',event=>{
+  const notes=document.querySelector('#menu:not([hidden]) #releaseNotes[open]');
+  if(event.key==='Escape'&&notes){event.preventDefault();event.stopPropagation();notes.open=false;notes.querySelector('summary').focus();}
+ },true);
  function setLocale(value){if(!languages.includes(value))return;locale=value;try{localStorage.setItem('momo-language',value);}catch{}applyDOM();for(const fn of listeners)fn();}
  return Object.freeze({t,format,applyDOM,setLocale,onChange(fn){listeners.push(fn);},get locale(){return locale;},get languages(){return [...languages];}});
 })();
