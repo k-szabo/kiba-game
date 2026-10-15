@@ -425,7 +425,14 @@
       "inventory.hud.label": "Hátizsák",
       "help.inventory.body": "A {0} billentyűvel vagy a hátizsák gombbal megnyithatod a tárgyaidat és Momo felszerelését. A játék közben szünetel.",
       "menu.changelog.097.inventory": "Új, korlátlan bőrhátizsák és felszerelési ablak Momo fegyverével. Alapból az I billentyű nyitja meg, és szünetelteti a játékot.",
-      "menu.changelog.098.inventoryArt": "Élesebb, nagy felbontású Momo-portré és festett katana a felszerelési ablakban, nagy pixelsűrűségű kijelzőkhöz igazítva."
+      "menu.changelog.098.inventoryArt": "Élesebb, nagy felbontású Momo-portré és festett katana a felszerelési ablakban, nagy pixelsűrűségű kijelzőkhöz igazítva.",
+      "menu.changelog.099.itemIcons": "Élesebb és kontrasztosabb hátizsáktárgyak, talapzat nélküli ereklyeikonokkal és az új tárgyakra is érvényes közös megjelenítéssel.",
+      "relic.eclipse.name": "Az Alkonyat Pecsétje",
+      "inventory.description.eclipseRelic": "Az angyali glória és a démonúr szarva a Két Világ Urának bukásakor egyetlen ereklyévé forrt össze. A benne lüktető Kiba fényt és árnyékot hordoz, mégsem tépi többé szét önmagát. Momo győzelmének emléke: az egymásnak feszülő erők is őrizhetik ugyanazt az életet.",
+      "relic.eclipse.dialog.label": "A két világ csendje",
+      "relic.eclipse.dialog.body": "Az őrző térdre rogy. A fény és az árnyék utolsó örvénye is elcsendesül körülötte.\n\n— Évezredekig hittem, hogy az egyik erőnek el kell emésztenie a másikat — suttogja. — Te miért nem választottál közülük?\n\nMomo az apjától kapott amulettre szorítja a mancsát. — Nem győztes világot kerestem. Csak haza akartam vinni őt.\n\nA glória meleg fénye a szarv parazsához simul. Repedéseik összezárulnak; Momo mancsában megszületik az Alkonyat Pecsétje. A Kiba most először nem követel semmit cserébe.",
+      "menu.changelog.0910.releases": "A kisebb hibajavítások nyolckarakteres, visszakereshető verziókódot kaphatnak, rögzített javításlistával.",
+      "menu.changelog.0910.relic": "A titkos végső bossforma legyőzése után a glória és a szarv új ereklyévé egyesül, saját grafikával és párbeszéddel."
     }
   },
   "en": {
@@ -854,7 +861,14 @@
       "inventory.hud.label": "Backpack",
       "help.inventory.body": "Press {0} or use the backpack button to inspect your items and Momo’s equipment. The game pauses while it is open.",
       "menu.changelog.097.inventory": "New unlimited leather backpack and equipment window showing Momo’s weapon. Press I by default to open it and pause the game.",
-      "menu.changelog.098.inventoryArt": "Sharper, high-resolution Momo portrait and painted katana in the equipment window, with high-density display support."
+      "menu.changelog.098.inventoryArt": "Sharper, high-resolution Momo portrait and painted katana in the equipment window, with high-density display support.",
+      "menu.changelog.099.itemIcons": "Sharper, higher-contrast backpack items, pedestal-free relic icons and shared rendering for future items.",
+      "relic.eclipse.name": "Seal of Dusk",
+      "inventory.description.eclipseRelic": "The angelic halo and the Demon Lord’s horn became one relic when the Lord of Two Worlds fell. The Kiba pulsing within carries both light and shadow, yet no longer tears itself apart. A keepsake of Momo’s victory: opposing forces can protect the same life.",
+      "relic.eclipse.dialog.label": "The silence of two worlds",
+      "relic.eclipse.dialog.body": "The guardian falls to his knees. The final swirl of light and shadow grows still around him.\n\n“For ages I believed one power had to devour the other,” he whispers. “Why did you not choose between them?”\n\nMomo closes his paw around his father’s amulet. “I was not looking for a world that would win. I only wanted to bring him home.”\n\nThe halo’s warmth settles against the horn’s embers. Their fractures close; the Seal of Dusk takes shape in Momo’s paw. For the first time, the Kiba asks for nothing in return.",
+      "menu.changelog.0910.releases": "Small fixes can now receive a traceable eight-character release code with a recorded list of changes.",
+      "menu.changelog.0910.relic": "Defeating the hidden final boss form unites the halo and horn into a new relic with its own art and dialogue."
     }
   }
 }

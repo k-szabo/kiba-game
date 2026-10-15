@@ -21,3 +21,19 @@ A billentyűkiosztás `inventory` művelete az `assets/config/keybindings.json` 
 - A portré és a katana rajzfelülete követi a kijelző pixelsűrűségét (legfeljebb 3×), a panel méretaránya változatlan. Mobilon a fegyverkártya továbbra is Momo alatt jelenik meg, átfedés nélkül.
 
 A `scripts/test-inventory.cjs` a tárgyakat, kulcsfogyasztást, szünetet, egyéni vezérlést és a korábbi I-kiosztások megtartását ellenőrzi. A látványt, billentyűzetfókuszt, mobil HUD-ot és tényleges böngészős tárolást külön Chrome QA ellenőrzi.
+
+## Tárgyikonok olvashatósága – 0.9.9
+
+Az `ART_INVENTORY.items` a közös ikonkatalógus: tárgyazonosítónként a fordítási kulcsot, képreferenciát és az inventoryhoz illő kivágást tartalmazza. A glória és a szarv itt talapzat nélkül látható; a világban használt képek és kivágások változatlanok. A forrásképek alfáját megőrizzük.
+
+Minden tárgy ugyanazon a rajzolón keresztül, pixelsűrűséghez igazított felbontással (legfeljebb 3×) és teljes rajzolási átlátszatlansággal jelenik meg. Az egységes, sötét kékesszürke ikonhátteret és enyhe fényerő-/kontrasztkiemelést a közös CSS adja. Ez a háttér kijelöléskor és hover alatt is megmarad, a színes tárgyak így elkülönülnek a barna bőrtől.
+
+Új tárgyhoz ebbe a katalógusba kell felvenni a grafikát, a kivágást és a HU/EN fordítási kulcsot; külön rajzolóág vagy halványító stílus helyett a közös megjelenítést kell használni. A katalógus minden bejegyzésére automatikusan fut a képhatár-, DPR- és rajzolási alfaellenőrzés. A tényleges olvashatóságot böngészőben is ellenőrizni kell: magyar/angol, asztali/320 px, normál/kijelölt/hover/fókusz állapotban, a teljes tárgysziluettel és olvasható névvel.
+
+## Az Alkonyat Pecsétje – 0.9.10
+
+A glória és a démonúr szarva csak a titkos harmadik bossforma végleges legyőzésekor egyesül. Az átváltozás vagy a szokásos kétfázisos győzelem nem adja a jutalmat. A Pecsét új grafikát, HU/EN leírást és egyszer megjelenő győzelmi párbeszédet kapott; statisztikai bónuszt nem ad.
+
+A mentett `flags[2].eclipseRelic` jelző az egyesült ereklyét birtokolja. A két eredeti gyűjtési jelző történeti adatként megmarad, hogy Japánban ne jelenjenek meg újra a felvett tárgyak; birtokolt tárgyként azonban a hátizsák és a HUD csak a Pecsétet mutatja. Halál, visszautazás és azonos kiadáson belüli újratöltés megőrzi. A validátor az utolsó boss legyőzését és a két őrzött ereklye megszerzését is megköveteli.
+
+A katalógus `realm` mezője adja meg a birtoklási jelző birodalmát. Az opcionális `consumedBy: {realm, id}` a felhasznált tárgyat elrejti, így a kulcsfogyasztás és az ereklyeegyesítés ugyanazt a közös inventory-megjelenítést használja. Az új grafika és prompt: `assets/images/ui/eclipse-relic-v1.png`, [generálási adatok](art-prompts/eclipse-relic-v1.json).

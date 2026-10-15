@@ -100,6 +100,7 @@ ledge(heaven,'moving-cloud-west',1110,3860,230,'moving',32);Object.assign(heaven
 heaven.winds=[{id:'wind1',x:550,y:5330,w:170,h:970},{id:'wind2',x:1800,y:4080,w:170,h:900},{id:'wind3',x:620,y:2730,w:170,h:1040},{id:'wind4',x:1910,y:1430,w:170,h:930},{id:'wind5',x:1910,y:680,w:170,h:800},{id:'homeWind',x:1390,y:170,w:160,h:700,afterBoss:true}];
 rest(heaven,'start',420,6300,I18n.t("text.gate.of.clouds"));rest(heaven,'third',930,2770,I18n.t("text.bridge.of.stars"));rest(heaven,'arena',1600,850,I18n.t("text.the.final.oath"));
 heaven.objects=[{id:'skyMemory',type:'memory',x:2620,y:3970,name:I18n.t("text.a.memory.of.heaven")},{id:'cloudMemory',type:'memory',x:2630,y:5630,name:I18n.t("text.a.memory.in.the.clouds")}];
+heaven.progressFlags=['eclipseRelic'];
 heaven.gates=[{id:'memorySeal',kind:'fire',x:2280,y:3730,w:35,h:290},{id:'dawnSeal',kind:'fire',x:0,y:1050,w:3200,h:28}];
 heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};heaven.father={x:1570,y:260};
 [[1200,5230],[1850,4960],[1510,3990],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));

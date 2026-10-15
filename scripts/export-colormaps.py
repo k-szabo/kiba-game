@@ -156,6 +156,9 @@ objects = {}
 katana = atlas['inventory']['katana']
 objects['inventoryKatana'] = {'kind': 'equipment-art',
     'paletteGroup': group('object.inventoryKatana', manifest[katana['image']], katana, 'ART_INVENTORY.katana')}
+for name, definition in atlas['inventory']['items'].items():
+    objects['inventoryItem.' + name] = {'kind': 'inventory-icon',
+        'paletteGroup': group('object.inventoryItem.' + name, manifest[definition['image']], definition, 'ART_INVENTORY.items.' + name)}
 for name, definition in atlas['secretWalls'].items():
     rect = {'x': 0, 'y': 0, 'w': definition['w'], 'h': definition['h']}
     objects['secretWall.' + name] = {'kind': 'scenery',

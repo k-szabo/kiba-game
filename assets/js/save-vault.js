@@ -35,6 +35,7 @@ const SaveVault=(()=>{
   if(earned&&!data.defeated[1]||held&&(!earned||gateOpen)||gateOpen&&(!earned||held))throw Error('Invalid council progress');
   if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won&&(!data.defeated[2]||data.realm!==2))throw Error('Invalid victory');
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
+  if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
   const checkpoint=levels[data.realm].rests.find(r=>r.id===data.checkpoint?.id);
   if(!checkpoint||data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
   return JSON.parse(JSON.stringify(data));
@@ -73,10 +74,23 @@ const SaveVault=(()=>{
  // Unknown version syntax is kept intact too: a cached client must never guess
  // that an unrecognised profile belongs to an older release and replace it.
  function compareRelease(a,b){
-  const parse=value=>typeof value==='string'&&/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([\da-zA-Z.-]+))?(?:\+[\da-zA-Z.-]+)?$/.exec(value);
+  const parse=value=>{
+   if(typeof value!=='string')return null;
+   const suffix=/_([a-z0-9]{8})$/.exec(value),base=suffix?value.slice(0,-9):value;
+   if(suffix&&!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(base))return null;
+   const result=/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([\da-zA-Z.-]+))?(?:\+[\da-zA-Z.-]+)?$/.exec(base);
+   if(result)result.bugfix=suffix?.[1];return result;
+  };
   const left=parse(a),right=parse(b);if(!left||!right)return null;
   for(let i=1;i<=3;i++){const x=BigInt(left[i]),y=BigInt(right[i]);if(x!==y)return x>y?1:-1;}
-  if(left[4]===right[4])return 0;if(!left[4])return 1;if(!right[4])return -1;
+  if(left[4]===right[4]){
+   if(left.bugfix===right.bugfix)return 0;
+   const history=GAME_RELEASE.bugfixHistory?.[left.slice(1,4).join('.')]||[];
+   if(left.bugfix&&!history.includes(left.bugfix)||right.bugfix&&!history.includes(right.bugfix))return null;
+   const ordinal=release=>release.bugfix?history.indexOf(release.bugfix)+1:0;
+   return ordinal(left)>ordinal(right)?1:-1;
+  }
+  if(!left[4])return 1;if(!right[4])return -1;
   const x=left[4].split('.'),y=right[4].split('.');
   for(let i=0;i<Math.max(x.length,y.length);i++){
    if(x[i]===undefined)return -1;if(y[i]===undefined)return 1;if(x[i]===y[i])continue;

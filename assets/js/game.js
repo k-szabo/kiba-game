@@ -110,10 +110,10 @@ function guardianDefeated(){
  if(Prologue.active||boss.dead||boss.hp>0||!bossStarted||defeated[realm])return;
  const keyEarned=realm===1&&awardCouncilKeyDrop();
  boss.dead=true;finishBossBattle();
- defeated[realm]=true;awardXP(100+realm*50);if(realm<2)abilities[realm]=true;shards+=20;checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
+ defeated[realm]=true;const relicUnited=uniteVictoryRelics();awardXP(100+realm*50);if(realm<2)abilities[realm]=true;shards+=20;checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
  persist();updateHUD();burst(boss.x+40,boss.y+40,realms[realm].gold,55);$('bossHud').hidden=true;
  const text=realm===0?I18n.t('story.haru.s.first.memory.returns.the.glowing.torii.has'):realm===1?I18n.t('story.haru.s.second.memory.has.set.momo.s.sword'):I18n.t('text.the.final.guardian.bows.a.new.wind.stream.shines');
- story(I18n.t('text.a.soul.fragment.returns.home'),realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),text+(realm===1?'\n\n'+I18n.t(keyEarned?'council.key.dropped':'council.key.missed'):''));
+ story(I18n.t(relicUnited?'relic.eclipse.dialog.label':'text.a.soul.fragment.returns.home'),relicUnited?I18n.t('relic.eclipse.name'):realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+text:text+(realm===1?'\n\n'+I18n.t(keyEarned?'council.key.dropped':'council.key.missed'):''));
 }
 function melee(){if(attackCooldown>0)return false;attack=SWORD_DURATION;attackCooldown=.34;attackElapsed=0;attackFace=player.face;attackHit=false;tone(defeated[1]?430:300,.1,'triangle',.025);return true;}
 function advanceSwordAttack(dt){if(attack<=0)return;attackElapsed=Math.min(SWORD_DURATION,attackElapsed+dt);if(!attackHit&&attackElapsed>=SWORD_IMPACT){attackHit=true;shake=.04;resolveMeleeHit();}}
@@ -330,5 +330,5 @@ function drawPlayer(){
  if(attack>0&&attackElapsed>=SWORD_IMPACT&&attackElapsed<.3)drawSlash();
  ctx.restore();
 }
-function collectedRelics(){return ['angelHalo','demonHorn'].filter(id=>flags[0].includes(id));}
-function updateRelicHUD(){const items=collectedRelics();if(flags[1].includes('councilKey'))items.push('councilKey');$('relicInventory').hidden=!items.length;$('relicInventory').textContent=items.map(id=>I18n.t(id==='councilKey'?'council.key.name':id==='angelHalo'?'text.angel.s.halo':'text.demon.lord.s.horn')).join(' · ');}
+function collectedRelics(){return flags[2].includes('eclipseRelic')?['eclipseRelic']:['angelHalo','demonHorn'].filter(id=>flags[0].includes(id));}
+function updateRelicHUD(){const items=Inventory.contents();$('relicInventory').hidden=!items.length;$('relicInventory').textContent=items.map(id=>I18n.t(ART_INVENTORY.items[id].name)).join(' · ');}

@@ -33,6 +33,19 @@ for(const [name,key] of [['momo','inventoryMomoPortrait'],['katana','inventoryKa
  assert(run(`artDraws.some(args=>args[0]===Visuals.images.${key}&&args[1]===ART_INVENTORY.${name}.x&&args[2]===ART_INVENTORY.${name}.y&&args[3]===ART_INVENTORY.${name}.w&&args[4]===ART_INVENTORY.${name}.h)`),`${name}: registered crop is rendered`);
 }
 assert(!run('artDraws.some(args=>args[0]===sheet)'),'Inventory portrait must not reuse the low-resolution gameplay cell');
+// Enumerate the shared catalogue so future items receive the same resolution,
+// alpha and crop coverage checks without another item-specific rendering branch.
+const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
+for(const id of iconIds){
+ run(`flags=[[],[],[]];flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
+ assert.equal(elements.get('inventoryGrid').children.length,1);
+ const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
+ assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);
+ assert.equal(icon.className,'inventory-icon');assert.equal(icon.getContext('2d').globalAlpha,1,`${id}: stale drawing alpha is cleared`);
+ const png=fs.readFileSync(path.join(__dirname,'..',run(`ART_MANIFEST[ART_INVENTORY.items[${JSON.stringify(id)}].image]`)));
+ assert(rect.x>=0&&rect.y>=0&&rect.x+rect.w<=png.readUInt32BE(16)&&rect.y+rect.h<=png.readUInt32BE(20),`${id}: valid native inventory crop`);
+ assert(run(`artDraws.some(args=>args[0]===Visuals.images[ART_INVENTORY.items[${JSON.stringify(id)}].image]&&args[1]===${rect.x}&&args[2]===${rect.y}&&args[3]===${rect.w}&&args[4]===${rect.h})`),`${id}: common renderer draws the registered crop`);
+}
 run('artContext.drawImage=originalArtDraw;devicePixelRatio=1;Inventory.close();');
 run("Bindings.setPrimary('inventory','o');Bindings.setPrimary('pause','p');");press('i');release('i');assert.equal(snap().state,'play');
 press('o');release('o');assert.equal(snap().state,'inventory');press('p');release('p');assert.equal(snap().state,'play');

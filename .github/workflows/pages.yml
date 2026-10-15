@@ -54,6 +54,8 @@ jobs:
           node scripts/test-secret-art.cjs
           node scripts/test-realm-travel.cjs
           node scripts/test-inventory.cjs
+          node scripts/test-release-ids.mjs
+          node scripts/test-eclipse-relic.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

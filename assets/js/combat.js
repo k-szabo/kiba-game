@@ -109,7 +109,12 @@ function updateEnemies(dt) {
 }
 
 /* Phase-aware bosses. All transitions and summons belong to one encounter. */
-function relicRitualReady(){return flags[0].includes('angelHalo')&&flags[0].includes('demonHorn');}
+function relicRitualReady(){return !flags[2].includes('eclipseRelic')&&flags[0].includes('angelHalo')&&flags[0].includes('demonHorn');}
+function uniteVictoryRelics(){
+  if(realm!==2||boss.stage!==3||!boss.secretTriggered||!defeated[2]||!boss.dead||boss.hp>0||!relicRitualReady())return false;
+  // Original collection flags are historical: keep the tower/cave relics from respawning.
+  flags[2].push('eclipseRelic');return true;
+}
 const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
 function createBoss(){
   const max=[28,48,ANGEL_HEALTH][realm];

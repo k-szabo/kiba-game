@@ -47,8 +47,8 @@ function storageEnvironment(){
  return env;
 }
 
-function client(env,release=current,{locks=true,crypto=webcrypto}={}){
- const context={TextEncoder,TextDecoder,Uint8Array,BigInt,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,crypto,indexedDB:env.indexedDB,localStorage:env.localStorage,navigator:locks?{locks:env.locks}:{},I18n:{t:key=>key},GAME_RELEASE:{version:release,savePolicy:'reset-on-version-change'}};
+function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={}){
+ const context={TextEncoder,TextDecoder,Uint8Array,BigInt,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,crypto,indexedDB:env.indexedDB,localStorage:env.localStorage,navigator:locks?{locks:env.locks}:{},I18n:{t:key=>key},GAME_RELEASE:{version:release,savePolicy:'reset-on-version-change',bugfixHistory:history}};
  vm.createContext(context);vm.runInContext(levelSource,context);
  vm.runInContext(source+'\nglobalThis.vault=SaveVault;',context);
  return context;
@@ -81,6 +81,30 @@ async function main(){
   const data=copy(council);data.flags[1].push(...flags);assert.throws(()=>councilClient.vault.write(data),/Invalid council progress/);
  }
  const unearned=copy(council);unearned.defeated[1]=false;unearned.flags[1].push('councilKeyEarned');assert.throws(()=>councilClient.vault.write(unearned),/Invalid council progress/);
+
+ // The united relic survives actual AES-GCM roundtrips and realm changes.
+ const united=fixture();Object.assign(united,{realm:2,abilities:[true,true],defeated:[true,true,true],flags:[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal','eclipseRelic']],visitedRests:[['start'],['start'],['start']],checkpoint:{id:'start',x:420,y:6300}});
+ await reload.vault.write(united);assert.deepEqual(plain(await client(env).vault.ready),united);
+ const invalidUnited=copy(united);invalidUnited.flags[0]=invalidUnited.flags[0].filter(id=>id!=='angelHalo');assert.throws(()=>reload.vault.write(invalidUnited),/Invalid united relic/);
+
+ // Hashes have no lexical time order: append order governs same-base updates.
+ const fixEnv=storageEnvironment(),base='0.9.10',firstFix=base+'_ffffffff',nextFix=base+'_00000000';
+ fixEnv.local.set('momo-language','en');fixEnv.local.set('momo-keybindings-v1','custom');
+ const baseClient=client(fixEnv,base);await baseClient.vault.ready;await baseClient.vault.write(fixture(base));
+ const firstHistory={[base]:['ffffffff']},nextHistory={[base]:['ffffffff','00000000']};
+ const firstClient=client(fixEnv,firstFix,{history:firstHistory});assert.equal(await firstClient.vault.ready,null);assert.equal(firstClient.vault.notice,'text.save.reset.new.version');
+ await firstClient.vault.write(fixture(firstFix));assert.deepEqual(plain(await client(fixEnv,firstFix,{history:firstHistory}).vault.ready),fixture(firstFix));
+ const nextClient=client(fixEnv,nextFix,{history:nextHistory});assert.equal(await nextClient.vault.ready,null);assert.equal(nextClient.vault.notice,'text.save.reset.new.version');
+ await nextClient.vault.write(fixture(nextFix));const nextCipher=fixEnv.records.get('save'),nextDevice=fixEnv.records.get('profile').device;
+ for(const [version,history] of [[base,{}],[firstFix,firstHistory],[firstFix,nextHistory]]){
+  const stale=client(fixEnv,version,{history});assert.equal(await stale.vault.ready,null);assert.equal(stale.vault.isReady,false);assert.equal(stale.vault.notice,'text.save.newer.version');
+  await assert.rejects(stale.vault.write(fixture(version)));assert.equal(fixEnv.records.get('save'),nextCipher);assert.equal(fixEnv.records.get('profile').device,nextDevice);
+ }
+ assert.deepEqual(plain(await client(fixEnv,nextFix,{history:nextHistory}).vault.ready),fixture(nextFix));
+ assert.equal(fixEnv.local.get('momo-language'),'en');assert.equal(fixEnv.local.get('momo-keybindings-v1'),'custom');
+ const futureCode=storageEnvironment();futureCode.records.set('profile',{...fixEnv.records.get('profile'),release:base+'_1234abcd'});futureCode.records.set('save',nextCipher);
+ const unknownFix=client(futureCode,nextFix,{history:nextHistory});await unknownFix.vault.ready;assert.equal(unknownFix.vault.isReady,false);assert.equal(futureCode.records.get('save'),nextCipher);
+ const laterBase=client(fixEnv,'0.9.11');await laterBase.vault.ready;assert(laterBase.vault.isReady);assert.equal(laterBase.vault.notice,'text.save.reset.new.version');
 
  // A real encrypted older release resets once, preserves preferences, and an
  // already-open old tab cannot write over the replacement profile or mirror.

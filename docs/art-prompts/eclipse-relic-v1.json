@@ -1,0 +1,38 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "assets/images/ui/eclipse-relic-v1.png",
+  "reference_images": [
+    "assets/images/relics-v5.png",
+    "assets/images/ui/katana-inventory-v1.png"
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: standalone inventory quest relic icon for Kiba, a detailed illustrated Japanese fantasy game. Input image 1 is material/identity reference: angel relic at left has antique gold halo, white feather ornaments and pearl; demon lord horn at right is obsidian with red-violet molten cracks and antique gold collar. Ignore the pedestals, scenery and all glows in that reference. Input image 2 gives the crisp dark outlined, richly hand-painted game prop style. Create ONE coherent newly united artifact called the Seal of Dusk (no written text): an elegant antique-gold circular angel halo joined organically to ONE curved obsidian demon horn that sweeps around its right side. A few restrained ivory feather shapes attach at the left gold rim; the horn has clear dark rocky ridges and a few narrow crimson-violet ember cracks. At the center hangs ONE small eclipse pearl, dark purple-black center with a thin pale-gold crescent rim. This should feel like an ancient compact talisman of balanced light and dark Kiba power, not two objects merely placed beside each other. Strong compact nearly circular silhouette, gold rim and dark horn remain distinguishable even at 60–96 CSS pixels. Native1024×1024 or greater resolution. Rich antique gold, ivory, black obsidian, restrained red-violet accents. Dark crisp hand-inked outer contours; detailed painterly brushed metal and stone shading matching the inventory katana art. Isolate the entire single relic including horn tip and feather tips with 8% transparent margin on all sides. Actual transparent alpha outside and through the ring where empty; NO pedestal, environment, floor, gradient rectangle, cast shadow plate, surrounding energy cloud, UI, frame, lettering or watermark. No white overglow; no large wings; no skull; no extra horns; no symmetric spiky crown; no duplicated items. Keep edges exceptionally sharp and all parts fully in frame.",
+  "dimensions": {
+    "width": 1254,
+    "height": 1254
+  },
+  "recommendedCrop": {
+    "x": 25,
+    "y": 12,
+    "w": 1208,
+    "h": 1220
+  },
+  "alpha": {
+    "preserved": "Original generated RGBA PNG copied byte-for-byte without resampling, recoloring or alpha editing.",
+    "threshold8Bounds": {
+      "left": 41,
+      "top": 27,
+      "right": 1218,
+      "bottom": 1220
+    },
+    "threshold128Bounds": {
+      "left": 43,
+      "top": 28,
+      "right": 1218,
+      "bottom": 1219
+    },
+    "range": [
+      0,
+      255
+    ]
+  }
+}

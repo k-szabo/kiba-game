@@ -5,6 +5,7 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "eclipseRelic": "assets/images/ui/eclipse-relic-v1.png",
   "inventoryMomoPortrait": "assets/images/ui/momo-inventory-v1.png",
   "inventoryKatana": "assets/images/ui/katana-inventory-v1.png",
   "inventoryLeather": "assets/images/ui/backpack-leather-v1.png",
@@ -57,7 +58,14 @@ const ART_MANIFEST = {
 // Dedicated native-resolution equipment art; crops preserve the complete silhouette.
 const ART_INVENTORY = {
   momo:{image:'inventoryMomoPortrait',x:48,y:87,w:976,h:1388},
-  katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536}
+  katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536},
+  // Inventory-only crops exclude world pedestals. Every item uses the same UI renderer.
+  items:{
+    angelHalo:{name:'text.angel.s.halo',realm:0,consumedBy:{realm:2,id:'eclipseRelic'},image:'relics',x:57,y:133,w:704,h:515},
+    demonHorn:{name:'text.demon.lord.s.horn',realm:0,consumedBy:{realm:2,id:'eclipseRelic'},image:'relics',x:927,y:44,w:595,h:660},
+    councilKey:{name:'council.key.name',realm:1,consumedBy:{realm:1,id:'councilGateOpen'},image:'councilKey',x:0,y:0,w:1024,h:1536},
+    eclipseRelic:{name:'relic.eclipse.name',realm:2,image:'eclipseRelic',x:25,y:12,w:1208,h:1220}
+  }
 };
 // Original PNGs retain their alpha; anchors describe visible stone/bone feet.
 const ART_COUNCIL = {
