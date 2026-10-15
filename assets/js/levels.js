@@ -62,7 +62,7 @@ const yomi=makeLevel('yomi',3300,6250,{x:1560,y:450});
  ['secret-tomb',230,2350,600],['secret-step',680,2240,250]
 ].forEach(p=>ledge(yomi,...p,'stone',32));
 yomi.ability={x:1570,y:2700,name:I18n.t("text.spirit.dash")};
-rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',1810,1790,I18n.t("text.ash.ledge"));rest(yomi,'shadow',1730,2700,I18n.t("text.shrine.of.shadows"));rest(yomi,'lower',2470,3900,I18n.t("text.the.silent.river"));rest(yomi,'abyss',1860,5040,I18n.t("text.edge.of.the.abyss"));rest(yomi,'arena',620,5800,I18n.t("text.the.soul.s.depths"));
+rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',1810,1790,I18n.t("text.ash.ledge"));rest(yomi,'lower',2470,3900,I18n.t("text.the.silent.river"));rest(yomi,'abyss',1860,5040,I18n.t("text.edge.of.the.abyss"));rest(yomi,'arena',620,5800,I18n.t("text.the.soul.s.depths"));
 yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:I18n.t("text.the.remembering.soul")},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:I18n.t("text.the.homesick.soul")},{id:'tombMemory',type:'memory',x:510,y:2350,name:I18n.t("text.a.memory.in.the.tombs")}];
 yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];

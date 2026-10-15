@@ -21,10 +21,10 @@ assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('proje
 // Lethal damage resets normal enemies in every realm, preserving permanent progress.
 {
   const deathTest=require('./test-harness.cjs')();
-  for(let r=0;r<3;r++)for(const guardianDead of [false,true]){
+  for(let r=0;r<3;r++)for(const guardianDead of [false,true])for(const cause of ['combat','fall']){
     deathTest.run(`flags=[['forestBell','guardian:oldAngel'],['soulUpper'],['dawnSeal']];abilities=[true,true];defeated=[false,false,false];defeated[${r}]=${guardianDead};progression=freshProgression();enterRealm(${r});state='play';awardXP(160);checkpoint={...level.rests[1]};enemies.filter(e=>!e.miniboss).forEach((e,i)=>{e.dead=i!==0;e.hp=i===0?1:0;});projectiles=[{source:'enemy',life:3},{source:'boss',life:3}];player.hp=1;player.inv=0;`);
     const before=deathTest.snap();
-    deathTest.run('damage(100);');
+    deathTest.run(cause==='combat'?'damage(100);':'player.y=level.height+200;movePlayer(1/120);');
     const after=deathTest.snap();
     assert(deathTest.run('enemies.filter(e=>!e.miniboss).every(e=>!e.dead&&e.hp===e.maxHp)'),`Death respawn in realm ${r}`);
     assert.equal(after.player.hp,after.player.maxHp);
@@ -38,7 +38,7 @@ assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('proje
     assert.equal(deathTest.run('projectiles.length'),0);
     if(r===0)assert(deathTest.run("enemies.find(e=>e.id==='oldAngel').dead"),'Defeated miniboss stays defeated');
   }
-  deathTest.run('enemies.find(e=>!e.miniboss).dead=true;player.hp=3;revive(true);');
+  deathTest.run('enemies.find(e=>!e.miniboss).dead=true;player.hp=3;player.y=level.height+200;movePlayer(1/120);');
   assert(deathTest.run('enemies.some(e=>!e.miniboss&&e.dead)'),'A nonlethal fall does not reset normal enemies');
   assert.equal(deathTest.snap().player.hp,2);
 }

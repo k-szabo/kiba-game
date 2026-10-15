@@ -373,7 +373,6 @@ const Visuals = (() => {
       }else{
         for(const [x,height,face] of [[2690,330,1],[3550,290,-1]])
           secretWallProp(ART_SECRET_WALLS.cult,x,area.arena.y+5,height,face);
-        prop('shrine',2760,2160,96,.65);
         for(const px of [2860,3100,3450]){
           ctx.fillStyle='#b5a777';ctx.fillRect(px-4,2140,8,21);const flame=ctx.createRadialGradient(px,2137,0,px,2137,70);flame.addColorStop(0,'#f6a47580');flame.addColorStop(1,'#dd744a00');ctx.fillStyle=flame;ctx.fillRect(px-70,2067,140,140);ctx.fillStyle='#ffe2a0';ctx.beginPath();ctx.ellipse(px,2133+Math.sin(time*6+px)*2,3,7,0,0,Math.PI*2);ctx.fill();
         }

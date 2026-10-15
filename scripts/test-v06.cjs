@@ -7,7 +7,7 @@ assert.match(fs.readFileSync(path.join(__dirname,'../index.html'),'utf8'),/id="s
 assert(elements.get('spiritTraining').hidden);assert(elements.get('train-spirit').disabled);
 const points=snap().progression.points;assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.points,points);assert.equal(snap().progression.stats.spirit,0);
 assert(run("spendPoint('strength')"));run("closeTraining();enterRealm(1);state='play';");const ability=run('level.ability');place(ability.x,ability.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
-place(1730,2700);press('u');tick();release('u');assert(!elements.get('spiritTraining').hidden);assert(!elements.get('train-spirit').disabled);assert(run("spendPoint('spirit')"));run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().progression.stats.spirit,1);
+place(1810,1790);press('u');tick();release('u');assert(!elements.get('spiritTraining').hidden);assert(!elements.get('train-spirit').disabled);assert(run("spendPoint('spirit')"));run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().progression.stats.spirit,1);
 
 // A legacy spirit investment survives, but cannot be extended without owning dash.
 run("abilities=[false,false];progression=normalizeProgression({level:4,stats:{spirit:1}});enterRealm(0);state='play';");place(330,1000);run("showTraining();");assert(elements.get('spiritTraining').hidden);assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.stats.spirit,1);run('closeTraining();');

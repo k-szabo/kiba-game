@@ -392,7 +392,9 @@
       "menu.changelog.092.dash": "Momo nem ragad bele a pokol lila oszlopaiba, ha átsuhan rajtuk.",
       "menu.changelog.091.branch": "Új, opcionális pokolbéli oldalág: a négy tanácsos démoni kastélya.",
       "menu.changelog.091.key": "A boss harca alatt négy idézett minion legyőzéséért csontkulcs jár. A kulcs a kapu nyitásakor megsemmisül.",
-      "menu.changelog.091.reset": "Az alfa/béta kiadások között a haladás újraindul; a nyelv és a billentyűkiosztás megmarad."
+      "menu.changelog.091.reset": "Az alfa/béta kiadások között a haladás újraindul; a nyelv és a billentyűkiosztás megmarad.",
+      "menu.changelog.094.fall": "Halálos lezuhanás után a normál ellenfelek újraélednek, Momo pedig teljes életerővel tér vissza.",
+      "menu.changelog.094.shrines": "A kultista barlang használhatatlan díszszentélyét és a szellemlépés melletti fölösleges pihenőszentélyt eltávolítottuk."
     }
   },
   "en": {
@@ -788,7 +790,9 @@
       "menu.changelog.092.dash": "Dashing through the purple pillars in Yomi no longer traps Momo.",
       "menu.changelog.091.branch": "A new optional Yomi branch: the demonic castle of the four councillors.",
       "menu.changelog.091.key": "Defeat four summoned minions during the boss fight to earn a bone key. Opening the gate consumes the key.",
-      "menu.changelog.091.reset": "Progress resets between alpha/beta releases; language and key bindings are kept."
+      "menu.changelog.091.reset": "Progress resets between alpha/beta releases; language and key bindings are kept.",
+      "menu.changelog.094.fall": "After a fatal fall, normal enemies respawn and Momo returns with full health.",
+      "menu.changelog.094.shrines": "Removed the unusable decorative shrine in the cultist cave and the redundant resting shrine beside Spirit Dash."
     }
   }
 }

@@ -23,7 +23,7 @@ const soul=run("level.objects.find(o=>o.id==='soulUpper')");place(soul.x,soul.y)
 for(const id of ['soulUpper','soulLower']){const o=run(`level.objects.find(o=>o.id==='${id}')`);const guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>({id:e.id,x:e.x,y:e.y+e.h,kind:e.kind}))`);for(const e of guards){place(e.x-55,e.y);run('player.face=1;');for(let i=0;i<4;i++){if(e.kind==='shield'){place(e.x-40,e.y-58);run('player.face=1;player.onGround=false;');}press('j');tick(60);release('j');}}place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();}
 assert(run("gatePass(level.gates.find(g=>g.kind==='souls'))"));const shrine=run('level.ability');place(shrine.x,shrine.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
 // Checkpoint maps travel vertically and reset camera, including old-release reset.
-run("visitedRests[1].push('shadow');fastTravel(level.rests.find(r=>r.id==='shadow'));draw();");assert.equal(snap().player.y+69,2700);assert(snap().cameraY>1700);
+run("visitedRests[1].push('lower');fastTravel(level.rests.find(r=>r.id==='lower'));draw();");assert.equal(snap().player.y+69,3900);assert(snap().cameraY>2900);
 defeat();exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('e');assert.equal(snap().realm,2);dismiss();assert.equal(snap().world.height,6650);
 // Wind is a real physical lift; the ascending camera follows it.
 place(635,6300);press(' ');tick(180);release(' ');assert(snap().player.y+69<5900);assert(snap().cameraY<5500);
