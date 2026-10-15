@@ -45,11 +45,11 @@ A szélfolyamokba **bele kell ugrani**. Maguktól magasba emelnek; oldalirányú
 
 ## Pihenők és mentés
 
-A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá válik. E-vel az életerőt is feltölti. A térképen az elérhető pihenőhelyek gombjai gyorsutazást indítanak, így Yomiban a felső termekbe is visszatérhetsz.
+A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá válik. E-vel az életerőt is feltölti. A térképen az elérhető pihenőhelyek gombjai gyorsutazást indítanak, így Yomiban a felső termekbe is visszatérhetsz. A további birodalmak külön csoportokban jelennek meg: visszautazhatsz a már befejezett pályák ismert szentélyeihez, majd az éppen folyamatban lévő, korábban már felkeresett birodalomba is. Minden gyorsutazás újraéleszti a normál ellenfeleket, de a legyőzött bossok, minibossok, tárgyak, képességek és megnyitott utak állapota megmarad. Az álomprológus és az ismeretlen pihenőhelyek nem választhatók.
 
 A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. Az első és második őrző a kihagyott szentélyképességet is megadja, hogy ne záródjon el a továbbjutás.
 
-**E-vel gyógyuláskor és halál után a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok és minibossok, kiszabadított lelkek és megnyitott utak megmaradnak. Az 1 HP-nál történő lezuhanás halálos: Momo teljes életerővel tér vissza, és a normál ellenfelek újraélednek. A nem halálos leesés 1 HP-t vesz el, és nem éleszti újra a normál ellenfeleket. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
+**E-vel gyógyuláskor és halál után a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok és minibossok, kiszabadított lelkek és megnyitott utak megmaradnak. Minden lezuhanás halálos, az aktuális életerőtől és sérthetetlenségtől függetlenül: Momo teljes életerővel tér vissza a pihenőhelyre, és a normál ellenfelek újraélednek. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
 
 ## Yomi opcionális oldalága
 

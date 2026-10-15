@@ -155,7 +155,8 @@ run('leaveCouncilHall();');
 // Hall death/fall, fast travel, and a fresh load return through canonical Yomi state.
 for(const fall of [false,true]){
  run('enterCouncilHall();player.hp=3;');assert.equal(run('level.id'),'councilHall');
- run(`revive(${fall});`);assert.equal(run('level.id'),'yomi');
+ run(fall?'player.y=level.height+200;movePlayer(1/120);':'revive();');assert.equal(run('level.id'),'yomi');
+ assert.equal(snap().player.hp,snap().player.maxHp,'Every hall fall/death restores full health');
  assert.equal(Math.round(snap().player.x+snap().player.w/2),snap().checkpoint.x);
  assert.equal(Math.round(snap().player.y+snap().player.h),snap().checkpoint.y);
  assert.equal(JSON.stringify({abilities:snap().abilities,defeated:snap().defeated,flags:snap().flags,progression:snap().progression,shards:snap().shards}),permanent);

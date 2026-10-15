@@ -101,3 +101,13 @@
 .release-notes-panel ul{padding-left:20px;margin:0;font-size:15px;line-height:1.65}
 .release-notes-panel li+li{margin-top:9px}
 @media(max-width:560px){#menu .release-notes{right:14px;max-width:calc(100% - 28px)}.release-notes-panel{width:min(440px,calc(100vw - 28px));padding:18px 16px}}
+
+/* Known shrines stay reachable when the realm list grows. */
+.map-panel .travel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.map-panel .travel-grid button{min-width:0;min-height:48px;padding:10px 8px;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.map-panel .travel-label{font-size:14px!important}
+.realm-travel{margin-top:24px;padding-top:16px;border-top:1px solid var(--muted)}
+.realm-travel h3{font-size:18px;line-height:1.5;margin:0 0 16px;color:var(--gold)}
+.realm-travel h4{font-size:16px;line-height:1.5;margin:18px 0 10px;overflow-wrap:anywhere}
+@media(max-width:800px){.map-panel .travel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.map-panel .travel-grid{grid-template-columns:minmax(0,1fr)}}

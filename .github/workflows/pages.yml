@@ -52,6 +52,7 @@ jobs:
           node scripts/test-visual-polish.cjs
           node scripts/test-changelog.cjs
           node scripts/test-secret-art.cjs
+          node scripts/test-realm-travel.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

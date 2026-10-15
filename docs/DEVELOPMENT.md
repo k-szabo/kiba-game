@@ -61,6 +61,7 @@ node scripts/test-save-release.cjs
 node scripts/test-visual-polish.cjs
 node scripts/test-secret-art.cjs
 node scripts/test-changelog.cjs
+node scripts/test-realm-travel.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
@@ -96,6 +97,8 @@ A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztat
 A játék relatív útvonalakat használ. Az `index.html` maradjon a repository gyökerében, az `assets/`, `scripts/` és `.github/` mappákkal együtt. A `.nojekyll` fájlt is őrizd meg.
 
 A 0.9.3 vizuális javításai és a változásnapló: [részletes leírás](VISUAL-POLISH-0.9.3.md). A három új regresszióteszt az ugrópózok valódi alfa-méretét, a titkos helyszínek grafikáját és a változásnapló működését ellenőrzi.
+
+A `test-realm-travel.cjs` ellenőrzi a befejezett birodalmakba visszautazást, a folyamatban lévő pályára visszatérést, a tartós haladást, az ellenfelek újraéledését, a kastélyból utazást és a célpontok feloldási szabályait.
 
 ## Frissítés és mentések
 
