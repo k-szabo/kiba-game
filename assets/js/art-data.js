@@ -5,6 +5,8 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "inventoryMomoPortrait": "assets/images/ui/momo-inventory-v1.png",
+  "inventoryKatana": "assets/images/ui/katana-inventory-v1.png",
   "inventoryLeather": "assets/images/ui/backpack-leather-v1.png",
   "angelRuinWall": "assets/images/angel-ruin-wall-v1.png",
   "cultCaveWall": "assets/images/cult-cave-wall-v1.png",
@@ -51,6 +53,11 @@ const ART_MANIFEST = {
   "oldCultist": "assets/images/enemies/old-cultist-v6.png",
   "angelRuinBackdrop": "assets/images/backgrounds/angel-ruins-v6.png",
   "cultCaveBackdrop": "assets/images/backgrounds/cult-cave-v6.png"
+};
+// Dedicated native-resolution equipment art; crops preserve the complete silhouette.
+const ART_INVENTORY = {
+  momo:{image:'inventoryMomoPortrait',x:48,y:87,w:976,h:1388},
+  katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536}
 };
 // Original PNGs retain their alpha; anchors describe visible stone/bone feet.
 const ART_COUNCIL = {

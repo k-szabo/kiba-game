@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -131,6 +131,8 @@ pc['momo']['variants']['base'] = {'asset': 'assets/images/momo.png'}
 menu_frames = [{'x': i % 3 * 512, 'y': i // 3 * 512, 'w': 512, 'h': 512} for i in range(6)]
 pc['momo']['variants']['menuIdle'] = {'paletteGroup': group('pc.momo.menuIdle', 'assets/images/momo-menu-idle-v2.png', menu_frames, 'game.js: drawMenuMomo')}
 pc['momo']['variants']['sword'] = {'paletteGroup': group('pc.momo.sword', manifest['momoSlash'], atlas['frames']['momoSlash'], 'ART_FRAMES.momoSlash')}
+portrait = atlas['inventory']['momo']
+pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
 npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
 for faction, actions in atlas['frames']['animations'].items():
     for role in actions['walk']:
@@ -151,6 +153,9 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+katana = atlas['inventory']['katana']
+objects['inventoryKatana'] = {'kind': 'equipment-art',
+    'paletteGroup': group('object.inventoryKatana', manifest[katana['image']], katana, 'ART_INVENTORY.katana')}
 for name, definition in atlas['secretWalls'].items():
     rect = {'x': 0, 'y': 0, 'w': definition['w'], 'h': definition['h']}
     objects['secretWall.' + name] = {'kind': 'scenery',

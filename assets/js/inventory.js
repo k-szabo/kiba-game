@@ -5,11 +5,18 @@ const Inventory=(()=>{
  const ids=['angelHalo','demonHorn','councilKey'];
  const names={angelHalo:'text.angel.s.halo',demonHorn:'text.demon.lord.s.horn',councilKey:'council.key.name'};
  function contents(){return ids.filter(id=>id==='councilKey'?flags[1].includes(id)&&!flags[1].includes('councilGateOpen'):flags[0].includes(id));}
- function image(canvas,image,rect){
+ function image(canvas,image,rect,size){
+  const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
+  if(size){canvas.width=Math.round(size.w*ratio);canvas.height=Math.round(size.h*ratio);}
   const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);
   if(!image?.complete||!image.naturalWidth)return;
-  const pad=8,s=Math.min((canvas.width-pad*2)/rect.w,(canvas.height-pad*2)/rect.h),w=rect.w*s,h=rect.h*s;
+  c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';
+  const pad=8*ratio,s=Math.min((canvas.width-pad*2)/rect.w,(canvas.height-pad*2)/rect.h),w=rect.w*s,h=rect.h*s;
   c.drawImage(image,rect.x||0,rect.y||0,rect.w,rect.h,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
+ }
+ function equipmentArt(){
+  image($('inventoryMomo'),Visuals.images.inventoryMomoPortrait,ART_INVENTORY.momo,{w:384,h:416});
+  image($('inventoryWeaponArt'),Visuals.images.inventoryKatana,ART_INVENTORY.katana,{w:108,h:144});
  }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.width=112;canvas.height=112;canvas.setAttribute('aria-hidden','true');
@@ -31,7 +38,7 @@ const Inventory=(()=>{
   $('inventoryButton').setAttribute('aria-label',I18n.t('inventory.open'));
   $('inventoryButton').title=`${I18n.t('inventory.open')} (${bindingKeyLabel(Bindings.read('inventory')[0])})`;
   $('inventoryMomo').setAttribute('aria-label',I18n.t('inventory.character'));
-  image($('inventoryMomo'),sheet,{x:0,y:0,w:192,h:208});
+  equipmentArt();
   $('inventoryCount').textContent=I18n.format('inventory.count',[items.length]);
   const grid=$('inventoryGrid');grid.replaceChildren();
   for(const id of items){
@@ -63,7 +70,8 @@ const Inventory=(()=>{
    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
   });
-  const repaint=()=>{if(state==='inventory')render();};Visuals.ready.then(repaint);sheet.addEventListener('load',repaint);
+  const repaint=()=>{if(state==='inventory')render();};Visuals.ready.then(repaint);
+  window.addEventListener('resize',()=>{if(state==='inventory')equipmentArt();});
  }
  return Object.freeze({init,open,close,render,contents});
 })();

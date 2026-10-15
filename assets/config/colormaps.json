@@ -27,6 +27,9 @@
         },
         "sword": {
           "paletteGroup": "pc.momo.sword"
+        },
+        "inventory": {
+          "paletteGroup": "pc.momo.inventory"
         }
       }
     }
@@ -233,6 +236,10 @@
     }
   },
   "objects": {
+    "inventoryKatana": {
+      "kind": "equipment-art",
+      "paletteGroup": "object.inventoryKatana"
+    },
     "secretWall.angel": {
       "kind": "scenery",
       "paletteGroup": "object.secretWall.angel",
@@ -674,6 +681,107 @@
         ],
         "visibleSamples": 590651,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "pc.momo.inventory": {
+      "source": "assets/images/ui/momo-inventory-v1.png",
+      "frameMetadata": "ART_INVENTORY.momo",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2d8",
+            "coveragePercent": 20.9826
+          },
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 15.7597
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 14.7282
+          },
+          {
+            "hex": "#273154",
+            "coveragePercent": 13.1127
+          },
+          {
+            "hex": "#1c1f32",
+            "coveragePercent": 7.1935
+          },
+          {
+            "hex": "#f3211b",
+            "coveragePercent": 6.9277
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fad9b7",
+            "coveragePercent": 3.2276
+          },
+          {
+            "hex": "#f4c7a3",
+            "coveragePercent": 3.1286
+          },
+          {
+            "hex": "#c1080d",
+            "coveragePercent": 2.1421
+          },
+          {
+            "hex": "#ab590e",
+            "coveragePercent": 1.92
+          },
+          {
+            "hex": "#58220a",
+            "coveragePercent": 1.609
+          },
+          {
+            "hex": "#4a506e",
+            "coveragePercent": 1.4304
+          },
+          {
+            "hex": "#fac766",
+            "coveragePercent": 1.0553
+          },
+          {
+            "hex": "#fcfbf9",
+            "coveragePercent": 0.4665
+          },
+          {
+            "hex": "#9d836f",
+            "coveragePercent": 0.454
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 46.655
+          },
+          {
+            "hex": "#f2211a",
+            "coveragePercent": 20.5111
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 17.3335
+          },
+          {
+            "hex": "#c0080d",
+            "coveragePercent": 6.417
+          },
+          {
+            "hex": "#ab5a10",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fac767",
+            "coveragePercent": 3.2215
+          }
+        ],
+        "visibleSamples": 891827,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.japan.guard.walk": {
@@ -4208,6 +4316,107 @@
           }
         ],
         "visibleSamples": 641481,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryKatana": {
+      "source": "assets/images/ui/katana-inventory-v1.png",
+      "frameMetadata": "ART_INVENTORY.katana",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060405",
+            "coveragePercent": 18.3205
+          },
+          {
+            "hex": "#f7f6f3",
+            "coveragePercent": 11.2079
+          },
+          {
+            "hex": "#2d3a5b",
+            "coveragePercent": 10.9678
+          },
+          {
+            "hex": "#4a556f",
+            "coveragePercent": 8.7011
+          },
+          {
+            "hex": "#121c3a",
+            "coveragePercent": 7.6284
+          },
+          {
+            "hex": "#aeb7c9",
+            "coveragePercent": 6.7923
+          },
+          {
+            "hex": "#d7dae4",
+            "coveragePercent": 6.5712
+          },
+          {
+            "hex": "#6d768b",
+            "coveragePercent": 5.5499
+          },
+          {
+            "hex": "#8e97ac",
+            "coveragePercent": 5.4378
+          },
+          {
+            "hex": "#8f520f",
+            "coveragePercent": 3.7338
+          },
+          {
+            "hex": "#c8892e",
+            "coveragePercent": 3.6366
+          },
+          {
+            "hex": "#eebe57",
+            "coveragePercent": 2.6193
+          },
+          {
+            "hex": "#f7e0a0",
+            "coveragePercent": 2.4503
+          },
+          {
+            "hex": "#542508",
+            "coveragePercent": 2.4224
+          },
+          {
+            "hex": "#ef211f",
+            "coveragePercent": 2.1855
+          },
+          {
+            "hex": "#b4070e",
+            "coveragePercent": 1.7751
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ce9032",
+            "coveragePercent": 26.6391
+          },
+          {
+            "hex": "#9b5b12",
+            "coveragePercent": 24.5041
+          },
+          {
+            "hex": "#f5cb5d",
+            "coveragePercent": 17.2325
+          },
+          {
+            "hex": "#ef211f",
+            "coveragePercent": 16.3865
+          },
+          {
+            "hex": "#b4070e",
+            "coveragePercent": 13.3239
+          },
+          {
+            "hex": "#3a4f85",
+            "coveragePercent": 1.9138
+          }
+        ],
+        "visibleSamples": 160733,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -13162,6 +13371,216 @@
           }
         ],
         "visibleSamples": 1365928,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/ui/katana-inventory-v1.png": {
+      "sha256": "3def1700b7a0334e715ee3229dbf8b9beea31cefb38d4f1fed01ecd67d84fb5c",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "inventoryKatana"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060405",
+            "coveragePercent": 18.3205
+          },
+          {
+            "hex": "#f7f6f3",
+            "coveragePercent": 11.2079
+          },
+          {
+            "hex": "#2d3a5b",
+            "coveragePercent": 10.9678
+          },
+          {
+            "hex": "#4a556f",
+            "coveragePercent": 8.7011
+          },
+          {
+            "hex": "#121c3a",
+            "coveragePercent": 7.6284
+          },
+          {
+            "hex": "#aeb7c9",
+            "coveragePercent": 6.7923
+          },
+          {
+            "hex": "#d7dae4",
+            "coveragePercent": 6.5712
+          },
+          {
+            "hex": "#6d768b",
+            "coveragePercent": 5.5499
+          },
+          {
+            "hex": "#8e97ac",
+            "coveragePercent": 5.4378
+          },
+          {
+            "hex": "#8f520f",
+            "coveragePercent": 3.7338
+          },
+          {
+            "hex": "#c8892e",
+            "coveragePercent": 3.6366
+          },
+          {
+            "hex": "#eebe57",
+            "coveragePercent": 2.6193
+          },
+          {
+            "hex": "#f7e0a0",
+            "coveragePercent": 2.4503
+          },
+          {
+            "hex": "#542508",
+            "coveragePercent": 2.4224
+          },
+          {
+            "hex": "#ef211f",
+            "coveragePercent": 2.1855
+          },
+          {
+            "hex": "#b4070e",
+            "coveragePercent": 1.7751
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ce9032",
+            "coveragePercent": 26.6391
+          },
+          {
+            "hex": "#9b5b12",
+            "coveragePercent": 24.5041
+          },
+          {
+            "hex": "#f5cb5d",
+            "coveragePercent": 17.2325
+          },
+          {
+            "hex": "#ef211f",
+            "coveragePercent": 16.3865
+          },
+          {
+            "hex": "#b4070e",
+            "coveragePercent": 13.3239
+          },
+          {
+            "hex": "#3a4f85",
+            "coveragePercent": 1.9138
+          }
+        ],
+        "visibleSamples": 160733,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/ui/momo-inventory-v1.png": {
+      "sha256": "dda114c421b5d2d401ffe2511f5f5dbdfda4e73bf1db68ba6932a04823347121",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "inventoryMomoPortrait"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2d8",
+            "coveragePercent": 20.9826
+          },
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 15.7597
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 14.7282
+          },
+          {
+            "hex": "#273154",
+            "coveragePercent": 13.1127
+          },
+          {
+            "hex": "#1c1f32",
+            "coveragePercent": 7.1935
+          },
+          {
+            "hex": "#f3211b",
+            "coveragePercent": 6.9277
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fad9b7",
+            "coveragePercent": 3.2276
+          },
+          {
+            "hex": "#f4c7a3",
+            "coveragePercent": 3.1286
+          },
+          {
+            "hex": "#c1080d",
+            "coveragePercent": 2.1421
+          },
+          {
+            "hex": "#ab590e",
+            "coveragePercent": 1.92
+          },
+          {
+            "hex": "#58220a",
+            "coveragePercent": 1.609
+          },
+          {
+            "hex": "#4a506e",
+            "coveragePercent": 1.4304
+          },
+          {
+            "hex": "#fac766",
+            "coveragePercent": 1.0553
+          },
+          {
+            "hex": "#fcfbf9",
+            "coveragePercent": 0.4665
+          },
+          {
+            "hex": "#9d836f",
+            "coveragePercent": 0.454
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 46.655
+          },
+          {
+            "hex": "#f2211a",
+            "coveragePercent": 20.5111
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 17.3335
+          },
+          {
+            "hex": "#c0080d",
+            "coveragePercent": 6.417
+          },
+          {
+            "hex": "#ab5a10",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fac767",
+            "coveragePercent": 3.2215
+          }
+        ],
+        "visibleSamples": 891827,
         "dominantCoveragePercent": 99.9999
       }
     }

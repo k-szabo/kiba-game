@@ -16,6 +16,8 @@ A billentyűkiosztás `inventory` művelete az `assets/config/keybindings.json` 
 - `assets/js/game.js`: a menüállapot és az akcióhoz kötött megnyitás/bezárás.
 - `assets/images/ui/backpack-leather-v1.png`: eredeti alfát megőrző, beépített `image_gen` eszközzel készült hátizsák.
 - [Generálási prompt és illesztési adatok](art-prompts/inventory-ui-v1.json).
-- A tárgyikonok és Momo az eredeti sprite-okból készülnek. A kis katanaikon natív SVG; a meglévő képek változatlanok.
+- A küldetéstárgyak ikonjai az eredeti sprite-okból készülnek.
+- A 0.9.8-as frissítéstől Momo külön, nagy felbontású portrét kapott (`assets/images/ui/momo-inventory-v1.png`); a fegyver festett grafikája az `assets/images/ui/katana-inventory-v1.png`. A [generálási promptok és kivágások](art-prompts/inventory-hd-v1.json) rögzítik a referenciákat és az illesztést.
+- A portré és a katana rajzfelülete követi a kijelző pixelsűrűségét (legfeljebb 3×), a panel méretaránya változatlan. Mobilon a fegyverkártya továbbra is Momo alatt jelenik meg, átfedés nélkül.
 
 A `scripts/test-inventory.cjs` a tárgyakat, kulcsfogyasztást, szünetet, egyéni vezérlést és a korábbi I-kiosztások megtartását ellenőrzi. A látványt, billentyűzetfókuszt, mobil HUD-ot és tényleges böngészős tárolást külön Chrome QA ellenőrzi.

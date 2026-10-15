@@ -20,6 +20,20 @@ assert.deepEqual(Array.from(run('Inventory.contents()')),['angelHalo','demonHorn
 run('mainMenu();');assert(elements.get('inventory').hidden);assert.equal(snap().state,'menu');assert(!run('Inventory.open()'));
 run("startGame();var dreamPhase=Prologue.phase;Inventory.open();");tick(120);assert.equal(run('Prologue.phase'),run('dreamPhase'));assert.equal(snap().state,'inventory');
 run('Inventory.close();Prologue.wake();');dismiss();
+// Inventory artwork uses dedicated native-resolution assets and a DPR-scaled
+// drawing buffer; the in-game sprite sheet must never be enlarged here.
+run("devicePixelRatio=2;var artDraws=[],artContext=$('inventoryMomo').getContext('2d'),originalArtDraw=artContext.drawImage;artContext.drawImage=(...args)=>artDraws.push(args);Inventory.open();");
+assert.equal(elements.get('inventoryMomo').width,768);assert.equal(elements.get('inventoryMomo').height,832);
+assert.equal(elements.get('inventoryWeaponArt').width,216);assert.equal(elements.get('inventoryWeaponArt').height,288);
+for(const [name,key] of [['momo','inventoryMomoPortrait'],['katana','inventoryKatana']]){
+ const source=run(`ART_MANIFEST.${key}`),rect=run(`ART_INVENTORY.${name}`),png=fs.readFileSync(path.join(__dirname,'..',source));
+ const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+ assert(width>=1024&&height>=1024,`${name}: dedicated high-resolution source`);
+ assert(rect.x>=0&&rect.y>=0&&rect.w>0&&rect.h>0&&rect.x+rect.w<=width&&rect.y+rect.h<=height,`${name}: crop is inside native image`);
+ assert(run(`artDraws.some(args=>args[0]===Visuals.images.${key}&&args[1]===ART_INVENTORY.${name}.x&&args[2]===ART_INVENTORY.${name}.y&&args[3]===ART_INVENTORY.${name}.w&&args[4]===ART_INVENTORY.${name}.h)`),`${name}: registered crop is rendered`);
+}
+assert(!run('artDraws.some(args=>args[0]===sheet)'),'Inventory portrait must not reuse the low-resolution gameplay cell');
+run('artContext.drawImage=originalArtDraw;devicePixelRatio=1;Inventory.close();');
 run("Bindings.setPrimary('inventory','o');Bindings.setPrimary('pause','p');");press('i');release('i');assert.equal(snap().state,'play');
 press('o');release('o');assert.equal(snap().state,'inventory');press('p');release('p');assert.equal(snap().state,'play');
 

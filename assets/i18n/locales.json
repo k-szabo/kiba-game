@@ -424,7 +424,8 @@
       "binding.action.inventory": "Felszerelés és hátizsák",
       "inventory.hud.label": "Hátizsák",
       "help.inventory.body": "A {0} billentyűvel vagy a hátizsák gombbal megnyithatod a tárgyaidat és Momo felszerelését. A játék közben szünetel.",
-      "menu.changelog.097.inventory": "Új, korlátlan bőrhátizsák és felszerelési ablak Momo fegyverével. Alapból az I billentyű nyitja meg, és szünetelteti a játékot."
+      "menu.changelog.097.inventory": "Új, korlátlan bőrhátizsák és felszerelési ablak Momo fegyverével. Alapból az I billentyű nyitja meg, és szünetelteti a játékot.",
+      "menu.changelog.098.inventoryArt": "Élesebb, nagy felbontású Momo-portré és festett katana a felszerelési ablakban, nagy pixelsűrűségű kijelzőkhöz igazítva."
     }
   },
   "en": {
@@ -852,7 +853,8 @@
       "binding.action.inventory": "Equipment and backpack",
       "inventory.hud.label": "Backpack",
       "help.inventory.body": "Press {0} or use the backpack button to inspect your items and Momo’s equipment. The game pauses while it is open.",
-      "menu.changelog.097.inventory": "New unlimited leather backpack and equipment window showing Momo’s weapon. Press I by default to open it and pause the game."
+      "menu.changelog.097.inventory": "New unlimited leather backpack and equipment window showing Momo’s weapon. Press I by default to open it and pause the game.",
+      "menu.changelog.098.inventoryArt": "Sharper, high-resolution Momo portrait and painted katana in the equipment window, with high-density display support."
     }
   }
 }

@@ -1,0 +1,41 @@
+{
+  "tool": "built-in image_gen",
+  "use": "High resolution inventory art; original generated RGBA pixels and alpha preserved without resampling.",
+  "assets": [
+    {
+      "path": "assets/images/ui/momo-inventory-v1.png",
+      "reference_images": [
+        "assets/images/momo.png",
+        "assets/images/momo-menu-idle-v2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: dedicated high-resolution full-body inventory equipment portrait for Kiba illustrated Japanese fantasy game. Input image 1 is Momo's existing sprite sheet: exact identity and outfit reference, especially first standing front-view frame. Input image 2 is larger artwork: line quality and exact fur, face, armor details reference, especially upper-left standing pose. Generate ONE character, not a sheet. Redraw the standing front-facing Momo at true native high resolution, a crisp 1536-pixel-tall-or-more character illustration; do not upscale pixels. Momo is a cute orange-and-cream shiba samurai with upright triangular ears, amber brown friendly eyes, small white eyebrow markings, cream muzzle and cheeks and paws, red forehead headband with two fabric ends extending to viewer-right, navy samurai layered lamellar armor with restrained warm gold fittings, red waist cord, small sword sheathed at his waist, fluffy cream-tipped curled orange tail on viewer-right. Preserve his short chibi body proportions, face shape, eyes, fur colors and calm closed-mouth smile faithfully. Stand relaxed on both hind paws, two forepaws hanging at sides. His paws are empty; katana remains sheathed. Crisp dark hand-inked outlines and softly painted rich fur/metal/fabric details matching reference. Fully transparent background, no shadow plate or glow or environment. Whole ears, headband ends, tail, sheath and both feet included with a small transparent margin. No text, no watermark, no framing, no extra limbs, no duplicate swords, no realistic adult dog, no changed armor, no blurry edges.",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "crop": {
+        "x": 48,
+        "y": 87,
+        "w": 976,
+        "h": 1388
+      }
+    },
+    {
+      "path": "assets/images/ui/katana-inventory-v1.png",
+      "reference_images": [
+        "assets/images/ui/momo-inventory-v1.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: standalone high-resolution equipped weapon icon in Kiba's painted Japanese fantasy inventory. Input image 1 is exact visual style and navy/gold armor and sheathed weapon palette reference only; do NOT draw the dog. Create ONLY ONE complete, unsheathed traditional Japanese katana with gently curved polished steel blade, sharp intact tip, rich navy cord-wrapped hilt with small cream ray-skin diamonds, restrained antique warm gold oval tsuba and fittings, a short red cord at the pommel. Blade elegant and believable, moderate length, engraved subtle hamon, bright silver sharp edge and cool steel spine, no magical glow. Clean silhouette, crisp hand-painted and dark inked contours matching the game's detailed illustrated props, enough edge highlights to remain readable against dark brown leather. Full sword almost vertical, tip at upper-right and pommel at lower-left in a very slight 15-degree diagonal, long slender blade about 70% overall sword length. Entire blade/tip/guard/handle/red cord included within small clear padding on all sides. Center single sword, native portrait 1024x1536 minimum. Actual transparent background alpha: no ground, scenery, painted paper, gradient, halo, frame, shadow vignette, UI or dog. No text, watermark, duplicate sword, scabbard, flames, lightning, flat vector symbol. Preserve all margins and blade tip.",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "crop": {
+        "x": 46,
+        "y": 0,
+        "w": 944,
+        "h": 1536
+      }
+    }
+  ]
+}
