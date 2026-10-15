@@ -10,7 +10,8 @@
     "interact": ["e"],
     "map": ["m"],
     "train": ["u"],
-    "pause": ["escape"]
+    "pause": ["escape"],
+    "inventory": ["i"]
   },
   "profiles": {
     "uk": {

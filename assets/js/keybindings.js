@@ -26,9 +26,23 @@ const Bindings=(()=>{
     return true;
   }
   function save(){try{localStorage.setItem(storageKey,JSON.stringify({profile,modified}));}catch{}}
+  function compatibleChanges(changes){
+    if(!changes||typeof changes!=='object'||Array.isArray(changes))return changes;
+    const copy=JSON.parse(JSON.stringify(changes));
+    for(const [which,overrides] of Object.entries(copy)){
+      if(!profiles.includes(which)||!overrides||Array.isArray(overrides)||typeof overrides!=='object'||Object.hasOwn(overrides,'inventory'))continue;
+      const used=new Set();
+      for(const action of actions.filter(a=>a!=='inventory'))for(const key of Array.isArray(overrides[action])?overrides[action]:base(which,action))used.add(key);
+      if(!base(which,'inventory').some(key=>used.has(key)))continue;
+      const candidates=[...base(which,'inventory'),'o','p','b',...'abcdefghijklmnopqrstuvwxyz0123456789',...Array.from({length:12},(_,i)=>'f'+(i+1))];
+      const available=candidates.find(key=>!used.has(key));
+      if(available)overrides.inventory=[available];
+    }
+    return copy;
+  }
   try{
     const stored=JSON.parse(localStorage.getItem(storageKey)||'null');
-    if(stored&&validate(stored.profile,stored.modified)){profile=stored.profile;modified=stored.modified;}
+    if(stored){const changes=compatibleChanges(stored.modified);if(validate(stored.profile,changes)){profile=stored.profile;modified=changes;if(JSON.stringify(changes)!==JSON.stringify(stored.modified))save();}}
   }catch{}
   function choose(next){if(!profiles.includes(next))return false;profile=next;save();return true;}
   function setPrimary(action,value){
@@ -43,8 +57,11 @@ const Bindings=(()=>{
   }
   function reset(){delete modified[profile];save();}
   function importData(data){
-    if(!data||data.version!==KEY_BINDINGS.version||JSON.stringify(data.original)!==JSON.stringify(KEY_BINDINGS.original)||!validate(data.selection,data.modified))return false;
-    profile=data.selection;modified=data.modified;save();return true;
+    if(!data||data.version!==KEY_BINDINGS.version)return false;
+    const legacy={...KEY_BINDINGS.original};delete legacy.inventory;
+    if(JSON.stringify(data.original)!==JSON.stringify(KEY_BINDINGS.original)&&JSON.stringify(data.original)!==JSON.stringify(legacy))return false;
+    const changes=compatibleChanges(data.modified);if(!validate(data.selection,changes))return false;
+    profile=data.selection;modified=changes;save();return true;
   }
   const exportData=()=>({version:KEY_BINDINGS.version,original:KEY_BINDINGS.original,profiles:KEY_BINDINGS.profiles,selection:profile,modified:JSON.parse(JSON.stringify(modified))});
   return Object.freeze({actions,profiles,normalize,read:action=>[...current(action)],has:(action,set)=>set.has('@'+action)||current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});

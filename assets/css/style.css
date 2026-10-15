@@ -111,3 +111,57 @@
 .realm-travel h4{font-size:16px;line-height:1.5;margin:18px 0 10px;overflow-wrap:anywhere}
 @media(max-width:800px){.map-panel .travel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.map-panel .travel-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* The backpack and equipment are two readable windows inside one paused dialog. */
+#inventory{z-index:25;display:flex;align-items:center;justify-content:center;padding:18px;background:#061019df;overflow:hidden}
+.inventory-shell{width:min(1000px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:#11232bf7;border:1px solid #c9b27b;border-radius:14px;padding:0 22px 22px;color:#f5edda;box-shadow:0 22px 65px #000a;scrollbar-gutter:stable;line-height:1.6}
+.inventory-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:#11232b;border-bottom:1px solid #c9b27b66}
+.inventory-header h2{font:32px Georgia,serif;margin:3px 0 0;line-height:1.25;color:#fff0c8}
+.inventory-header .eyebrow{color:#e2cfab;letter-spacing:1px}
+#inventory button{min-height:48px;border-radius:7px;color:#fff2cf;font:inherit;cursor:pointer}
+#inventory button:focus-visible{outline:3px solid #fff0ad;outline-offset:3px}
+#closeInventory{flex:none;padding:10px 16px;border:1px solid #d5bc87;background:#243e48;font-weight:700!important}
+#closeInventory:hover{background:#3b5960}
+.inventory-windows{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;padding-top:20px}
+#inventory h3{font-size:21px;line-height:1.4;margin:0 0 9px;color:#ffebbd}
+#inventory p{font-size:15px;line-height:1.65;margin:0 0 12px;color:#f3e7d1}
+.inventory-bag{position:relative;min-height:460px;min-width:0;background:url('../images/ui/backpack-leather-v1.png') center/100% 100% no-repeat;border-radius:22px;display:flex;align-items:stretch;padding:94px 14% 78px}
+.inventory-bag-content{width:100%;min-width:0;padding:14px 12px;background:#1c120dd4;border:1px solid #d0a76b78;border-radius:8px;align-self:stretch;box-shadow:0 6px 18px #140b06a6}
+#inventoryCapacity{font-size:14px!important;color:#f1d9b3!important}
+#inventoryCount{font-size:14px!important;font-weight:700;color:#ffe3af!important}
+.inventory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}
+#inventory .inventory-item{min-width:0;padding:5px;background:#17100de8;border:1px solid #d4aa71a6;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px}
+.inventory-item canvas{display:block;width:100%;max-width:88px;aspect-ratio:1;height:auto;filter:drop-shadow(0 2px 3px #000)}
+.inventory-item span{font-size:12px;line-height:1.45;overflow-wrap:anywhere;color:#fff0cf}
+#inventory [data-inventory-item][aria-pressed="true"]{border:2px solid #ffe5a2;background:#6a4c2f;color:#fff}
+.inventory-item:hover{background:#513b29!important}
+#inventory .inventory-empty{padding:22px 4px;text-align:center;color:#f0d9b7;font-style:italic}
+.inventory-equipment{min-width:0;border:1px solid #a99060;border-radius:12px;padding:22px 18px;background:radial-gradient(ellipse at 43% 55%,#30414c,#101d29 75%);box-shadow:inset 0 0 25px #050f1680}
+.inventory-character{position:relative;min-height:355px;display:flex;align-items:center;justify-content:flex-start;padding-right:60px}
+#inventoryMomo{display:block;width:min(100%,330px);height:auto;filter:drop-shadow(0 12px 8px #060c1699)}
+.inventory-weapon-slot{position:absolute;right:0;top:49%;transform:translateY(-10%);width:120px;text-align:center;font-size:15px;color:#ffebbf}
+.inventory-weapon-slot::before{content:"";position:absolute;top:48px;right:100%;width:35px;border-top:2px solid #ccb279;transform:rotate(-12deg);transform-origin:right}
+.inventory-weapon-slot>span{display:block;margin-bottom:5px;font-weight:700;text-shadow:0 2px 3px #07121c}
+#inventoryWeapon{width:100%;padding:5px 8px 9px;border:1px solid #dfc18c;background:#0e202ce8;display:grid;justify-items:center;gap:4px;line-height:1.4;font-size:13px!important}
+.inventory-sword{width:54px;height:72px;display:block;filter:drop-shadow(0 0 5px #dfc78045)}
+#inventoryEquipped{display:block;font-size:13px;margin-top:4px;color:#e4d8bb}
+.inventory-details{margin-top:20px;padding:18px 20px;border:1px solid #c6ab7480;border-radius:8px;background:#0c1b25;min-height:150px}
+.inventory-details .eyebrow{display:block;color:#d6bf8e;letter-spacing:1px;margin-bottom:5px}
+#inventoryDetailName{font-size:22px;margin:0 0 8px}
+#inventoryDetailText{margin:0}
+@media(max-width:800px){.inventory-shell{padding:0 16px 16px}.inventory-windows{gap:14px}.inventory-bag{padding-left:12%;padding-right:12%}.inventory-grid{gap:5px}.inventory-bag-content{padding:12px 8px}.inventory-equipment{padding:20px 14px}.inventory-character{padding-right:50px}.inventory-weapon-slot{width:104px}.inventory-header h2{font-size:27px}.inventory-header .eyebrow{font-size:11px!important}}
+@media(max-width:650px){#inventory{padding:9px}.inventory-shell{max-height:calc(100dvh - 18px);padding:0 12px 14px}.inventory-header{align-items:flex-start;gap:10px;padding:14px 0}.inventory-header h2{font-size:25px}#closeInventory{max-width:130px;padding:9px 10px;font-size:14px!important}.inventory-windows{grid-template-columns:minmax(0,1fr);padding-top:14px}.inventory-bag{min-height:430px;padding:88px 14% 70px}.inventory-bag-content{padding:14px 12px}.inventory-item span{font-size:13px}.inventory-equipment{padding:20px}.inventory-character{max-width:380px;min-height:330px;margin:auto;padding-right:64px}.inventory-weapon-slot{width:114px}.inventory-details{padding:16px}.inventory-header .eyebrow{letter-spacing:.3px}#inventoryButton .inventory-button-label{display:none}#inventoryButton::before{content:'🎒';font-size:20px}#inventoryButton{min-width:42px!important;padding:4px!important}}
+@media(max-width:370px){.inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-header h2{font-size:22px}.inventory-bag{padding-left:12%;padding-right:12%}}
+@media(prefers-reduced-motion:reduce){#inventory{scroll-behavior:auto}#inventory button{transition:none}}
+@media(max-width:650px){
+ .hud{flex-wrap:wrap;align-items:flex-start;gap:8px}
+ .hud-left{flex:1;max-width:calc(100% - 112px)}
+ .progression{position:static;order:1;width:100px;min-width:100px}
+ .hud-right{order:2;flex-basis:100%;flex-wrap:wrap;justify-content:flex-end}
+ .hud-right button,#inventoryButton{min-width:44px!important;min-height:44px}
+ #quest{top:145px}#relicInventory{top:250px}
+ .inventory-character{flex-direction:column;align-items:center;max-width:none;min-height:0;padding:0;gap:14px}
+ #inventoryMomo{width:min(100%,240px)}
+ .inventory-weapon-slot{position:static;align-self:flex-end;transform:none;width:140px;max-width:100%}
+ .inventory-weapon-slot::before{display:none}
+}

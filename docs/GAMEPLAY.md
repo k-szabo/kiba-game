@@ -35,6 +35,7 @@ Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külö
 | E | Harang, lélek, emlék, szentély, torii, apa |
 | U / Fejlesztés gomb | Fejlesztéspontok elköltése a pihenőszentélynél |
 | M | Térkép és gyorsutazás az ismert pihenőhelyekhez |
+| I | Hátizsák és Momo felszerelése; megnyitva szünetelteti a játékot |
 | Esc | Szünet |
 
 Érintőképernyőn a képernyő gombjai használhatók. A leugráshoz a lefelé és az ugrás gombot együtt kell használni. A hang a felső gombbal kapcsolható.

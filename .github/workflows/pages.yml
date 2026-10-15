@@ -53,6 +53,7 @@ jobs:
           node scripts/test-changelog.cjs
           node scripts/test-secret-art.cjs
           node scripts/test-realm-travel.cjs
+          node scripts/test-inventory.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

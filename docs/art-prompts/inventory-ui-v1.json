@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in image_gen",
+  "styleReferences": [
+    "assets/images/backgrounds/cult-cave-v6.png"
+  ],
+  "assets": [
+    {
+      "path": "assets/images/ui/backpack-leather-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: production UI backdrop for the inventory window of a detailed painted 2D Japanese fantasy game. Primary request: one front-on opened leather travelling backpack turned into a broad flat inventory panel. Square composition. The entire bag is visible, centered with a very thin transparent outer margin, usable as a responsive HTML panel background. Hand-painted richly textured aged chestnut brown leather, softened rounded corners, substantial double-stitched leather border, visible leather grain and scuffs, restrained brass buckles and short rolled straps confined to the outer rim, subtle side gussets so it unmistakably resembles an adventurer's leather backpack. Wide dark umber leather central panel completely empty and low contrast, occupying the inner 76 percent width and 76 percent height. No pockets or flap crossing the central area, no painted grid or slots, no emblems, no text, no numerals, no objects, no characters, no metal fantasy frame. The actual item slots and all text will be HTML layered over this image, so preserve the quiet plain dark center. Warm soft rim light reveals leather craftsmanship while central area remains dark enough for ivory text contrast. Illustrated premium Japanese storybook fantasy game material rendering, very detailed yet restrained. Straight-on flat orthographic camera, no tilted perspective, no dramatic cast shadows outside object. True transparent outer background and natural clean alpha; do not paint a checkerboard."
+    }
+  ],
+  "integration": {
+    "alpha": "Original generated RGBA image preserved without resampling or color changes.",
+    "usage": "Responsive leather inventory panel background; dark central clear area x:160..1090 y:260..1020. Layer real HTML grid/text above it; no painted slots.",
+    "geometry": "UI art only; no gameplay or collision changes."
+  }
+}

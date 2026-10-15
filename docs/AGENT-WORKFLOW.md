@@ -52,7 +52,7 @@ Példa egy ötpontos tervre:
 
 ## Ellenőrzés
 
-A parancsok a [fejlesztői útmutatóban](DEVELOPMENT.md) vannak. A meglévő 17 csomagból a változáshoz illőket futtassák; kiadás előtt teljes npm test kell. A test-save-validation.cjs és test-only-bootstrap.cjs segédfájlok.
+A parancsok a [fejlesztői útmutatóban](DEVELOPMENT.md) vannak. A meglévő 18 csomagból a változáshoz illőket futtassák; kiadás előtt teljes npm test kell. A test-save-validation.cjs és test-only-bootstrap.cjs segédfájlok.
 
 A mockolt Canvas/SaveVault VM-teszt nem bizonyítja a látványt vagy a valódi IndexedDB/titkosítás működését. Ezekhez friss tesztprofillal végzett böngészős ellenőrzés kell, személyes mentések használata nélkül.
 

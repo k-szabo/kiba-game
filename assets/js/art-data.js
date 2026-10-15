@@ -5,6 +5,7 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "inventoryLeather": "assets/images/ui/backpack-leather-v1.png",
   "angelRuinWall": "assets/images/angel-ruin-wall-v1.png",
   "cultCaveWall": "assets/images/cult-cave-wall-v1.png",
   "councilGateClosed": "assets/images/council-gate-closed-v1.png",
