@@ -458,7 +458,15 @@
       "bugReport.area.council": "Tanácsosok kastélya",
       "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal.",
       "menu.changelog.0912.bugReportStyle": "A hibajelentés-gombok színe a többi menügombhoz igazodik, és mindkettő kis bogárikont kapott.",
-      "menu.changelog.0912.yomiAggro": "A pokol ura és idézett szolgái a lávafázis után is követik Momót; a boss közelebb megy, mielőtt újabb közelharci támadást indít."
+      "menu.changelog.0912.yomiAggro": "A pokol ura és idézett szolgái a lávafázis után is követik Momót; a boss közelebb megy, mielőtt újabb közelharci támadást indít.",
+      "dev.eyebrow": "FEJLESZTŐI ESZKÖZÖK",
+      "dev.title": "Fejlesztői eszközpanel",
+      "dev.intro": "A panel megnyitása szünetelteti a játékot. Bezáráskor ott folytathatod, ahol abbahagytad.",
+      "dev.close": "Bezárás",
+      "dev.empty": "A panel készen áll. A tesztelőeszközök külön fejlesztési feladatokban érkeznek.",
+      "dev.version": "Játékverzió: {0}",
+      "dev.toolError": "Az eszköz futtatása sikertelen.",
+      "menu.changelog.0913.maintenance": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -920,7 +928,15 @@
       "bugReport.area.council": "Council castle",
       "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically.",
       "menu.changelog.0912.bugReportStyle": "Bug report controls now match the other menu controls and both include a small bug icon.",
-      "menu.changelog.0912.yomiAggro": "The lord of Yomi and his summoned minions keep pursuing Momo after the lava phase; the boss approaches before starting another melee attack."
+      "menu.changelog.0912.yomiAggro": "The lord of Yomi and his summoned minions keep pursuing Momo after the lava phase; the boss approaches before starting another melee attack.",
+      "dev.eyebrow": "DEVELOPER TOOLS",
+      "dev.title": "Developer tools",
+      "dev.intro": "Opening this panel pauses the game. Close it to return to where you left off.",
+      "dev.close": "Close",
+      "dev.empty": "The panel is ready. Testing tools will be added in separate development tasks.",
+      "dev.version": "Game version: {0}",
+      "dev.toolError": "The tool could not be run.",
+      "menu.changelog.0913.maintenance": "Internal maintenance and technical improvements."
     }
   }
 }

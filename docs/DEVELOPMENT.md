@@ -21,6 +21,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
 | `assets/js/inventory.js` | Hátizsák, tárgyleírások és Momo felszerelési nézete. |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
+| `assets/js/dev-tools.js` | Jelszó nélkül elérhető, rejtett fejlesztői panel; [használat és bővítés](DEV-TOOLS.md). |
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
 | `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
@@ -75,6 +76,7 @@ node scripts/test-eclipse-relic.cjs
 node scripts/test-yomi-redesign.cjs
 node scripts/test-serpent-art.cjs
 node scripts/test-bug-report.cjs
+node scripts/test-dev-tools.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.

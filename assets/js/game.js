@@ -149,7 +149,7 @@ function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove(
  camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=keyedInstruction(I18n.t(context.text));const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t((region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):''));updateHUD();
  if(sound){musicClock-=dt;if(musicClock<=0){const notes=[220,261.63,293.66,329.63,392];tone(notes[Math.floor(time*.3)%5]*(realm===2?2:1),1.8,'sine',.02);musicClock=1.6;}}pressed.clear();}
-function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
+function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'||DevTools.menuBackground){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
  if(level===councilHall){
   ctx.save();ctx.translate(-camera,-cameraY);drawKibaCurrent();Visuals.councilGate({...level.returnPoint,w:250,h:250},true);
   drawPlayer();ctx.restore();ctx.restore();return;
@@ -199,7 +199,7 @@ function showMap(){if(state!=='play'||Prologue.active)return;const inside=level=
  const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t(realms[realm].name+I18n.t("text.light.paths.to.discovered.shrines"));$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmUnlocked(n)&&visitedRests[n].length);if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
 function closeMap(){$('map').hidden=true;state='play';pressed.clear();}
 function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden=false;$('resumeButton').focus();}else if(state==='pause'){state='play';$('pause').hidden=true;pressed.clear();}}
-function mainMenu(){if(state==='inventory')Inventory.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
+function mainMenu(){if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
 $('startButton').onclick=()=>startGame(false);$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
@@ -254,6 +254,7 @@ $('importBindings').onclick=()=>$('bindingFile').click();
 $('bindingFile').onchange=async event=>{const file=event.target.files?.[0];if(!file)return;let valid=false;try{valid=Bindings.importData(JSON.parse(await file.text()));}catch{}event.target.value='';captureAction=null;renderHelp();$('bindingMessage').textContent=I18n.t(valid?'help.bindings.import.done':'help.bindings.import.error');};
 function keyName(e){return Bindings.normalize(e.code==='Space'?' ':e.key);}
 function handleKeyDown(e){
+ if(state==='developer')return;
  const k=keyName(e);
  if(state==='inventory'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k)||Bindings.read('inventory').includes(k))){e.preventDefault();Inventory.close();}return;}
  if(state==='help'){
@@ -279,6 +280,7 @@ function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);
 Inventory.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':['japan','yomi','heaven'][realm]);
 I18n.applyDOM();
+DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
 renderBindingHints();
 for(const select of document.querySelectorAll('.language-picker select'))select.addEventListener('change',e=>I18n.setLocale(e.target.value));

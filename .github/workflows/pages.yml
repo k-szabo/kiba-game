@@ -54,6 +54,7 @@ jobs:
           node scripts/test-yomi-redesign.cjs
           node scripts/test-serpent-art.cjs
           node scripts/test-bug-report.cjs
+          node scripts/test-dev-tools.cjs
 
   deploy:
     needs: validate
