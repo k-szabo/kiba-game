@@ -10,3 +10,4 @@ description: Change Kiba combat, movement, progression, levels, or encounter tra
 - Select affected checks: combat; v05/v06 boss/relic systems; routes for geometry/abilities; prologue/shadow animation; polish for spawn/pause/platform behavior. Run npm test for changes spanning systems.
 - Hand source edits/results to the integrator for final runtime generation and current-runtime checks. Keep test/debug state out of production.
 - If QA rejected this work, apply kiba-qa-rework before source or test edits.
+- Before finalizing or adding player-facing copy for an item, enemy, boss, attack, ability, quest, or gameplay prompt, present the exact text to the user and wait for explicit approval. Mechanical implementation can proceed independently; keep unapproved descriptions out of game content.

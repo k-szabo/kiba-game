@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {prepareBugfix,validateRegistry,validateRelease} from './release-id.mjs';
+import {prepareBugfix,prepareRelease,validateRegistry,validateRelease} from './release-id.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const registryPath=path.join(root,'docs/releases.json'),releasePath=path.join(root,'assets/config/release.json');
@@ -14,15 +14,21 @@ function replaceFile(file,content){
 }
 try{
   const [command,...args]=process.argv.slice(2),registry=validateRegistry(read(registryPath)),release=validateRelease(read(releasePath),registry);
-  if(command==='validate'&&!args.length)console.log(`PASS: ${registry.bugfixes.length} registered bugfix release(s); current ${release.version}.`);
+  if(command==='validate'&&!args.length)console.log(`PASS: ${registry.releases.length} feature release(s) and ${registry.bugfixes.length} bugfix release(s) registered; current ${release.version}.`);
   else if(command==='lookup'&&args.length===1){
-    const matches=registry.bugfixes.filter(entry=>entry.code===args[0]||entry.version===args[0]);
+    const matches=[...registry.releases,...registry.bugfixes].filter(entry=>entry.code===args[0]||entry.version===args[0]);
     if(matches.length!==1)throw Error(`No unique registered release matches: ${args[0]}.`);
     console.log(json(matches[0]));
   }else if(command==='bugfix'&&args[0]==='--metadata'&&(args.length===2||(args.length===3&&args[2]==='--write'))){
     const proposal=prepareBugfix(read(path.resolve(args[1])),release,registry);
+    printProposal(proposal,'bugfix');
+  }else if(command==='release'&&args[0]==='--metadata'&&(args.length===2||(args.length===3&&args[2]==='--write'))){
+    const proposal=prepareRelease(read(path.resolve(args[1])),release,registry);
+    printProposal(proposal,'feature release');
+  }else throw Error('Usage: node scripts/release.mjs validate | lookup <8-character-code|full-version> | bugfix --metadata <JSON-file> [--write] | release --metadata <JSON-file> [--write]');
+  function printProposal(proposal,label){
     console.log(json(proposal.entry));
-    if(args[2]!=='--write')console.log('DRY RUN: no files changed. Add --write to append the registry and update release.json.');
+    if(args[2]!=='--write')console.log(`DRY RUN: no files changed. Add --write to append this ${label} and update release.json.`);
     else if(proposal.unchanged)console.log('Already current; no files changed.');
     else{
       // Keep the old registry if updating the release marker fails. The build
@@ -31,7 +37,7 @@ try{
       replaceFile(registryPath,json(proposal.registry));
       try{replaceFile(releasePath,json(proposal.release));}
       catch(error){replaceFile(registryPath,previous);throw error;}
-      console.log('Updated docs/releases.json and assets/config/release.json. Update both language changelogs, then build and test before publishing.');
+      console.log(`Updated docs/releases.json and assets/config/release.json. Update both language changelogs, then build and test before publishing.`);
     }
-  }else throw Error('Usage: node scripts/release.mjs validate | lookup <8-character-code|full-version> | bugfix --metadata <JSON-file> [--write]');
+  }
 }catch(error){console.error(error.message);process.exitCode=1;}

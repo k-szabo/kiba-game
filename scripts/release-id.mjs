@@ -18,16 +18,22 @@ export function canonicalMetadata(value){
   if(!Array.isArray(value.fixes)||!value.fixes.length)throw Error('At least one bilingual fix is required.');
   return {baseVersion:value.baseVersion,slug:value.slug,summary:translated(value.summary,'summary'),fixes:value.fixes.map((fix,i)=>translated(fix,`fixes[${i}]`))};
 }
+function compareBaseVersions(a,b){
+  const left=a.split('.').map(Number),right=b.split('.').map(Number);
+  for(let i=0;i<3;i++)if(left[i]!==right[i])return left[i]-right[i];
+  return 0;
+}
 export function makeBugfix(value){
   const metadata=canonicalMetadata(value);
   const code=createHash('sha256').update(JSON.stringify(metadata),'utf8').digest('hex').slice(0,8);
   return {version:`${metadata.baseVersion}_${code}`,code,...metadata};
 }
+export function makeRelease(value){return makeBugfix(value);}
 export function validateRegistry(registry){
-  object(registry,['schemaVersion','bugfixes'],'release registry');
-  if(registry.schemaVersion!==1||!Array.isArray(registry.bugfixes))throw Error('Unsupported release registry.');
+  object(registry,['schemaVersion','bugfixes','releases'],'release registry');
+  if(registry.schemaVersion!==1||!Array.isArray(registry.bugfixes)||!Array.isArray(registry.releases))throw Error('Unsupported release registry.');
   const codes=new Set(),versions=new Set(),slugs=new Set();
-  for(const entry of registry.bugfixes){
+  for(const entry of [...registry.releases,...registry.bugfixes]){
     object(entry,['version','code','baseVersion','slug','summary','fixes'],'release entry');
     const expected=makeBugfix({baseVersion:entry.baseVersion,slug:entry.slug,summary:entry.summary,fixes:entry.fixes});
     if(entry.code!==expected.code||entry.version!==expected.version)throw Error(`Release metadata/hash mismatch: ${entry.version}.`);
@@ -40,20 +46,20 @@ export function validateRegistry(registry){
 export function validateRelease(release,registry){
   if(!release||typeof release.version!=='string'||!releasePattern.test(release.version)||release.savePolicy!=='reset-on-version-change')throw Error('Invalid release version or save policy.');
   validateRegistry(registry);
-  if(release.version.includes('_')&&!registry.bugfixes.some(entry=>entry.version===release.version))throw Error(`Unregistered bugfix release: ${release.version}. Use scripts/release.mjs.`);
+  if(release.version.includes('_')&&![...registry.releases,...registry.bugfixes].some(entry=>entry.version===release.version))throw Error(`Unregistered release: ${release.version}. Use scripts/release.mjs.`);
   return release;
 }
 export function bugfixHistory(registry){
   validateRegistry(registry);
   const history={};
-  for(const {baseVersion,code} of registry.bugfixes)(history[baseVersion]??=[]).push(code);
+  for(const {baseVersion,code} of [...registry.releases,...registry.bugfixes])(history[baseVersion]??=[]).push(code);
   return history;
 }
 export function prepareBugfix(metadata,release,registry){
   validateRelease(release,registry);
   const entry=makeBugfix(metadata);
-  if(entry.baseVersion!==release.version.split('_')[0])throw Error('Bugfix baseVersion must match the current release base. Feature releases use a new plain version.');
-  const collision=registry.bugfixes.find(record=>record.code===entry.code);
+  if(entry.baseVersion!==release.version.split('_')[0])throw Error('Bugfix baseVersion must match the current release base.');
+  const collision=[...registry.releases,...registry.bugfixes].find(record=>record.code===entry.code);
   if(collision){
     const known=makeBugfix({baseVersion:collision.baseVersion,slug:collision.slug,summary:collision.summary,fixes:collision.fixes});
     if(JSON.stringify(known)!==JSON.stringify(entry))throw Error(`Release code collision: ${entry.code}. Choose a different descriptive slug.`);
@@ -61,7 +67,23 @@ export function prepareBugfix(metadata,release,registry){
     return {entry,release,registry,unchanged:true};
   }
   if(registry.bugfixes.some(record=>record.baseVersion===entry.baseVersion&&record.slug===entry.slug))throw Error('This slug is already registered under this base version; use a new descriptive slug.');
-  const nextRegistry={schemaVersion:1,bugfixes:[...registry.bugfixes,entry]};
+  const nextRegistry={...registry,bugfixes:[...registry.bugfixes,entry]};
+  validateRegistry(nextRegistry);
+  return {entry,release:{...release,version:entry.version},registry:nextRegistry,unchanged:false};
+}
+export function prepareRelease(metadata,release,registry){
+  validateRelease(release,registry);
+  const entry=makeRelease(metadata),currentBase=release.version.split('_')[0];
+  const collision=[...registry.releases,...registry.bugfixes].find(record=>record.code===entry.code);
+  if(collision){
+    const known=makeRelease({baseVersion:collision.baseVersion,slug:collision.slug,summary:collision.summary,fixes:collision.fixes});
+    if(JSON.stringify(known)!==JSON.stringify(entry))throw Error(`Release code collision: ${entry.code}. Choose a different descriptive slug.`);
+    if(release.version!==entry.version)throw Error(`This release was already recorded: ${entry.version}. Use a new slug/description.`);
+    return {entry,release,registry,unchanged:true};
+  }
+  if(compareBaseVersions(entry.baseVersion,currentBase)<=0)throw Error('A feature release baseVersion must be greater than the current release base.');
+  if([...registry.releases,...registry.bugfixes].some(record=>record.baseVersion===entry.baseVersion&&record.slug===entry.slug))throw Error('This slug is already registered under this base version; use a new descriptive slug.');
+  const nextRegistry={...registry,releases:[...registry.releases,entry]};
   validateRegistry(nextRegistry);
   return {entry,release:{...release,version:entry.version},registry:nextRegistry,unchanged:false};
 }
