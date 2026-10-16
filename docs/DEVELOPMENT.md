@@ -82,7 +82,7 @@ node scripts/test-bug-report.cjs
 - A kiosztásteszt a profilváltást, ütköző billentyűk kezelését, mentést, JSON-átvitelt és a francia mozgásbillentyűket ellenőrzi.
 - A prológusteszt az üres álompályát, a harci támadásokat, az elkerülhetetlen vereséget, az ébredést és a mentések kompatibilitását ellenőrzi.
 - Árnyék animációtesztje a 24 pózt, a szemek illesztését, az előjelzések és találatok időzítését, a szünetet és az elnyelés végső pózát vizsgálja.
-- A polish teszt a stabil spawn-, szünet- és interakciós képkockákat, a platformok átfedését, az égi szentélyek ritkítását és az aktuális kiadás mentőpont-validációját vizsgálja; a látványjavítások történetét lásd a [0.8.2 leírásában](POLISH-0.8.2.md).
+- A polish teszt a stabil spawn-, szünet- és interakciós képkockákat, a platformok átfedését, az égi szentélyek ritkítását és az aktuális kiadás mentőpont-validációját vizsgálja; az aktuális illesztési és szünetkezelési szabályokat a [grafikai útmutató](ART-DESIGN.md) foglalja össze.
 - Az angyali grafika tesztje a festett lövedékek illesztését, a fázisfüggő háttereket, az áttűnés szünetét és a világos ég visszaállítását vizsgálja; lásd a [0.8.3 grafikáit](ANGEL-ART-0.8.3.md).
 - A boss-effektus teszt minden támadáscsaládot és a rajzolás alatt változatlan harci állapotot ellenőrzi; lásd a [0.8.4 effektuscsomagját](BOSS-VFX-0.8.4.md).
 - A tanácsosi oldalág tesztje a minionfeltételt, az egyszer megszerezhető és elhasználódó csontkulcsot, a visszahívás hiányát és az üres kastélyból visszatérést ellenőrzi; lásd az [oldalág leírását](COUNCIL-BRANCH.md).
@@ -116,7 +116,7 @@ A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztat
 
 A játék relatív útvonalakat használ. Az `index.html` maradjon a repository gyökerében, az `assets/`, `scripts/` és `.github/` mappákkal együtt. A `.nojekyll` fájlt is őrizd meg.
 
-A 0.9.3 vizuális javításai és a változásnapló: [részletes leírás](VISUAL-POLISH-0.9.3.md). A három új regresszióteszt az ugrópózok valódi alfa-méretét, a titkos helyszínek grafikáját és a változásnapló működését ellenőrzi.
+A vizuális regressziótesztek az ugrópózok valódi alfa-méretét és talpillesztését, a titkos helyszínek hátterét és falait, valamint a változásnapló működését ellenőrzik. A megjelenítési szabályok a [grafikai útmutatóban](ART-DESIGN.md) vannak.
 
 A `test-realm-travel.cjs` ellenőrzi a befejezett birodalmakba visszautazást, a folyamatban lévő pályára visszatérést, a tartós haladást, az ellenfelek újraéledését, a kastélyból utazást és a célpontok feloldási szabályait.
 
@@ -134,11 +134,21 @@ Az új játék a prológusban kezdődik. Ugyanazon verzión belül a `prologueCo
 
 ## Képek cseréje
 
-A titkos területek és minibossok a 0.6 változatban négy új képet használnak; lásd az [új változat leírását](SECRETS-0.6.md).
+A titkos területek és minibossok aktuális szabályai a [titkos helyek útmutatójában](SECRETS-0.6.md) vannak.
 
 A képek verziószáma nem jelenti, hogy elavultak: a játék v3 háttereket, v4 animációkat és v5/v6 kiegészítéseket együtt használ. A ténylegesen betöltött képeket az `ART_MANIFEST` sorolja fel az `assets/js/art-data.js` fájlban; Momo eredeti sprite lapja `assets/images/momo.png`.
 
-Képcsere után a kivágások és illesztési pontok is ellenőrzendők. A törölhető régi képek listáját az [asset-útmutató](ASSET-CLEANUP.md) tartalmazza.
+Képcsere után a kivágások és illesztési pontok is ellenőrzendők; lásd a [grafikai útmutatót](ART-DESIGN.md).
+
+## Repository és takarítás
+
+- A Pages-csomag kizárólag az index.html, .nojekyll és assets/ tartalmát kapja. A docs/, scripts/ és agentbeállítások a közös fejlesztéshez maradnak Gitben.
+- A docs/releases.json a build és a kiadáskezelő bemenete, hozzáfűzési sorrendjét meg kell őrizni. Nem helyettesíthető gitignore-szabállyal.
+- A docs/art-prompts/ a képek eredetét és későbbi szerkesztési referenciáit őrzi. Csak repository-relatív assetútvonalakat használjunk, személyes gépútvonalakat ne.
+- Törlés előtt ellenőrizd az ART_MANIFEST mellett a közvetlen HTML/JS/CSS-hivatkozásokat, tesztimportokat, konfigurációt és dokumentációs referenciákat is. Az Árnyék eredeti shadow-prologue-v1.png képe például tervezési referencia, bár nem a runtime tölti be.
+- Az aktuális játékmeneti, grafikai, mentési és agentútmutatók, valamint a README által használt publikus képek maradjanak követve. Az elavult kiadási beszámolók helyett az aktuális útmutatót frissítsük; korábbi tartalmuk a Git-előzményben visszakereshető.
+- Átmeneti tesztpéldányok, helyi PR-tervezetek és QA-bizonyítékok az ignorált .codex/work/ alá kerüljenek. Lezárt másolt runtime-ot, tesztprofilt és screenshotot ne tartsunk a publikált fájlok között.
+- A scripts/ fájljai build-, kiadás-, paletta- és regressziós eszközök vagy importált segédmodulok; attól, hogy nem a böngésző tölti be őket, még szükségesek a fejlesztéshez.
 
 ## Színpaletta-referencia
 

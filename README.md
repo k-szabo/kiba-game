@@ -49,6 +49,7 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 | M | Térkép és gyorsutazás |
 | S + Space | Leugrás a párkányról |
 | Esc | Szünet |
+| I | Hátizsák és felszerelés, a játék szüneteltetésével |
 
 \* A megfelelő képesség megszerzése után. Érintőképernyőn a képernyőn megjelenő gombok is használhatók.
 
@@ -66,19 +67,14 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 
 ## Dokumentáció
 
-- [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md) – láncos kapu, csontkulcs és egy üres démoni kastélybelső.
-- [A Yomi boss és a lávakígyó](docs/YOMI-BOSS.md) – a minionküszöbök, a két lávaszakasz és a pikkely részletes szabályai.
-- [Inventory és tárgyak](docs/INVENTORY.md) – hátizsák, felszerelés, ereklyék és tárgyikonok.
-- [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md) – projektspecialisták, fájlfelelősségek és kötelező javítási terv QA-visszadobás után.
-
-- [A 0.8.4 boss-effektusai](docs/BOSS-VFX-0.8.4.md) – részletes láva, földrengés, kardcsóvák, árnymágia és idézés.
-- [A 0.8.3 angyali grafikái](docs/ANGEL-ART-0.8.3.md) – festett fénynyilak, sötét ég és napfogyatkozásos titkos fázis.
-- [A 0.8.2 pálya- és animációjavításai](docs/POLISH-0.8.2.md) – stabil Momo, rendezett platformok, festett felhők és átdolgozott ébredés.
-- [A 0.8 prológusa](docs/PROLOGUE.md) – az új kezdés, Árnyék és az ébredési átvezetés; spoileres történetrész lenyitható leírásban.
-- [Játékmenet, képességek és mentés](docs/GAMEPLAY.md) – részletes segítség, később boss- és titokleírásokkal.
-- [Helyi futtatás, ellenőrzés és GitHub Pages](docs/DEVELOPMENT.md).
-- [Assetek és a repository rendbetétele](docs/ASSET-CLEANUP.md).
-- [Grafikai koncepció és assetek](docs/ART-DESIGN.md).
-- [Karakterek és assetek színpaletta-referenciája](assets/config/colormaps.json) – HEX-paletták, boss-formák, környezet és effektusszínek.
-- [A 0.6 titkos területei és harci frissítése](docs/SECRETS-0.6.md) – spoileres részletek lenyitható leírásban.
-- [A 0.5 harci és animációs frissítés](docs/BOSSES-0.5.md) – a titkos fázis leírását is tartalmazza.
+- [Játékmenet, képességek és mentés](docs/GAMEPLAY.md).
+- [Helyi futtatás, ellenőrzés, GitHub Pages és repository-rend](docs/DEVELOPMENT.md).
+- [Grafikai stílus, animáció és assetek](docs/ART-DESIGN.md).
+- [Titkos helyek és minibossok](docs/SECRETS-0.6.md) – spoileres részletek lenyitható leírásban.
+- [Prológus és Árnyék](docs/PROLOGUE.md).
+- [A Yomi boss és a lávakígyó](docs/YOMI-BOSS.md).
+- [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md).
+- [Inventory és tárgyak](docs/INVENTORY.md).
+- [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md).
+- [Kiadásazonosítók és hibajavítások](docs/RELEASES.md).
+- [Karakterek és assetek színpaletta-referenciája](assets/config/colormaps.json).

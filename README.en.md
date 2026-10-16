@@ -75,8 +75,8 @@ The site is static and hosted on GitHub Pages. You do not need an account or a s
 - [Prologue](docs/PROLOGUE.md) — the dream, Shadow, and Momo's awakening.
 - [Development guide](docs/DEVELOPMENT.md) — local setup, checks, and GitHub Pages.
 - [Agents, skills, and QA approval flow](docs/AGENT-WORKFLOW.md)
-- [Assets and repository cleanup](docs/ASSET-CLEANUP.md)
+- [Repository and asset maintenance](docs/DEVELOPMENT.md#repository-és-takarítás)
 - [Art direction and asset guide](docs/ART-DESIGN.md)
 - [Character and asset color-map reference](assets/config/colormaps.json)
 - [Release IDs and bug-fix history](docs/RELEASES.md)
-- [Previous art and gameplay updates](docs/)
+- [Art prompts and reference provenance](docs/art-prompts/README.md)

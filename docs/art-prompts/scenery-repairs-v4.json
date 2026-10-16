@@ -5,7 +5,7 @@
       "id": "terrain",
       "prompt": "Use case: precise-object-edit. Repair the provided painted terrain sprite atlas without changing the three realm designs. Transparent PNG 1536x1024. Re-layout into exactly THREE columns by THREE rows with safe empty padding. Row1 moss grass soil with red maple, row2 cracked dark basalt Yomi shrine stone, row3 ivory gold heaven marble. Left cap, repeating straight middle, right cap per row. All nine islands complete: no cropped roots, chains, foliage, torii roof tips, clouds, gems or edges. Each entire piece stays inside its512x341 cell with32pixels transparent padding all around. Use a common flat walkable top at30 percent of each cell height. Maximum piece height220pixels. Continuous matching material edges on the three pieces per row. Side elevation, no perspective, detailed painted texture from reference. The middle tile must be plain continuous material all across, no isolated object. Remove small torii from basalt caps to avoid confusion with interactive gates. No labels, no grid, real transparency, do not add backgrounds.",
       "referenced_image_paths": [
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/terrain-v3.png"
+        "assets/images/terrain-v3.png"
       ],
       "transparent_background": true
     },
@@ -13,7 +13,7 @@
       "id": "props",
       "prompt": "Use case: precise-object-edit. Repair and safely re-layout the provided fantasy game scenery sprite sheet. Preserve the same detailed painted style and all eight object designs. Transparent PNG1536x1024 EXACT FOUR equal columns and TWO equal rows. Each object must be complete inside its384x512 cell, minimum30pixels empty transparent padding on all sides: no cut tips, roots, roof, leaves, branches, gems, chains or bases, no overlap with neighbors. Top row left to right: red Japanese torii, moss stone lantern shrine, red roof bronze bell pavilion, old Japanese wood house. Bottom row: violet soul cage, ivory gold sky torii, white-gold sky shrine lantern, compact bamboo red-maple foliage cluster. All feet/bases aligned at90percent cell height. Shrink objects enough to guarantee padding. Do not truncate or erase object parts. No text, no grid, no backgrounds except real transparent alpha.",
       "referenced_image_paths": [
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/props-v3.png"
+        "assets/images/props-v3.png"
       ],
       "transparent_background": true
     }
