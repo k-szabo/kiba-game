@@ -104,7 +104,7 @@ Az űrlap hét rejtett mezőt vár, pontosan ezekkel a nevekkel: `version`, `lan
 
 Nyers user agent, oldal-URL, mentés, tárgyak, küldetésállapot és tárolóadatok nem kerülnek a linkbe. A hivatkozás fókuszkor és aktiváláskor frissül, ezért nyelvváltás vagy átméretezés után is az aktuális kontextust használja. A `test-bug-report.cjs` tiltott tároló-hozzáféréssel is ellenőrzi ezt; a billentyűzetes aktiválást, a szünet megőrzését és a keskeny/alacsony elrendezést valódi böngészőben kell tesztelni.
 
-A beküldések a Tally Submissions felületén kezelhetők. A Trello-kártyák automatikus létrehozása külön Tally–Make/Zapier integrációt igényel; ezt a statikus játék nem állítja be.
+A beküldések a Tally Submissions felületén kezelhetők. A projekthez beállított Make-scenario minden új válaszból kártyát készít a Kiba Game Kanban tábla **Beérkező Hibák** listájában, **BUG** címkével. A cím a rövid hibacím, a leírás a szöveges válaszokat, a hét technikai mezőt és a Tally-beküldés azonosítóját tartalmazza. A teljes Tally–Make–Trello folyamatot két megjelölt tesztbeküldéssel ellenőriztük. A scenario és a szolgáltatások hitelesítése külső beállítás, nem a statikus játék része.
 
 ## GitHub Pages
 
