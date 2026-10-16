@@ -4,8 +4,8 @@
     {
       "id": "japan-attack-repair",
       "referenced_image_paths": [
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/japan-attack-v4.png",
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/japan-walk-v4.png"
+        "assets/images/enemies/japan-attack-v4.png",
+        "assets/images/enemies/japan-walk-v4.png"
       ],
       "transparent_background": true,
       "prompt": "Use case: identity-preserve. FIRST image is the EDIT TARGET attack sprite sheet. SECOND image is a supporting character design reference walking sheet. Make a precise correction ONLY to the top row samurai helmets: columns2,3 and5 currently incorrectly show an unhelmeted ponytail head. Put the exact same dark navy samurai helmet with its gold horns/crescent and face guards from the top row of image2 onto these THREE attack poses, matching their head tilt. Keep face, sword raised pose, armor, limbs, motion and every other frame and all other three rows unchanged. Every top-row attack frame must depict the exact same helmeted black/navy samurai. Preserve canvas1536x1024, six columns four rows, feet baselines, poses, full weapons, crisp painted style, real transparent alpha. Keep all sprites complete and do not introduce clipping or inter-frame overlap. No new characters, no background, no labels."
@@ -13,8 +13,8 @@
     {
       "id": "yomi-attack-repair",
       "referenced_image_paths": [
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/yomi-attack-v4.png",
-        "C:/Users/kszab/Documents/Codex/2026-10-13/hoz/outputs/kiba-github-pages/assets/images/enemies/yomi-walk-v4.png"
+        "assets/images/enemies/yomi-attack-v4.png",
+        "assets/images/enemies/yomi-walk-v4.png"
       ],
       "transparent_background": true,
       "prompt": "Use case: identity-preserve. FIRST image is the EDIT TARGET oni attack sheet. SECOND is supporting character reference. Precisely repair THIRD ROW blue shield oni, especially column5: keep the gold round oni-face SHIELD intact and carried in its left arm in ALL six frames. Current column5 mistakenly loses the shield and has only flying rubble; replace rubble with the same complete shield from the other frames, in shield-bash recovery pose. In column4 keep an intact shield behind the gold sparks, without broken-off pieces. The shield does NOT shatter during its own attack. Preserve blue body, white beard, compact mace, all six poses and all other rows unchanged. Canvas1536x1024 six columns four rows, detailed painted style and original alpha. Keep hands, feet, horns and weapon tips whole and inside separated sprite cells. No backgrounds, no labels, no grid."

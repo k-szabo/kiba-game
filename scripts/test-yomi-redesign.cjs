@@ -73,4 +73,38 @@ assert(!run('bossStarted'));assert.equal(run('boss.yomiStage'),'normal');assert.
 fresh();to(.8);flush();run('var stale=enemies.find(e=>e.summoned);resetBossBattle();bossStarted=true;stale.hp=0;killEnemy(stale);');assert.equal(run('boss.councilMinionKills'),0);
 to(.8);flush();run('var fake=enemies.find(e=>e.summoned);fake.councilEligible=false;fake.hp=0;killEnemy(fake);');assert.equal(run('boss.councilMinionKills'),0);
 run('enterRealm(0);');assert.equal(run('enemies.filter(e=>e.serpent).length'),0);run('enterRealm(1);');assert.equal(run('boss.serpent'),null);assert.equal(run('boss.summonThresholds.length'),0);
-console.log('PASS: four uncapped milestone pairs; eight-kill secret key; protected 50/10 boundaries; invulnerable shelter; dormant/returning serpent HP; one permanent scale; reachable final-platform melee; finite fatal race; pause, death, reset and realm cleanup.');
+// Both shelter exits retain arena pursuit, even beyond the old detection/patrol span.
+for(const ending of ['serpent','survival'])for(const raised of [false,true]){
+ fresh();if(raised)place(1300,5695);huge();flush();
+ if(ending==='serpent')killSnake();
+ else run('updateYomiWave(2);boss.waveClock=10;updateYomiWave(0);');
+ place(2800,5800);
+ const attempts=run(`var minionAttacks=new Set();for(let i=0;i<2400;i++){updateEnemies(1/60);for(const e of enemies)if(e.summoned&&e.attackTime>0)minionAttacks.add(e.kind);}Array.from(minionAttacks);`);
+ assert(attempts.includes('guard')&&attempts.includes('mage'),`${ending}/${raised}: both minion roles must pursue and attack a distant target`);
+ run('player.inv=0;for(let i=0;i<240&&player.hp===player.maxHp;i++)updateEnemies(1/60);');
+ assert(run('player.hp<player.maxHp'),'The pursuing minions can actually damage Momo');
+ assert(run('enemies.filter(e=>e.summoned).every(e=>e.baseY+e.h===level.arena.y)'), 'Minions leave old island supports when Momo returns to the floor');
+ assert.equal(run('boss.councilMinionKills'),0,'Pursuit changes do not award secret credit');
+ // Keep Momo far from the boss after either exit: it must approach rather than
+ // cycling empty melee attacks on the other side of the arena.
+ place(400,5800);const beforeX=run('boss.x');
+ run('for(let i=0;i<600;i++)updateBoss(1/60);');
+ assert(beforeX-run('boss.x')>750,`${ending}: boss should continue pursuing during its wait phase`);
+ assert.equal(run('boss.cycles'),0,'Distant melee cycles cannot stall pursuit');
+ run('for(let i=0;i<1800;i++)updateBoss(1/60);');
+ assert(run('boss.cycles>0'),'Normal telegraphed offense resumes after approaching');
+ const enemyX=run('enemies.find(e=>e.summoned).x'),bossX=run('boss.x');run("state='pause';");tick(120);
+ assert.equal(run('boss.x'),bossX);assert.equal(run('enemies.find(e=>e.summoned).x'),enemyX);
+ run("state='play';resetBossBattle();");assert(!run('enemies.some(e=>e.summoned)'));
+}
+// Encounter pursuit is neither a global detection buff nor inherited by stale summons.
+for(const context of ['outside','stale','ordinary']){
+ fresh();to(.8);flush();
+ run(`var isolated=enemies.find(e=>e.summoned&&e.kind==='guard');enemies=[isolated];if('${context}'==='stale')isolated.encounterId--;if('${context}'==='ordinary')isolated.summoned=false;`);
+ place(context==='outside'?run('level.arena.x+level.arena.w+150'):2800,5800);
+ run('for(let i=0;i<600;i++)updateEnemies(1/60);');
+ assert(run('isolated.x>=isolated.patrolLeft&&isolated.x<=isolated.patrolRight'));
+ assert(run('isolated.patrolRight-isolated.patrolLeft<=460'),'Unengaged/stale/ordinary units keep their patrol limits');
+ assert.equal(run('isolated.attackTime'),0);assert.equal(run('isolated.windup'),0);
+}
+console.log('PASS: four uncapped milestone pairs; eight-kill secret key; protected 50/10 boundaries; invulnerable shelter; dormant/returning serpent HP; one permanent scale; reachable final-platform melee; finite fatal race; both shelter exits retain boss/minion pursuit and offense; pause, death, reset and realm cleanup.');

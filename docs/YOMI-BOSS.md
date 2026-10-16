@@ -8,6 +8,8 @@ A démon a szokásos kalapácsütéseket, földrengést és parázslövedékeket
 
 A szakasz a kígyó megölésekor vagy az utolsó előtti sziget összeomlásakor ér véget. A láva visszahúzódik, a platformok helyreállnak, és a démon ismét sebezhető. A túlélő kígyó eltűnik és megőrzi a maradék HP-ját. A démon platformmagasságban lebeg, és az előjelzett közelharci ütéseit a lávás szakaszokban is használja.
 
+A szakasz után a démon addig közelít, amíg ismét támadási távolságba ér, így a jobb szélső menedéknél nem kezdi távolról újra és újra a közelharci kombinációját. Az aktuális kísérlet idézett szolgái az aréna teljes szélességében követik Momót, a talaj és az alacsony menedékek magasságában. A talajon az aréna határai között járhatnak; az összeomlott menedékről, illetve a szakasz után Momo által elhagyott szigetről a talajra kerülnek. A támadások hatótávja, előjelzése és időzítése megmarad; ez a követés nem vonatkozik a pálya normál ellenfeleire vagy korábbi kísérletből származó idézésekre.
+
 ## Az utolsó 10%: verseny az összeomlással
 
 10%-nál újabb kétszekundumos előjelzés után a láva visszatér. A boss ezúttal **sebezhető marad**, és az utolsó platform fölött, karddal elérhető magasságban áll. A félidőben életben maradt kígyó ugyanazzal a HP-val tér vissza; a megölt kígyó nem éled újra.

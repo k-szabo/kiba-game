@@ -1,6 +1,6 @@
-# 0.6 – Az elfeledett őrzők
+# Titkos helyek és az elfeledett őrzők
 
-Két új titkos hely, külön minibossok, képességhez kötött fejlesztés és erősebb végső őrző. Az élő oldalon frissítés után a főmenü **V0.6 · AZ ELFELEDETT ŐRZŐK** felirata jelzi ezt a változatot.
+A japán pálya két opcionális helyszíne őrzi a végső összecsapást megváltoztató ereklyéket. Az aktuális kiadás azonosítója az assets/config/release.json fájlban és a főmenüben található.
 
 ## Titkos helyek
 
@@ -31,7 +31,7 @@ Mindkét minibossnak saját, hat pózból álló animációs készlete és helyi
 
 ## Fejlesztés
 
-A **Szellem** fejlesztés gombja zárolt, amíg Momo nem szerzi meg a szellemlépést. A menü megmutatja a feltételt, és a pontköltés logikája is ellenőrzi a képességet. Életerőt és kardot továbbra is lehet fejleszteni előtte. A korábbi mentésben már kiosztott szellempontok megmaradnak.
+A **Szellem** fejlesztés egyáltalán nem jelenik meg, amíg Momo nem szerzi meg a szellemlépést. A pontköltés logikája is ellenőrzi a képességet. Életerőt és kardot előtte is lehet fejleszteni. Az azonos kiadásban megszerzett képességek és fejlesztések halál és pihenés után megmaradnak.
 
 ## Az angyal őrző
 
@@ -41,9 +41,9 @@ Mindhárom forma a varázslatai mellett önálló közelharci szárnyvágást ha
 
 ## Mentések és frissítés
 
-A mentés kulcsa és formátuma megmaradt. A képességek, statok, korábbi győzelmek és már felvett ereklyék tovább használhatók. Új játékból lehet végigjátszani az új keresést és az őrzőket; a régi ereklyék nem kerülnek ki a gyűjteményből.
+Azonos kiadáson belül a képességek, fejlesztések, legyőzött minibossok és felvett ereklyék mentődnek. Alfa/béta alatt új kiadásnál minden korábbi játékhaladás törlődik; csak a nyelv és a billentyűkiosztás marad meg. Régebbi kiadás mentését nem vesszük át.
 
-A teljes frissítéshez a JavaScript-fájlokon túl az **új négy v6 PNG** és a frissített **art-data.js** is kell. A v3 hátterek és a v4/v5 aktív képek továbbra is szükségesek. A négy új illusztráció a beépített ImageGen eszközzel készült; a [promptok](V06-ART-PROMPTS.json) a dokumentációban megtalálhatók. A PNG-k változatlanul kerültek a játékba, az animációs kivágásokat átlátszó határok mentén ellenőrzött metadata választja el.
+A két miniboss és a két helyszínháttér a v6 PNG-ket és az art-data.js kivágásait használja. A v3 hátterek és a v4/v5 aktív képek továbbra is szükségesek. A négy új illusztráció a beépített ImageGen eszközzel készült; a [promptok](art-prompts/secrets-v6.json) a dokumentációban megtalálhatók. A PNG-k változatlanul kerültek a játékba, az animációs kivágásokat átlátszó határok mentén ellenőrzött metadata választja el.
 
 ## Ellenőrzés
 

@@ -67,10 +67,21 @@ function updateEnemies(dt) {
     if(e.dead)continue;
     if(e.serpent){updateLavaSerpent(e,dt);continue;}
     if(e.miniboss){updateMiniboss(e,dt);continue;}
+    // An original-fight summon follows Momo across this arena, rather than
+    // forgetting the target at its spawn-local patrol/detection boundary.
+    const a=level.arena,yomiMinion=e.summoned&&realm===1&&level===levels[1]&&bossStarted&&!boss.dead&&e.encounterId===boss.encounterId;
+    const arenaAggro=yomiMinion&&player.x+player.w>a.x&&player.x<a.x+a.w&&player.y+player.h>=a.y-220&&player.y+player.h<=a.y+25;
+    const support=e.summoned&&platforms.find(p=>p.id===e.supportId);
+    const leaveRefuge=arenaAggro&&support?.bossPlatform&&boss.yomiStage==='normal'&&
+      (player.x+player.w<support.x||player.x>support.x+support.w||player.y+player.h>support.y+35);
+    if(support?.broken||leaveRefuge){e.supportId='bottom';e.baseY=a.y-e.h;e.y=e.baseY;}
+    if(e.summoned&&(support?.broken||leaveRefuge||arenaAggro&&(!support||e.supportId==='bottom'))){
+      e.patrolLeft=a.x+8;e.patrolRight=a.x+a.w-e.w-8;
+    }
     for(const key of ['stun','cd','contactCd','recovery','guardBreak','blockFlash','turnCooldown','edgePause'])e[key]=Math.max(0,e[key]-dt);
     e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
     const dx=player.x+player.w/2-e.x-e.w/2,dy=player.y+player.h*.5-e.y-e.h*.5,role=enemyRole(e);
-    const near=Math.abs(dx)<(role==='mage'?610:510)&&Math.abs(dy)<180;
+    const near=(arenaAggro||Math.abs(dx)<(role==='mage'?610:510))&&Math.abs(dy)<180;
     if(e.stun<=0){
       if(e.windup>0){e.windup-=dt;if(e.windup<=0)releaseEnemyAttack(e);}
       else if(e.recovery<=0&&e.attackTime<=0){
@@ -100,7 +111,6 @@ function updateEnemies(dt) {
       }
     }
     if(e.kind==='fly')e.y=e.baseY+Math.sin(time*2+e.origin)*18;
-    if(e.summoned&&e.supportId){const p=platforms.find(p=>p.id===e.supportId);if(p?.broken){e.supportId='bottom';e.baseY=level.arena.y-e.h;e.y=e.baseY;e.patrolLeft=level.arena.x+8;e.patrolRight=level.arena.x+level.arena.w-e.w-8;}}
     if(overlap(player,e)&&e.contactCd<=0){damage(1,dx>0?1:-1);e.contactCd=1.1;}
     if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
@@ -429,7 +439,11 @@ function updateBoss(dt){
   if(!bossStarted||boss.dead)return;
   if(boss.phase==='wait'){
     if(!boss.autoPhase&&Math.abs(player.x-boss.x)>165)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*(realm===1?95:realm===2?85+boss.stage*10:65)*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
-    if(boss.clock<=0&&!boss.autoPhase)chooseBossMove();
+    // The lava wave leaves Yomi's demon at the final refuge. Keep approaching
+    // before committing the next combo instead of spending every wait on a
+    // distant hammer swing. Committed windups/strikes retain their timing.
+    if(realm===1&&!boss.autoPhase)boss.face=Math.sign(player.x+player.w/2-boss.x-boss.w/2)||boss.face;
+    if(boss.clock<=0&&!boss.autoPhase&&(realm!==1||Math.abs(player.x+player.w/2-boss.x-boss.w/2)<235))chooseBossMove();
   }else if(boss.phase==='windup'){if(boss.clock<=0)startBossAttack();}
   else if(boss.phase==='strike'){
     if(realm===1&&boss.move==='lava'&&!boss.autoPhase&&Math.abs(player.x-boss.x)>180)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*55*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);

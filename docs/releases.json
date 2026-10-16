@@ -44,6 +44,26 @@
           "en": "Both bug report controls now include a small bug icon that follows the text color."
         }
       ]
+    },
+    {
+      "version": "0.9.12_80a6980e",
+      "code": "80a6980e",
+      "baseVersion": "0.9.12",
+      "slug": "yomi-post-lava-pursuit",
+      "summary": {
+        "hu": "Yomi arénaharc követésének javítása",
+        "en": "Yomi arena pursuit fix"
+      },
+      "fixes": [
+        {
+          "hu": "A démon a lávafázis után támadási távolságba közelít az újabb közelharci kombináció előtt.",
+          "en": "After the lava phase, the demon approaches attack range before committing another melee combo."
+        },
+        {
+          "hu": "Az aktuális arénaharc idézett szolgái mindkét lávafázis-lezárás után követik Momót, a régi járőrhatárok és elhagyott menedékek nem tartják vissza őket.",
+          "en": "Current-encounter summoned minions pursue Momo after either shelter exit without being restricted by old patrol limits or abandoned refuges."
+        }
+      ]
     }
   ]
 }

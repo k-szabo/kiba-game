@@ -1,50 +1,41 @@
-# Momo – grafikai frissítés · 0.3
+# Grafikai stílus és assetek
 
-A 0.3 látványvilágának leírása. A legújabb animációk, javított atlaszok, bossok és az XP-rendszer a [0.4 változat dokumentációjában](POLISH-0.4.md) szerepelnek.
+A Kiba részletes, festett japán fantasy világot használ. Momo a játszható shiba szamuráj; a Kiba a világot átszövő energia. Az aktuális képek listáját és forráskivágásait az assets/js/art-data.js, a színreferenciákat az assets/config/colormaps.json tartalmazza. A fájlnévben lévő v3/v4/v5 szám grafikai generáció, nem törlési jelzés.
 
-A frissítés részletes, festett japán fantasy környezetet ad a három birodalomnak. Momo eredeti, 1536×2288 méretű sprite sheetje változatlan maradt; a tájak és ellenfelek köré épültek. A pályák méretei, ugrási fizikája és küldetései megmaradtak, a 0.2 mentések tovább használhatók.
+## Tájak és szereplők
 
-## Tájak és kellékek
+| Birodalom | Környezet | Ellenfelek |
+| --- | --- | --- |
+| Japán | Hajnali hegyek, bambusz, vörös juhar, mohás és gyökerekkel átszőtt párkányok. | Szamuráj, íjász, pajzsos katona, onmyoji. |
+| Yomi | Mély sziklahasadékok, bazalt, láncok, hamu, szentélyek és lávafény. | Oni harcos, tengu, pajzsos démon, démonmágus. |
+| Takamagahara | Felhők, elefántcsont és arany paloták, márványpárkányok. | Égi katona, íjász, pajzsos angyal, mágus. |
 
-| Birodalom | Új látvány |
-| --- | --- |
-| Japán | Hajnali hegyvidék, rizsteraszok, pagodák, bambusz, vörös juharlevelek, mohás és gyökerekkel átszőtt platformok. |
-| Yomi | Mély sziklahasadékok, bazalt, függő láncok, elhagyott szentélyek, izzó hamu és lávafény. |
-| Takamagahara | Felhőtenger, lebegő szigetek, elefántcsontszínű és arany paloták, márványpárkányok. |
+A v3 tájképek, a v4 terep/kellékek és normálellenfél-animációk továbbra is aktívak. A külön szamuráj- és angyalbossok, a titkos őrzők, Árnyék és a lávakígyó későbbi készleteket használnak. Az ellenfelek és interaktív tárgyak legyenek a tájhoz illők, mégis felismerhetők; ne helyettesítsük a festett effektusokat egyszerű síkidomokkal.
 
-A háttér a kamera mozgására eltérő sebességgel reagál. Japánban tükrözött háttérszakaszok kísérik a széles pályát; Yomiban és az égben a kép a függőleges haladással változik. Köd, parázs, fény és részecskék adnak mozgást a tájnak. A platformok képi felső széle a járható felülethez illeszkedik.
+Az angyali romokat ködös, festett felhők és romos párkányok rejtik. A titkos arénák festett falai az ART_SECRET_WALLS leírásból rajzolódnak; a háttér vizuális határa az egész dupla ugrást lefedi, hogy ugráskor ne villanjon át a falu képe. A széláramlatok vége fokozatosan halványul, a járható platformokhoz igazítva.
 
-## Ellenfelek
+## Animáció, kivágás és illesztés
 
-| Szerepkör | Japán | Yomi | Mennyország |
-| --- | --- | --- | --- |
-| Közelharcos | Páncélos szamuráj | Vörös oni | Égi katona |
-| Íjász | Japán íjász | Szárnyas tengu | Szárnyas íjász |
-| Pajzsos | Nehéz katonai pajzs | Kék oni | Arany pajzsos angyal |
-| Varázsló | Onmyoji | Ibolyaszínű démonmágus | Égi mágus |
-| Őrző | Hadvezér | Vulkáni oni király | Szeráf |
+- Őrizzük meg a PNG eredeti alfáját. Kivágással és átlátszó hézagot követő kontúrral válasszuk szét a sprite-okat; ne töröljünk valódi fegyver-, szárny- vagy füstrészletet.
+- A teljes sziluett férjen el minden képkockán mindkét irányban. A kiálló kardhegy, glória, pajzs és talp ne vágódjon le, a szomszédos figura ne szivárogjon át.
+- Momo pózainak méretét a valódi alfa-tartalomhoz és rögzített talppontokhoz igazítjuk; a 43 × 69-es ütközőtest ettől független. Ugrás közben sem változhat a látszólagos testmérete.
+- A normál ellenfelek mozgási és támadási atlaszai hat-hat pózt használnak szerepkörönként. A fordulási késleltetés és a járőrhatár kezelése akadályozza meg a helyben forgást; grafikai változtatás ezeket ne írja át.
+- Momo nyolcpózos kardcsapása a mozgás/ugrás elé kerül. Az irány a gombnyomáskor rögzül, a találat a vágás pillanatában egyszer történik. A rajzolás a meglévő harci állapotot követi.
+- Árnyék négy, egyenként hatpózos animációját a szemekhez illesztjük; a részletes időzítések és prioritások a [prológus útmutatójában](PROLOGUE.md) vannak.
+- A spawn talppontja a platformra kerüljön. A sebezhetetlenség látható, állandó áttetszőséget használjon villódzás helyett; a levegőpóz a függőleges sebességet kövesse.
 
-Mindegyik szereplő két illusztrált pózt kapott: nyugalmi és támadó. A játék programozott lépéssel, finom testmozgással, árnyékkal, támadásjelzéssel és találati effektekkel egészíti ki ezeket. A pajzsosok, íjászok és varázslók külön harci viselkedést is használnak; a taktikai leírás a [GAMEPLAY.md](GAMEPLAY.md) fájlban található.
+## Effektek és olvashatóság
 
-## Képfájlok és generálás
+A világos égi háttéren a fehér-arany tárgyak és támadásjelzések sötét alátétet vagy kontúrt kapnak. A szín mellett a forma és a felkészülési animáció is jelezze a veszélyt. A festett fénynyíl csúcsa a tényleges lövedékponthoz, az óriási lándzsa a jelzett talajbecsapódáshoz igazodik: [angyali grafika](ANGEL-ART-0.8.3.md).
 
-A nyolc új PNG a beépített **ImageGen** eszközzel készült. A képek generálásához használt teljes promptok az [ART-PROMPTS.json](ART-PROMPTS.json) és a [SCENERY-PROMPTS.json](SCENERY-PROMPTS.json) fájlban találhatók. Az áttetsző sprite sheetek és atlaszok eredeti alfa-csatornája megmaradt; a játék forráskivágásokkal használja őket.
+A láva, földrepedés, becsapódás, kardcsóva, árnyékmágia és idézőkapu közös festett atlaszokat használ. A BOSS_FX_ART kivágásai és a BossVFX rajzoló a támadás tényleges helyéhez és fázisához igazítják a grafikát: [boss-effektusok](BOSS-VFX-0.8.4.md). A dash füstnyoma a meglévő árnymágia-textúrából készül.
 
-| Fájl a projektben | Tartalom |
-| --- | --- |
-| `assets/images/backgrounds/japan-v3.png` | Japán panoráma |
-| `assets/images/backgrounds/yomi-v3.png` | Yomi függőleges tája |
-| `assets/images/backgrounds/heaven-v3.png` | Az égi birodalom függőleges tája |
-| `assets/images/enemies/japan-v3.png` | Japán szereplők, öt oszlop és két póz |
-| `assets/images/enemies/yomi-v3.png` | Démonok, öt oszlop és két póz |
-| `assets/images/enemies/heaven-v3.png` | Angyalok, öt oszlop és két póz |
-| `assets/images/terrain-v3.png` | Három birodalom platformtextúrái |
-| `assets/images/props-v3.png` | Torii, szentély, harang, ház, lélekketrec és növényzet |
+A díszítő effektek és animációs órák álljanak meg pause, dialógus, térkép, inventory és fejlesztés alatt. Csökkentett mozgásnál a dekoratív sodródás/forgás szünetel, a szükséges harci előjelzés megmarad. Art-only változtatás nem módosíthat sebzést, támadási időt, hitboxot vagy járható geometriát.
 
-A `graphics.js` tölti be és rajzolja a képeket, az `art-data.js` a sprite-kivágásokat és illesztési pontokat tartalmazza. A játék kezdőgombja a grafikák betöltésének állapotát mutatja.
+## Források és ellenőrzés
 
-## Ellenőrzés
+A generálási promptok és történeti stílusreferenciák a [docs/art-prompts/](art-prompts/README.md) alatt vannak. Új promptnál repository-relatív útvonalakat használjunk. Egy régi generálás referenciája lehet már lecserélt kép; ez nem indok arra, hogy visszategyük a runtime-ba.
 
-A statikus oldallellenőrzés, a három világ küldetés- és fizikai útvonaltesztje, valamint az új harci szerepkörök tesztje sikeres. A tényleges rajzolókód mindhárom világhoz Canvas-előnézetet készített; ellenőrizve az áttetszőség, a méretarány és a platformok illeszkedése. Momo fájljának SHA256-értéke változatlan: `662cb7c1ade03bd801be53fd459fef5ecce04b13ca20bb857a8614adf77fcb85`.
+A speciális grafikai szerződések: [inventory](INVENTORY.md), [titkos helyek](SECRETS-0.6.md), [Yomi boss](YOMI-BOSS.md), [tanácsosi csarnok](COUNCIL-BRANCH.md). Új inventory-képet az ART_INVENTORY.items katalógusba kell regisztrálni, és a közös, DPR-t figyelembe vevő, kontrasztos rajzolóval megjeleníteni.
 
-A 0.3 teljes böngészős végigjátszása ebben a környezetben nem történt meg. A csomag a korábban működő GitHub Pages-szerkezetet használja; az éles oldalhoz a repository fájljait frissíteni kell.
+Kép-, kivágás- és színváltozás után frissítsd és ellenőrizd a colormaps.json fájlt. Futtasd az érintett sprite/VFX regressziókat, a buildet és a statikus ellenőrzést; kiadás előtt a teljes tesztcsomagot. A tesztek listája a [fejlesztői útmutatóban](DEVELOPMENT.md) van. A mockolt Canvas-teszt nem bizonyítja a látványt: valódi böngészőben is vizsgáld a képkockák folytonosságát, az illesztést, a telegráfok kontrasztját, a szünetet és a csökkentett mozgást.
