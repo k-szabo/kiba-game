@@ -1,7 +1,7 @@
-/* A user-reviewed GitHub draft; never exports saves or raw browser/session data. */
+/* A public Tally form; never exports saves or raw browser/session data. */
 'use strict';
 const BugReport=(()=>{
- const endpoint='https://github.com/k-szabo/kiba-game/issues/new';
+ const endpoint='https://tally.so/r/8Nojjr';
  const areas=new Set(['menu','dream','japan','yomi','heaven','council']);
  function browserName(){
   const agent=navigator.userAgent||'';
@@ -12,12 +12,12 @@ const BugReport=(()=>{
  }
  function createURL(area='menu'){
   const url=new URL(endpoint),safeArea=areas.has(area)?area:'menu';
-  url.searchParams.set('title',I18n.format('bugReport.issueTitle',[GAME_RELEASE.version]));
-  url.searchParams.set('body',I18n.format('bugReport.template',[
-   GAME_RELEASE.version,I18n.locale,I18n.t('bugReport.area.'+safeArea),browserName(),
-   `${Math.round(innerWidth)} × ${Math.round(innerHeight)}`,Number(devicePixelRatio||1).toFixed(2),
-   I18n.t(typeof matchMedia==='function'&&matchMedia('(pointer:coarse)').matches?'bugReport.touch':'bugReport.pointer')
-  ]));
+  const fields={
+   version:GAME_RELEASE.version,language:I18n.locale,area:I18n.t('bugReport.area.'+safeArea),browser:browserName(),
+   viewport:`${Math.round(innerWidth)} × ${Math.round(innerHeight)}`,pixel_ratio:Number(devicePixelRatio||1).toFixed(2),
+   input:I18n.t(typeof matchMedia==='function'&&matchMedia('(pointer:coarse)').matches?'bugReport.touch':'bugReport.pointer')
+  };
+  for(const [key,value] of Object.entries(fields))url.searchParams.set(key,value);
   return url.href;
  }
  function init(currentArea){

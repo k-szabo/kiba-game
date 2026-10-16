@@ -52,7 +52,7 @@ Példa egy ötpontos tervre:
 
 ## Ellenőrzés
 
-A parancsok a [fejlesztői útmutatóban](DEVELOPMENT.md) vannak. A meglévő 22 csomagból a változáshoz illőket futtassák; kiadás előtt teljes npm test kell. A test-save-validation.cjs és test-only-bootstrap.cjs segédfájlok.
+A parancsok a [fejlesztői útmutatóban](DEVELOPMENT.md) vannak. A meglévő 23 csomagból a változáshoz illőket futtassák; kiadás előtt teljes npm test kell. A test-save-validation.cjs és test-only-bootstrap.cjs segédfájlok.
 
 Új funkció egyszerű verziót kap; kisebb hibajavításnál a [kiadási szabályok](RELEASES.md) szerinti rögzített metaadatból generált nyolckarakteres utótagot használjuk. A korábbi kódrekordok hozzáfűzési sorrendjét őrizzék meg: a mentésvédelem ebből állapítja meg az azonos alapverziójú javítások időrendjét.
 

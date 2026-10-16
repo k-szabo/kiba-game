@@ -15,33 +15,33 @@ const context=vm.createContext({URL,Set,Math,Number,GAME_RELEASE:release,
  saved:forbidden,player:forbidden,flags:forbidden
 });
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/bug-report.js'),'utf8')+'\nglobalThis.report=BugReport;',context);
-function checkDraft(url,expectedArea){
- const draft=new URL(url),body=draft.searchParams.get('body');
- assert.equal(draft.origin,'https://github.com');assert.equal(draft.pathname,'/k-szabo/kiba-game/issues/new');
- assert.deepEqual([...draft.searchParams.keys()].sort(),['body','title']);
- assert(draft.searchParams.get('title').includes(release.version),'Full release ID is included');
- assert(body.includes(release.version));assert(body.includes(t('bugReport.area.'+expectedArea)));
- assert(body.includes('Chrome 140'));assert(body.includes('1280 × 720'));assert(body.includes('2.00'));
- assert(!body.includes('DO_NOT_EXPORT'));assert(!body.includes('Mozilla'));assert(!body.includes('{0}'));
- assert(url.length<8000,'Keep the draft URL bounded');
- return body;
+function checkForm(url,expectedArea){
+ const form=new URL(url),fields=form.searchParams;
+ assert.equal(form.origin,'https://tally.so');assert.equal(form.pathname,'/r/8Nojjr');
+ assert.deepEqual([...fields.keys()].sort(),['area','browser','input','language','pixel_ratio','version','viewport']);
+ assert.equal(fields.get('version'),release.version,'Full release ID is included');
+ assert.equal(fields.get('language'),language);assert.equal(fields.get('area'),t('bugReport.area.'+expectedArea));
+ assert.equal(fields.get('browser'),'Chrome 140');assert.equal(fields.get('viewport'),'1280 × 720');assert.equal(fields.get('pixel_ratio'),'2.00');
+ assert(!url.includes('DO_NOT_EXPORT'));assert(!url.includes('Mozilla'));assert(!url.includes('{0}'));
+ assert(url.length<2000,'Keep the form URL bounded');
 }
 for(language of ['hu','en']){
- const body=checkDraft(context.report.createURL('dream'),'dream');
- assert(body.includes(language==='hu'?'Reprodukálás':'Steps to reproduce'));
- checkDraft(context.report.createURL('DO_NOT_EXPORT'),'menu');
+ checkForm(context.report.createURL('dream'),'dream');
+ checkForm(context.report.createURL('DO_NOT_EXPORT'),'menu');
 }
+const originalVersion=release.version;release.version=originalVersion.split('_')[0]+'_a1b2c3d4';
+checkForm(context.report.createURL('heaven'),'heaven');release.version=originalVersion;
 language='hu';context.report.init(()=>area);
-checkDraft(links[0].href,'menu');checkDraft(links[1].href,'dream');
-area='yomi';links[1].listeners.click();checkDraft(links[1].href,'yomi');
+checkForm(links[0].href,'menu');checkForm(links[1].href,'dream');
+area='yomi';links[1].listeners.click();checkForm(links[1].href,'yomi');
 language='en';localeChanged();assert.equal(links[1].attributes['aria-label'],t('bugReport.label'));
-assert(new URL(links[0].href).searchParams.get('title').includes('short bug title'));
+assert.equal(new URL(links[0].href).searchParams.get('language'),'en');
 context.innerWidth=390;context.innerHeight=844;links[1].listeners.focus();
-assert(new URL(links[1].href).searchParams.get('body').includes('390 × 844'),'Focus refreshes viewport context');
+assert.equal(new URL(links[1].href).searchParams.get('viewport'),'390 × 844','Focus refreshes viewport context');
 context.matchMedia=()=>({matches:true});links[1].listeners.pointerdown();
-assert(new URL(links[1].href).searchParams.get('body').includes(t('bugReport.touch')));
+assert.equal(new URL(links[1].href).searchParams.get('input'),t('bugReport.touch'));
 for(const [ua,expected] of [['Edg/143.1 Chrome/142.0','Edge 143'],['FxiOS/144.0 Safari/604.1','Firefox 144'],['Version/26.0 Mobile/15E148 Safari/604.1','Safari 26'],['unrecognized SecretSession/DO_NOT_EXPORT',t('bugReport.unknown')]]){
  context.navigator.userAgent=ua;
- assert(new URL(context.report.createURL()).searchParams.get('body').includes(expected));
+ assert.equal(new URL(context.report.createURL()).searchParams.get('browser'),expected);
 }
-console.log('PASS: HU/EN GitHub draft URLs, full release/context, bounded allowlisted metadata, no storage/session export, live language/viewport refresh, and browser/input detection.');
+console.log('PASS: HU/EN Tally form links, exact hidden field contract, full plain/bugfix release IDs, no storage/session export, live language/viewport refresh, and browser/input detection.');

@@ -58,6 +58,8 @@ Az alapértelmezett kiosztást az `assets/config/keybindings.json` tartalmazza. 
 
 ## A projektről
 
+A főmenü és a szünetmenü **Hibajelentés** hivatkozása új lapon nyitja a [hibajelentő űrlapot](https://tally.so/r/8Nojjr), amely bejelentkezés nélkül kitölthető. A játék átadja a verziót, a nyelvet, az aktuális birodalmat és néhány technikai adatot; a hiba leírását te adod meg. Mentést vagy személyes adatot a játék nem ad át. Képernyőképet és kapcsolattartási e-mailt önként adhatsz meg az űrlapon.
+
 A játék **HTML5 Canvas**, **JavaScript** és **CSS** használatával készült. Momo eredeti animált pet sprite sheetjére épül, illusztrált tájakkal, külön mozgási és támadási animációkkal, valamint a játékban rajzolt fény- és részecskehatásokkal.
 
 A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhasználói fiókra vagy szerveroldali alkalmazásra. Helyi kipróbáláshoz HTTP-kiszolgálót használj, hogy a böngésző biztonságos tárhelye és a mentés is működjön; az elkészült `runtime.js` a repository része. A fejlesztés és az ellenőrzés lépései a [fejlesztői útmutatóban](docs/DEVELOPMENT.md) vannak.

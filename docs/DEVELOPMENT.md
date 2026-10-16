@@ -18,6 +18,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | --- | --- |
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
 | `assets/js/inventory.js` | Hátizsák, tárgyleírások és Momo felszerelési nézete. |
+| `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
 | `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
@@ -70,6 +71,7 @@ node scripts/test-release-ids.mjs
 node scripts/test-eclipse-relic.cjs
 node scripts/test-yomi-redesign.cjs
 node scripts/test-serpent-art.cjs
+node scripts/test-bug-report.cjs
 ```
 
 - A statikus ellenőrzés a fájlhivatkozásokat, a fájlnevek pontos írásmódját, a gyökérből és repository-almappából történő kiszolgálást, a JavaScript szintaxisát és Momo sprite sheetjét vizsgálja.
@@ -93,6 +95,16 @@ Az összes fordítás és a nyelvválasztó metaadata az `assets/i18n/locales.js
 Az `assets/config/keybindings.json` tartalmazza az eredeti kiosztást (`original`), a profilokat (`presets`) és az induló módosításokat (`modified`). A statikus GitHub Pages nem tudja átírni ezt a fájlt futás közben, ezért a játékos módosításai böngészőnként a `localStorage` területén maradnak. A súgó JSON-exportja és importja hordozható mentést ad a kiosztáshoz. Az új kiosztásokat és alapértékeket a forrás JSON-ban lehet bővíteni; ehhez új build szükséges.
 
 Ezek automatizált ellenőrzések; egy teljes böngészős végigjátszás további vizuális és kezelési hibákat is feltárhat.
+
+### Hibajelentés
+
+A főmenü és a szünetmenü natív, `noopener noreferrer` hivatkozása a [publikus Tally-űrlapot](https://tally.so/r/8Nojjr) nyitja meg. A játék nem küld be jelentést automatikusan; a játékos írja le a hibát, és maga küldi be az űrlapot. Bejelentkezés nem szükséges.
+
+Az űrlap hét rejtett mezőt vár, pontosan ezekkel a nevekkel: `version`, `language`, `area`, `browser`, `viewport`, `pixel_ratio`, `input`. A játék ezeket URL-paraméterekkel adja át a [Tally rejtettmező-szabályai](https://tally.so/help/hidden-fields) szerint. A verzió a teljes kiadási azonosító; a nyelv ISO-kód, a helyszín és a bevitel felirata lokalizált. A böngészőből csak a család/főverzió kerül bele.
+
+Nyers user agent, oldal-URL, mentés, tárgyak, küldetésállapot és tárolóadatok nem kerülnek a linkbe. A hivatkozás fókuszkor és aktiváláskor frissül, ezért nyelvváltás vagy átméretezés után is az aktuális kontextust használja. A `test-bug-report.cjs` tiltott tároló-hozzáféréssel is ellenőrzi ezt; a billentyűzetes aktiválást, a szünet megőrzését és a keskeny/alacsony elrendezést valódi böngészőben kell tesztelni.
+
+A beküldések a Tally Submissions felületén kezelhetők. A Trello-kártyák automatikus létrehozása külön Tally–Make/Zapier integrációt igényel; ezt a statikus játék nem állítja be.
 
 ## GitHub Pages
 

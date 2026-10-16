@@ -444,10 +444,9 @@
       "menu.changelog.0911.yomi": "Átdolgozott pokolboss: életerőhöz kötött idézések, külön túlélő- és végső lávaszakasz, animált lávakígyó miniboss és gyűjthető pikkely.",
       "menu.changelog.0911.buildId": "A főmenü verziójelzése már a nyolckarakteres javításazonosítót is mutatja.",
       "bugReport.button": "Hibajelentés",
-      "bugReport.external": "GitHub · új lap ↗",
-      "bugReport.label": "Hibajelentés a GitHubon, új lapon",
-      "bugReport.hint": "Szerkeszthető hibajelentés nyílik meg a GitHubon. A beküldéshez GitHub-fiók szükséges.",
-      "bugReport.issueTitle": "[BUG] Kiba {0} – a hiba rövid címe",
+      "bugReport.external": "Űrlap · új lap ↗",
+      "bugReport.label": "Hibajelentő űrlap megnyitása új lapon",
+      "bugReport.hint": "Írd le a hibát a megnyíló űrlapon; bejelentkezés nélkül beküldheted.",
       "bugReport.unknown": "Ismeretlen",
       "bugReport.touch": "Érintés / durva mutató",
       "bugReport.pointer": "Billentyűzet / egér",
@@ -457,7 +456,7 @@
       "bugReport.area.yomi": "Yomi",
       "bugReport.area.heaven": "Takamagahara",
       "bugReport.area.council": "Tanácsosok kastélya",
-      "bugReport.template": "## Mi történt?\n[Írd le röviden a hibát.]\n\n## Reprodukálás\n1. \n2. \n3. \n\n## Elvárt működés\n[Mi kellett volna történjen?]\n\n## Tényleges működés\n[Mi történt helyette?]\n\n## Környezet\n- Játékverzió: {0}\n- Nyelv: {1}\n- Helyszín: {2}\n- Böngésző: {3}\n- Játéknézet: {4} CSS px; pixelsűrűség: {5}\n- Bevitel: {6}\n\n## Képernyőkép (ha segít)\n[Csatolhatsz képet vagy videót. Beküldés előtt nézd át a jelentést.]"
+      "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal."
     }
   },
   "en": {
@@ -905,10 +904,9 @@
       "menu.changelog.0911.yomi": "Redesigned Yomi boss: health-triggered summons, separate survival and final lava stages, an animated Lava Serpent miniboss and a collectible scale.",
       "menu.changelog.0911.buildId": "The main menu version badge now shows the eight-character bugfix ID.",
       "bugReport.button": "Report a bug",
-      "bugReport.external": "GitHub · new tab ↗",
-      "bugReport.label": "Report a bug on GitHub, opens in a new tab",
-      "bugReport.hint": "Opens an editable bug report on GitHub. A GitHub account is required to submit it.",
-      "bugReport.issueTitle": "[BUG] Kiba {0} – short bug title",
+      "bugReport.external": "Form · new tab ↗",
+      "bugReport.label": "Open the bug report form in a new tab",
+      "bugReport.hint": "Describe the bug in the form that opens; no sign-in is required to submit it.",
       "bugReport.unknown": "Unknown",
       "bugReport.touch": "Touch / coarse pointer",
       "bugReport.pointer": "Keyboard / mouse",
@@ -918,7 +916,7 @@
       "bugReport.area.yomi": "Yomi",
       "bugReport.area.heaven": "Takamagahara",
       "bugReport.area.council": "Council castle",
-      "bugReport.template": "## What happened?\n[Briefly describe the bug.]\n\n## Steps to reproduce\n1. \n2. \n3. \n\n## Expected behavior\n[What should have happened?]\n\n## Actual behavior\n[What happened instead?]\n\n## Environment\n- Game version: {0}\n- Language: {1}\n- Area: {2}\n- Browser: {3}\n- Game viewport: {4} CSS px; pixel ratio: {5}\n- Input: {6}\n\n## Screenshot (if helpful)\n[You can attach an image or video. Review the report before submitting.]"
+      "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically."
     }
   }
 }
