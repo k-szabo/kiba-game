@@ -4,7 +4,9 @@ Agentekkel végzett munkához lásd az [agentfolyamatot](AGENT-WORKFLOW.md), a g
 
 ## Helyi indítás
 
-A repository gyökerében az `index.html` és a mellette lévő `assets/` alkotja a játékot. A mentés a böngésző biztonságos tárhelyét használja, ezért helyi fejlesztéshez indíts HTTP-előnézetet:
+A repository gyökerében az `index.html` és a mellette lévő `assets/` alkotja a játékot. Windows alatt PowerShellből futtasd a `scripts/start-local.ps1` scriptet; megnyitja a játékot a böngészőben, a szervert pedig a `Ctrl+C` állítja le. Python 3 szükséges, külső csomag nem kell. A port megadható például `-Port 8080` paraméterrel.
+
+Más rendszeren vagy terminálból a repository gyökerében futtasd:
 
 ```sh
 python -m http.server 8000
@@ -41,7 +43,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/config/colormaps.json` | Karakterek, tárgyak és összes képfájl referencia-színpalettái, zászlók és kódbeli színek. |
 | `scripts/export-colormaps.py` | A színreferencia reprodukálható frissítése a képekből és a rajzolási metaadatokból. |
 | `scripts/` | Strukturális és játékmeneti ellenőrzések. |
-| `.github/workflows/pages.yml` | Ellenőrzés és GitHub Pages publikálás. |
+| `.github/workflows/pages.yml` | Ellenőrzés minden pushon és pull requesten, Pages publikálás az alapértelmezett branchről. |
+| `scripts/start-local.ps1` | Helyi HTTP-szerver indítása Windowson. |
 | `docs/` | Játékleírás, fejlesztési dokumentáció és grafikai háttéranyagok. |
 
 ## Ellenőrzés
@@ -110,7 +113,7 @@ A beküldések a Tally Submissions felületén kezelhetők. A projekthez beáll�
 
 Az élő játék: **[k-szabo.github.io/kiba-game](https://k-szabo.github.io/kiba-game/)**.
 
-A mellékelt workflow az alapértelmezett branchre érkező push után, illetve kézi indítással fut. Először végrehajtja az ellenőrzéseket, majd kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
+A mellékelt workflow minden branch pushán és pull requesten lefuttatja az ellenőrzéseket. Sikeres ellenőrzés után csak az alapértelmezett branch pusha vagy az azon kézzel indított futás publikálja a Pages-oldalt. Kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
 
 A meglévő, működő Pages-beállítást frissítéskor nem kell megváltoztatni. Új repository esetén a **Settings → Pages → Build and deployment → Source → GitHub Actions** beállítás használható a mellékelt workflow-val. Lásd a [GitHub hivatalos workflow-útmutatóját](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
