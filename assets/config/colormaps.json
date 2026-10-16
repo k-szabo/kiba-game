@@ -16305,6 +16305,7 @@
         "dynamic": false
       }
     ],
+    "assets/js/bug-report.js": [],
     "assets/js/combat.js": [
       {
         "value": "#b087dd",
@@ -16432,7 +16433,7 @@
       {
         "value": "#08141166",
         "lines": [
-          297
+          298
         ],
         "dynamic": false
       },
@@ -16460,14 +16461,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          286
+          287
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          286
+          287
         ],
         "dynamic": false
       },
@@ -16642,7 +16643,7 @@
       {
         "value": "#d9e8ce",
         "lines": [
-          315
+          316
         ],
         "dynamic": false
       },
@@ -16705,14 +16706,14 @@
       {
         "value": "#ec9153",
         "lines": [
-          315
+          316
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          315
+          316
         ],
         "dynamic": false
       },
@@ -16769,7 +16770,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          315
+          316
         ],
         "dynamic": false
       },

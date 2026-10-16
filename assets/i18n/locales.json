@@ -442,7 +442,21 @@
       "yomi.phase.return": "A lávakígyó visszatért! Korábbi sebei nem gyógyultak be.",
       "yomi.phase.immune": "LÁVAPAJZS · SEBEZHETETLEN",
       "menu.changelog.0911.yomi": "Átdolgozott pokolboss: életerőhöz kötött idézések, külön túlélő- és végső lávaszakasz, animált lávakígyó miniboss és gyűjthető pikkely.",
-      "menu.changelog.0911.buildId": "A főmenü verziójelzése már a nyolckarakteres javításazonosítót is mutatja."
+      "menu.changelog.0911.buildId": "A főmenü verziójelzése már a nyolckarakteres javításazonosítót is mutatja.",
+      "bugReport.button": "Hibajelentés",
+      "bugReport.external": "Űrlap · új lap ↗",
+      "bugReport.label": "Hibajelentő űrlap megnyitása új lapon",
+      "bugReport.hint": "Írd le a hibát a megnyíló űrlapon; bejelentkezés nélkül beküldheted.",
+      "bugReport.unknown": "Ismeretlen",
+      "bugReport.touch": "Érintés / durva mutató",
+      "bugReport.pointer": "Billentyűzet / egér",
+      "bugReport.area.menu": "Főmenü",
+      "bugReport.area.dream": "Álomprológus",
+      "bugReport.area.japan": "Japán",
+      "bugReport.area.yomi": "Yomi",
+      "bugReport.area.heaven": "Takamagahara",
+      "bugReport.area.council": "Tanácsosok kastélya",
+      "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal."
     }
   },
   "en": {
@@ -888,7 +902,21 @@
       "yomi.phase.return": "The Lava Serpent returns! Its old wounds have not healed.",
       "yomi.phase.immune": "LAVA SHIELD · INVULNERABLE",
       "menu.changelog.0911.yomi": "Redesigned Yomi boss: health-triggered summons, separate survival and final lava stages, an animated Lava Serpent miniboss and a collectible scale.",
-      "menu.changelog.0911.buildId": "The main menu version badge now shows the eight-character bugfix ID."
+      "menu.changelog.0911.buildId": "The main menu version badge now shows the eight-character bugfix ID.",
+      "bugReport.button": "Report a bug",
+      "bugReport.external": "Form · new tab ↗",
+      "bugReport.label": "Open the bug report form in a new tab",
+      "bugReport.hint": "Describe the bug in the form that opens; no sign-in is required to submit it.",
+      "bugReport.unknown": "Unknown",
+      "bugReport.touch": "Touch / coarse pointer",
+      "bugReport.pointer": "Keyboard / mouse",
+      "bugReport.area.menu": "Main menu",
+      "bugReport.area.dream": "Dream prologue",
+      "bugReport.area.japan": "Japan",
+      "bugReport.area.yomi": "Yomi",
+      "bugReport.area.heaven": "Takamagahara",
+      "bugReport.area.council": "Council castle",
+      "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically."
     }
   }
 }

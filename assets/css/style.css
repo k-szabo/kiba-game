@@ -33,13 +33,13 @@
 .language-options{position:absolute;left:0;right:0;bottom:calc(100% + 8px);z-index:20;min-width:max-content;padding:5px;background:#13272df7;border:1px solid #d9ba7ba8;border-radius:6px;box-shadow:0 15px 35px #000a}
 .language-option,.menu-bottom .language-option{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:9px 12px;border:0;border-radius:4px;background:transparent;color:#f4e3bf;font-size:14px;text-align:left;white-space:nowrap}
 .language-option:hover,.language-option[aria-pressed="true"]{background:#3a4b49;color:#fff5d8}
-.menu-bottom>button#helpButton{min-height:50px;padding:10px 17px;border:1px solid #d9ba7ba8;border-radius:6px;background:#13272ded;color:#f4e3bf;font-size:15px;font-weight:700;letter-spacing:0}
-.menu-bottom>button#helpButton:hover{background:#344744}
+.menu-bottom #helpButton{min-height:50px;padding:10px 17px;border:1px solid #d9ba7ba8;border-radius:6px;background:#13272ded;color:#f4e3bf;font-size:15px;font-weight:700;letter-spacing:0}
+.menu-bottom #helpButton:hover{background:#344744}
 .panel .language-picker{margin-top:18px}
 .panel .language-options{top:calc(100% + 8px);bottom:auto}
 .language-picker select{min-height:50px;padding:9px 12px;font-size:15px}
-@media(max-width:800px){.menu-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;bottom:14px;left:16px;right:16px}.menu-bottom>span{grid-column:1/-1;max-width:none;text-align:center;font-size:10px}.menu-bottom .language-picker{justify-self:start}.menu-bottom>button#helpButton{justify-self:end}.language-chooser{min-width:min(190px,42vw)}}
-@media(max-width:480px){.menu-bottom .language-caption{display:none}.menu-bottom>button#helpButton{font-size:14px;padding:9px 12px}.menu-bottom .language-chooser{min-width:min(185px,43vw)}.language-options{min-width:220px}}
+@media(max-width:800px){.menu-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;bottom:14px;left:16px;right:16px}.menu-bottom>span{grid-column:1/-1;max-width:none;text-align:center;font-size:10px}.menu-bottom .language-picker{justify-self:start}.menu-bottom #helpButton{justify-self:end}.language-chooser{min-width:min(190px,42vw)}}
+@media(max-width:480px){.menu-bottom .language-caption{display:none}.menu-bottom #helpButton{font-size:14px;padding:9px 12px}.menu-bottom .language-chooser{min-width:min(185px,43vw)}.language-options{min-width:220px}}
 /* Readable controls and status text across the three very different backdrops. */
 .training-stats{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
 .hud-right button,.training-stats button,.travel-grid button{min-height:44px}
@@ -80,9 +80,9 @@
 #menu .menu-bottom{position:relative;bottom:auto;left:auto;right:auto;flex:none;gap:16px;margin-top:12px;padding:14px 18px;background:#0b1921ed;border:1px solid #d9ba7b38;border-radius:10px;color:#e0e8df;font-size:14px;line-height:1.6;letter-spacing:1px}
 #menu .menu-bottom>span{font-size:14px;max-width:none}
 #menu .language-caption{font-size:16px;color:#f4deb1}
-#menu .language-chooser summary,#menu .language-option,#menu .menu-bottom>button#helpButton{font-size:16px}
+#menu .language-chooser summary,#menu .language-option,#menu .menu-bottom #helpButton{font-size:16px}
 @media(max-width:800px){#menu{padding:76px 20px 20px}#menu .menu-content{margin:auto;width:min(520px,100%)}#menu .menu-bottom{grid-template-columns:minmax(0,1fr) auto}#menu .menu-bottom>span{grid-column:1/-1}}
-@media(max-width:560px){#menu{padding:74px 12px 16px;gap:20px}#menu .menu-content{padding:24px 16px}#menu .intro{font-size:24px}#menu .chapter{letter-spacing:1px}#menu .menu-bottom{grid-template-columns:1fr;padding:16px;gap:14px}#menu .menu-bottom>span{font-size:13px;letter-spacing:.5px}#menu .menu-bottom .language-picker{justify-self:stretch}#menu .menu-bottom .language-caption{display:inline}#menu .language-chooser{min-width:0;flex:1}#menu .menu-bottom>button#helpButton{justify-self:stretch;width:100%;padding:12px}#menu .menu-note{right:14px}#menu .language-options{min-width:100%}}
+@media(max-width:560px){#menu{padding:74px 12px 16px;gap:20px}#menu .menu-content{padding:24px 16px}#menu .intro{font-size:24px}#menu .chapter{letter-spacing:1px}#menu .menu-bottom{grid-template-columns:1fr;padding:16px;gap:14px}#menu .menu-bottom>span{font-size:13px;letter-spacing:.5px}#menu .menu-bottom .language-picker{justify-self:stretch}#menu .menu-bottom .language-caption{display:inline}#menu .language-chooser{min-width:0;flex:1}#menu .menu-bottom #helpButton{justify-self:stretch;width:100%;padding:12px}#menu .menu-note{right:14px}#menu .language-options{min-width:100%}}
 @media(prefers-reduced-motion:reduce){#menu{scroll-behavior:auto}}
 
 /* Release notes stay below the keyboard-accessible version badge. */
@@ -172,3 +172,15 @@
  #game.encounter-active #bossName{display:block;font-size:14px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  #game.encounter-active #bossHud>div{height:4px;margin-top:4px}
 }
+
+/* Reporting is a native, user-reviewed link, reachable from either menu. */
+.bug-report-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:50px;padding:10px 16px;border:1px solid var(--gold);border-radius:6px;background:var(--ink);color:var(--paper);font-size:16px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none}
+.bug-report-link small{font-size:12px;font-weight:500}
+.bug-report-link:hover{background:var(--gold);color:var(--ink)}
+.bug-report-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.menu-utilities{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+#menu .menu-utilities>#helpButton,#menu .menu-utilities>.bug-report-link{flex:1;white-space:nowrap}
+#pause .panel{max-height:90dvh;overflow-y:auto}
+#pause .bug-report-link{margin-top:14px;width:100%}
+@media(max-width:800px){#menu .menu-utilities{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}#menu .menu-bottom .language-picker{grid-column:1/-1;justify-self:stretch}#menu .menu-bottom .language-chooser{flex:1}}
+@media(max-width:560px){#menu .menu-utilities{grid-template-columns:1fr}}

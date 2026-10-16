@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "node scripts/build-game.mjs",
-    "test": "node scripts/check-site.mjs && node scripts/test-combat.cjs && node scripts/test-v05.cjs && node scripts/test-v06.cjs && node scripts/test-routes.cjs && node scripts/test-bindings.cjs && node scripts/test-prologue.cjs && node scripts/test-shadow-animation.cjs && node scripts/test-polish.cjs && node scripts/test-angel-art.cjs && node scripts/test-boss-vfx.cjs && node scripts/test-council-branch.cjs && node scripts/test-save-release.cjs && node scripts/test-visual-polish.cjs && node scripts/test-changelog.cjs && node scripts/test-secret-art.cjs && node scripts/test-realm-travel.cjs && node scripts/test-inventory.cjs && node scripts/test-release-ids.mjs && node scripts/test-eclipse-relic.cjs && node scripts/test-yomi-redesign.cjs && node scripts/test-serpent-art.cjs"
+    "test:bug-report": "node scripts/test-bug-report.cjs",
+    "test": "node scripts/check-site.mjs && node scripts/test-combat.cjs && node scripts/test-v05.cjs && node scripts/test-v06.cjs && node scripts/test-routes.cjs && node scripts/test-bindings.cjs && node scripts/test-prologue.cjs && node scripts/test-shadow-animation.cjs && node scripts/test-polish.cjs && node scripts/test-angel-art.cjs && node scripts/test-boss-vfx.cjs && node scripts/test-council-branch.cjs && node scripts/test-save-release.cjs && node scripts/test-visual-polish.cjs && node scripts/test-changelog.cjs && node scripts/test-secret-art.cjs && node scripts/test-realm-travel.cjs && node scripts/test-inventory.cjs && node scripts/test-release-ids.mjs && node scripts/test-eclipse-relic.cjs && node scripts/test-yomi-redesign.cjs && node scripts/test-serpent-art.cjs && node scripts/test-bug-report.cjs"
   }
 }

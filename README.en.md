@@ -60,6 +60,8 @@ The default bindings are in `assets/config/keybindings.json`. Open **How to Play
 
 ## About the project
 
+The **Report a bug** link in the main and pause menus opens the [bug report form](https://tally.so/r/8Nojjr) in a new tab, with no sign-in required. The game passes the version, language, current area, and a few technical details; you describe the problem before submitting. The game does not pass saves or personal data. Screenshots and a contact email are optional.
+
 The game is built with **HTML5 Canvas**, **JavaScript**, and **CSS**. It uses Momo's animated character sprite sheet, illustrated environments, separate movement and attack animations, and lighting and particle effects drawn in the game.
 
 The site is static and hosted on GitHub Pages. You do not need an account or a server-side application to play. For local development, use an HTTP server so browser storage and saves work correctly. The generated `runtime.js` is included in the repository. See the [development guide](docs/DEVELOPMENT.md) for local setup, checks, and Pages publishing.
