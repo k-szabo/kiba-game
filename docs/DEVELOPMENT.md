@@ -21,7 +21,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
 | `assets/js/inventory.js` | Hátizsák, tárgyleírások és Momo felszerelési nézete. |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
-| `assets/js/dev-tools.js`, `assets/config/dev-tools.json` | Rejtett, jelszavas fejlesztői panel és sózott ellenőrző adat; [beállítás és korlátok](DEV-TOOLS.md). |
+| `assets/js/dev-tools.js` | Jelszó nélkül elérhető, rejtett fejlesztői panel; [használat és bővítés](DEV-TOOLS.md). |
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
 | `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |

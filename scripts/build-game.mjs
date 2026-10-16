@@ -9,17 +9,11 @@ const localePath='assets/i18n/locales.json';
 const bindingPath='assets/config/keybindings.json';
 const releasePath='assets/config/release.json';
 const registryPath='docs/releases.json';
-const devAuthPath='assets/config/dev-tools.json';
 const readSource=file=>fs.readFileSync(path.join(root,file),'utf8').replace(/\r\n?/g,'\n');
 const locales=JSON.parse(readSource(localePath));
 const bindings=JSON.parse(readSource(bindingPath));
 const release=JSON.parse(readSource(releasePath));
 const registry=JSON.parse(readSource(registryPath));
-const devAuth=JSON.parse(readSource(devAuthPath));
-if(Object.keys(devAuth).sort().join(',')!=='algorithm,enabled,iterations,salt,verifier,version')throw Error('Unexpected developer verifier fields; do not store plaintext passwords.');
-const base64Bytes=(value,bytes)=>typeof value==='string'&&Buffer.from(value,'base64').length===bytes&&Buffer.from(value,'base64').toString('base64')===value;
-if(devAuth.version!==1||typeof devAuth.enabled!=='boolean'||devAuth.algorithm!=='PBKDF2-SHA256'||devAuth.iterations!==600000||
- (devAuth.enabled? !base64Bytes(devAuth.salt,16)||!base64Bytes(devAuth.verifier,32):devAuth.salt!==''||devAuth.verifier!==''))throw Error('Invalid developer password verifier configuration.');
 validateRelease(release,registry);
 const runtimeRelease={...release,bugfixHistory:bugfixHistory(registry)};
 if(bindings.version!==1||!bindings.original||!bindings.profiles?.uk||!bindings.profiles?.fr||!bindings.modified)throw Error('Key binding profiles are incomplete.');
@@ -43,11 +37,11 @@ for(const language of languages){
 }
 const files=['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','progression','combat','shadow-animation','prologue','inventory','bug-report','dev-tools','game'];
 const digest=createHash('sha256');
-for(const file of [localePath,bindingPath,releasePath,registryPath,devAuthPath,...files.map(name=>'assets/js/'+name+'.js')]){
+for(const file of [localePath,bindingPath,releasePath,registryPath,...files.map(name=>'assets/js/'+name+'.js')]){
   digest.update(file);digest.update('\0');digest.update(readSource(file));digest.update('\0');
 }
 const sourceHash=digest.digest('hex');
-let runtime=`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${sourceHash} */\n(()=>{'use strict';\nconst GAME_RELEASE=${JSON.stringify(runtimeRelease)};\nconst LOCALES=${JSON.stringify(locales)};\nconst KEY_BINDINGS=${JSON.stringify(bindings)};\nconst DEV_AUTH=${JSON.stringify(devAuth)};\n`;
+let runtime=`/* Generated from assets/js sources by scripts/build-game.mjs; source-sha256: ${sourceHash} */\n(()=>{'use strict';\nconst GAME_RELEASE=${JSON.stringify(runtimeRelease)};\nconst LOCALES=${JSON.stringify(locales)};\nconst KEY_BINDINGS=${JSON.stringify(bindings)};\n`;
 for(const name of files)runtime+=`\n/* ${name}.js */\n${readSource('assets/js/'+name+'.js')}\n`;
 runtime+='})();\n';
 const output=path.join(root,'assets/js/runtime.js');

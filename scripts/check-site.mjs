@@ -14,7 +14,6 @@ assert(sprite,'Momo sprite reference is missing.');
 refs.push(sprite[1]);
 refs.push('assets/config/keybindings.json');
 refs.push('assets/config/release.json');
-refs.push('assets/config/dev-tools.json');
 const menuSprite=game.match(/menuSheet\.src\s*=\s*['"]([^'"]+)['"]/);
 assert(menuSprite,'Menu idle sprite reference is missing.');
 refs.push(menuSprite[1]);

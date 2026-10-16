@@ -48,7 +48,7 @@ assert.ok(!next.includes('_deadbeef'));
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-release-ids-'));
 try{
   for(const dir of ['scripts','docs','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
-  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json','assets/config/dev-tools.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
+  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);
