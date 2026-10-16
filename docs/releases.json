@@ -24,6 +24,26 @@
           "en": "Removed remnants of earlier local QA runs, screenshots and temporary project copies."
         }
       ]
+    },
+    {
+      "version": "0.9.12_f01ba067",
+      "code": "f01ba067",
+      "baseVersion": "0.9.12",
+      "slug": "bug-report-button-style",
+      "summary": {
+        "hu": "Egységes hibajelentés-gomb",
+        "en": "Consistent bug report controls"
+      },
+      "fixes": [
+        {
+          "hu": "A hibajelentés-gomb a főmenü és a szünetmenü többi másodlagos vezérlőjével egyező színeket használ.",
+          "en": "The bug report control uses the same colors as the other secondary controls in the main and pause menus."
+        },
+        {
+          "hu": "Mindkét hibajelentés-gomb kis, szövegszínt követő bogárikont kapott.",
+          "en": "Both bug report controls now include a small bug icon that follows the text color."
+        }
+      ]
     }
   ]
 }

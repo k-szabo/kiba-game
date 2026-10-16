@@ -456,7 +456,8 @@
       "bugReport.area.yomi": "Yomi",
       "bugReport.area.heaven": "Takamagahara",
       "bugReport.area.council": "Tanácsosok kastélya",
-      "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal."
+      "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal.",
+      "menu.changelog.0912.bugReportStyle": "A hibajelentés-gombok színe a többi menügombhoz igazodik, és mindkettő kis bogárikont kapott."
     }
   },
   "en": {
@@ -916,7 +917,8 @@
       "bugReport.area.yomi": "Yomi",
       "bugReport.area.heaven": "Takamagahara",
       "bugReport.area.council": "Council castle",
-      "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically."
+      "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically.",
+      "menu.changelog.0912.bugReportStyle": "Bug report controls now match the other menu controls and both include a small bug icon."
     }
   }
 }
