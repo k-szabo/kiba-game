@@ -38,7 +38,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/config/release.json` | Közös játékverzió és alfa/béta mentésreset-politika. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
-| `scripts/release.mjs`, `docs/releases.json` | Nyolckarakteres hibajavítás-verziók generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
+| `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
 | `assets/css/style.css` | A kezelőfelület megjelenése. |
 | `assets/images/` | Momo, a világok, az ellenfelek és a tárgyak képei. |
 | `assets/config/colormaps.json` | Karakterek, tárgyak és összes képfájl referencia-színpalettái, zászlók és kódbeli színek. |

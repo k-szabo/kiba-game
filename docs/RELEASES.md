@@ -1,10 +1,12 @@
 # Kiadások és visszakereshető hibajavítások
 
-Új funkcióhoz továbbra is egyszerű `major.minor.patch` verziót használunk, például `0.9.10`. Kisebb hibajavításhoz ugyanez az alap kap egy aláhúzást és nyolc karaktert: `0.9.10_8a586f97` a formátum példája. A generátor `0–9`, `a–f` karaktereket használ, így minden kód nyolc kisbetűs hexadecimális karakterből áll.
+Minden új kiadás, funkció és hibajavítás egyaránt `major.minor.patch_8hex` formátumot használ, például `0.9.14_8a586f97`. A feature új alapverziót kap, a javítás megtartja az aktuális alapverziót. A generátor `0–9`, `a–f` karaktereket használ. A korábbi, már közzétett egyszerű verzióazonosítókat nem írjuk át.
 
-A kód a javítás **rögzített leírásának** SHA-256 lenyomatából az első nyolc hexadecimális karakter. Nem véletlenszám, dátum, gépfüggő adat vagy a generált runtime hash-e. Azonos metaadatból minden gépen ugyanaz lesz; a build nem készít új verziót. A javítás tartalmát a leírás és a Git-diff együtt azonosítja; a rövid kód nem biztonsági ellenőrzőösszeg.
+A kód a kiadás **jóváhagyott HU/EN metaadatának** SHA-256 lenyomatából az első nyolc hexadecimális karakter. Nem véletlenszám, dátum, gépfüggő adat vagy a generált runtime hash-e. Azonos metaadatból minden gépen ugyanaz lesz; a build nem készít új verziót. A normalizált alapverzió, slug, összefoglaló és változáslista egyszerre dokumentálja a kiadást és adja a kód bemenetét. A rövid kód nem biztonsági ellenőrzőösszeg.
 
-## Hibajavítás előkészítése
+A játékosoknak szóló kiadási összefoglaló és változásnapló leírásnak számít. A release agent megmutatja a HU/EN tervezetet a felhasználónak, és megvárja a kifejezett jóváhagyását, mielőtt a szöveget metaadatba, játékba vagy kiadásba véglegesíti. A kódot csak a jóváhagyott változatból generálja.
+
+## Kiadási metadata előkészítése
 
 Készíts egy JSON-fájlt a javítás alapverziójával, egy rövid egyedi azonosítóval és HU/EN szövegekkel. A `fixes` a kiadás összes javítását sorolja fel. Az azonos alapverzióhoz tartozó `slug` nem használható újra.
 
@@ -30,10 +32,14 @@ Az előnézet nem ír fájlt. A `--write` kifejezetten frissíti a `release.json
 ```sh
 node scripts/release.mjs bugfix --metadata path/to/fix.json
 node scripts/release.mjs bugfix --metadata path/to/fix.json --write
+node scripts/release.mjs release --metadata path/to/feature.json
+node scripts/release.mjs release --metadata path/to/feature.json --write
 node scripts/release.mjs validate
 ```
 
-A JSON mezősorrendje és a szélső szóközök nem módosítják a kódot. A szöveg Unicode NFC-re és LF sortörésekre normalizálódik; a javítások listájának sorrendje számít. A hiányzó fordítások és ismeretlen mezők hibát okoznak. Kódütközésnél a parancs leáll: válassz másik, továbbra is beszédes `slug` értéket. Ugyanazon aktuális rekord ismételt rögzítése nem duplikál; régi kiadást nem aktivál újra.
+Bugfixnél a `baseVersion` egyezzen a jelenlegi kiadás egyszerű alapjával. Feature-nél a `release` parancs olyan új `baseVersion`-t követel, amely nagyobb az aktuálisnál; ehhez is ugyanazt a nyolckarakteres kódot generálja. Például a `0.9.13` után egy feature `0.9.14_XXXXXXXX` verziót kap. A `releases` nyilvántartási lista a feature kiadásokat, a `bugfixes` lista a javításokat tartalmazza; mindkettő hozzáfűzéses és egyik rekordját sem írjuk át.
+
+A JSON mezősorrendje és a szélső szóközök nem módosítják a kódot. A szöveg Unicode NFC-re és LF sortörésekre normalizálódik; a változáslista sorrendje számít. A hiányzó fordítások és ismeretlen mezők hibát okoznak. Kódütközésnél a parancs leáll: válassz másik, továbbra is beszédes `slug` értéket. Ugyanazon aktuális rekord ismételt rögzítése nem duplikál; régi kiadást nem aktivál újra. A build a történeti plain verziókat kompatibilitás miatt továbbra is beolvassa, de új kiadáshoz a két release parancs valamelyikével kell nyolckarakteres kódot készíteni.
 
 ## Visszakeresés
 
@@ -53,7 +59,7 @@ npm run build
 npm test
 ```
 
-A build elfogadja az egyszerű verziókat és a nyilvántartásban szereplő kódos verziókat. A teljes azonosító kerül a főmenübe, a CSS/runtime cache URL-jeibe és a mentések kiadási kulcsába. Ismételt buildnél nincs dupla utótag. Alfa/béta alatt **egy új kódos hibajavítás is törli az előző kiadás haladását**, a nyelv és billentyűkiosztás megmarad. Új funkciónál kézzel növeld az `assets/config/release.json` egyszerű verzióját; a korábbi nyilvántartási rekordokat őrizd meg.
+Az előkészített kiadást `--write` után a build teljes azonosítóként használja a főmenüben, CSS/runtime cache URL-jeiben és a mentések kiadási kulcsában. Ismételt buildnél nincs dupla utótag. Alfa/béta alatt **minden új kiadáskód törli az előző verzió haladását**, a nyelv és billentyűkiosztás megmarad. Kiadáskor soha ne szerkesszük kézzel az `assets/config/release.json` verzióját; a megfelelő `release.mjs` parancs frissíti a regisztert és a verziót.
 
 A runtime `GAME_RELEASE.bugfixHistory` mezőjében a build alapverziónként beágyazza a kódokat a nyilvántartás hozzáfűzési sorrendjében. A mentésvédelem ezt használja az ugyanazon alapverzióhoz tartozó javítások időrendi összehasonlításához; a hash betűrendje nem jelent időrendet. A nyilvántartás változása is elavulttá teszi a buildet. Korábbi böngészőlap egy számára ismeretlen új kódú profilt nem írhat felül.
 

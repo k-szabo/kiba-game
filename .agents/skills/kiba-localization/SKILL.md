@@ -7,5 +7,6 @@ description: Add or change Kiba translations, language metadata, or localized UI
 - Keep Momo/Haru names and Kiba energy/world terminology consistent. Preserve native/English display names and SVG flag data URLs.
 - Use I18n.t/I18n.format in source. Do not introduce a second dictionary or hardcoded UI translations. Keep story paragraph breaks intentional.
 - Instructions showing controls use selected action bindings rather than assuming a fixed keyboard layout.
+- For any new or changed player-facing description, name, tooltip, dialogue, menu/help text, quest copy, or changelog entry, show the user the HU and EN draft first and wait for explicit approval before writing finalized strings to the catalog. Continue unrelated implementation while waiting; never infer copy approval from feature approval.
 - Check HU/EN wrapping, clipping, and focus/control access where text changed. The integrator rebuilds runtime.js; check-site.mjs verifies keys, metadata, and placeholders.
 - Coordinate the shared JSON's single editor. If QA rejected this work, apply kiba-qa-rework before edits.

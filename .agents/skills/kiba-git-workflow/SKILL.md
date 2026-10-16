@@ -17,9 +17,12 @@ Use this skill when implementation work is tied to a Kiba Trello card. Keep the 
 ## Commit and review handoff
 
 - Prefix every commit subject with the card category and colon: `BUG: Restore Yomi boss aggro after lava phase` or `FEATURE: Add three serpent scales`.
+- Before every commit, clean up task-owned temporary files, inspect `git status --short`, and stage only explicitly named intended paths. Review `git diff --cached --name-status` and `git diff --cached`; exclude scratch work, screenshots, logs, test artifacts, local build output, credentials, and unrelated/untracked files. Preserve existing user files and changes; never run a blanket `git add .` as cleanup. Run `git diff --cached --check` before committing.
 - Keep commits scoped to the card. Do not commit generated `assets/js/runtime.js` by hand; follow the project build instructions when generated output is needed.
+- Every new published version, including a feature release, gets an eight-character suffix from bilingual release metadata. Use `node scripts/release.mjs release --metadata <file> [--write]` for a new feature release and `bugfix` for a fix; follow docs/RELEASES.md. Historical plain versions remain unchanged.
 - Prepare a pull request title that begins with the same category, followed by the card title or a concise equivalent, for example `BUG: Restore Yomi boss aggro after lava phase`.
 - Write the pull request description for a reviewer who has not seen the conversation. Include the Trello card link, a short change summary, a bulleted list of notable changes, and testing steps/results. Include test steps when verification requires reviewer interaction; otherwise report the automated checks run. Mention known limitations that affect review.
+- Before finalizing player-facing text (item/menu/boss/character/ability/quest descriptions, dialogue, or changelog copy), share the proposed wording with the user and wait for explicit approval. Keep unapproved copy out of source and release metadata; bilingual release text also determines the release ID.
 - Do not create, merge, or publish a pull request unless the user has authorized that action for the current task. When authorized and a PR is created, add its URL to the Trello card and attach the PR to the Codex task using the available app integration.
 
 ## Finish the card handoff
