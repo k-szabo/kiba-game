@@ -48,11 +48,11 @@ assert.ok(!next.includes('_deadbeef'));
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-release-ids-'));
 try{
   for(const dir of ['scripts','docs','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
-  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
+  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json','assets/config/dev-tools.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);
-  for(const module of ['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','progression','combat','shadow-animation','prologue','inventory','bug-report','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
+  for(const module of ['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','progression','combat','shadow-animation','prologue','inventory','bug-report','dev-tools','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
   const run=(script,args=[],ok=true)=>{
     const result=spawnSync(process.execPath,[path.join(fixture,'scripts',script),...args],{cwd:fixture,encoding:'utf8'});
     if(ok)assert.equal(result.status,0,result.stderr||result.stdout);

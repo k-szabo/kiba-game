@@ -3,8 +3,10 @@ const fs=require('node:fs'),path=require('node:path');
 const locale=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/i18n/locales.json'),'utf8')).hu.dict;
 const bindings=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/keybindings.json'),'utf8'));
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8'));
+const devAuth=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/dev-tools.json'),'utf8'));
 exports.before=`
 const GAME_RELEASE=${JSON.stringify(release)};
+const DEV_AUTH=${JSON.stringify(devAuth)};
 const TEST_LOCALE=${JSON.stringify(locale)};
 const KEY_BINDINGS=${JSON.stringify(bindings)};
 const I18n={t:value=>TEST_LOCALE[value]??value,format:(key,args)=>(TEST_LOCALE[key]??key).replace(/\\{(\\d+)\\}/g,(_,i)=>args[i]),applyDOM(){},onChange(){},setLocale(){},locale:'hu'};

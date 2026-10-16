@@ -458,7 +458,24 @@
       "bugReport.area.council": "Tanácsosok kastélya",
       "menu.changelog.0912.bugReport": "A főmenüből és a szünetmenüből bejelentkezés nélküli hibajelentő űrlapot nyithatsz meg, automatikusan kitöltött játékverzióval és technikai adatokkal.",
       "menu.changelog.0912.bugReportStyle": "A hibajelentés-gombok színe a többi menügombhoz igazodik, és mindkettő kis bogárikont kapott.",
-      "menu.changelog.0912.yomiAggro": "A pokol ura és idézett szolgái a lávafázis után is követik Momót; a boss közelebb megy, mielőtt újabb közelharci támadást indít."
+      "menu.changelog.0912.yomiAggro": "A pokol ura és idézett szolgái a lávafázis után is követik Momót; a boss közelebb megy, mielőtt újabb közelharci támadást indít.",
+      "dev.eyebrow": "FEJLESZTŐI HOZZÁFÉRÉS",
+      "dev.title": "Fejlesztői eszközpanel",
+      "dev.intro": "A panel megnyitása szünetelteti a játékot. Bezáráskor a hozzáférés újra zárolódik.",
+      "dev.password": "Fejlesztői jelszó",
+      "dev.unlock": "Belépés",
+      "dev.close": "Bezárás",
+      "dev.lock": "Hozzáférés zárolása",
+      "dev.empty": "A panel készen áll. A tesztelőeszközök külön fejlesztési feladatokban érkeznek.",
+      "dev.version": "Játékverzió: {0}",
+      "dev.locked": "A hozzáférés zárolva van.",
+      "dev.authenticated": "Sikeres belépés. A játék továbbra is szünetel.",
+      "dev.unconfigured": "Ebben a buildben nincs beállítva fejlesztői hozzáférés.",
+      "dev.unsupported": "A jelszóellenőrzés nem érhető el. Használj HTTPS-kapcsolatot vagy helyi szervert egy támogatott böngészőben.",
+      "dev.invalid": "Sikertelen belépés. Ellenőrizd a jelszót, majd próbáld újra.",
+      "dev.checking": "Jelszó ellenőrzése…",
+      "dev.toolError": "Az eszköz futtatása sikertelen.",
+      "menu.changelog.0913.devPanel": "Új, külön jelszavas fejlesztői panel a későbbi tesztelőeszközökhöz."
     }
   },
   "en": {
@@ -920,7 +937,24 @@
       "bugReport.area.council": "Council castle",
       "menu.changelog.0912.bugReport": "Open a bug report form from the main or pause menu without signing in, with the game version and technical details filled in automatically.",
       "menu.changelog.0912.bugReportStyle": "Bug report controls now match the other menu controls and both include a small bug icon.",
-      "menu.changelog.0912.yomiAggro": "The lord of Yomi and his summoned minions keep pursuing Momo after the lava phase; the boss approaches before starting another melee attack."
+      "menu.changelog.0912.yomiAggro": "The lord of Yomi and his summoned minions keep pursuing Momo after the lava phase; the boss approaches before starting another melee attack.",
+      "dev.eyebrow": "DEVELOPER ACCESS",
+      "dev.title": "Developer tools",
+      "dev.intro": "Opening this panel pauses the game. Closing it locks access again.",
+      "dev.password": "Developer password",
+      "dev.unlock": "Unlock",
+      "dev.close": "Close",
+      "dev.lock": "Lock access",
+      "dev.empty": "The panel is ready. Testing tools will be added in separate development tasks.",
+      "dev.version": "Game version: {0}",
+      "dev.locked": "Access is locked.",
+      "dev.authenticated": "Access unlocked. The game remains paused.",
+      "dev.unconfigured": "Developer access has not been configured for this build.",
+      "dev.unsupported": "Password verification is unavailable. Use HTTPS or a local server in a supported browser.",
+      "dev.invalid": "Access denied. Check the password and try again.",
+      "dev.checking": "Checking password…",
+      "dev.toolError": "The tool could not be run.",
+      "menu.changelog.0913.devPanel": "A separate password-gated developer panel prepares access to future testing tools."
     }
   }
 }
