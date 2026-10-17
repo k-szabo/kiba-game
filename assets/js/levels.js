@@ -4,8 +4,8 @@
 // the permanent bonus-point budget. Shared with the standalone save validator.
 const BOSS_REWARDS=Object.freeze([
  Object.freeze({id:'oathbreakerSoul',claim:'bossRewardClaimed',xp:250,points:1}),
- Object.freeze({id:'yomiGuardianSoul',claim:'bossRewardClaimed',xp:400,points:2}),
- Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:3})
+ Object.freeze({id:'yomiGuardianSoul',claim:'bossRewardClaimed',xp:400,points:1}),
+ Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:1})
 ]);
 function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}

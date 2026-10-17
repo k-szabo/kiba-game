@@ -22,7 +22,7 @@ for(let mask=0;mask<8;mask++)for(const level of [1,5,12])for(const spent of [fal
  const missing=copy(data);if(missing.progression.points)missing.progression.points--;else missing.progression.stats.vitality--;
  assert.throws(()=>validate(missing),/Invalid save schema/,'Allocated plus unspent points must equal the whole budget');
 }
-const capped=fixture(7,{level:12});assert.equal(capped.progression.points,17);assert.equal(validate(capped).progression.points,17);
+const capped=fixture(7,{level:12});assert.equal(capped.progression.points,14);assert.equal(validate(capped).progression.points,14);
 for(const [realm,reward] of rewards.entries()){
  for(const missing of [reward.claim,reward.id]){
   const orphan=fixture(1<<realm);orphan.flags[realm]=orphan.flags[realm].filter(id=>id!==missing);

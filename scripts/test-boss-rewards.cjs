@@ -13,7 +13,7 @@ for(let realm=0;realm<3;realm++){
  r('boss.hp=0;guardianDefeated();');
  const p=h.snap().progression;
  assert.equal(p.totalXp,[250,400,600][realm]);
- assert.equal(p.points,p.level-1+[1,2,3][realm]);
+ assert.equal(p.points,p.level-1+1,'Every realm boss grants exactly one extra point');
  assert(r(`flags[${realm}].includes('${reward.id}')&&flags[${realm}].includes('${reward.claim}')`));
  assert(r(`Inventory.contents().includes('${reward.id}')`),'Earned soul must appear in the shared inventory');
  for(const save of r(`window.__saveSnapshots.slice(${startWrites})`))assert.doesNotThrow(()=>validate(JSON.parse(save)),'Every intermediate victory snapshot must be complete and valid');
@@ -59,4 +59,4 @@ for(let realm=0;realm<3;realm++){
  const h=harness({prologue:true}),r=h.run,before=r('JSON.stringify([flags,progression])');
  r('guardianDefeated();');assert.equal(r('JSON.stringify([flags,progression])'),before,'Dream boss awarded a realm reward');
 }
-console.log('PASS: unique 250/400/600 XP and 1/2/3 bonus points, atomic valid snapshots, spent/unspent reload, death/shrine persistence, replay/spawn/level isolation and final angel phase only.');
+console.log('PASS: unique 250/400/600 XP and one bonus point per boss, atomic valid snapshots, spent/unspent reload, death/shrine persistence, replay/spawn/level isolation and final angel phase only.');

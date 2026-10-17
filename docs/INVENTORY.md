@@ -39,8 +39,8 @@ A korábbi bőrhátteret indigókék szövet, világos vászonszegély, fonott k
 | Főboss | XP | Extra fejlesztéspont | Lélektárgy |
 | --- | ---: | ---: | --- |
 | Japán | 250 | 1 | Az esküszegő lelke |
-| Yomi | 400 | 2 | Yomi őrzőjének lelke |
-| Mennyország | 600 | 3 | A szeráf lelke |
+| Yomi | 400 | 1 | Yomi őrzőjének lelke |
+| Mennyország | 600 | 1 | A szeráf lelke |
 
 A lélek automatikusan a közös inventoryba kerül. A pontbónusz a szintlépési pontokon felül jár, és a szentélyeknél költhető el. A végső boss titkos formája esetén a jutalom csak a teljes harc végén jár. Az álomprológus és a minibossok nem adnak ilyen jutalomcsomagot.
 

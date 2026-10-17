@@ -107,7 +107,7 @@ for(const extra of [['councilKey'],['councilGateOpen'],['councilKeyEarned','coun
  const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower','bossRewardClaimed','yomiGuardianSoul',...extra];assert.throws(()=>validate(data),/Invalid council progress/);
 }
 const unearned=JSON.parse(JSON.stringify(valid));unearned.defeated[1]=false;unearned.flags[1]=['soulUpper','soulLower','councilKeyEarned'];
-unearned.progression.points-=2;
+unearned.progression.points-=1;
 assert.throws(()=>validate(unearned),/Invalid council progress/);
 const unknown=JSON.parse(JSON.stringify(valid));unknown.flags[1].push('councilInvented');assert.throws(()=>validate(unknown),/Invalid quest flags/);
 assert.equal(valid.release,run('GAME_RELEASE.version'));
