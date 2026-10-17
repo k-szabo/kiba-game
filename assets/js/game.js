@@ -280,7 +280,7 @@ function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);
 Inventory.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':['japan','yomi','heaven'][realm]);
 I18n.applyDOM();
-DevSession.init();DevTools.init();
+DevSession.init();DevBoss.init();DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
 renderBindingHints();
 for(const select of document.querySelectorAll('.language-picker select'))select.addEventListener('change',e=>I18n.setLocale(e.target.value));
