@@ -112,6 +112,22 @@
           "en": "The Japan realm pillar now renders with more natural proportions."
         }
       ]
+    },
+    {
+      "version": "0.9.15_e8373e52",
+      "code": "e8373e52",
+      "baseVersion": "0.9.15",
+      "slug": "prologue-shared-player-timers",
+      "summary": {
+        "hu": "A prológusban beragadó dash javítása",
+        "en": "Fix stuck dash in the prologue"
+      },
+      "fixes": [
+        {
+          "hu": "A prológusban a megszerzett szellemlépés rendesen véget ér, ugrás után pedig visszaáll a gravitáció.",
+          "en": "Acquired Spirit Dash now ends correctly in the prologue, and gravity resumes after jumping."
+        }
+      ]
     }
   ],
   "releases": [
