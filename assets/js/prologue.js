@@ -50,6 +50,7 @@ const Prologue=(()=>{
     tone(48,1.5,'sawtooth',.025);
   }
   function hurt(amount,unavoidable=false){
+    if(DevImmortality.active)return;
     if(phase!=='battle'||!unavoidable&&player.inv>0)return;
     player.hp=Math.max(0,player.hp-amount);player.inv=1.15;shake=reducedMotion.matches?0:.15;
     burst(player.x+21,player.y+30,'#d6a4f5',18);tone(80,.25,'sawtooth',.03);
