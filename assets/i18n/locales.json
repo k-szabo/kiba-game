@@ -494,7 +494,11 @@
       "menu.changelog.0914.8447366a.fix0": "A szünetmenü gombjai egységesen jól olvasható feliratokat kaptak.",
       "menu.changelog.0914.8447366a.fix1": "A fejlesztői panel nyitott játékablakokból is elérhető, a tesztelés utáni visszatérés pedig egy kattintással működik.",
       "menu.changelog.0914.8447366a.fix2": "A tesztmódban hozzáadott csontkulccsal használható a tanácsosi kapu.",
-      "menu.changelog.0914.8447366a.fix3": "A japán pálya oszlopa természetesebb arányokkal jelenik meg."
+      "menu.changelog.0914.8447366a.fix3": "A japán pálya oszlopa természetesebb arányokkal jelenik meg.",
+      "dev.ability": "Képesség",
+      "dev.ability.acquire": "Képesség megszerzése",
+      "dev.ability.owned": "Ezt a képességet már megszerezted.",
+      "menu.changelog.0915.maintenance": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -992,7 +996,11 @@
       "menu.changelog.0914.8447366a.fix0": "Pause menu buttons now use consistently readable labels.",
       "menu.changelog.0914.8447366a.fix1": "The developer panel can open over game dialogs, and returning from testing takes one click.",
       "menu.changelog.0914.8447366a.fix2": "The bone key added in test mode now works at the council gate.",
-      "menu.changelog.0914.8447366a.fix3": "The Japan realm pillar now renders with more natural proportions."
+      "menu.changelog.0914.8447366a.fix3": "The Japan realm pillar now renders with more natural proportions.",
+      "dev.ability": "Ability",
+      "dev.ability.acquire": "Acquire ability",
+      "dev.ability.owned": "You already have this ability.",
+      "menu.changelog.0915.maintenance": "Internal maintenance and technical improvements."
     }
   }
 }

@@ -29,12 +29,15 @@ A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz 
 | Teleportálás | Bármelyik birodalom valódi pihenőhelyét választhatod, feloldottságtól függetlenül. A célpontokat a pályaadatokból olvassa; csak alátámasztott érkezést fogad el. Az álomprológus külön tesztcélpont. Nem ad automatikusan képességet és nem jelöl legyőzöttnek őrzőt. |
 | Játékos szintje | Egész szint 1 és a kódbeli `LEVEL_LIMIT` között, jelenleg 12-ig. Az XP az adott szint kezdetére áll. A megfizethető statelosztás megmarad; a normalizáló a csökkentett kerethez igazítja, a maradék szabad pont. A 30-as limit külön fejlesztési kártya. |
 | Tárgy hozzáadása | Az `ART_INVENTORY.items` katalógus összes regisztrált tárgyát listázza, a meglévő nevekkel. Már birtokolt vagy felhasznált tárgy nem duplikálható. A felszerelt alapfegyver nem külön hátizsáktárgy. |
+| Képesség megszerzése | A szél áldása (dupla ugrás) vagy a szellemlépés kiválasztható és a tesztkarakternek adható. A HUD azonnal frissül, a dash fejlesztése elérhetővé válik a szentélynél. Már megszerzett képesség nem duplikálható. |
 | Halhatatlanság | Ki/be kapcsolható védelem a normál harcban, a halálos lávában és az álomban is. Lezuhanásnál biztonságos pontra kerül Momo. Külön jelzés látható a próba közben; a teszt végén kikapcsol. A normál játék halál- és lezuhanásszabályai változatlanok. |
 | Sebzésszámok | Alapból kikapcsolt harci mérőeszköz; a tényleges HP-veszteséget mutatja. Blokkolás és sérthetetlenség nem kap fiktív találatot, az overkill és a boss-fázishatárok korlátozzák az értéket. Szünetben az effektek is megállnak; csökkentett mozgásnál helyben jelennek meg. |
 
 A tesztmódban hozzáadott csontkulcs a boss legyőzése nélkül is nyitja a tanácsosi kaput, és használatkor elfogy. Az így megnyitott kapu újra használható. Ez csak a memóriában futó tesztre érvényes; normál játékban a boss- és kulcsszabályok változatlanok.
 
 A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési sémába. Az eszközök belső állapotát nem exportáljuk a `window` objektumra.
+
+A képességválasztót az `assets/js/dev-abilities.js` `catalogue` listája építi fel: egy bejegyzés stabil `id`, a játék `abilities` tömbjére mutató `index`, valamint lokalizációs `label` kulcs. Új, már játékba épített képességhez ezt a listát kell bővíteni; a mező és a megszerzés művelete közös marad. Új képesség játékmenete és mentési sémája külön fejlesztést igényel. A dev művelet nem teljesít küldetést, nem ad XP-t és nem ír normál mentést.
 
 ## Git ágak
 
