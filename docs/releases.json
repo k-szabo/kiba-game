@@ -130,6 +130,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.15_b2ea9859",
+      "code": "b2ea9859",
+      "baseVersion": "0.9.15",
+      "slug": "developer-ability-acquisition",
+      "summary": {
+        "hu": "Belső karbantartás és technikai fejlesztések.",
+        "en": "Internal maintenance and technical improvements."
+      },
+      "fixes": [
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

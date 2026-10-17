@@ -1,0 +1,35 @@
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
+const h=harness(),run=h.run;
+const normal=run('JSON.stringify(saved)'),writes=run('window.__saveSnapshots.length');
+assert(!run('DevAbilities.acquire({ability:"dash"})'),'Closed panel rejects grants');
+run('DevTools.open()');assert(!run('DevAbilities.acquire({ability:"dash"})'),'Panel alone cannot grant abilities');
+assert(run('DevSession.begin()'));
+const unrelated=run('JSON.stringify({flags,defeated,progression,shards,checkpoint})');
+for(const values of [undefined,{}, {ability:'unknown'}, {ability:'__proto__'}, {ability:0}]){
+ assert(!run(`DevAbilities.acquire(${JSON.stringify(values)})`));
+ assert(run('abilities.every(value=>!value)'));
+}
+assert(run('DevAbilities.acquire({ability:"double-jump"})'));
+assert.deepEqual(Array.from(run('abilities')),[true,false]);
+assert.equal(run('DevAbilities.acquire({ability:"double-jump"})'),'dev.ability.owned');
+assert.equal(run('JSON.stringify({flags,defeated,progression,shards,checkpoint})'),unrelated,'Grant does not award boss, item, quest or stat progress');
+run('DevTools.close()');
+assert(!run('DevAbilities.acquire({ability:"dash"})'),'Active test still requires an open panel');
+h.press(' ');h.tick(25);h.release(' ');h.press(' ');h.tick();h.release(' ');
+assert.equal(h.snap().player.jumps,2,'Granted double jump works through normal input');
+assert(h.snap().player.vy<-600);
+run('DevTools.open()');assert(run('DevAbilities.acquire({ability:"dash"})'));
+assert.equal(run('DevAbilities.acquire({ability:"dash"})'),'dev.ability.owned');
+assert.equal(h.elements.get('dashHint').hidden,false,'HUD immediately reflects the unlock');
+assert.equal(run('DevTools.returnState'),'play');assert.equal(h.snap().state,'developer','Acquiring does not close the panel');
+run('DevTools.close();dashCooldown=0');h.press('k');h.tick();h.release('k');
+assert(run('dash>0'),'Granted dash works through normal input');
+run('DevTools.open();DevTeleport.teleport({realm:"1",rest:"start"});DevTools.close();revive()');
+assert.deepEqual(Array.from(run('abilities')),[true,true],'Test unlocks survive travel and death');
+run('DevTools.open();DevTeleport.teleport({realm:"0",rest:"start"});DevTools.close();showTraining()');
+assert.equal(h.snap().state,'training');assert.equal(h.elements.get('spiritTraining').hidden,false,'Dash training appears after granting dash');
+run('persist()');assert.equal(run('JSON.stringify(saved)'),normal);assert.equal(run('window.__saveSnapshots.length'),writes);
+run('DevTools.open();DevSession.end();startGame(true)');h.dismiss();
+assert.deepEqual(Array.from(run('abilities')),[false,false],'Continue discards test unlocks');
+assert(!run('DevAbilities.acquire({ability:"dash"})'));
+console.log('PASS: test-only ability catalogue, panel/session guards, invalid IDs and duplicates, actual double jump/dash input, HUD/training, travel/death and normal-save isolation.');
