@@ -105,6 +105,24 @@ async function main(){
  await reload.vault.write(united);assert.deepEqual(plain(await client(env).vault.ready),united);
  const invalidUnited=copy(united);invalidUnited.flags[0]=invalidUnited.flags[0].filter(id=>id!=='angelHalo');assert.throws(()=>reload.vault.write(invalidUnited),/Invalid united relic/);
 
+ // Claimed boss souls and their extra training budget survive real WebCrypto
+ // serialization, including allocated stats and a reload after each victory.
+ const rewards=plain(vm.runInContext('BOSS_REWARDS',councilClient));
+ const rewarded=copy(united);rewarded.flags[2]=['dawnSeal'];
+ let rewardXP=0,bonusPoints=0;
+ for(const [realm,reward] of rewards.entries()){
+  rewarded.flags[realm].push(reward.claim,reward.id);rewardXP+=reward.xp;bonusPoints+=reward.points;
+  let level=1,xp=rewardXP;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
+  const budget=level-1+bonusPoints,vitality=Math.min(3,budget),strength=Math.min(2,budget-vitality);
+  rewarded.progression={level,xp:level===12?0:xp,totalXp:rewardXP,points:budget-vitality-strength,stats:{vitality,strength,spirit:0}};
+  await reload.vault.write(rewarded);
+  const restored=plain(await client(env).vault.ready);assert.deepEqual(restored,rewarded);
+  assert(restored.flags[realm].includes(reward.id));assert.equal(restored.progression.points+vitality+strength,budget);
+  const inflated=copy(rewarded);inflated.progression.points++;assert.throws(()=>reload.vault.write(inflated),/Invalid save schema/);
+  const missingSoul=copy(rewarded);missingSoul.flags[realm]=missingSoul.flags[realm].filter(id=>id!==reward.id);
+  assert.throws(()=>reload.vault.write(missingSoul),/Invalid boss reward/);
+ }
+
  // Hashes have no lexical time order: append order governs same-base updates.
  const fixEnv=storageEnvironment(),base='0.9.10',firstFix=base+'_ffffffff',nextFix=base+'_00000000';
  fixEnv.local.set('momo-language','en');fixEnv.local.set('momo-keybindings-v1','custom');
@@ -174,6 +192,6 @@ async function main(){
  const replacement=client(inflight,current,{locks:false});await replacement.vault.ready;assert.equal(replacement.vault.isReady,true);const replacementDevice=inflight.records.get('profile').device;
  continueEncryption();await assert.rejects(writing,/Storage aborted/);assert.equal(inflight.records.get('profile').device,replacementDevice);assert.equal(inflight.records.has('save'),false);assert.equal(inflight.local.has(SAVE),false);
  assert.ok([...env.opened,...update.opened,...race.opened].every(name=>name==='momo-save-v2'));
- console.log('Save release: reload, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
+ console.log('Save release: reload, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

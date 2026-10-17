@@ -13,9 +13,9 @@ for(const relics of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
   assert.deepEqual(Array.from(run('Inventory.contents()')),relics);
   run('updateBoss(1.81);boss.inv=0;hitBoss(boss.hp);');
  }else assert.equal(run('boss.stage'),2);
- assert(run('boss.dead&&defeated[2]'));assert.equal(snap().progression.totalXp,200);
+ assert(run('boss.dead&&defeated[2]'));assert.equal(snap().progression.totalXp,600);
  assert.equal(run("flags[2].includes('eclipseRelic')"),secret);
- assert.deepEqual(Array.from(run('Inventory.contents()')),secret?['eclipseRelic']:relics);
+ assert.deepEqual(Array.from(run('Inventory.contents()')),secret?['seraphSoul','eclipseRelic']:['seraphSoul',...relics]);
  if(secret){
   assert.deepEqual(Array.from(snap().relics),['eclipseRelic']);
   assert.equal(elements.get('dialogTitle').textContent,run("I18n.t('relic.eclipse.name')"));
@@ -31,9 +31,9 @@ for(const relics of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
   for(const mutate of [data=>data.defeated[2]=false,data=>data.flags[0]=data.flags[0].filter(id=>id!=='angelHalo'),data=>data.flags[0]=data.flags[0].filter(id=>id!=='demonHorn'),data=>data.flags[0]=data.flags[0].filter(id=>id!=='guardian:oldAngel')]){
    const invalid=structuredClone(saved);mutate(invalid);assert.throws(()=>validate(invalid));
   }
-  run('mainMenu();startGame(true);');assert.deepEqual(Array.from(run('Inventory.contents()')),['eclipseRelic']);
-  run('player.y=level.height+1000;player.inv=999;');tick();assert.deepEqual(Array.from(run('Inventory.contents()')),['eclipseRelic']);assert(snap().defeated[2]);
-  run("enterRealm(0);state='play';");assert.deepEqual(Array.from(run('Inventory.contents()')),['eclipseRelic']);
+  run('mainMenu();startGame(true);');assert.deepEqual(Array.from(run('Inventory.contents()')),['seraphSoul','eclipseRelic']);
+  run('player.y=level.height+1000;player.inv=999;');tick();assert.deepEqual(Array.from(run('Inventory.contents()')),['seraphSoul','eclipseRelic']);assert(snap().defeated[2]);
+  run("enterRealm(0);state='play';");assert.deepEqual(Array.from(run('Inventory.contents()')),['seraphSoul','eclipseRelic']);
   for(const id of ['angelHalo','demonHorn'])assert(run(`hasFlag('${id}')`),'Consumed original must stay collected on its map');
   run('persist();');assert.doesNotThrow(()=>validate(JSON.parse(run('JSON.stringify(saved)'))));
  }

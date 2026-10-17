@@ -51,6 +51,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 
 ## Ellenőrzés
 
+A főbossok jutalmait a `levels.js` megosztott `BOSS_REWARDS` táblája határozza meg. A `bossRewardClaimed` jelző adja az egyszeri XP- és pontcsomag jogcímét; a lélektárgy birtoklása külön jelző. A `normalizeProgression(data, flags)` hívásokból nem hagyható el a világállapot, különben a bossokból nyert statpontkeret elveszne. A `test-boss-rewards.cjs` a győzelmet, ismételt hívást, végső angyalfázist és a folytatást, a `test-boss-reward-saves.cjs` a pontkeretet és a hibás mentéseket, a `test-save-release.cjs` a titkosított jutalommentést ellenőrzi. A teljes pontköltségvetés `szint − 1 + megszerzett bossbónusz`; a szint- és statlimitek ettől nem változnak.
+
 A Yomi-boss legyőzése és a szellemlépés megszerzése független progresszió. A Hajnalkardot a `defeated[1]` jelzi; a dash-t normál játékban az oltárinterakció adja, tesztmódban a `DevAbilities`. A mentésvalidátor elfogadja a Yomi utáni állapotot és a következő pályát dash nélkül is, de a korábbi bossok legyőzését és a kötelező küldetésjelzőket továbbra is ellenőrzi. Ezt a `test-v06.cjs` bossgyőzelem, halál, folytatás, torii, visszautazás és későbbi oltárhasználat útvonalon ellenőrzi; a `test-save-release.cjs` valódi WebCryptóval, szimulált IndexedDB mellett teszteli a titkosított oda-vissza mentést.
 
 A workflow Node.js 24-et használ. A repository gyökeréből az ellenőrzések külső npm-csomagok nélkül futtathatók:

@@ -4,11 +4,11 @@ const STAT_LIMIT = 8, LEVEL_LIMIT = 12;
 let progression = freshProgression();
 function freshProgression() {return {level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};}
 function xpForLevel(n) {return 60+(n-1)*35;}
-function normalizeProgression(data) {
+function normalizeProgression(data,worldFlags=[]) {
   const out=freshProgression(),integer=(n,lo,hi)=>Number.isFinite(n)?Math.max(lo,Math.min(hi,Math.floor(n))):lo;
   if(!data||typeof data!=='object')return out;
   out.level=integer(data.level,1,LEVEL_LIMIT);
-  let budget=out.level-1;
+  let budget=out.level-1+bossBonusPoints(worldFlags);
   for(const key of Object.keys(out.stats)){out.stats[key]=integer(data.stats?.[key],0,Math.min(STAT_LIMIT,budget));budget-=out.stats[key];}
   out.points=budget;
   out.xp=out.level===LEVEL_LIMIT?0:integer(data.xp,0,xpForLevel(out.level)-1);

@@ -511,8 +511,17 @@
       "menu.changelog.0916.dash.shrine": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg.",
       "menu.changelog.0917.title": "Szamuráj útravaló zsák",
       "menu.changelog.0917.bag": "Az inventory bőrhátizsákját a játék festett stílusához illő szamuráj útravaló zsák váltja.",
+      "item.oathbreakerSoul": "Az esküszegő lelke",
+      "item.yomiGuardianSoul": "Yomi őrzőjének lelke",
+      "item.seraphSoul": "A szeráf lelke",
+      "inventory.description.oathbreakerSoul": "Az erdő esküszegőjének hátramaradt lelke. A megrepedt esküben még parázslik a Kiba.",
+      "inventory.description.yomiGuardianSoul": "Yomi őrzőjének lelke, amelyben a mélység perzselő Kibája kavarog.",
+      "inventory.description.seraphSoul": "Az égi őrző lelke. Fénye és árnyéka ugyanannak a Kibának két arca.",
+      "boss.reward.summary": "Jutalom: {0} XP · +{1} fejlesztéspont · {2}.",
       "menu.changelog.0918.title": "Új út a kultista barlangja mögött",
-      "menu.changelog.0918.passage": "A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz."
+      "menu.changelog.0918.passage": "A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz.",
+      "menu.changelog.0919.title": "Erősebb bossjutalmak",
+      "menu.changelog.0919.rewards": "A világok főbossai több XP-t, extra fejlesztéspontokat és egyedi, megőrizhető lélektárgyakat adnak."
     }
   },
   "en": {
@@ -1027,8 +1036,17 @@
       "menu.changelog.0916.dash.shrine": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows.",
       "menu.changelog.0917.title": "Samurai travel bag",
       "menu.changelog.0917.bag": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style.",
+      "item.oathbreakerSoul": "Soul of the Oathbreaker",
+      "item.yomiGuardianSoul": "Soul of Yomi's Guardian",
+      "item.seraphSoul": "Soul of the Seraph",
+      "inventory.description.oathbreakerSoul": "The soul left behind by the Forest Oathbreaker. Kiba still smoulders within the broken oath.",
+      "inventory.description.yomiGuardianSoul": "The soul of Yomi's guardian, swirling with the scorching Kiba of the depths.",
+      "inventory.description.seraphSoul": "The celestial guardian's soul. Its light and shadow are two faces of the same Kiba.",
+      "boss.reward.summary": "Reward: {0} XP · +{1} training points · {2}.",
       "menu.changelog.0918.title": "A new path beyond the cultist's cave",
-      "menu.changelog.0918.passage": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate."
+      "menu.changelog.0918.passage": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate.",
+      "menu.changelog.0919.title": "Greater boss rewards",
+      "menu.changelog.0919.rewards": "Realm bosses award more XP, bonus training points and unique soul items to keep."
     }
   }
 }

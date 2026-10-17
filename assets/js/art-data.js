@@ -6,6 +6,9 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "oathbreakerSoul": "assets/images/ui/oathbreaker-soul-v1.png",
+  "yomiGuardianSoul": "assets/images/ui/yomi-guardian-soul-v1.png",
+  "seraphSoul": "assets/images/ui/seraph-soul-v1.png",
   "cultRuinedGate": "assets/images/cult-ruined-gate-v1.png",
   "momoHeavy": "assets/images/momo-heavy-v1.png",
   "lavaSerpent": "assets/images/enemies/lava-serpent-v1.png",
@@ -66,6 +69,9 @@ const ART_INVENTORY = {
   katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536},
   // Inventory-only crops exclude world pedestals. Every item uses the same UI renderer.
   items:{
+    oathbreakerSoul:{name:'item.oathbreakerSoul',realm:0,image:'oathbreakerSoul',x:229,y:106,w:845,h:1056},
+    yomiGuardianSoul:{name:'item.yomiGuardianSoul',realm:1,image:'yomiGuardianSoul',x:164,y:24,w:924,h:1164},
+    seraphSoul:{name:'item.seraphSoul',realm:2,image:'seraphSoul',x:210,y:4,w:925,h:1248},
     angelHalo:{name:'text.angel.s.halo',realm:0,consumedBy:{realm:2,id:'eclipseRelic'},image:'relics',x:57,y:133,w:704,h:515},
     demonHorn:{name:'text.demon.lord.s.horn',realm:0,consumedBy:{realm:2,id:'eclipseRelic'},image:'relics',x:927,y:44,w:595,h:660},
     councilKey:{name:'council.key.name',realm:1,consumedBy:{realm:1,id:'councilGateOpen'},image:'councilKey',x:0,y:0,w:1024,h:1536},
