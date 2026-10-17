@@ -6,6 +6,7 @@
     "jump": [" ", "w", "arrowup"],
     "drop": ["s", "arrowdown"],
     "attack": ["j", "z"],
+    "heavyAttack": ["h"],
     "dash": ["k", "shift"],
     "interact": ["e"],
     "map": ["m"],

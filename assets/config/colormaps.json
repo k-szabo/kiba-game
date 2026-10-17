@@ -28,6 +28,9 @@
         "sword": {
           "paletteGroup": "pc.momo.sword"
         },
+        "heavySword": {
+          "paletteGroup": "pc.momo.heavySword"
+        },
         "inventory": {
           "paletteGroup": "pc.momo.inventory"
         }
@@ -718,6 +721,107 @@
           }
         ],
         "visibleSamples": 590651,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "pc.momo.heavySword": {
+      "source": "assets/images/momo-heavy-v1.png",
+      "frameMetadata": "ART_FRAMES.momoHeavy",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf1d3",
+            "coveragePercent": 14.0353
+          },
+          {
+            "hex": "#fbb028",
+            "coveragePercent": 13.7597
+          },
+          {
+            "hex": "#0d0605",
+            "coveragePercent": 12.5511
+          },
+          {
+            "hex": "#343a4e",
+            "coveragePercent": 9.0944
+          },
+          {
+            "hex": "#20212b",
+            "coveragePercent": 9.0819
+          },
+          {
+            "hex": "#f01217",
+            "coveragePercent": 7.113
+          },
+          {
+            "hex": "#ed8109",
+            "coveragePercent": 6.0881
+          },
+          {
+            "hex": "#f7f8f9",
+            "coveragePercent": 4.9088
+          },
+          {
+            "hex": "#f6c580",
+            "coveragePercent": 4.5952
+          },
+          {
+            "hex": "#541e0a",
+            "coveragePercent": 4.4183
+          },
+          {
+            "hex": "#a90408",
+            "coveragePercent": 3.7554
+          },
+          {
+            "hex": "#9a5818",
+            "coveragePercent": 3.3918
+          },
+          {
+            "hex": "#1485fb",
+            "coveragePercent": 2.4978
+          },
+          {
+            "hex": "#b4c9e3",
+            "coveragePercent": 1.928
+          },
+          {
+            "hex": "#697c9f",
+            "coveragePercent": 1.6286
+          },
+          {
+            "hex": "#57adf8",
+            "coveragePercent": 1.1527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f7a729",
+            "coveragePercent": 54.8247
+          },
+          {
+            "hex": "#ec1116",
+            "coveragePercent": 19.4637
+          },
+          {
+            "hex": "#a62f0b",
+            "coveragePercent": 14.7016
+          },
+          {
+            "hex": "#1586fb",
+            "coveragePercent": 6.2995
+          },
+          {
+            "hex": "#5ab1fa",
+            "coveragePercent": 2.6748
+          },
+          {
+            "hex": "#5374ad",
+            "coveragePercent": 2.0357
+          }
+        ],
+        "visibleSamples": 508807,
         "dominantCoveragePercent": 100.0001
       }
     },
@@ -13695,6 +13799,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/momo-heavy-v1.png": {
+      "sha256": "e4ee80fd15680efaa036ad740e5c822914b5b8c7b73fa1d10b16fa1ade32bdbb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoHeavy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf1d3",
+            "coveragePercent": 14.0353
+          },
+          {
+            "hex": "#fbb028",
+            "coveragePercent": 13.7597
+          },
+          {
+            "hex": "#0d0605",
+            "coveragePercent": 12.5511
+          },
+          {
+            "hex": "#343a4e",
+            "coveragePercent": 9.0944
+          },
+          {
+            "hex": "#20212b",
+            "coveragePercent": 9.0819
+          },
+          {
+            "hex": "#f01217",
+            "coveragePercent": 7.113
+          },
+          {
+            "hex": "#ed8109",
+            "coveragePercent": 6.0881
+          },
+          {
+            "hex": "#f7f8f9",
+            "coveragePercent": 4.9088
+          },
+          {
+            "hex": "#f6c580",
+            "coveragePercent": 4.5952
+          },
+          {
+            "hex": "#541e0a",
+            "coveragePercent": 4.4183
+          },
+          {
+            "hex": "#a90408",
+            "coveragePercent": 3.7554
+          },
+          {
+            "hex": "#9a5818",
+            "coveragePercent": 3.3918
+          },
+          {
+            "hex": "#1485fb",
+            "coveragePercent": 2.4978
+          },
+          {
+            "hex": "#b4c9e3",
+            "coveragePercent": 1.928
+          },
+          {
+            "hex": "#697c9f",
+            "coveragePercent": 1.6286
+          },
+          {
+            "hex": "#57adf8",
+            "coveragePercent": 1.1527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f7a729",
+            "coveragePercent": 54.8247
+          },
+          {
+            "hex": "#ec1116",
+            "coveragePercent": 19.4637
+          },
+          {
+            "hex": "#a62f0b",
+            "coveragePercent": 14.7016
+          },
+          {
+            "hex": "#1586fb",
+            "coveragePercent": 6.2995
+          },
+          {
+            "hex": "#5ab1fa",
+            "coveragePercent": 2.6748
+          },
+          {
+            "hex": "#5374ad",
+            "coveragePercent": 2.0357
+          }
+        ],
+        "visibleSamples": 508807,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/momo-menu-idle-v2.png": {
       "sha256": "51b6f50ea992e88cfcd7df5e4d8410e021877fd1bb864423a5c43dcfc073df45",
       "width": 1536,
@@ -16443,379 +16652,379 @@
       {
         "value": "#08121900",
         "lines": [
-          167
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          167
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          167
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          305
+          308
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#171322",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#182c37",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#1c3837",
         "lines": [
-          294
+          297
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          294
+          297
         ],
         "dynamic": false
       },
       {
         "value": "#253c37",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#322136",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#344358",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#352534",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#415d60",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#465959",
         "lines": [
-          203
+          205
         ],
         "dynamic": false
       },
       {
         "value": "#606a62",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#60706a",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#69505e",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#718679",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#8b5c77",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#8f9696",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#94b6a4",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#9da68e",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#a4ac8d",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#a6c9c5",
         "lines": [
-          203
+          205
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          169
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          124
+          126
         ],
         "dynamic": false
       },
       {
         "value": "#b788dd",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#c872b8",
         "lines": [
-          169
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#c96957",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#d58cf3",
         "lines": [
-          103
+          104
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          131
+          133
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          323
+          326
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          72
+          73
         ],
         "dynamic": false
       },
       {
         "value": "#dea58d",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#dfba76",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#e3cfa3",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#e4c78a",
         "lines": [
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#e5e0c8",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#e8d89b",
         "lines": [
-          169
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          323
+          326
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          323
+          326
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          121
+          123
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          101
+          102
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          131
+          133
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          203
+          205
         ],
         "dynamic": false
       },
       {
         "value": "#f3d494",
         "lines": [
-          21,
-          125
+          22,
+          127
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          202
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#f6d796",
         "lines": [
-          21
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#ffcf83",
         "lines": [
-          323
+          326
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          103
+          104
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          203
+          205
         ],
         "dynamic": false
       }
@@ -16873,7 +17082,7 @@
       {
         "value": "#102236",
         "lines": [
-          513
+          518
         ],
         "dynamic": false
       },
@@ -16909,7 +17118,7 @@
       {
         "value": "#132b42d9",
         "lines": [
-          547
+          552
         ],
         "dynamic": false
       },
@@ -16923,7 +17132,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          623
+          628
         ],
         "dynamic": false
       },
@@ -16937,7 +17146,7 @@
       {
         "value": "#163847dd",
         "lines": [
-          496
+          501
         ],
         "dynamic": false
       },
@@ -16972,7 +17181,7 @@
       {
         "value": "#234559cc",
         "lines": [
-          485
+          490
         ],
         "dynamic": false
       },
@@ -16986,14 +17195,14 @@
       {
         "value": "#251339",
         "lines": [
-          611
+          616
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          517
+          522
         ],
         "dynamic": false
       },
@@ -17007,7 +17216,7 @@
       {
         "value": "#326e8fa3",
         "lines": [
-          472
+          477
         ],
         "dynamic": false
       },
@@ -17028,7 +17237,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          472
+          477
         ],
         "dynamic": false
       },
@@ -17070,14 +17279,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          476
+          481
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          505
+          510
         ],
         "dynamic": false
       },
@@ -17091,7 +17300,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          505
+          510
         ],
         "dynamic": false
       },
@@ -17112,14 +17321,14 @@
       {
         "value": "#b683ff",
         "lines": [
-          611
+          616
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          577
+          582
         ],
         "dynamic": false
       },
@@ -17140,14 +17349,14 @@
       {
         "value": "#c596ffad",
         "lines": [
-          505
+          510
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          486
+          491
         ],
         "dynamic": false
       },
@@ -17161,14 +17370,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          607
+          612
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          491
+          496
         ],
         "dynamic": false
       },
@@ -17189,7 +17398,7 @@
       {
         "value": "#d8bd827d",
         "lines": [
-          550
+          555
         ],
         "dynamic": false
       },
@@ -17210,14 +17419,14 @@
       {
         "value": "#d9a9ff",
         "lines": [
-          611
+          616
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          609
+          614
         ],
         "dynamic": false
       },
@@ -17238,14 +17447,14 @@
       {
         "value": "#e1778800",
         "lines": [
-          597
+          602
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          478
+          483
         ],
         "dynamic": false
       },
@@ -17259,21 +17468,21 @@
       {
         "value": "#e7616355",
         "lines": [
-          596
+          601
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          596
+          601
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          577
+          582
         ],
         "dynamic": false
       },
@@ -17287,14 +17496,14 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          608
+          613
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          596
+          601
         ],
         "dynamic": false
       },
@@ -17315,7 +17524,7 @@
       {
         "value": "#f7c0a4",
         "lines": [
-          513
+          518
         ],
         "dynamic": false
       },
@@ -17329,7 +17538,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          517
+          522
         ],
         "dynamic": false
       },
@@ -17350,7 +17559,7 @@
       {
         "value": "#ffb889",
         "lines": [
-          517
+          522
         ],
         "dynamic": false
       },
@@ -17364,7 +17573,7 @@
       {
         "value": "#ffd5a2",
         "lines": [
-          597
+          602
         ],
         "dynamic": false
       },
@@ -17385,7 +17594,7 @@
       {
         "value": "#ffe0a229",
         "lines": [
-          539
+          544
         ],
         "dynamic": false
       },
@@ -17393,42 +17602,42 @@
         "value": "#ffe2a0",
         "lines": [
           415,
-          540
+          545
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          547
+          552
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          472
+          477
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          478
+          483
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          505
+          510
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          495
+          500
         ],
         "dynamic": false
       },
@@ -17443,7 +17652,7 @@
         "value": "#fff0b3",
         "lines": [
           330,
-          491
+          496
         ],
         "dynamic": false
       },
@@ -17468,35 +17677,35 @@
           370,
           371,
           374,
-          517
+          522
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          508
+          513
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          612
+          617
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          496
+          501
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          485
+          490
         ],
         "dynamic": false
       },

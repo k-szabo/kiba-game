@@ -30,13 +30,18 @@ const Bindings=(()=>{
     if(!changes||typeof changes!=='object'||Array.isArray(changes))return changes;
     const copy=JSON.parse(JSON.stringify(changes));
     for(const [which,overrides] of Object.entries(copy)){
-      if(!profiles.includes(which)||!overrides||Array.isArray(overrides)||typeof overrides!=='object'||Object.hasOwn(overrides,'inventory'))continue;
+      if(!profiles.includes(which)||!overrides||Array.isArray(overrides)||typeof overrides!=='object')continue;
+      const missing=['inventory','heavyAttack'].filter(action=>!Object.hasOwn(overrides,action));
       const used=new Set();
-      for(const action of actions.filter(a=>a!=='inventory'))for(const key of Array.isArray(overrides[action])?overrides[action]:base(which,action))used.add(key);
-      if(!base(which,'inventory').some(key=>used.has(key)))continue;
-      const candidates=[...base(which,'inventory'),'o','p','b',...'abcdefghijklmnopqrstuvwxyz0123456789',...Array.from({length:12},(_,i)=>'f'+(i+1))];
-      const available=candidates.find(key=>!used.has(key));
-      if(available)overrides.inventory=[available];
+      for(const action of actions.filter(action=>!missing.includes(action)))for(const key of Array.isArray(overrides[action])?overrides[action]:base(which,action))used.add(key);
+      for(const action of missing){
+        const preferred=base(which,action);
+        if(!preferred.some(key=>used.has(key))){for(const key of preferred)used.add(key);continue;}
+        const alternatives=action==='heavyAttack'?['l']:['o','p','b'];
+        const candidates=[...preferred,...alternatives,...'abcdefghijklmnopqrstuvwxyz0123456789',...Array.from({length:12},(_,i)=>'f'+(i+1))];
+        const available=candidates.find(key=>!used.has(key));
+        if(available){overrides[action]=[available];used.add(available);}
+      }
     }
     return copy;
   }
@@ -58,8 +63,8 @@ const Bindings=(()=>{
   function reset(){delete modified[profile];save();}
   function importData(data){
     if(!data||data.version!==KEY_BINDINGS.version)return false;
-    const legacy={...KEY_BINDINGS.original};delete legacy.inventory;
-    if(JSON.stringify(data.original)!==JSON.stringify(KEY_BINDINGS.original)&&JSON.stringify(data.original)!==JSON.stringify(legacy))return false;
+    const compatibleOriginals=[[],['heavyAttack'],['inventory'],['inventory','heavyAttack']].map(missing=>Object.fromEntries(Object.entries(KEY_BINDINGS.original).filter(([action])=>!missing.includes(action))));
+    if(!compatibleOriginals.some(original=>JSON.stringify(data.original)===JSON.stringify(original)))return false;
     const changes=compatibleChanges(data.modified);if(!validate(data.selection,changes))return false;
     profile=data.selection;modified=changes;save();return true;
   }

@@ -26,7 +26,7 @@ const Inventory=(()=>{
  function details(id){
   $('inventoryDetailName').textContent=id==='weapon'?weaponName():id?I18n.t(catalogue[id].name):I18n.t('inventory.empty.title');
   $('inventoryDetailType').textContent=I18n.t(id==='weapon'?'inventory.type.equipped':id?'inventory.type.quest':'inventory.type.backpack');
-  $('inventoryDetailText').textContent=id==='weapon'?I18n.format('inventory.weapon.description',[momoStats().damage]):id?I18n.t('inventory.description.'+id):I18n.t('inventory.empty.body');
+  $('inventoryDetailText').textContent=id==='weapon'?I18n.format('inventory.weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?I18n.t('inventory.description.'+id):I18n.t('inventory.empty.body');
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}
  function render(){

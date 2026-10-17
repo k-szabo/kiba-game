@@ -59,7 +59,7 @@ const Prologue=(()=>{
   function hit(amount,box){
     if(phase!=='battle'||boss.inv>0||box&&!overlap(box,boss)||!Number.isFinite(amount)||amount<=0)return false;
     // A normal sword can harm the apparition, but cannot end this story encounter.
-    const before=boss.hp;boss.hp=Math.max(1,boss.hp-Math.min(amount,momoStats().damage));DevDamage.record('outgoing',boss,before,boss.hp);boss.inv=.28;boss.flash=.2;
+    const before=boss.hp;boss.hp=Math.max(1,boss.hp-Math.min(amount,playerAttackDamage()));DevDamage.record('outgoing',boss,before,boss.hp);boss.inv=.28;boss.flash=.2;
     burst(Math.min(boss.x+50,player.x+130),player.y+28,'#d9b3f8',14);tone(145,.1,'triangle',.02);return true;
   }
   function hazard(kind,x,y,w,h,warning,life,amount){hazards.push({kind,x,y,w,h,warning,life,amount,active:false});}

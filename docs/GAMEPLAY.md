@@ -30,7 +30,8 @@ Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külö
 | Space, W, fel nyíl | Ugrás |
 | Space → felengedés → újra Space | Kettős ugrás a szél áldása után |
 | S + Space | Leugrás a kő- vagy felhőpárkányról |
-| J vagy Z | Kardcsapás; a hajnalkarddal pecsétek feltörése |
+| J vagy Z | Normál támadás; a hajnalkarddal pecsétek feltörése |
+| H | Erős támadás; lassabban indul és nagyobbat sebez |
 | K vagy Shift | Szellemlépés az árnyék szentélye után |
 | E | Harang, lélek, emlék, szentély, torii, apa |
 | U / Fejlesztés gomb | Fejlesztéspontok elköltése a pihenőszentélynél |
@@ -60,7 +61,7 @@ Yomi középső mélységének jobb oldalán egy [láncos kapu és opcionális k
 
 Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
 
-A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 sebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek.
+A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 alap kardsebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek.
 
 ## Ellenfelek
 

@@ -5,8 +5,8 @@ const {run,snap,tick,press,release,place,dismiss,storage,elements}=require('./te
 run("enterRealm(0);state='play';progression=freshProgression();var foe=enemies.find(e=>e.kind==='guard');enemies=[foe];foe.cd=999;");
 place(run('foe.x-40'),run('foe.y+foe.h'));run('player.face=1;attackCooldown=0;melee();');assert.equal(run('foe.hp'),4);
 run('advanceSwordAttack(.12);player.face=-1;');assert.equal(run('foe.hp'),4);
-run('advanceSwordAttack(.05);');assert.equal(run('foe.hp'),2);assert.equal(snap().attack.face,1);
-run('advanceSwordAttack(.1);');assert.equal(run('foe.hp'),2,'A single swing hit more than once');
+run('advanceSwordAttack(.05);');assert.equal(run('foe.hp'),2.5);assert.equal(snap().attack.face,1);
+run('advanceSwordAttack(.1);');assert.equal(run('foe.hp'),2.5,'A single swing hit more than once');
 run('var slashCalls=0;var slashFace=0;var originalSlash=Visuals.momoSlash;Visuals.momoSlash=(...args)=>{slashCalls++;slashFace=args[4];originalSlash(...args);};player.inv=0;player.onGround=false;player.vx=285;draw();');assert.equal(run('slashCalls'),1,'Air/running animation overrides the slash');assert.equal(run('slashFace'),1);
 run('player.onGround=true;draw();');assert.equal(run('slashCalls'),2,'Running animation overrides the slash');
 run('Visuals.momoSlash=originalSlash;');
