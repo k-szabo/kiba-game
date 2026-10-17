@@ -13,6 +13,7 @@ A referenciaútvonalak a repository gyökeréhez képest értendők. A korai gen
 | [scenery-repairs-v4.json](scenery-repairs-v4.json) | Az aktív terep/kellékatlasz elrendezési javításai. |
 | [combat-v5.json](combat-v5.json) | Momo kardcsapása, szamuráj, angyalformák és ereklyék. |
 | [secrets-v6.json](secrets-v6.json) | Öreg angyal, kultista és titkos helyszínek. |
+| [cult-ruined-gate-v1.json](cult-ruined-gate-v1.json) | A kultista mögötti oldalág betört templomkapuja; jóváhagyott koncepció és eredeti RGBA grafika. |
 | [shadow-combat-v2.json](shadow-combat-v2.json) | Árnyék harci animációi. |
 | [japan-clouds-v1.json](japan-clouds-v1.json) | A titkos torony festett felhői. |
 | [angel-vfx-heaven-phases-v1.json](angel-vfx-heaven-phases-v1.json) | Fénynyilak és a sötét/napfogyatkozásos ég. |

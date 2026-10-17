@@ -210,6 +210,22 @@
           "en": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style."
         }
       ]
+    },
+    {
+      "version": "0.9.18_44c92a88",
+      "code": "44c92a88",
+      "baseVersion": "0.9.18",
+      "slug": "cultist-dash-passage",
+      "summary": {
+        "hu": "Új út a kultista barlangja mögött",
+        "en": "A new path beyond the cultist's cave"
+      },
+      "fixes": [
+        {
+          "hu": "A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz.",
+          "en": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate."
+        }
+      ]
     }
   ]
 }

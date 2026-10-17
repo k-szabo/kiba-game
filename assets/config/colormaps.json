@@ -10861,6 +10861,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/cult-ruined-gate-v1.png": {
+      "sha256": "b41557278ac1d66e06f4a1cb04a515f74568333228b869e33e6bbc426897f9e5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultRuinedGate"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341811",
+            "coveragePercent": 15.4952
+          },
+          {
+            "hex": "#080302",
+            "coveragePercent": 15.113
+          },
+          {
+            "hex": "#1f0d09",
+            "coveragePercent": 14.968
+          },
+          {
+            "hex": "#512517",
+            "coveragePercent": 10.76
+          },
+          {
+            "hex": "#3a2929",
+            "coveragePercent": 8.5027
+          },
+          {
+            "hex": "#533c39",
+            "coveragePercent": 8.0864
+          },
+          {
+            "hex": "#74301f",
+            "coveragePercent": 6.3779
+          },
+          {
+            "hex": "#754e3c",
+            "coveragePercent": 5.0788
+          },
+          {
+            "hex": "#9d4e2c",
+            "coveragePercent": 3.1985
+          },
+          {
+            "hex": "#9b6e57",
+            "coveragePercent": 2.983
+          },
+          {
+            "hex": "#645564",
+            "coveragePercent": 2.7989
+          },
+          {
+            "hex": "#cf7b46",
+            "coveragePercent": 1.9804
+          },
+          {
+            "hex": "#877790",
+            "coveragePercent": 1.6046
+          },
+          {
+            "hex": "#e2a776",
+            "coveragePercent": 1.4851
+          },
+          {
+            "hex": "#ab9fbb",
+            "coveragePercent": 0.9816
+          },
+          {
+            "hex": "#e8ddda",
+            "coveragePercent": 0.586
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#905133",
+            "coveragePercent": 32.1172
+          },
+          {
+            "hex": "#ad6640",
+            "coveragePercent": 23.7954
+          },
+          {
+            "hex": "#902f20",
+            "coveragePercent": 18.959
+          },
+          {
+            "hex": "#d37f4b",
+            "coveragePercent": 15.9046
+          },
+          {
+            "hex": "#f0a867",
+            "coveragePercent": 8.3852
+          },
+          {
+            "hex": "#784b8d",
+            "coveragePercent": 0.8385
+          }
+        ],
+        "visibleSamples": 958767,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/effects/boss-slashes-v1.png": {
       "sha256": "3bfc506fbf597fee78ad3cd95d16dc5b05d76854781797754c557251bb5d384c",
       "width": 1024,
@@ -17185,7 +17290,7 @@
       {
         "value": "#102236",
         "lines": [
-          518
+          523
         ],
         "dynamic": false
       },
@@ -17221,7 +17326,7 @@
       {
         "value": "#132b42d9",
         "lines": [
-          552
+          557
         ],
         "dynamic": false
       },
@@ -17235,7 +17340,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          628
+          642
         ],
         "dynamic": false
       },
@@ -17249,7 +17354,14 @@
       {
         "value": "#163847dd",
         "lines": [
-          501
+          506
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#171020c7",
+        "lines": [
+          581
         ],
         "dynamic": false
       },
@@ -17263,7 +17375,7 @@
       {
         "value": "#182025",
         "lines": [
-          432
+          437
         ],
         "dynamic": false
       },
@@ -17284,7 +17396,7 @@
       {
         "value": "#234559cc",
         "lines": [
-          490
+          495
         ],
         "dynamic": false
       },
@@ -17298,14 +17410,14 @@
       {
         "value": "#251339",
         "lines": [
-          616
+          630
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          522
+          527
         ],
         "dynamic": false
       },
@@ -17319,7 +17431,7 @@
       {
         "value": "#326e8fa3",
         "lines": [
-          477
+          482
         ],
         "dynamic": false
       },
@@ -17340,7 +17452,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          477
+          482
         ],
         "dynamic": false
       },
@@ -17361,7 +17473,7 @@
       {
         "value": "#9b626b88",
         "lines": [
-          417
+          422
         ],
         "dynamic": false
       },
@@ -17382,14 +17494,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          481
+          486
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          510
+          515
         ],
         "dynamic": false
       },
@@ -17403,7 +17515,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          510
+          515
         ],
         "dynamic": false
       },
@@ -17417,21 +17529,21 @@
       {
         "value": "#b5a777",
         "lines": [
-          415
+          420
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          616
+          630
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          582
+          596
         ],
         "dynamic": false
       },
@@ -17452,14 +17564,14 @@
       {
         "value": "#c596ffad",
         "lines": [
-          510
+          515
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          491
+          496
         ],
         "dynamic": false
       },
@@ -17473,14 +17585,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          612
+          626
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          496
+          501
         ],
         "dynamic": false
       },
@@ -17494,14 +17606,14 @@
       {
         "value": "#d1c9acaf",
         "lines": [
-          443
+          448
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          555
+          560
         ],
         "dynamic": false
       },
@@ -17522,21 +17634,21 @@
       {
         "value": "#d9a9ff",
         "lines": [
-          616
+          630
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          614
+          628
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          415
+          420
         ],
         "dynamic": false
       },
@@ -17550,14 +17662,14 @@
       {
         "value": "#e1778800",
         "lines": [
-          602
+          616
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          483
+          488
         ],
         "dynamic": false
       },
@@ -17571,21 +17683,21 @@
       {
         "value": "#e7616355",
         "lines": [
-          601
+          615
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          601
+          615
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          582
+          596
         ],
         "dynamic": false
       },
@@ -17599,14 +17711,14 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          613
+          627
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          601
+          615
         ],
         "dynamic": false
       },
@@ -17620,14 +17732,14 @@
       {
         "value": "#f6a47580",
         "lines": [
-          415
+          420
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          518
+          523
         ],
         "dynamic": false
       },
@@ -17641,7 +17753,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          522
+          527
         ],
         "dynamic": false
       },
@@ -17662,7 +17774,7 @@
       {
         "value": "#ffb889",
         "lines": [
-          522
+          527
         ],
         "dynamic": false
       },
@@ -17676,7 +17788,7 @@
       {
         "value": "#ffd5a2",
         "lines": [
-          602
+          616
         ],
         "dynamic": false
       },
@@ -17697,50 +17809,50 @@
       {
         "value": "#ffe0a229",
         "lines": [
-          544
+          549
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          415,
-          545
+          420,
+          550
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          552
+          557
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          477
+          482
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          483
+          488
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          510
+          515
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          500
+          505
         ],
         "dynamic": false
       },
@@ -17755,7 +17867,7 @@
         "value": "#fff0b3",
         "lines": [
           330,
-          496
+          501
         ],
         "dynamic": false
       },
@@ -17780,35 +17892,35 @@
           370,
           371,
           374,
-          522
+          527
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          513
+          518
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          617
+          631
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          501
+          506
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          490
+          495
         ],
         "dynamic": false
       },

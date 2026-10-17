@@ -5,7 +5,7 @@ function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,d
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
 function foe(l,id,x,y,kind='guard',group=null,patrol=65){l.enemies.push({id,x,y,kind,group,patrol});}
 function zone(l,name,x,y,w,h){l.zones.push({name,x,y,w,h});}
-const japan=makeLevel('japan',10400,2500,{x:260,y:1000});
+const japan=makeLevel('japan',10400,3100,{x:260,y:1000});
 japan.top=-1100; // The optional angel tower rises above the ordinary camera range.
 [[0,1000,1550],[1680,950,1640],[3400,1000,1500],[5100,920,1400],[6740,960,1160],[8150,1000,2250]].forEach((p,i)=>ledge(japan,'road'+i,...p,'ground',190));
 [
@@ -23,7 +23,7 @@ japan.objects=[{id:'forestBell',type:'bell',x:4420,y:715,name:I18n.t('place.fore
 // Optional paths lie outside the quest route and remain absent from the map until discovered.
 japan.secrets=[
  {id:'angelRuin',name:I18n.t("text.ruins.of.the.ancient.angel.tower"),x:2440,y:-1000,w:1240,h:1550,arena:{x:2510,y:-690,w:510},guardian:'oldAngel',relic:'angelHalo'},
- {id:'cultCave',name:I18n.t("text.cave.of.the.forgotten.cult"),x:2420,y:1740,w:1710,h:700,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
+ {id:'cultCave',name:I18n.t("text.cave.of.the.forgotten.cult"),x:800,y:1740,w:3330,h:1320,arena:{x:2650,y:2160,w:950},guardian:'oldCultist',relic:'demonHorn'}
 ];
 for(const p of [
  ['tower-step1',3490,445,140],['tower-step2',3250,285,120],['tower-step3',3030,230,130],
@@ -31,19 +31,36 @@ for(const p of [
  ['tower-step7',3010,-400,160],['tower-step8',2780,-560,160],['halo-altar',2510,-690,510]
 ]){ledge(japan,...p);japan.platforms.at(-1).secretArea='angelRuin';}
 for(const p of [['cult-mouth',4530,1510,180],['cult-stair1',4200,1680,200],['cult-stair2',3910,1850,190],['cult-stair3',3640,2010,180],['horn-vault',2650,2160,950]]){ledge(japan,...p);japan.platforms.at(-1).secretArea='cultCave';}
+// A later return with Spirit Dash reveals a short descent beyond the elder's
+// west wall. Every step is usable in both directions with the double jump.
+for(const p of [
+ ['cult-passage-forecourt',2485,2160,165],['cult-passage-landing',2150,2160,270],
+ ['cult-passage-step1',1810,2310,260],['cult-passage-step2',1480,2460,250],
+ ['cult-passage-temple',900,2620,650]
+]){ledge(japan,...p);japan.platforms.at(-1).secretArea='cultCave';}
+japan.cultPassage={
+ gateId:'cultWestWall',platformIds:['cult-passage-forecourt','cult-passage-landing','cult-passage-step1','cult-passage-step2','cult-passage-temple'],
+ // The renderer's x is the artwork's horizontal centre; y is its foot line.
+ ruinedGate:{x:1150,y:2620,w:480,h:365}
+};
 japan.objects.push(
  {id:'angelHalo',type:'relic',x:2600,y:-690,name:I18n.t("text.the.angel.s.halo"),secretArea:'angelRuin',guardian:'oldAngel'},
  {id:'demonHorn',type:'relic',x:2760,y:2160,name:I18n.t("text.the.demon.lord.s.horn"),secretArea:'cultCave',guardian:'oldCultist'}
 );
 foe(japan,'oldAngel',2800,-690,'mage',null,250);Object.assign(japan.enemies.at(-1),{miniboss:'angel',name:I18n.t("text.the.mad.elder.angel"),secretArea:'angelRuin',factionOverride:'heaven'});
 foe(japan,'oldCultist',3070,2160,'mage',null,380);Object.assign(japan.enemies.at(-1),{miniboss:'cultist',name:I18n.t("text.the.ancient.cult.s.elder"),secretArea:'cultCave',factionOverride:'japan'});
-japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:2500}];
+japan.gates=[{id:'root',kind:'root',x:3100,y:745,w:65,h:205},{id:'templeOath',kind:'bells',x:8560,y:0,w:35,h:japan.height}];
 // Cave ceiling and wall prevent falling straight into the relic chamber from the main road.
 japan.gates.push(
  {id:'cultRoof',kind:'secretRock',x:2420,y:1740,w:1200,h:105,secretArea:'cultCave'},
- {id:'cultWestWall',kind:'secretRock',x:2420,y:1740,w:65,h:760,secretArea:'cultCave'},
+ {id:'cultWestWall',kind:'shadow',requiresDash:true,x:2420,y:2000,w:65,h:160,secretArea:'cultCave'},
+ {id:'cultWestWallUpper',kind:'secretRock',x:2420,y:1740,w:65,h:260,secretArea:'cultCave'},
+ {id:'cultWestWallLower',kind:'secretRock',x:2420,y:2160,w:65,h:940,secretArea:'cultCave'},
+ {id:'cultPassageRoof',kind:'secretRock',x:800,y:1740,w:1620,h:105,secretArea:'cultCave'},
+ {id:'cultPassageWest',kind:'secretRock',x:800,y:1740,w:65,h:1360,secretArea:'cultCave'},
+ {id:'cultPassageFoundation',kind:'secretRock',x:800,y:2820,w:1685,h:280,secretArea:'cultCave'},
  {id:'cultEastWall',kind:'secretRock',x:3620,y:1100,w:35,h:820,secretArea:'cultCave'},
- {id:'cultEntrance',kind:'fragile',x:4450,y:1000,w:55,h:1500,secretArea:'cultCave'}
+ {id:'cultEntrance',kind:'fragile',x:4450,y:1000,w:55,h:japan.height-1000,secretArea:'cultCave'}
 );
 japan.arena={x:8770,y:1000,w:1550,restId:'temple'};japan.boss={x:9570,y:1000};japan.exit={x:10000,y:1000};
 [[930,1000],[1900,950],[2820,950],[3600,1000],[4140,1000],[4750,1000],[5450,920],[6200,920],[6930,960],[7550,960],[8390,1000]].forEach(([x,y],i)=>foe(japan,'road-'+i,x,y,i%4===2?'archer':'guard',null,Math.min(65,i===8?40:65)));
