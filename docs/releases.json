@@ -86,5 +86,22 @@
       ]
     }
   ],
-  "releases": []
+  "releases": [
+    {
+      "version": "0.9.14_62abac61",
+      "code": "62abac61",
+      "baseVersion": "0.9.14",
+      "slug": "developer-tool-suite",
+      "summary": {
+        "hu": "Belső karbantartás és technikai fejlesztések.",
+        "en": "Internal maintenance and technical improvements."
+      },
+      "fixes": [
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
+const h=harness(),run=h.run,saved=run('JSON.stringify(saved)'),writes=run('window.__saveSnapshots.length');
+assert(!run('DevImmortality.toggle()'));run('DevTools.open();DevSession.begin();');assert(run('DevImmortality.toggle()'));assert(run('DevImmortality.active'));
+assert.equal(h.elements.get('devInvincibleNotice').hidden,false);run('DevTools.close();player.inv=0;');
+const hp=h.snap().player.hp;run('damage(999,1)');assert.equal(h.snap().player.hp,hp);
+run('enterRealm(1);bossStarted=true;boss.lava={x:player.x,y:player.y,w:43,h:69,active:true,warning:0,lethal:true};updateBossHazards(.1)');
+assert.equal(h.snap().player.hp,hp);assert(run('bossStarted'),'Lethal lava cannot kill/reset an invincible test run');
+run('player.y=level.height+200;movePlayer(.01)');assert(run('player.onGround'));assert.equal(h.snap().player.hp,hp,'Falling returns an invincible test character to a safe shrine');
+run('Prologue.start();player.x=3100;Prologue.update(.01);Prologue.update(2.9);player.inv=0;');assert.equal(run('Prologue.phase'),'battle');
+run('Prologue.hurt(999,true)');assert.equal(run('Prologue.phase'),'battle');assert.equal(h.snap().player.hp,hp);
+run('DevTools.open()');assert(run('DevImmortality.toggle()'));run('DevTools.close();player.inv=0;Prologue.hurt(1)');assert.equal(h.snap().player.hp,hp-1,'Turning off restores ordinary dream damage');
+run('Prologue.stop();enterRealm(0);DevTools.open();DevImmortality.toggle();mainMenu()');
+assert(!run('DevImmortality.active'));assert(h.elements.get('devInvincibleNotice').hidden);assert.equal(run('JSON.stringify(saved)'),saved);assert.equal(run('window.__saveSnapshots.length'),writes);
+run('startGame(true);player.inv=0;damage(1)');assert.equal(h.snap().player.hp,hp-1,'Normal play is never immortal after ending the test');
+console.log('PASS: explicit test-only invincibility, ordinary/lethal/dream damage, safe fall recovery, visible state, toggling and session cleanup.');

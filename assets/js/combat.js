@@ -184,7 +184,10 @@ function checkBossHealth(){
 function hitBoss(amount){
   if(Prologue.active)return Prologue.hit(amount);
   if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform'||realm===1&&boss.yomiStage==='shelter')return false;
-  boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();return true;
+  const before=boss.hp,stage=boss.stage,position={x:boss.x,y:boss.y,w:boss.w};
+  boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
+  // The secret angel phase refills HP; report the depleted previous life bar.
+  DevDamage.record('outgoing',position,before,realm===2&&stage===2&&boss.stage===3?0:boss.hp);return true;
 }
 function bossMoves(){
   if(realm===0)return ['cleave','dash','doubleCut'];
@@ -419,8 +422,8 @@ function updateBossHazards(dt){
   for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);}
   boss.hazards=boss.hazards.filter(h=>h.life>0);
   if(boss.lava){boss.lava.warning=Math.max(0,boss.lava.warning-dt);if(boss.lava.active&&overlap(player,boss.lava)){
-    if(boss.lava.lethal){player.hp=0;revive();return;}
-    damage(2,player.x>boss.x?1:-1);
+    if(boss.lava.lethal){if(!DevImmortality.active){const before=player.hp;player.hp=0;DevDamage.record('incoming',player,before,player.hp);revive();return;}}
+    else damage(2,player.x>boss.x?1:-1);
   }}
   updateSummons(dt);
 }
