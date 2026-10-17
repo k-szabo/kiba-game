@@ -16,6 +16,10 @@ A főagent koordinál és integrál; az önálló részfeladatokat specialisták
 
 A táblázat nem engedély ugyanazon fájl párhuzamos szerkesztésére: a koordinátor kiosztja a konkrét tulajdonost. Grafika és játékmenet együttműködésénél először a szükséges állapotokat, pózokat és illesztési pontokat egyeztessék. A runtime.js és colormaps.json generálását egy integrátor végezze a releváns szerkesztések lezárása után.
 
+### Grafikai jóváhagyási kapu
+
+Teljesen új vizuális design esetén az artist először koncepciórajzot mutat be, amelyen a sziluett, a színek, az anyagok és a kompozíció megítélhető. Új animációnál először vázlatos storyboardot vagy kulcspózlapot készít a tervezett mozgásról. A kész, részletes asset vagy animáció gyártása csak a konkrét előnézetre adott kifejezett felhasználói jóváhagyás után indulhat. Módosított koncepciót vagy lényegesen megváltozott pózsort újra jóvá kell hagyatni. A jóváhagyás a bemutatott vizuális irányra szól; a neveket, leírásokat, játékmenetet vagy nem látott részleteket külön kell egyeztetni. Már jóváhagyott design apró javítása vagy változata nem igényel új koncepciókört, amíg az alapötlet nem változik.
+
 Az agentek nem indítanak saját alcsapatokat. A szerep nem külön sandbox, a specialisták a szülő jogosultságait öröklik. A projekt jelenleg teljesen statikus; külön backend szerep csak szerveroldali funkció bevezetésekor szükséges.
 
 ## Feladat és átadás
