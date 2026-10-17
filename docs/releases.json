@@ -162,6 +162,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.16_ea6af7c0",
+      "code": "ea6af7c0",
+      "baseVersion": "0.9.16",
+      "slug": "normal-heavy-attacks",
+      "summary": {
+        "hu": "Normál és erős támadás",
+        "en": "Normal and heavy attacks"
+      },
+      "fixes": [
+        {
+          "hu": "Külön, átállítható gombot kapott az erős támadás; a normál csapás gyengébb, az erős lassabb és nagyobbat sebez.",
+          "en": "Heavy attacks have a separate, remappable button; normal strikes deal less damage, while heavy strikes are slower and hit harder."
+        }
+      ]
     }
   ]
 }

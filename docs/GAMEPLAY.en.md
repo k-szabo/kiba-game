@@ -14,7 +14,8 @@ These are the default keys. Open **How to Play** from the main or pause menu to 
 | --- | --- |
 | A / D or ← / → | Move |
 | Space, W, or ↑ | Jump; release and press again for double jump after unlocking it |
-| J or Z | Sword attack |
+| J or Z | Normal attack |
+| H | Heavy attack; takes longer to wind up and deals more damage |
 | K or Shift | Spirit dash after unlocking it |
 | E | Interact, rest, open gates, and collect items |
 | U | Spend an upgrade point at a shrine |

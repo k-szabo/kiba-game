@@ -210,5 +210,10 @@
 #devPanel input:focus-visible,#devPanel select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 #devTestNotice{position:absolute;z-index:6;left:12px;bottom:140px;max-width:calc(100% - 24px);padding:8px 12px;background:var(--ink);color:var(--paper);border:2px solid var(--gold);border-radius:4px;text-align:center;font-size:15px;font-weight:700;pointer-events:none}
 #devInvincibleNotice{position:absolute;z-index:6;right:12px;bottom:80px;max-width:calc(100% - 24px);padding:8px 12px;background:var(--ink);color:var(--paper);border:2px solid var(--gold);border-radius:4px;font-size:16px;font-weight:700;pointer-events:none}
+#touchControls{gap:8px}
+#touchControls>div{flex-wrap:wrap;max-width:60%}
+#touchControls>div:first-child{max-width:38%}
+#touchControls button{min-width:44px;min-height:44px}
+#touchControls button[data-action="heavyAttack"]{font-weight:700;border-width:2px}
 @media(max-height:500px){#devPanel{align-items:flex-start;padding:8px}#devPanel .dev-panel{max-height:calc(100dvh - 16px)}}
 @media(prefers-reduced-motion:reduce){#devPanel *{transition:none;animation:none;scroll-behavior:auto}}

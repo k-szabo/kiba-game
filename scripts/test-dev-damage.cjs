@@ -49,7 +49,7 @@ h.dismiss();
 
 // Shadow's statutory damage cap/floor and dream death use the same actual-delta rule.
 run("Prologue.start();player.x=3100;Prologue.update(.01);Prologue.update(2.9);boss.inv=0;Prologue.hit(Number.MAX_SAFE_INTEGER);");
-assert.equal(last(),run('momoStats().damage'));
+assert.equal(last(),run('playerAttackDamage()'));
 run('DevDamage.clear();boss.hp=1;boss.inv=0;Prologue.hit(2);');assert.deepEqual(amounts(),[]);
 run('player.inv=0;Prologue.hurt(2);');assert.equal(last(),2);
 run('Prologue.hurt(2);');assert.equal(amounts().length,1);

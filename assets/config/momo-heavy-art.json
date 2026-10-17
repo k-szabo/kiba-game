@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "image": "assets/images/momo-heavy-v1.png",
+  "width": 1536,
+  "height": 1024,
+  "duration": 0.9,
+  "impactAt": 0.38,
+  "registration": "Source-space anchors; use constant bodyHeight to preserve crouch and windup scale. Transparent separator bounds are intentionally wider than nominal cells to preserve complete blade tips.",
+  "frames": [
+    {
+      "phase": "ready",
+      "start": 0,
+      "end": 0.1,
+      "x": 0,
+      "y": 0,
+      "w": 548,
+      "h": 512,
+      "anchorX": 200,
+      "anchorY": 493,
+      "bodyHeight": 369
+    },
+    {
+      "phase": "raise",
+      "start": 0.1,
+      "end": 0.25,
+      "x": 552,
+      "y": 0,
+      "w": 472,
+      "h": 512,
+      "anchorX": 777,
+      "anchorY": 493,
+      "bodyHeight": 369
+    },
+    {
+      "phase": "anticipation",
+      "start": 0.25,
+      "end": 0.38,
+      "x": 1040,
+      "y": 0,
+      "w": 496,
+      "h": 512,
+      "anchorX": 1290,
+      "anchorY": 493,
+      "bodyHeight": 369
+    },
+    {
+      "phase": "impact",
+      "start": 0.38,
+      "end": 0.5,
+      "x": 0,
+      "y": 512,
+      "w": 548,
+      "h": 512,
+      "anchorX": 200,
+      "anchorY": 935,
+      "bodyHeight": 369
+    },
+    {
+      "phase": "followThrough",
+      "start": 0.5,
+      "end": 0.72,
+      "x": 550,
+      "y": 512,
+      "w": 474,
+      "h": 512,
+      "anchorX": 728,
+      "anchorY": 935,
+      "bodyHeight": 369
+    },
+    {
+      "phase": "recovery",
+      "start": 0.72,
+      "end": 0.9,
+      "x": 1030,
+      "y": 512,
+      "w": 506,
+      "h": 512,
+      "anchorX": 1218,
+      "anchorY": 935,
+      "bodyHeight": 369
+    }
+  ]
+}

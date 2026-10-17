@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "asset": "assets/images/momo-heavy-v1.png",
+  "approval": {
+    "stage": "User explicitly approved heavy-attack-sketch-v1 before production generation.",
+    "sketch": ".codex/work/heavy-attack/heavy-attack-sketch-v1.png",
+    "scope": "Six heavy-katana key poses; ready, overhead raise, compressed anticipation, down-forward cut, low follow-through, recovery."
+  },
+  "references": [
+    "assets/images/momo-slash-v5.png",
+    "assets/images/ui/momo-inventory-v1.png"
+  ],
+  "transparent_background": true,
+  "prompts": [
+    {
+      "stage": "production",
+      "prompt": "Use case: stylized-concept. Asset type: polished transparent game animation atlas. Input image1 is USER-APPROVED motion storyboard; image2 existing Momo slash is exact appearance/painterly finish reference; image3 portrait is identity reference. Create the PRODUCTION version of ONLY image1's six poses. Preserve its six-keypose heavy katana sequence, SAME Momo character identity and squat orange/cream Shiba proportions, big brown eyes, pointed ears, curled creamtail, red hachimaki/headband and redbelt, navy armor with goldtrim. EXACT 3columns x2rows landscape 1536x1024, six completely separate sprites in equal512x512cells, read left-right then nextrow. All faceRIGHT. No text, numbers, grid, paper or backdrop; ACTUAL TRANSPARENT alpha zero background, no background color, no contactshadow. Detailed polished 2D handpainted cute Japanese fantasy sprite finish matching input2, confident fine dark outlines. Same bodyheight approx300px from ears to feet, same feetbaseline localy430 and torso center localx225 in ALL6cells. Fullbody, bothfeetgrounded, no jumping. Cell1 ready, kneesbent bothpaws hold sword forward low; Cell2 slow two-paw raise over head; Cell3 peak overhead anticipation deeperknees, bladebehind upperleft; Cell4 decisive down-forward diagonal cut, hipsweightforward, long complete katana at diagonaldown-right and subtle compact pale-blue slash crescent; Cell5 low extended followthrough, kneesbent, complete bladepointdownright clearofground; Cell6 recover katana toward readystance. Each is visibly distinct. Exactly TWO forepaws holding ONE katana hilt and TWO hindfeet, no extra limbs. Complete full curved katana steelblade and sharp tip visible everyframe. Blade and curledtail stay entireinsidecell, at least30pixels transparentpadding aroundallsilhouettes andeffects; especially sword tipatrightand overheadbladeattop. Blade max length175px to fit. Head, eyes, armorpattern, twolegs, scabbard, bodyscale allconsistent. No enemies or decorations. NOT a sketch now: finished painterly sprite art; show six clean finished cutouts of approved motion on genuinely transparent background."
+    },
+    {
+      "stage": "spacing-repair",
+      "prompt": "Use case: precise-object-edit. Asset type: production transparent 6pose sprite atlas SPACING REPAIR. The input image is an existing 1536x1024 Momo heavykatana atlas. Preserve EXACT SAME six characterposes, face, armor/colors, fullkatana blades, motiondirection and quality. RepairONLY atlas packing: first sprite's and fourth sprite's sword tip currently crosses next512pxcellboundary; make each character+sword silhouette a little smaller so EVERY sprite, all swordtips, scabbards, tails and blueeffects is confined FULLY within its OWN cell with at least48px TRANSPARENTmargin. Exact3columns2rows, cells512x512. Each sprite overallwidth MAX416px, overallheight MAX416px, centerx=column*512+256. Feet baseline within eachcell localy442. Bodyheight ears-tofeet about310px SAME allframes (arms/bladeraised mayextendhigher), lowfollowthrough crouch naturallyabout290px. For firstcell fullsprite including horizontalblade boundsx48..464; secondcellbounds560..976; thirdcellbounds1072..1488. Row1 boundsy48..464, row2 y560..976. Keep plentyofswordtipclearance, doNOT shortenblade unnaturally, doNOT deleteweaponparts. Tiny compact pale-bluearc only strike/followthrough, nevernearcellboundary. Preserve6poses readingleft-right: ready, overheadraise, overheadanticipation deeperknees, downforwardcut, lowfollowthrough, recovery. Exactly2forepaws2hindfeet; no extralimbs. Sharp complete painterly spritecutouts, NO BACKGROUND, no smoky or coloredhaze, nogroundshadow, NO checkerboard drawnin, no grid/text/labels. REAL TRANSPARENT alpha0 aroundcharacters. This is a spacing repair within userapproved animationdirection."
+    }
+  ],
+  "postProcessing": "None. Generated RGBA pixels and alpha copied unchanged. Renderer crop rectangles follow transparent separators, preserving complete blade tips.",
+  "registration": "assets/config/momo-heavy-art.json"
+}

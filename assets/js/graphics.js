@@ -446,7 +446,12 @@ const Visuals = (() => {
     }
     ctx.restore();
   }
-  function momoSlash(x,feet,height,elapsed,face){
+  function momoSlash(x,feet,height,elapsed,face,kind='normal'){
+    if(kind==='heavy'){
+      const index=ART_FRAMES.momoHeavy.findIndex(pose=>elapsed<pose.end);
+      frame('momoHeavy',ART_FRAMES.momoHeavy[index<0?5:index],x,feet,height,face);
+      return;
+    }
     const index=Math.min(7,Math.floor(clamp(elapsed/SWORD_DURATION,0,.999)*8));
     frame('momoSlash',ART_FRAMES.momoSlash[index],x,feet,height,face);
   }
