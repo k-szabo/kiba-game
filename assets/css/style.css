@@ -125,8 +125,8 @@
 .inventory-windows{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;padding-top:20px}
 #inventory h3{font-size:21px;line-height:1.4;margin:0 0 9px;color:#ffebbd}
 #inventory p{font-size:15px;line-height:1.65;margin:0 0 12px;color:#f3e7d1}
-.inventory-bag{position:relative;min-height:460px;min-width:0;background:url('../images/ui/backpack-leather-v1.png') center/100% 100% no-repeat;border-radius:22px;display:flex;align-items:stretch;padding:94px 14% 78px}
-.inventory-bag-content{width:100%;min-width:0;padding:14px 12px;background:#1c120dd4;border:1px solid #d0a76b78;border-radius:8px;align-self:stretch;box-shadow:0 6px 18px #140b06a6}
+.inventory-bag{position:relative;min-height:460px;min-width:0;background:url('../images/ui/samurai-travel-bag-v1.png') center/100% 100% no-repeat;border-radius:22px;display:flex;align-items:stretch;padding:94px 14% 78px}
+.inventory-bag-content{width:100%;min-width:0;padding:14px 12px;background:#101b28e8;border:1px solid #c5b4868c;border-radius:8px;align-self:stretch;box-shadow:0 6px 18px #07101ba6}
 #inventoryCapacity{font-size:14px!important;color:#f1d9b3!important}
 #inventoryCount{font-size:14px!important;font-weight:700;color:#ffe3af!important}
 .inventory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}

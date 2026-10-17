@@ -194,6 +194,22 @@
           "en": "Heavy attacks have a separate, remappable button; normal strikes deal less damage, while heavy strikes are slower and hit harder."
         }
       ]
+    },
+    {
+      "version": "0.9.17_8db6c809",
+      "code": "8db6c809",
+      "baseVersion": "0.9.17",
+      "slug": "samurai-travel-bag-inventory",
+      "summary": {
+        "hu": "Szamuráj útravaló zsák",
+        "en": "Samurai travel bag"
+      },
+      "fixes": [
+        {
+          "hu": "Az inventory bőrhátizsákját a játék festett stílusához illő szamuráj útravaló zsák váltja.",
+          "en": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style."
+        }
+      ]
     }
   ]
 }

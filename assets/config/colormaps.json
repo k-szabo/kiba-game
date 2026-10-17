@@ -14534,10 +14534,8 @@
       "sha256": "eca92014920d3411ff927b4df6ba3986fe1eb951936fdae07deca72b679f6fb6",
       "width": 1254,
       "height": 1254,
-      "runtimeKeys": [
-        "inventoryLeather"
-      ],
-      "usage": "runtime",
+      "runtimeKeys": [],
+      "usage": "design-reference",
       "palette": {
         "dominant": [
           {
@@ -14950,6 +14948,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/ui/samurai-travel-bag-v1.png": {
+      "sha256": "3b323b9c7839ec89460df892561d518db90027a09215a632d3b68e2430809d32",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "inventoryTravelBag"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#19233a",
+            "coveragePercent": 28.3832
+          },
+          {
+            "hex": "#202c45",
+            "coveragePercent": 20.5082
+          },
+          {
+            "hex": "#283653",
+            "coveragePercent": 18.0082
+          },
+          {
+            "hex": "#374765",
+            "coveragePercent": 7.0759
+          },
+          {
+            "hex": "#111726",
+            "coveragePercent": 6.9782
+          },
+          {
+            "hex": "#09090e",
+            "coveragePercent": 3.51
+          },
+          {
+            "hex": "#f3c686",
+            "coveragePercent": 2.9214
+          },
+          {
+            "hex": "#e3ad6c",
+            "coveragePercent": 2.7583
+          },
+          {
+            "hex": "#cd9457",
+            "coveragePercent": 2.0712
+          },
+          {
+            "hex": "#b57d45",
+            "coveragePercent": 1.5632
+          },
+          {
+            "hex": "#fbdea6",
+            "coveragePercent": 1.4259
+          },
+          {
+            "hex": "#996536",
+            "coveragePercent": 1.3861
+          },
+          {
+            "hex": "#532912",
+            "coveragePercent": 1.1905
+          },
+          {
+            "hex": "#774b25",
+            "coveragePercent": 1.1403
+          },
+          {
+            "hex": "#fcf5d5",
+            "coveragePercent": 0.6765
+          },
+          {
+            "hex": "#d42918",
+            "coveragePercent": 0.4029
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d9a162",
+            "coveragePercent": 26.7573
+          },
+          {
+            "hex": "#edbb79",
+            "coveragePercent": 26.7066
+          },
+          {
+            "hex": "#bd8449",
+            "coveragePercent": 24.4053
+          },
+          {
+            "hex": "#976231",
+            "coveragePercent": 17.4472
+          },
+          {
+            "hex": "#ce2616",
+            "coveragePercent": 4.4908
+          },
+          {
+            "hex": "#445c84",
+            "coveragePercent": 0.1929
+          }
+        ],
+        "visibleSamples": 1305756,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/ui/serpent-scale-v1.png": {
       "sha256": "f691739e8eb2e56e2fc9581709e567fa91926d171fe4942c150f70e8400e42a9",
       "width": 1254,
@@ -15192,6 +15295,13 @@
         "dynamic": false
       },
       {
+        "value": "#07101ba6",
+        "lines": [
+          129
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#07121c",
         "lines": [
           144
@@ -15353,6 +15463,13 @@
         "dynamic": false
       },
       {
+        "value": "#101b28e8",
+        "lines": [
+          129
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#101d29",
         "lines": [
           139
@@ -15482,13 +15599,6 @@
         "dynamic": false
       },
       {
-        "value": "#140b06a6",
-        "lines": [
-          129
-        ],
-        "dynamic": false
-      },
-      {
         "value": "#140d25eb",
         "lines": [
           60
@@ -15548,13 +15658,6 @@
         "value": "#1b3540",
         "lines": [
           56
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#1c120dd4",
-        "lines": [
-          129
         ],
         "dynamic": false
       },
@@ -15749,6 +15852,13 @@
         "dynamic": false
       },
       {
+        "value": "#c5b4868c",
+        "lines": [
+          129
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#c5cbbf",
         "lines": [
           2
@@ -15794,13 +15904,6 @@
         "value": "#ced6d0",
         "lines": [
           2
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d0a76b78",
-        "lines": [
-          129
         ],
         "dynamic": false
       },

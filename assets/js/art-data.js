@@ -11,7 +11,7 @@ const ART_MANIFEST = {
   "eclipseRelic": "assets/images/ui/eclipse-relic-v1.png",
   "inventoryMomoPortrait": "assets/images/ui/momo-inventory-v1.png",
   "inventoryKatana": "assets/images/ui/katana-inventory-v1.png",
-  "inventoryLeather": "assets/images/ui/backpack-leather-v1.png",
+  "inventoryTravelBag": "assets/images/ui/samurai-travel-bag-v1.png",
   "angelRuinWall": "assets/images/angel-ruin-wall-v1.png",
   "cultCaveWall": "assets/images/cult-cave-wall-v1.png",
   "councilGateClosed": "assets/images/council-gate-closed-v1.png",
