@@ -107,4 +107,33 @@ for(const context of ['outside','stale','ordinary']){
  assert(run('isolated.patrolRight-isolated.patrolLeft<=460'),'Unengaged/stale/ordinary units keep their patrol limits');
  assert.equal(run('isolated.attackTime'),0);assert.equal(run('isolated.windup'),0);
 }
-console.log('PASS: four uncapped milestone pairs; eight-kill secret key; protected 50/10 boundaries; invulnerable shelter; dormant/returning serpent HP; one permanent scale; reachable final-platform melee; finite fatal race; both shelter exits retain boss/minion pursuit and offense; pause, death, reset and realm cleanup.');
+// Already-released embers outlive their caster, but never the encounter.
+function fireEmbers(){
+ fresh();huge();
+ run("enemies=[boss.serpent];boss.summons=[];boss.autoCooldown=999;boss.serpent.targetX=player.x+player.w/2;boss.serpent.targetY=player.y+player.h*.5;updateLavaSerpent(boss.serpent,1.11);");
+ assert.equal(run("projectiles.filter(p=>p.source?.startsWith('serpent:')).length"),3);
+}
+for(const ending of ['survival','defeat']){
+ fireEmbers();
+ if(ending==='survival')run('updateYomiWave(2);boss.waveClock=10;updateYomiWave(0);');
+ else killSnake();
+ assert.equal(run('boss.yomiStage'),'normal');
+ assert.equal(run('projectiles.length'),3,`${ending}: emitted embers survive the serpent disappearing`);
+ const emberX=run('projectiles[1].x'),emberLife=run('projectiles[1].life');
+ run("state='pause';");tick(120);
+ assert.equal(run('projectiles[1].x'),emberX);assert.equal(run('projectiles[1].life'),emberLife);
+ run("state='play';boss.inv=0;boss.autoCooldown=999;boss.clock=999;");tick(1);
+ assert.notEqual(run('projectiles[1].x'),emberX,'An orphaned ember keeps moving');
+ // Arrange impact on the following real game update, with all other damage sources removed.
+ run("var ember=projectiles[1];projectiles=[ember];enemies=[];level={...level,hazards:[]};player.x=ember.x-player.w/2;player.y=ember.y-player.h/2;player.vx=0;player.vy=0;player.inv=0;dash=0;");
+ const before=snap().player.hp;tick(1);
+ assert.equal(snap().player.hp,before-1,'An orphaned ember still damages Momo');
+ assert.equal(run('projectiles.length'),0,'The ember is consumed on impact');
+}
+fireEmbers();run('endYomiShelter();');huge();assert.equal(run('projectiles.length'),3,'Returning serpent does not cancel earlier embers');
+fireEmbers();run('endYomiShelter();enemies=[];boss.clock=999;boss.autoCooldown=999;player.inv=999;projectiles.forEach(p=>{p.vx=0;p.vy=0;p.x=0;p.y=0;});');tick(500);
+assert.equal(run('projectiles.length'),0,'Orphaned embers expire normally');
+for(const cleanup of ['resetBossBattle()','finishBossBattle()','revive()','enterRealm(0)']){
+ fireEmbers();run(cleanup);assert(!run("projectiles.some(p=>p.source?.startsWith('serpent:'))"),`${cleanup}: encounter cleanup still removes serpent attacks`);
+}
+console.log('PASS: Yomi milestones, secret rewards, shelter/race, pursuit, persistent serpent projectiles, impact/expiry/pause and encounter cleanup.');

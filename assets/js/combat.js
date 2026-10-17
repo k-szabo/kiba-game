@@ -268,13 +268,13 @@ function startYomiLavaWave(stage){
     e.x=clamp(player.x+180,level.arena.x+30,level.arena.x+level.arena.w-e.w-30);e.y=(last?.y||level.arena.y)-e.h;
     toast(I18n.t('yomi.phase.return'));
   }
-  projectiles=projectiles.filter(p=>p.source!=='boss'&&!p.source?.startsWith('serpent:'));
+  projectiles=projectiles.filter(p=>p.source!=='boss');
   setBossPhase('windup',2);toast(I18n.t(stage==='shelter'?'yomi.phase.shelter':'yomi.phase.race'));
 }
 function endYomiShelter(){
   if(boss.yomiStage!=='shelter'||boss.dead)return;
   if(boss.serpent&&!boss.serpent.dead){boss.serpent.active=false;boss.serpent.phase='dormant';boss.serpent.windup=0;}
-  projectiles=projectiles.filter(p=>!p.source?.startsWith('serpent:'));
+  // Released embers belong to the encounter, even while their caster is dormant.
   boss.yomiStage='normal';boss.lava=null;boss.move=null;boss.autoPhase=null;boss.autoCooldown=1;
   boss.y=level.arena.y-boss.h;boss.inv=.6;
   for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
@@ -301,7 +301,6 @@ function updateYomiWave(dt){
 function defeatLavaSerpent(e){
   if(e.dead||e!==boss.serpent||!e.active||realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
   e.dead=true;e.active=false;e.phase='dead';e.hazards=[];
-  projectiles=projectiles.filter(p=>p.source!=='serpent:'+e.id);
   if(!flags[1].includes('serpentScale')){flags[1].push('serpentScale');awardXP(70);persist();updateHUD();toast(I18n.t('yomi.serpent.scale.gained'));}
   burst(e.x+e.w/2,e.y+e.h*.5,'#ffbd69',36);
   if(boss.yomiStage==='shelter')endYomiShelter();
