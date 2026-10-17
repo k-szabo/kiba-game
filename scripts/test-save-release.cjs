@@ -82,6 +82,18 @@ async function main(){
  }
  const unearned=copy(council);unearned.defeated[1]=false;unearned.flags[1].push('councilKeyEarned');assert.throws(()=>councilClient.vault.write(unearned),/Invalid council progress/);
 
+ // Defeating Yomi without visiting the dash shrine is a legal permanent state,
+ // including the next realm. Encryption/reload must not invent the ability.
+ for(const realm of [1,2]){
+  const skipped=copy(council);skipped.realm=realm;skipped.abilities[1]=false;
+  skipped.checkpoint=plain(vm.runInContext(`levels[${realm}].rests[0]`,councilClient));skipped.visitedRests[realm]=['start'];
+  await councilClient.vault.write(skipped);assert.deepEqual(plain(await client(env).vault.ready),skipped);
+  const missingGuardian=copy(skipped);missingGuardian.defeated[0]=false;assert.throws(()=>councilClient.vault.write(missingGuardian),/Invalid realm sequence/);
+  if(realm===2){missingGuardian.defeated[0]=true;missingGuardian.defeated[1]=false;assert.throws(()=>councilClient.vault.write(missingGuardian),/Invalid realm sequence/);}
+  const acquired=copy(skipped);acquired.abilities[1]=true;
+  await councilClient.vault.write(acquired);assert.deepEqual(plain(await client(env).vault.ready),acquired);
+ }
+
  // Snake loot can be earned before the guardian dies, even without collecting
  // the optional dash shrine first. It is permanent across encrypted reloads.
  const scale=copy(council);scale.abilities[1]=false;scale.defeated[1]=false;scale.flags[1].push('serpentScale');

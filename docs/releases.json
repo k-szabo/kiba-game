@@ -128,6 +128,22 @@
           "en": "Acquired Spirit Dash now ends correctly in the prologue, and gravity resumes after jumping."
         }
       ]
+    },
+    {
+      "version": "0.9.16_1d4fbc4b",
+      "code": "1d4fbc4b",
+      "baseVersion": "0.9.16",
+      "slug": "yomi-dash-shrine-acquisition",
+      "summary": {
+        "hu": "A szellemlépés megszerzésének javítása",
+        "en": "Fix Spirit Dash acquisition"
+      },
+      "fixes": [
+        {
+          "hu": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg.",
+          "en": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows."
+        }
+      ]
     }
   ],
   "releases": [

@@ -51,6 +51,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 
 ## Ellenőrzés
 
+A Yomi-boss legyőzése és a szellemlépés megszerzése független progresszió. A Hajnalkardot a `defeated[1]` jelzi; a dash-t normál játékban az oltárinterakció adja, tesztmódban a `DevAbilities`. A mentésvalidátor elfogadja a Yomi utáni állapotot és a következő pályát dash nélkül is, de a korábbi bossok legyőzését és a kötelező küldetésjelzőket továbbra is ellenőrzi. Ezt a `test-v06.cjs` bossgyőzelem, halál, folytatás, torii, visszautazás és későbbi oltárhasználat útvonalon ellenőrzi; a `test-save-release.cjs` valódi WebCryptóval, szimulált IndexedDB mellett teszteli a titkosított oda-vissza mentést.
+
 A workflow Node.js 24-et használ. A repository gyökeréből az ellenőrzések külső npm-csomagok nélkül futtathatók:
 
 ```sh

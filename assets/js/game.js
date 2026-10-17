@@ -111,7 +111,7 @@ function guardianDefeated(){
  if(Prologue.active||boss.dead||boss.hp>0||!bossStarted||defeated[realm])return;
  const keyEarned=realm===1&&awardCouncilKeyDrop();
  boss.dead=true;finishBossBattle();
- defeated[realm]=true;const relicUnited=uniteVictoryRelics();awardXP(100+realm*50);if(realm<2)abilities[realm]=true;shards+=20;checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
+ /* Yomi's sword follows defeated[1]; Spirit Dash belongs to its shrine. */ defeated[realm]=true;const relicUnited=uniteVictoryRelics();awardXP(100+realm*50);if(realm===0)abilities[0]=true;shards+=20;checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
  persist();updateHUD();burst(boss.x+40,boss.y+40,realms[realm].gold,55);$('bossHud').hidden=true;
  const text=realm===0?I18n.t('story.haru.s.first.memory.returns.the.glowing.torii.has'):realm===1?I18n.t('story.haru.s.second.memory.has.set.momo.s.sword'):I18n.t('text.the.final.guardian.bows.a.new.wind.stream.shines');
  story(I18n.t(relicUnited?'relic.eclipse.dialog.label':'text.a.soul.fragment.returns.home'),relicUnited?I18n.t('relic.eclipse.name'):realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+text:text+(keyEarned?'\n\n'+I18n.t('council.key.dropped'):''));
