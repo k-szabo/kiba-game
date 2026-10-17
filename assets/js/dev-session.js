@@ -13,7 +13,7 @@ const DevSession=(()=>{
   if(state!=='developer'||!DevTools.isOpen||!ready())return false;
   if(active)return true;
   normalSave=clone(saved);active=true;
-  if(DevTools.returnState==='menu'){
+  if(DevTools.menuBackground){
    const old=normalSave;
    abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:[false,false,false];
    flags=old?old.flags.map(f=>[...f]):[[],[],[]];visitedRests=old?old.visitedRests.map(f=>[...f]):[[],[],[]];

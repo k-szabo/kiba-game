@@ -12,4 +12,14 @@ run('flags[1]=flags[1].filter(f=>f!=="councilKey");flags[1].push("councilGateOpe
 assert.equal(run('DevItems.add({item:"councilKey"})'),'dev.item.owned','Consumed keys are not duplicated');
 assert.equal(run('JSON.stringify(saved)'),saved);assert.equal(run('window.__saveSnapshots.length'),writes);
 run('DevTools.close()');assert(!run('DevItems.add({item:"serpentScale"})'));run('mainMenu();startGame(true)');assert.equal(run('Inventory.contents().length'),0);
+// A synthetic test key can open and enter the optional hall before boss victory.
+const gate=harness(),g=gate.run,baseline=g('JSON.stringify(saved)'),gateWrites=g('window.__saveSnapshots.length');
+g('DevTools.open();DevSession.begin();DevTeleport.teleport({realm:"1",rest:levels[1].rests[0].id});');
+assert.equal(g('defeated[1]'),false);assert(g('DevItems.add({item:"councilKey"})'));g('DevTools.close()');
+gate.place(g('level.councilGate.x'),g('level.councilGate.y'));
+g('interact()');assert.equal(g('level===councilHall'),true);assert(!g('flags[1].includes("councilKey")'));assert(g('flags[1].includes("councilGateOpen")'));assert.equal(g('defeated[1]'),false);
+assert(g('leaveCouncilHall()'));gate.place(g('level.councilGate.x'),g('level.councilGate.y'));g('interact()');assert(g('level===councilHall'),'The consumed key leaves a reusable open gate');
+assert.equal(g('JSON.stringify(saved)'),baseline);assert.equal(g('window.__saveSnapshots.length'),gateWrites);
+g('DevSession.end();startGame(true)');gate.dismiss();assert(!g('flags[1].includes("councilGateOpen")'));assert(!g('DevSession.active'));
+g('enterRealm(1);flags[1].push("councilGateOpen");');assert(!g('enterCouncilHall()'),'Normal play still requires a real boss victory');
 console.log('PASS: catalogue-driven test inventory, complete item list, no duplicates or consumed-item resurrection and unchanged normal saves.');

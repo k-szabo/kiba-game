@@ -180,7 +180,14 @@
 .bug-report-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .menu-utilities{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
 #menu .menu-utilities>#helpButton,#menu .menu-utilities>.bug-report-link{flex:1;white-space:nowrap}
-#pause .panel{max-height:90dvh;overflow-y:auto}
+#pause .panel{max-height:90dvh;overflow-y:auto;padding:clamp(18px,4vw,42px);overscroll-behavior:contain}
+/* Keep secondary pause actions as readable as Resume and the report link. */
+#pause .panel p{font-size:16px;line-height:1.65}
+#pause button,#pause .bug-report-link,#pause .language-chooser summary,#pause select{min-height:50px;min-width:0;max-width:100%;padding:12px 16px;font-size:16px;font-weight:700;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+#pause .language-picker{display:flex;flex-wrap:wrap;font-size:16px}
+#pause .language-chooser{min-width:0;max-width:100%;flex:1}
+#pause .language-options{min-width:0;width:100%}
+#pause button:focus-visible,#pause .bug-report-link:focus-visible,#pause summary:focus-visible,#pause select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 #pause .bug-report-link{margin-top:14px;width:100%}
 @media(max-width:800px){#menu .menu-utilities{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}#menu .menu-bottom .language-picker{grid-column:1/-1;justify-self:stretch}#menu .menu-bottom .language-chooser{flex:1}}
 @media(max-width:560px){#menu .menu-utilities{grid-template-columns:1fr}}
