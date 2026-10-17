@@ -1,6 +1,6 @@
 # Fejlesztői eszközpanel
 
-A panel jelszó és külön konfiguráció nélkül elérhető, helyi futtatásban és GitHub Pagesen is. A 0.9.13 a panel alapját és a későbbi eszközök regisztrációját tartalmazza; a boss-visszahívás, teleport, halhatatlanság, sebzésszámok és tárgyidézés külön fejlesztési feladatok.
+A panel jelszó és külön konfiguráció nélkül elérhető, helyi futtatásban és GitHub Pagesen is. A külön eszközök elkülönített tesztmódban használhatók.
 
 ## Megnyitás és bezárás
 
@@ -21,6 +21,23 @@ A **Tesztmód indítása** külön, csak memóriában futó próbát kezd. A fő
 
 A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz használt adatot, sem a SaveVault rekordját. A panel bezárása után a próba játszható; a látható tesztjelzés megmarad. A **Teszt befejezése**, illetve a főmenübe visszatérés eldobja a tesztet. A normál mentés a Folytatással ismét használható. A lap újratöltése is eldobja a memóriában futó tesztet. A puszta panelnyitás továbbra sem kezd tesztet és nem ír mentést.
 
+## Eszközök
+
+| Eszköz | Működés |
+| --- | --- |
+| Boss újraélesztése | Az aktuális birodalom őrzőjének harcát tiszta állapotban újraindítja, teljes HP-val, az aréna megközelítési oldalára helyezett Momóval. A láva, veszélyek, idézések, küszöbök, boss-lövedékek és fázisok törlődnek. Az álom őrzőjének tesztje újrakezdi az álmot; az üres tanácsosi csarnokban nincs boss. |
+| Teleportálás | Bármelyik birodalom valódi pihenőhelyét választhatod, feloldottságtól függetlenül. A célpontokat a pályaadatokból olvassa; csak alátámasztott érkezést fogad el. Az álomprológus külön tesztcélpont. Nem ad automatikusan képességet és nem jelöl legyőzöttnek őrzőt. |
+| Játékos szintje | Egész szint 1 és a kódbeli `LEVEL_LIMIT` között, jelenleg 12-ig. Az XP az adott szint kezdetére áll. A megfizethető statelosztás megmarad; a normalizáló a csökkentett kerethez igazítja, a maradék szabad pont. A 30-as limit külön fejlesztési kártya. |
+| Tárgy hozzáadása | Az `ART_INVENTORY.items` katalógus összes regisztrált tárgyát listázza, a meglévő nevekkel. Már birtokolt vagy felhasznált tárgy nem duplikálható. A felszerelt alapfegyver nem külön hátizsáktárgy. |
+| Halhatatlanság | Ki/be kapcsolható védelem a normál harcban, a halálos lávában és az álomban is. Lezuhanásnál biztonságos pontra kerül Momo. Külön jelzés látható a próba közben; a teszt végén kikapcsol. A normál játék halál- és lezuhanásszabályai változatlanok. |
+| Sebzésszámok | Alapból kikapcsolt harci mérőeszköz; a tényleges HP-veszteséget mutatja. Blokkolás és sérthetetlenség nem kap fiktív találatot, az overkill és a boss-fázishatárok korlátozzák az értéket. Szünetben az effektek is megállnak; csökkentett mozgásnál helyben jelennek meg. |
+
+A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési sémába. Az eszközök belső állapotát nem exportáljuk a `window` objektumra.
+
+## Git ágak
+
+A közös integrációs ág `FEATURE-dev-tools-works`. Az alapozó `FEATURE-dev-tools-test-session` és a hat kártyához tartozó `FEATURE-dev-*` ág innen indul; a helyi integráció `--no-ff` merge-dzsel megőrzi a kártyák határait. A kész csomag később egyetlen PR-ként kerülhet mainre. Push, PR-nyitás és main-merge külön felhasználói engedély alapján történik.
+
 ## Új eszköz hozzáadása
 
 A zárt runtime modulon belül regisztrálj műveletet:
@@ -40,4 +57,4 @@ A panel használata szabad, nem jogosultságkezelés. A játékállapotot módos
 
 ## Ellenőrzés
 
-Forrásmódosítás után `node scripts/build-game.mjs`, majd `node scripts/test-dev-tools.cjs` és `node scripts/check-site.mjs` szükséges. A panelteszt a közvetlen megnyitást, az eszközök elérhetőségi feltételeit, a bezárt és korábbi munkamenetből megtartott callbackek elutasítását, a fókuszt, a szünetet és a változatlan mentést vizsgálja. A HU/EN megjelenést és a billentyűzetes használatot valódi böngészőben is ellenőrizd.
+Forrásmódosítás után `node scripts/build-game.mjs`, majd a releváns `scripts/test-dev-*.cjs` és a `node scripts/check-site.mjs` futtatandó. A panelteszt a közvetlen megnyitást, az elérhetőségi feltételeket, az elavult callbackek elutasítását, a fókuszt és a szünetet vizsgálja. A session- és eszköztesztek a mentésizolációt, a valódi játékmeneti írási útvonalakat és az eszközök szélértékeit fedik le. A teljes integrációhoz az összes `package.json` teszt kell; a HU/EN megjelenést, billentyűzetet és valódi mentés-visszatöltést böngészőben is ellenőrizd.

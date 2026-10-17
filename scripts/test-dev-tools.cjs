@@ -2,8 +2,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/dev-tools.js'),'utf8');
 function fixture({hash='',initialState='play'}={}){
  const elements=new Map(),listeners={};
- const document={activeElement:null,getElementById(id){if(!elements.has(id))elements.set(id,element(id));return elements.get(id);},createElement:()=>element('toolButton')};
- function element(id){return{id,hidden:false,disabled:false,children:[],attributes:{},listeners:{},isConnected:true,inert:false,textContent:'',scrollTop:0,
+ const document={activeElement:null,getElementById(id){if(!elements.has(id))elements.set(id,element(id));return elements.get(id);},createElement:tag=>element('toolButton',tag)};
+ function element(id,tag='button'){return{id,tagName:tag.toUpperCase(),hidden:false,disabled:false,children:[],attributes:{},listeners:{},isConnected:true,inert:false,textContent:'',scrollTop:0,
   setAttribute(k,v){this.attributes[k]=v;},addEventListener(k,f){this.listeners[k]=f;},replaceChildren(){this.children=[];},append(e){this.children.push(e);},focus(){document.activeElement=this;},matches(){return /Button$|^devClose$/.test(this.id);},closest(){return null;},getClientRects(){return this.hidden?[]:[{}];},querySelectorAll(){return [...document.getElementById('devToolsList').children,document.getElementById('devClose')].filter(e=>!e.disabled&&!e.hidden);}};}
  const context={console,Map,Set,document,location:{hash,pathname:'/kiba-game/',search:'?example=1'},history:{replaceState(_s,_t,url){assert.equal(url,'/kiba-game/?example=1');context.location.hash='';}},addEventListener(name,fn){listeners[name]=fn;}};
  context.window=context;vm.createContext(context);
@@ -31,6 +31,19 @@ const hash=fixture({hash:'#devtools',initialState:'menu'});assert.equal(hash.run
 const empty=fixture();empty.run('DevTools.open()');assert(!empty.node('devEmpty').hidden);
 let prevented=false;empty.node('devPanel').listeners.keydown({key:'Tab',preventDefault(){prevented=true;}});assert(prevented,'The only control traps Tab');
 empty.node('devPanel').listeners.keydown({key:'Escape',preventDefault(){},stopPropagation(){}});assert.equal(empty.run('state'),'play');
+// Re-rendered forms must not retain privileged callbacks or lose field values.
+const form=fixture();form.run(`var selected='a',submitted=null;DevTools.register({id:'form',labelKey:'dev.test',fields:()=>[
+ {id:'realm',type:'select',labelKey:'dev.realm',value:selected,options:[{value:'a',label:'A'},{value:'b',label:'B'}],change:value=>selected=value},
+ {id:'level',type:'number',labelKey:'dev.level',value:3,min:1,max:12}
+],run:values=>submitted=values});DevTools.open();`);
+const oldGroup=form.node('devToolsList').children[0],oldSelect=oldGroup.children[1],oldAction=oldGroup.children[4];
+assert.equal(oldSelect.tagName,'SELECT');assert.equal(oldSelect.value,'a');assert.equal(oldSelect.children.length,2);
+oldSelect.value='b';oldSelect.onchange();assert.equal(form.run('selected'),'b');
+oldAction.onclick();assert.equal(form.run('submitted'),null,'An action from before a form re-render is stale');
+oldSelect.value='a';oldSelect.onchange();assert.equal(form.run('selected'),'b','A stale select callback cannot change current selection');
+const group=form.node('devToolsList').children[0];group.children[3].value='9';group.children[4].onclick();
+assert.equal(form.run('submitted.realm'),'b');assert.equal(form.run('submitted.level'),'9','The action reads the current typed value');
+const closedField=form.node('devToolsList').children[0].children[1];form.run('DevTools.close()');closedField.value='a';closedField.onchange();assert.equal(form.run('selected'),'b');
 const h=require('./test-harness.cjs')();
 const before=h.run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),writes=h.run('window.__saveSnapshots.length');
 assert(h.run('DevTools.open()'));h.press('j');h.press(' ');h.tick(240);assert.equal(h.run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),before,'Developer panel freezes the game');assert.equal(h.run('window.__saveSnapshots.length'),writes,'Panel does not write gameplay saves');

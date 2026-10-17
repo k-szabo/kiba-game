@@ -8,7 +8,7 @@ const Prologue=(()=>{
   let hazards=[],bolts=[],auto=null,cast=null;
   let animationTime=0,castVisual=null,deathPose=null,currentPose={clip:'idle',frame:0},previousPose=null,blendClock=.12;
   const active=()=>phase!=='off';
-  function stop(){phase='off';hazards=[];bolts=[];auto=cast=null;animationTime=0;castVisual=deathPose=previousPose=null;currentPose={clip:'idle',frame:0};blendClock=.12;$('game').classList.remove('dream-active');}
+  function stop(){DevDamage.clear();phase='off';hazards=[];bolts=[];auto=cast=null;animationTime=0;castVisual=deathPose=previousPose=null;currentPose={clip:'idle',frame:0};blendClock=.12;$('game').classList.remove('dream-active');}
   function samplePose(){return ShadowAnimation.sample({auto,cast,release:castVisual,idleTime:reducedMotion.matches?0:animationTime,deathPose});}
   function setPose(pose){
     if(currentPose.clip!==pose.clip){previousPose={...currentPose};blendClock=0;}
@@ -44,7 +44,7 @@ const Prologue=(()=>{
   function lose(){
     if(!active()||['death','awakening'].includes(phase))return;
     deathPose=samplePose();setPose(deathPose);
-    phase='death';clock=0;player.hp=0;player.vx=player.vy=0;attack=dash=0;
+    phase='death';clock=0;const before=player.hp;player.hp=0;DevDamage.record('incoming',player,before,player.hp);player.vx=player.vy=0;attack=dash=0;
     keys.clear();pressed.clear();hazards=[];bolts=[];auto=cast=castVisual=null;shake=.25;
     burst(player.x+21,player.y+30,'#bd91df',35);showHUD(false);$('bossHud').hidden=true;$('prompt').hidden=true;
     tone(48,1.5,'sawtooth',.025);
@@ -52,14 +52,14 @@ const Prologue=(()=>{
   function hurt(amount,unavoidable=false){
     if(DevImmortality.active)return;
     if(phase!=='battle'||!unavoidable&&player.inv>0)return;
-    player.hp=Math.max(0,player.hp-amount);player.inv=1.15;shake=reducedMotion.matches?0:.15;
+    const before=player.hp;player.hp=Math.max(0,player.hp-amount);DevDamage.record('incoming',player,before,player.hp);player.inv=1.15;shake=reducedMotion.matches?0:.15;
     burst(player.x+21,player.y+30,'#d6a4f5',18);tone(80,.25,'sawtooth',.03);
     if(!player.hp)lose();else hud();
   }
   function hit(amount,box){
     if(phase!=='battle'||boss.inv>0||box&&!overlap(box,boss)||!Number.isFinite(amount)||amount<=0)return false;
     // A normal sword can harm the apparition, but cannot end this story encounter.
-    boss.hp=Math.max(1,boss.hp-Math.min(amount,momoStats().damage));boss.inv=.28;boss.flash=.2;
+    const before=boss.hp;boss.hp=Math.max(1,boss.hp-Math.min(amount,momoStats().damage));DevDamage.record('outgoing',boss,before,boss.hp);boss.inv=.28;boss.flash=.2;
     burst(Math.min(boss.x+50,player.x+130),player.y+28,'#d9b3f8',14);tone(145,.1,'triangle',.02);return true;
   }
   function hazard(kind,x,y,w,h,warning,life,amount){hazards.push({kind,x,y,w,h,warning,life,amount,active:false});}
@@ -250,6 +250,7 @@ const Prologue=(()=>{
     if(phase==='death'){
       ctx.save();ctx.translate(player.x+21,player.y+55);ctx.rotate(Math.min(clock,1)*Math.PI*.45);ctx.globalAlpha=clamp(1-clock/2,0,1);drawMomo(0,12,96,0,0,player.face);ctx.restore();
     }else drawPlayer();
+    DevDamage.draw();
     ctx.restore();
     if(phase==='death'){ctx.fillStyle=`rgba(1,1,6,${clamp(clock/2.1,0,1)})`;ctx.fillRect(0,0,viewW,H);caption(I18n.t('prologue.death'),H*.48);}
   }
