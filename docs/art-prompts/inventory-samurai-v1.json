@@ -1,0 +1,90 @@
+{
+  "asset": "assets/images/ui/samurai-travel-bag-v1.png",
+  "purpose": "Painted cloth inventory backdrop replacing the former leather backpack surface.",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "approval": {
+    "concept": "concept-v1.png",
+    "conceptState": "explicitly approved by user before production",
+    "productionDirection": "Approved indigo/navy cloth, flax lining, cream cord and small red upper-rim knot."
+  },
+  "references": [
+    {
+      "file": "concept-v1.png",
+      "role": "Approved design concept; the open cloth at left defines production direction. Closed bundle inset and parchment excluded from production."
+    },
+    {
+      "file": "assets/images/ui/backpack-leather-v1.png",
+      "role": "Original concept stage only: square inventory panel composition; leather construction excluded."
+    },
+    {
+      "file": "assets/images/ui/momo-inventory-v1.png",
+      "role": "Original concept stage only: painted material style and navy/red palette."
+    }
+  ],
+  "attempts": [
+    {
+      "id": "production-1",
+      "selected": true,
+      "generatedFilename": "exec-18714b5d-bf9b-4429-95f1-36dd7ecd9d9f.png",
+      "prompt": "Use case: stylized-concept. Asset type: production painted transparent PNG inventory backdrop for the Kiba Japanese fantasy game. Reference image is the USER-APPROVED concept sheet. Extract its visual design direction into a NEW SINGLE production object, not a concept sheet: ONLY the large open cloth surface seen on the LEFT of the reference. Remove the small closed bundle on the right entirely and remove all parchment/background. A single opened, unfolded furoshiki-inspired samurai travel cloth, perfectly front-facing, nearly square flat inventory surface, centered on a 1536x1536 square transparent canvas, complete silhouette with 3% clear transparent margin on all four sides. Match approved detailed hand-painted indigo/navy woven cotton, warm flax/tan folded lining around the perimeter, cream braided cords along the rim, small restrained red knot in the UPPER RIGHT outer rim. Soft folded fabric construction, irregular cloth corners; no leather, buckles, backpack handle, metal ornaments. Make the quiet central textile area larger than the concept: the rectangle from x=13% to x=87%, y=20% to y=83% must remain uniformly dark navy woven cloth with subtle low-contrast texture ONLY, no prominent folds, knots, ropes, bright highlights or objects. All decorative cloth folds and cords remain on the outermost 10-12% rim, with the small red knot and its short tassel contained above y=18% and near x=84%. Refined painted warm edge lighting, tactile fine textile weave, cohesive navy, tan, cream, small red palette. No lettering, symbols, fake kanji, logos, grid, inventory slots, items, secondary inset, perspective skew, ground plane, cast shadow outside silhouette, colored backdrop or checkerboard; background genuinely transparent with alpha. Preserve the broad calm dark inner surface for actual interactive HTML inventory cards.",
+      "result": "Selected for broader usable center and full, uncropped visible cloth silhouette."
+    },
+    {
+      "id": "margin-repair",
+      "selected": false,
+      "generatedFilename": "exec-c156fcb9-70ec-4143-a27f-139388b3f20f.png",
+      "prompt": "Use case: precise-object-edit. Repair ONLY canvas padding of this approved production art. Preserve the exact front-facing open square navy-and-tan cloth wrap design, cream rope, small red top-right knot, fine painted texture, quiet dark center and complete folds. Make its whole silhouette modestly smaller within the square canvas so there is at least a 5% genuinely fully transparent empty border ON EVERY SIDE, including around all stray fibers, antialiased edges and shadows. Center the object precisely horizontally and vertically with even clear margin. The previous faint edge fringe must not reach any canvas edge. No redesign, no new ornament, no background, no external shadow, no text, no grid, no closed bundle. Keep real RGBA transparency. Keep inner rectangle x=16%-84%,y=21%-81% quiet navy cloth and all decorations outside it. Preserve existing warm flax lining, indigo weave and restrained red accent exactly. Square high-resolution output, 1536x1536 if available.",
+      "result": "Preserved design, but excessive empty margin reduced usable center. Not integrated."
+    }
+  ],
+  "file": {
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "3b323b9c7839ec89460df892561d518db90027a09215a632d3b68e2430809d32",
+    "pixelsModifiedAfterGeneration": false,
+    "alphaPreserved": true,
+    "fullyTransparentPixels": 251597,
+    "partiallyTransparentPixels": 1320186,
+    "alphaBounds": [
+      0,
+      4,
+      1241,
+      1214
+    ],
+    "alpha32Bounds": [
+      16,
+      35,
+      1239,
+      1201
+    ],
+    "alpha128Bounds": [
+      17,
+      35,
+      1238,
+      1200
+    ],
+    "canvasEdgeAlphaMax": {
+      "top": 0,
+      "bottom": 0,
+      "left": 1,
+      "right": 0
+    }
+  },
+  "integration": {
+    "quietCenterRect": {
+      "x": 180,
+      "y": 260,
+      "width": 900,
+      "height": 770
+    },
+    "notes": [
+      "Use the full source as the responsive background; do not crop visible rope, corners or red knot.",
+      "The quiet center rectangle is an approximate conservative UI overlay region, not a gameplay hitbox.",
+      "The generated PNG retains very faint alpha=1 residue at the left canvas edge; the visible alpha>=32 silhouette has complete padding.",
+      "Dark navy interior should remain readable beneath the shared contrasting item cards and accessible HTML labels.",
+      "No painted inventory grid, labels, item icons, parchment or closed-bundle inset is present in production."
+    ]
+  }
+}

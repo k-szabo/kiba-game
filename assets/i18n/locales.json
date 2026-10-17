@@ -508,7 +508,9 @@
       "menu.changelog.0916.title": "Normál és erős támadás",
       "menu.changelog.0916.attacks": "Külön, átállítható gombot kapott az erős támadás; a normál csapás gyengébb, az erős lassabb és nagyobbat sebez.",
       "menu.changelog.0916.dash.title": "A szellemlépés megszerzésének javítása",
-      "menu.changelog.0916.dash.shrine": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg."
+      "menu.changelog.0916.dash.shrine": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg.",
+      "menu.changelog.0917.title": "Szamuráj útravaló zsák",
+      "menu.changelog.0917.bag": "Az inventory bőrhátizsákját a játék festett stílusához illő szamuráj útravaló zsák váltja."
     }
   },
   "en": {
@@ -1020,7 +1022,9 @@
       "menu.changelog.0916.title": "Normal and heavy attacks",
       "menu.changelog.0916.attacks": "Heavy attacks have a separate, remappable button; normal strikes deal less damage, while heavy strikes are slower and hit harder.",
       "menu.changelog.0916.dash.title": "Fix Spirit Dash acquisition",
-      "menu.changelog.0916.dash.shrine": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows."
+      "menu.changelog.0916.dash.shrine": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows.",
+      "menu.changelog.0917.title": "Samurai travel bag",
+      "menu.changelog.0917.bag": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style."
     }
   }
 }
