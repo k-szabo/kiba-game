@@ -498,7 +498,9 @@
       "dev.ability": "Képesség",
       "dev.ability.acquire": "Képesség megszerzése",
       "dev.ability.owned": "Ezt a képességet már megszerezted.",
-      "menu.changelog.0915.maintenance": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0915.maintenance": "Belső karbantartás és technikai fejlesztések.",
+      "menu.changelog.0915.e8373e52.title": "A prológusban beragadó dash javítása",
+      "menu.changelog.0915.e8373e52.dash": "A prológusban a megszerzett szellemlépés rendesen véget ér, ugrás után pedig visszaáll a gravitáció."
     }
   },
   "en": {
@@ -1000,7 +1002,9 @@
       "dev.ability": "Ability",
       "dev.ability.acquire": "Acquire ability",
       "dev.ability.owned": "You already have this ability.",
-      "menu.changelog.0915.maintenance": "Internal maintenance and technical improvements."
+      "menu.changelog.0915.maintenance": "Internal maintenance and technical improvements.",
+      "menu.changelog.0915.e8373e52.title": "Fix stuck dash in the prologue",
+      "menu.changelog.0915.e8373e52.dash": "Acquired Spirit Dash now ends correctly in the prologue, and gravity resumes after jumping."
     }
   }
 }

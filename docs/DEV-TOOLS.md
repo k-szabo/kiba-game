@@ -39,6 +39,16 @@ A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési s
 
 A képességválasztót az `assets/js/dev-abilities.js` `catalogue` listája építi fel: egy bejegyzés stabil `id`, a játék `abilities` tömbjére mutató `index`, valamint lokalizációs `label` kulcs. Új, már játékba épített képességhez ezt a listát kell bővíteni; a mező és a megszerzés művelete közös marad. Új képesség játékmenete és mentési sémája külön fejlesztést igényel. A dev művelet nem teljesít küldetést, nem ad XP-t és nem ír normál mentést.
 
+## RCA: beragadó dash a prológusban
+
+A [46-os hibajegy](https://trello.com/c/jcC3vvm4) reprodukciója: tesztmód, dupla ugrás és dash megszerzése, teleport az álomba, dash, billentyűfelengedés, majd ugrás. Az eredeti kódban egy másodperc után is `dash=0.2`, `dashCooldown=0.8` és `vx=1100` maradt. Ugrás után a `vy=-590` sem változott.
+
+A közös `input()` és `movePlayer()` a dash állapotát használta, de a külső `update()` a prológushoz érve a közös időzítők előtt visszatért. A prológus saját másolatában a dash és a dash-cooldown csökkentése hiányzott. Az állandóan aktív dash ezért folyamatosan előírta a vízszintes sebességet és kikapcsolva tartotta a gravitációt. A teleport az átmeneti állapotokat helyesen nullázta; a hiba az első új dash után keletkezett. A normál prológus képességek nélkül indul, ezért ez az állapot a képességadó eszközzel vált könnyen elérhetővé.
+
+A játékos közös időzítőinek egyetlen gazdája a `game.js` `updatePlayerTimers(dt)` függvénye: minden aktív játékképkockán, a normál/prológus elágazás előtt egyszer fut. A prológus csak a saját boss- és történetidőzítőit kezeli. Szünetben és játékablakoknál a közös óra is áll; az `initPlayer()` átmenetkor törli a mozgás átmeneti állapotát.
+
+A korábbi tesztek külön ellenőrizték a képességadást és a teleport célpontját, de a megszerzett képesség használatát nem az alternatív játékhurokban. A CI emellett külön, elavult tesztlistát tartott fenn. A `scripts/test-player-timers.cjs` most a képességadás → teleport → tényleges gombnyomás útvonalat vizsgálja mindkét irányban, képességkombinációkkal és 30/60/120 FPS-en: lejárat, megállás, gravitáció, talajra érkezés, újrahasználat, szünet és pályaváltás. Az eredeti forrásokat memóriában visszatöltve a teszt hibát jelez; a javított kódon sikeres. A Pages CI most ugyanazt az `npm test` parancsot futtatja, mint a helyi teljes ellenőrzés, így a később hozzáadott tesztek sem maradnak ki egy második lista miatt.
+
 ## Git ágak
 
 A közös integrációs ág `FEATURE-dev-tools-works`. Az alapozó `FEATURE-dev-tools-test-session` és a hat kártyához tartozó `FEATURE-dev-*` ág innen indul; a helyi integráció `--no-ff` merge-dzsel megőrzi a kártyák határait. A kész csomag később egyetlen PR-ként kerülhet mainre. Push, PR-nyitás és main-merge külön felhasználói engedély alapján történik.

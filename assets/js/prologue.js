@@ -141,8 +141,7 @@ const Prologue=(()=>{
     if(castVisual){castVisual.elapsed+=dt;if(castVisual.elapsed>=castVisual.duration+SHADOW_ATTACK_TIMING.spellRecovery)castVisual=null;}
     if(phase==='death'){if(clock>=2.6){phase='awakening';clock=0;scream();}return;}
     if(phase==='awakening'){if(clock>=4.3)wake();return;}
-    attack=Math.max(0,attack-dt);attackCooldown-=dt;jumpBuffer-=dt;coyote-=dt;dropTimer-=dt;
-    player.inv=Math.max(0,player.inv-dt);boss.inv=Math.max(0,boss.inv-dt);boss.flash=Math.max(0,boss.flash-dt);shake=Math.max(0,shake-dt);
+    boss.inv=Math.max(0,boss.inv-dt);boss.flash=Math.max(0,boss.flash-dt);
     if(phase==='reveal'){
       if(clock>=2.8){phase='battle';clock=0;player.inv=.6;keys.clear();pressed.clear();}
     }else{
