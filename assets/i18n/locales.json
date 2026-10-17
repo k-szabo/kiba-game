@@ -466,7 +466,9 @@
       "dev.empty": "A panel készen áll. A tesztelőeszközök külön fejlesztési feladatokban érkeznek.",
       "dev.version": "Játékverzió: {0}",
       "dev.toolError": "Az eszköz futtatása sikertelen.",
-      "menu.changelog.0913.maintenance": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0913.maintenance": "Belső karbantartás és technikai fejlesztések.",
+      "menu.changelog.0913.32b2a833.0": "A lávakígyó már kilőtt lövedékei a kígyó eltűnése után is megmaradnak és sebeznek.",
+      "menu.changelog.0913.32b2a833.1": "A hibajelentés gombokon csak a bogárikon és a felirat marad."
     }
   },
   "en": {
@@ -936,7 +938,9 @@
       "dev.empty": "The panel is ready. Testing tools will be added in separate development tasks.",
       "dev.version": "Game version: {0}",
       "dev.toolError": "The tool could not be run.",
-      "menu.changelog.0913.maintenance": "Internal maintenance and technical improvements."
+      "menu.changelog.0913.maintenance": "Internal maintenance and technical improvements.",
+      "menu.changelog.0913.32b2a833.0": "Lava serpent projectiles remain active and deal damage after the serpent disappears.",
+      "menu.changelog.0913.32b2a833.1": "Bug report buttons now show only the bug icon and label."
     }
   }
 }

@@ -64,6 +64,26 @@
           "en": "Current-encounter summoned minions pursue Momo after either shelter exit without being restricted by old patrol limits or abandoned refuges."
         }
       ]
+    },
+    {
+      "version": "0.9.13_32b2a833",
+      "code": "32b2a833",
+      "baseVersion": "0.9.13",
+      "slug": "serpent-projectiles-report-button",
+      "summary": {
+        "hu": "Lávakígyó-lövedékek és hibajelentés-gomb javítása",
+        "en": "Lava serpent projectile and bug report button fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A lávakígyó már kilőtt lövedékei a kígyó eltűnése után is megmaradnak és sebeznek.",
+          "en": "Lava serpent projectiles remain active and deal damage after the serpent disappears."
+        },
+        {
+          "hu": "A hibajelentés gombokon csak a bogárikon és a felirat marad.",
+          "en": "Bug report buttons now show only the bug icon and label."
+        }
+      ]
     }
   ],
   "releases": []
