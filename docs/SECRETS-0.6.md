@@ -45,6 +45,16 @@ Azonos kiadáson belül a képességek, fejlesztések, legyőzött minibossok é
 
 A két miniboss és a két helyszínháttér a v6 PNG-ket és az art-data.js kivágásait használja. A v3 hátterek és a v4/v5 aktív képek továbbra is szükségesek. A négy új illusztráció a beépített ImageGen eszközzel készült; a [promptok](art-prompts/secrets-v6.json) a dokumentációban megtalálhatók. A PNG-k változatlanul kerültek a játékba, az animációs kivágásokat átlátszó határok mentén ellenőrzött metadata választja el.
 
+## A kultista mögötti oldalág – 0.9.18
+
+A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz.
+
+Fejlesztői részletek: a `cultWestWall` csak aktív dash alatt átjárható, Japán őrzőjének legyőzése után is. A japán világ alsó határa 3100; az új kamra zárt födémet, oldalfalat és alapzatot kapott. Az öt `cult-passage-*` platform oda-vissza járható kettős ugrással. A kapu egyelőre díszlet, új pálya és interakció nélkül. A meglévő őrző, ereklye és pihenőhelyek azonosítói megmaradtak.
+
+A `cult-ruined-gate-v1.png` eredeti RGBA képe aránytartóan jelenik meg; talppontja a `japan.cultPassage.ruinedGate` koordinátája. A jóváhagyott koncepció és a gyártási prompt a [grafikai rekordban](art-prompts/cult-ruined-gate-v1.json) található. A dash-fal a meglévő festett árnymágia-atlaszt használja.
+
+A `node scripts/test-cult-passage.cjs` 30/60/120 FPS mellett ellenőrzi a valódi ugrásokat, a visszautat, a fal mindkét irányú átlépését, a dash nélküli lezárást és a kamra megkerülhetetlenségét.
+
 ## Ellenőrzés
 
 ```sh

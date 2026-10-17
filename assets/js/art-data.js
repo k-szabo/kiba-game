@@ -1,10 +1,12 @@
 /* Illustrated animation atlas metadata. */
+const ART_CULT_GATE={w:1536,h:1024,anchorX:768,anchorY:1003,bodyHeight:995};
 // Painted spell sprites: the tip is registered to the projectile/ground impact point.
 const ART_EFFECTS={
   holyArrow:{image:'holyArrow',w:2006,h:784,tipX:1948,tipY:382,start:70,inkHeight:415},
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "cultRuinedGate": "assets/images/cult-ruined-gate-v1.png",
   "momoHeavy": "assets/images/momo-heavy-v1.png",
   "lavaSerpent": "assets/images/enemies/lava-serpent-v1.png",
   "serpentScale": "assets/images/ui/serpent-scale-v1.png",

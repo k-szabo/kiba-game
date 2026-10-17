@@ -1,0 +1,109 @@
+{
+  "asset": "assets/images/cult-ruined-gate-v1.png",
+  "purpose": "Painted scenery for the descending optional passage beyond the old cultist cave's dash wall.",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "approval": {
+    "concept": "broken-cult-gate-concept-v1.png",
+    "state": "Explicitly approved by the user before production.",
+    "direction": "Ruined aged timber temple gate with broken tiled roof, splintered open doors, worn rope, muted red cloth and small candles. Production isolates the approved gate; cave backdrop and separate stepping ledges are excluded."
+  },
+  "references": [
+    {
+      "file": "broken-cult-gate-concept-v1.png",
+      "role": "Approved concept, generated from the active cult cave wall, backdrop and terrain references. Preview remains an ignored task artifact."
+    },
+    {
+      "file": "assets/images/cult-cave-wall-v1.png",
+      "role": "Concept-stage active rock and rope material reference."
+    },
+    {
+      "file": "assets/images/backgrounds/cult-cave-v6.png",
+      "role": "Concept-stage primary painted cave style reference."
+    },
+    {
+      "file": "assets/images/terrain-v4.png",
+      "role": "Concept-stage painted stone ledge material reference."
+    }
+  ],
+  "attempts": [
+    {
+      "id": "production-1",
+      "selected": true,
+      "generatedFilename": "exec-c2fd9f9a-ae3b-49bb-a467-8547ab2f56e0.png",
+      "prompt": "Use case: background-extraction, stylized-concept.\nAsset type: single production transparent PNG scenery object for Kiba, a painted Japanese dark fantasy 2D side-scrolling game.\nInput image: the USER-APPROVED broken cult temple gate concept. Preserve the gate's approved visual direction and recognizable materials. Extract/recreate ONLY the COMPLETE large broken gate from the left of this concept, with its attached stone post bases, a small amount of nearby rubble and a few small candles at those bases. This is one standalone game scenery sprite, not an environment scene.\nSubject: front-facing abandoned Japanese temple gate, broad charcoal-aged timber lintel and sagging curved tiled roof with missing/broken tiles, muted faded dark vermilion wood, deeply worn wood grain and iron fittings, splintered doors hanging askew and open, cracked dark stone post footings, old straw ropes and shredded paper offerings, restrained rotted red cloth strips, tiny warm candles fixed near the post bases. Preserve believable broken gate structure and complete roof, doors and posts. No new ornamental theme.\nComposition: high resolution landscape canvas 1536x1024, single centered gate filling roughly 90% width and 85% height, entire silhouette inside the canvas with at least 4% clear margin around roof tips, hanging ropes, door edges, candles and footings. Near-frontal orthographic side-scroller view; keep baseline level and strong readable silhouette. Source aspect ratio appropriate for display about 480px wide and 365px high.\nTRANSPARENCY IS CRITICAL: genuinely transparent RGBA background outside the object AND THROUGH THE OPEN DOORWAY. The gap between the broken doors must be a true transparent hole showing whatever game background is behind it, not black paint, not an image of the cave or distant passage. Every visible space through broken timbers and holes in the roof must also be transparent. No ground rectangle, no floor plane across the doorway, no background cave rocks, no distant scenery, no separate stepping ledges, no backdrop shadow, no colored matte and no checkerboard. Isolate the entire gate cleanly, including complete attached small bases and candles.\nStyle: highly detailed hand-painted Japanese dark fantasy matching approved reference, textured aged wood, chipped tile, mossy cracked stone, softly reflected cool violet edges so the dark structure reads in a cave, subtle amber candlelight. Keep magic absent or extremely subtle; no bright purple portal. Painterly highlights and organic material shading, no flat vector look or cartoon black outlines.\nAvoid: people, animals, characters, enemies, text, letters, writing, fake kanji, captions, logos, UI, labels, map, lock, key, intact sealed doorway, glowing portal, magic circle, large chains sealing entrance, photorealistic lens effects, cropped silhouette, detached environment pieces. One object only on genuine transparent background.",
+      "result": "Selected. Complete broken gate on original RGBA transparency; open doorway samples have alpha zero. No cave background or detached platforms."
+    }
+  ],
+  "file": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "sha256": "b41557278ac1d66e06f4a1cb04a515f74568333228b869e33e6bbc426897f9e5",
+    "pixelsModifiedAfterGeneration": false,
+    "alphaPreserved": true,
+    "fullyTransparentPixels": 545110,
+    "alphaBounds": [
+      0,
+      0,
+      1524,
+      1016
+    ],
+    "alpha32Bounds": [
+      14,
+      8,
+      1521,
+      1003
+    ],
+    "alpha128Bounds": [
+      15,
+      9,
+      1520,
+      1002
+    ],
+    "canvasEdgeAlphaMax": {
+      "top": 2,
+      "bottom": 0,
+      "left": 1,
+      "right": 0
+    },
+    "doorwayAlphaSamples": [
+      {
+        "x": 768,
+        "y": 600,
+        "alpha": 0
+      },
+      {
+        "x": 768,
+        "y": 750,
+        "alpha": 0
+      },
+      {
+        "x": 768,
+        "y": 850,
+        "alpha": 0
+      }
+    ]
+  },
+  "integration": {
+    "suggestedSourceRect": {
+      "x": 0,
+      "y": 0,
+      "w": 1536,
+      "h": 1024
+    },
+    "suggestedAnchor": {
+      "x": 768,
+      "y": 1003
+    },
+    "suggestedBodyHeight": 995,
+    "notes": [
+      "Keep the native aspect ratio; do not stretch to the available landing dimensions.",
+      "Anchor at the center of the lowest visible stone bases; source anchor is a scenery grounding estimate, not a collider.",
+      "The visible alpha>=32 silhouette has complete padding, including both roof tips, broken doors, ropes, candles and post bases.",
+      "Original source alpha includes only very faint alpha=1..2 residue at top/left canvas edges. Preserve the original pixels; no thresholding or alpha editing has been applied.",
+      "The open doorway is transparent and must reveal the existing cave backdrop. It is not an active portal or an implied new level transition.",
+      "Use the normal scenery renderer and authored landing/platform geometry; this image does not define movement collision or add a floor across the opening."
+    ]
+  }
+}

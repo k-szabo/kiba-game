@@ -510,7 +510,9 @@
       "menu.changelog.0916.dash.title": "A szellemlépés megszerzésének javítása",
       "menu.changelog.0916.dash.shrine": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg.",
       "menu.changelog.0917.title": "Szamuráj útravaló zsák",
-      "menu.changelog.0917.bag": "Az inventory bőrhátizsákját a játék festett stílusához illő szamuráj útravaló zsák váltja."
+      "menu.changelog.0917.bag": "Az inventory bőrhátizsákját a játék festett stílusához illő szamuráj útravaló zsák váltja.",
+      "menu.changelog.0918.title": "Új út a kultista barlangja mögött",
+      "menu.changelog.0918.passage": "A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz."
     }
   },
   "en": {
@@ -1024,7 +1026,9 @@
       "menu.changelog.0916.dash.title": "Fix Spirit Dash acquisition",
       "menu.changelog.0916.dash.shrine": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows.",
       "menu.changelog.0917.title": "Samurai travel bag",
-      "menu.changelog.0917.bag": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style."
+      "menu.changelog.0917.bag": "The inventory's leather backpack is replaced by a samurai travel bag matching the game's painted art style.",
+      "menu.changelog.0918.title": "A new path beyond the cultist's cave",
+      "menu.changelog.0918.passage": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate."
     }
   }
 }

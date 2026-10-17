@@ -409,6 +409,11 @@ const Visuals = (() => {
           secretWallProp(ART_SECRET_WALLS.angel,x,altarY+6,height,face);
         ctx.strokeStyle='#8b764eaa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(2790,altarY-2,160,15,0,0,Math.PI*2);ctx.stroke();
       }else{
+        const gate=level.cultPassage?.ruinedGate;
+        if(gate&&usable('cultRuinedGate')){
+          const art=ART_CULT_GATE,s=Math.min(gate.w/art.w,gate.h/art.bodyHeight);
+          ctx.drawImage(images.cultRuinedGate,gate.x-art.anchorX*s,gate.y-art.anchorY*s,art.w*s,art.h*s);
+        }
         for(const [x,height,face] of [[2690,330,1],[3550,290,-1]])
           secretWallProp(ART_SECRET_WALLS.cult,x,area.arena.y+5,height,face);
         for(const px of [2860,3100,3450]){
@@ -568,7 +573,16 @@ const Visuals = (() => {
         if(level.councilGate)councilGate(level.councilGate,hasFlag('councilGateOpen'));
         continue;
       }
-      if (gatePass(g) || g.x + g.w < camera - 80 || g.x > camera + viewW + 80 || g.y + g.h < cameraY - 80 || g.y > cameraY + H + 80) continue;
+      if (g.x + g.w < camera - 80 || g.x > camera + viewW + 80 || g.y + g.h < cameraY - 80 || g.y > cameraY + H + 80) continue;
+      if(g.kind==='shadow'&&g.requiresDash){
+        // Painted Kiba smoke remains visible while Momo phases through it.
+        const pulse=reducedMotion.matches?1:.94+Math.sin(time*1.7)*.06;
+        ctx.save();ctx.globalAlpha*=dash>0?.3:.8;
+        ctx.fillStyle='#171020c7';ctx.fillRect(g.x,g.y,g.w,g.h);
+        BossVFX.stamp('shadowColumn',g.x+g.w/2,g.y+g.h+15,g.w*2.15,g.h*1.22,{alpha:pulse});
+        ctx.restore();continue;
+      }
+      if(gatePass(g))continue;
       if(g.kind==='secretRock'||g.kind==='fragile'){
         secretRock(g);continue;
       }
