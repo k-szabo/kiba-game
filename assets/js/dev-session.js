@@ -2,6 +2,7 @@
 'use strict';
 const DevSession=(()=>{
  let active=false,normalSave=null,initialized=false;
+ const endHandlers=new Set();
  const clone=value=>value?JSON.parse(JSON.stringify(value)):null;
  const ready=()=>storageReady&&loadingReady&&Visuals.loaded===Visuals.total&&!Visuals.failures.length;
  function refresh(){
@@ -25,6 +26,7 @@ const DevSession=(()=>{
  function end(){
   if(!active)return false;
   active=false;saved=clone(normalSave);normalSave=null;
+  for(const handler of endHandlers)handler();
   if(DevTools.isOpen)DevTools.close();
   refresh();mainMenu();return true;
  }
@@ -34,5 +36,5 @@ const DevSession=(()=>{
   DevTools.register({id:'test-end',labelKey:'dev.session.end',available:()=>active,run:end});
   I18n.onChange(refresh);refresh();
  }
- return Object.freeze({begin,end,init,refresh,get active(){return active;},get ready(){return ready();}});
+ return Object.freeze({begin,end,init,refresh,onEnd(handler){endHandlers.add(handler);},get active(){return active;},get ready(){return ready();}});
 })();

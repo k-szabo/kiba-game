@@ -419,8 +419,8 @@ function updateBossHazards(dt){
   for(const h of boss.hazards){h.warning-=dt;h.life-=dt;h.active=h.warning<=0;if(h.active&&overlap(player,h))damage(h.kind==='lightPillar'?2:1,player.x>h.x?1:-1);}
   boss.hazards=boss.hazards.filter(h=>h.life>0);
   if(boss.lava){boss.lava.warning=Math.max(0,boss.lava.warning-dt);if(boss.lava.active&&overlap(player,boss.lava)){
-    if(boss.lava.lethal){player.hp=0;revive();return;}
-    damage(2,player.x>boss.x?1:-1);
+    if(boss.lava.lethal){if(!DevImmortality.active){player.hp=0;revive();return;}}
+    else damage(2,player.x>boss.x?1:-1);
   }}
   updateSummons(dt);
 }
