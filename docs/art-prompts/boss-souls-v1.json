@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "mode": "reference-based generation and framing edit",
+  "approval": {
+    "conceptRevision": 2,
+    "conceptBoard": ".codex/work/boss-rewards/boss-souls-concept-v2.png",
+    "conceptGeneratedBasename": "exec-6c8750d1-c5c2-4307-90eb-f1ab587a138d.png",
+    "status": "User explicitly approved revised three-icon concept before production.",
+    "revisionReason": "User requested the first soul reflect the samurai boss rather than the original wooden totem.",
+    "references": [
+      "assets/images/enemies/bosses-v4.png",
+      "assets/images/ui/eclipse-relic-v1.png",
+      "assets/images/ui/serpent-scale-v1.png"
+    ]
+  },
+  "preservation": "Each selected generated PNG was copied byte-for-byte. Original RGBA pixels and generated alpha are preserved; no programmatic pixel editing, matte removal, resizing or alpha modification. Inventory crops are metadata only.",
+  "coordinateConvention": "Bounds are [left, top, right, bottom], right/bottom exclusive. Recommended crops include 12 source pixels beyond alpha>=8 silhouette.",
+  "assets": [
+    {
+      "path": "assets/images/ui/oathbreaker-soul-v1.png",
+      "generatedBasename": "exec-40ab0bad-2517-499c-871a-c7084cdfad0c.png",
+      "native": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "alphaBounds": {
+        "8": [
+          241,
+          118,
+          1062,
+          1150
+        ],
+        "32": [
+          242,
+          119,
+          1061,
+          1150
+        ],
+        "128": [
+          243,
+          120,
+          1061,
+          1149
+        ]
+      },
+      "recommendedCrop": {
+        "x": 229,
+        "y": 106,
+        "w": 845,
+        "h": 1056
+      },
+      "reference": ".codex/work/boss-rewards/boss-souls-concept-v2.png",
+      "prompt": "Use case: stylized-concept\nAsset type: FINAL PRODUCTION high-resolution standalone inventory collectible sprite for the painted Japanese fantasy game Kiba. Generate ONE square image, 1024x1024 or larger square, with genuinely transparent RGBA background.\nInput image: boss-souls-concept-v2.png is the USER-APPROVED DESIGN REFERENCE. Extract/re-create ONLY THE LEFT ICON as a standalone finished asset. Middle and right icons MUST NOT appear.\nSubject: the samurai boss's spectral soul, matching the approved left icon: empty battered black and deep-crimson lacquered kabuto helmet with its very tall weathered gold V-shaped crest; dark empty menpo mask beneath; compact scarred black/crimson lamellar neck/shoulder plates with gold edging and scarlet braided armor cords; one broken silver katana diagonally behind the helmet, dark grip with scarlet diamonds at upper left and jagged broken blade extending lower right. Jade-teal Kiba soul-flame wraps around and emerges from inside the helmet with bright solid luminous painted ribbons and dark-edged internal detail. Empty glowing teal eye slits, no living head or body. Preserve the approved recognizable overall composition, helmet, colors, motifs and elegant flame silhouette.\nStyle: richly detailed hand-painted Japanese dark fantasy treasure art with crisp material edges, textured aged gold, crimson lacquer, black metal, chipped steel and jewel-like luminous teal soul energy; matching supplied concept. Fully opaque richly colored material cores and firm edges that remain readable at 112px inventory size; controlled soft alpha only at flame tips, no faded wash.\nFraming: isolated entire single floating object centered in a square, fit ALL horns, sword tip, grip, armor, cords and flames fully inside canvas with at least 8% clear transparent padding around the complete silhouette. No cropping. No background, backdrop, dark matte, ground, pedestal, stand, separate decoration, UI, text or watermark. Do not include any wood, bark, moss, roots, forest totem, human face, duplicate helmet or full character. TRUE transparency outside the single object, and within natural gaps between blade/helmet/flame. Keep the existing approved design; this is refinement for production, no redesign.",
+      "framingRepair": {
+        "initialGeneratedBasename": "exec-79f527ae-cf35-4a5d-ac65-bae295ee769c.png",
+        "reason": "Initial flame fringe approached the top and bottom canvas edge. A built-in image edit fit the entire approved design within wider transparent margins.",
+        "prompt": "Use case: precise-object-edit\nProduction sprite framing repair only. Input is the approved Kiba samurai boss soul production art with true alpha. Preserve the exact single object's design, painting, armor, gold kabuto, teal soul flames, scarlet cord and broken katana, colors and all internal details unchanged. The object is currently too tall and nearly touches top and bottom. Zoom out / make the WHOLE existing object uniformly SMALLER so ALL visible flame tips, gold crest, sword tip and cords fit inside a centered bounding rectangle occupying at most 78% of the canvas height and width. Provide at least 10% completely empty genuinely transparent RGBA margin at TOP, BOTTOM, LEFT and RIGHT beyond all particles and glow. Same square canvas. Show the FULL intact upper flame curl and lower curl with no clipped or hidden ends. Do not redesign, rotate, add extra particles, add background, dark matte or text. Transparent outside and in existing gaps. Keep the opaque luminous material cores; this is only fitting the complete silhouette safely into the canvas."
+      }
+    },
+    {
+      "path": "assets/images/ui/yomi-guardian-soul-v1.png",
+      "generatedBasename": "exec-7048e59f-b1f4-4409-8e28-fec677fda117.png",
+      "native": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "alphaBounds": {
+        "8": [
+          176,
+          36,
+          1076,
+          1176
+        ],
+        "32": [
+          176,
+          38,
+          1076,
+          1176
+        ],
+        "128": [
+          177,
+          38,
+          1075,
+          1176
+        ]
+      },
+      "recommendedCrop": {
+        "x": 164,
+        "y": 24,
+        "w": 924,
+        "h": 1164
+      },
+      "reference": ".codex/work/boss-rewards/boss-souls-concept-v2.png",
+      "prompt": "Use case: stylized-concept\nAsset type: FINAL PRODUCTION high-resolution standalone inventory collectible sprite for the painted Japanese fantasy game Kiba. Generate ONE square image, 1024x1024 or larger square, with genuinely transparent RGBA background.\nInput image: boss-souls-concept-v2.png is the USER-APPROVED DESIGN REFERENCE. Re-create ONLY THE MIDDLE CRIMSON HORNED SOUL as a standalone finished asset. Left samurai and right seraph MUST NOT appear.\nSubject: the approved Yomi guardian's demonic soul: a dense ruby-crimson spherical ember vortex core with vivid molten orange-gold flame rising from it, cradled by two large asymmetrical blackened bone/obsidian horn arcs forming a broad pointed shield/heart silhouette. The longer left horn climbs up-left, the right horn curves up-right, jagged tapered tips; detailed black charcoal bone plates with pale bone ridges, hot red fissures, sparse gold-hot seams. The lower cradling horn curves meet at a sharp point, matching the approved exact overall shape. Keep the horn shape and dense bright red core clearly separated, red flame curls close to the object, few sparse sparks inside silhouette. No face, skull, helmet or character.\nStyle: richly detailed hand-painted Japanese dark fantasy treasure art with crisp material edges, tactile fissured bone/stone, dimensional charcoal scales, glossy ruby core, bright opaque red/orange soul flames; same painting density and contrast as approved concept and other inventory collectibles. Fully opaque richly colored material cores, controlled alpha only at fringe; excellent readability at 112px. Avoid faded wash or smoky low-contrast blobs.\nCRITICAL framing: show the ENTIRE object centered and uniformly scaled to occupy no more than 78% of canvas width and height. Leave at least 10% completely clear transparent margin around ALL horn tips, bottom point, sparks and flames on all four sides. Entire silhouette uncut, no cropped or edge-touching glow. Isolated single floating collectible only. TRUE RGBA transparency outside object and within natural gaps, no background or dark matte. No pedestal, stand, ground, UI, letters, text or watermark. Preserve the approved design; production refinement, no redesign."
+    },
+    {
+      "path": "assets/images/ui/seraph-soul-v1.png",
+      "generatedBasename": "exec-db9bebf2-6219-4c72-9e7e-b56d166173b7.png",
+      "native": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "alphaBounds": {
+        "8": [
+          222,
+          16,
+          1123,
+          1240
+        ],
+        "32": [
+          223,
+          16,
+          1120,
+          1239
+        ],
+        "128": [
+          223,
+          17,
+          1119,
+          1239
+        ]
+      },
+      "recommendedCrop": {
+        "x": 210,
+        "y": 4,
+        "w": 925,
+        "h": 1248
+      },
+      "reference": ".codex/work/boss-rewards/boss-souls-concept-v2.png",
+      "prompt": "Use case: stylized-concept\nAsset type: FINAL PRODUCTION high-resolution standalone inventory collectible sprite for the painted Japanese fantasy game Kiba. Generate ONE square image, 1024x1024 or larger square, with genuinely transparent RGBA background.\nInput image: boss-souls-concept-v2.png is the USER-APPROVED DESIGN REFERENCE. Re-create ONLY THE RIGHT SERAPH SOUL as a standalone finished asset. Left samurai and middle demon MUST NOT appear.\nSubject: exactly the approved celestial soul collectible: an elegant vertical curved broken halo crescent of engraved aged gold cradling a swirling split spirit core, luminous pearl-white/gold on the left and deep luminous violet/amethyst on the right. Layered large individual ivory feathers sweep upward along the left and down toward the bottom, while graceful dark-violet feather layers curve down the right. Small warm-gold starburst settings and opalescent round pearls nest into the feather/halo structure as in the concept. The tip of the broken gold halo rises at upper right; the bottom ends in graceful feather tips. Preserve the approved asymmetric winged crescent silhouette and material palette. This is an object, not a living angel or face. Densely painted bright core, internal swirling amethyst, gold and pearl light with crisp dark separation.\nStyle: richly detailed hand-painted Japanese fantasy treasure art, precise feather strands, aged engraved gold with textured highlights, dimensional opal pearls and deeply luminous soul energy; match the exact approved concept's detail and colors. Opaque full-color core and feathers, firm dark edges for strong readability at112px, controlled translucency only around energy fringes. Avoid pale faded wash or generic flat shapes.\nCRITICAL framing: show the ENTIRE single object centered and uniformly scaled to occupy no more than78% of canvas width and height, with at least10% clear truly transparent padding around ALL halo points, feather tips, sparse sparks and glowing curls on all four sides. Full silhouette uncut, no edge-touching tips. Isolated single floating inventory collectible only. TRUE RGBA transparency outside and in natural gaps. No background or dark matte, no pedestal, stand, ground, UI, lettering, text or watermark. Preserve the approved design, no redesign or additional relics."
+    }
+  ],
+  "checks": [
+    "Inspected all three selected PNGs against the approved v2 concept.",
+    "Confirmed native RGBA and alpha range 0..255 with Pillow.",
+    "Measured alpha>=8, >=32 and >=128 bounds without changing source pixels.",
+    "Complete helmet, horns, broken blade, flames, halo and feathers fit within each source canvas.",
+    "No text, pedestal, background or cropped solid silhouette in the selected assets."
+  ],
+  "integration": "Register through ART_INVENTORY.items and the existing DPR-aware contrasting renderer. Integrator owns metadata registration, real-browser verification, runtime build and colormap refresh."
+}

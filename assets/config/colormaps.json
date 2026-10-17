@@ -261,6 +261,18 @@
       "kind": "equipment-art",
       "paletteGroup": "object.inventoryKatana"
     },
+    "inventoryItem.oathbreakerSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.oathbreakerSoul"
+    },
+    "inventoryItem.yomiGuardianSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.yomiGuardianSoul"
+    },
+    "inventoryItem.seraphSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.seraphSoul"
+    },
     "inventoryItem.angelHalo": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.angelHalo"
@@ -4963,6 +4975,309 @@
           }
         ],
         "visibleSamples": 160733,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.oathbreakerSoul": {
+      "source": "assets/images/ui/oathbreaker-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.oathbreakerSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060706",
+            "coveragePercent": 22.5344
+          },
+          {
+            "hex": "#038d85",
+            "coveragePercent": 13.92
+          },
+          {
+            "hex": "#0af5db",
+            "coveragePercent": 10.6267
+          },
+          {
+            "hex": "#f0f8ee",
+            "coveragePercent": 6.7793
+          },
+          {
+            "hex": "#37110a",
+            "coveragePercent": 6.6989
+          },
+          {
+            "hex": "#034740",
+            "coveragePercent": 5.6052
+          },
+          {
+            "hex": "#861b04",
+            "coveragePercent": 5.064
+          },
+          {
+            "hex": "#04c6ab",
+            "coveragePercent": 4.7423
+          },
+          {
+            "hex": "#ce640b",
+            "coveragePercent": 3.9976
+          },
+          {
+            "hex": "#f5ad20",
+            "coveragePercent": 3.8178
+          },
+          {
+            "hex": "#4f4533",
+            "coveragePercent": 3.6647
+          },
+          {
+            "hex": "#e91010",
+            "coveragePercent": 3.4546
+          },
+          {
+            "hex": "#f9e273",
+            "coveragePercent": 2.6774
+          },
+          {
+            "hex": "#d1b0a8",
+            "coveragePercent": 2.2212
+          },
+          {
+            "hex": "#877967",
+            "coveragePercent": 2.1049
+          },
+          {
+            "hex": "#7ff8e6",
+            "coveragePercent": 2.0911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#03988c",
+            "coveragePercent": 32.0539
+          },
+          {
+            "hex": "#11f0d6",
+            "coveragePercent": 30.8298
+          },
+          {
+            "hex": "#e48812",
+            "coveragePercent": 10.9959
+          },
+          {
+            "hex": "#9f3208",
+            "coveragePercent": 10.273
+          },
+          {
+            "hex": "#f7cf52",
+            "coveragePercent": 8.04
+          },
+          {
+            "hex": "#ea1211",
+            "coveragePercent": 7.8073
+          }
+        ],
+        "visibleSamples": 526484,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.yomiGuardianSoul": {
+      "source": "assets/images/ui/yomi-guardian-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.yomiGuardianSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f20905",
+            "coveragePercent": 13.2878
+          },
+          {
+            "hex": "#080201",
+            "coveragePercent": 12.3602
+          },
+          {
+            "hex": "#4c0c09",
+            "coveragePercent": 10.9432
+          },
+          {
+            "hex": "#280909",
+            "coveragePercent": 10.4794
+          },
+          {
+            "hex": "#830a07",
+            "coveragePercent": 7.8222
+          },
+          {
+            "hex": "#bc0a07",
+            "coveragePercent": 6.9661
+          },
+          {
+            "hex": "#5d2f2c",
+            "coveragePercent": 6.2895
+          },
+          {
+            "hex": "#f53908",
+            "coveragePercent": 5.5377
+          },
+          {
+            "hex": "#f77612",
+            "coveragePercent": 4.5808
+          },
+          {
+            "hex": "#9b5341",
+            "coveragePercent": 4.5063
+          },
+          {
+            "hex": "#fcf8ed",
+            "coveragePercent": 3.7411
+          },
+          {
+            "hex": "#d98b6d",
+            "coveragePercent": 3.2611
+          },
+          {
+            "hex": "#fcc01e",
+            "coveragePercent": 3.0174
+          },
+          {
+            "hex": "#f6dbb0",
+            "coveragePercent": 2.8084
+          },
+          {
+            "hex": "#fbd96b",
+            "coveragePercent": 2.6016
+          },
+          {
+            "hex": "#ef1f4f",
+            "coveragePercent": 1.7973
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ee0c08",
+            "coveragePercent": 36.7032
+          },
+          {
+            "hex": "#a10e0a",
+            "coveragePercent": 20.9021
+          },
+          {
+            "hex": "#f64c0c",
+            "coveragePercent": 13.9506
+          },
+          {
+            "hex": "#ba594a",
+            "coveragePercent": 10.3046
+          },
+          {
+            "hex": "#faa317",
+            "coveragePercent": 9.7801
+          },
+          {
+            "hex": "#f8c861",
+            "coveragePercent": 8.3594
+          }
+        ],
+        "visibleSamples": 518593,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.seraphSoul": {
+      "source": "assets/images/ui/seraph-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.seraphSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcf8f7",
+            "coveragePercent": 16.4457
+          },
+          {
+            "hex": "#0d030a",
+            "coveragePercent": 12.3278
+          },
+          {
+            "hex": "#f6e6d2",
+            "coveragePercent": 11.0916
+          },
+          {
+            "hex": "#f5d8a6",
+            "coveragePercent": 7.9836
+          },
+          {
+            "hex": "#300546",
+            "coveragePercent": 6.6207
+          },
+          {
+            "hex": "#f9c45a",
+            "coveragePercent": 5.445
+          },
+          {
+            "hex": "#8c3d09",
+            "coveragePercent": 5.3153
+          },
+          {
+            "hex": "#f09a27",
+            "coveragePercent": 4.9888
+          },
+          {
+            "hex": "#611081",
+            "coveragePercent": 4.6037
+          },
+          {
+            "hex": "#c9630b",
+            "coveragePercent": 4.4717
+          },
+          {
+            "hex": "#511d06",
+            "coveragePercent": 4.1071
+          },
+          {
+            "hex": "#c946e6",
+            "coveragePercent": 3.8047
+          },
+          {
+            "hex": "#821fd2",
+            "coveragePercent": 3.7563
+          },
+          {
+            "hex": "#deac8b",
+            "coveragePercent": 3.7523
+          },
+          {
+            "hex": "#e99af0",
+            "coveragePercent": 2.9044
+          },
+          {
+            "hex": "#b96b55",
+            "coveragePercent": 2.3812
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f8c461",
+            "coveragePercent": 21.6959
+          },
+          {
+            "hex": "#a64b0a",
+            "coveragePercent": 19.5479
+          },
+          {
+            "hex": "#ea8f20",
+            "coveragePercent": 19.0154
+          },
+          {
+            "hex": "#6f15b0",
+            "coveragePercent": 16.2906
+          },
+          {
+            "hex": "#c64be9",
+            "coveragePercent": 16.0327
+          },
+          {
+            "hex": "#ba6358",
+            "coveragePercent": 7.4174
+          }
+        ],
+        "visibleSamples": 657295,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -15053,6 +15368,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/ui/oathbreaker-soul-v1.png": {
+      "sha256": "a95eabc462ffec081c472e756643c82306305fbb9c01cd10364f5ce1aa16a761",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "oathbreakerSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060706",
+            "coveragePercent": 22.5344
+          },
+          {
+            "hex": "#038d85",
+            "coveragePercent": 13.92
+          },
+          {
+            "hex": "#0af5db",
+            "coveragePercent": 10.6267
+          },
+          {
+            "hex": "#f0f8ee",
+            "coveragePercent": 6.7793
+          },
+          {
+            "hex": "#37110a",
+            "coveragePercent": 6.6989
+          },
+          {
+            "hex": "#034740",
+            "coveragePercent": 5.6052
+          },
+          {
+            "hex": "#861b04",
+            "coveragePercent": 5.064
+          },
+          {
+            "hex": "#04c6ab",
+            "coveragePercent": 4.7423
+          },
+          {
+            "hex": "#ce640b",
+            "coveragePercent": 3.9976
+          },
+          {
+            "hex": "#f5ad20",
+            "coveragePercent": 3.8178
+          },
+          {
+            "hex": "#4f4533",
+            "coveragePercent": 3.6647
+          },
+          {
+            "hex": "#e91010",
+            "coveragePercent": 3.4546
+          },
+          {
+            "hex": "#f9e273",
+            "coveragePercent": 2.6774
+          },
+          {
+            "hex": "#d1b0a8",
+            "coveragePercent": 2.2212
+          },
+          {
+            "hex": "#877967",
+            "coveragePercent": 2.1049
+          },
+          {
+            "hex": "#7ff8e6",
+            "coveragePercent": 2.0911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#03988c",
+            "coveragePercent": 32.0539
+          },
+          {
+            "hex": "#11f0d6",
+            "coveragePercent": 30.8298
+          },
+          {
+            "hex": "#e48812",
+            "coveragePercent": 10.9959
+          },
+          {
+            "hex": "#9f3208",
+            "coveragePercent": 10.273
+          },
+          {
+            "hex": "#f7cf52",
+            "coveragePercent": 8.04
+          },
+          {
+            "hex": "#ea1211",
+            "coveragePercent": 7.8073
+          }
+        ],
+        "visibleSamples": 526484,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/ui/samurai-travel-bag-v1.png": {
       "sha256": "3b323b9c7839ec89460df892561d518db90027a09215a632d3b68e2430809d32",
       "width": 1254,
@@ -15158,6 +15578,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/ui/seraph-soul-v1.png": {
+      "sha256": "087591a3a366863ff1ca5a51419990fb749e26e7732ab0f0148b3be9ff1dd6c0",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "seraphSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcf8f7",
+            "coveragePercent": 16.4457
+          },
+          {
+            "hex": "#0d030a",
+            "coveragePercent": 12.3278
+          },
+          {
+            "hex": "#f6e6d2",
+            "coveragePercent": 11.0916
+          },
+          {
+            "hex": "#f5d8a6",
+            "coveragePercent": 7.9836
+          },
+          {
+            "hex": "#300546",
+            "coveragePercent": 6.6207
+          },
+          {
+            "hex": "#f9c45a",
+            "coveragePercent": 5.445
+          },
+          {
+            "hex": "#8c3d09",
+            "coveragePercent": 5.3153
+          },
+          {
+            "hex": "#f09a27",
+            "coveragePercent": 4.9888
+          },
+          {
+            "hex": "#611081",
+            "coveragePercent": 4.6037
+          },
+          {
+            "hex": "#c9630b",
+            "coveragePercent": 4.4717
+          },
+          {
+            "hex": "#511d06",
+            "coveragePercent": 4.1071
+          },
+          {
+            "hex": "#c946e6",
+            "coveragePercent": 3.8047
+          },
+          {
+            "hex": "#821fd2",
+            "coveragePercent": 3.7563
+          },
+          {
+            "hex": "#deac8b",
+            "coveragePercent": 3.7523
+          },
+          {
+            "hex": "#e99af0",
+            "coveragePercent": 2.9044
+          },
+          {
+            "hex": "#b96b55",
+            "coveragePercent": 2.3812
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f8c461",
+            "coveragePercent": 21.6959
+          },
+          {
+            "hex": "#a64b0a",
+            "coveragePercent": 19.5479
+          },
+          {
+            "hex": "#ea8f20",
+            "coveragePercent": 19.0154
+          },
+          {
+            "hex": "#6f15b0",
+            "coveragePercent": 16.2906
+          },
+          {
+            "hex": "#c64be9",
+            "coveragePercent": 16.0327
+          },
+          {
+            "hex": "#ba6358",
+            "coveragePercent": 7.4174
+          }
+        ],
+        "visibleSamples": 657295,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/ui/serpent-scale-v1.png": {
       "sha256": "f691739e8eb2e56e2fc9581709e567fa91926d171fe4942c150f70e8400e42a9",
       "width": 1254,
@@ -15261,6 +15786,111 @@
         ],
         "visibleSamples": 696637,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/ui/yomi-guardian-soul-v1.png": {
+      "sha256": "c8524b0343b6d3d0bd59d4e8468fe2e0ea2892723abe493e13269f9fb8e90fd2",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "yomiGuardianSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f20905",
+            "coveragePercent": 13.2878
+          },
+          {
+            "hex": "#080201",
+            "coveragePercent": 12.3602
+          },
+          {
+            "hex": "#4c0c09",
+            "coveragePercent": 10.9432
+          },
+          {
+            "hex": "#280909",
+            "coveragePercent": 10.4794
+          },
+          {
+            "hex": "#830a07",
+            "coveragePercent": 7.8222
+          },
+          {
+            "hex": "#bc0a07",
+            "coveragePercent": 6.9661
+          },
+          {
+            "hex": "#5d2f2c",
+            "coveragePercent": 6.2895
+          },
+          {
+            "hex": "#f53908",
+            "coveragePercent": 5.5377
+          },
+          {
+            "hex": "#f77612",
+            "coveragePercent": 4.5808
+          },
+          {
+            "hex": "#9b5341",
+            "coveragePercent": 4.5063
+          },
+          {
+            "hex": "#fcf8ed",
+            "coveragePercent": 3.7411
+          },
+          {
+            "hex": "#d98b6d",
+            "coveragePercent": 3.2611
+          },
+          {
+            "hex": "#fcc01e",
+            "coveragePercent": 3.0174
+          },
+          {
+            "hex": "#f6dbb0",
+            "coveragePercent": 2.8084
+          },
+          {
+            "hex": "#fbd96b",
+            "coveragePercent": 2.6016
+          },
+          {
+            "hex": "#ef1f4f",
+            "coveragePercent": 1.7973
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ee0c08",
+            "coveragePercent": 36.7032
+          },
+          {
+            "hex": "#a10e0a",
+            "coveragePercent": 20.9021
+          },
+          {
+            "hex": "#f64c0c",
+            "coveragePercent": 13.9506
+          },
+          {
+            "hex": "#ba594a",
+            "coveragePercent": 10.3046
+          },
+          {
+            "hex": "#faa317",
+            "coveragePercent": 9.7801
+          },
+          {
+            "hex": "#f8c861",
+            "coveragePercent": 8.3594
+          }
+        ],
+        "visibleSamples": 518593,
+        "dominantCoveragePercent": 100.0001
       }
     }
   },
@@ -16860,35 +17490,35 @@
       {
         "value": "#08121900",
         "lines": [
-          169
+          178
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          169
+          178
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          169
+          178
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          308
+          317
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -16909,14 +17539,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          297
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          297
+          306
         ],
         "dynamic": false
       },
@@ -16958,7 +17588,7 @@
       {
         "value": "#465959",
         "lines": [
-          205
+          214
         ],
         "dynamic": false
       },
@@ -16972,7 +17602,7 @@
       {
         "value": "#60706a",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -16986,7 +17616,7 @@
       {
         "value": "#718679",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -17014,7 +17644,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -17028,21 +17658,21 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          205
+          214
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          171
+          180
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          126
+          135
         ],
         "dynamic": false
       },
@@ -17056,7 +17686,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          171
+          180
         ],
         "dynamic": false
       },
@@ -17077,21 +17707,21 @@
       {
         "value": "#d8e3c9",
         "lines": [
-          133
+          142
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          326
+          335
         ],
         "dynamic": false
       },
@@ -17112,14 +17742,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -17147,28 +17777,28 @@
       {
         "value": "#e8d89b",
         "lines": [
-          171
+          180
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          326
+          335
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          326
+          335
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          123
+          132
         ],
         "dynamic": false
       },
@@ -17182,14 +17812,14 @@
       {
         "value": "#f0df9c",
         "lines": [
-          133
+          142
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          205
+          214
         ],
         "dynamic": false
       },
@@ -17197,14 +17827,14 @@
         "value": "#f3d494",
         "lines": [
           22,
-          127
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          204
+          213
         ],
         "dynamic": false
       },
@@ -17218,7 +17848,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          326
+          335
         ],
         "dynamic": false
       },
@@ -17232,7 +17862,7 @@
       {
         "value": "#fff",
         "lines": [
-          205
+          214
         ],
         "dynamic": false
       }

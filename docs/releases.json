@@ -226,6 +226,22 @@
           "en": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate."
         }
       ]
+    },
+    {
+      "version": "0.9.19_4eb4a639",
+      "code": "4eb4a639",
+      "baseVersion": "0.9.19",
+      "slug": "greater-boss-rewards",
+      "summary": {
+        "hu": "Erősebb bossjutalmak",
+        "en": "Greater boss rewards"
+      },
+      "fixes": [
+        {
+          "hu": "A világok főbossai több XP-t, extra fejlesztéspontokat és egyedi, megőrizhető lélektárgyakat adnak.",
+          "en": "Realm bosses award more XP, bonus training points and unique soul items to keep."
+        }
+      ]
     }
   ]
 }

@@ -58,7 +58,7 @@ for(const count of [0,7,8]){
  assert.equal(run('boss.councilMinionKills'),count);
  assert(!snap().flags[1].includes('councilKeyEarned'));
  const firstVictory=snap();defeatBoss();
- assert.equal(snap().progression.totalXp,firstVictory.progression.totalXp+150);
+ assert.equal(snap().progression.totalXp,firstVictory.progression.totalXp+400);
  assert.equal(snap().shards,firstVictory.shards+20);
  assert(snap().defeated[1]);
  assert.equal(snap().flags[1].includes('councilKeyEarned'),count>=8,`${count} summon kills produced the wrong key result`);
@@ -100,13 +100,14 @@ useAt(key);assert.equal(snap().flags[1].filter(f=>f==='councilKey').length,1);
 // Save schemas stay on the three original realms and reject impossible key chains.
 run('persist();');const valid=JSON.parse(JSON.stringify(run('saved')));
 for(const extra of [[],['councilKeyEarned'],['councilKeyEarned','councilKey'],['councilKeyEarned','councilGateOpen']]){
- const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower',...extra];
- assert.equal(validate(data).flags[1].length,2+extra.length);
+ const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower','bossRewardClaimed','yomiGuardianSoul',...extra];
+ assert.equal(validate(data).flags[1].length,4+extra.length);
 }
 for(const extra of [['councilKey'],['councilGateOpen'],['councilKeyEarned','councilKey','councilGateOpen']]){
- const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower',...extra];assert.throws(()=>validate(data),/Invalid council progress/);
+ const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower','bossRewardClaimed','yomiGuardianSoul',...extra];assert.throws(()=>validate(data),/Invalid council progress/);
 }
 const unearned=JSON.parse(JSON.stringify(valid));unearned.defeated[1]=false;unearned.flags[1]=['soulUpper','soulLower','councilKeyEarned'];
+unearned.progression.points-=1;
 assert.throws(()=>validate(unearned),/Invalid council progress/);
 const unknown=JSON.parse(JSON.stringify(valid));unknown.flags[1].push('councilInvented');assert.throws(()=>validate(unknown),/Invalid quest flags/);
 assert.equal(valid.release,run('GAME_RELEASE.version'));

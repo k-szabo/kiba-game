@@ -55,7 +55,7 @@ function leaveCouncilHall(toShrine=false){
 }
 function startGame(resume=false){if(!storageReady){toast(I18n.t("text.the.save.is.still.loading"));return;}if(!loadingReady||Visuals.loaded<Visuals.total){toast(I18n.t("text.the.artwork.is.still.loading"));return;}if(Visuals.failures.length){toast(I18n.t("text.an.artwork.file.could.not.be.loaded.please.reload"));return;}
  const resetForRelease=!!(resume&&saved&&saved.release!==GAME_RELEASE.version),old=resume&&!resetForRelease?saved:null;
- abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:[false,false,false];flags=old?old.flags.map(f=>[...f]):[[],[],[]];visitedRests=old?old.visitedRests.map(f=>[...f]):[[],[],[]];shards=old?old.shards:0;progression=normalizeProgression(old?.progression);
+ abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:[false,false,false];flags=old?old.flags.map(f=>[...f]):[[],[],[]];visitedRests=old?old.visitedRests.map(f=>[...f]):[[],[],[]];shards=old?old.shards:0;progression=normalizeProgression(old?.progression,flags);
  Prologue.stop();enterRealm(old?old.realm:0,old?.checkpoint);state='play';$('menu').hidden=true;showHUD(true);
  if(!old||old.prologueComplete===false){Prologue.start();persist();}else{persist();toast(I18n.t('text.your.journey.continues.where.you.last.rested'));}
  if(resetForRelease)toast(I18n.t('text.save.reset.new.version'));
@@ -111,10 +111,19 @@ function guardianDefeated(){
  if(Prologue.active||boss.dead||boss.hp>0||!bossStarted||defeated[realm])return;
  const keyEarned=realm===1&&awardCouncilKeyDrop();
  boss.dead=true;finishBossBattle();
- /* Yomi's sword follows defeated[1]; Spirit Dash belongs to its shrine. */ defeated[realm]=true;const relicUnited=uniteVictoryRelics();awardXP(100+realm*50);if(realm===0)abilities[0]=true;shards+=20;checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
+ /* Establish a complete victory before awardXP persists the reward snapshot. */
+ defeated[realm]=true;if(realm===0)abilities[0]=true;
+ const relicUnited=uniteVictoryRelics(),reward=BOSS_REWARDS[realm],firstReward=!hasFlag(reward.claim);
+ checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
+ if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);
+ if(firstReward){
+  flags[realm].push(reward.claim);if(!hasFlag(reward.id))flags[realm].push(reward.id);
+  progression.points+=reward.points;shards+=20;awardXP(reward.xp);
+ }
  persist();updateHUD();burst(boss.x+40,boss.y+40,realms[realm].gold,55);$('bossHud').hidden=true;
  const text=realm===0?I18n.t('story.haru.s.first.memory.returns.the.glowing.torii.has'):realm===1?I18n.t('story.haru.s.second.memory.has.set.momo.s.sword'):I18n.t('text.the.final.guardian.bows.a.new.wind.stream.shines');
- story(I18n.t(relicUnited?'relic.eclipse.dialog.label':'text.a.soul.fragment.returns.home'),relicUnited?I18n.t('relic.eclipse.name'):realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+text:text+(keyEarned?'\n\n'+I18n.t('council.key.dropped'):''));
+ const body=(relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+text:text+(keyEarned?'\n\n'+I18n.t('council.key.dropped'):''))+(firstReward?'\n\n'+I18n.format('boss.reward.summary',[reward.xp,reward.points,I18n.t('item.'+reward.id)]):'');
+ story(I18n.t(relicUnited?'relic.eclipse.dialog.label':'text.a.soul.fragment.returns.home'),relicUnited?I18n.t('relic.eclipse.name'):realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),body);
 }
 function playerAttackDamage(kind=attackKind){return momoStats().damage*SWORD_ATTACKS[kind].damageScale;}
 function melee(kind='normal'){if(!Object.hasOwn(SWORD_ATTACKS,kind)||attackCooldown>0)return false;const profile=SWORD_ATTACKS[kind];attackKind=kind;attack=profile.duration;attackCooldown=profile.cooldown;attackElapsed=0;attackFace=player.face;attackHit=false;tone(kind==='heavy'?180:defeated[1]?430:300,.1,'triangle',.025);return true;}

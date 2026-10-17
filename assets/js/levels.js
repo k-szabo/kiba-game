@@ -1,5 +1,13 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
+// Earned reward flags, rather than held items or replayable encounters, own
+// the permanent bonus-point budget. Shared with the standalone save validator.
+const BOSS_REWARDS=Object.freeze([
+ Object.freeze({id:'oathbreakerSoul',claim:'bossRewardClaimed',xp:250,points:1}),
+ Object.freeze({id:'yomiGuardianSoul',claim:'bossRewardClaimed',xp:400,points:1}),
+ Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:1})
+]);
+function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -132,4 +140,5 @@ const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage
 for(let i=0;i<7;i++){ledge(yomi,'lava-island-'+i,440+i*350,5695,275,'stone',32);Object.assign(yomi.platforms.at(-1),{bossPlatform:true,broken:false,crumble:0});}
 japan.arena.triggerX=9120;yomi.arena.triggerX=1000;heaven.arena.triggerX=2050;
 const levels=[japan,yomi,heaven];
+for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
 

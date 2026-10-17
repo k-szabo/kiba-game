@@ -9,7 +9,7 @@ const DevLevel=(()=>{
   let totalXp=0;for(let n=1;n<target;n++)totalXp+=xpForLevel(n);
   // Preserve affordable allocations and refund the remainder through the
   // same budget normalization used by ordinary progression.
-  progression=normalizeProgression({level:target,xp:0,totalXp,stats:progression.stats});
+  progression=normalizeProgression({level:target,xp:0,totalXp,stats:progression.stats},flags);
   player.maxHp=momoStats().maxHp;player.hp=Math.max(1,Math.min(player.hp,player.maxHp));
   updateHUD();return true;
  }

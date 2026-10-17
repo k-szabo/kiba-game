@@ -49,8 +49,8 @@ for(const items of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
     assert.equal(run('boss.stage'),3);assert.equal(run('boss.hp'),run('boss.max'));assert(run('boss.secretTriggered'));assert(!snap().boss.dead&&!snap().defeated[2]);assert.equal(snap().progression.totalXp,xpStart);
     assert(!run('level.winds.find(w=>w.afterBoss)&&defeated[2]'));
     run("updateBoss(1.81);boss.move='eclipse';boss.targetX=player.x;startBossAttack();executeBossMove(0);");assert(run("boss.hazards.some(h=>h.kind==='lightPillar')&&projectiles.some(p=>p.kind==='shadowBolt')"));
-    run('boss.inv=0;hitBoss(boss.max);');assert(run('boss.dead'));assert.equal(run('boss.stage'),3);assert.equal(snap().progression.totalXp,xpStart+200);dismiss();
-  }else{assert(run('boss.dead'));assert.equal(run('boss.stage'),2);assert.equal(snap().progression.totalXp,xpStart+200);dismiss();}
+    run('boss.inv=0;hitBoss(boss.max);');assert(run('boss.dead'));assert.equal(run('boss.stage'),3);assert.equal(snap().progression.totalXp,xpStart+600);dismiss();
+  }else{assert(run('boss.dead'));assert.equal(run('boss.stage'),2);assert.equal(snap().progression.totalXp,xpStart+600);dismiss();}
 }
 // An overpowered hit cannot bypass the mandatory second form; resets start a fresh encounter.
 run("flags=[['angelHalo','demonHorn'],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;hitBoss(500);");assert.equal(run('boss.stage'),2);assert(!snap().boss.dead);assert(run('boss.hp>=1'));

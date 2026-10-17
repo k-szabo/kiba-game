@@ -34,6 +34,20 @@ Minden tárgy ugyanazon a rajzolón keresztül, pixelsűrűséghez igazított fe
 
 A korábbi bőrhátteret indigókék szövet, világos vászonszegély, fonott kötél és vörös csomó váltja. A díszítés a panel szélén marad; a sötét belső felület fölött továbbra is valódi HTML-rács és feliratok jelennek meg, így a tárgylista bővíthető és billentyűzettel kezelhető. A tárgyikonok közös kontrasztos stílusa, a kijelölés és a fókuszkeret megmarad. A megújulás nem ad új tárgyat és nem változtatja meg az inventory vagy a mentés működését.
 
+## Főbossok lélektárgyai – 0.9.19
+
+| Főboss | XP | Extra fejlesztéspont | Lélektárgy |
+| --- | ---: | ---: | --- |
+| Japán | 250 | 1 | Az esküszegő lelke |
+| Yomi | 400 | 1 | Yomi őrzőjének lelke |
+| Mennyország | 600 | 1 | A szeráf lelke |
+
+A lélek automatikusan a közös inventoryba kerül. A pontbónusz a szintlépési pontokon felül jár, és a szentélyeknél költhető el. A végső boss titkos formája esetén a jutalom csak a teljes harc végén jár. Az álomprológus és a minibossok nem adnak ilyen jutalomcsomagot.
+
+Fejlesztői részletek: a `BOSS_REWARDS` a `levels.js` közös táblája. A birodalmonkénti `bossRewardClaimed` jelző az egyszeri csomagot és az extra pontkeretet rögzíti; a külön lélektárgy-jelző a birtoklást. A normalizálás és a mentésvalidátor ugyanebből számolja a `szint − 1 + bossbónusz` keretet. A jutalom halál, pihenés, gyorsutazás és azonos kiadáson belüli folytatás után is megmarad. A fejlesztői tárgyadás csak a tárgyat adja, az újraélesztett boss pedig nem ismétli a jutalmat; a fejlesztői szintváltás megőrzi a már elnyert bónuszkeretet.
+
+A három eredeti RGBA kép az `assets/images/ui/` mappában található: `oathbreaker-soul-v1.png`, `yomi-guardian-soul-v1.png`, `seraph-soul-v1.png`. Az `ART_INVENTORY.items` teljes sziluettet őrző kivágásai ugyanazt a DPR- és kontrasztkezelést használják, mint a többi tárgy. A jóváhagyott koncepció és a beépített ImageGen gyártási adatai a [grafikai rekordban](art-prompts/boss-souls-v1.json) szerepelnek.
+
 ## Az Alkonyat Pecsétje – 0.9.10
 
 A glória és a démonúr szarva csak a titkos harmadik bossforma végleges legyőzésekor egyesül. Az átváltozás vagy a szokásos kétfázisos győzelem nem adja a jutalmat. A Pecsét új grafikát, HU/EN leírást és egyszer megjelenő győzelmi párbeszédet kapott; statisztikai bónuszt nem ad.

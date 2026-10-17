@@ -10,23 +10,29 @@ const SaveVault=(()=>{
  function bytes(text,size){if(typeof text!=='string'||text.length>30000)throw Error('Invalid encoding');const result=Uint8Array.from(atob(text),c=>c.charCodeAt(0));if(size&&result.length!==size)throw Error('Invalid length');return result;}
  const random=n=>crypto.getRandomValues(new Uint8Array(n));
  const integer=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
- function validProgress(p){
-  if(!p||!integer(p.level,1,12)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,11)||!integer(p.xp,0,500))return false;
+ function validProgress(p,worldFlags){
+  const maxPoints=11+BOSS_REWARDS.reduce((sum,reward)=>sum+reward.points,0);
+  if(!p||!integer(p.level,1,12)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,500))return false;
   if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,8)))return false;
-  if(p.points+Object.values(p.stats).reduce((a,b)=>a+b,0)!==p.level-1)return false;
+  if(p.points+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
   let xp=p.totalXp,level=1;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
   return level===p.level&&p.xp===(level===12?0:xp);
  }
  function validate(data){
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
-  if(data?.prologueComplete===false&&(data.realm!==0||data.won||data.defeated?.some(Boolean)||data.abilities?.some(Boolean)||data.flags?.some(f=>f.length)||data.progression?.totalXp))throw Error('Invalid dream progress');
-  if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean'||!validProgress(data.progression))throw Error('Invalid save schema');
+  if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
   for(const [key,length] of [['abilities',2],['defeated',3]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
   for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==3)throw Error('Invalid world progress');
   for(let i=0;i<3;i++){
    const map=levels[i],allowed=new Set([...map.objects.map(o=>o.id),...(map.progressFlags||[]),...map.gates.filter(g=>['fire','fragile'].includes(g.kind)).map(g=>g.id),...(map.secrets||[]).flatMap(s=>['discovered:'+s.id,'guardian:'+s.guardian])]);
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(map.rests.map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
+  }
+  if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
+  if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
+  for(const [realm,reward] of BOSS_REWARDS.entries()){
+   const claimed=data.flags[realm].includes(reward.claim),soul=data.flags[realm].includes(reward.id);
+   if(claimed!==soul||claimed&&!data.defeated[realm])throw Error('Invalid boss reward');
   }
   // Spirit Dash is acquired independently at the Yomi shrine, even after victory.
   if((data.realm>0||data.defeated[0])&&!data.abilities[0]||data.realm>0&&!data.defeated[0]||data.realm>1&&!data.defeated[1])throw Error('Invalid realm sequence');
