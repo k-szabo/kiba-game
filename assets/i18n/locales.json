@@ -488,7 +488,8 @@
       "dev.applied": "A módosítás alkalmazva.",
       "dev.invalid": "Érvénytelen érték.",
       "dev.item.owned": "Ez a tárgy már nálad van vagy felhasználtad.",
-      "dev.loading": "A tesztmód indításához várd meg a betöltést."
+      "dev.loading": "A tesztmód indításához várd meg a betöltést.",
+      "menu.changelog.0914.maintenance": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -980,7 +981,8 @@
       "dev.applied": "Change applied.",
       "dev.invalid": "Invalid value.",
       "dev.item.owned": "You already own or have consumed this item.",
-      "dev.loading": "Wait for loading to finish before starting test mode."
+      "dev.loading": "Wait for loading to finish before starting test mode.",
+      "menu.changelog.0914.maintenance": "Internal maintenance and technical improvements."
     }
   }
 }

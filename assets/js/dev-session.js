@@ -34,6 +34,7 @@ const DevSession=(()=>{
   if(initialized)return;initialized=true;
   DevTools.register({id:'test-start',labelKey:'dev.session.start',available:()=>!active&&ready(),run:begin});
   DevTools.register({id:'test-end',labelKey:'dev.session.end',available:()=>active,run:end});
+  Visuals.ready.then(()=>{if(DevTools.isOpen)DevTools.refresh();});
   I18n.onChange(refresh);refresh();
  }
  return Object.freeze({begin,end,init,refresh,onEnd(handler){endHandlers.add(handler);},get active(){return active;},get ready(){return ready();}});
