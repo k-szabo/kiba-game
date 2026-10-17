@@ -468,7 +468,27 @@
       "dev.toolError": "Az eszköz futtatása sikertelen.",
       "menu.changelog.0913.maintenance": "Belső karbantartás és technikai fejlesztések.",
       "menu.changelog.0913.32b2a833.0": "A lávakígyó már kilőtt lövedékei a kígyó eltűnése után is megmaradnak és sebeznek.",
-      "menu.changelog.0913.32b2a833.1": "A hibajelentés gombokon csak a bogárikon és a felirat marad."
+      "menu.changelog.0913.32b2a833.1": "A hibajelentés gombokon csak a bogárikon és a felirat marad.",
+      "dev.session.start": "Tesztmód indítása",
+      "dev.session.end": "Teszt befejezése",
+      "dev.session.active": "TESZTMÓD · A haladás nem mentődik",
+      "dev.session.info": "A tesztmód a memóriában fut. Befejezése visszavisz a főmenübe; a normál mentésed megmarad.",
+      "dev.boss": "Boss újraélesztése",
+      "dev.damage": "Sebzésszámok",
+      "dev.immortal": "Halhatatlanság",
+      "dev.on": "Bekapcsolva",
+      "dev.off": "Kikapcsolva",
+      "dev.realm": "Pálya",
+      "dev.arrival": "Érkezési pont",
+      "dev.teleport": "Teleportálás",
+      "dev.item": "Tárgy",
+      "dev.item.add": "Tárgy hozzáadása",
+      "dev.level": "Játékos szintje",
+      "dev.level.set": "Szint beállítása",
+      "dev.applied": "A módosítás alkalmazva.",
+      "dev.invalid": "Érvénytelen érték.",
+      "dev.item.owned": "Ez a tárgy már nálad van vagy felhasználtad.",
+      "dev.loading": "A tesztmód indításához várd meg a betöltést."
     }
   },
   "en": {
@@ -940,7 +960,27 @@
       "dev.toolError": "The tool could not be run.",
       "menu.changelog.0913.maintenance": "Internal maintenance and technical improvements.",
       "menu.changelog.0913.32b2a833.0": "Lava serpent projectiles remain active and deal damage after the serpent disappears.",
-      "menu.changelog.0913.32b2a833.1": "Bug report buttons now show only the bug icon and label."
+      "menu.changelog.0913.32b2a833.1": "Bug report buttons now show only the bug icon and label.",
+      "dev.session.start": "Start test mode",
+      "dev.session.end": "End test",
+      "dev.session.active": "TEST MODE · Progress is not saved",
+      "dev.session.info": "Test mode runs in memory. Ending it returns to the main menu; your normal save is preserved.",
+      "dev.boss": "Revive boss",
+      "dev.damage": "Damage numbers",
+      "dev.immortal": "Invincibility",
+      "dev.on": "On",
+      "dev.off": "Off",
+      "dev.realm": "Realm",
+      "dev.arrival": "Arrival point",
+      "dev.teleport": "Teleport",
+      "dev.item": "Item",
+      "dev.item.add": "Add item",
+      "dev.level": "Player level",
+      "dev.level.set": "Set level",
+      "dev.applied": "Change applied.",
+      "dev.invalid": "Invalid value.",
+      "dev.item.owned": "You already own or have consumed this item.",
+      "dev.loading": "Wait for loading to finish before starting test mode."
     }
   }
 }
