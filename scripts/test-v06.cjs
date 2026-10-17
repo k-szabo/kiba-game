@@ -1,5 +1,27 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {run,snap,tick,press,release,place,elements,dismiss}=require('./test-harness.cjs')();
+const validateSave=require('./test-save-validation.cjs');
+
+// Yomi victory awards the sword, XP and optional key, not the shrine's dash.
+// Both skipping the shrine and acquiring it before the fight remain saveable.
+for(const owned of [false,true]){
+  run(`flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));abilities=[true,${owned}];defeated=[true,false,false];progression=freshProgression();shards=0;enterRealm(1);state='play';bossStarted=true;boss.shelterTriggered=true;boss.raceTriggered=true;boss.yomiStage='race';boss.hp=1;boss.inv=0;boss.councilMinionKills=8;`);
+  place(run('boss.x-40'),5800);run("player.face=1;melee();advanceSwordAttack(.17)");dismiss();
+  assert(snap().defeated[1]);assert.equal(snap().abilities[1],owned,'Yomi victory must preserve the actual dash acquisition state');
+  assert.equal(snap().progression.totalXp,150);assert.equal(snap().shards,20);assert(run("flags[1].includes('councilKeyEarned')"));
+  validateSave(run('saved'));
+  run('guardianDefeated();mainMenu();startGame(true)');assert.equal(snap().abilities[1],owned);assert.equal(snap().progression.totalXp,150);
+  press('k');tick();release('k');assert.equal(run('dash>0'),owned,'Actual dash input must match ownership after Continue');
+  run('revive();persist()');assert.equal(snap().abilities[1],owned);validateSave(run('saved'));
+  run('showTraining()');assert.equal(elements.get('spiritTraining').hidden,!owned);run('closeTraining()');
+  const portal=run('level.exit');place(portal.x,portal.y);press('e');tick();release('e');dismiss();
+  assert.equal(snap().realm,2);assert.equal(snap().abilities[1],owned);validateSave(run('saved'));
+  run('mainMenu();startGame(true)');assert.equal(snap().realm,2);assert.equal(snap().abilities[1],owned);
+  assert(run("fastTravel(yomi.rests.find(r=>r.id==='lower'),1)"));
+  const altar=run('level.ability');place(altar.x,altar.y);press('e');tick();release('e');dismiss();
+  assert(snap().abilities[1],'The skipped altar must still grant dash after victory and returning from heaven');validateSave(run('saved'));
+  run('mainMenu();startGame(true)');assert(snap().abilities[1]);press('k');tick();release('k');assert(run('dash>0'));
+}
 
 // Both UI and direct purchase reject spirit training until the actual ability is acquired.
 run("abilities=[true,false];progression=freshProgression();awardXP(160);enterRealm(0);state='play';");place(330,1000);press('u');tick();release('u');

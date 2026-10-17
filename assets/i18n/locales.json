@@ -506,7 +506,9 @@
       "text.heavy.attack.short": "erős",
       "help.attack.body": "{0}: normál támadás, {1}: erős támadás. Az erős csapás lassabban indul és nagyobbat sebez.",
       "menu.changelog.0916.title": "Normál és erős támadás",
-      "menu.changelog.0916.attacks": "Külön, átállítható gombot kapott az erős támadás; a normál csapás gyengébb, az erős lassabb és nagyobbat sebez."
+      "menu.changelog.0916.attacks": "Külön, átállítható gombot kapott az erős támadás; a normál csapás gyengébb, az erős lassabb és nagyobbat sebez.",
+      "menu.changelog.0916.dash.title": "A szellemlépés megszerzésének javítása",
+      "menu.changelog.0916.dash.shrine": "Yomi őrzőjének legyőzése többé nem adja meg automatikusan a szellemlépést; a képességet az árnyék szentélyénél szerezheted meg."
     }
   },
   "en": {
@@ -1016,7 +1018,9 @@
       "text.heavy.attack.short": "heavy",
       "help.attack.body": "{0}: normal attack, {1}: heavy attack. Heavy strikes take longer to wind up and deal more damage.",
       "menu.changelog.0916.title": "Normal and heavy attacks",
-      "menu.changelog.0916.attacks": "Heavy attacks have a separate, remappable button; normal strikes deal less damage, while heavy strikes are slower and hit harder."
+      "menu.changelog.0916.attacks": "Heavy attacks have a separate, remappable button; normal strikes deal less damage, while heavy strikes are slower and hit harder.",
+      "menu.changelog.0916.dash.title": "Fix Spirit Dash acquisition",
+      "menu.changelog.0916.dash.shrine": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows."
     }
   }
 }

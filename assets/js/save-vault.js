@@ -28,7 +28,8 @@ const SaveVault=(()=>{
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(map.rests.map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
-  if((data.realm>0||data.defeated[0])&&!data.abilities[0]||(data.realm>1||data.defeated[1])&&!data.abilities[1]||data.realm>0&&!data.defeated[0]||data.realm>1&&!data.defeated[1])throw Error('Invalid realm sequence');
+  // Spirit Dash is acquired independently at the Yomi shrine, even after victory.
+  if((data.realm>0||data.defeated[0])&&!data.abilities[0]||data.realm>0&&!data.defeated[0]||data.realm>1&&!data.defeated[1])throw Error('Invalid realm sequence');
   if(data.defeated[0]&&!['forestBell','villageBell'].every(id=>data.flags[0].includes(id))||data.defeated[1]&&!['soulUpper','soulLower'].every(id=>data.flags[1].includes(id)))throw Error('Incomplete boss prerequisites');
   const council=data.flags[1];
   const earned=council.includes('councilKeyEarned'),held=council.includes('councilKey'),gateOpen=council.includes('councilGateOpen');
