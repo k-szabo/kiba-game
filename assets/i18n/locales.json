@@ -489,7 +489,12 @@
       "dev.invalid": "Érvénytelen érték.",
       "dev.item.owned": "Ez a tárgy már nálad van vagy felhasználtad.",
       "dev.loading": "A tesztmód indításához várd meg a betöltést.",
-      "menu.changelog.0914.maintenance": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0914.maintenance": "Belső karbantartás és technikai fejlesztések.",
+      "menu.changelog.0914.8447366a.title": "Menü, tesztmód és japán oszlop javítása",
+      "menu.changelog.0914.8447366a.fix0": "A szünetmenü gombjai egységesen jól olvasható feliratokat kaptak.",
+      "menu.changelog.0914.8447366a.fix1": "A fejlesztői panel nyitott játékablakokból is elérhető, a tesztelés utáni visszatérés pedig egy kattintással működik.",
+      "menu.changelog.0914.8447366a.fix2": "A tesztmódban hozzáadott csontkulccsal használható a tanácsosi kapu.",
+      "menu.changelog.0914.8447366a.fix3": "A japán pálya oszlopa természetesebb arányokkal jelenik meg."
     }
   },
   "en": {
@@ -982,7 +987,12 @@
       "dev.invalid": "Invalid value.",
       "dev.item.owned": "You already own or have consumed this item.",
       "dev.loading": "Wait for loading to finish before starting test mode.",
-      "menu.changelog.0914.maintenance": "Internal maintenance and technical improvements."
+      "menu.changelog.0914.maintenance": "Internal maintenance and technical improvements.",
+      "menu.changelog.0914.8447366a.title": "Menu, test mode and Japan pillar fixes",
+      "menu.changelog.0914.8447366a.fix0": "Pause menu buttons now use consistently readable labels.",
+      "menu.changelog.0914.8447366a.fix1": "The developer panel can open over game dialogs, and returning from testing takes one click.",
+      "menu.changelog.0914.8447366a.fix2": "The bone key added in test mode now works at the council gate.",
+      "menu.changelog.0914.8447366a.fix3": "The Japan realm pillar now renders with more natural proportions."
     }
   }
 }

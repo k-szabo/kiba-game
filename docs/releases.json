@@ -84,6 +84,34 @@
           "en": "Bug report buttons now show only the bug icon and label."
         }
       ]
+    },
+    {
+      "version": "0.9.14_8447366a",
+      "code": "8447366a",
+      "baseVersion": "0.9.14",
+      "slug": "menu-devtools-council-pillar",
+      "summary": {
+        "hu": "Menü, tesztmód és japán oszlop javítása",
+        "en": "Menu, test mode and Japan pillar fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A szünetmenü gombjai egységesen jól olvasható feliratokat kaptak.",
+          "en": "Pause menu buttons now use consistently readable labels."
+        },
+        {
+          "hu": "A fejlesztői panel nyitott játékablakokból is elérhető, a tesztelés utáni visszatérés pedig egy kattintással működik.",
+          "en": "The developer panel can open over game dialogs, and returning from testing takes one click."
+        },
+        {
+          "hu": "A tesztmódban hozzáadott csontkulccsal használható a tanácsosi kapu.",
+          "en": "The bone key added in test mode now works at the council gate."
+        },
+        {
+          "hu": "A japán pálya oszlopa természetesebb arányokkal jelenik meg.",
+          "en": "The Japan realm pillar now renders with more natural proportions."
+        }
+      ]
     }
   ],
   "releases": [

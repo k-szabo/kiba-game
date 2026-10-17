@@ -39,7 +39,7 @@ function resetCamera(){camera=clamp(player.x-viewW*.43,0,Math.max(0,level.width-
 function enterRealm(n,point=null){DevDamage.clear();councilReturn=null;realm=n;level=levels[n];platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;checkpoint={...(level.rests.find(r=>r.id===point?.id)||level.rests[0])};initPlayer(checkpoint);bossStarted=false;particles=[];drops=[];projectiles=[];visits=new Set();
  enemies=createEnemies();boss=createBoss();Visuals.resetAtmosphere();if(!visitedRests[n].includes('start'))visitedRests[n].push('start');resetCamera();updateHUD();}
 function enterCouncilHall(){
- if(Prologue.active||realm!==1||level!==levels[1]||!defeated[1]||!hasFlag('councilGateOpen'))return false;
+ if(Prologue.active||realm!==1||level!==levels[1]||(!defeated[1]&&!DevSession.active)||!hasFlag('councilGateOpen'))return false;
  DevDamage.clear();const hp=player.hp;
  councilReturn={checkpoint:{...checkpoint},enemies,visits,point:{x:2650,y:3400}};
  level=councilHall;platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;enemies=[];particles=[];drops=[];projectiles=[];visits=new Set();

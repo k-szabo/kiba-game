@@ -9,9 +9,9 @@ A játék címéhez add hozzá a `#devtools` fragmentet:
 - Helyben: `http://localhost:8000/#devtools`
 - GitHub Pagesen, a verzió publikálása után: `https://k-szabo.github.io/kiba-game/#devtools`
 
-A panel azonnal megnyílik, nincs belépés vagy jelszóbeállító script. Főmenüből, aktív játékból és szünetmenüből nyitható; más felületek és átvezetők közben nem lép a játékállapotuk helyére. Az URL-fragment megváltoztatásával futás közben is megnyitható.
+A panel azonnal megnyílik, nincs belépés vagy jelszóbeállító script. Főmenüből, aktív játékból és minden játékablakból nyitható, beleértve az inventoryt, térképet, fejlesztést, súgót és párbeszédet. Az URL-fragment megváltoztatásával futás közben is megnyitható.
 
-A panel megállítja a játékot és törli a lenyomva maradt játékbillentyűket. A Bezárás gomb vagy az Escape visszaállítja az előző állapotot és fókuszt; az URL-ből eltűnik a fragment. Szünetmenüből nyitva bezárás után is szünet marad. A Tab és Shift+Tab a panel kezelőszervei között mozog. A feliratok követik a játék HU/EN nyelvét.
+A panel megállítja a játékot, ideiglenesen elrejti a korábbi ablakokat és törli a lenyomva maradt játékbillentyűket. A Bezárás gomb vagy az Escape művelet nélkül visszaállítja az előző ablakokat, állapotot és fókuszt; az URL-ből eltűnik a fragment. Szünetmenüből nyitva bezárás után is szünet marad. Tesztindítás, teleport vagy boss-újraélesztés után a régi ablakok helyett közvetlenül a játék folytatódik. A Tab és Shift+Tab a panel kezelőszervei között mozog. A feliratok követik a játék HU/EN nyelvét.
 
 A megnyitását csak fejlesztői dokumentációban ismertetjük: a README, a játékmeneti útmutató, a játék súgója és a játékosoknak szóló változásnapló nem hirdeti.
 
@@ -31,6 +31,8 @@ A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz 
 | Tárgy hozzáadása | Az `ART_INVENTORY.items` katalógus összes regisztrált tárgyát listázza, a meglévő nevekkel. Már birtokolt vagy felhasznált tárgy nem duplikálható. A felszerelt alapfegyver nem külön hátizsáktárgy. |
 | Halhatatlanság | Ki/be kapcsolható védelem a normál harcban, a halálos lávában és az álomban is. Lezuhanásnál biztonságos pontra kerül Momo. Külön jelzés látható a próba közben; a teszt végén kikapcsol. A normál játék halál- és lezuhanásszabályai változatlanok. |
 | Sebzésszámok | Alapból kikapcsolt harci mérőeszköz; a tényleges HP-veszteséget mutatja. Blokkolás és sérthetetlenség nem kap fiktív találatot, az overkill és a boss-fázishatárok korlátozzák az értéket. Szünetben az effektek is megállnak; csökkentett mozgásnál helyben jelennek meg. |
+
+A tesztmódban hozzáadott csontkulcs a boss legyőzése nélkül is nyitja a tanácsosi kaput, és használatkor elfogy. Az így megnyitott kapu újra használható. Ez csak a memóriában futó tesztre érvényes; normál játékban a boss- és kulcsszabályok változatlanok.
 
 A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési sémába. Az eszközök belső állapotát nem exportáljuk a `window` objektumra.
 

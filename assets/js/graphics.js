@@ -170,12 +170,17 @@ const Visuals = (() => {
     const scale=size/art.bodyHeight;
     ctx.drawImage(images[art.image],x-art.anchorX*scale,feet-art.anchorY*scale,art.w*scale,art.h*scale);
   }
-  function tile(rect, x, y, width, height) {
+  function tile(rect, x, y, width, height, proportional = false, cropAnchor = .5) {
     if (!usable('terrain') || width <= 0) return;
+    // Tall, narrow root barriers need a slice of the painted material, not
+    // an entire horizontal platform squeezed into a column.
+    const sourceWidth=proportional?Math.min(rect.w,width*rect.h/height):rect.w;
+    const sourceX=rect.x+(rect.w-sourceWidth)*cropAnchor;
+    const drawWidth=proportional?sourceWidth*height/rect.h:width;
     const top=y-((rect.surfaceY??rect.y)-rect.y)*height/rect.h;
     ctx.save();
-    ctx.translate(x,top);ctx.scale(width/rect.w,height/rect.h);ctx.translate(-rect.x,-rect.y);sourceClip(rect);
-    ctx.drawImage(images.terrain, rect.x, rect.y, rect.w, rect.h, rect.x,rect.y,rect.w,rect.h);
+    ctx.translate(x+(width-drawWidth)/2,top);ctx.scale(drawWidth/sourceWidth,height/rect.h);ctx.translate(-sourceX,-rect.y);sourceClip(rect);
+    ctx.drawImage(images.terrain, sourceX, rect.y, sourceWidth, rect.h, sourceX,rect.y,sourceWidth,rect.h);
     ctx.restore();
   }
   function terrain(r, items) {
@@ -564,7 +569,8 @@ const Visuals = (() => {
       }
       if (g.kind === 'root') {
         const rect = ART_FRAMES.terrain[0][1];
-        tile(rect,g.x-4,g.y,g.w+8,g.h+40);
+        // This strip retains long roots that overlap the road beneath it.
+        tile(rect,g.x-4,g.y,g.w+8,g.h+40,true,.925);
         continue;
       }
       const horizontal = g.w > g.h;
