@@ -237,3 +237,13 @@
 .dream-active #coinPurse,.dream-active #foodTouch{display:none!important}
 @media(max-width:800px){.shop-items{grid-template-columns:1fr}.shop-item{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px 16px}.shop-item canvas{width:90px;height:90px;grid-row:span 2}.shop-item h3{margin:0;text-align:left}.shop-item p{margin:0}.shop-item button{grid-column:1/-1}.shop-panel{padding:22px}}
 @media(max-width:650px){#coinPurse{position:absolute;left:14px;top:83px;font-size:14px}#coinPurse img{width:22px;height:26px}#minimap{right:12px;bottom:155px}#minimap canvas{width:144px;height:92px}.shop-panel{max-height:calc(100dvh - 18px);padding:20px}.shop-item{padding:12px;grid-template-columns:72px minmax(0,1fr)}.shop-item canvas{width:72px;height:72px}}
+#journeyHUD{position:absolute;left:35px;top:108px;width:350px;max-width:calc(100% - 70px);display:flex;flex-direction:column;gap:8px;pointer-events:none}
+#journeyHUD #quest,#journeyHUD #relicInventory{position:static;max-width:none;width:100%;margin:0}
+#compass{display:grid;grid-template-columns:56px minmax(0,1fr) 44px;align-items:center;gap:9px;margin-top:10px;padding-top:10px;border-top:1px solid #d8bd80}
+#compass>img{width:56px;height:68px;object-fit:contain;filter:drop-shadow(0 1px 2px #000)}
+.compass-copy{display:flex;flex-direction:column;min-width:0;gap:3px;color:#fff2cf;font-size:14px;line-height:1.4}
+#compassLabel{font-size:15px;color:#ffe0a3}#compassTarget{overflow-wrap:anywhere}#compassDirection{font-size:13px;color:#d5edf4}
+#compassArrow{display:block;font:700 40px/1 Segoe UI Symbol,Arial,sans-serif;text-align:center;color:#ffe2a0;text-shadow:0 2px 2px #000,-1px 0 #000,1px 0 #000}
+@media(max-width:1000px){#journeyHUD{left:17px;top:108px;width:230px;max-width:calc(100% - 34px)}#compass{grid-template-columns:40px minmax(0,1fr) 32px;gap:6px}#compass>img{width:40px;height:52px}#compassArrow{font-size:32px}}
+@media(max-width:650px){#journeyHUD{left:12px;top:145px;width:calc(100% - 24px);max-width:none}#compass{grid-template-columns:48px minmax(0,1fr) 40px}#compass>img{width:48px;height:60px}#compassArrow{font-size:36px}#journeyHUD #quest p{margin-bottom:6px}}
+@media(max-height:500px){#journeyHUD{left:12px;top:88px;width:230px;max-width:calc(100% - 24px)}#quest:has(#compass:not([hidden])) #objective{display:none}#compass{margin-top:5px;padding-top:5px;grid-template-columns:32px minmax(0,1fr) 28px;gap:5px}#compass>img{width:32px;height:44px}#compassArrow{font-size:28px}.compass-copy{font-size:13px}#compassLabel,#compassDirection{font-size:12px}}

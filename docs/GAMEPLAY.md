@@ -109,6 +109,6 @@ A mockolt játékteszt nem ellenőrzi a tényleges böngészőmegjelenítést va
 
 O: étel használata. Akash portékáit az erdei menedékben találod, ha kiszabadítottad Yomiban.
 
-- **Iránytű:** A következő fő feladat irányát mutatja. A rejtett ösvények titkait magadnak kell felfedezned.
+- **Iránytű:** A bal felső feladatpanel alatt, nagy nyíllal és a cél nevével mutatja a következő fő feladat irányát. Az irányt jelzi, nem a bejárható útvonalat; a rejtett ösvényeket magadnak kell felfedezned.
 - **Kis útitérkép:** A közeli párkányokat, ismert szentélyeket és Momo helyét mutatja a képernyő sarkában.
 - **Ismeretlen eredetű sült hús:** Akash nem árulja el, miből készült. Elfogyasztva azonos eséllyel visszaad vagy elvesz 1 életerőt, de nem ölhet meg. Gyorshasználat: O.

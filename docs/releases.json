@@ -192,6 +192,22 @@
           "en": "Defeating Japan's guardian no longer grants double jump automatically; acquire the ability at the wind shrine."
         }
       ]
+    },
+    {
+      "version": "0.9.21_c1a74b3b",
+      "code": "c1a74b3b",
+      "baseVersion": "0.9.21",
+      "slug": "clear-compass-guidance",
+      "summary": {
+        "hu": "Láthatóbb iránytű",
+        "en": "Clearer compass"
+      },
+      "fixes": [
+        {
+          "hu": "Az iránytű külön, kontrasztos kijelzőn mutatja a fő cél nevét és irányát, és jelzi, ha a cél közelébe értél.",
+          "en": "The compass now shows the main objective's name and direction in a separate, high-contrast display, and indicates when you are nearby."
+        }
+      ]
     }
   ],
   "releases": [

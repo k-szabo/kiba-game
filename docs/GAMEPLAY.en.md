@@ -69,6 +69,6 @@ The Four Councillors' Hall is optional. To receive its key, defeat all eight min
 
 O: use food. Akash sells his wares at the Forest Refuge after you free him in Yomi.
 
-- **Compass:** Points towards your next main objective. Hidden paths still keep their secrets.
+- **Compass:** Shows the direction and name of your next main objective beneath the task panel in the top-left corner. It indicates direction, not a traversable route; hidden paths are yours to discover.
 - **Pocket Map:** Shows nearby ledges, known shrines and Momo's position in the corner of the screen.
 - **Roast Meat of Unknown Origin:** Akash will not say what it is made of. Eating it has an equal chance to restore or remove 1 health, but cannot kill you. Quick use: O.
