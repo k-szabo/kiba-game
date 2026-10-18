@@ -176,6 +176,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.20_74b9a06b",
+      "code": "74b9a06b",
+      "baseVersion": "0.9.20",
+      "slug": "double-jump-shrine-acquisition",
+      "summary": {
+        "hu": "A dupla ugrás megszerzésének javítása",
+        "en": "Fix double jump acquisition"
+      },
+      "fixes": [
+        {
+          "hu": "Japán őrzőjének legyőzése többé nem adja meg automatikusan a dupla ugrást; a képességet a szél szentélyénél szerezheted meg.",
+          "en": "Defeating Japan's guardian no longer grants double jump automatically; acquire the ability at the wind shrine."
+        }
+      ]
     }
   ],
   "releases": [

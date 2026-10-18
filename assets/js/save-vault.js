@@ -37,8 +37,8 @@ const SaveVault=(()=>{
    const claimed=data.flags[realm].includes(reward.claim),soul=data.flags[realm].includes(reward.id);
    if(claimed!==soul||claimed&&!data.defeated[realm])throw Error('Invalid boss reward');
   }
-  // Spirit Dash is acquired independently at the Yomi shrine, even after victory.
-  if((data.realm>0||data.defeated[0])&&!data.abilities[0]||data.realm>0&&!data.defeated[0]||data.realm>1&&!data.defeated[1])throw Error('Invalid realm sequence');
+  // Both movement abilities belong to their shrines, independently of victories.
+  if(data.realm>0&&!data.defeated[0]||data.realm>1&&!data.defeated[1])throw Error('Invalid realm sequence');
   if(data.defeated[0]&&!['forestBell','villageBell'].every(id=>data.flags[0].includes(id))||data.defeated[1]&&!['soulUpper','soulLower'].every(id=>data.flags[1].includes(id)))throw Error('Incomplete boss prerequisites');
   const council=data.flags[1];
   const earned=council.includes('councilKeyEarned'),held=council.includes('councilKey'),gateOpen=council.includes('councilGateOpen');

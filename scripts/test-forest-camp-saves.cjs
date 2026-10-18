@@ -22,7 +22,7 @@ for(const realm of [0,1,2]){
  assert.deepEqual(JSON.parse(JSON.stringify(validate(elsewhere))),elsewhere,'Camp visitation remains valid while exploring another realm');
  delete elsewhere.location;assert.deepEqual(JSON.parse(JSON.stringify(validate(elsewhere))),elsewhere,'Existing ordinary save fixtures may omit location');
 }
-const firstVisit=fixture();firstVisit.defeated=[true,false,false];firstVisit.abilities=[true,false];firstVisit.flags=[['forestBell','villageBell'],[],[]];
+const firstVisit=fixture();firstVisit.defeated=[true,false,false];firstVisit.abilities=[false,false];firstVisit.flags=[['forestBell','villageBell'],[],[]];
 firstVisit.visitedRests=[['start',campRest.id],[],[]];firstVisit.progression={level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};
 assert.doesNotThrow(()=>validate(firstVisit),'First visit needs Japan victory, not later-world progress or a dash');
 for(const [name,mutate] of [

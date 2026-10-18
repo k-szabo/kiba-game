@@ -94,6 +94,19 @@ async function main(){
   await councilClient.vault.write(acquired);assert.deepEqual(plain(await client(env).vault.ready),acquired);
  }
 
+ // Japan victory and later realms do not imply double-jump ownership. Keep
+ // both abilities independent through real encryption and profile reloads.
+ for(const realm of [0,1,2])for(const dashOwned of [false,true]){
+  const skipped=copy(council);skipped.realm=realm;skipped.abilities=[false,dashOwned];
+  skipped.checkpoint=plain(vm.runInContext(`levels[${realm}].rests[0]`,councilClient));skipped.visitedRests[realm]=['start'];
+  await councilClient.vault.write(skipped);assert.deepEqual(plain(await client(env).vault.ready),skipped);
+  const atCamp=copy(skipped);atCamp.realm=0;atCamp.location='forestCamp';atCamp.prologueComplete=true;
+  atCamp.checkpoint=plain(vm.runInContext('forestCamp.rests[0]',councilClient));atCamp.visitedRests[0]=['start','forestCamp'];
+  await councilClient.vault.write(atCamp);assert.deepEqual(plain(await client(env).vault.ready),atCamp);
+  const acquired=copy(skipped);acquired.abilities[0]=true;
+  await councilClient.vault.write(acquired);assert.deepEqual(plain(await client(env).vault.ready),acquired);
+ }
+
  // Snake loot can be earned before the guardian dies, even without collecting
  // the optional dash shrine first. It is permanent across encrypted reloads.
  const scale=copy(council);scale.abilities[1]=false;scale.defeated[1]=false;scale.flags[1].push('serpentScale');
