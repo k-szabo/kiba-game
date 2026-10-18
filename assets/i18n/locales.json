@@ -571,7 +571,9 @@
       "merchant.greeting": "Aki messzire készül, többnyire azt kérdezi, mennyit ér egy jó térkép, holott az igazi kérdés inkább az, mennyit ér az az út, amelyet nélküle kellene megtennie; nézz hát körül, és talán találsz valamit, amiért cserébe a következő eltévedést meghagyhatod valaki másnak.",
       "help.merchant.body": "{0}: étel használata. Akash portékáit az erdei menedékben találod, ha kiszabadítottad Yomiban.",
       "menu.changelog.0921.title": "Akash és az elveszett utak portékái",
-      "menu.changelog.0921.merchant": "Kiszabadítható kereskedő, gyűjthető érmék, megvásárolható iránytű és minimap, valamint inventoryból és átállítható gyorsbillentyűvel használható sült hús került a játékba."
+      "menu.changelog.0921.merchant": "Kiszabadítható kereskedő, gyűjthető érmék, megvásárolható iránytű és minimap, valamint inventoryból és átállítható gyorsbillentyűvel használható sült hús került a játékba.",
+      "dev.amount": "Mennyiség",
+      "dev.coins.add": "Érmék hozzáadása"
     }
   },
   "en": {
@@ -1146,7 +1148,9 @@
       "merchant.greeting": "Those who set out for distant places usually ask what a good map is worth, though the real question is rather what the journey without it might cost; have a look around, then, and perhaps you will find something that lets you leave the next wrong turning to somebody else.",
       "help.merchant.body": "{0}: use food. Akash sells his wares at the Forest Refuge after you free him in Yomi.",
       "menu.changelog.0921.title": "Akash and the wares of lost roads",
-      "menu.changelog.0921.merchant": "The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut."
+      "menu.changelog.0921.merchant": "The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut.",
+      "dev.amount": "Amount",
+      "dev.coins.add": "Add coins"
     }
   }
 }

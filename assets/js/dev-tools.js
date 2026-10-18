@@ -60,6 +60,8 @@ const DevTools=(()=>{
   for(const [child,wasInert] of inertSiblings)child.inert=wasInert;inertSiblings=[];
   for(const [overlay,wasHidden] of overlays)overlay.hidden=wasHidden;overlays=[];
   state=origin;keys.clear();pressed.clear();
+  if(origin==='inventory')Inventory.render();
+  if(origin==='shop')Merchant.render();
   if(window.location?.hash==='#devtools')window.history.replaceState(null,'',window.location.pathname+window.location.search);
   if(returnFocus?.isConnected&&returnFocus.matches?.('button,a[href],input,select,textarea,summary,[tabindex]')&&!returnFocus.disabled&&!returnFocus.closest('[inert]')&&returnFocus.getClientRects().length)returnFocus.focus();
   else node(({menu:'startButton',pause:'resumeButton',inventory:'closeInventory',map:'closeMap',training:'closeTraining',help:'helpTitle',dialog:'dialogOk',won:'dialogOk',shop:'closeShop'})[origin]||'pauseButton').focus();
