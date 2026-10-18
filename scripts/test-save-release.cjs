@@ -123,6 +123,26 @@ async function main(){
   assert.throws(()=>reload.vault.write(missingSoul),/Invalid boss reward/);
  }
 
+ // A separate safe camp still belongs to Japan's world progress. Its own
+ // canonical checkpoint and exact location survive encryption and reloading.
+ const camp=copy(rewarded);camp.realm=0;camp.location='forestCamp';camp.prologueComplete=true;
+ camp.checkpoint=plain(vm.runInContext('forestCamp.rests[0]',councilClient));camp.visitedRests[0].push(camp.checkpoint.id);
+ await reload.vault.write(camp);assert.deepEqual(plain(await client(env).vault.ready),camp);
+ for(const realm of [0,1,2]){
+  const travelling=copy(camp);travelling.realm=realm;travelling.location=null;
+  travelling.checkpoint=plain(vm.runInContext(`levels[${realm}].rests[0]`,councilClient));
+  await reload.vault.write(travelling);assert.deepEqual(plain(await client(env).vault.ready),travelling);
+  await reload.vault.write(camp);assert.deepEqual(plain(await client(env).vault.ready),camp);
+ }
+ const unlocatedCamp=copy(camp);unlocatedCamp.location=null;
+ assert.throws(()=>reload.vault.write(unlocatedCamp),/Invalid save location/);
+ const campUpdate=storageEnvironment(),campOld=client(campUpdate);await campOld.vault.ready;await campOld.vault.write(camp);
+ campUpdate.local.set('momo-language','en');campUpdate.local.set('momo-keybindings-v1','custom');
+ const campNext=client(campUpdate,(BigInt(current.split('.')[0])+1n)+'.0.0');
+ assert.equal(await campNext.vault.ready,null);assert.equal(campNext.vault.notice,'text.save.reset.new.version');
+ assert.equal(campUpdate.records.has('save'),false);assert.equal(campUpdate.local.has(SAVE),false);
+ assert.equal(campUpdate.local.get('momo-language'),'en');assert.equal(campUpdate.local.get('momo-keybindings-v1'),'custom');
+
  // Hashes have no lexical time order: append order governs same-base updates.
  const fixEnv=storageEnvironment(),base='0.9.10',firstFix=base+'_ffffffff',nextFix=base+'_00000000';
  fixEnv.local.set('momo-language','en');fixEnv.local.set('momo-keybindings-v1','custom');
@@ -192,6 +212,6 @@ async function main(){
  const replacement=client(inflight,current,{locks:false});await replacement.vault.ready;assert.equal(replacement.vault.isReady,true);const replacementDevice=inflight.records.get('profile').device;
  continueEncryption();await assert.rejects(writing,/Storage aborted/);assert.equal(inflight.records.get('profile').device,replacementDevice);assert.equal(inflight.records.has('save'),false);assert.equal(inflight.local.has(SAVE),false);
  assert.ok([...env.opened,...update.opened,...race.opened].every(name=>name==='momo-save-v2'));
- console.log('Save release: reload, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
+ console.log('Save release: reload, forest camp travel/checkpoint/reset, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

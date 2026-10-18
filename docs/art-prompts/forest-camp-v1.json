@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "User explicitly approved forest-camp-v1 concept and all three civilian shiba designs before production.",
+  "useCase": "stylized-concept",
+  "references": [
+    "assets/images/ui/momo-inventory-v1.png",
+    "assets/images/backgrounds/japan-v3.png"
+  ],
+  "concept": "Approved board: blue-hour cedar/bamboo refugee camp; elder watchman, adult weaver and cream child, all unarmoured upright shiba villagers.",
+  "notes": [
+    "Four distinct imagegen calls, one per production image.",
+    "Source image pixels and alpha are unchanged; no postprocessed matte removal or compositing.",
+    "Bounds are [left,top,right-exclusive,bottom-exclusive]. Feet anchors and source ground line are visual registration estimates; preserve uniform scale and verify in browser.",
+    "Three static standing sprites only. No new animation was requested or produced.",
+    "Dark RGB outside NPC silhouettes is fully transparent; preserve native RGBA alpha."
+  ],
+  "assets": [
+    {
+      "key": "background",
+      "path": "assets/images/backgrounds/forest-camp-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "groundLineY": 532,
+      "prompt": "Use case: stylized-concept. Asset type: production painted bitmap for Kiba, a 2D Japanese fantasy game. User APPROVED the supplied concept board. Match its detailed painted materials, colours and gentle mood exactly. No words, text, lettering, labels, watermark, UI or modern objects. Primary request: extract and expand ONLY the upper forest camp environment into one complete standalone extremely wide panoramic background, approximately 3072x1024 composition. No parchment board, no character lineup, no people or animals. Dark blue cedar and bamboo woods at blue hour, red maple leaves, worn indigo cloth refugee tents, baskets and cloth bundles, amber hanging paper lanterns, a central warm modest campfire with cooking pot, small wooden shrine on the far right. The safe broad continuous horizontal mossy earth footpath runs level across the ENTIRE width at about y=800 of 1024, 78 percent image height. Keep the walkable path open in the foreground so sprites can stand along it; tents, baskets, fire and shrine are BEHIND the foot line, never obstacles or stair steps into it. Left and right side entrances open. Very distant misty cedar trunks, densely painted natural foliage and exposed roots. Stable side-on game camera, no extreme perspective, no platform gaps, no foreground fence. Complete environmental scene from canopy sky to solid root-filled earth below the foot line. Match upper board style; do not include lower board or characters. Full opaque background."
+    },
+    {
+      "key": "daichi",
+      "path": "assets/images/npcs/daichi-v1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        39,
+        138,
+        1021,
+        1446
+      ],
+      "alphaBounds128": [
+        39,
+        138,
+        1020,
+        1446
+      ],
+      "feetAnchor": [
+        532,
+        1445
+      ],
+      "bodyHeight": 1308,
+      "prompt": "Use case: stylized-concept. Asset type: production painted bitmap for Kiba, a 2D Japanese fantasy game. User APPROVED the supplied concept board. Match its detailed painted materials, colours and gentle mood exactly. No words, text, lettering, labels, watermark, UI or modern objects. Primary request: ONLY the LEFT elder grey-brown shiba villager from the approved concept, as a single production character sprite, centered complete head to feet, upright on two paws, front three-quarter view. Retain same large triangular ears, warm big brown eyes, short round canine muzzle, white eyebrows/cheek fur and little grey chin beard, worn indigo unarmoured haori with subtle faded gold stitch marks over tan kimono and straw-brown belt, wooden walking staff on his left in paw, fluffy curled tail to his right. Exactly the same design and chibi proportions as concept, match Momo species. Character occupies ~80% canvas height, wide empty margin above ears/below feet/around tail/staff. No armour, no weapons. Truly transparent RGBA background around whole figure and in silhouette gaps, NO ground, NO pedestal, NO painted backdrop, NO parchment, NO floor shadow or coloured matte. Full staff and both paws intact. One neutral calm standing pose only."
+    },
+    {
+      "key": "natsu",
+      "path": "assets/images/npcs/natsu-v1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        50,
+        143,
+        1009,
+        1439
+      ],
+      "alphaBounds128": [
+        51,
+        144,
+        1009,
+        1439
+      ],
+      "feetAnchor": [
+        480,
+        1438
+      ],
+      "bodyHeight": 1296,
+      "prompt": "Use case: stylized-concept. Asset type: production painted bitmap for Kiba, a 2D Japanese fantasy game. User APPROVED the supplied concept board. Match its detailed painted materials, colours and gentle mood exactly. No words, text, lettering, labels, watermark, UI or modern objects. Primary request: ONLY the MIDDLE adult reddish shiba female weaver from approved concept, as a single production character sprite, centered complete head to feet, upright on two paws, front three-quarter view. Retain same large triangular ears, big brown eyes, short round canine muzzle, cream cheeks, reddish-orange fur, small rust-red flower at one ear, worn indigo floral cloth shawl over faded rust-red kimono, sewing basket with folded indigo/cream cloth held in paws, fluffy curled tail to her right. Exactly the approved design and chibi proportions, match Momo species, no human face or human hair. Character occupies ~80% canvas height, wide empty margin around all bodyparts/tail/basket. No armour or weapons. Truly transparent RGBA background around whole figure and in silhouette gaps, NO ground, NO pedestal, NO painted backdrop, NO parchment, NO floor shadow or coloured matte. Both feet and complete basket visible. One neutral resilient standing pose only."
+    },
+    {
+      "key": "sora",
+      "path": "assets/images/npcs/sora-v1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        14,
+        109,
+        1015,
+        1412
+      ],
+      "alphaBounds128": [
+        15,
+        109,
+        1014,
+        1411
+      ],
+      "feetAnchor": [
+        480,
+        1411
+      ],
+      "bodyHeight": 1303,
+      "prompt": "Use case: stylized-concept. Asset type: production painted bitmap for Kiba, a 2D Japanese fantasy game. User APPROVED the supplied concept board. Match its detailed painted materials, colours and gentle mood exactly. No words, text, lettering, labels, watermark, UI or modern objects. Primary request: ONLY the RIGHT little cream shiba child from approved concept, as a single production character sprite, centered complete head to feet, upright on two paws, front three-quarter view. Retain same big triangular ears, huge warm brown eyes, short round canine muzzle, pale cream-gold fur, cream cheeks, small child body and round cheeks, tan straw rain cape with visible handpainted reeds and cord collar, faded blue-grey short robe, holding small carved wooden toy dog in both paws at chest, fluffy curled tail to his right. Exactly the approved design and child proportions, match Momo canine species, no human hair or human face. Character occupies ~80% canvas height, wide empty margin around ears/feet/cape/tail. No armour or weapons. Truly transparent RGBA background around whole figure and in silhouette gaps, NO ground, NO pedestal, NO painted backdrop, NO parchment, NO floor shadow or coloured matte. Both feet and complete cape/tail visible. One neutral shy hopeful standing pose only."
+    }
+  ]
+}

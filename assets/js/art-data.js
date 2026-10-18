@@ -1,4 +1,10 @@
 /* Illustrated animation atlas metadata. */
+const ART_CAMP={
+  backdrop:{image:'campBackdrop',w:2172,h:724,groundY:532},
+  daichi:{image:'campDaichi',x:0,y:0,w:1024,h:1536,anchorX:532,anchorY:1445,bodyHeight:1308},
+  natsu:{image:'campNatsu',x:0,y:0,w:1024,h:1536,anchorX:480,anchorY:1438,bodyHeight:1296},
+  sora:{image:'campSora',x:0,y:0,w:1024,h:1536,anchorX:480,anchorY:1411,bodyHeight:1303}
+};
 const ART_CULT_GATE={w:1536,h:1024,anchorX:768,anchorY:1003,bodyHeight:995};
 // Painted spell sprites: the tip is registered to the projectile/ground impact point.
 const ART_EFFECTS={
@@ -6,6 +12,10 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "campBackdrop": "assets/images/backgrounds/forest-camp-v1.png",
+  "campDaichi": "assets/images/npcs/daichi-v1.png",
+  "campNatsu": "assets/images/npcs/natsu-v1.png",
+  "campSora": "assets/images/npcs/sora-v1.png",
   "oathbreakerSoul": "assets/images/ui/oathbreaker-soul-v1.png",
   "yomiGuardianSoul": "assets/images/ui/yomi-guardian-soul-v1.png",
   "seraphSoul": "assets/images/ui/seraph-soul-v1.png",

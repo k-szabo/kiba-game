@@ -29,7 +29,7 @@ const objectVisible=o=>(!o.requiresFlag||hasFlag(o.requiresFlag))&&!(o.type==='c
 function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);scale=innerHeight/H;viewW=innerWidth/scale;ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);}
 addEventListener('resize',resize);resize();
 SaveVault.ready.then(data=>{storageReady=true;saved=data;$('continueButton').hidden=!data;if(SaveVault.notice)toast(I18n.t(SaveVault.notice));if(DevTools.isOpen)DevTools.refresh();});
-function persist(){if(DevSession.active)return;saved={version:2,layout:2,release:GAME_RELEASE.version,realm,prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
+function persist(){if(DevSession.active)return;saved={version:2,layout:2,release:GAME_RELEASE.version,realm,location:level===forestCamp?'forestCamp':null,prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
 function saveFailed(){if(!saveWarning){saveWarning=true;toast(I18n.t("text.saving.failed.check.your.browser.storage"));}}
 function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add('visible');toastTimer=5;}
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
@@ -46,6 +46,24 @@ function enterCouncilHall(){
  level=councilHall;platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;enemies=[];particles=[];drops=[];projectiles=[];visits=new Set();
  boss=createBoss();bossStarted=false;initPlayer(level.start);player.hp=Math.min(hp,player.maxHp);state='play';keys.clear();pressed.clear();resetCamera();updateHUD();persist();toast(I18n.t('council.hall.entered'));return true;
 }
+function campNPCVisible(npc){return !npc.requiresFlag||flags[npc.requiresFlag.realm]?.includes(npc.requiresFlag.id);}
+function enterForestCamp({save=true,atShrine=false}={}){
+ if(Prologue.active||!defeated[0])return false;
+ const hp=player?.hp;
+ enterRealm(0);level=forestCamp;platforms=level.platforms.map(p=>({...p,dx:0}));
+ checkpoint={...forestCamp.rests[0]};enemies=[];boss=createBoss();boss.dead=true;bossStarted=false;
+ initPlayer(atShrine?checkpoint:level.start);if(!atShrine&&Number.isFinite(hp))player.hp=Math.min(hp,player.maxHp);
+ if(!visitedRests[0].includes(checkpoint.id))visitedRests[0].push(checkpoint.id);
+ state='play';keys.clear();pressed.clear();context=null;$('prompt').hidden=true;$('bossHud').hidden=true;
+ resetCamera();updateHUD();if(save)persist();return true;
+}
+function leaveForestCamp(){
+ if(level!==forestCamp)return false;
+ const hp=player.hp;enterRealm(0,levels[0].rests.find(r=>r.id==='temple'));
+ initPlayer(level.campEntrance);player.hp=Math.max(1,Math.min(hp,player.maxHp));
+ state='play';keys.clear();pressed.clear();context=null;$('prompt').hidden=true;
+ resetCamera();updateHUD();persist();return true;
+}
 function leaveCouncilHall(toShrine=false){
  if(level!==councilHall)return false;
  const back=councilReturn,hp=player.hp,rest={...(back?.checkpoint||checkpoint)};
@@ -56,7 +74,7 @@ function leaveCouncilHall(toShrine=false){
 function startGame(resume=false){if(!storageReady){toast(I18n.t("text.the.save.is.still.loading"));return;}if(!loadingReady||Visuals.loaded<Visuals.total){toast(I18n.t("text.the.artwork.is.still.loading"));return;}if(Visuals.failures.length){toast(I18n.t("text.an.artwork.file.could.not.be.loaded.please.reload"));return;}
  const resetForRelease=!!(resume&&saved&&saved.release!==GAME_RELEASE.version),old=resume&&!resetForRelease?saved:null;
  abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:[false,false,false];flags=old?old.flags.map(f=>[...f]):[[],[],[]];visitedRests=old?old.visitedRests.map(f=>[...f]):[[],[],[]];shards=old?old.shards:0;progression=normalizeProgression(old?.progression,flags);
- Prologue.stop();enterRealm(old?old.realm:0,old?.checkpoint);state='play';$('menu').hidden=true;showHUD(true);
+ Prologue.stop();if(old?.location==='forestCamp')enterForestCamp({save:false,atShrine:true});else enterRealm(old?old.realm:0,old?.checkpoint);state='play';$('menu').hidden=true;showHUD(true);
  if(!old||old.prologueComplete===false){Prologue.start();persist();}else{persist();toast(I18n.t('text.your.journey.continues.where.you.last.rested'));}
  if(resetForRelease)toast(I18n.t('text.save.reset.new.version'));
 }
@@ -64,15 +82,23 @@ function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on
 function story(label,title,text,onClose){state='dialog';keys.clear();pressed.clear();$('dialogLabel').textContent=I18n.t(label);$('dialogTitle').textContent=I18n.t(title);$('dialogText').replaceChildren();for(const paragraph of I18n.t(text).split(/\n\s*\n/)){const p=document.createElement('p');p.textContent=paragraph;$('dialogText').append(p);}$('dialog').hidden=false;$('dialogOk').textContent=I18n.t("text.next.0ed851");$('dialogOk').onclick=()=>{$('dialog').hidden=true;state='play';onClose?.();};$('dialogOk').focus();}
 function pointNear(p,dx=100,dy=90){return Math.abs(player.x+player.w/2-p.x)<dx&&Math.abs(player.y+player.h-p.y)<dy;}
 function direction(p){const dx=p.x-player.x,dy=p.y-(player.y+player.h);return Math.abs(dy)>Math.abs(dx)*.6?(dy>0?'↓':'↑'):(dx>0?'→':'←');}
-function nextObjective(){if(level.id==='councilHall')return{point:level.inscription,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
+function nextObjective(){if(level===forestCamp)return{point:level.rests[0],text:I18n.t('camp.objective')};if(level.id==='councilHall')return{point:level.inscription,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
  if(realm===0){if(!abilities[0])return{point:level.ability,text:I18n.t("text.visit.the.wind.shrine.beside.the.path")};const bell=level.objects.find(o=>o.type==='bell'&&!hasFlag(o.id));if(bell)return{point:bell,text:I18n.format("message.ring.arg0.bells.arg1.2",[bell.name,flags[0].filter(f=>f.endsWith('Bell')).length])};return{point:level.boss,text:I18n.t("text.the.two.bells.have.opened.the.bamboo.temple.find")};}
  if(realm===1){const soul=level.objects.find(o=>o.type==='rescue'&&!hasFlag(o.id));if(soul)return{point:soul,text:I18n.format("message.free.arg0.souls.arg1.2",[soul.name,flags[1].filter(f=>f.startsWith('soul')).length])};if(!abilities[1])return{point:level.ability,text:I18n.t("text.the.shrine.of.shadows.grants.spirit.dash.use.the")};return{point:level.boss,text:I18n.t("text.the.abyss.gate.is.open.descend.to.the.bottom")};}
  const upcoming=level.winds.find(w=>!w.afterBoss&&w.y+50<player.y&&w.y+w.h>player.y-250);return{point:upcoming?{x:upcoming.x+upcoming.w/2,y:upcoming.y}:level.boss,text:hasFlag('dawnSeal')?I18n.t("text.the.dawn.seal.is.broken.the.guardian.awaits.at"):I18n.t("text.jump.into.the.wind.streams.and.move.sideways.onto")};}
-function updateHUD(){if(!player)return;$('game').classList[!Prologue.active&&bossStarted&&!boss?.dead?'add':'remove']('encounter-active');if(Prologue.active){Prologue.hud();return;}$('questLabel').textContent=I18n.t('quest.label');const current=realm===0?(player.y>1150?I18n.t("energy.faint"):I18n.t("energy.nourishing")):realm===1?I18n.t("energy.distorted"):level.winds.some(w=>overlap(player,w))?I18n.t("energy.powerful"):I18n.t("energy.pure");$('kibaCurrent').textContent=I18n.t(current);$('realmLabel').textContent=I18n.t(realms[realm].label);$('health').innerHTML=I18n.t('<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp));$('health').setAttribute('aria-label',I18n.format("message.arg0.of.arg1.health",[player.hp,player.maxHp]));$('souls').textContent=I18n.t(shards);$('dashHint').hidden=!abilities[1];$('jumpHint').textContent=I18n.t(abilities[0]?I18n.t("text.twice.double.jump"):I18n.t("text.jump.4e09c3"));$('dropHint').hidden=realm===0;updateProgressHUD();updateRelicHUD();const objective=nextObjective();$('objective').textContent=keyedInstruction(I18n.t(objective.text+' '+direction(objective.point)));}
+function updateHUD(){if(!player)return;$('game').classList[!Prologue.active&&bossStarted&&!boss?.dead?'add':'remove']('encounter-active');if(Prologue.active){Prologue.hud();return;}$('questLabel').textContent=I18n.t('quest.label');const current=realm===0?(player.y>1150?I18n.t("energy.faint"):I18n.t("energy.nourishing")):realm===1?I18n.t("energy.distorted"):level.winds.some(w=>overlap(player,w))?I18n.t("energy.powerful"):I18n.t("energy.pure");$('kibaCurrent').textContent=I18n.t(current);$('realmLabel').textContent=I18n.t(level===forestCamp?'camp.name':realms[realm].label);$('health').innerHTML=I18n.t('<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp));$('health').setAttribute('aria-label',I18n.format("message.arg0.of.arg1.health",[player.hp,player.maxHp]));$('souls').textContent=I18n.t(shards);$('dashHint').hidden=!abilities[1];$('jumpHint').textContent=I18n.t(abilities[0]?I18n.t("text.twice.double.jump"):I18n.t("text.jump.4e09c3"));$('dropHint').hidden=realm===0;updateProgressHUD();updateRelicHUD();const objective=nextObjective();$('objective').textContent=keyedInstruction(I18n.t(objective.text+' '+direction(objective.point)));}
 function revive(){if(DevImmortality.active){initPlayer(Prologue.active||level===councilHall?level.start:checkpoint);projectiles=[];resetCamera();updateHUD();return;}if(Prologue.active){Prologue.lose();return;}if(level===councilHall)leaveCouncilHall(true);initPlayer(checkpoint);respawnEnemies();if(!boss.dead)resetBossBattle();resetMinibosses();projectiles=[];resetCamera();updateHUD();toast(I18n.t("text.the.shrine.has.called.you.back.your.abilities.and"));}
 function damage(amount=1,dir=0){if(DevImmortality.active)return;if(Prologue.active){Prologue.hurt(amount);return;}if(player.inv>0||dash>0)return;const before=player.hp;player.hp=Math.max(0,player.hp-amount);DevDamage.record('incoming',player,before,player.hp);player.inv=momoStats().invulnerability;player.vx=dir*240;player.vy=-220;shake=.22;tone(100,.22,'sawtooth',.03);burst(player.x+20,player.y+35,'#dd9480');if(!player.hp)revive();else updateHUD();}
 function getContext(){
  if(Prologue.active)return null;
+ if(level===forestCamp){
+  if(pointNear(level.returnPoint,100,90))return{type:'campReturn',text:I18n.t('camp.return')};
+  const npc=level.npcs.find(n=>campNPCVisible(n)&&pointNear(n,95,85));
+  if(npc)return{type:'campNPC',npc,text:I18n.format('camp.talk',[I18n.t(npc.name)])};
+  const rest=level.rests.find(r=>pointNear(r,90,80));
+  return rest?{type:'checkpoint',rest,text:I18n.t('text.e.rest.heal.and.save')}:null;
+ }
+ if(level===levels[0]&&defeated[0]&&pointNear(level.campEntrance,105,90))return{type:'campEntrance',text:I18n.t('camp.enter')};
  if(level===councilHall){
   if(pointNear(level.returnPoint,130,110))return{type:'councilReturn',text:I18n.t('council.return.prompt')};
   if(pointNear(level.inscription,130,110))return{type:'councilInscription',text:I18n.t('council.inscription.prompt')};
@@ -91,6 +117,9 @@ function getContext(){
  if(seal)return{type:'seal',text:I18n.t('text.j.break.the.seal.with.the.dawnblade')};return null;
 }
 function interact(){const c=getContext();if(!c)return;
+ if(c.type==='campEntrance'){enterForestCamp();return;}
+ if(c.type==='campReturn'){leaveForestCamp();return;}
+ if(c.type==='campNPC'){story(I18n.t('camp.dialogue.label'),I18n.t(c.npc.name),I18n.t(c.npc.dialogue));return;}
  if(c.type==='councilGate'){
   if(hasFlag('councilGateOpen')){enterCouncilHall();return;}
   if(!hasFlag('councilKey')){toast(I18n.t('council.gate.clue'));return;}
@@ -170,7 +199,10 @@ function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prolog
   ctx.save();ctx.translate(-camera,-cameraY);drawKibaCurrent();Visuals.councilGate({...level.returnPoint,w:250,h:250},true);
   drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
  }
- ctx.save();ctx.translate(-camera+(shake>0?(noise(time*500)-.5)*10:0),-cameraY);Visuals.secretScenery(r);Prologue.village();drawWinds(r);drawLandscape(r,platforms);drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);drawObjects(r);drawHazards(r);Visuals.bossEffects(r);
+ if(level===forestCamp){
+  ctx.save();ctx.translate(-camera,-cameraY);Visuals.campScenery();drawShrine(level.rests[0].x,level.rests[0].y,r,false);Visuals.campPathMarker(level.returnPoint,I18n.t(realms[0].short));drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
+ }
+ ctx.save();ctx.translate(-camera+(shake>0?(noise(time*500)-.5)*10:0),-cameraY);Visuals.secretScenery(r);if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);Visuals.bossEffects(r);
  for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){drawMomo(level.father.x,level.father.y+4,90,0,Math.floor(time*3)%6,1);ctx.font='11px Manrope, sans-serif';ctx.fillStyle=r.gold;ctx.textAlign='center';ctx.fillText(I18n.t('HARU'),level.father.x,level.father.y-105);}
  for(const p of projectiles)Visuals.projectile(p);
@@ -178,7 +210,7 @@ function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prolog
  drawPlayer();DevDamage.draw();ctx.restore();const v=ctx.createLinearGradient(0,0,0,H);v.addColorStop(0,'#08121945');v.addColorStop(.3,'#08121900');v.addColorStop(.75,'#08121900');v.addColorStop(1,'#08121988');ctx.fillStyle=v;ctx.fillRect(0,0,viewW,H);ctx.restore();}
 function visiblePoint(p,margin=280){return p.x>camera-margin&&p.x<camera+viewW+margin&&p.y>cameraY-margin&&p.y<cameraY+H+margin;}
 function drawKibaCurrent(){const weak=realm===0&&player.y>1150;ctx.save();ctx.lineWidth=realm===1?2:1.5;ctx.strokeStyle=realm===1?'#c872b8':realm===2?'#e8d89b':'#addbb5';for(let i=0;i<(weak?7:22);i++){const x=camera+noise(i*14.7+realm)*viewW+Math.sin(time*.7+i)*18,y=cameraY+noise(i*29.3+realm*17)*H;ctx.globalAlpha=(weak?.14:.24)+Math.sin(time*2+i)*.08;ctx.beginPath();ctx.moveTo(x,y);if(realm===1){ctx.lineTo(x+8,y-9);ctx.lineTo(x+2,y-18);}else{ctx.quadraticCurveTo(x+8+Math.sin(time+i)*5,y-12,x+6,y-26);}ctx.stroke();}ctx.restore();}
-function background(r){if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
+function background(r){if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
 
 function drawLandscape(r,items){Visuals.terrain(r,items);}
 
@@ -194,13 +226,14 @@ function drawBat(e,r){Visuals.actor(e,r);}
 function realmUnlocked(n){return Number.isInteger(n)&&n>=0&&n<levels.length&&(n===0||defeated[n-1]);}
 function fastTravel(rest,targetRealm=realm){
  if(Prologue.active||!['play','map'].includes(state)||!realmUnlocked(targetRealm))return false;
- const destination=levels[targetRealm].rests.find(r=>r.id===rest?.id);
+ const destination=realmRests(targetRealm).find(r=>r.id===rest?.id);
  if(!destination||!visitedRests[targetRealm].includes(destination.id))return false;
- enterRealm(targetRealm,destination);$('map').hidden=true;state='play';keys.clear();pressed.clear();persist();updateHUD();toast(I18n.t('text.light.path')+destination.name);return true;
+ if(destination.id==='forestCamp'){if(!enterForestCamp({save:false,atShrine:true}))return false;}else enterRealm(targetRealm,destination);$('map').hidden=true;state='play';keys.clear();pressed.clear();persist();updateHUD();toast(I18n.t('text.light.path')+destination.name);return true;
 }
 function travelGrid(n){
  const grid=document.createElement('div');grid.className='travel-grid';
- for(const rest of levels[n].rests){
+ for(const rest of realmRests(n)){
+  if(rest.id==='forestCamp'&&!visitedRests[0].includes(rest.id))continue;
   const discovered=visitedRests[n].includes(rest.id),button=document.createElement('button');
   button.type='button';button.textContent=(discovered?'⛩ ':'· ')+I18n.t(rest.name);button.disabled=!discovered;
   button.setAttribute('data-realm',String(n));button.setAttribute('data-rest',rest.id);
@@ -209,10 +242,10 @@ function travelGrid(n){
  }
  return grid;
 }
-function showMap(){if(state!=='play'||Prologue.active)return;const inside=level===councilHall,mapLevel=levels[realm],mapPlatforms=inside?mapLevel.platforms:platforms,mapPlayer=inside?mapLevel.councilGate:{x:player.x+21,y:player.y+69};state='map';keys.clear();pressed.clear();$('mapContent').replaceChildren();const box=document.createElement('div');box.className='world-map';const width=620,height=320,pad=16,worldTop=mapLevel.top??0,worldHeight=mapLevel.height-worldTop,s=Math.min((width-pad*2)/mapLevel.width,(height-pad*2)/worldHeight),ox=(width-mapLevel.width*s)/2,oy=(height-worldHeight*s)/2;const X=x=>ox+x*s,Y=y=>oy+(y-worldTop)*s;
- let svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${realms[realm].name} térképe"><rect x="${ox}" y="${oy}" width="${mapLevel.width*s}" height="${worldHeight*s}" fill="#0b1920" stroke="#60706a" stroke-width="1"/>`;for(const p of mapPlatforms.filter(p=>!p.secretArea||secretKnown(p.secretArea)))svg+=`<line x1="${X(p.x)}" y1="${Y(p.y)}" x2="${X(p.x+p.w)}" y2="${Y(p.y)}" stroke="#9da68e" stroke-width="2"/>`;for(const w of mapLevel.winds)if(!w.afterBoss||defeated[realm])svg+=`<rect x="${X(w.x)}" y="${Y(w.y)}" width="${Math.max(3,w.w*s)}" height="${w.h*s}" fill="#dfc68844"/>`;for(const o of mapLevel.objects.filter(o=>objectVisible(o)&&(!o.secretArea||secretKnown(o.secretArea)&&relicUnlocked(o))))svg+=`<circle cx="${X(o.x)}" cy="${Y(o.y)}" r="3" fill="${hasFlag(o.id)?'#718679':'#dfba76'}"/>`;if(mapLevel.ability)svg+=`<text x="${X(mapLevel.ability.x)-4}" y="${Y(mapLevel.ability.y)-5}" fill="#f4cf8a" font-size="12">✦</text>`;svg+=`<text x="${X(mapLevel.boss.x)-4}" y="${Y(mapLevel.boss.y)-6}" fill="${defeated[realm]?'#718679':'#d98877'}" font-size="12">◆</text>`;
+function showMap(){if(state!=='play'||Prologue.active)return;const inside=level===councilHall,inCamp=level===forestCamp,mapLevel=inCamp?forestCamp:levels[realm],mapPlatforms=inside?mapLevel.platforms:platforms,mapPlayer=inside?mapLevel.councilGate:{x:player.x+21,y:player.y+69};state='map';keys.clear();pressed.clear();$('mapContent').replaceChildren();const box=document.createElement('div');box.className='world-map';const width=620,height=320,pad=16,worldTop=mapLevel.top??0,worldHeight=mapLevel.height-worldTop,s=Math.min((width-pad*2)/mapLevel.width,(height-pad*2)/worldHeight),ox=(width-mapLevel.width*s)/2,oy=(height-worldHeight*s)/2;const X=x=>ox+x*s,Y=y=>oy+(y-worldTop)*s;
+ let svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${inCamp?I18n.t('camp.name'):realms[realm].name+' térképe'}"><rect x="${ox}" y="${oy}" width="${mapLevel.width*s}" height="${worldHeight*s}" fill="#0b1920" stroke="#60706a" stroke-width="1"/>`;for(const p of mapPlatforms.filter(p=>!p.secretArea||secretKnown(p.secretArea)))svg+=`<line x1="${X(p.x)}" y1="${Y(p.y)}" x2="${X(p.x+p.w)}" y2="${Y(p.y)}" stroke="#9da68e" stroke-width="2"/>`;for(const w of mapLevel.winds)if(!w.afterBoss||defeated[realm])svg+=`<rect x="${X(w.x)}" y="${Y(w.y)}" width="${Math.max(3,w.w*s)}" height="${w.h*s}" fill="#dfc68844"/>`;for(const o of mapLevel.objects.filter(o=>objectVisible(o)&&(!o.secretArea||secretKnown(o.secretArea)&&relicUnlocked(o))))svg+=`<circle cx="${X(o.x)}" cy="${Y(o.y)}" r="3" fill="${hasFlag(o.id)?'#718679':'#dfba76'}"/>`;if(mapLevel.ability)svg+=`<text x="${X(mapLevel.ability.x)-4}" y="${Y(mapLevel.ability.y)-5}" fill="#f4cf8a" font-size="12">✦</text>`;if(!inCamp)svg+=`<text x="${X(mapLevel.boss.x)-4}" y="${Y(mapLevel.boss.y)-6}" fill="${defeated[realm]?'#718679':'#d98877'}" font-size="12">◆</text>`;
  for(const r of mapLevel.rests)svg+=`<circle cx="${X(r.x)}" cy="${Y(r.y)}" r="3" fill="${visitedRests[realm].includes(r.id)?'#a6c9c5':'#465959'}"/>`;svg+=`<circle cx="${X(mapPlayer.x)}" cy="${Y(mapPlayer.y)}" r="5" fill="#f0dfb1" stroke="#fff" stroke-width="1"/></svg>`;box.innerHTML=I18n.t(svg);$('mapContent').append(box);
- const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t(realms[realm].name+I18n.t("text.light.paths.to.discovered.shrines"));$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmUnlocked(n)&&visitedRests[n].length);if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
+ const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t((inCamp?I18n.t('camp.name'):realms[realm].name)+I18n.t("text.light.paths.to.discovered.shrines"));$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmUnlocked(n)&&visitedRests[n].length);if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
 function closeMap(){$('map').hidden=true;state='play';pressed.clear();}
 function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden=false;$('resumeButton').focus();}else if(state==='pause'){state='play';$('pause').hidden=true;pressed.clear();}}
 function mainMenu(){if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
@@ -295,7 +328,7 @@ document.querySelectorAll('#touchControls [data-action]').forEach(b=>{const toke
 sheet.onload=()=>{loadingReady=true;if(DevTools.isOpen)DevTools.refresh();};sheet.onerror=()=>toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));if(sheet.complete&&sheet.naturalWidth)loadingReady=true;
 function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();requestAnimationFrame(frame);}requestAnimationFrame(frame);
 Inventory.init();
-BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':['japan','yomi','heaven'][realm]);
+BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':level===forestCamp?'forestCamp':['japan','yomi','heaven'][realm]);
 I18n.applyDOM();
 DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevImmortality.init();DevDamage.init();DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});

@@ -523,7 +523,23 @@
       "menu.changelog.0919.title": "Erősebb bossjutalmak",
       "menu.changelog.0919.rewards": "A világok főbossai több XP-t, extra fejlesztéspontokat és egyedi, megőrizhető lélektárgyakat adnak.",
       "menu.changelog.0919.selection.title": "Stabil inventory-kijelölés",
-      "menu.changelog.0919.selection.wrapping": "A hátizsák tárgyainak és a felszerelt fegyvernek a kijelölése nem változtatja meg a feliratok tördelését."
+      "menu.changelog.0919.selection.wrapping": "A hátizsák tárgyainak és a felszerelt fegyvernek a kijelölése nem változtatja meg a feliratok tördelését.",
+      "camp.name": "Erdei menedék",
+      "camp.shrine": "A tábor szentélye",
+      "camp.enter": "E · Az erdei menedékhez",
+      "camp.return": "E · Vissza a harangok útjára",
+      "camp.talk": "E · Beszélgetés: {0}",
+      "camp.objective": "Pihenj meg, vagy beszélgess a túlélőkkel.",
+      "camp.dialogue.label": "A tábortűz mellett",
+      "camp.npc.daichi.name": "Daichi",
+      "camp.npc.natsu.name": "Natsu",
+      "camp.npc.sora.name": "Sora",
+      "camp.npc.daichi.dialogue": "A falu szétszóródott, de nem tűnt el. Én őrködöm az ösvénynél; aki kijutott a lángok közül, itt találhat ránk.",
+      "camp.npc.natsu.dialogue": "Amit magunkkal hoztunk, abból varrok új otthont. Egyelőre csak vászon és kötél, de minden visszatérő hanggal erősebb lesz.",
+      "camp.npc.sora.dialogue": "Éjjel hallom, ahogy az erdő lélegzik. Szerinted a Kiba emlékszik azokra is, akiket még nem találtunk meg?",
+      "bugReport.area.forestCamp": "Erdei menedék",
+      "menu.changelog.0920.title": "Erdei menedék és túlélők",
+      "menu.changelog.0920.camp": "Japán őrzőjének legyőzése után új erdei tábor nyílik meg, pihenőszentéllyel, gyorsutazással és beszélgethető shiba túlélőkkel."
     }
   },
   "en": {
@@ -1050,7 +1066,23 @@
       "menu.changelog.0919.title": "Greater boss rewards",
       "menu.changelog.0919.rewards": "Realm bosses award more XP, bonus training points and unique soul items to keep.",
       "menu.changelog.0919.selection.title": "Stable inventory selection",
-      "menu.changelog.0919.selection.wrapping": "Selecting backpack items or the equipped weapon no longer changes label wrapping."
+      "menu.changelog.0919.selection.wrapping": "Selecting backpack items or the equipped weapon no longer changes label wrapping.",
+      "camp.name": "Forest Refuge",
+      "camp.shrine": "Camp Shrine",
+      "camp.enter": "E · Enter the Forest Refuge",
+      "camp.return": "E · Return to the Path of Bells",
+      "camp.talk": "E · Talk: {0}",
+      "camp.objective": "Rest, or speak with the survivors.",
+      "camp.dialogue.label": "Beside the Campfire",
+      "camp.npc.daichi.name": "Daichi",
+      "camp.npc.natsu.name": "Natsu",
+      "camp.npc.sora.name": "Sora",
+      "camp.npc.daichi.dialogue": "The village is scattered, but it is not gone. I keep watch by the path; anyone who escaped the flames can find us here.",
+      "camp.npc.natsu.dialogue": "I am sewing a new home from what we carried here. For now it is only canvas and rope, but every returning voice makes it stronger.",
+      "camp.npc.sora.dialogue": "At night I hear the forest breathing. Do you think Kiba remembers the ones we have not found yet?",
+      "bugReport.area.forestCamp": "Forest Refuge",
+      "menu.changelog.0920.title": "Forest refuge and survivors",
+      "menu.changelog.0920.camp": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to."
     }
   }
 }

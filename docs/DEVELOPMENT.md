@@ -23,7 +23,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
-| `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei. |
+| `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
 | `assets/js/shadow-animation.js` | Árnyék 24 festett póza, szemekhez igazított kivágásai és harci időzítése. |
@@ -50,6 +50,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `docs/` | Játékleírás, fejlesztési dokumentáció és grafikai háttéranyagok. |
 
 ## Ellenőrzés
+
+Az erdei menedék külön helyszín Japán világállapotán belül. Új szentély- vagy utazási kódnál a `realmRests` katalógust használd a birodalmi célokhoz; fizikai térképhez a konkrét pálya `rests` listája szükséges. A `location` mező választja el a tábori mentőpontot Japánétól. Részletek és az NPC-katalógus bővítése: [FOREST-CAMP.md](FOREST-CAMP.md). A célzott ellenőrzés `npm run test:forest-camp`, mindkét teszt része a teljes csomagnak.
 
 A főbossok jutalmait a `levels.js` megosztott `BOSS_REWARDS` táblája határozza meg. A `bossRewardClaimed` jelző adja az egyszeri XP- és pontcsomag jogcímét; a lélektárgy birtoklása külön jelző. A `normalizeProgression(data, flags)` hívásokból nem hagyható el a világállapot, különben a bossokból nyert statpontkeret elveszne. A `test-boss-rewards.cjs` a győzelmet, ismételt hívást, végső angyalfázist és a folytatást, a `test-boss-reward-saves.cjs` a pontkeretet és a hibás mentéseket, a `test-save-release.cjs` a titkosított jutalommentést ellenőrzi. A teljes pontköltségvetés `szint − 1 + megszerzett bossbónusz`; a szint- és statlimitek ettől nem változnak.
 

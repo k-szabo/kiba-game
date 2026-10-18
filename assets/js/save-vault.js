@@ -21,13 +21,16 @@ const SaveVault=(()=>{
  function validate(data){
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
+  if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
   for(const [key,length] of [['abilities',2],['defeated',3]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
   for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==3)throw Error('Invalid world progress');
   for(let i=0;i<3;i++){
    const map=levels[i],allowed=new Set([...map.objects.map(o=>o.id),...(map.progressFlags||[]),...map.gates.filter(g=>['fire','fragile'].includes(g.kind)).map(g=>g.id),...(map.secrets||[]).flatMap(s=>['discovered:'+s.id,'guardian:'+s.guardian])]);
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
-   const rests=new Set(map.rests.map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
+   const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
+  if(data.visitedRests[0].includes('forestCamp')&&!data.defeated[0])throw Error('Invalid camp progress');
+  if(data.location==='forestCamp'&&(data.realm!==0||data.prologueComplete!==true||!data.defeated[0]))throw Error('Invalid camp location');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
   for(const [realm,reward] of BOSS_REWARDS.entries()){
@@ -44,7 +47,8 @@ const SaveVault=(()=>{
   if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won&&(!data.defeated[2]||data.realm!==2))throw Error('Invalid victory');
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
-  const checkpoint=levels[data.realm].rests.find(r=>r.id===data.checkpoint?.id);
+  const checkpointMap=data.location==='forestCamp'?forestCamp:levels[data.realm];
+  const checkpoint=checkpointMap.rests.find(r=>r.id===data.checkpoint?.id);
   if(!checkpoint||data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
   return JSON.parse(JSON.stringify(data));
  }

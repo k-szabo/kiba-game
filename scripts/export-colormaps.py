@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -135,6 +135,10 @@ pc['momo']['variants']['heavySword'] = {'paletteGroup': group('pc.momo.heavySwor
 portrait = atlas['inventory']['momo']
 pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
 npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
+for name in ('daichi', 'natsu', 'sora'):
+    definition = atlas['camp'][name]
+    npcs[name] = {'name': name.capitalize(), 'role': 'camp-survivor',
+                  'paletteGroup': group('npc.camp.' + name, manifest[definition['image']], definition, 'ART_CAMP.' + name)}
 for faction, actions in atlas['frames']['animations'].items():
     for role in actions['walk']:
         variants = {}
@@ -233,7 +237,7 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 22, 'Missing current character entry'
+assert len(npcs) == 25, 'Missing current character entry'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'
