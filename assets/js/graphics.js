@@ -82,6 +82,35 @@ const Visuals = (() => {
     }
     return null;
   }
+  function campBackdrop(){
+    const art=ART_CAMP.backdrop,s=forestCamp.width/art.w,top=forestCamp.start.y-art.groundY*s;
+    ctx.fillStyle='#0e202c';ctx.fillRect(0,0,viewW,H);
+    if(!usable(art.image))return;
+    ctx.drawImage(images[art.image],-camera,top-cameraY,forestCamp.width,art.h*s);
+    // The canopy keeps its proportions; a short fade joins the quiet upper sky.
+    const fade=ctx.createLinearGradient(0,top-cameraY,0,top-cameraY+42);
+    fade.addColorStop(0,'#0e202c');fade.addColorStop(1,'#0e202c00');
+    ctx.fillStyle=fade;ctx.fillRect(-camera,top-cameraY,forestCamp.width,42);
+  }
+  function campScenery(){
+    for(const npc of forestCamp.npcs){
+      if(!campNPCVisible(npc)||!visiblePoint(npc,180))continue;
+      shadow(npc.x,npc.y,26,.22);
+      frame(npc.image,ART_CAMP[npc.id],npc.x,npc.y,npc.height);
+      const label=I18n.t(npc.name),y=npc.y-npc.height-18;
+      ctx.save();ctx.font='600 15px Manrope, sans-serif';ctx.textAlign='center';
+      const w=ctx.measureText(label).width+20;ctx.fillStyle='#0d1b29ed';ctx.fillRect(npc.x-w/2,y-16,w,26);
+      ctx.fillStyle='#fff0cc';ctx.fillText(label,npc.x,y+2);ctx.restore();
+    }
+  }
+  function campPathMarker(point,label){
+    if(!visiblePoint(point,200))return;
+    prop('torii',point.x,point.y,150,.9);
+    ctx.save();ctx.font='600 15px Manrope, sans-serif';ctx.textAlign='center';
+    const w=ctx.measureText(label).width+24,y=point.y-172;
+    ctx.fillStyle='#0d1b29ed';ctx.fillRect(point.x-w/2,y-19,w,30);
+    ctx.fillStyle='#fff0cc';ctx.fillText(label,point.x,y+2);ctx.restore();
+  }
   function backdrop(r) {
     const key = faction() + 'Backdrop';
     const sky = ctx.createLinearGradient(0, 0, 0, H);
@@ -643,5 +672,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,dashTrail,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,dashTrail,secretScenery};
 })();

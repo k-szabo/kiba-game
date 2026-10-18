@@ -258,6 +258,22 @@
           "en": "Realm bosses award more XP, bonus training points and unique soul items to keep."
         }
       ]
+    },
+    {
+      "version": "0.9.20_099eba78",
+      "code": "099eba78",
+      "baseVersion": "0.9.20",
+      "slug": "forest-refuge-npc-hub",
+      "summary": {
+        "hu": "Erdei menedék és túlélők",
+        "en": "Forest refuge and survivors"
+      },
+      "fixes": [
+        {
+          "hu": "Japán őrzőjének legyőzése után új erdei tábor nyílik meg, pihenőszentéllyel, gyorsutazással és beszélgethető shiba túlélőkkel.",
+          "en": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to."
+        }
+      ]
     }
   ]
 }

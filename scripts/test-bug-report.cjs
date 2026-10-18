@@ -27,6 +27,7 @@ function checkForm(url,expectedArea){
 }
 for(language of ['hu','en']){
  checkForm(context.report.createURL('dream'),'dream');
+ checkForm(context.report.createURL('forestCamp'),'forestCamp');
  checkForm(context.report.createURL('DO_NOT_EXPORT'),'menu');
 }
 const originalVersion=release.version;release.version=originalVersion.split('_')[0]+'_a1b2c3d4';
