@@ -16,4 +16,44 @@ assert(run('DevTeleport.teleport({realm:"1",rest:"start"})'));assert(!run('Prolo
 assert(run('abilities.every(x=>!x)&&defeated.every(x=>!x)'),'Teleport does not grant normal unlocks or boss victories');
 run('DevTools.close()');assert(!run('DevTeleport.teleport({realm:"0",rest:"start"})'));
 run('mainMenu()');assert.equal(run('JSON.stringify(saved)'),saved);
-console.log('PASS: panel-only test teleport, every realm shrine grounded, dream roundtrip, invalid-input guards, unlock and save isolation.');
+
+// Exercise the rendered selector and its change callbacks, not just a helper
+// accepting a new id. Every advertised destination must actually be usable.
+const camp=harness(),r=camp.run,normal=r('JSON.stringify(saved)'),normalWrites=r('window.__saveSnapshots.length');
+const progress=()=>r('JSON.stringify({flags,abilities,defeated,progression,shards})');
+const originalProgress=progress();
+function field(id){
+ const find=node=>node.id===id?node:(node.children||[]).map(find).find(Boolean);
+ return find(camp.elements.get('devToolsList'));
+}
+assert.equal(r('enterForestCamp()'),false,'Ordinary entry remains locked before the first boss');
+r('DevTools.open();DevSession.begin();DevTools.refresh();');
+const selector=field('dev-teleport-realm');
+assert(selector.children.some(option=>option.value==='forestCamp'),'The camp is missing from the rendered destination selector');
+for(const option of [...selector.children]){
+ const current=field('dev-teleport-realm');current.value=String(option.value);current.onchange();
+ const rest=field('dev-teleport-rest');
+ assert(rest.children.length,'Every listed destination needs an arrival point');
+ for(const point of rest.children){
+  assert(r(`DevTeleport.teleport(${JSON.stringify({realm:String(option.value),rest:String(point.value)})})`),'The selector advertises an unusable destination');
+ }
+}
+for(const from of [{realm:'dream',rest:'dream'},{realm:'1',rest:'start'},{realm:'2',rest:'start'}]){
+ assert(r(`DevTeleport.teleport(${JSON.stringify(from)})`));
+ const before=r('JSON.stringify({realm,level:level.id,player,checkpoint,visitedRests,flags})');
+ assert.equal(r("DevTeleport.teleport({realm:'forestCamp',rest:'start'})"),false);
+ assert.equal(r('JSON.stringify({realm,level:level.id,player,checkpoint,visitedRests,flags})'),before,'Invalid camp arrival mutates the world');
+ assert(r("DevTeleport.teleport({realm:'forestCamp',rest:'forestCamp'})"),'Unbeaten camp must be reachable only in a dev test');
+ assert.equal(r('level.id'),'forestCamp');assert.equal(camp.snap().realm,0);
+ assert.equal(camp.snap().checkpoint.id,'forestCamp');assert(r('player.onGround&&player.y+player.h===forestCamp.rests[0].y'));
+ assert(r('!Prologue.active&&boss.dead&&!bossStarted&&enemies.length===0&&projectiles.length===0'));
+ assert.equal(r('DevBoss.revive()'),false,'The safe camp must not acquire a realm guardian');
+ assert.equal(camp.snap().state,'developer');assert.equal(r('DevTools.returnState'),'play');
+ assert.equal(progress(),originalProgress,'Camp teleport granted normal progress');
+ r('DevTools.close();interact();persist();DevTools.open();');
+ assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('window.__saveSnapshots.length'),normalWrites);
+}
+r('DevTools.close();DevSession.end();startGame(true);');camp.dismiss();
+assert.equal(r('DevSession.active'),false);assert.equal(r('enterForestCamp()'),false,'The dev exception must end with the test');
+assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('window.__saveSnapshots.length'),normalWrites+1,'Only resuming the normal game may persist');
+console.log('PASS: rendered destination catalogue and execution agree, camp/dream/realm roundtrips, grounded arrival, invalid-input guards, normal unlocks and save isolation.');

@@ -160,6 +160,22 @@
           "en": "Selecting backpack items or the equipped weapon no longer changes label wrapping."
         }
       ]
+    },
+    {
+      "version": "0.9.20_3ad12555",
+      "code": "3ad12555",
+      "baseVersion": "0.9.20",
+      "slug": "forest-camp-dev-teleport",
+      "summary": {
+        "hu": "Belső karbantartás és technikai fejlesztések.",
+        "en": "Internal maintenance and technical improvements."
+      },
+      "fixes": [
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

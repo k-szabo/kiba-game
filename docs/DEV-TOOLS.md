@@ -26,7 +26,7 @@ A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz 
 | Eszköz | Működés |
 | --- | --- |
 | Boss újraélesztése | Az aktuális birodalom őrzőjének harcát tiszta állapotban újraindítja, teljes HP-val, az aréna megközelítési oldalára helyezett Momóval. A láva, veszélyek, idézések, küszöbök, boss-lövedékek és fázisok törlődnek. Az álom őrzőjének tesztje újrakezdi az álmot; az üres tanácsosi csarnokban nincs boss. |
-| Teleportálás | Bármelyik birodalom valódi pihenőhelyét választhatod, feloldottságtól függetlenül. A célpontokat a pályaadatokból olvassa; csak alátámasztott érkezést fogad el. Az álomprológus külön tesztcélpont. Nem ad automatikusan képességet és nem jelöl legyőzöttnek őrzőt. |
+| Teleportálás | Bármelyik birodalom valódi pihenőhelyét választhatod, feloldottságtól függetlenül. Az Erdei menedék külön célpont, a tábor szentélyére érkezik; aktív tesztmódban az első boss legyőzése sem szükséges. A célpontokat a pályaadatokból olvassa; csak alátámasztott érkezést fogad el. Az álomprológus külön tesztcélpont. Nem ad automatikusan képességet és nem jelöl legyőzöttnek őrzőt. |
 | Játékos szintje | Egész szint 1 és a kódbeli `LEVEL_LIMIT` között, jelenleg 12-ig. Az XP az adott szint kezdetére áll. A megfizethető statelosztás megmarad; a normalizáló a csökkentett kerethez igazítja, a maradék szabad pont. A 30-as limit külön fejlesztési kártya. |
 | Tárgy hozzáadása | Az `ART_INVENTORY.items` katalógus összes regisztrált tárgyát listázza, a meglévő nevekkel. Már birtokolt vagy felhasznált tárgy nem duplikálható. A felszerelt alapfegyver nem külön hátizsáktárgy. |
 | Képesség megszerzése | A szél áldása (dupla ugrás) vagy a szellemlépés kiválasztható és a tesztkarakternek adható. A HUD azonnal frissül, a dash fejlesztése elérhetővé válik a szentélynél. Már megszerzett képesség nem duplikálható. |
@@ -38,6 +38,14 @@ A tesztmódban hozzáadott csontkulcs a boss legyőzése nélkül is nyitja a ta
 A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési sémába. Az eszközök belső állapotát nem exportáljuk a `window` objektumra.
 
 A képességválasztót az `assets/js/dev-abilities.js` `catalogue` listája építi fel: egy bejegyzés stabil `id`, a játék `abilities` tömbjére mutató `index`, valamint lokalizációs `label` kulcs. Új, már játékba épített képességhez ezt a listát kell bővíteni; a mező és a megszerzés művelete közös marad. Új képesség játékmenete és mentési sémája külön fejlesztést igényel. A dev művelet nem teljesít küldetést, nem ad XP-t és nem ír normál mentést.
+
+## RCA: hiányzó tábori teleport
+
+Az [51-es hibajegynél](https://trello.com/c/kG5Dtu8Q) a választó a háromelemű `levels` tömbből és egy külön álombejegyzésből épült; a végrehajtó ettől függetlenül, kézzel felsorolt azonosítókat engedett. A tábor nem birodalom, ezért mindkét helyről kimaradt. A tábori belépés normál bossfeltétele a lista egyszerű bővítése után is blokkolta volna a tesztelést.
+
+A `DevTeleport` közös, késleltetve felépített célpontkatalógust használ a mezőkhöz és a végrehajtáshoz. A birodalmak pihenőhelyei és a külön tábori/álomcél ugyanitt szerepelnek. A tábor a meglévő `enterForestCamp` belépést használja; a bossfeltétel csak aktív `DevSession` alatt kerülhető meg. A képességek, legyőzött bossok és normál mentések nem változnak. Új oldalhelyszín dev támogatásához ezt a katalógust kell bővíteni, nem a három birodalom tömbjét.
+
+A `test-dev-teleport.cjs` a ténylegesen felépített select opcióit és változáskezelőit is ellenőrzi: minden listázott cél összes érkezési pontjának működnie kell. Külön lefedi a táborba érkezést az álomból és későbbi birodalmakból, a hibás pont elutasítását állapotváltozás nélkül, a normál feloldás és a mentés izolációját. A `test-player-timers.cjs` a dev képességadás → tábori teleport → tényleges input útvonalat is vizsgálja 30/60/120 FPS, mindkét irány és minden képességkombináció mellett.
 
 ## RCA: beragadó dash a prológusban
 
