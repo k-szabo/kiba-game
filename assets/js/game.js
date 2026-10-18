@@ -141,7 +141,7 @@ function guardianDefeated(){
  const keyEarned=realm===1&&awardCouncilKeyDrop();
  boss.dead=true;finishBossBattle();
  /* Establish a complete victory before awardXP persists the reward snapshot. */
- defeated[realm]=true;if(realm===0)abilities[0]=true;
+ defeated[realm]=true;
  const relicUnited=uniteVictoryRelics(),reward=BOSS_REWARDS[realm],firstReward=!hasFlag(reward.claim);
  checkpoint={...level.rests.find(r=>r.id===level.arena.restId)};
  if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);

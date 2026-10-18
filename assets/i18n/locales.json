@@ -139,7 +139,7 @@
       "text.sound.on": "Hang: be",
       "story.haru.waits.above.the.clouds.your.path.leads.upward": "Haru a felhők fölött vár. Itt felfelé vezet az út: ugorj a fénylő szélfolyamokba, és hagyd, hogy magasba emeljenek. Oldalra kilépve szállj le a felhőszigetekre, majd kettős ugrással és szellemlépéssel folytasd az emelkedést. A legfelső pecsétet J-vel törheted fel. Az utolsó őrző fölött találod az apa oltárát.",
       "text.an.old.memory.of.haru.warms.the.amulet.you": "Haru egy régi emléke megmelegíti az amulettet. Nyolc lélektöredéket kaptál, és az életerőd feltöltődött.",
-      "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru első emléke visszatér. Az őrző mögött, keletre megnyílt a fénylő torii. Állj a kapu alá, és nyomj E-t. A szél áldása biztosan veled marad: Space, felengedés, majd újra Space a levegőben.",
+      "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru első emléke visszatér. Az őrző mögött, keletre megnyílt a fénylő torii. Állj a kapu alá, és nyomj E-t. Ha a szél áldása még nem kísér, keresd fel a szél szentélyét.",
       "story.haru.kneels.before.the.little.samurai.i.knew.you": "Haru letérdel a kis szamuráj elé. „Tudtam, hogy eljössz.” Momo végre leteszi a kardját. Erdőkön és falvakon át, a világ mélyéről az ég tetejéig jutott, és egyetlen pillanatra sem felejtette el, kit szeretne megmenteni. Apa és fia együtt indulnak haza.",
       "story.haru.s.second.memory.has.set.momo.s.sword": "Haru második emléke lángra gyújtotta Momo kardját. A hajnalkard erősebb, és J-vel feltöri az égi pecséteket. A legalsó terem keleti torii kapuján át emelkedhetsz az égbe.",
       "story.two.distant.bells.guard.haru.s.trail.one.waits": "Haru nyomát két távoli harang őrzi. Az egyik az erdő lombjai között, a másik egy csendes falu tetőin vár. Haladj keletre, keresd fel a szél szentélyét, és járd be a folyó fölötti és alatti ösvényeket. A két harang hangja együtt nyitja meg a bambusztemplomot.",
@@ -539,7 +539,9 @@
       "camp.npc.sora.dialogue": "Éjjel hallom, ahogy az erdő lélegzik. Szerinted a Kiba emlékszik azokra is, akiket még nem találtunk meg?",
       "bugReport.area.forestCamp": "Erdei menedék",
       "menu.changelog.0920.title": "Erdei menedék és túlélők",
-      "menu.changelog.0920.camp": "Japán őrzőjének legyőzése után új erdei tábor nyílik meg, pihenőszentéllyel, gyorsutazással és beszélgethető shiba túlélőkkel."
+      "menu.changelog.0920.camp": "Japán őrzőjének legyőzése után új erdei tábor nyílik meg, pihenőszentéllyel, gyorsutazással és beszélgethető shiba túlélőkkel.",
+      "menu.changelog.0920.doubleJump.title": "A dupla ugrás megszerzésének javítása",
+      "menu.changelog.0920.doubleJump.acquisition": "Japán őrzőjének legyőzése többé nem adja meg automatikusan a dupla ugrást; a képességet a szél szentélyénél szerezheted meg."
     }
   },
   "en": {
@@ -682,7 +684,7 @@
       "text.sound.on": "Sound: on",
       "story.haru.waits.above.the.clouds.your.path.leads.upward": "Haru waits above the clouds. Your path leads upward: jump into the glowing wind streams and let them lift you. Move sideways onto cloud islands, then continue climbing with double-jumps and Spirit Dash. Break the uppermost seal with J. Your father's altar lies above the final guardian.",
       "text.an.old.memory.of.haru.warms.the.amulet.you": "An old memory of Haru warms the amulet. You received eight soul fragments and your health was restored.",
-      "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru's first memory returns. The glowing torii has opened east of the guardian. Stand beneath it and press E. The wind blessing is now yours: Space, release, then Space again in the air.",
+      "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru's first memory returns. The glowing torii has opened east of the guardian. Stand beneath it and press E. If the wind's blessing is not yet with you, seek the wind shrine.",
       "story.haru.kneels.before.the.little.samurai.i.knew.you": "Haru kneels before the little samurai. “I knew you would come.” Momo finally puts down his sword. Through forests and villages, from the world's depths to the summit of heaven, he never once forgot whom he wanted to save. Father and son set off for home together.",
       "story.haru.s.second.memory.has.set.momo.s.sword": "Haru's second memory has set Momo's sword alight. The Dawnblade is stronger and breaks celestial seals with J. Pass through the eastern torii in the lowest chamber to reach heaven.",
       "story.two.distant.bells.guard.haru.s.trail.one.waits": "Two distant bells guard Haru's trail. One waits in the forest canopy, the other on the rooftops of a quiet village. Head east, visit the wind shrine, and explore paths above and beneath the river. The two bells together open the Bamboo Temple.",
@@ -1082,7 +1084,9 @@
       "camp.npc.sora.dialogue": "At night I hear the forest breathing. Do you think Kiba remembers the ones we have not found yet?",
       "bugReport.area.forestCamp": "Forest Refuge",
       "menu.changelog.0920.title": "Forest refuge and survivors",
-      "menu.changelog.0920.camp": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to."
+      "menu.changelog.0920.camp": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to.",
+      "menu.changelog.0920.doubleJump.title": "Fix double jump acquisition",
+      "menu.changelog.0920.doubleJump.acquisition": "Defeating Japan's guardian no longer grants double jump automatically; acquire the ability at the wind shrine."
     }
   }
 }
