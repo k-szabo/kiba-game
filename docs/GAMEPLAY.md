@@ -37,6 +37,7 @@ Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külö
 | U / Fejlesztés gomb | Fejlesztéspontok elköltése a pihenőszentélynél |
 | M | Térkép és gyorsutazás az ismert pihenőhelyekhez |
 | I | Hátizsák és Momo felszerelése; megnyitva szünetelteti a játékot |
+| O | Étel használata |
 | Esc | Szünet |
 
 Érintőképernyőn a képernyő gombjai használhatók. A leugráshoz a lefelé és az ugrás gombot együtt kell használni. A hang a felső gombbal kapcsolható.
@@ -103,3 +104,11 @@ A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol köz�
 A fejlesztői ellenőrzések a játékfolyamatot, a három világ útvonalait, a harcot és bossfázisokat, a mentést, az inventoryt, a fordításokat, a grafikai kivágásokat és a generált Pages-csomagot fedik le. A futtatási parancsokat és azok szerepét a [fejlesztői útmutató](DEVELOPMENT.md) sorolja fel.
 
 A mockolt játékteszt nem ellenőrzi a tényleges böngészőmegjelenítést vagy a profilhoz kötött mentést. Képernyőméret, fókusz, billentyűzet, grafikai olvashatóság és valós böngészős mentés ellenőrzéséhez külön, friss Chrome-profillal végzett QA szükséges.
+
+## Akash portékái
+
+O: étel használata. Akash portékáit az erdei menedékben találod, ha kiszabadítottad Yomiban.
+
+- **Iránytű:** A következő fő feladat irányát mutatja. A rejtett ösvények titkait magadnak kell felfedezned.
+- **Kis útitérkép:** A közeli párkányokat, ismert szentélyeket és Momo helyét mutatja a képernyő sarkában.
+- **Ismeretlen eredetű sült hús:** Akash nem árulja el, miből készült. Elfogyasztva azonos eséllyel visszaad vagy elvesz 1 életerőt, de nem ölhet meg. Gyorshasználat: O.

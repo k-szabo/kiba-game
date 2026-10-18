@@ -24,6 +24,7 @@ function killEnemy(e) {
   if(e.serpent){defeatLavaSerpent(e);return;}
   if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
+  if(!e.summoned)Merchant.award(Merchant.rewards.enemy);
   if(e.summoned&&e.councilEligible&&e.encounterId===boss.encounterId&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
   const role=enemyRole(e);
   awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
@@ -304,7 +305,7 @@ function updateYomiWave(dt){
 function defeatLavaSerpent(e){
   if(e.dead||e!==boss.serpent||!e.active||realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
   e.dead=true;e.active=false;e.phase='dead';e.hazards=[];
-  if(!flags[1].includes('serpentScale')){flags[1].push('serpentScale');awardXP(70);persist();updateHUD();toast(I18n.t('yomi.serpent.scale.gained'));}
+  if(!flags[1].includes('serpentScale')){flags[1].push('serpentScale');Merchant.award(Merchant.rewards.miniboss);awardXP(70);persist();updateHUD();toast(I18n.t('yomi.serpent.scale.gained'));}
   burst(e.x+e.w/2,e.y+e.h*.5,'#ffbd69',36);
   if(boss.yomiStage==='shelter')endYomiShelter();
 }
@@ -481,7 +482,7 @@ function defeatMiniboss(e){
   if(e.dead)return;
   e.dead=true;e.active=false;e.hazards=[];projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
   const flag=minibossFlag(e.id),first=!flags[realm].includes(flag);
-  if(first){flags[realm].push(flag);shards+=8;awardXP(e.miniboss==='angel'?80:95);persist();}
+  if(first){flags[realm].push(flag);shards+=8;Merchant.award(Merchant.rewards.miniboss);awardXP(e.miniboss==='angel'?80:95);persist();}
   burst(e.x+e.w/2,e.y+35,e.miniboss==='angel'?'#ffe9aa':'#cf8aff',36);
   toast(I18n.t("text.the.ancient.guardian.rests.the.altar.s.seal.has"));updateHUD();
 }

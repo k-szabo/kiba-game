@@ -36,6 +36,8 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 - **Állítható irányítás:** a „Hogyan játszunk” ablakban brit és francia kiosztás választható, az egyes műveletek billentyűi átállíthatók, a beállítások JSON-fájlként exportálhatók és importálhatók.
 - **Helyi mentés:** a haladás titkosított formában, az adott böngészőprofilhoz kötve marad meg; a főmenüben a Folytatás gombbal térhetsz vissza. Az alfa/béta időszakban új játékverziónál a haladás törlődik; a nyelv és a billentyűkiosztás megmarad.
 
+- Kiszabadítható kereskedő, gyűjthető érmék, megvásárolható iránytű és minimap, valamint inventoryból és átállítható gyorsbillentyűvel használható sült hús került a játékba.
+
 ## Irányítás
 
 | Billentyű | Művelet |
@@ -48,6 +50,7 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 | U | Fejlesztés a pihenőszentélynél |
 | M | Térkép és gyorsutazás |
 | S + Space | Leugrás a párkányról |
+| O | Étel használata |
 | Esc | Szünet |
 | I | Hátizsák és felszerelés, a játék szüneteltetésével |
 

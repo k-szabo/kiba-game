@@ -37,6 +37,8 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 - **Custom controls:** Choose UK or French keyboard presets, remap individual actions, and export or import bindings as JSON.
 - **Local saves:** Progress is encrypted and tied to the current browser profile. Use Continue from the main menu to resume. During alpha and beta, a new game version resets progress while preserving language and control preferences.
 
+- The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut.
+
 ## Controls
 
 | Default keys | Action |
@@ -49,6 +51,7 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 | U | Upgrade at a shrine |
 | M | Map and fast travel |
 | S + Space | Drop through a ledge |
+| O | Use food |
 | Esc | Pause |
 | I | Open inventory and pause the game |
 

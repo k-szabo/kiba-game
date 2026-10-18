@@ -81,3 +81,11 @@ A panel használata szabad, nem jogosultságkezelés. A játékállapotot módos
 ## Ellenőrzés
 
 Forrásmódosítás után `node scripts/build-game.mjs`, majd a releváns `scripts/test-dev-*.cjs` és a `node scripts/check-site.mjs` futtatandó. A panelteszt a közvetlen megnyitást, az elérhetőségi feltételeket, az elavult callbackek elutasítását, a fókuszt és a szünetet vizsgálja. A session- és eszköztesztek a mentésizolációt, a valódi játékmeneti írási útvonalakat és az eszközök szélértékeit fedik le. A teljes integrációhoz az összes `package.json` teszt kell; a HU/EN megjelenést, billentyűzetet és valódi mentés-visszatöltést böngészőben is ellenőrizd.
+
+### Akash portékái
+
+Az iránytű és útitérkép az inventory katalógusából adható egyszeri teszttárgy. A sült hús ugyaninnen ismételten hozzáadható, kattintásonként egy adaggal; az aktuális gyorsbillentyűvel vagy az inventoryból használható. A pénz, a vásárlások és az étel mennyisége is az elkülönített dev session része; a normál mentést nem módosítják.
+
+Az érmeadó mezőben pozitív egész mennyiség adható meg (alapérték:100). Az eszköz kizárólag aktív tesztmódban és nyitott dev panelen működik; az érméket a HUD azonnal mutatja. Hibás vagy túlcsorduló mennyiség teljesen elutasított, részleges jóváírás nincs. A normál mentést nem írja. A tárgyválasztó hozzáadás és panel-frissítés után megőrzi a kiválasztást, ezért több adag sült hús ismételten hozzáadható. Az iránytű és a kis útitérkép egyszeri tárgy marad.
+
+Ha a panelt nyitott inventoryból vagy boltból nyitod, a visszatérés újrarajzolja az adott ablakot: a hozzáadott étel darabszáma, az új érmeegyenleg és a megfizethető vásárlógombok rögtön frissülnek.

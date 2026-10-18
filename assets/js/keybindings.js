@@ -3,6 +3,7 @@
 const Bindings=(()=>{
   const storageKey='momo-keybindings-v1';
   const actions=Object.keys(KEY_BINDINGS.original);
+  const addedActions=['inventory','heavyAttack','useMeat'];
   const profiles=['original',...Object.keys(KEY_BINDINGS.profiles)];
   let profile='original',modified={};
   const normalize=value=>value==='Spacebar'||value==='Space'?' ':String(value||'').toLowerCase();
@@ -31,13 +32,13 @@ const Bindings=(()=>{
     const copy=JSON.parse(JSON.stringify(changes));
     for(const [which,overrides] of Object.entries(copy)){
       if(!profiles.includes(which)||!overrides||Array.isArray(overrides)||typeof overrides!=='object')continue;
-      const missing=['inventory','heavyAttack'].filter(action=>!Object.hasOwn(overrides,action));
+      const missing=addedActions.filter(action=>!Object.hasOwn(overrides,action));
       const used=new Set();
       for(const action of actions.filter(action=>!missing.includes(action)))for(const key of Array.isArray(overrides[action])?overrides[action]:base(which,action))used.add(key);
       for(const action of missing){
         const preferred=base(which,action);
         if(!preferred.some(key=>used.has(key))){for(const key of preferred)used.add(key);continue;}
-        const alternatives=action==='heavyAttack'?['l']:['o','p','b'];
+        const alternatives={inventory:['o','p','b'],heavyAttack:['l'],useMeat:['p','b','n']}[action];
         const candidates=[...preferred,...alternatives,...'abcdefghijklmnopqrstuvwxyz0123456789',...Array.from({length:12},(_,i)=>'f'+(i+1))];
         const available=candidates.find(key=>!used.has(key));
         if(available){overrides[action]=[available];used.add(available);}
@@ -63,7 +64,8 @@ const Bindings=(()=>{
   function reset(){delete modified[profile];save();}
   function importData(data){
     if(!data||data.version!==KEY_BINDINGS.version)return false;
-    const compatibleOriginals=[[],['heavyAttack'],['inventory'],['inventory','heavyAttack']].map(missing=>Object.fromEntries(Object.entries(KEY_BINDINGS.original).filter(([action])=>!missing.includes(action))));
+    const historicalSchemas=addedActions.reduce((schemas,action)=>[...schemas,...schemas.map(missing=>[...missing,action])],[[]]);
+    const compatibleOriginals=historicalSchemas.map(missing=>Object.fromEntries(Object.entries(KEY_BINDINGS.original).filter(([action])=>!missing.includes(action))));
     if(!compatibleOriginals.some(original=>JSON.stringify(data.original)===JSON.stringify(original)))return false;
     const changes=compatibleChanges(data.modified);if(!validate(data.selection,changes))return false;
     profile=data.selection;modified=changes;save();return true;

@@ -92,6 +92,8 @@ yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:
 yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
 yomi.progressFlags=['councilKeyEarned','councilGateOpen','serpentScale'];
+yomi.progressFlags.push('akashRescued','compass','minimap');
+yomi.akash={x:710,y:2350};
 yomi.councilGate={x:2770,y:3400,w:420,h:415};
 yomi.gates.push({id:'councilGate',kind:'council',x:2815,y:2985,w:70,h:415});
 yomi.objects.push({id:'councilKey',type:'councilKey',x:1490,y:5800,name:I18n.t('council.key.name'),requiresFlag:'councilKeyEarned'});
@@ -140,6 +142,8 @@ const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage
 for(let i=0;i<7;i++){ledge(yomi,'lava-island-'+i,440+i*350,5695,275,'stone',32);Object.assign(yomi.platforms.at(-1),{bossPlatform:true,broken:false,crumble:0});}
 japan.arena.triggerX=9120;yomi.arena.triggerX=1000;heaven.arena.triggerX=2050;
 const levels=[japan,yomi,heaven];
+foe(yomi,'akash-guard',350,2350,'shield','akash',60);
+foe(yomi,'akash-mage',785,2350,'mage','akash',15);
 // A safe side area belongs to Japan's progression; it is not a fourth realm.
 japan.campEntrance={x:8870,y:1000};
 const forestCamp=makeLevel('forestCamp',2800,1080,{x:280,y:820});
@@ -149,6 +153,7 @@ forestCamp.returnPoint={x:180,y:820};
 forestCamp.arena={x:-1000,y:820,w:0,restId:'forestCamp'};forestCamp.boss={x:-1000,y:820};
 zone(forestCamp,I18n.t('camp.name'),0,0,2800,1080);
 forestCamp.npcs=[
+ {id:'akash',x:930,y:820,name:'merchant.name',dialogue:'merchant.greeting',image:'akash',height:148,merchant:true,requiresFlag:{realm:1,id:'akashRescued'}},
  {id:'daichi',x:620,y:820,name:'camp.npc.daichi.name',dialogue:'camp.npc.daichi.dialogue',image:'campDaichi',height:100},
  {id:'natsu',x:1710,y:820,name:'camp.npc.natsu.name',dialogue:'camp.npc.natsu.dialogue',image:'campNatsu',height:96},
  {id:'sora',x:2310,y:820,name:'camp.npc.sora.name',dialogue:'camp.npc.sora.dialogue',image:'campSora',height:72}

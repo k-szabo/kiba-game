@@ -14,7 +14,7 @@ function fixture(mask=0,{level=1,spent=false}={}){
  let totalXp=0;for(let n=1;n<level;n++)totalXp+=60+(n-1)*35;
  let budget=level-1+bonus;const stats={vitality:0,strength:0,spirit:0};
  if(spent)for(const key of Object.keys(stats)){stats[key]=Math.min(8,budget);budget-=stats[key];}
- return {version:2,layout:2,release,realm:2,prologueComplete:true,shards:0,won:false,abilities:[true,true],defeated:[true,true,true],flags,visitedRests:[['start'],['start'],['start']],checkpoint:copy(start),progression:{level,xp:0,totalXp,points:budget,stats}};
+ return {coins:0,meatCount:0,version:2,layout:2,release,realm:2,prologueComplete:true,shards:0,won:false,abilities:[true,true],defeated:[true,true,true],flags,visitedRests:[['start'],['start'],['start']],checkpoint:copy(start),progression:{level,xp:0,totalXp,points:budget,stats}};
 }
 for(let mask=0;mask<8;mask++)for(const level of [1,5,12])for(const spent of [false,true]){
  const data=fixture(mask,{level,spent});assert.deepEqual(JSON.parse(JSON.stringify(validate(data))),data,`Reward mask ${mask}, level ${level}, spent ${spent} is preserved`);

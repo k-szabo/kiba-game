@@ -135,9 +135,9 @@ pc['momo']['variants']['heavySword'] = {'paletteGroup': group('pc.momo.heavySwor
 portrait = atlas['inventory']['momo']
 pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
 npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
-for name in ('daichi', 'natsu', 'sora'):
+for name in ('daichi', 'natsu', 'sora', 'akash'):
     definition = atlas['camp'][name]
-    npcs[name] = {'name': name.capitalize(), 'role': 'camp-survivor',
+    npcs[name] = {'name': name.capitalize(), 'role': 'merchant' if name == 'akash' else 'camp-survivor',
                   'paletteGroup': group('npc.camp.' + name, manifest[definition['image']], definition, 'ART_CAMP.' + name)}
 for faction, actions in atlas['frames']['animations'].items():
     for role in actions['walk']:
@@ -237,7 +237,7 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 25, 'Missing current character entry'
+assert len(npcs) == 26, 'Missing current character entry'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'

@@ -61,7 +61,7 @@ function frames(h,seconds,fps=120){h.run(`for(let f=0;f<${Math.ceil(seconds*fps)
 // systems, without combat rewards or a hidden guardian in the safe map.
 {
  const h=victorious(),r=h.run;assert.equal(r('enterForestCamp()'),true);
- const residents=r('forestCamp.npcs.map(n=>n.id)');assert.equal(residents.length,3);
+ const residents=r('forestCamp.npcs.filter(campNPCVisible).map(n=>n.id)');assert.equal(residents.length,3);
  for(const id of residents){
   r(`initPlayer(forestCamp.npcs.find(n=>n.id===${json(id)}));`);
   assert.equal(r('getContext().type'),'campNPC');

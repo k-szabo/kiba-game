@@ -38,6 +38,12 @@ for(const profile of ['original','uk','fr']){
   assert(run(`Bindings.choose('${profile}')`));
   run('Bindings.reset()');
   assert.equal(run("Bindings.read('heavyAttack')[0]"),'h','Every layout inherits the new action default');
+  assert.equal(run("Bindings.read('useMeat')[0]"),'o','Every layout inherits the food action default');
+  assert(run("Bindings.has('useMeat',new Set(['@useMeat']))"),'Food input also supports an action token');
+  assert.equal(run("Bindings.setPrimary('useMeat','j').reason"),'conflict');
+  assert(run("Bindings.setPrimary('useMeat','p').ok"));
+  assert(run("Bindings.has('useMeat',new Set(['p']))"));
+  assert(!run("Bindings.has('useMeat',new Set(['o']))"));
   assert(run("Bindings.has('heavyAttack',new Set(['@heavyAttack']))"),'Touch input uses the action rather than its physical key');
   assert.equal(run("Bindings.setPrimary('heavyAttack','j').reason"),'conflict');
   assert(run("Bindings.setPrimary('heavyAttack','l').ok"));
@@ -45,14 +51,17 @@ for(const profile of ['original','uk','fr']){
   assert(!run("Bindings.has('heavyAttack',new Set(['h']))"));
   run('Bindings.reset()');
   assert.equal(run("Bindings.read('heavyAttack')[0]"),'h');
+  assert.equal(run("Bindings.read('useMeat')[0]"),'o');
 }
 const historicalOriginal=missing=>Object.fromEntries(Object.entries(defaults.original).filter(([action])=>!missing.includes(action)));
-for(const missing of [['heavyAttack'],['inventory'],['inventory','heavyAttack']]){
+const historicalSchemas=[[],['heavyAttack'],['inventory'],['inventory','heavyAttack']];
+for(const missing of [...historicalSchemas.slice(1),...historicalSchemas.map(schema=>[...schema,'useMeat'])]){
   const oldExport={version:defaults.version,original:historicalOriginal(missing),selection:'fr',modified:{fr:{attack:['h'],map:['l'],...(missing.includes('inventory')?{train:['i']}:{inventory:['o']})}}};
   const isolated=isolatedBindings();
   assert(isolated.read(`Bindings.importData(${JSON.stringify(oldExport)})`),'Historical default schemas remain importable');
   assert.equal(isolated.read("Bindings.read('attack')[0]"),'h','Existing H preference must survive');
   assert.equal(isolated.read("Bindings.read('map')[0]"),'l','Existing L preference must survive');
+  assert.equal(isolated.read("Bindings.read('useMeat')[0]"),'p','Historical inventory O is preserved and the new food action uses a free fallback');
   assert.notEqual(isolated.read("Bindings.read('heavyAttack')[0]"),'h');
   assert.notEqual(isolated.read("Bindings.read('heavyAttack')[0]"),'l');
   if(missing.includes('inventory')){
@@ -64,6 +73,7 @@ for(const missing of [['heavyAttack'],['inventory'],['inventory','heavyAttack']]
   const reloaded=isolatedBindings(JSON.parse(isolated.writes.get('momo-keybindings-v1')));
   assert.equal(reloaded.read("Bindings.read('attack')[0]"),'h');
   assert.equal(reloaded.read("Bindings.read('heavyAttack')[0]"),isolated.read("Bindings.read('heavyAttack')[0]"));
+  assert.equal(reloaded.read("Bindings.read('useMeat')[0]"),isolated.read("Bindings.read('useMeat')[0]"));
   oldExport.original.attack=['x'];
   assert(!isolated.read(`Bindings.importData(${JSON.stringify(oldExport)})`),'Historical imports cannot alter built-in defaults');
 }
@@ -72,6 +82,27 @@ assert.equal(stored.read("Bindings.profile"),'uk');
 assert.equal(stored.read("Bindings.read('attack')[0]"),'h');
 assert.equal(stored.read("Bindings.read('heavyAttack')[0]"),'l','Unused L is the first H-conflict fallback');
 assert.equal(stored.read("Bindings.read('inventory')[0]"),'o');
+assert.equal(stored.read("Bindings.read('useMeat')[0]"),'p','Food migration cannot take the older inventory fallback O');
 assert.equal(stored.read("Bindings.read('train')[0]"),'i');
 assert(stored.writes.get('momo-keybindings-v1').includes('heavyAttack'),'Compatibility assignments persist across reloads');
-console.log('PASS: keyboard layouts, remapping, action-based heavy touch input, conflict-free historical imports/storage and gameplay use.');
+for(const profile of ['original','uk','fr']){
+  const customO=isolatedBindings({profile,modified:{[profile]:{attack:['o'],inventory:['i'],heavyAttack:['h']}}});
+  assert.equal(customO.read("Bindings.read('attack')[0]"),'o','An existing custom O binding remains owned by its original action');
+  assert.equal(customO.read("Bindings.read('useMeat')[0]"),'p');
+  const all=customO.read('Bindings.actions.flatMap(action=>Bindings.read(action))');
+  assert.equal(new Set(all).size,all.length,'Adding food does not duplicate a physical key');
+  const reload=isolatedBindings(JSON.parse(customO.writes.get('momo-keybindings-v1')));
+  assert.equal(reload.read("Bindings.read('attack')[0]"),'o');assert.equal(reload.read("Bindings.read('useMeat')[0]"),'p');
+}
+const crowded=isolatedBindings({profile:'uk',modified:{uk:{attack:['o'],train:['p'],map:['b'],drop:['n'],inventory:['i'],heavyAttack:['h']}}});
+const crowdedKeys=crowded.read('Bindings.actions.flatMap(action=>Bindings.read(action))');
+assert.equal(new Set(crowdedKeys).size,crowdedKeys.length,'Food finds another unused key when all named fallbacks are occupied');
+assert(!['o','p','b','n'].includes(crowded.read("Bindings.read('useMeat')[0]")));
+const current=isolatedBindings({profile:'uk',modified:{uk:{useMeat:['f2']}}});
+assert.equal(current.read("Bindings.read('useMeat')[0]"),'f2','An explicit current food binding is never remigrated');
+assert(current.read("Bindings.setPrimary('useMeat','f3').ok"));
+current.read("var foodExport=Bindings.exportData();Bindings.reset();");
+assert.equal(current.read("Bindings.read('useMeat')[0]"),'o');
+assert(current.read('Bindings.importData(foodExport)'));
+assert.equal(current.read("Bindings.read('useMeat')[0]"),'f3','Food remapping survives export, reset and import');
+console.log('PASS: keyboard layouts, heavy/food defaults and remapping, action tokens, conflict-free historical imports/storage, preserved O preferences and gameplay use.');

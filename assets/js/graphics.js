@@ -294,6 +294,11 @@ const Visuals = (() => {
     }
   }
   function objects(r) {
+    if(level===yomi&&!Merchant.rescued()&&visiblePoint(yomi.akash,180)){
+      shadow(yomi.akash.x,yomi.akash.y,30,.3);
+      frame('akash',ART_CAMP.akash,yomi.akash.x,yomi.akash.y,148);
+      prop('cage',yomi.akash.x,yomi.akash.y+2,186);
+    }
     for (const o of level.objects) {
       if(!objectVisible(o))continue;
       if (!visiblePoint(o)) continue;

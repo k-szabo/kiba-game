@@ -22,6 +22,7 @@ const SaveVault=(()=>{
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
   if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
+  if(!integer(data.coins,0,Number.MAX_SAFE_INTEGER)||!integer(data.meatCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid merchant inventory');
   for(const [key,length] of [['abilities',2],['defeated',3]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
   for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==3)throw Error('Invalid world progress');
   for(let i=0;i<3;i++){
@@ -30,6 +31,9 @@ const SaveVault=(()=>{
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
   if(data.visitedRests[0].includes('forestCamp')&&!data.defeated[0])throw Error('Invalid camp progress');
+  const rescued=data.flags[1].includes('akashRescued');
+  if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.flags[1].some(id=>id==='compass'||id==='minimap')))throw Error('Invalid merchant progress');
+  if(data.prologueComplete===false&&(data.coins||data.meatCount))throw Error('Invalid dream inventory');
   if(data.location==='forestCamp'&&(data.realm!==0||data.prologueComplete!==true||!data.defeated[0]))throw Error('Invalid camp location');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');

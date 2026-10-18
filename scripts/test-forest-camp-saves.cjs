@@ -11,7 +11,7 @@ function fixture(){
  const flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal']];
  let totalXp=0,bonus=0;for(const [realm,reward] of rewards.entries()){flags[realm].push(reward.claim,reward.id);totalXp+=reward.xp;bonus+=reward.points;}
  let level=1,xp=totalXp;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
- return {version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
+ return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
   abilities:[true,true],defeated:[true,true,true],flags,visitedRests:[['start',campRest.id],['start'],['start']],checkpoint:copy(campRest),
   progression:{level,xp:level===12?0:xp,totalXp,points:level-1+bonus-2,stats:{vitality:1,strength:1,spirit:0}}};
 }

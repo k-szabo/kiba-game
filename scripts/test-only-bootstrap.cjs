@@ -13,5 +13,5 @@ const SaveVault={ready:Promise.resolve(null),isReady:true,notice:'',write(data){
 `;
 exports.after=`
 storageReady=true;
-window.momo={getState:()=>({state,realm,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),shards,relics:collectedRelics(),attack:{active:attack>0,elapsed:attackElapsed,face:attackFace,hit:attackHit},progression:JSON.parse(JSON.stringify(progression)),stats:momoStats(),player:player?{...player}:null,boss:boss?{...boss}:null,checkpoint:checkpoint?{...checkpoint}:null,camera,cameraY,world:{width:level.width,height:level.height}})};
+window.momo={getState:()=>({state,realm,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),shards,coins,meatCount,relics:collectedRelics(),attack:{active:attack>0,elapsed:attackElapsed,face:attackFace,hit:attackHit},progression:JSON.parse(JSON.stringify(progression)),stats:momoStats(),player:player?{...player}:null,boss:boss?{...boss}:null,checkpoint:checkpoint?{...checkpoint}:null,camera,cameraY,world:{width:level.width,height:level.height}})};
 `;
