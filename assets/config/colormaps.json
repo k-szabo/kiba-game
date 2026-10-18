@@ -5165,97 +5165,97 @@
       "palette": {
         "dominant": [
           {
-            "hex": "#2b1512",
-            "coveragePercent": 15.2887
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
           },
           {
-            "hex": "#100707",
-            "coveragePercent": 11.292
+            "hex": "#100605",
+            "coveragePercent": 12.0161
           },
           {
-            "hex": "#3b2726",
-            "coveragePercent": 10.7091
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
           },
           {
-            "hex": "#521d18",
-            "coveragePercent": 10.4606
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
           },
           {
-            "hex": "#543c38",
-            "coveragePercent": 10.3907
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
           },
           {
-            "hex": "#782a24",
-            "coveragePercent": 9.1685
+            "hex": "#624846",
+            "coveragePercent": 7.8941
           },
           {
-            "hex": "#75554e",
-            "coveragePercent": 7.5744
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
           },
           {
-            "hex": "#a76f50",
-            "coveragePercent": 5.1093
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
           },
           {
-            "hex": "#a43832",
-            "coveragePercent": 4.4041
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
           },
           {
-            "hex": "#cc9872",
-            "coveragePercent": 4.1797
+            "hex": "#826563",
+            "coveragePercent": 4.8411
           },
           {
-            "hex": "#e7c29c",
-            "coveragePercent": 3.5623
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
           },
           {
-            "hex": "#967b7f",
-            "coveragePercent": 2.479
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
           },
           {
-            "hex": "#b570e1",
-            "coveragePercent": 2.0342
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
           },
           {
-            "hex": "#f6e4e1",
-            "coveragePercent": 1.4212
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
           },
           {
-            "hex": "#dd9df5",
-            "coveragePercent": 1.0447
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
           },
           {
-            "hex": "#8f40c3",
-            "coveragePercent": 0.8814
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
           }
         ],
         "accents": [
           {
-            "hex": "#9b6244",
-            "coveragePercent": 27.7841
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
           },
           {
-            "hex": "#8e2c2a",
-            "coveragePercent": 26.7089
+            "hex": "#935435",
+            "coveragePercent": 20.7743
           },
           {
-            "hex": "#cd9264",
-            "coveragePercent": 17.9569
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
           },
           {
-            "hex": "#b33a38",
-            "coveragePercent": 12.5769
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
           },
           {
-            "hex": "#b66de8",
-            "coveragePercent": 9.5679
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
           },
           {
-            "hex": "#8f40bf",
-            "coveragePercent": 5.4054
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
           }
         ],
-        "visibleSamples": 613124,
+        "visibleSamples": 594036,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -16228,7 +16228,7 @@
       }
     },
     "assets/images/enemies/shadow-mage-v1.png": {
-      "sha256": "563627ab6f29600dc708dfcbfa3cb549fa3232a36ad981106bf01ac34587f722",
+      "sha256": "db4ee322042929ae1a3ad517df73df9addaca088023d7560afca7d457e89784c",
       "width": 1536,
       "height": 1024,
       "runtimeKeys": [
@@ -16238,97 +16238,97 @@
       "palette": {
         "dominant": [
           {
-            "hex": "#2b1512",
-            "coveragePercent": 15.2887
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
           },
           {
-            "hex": "#100707",
-            "coveragePercent": 11.292
+            "hex": "#100605",
+            "coveragePercent": 12.0161
           },
           {
-            "hex": "#3b2726",
-            "coveragePercent": 10.7091
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
           },
           {
-            "hex": "#521d18",
-            "coveragePercent": 10.4606
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
           },
           {
-            "hex": "#543c38",
-            "coveragePercent": 10.3907
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
           },
           {
-            "hex": "#782a24",
-            "coveragePercent": 9.1685
+            "hex": "#624846",
+            "coveragePercent": 7.8941
           },
           {
-            "hex": "#75554e",
-            "coveragePercent": 7.5744
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
           },
           {
-            "hex": "#a76f50",
-            "coveragePercent": 5.1093
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
           },
           {
-            "hex": "#a43832",
-            "coveragePercent": 4.4041
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
           },
           {
-            "hex": "#cc9872",
-            "coveragePercent": 4.1797
+            "hex": "#826563",
+            "coveragePercent": 4.8411
           },
           {
-            "hex": "#e7c29c",
-            "coveragePercent": 3.5623
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
           },
           {
-            "hex": "#967b7f",
-            "coveragePercent": 2.479
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
           },
           {
-            "hex": "#b570e1",
-            "coveragePercent": 2.0342
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
           },
           {
-            "hex": "#f6e4e1",
-            "coveragePercent": 1.4212
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
           },
           {
-            "hex": "#dd9df5",
-            "coveragePercent": 1.0447
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
           },
           {
-            "hex": "#8f40c3",
-            "coveragePercent": 0.8814
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
           }
         ],
         "accents": [
           {
-            "hex": "#9b6244",
-            "coveragePercent": 27.7841
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
           },
           {
-            "hex": "#8e2c2a",
-            "coveragePercent": 26.7089
+            "hex": "#935435",
+            "coveragePercent": 20.7743
           },
           {
-            "hex": "#cd9264",
-            "coveragePercent": 17.9569
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
           },
           {
-            "hex": "#b33a38",
-            "coveragePercent": 12.5769
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
           },
           {
-            "hex": "#b66de8",
-            "coveragePercent": 9.5679
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
           },
           {
-            "hex": "#8f40bf",
-            "coveragePercent": 5.4054
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
           }
         ],
-        "visibleSamples": 613124,
+        "visibleSamples": 594036,
         "dominantCoveragePercent": 99.9999
       }
     },
