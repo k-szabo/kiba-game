@@ -28,6 +28,8 @@ Az `ART_INVENTORY.items` a közös ikonkatalógus: tárgyazonosítónként a for
 
 Minden tárgy ugyanazon a rajzolón keresztül, pixelsűrűséghez igazított felbontással (legfeljebb 3×) és teljes rajzolási átlátszatlansággal jelenik meg. Az egységes, sötét kékesszürke ikonhátteret és enyhe fényerő-/kontrasztkiemelést a közös CSS adja. Ez a háttér kijelöléskor és hover alatt is megmarad, a színes tárgyak így elkülönülnek a zsák anyagától.
 
+A tárgy- és fegyverkijelölés csak a keret színét, a belső árnyékot és a hátteret módosítja. A keret vastagsága, a padding, a betűméret és a betűvastagság állandó maradjon: kattintás, hover és billentyűzetes fókusz nem tördelheti újra a nevet, és nem méretezheti át a képet vagy a gombot. Ellenőrzéskor HU/EN asztali és keskeny nézetben össze kell hasonlítani a kijelölt/kijelöletlen feliratok méreteit; különösen az „Az esküszegő lelke” és „Soul of the Oathbreaker” nevekkel.
+
 Új tárgyhoz ebbe a katalógusba kell felvenni a grafikát, a kivágást és a HU/EN fordítási kulcsot; külön rajzolóág vagy halványító stílus helyett a közös megjelenítést kell használni. A katalógus minden bejegyzésére automatikusan fut a képhatár-, DPR- és rajzolási alfaellenőrzés. A tényleges olvashatóságot böngészőben is ellenőrizni kell: magyar/angol, asztali/320 px, normál/kijelölt/hover/fókusz állapotban, a teljes tárgysziluettel és olvasható névvel.
 
 ## Szamuráj útravaló zsák – 0.9.17
