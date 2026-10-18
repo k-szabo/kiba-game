@@ -48,7 +48,7 @@ function enterCouncilHall(){
 }
 function campNPCVisible(npc){return !npc.requiresFlag||flags[npc.requiresFlag.realm]?.includes(npc.requiresFlag.id);}
 function enterForestCamp({save=true,atShrine=false}={}){
- if(Prologue.active||!defeated[0])return false;
+ if(Prologue.active||!defeated[0]&&!DevSession.active)return false;
  const hp=player?.hp;
  enterRealm(0);level=forestCamp;platforms=level.platforms.map(p=>({...p,dx:0}));
  checkpoint={...forestCamp.rests[0]};enemies=[];boss=createBoss();boss.dead=true;bossStarted=false;
