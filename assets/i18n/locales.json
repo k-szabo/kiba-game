@@ -572,7 +572,7 @@
       "help.merchant.body": "{0}: étel használata. Akash portékáit az erdei menedékben találod, ha kiszabadítottad Yomiban.",
       "menu.changelog.0921.title": "Akash és az elveszett utak portékái",
       "menu.changelog.0921.merchant": "Kiszabadítható kereskedő, gyűjthető érmék, megvásárolható iránytű és minimap, valamint inventoryból és átállítható gyorsbillentyűvel használható sült hús került a játékba.",
-      "dev.amount": "Mennyiség",
+      "dev.amount": "Érme Mennyiség",
       "dev.coins.add": "Érmék hozzáadása"
     }
   },
@@ -1149,7 +1149,7 @@
       "help.merchant.body": "{0}: use food. Akash sells his wares at the Forest Refuge after you free him in Yomi.",
       "menu.changelog.0921.title": "Akash and the wares of lost roads",
       "menu.changelog.0921.merchant": "The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut.",
-      "dev.amount": "Amount",
+      "dev.amount": "Coin Amount",
       "dev.coins.add": "Add coins"
     }
   }
