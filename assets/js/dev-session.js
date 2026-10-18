@@ -15,8 +15,8 @@ const DevSession=(()=>{
   normalSave=clone(saved);active=true;
   if(DevTools.menuBackground){
    const old=normalSave;
-   abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:[false,false,false];
-   flags=old?old.flags.map(f=>[...f]):[[],[],[]];visitedRests=old?old.visitedRests.map(f=>[...f]):[[],[],[]];
+   abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);
+   flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);
    shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;progression=normalizeProgression(old?.progression,flags);
    Prologue.stop();enterRealm(0);
   }else if(Prologue.active){Prologue.stop();enterRealm(0);}

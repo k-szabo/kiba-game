@@ -25,7 +25,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
-| `assets/js/levels.js` | A három birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
+| `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
+| `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
 | `assets/js/shadow-animation.js` | Árnyék 24 festett póza, szemekhez igazított kivágásai és harci időzítése. |

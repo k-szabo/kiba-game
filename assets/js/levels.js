@@ -5,7 +5,8 @@
 const BOSS_REWARDS=Object.freeze([
  Object.freeze({id:'oathbreakerSoul',claim:'bossRewardClaimed',xp:250,points:1}),
  Object.freeze({id:'yomiGuardianSoul',claim:'bossRewardClaimed',xp:400,points:1}),
- Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:1})
+ Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:1}),
+ Object.freeze({id:'madPriestSoul',claim:'bossRewardClaimed',xp:800,points:1})
 ]);
 function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
@@ -141,7 +142,53 @@ const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage
 // Low arena ledges are reachable with one jump and connect with ordinary/double jumps.
 for(let i=0;i<7;i++){ledge(yomi,'lava-island-'+i,440+i*350,5695,275,'stone',32);Object.assign(yomi.platforms.at(-1),{bossPlatform:true,broken:false,crumble:0});}
 japan.arena.triggerX=9120;yomi.arena.triggerX=1000;heaven.arena.triggerX=2050;
-const levels=[japan,yomi,heaven];
+// The fourth realm winds through a prison before climbing to the cathedral.
+// Its optional organ gallery lies above the camera of the ordinary route.
+const shadowRealm=makeLevel('shadowRealm',11200,2600,{x:300,y:1400});
+for(const p of [
+ ['shore',0,1400,1900],['cloister',2120,1400,1650],['altar-road',4000,1280,1600],
+ ['prison-court',5810,1400,1750],['prison-hall',7560,1400,1200],['cathedral',8950,1200,2250]
+])ledge(shadowRealm,...p,'ground',220);
+for(const p of [
+ ['shore-bridge',1830,1280,360],['cloister-bridge',3660,1200,420],
+ ['altar-descent',5600,1280,210],['cathedral-step',8760,1300,190],
+ ['prison-balcony',6240,1210,460],['prison-loft',6830,1080,420],
+ ['gallery-step1',3150,1220,190],['gallery-step2',2910,1060,170],
+ ['gallery-step3',3140,900,180],['gallery-step4',2910,740,170],
+ ['gallery-step5',3140,580,180],['organ-loft',2510,420,1200]
+]){ledge(shadowRealm,...p);if(p[0].startsWith('gallery-')||p[0]==='organ-loft')shadowRealm.platforms.at(-1).secretArea='organLoft';}
+rest(shadowRealm,'start',350,1400,I18n.t('shadow.place.shore'));
+rest(shadowRealm,'altar',4700,1280,I18n.t('shadow.place.altar'));
+rest(shadowRealm,'prison',6100,1400,I18n.t('shadow.place.prison'));
+rest(shadowRealm,'cathedral',9180,1200,I18n.t('shadow.place.cathedral'));
+shadowRealm.altar={x:4700,y:1280};shadowRealm.prisonDoor={x:7520,y:1400};
+shadowRealm.prisonTrace={x:8290,y:1400};
+shadowRealm.secrets=[
+ {id:'organLoft',name:I18n.t('shadow.place.gallery'),x:2460,y:0,w:1300,h:650,arena:{x:2510,y:420,w:1200},guardian:'madOrganist'},
+ {id:'prisonCourt',name:I18n.t('shadow.place.prison'),x:6300,y:950,w:1230,h:550,arena:{x:6410,y:1400,w:1110},guardian:'cultJailer',public:true}
+];
+shadowRealm.progressFlags=['shadowAltar','prisonOpen','prisonTrace','prisonKey','corruptedHymn'];
+shadowRealm.gates=[{id:'prisonDoor',kind:'prison',x:7500,y:0,w:60,h:1400}];
+shadowRealm.objects=[
+ {id:'prisonTrace',type:'shadowTrace',x:8290,y:1400,name:I18n.t('HARU'),requiresFlag:'prisonOpen'},
+ {id:'prisonKey',type:'shadowItem',x:7070,y:1400,name:I18n.t('item.prisonKey'),guardian:'cultJailer'},
+ {id:'corruptedHymn',type:'shadowItem',x:2730,y:420,name:I18n.t('item.corruptedHymn'),guardian:'madOrganist',secretArea:'organLoft'}
+];
+shadowRealm.arena={x:9400,y:1200,w:1780,triggerX:9660,restId:'cathedral'};
+shadowRealm.boss={x:10450,y:1200};
+for(const [i,x] of [950,1500,2460,3460,4280,5160,6000,7890,8480,9280].entries()){
+ const floor=shadowRealm.platforms.find(p=>p.kind==='ground'&&x>=p.x&&x<p.x+p.w);
+ foe(shadowRealm,'cultist-'+i,x,floor.y,fieldRoles[i%4],null,60);
+ shadowRealm.enemies.at(-1).name=I18n.t('shadow.enemy.'+fieldRoles[i%4]);
+}
+foe(shadowRealm,'madOrganist',3300,420,'mage',null,0);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'organist',name:I18n.t('shadow.boss.organist'),secretArea:'organLoft'});
+foe(shadowRealm,'cultJailer',7040,1400,'guard',null,250);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'jailer',name:I18n.t('shadow.boss.jailer'),secretArea:'prisonCourt'});
+zone(shadowRealm,I18n.t('shadow.place.shore'),0,650,3900,1950);
+zone(shadowRealm,I18n.t('shadow.place.altar'),3900,650,1900,1950);
+zone(shadowRealm,I18n.t('shadow.place.prison'),5800,650,3100,1950);
+zone(shadowRealm,I18n.t('shadow.place.cathedral'),8900,0,2300,2600);
+heaven.progressFlags.push('shadowEntered');
+const levels=[japan,yomi,heaven,shadowRealm];
 foe(yomi,'akash-guard',350,2350,'shield','akash',60);
 foe(yomi,'akash-mage',785,2350,'mage','akash',15);
 // A safe side area belongs to Japan's progression; it is not a fourth realm.

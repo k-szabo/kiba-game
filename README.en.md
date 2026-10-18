@@ -83,3 +83,7 @@ The site is static and hosted on GitHub Pages. You do not need an account or a s
 - [Character and asset color-map reference](assets/config/colormaps.json)
 - [Release IDs and bug-fix history](docs/RELEASES.md)
 - [Art prompts and reference provenance](docs/art-prompts/README.md)
+
+## Shadow Realm
+
+Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar. See the [fourth realm design and validation guide](docs/SHADOW-REALM.md) for details (Hungarian).

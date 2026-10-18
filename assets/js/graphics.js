@@ -47,7 +47,7 @@ const Visuals = (() => {
     if (image.complete && image.naturalWidth) finish(true);
   })));
   const usable = key => images[key]?.complete && images[key].naturalWidth > 0;
-  const faction = () => ['japan', 'yomi', 'heaven'][realm];
+  const faction = () => ['japan', 'yomi', 'heaven', 'shadowCult'][realm];
   function frame(key, rect, x, feet, bodyHeight, face = 1, bob = 0, stretch = 0) {
     if (!usable(key) || !rect) return;
         const image = images[key];
@@ -148,7 +148,7 @@ const Visuals = (() => {
     }
     ctx.fillStyle = realm === 1 ? '#140c2028' : realm === 2 ? '#24314820' : '#11252d30';
     const secretState=secretBackdropState();
-    if(secretState){
+    if(secretState&&realm!==3){
       const secret=secretState.area;
       const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';
       if(usable(key)){
@@ -214,7 +214,7 @@ const Visuals = (() => {
   }
   function terrain(r, items) {
     for (const p of items) {
-      const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm];
+      const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
@@ -294,6 +294,10 @@ const Visuals = (() => {
     }
   }
   function objects(r) {
+    if(realm===3){
+      const altar=level.altar;
+      if(visiblePoint(altar))BossVFX.portal(altar.x,altar.y+8,130,hasFlag('shadowAltar')?.8:.35);
+    }
     if(level===yomi&&!Merchant.rescued()&&visiblePoint(yomi.akash,180)){
       shadow(yomi.akash.x,yomi.akash.y,30,.3);
       frame('akash',ART_CAMP.akash,yomi.akash.x,yomi.akash.y,148);
@@ -302,21 +306,27 @@ const Visuals = (() => {
     for (const o of level.objects) {
       if(!objectVisible(o))continue;
       if (!visiblePoint(o)) continue;
-      const taken = hasFlag(o.id);if(o.type==='relic'&&!relicUnlocked(o))continue;
+      const taken = hasFlag(o.id);if(['relic','shadowItem'].includes(o.type)&&!relicUnlocked(o))continue;
+      if(o.type==='shadowItem'&&(taken||o.id==='prisonKey'&&hasFlag('prisonOpen')))continue;
       if(o.type==='councilKey'&&taken)continue;
       if(realm===2&&!taken){
         const cy=o.type==='bell'?o.y-80:o.y-42;
         ctx.save();ctx.fillStyle='#193549b8';ctx.strokeStyle='#f5df9f';ctx.lineWidth=2;
         ctx.beginPath();ctx.ellipse(o.x,cy,o.type==='bell'?62:37,o.type==='bell'?75:42,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
       }
-      if (o.type === 'councilKey') {shadow(o.x,o.y,28,.35);councilKey(o.x,o.y,92);}
+      if(o.type==='shadowItem'){
+        const art=ART_INVENTORY.items[o.id],image=images[art.image],height=76,width=height*art.w/art.h;
+        shadow(o.x,o.y,28,.35);BossVFX.marker(o.x,o.y,70,'#f3dbaf');
+        if(usable(art.image))ctx.drawImage(image,art.x,art.y,art.w,art.h,o.x-width/2,o.y-height-10,width,height);
+      }
+      else if (o.type === 'councilKey') {shadow(o.x,o.y,28,.35);councilKey(o.x,o.y,92);}
       else if (o.type === 'bell') {shadow(o.x, o.y, 45);prop('bell', o.x, o.y + 2, 158, taken ? .62 : 1);}
       else if (o.type === 'rescue') {if (!taken) prop('cage', o.x, o.y + 2, 125);drawSpirit(o.x, o.y - 58, r.gold);}
       else if(o.type==='relic'){if(!taken){shadow(o.x,o.y,33,.35);frame('relics',ART_FRAMES.relics[o.id],o.x,o.y+2,118);}}
       else drawSpirit(o.x, o.y - 35, r.gold);
       ctx.save();ctx.font = 'bold 12px Manrope, sans-serif';ctx.textAlign = 'center';
       const label=I18n.t(taken ? '✓' : o.name),labelY=o.y-(o.type==='bell'?175:148);
-      if(realm===2){const width=ctx.measureText(label).width+20;ctx.fillStyle='#183246e8';ctx.fillRect(o.x-width/2,labelY-15,width,21);}
+      if(realm===2||realm===3){const width=ctx.measureText(label).width+20;ctx.fillStyle='#183246e8';ctx.fillRect(o.x-width/2,labelY-15,width,21);}
       ctx.fillStyle = realm===2?'#fff0ba':r.gold;ctx.fillText(label,o.x,labelY);ctx.restore();
     }
   }
@@ -324,12 +334,20 @@ const Visuals = (() => {
   function actor(e, r, isBoss = false) {
     if(!isBoss&&e.serpent===true){serpentActor(e);return;}
     const role=isBoss?'boss':enemyRole(e),feet=e.y+e.h,x=e.x+e.w/2;
-    const height=isBoss?[164,180,176][realm]:e.miniboss?(e.miniboss==='angel'?156:145):role==='shield'?102:role==='mage'?101:94;
+    const height=isBoss?[164,180,176,170][realm]:e.miniboss?(e.miniboss==='organist'?290:e.miniboss==='jailer'?172:e.miniboss==='angel'?156:145):role==='shield'?102:role==='mage'?101:94;
     const face=isBoss&&e.autoPhase?e.autoFace:e.face;
     const actorFaction=e.factionOverride||faction();
     const palette=e.factionOverride==='yomi'?realms[1]:e.factionOverride==='heaven'?realms[2]:r;
     let index=0,key,rect;
-    if(e.miniboss){
+    if(realm===3){
+      const name=isBoss?'madPriest':e.miniboss?e.id:role;
+      const art=ART_SHADOW.actors[name],phase=e.miniboss||isBoss?e.phase:e.windup>0?'windup':e.attackTime>0?'strike':e.recovery>0?'recover':'wait';
+      if(phase==='windup')index=(isBoss||e.miniboss?e.clock/e.phaseDuration:e.windup/e.windupDuration)>.5?2:3;
+      else if(phase==='strike')index=4;
+      else if(phase==='recover'||e.stun>0)index=5;
+      else if(Math.abs(e.walkSpeed)>2)index=Math.floor(e.animTime*8)%2;
+      key=art.image;rect=art.frames[index];
+    }else if(e.miniboss){
       index=e.phase==='windup'?(e.clock/e.phaseDuration>.5?1:2):e.phase==='strike'?(['holyFan','curse','sigils'].includes(e.move)?4:3):e.phase==='recover'?5:0;
       key=e.miniboss==='angel'?'oldAngel':'oldCultist';rect=ART_FRAMES[key][index];
     }else if(isBoss){
@@ -413,13 +431,19 @@ const Visuals = (() => {
   function miniEffects(e,height){
     const x=e.x+e.w/2,feet=e.y+e.h,color=e.miniboss==='angel'?'#ffe0a2':'#c39ae7';
     ctx.save();
+    if(realm===3&&e.move==='axe'){
+      if(e.phase==='windup'){
+        const hit={x:e.face>0?e.x+e.w*.4:e.x-185,y:e.y-8,w:185+e.w*.6,h:e.h+20};
+        ctx.fillStyle='#e6b0fa22';ctx.strokeStyle='#f3d8ac';ctx.lineWidth=2.5;ctx.fillRect(hit.x,hit.y,hit.w,hit.h);ctx.strokeRect(hit.x,hit.y,hit.w,hit.h);
+      }else if(e.phase==='strike')BossVFX.slash('slashShadow',x+e.face*70,feet-68,220,145,e.face,1-e.clock/e.phaseDuration);
+    }
     if(e.active){
       ctx.fillStyle='#122739df';ctx.fillRect(x-98,feet-height-79,196,e.phase==='windup'?57:53);
       ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);
       ctx.font='bold 11px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
       if(e.phase==='windup'){
         const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};
-        ctx.fillText(I18n.t(names[e.move]),x,feet-height-63);
+        ctx.fillText(I18n.t(names[e.move]||'text.attack'),x,feet-height-63);
         if(['glaive','staff','lunge'].includes(e.move)){ctx.shadowBlur=0;ctx.fillStyle=color+'25';const w=e.move==='lunge'?300:175;ctx.fillRect(e.face>0?x:x-w,feet-95,w,95);ctx.strokeStyle=color;ctx.setLineDash([7,6]);ctx.strokeRect(e.face>0?x:x-w,feet-95,w,95);ctx.setLineDash([]);}
       }
     }
@@ -544,6 +568,19 @@ const Visuals = (() => {
   function bossEffects(r) {
     if(!bossStarted||!boss||boss.dead)return;
     ctx.save();
+    if(realm===3){
+      if(boss.move==='bell'&&['windup','strike'].includes(boss.phase)){
+        BossVFX.marker(boss.targetX,level.arena.y,290,'#f3d8ac');
+        BossVFX.portal(boss.targetX,level.arena.y,290,boss.phase==='windup'?.35:.75);
+      }
+      if(boss.move==='bell'&&boss.drainPending){
+        const from={x:player.x+player.w/2,y:player.y+player.h*.45},to={x:boss.x+boss.w/2,y:boss.y+boss.h*.45};
+        ctx.strokeStyle='#170f27';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(from.x,from.y);ctx.quadraticCurveTo((from.x+to.x)/2,Math.min(from.y,to.y)-70,to.x,to.y);ctx.stroke();
+        ctx.strokeStyle='#e0b9ff';ctx.lineWidth=3;ctx.stroke();
+        BossVFX.stamp('shadowBolt',from.x,from.y,85,55,{alpha:.8});
+      }
+      if(boss.phase==='strike'&&boss.move==='cleave')BossVFX.slash('slashShadow',boss.x+boss.w/2+boss.face*65,boss.y+boss.h*.55,200,135,boss.face,1-boss.clock/boss.phaseDuration);
+    }
     if(boss.phase==='transform'){
       const x=boss.x+boss.w/2,y=boss.y+45,pulse=1-boss.clock/boss.phaseDuration;
       const g=ctx.createRadialGradient(x,y,5,x,y,210);g.addColorStop(0,boss.stage===2?'#c596ffad':'#ffe6adbb');g.addColorStop(.45,'#ab83d955');g.addColorStop(1,'#aa77dd00');ctx.fillStyle=g;ctx.fillRect(x-210,y-210,420,420);
@@ -603,6 +640,12 @@ const Visuals = (() => {
   }
   function gates(r) {
     for (const g of level.gates) {
+      if(g.kind==='prison'){
+        const p=level.prisonDoor,open=hasFlag('prisonOpen');
+        if(!open)secretRock({x:g.x,y:g.y,w:g.w,h:g.h-350});
+        if(visiblePoint(p,500))councilGate({...p,w:300,h:390},open);
+        continue;
+      }
       if(g.kind==='council'){
         if(level.councilGate)councilGate(level.councilGate,hasFlag('councilGateOpen'));
         continue;

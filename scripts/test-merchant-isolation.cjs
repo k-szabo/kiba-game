@@ -5,7 +5,7 @@ function normalState(h){return {saved:h.run('JSON.stringify(saved)'),writes:h.ru
 function unchanged(h,baseline,message){assert.deepEqual(normalState(h),baseline,message);}
 function possessions(h){return h.run('JSON.stringify({coins,meatCount,flags})');}
 function seed(h){
- h.run("Prologue.stop();abilities=[true,false];defeated=[true,false,false];flags=[['forestBell','villageBell'],['akashRescued'],[]];visitedRests=[['start'],[],[]];progression=freshProgression();coins=1000;meatCount=3;enterForestCamp({save:false,atShrine:true});state='play';persist();");
+ h.run("Prologue.stop();abilities=[true,false];defeated=[true,false,false,false];flags=[['forestBell','villageBell'],['akashRescued'],[],[]];visitedRests=[['start'],[],[],[]];progression=freshProgression();coins=1000;meatCount=3;enterForestCamp({save:false,atShrine:true});state='play';persist();");
  h.sandbox.Math=Object.create(Math);h.sandbox.Math.random=()=>.25;
 }
 function approach(h){h.place(h.run("forestCamp.npcs.find(n=>n.id==='akash').x"),820);}
@@ -82,7 +82,7 @@ for(const origin of ['live','menu','shop']){
 }
 {
  const h=harness(),r=h.run;
- r("Prologue.stop();defeated=[true,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];coins=0;enterRealm(1);state='play';bossStarted=true;boss.serpent=createLavaSerpent();boss.serpent.hp=0;killEnemy(boss.serpent);");
+ r("Prologue.stop();defeated=[true,false,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];coins=0;enterRealm(1);state='play';bossStarted=true;boss.serpent=createLavaSerpent();boss.serpent.hp=0;killEnemy(boss.serpent);");
  assert.equal(r('coins'),r('Merchant.rewards.miniboss'));assert.equal(r('saved.coins'),r('coins'));
  r('killEnemy(boss.serpent);boss.serpent=createLavaSerpent();boss.serpent.hp=0;killEnemy(boss.serpent);');
  assert.equal(r('coins'),r('Merchant.rewards.miniboss'),'The permanent serpent reward cannot be earned twice');

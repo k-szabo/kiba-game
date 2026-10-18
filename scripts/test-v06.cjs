@@ -5,7 +5,7 @@ const validateSave=require('./test-save-validation.cjs');
 // Yomi victory awards the sword, XP and optional key, not the shrine's dash.
 // Both skipping the shrine and acquiring it before the fight remain saveable.
 for(const owned of [false,true]){
-  run(`flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));abilities=[true,${owned}];defeated=[true,false,false];progression=freshProgression();shards=0;enterRealm(1);state='play';bossStarted=true;boss.shelterTriggered=true;boss.raceTriggered=true;boss.yomiStage='race';boss.hp=1;boss.inv=0;boss.councilMinionKills=8;`);
+  run(`flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];visitedRests=levels.map((l,n)=>n<3?l.rests.map(r=>r.id):[]);abilities=[true,${owned}];defeated=[true,false,false,false];progression=freshProgression();shards=0;enterRealm(1);state='play';bossStarted=true;boss.shelterTriggered=true;boss.raceTriggered=true;boss.yomiStage='race';boss.hp=1;boss.inv=0;boss.councilMinionKills=8;`);
   place(run('boss.x-40'),5800);run("player.face=1;melee();advanceSwordAttack(.17)");dismiss();
   assert(snap().defeated[1]);assert.equal(snap().abilities[1],owned,'Yomi victory must preserve the actual dash acquisition state');
   assert.equal(snap().progression.totalXp,400);assert.equal(snap().shards,20);assert(run("flags[1].includes('councilKeyEarned')"));
@@ -35,7 +35,7 @@ place(1810,1790);press('u');tick();release('u');assert(!elements.get('spiritTrai
 run("abilities=[false,false];progression=normalizeProgression({level:4,stats:{spirit:1}});enterRealm(0);state='play';");place(330,1000);run("showTraining();");assert(elements.get('spiritTraining').hidden);assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.stats.spirit,1);run('closeTraining();');
 
 // Optional relics are off the initial map and cannot be collected before their guardian dies.
-run("flags=[[],[],[]];defeated=[false,false,false];abilities=[true,false];enterRealm(0);state='play';showMap();var initialMap=$('mapContent').children[0].innerHTML;closeMap();");
+run("flags=levels.map(()=>[]);defeated=levels.map(()=>false);abilities=[true,false];enterRealm(0);state='play';showMap();var initialMap=$('mapContent').children[0].innerHTML;closeMap();");
 place(2800,530);run("var oldAngel=enemies.find(e=>e.id==='oldAngel');discoverSecrets();updateMiniboss(oldAngel,.1);player.face=1;attackCooldown=0;melee();advanceSwordAttack(.17);");assert(!run('oldAngel.active'));assert.equal(run('oldAngel.hp'),36);assert(!run("secretKnown('angelRuin')"),'Passing below the tower exposed its map');
 for(const id of ['angelHalo','demonHorn']){
   const o=run(`level.objects.find(o=>o.id==='${id}')`);place(o.x,o.y);assert(!run(`relicUnlocked(level.objects.find(o=>o.id==='${id}'))`));press('e');tick();release('e');assert(!snap().relics.includes(id));
@@ -51,12 +51,12 @@ run('persist();mainMenu();startGame(true);');assert.deepEqual(Array.from(snap().
 run("showMap();var discoveredMap=$('mapContent').children[0].innerHTML;closeMap();");assert(run('discoveredMap.length>initialMap.length'));
 
 // The inconspicuous stone seal is solid until an ordinary, timed sword hit breaks it.
-run("flags=[[],[],[]];defeated[0]=false;enterRealm(0);state='play';enemies=[];");place(4550,1510);run("player.face=-1;var wall=level.gates.find(g=>g.id==='cultEntrance');");assert(!run('gatePass(wall)'));press('j');tick(12);release('j');assert(!run('gatePass(wall)'));tick(12);assert(run('gatePass(wall)'));assert(snap().flags[0].includes('cultEntrance'));
+run("flags=levels.map(()=>[]);defeated[0]=false;enterRealm(0);state='play';enemies=[];");place(4550,1510);run("player.face=-1;var wall=level.gates.find(g=>g.id==='cultEntrance');");assert(!run('gatePass(wall)'));press('j');tick(12);release('j');assert(!run('gatePass(wall)'));tick(12);assert(run('gatePass(wall)'));assert(snap().flags[0].includes('cultEntrance'));
 run("defeated[0]=true;");assert(!run("gatePass(level.gates.find(g=>g.kind==='secretRock'))"),'Realm boss defeat must not erase the cave structure');
 
 // Each mini has three actual attacks; tells lock facing, and spells/hazards release afterwards.
 for(const id of ['oldAngel','oldCultist']){
-  run("flags=[[],[],[]];defeated[0]=false;enterRealm(0);state='play';");run(`var mini=enemies.find(e=>e.id==='${id}');enemies=[mini];`);place(run('mini.x-130'),run('mini.y+mini.h'));run('mini.clock=0;player.inv=999;');
+  run("flags=levels.map(()=>[]);defeated[0]=false;enterRealm(0);state='play';");run(`var mini=enemies.find(e=>e.id==='${id}');enemies=[mini];`);place(run('mini.x-130'),run('mini.y+mini.h'));run('mini.clock=0;player.inv=999;');
   const moves=[];
   for(let i=0;i<3;i++){
     run('mini.phase="wait";mini.clock=0;updateMiniboss(mini,.01);');assert.equal(run('mini.phase'),'windup');moves.push(run('mini.move'));const face=run('mini.face');const windup=run('mini.clock');
@@ -69,7 +69,7 @@ for(const id of ['oldAngel','oldCultist']){
 
 // All angel forms have independent, telegraphed melee while the spell cycle continues.
 for(const stage of [1,2,3]){
-  run("flags=[['angelHalo','demonHorn'],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;");
+  run("flags=[['angelHalo','demonHorn'],[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;");
   assert.equal(run('boss.max'),140);if(stage>1)run(`transformAngel(${stage});boss.inv=0;`);
   assert.equal(run('boss.max'),stage===3?180:140);run(`boss.stage=${stage};boss.move='${stage===1?'lightArrows':stage===2?'shadowBolts':'eclipse'}';boss.targetX=boss.x+160;startBossAttack();boss.autoCooldown=0;`);
   place(run('boss.x+170'),850);run('player.hp=player.maxHp=12;player.inv=0;');const hp=snap().player.hp;
@@ -79,7 +79,7 @@ for(const stage of [1,2,3]){
   run('boss.hazards=[];projectiles=[];updateBoss(.03);');assert.equal(snap().player.hp,hp-(stage===3?3:2));assert.equal(run('boss.autoPhase'),'strike');run('draw();');
   run('resetBossBattle();');assert.equal(run('boss.autoPhase'),null);assert.equal(run('boss.max'),140);
 }
-run("flags=[['angelHalo','demonHorn'],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;hitBoss(70);updateBoss(1.81);boss.inv=0;hitBoss(70);");assert.equal(run('boss.stage'),3);assert.equal(run('boss.hp'),180);assert(!snap().defeated[2]);
+run("flags=[['angelHalo','demonHorn'],[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;hitBoss(70);updateBoss(1.81);boss.inv=0;hitBoss(70);");assert.equal(run('boss.stage'),3);assert.equal(run('boss.hp'),180);assert(!snap().defeated[2]);
 
 // New atlas coordinates fit real PNG bounds, including every six-pose guard sprite.
 const art=run('({manifest:ART_MANIFEST,frames:ART_FRAMES})');for(const key of ['oldAngel','oldCultist']){

@@ -17,7 +17,7 @@ function paint(code){draws.length=0;const before=state();run(code);assert.equal(
 
 for(const [realm,moves]of [[0,['cleave','dash','doubleCut']],[1,['hammer','slam','lava','embers','summon']],[2,['lightArrows','holySweep','shadowBolts','shadowNova','shadowRain','eclipse','hellfire','summon']]]){
  for(const move of moves){
-  run(`abilities=[true,true];flags=[['angelHalo','demonHorn'],[],[]];defeated=[false,false,false];state='play';enterRealm(${realm});bossStarted=true;initPlayer({x:level.boss.x-200,y:level.arena.y});player.inv=999;boss.stage=${realm===2?3:1};boss.cycles=bossMoves().indexOf('${move}');chooseBossMove();`);
+  run(`abilities=[true,true];flags=[['angelHalo','demonHorn'],[],[],[]];defeated=[false,false,false,false];state='play';enterRealm(${realm});bossStarted=true;initPlayer({x:level.boss.x-200,y:level.arena.y});player.inv=999;boss.stage=${realm===2?3:1};boss.cycles=bossMoves().indexOf('${move}');chooseBossMove();`);
   // Explicit moves after choosing still use the real cast initialization and timings.
   run(`boss.move='${move}';if(realm===1&&'${move}'==='lava')startYomiLavaWave('shelter');startBossAttack();executeBossMove(.01);updateBossHazards(.96);`);
   const used=paint('Visuals.bossEffects(realms[realm]);for(const p of projectiles)Visuals.projectile(p);');

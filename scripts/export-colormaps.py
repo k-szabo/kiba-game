@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -158,6 +158,9 @@ for action, indices in atlas['serpent']['clips'].items():
     rects = [atlas['serpent']['frames'][i] for i in indices]
     npcs['lavaSerpent']['variants'][action] = {'paletteGroup': group('npc.lavaSerpent.' + action, manifest[atlas['serpent']['image']], rects, 'ART_SERPENT.clips.' + action)}
 npcs['shadow'] = {'name': {'hu': 'Árnyék', 'en': 'Shadow'}, 'role': 'prologue-boss', 'variants': {}}
+for name, definition in atlas['shadowCult']['actors'].items():
+    npcs['shadowCult.' + name] = {'faction': 'shadowCult', 'role': 'boss' if name == 'madPriest' else 'miniboss' if name in ('cultJailer', 'madOrganist') else name,
+        'paletteGroup': group('npc.shadowCult.' + name, manifest[definition['image']], definition['frames'], 'ART_SHADOW.actors.' + name)}
 for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
@@ -234,10 +237,10 @@ result = {'schemaVersion': 1,
                                'Dynamic VFX colors are preserved as source expressions; lighting, opacity and filters can alter displayed colors.']},
           'pc': pc, 'npcs': npcs, 'objects': objects, 'paletteGroups': groups, 'assets': assets,
           'realmColors': {name: {k: value for k, value in record.items() if k in ('sky', 'fog', 'gold', 'accent', 'floor')}
-                          for name, record in zip(('japan', 'yomi', 'heaven'), atlas['realms'])},
+                          for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 26, 'Missing current character entry'
+assert len(npcs) == 33, 'Missing current character entry'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'

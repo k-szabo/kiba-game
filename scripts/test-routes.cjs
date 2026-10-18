@@ -4,7 +4,7 @@ const elements=new Map();function el(){return{hidden:false,textContent:'',innerH
 const draw=new Proxy({createLinearGradient(){return{addColorStop(){}}},createRadialGradient(){return{addColorStop(){}}}},{get(t,k){return t[k]||(()=>{})}});
 const storage=new Map(),sandbox={console,Math,Set,JSON,Image:class{complete=true;naturalWidth=1536;addEventListener(){}},document:{getElementById(id){if(!elements.has(id))elements.set(id,el());return elements.get(id);},createElement:el,querySelectorAll(){return[]}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},innerWidth:1280,innerHeight:720,devicePixelRatio:1,addEventListener(){},matchMedia:()=>({matches:false}),requestAnimationFrame(){}};
 sandbox.window=sandbox;sandbox.document.getElementById('world').getContext=()=>draw;vm.createContext(sandbox);
-const inputFile=process.argv[2]||require('node:path').join(__dirname,'../assets/js/game.js');let source=fs.readFileSync(inputFile,'utf8');if(source.startsWith('<!doctype'))source=source.match(/<script>([\s\S]*)<\/script>/)[1];else {const dir=require('node:path').dirname(inputFile);const files=['keybindings.js','levels.js','art-data.js','boss-vfx.js','graphics.js','progression.js','combat.js','shadow-animation.js','prologue.js','inventory.js','merchant.js','compass.js','bug-report.js','dev-session.js','dev-tools.js','dev-boss.js','dev-teleport.js','dev-level.js','dev-items.js','dev-abilities.js','dev-immortality.js','dev-damage.js'].filter(f=>fs.existsSync(require('node:path').join(dir,f)));source=files.map(f=>fs.readFileSync(require('node:path').join(dir,f),'utf8')).join('\n')+'\n'+source;}vm.runInContext(bootstrap.before+source+bootstrap.after,sandbox);
+const inputFile=process.argv[2]||require('node:path').join(__dirname,'../assets/js/game.js');let source=fs.readFileSync(inputFile,'utf8');if(source.startsWith('<!doctype'))source=source.match(/<script>([\s\S]*)<\/script>/)[1];else {const dir=require('node:path').dirname(inputFile);const files=['keybindings.js','levels.js','art-data.js','boss-vfx.js','graphics.js','progression.js','combat.js','shadow-realm.js','shadow-animation.js','prologue.js','inventory.js','merchant.js','compass.js','bug-report.js','dev-session.js','dev-tools.js','dev-boss.js','dev-teleport.js','dev-level.js','dev-items.js','dev-abilities.js','dev-immortality.js','dev-damage.js'].filter(f=>fs.existsSync(require('node:path').join(dir,f)));source=files.map(f=>fs.readFileSync(require('node:path').join(dir,f),'utf8')).join('\n')+'\n'+source;}vm.runInContext(bootstrap.before+source+bootstrap.after,sandbox);
 const run=s=>vm.runInContext(s,sandbox),snap=()=>sandbox.momo.getState(),tick=(n=1)=>run(`for(let i=0;i<${n};i++)update(1/120);`),press=k=>run(`handleKeyDown({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')},repeat:false,preventDefault(){}});`),release=k=>run(`handleKeyUp({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')}});`),dismiss=()=>{if(snap().state==='dialog')elements.get('dialogOk').onclick();};
 const place=(x,y)=>run(`initPlayer({x:${x},y:${y}});player.onGround=true;player.inv=999;`);
 run('startGame();Prologue.wake();');dismiss();tick(30);assert.equal(snap().world.width,10400);assert.equal(snap().player.y+69,1000);
@@ -39,11 +39,11 @@ place(635,6300);press(' ');tick(180);release(' ');assert(snap().player.y+69<5900
 place(1980,1130);run('player.y=1078;player.onGround=false;');press('j');tick(30);release('j');assert(snap().flags[2].includes('dawnSeal'));
 // Moving clouds carry a grounded player, rather than moving out from under them.
 run("const cloud=platforms.find(p=>p.kind==='moving');initPlayer({x:cloud.x+90,y:cloud.y});player.onGround=true;player.support=cloud.id;");const cloudBefore=snap().player.x;run('movingPlatforms(.25);');assert.notEqual(snap().player.x,cloudBefore);
-defeat();const father=run('level.father');place(father.x,father.y);press('e');tick();release('e');assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).won,true);dismiss();assert.equal(snap().state,'won');
+defeat();const father=run('level.father');place(father.x,father.y);press('e');tick();release('e');assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).won,false);assert.equal(snap().realm,3);assert(snap().flags[2].includes('shadowEntered'));dismiss();assert.equal(snap().state,'play');
 const validateSave=require('./test-save-validation.cjs');for(const [index,record] of sandbox.__saveSnapshots.entries()){try{validateSave(JSON.parse(record));}catch(error){throw Error(`Game save #${index} failed production validation: ${error.message}`);}}
 run('mainMenu();saved={version:1,realm:1,abilities:[false,false],defeated:[true,false,false],shards:21,checkpoint:2830};startGame(true);');assert(run('Prologue.active'));assert(!snap().abilities[0]);assert.equal(snap().shards,0);assert.equal(snap().realm,0);assert.equal(snap().checkpoint.id,'start');
 run("Prologue.stop();enterRealm(0);state='play';showMap();");assert(elements.get('mapContent').children.length>=3);run('closeMap();draw();');
-console.log('PASS: double jump, both Japan bells, all three guardians and exits, cage combat/rescues, descent/drop-through, wind lift and vertical camera, upward seal strike, moving-cloud carry, map fast travel, summit ending, old-release reset.');
+console.log('PASS: double jump, both Japan bells, all three guardians and exits, cage combat/rescues, descent/drop-through, wind lift and vertical camera, upward seal strike, moving-cloud carry, map fast travel, summit transition into the Shadow Realm, old-release reset.');
 
 // Reachability search uses the actual input/gravity/landing/wind functions.
 run(`
@@ -77,7 +77,7 @@ function reachableFrom(startId,jumpTwice){
   if(routeLink(a,b,jumpTwice,wind)){seen.add(b.id);queue.push(b.id);}
  }}return [...seen];
 }
-state='play';abilities=[false,false];defeated=[false,false,false];flags=[[],[],[]];enterRealm(0);enemies=[];
+state='play';abilities=[false,false];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(0);enemies=[];
 var firstReach=reachableFrom('road0',false);
 `);
 let reach=run('firstReach');assert(reach.includes('wind-roof'),'Japan wind shrine inaccessible before double jump: '+reach.join(', '));
@@ -114,7 +114,7 @@ for(let i=1;i<7;i++)assert(run(`routeLink(lavaLedges[${i-1}],lavaLedges[${i}],tr
 console.log('PASS: all seven lava refuges have reachable jump connections.');
 
 // Both optional relic locations have actual physical routes from the Japan entrance.
-run("state='play';abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(0);var sealedRelicReach=reachableFrom('road0',true);flags[0].push('cultEntrance');var relicReach=reachableFrom('road0',true);");
+run("state='play';abilities=[true,true];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(0);var sealedRelicReach=reachableFrom('road0',true);flags[0].push('cultEntrance');var relicReach=reachableFrom('road0',true);");
 for(const id of ['halo-altar','horn-vault'])assert(run(`relicReach.includes('${id}')`),'Hidden relic route is unreachable: '+id);
 for(const id of ['tower-step4','tower-step5','tower-step6','tower-step7','tower-step8'])assert(run(`relicReach.includes('${id}')`),'Upper tower ascent is unreachable: '+id);
 run("initPlayer({x:2340,y:760});resetCamera();");assert.equal(run('level.top'),-1100);assert(!run("visiblePoint({x:2800,y:-690},190)"),'The old angel is visible from the main-route shrine');
@@ -127,7 +127,7 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
 {
  const {run,press,release}=require('./test-harness.cjs')();
  for(const dt of [1/120,1/60,1/30])for(const face of [-1,1])for(const gap of [150,180,200])for(const keepMoving of [false,true]){
-  run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false];flags=[[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3650});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
+  run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3650});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
   if(keepMoving)press(face>0?'d':'a');
   press('k');run(`update(${dt});`);release('k');
   let overlapped=false;
@@ -162,3 +162,12 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
  run('pause();update(1/60);');assert(!run('overlap(player,veil)'));
 }
 console.log('PASS: shadow veil resolves dash expiry at 30/60/120 FPS in both directions, allows walking/jumping away, preserves normal blocking/full-dash passage and freezes during pause.');
+
+// The prison is mandatory; the organ gallery is optional and physically returnable.
+run("defeated=levels.map(()=>false);flags=levels.map(()=>[]);visitedRests=levels.map(()=>[]);abilities=[true,true];enterRealm(3);enemies=[];state='play';var shadowClosed=reachableFrom('shore',true);");
+for(const id of ['cloister','altar-road','prison-court','organ-loft'])assert(run(`shadowClosed.includes('${id}')`),'Shadow route disconnected before jailer: '+id);
+assert(!run("shadowClosed.includes('prison-hall')"),'Prison door can be bypassed without its key');
+run("flags[3].push('prisonOpen');var shadowOpen=reachableFrom('shore',true),organReturn=reachableFrom('organ-loft',true);");
+for(const id of ['prison-hall','cathedral'])assert(run(`shadowOpen.includes('${id}')`),'Shadow route disconnected after prison unlock: '+id);
+assert(run("organReturn.includes('cloister')"),'The organ gallery has no return route');
+console.log('PASS: fourth-realm prison progression and optional organ gallery return use actual jump physics.');

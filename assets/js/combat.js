@@ -56,7 +56,7 @@ function releaseEnemyAttack(e) {
     shoot(x,y,Math.cos(angle)*330,Math.sin(angle)*330,palette.gold,4,'arrow');e.cd=2.4;
   }else if(role==='mage'){
     const angle=Math.atan2(e.targetY-(e.y+20),e.targetX-(e.x+e.w/2)),count=realm===0?1:2;
-    for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,'magic');}e.cd=3.3;
+    for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,realm===3?'shadowBolt':'magic');}e.cd=3.3;
   }else{
     const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
     if(overlap(player,hit))damage(1,e.face);e.cd=e.kind==='shield'?2.5:1.8;
@@ -131,7 +131,7 @@ function uniteVictoryRelics(){
 const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
 let yomiEncounterSerial=0;
 function createBoss(){
-  const max=[28,48,ANGEL_HEALTH][realm];
+  const max=[28,48,ANGEL_HEALTH,180][realm];
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
@@ -186,7 +186,7 @@ function hitBoss(amount){
   if(Prologue.active)return Prologue.hit(amount);
   if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform'||realm===1&&boss.yomiStage==='shelter')return false;
   const before=boss.hp,stage=boss.stage,position={x:boss.x,y:boss.y,w:boss.w};
-  boss.hp-=amount;boss.inv=.3;burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
+  boss.hp-=amount;boss.inv=.3;ShadowRealm.interrupt();burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
   // The secret angel phase refills HP; report the depleted previous life bar.
   DevDamage.record('outgoing',position,before,realm===2&&stage===2&&boss.stage===3?0:boss.hp);return true;
 }
@@ -428,7 +428,7 @@ function updateBossHazards(dt){
   }}
   updateSummons(dt);
 }
-function updateBoss(dt){
+function updateBoss(dt){if(ShadowRealm.active()){ShadowRealm.updateBoss(dt);return;}
   Visuals.updateAtmosphere(dt);
   $('bossHud').hidden=!bossStarted||boss.dead;if(!bossStarted||boss.dead)return;
   if((realm===1||realm===2)&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
@@ -459,7 +459,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
-  const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,h=94,w=68,maxHp=spec.miniboss==='angel'?36:42;
+  const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:94,w:68,maxHp:spec.miniboss==='angel'?36:42};
   return {...spec,x:spec.x,y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,hp:maxHp,maxHp,
     patrolLeft:a.x+25,patrolRight:a.x+a.w-w-25,face:-1,patrolFace:-1,phase:'wait',clock:1.2,phaseDuration:1.2,
     cycles:0,move:null,active:false,dead:flags[realm].includes(minibossFlag(spec.id)),inv:0,stun:0,
@@ -473,7 +473,7 @@ function resetMiniboss(e){
 }
 function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.serpent&&!e.dead)resetMiniboss(e);}
 function discoverSecrets(){
-  for(const area of level.secrets||[])if(!secretKnown(area.id)&&overlap(player,area)&&
+  for(const area of level.secrets||[])if(!area.public&&!secretKnown(area.id)&&overlap(player,area)&&
     (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){
     flags[realm].push('discovered:'+area.id);persist();toast(I18n.t('hint.hidden.area.prefix')+area.name);
   }
@@ -484,7 +484,7 @@ function defeatMiniboss(e){
   const flag=minibossFlag(e.id),first=!flags[realm].includes(flag);
   if(first){flags[realm].push(flag);shards+=8;Merchant.award(Merchant.rewards.miniboss);awardXP(e.miniboss==='angel'?80:95);persist();}
   burst(e.x+e.w/2,e.y+35,e.miniboss==='angel'?'#ffe9aa':'#cf8aff',36);
-  toast(I18n.t("text.the.ancient.guardian.rests.the.altar.s.seal.has"));updateHUD();
+  if(realm!==3)toast(I18n.t("text.the.ancient.guardian.rests.the.altar.s.seal.has"));updateHUD();
 }
 function setMiniPhase(e,phase,duration){e.phase=phase;e.clock=duration;e.phaseDuration=duration;e.windup=phase==='windup'?duration:0;e.windupDuration=duration;e.hitDone=false;}
 function miniMelee(e,width,amount=2){
@@ -503,7 +503,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){
+function updateMiniboss(e,dt){if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

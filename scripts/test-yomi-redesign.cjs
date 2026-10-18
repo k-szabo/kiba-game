@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const {run,snap,tick,place,dismiss}=require('./test-harness.cjs')();
 function fresh(){
- run("Prologue.stop();flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];abilities=[true,true];defeated=[true,false,false];progression=freshProgression();visitedRests=[['start'],['start','arena'],[]];enterRealm(1);state='play';bossStarted=true;");
+ run("Prologue.stop();flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];abilities=[true,true];defeated=[true,false,false,false];progression=freshProgression();visitedRests=[['start'],['start','arena'],[],[]];enterRealm(1);state='play';bossStarted=true;");
  place(1300,5800);
 }
 function to(fraction){run(`boss.inv=0;hitBoss(boss.hp-boss.max*${fraction});`);}

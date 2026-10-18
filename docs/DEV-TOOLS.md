@@ -89,3 +89,7 @@ Az iránytű és útitérkép az inventory katalógusából adható egyszeri tes
 Az érmeadó mezőben pozitív egész mennyiség adható meg (alapérték:100). Az eszköz kizárólag aktív tesztmódban és nyitott dev panelen működik; az érméket a HUD azonnal mutatja. Hibás vagy túlcsorduló mennyiség teljesen elutasított, részleges jóváírás nincs. A normál mentést nem írja. A tárgyválasztó hozzáadás és panel-frissítés után megőrzi a kiválasztást, ezért több adag sült hús ismételten hozzáadható. Az iránytű és a kis útitérkép egyszeri tárgy marad.
 
 Ha a panelt nyitott inventoryból vagy boltból nyitod, a visszatérés újrarajzolja az adott ablakot: a hozzáadott étel darabszáma, az új érmeegyenleg és a megfizethető vásárlógombok rögtön frissülnek.
+
+### Árnyékvilág
+
+A negyedik birodalom minden pihenőhelye a közös teleportkatalógus része; a normál történeti belépést és az oltár utazási zárját a dev teleport nem kéri. A Boss újraélesztése eszköz találkozásválasztójából a főboss és az aktuális pálya minibossai külön indíthatók. A miniboss újraindítása a tartós győzelmi és jutalomjelzőket megőrzi; ismételt jutalom nincs. A pap lelke, a kotta és a börtönkulcs a közös tárgykatalóguson keresztül adható. A tesztmód továbbra sem ír normál mentést.

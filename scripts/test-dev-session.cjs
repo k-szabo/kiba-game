@@ -13,7 +13,7 @@ function assertSaveUnchanged(h,before,label){assert.deepEqual(saveState(h),befor
 function begin(h){assert(h.run('DevTools.open()'));assert(h.run('DevSession.ready'));assert.equal(h.run('DevSession.begin()'),true);assert(h.run('DevSession.active'));}
 function permanent(h){return h.run('JSON.stringify({abilities,defeated,flags,visitedRests,shards,progression})');}
 function seedProgress(h){
- h.run("Prologue.stop();abilities=[true,true];defeated=[true,false,false];flags=[['forestBell','villageBell','guardian:oldAngel','angelHalo'],['soulUpper','soulLower'],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));progression=normalizeProgression({level:3,xp:12,totalXp:167,stats:{vitality:1,strength:1,spirit:0}});shards=17;enterRealm(1);state='play';persist();");
+ h.run("Prologue.stop();abilities=[true,true];defeated=[true,false,false,false];flags=[['forestBell','villageBell','guardian:oldAngel','angelHalo'],['soulUpper','soulLower'],[],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));progression=normalizeProgression({level:3,xp:12,totalXp:167,stats:{vitality:1,strength:1,spirit:0}});shards=17;enterRealm(1);state='play';persist();");
 }
 
 // A developer-session entry point is guarded by the open panel and readiness.

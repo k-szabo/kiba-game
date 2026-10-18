@@ -2,7 +2,7 @@
 
 [English](README.en.md)
 
-Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
+Egy kis shiba szamuráj. Négy birodalom. Egy apa, akit haza kell hozni.
 
 **[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)
 
@@ -16,13 +16,14 @@ Momo, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, 
 
 A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
 
-## Három világ, háromféle kaland
+## A birodalmak
 
 | Birodalom | Az utazás | Ellenfelek |
 | --- | --- | --- |
 | **Japán – A harangok útja** | Hosszú erdei ösvények, falusi tetők, folyójáratok és egy bambusztemplom. Két harang hangja mutatja a továbbvezető utat. | Szamurájok, íjászok, pajzsos katonák és onmyoji varázslók. |
 | **Yomi – Az alvilág** | Ereszkedés a mélybe, fogoly lelkek, hamupárkányok és lávával elárasztott termek. | Oni démonok, tenguk és egy csatlósokat idéző démoni őrző. |
 | **Takamagahara – Az égi birodalom** | Emelkedés szélfolyamokkal, mozgó felhőszigetekkel és égi pecsétekkel. | Szárnyas angyalok és egy több alakot öltő szeráf. |
+| **Árnyékvilág** | A kihunyt part, árnyékoltár, börtön és katedrális; Haru keresése folytatódik. | Kultisták, Őrült pap, Kultista börtönőr és rejtett Őrült orgonista. |
 
 ## Játékmenet
 
