@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {run,snap,tick,press,release,elements,dismiss}=require('./test-harness.cjs')();
 assert.equal(run("Bindings.read('inventory')[0]"),'i');
-run("flags=[[],[],[]];enemies[0].dead=true;player.vx=150;projectiles=[{x:400,y:400,vx:40,vy:0,life:5,kind:'orb'}];");
+run("flags=[[],[],[],[]];enemies[0].dead=true;player.vx=150;projectiles=[{x:400,y:400,vx:40,vy:0,life:5,kind:'orb'}];");
 press('i');release('i');assert.equal(snap().state,'inventory');assert(!elements.get('inventory').hidden);
 assert.deepEqual(Array.from(run('Inventory.contents()')),[]);assert(!elements.get('inventoryEmpty').hidden);
 const frozen=run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})');
@@ -10,7 +10,7 @@ press('j');press(' ');press('m');assert.equal(snap().state,'inventory');assert(r
 run("handleKeyDown({key:'i',code:'KeyI',repeat:false,target:{closest:()=>({})},preventDefault(){}});");assert.equal(snap().state,'play','Focused inventory buttons must not swallow the inventory close binding');
 press('i');release('i');press('escape');release('escape');assert.equal(snap().state,'play');
 
-run("flags=[['angelHalo','demonHorn'],['councilKey','councilKeyEarned'],[]];defeated[1]=true;");
+run("flags=[['angelHalo','demonHorn'],['councilKey','councilKeyEarned'],[],[]];defeated[1]=true;");
 const before=JSON.stringify(snap());press('i');release('i');
 assert.deepEqual(Array.from(run('Inventory.contents()')),['angelHalo','demonHorn','councilKey']);assert.equal(elements.get('inventoryGrid').children.length,3);
 assert.equal(elements.get('inventoryWeaponName').textContent,run("I18n.t('item.dawnblade')"));
@@ -37,7 +37,7 @@ assert(!run('artDraws.some(args=>args[0]===sheet)'),'Inventory portrait must not
 // alpha and crop coverage checks without another item-specific rendering branch.
 const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 for(const id of iconIds){
- run(`flags=[[],[],[]];meatCount=ART_INVENTORY.items[${JSON.stringify(id)}].stack?1:0;flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
+ run(`flags=[[],[],[],[]];meatCount=ART_INVENTORY.items[${JSON.stringify(id)}].stack?1:0;flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
  assert.equal(elements.get('inventoryGrid').children.length,1);
  const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
  assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);

@@ -41,7 +41,7 @@ run("DevDamage.clear();boss.lava={x:player.x,y:player.y,w:43,h:69,active:true,wa
 assert.equal(last(),3,'Lethal lava records its direct HP loss');
 
 // Secret refill must not erase the damage applied to the previous angel life bar.
-run("flags=[['angelHalo','demonHorn'],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;boss.inv=0;hitBoss(999);");
+run("flags=[['angelHalo','demonHorn'],[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;boss.inv=0;hitBoss(999);");
 assert.equal(last(),139);assert.equal(run('boss.stage'),2);assert.equal(run('boss.hp'),1);
 run("boss.inv=0;boss.phase='wait';hitBoss(999);");assert.equal(last(),1);assert.equal(run('boss.hp'),180);assert.equal(run('boss.stage'),3);
 run("boss.inv=0;boss.phase='wait';hitBoss(999);");assert.equal(last(),180);assert(run('boss.dead'));

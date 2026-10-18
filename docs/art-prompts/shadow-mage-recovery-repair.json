@@ -1,0 +1,21 @@
+{
+  "tool": "builtin image_gen",
+  "kind": "approved-design anatomy repair",
+  "finding": "QA-SHADOW-003 r1",
+  "source": "assets/images/enemies/shadow-mage-v1.png",
+  "output": "assets/images/enemies/shadow-mage-v1.png",
+  "changes": "Remove the third arm/hand and its casting sparks from the sixth recovery pose. Keep staff-gripping right hand and naturally lowered free left hand. Preserve other five pose silhouettes and gameplay.",
+  "review": "The first edited candidate failed alpha validation and was not integrated. A second builtin background-removal edit preserved transparent gutters; original generated alpha was copied without postprocessing. Six major isolated poses are registered with the existing script.",
+  "prompts": [
+    {
+      "purpose": "Localized third-hand removal",
+      "transparent_background": true,
+      "prompt": "EDIT TARGET: the attached existing six-frame cultist mage sprite atlas. Make ONE localized anatomy correction ONLY in the BOTTOM-RIGHT / SIXTH / FINAL recovery pose (approximately x1100–1520, y540–1000 in the 1536x1024 input). This pose accidentally has THREE hands. KEEP the right hand wrapped around the vertical ritual staff shaft at chest height (around x1395,y735), and KEEP the natural low left free hand in front of the robe near x1278,y809. REMOVE the EXTRA third hand, its wrist/forearm, and associated small purple casting sparks extending to the FAR RIGHT below the staff grip (around x1400–1490,y765–877). Where that extra arm overlapped robes/staff, restore their continuous existing painted material, with only two plausible arms and two hands total. The right hand must still physically grip the same complete staff, including all crescent, skull and bells; the left hand hangs naturally in recovery. CRITICAL preservation: do not redesign, reposition or repaint the other FIVE poses; preserve their poses, anatomy, face, costume, staff and magic. Preserve six-pose arrangement, resolution/aspect ratio, existing painted Japanese dark fantasy style, source-transparent RGBA background, colors, body scale, full silhouettes, footing and gutters. Do not add anything. No labels, backgrounds or checkerboard. This is a surgical removal of the redundant sixth-pose limb, not a new sprite sheet design."
+    },
+    {
+      "purpose": "Restore genuine transparent gutters in edited candidate",
+      "transparent_background": true,
+      "prompt": "BACKGROUND REMOVAL / ALPHA REPAIR ONLY of this corrected six-pose sprite atlas. Keep the existing painted SIX cultist mage figures, staffs, hands, purple spell effects exactly as shown. In particular BOTTOM RIGHT must keep precisely TWO hands: right hand grips staff and one free hand hangs low at front; no third hand. Remove ALL of the colored smoky brown/purple/black backdrop visible BETWEEN and BEHIND the six figures. All empty gutters, upper corners and gaps between figures MUST BE fully transparent alpha=0, not merely dark or semitransparent haze. No checkerboard pixels. Genuine isolated RGBA cutouts only: retain solid painted cloth, facial and weapon pixels and the actual narrow purple spell strokes in frames4 and5, with clean naturally antialiased edges. No broad glow/background mist. Exact original 1536x1024 composition, 3 columns x2 rows, figures and staff tops/feet positions unchanged, full silhouettes not cropped. Do not redraw hands or add limbs. Background removal only; no design changes."
+    }
+  ]
+}

@@ -5,6 +5,10 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {webcrypto}=require('node:crypto');
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8');
 const levelSource=fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8');
+const levelContext=vm.createContext({I18n:{t:key=>key}});vm.runInContext(levelSource,levelContext);
+const realmCount=vm.runInContext('levels.length',levelContext);
+const worldArrays=(first=[])=>Array.from({length:realmCount},(_,index)=>first[index]?[...first[index]]:[]);
+const victories=(first=[])=>Array.from({length:realmCount},(_,index)=>first[index]===true);
 const current=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const SAVE='momo-three-worlds-v2',LEGACY='kiba-three-worlds-v1';
 const copy=value=>value===undefined?undefined:structuredClone(value);
@@ -55,7 +59,7 @@ function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={})
 }
 
 function fixture(release=current){
- return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:[false,false,false],flags:[[],[],[]],visitedRests:[['start'],[],[]],checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
+ return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
 }
 function plain(value){return JSON.parse(JSON.stringify(value));}
 
@@ -71,7 +75,7 @@ async function main(){
  const noRelease=fixture();delete noRelease.release;assert.throws(()=>first.vault.write(noRelease),/Invalid save schema/);
 
  // Council key is consumed at the gate; an earned key can also lie on the floor.
- const council=fixture();Object.assign(council,{realm:1,abilities:[true,true],defeated:[true,true,false],flags:[['forestBell','villageBell'],['soulUpper','soulLower'],[]],visitedRests:[['start'],['start'],[]]});
+ const council=fixture();Object.assign(council,{realm:1,abilities:[true,true],defeated:victories([true,true]),flags:worldArrays([['forestBell','villageBell'],['soulUpper','soulLower']]),visitedRests:worldArrays([['start'],['start']])});
  const councilClient=reload;
  const councilRest=vm.runInContext('levels[1].rests[0]',councilClient);council.checkpoint=plain(councilRest);
  for(const flags of [['councilKeyEarned'],['councilKeyEarned','councilKey'],['councilKeyEarned','councilGateOpen']]){
@@ -114,7 +118,7 @@ async function main(){
  const invalidScale=copy(scale);invalidScale.flags[1]=['serpentScale'];assert.throws(()=>councilClient.vault.write(invalidScale),/Invalid serpent reward/);
 
  // The united relic survives actual AES-GCM roundtrips and realm changes.
- const united=fixture();Object.assign(united,{realm:2,abilities:[true,true],defeated:[true,true,true],flags:[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal','eclipseRelic']],visitedRests:[['start'],['start'],['start']],checkpoint:{id:'start',x:420,y:6300}});
+ const united=fixture();Object.assign(united,{realm:2,abilities:[true,true],defeated:victories([true,true,true]),flags:worldArrays([['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal','eclipseRelic']]),visitedRests:worldArrays([['start'],['start'],['start']]),checkpoint:{id:'start',x:420,y:6300}});
  await reload.vault.write(united);assert.deepEqual(plain(await client(env).vault.ready),united);
  const invalidUnited=copy(united);invalidUnited.flags[0]=invalidUnited.flags[0].filter(id=>id!=='angelHalo');assert.throws(()=>reload.vault.write(invalidUnited),/Invalid united relic/);
 
@@ -124,6 +128,7 @@ async function main(){
  const rewarded=copy(united);rewarded.flags[2]=['dawnSeal'];
  let rewardXP=0,bonusPoints=0;
  for(const [realm,reward] of rewards.entries()){
+  if(realm===3){rewarded.flags[2].push('shadowEntered');rewarded.defeated[3]=true;rewarded.visitedRests[3]=[vm.runInContext('levels[3].rests[0].id',councilClient)];}
   rewarded.flags[realm].push(reward.claim,reward.id);rewardXP+=reward.xp;bonusPoints+=reward.points;
   let level=1,xp=rewardXP;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
   const budget=level-1+bonusPoints,vitality=Math.min(3,budget),strength=Math.min(2,budget-vitality);
@@ -134,6 +139,47 @@ async function main(){
   const inflated=copy(rewarded);inflated.progression.points++;assert.throws(()=>reload.vault.write(inflated),/Invalid save schema/);
   const missingSoul=copy(rewarded);missingSoul.flags[realm]=missingSoul.flags[realm].filter(id=>id!==reward.id);
   assert.throws(()=>reload.vault.write(missingSoul),/Invalid boss reward/);
+ }
+
+ // Fourth-realm entry, shrine discovery and altar activation are separate
+ // persistent states. Reload must never activate fast travel implicitly.
+ const shadowIndex=vm.runInContext("levels.findIndex(map=>map.id==='shadowRealm')",councilClient);
+ if(shadowIndex>=0){
+  const shadow=copy(united);shadow.realm=shadowIndex;shadow.flags[2].push('shadowEntered');
+  shadow.checkpoint=plain(vm.runInContext(`levels[${shadowIndex}].rests[0]`,councilClient));
+  shadow.visitedRests[shadowIndex]=[shadow.checkpoint.id];
+  for(const activated of [false,true]){
+   const data=copy(shadow);if(activated)data.flags[shadowIndex].push('shadowAltar');
+   await reload.vault.write(data);const restored=plain(await client(env).vault.ready);assert.deepEqual(restored,data);
+   assert.equal(restored.flags[shadowIndex].includes('shadowAltar'),activated,'Discovering a rest must not activate the shadow altar');
+   for(const returnedRealm of [0,2]){
+    const returned=copy(data);returned.realm=returnedRealm;returned.checkpoint=plain(vm.runInContext(`levels[${returnedRealm}].rests[0]`,councilClient));
+    await reload.vault.write(returned);assert.deepEqual(plain(await client(env).vault.ready),returned,'Shadow progress survives returning to an earlier realm');
+   }
+  }
+  for(const fourthFlags of [
+   ['guardian:cultJailer','prisonKey'],['guardian:cultJailer','prisonOpen'],
+   ['guardian:madOrganist','corruptedHymn'],['guardian:cultJailer','prisonOpen','guardian:madOrganist','corruptedHymn','shadowAltar']
+  ]){
+   const data=copy(shadow);data.flags[shadowIndex]=fourthFlags;
+   await reload.vault.write(data);assert.deepEqual(plain(await client(env).vault.ready),data,'Miniboss rewards and consumed prison keys survive encrypted reloads');
+  }
+  for(const [mutate,error] of [
+   [data=>{data.flags[2]=data.flags[2].filter(flag=>flag!=='shadowEntered');},/Invalid shadow entry/],
+   [data=>{data.defeated[2]=false;},/Invalid shadow entry/],
+   [data=>{data.flags[shadowIndex]=['prisonKey'];},/Invalid prison progress/],
+   [data=>{data.flags[shadowIndex]=['prisonOpen'];},/Invalid prison progress/],
+   [data=>{data.flags[shadowIndex]=['guardian:cultJailer','prisonKey','prisonOpen'];},/Invalid prison progress/],
+   [data=>{data.flags[shadowIndex]=['corruptedHymn'];},/Invalid shadow item/],
+   [data=>{data.flags[shadowIndex]=['inventedShadowFlag'];},/Invalid quest flags/],
+   [data=>{data.visitedRests[shadowIndex].push('inventedShrine');},/Invalid checkpoints/],
+   [data=>{data.won=true;},/Invalid victory/]
+  ]){const invalid=copy(shadow);mutate(invalid);assert.throws(()=>reload.vault.write(invalid),error);}
+  const premature=fixture();premature.flags[2].push('shadowEntered');assert.throws(()=>reload.vault.write(premature),/Invalid shadow entry/);
+  const oldEnding=copy(united);oldEnding.won=true;assert.throws(()=>reload.vault.write(oldEnding),/Invalid victory/,'Heaven no longer ends the fourth-realm journey');
+  for(const key of ['flags','visitedRests','defeated']){
+   const truncated=copy(shadow);truncated[key].pop();assert.throws(()=>reload.vault.write(truncated),/Invalid world progress|Invalid abilities/,'Three-world snapshots are invalid in the current release');
+  }
  }
 
  // A separate safe camp still belongs to Japan's world progress. Its own

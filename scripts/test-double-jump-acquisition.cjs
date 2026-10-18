@@ -7,7 +7,7 @@ function jumpInput(h,owned){
 }
 for(const owned of [false,true]){
  const h=harness(),r=h.run;
- r(`abilities=[${owned},false];flags=[['forestBell','villageBell'],[],[]];visitedRests=[japan.rests.map(s=>s.id),[],[]];defeated=[false,false,false];progression=freshProgression();shards=0;enterRealm(0);bossStarted=true;boss.hp=1;boss.inv=0;player.inv=999;`);
+ r(`abilities=[${owned},false];flags=levels.map((_,n)=>n===0?['forestBell','villageBell']:[]);visitedRests=levels.map((_,n)=>n===0?japan.rests.map(s=>s.id):[]);defeated=levels.map(()=>false);progression=freshProgression();shards=0;enterRealm(0);bossStarted=true;boss.hp=1;boss.inv=0;player.inv=999;`);
  const writes=r('window.__saveSnapshots.length');
  h.place(r('boss.x-35'),r('level.arena.y'));r("player.face=1;melee();advanceSwordAttack(.17);");
  assert(h.snap().defeated[0],'The actual sword hit must defeat the guardian');

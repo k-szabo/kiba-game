@@ -8,11 +8,11 @@ function victorious(){
 const ledger=h=>h.run('JSON.stringify([flags,defeated,abilities,progression,shards])');
 function frames(h,seconds,fps=120){h.run(`for(let f=0;f<${Math.ceil(seconds*fps)};f++)update(${1/fps});`);}
 
-// The side area is not a fourth realm, and its shrine is never a physical
+// The side area does not become an additional realm, and its shrine is never a physical
 // marker in Japan. Its own geometry contains no encounter actors or hazards.
 {
  const h=harness(),r=h.run;
- assert.equal(r('levels.length'),3);assert.equal(r('levels.includes(forestCamp)'),false);
+ assert.equal(r('levels.length'),4);assert.equal(r('levels.includes(forestCamp)'),false);
  assert.equal(r('japan.rests.some(s=>s.id===\'forestCamp\')'),false);
  assert.equal(r('realmRests(0).filter(s=>s.id===\'forestCamp\').length'),1);
  assert.equal(r('realmRests(1).length'),r('yomi.rests.length'));

@@ -3,7 +3,7 @@ const {run,snap,tick,press,release,dismiss,place,elements}=require('./test-harne
 const validate=require('./test-save-validation.cjs');
 
 function freshYomi(defeatedBoss=false){
- run(`Prologue.stop();flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];abilities=[true,true];defeated=[true,${defeatedBoss},false];progression=freshProgression();shards=0;visitedRests=[['start'],['start','arena'],[]];enterRealm(1);state='play';`);
+ run(`Prologue.stop();flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];abilities=[true,true];defeated=[true,${defeatedBoss},false,false];progression=freshProgression();shards=0;visitedRests=[['start'],['start','arena'],[],[]];enterRealm(1);state='play';`);
  place(1500,5800);
 }
 function killSummons(count){
@@ -97,7 +97,7 @@ useAt(key);assert(snap().flags[1].includes('councilKey'));
 run('persist();mainMenu();startGame(true);');dismiss();assert(snap().flags[1].includes('councilKey'));
 useAt(key);assert.equal(snap().flags[1].filter(f=>f==='councilKey').length,1);
 
-// Save schemas stay on the three original realms and reject impossible key chains.
+// The hall remains a Yomi side area within the four-realm save schema.
 run('persist();');const valid=JSON.parse(JSON.stringify(run('saved')));
 for(const extra of [[],['councilKeyEarned'],['councilKeyEarned','councilKey'],['councilKeyEarned','councilGateOpen']]){
  const data=JSON.parse(JSON.stringify(valid));data.flags[1]=['soulUpper','soulLower','bossRewardClaimed','yomiGuardianSoul',...extra];
@@ -134,7 +134,7 @@ run('var outsideEnemy=enemies.find(e=>!e.miniboss);outsideEnemy.hp=1;player.hp=3
 useAt(gate);assert(snap().flags[1].includes('councilGateOpen'));
 assert(!snap().flags[1].includes('councilKey'),'The first unlock must consume the inventory key');
 if(run('level===yomi'))useAt(gate);
-assert.equal(run('level.id'),'councilHall');assert.equal(snap().realm,1);assert.equal(run('levels.length'),3);
+assert.equal(run('level.id'),'councilHall');assert.equal(snap().realm,1);assert.equal(run('levels.length'),4);
 assert.equal(run('enemies.length'),0);assert(run('boss.dead'));assert.equal(run('level.objects.length'),0);
 assert.equal(run('level.width'),2400);assert.equal(run('level.height'),1100);
 assert(run('platforms.some(p=>p.y===820)'));

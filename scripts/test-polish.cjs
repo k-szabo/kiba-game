@@ -38,7 +38,7 @@ assert(run('heaven.rests.every(r=>heaven.winds.filter(w=>!w.afterBoss).every(w=>
 
 // Current-release locations remain strict; previous-release saves are reset, not migrated.
 const validate=require('./test-save-validation.cjs');
-run("state='play';abilities=[true,true];defeated=[true,true,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[]];enterRealm(2);persist();");
+run("state='play';abilities=[true,true];defeated=[true,true,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];enterRealm(2);persist();");
 const saved=JSON.parse(JSON.stringify(run('saved')));
 for(const [id,x,y,replacement] of [['first',830,5370,'start'],['second',2070,4120,'start'],['third',810,2770,'third'],['fourth',2170,1470,'third']]){
  const old=JSON.parse(JSON.stringify(saved));old.checkpoint={id,x,y,name:id};old.visitedRests[2]=['start',id].filter((v,i,a)=>a.indexOf(v)===i);

@@ -2,7 +2,7 @@
 
 [Magyar játékmeneti útmutató](GAMEPLAY.md)
 
-Kiba is a browser-playable 2D metroidvania starring Momo, a shiba samurai searching for his father, Haru. Kiba is the energy flowing through all three realms. Its strength and nature change from place to place, and the game shows its current state in the upper HUD and through environmental effects.
+Kiba is a browser-playable 2D metroidvania starring Momo, a shiba samurai searching for his father, Haru. Kiba is the energy flowing through all four realms. Its strength and nature change from place to place, and the game shows its current state in the upper HUD and through environmental effects.
 
 The game starts with a silent dream prologue. After Momo wakes, follow the story from Japan into Yomi, then climb into Takamagahara. Each realm has its own route, enemies, guardian, and optional secrets.
 
@@ -72,3 +72,9 @@ O: use food. Akash sells his wares at the Forest Refuge after you free him in Yo
 - **Compass:** Shows the direction and name of your next main objective beneath the task panel in the top-left corner. It indicates direction, not a traversable route; hidden paths are yours to discover.
 - **Pocket Map:** Shows nearby ledges, known shrines and Momo's position in the corner of the screen.
 - **Roast Meat of Unknown Origin:** Akash will not say what it is made of. Eating it has an equal chance to restore or remove 1 health, but cannot kill you. Quick use: O.
+
+## Shadow Realm
+
+Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar. Unlock fast travel at the Shadow Altar.
+
+Collect the jailer’s key and interact at the prison door; the key is consumed and the door stays open. Leave the marked circle or interrupt the priest with a heavy strike before the bell toll. The optional organist is hidden along an elevated platforming branch. The prison holds Haru’s trail, and the search remains open after defeating the priest.

@@ -1,8 +1,8 @@
 const assert=require('node:assert/strict'),harness=require('./test-harness.cjs'),validate=require('./test-save-validation.cjs');
 function setup(realm=0,secret=false){
  const h=harness(),r=h.run;
- r(`Prologue.stop();abilities=[${realm>0},${realm>1}];defeated=[${realm>0},${realm>1},false];
- flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal']];visitedRests=levels.map(l=>l.rests.map(s=>s.id));progression=freshProgression();
+ r(`Prologue.stop();abilities=[${realm>0},${realm>1}];defeated=[${realm>0},${realm>1},false,false];
+ flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal'],[]];visitedRests=levels.map((l,n)=>n<3?l.rests.map(s=>s.id):[]);progression=freshProgression();
  ${secret?"flags[0].push('guardian:oldAngel','angelHalo','guardian:oldCultist','demonHorn');":''}
  enterRealm(${realm});state='play';bossStarted=true;enemies=[];boss.inv=0;`);
  return h;

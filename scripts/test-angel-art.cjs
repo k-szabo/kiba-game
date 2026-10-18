@@ -30,7 +30,7 @@ for(const p of fan){
  assert.equal(calls.length,1);assert.equal(calls[0].key,'holyArrow');registered(calls[0],definitions.holyArrow);
  near(calls[0].x,p.x);near(calls[0].y,p.y);near(calls[0].angle,Math.atan2(p.vy,p.vx));assert.equal(JSON.stringify(p),original);
 }
-run("abilities=[true,true];defeated=[true,true,false];flags=[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal']];enterRealm(2);state='play';bossStarted=true;player.inv=999;boss.move='holySweep';boss.face=-1;startBossAttack();executeBossMove(.01);");
+run("abilities=[true,true];defeated=[true,true,false,false];flags=[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist','angelHalo','demonHorn'],['soulUpper','soulLower'],['dawnSeal'],[]];enterRealm(2);state='play';bossStarted=true;player.inv=999;boss.move='holySweep';boss.face=-1;startBossAttack();executeBossMove(.01);");
 assert(run("projectiles.length===2&&projectiles.every(p=>p.kind==='holyArrow'&&p.source==='boss')"));
 calls.length=0;run('Visuals.projectile(projectiles[0])');assert.equal(calls[0].key,'holyArrow');registered(calls[0],definitions.holyArrow);assert(Math.abs(calls[0].angle)>2);
 run('boss.hazards=[];lightArrowAt(player.x+200,.7)');

@@ -12,7 +12,7 @@ run('player.onGround=true;draw();');assert.equal(run('slashCalls'),2,'Running an
 run('Visuals.momoSlash=originalSlash;');
 
 // Collectibles require E, persist across realms/save reload, and cannot be picked twice.
-run("flags=[[],[],[]];enterRealm(0);state='play';");
+run("flags=[[],[],[],[]];enterRealm(0);state='play';");
 for(const id of ['angelHalo','demonHorn']){
   run(`{const guard=enemies.find(e=>e.id===level.objects.find(o=>o.id==='${id}').guardian);guard.hp=0;killEnemy(guard);}`);const point=run(`level.objects.find(o=>o.id==='${id}')`);place(point.x,point.y);press('e');tick();release('e');assert(snap().relics.includes(id));dismiss();
 }
@@ -35,14 +35,14 @@ const xpBefore=snap().progression.totalXp;run('var minion=enemies.find(e=>e.summ
 run("projectiles.push({source:'minion',life:5});resetBossBattle();");assert.equal(run('enemies.filter(e=>e.summoned).length'),0);assert.equal(run('boss.summons.length'),0);assert(!run("projectiles.some(p=>p.source==='minion')"));
 
 // Normal angel has only holy attacks; 50% changes form without refilling health or paying XP.
-run("flags=[[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;");assert.equal(run('boss.stage'),1);assert(run("bossMoves().every(m=>m==='lightArrows'||m==='holySweep')"));
+run("flags=[[],[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;");assert.equal(run('boss.stage'),1);assert(run("bossMoves().every(m=>m==='lightArrows'||m==='holySweep')"));
 const xpPhase=snap().progression.totalXp;run('hitBoss(boss.max/2-1);');assert.equal(run('boss.stage'),1);run('boss.inv=0;hitBoss(1);');assert.equal(run('boss.stage'),2);assert.equal(run('boss.hp'),run('boss.max/2'));assert.equal(run('boss.phase'),'transform');assert.equal(snap().progression.totalXp,xpPhase);assert(!snap().defeated[2]);
 assert(run("bossMoves().every(m=>m.startsWith('shadow'))"));run('hitBoss(100);');assert.equal(run('boss.hp'),run('boss.max/2'),'Transformation should resist further hits');
 run('updateBoss(1.81);boss.inv=0;hitBoss(boss.hp);');assert(run('boss.dead'));assert(snap().defeated[2]);dismiss();
 
 // The secret is triggered only by BOTH relics; full HP refill happens once, with no premature win.
 for(const items of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
-  run(`flags=[${JSON.stringify(items)},[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;`);
+  run(`flags=[${JSON.stringify(items)},[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;`);
   const eligible=items.length===2,xpStart=snap().progression.totalXp;assert.equal(run('boss.secretEligible'),eligible);
   run('hitBoss(boss.max/2);updateBoss(1.81);boss.inv=0;hitBoss(boss.hp);');
   if(eligible){
@@ -53,7 +53,7 @@ for(const items of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
   }else{assert(run('boss.dead'));assert.equal(run('boss.stage'),2);assert.equal(snap().progression.totalXp,xpStart+600);dismiss();}
 }
 // An overpowered hit cannot bypass the mandatory second form; resets start a fresh encounter.
-run("flags=[['angelHalo','demonHorn'],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;hitBoss(500);");assert.equal(run('boss.stage'),2);assert(!snap().boss.dead);assert(run('boss.hp>=1'));
+run("flags=[['angelHalo','demonHorn'],[],[],[]];defeated[2]=false;enterRealm(2);state='play';bossStarted=true;hitBoss(500);");assert.equal(run('boss.stage'),2);assert(!snap().boss.dead);assert(run('boss.hp>=1'));
 run('resetBossBattle();');assert.equal(run('boss.stage'),1);assert.equal(run('boss.hp'),run('boss.max'));assert(!run('boss.secretTriggered'));assert(run('boss.secretEligible'));
 
 // Exact blade regression: follow-through/recovery use full source regions with no clip masks.

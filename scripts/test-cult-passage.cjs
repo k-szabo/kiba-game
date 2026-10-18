@@ -3,7 +3,7 @@ const {run,press,release,sandbox}=require('./test-harness.cjs')();
 const fs=require('node:fs'),path=require('node:path');
 
 function reset({dashAbility=true,defeatedJapan=false}={}){
- run(`Prologue.stop();abilities=[true,${dashAbility}];defeated=[${defeatedJapan},false,false];flags=[['cultEntrance'],[],[]];enterRealm(0);state='play';enemies=[];keys.clear();pressed.clear();`);
+ run(`Prologue.stop();abilities=[true,${dashAbility}];defeated=[${defeatedJapan},false,false,false];flags=[['cultEntrance'],[],[],[]];enterRealm(0);state='play';enemies=[];keys.clear();pressed.clear();`);
 }
 reset();
 const authored=run(`JSON.parse(JSON.stringify({height:level.height,passage:level.cultPassage,secret:level.secrets.find(s=>s.id==='cultCave'),gate:level.gates.find(g=>g.id==='cultWestWall')}))`);

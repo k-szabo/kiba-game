@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const {run,snap,tick,dismiss,elements}=require('./test-harness.cjs')();
 const validate=require('./test-save-validation.cjs');
 function setup(items){
- run(`Prologue.stop();flags=[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist',...${JSON.stringify(items)}],['soulUpper','soulLower'],['dawnSeal']];abilities=[true,true];defeated=[true,true,false];visitedRests=[['start'],['start'],['start','arena']];progression=freshProgression();shards=0;enterRealm(2);state='play';bossStarted=true;`);
+ run(`Prologue.stop();flags=[['forestBell','villageBell','guardian:oldAngel','guardian:oldCultist',...${JSON.stringify(items)}],['soulUpper','soulLower'],['dawnSeal'],[]];abilities=[true,true];defeated=[true,true,false,false];visitedRests=[['start'],['start'],['start','arena'],[]];progression=freshProgression();shards=0;enterRealm(2);state='play';bossStarted=true;`);
 }
 for(const relics of [[],['angelHalo'],['demonHorn'],['angelHalo','demonHorn']]){
  setup(relics);const secret=relics.length===2;

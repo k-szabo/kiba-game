@@ -1,9 +1,18 @@
 /* Encounter replays are restricted to the in-memory developer character. */
 'use strict';
 const DevBoss=(()=>{
+ let encounter='main';
  const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]);
- function revive(){
+ const encounters=()=>[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss},
+  ...(Prologue.active?[]:level.enemies.filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
+ function fields(){
+  const options=encounters();if(!options.some(entry=>entry.id===encounter))encounter='main';
+  return [{id:'encounter',type:'select',labelKey:'dev.boss',value:encounter,options:options.map(entry=>({value:entry.id,label:entry.name})),change:value=>{if(encounters().some(entry=>entry.id===value))encounter=value;}}];
+ }
+ function revive(values){
   if(!available()||state!=='developer'||!DevTools.isOpen)return false;
+  const target=values?.encounter??'main';if(!encounters().some(entry=>entry.id===target))return false;
+  if(target!=='main')return reviveMiniboss(target);
   if(Prologue.active){Prologue.start();state='developer';DevTools.setReturnState('play');return true;}
   clearEncounterEffects();defeated[realm]=false;resetBossBattle();
   const rest=level.rests.find(r=>r.id===level.arena.restId)||level.rests[0];
@@ -14,6 +23,19 @@ const DevBoss=(()=>{
   if(floor)initPlayer({x:a.x+70,y:floor.y});
   bossStarted=true;resetCamera();updateHUD();DevTools.setReturnState('play');return true;
  }
- function init(){DevTools.register({id:'boss-revive',labelKey:'dev.boss',available,run:revive});}
+ function reviveMiniboss(id){
+  const index=level.enemies.findIndex(spec=>spec.id===id&&spec.miniboss);if(index<0)return false;
+  const replay=createEnemy(level.enemies[index],index),a=replay.arena;
+  const floor=platforms.find(p=>!p.broken&&Math.abs(p.y-a.y)<2&&p.x<=a.x+70&&p.x+p.w>=a.x+70);
+  if(!floor)return false;
+  clearEncounterEffects();if(!boss.dead)resetBossBattle();
+  resetMinibosses();projectiles=[];
+  // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
+  resetMiniboss(replay);replay.dead=false;replay.active=true;
+  const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;
+  initPlayer({x:a.x+70,y:floor.y});particles=[];drops=[];keys.clear();pressed.clear();
+  resetCamera();updateHUD();DevTools.setReturnState('play');return true;
+ }
+ function init(){DevTools.register({id:'boss-revive',labelKey:'dev.boss',available,fields,run:revive});}
  return Object.freeze({init,revive});
 })();

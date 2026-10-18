@@ -2,7 +2,7 @@
 
 [English gameplay guide](GAMEPLAY.en.md)
 
-Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj három eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
+Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj négy eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 
 ## Indítás és frissítés
 
@@ -10,7 +10,7 @@ Az **index.html** indítja a játékot a mellette található **assets** mappáv
 
 Új utazáshoz válaszd **Az utazás kezdetét**, a korábbi mentés folytatásához pedig a **Folytatás** gombot. Az alfa/béta időszakban minden új játékverzió alaphelyzetbe állítja a haladást, hogy a változó pályák és mentési szabályok ne keveredjenek. A nyelv- és billentyűbeállítások megmaradnak. Azonos verzió újratöltése megőrzi a mentést; részletek a [fejlesztői útmutatóban](DEVELOPMENT.md).
 
-## Három eltérő kaland
+## Eltérő kalandok
 
 Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. Ugyanazon verzión belül a Folytatás visszatölt; új alfa/béta verziónál a haladás törlődik és újra a prológusban kezdhetsz. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
 
@@ -50,7 +50,7 @@ A szélfolyamokba **bele kell ugrani**. Maguktól magasba emelnek; oldalirányú
 
 A közelről felfedezett pihenőhely felkerül a térképre és mentőponttá válik. E-vel az életerőt is feltölti. A térképen az elérhető pihenőhelyek gombjai gyorsutazást indítanak, így Yomiban a felső termekbe is visszatérhetsz. A további birodalmak külön csoportokban jelennek meg: visszautazhatsz a már befejezett pályák ismert szentélyeihez, majd az éppen folyamatban lévő, korábban már felkeresett birodalomba is. Minden gyorsutazás újraéleszti a normál ellenfeleket, de a legyőzött bossok, minibossok, tárgyak, képességek és megnyitott utak állapota megmarad. Az álomprológus és az ismeretlen pihenőhelyek nem választhatók.
 
-A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. Az első és második őrző a kihagyott szentélyképességet is megadja, hogy ne záródjon el a továbbjutás.
+A megszerzett képességek, megnyitott pecsétek, harangok, kiszabadított lelkek, összegyűjtött emlékek és legyőzött őrzők mentődnek. Halál után a legutóbbi pihenőhelyhez térsz vissza. A dupla ugrást a szél szentélyénél, a szellemlépést az árnyék szentélyénél szerezheted meg; az őrzők legyőzése nem helyettesíti ezeket.
 
 **E-vel gyógyuláskor és halál után a normál ellenfelek újraélednek** az adott birodalomban. A legyőzött bossok és minibossok, kiszabadított lelkek és megnyitott utak megmaradnak. Minden lezuhanás halálos, az aktuális életerőtől és sérthetetlenségtől függetlenül: Momo teljes életerővel tér vissza a pihenőhelyre, és a normál ellenfelek újraélednek. A folyamatban lévő boss-harc a szentélynél újrakezdődik; a láva eltűnik, a kőszigetek visszatérnek. Az XP és a fejlesztések halál után is megmaradnak.
 
@@ -60,7 +60,7 @@ Yomi középső mélységének jobb oldalán egy [láncos kapu és opcionális k
 
 ## XP és fejlesztés
 
-Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 100 / 150 / 200 XP-t. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
+Az ellenfelek legyőzése 18–26 XP-t ad, az őrzőké 250 / 400 / 600 / 800 XP-t és egyenként 1 extra fejlesztéspontot. Az első szintlépéshez 60 XP kell, minden következőhöz 35-tel több. Minden új szint egy elkölthető pontot ad; a felső határ 12. szint. Az újraélesztett ellenfelek ismét adnak XP-t.
 
 A szentély mellett **U-val** vagy a felső **Fejlesztés** gombbal nyithatod meg a három választást: életerő (+1 maximum), kard (+0,5 alap kardsebzés), szellem (rövidebb szellemlépés-várakozás és hosszabb védettség találat után). A Szellem fejlesztést csak a szellemlépés megszerzése után választhatod; a menü addig zárolja. Az XP, szint és kiosztott pontok automatikusan mentődnek.
 
@@ -112,3 +112,9 @@ O: étel használata. Akash portékáit az erdei menedékben találod, ha kiszab
 - **Iránytű:** A bal felső feladatpanel alatt, nagy nyíllal és a cél nevével mutatja a következő fő feladat irányát. Az irányt jelzi, nem a bejárható útvonalat; a rejtett ösvényeket magadnak kell felfedezned.
 - **Kis útitérkép:** A közeli párkányokat, ismert szentélyeket és Momo helyét mutatja a képernyő sarkában.
 - **Ismeretlen eredetű sült hús:** Akash nem árulja el, miből készült. Elfogyasztva azonos eséllyel visszaad vagy elvesz 1 életerőt, de nem ölhet meg. Gyorshasználat: O.
+
+## Árnyékvilág
+
+Haru megtalálása után új árnyékvilág nyílik kultistákkal, három új bossal, gyűjthető jutalmakkal és oltárnál feloldható gyorsutazással. A gyorsutazást az árnyékoltárnál oldhatod fel.
+
+A börtönőr kulcsát vedd fel, majd a börtön ajtajánál használd az interakciót; a kulcs elfogy, a kapu nyitva marad. A pap harangszava előtt hagyd el a jelzett kört, vagy szakítsd meg erős támadással. Az orgonista opcionális, magasba vezető platformos mellékágon rejtőzik. A börtönben Haru nyomát találod, a pap után a keresés folytatása nyitva marad.

@@ -274,12 +274,59 @@
           "paletteGroup": "npc.shadow.devour"
         }
       }
+    },
+    "shadowCult.guard": {
+      "faction": "shadowCult",
+      "role": "guard",
+      "paletteGroup": "npc.shadowCult.guard"
+    },
+    "shadowCult.archer": {
+      "faction": "shadowCult",
+      "role": "archer",
+      "paletteGroup": "npc.shadowCult.archer"
+    },
+    "shadowCult.mage": {
+      "faction": "shadowCult",
+      "role": "mage",
+      "paletteGroup": "npc.shadowCult.mage"
+    },
+    "shadowCult.shield": {
+      "faction": "shadowCult",
+      "role": "shield",
+      "paletteGroup": "npc.shadowCult.shield"
+    },
+    "shadowCult.madPriest": {
+      "faction": "shadowCult",
+      "role": "boss",
+      "paletteGroup": "npc.shadowCult.madPriest"
+    },
+    "shadowCult.cultJailer": {
+      "faction": "shadowCult",
+      "role": "miniboss",
+      "paletteGroup": "npc.shadowCult.cultJailer"
+    },
+    "shadowCult.madOrganist": {
+      "faction": "shadowCult",
+      "role": "miniboss",
+      "paletteGroup": "npc.shadowCult.madOrganist"
     }
   },
   "objects": {
     "inventoryKatana": {
       "kind": "equipment-art",
       "paletteGroup": "object.inventoryKatana"
+    },
+    "inventoryItem.madPriestSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.madPriestSoul"
+    },
+    "inventoryItem.corruptedHymn": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.corruptedHymn"
+    },
+    "inventoryItem.prisonKey": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.prisonKey"
     },
     "inventoryItem.compass": {
       "kind": "inventory-icon",
@@ -4909,6 +4956,713 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "npc.shadowCult.guard": {
+      "source": "assets/images/enemies/shadow-guard-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0c",
+            "coveragePercent": 13.2397
+          },
+          {
+            "hex": "#090303",
+            "coveragePercent": 13.1013
+          },
+          {
+            "hex": "#342320",
+            "coveragePercent": 11.1761
+          },
+          {
+            "hex": "#4f3631",
+            "coveragePercent": 9.2132
+          },
+          {
+            "hex": "#3e0f0d",
+            "coveragePercent": 7.8897
+          },
+          {
+            "hex": "#591b17",
+            "coveragePercent": 7.092
+          },
+          {
+            "hex": "#7a1d1b",
+            "coveragePercent": 7.0031
+          },
+          {
+            "hex": "#7e4836",
+            "coveragePercent": 5.5016
+          },
+          {
+            "hex": "#9e2623",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#604d4c",
+            "coveragePercent": 4.6965
+          },
+          {
+            "hex": "#aa6b4f",
+            "coveragePercent": 3.4287
+          },
+          {
+            "hex": "#836762",
+            "coveragePercent": 3.326
+          },
+          {
+            "hex": "#c89170",
+            "coveragePercent": 3.0411
+          },
+          {
+            "hex": "#c33d33",
+            "coveragePercent": 2.434
+          },
+          {
+            "hex": "#e7bc96",
+            "coveragePercent": 2.2959
+          },
+          {
+            "hex": "#f5e4cd",
+            "coveragePercent": 1.2465
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c201e",
+            "coveragePercent": 27.133
+          },
+          {
+            "hex": "#a82a27",
+            "coveragePercent": 20.9483
+          },
+          {
+            "hex": "#91523c",
+            "coveragePercent": 19.2787
+          },
+          {
+            "hex": "#b57150",
+            "coveragePercent": 14.2181
+          },
+          {
+            "hex": "#c93e35",
+            "coveragePercent": 10.136
+          },
+          {
+            "hex": "#dc9c6b",
+            "coveragePercent": 8.2859
+          }
+        ],
+        "visibleSamples": 579599,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.shadowCult.archer": {
+      "source": "assets/images/enemies/shadow-archer-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f0f0f",
+            "coveragePercent": 16.0153
+          },
+          {
+            "hex": "#080404",
+            "coveragePercent": 14.8711
+          },
+          {
+            "hex": "#342424",
+            "coveragePercent": 11.0
+          },
+          {
+            "hex": "#473635",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#401111",
+            "coveragePercent": 8.629
+          },
+          {
+            "hex": "#631d1f",
+            "coveragePercent": 7.1929
+          },
+          {
+            "hex": "#8a2026",
+            "coveragePercent": 5.3111
+          },
+          {
+            "hex": "#584a4c",
+            "coveragePercent": 5.2552
+          },
+          {
+            "hex": "#744537",
+            "coveragePercent": 4.7246
+          },
+          {
+            "hex": "#7d6058",
+            "coveragePercent": 3.8444
+          },
+          {
+            "hex": "#b52f33",
+            "coveragePercent": 2.9141
+          },
+          {
+            "hex": "#aa7c66",
+            "coveragePercent": 2.8126
+          },
+          {
+            "hex": "#cd9878",
+            "coveragePercent": 2.3525
+          },
+          {
+            "hex": "#a95d48",
+            "coveragePercent": 2.3378
+          },
+          {
+            "hex": "#e6bd99",
+            "coveragePercent": 1.9297
+          },
+          {
+            "hex": "#f7e2c4",
+            "coveragePercent": 1.4137
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b2026",
+            "coveragePercent": 25.3667
+          },
+          {
+            "hex": "#a5272d",
+            "coveragePercent": 20.0194
+          },
+          {
+            "hex": "#91523f",
+            "coveragePercent": 19.9671
+          },
+          {
+            "hex": "#b46f52",
+            "coveragePercent": 14.5408
+          },
+          {
+            "hex": "#c33939",
+            "coveragePercent": 12.1306
+          },
+          {
+            "hex": "#d8966a",
+            "coveragePercent": 7.9753
+          }
+        ],
+        "visibleSamples": 542510,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.shadowCult.mage": {
+      "source": "assets/images/enemies/shadow-mage-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
+          },
+          {
+            "hex": "#100605",
+            "coveragePercent": 12.0161
+          },
+          {
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
+          },
+          {
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
+          },
+          {
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#624846",
+            "coveragePercent": 7.8941
+          },
+          {
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
+          },
+          {
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
+          },
+          {
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
+          },
+          {
+            "hex": "#826563",
+            "coveragePercent": 4.8411
+          },
+          {
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
+          },
+          {
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
+          },
+          {
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
+          },
+          {
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
+          },
+          {
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
+          },
+          {
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
+          },
+          {
+            "hex": "#935435",
+            "coveragePercent": 20.7743
+          },
+          {
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
+          },
+          {
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
+          },
+          {
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
+          },
+          {
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
+          }
+        ],
+        "visibleSamples": 594036,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowCult.shield": {
+      "source": "assets/images/enemies/shadow-shield-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#39241f",
+            "coveragePercent": 11.7538
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 11.2656
+          },
+          {
+            "hex": "#1e0c09",
+            "coveragePercent": 10.9648
+          },
+          {
+            "hex": "#513830",
+            "coveragePercent": 10.4103
+          },
+          {
+            "hex": "#340f0b",
+            "coveragePercent": 9.9166
+          },
+          {
+            "hex": "#531712",
+            "coveragePercent": 8.9506
+          },
+          {
+            "hex": "#6f201b",
+            "coveragePercent": 7.0406
+          },
+          {
+            "hex": "#7e4a30",
+            "coveragePercent": 5.8472
+          },
+          {
+            "hex": "#8e2422",
+            "coveragePercent": 4.6136
+          },
+          {
+            "hex": "#68524b",
+            "coveragePercent": 4.429
+          },
+          {
+            "hex": "#a46a47",
+            "coveragePercent": 4.2232
+          },
+          {
+            "hex": "#c7916b",
+            "coveragePercent": 3.2385
+          },
+          {
+            "hex": "#e2ba95",
+            "coveragePercent": 2.3568
+          },
+          {
+            "hex": "#b23731",
+            "coveragePercent": 1.8813
+          },
+          {
+            "hex": "#90776b",
+            "coveragePercent": 1.8115
+          },
+          {
+            "hex": "#f5e7d3",
+            "coveragePercent": 1.2967
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d2321",
+            "coveragePercent": 29.2405
+          },
+          {
+            "hex": "#8d5335",
+            "coveragePercent": 22.0129
+          },
+          {
+            "hex": "#a56a47",
+            "coveragePercent": 17.5932
+          },
+          {
+            "hex": "#b13530",
+            "coveragePercent": 12.8883
+          },
+          {
+            "hex": "#c18258",
+            "coveragePercent": 12.0088
+          },
+          {
+            "hex": "#dda46e",
+            "coveragePercent": 6.2563
+          }
+        ],
+        "visibleSamples": 627200,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.shadowCult.madPriest": {
+      "source": "assets/images/enemies/shadow-madPriest-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.madPriest",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#250c0b",
+            "coveragePercent": 13.0709
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 10.5912
+          },
+          {
+            "hex": "#4c2f2c",
+            "coveragePercent": 9.8455
+          },
+          {
+            "hex": "#49120e",
+            "coveragePercent": 9.8202
+          },
+          {
+            "hex": "#6e1d1a",
+            "coveragePercent": 9.0111
+          },
+          {
+            "hex": "#341f1f",
+            "coveragePercent": 8.6598
+          },
+          {
+            "hex": "#7b422d",
+            "coveragePercent": 6.3804
+          },
+          {
+            "hex": "#9d262a",
+            "coveragePercent": 6.0228
+          },
+          {
+            "hex": "#5e4644",
+            "coveragePercent": 5.6972
+          },
+          {
+            "hex": "#856154",
+            "coveragePercent": 4.0846
+          },
+          {
+            "hex": "#ae513c",
+            "coveragePercent": 3.9476
+          },
+          {
+            "hex": "#bb7b54",
+            "coveragePercent": 3.7619
+          },
+          {
+            "hex": "#daa171",
+            "coveragePercent": 3.0584
+          },
+          {
+            "hex": "#e9c297",
+            "coveragePercent": 3.0319
+          },
+          {
+            "hex": "#f5e3c3",
+            "coveragePercent": 1.5867
+          },
+          {
+            "hex": "#aa8e81",
+            "coveragePercent": 1.4297
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912224",
+            "coveragePercent": 27.6524
+          },
+          {
+            "hex": "#8f4f35",
+            "coveragePercent": 20.0683
+          },
+          {
+            "hex": "#ab6a47",
+            "coveragePercent": 16.3721
+          },
+          {
+            "hex": "#b73637",
+            "coveragePercent": 15.8058
+          },
+          {
+            "hex": "#c98658",
+            "coveragePercent": 12.4164
+          },
+          {
+            "hex": "#e6ad6f",
+            "coveragePercent": 7.6849
+          }
+        ],
+        "visibleSamples": 705690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowCult.cultJailer": {
+      "source": "assets/images/enemies/shadow-cultJailer-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.cultJailer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 18.3509
+          },
+          {
+            "hex": "#250f0c",
+            "coveragePercent": 16.152
+          },
+          {
+            "hex": "#39211a",
+            "coveragePercent": 10.5043
+          },
+          {
+            "hex": "#4e3229",
+            "coveragePercent": 8.8445
+          },
+          {
+            "hex": "#4b100d",
+            "coveragePercent": 7.4749
+          },
+          {
+            "hex": "#6d3e2c",
+            "coveragePercent": 5.8612
+          },
+          {
+            "hex": "#721516",
+            "coveragePercent": 5.8533
+          },
+          {
+            "hex": "#6a524b",
+            "coveragePercent": 4.2922
+          },
+          {
+            "hex": "#8c563e",
+            "coveragePercent": 4.1865
+          },
+          {
+            "hex": "#99705f",
+            "coveragePercent": 4.0602
+          },
+          {
+            "hex": "#9a1f20",
+            "coveragePercent": 3.5657
+          },
+          {
+            "hex": "#bd866b",
+            "coveragePercent": 3.427
+          },
+          {
+            "hex": "#d3a38b",
+            "coveragePercent": 2.785
+          },
+          {
+            "hex": "#e9c5ac",
+            "coveragePercent": 1.9234
+          },
+          {
+            "hex": "#be4e37",
+            "coveragePercent": 1.5215
+          },
+          {
+            "hex": "#f6eadc",
+            "coveragePercent": 1.1974
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901b1d",
+            "coveragePercent": 30.1241
+          },
+          {
+            "hex": "#8d5034",
+            "coveragePercent": 23.7857
+          },
+          {
+            "hex": "#a56647",
+            "coveragePercent": 18.1624
+          },
+          {
+            "hex": "#c57d56",
+            "coveragePercent": 11.4788
+          },
+          {
+            "hex": "#bb2e2d",
+            "coveragePercent": 11.425
+          },
+          {
+            "hex": "#e3a56c",
+            "coveragePercent": 5.0241
+          }
+        ],
+        "visibleSamples": 565561,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.shadowCult.madOrganist": {
+      "source": "assets/images/enemies/shadow-madOrganist-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.madOrganist",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0303",
+            "coveragePercent": 15.0686
+          },
+          {
+            "hex": "#210d0b",
+            "coveragePercent": 14.9398
+          },
+          {
+            "hex": "#41130d",
+            "coveragePercent": 10.3887
+          },
+          {
+            "hex": "#35221f",
+            "coveragePercent": 8.1006
+          },
+          {
+            "hex": "#5e2d16",
+            "coveragePercent": 7.195
+          },
+          {
+            "hex": "#844621",
+            "coveragePercent": 6.3192
+          },
+          {
+            "hex": "#523832",
+            "coveragePercent": 6.2168
+          },
+          {
+            "hex": "#95151f",
+            "coveragePercent": 5.7561
+          },
+          {
+            "hex": "#ac6732",
+            "coveragePercent": 4.9036
+          },
+          {
+            "hex": "#6c0e15",
+            "coveragePercent": 4.4827
+          },
+          {
+            "hex": "#775549",
+            "coveragePercent": 3.5231
+          },
+          {
+            "hex": "#d6904e",
+            "coveragePercent": 3.3665
+          },
+          {
+            "hex": "#c2252f",
+            "coveragePercent": 3.2502
+          },
+          {
+            "hex": "#ebbc80",
+            "coveragePercent": 3.0117
+          },
+          {
+            "hex": "#a57f6c",
+            "coveragePercent": 1.8596
+          },
+          {
+            "hex": "#f7e6be",
+            "coveragePercent": 1.6176
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#955329",
+            "coveragePercent": 28.0627
+          },
+          {
+            "hex": "#bf7a40",
+            "coveragePercent": 19.823
+          },
+          {
+            "hex": "#8e141d",
+            "coveragePercent": 17.0907
+          },
+          {
+            "hex": "#ac1b26",
+            "coveragePercent": 14.4942
+          },
+          {
+            "hex": "#e7ad65",
+            "coveragePercent": 13.1378
+          },
+          {
+            "hex": "#cf2e36",
+            "coveragePercent": 7.3916
+          }
+        ],
+        "visibleSamples": 1019137,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "npc.shadow.idle": {
       "source": "assets/images/enemies/shadow-idle-v2.png",
       "frameMetadata": "SHADOW_CLIPS.idle",
@@ -5412,6 +6166,309 @@
         ],
         "visibleSamples": 160733,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.madPriestSoul": {
+      "source": "assets/images/ui/mad-priest-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.madPriestSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0307",
+            "coveragePercent": 17.7622
+          },
+          {
+            "hex": "#2b0d10",
+            "coveragePercent": 14.6064
+          },
+          {
+            "hex": "#501f1a",
+            "coveragePercent": 11.5863
+          },
+          {
+            "hex": "#7e402b",
+            "coveragePercent": 8.048
+          },
+          {
+            "hex": "#7f0a17",
+            "coveragePercent": 6.4266
+          },
+          {
+            "hex": "#b4643c",
+            "coveragePercent": 5.9029
+          },
+          {
+            "hex": "#2c0a3d",
+            "coveragePercent": 5.8751
+          },
+          {
+            "hex": "#b5192b",
+            "coveragePercent": 4.4924
+          },
+          {
+            "hex": "#e49853",
+            "coveragePercent": 4.458
+          },
+          {
+            "hex": "#50156e",
+            "coveragePercent": 4.3383
+          },
+          {
+            "hex": "#fcf1ea",
+            "coveragePercent": 3.3192
+          },
+          {
+            "hex": "#711caa",
+            "coveragePercent": 3.2619
+          },
+          {
+            "hex": "#f6d08e",
+            "coveragePercent": 2.9639
+          },
+          {
+            "hex": "#9d2ee0",
+            "coveragePercent": 2.5936
+          },
+          {
+            "hex": "#cf63ea",
+            "coveragePercent": 2.4313
+          },
+          {
+            "hex": "#f2a5f5",
+            "coveragePercent": 1.934
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#aa5833",
+            "coveragePercent": 26.8416
+          },
+          {
+            "hex": "#a01523",
+            "coveragePercent": 26.1351
+          },
+          {
+            "hex": "#e9a358",
+            "coveragePercent": 17.5181
+          },
+          {
+            "hex": "#64159d",
+            "coveragePercent": 11.0911
+          },
+          {
+            "hex": "#952bd7",
+            "coveragePercent": 9.9712
+          },
+          {
+            "hex": "#d161f0",
+            "coveragePercent": 8.4429
+          }
+        ],
+        "visibleSamples": 694615,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.corruptedHymn": {
+      "source": "assets/images/ui/corrupted-hymn-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.corruptedHymn",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#e9b890",
+            "coveragePercent": 11.823
+          },
+          {
+            "hex": "#f4cfa7",
+            "coveragePercent": 10.2872
+          },
+          {
+            "hex": "#dca272",
+            "coveragePercent": 10.147
+          },
+          {
+            "hex": "#2c1b20",
+            "coveragePercent": 8.434
+          },
+          {
+            "hex": "#1a0809",
+            "coveragePercent": 6.9965
+          },
+          {
+            "hex": "#cb8552",
+            "coveragePercent": 6.7118
+          },
+          {
+            "hex": "#3b0906",
+            "coveragePercent": 5.8004
+          },
+          {
+            "hex": "#4a2e32",
+            "coveragePercent": 5.667
+          },
+          {
+            "hex": "#67120f",
+            "coveragePercent": 5.5507
+          },
+          {
+            "hex": "#aa6438",
+            "coveragePercent": 5.0434
+          },
+          {
+            "hex": "#f8dec8",
+            "coveragePercent": 4.9053
+          },
+          {
+            "hex": "#7a4937",
+            "coveragePercent": 4.7567
+          },
+          {
+            "hex": "#060102",
+            "coveragePercent": 4.5458
+          },
+          {
+            "hex": "#97171d",
+            "coveragePercent": 4.2881
+          },
+          {
+            "hex": "#a66f7e",
+            "coveragePercent": 2.6469
+          },
+          {
+            "hex": "#cc2837",
+            "coveragePercent": 2.3961
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d69360",
+            "coveragePercent": 24.369
+          },
+          {
+            "hex": "#bc7446",
+            "coveragePercent": 19.5386
+          },
+          {
+            "hex": "#ebb175",
+            "coveragePercent": 17.803
+          },
+          {
+            "hex": "#975334",
+            "coveragePercent": 15.3169
+          },
+          {
+            "hex": "#97151e",
+            "coveragePercent": 14.5228
+          },
+          {
+            "hex": "#cc2837",
+            "coveragePercent": 8.4498
+          }
+        ],
+        "visibleSamples": 820270,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.prisonKey": {
+      "source": "assets/images/ui/prison-key-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.prisonKey",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060202",
+            "coveragePercent": 17.0028
+          },
+          {
+            "hex": "#1a0806",
+            "coveragePercent": 13.6347
+          },
+          {
+            "hex": "#2c1410",
+            "coveragePercent": 11.8041
+          },
+          {
+            "hex": "#422a25",
+            "coveragePercent": 9.2182
+          },
+          {
+            "hex": "#4d1009",
+            "coveragePercent": 7.4727
+          },
+          {
+            "hex": "#614541",
+            "coveragePercent": 6.0142
+          },
+          {
+            "hex": "#6c321a",
+            "coveragePercent": 5.2079
+          },
+          {
+            "hex": "#841013",
+            "coveragePercent": 4.5434
+          },
+          {
+            "hex": "#83665f",
+            "coveragePercent": 4.2109
+          },
+          {
+            "hex": "#9c5029",
+            "coveragePercent": 4.083
+          },
+          {
+            "hex": "#cc7640",
+            "coveragePercent": 3.6402
+          },
+          {
+            "hex": "#bc2127",
+            "coveragePercent": 2.9154
+          },
+          {
+            "hex": "#eaa966",
+            "coveragePercent": 2.8333
+          },
+          {
+            "hex": "#f0d2a2",
+            "coveragePercent": 2.7301
+          },
+          {
+            "hex": "#ad9187",
+            "coveragePercent": 2.3511
+          },
+          {
+            "hex": "#fbf5e0",
+            "coveragePercent": 2.338
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#954c29",
+            "coveragePercent": 22.495
+          },
+          {
+            "hex": "#951517",
+            "coveragePercent": 21.9895
+          },
+          {
+            "hex": "#bc6a3a",
+            "coveragePercent": 18.55
+          },
+          {
+            "hex": "#dd8e50",
+            "coveragePercent": 14.9997
+          },
+          {
+            "hex": "#c5262b",
+            "coveragePercent": 12.1564
+          },
+          {
+            "hex": "#f4bc6f",
+            "coveragePercent": 9.8094
+          }
+        ],
+        "visibleSamples": 336740,
+        "dominantCoveragePercent": 100.0
       }
     },
     "object.inventoryItem.compass": {
@@ -11390,6 +12447,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/shadow-cult-realm-v1.png": {
+      "sha256": "9174455f081e908f0d0dcd4f59d990fb3af8e79e8d66146409dcdc3fd1dc8822",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "shadowCultBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#030205",
+            "coveragePercent": 13.9099
+          },
+          {
+            "hex": "#1e1437",
+            "coveragePercent": 12.3628
+          },
+          {
+            "hex": "#2c1e4f",
+            "coveragePercent": 11.3184
+          },
+          {
+            "hex": "#140d24",
+            "coveragePercent": 11.233
+          },
+          {
+            "hex": "#0c0714",
+            "coveragePercent": 11.0913
+          },
+          {
+            "hex": "#3d296a",
+            "coveragePercent": 9.1462
+          },
+          {
+            "hex": "#503587",
+            "coveragePercent": 7.1711
+          },
+          {
+            "hex": "#6542a2",
+            "coveragePercent": 5.8713
+          },
+          {
+            "hex": "#7b50bd",
+            "coveragePercent": 4.9354
+          },
+          {
+            "hex": "#915dda",
+            "coveragePercent": 3.9404
+          },
+          {
+            "hex": "#ac71ef",
+            "coveragePercent": 2.9973
+          },
+          {
+            "hex": "#471a24",
+            "coveragePercent": 2.3287
+          },
+          {
+            "hex": "#c98ef4",
+            "coveragePercent": 1.5597
+          },
+          {
+            "hex": "#884642",
+            "coveragePercent": 1.0066
+          },
+          {
+            "hex": "#dc835e",
+            "coveragePercent": 0.6407
+          },
+          {
+            "hex": "#eac1f2",
+            "coveragePercent": 0.4874
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#51338d",
+            "coveragePercent": 26.1971
+          },
+          {
+            "hex": "#6743a7",
+            "coveragePercent": 23.5374
+          },
+          {
+            "hex": "#7d50c4",
+            "coveragePercent": 19.5931
+          },
+          {
+            "hex": "#965fe2",
+            "coveragePercent": 15.7829
+          },
+          {
+            "hex": "#b676f4",
+            "coveragePercent": 10.7362
+          },
+          {
+            "hex": "#c06745",
+            "coveragePercent": 4.1532
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/shadow-world-v1.png": {
       "sha256": "e5e2995e59ad707244d5c1540eee9d896e249bc8c29e3a824d572c1f94cf103a",
       "width": 1672,
@@ -14225,6 +15387,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/enemies/shadow-archer-v1.png": {
+      "sha256": "15fc48babb06118b83fcbe62ca435c5fef5ceacd3e3f44d32e95f7675cfd6ddb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowArcher"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f0f0f",
+            "coveragePercent": 16.0203
+          },
+          {
+            "hex": "#080404",
+            "coveragePercent": 14.8655
+          },
+          {
+            "hex": "#342424",
+            "coveragePercent": 11.0075
+          },
+          {
+            "hex": "#473635",
+            "coveragePercent": 9.4062
+          },
+          {
+            "hex": "#401111",
+            "coveragePercent": 8.6169
+          },
+          {
+            "hex": "#631d1f",
+            "coveragePercent": 7.1782
+          },
+          {
+            "hex": "#584b4c",
+            "coveragePercent": 5.3178
+          },
+          {
+            "hex": "#8a2026",
+            "coveragePercent": 5.2999
+          },
+          {
+            "hex": "#744537",
+            "coveragePercent": 4.7287
+          },
+          {
+            "hex": "#7d6158",
+            "coveragePercent": 3.7836
+          },
+          {
+            "hex": "#b52f32",
+            "coveragePercent": 2.8862
+          },
+          {
+            "hex": "#a97d66",
+            "coveragePercent": 2.8235
+          },
+          {
+            "hex": "#cd9878",
+            "coveragePercent": 2.3679
+          },
+          {
+            "hex": "#a95d48",
+            "coveragePercent": 2.3556
+          },
+          {
+            "hex": "#e6bd99",
+            "coveragePercent": 1.9299
+          },
+          {
+            "hex": "#f7e2c4",
+            "coveragePercent": 1.4122
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b2026",
+            "coveragePercent": 25.3432
+          },
+          {
+            "hex": "#a5272d",
+            "coveragePercent": 19.9984
+          },
+          {
+            "hex": "#91523f",
+            "coveragePercent": 19.9782
+          },
+          {
+            "hex": "#b46f52",
+            "coveragePercent": 14.5864
+          },
+          {
+            "hex": "#c33939",
+            "coveragePercent": 12.1179
+          },
+          {
+            "hex": "#d8966a",
+            "coveragePercent": 7.9759
+          }
+        ],
+        "visibleSamples": 543938,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/shadow-cast-v2.png": {
       "sha256": "e2c9aa7b1f5ad9b78680b0d51b017928ac3819493ed4fe83c887a4926c1c3056",
       "width": 1536,
@@ -14328,6 +15595,111 @@
         ],
         "visibleSamples": 545659,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/shadow-cultJailer-v1.png": {
+      "sha256": "d654be4490d3578addb254c449b9bbf841210a8172fc627d046b55b39ac56e13",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowCultJailer"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 18.3509
+          },
+          {
+            "hex": "#250f0c",
+            "coveragePercent": 16.152
+          },
+          {
+            "hex": "#39211a",
+            "coveragePercent": 10.5043
+          },
+          {
+            "hex": "#4e3229",
+            "coveragePercent": 8.8445
+          },
+          {
+            "hex": "#4b100d",
+            "coveragePercent": 7.4749
+          },
+          {
+            "hex": "#6d3e2c",
+            "coveragePercent": 5.8612
+          },
+          {
+            "hex": "#721516",
+            "coveragePercent": 5.8533
+          },
+          {
+            "hex": "#6a524b",
+            "coveragePercent": 4.2922
+          },
+          {
+            "hex": "#8c563e",
+            "coveragePercent": 4.1865
+          },
+          {
+            "hex": "#99705f",
+            "coveragePercent": 4.0602
+          },
+          {
+            "hex": "#9a1f20",
+            "coveragePercent": 3.5657
+          },
+          {
+            "hex": "#bd866b",
+            "coveragePercent": 3.427
+          },
+          {
+            "hex": "#d3a38b",
+            "coveragePercent": 2.785
+          },
+          {
+            "hex": "#e9c5ac",
+            "coveragePercent": 1.9234
+          },
+          {
+            "hex": "#be4e37",
+            "coveragePercent": 1.5215
+          },
+          {
+            "hex": "#f6eadc",
+            "coveragePercent": 1.1974
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901b1d",
+            "coveragePercent": 30.1241
+          },
+          {
+            "hex": "#8d5034",
+            "coveragePercent": 23.7857
+          },
+          {
+            "hex": "#a56647",
+            "coveragePercent": 18.1624
+          },
+          {
+            "hex": "#c57d56",
+            "coveragePercent": 11.4788
+          },
+          {
+            "hex": "#bb2e2d",
+            "coveragePercent": 11.425
+          },
+          {
+            "hex": "#e3a56c",
+            "coveragePercent": 5.0241
+          }
+        ],
+        "visibleSamples": 565561,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/enemies/shadow-devour-v2.png": {
@@ -14435,6 +15807,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/enemies/shadow-guard-v1.png": {
+      "sha256": "ecc07777f6faf00e48c32227f6194877eb0b2c18969ad835c0f3843c5ffa3cfa",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowGuard"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0c",
+            "coveragePercent": 13.2397
+          },
+          {
+            "hex": "#090303",
+            "coveragePercent": 13.1013
+          },
+          {
+            "hex": "#342320",
+            "coveragePercent": 11.1761
+          },
+          {
+            "hex": "#4f3631",
+            "coveragePercent": 9.2132
+          },
+          {
+            "hex": "#3e0f0d",
+            "coveragePercent": 7.8897
+          },
+          {
+            "hex": "#591b17",
+            "coveragePercent": 7.092
+          },
+          {
+            "hex": "#7a1d1b",
+            "coveragePercent": 7.0031
+          },
+          {
+            "hex": "#7e4836",
+            "coveragePercent": 5.5016
+          },
+          {
+            "hex": "#9e2623",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#604d4c",
+            "coveragePercent": 4.6965
+          },
+          {
+            "hex": "#aa6b4f",
+            "coveragePercent": 3.4287
+          },
+          {
+            "hex": "#836762",
+            "coveragePercent": 3.326
+          },
+          {
+            "hex": "#c89170",
+            "coveragePercent": 3.0411
+          },
+          {
+            "hex": "#c33d33",
+            "coveragePercent": 2.434
+          },
+          {
+            "hex": "#e7bc96",
+            "coveragePercent": 2.2959
+          },
+          {
+            "hex": "#f5e4cd",
+            "coveragePercent": 1.2465
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c201e",
+            "coveragePercent": 27.133
+          },
+          {
+            "hex": "#a82a27",
+            "coveragePercent": 20.9483
+          },
+          {
+            "hex": "#91523c",
+            "coveragePercent": 19.2787
+          },
+          {
+            "hex": "#b57150",
+            "coveragePercent": 14.2181
+          },
+          {
+            "hex": "#c93e35",
+            "coveragePercent": 10.136
+          },
+          {
+            "hex": "#dc9c6b",
+            "coveragePercent": 8.2859
+          }
+        ],
+        "visibleSamples": 579599,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/enemies/shadow-idle-v2.png": {
       "sha256": "69dc7d04f20ef9e8f5cb751ca8546a33b47b40d0f2ff816e6ec7b6fc9ed4f9c4",
       "width": 1536,
@@ -14538,6 +16015,321 @@
         ],
         "visibleSamples": 973716,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/shadow-madOrganist-v1.png": {
+      "sha256": "3137add5baaf467c79c3891b6e29660ace158f641b039747fa4bee6e7ee4d781",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMadOrganist"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0303",
+            "coveragePercent": 15.0686
+          },
+          {
+            "hex": "#210d0b",
+            "coveragePercent": 14.9398
+          },
+          {
+            "hex": "#41130d",
+            "coveragePercent": 10.3887
+          },
+          {
+            "hex": "#35221f",
+            "coveragePercent": 8.1006
+          },
+          {
+            "hex": "#5e2d16",
+            "coveragePercent": 7.195
+          },
+          {
+            "hex": "#844621",
+            "coveragePercent": 6.3192
+          },
+          {
+            "hex": "#523832",
+            "coveragePercent": 6.2168
+          },
+          {
+            "hex": "#95151f",
+            "coveragePercent": 5.7561
+          },
+          {
+            "hex": "#ac6732",
+            "coveragePercent": 4.9036
+          },
+          {
+            "hex": "#6c0e15",
+            "coveragePercent": 4.4827
+          },
+          {
+            "hex": "#775549",
+            "coveragePercent": 3.5231
+          },
+          {
+            "hex": "#d6904e",
+            "coveragePercent": 3.3665
+          },
+          {
+            "hex": "#c2252f",
+            "coveragePercent": 3.2502
+          },
+          {
+            "hex": "#ebbc80",
+            "coveragePercent": 3.0117
+          },
+          {
+            "hex": "#a57f6c",
+            "coveragePercent": 1.8596
+          },
+          {
+            "hex": "#f7e6be",
+            "coveragePercent": 1.6176
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#955329",
+            "coveragePercent": 28.0627
+          },
+          {
+            "hex": "#bf7a40",
+            "coveragePercent": 19.823
+          },
+          {
+            "hex": "#8e141d",
+            "coveragePercent": 17.0907
+          },
+          {
+            "hex": "#ac1b26",
+            "coveragePercent": 14.4942
+          },
+          {
+            "hex": "#e7ad65",
+            "coveragePercent": 13.1378
+          },
+          {
+            "hex": "#cf2e36",
+            "coveragePercent": 7.3916
+          }
+        ],
+        "visibleSamples": 1019137,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/shadow-madPriest-v1.png": {
+      "sha256": "76702a6bd48719f99bd4244b4de5ffdd7a6078504ed061b890266b96a3448e53",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMadPriest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#250c0b",
+            "coveragePercent": 13.0709
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 10.5912
+          },
+          {
+            "hex": "#4c2f2c",
+            "coveragePercent": 9.8455
+          },
+          {
+            "hex": "#49120e",
+            "coveragePercent": 9.8202
+          },
+          {
+            "hex": "#6e1d1a",
+            "coveragePercent": 9.0111
+          },
+          {
+            "hex": "#341f1f",
+            "coveragePercent": 8.6598
+          },
+          {
+            "hex": "#7b422d",
+            "coveragePercent": 6.3804
+          },
+          {
+            "hex": "#9d262a",
+            "coveragePercent": 6.0228
+          },
+          {
+            "hex": "#5e4644",
+            "coveragePercent": 5.6972
+          },
+          {
+            "hex": "#856154",
+            "coveragePercent": 4.0846
+          },
+          {
+            "hex": "#ae513c",
+            "coveragePercent": 3.9476
+          },
+          {
+            "hex": "#bb7b54",
+            "coveragePercent": 3.7619
+          },
+          {
+            "hex": "#daa171",
+            "coveragePercent": 3.0584
+          },
+          {
+            "hex": "#e9c297",
+            "coveragePercent": 3.0319
+          },
+          {
+            "hex": "#f5e3c3",
+            "coveragePercent": 1.5867
+          },
+          {
+            "hex": "#aa8e81",
+            "coveragePercent": 1.4297
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912224",
+            "coveragePercent": 27.6524
+          },
+          {
+            "hex": "#8f4f35",
+            "coveragePercent": 20.0683
+          },
+          {
+            "hex": "#ab6a47",
+            "coveragePercent": 16.3721
+          },
+          {
+            "hex": "#b73637",
+            "coveragePercent": 15.8058
+          },
+          {
+            "hex": "#c98658",
+            "coveragePercent": 12.4164
+          },
+          {
+            "hex": "#e6ad6f",
+            "coveragePercent": 7.6849
+          }
+        ],
+        "visibleSamples": 705690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-mage-v1.png": {
+      "sha256": "db4ee322042929ae1a3ad517df73df9addaca088023d7560afca7d457e89784c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMage"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
+          },
+          {
+            "hex": "#100605",
+            "coveragePercent": 12.0161
+          },
+          {
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
+          },
+          {
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
+          },
+          {
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#624846",
+            "coveragePercent": 7.8941
+          },
+          {
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
+          },
+          {
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
+          },
+          {
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
+          },
+          {
+            "hex": "#826563",
+            "coveragePercent": 4.8411
+          },
+          {
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
+          },
+          {
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
+          },
+          {
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
+          },
+          {
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
+          },
+          {
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
+          },
+          {
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
+          },
+          {
+            "hex": "#935435",
+            "coveragePercent": 20.7743
+          },
+          {
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
+          },
+          {
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
+          },
+          {
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
+          },
+          {
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
+          }
+        ],
+        "visibleSamples": 594036,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/enemies/shadow-melee-v2.png": {
@@ -14746,6 +16538,111 @@
         ],
         "visibleSamples": 947293,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/shadow-shield-v1.png": {
+      "sha256": "04708f4925358fc41b328baaaa97a9b56ac5f512afa5c525bc768579946d5aaa",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowShield"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#39241f",
+            "coveragePercent": 11.7538
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 11.2656
+          },
+          {
+            "hex": "#1e0c09",
+            "coveragePercent": 10.9648
+          },
+          {
+            "hex": "#513830",
+            "coveragePercent": 10.4103
+          },
+          {
+            "hex": "#340f0b",
+            "coveragePercent": 9.9166
+          },
+          {
+            "hex": "#531712",
+            "coveragePercent": 8.9506
+          },
+          {
+            "hex": "#6f201b",
+            "coveragePercent": 7.0406
+          },
+          {
+            "hex": "#7e4a30",
+            "coveragePercent": 5.8472
+          },
+          {
+            "hex": "#8e2422",
+            "coveragePercent": 4.6136
+          },
+          {
+            "hex": "#68524b",
+            "coveragePercent": 4.429
+          },
+          {
+            "hex": "#a46a47",
+            "coveragePercent": 4.2232
+          },
+          {
+            "hex": "#c7916b",
+            "coveragePercent": 3.2385
+          },
+          {
+            "hex": "#e2ba95",
+            "coveragePercent": 2.3568
+          },
+          {
+            "hex": "#b23731",
+            "coveragePercent": 1.8813
+          },
+          {
+            "hex": "#90776b",
+            "coveragePercent": 1.8115
+          },
+          {
+            "hex": "#f5e7d3",
+            "coveragePercent": 1.2967
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d2321",
+            "coveragePercent": 29.2405
+          },
+          {
+            "hex": "#8d5335",
+            "coveragePercent": 22.0129
+          },
+          {
+            "hex": "#a56a47",
+            "coveragePercent": 17.5932
+          },
+          {
+            "hex": "#b13530",
+            "coveragePercent": 12.8883
+          },
+          {
+            "hex": "#c18258",
+            "coveragePercent": 12.0088
+          },
+          {
+            "hex": "#dda46e",
+            "coveragePercent": 6.2563
+          }
+        ],
+        "visibleSamples": 627200,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/enemies/yomi-attack-v4.png": {
@@ -16527,6 +18424,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/ui/corrupted-hymn-v1.png": {
+      "sha256": "2d994ce6362473db3fba9080607791e7d667d403d0d59593107ef251a6fbf3ae",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "corruptedHymn"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#e9b890",
+            "coveragePercent": 11.823
+          },
+          {
+            "hex": "#f4cfa7",
+            "coveragePercent": 10.2872
+          },
+          {
+            "hex": "#dca272",
+            "coveragePercent": 10.147
+          },
+          {
+            "hex": "#2c1b20",
+            "coveragePercent": 8.434
+          },
+          {
+            "hex": "#1a0809",
+            "coveragePercent": 6.9965
+          },
+          {
+            "hex": "#cb8552",
+            "coveragePercent": 6.7118
+          },
+          {
+            "hex": "#3b0906",
+            "coveragePercent": 5.8004
+          },
+          {
+            "hex": "#4a2e32",
+            "coveragePercent": 5.667
+          },
+          {
+            "hex": "#67120f",
+            "coveragePercent": 5.5507
+          },
+          {
+            "hex": "#aa6438",
+            "coveragePercent": 5.0434
+          },
+          {
+            "hex": "#f8dec8",
+            "coveragePercent": 4.9053
+          },
+          {
+            "hex": "#7a4937",
+            "coveragePercent": 4.7567
+          },
+          {
+            "hex": "#060102",
+            "coveragePercent": 4.5458
+          },
+          {
+            "hex": "#97171d",
+            "coveragePercent": 4.2881
+          },
+          {
+            "hex": "#a66f7e",
+            "coveragePercent": 2.6469
+          },
+          {
+            "hex": "#cc2837",
+            "coveragePercent": 2.3961
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d69360",
+            "coveragePercent": 24.369
+          },
+          {
+            "hex": "#bc7446",
+            "coveragePercent": 19.5386
+          },
+          {
+            "hex": "#ebb175",
+            "coveragePercent": 17.803
+          },
+          {
+            "hex": "#975334",
+            "coveragePercent": 15.3169
+          },
+          {
+            "hex": "#97151e",
+            "coveragePercent": 14.5228
+          },
+          {
+            "hex": "#cc2837",
+            "coveragePercent": 8.4498
+          }
+        ],
+        "visibleSamples": 820270,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/ui/eclipse-relic-v1.png": {
       "sha256": "a910653e9e119abdffb00e7262cf86b948c6ea15037ed4967cc66d481d2f7d9c",
       "width": 1254,
@@ -16735,6 +18737,111 @@
         ],
         "visibleSamples": 160733,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/ui/mad-priest-soul-v1.png": {
+      "sha256": "9bcd8e4abb6ef38c3a36ac99dc639f7c1713bba3155c43ff66697e75b1c9ca9d",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "madPriestSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0307",
+            "coveragePercent": 17.7622
+          },
+          {
+            "hex": "#2b0d10",
+            "coveragePercent": 14.6064
+          },
+          {
+            "hex": "#501f1a",
+            "coveragePercent": 11.5863
+          },
+          {
+            "hex": "#7e402b",
+            "coveragePercent": 8.048
+          },
+          {
+            "hex": "#7f0a17",
+            "coveragePercent": 6.4266
+          },
+          {
+            "hex": "#b4643c",
+            "coveragePercent": 5.9029
+          },
+          {
+            "hex": "#2c0a3d",
+            "coveragePercent": 5.8751
+          },
+          {
+            "hex": "#b5192b",
+            "coveragePercent": 4.4924
+          },
+          {
+            "hex": "#e49853",
+            "coveragePercent": 4.458
+          },
+          {
+            "hex": "#50156e",
+            "coveragePercent": 4.3383
+          },
+          {
+            "hex": "#fcf1ea",
+            "coveragePercent": 3.3192
+          },
+          {
+            "hex": "#711caa",
+            "coveragePercent": 3.2619
+          },
+          {
+            "hex": "#f6d08e",
+            "coveragePercent": 2.9639
+          },
+          {
+            "hex": "#9d2ee0",
+            "coveragePercent": 2.5936
+          },
+          {
+            "hex": "#cf63ea",
+            "coveragePercent": 2.4313
+          },
+          {
+            "hex": "#f2a5f5",
+            "coveragePercent": 1.934
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#aa5833",
+            "coveragePercent": 26.8416
+          },
+          {
+            "hex": "#a01523",
+            "coveragePercent": 26.1351
+          },
+          {
+            "hex": "#e9a358",
+            "coveragePercent": 17.5181
+          },
+          {
+            "hex": "#64159d",
+            "coveragePercent": 11.0911
+          },
+          {
+            "hex": "#952bd7",
+            "coveragePercent": 9.9712
+          },
+          {
+            "hex": "#d161f0",
+            "coveragePercent": 8.4429
+          }
+        ],
+        "visibleSamples": 694615,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/ui/momo-inventory-v1.png": {
@@ -17049,6 +19156,111 @@
           }
         ],
         "visibleSamples": 945586,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/ui/prison-key-v1.png": {
+      "sha256": "13c162a69cf4de85d4b5f15cb385e2d62fb1e92f5e4eac2ea97beefa5ea9bff2",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "prisonKey"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060202",
+            "coveragePercent": 17.0028
+          },
+          {
+            "hex": "#1a0806",
+            "coveragePercent": 13.6347
+          },
+          {
+            "hex": "#2c1410",
+            "coveragePercent": 11.8041
+          },
+          {
+            "hex": "#422a25",
+            "coveragePercent": 9.2182
+          },
+          {
+            "hex": "#4d1009",
+            "coveragePercent": 7.4727
+          },
+          {
+            "hex": "#614541",
+            "coveragePercent": 6.0142
+          },
+          {
+            "hex": "#6c321a",
+            "coveragePercent": 5.2079
+          },
+          {
+            "hex": "#841013",
+            "coveragePercent": 4.5434
+          },
+          {
+            "hex": "#83665f",
+            "coveragePercent": 4.2109
+          },
+          {
+            "hex": "#9c5029",
+            "coveragePercent": 4.083
+          },
+          {
+            "hex": "#cc7640",
+            "coveragePercent": 3.6402
+          },
+          {
+            "hex": "#bc2127",
+            "coveragePercent": 2.9154
+          },
+          {
+            "hex": "#eaa966",
+            "coveragePercent": 2.8333
+          },
+          {
+            "hex": "#f0d2a2",
+            "coveragePercent": 2.7301
+          },
+          {
+            "hex": "#ad9187",
+            "coveragePercent": 2.3511
+          },
+          {
+            "hex": "#fbf5e0",
+            "coveragePercent": 2.338
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#954c29",
+            "coveragePercent": 22.495
+          },
+          {
+            "hex": "#951517",
+            "coveragePercent": 21.9895
+          },
+          {
+            "hex": "#bc6a3a",
+            "coveragePercent": 18.55
+          },
+          {
+            "hex": "#dd8e50",
+            "coveragePercent": 14.9997
+          },
+          {
+            "hex": "#c5262b",
+            "coveragePercent": 12.1564
+          },
+          {
+            "hex": "#f4bc6f",
+            "coveragePercent": 9.8094
+          }
+        ],
+        "visibleSamples": 336740,
         "dominantCoveragePercent": 100.0
       }
     },
@@ -17611,6 +19823,17 @@
       "gold": "#f6d796",
       "accent": "#f3d494",
       "floor": "#606a62"
+    },
+    "shadowRealm": {
+      "sky": [
+        "#100d1b",
+        "#29203c",
+        "#544360"
+      ],
+      "fog": "#867294",
+      "gold": "#e4c4ec",
+      "accent": "#b88ee9",
+      "floor": "#2b2536"
     }
   },
   "flags": {
@@ -19267,35 +21490,42 @@
       {
         "value": "#08121900",
         "lines": [
-          213
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          213
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          213
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          355
+          358
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          249
+          252
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100d1b",
+        "lines": [
+          24
         ],
         "dynamic": false
       },
@@ -19316,14 +21546,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          344
+          347
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          344
+          347
         ],
         "dynamic": false
       },
@@ -19331,6 +21561,20 @@
         "value": "#253c37",
         "lines": [
           21
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#29203c",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#2b2536",
+        "lines": [
+          24
         ],
         "dynamic": false
       },
@@ -19365,7 +21609,14 @@
       {
         "value": "#465959",
         "lines": [
-          250
+          253
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#544360",
+        "lines": [
+          24
         ],
         "dynamic": false
       },
@@ -19379,7 +21630,7 @@
       {
         "value": "#60706a",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
@@ -19393,7 +21644,14 @@
       {
         "value": "#718679",
         "lines": [
-          249
+          252
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#867294",
+        "lines": [
+          24
         ],
         "dynamic": false
       },
@@ -19421,7 +21679,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
@@ -19435,21 +21693,21 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          250
+          253
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          215
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          167
+          170
         ],
         "dynamic": false
       },
@@ -19461,9 +21719,16 @@
         "dynamic": false
       },
       {
+        "value": "#b88ee9",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#c872b8",
         "lines": [
-          215
+          218
         ],
         "dynamic": false
       },
@@ -19477,35 +21742,35 @@
       {
         "value": "#d58cf3",
         "lines": [
-          136
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          174
+          177
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          373
+          376
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          91
+          92
         ],
         "dynamic": false
       },
@@ -19519,14 +21784,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
@@ -19534,6 +21799,13 @@
         "value": "#e3cfa3",
         "lines": [
           23
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4c4ec",
+        "lines": [
+          24
         ],
         "dynamic": false
       },
@@ -19554,49 +21826,49 @@
       {
         "value": "#e8d89b",
         "lines": [
-          215
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          373
+          376
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          373
+          376
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          164
+          167
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          134
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          174
+          177
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          250
+          253
         ],
         "dynamic": false
       },
@@ -19604,14 +21876,14 @@
         "value": "#f3d494",
         "lines": [
           23,
-          168
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
@@ -19625,21 +21897,21 @@
       {
         "value": "#ffcf83",
         "lines": [
-          373
+          376
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          136
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          250
+          253
         ],
         "dynamic": false
       }
@@ -19662,35 +21934,35 @@
       {
         "value": "#070e18",
         "lines": [
-          400
+          418
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          419
+          443
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          378
+          396
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          418
+          442
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          386
+          404
         ],
         "dynamic": false
       },
@@ -19720,15 +21992,15 @@
       {
         "value": "#102236",
         "lines": [
-          557
+          594
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          398,
-          404
+          416,
+          422
         ],
         "dynamic": false
       },
@@ -19742,21 +22014,21 @@
       {
         "value": "#112b3fee",
         "lines": [
-          360
+          378
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          417
+          441
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          591
+          628
         ],
         "dynamic": false
       },
@@ -19770,7 +22042,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          676
+          719
         ],
         "dynamic": false
       },
@@ -19784,49 +22056,56 @@
       {
         "value": "#163847dd",
         "lines": [
-          540
+          564
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#170f27",
+        "lines": [
+          578
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          615
+          658
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          381
+          399
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          471
+          495
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          319
+          329
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          309
+          314
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          529
+          553
         ],
         "dynamic": false
       },
@@ -19840,28 +22119,28 @@
       {
         "value": "#251339",
         "lines": [
-          664
+          707
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          561
+          598
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          372
+          390
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          516
+          540
         ],
         "dynamic": false
       },
@@ -19882,7 +22161,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          516
+          540
         ],
         "dynamic": false
       },
@@ -19896,14 +22175,14 @@
       {
         "value": "#8b764eaa",
         "lines": [
-          444
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          456
+          480
         ],
         "dynamic": false
       },
@@ -19924,14 +22203,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          520
+          544
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          549
+          586
         ],
         "dynamic": false
       },
@@ -19945,7 +22224,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          549
+          586
         ],
         "dynamic": false
       },
@@ -19959,49 +22238,49 @@
       {
         "value": "#b5a777",
         "lines": [
-          454
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          664
+          707
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          630
+          673
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          370
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          414
+          432
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          549
+          586
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          530
+          554
         ],
         "dynamic": false
       },
@@ -20015,14 +22294,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          660
+          703
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          535
+          559
         ],
         "dynamic": false
       },
@@ -20036,14 +22315,14 @@
       {
         "value": "#d1c9acaf",
         "lines": [
-          482
+          506
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          594
+          631
         ],
         "dynamic": false
       },
@@ -20057,49 +22336,56 @@
       {
         "value": "#d99583",
         "lines": [
-          386
+          404
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          664
+          707
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          662
+          705
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          454
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          386
+          404
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          579
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          650
+          693
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          522
+          546
         ],
         "dynamic": false
       },
@@ -20111,23 +22397,30 @@
         "dynamic": false
       },
       {
+        "value": "#e6b0fa22",
+        "lines": [
+          437
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#e7616355",
         "lines": [
-          649
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          649
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          630
+          673
         ],
         "dynamic": false
       },
@@ -20141,35 +22434,50 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          661
+          704
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          649
+          692
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3d8ac",
+        "lines": [
+          437,
+          573
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3dbaf",
+        "lines": [
+          319
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          309
+          314
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          454
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          557
+          594
         ],
         "dynamic": false
       },
@@ -20183,7 +22491,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          561
+          598
         ],
         "dynamic": false
       },
@@ -20197,92 +22505,92 @@
       {
         "value": "#ffb385",
         "lines": [
-          370
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          561
+          598
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          401
+          419
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          650
+          693
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          370
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          414
+          432
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          583
+          620
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          454,
-          584
+          478,
+          621
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          591
+          628
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          516
+          540
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          522
+          546
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          549
+          586
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          539
+          563
         ],
         "dynamic": false
       },
@@ -20296,33 +22604,33 @@
       {
         "value": "#fff0b3",
         "lines": [
-          364,
-          535
+          382,
+          559
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          320
+          330
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          361
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          399,
-          404,
-          405,
-          408,
-          561
+          417,
+          422,
+          423,
+          426,
+          598
         ],
         "dynamic": false
       },
@@ -20337,35 +22645,35 @@
       {
         "value": "#fff0ce",
         "lines": [
-          552
+          589
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          665
+          708
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          540
+          564
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          529
+          553
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          375
+          393
         ],
         "dynamic": false
       }
@@ -20627,6 +22935,15 @@
       }
     ],
     "assets/js/save-vault.js": [],
-    "assets/js/shadow-animation.js": []
+    "assets/js/shadow-animation.js": [],
+    "assets/js/shadow-realm.js": [
+      {
+        "value": "#be96eb",
+        "lines": [
+          55
+        ],
+        "dynamic": false
+      }
+    ]
   }
 }

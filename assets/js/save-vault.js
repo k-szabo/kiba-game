@@ -20,12 +20,12 @@ const SaveVault=(()=>{
  }
  function validate(data){
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
-  if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,2)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
+  if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,levels.length-1)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
   if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
   if(!integer(data.coins,0,Number.MAX_SAFE_INTEGER)||!integer(data.meatCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid merchant inventory');
-  for(const [key,length] of [['abilities',2],['defeated',3]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
-  for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==3)throw Error('Invalid world progress');
-  for(let i=0;i<3;i++){
+  for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
+  for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==levels.length)throw Error('Invalid world progress');
+  for(let i=0;i<levels.length;i++){
    const map=levels[i],allowed=new Set([...map.objects.map(o=>o.id),...(map.progressFlags||[]),...map.gates.filter(g=>['fire','fragile'].includes(g.kind)).map(g=>g.id),...(map.secrets||[]).flatMap(s=>['discovered:'+s.id,'guardian:'+s.guardian])]);
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
@@ -48,7 +48,15 @@ const SaveVault=(()=>{
   const earned=council.includes('councilKeyEarned'),held=council.includes('councilKey'),gateOpen=council.includes('councilGateOpen');
   if(earned&&!data.defeated[1]||held&&(!earned||gateOpen)||gateOpen&&(!earned||held))throw Error('Invalid council progress');
   if(council.includes('serpentScale')&&(!data.defeated[0]||!['soulUpper','soulLower'].every(id=>council.includes(id))))throw Error('Invalid serpent reward');
-  if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won&&(!data.defeated[2]||data.realm!==2))throw Error('Invalid victory');
+  if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won)throw Error('Invalid victory');
+  const shadowIndex=levels.findIndex(map=>map.id==='shadowRealm');
+  if(shadowIndex>=0){
+   const entered=data.flags[2].includes('shadowEntered'),shadow=data.flags[shadowIndex];
+   if(entered&&!data.defeated[2]||(data.realm===shadowIndex||data.defeated[shadowIndex]||shadow.length||data.visitedRests[shadowIndex].length)&&(!entered||!data.defeated[2]))throw Error('Invalid shadow entry');
+   const jailer=shadow.includes('guardian:cultJailer'),key=shadow.includes('prisonKey'),open=shadow.includes('prisonOpen');
+   if((key||open)&&!jailer||key&&open||shadow.includes('prisonTrace')&&!open)throw Error('Invalid prison progress');
+   if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
+  }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
   const checkpointMap=data.location==='forestCamp'?forestCamp:levels[data.realm];

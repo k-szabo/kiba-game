@@ -1,0 +1,27 @@
+# A negyedik birodalom
+
+A [54-es Trello-kártya](https://trello.com/c/P5aSKhN9) az égi történet folytatása. Haru megtalálása után az örvény Momót és apját az Árnyékvilágba sodorja. A börtönben Haru nyoma található; az Őrült pap legyőzése után a keresés folytatása nyitva marad.
+
+## Útvonal és tartós állapot
+
+A `levels[3]` / `shadowRealm` 11 200 × 2 600 játékegység. A parttól a kolostor és az árnyékoltár útja a börtönhöz, onnan a katedrálishoz vezet. Az orgonista karzata külön, a főút kamerája fölé vezető platformos mellékág; oda-vissza járható dupla ugrással. A börtönkaput a főboss legyőzése sem nyitja ki automatikusan.
+
+- A mennyországi `shadowEntered` jelző rögzíti a történeti belépést. A szeráf legyőzése önmagában nem nyitja meg a negyedik világot a normál gyorsutazáshoz.
+- A `shadowAltar` csak az oltár kifejezett használatakor aktiválódik. Pihenőhely felfedezése, gyógyulás és halál nem helyettesíti ezt.
+- Aktiválásig sem az Árnyékvilágból, sem oda nem indítható normál gyorsutazás. A térkép továbbra is megnyitható; az utazógombok zároltak. Halálkor a helyi mentőpont használható.
+- A börtönőr legyőzése feloldja a felvehető `prisonKey` tárgyat. Nyitáskor a kulcs elfogy, a `prisonOpen` megmarad. A börtönben a `prisonTrace` külön interakcióval rögzíti Haru nyomát.
+- Az opcionális orgonista legyőzése feloldja a `corruptedHymn` kottát. A két miniboss és jutalmaik nem ismétlődnek halál, pihenés vagy visszatérés után.
+
+## Harc
+
+A négy normál kultista a meglévő kardos, íjász, varázsló és pajzsos állapotgépet használja. A pap saját támadássorrendje: árnyéklövedékek, jelzett talajpecsétek, harangszó, közelharci csapás. A pap 180 HP-val indul.
+
+A harang 1,5 másodperces előjelzésekor rögzíti a cél közepét. A hatás 145 egység vízszintes és 110 egység talajtól mért távolságon belül bénít; elmozdulással, ugrással vagy szellemlépéssel kerülhető el. A harang előkészítését egy erős kardtalálat megszakítja. A bénítás 0,65 másodperc, az elszívás egyszer 2 HP-t sebez. A pap a ténylegesen elvesztett HP háromszorosát gyógyulja, legfeljebb a maximumáig. A halál közben újraindult bossra nem kerül át a gyógyulás. Szünet és párbeszéd alatt a közös játékosóra és a bossóra is áll.
+
+A börtönőr 75 HP-s, közeledő fejszés miniboss; az orgonista 105 HP-s, helyben maradó, legyezős lövedékekkel és orgonasípokat idéző talajtámadásokkal harcoló miniboss. A pap egyszeri jutalma 800 XP, 1 extra fejlesztéspont és `madPriestSoul`; a lélek a közös bossjutalom-katalógust használja.
+
+## Forrás és ellenőrzés
+
+A pályaadat a `levels.js`, a külön harc/interakció a `shadow-realm.js` része. A `game.js` a történeti belépést, közös időzítőket és utazási korlátot kapcsolja hozzá. A mentés minden birodalomtömb méretét a `levels.length` alapján ellenőrzi; a mozgásképességek száma továbbra is kettő. Új kiadáskor a megszokott alfa/béta reset érvényes.
+
+`scripts/test-shadow-realm.cjs`: történeti belépés, oltár és pihenés különbsége, kétirányú utazási zár, minibossok és tárgyaik, kulcsfogyasztás, bénítás és elszívás 30/60/120 FPS-en, szünet, megszakítás, egyszeri bossjutalom. A `test-routes.cjs` a tényleges ugrásfizikával vizsgálja a börtönzárat, a katedrálishoz vezető utat és az orgonakarzat visszaútját. A grafika és a valódi böngészős mentés külön ellenőrzést igényel.

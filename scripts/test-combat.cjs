@@ -22,7 +22,7 @@ assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('proje
 {
   const deathTest=require('./test-harness.cjs')();
   for(let r=0;r<3;r++)for(const guardianDead of [false,true])for(const cause of ['combat','fall','fallFullHp']){
-    deathTest.run(`flags=[['forestBell','guardian:oldAngel'],['soulUpper'],['dawnSeal']];abilities=[true,true];defeated=[false,false,false];defeated[${r}]=${guardianDead};progression=freshProgression();enterRealm(${r});state='play';awardXP(160);checkpoint={...level.rests[1]};enemies.filter(e=>!e.miniboss).forEach((e,i)=>{e.dead=i!==0;e.hp=i===0?1:0;});projectiles=[{source:'enemy',life:3},{source:'boss',life:3}];player.hp=1;player.inv=0;`);
+    deathTest.run(`flags=[['forestBell','guardian:oldAngel'],['soulUpper'],['dawnSeal'],[]];abilities=[true,true];defeated=[false,false,false,false];defeated[${r}]=${guardianDead};progression=freshProgression();enterRealm(${r});state='play';awardXP(160);checkpoint={...level.rests[1]};enemies.filter(e=>!e.miniboss).forEach((e,i)=>{e.dead=i!==0;e.hp=i===0?1:0;});projectiles=[{source:'enemy',life:3},{source:'boss',life:3}];player.hp=1;player.inv=0;`);
     if(cause==='fallFullHp')deathTest.run('player.hp=player.maxHp;player.inv=999;dash=.1;');
     const before=deathTest.snap();
     deathTest.run(cause==='combat'?'damage(100);':'player.y=level.height+200;movePlayer(1/120);');

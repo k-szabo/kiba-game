@@ -43,6 +43,7 @@ A korábbi bőrhátteret indigókék szövet, világos vászonszegély, fonott k
 | Japán | 250 | 1 | Az esküszegő lelke |
 | Yomi | 400 | 1 | Yomi őrzőjének lelke |
 | Mennyország | 600 | 1 | A szeráf lelke |
+| Árnyékvilág | 800 | 1 | Az őrült pap lelke |
 
 A lélek automatikusan a közös inventoryba kerül. A pontbónusz a szintlépési pontokon felül jár, és a szentélyeknél költhető el. A végső boss titkos formája esetén a jutalom csak a teljes harc végén jár. Az álomprológus és a minibossok nem adnak ilyen jutalomcsomagot.
 
@@ -63,3 +64,7 @@ A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpent
 ## Akash portékái – 0.9.21
 
 Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A sült hús `stack:true` bejegyzés, mennyisége a mentett `meatCount`; nem puszta küldetésjelző. A kártyán mennyiségjelvény, a részleteknél darabszám és fogyasztógomb jelenik meg. Az O alapú `useMeat` billentyű átállítható és exportálható; a leírás az aktuális kötést használja. Az utolsó darab után a kiválasztás/fókusz érvényes tárgyra tér vissza. A közös ikonrenderer minden új portéka eredeti alpha-cropját ugyanolyan kontrasztos, DPR-érzékeny háttéren rajzolja. Részletek: [Akash](MERCHANT.md).
+
+## Árnyékvilág
+
+Az Őrült pap lelke automatikus főbossjutalom. A Megrontott szent ének az opcionális orgonista után vehető fel; a Börtönkulcs a börtönőr után. A kulcs az első börtönnyitáskor elfogy, a nyitás tartós. Mindhárom ikon a közös DPR- és kontrasztkezelést használja. A [pálya és mentés részletei](SHADOW-REALM.md), valamint a [grafikai promptok](art-prompts/shadow-realm-v1.json) tartalmazzák az integrációt.

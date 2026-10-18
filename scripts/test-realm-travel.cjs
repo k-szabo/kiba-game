@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const {run,snap,elements}=require('./test-harness.cjs')();
 const validate=require('./test-save-validation.cjs');
 const permanent=()=>JSON.stringify({flags:snap().flags,abilities:snap().abilities,defeated:snap().defeated,progression:snap().progression,shards:snap().shards});
-run("Prologue.stop();abilities=[true,true];defeated=[true,true,false];flags=[['forestBell','villageBell','cultEntrance','discovered:angelRuin','discovered:cultCave','guardian:oldAngel','angelHalo','guardian:oldCultist','demonHorn'],['soulUpper','soulLower','councilKeyEarned','councilGateOpen'],['dawnSeal']];progression=freshProgression();enterRealm(2);state='play';awardXP(160);progression.stats.strength=1;progression.points--;shards=17;visitedRests=levels.map(l=>l.rests.map(r=>r.id));enemies.filter(e=>!e.miniboss).forEach(e=>e.dead=true);persist();");
+run("Prologue.stop();abilities=[true,true];defeated=[true,true,false,false];flags=[['forestBell','villageBell','cultEntrance','discovered:angelRuin','discovered:cultCave','guardian:oldAngel','angelHalo','guardian:oldCultist','demonHorn'],['soulUpper','soulLower','councilKeyEarned','councilGateOpen'],['dawnSeal'],[]];progression=freshProgression();enterRealm(2);state='play';awardXP(160);progression.stats.strength=1;progression.points--;shards=17;visitedRests=levels.map((l,n)=>n<3?l.rests.map(r=>r.id):[]);enemies.filter(e=>!e.miniboss).forEach(e=>e.dead=true);persist();");
 const before=permanent();validate(run('saved'));
 run('showMap();');
 const realmSection=elements.get('mapContent').children.find(el=>el.className==='realm-travel');

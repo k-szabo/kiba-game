@@ -6,24 +6,24 @@ const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/r
 const context=vm.createContext({I18n:{t:key=>key}});
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext(`JSON.stringify(${expression})`,context)),copy=value=>structuredClone(value);
-const rewards=read('BOSS_REWARDS'),campRest=read('forestCamp.rests[0]');
+const rewards=read('BOSS_REWARDS'),campRest=read('forestCamp.rests[0]'),realmCount=read('levels.length');
 function fixture(){
- const flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal']];
+ const flags=Array.from({length:realmCount},()=>[]);flags[0]=['forestBell','villageBell'];flags[1]=['soulUpper','soulLower'];flags[2]=['dawnSeal'];if(realmCount>3)flags[2].push('shadowEntered');
  let totalXp=0,bonus=0;for(const [realm,reward] of rewards.entries()){flags[realm].push(reward.claim,reward.id);totalXp+=reward.xp;bonus+=reward.points;}
  let level=1,xp=totalXp;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
  return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
-  abilities:[true,true],defeated:[true,true,true],flags,visitedRests:[['start',campRest.id],['start'],['start']],checkpoint:copy(campRest),
+  abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},(_,index)=>index===0?['start',campRest.id]:['start']),checkpoint:copy(campRest),
   progression:{level,xp:level===12?0:xp,totalXp,points:level-1+bonus-2,stats:{vitality:1,strength:1,spirit:0}}};
 }
 const data=fixture();assert.deepEqual(JSON.parse(JSON.stringify(validate(data))),data,'Camp retains the exact current-release progress and reward budget');
-assert.equal(read('levels.length'),3,'Camp does not become a fourth realm');
-for(const realm of [0,1,2]){
+assert.equal(read('levels.includes(forestCamp)'),false,'Camp remains a side area rather than a realm');
+for(let realm=0;realm<realmCount;realm++){
  const elsewhere=copy(data);elsewhere.realm=realm;elsewhere.location=null;elsewhere.checkpoint=read(`levels[${realm}].rests[0]`);
  assert.deepEqual(JSON.parse(JSON.stringify(validate(elsewhere))),elsewhere,'Camp visitation remains valid while exploring another realm');
  delete elsewhere.location;assert.deepEqual(JSON.parse(JSON.stringify(validate(elsewhere))),elsewhere,'Existing ordinary save fixtures may omit location');
 }
-const firstVisit=fixture();firstVisit.defeated=[true,false,false];firstVisit.abilities=[false,false];firstVisit.flags=[['forestBell','villageBell'],[],[]];
-firstVisit.visitedRests=[['start',campRest.id],[],[]];firstVisit.progression={level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};
+const firstVisit=fixture();firstVisit.defeated=Array.from({length:realmCount},(_,index)=>index===0);firstVisit.abilities=[false,false];firstVisit.flags=Array.from({length:realmCount},(_,index)=>index===0?['forestBell','villageBell']:[]);
+firstVisit.visitedRests=Array.from({length:realmCount},(_,index)=>index===0?['start',campRest.id]:[]);firstVisit.progression={level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};
 assert.doesNotThrow(()=>validate(firstVisit),'First visit needs Japan victory, not later-world progress or a dash');
 for(const [name,mutate] of [
  ['unknown location',save=>{save.location='councilHall';}],

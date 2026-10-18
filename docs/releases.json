@@ -338,6 +338,22 @@
           "en": "The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut."
         }
       ]
+    },
+    {
+      "version": "0.9.22_12f67b28",
+      "code": "12f67b28",
+      "baseVersion": "0.9.22",
+      "slug": "shadow-realm-cultists-and-cathedral",
+      "summary": {
+        "hu": "Az árnyékvilág kapuja",
+        "en": "The Gate to the Shadow Realm"
+      },
+      "fixes": [
+        {
+          "hu": "Haru megtalálása után új árnyékvilág nyílik kultistákkal, három új bossal, gyűjthető jutalmakkal és oltárnál feloldható gyorsutazással.",
+          "en": "Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar."
+        }
+      ]
     }
   ]
 }

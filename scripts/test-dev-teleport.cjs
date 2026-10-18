@@ -2,14 +2,14 @@ const assert=require('node:assert/strict'),harness=require('./test-harness.cjs')
 const h=harness(),run=h.run;const saved=run('JSON.stringify(saved)'),writes=run('window.__saveSnapshots.length');
 assert(!run('DevTeleport.teleport({realm:"1",rest:"start"})'));
 run('DevTools.open();DevSession.begin();');
-for(const n of [0,1,2])for(const rest of run(`levels[${n}].rests.map(r=>r.id)`)){
+for(const n of run('levels.map((_,n)=>n)'))for(const rest of run(`levels[${n}].rests.map(r=>r.id)`)){
  assert(run(`DevTeleport.teleport({realm:'${n}',rest:'${rest}'})`),`${n}/${rest} is a safe destination`);
  assert.equal(h.snap().realm,n);assert(run('player.onGround'));assert.equal(h.snap().checkpoint.id,rest);
  assert.equal(h.snap().state,'developer');assert.equal(run('projectiles.length'),0);assert(!run('bossStarted'));
  assert.equal(run('JSON.stringify(saved)'),saved);assert.equal(run('window.__saveSnapshots.length'),writes);
 }
 const before=run('JSON.stringify({realm,player,flags,abilities,defeated})');
-for(const values of [{realm:'-1',rest:'start'},{realm:'3',rest:'start'},{realm:'NaN',rest:'start'},{realm:'1',rest:'missing'},{realm:'dream',rest:'start'}])assert(!run(`DevTeleport.teleport(${JSON.stringify(values)})`));
+for(const values of [{realm:'-1',rest:'start'},{realm:String(run('levels.length')),rest:'start'},{realm:'NaN',rest:'start'},{realm:'1',rest:'missing'},{realm:'dream',rest:'start'}])assert(!run(`DevTeleport.teleport(${JSON.stringify(values)})`));
 assert.equal(run('JSON.stringify({realm,player,flags,abilities,defeated})'),before,'Invalid destinations do not mutate state');
 assert(run('DevTeleport.teleport({realm:"dream",rest:"dream"})'));assert(run('Prologue.active'));assert.equal(h.snap().state,'developer');
 assert(run('DevTeleport.teleport({realm:"1",rest:"start"})'));assert(!run('Prologue.active'));assert(run('player.onGround'));
@@ -30,6 +30,10 @@ assert.equal(r('enterForestCamp()'),false,'Ordinary entry remains locked before 
 r('DevTools.open();DevSession.begin();DevTools.refresh();');
 const selector=field('dev-teleport-realm');
 assert(selector.children.some(option=>option.value==='forestCamp'),'The camp is missing from the rendered destination selector');
+const shadowIndex=r("levels.findIndex(map=>map.id==='shadowRealm')");
+assert(shadowIndex>=0,'The fourth realm must be authored');
+assert(selector.children.some(option=>option.value===String(shadowIndex)),'The fourth realm is missing from the rendered selector');
+assert.deepEqual(Array.from(r(`levels[${shadowIndex}].rests.map(rest=>rest.id)`)),['start','altar','prison','cathedral']);
 for(const option of [...selector.children]){
  const current=field('dev-teleport-realm');current.value=String(option.value);current.onchange();
  const rest=field('dev-teleport-rest');
