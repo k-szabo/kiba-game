@@ -521,7 +521,9 @@
       "menu.changelog.0918.title": "Új út a kultista barlangja mögött",
       "menu.changelog.0918.passage": "A kultista arénájának bal falán a szellemlépéssel juthatsz át; mögötte új platformok vezetnek lefelé egy betört templomkapuhoz.",
       "menu.changelog.0919.title": "Erősebb bossjutalmak",
-      "menu.changelog.0919.rewards": "A világok főbossai több XP-t, extra fejlesztéspontokat és egyedi, megőrizhető lélektárgyakat adnak."
+      "menu.changelog.0919.rewards": "A világok főbossai több XP-t, extra fejlesztéspontokat és egyedi, megőrizhető lélektárgyakat adnak.",
+      "menu.changelog.0919.selection.title": "Stabil inventory-kijelölés",
+      "menu.changelog.0919.selection.wrapping": "A hátizsák tárgyainak és a felszerelt fegyvernek a kijelölése nem változtatja meg a feliratok tördelését."
     }
   },
   "en": {
@@ -1046,7 +1048,9 @@
       "menu.changelog.0918.title": "A new path beyond the cultist's cave",
       "menu.changelog.0918.passage": "Spirit Dash lets you pass through the cultist arena's left wall; new platforms beyond it descend to a ruined temple gate.",
       "menu.changelog.0919.title": "Greater boss rewards",
-      "menu.changelog.0919.rewards": "Realm bosses award more XP, bonus training points and unique soul items to keep."
+      "menu.changelog.0919.rewards": "Realm bosses award more XP, bonus training points and unique soul items to keep.",
+      "menu.changelog.0919.selection.title": "Stable inventory selection",
+      "menu.changelog.0919.selection.wrapping": "Selecting backpack items or the equipped weapon no longer changes label wrapping."
     }
   }
 }

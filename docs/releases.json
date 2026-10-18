@@ -144,6 +144,22 @@
           "en": "Defeating Yomi's guardian no longer grants Spirit Dash automatically; acquire the ability at the Shrine of Shadows."
         }
       ]
+    },
+    {
+      "version": "0.9.19_07af538a",
+      "code": "07af538a",
+      "baseVersion": "0.9.19",
+      "slug": "stable-inventory-selection",
+      "summary": {
+        "hu": "Stabil inventory-kijelölés",
+        "en": "Stable inventory selection"
+      },
+      "fixes": [
+        {
+          "hu": "A hátizsák tárgyainak és a felszerelt fegyvernek a kijelölése nem változtatja meg a feliratok tördelését.",
+          "en": "Selecting backpack items or the equipped weapon no longer changes label wrapping."
+        }
+      ]
     }
   ],
   "releases": [
