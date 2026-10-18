@@ -3,6 +3,7 @@ const h=harness(),run=h.run,saved=run('JSON.stringify(saved)'),writes=run('windo
 assert(!run('DevItems.add({item:"angelHalo"})'));run('DevTools.open();DevSession.begin();');
 for(const id of run('Object.keys(ART_INVENTORY.items)')){
  assert.equal(run(`DevItems.add({item:'${id}'})`),true);assert(run(`Inventory.contents().includes('${id}')`));
+ if(run(`!!ART_INVENTORY.items['${id}'].stack`)){assert.equal(run(`DevItems.add({item:'${id}'})`),true);assert.equal(run(`Inventory.quantity('${id}')`),2);continue;}
  assert.equal(run(`DevItems.add({item:'${id}'})`),'dev.item.owned');
  const realm=run(`ART_INVENTORY.items['${id}'].realm`);assert.equal(run(`flags[${realm}].filter(f=>f==='${id}').length`),1);
 }

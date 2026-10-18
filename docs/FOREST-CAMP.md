@@ -22,3 +22,7 @@ A képek az `ART_MANIFEST`, az eredeti méretek és talpillesztések az `ART_CAM
 ## Ellenőrzés
 
 `npm run test:forest-camp` ellenőrzi a belépési és mentési feltételeket, a beállított interakcióbillentyűt, a dialógus alatti megállást, a gyógyítást/fejlesztést, a halált és lezuhanást, az utazást és a jutalmak egyszeriségét. A mozgás, a dash lejárata és a gravitáció 30/60/120 FPS mellett, minden képességkombinációval fut. A `test-save-release.cjs` valódi WebCryptóval, szimulált IndexedDB mellett a tábor titkosított mentését is ellenőrzi. A látvány és a valódi böngészős mentés külön böngészőtesztet igényel.
+
+## Akash – 0.9.21
+
+Yomiban történt kiszabadítása után a táborban megjelenik Akash ember kereskedő. A `(930,820)` ponton áll, `requiresFlag:{realm:1,id:"akashRescued"}` feltétellel és `merchant:true` szereppel. A közös NPC-láthatóságot használja; interakciója szüneteltető boltot nyit. A három shiba túlélő meglévő párbeszéde változatlan. [Gazdaság, portékák és mentés](MERCHANT.md).

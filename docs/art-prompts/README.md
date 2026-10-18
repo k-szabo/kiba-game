@@ -23,6 +23,7 @@ A referenciaútvonalak a repository gyökeréhez képest értendők. A korai gen
 | [inventory-ui-v1.json](inventory-ui-v1.json) | Hátizsákpanel. |
 | [inventory-hd-v1.json](inventory-hd-v1.json) | Momo-portré és katana. |
 | [boss-souls-v1.json](boss-souls-v1.json) | A három főboss egyedi lélektárgya; a jóváhagyott szamurájos, démoni és égi koncepciók alapján. |
+| [akash-v1.json](akash-v1.json) | Akash ember kereskedő és négy portékagrafika; jóváhagyott koncepció, öt önálló RGBA kép, natív kivágások és talpillesztés. |
 | [forest-camp-v1.json](forest-camp-v1.json) | Erdei menedék és a három shiba túlélő: jóváhagyott koncepció, eredeti háttér és RGBA sprite-ok, talaj- és talpillesztés. |
 | [eclipse-relic-v1.json](eclipse-relic-v1.json) | Egyesült ereklye. |
 | [lava-serpent-v1.json](lava-serpent-v1.json) | Lávakígyó és pikkely. |

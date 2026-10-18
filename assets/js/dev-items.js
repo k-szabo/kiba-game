@@ -6,6 +6,7 @@ const DevItems=(()=>{
   const id=values?.item;
   if(typeof id!=='string'||!Object.hasOwn(ART_INVENTORY.items,id))return false;
   const item=ART_INVENTORY.items[id];
+  if(item.stack){if(meatCount===Number.MAX_SAFE_INTEGER)return false;meatCount++;updateHUD();return true;}
   if(flags[item.realm].includes(id)||item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))return 'dev.item.owned';
   flags[item.realm].push(id);updateHUD();return true;
  }

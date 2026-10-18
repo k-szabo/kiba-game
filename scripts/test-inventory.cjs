@@ -37,7 +37,7 @@ assert(!run('artDraws.some(args=>args[0]===sheet)'),'Inventory portrait must not
 // alpha and crop coverage checks without another item-specific rendering branch.
 const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 for(const id of iconIds){
- run(`flags=[[],[],[]];flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
+ run(`flags=[[],[],[]];meatCount=ART_INVENTORY.items[${JSON.stringify(id)}].stack?1:0;flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
  assert.equal(elements.get('inventoryGrid').children.length,1);
  const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
  assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);
@@ -47,7 +47,7 @@ for(const id of iconIds){
  assert(run(`artDraws.some(args=>args[0]===Visuals.images[ART_INVENTORY.items[${JSON.stringify(id)}].image]&&args[1]===${rect.x}&&args[2]===${rect.y}&&args[3]===${rect.w}&&args[4]===${rect.h})`),`${id}: common renderer draws the registered crop`);
 }
 run('artContext.drawImage=originalArtDraw;devicePixelRatio=1;Inventory.close();');
-run("Bindings.setPrimary('inventory','o');Bindings.setPrimary('pause','p');");press('i');release('i');assert.equal(snap().state,'play');
+assert(run("Bindings.setPrimary('useMeat','b').ok"));assert(run("Bindings.setPrimary('inventory','o').ok"));assert(run("Bindings.setPrimary('pause','p').ok"));press('i');release('i');assert.equal(snap().state,'play');
 press('o');release('o');assert.equal(snap().state,'inventory');press('p');release('p');assert.equal(snap().state,'play');
 
 // Preserve older custom layouts when I was already assigned before inventory existed.

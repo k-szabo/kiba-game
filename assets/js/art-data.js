@@ -1,5 +1,6 @@
 /* Illustrated animation atlas metadata. */
 const ART_CAMP={
+  akash:{image:'akash',x:0,y:0,w:1024,h:1536,anchorX:490,anchorY:1500,bodyHeight:1485},
   backdrop:{image:'campBackdrop',w:2172,h:724,groundY:532},
   daichi:{image:'campDaichi',x:0,y:0,w:1024,h:1536,anchorX:532,anchorY:1445,bodyHeight:1308},
   natsu:{image:'campNatsu',x:0,y:0,w:1024,h:1536,anchorX:480,anchorY:1438,bodyHeight:1296},
@@ -12,6 +13,11 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "akash": "assets/images/npcs/akash-v1.png",
+  "compass": "assets/images/ui/compass-v1.png",
+  "minimap": "assets/images/ui/pocket-map-v1.png",
+  "roastMeat": "assets/images/ui/roast-meat-v1.png",
+  "coin": "assets/images/ui/coin-v1.png",
   "campBackdrop": "assets/images/backgrounds/forest-camp-v1.png",
   "campDaichi": "assets/images/npcs/daichi-v1.png",
   "campNatsu": "assets/images/npcs/natsu-v1.png",
@@ -79,6 +85,9 @@ const ART_INVENTORY = {
   katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536},
   // Inventory-only crops exclude world pedestals. Every item uses the same UI renderer.
   items:{
+    compass:{name:'item.compass',realm:1,category:'travelGear',image:'compass',x:180,y:26,w:912,h:1200},
+    minimap:{name:'item.minimap',realm:1,category:'travelGear',image:'minimap',x:26,y:69,w:1223,h:1090},
+    roastMeat:{name:'item.roastMeat',realm:1,stack:true,image:'roastMeat',x:26,y:237,w:1204,h:780},
     oathbreakerSoul:{name:'item.oathbreakerSoul',realm:0,image:'oathbreakerSoul',x:229,y:106,w:845,h:1056},
     yomiGuardianSoul:{name:'item.yomiGuardianSoul',realm:1,image:'yomiGuardianSoul',x:164,y:24,w:924,h:1164},
     seraphSoul:{name:'item.seraphSoul',realm:2,image:'seraphSoul',x:210,y:4,w:925,h:1248},

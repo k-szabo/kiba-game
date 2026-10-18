@@ -4,7 +4,7 @@ const DevTools=(()=>{
  const tools=new Map();
  let initialized=false,opened=false,session=0,render=0,origin='menu',returnFocus=null,message='';
  let inertSiblings=[],overlays=[];
- const overlayIds=['menu','pause','inventory','map','training','help','dialog'];
+ const overlayIds=['menu','pause','inventory','map','training','help','dialog','shop'];
  const node=id=>document.getElementById(id);
  function text(id,key){node(id).textContent=I18n.t(key);}
  function refresh(){
@@ -47,7 +47,7 @@ const DevTools=(()=>{
  }
  function open(){
   if(!initialized)return false;if(opened)return true;
-  if(!['menu','play','pause','inventory','map','training','help','dialog','won'].includes(state))return false;
+  if(!['menu','play','pause','inventory','map','training','help','dialog','shop','won'].includes(state))return false;
   origin=state;returnFocus=document.activeElement;opened=true;session++;message='';state='developer';keys.clear();pressed.clear();
   overlays=overlayIds.map(id=>[node(id),node(id).hidden]);
   for(const [overlay] of overlays)overlay.hidden=true;
@@ -62,7 +62,7 @@ const DevTools=(()=>{
   state=origin;keys.clear();pressed.clear();
   if(window.location?.hash==='#devtools')window.history.replaceState(null,'',window.location.pathname+window.location.search);
   if(returnFocus?.isConnected&&returnFocus.matches?.('button,a[href],input,select,textarea,summary,[tabindex]')&&!returnFocus.disabled&&!returnFocus.closest('[inert]')&&returnFocus.getClientRects().length)returnFocus.focus();
-  else node(({menu:'startButton',pause:'resumeButton',inventory:'closeInventory',map:'closeMap',training:'closeTraining',help:'helpTitle',dialog:'dialogOk',won:'dialogOk'})[origin]||'pauseButton').focus();
+  else node(({menu:'startButton',pause:'resumeButton',inventory:'closeInventory',map:'closeMap',training:'closeTraining',help:'helpTitle',dialog:'dialogOk',won:'dialogOk',shop:'closeShop'})[origin]||'pauseButton').focus();
   return true;
  }
  function init(){

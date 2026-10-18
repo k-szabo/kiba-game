@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "The user explicitly approved Akash's concept board and HU/EN copy before these five production images were generated.",
+  "useCase": "stylized-concept",
+  "references": [
+    ".codex/work/akash/akash-concept-v1.png",
+    "assets/images/npcs/daichi-v1.png",
+    "assets/images/ui/momo-inventory-v1.png",
+    "assets/images/backgrounds/forest-camp-v1.png"
+  ],
+  "concept": "Tall slender mysterious human Indian travelling merchant, indigo travelling coat, ochre scarf and headwrap; aged copper compass, pictorial pocket-map scroll, roast meat leaf parcel and square-hole coin.",
+  "notes": [
+    "Five distinct built-in imagegen calls, one per production image.",
+    "Original source pixels and native RGBA alpha remain unchanged; no matte removal, recolouring or compositing.",
+    "Bounds are [left,top,right-exclusive,bottom-exclusive]; crops are [x,y,width,height]. Registration estimates require real-browser validation.",
+    "Akash is a single static neutral standing pose; no animation was produced.",
+    "Concept board is an ignored approval artifact; original style references remain in the repository.",
+    "Coin central square hole is transparent; one remote corner retains native alpha 1, invisible under the alpha>=32 palette threshold."
+  ],
+  "assets": [
+    {
+      "key": "akash",
+      "path": "assets/images/npcs/akash-v1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        126,
+        16,
+        821,
+        1501
+      ],
+      "alphaBounds128": [
+        126,
+        16,
+        820,
+        1501
+      ],
+      "crop": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "feetAnchor": [
+        490,
+        1500
+      ],
+      "bodyHeight": 1485,
+      "prompt": "Use case: stylized-concept. Asset type: final production hand-painted bitmap asset for Kiba, a 2D Japanese fantasy game. The user explicitly APPROVED the supplied Akash concept board. Match that approved design, bold clean dark outlines, detailed painted textures, indigo, ochre and aged copper palette. Transparent native RGBA background: all pixels outside the isolated silhouette, including internal gaps, genuinely transparent. Preserve strong luminous light edge accents and material highlights for dark inventory readability, but no glowing haze extending to canvas borders. No text, labels, UI, watermarks, backdrop, ground plane, pedestal, cast floor shadow, montage, multiple views, duplicate objects, checkerboard painted into pixels, photorealism or cropping. Complete silhouette with generous padding on all sides. Primary request: ONLY Akash, the HUMAN travelling merchant on the LEFT of the approved concept board. A tall very slender Indian man, elongated face and limbs, warm brown skin, subtly smiling friendly but mysterious dark eyes, small dark chin beard and moustache, ochre/saffron cloth turban and flowing scarf, indigo long coat/tunic with worn fine gold pattern over pale loose trousers, practical strapped sandals. Match the exact approved young-adult face, sash, few copper amulets and rings, fabric backpack roll and leather-and-cloth travelling satchel with tiny bottles. One full-body neutral standing three-quarter pose, one hand loosely holding backpack strap, other hand relaxed at side. Human ears, human hands, human facial structure; NOT an animal or elf. Entire headwrap, scarf, bag, toes, sandals, fingers intact. Character height roughly 82 percent of tall 1024x1536 canvas, keep clear transparent margins above turban and below feet, both feet at a stable flat registration line. No weapons and no character animation.",
+      "transparentBackground": true
+    },
+    {
+      "key": "compass",
+      "path": "assets/images/ui/compass-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        180,
+        26,
+        1092,
+        1226
+      ],
+      "alphaBounds128": [
+        181,
+        27,
+        1091,
+        1226
+      ],
+      "crop": [
+        180,
+        26,
+        912,
+        1200
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: final production hand-painted bitmap asset for Kiba, a 2D Japanese fantasy game. The user explicitly APPROVED the supplied Akash concept board. Match that approved design, bold clean dark outlines, detailed painted textures, indigo, ochre and aged copper palette. Transparent native RGBA background: all pixels outside the isolated silhouette, including internal gaps, genuinely transparent. Preserve strong luminous light edge accents and material highlights for dark inventory readability, but no glowing haze extending to canvas borders. No text, labels, UI, watermarks, backdrop, ground plane, pedestal, cast floor shadow, montage, multiple views, duplicate objects, checkerboard painted into pixels, photorealism or cropping. Complete silhouette with generous padding on all sides. Primary request: ONLY the aged brass/copper pocket compass from the approved concept board's upper centre, as ONE large centered inventory icon on a square canvas. Its circular compass case is open with lid leaning back at upper left, engraved lotus motif on interior lid, cream compass face with sharply defined black compass rose and crimson needle, copper hinge, little cord loop ending in a copper lotus charm below-left. No letters, cardinal-direction lettering or numbers. Every part of lid, charm, cord and case complete and visible within generous transparent padding. Antique scratched copper, subtle verdigris, rich bevels and cream highlights make a strong readable silhouette. Approximately 78 percent canvas occupied, front three-quarter view.",
+      "transparentBackground": true
+    },
+    {
+      "key": "pocketMap",
+      "path": "assets/images/ui/pocket-map-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        26,
+        69,
+        1249,
+        1159
+      ],
+      "alphaBounds128": [
+        26,
+        69,
+        1248,
+        1158
+      ],
+      "crop": [
+        26,
+        69,
+        1223,
+        1090
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: final production hand-painted bitmap asset for Kiba, a 2D Japanese fantasy game. The user explicitly APPROVED the supplied Akash concept board. Match that approved design, bold clean dark outlines, detailed painted textures, indigo, ochre and aged copper palette. Transparent native RGBA background: all pixels outside the isolated silhouette, including internal gaps, genuinely transparent. Preserve strong luminous light edge accents and material highlights for dark inventory readability, but no glowing haze extending to canvas borders. No text, labels, UI, watermarks, backdrop, ground plane, pedestal, cast floor shadow, montage, multiple views, duplicate objects, checkerboard painted into pixels, photorealism or cropping. Complete silhouette with generous padding on all sides. Primary request: ONLY the small partly unrolled hand-drawn parchment route map from the approved concept board's upper right, as ONE centered square inventory icon. An intact weathered ivory parchment unrolled between two curled scroll ends, one end wrapped in worn indigo patterned cloth with brown rope tie. Painted pictorial landscape shows hills, bamboo, small Japanese roofs and torii, and a winding rusty-red route, tiny sun. Invented pictorial marks only; NO text, writing, letters, numbers or labels. Keep a high-contrast complete irregular parchment silhouette, bright warm paper edges, deep ink-blue accents and shadows belonging to the scroll itself only. Entire rolled ends and ties inside generous transparent margins. Three-quarter view, about 78 percent square canvas occupied.",
+      "transparentBackground": true
+    },
+    {
+      "key": "roastMeat",
+      "path": "assets/images/ui/roast-meat-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        26,
+        237,
+        1230,
+        1017
+      ],
+      "alphaBounds128": [
+        27,
+        237,
+        1229,
+        1017
+      ],
+      "crop": [
+        26,
+        237,
+        1204,
+        780
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: final production hand-painted bitmap asset for Kiba, a 2D Japanese fantasy game. The user explicitly APPROVED the supplied Akash concept board. Match that approved design, bold clean dark outlines, detailed painted textures, indigo, ochre and aged copper palette. Transparent native RGBA background: all pixels outside the isolated silhouette, including internal gaps, genuinely transparent. Preserve strong luminous light edge accents and material highlights for dark inventory readability, but no glowing haze extending to canvas borders. No text, labels, UI, watermarks, backdrop, ground plane, pedestal, cast floor shadow, montage, multiple views, duplicate objects, checkerboard painted into pixels, photorealism or cropping. Complete silhouette with generous padding on all sides. Primary request: ONLY the mysterious roasted meat leaf parcel from the approved concept board's lower middle, as ONE centered square inventory icon. A glossy caramel and reddish-brown roasted boneless portion cut to reveal a golden pale interior, delicately sprinkled toasted sesame seeds and a few green herb flecks, placed on a folded deep green banana-leaf wrapper tied with a short straw cord bow. Warm appetising painterly highlights, sharply readable full meat-and-leaf silhouette, detailed seared glaze and leaf veins. No cutlery, plate, bone, gore, faces, whole animal, extra food or visible floating steam. Keep every leaf corner and bow intact with at least 12 percent transparent padding around the entire object. Three-quarter view matching the approved board.",
+      "transparentBackground": true
+    },
+    {
+      "key": "coin",
+      "path": "assets/images/ui/coin-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        138,
+        112,
+        1143,
+        1156
+      ],
+      "alphaBounds128": [
+        139,
+        113,
+        1142,
+        1156
+      ],
+      "crop": [
+        138,
+        112,
+        1005,
+        1044
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: final production hand-painted bitmap asset for Kiba, a 2D Japanese fantasy game. The user explicitly APPROVED the supplied Akash concept board. Match that approved design, bold clean dark outlines, detailed painted textures, indigo, ochre and aged copper palette. Transparent native RGBA background: all pixels outside the isolated silhouette, including internal gaps, genuinely transparent. Preserve strong luminous light edge accents and material highlights for dark inventory readability, but no glowing haze extending to canvas borders. No text, labels, UI, watermarks, backdrop, ground plane, pedestal, cast floor shadow, montage, multiple views, duplicate objects, checkerboard painted into pixels, photorealism or cropping. Complete silhouette with generous padding on all sides. Primary request: ONLY the single worn ancient round copper coin with square central hole from the approved concept board's lower right, as ONE centered square inventory icon. Tilted three-quarter view with visible thick worn rim. Rich scratched hammered copper, weathered rusty orange and subtle teal-green verdigris, small embossed floral motifs around the square hole, bright ivory-copper bevel highlights and dark deep engraved relief. No lettering, writing, numbers, labels or readable symbols. Genuinely transparent square hole and outer background. Full circular coin and complete outer rim intact, no bag, no duplicate coins, no cord. The coin occupies roughly 74 percent of canvas with uniform generous clear transparent padding.",
+      "transparentBackground": true
+    }
+  ]
+}

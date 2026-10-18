@@ -22,6 +22,7 @@ These are the default keys. Open **How to Play** from the main or pause menu to 
 | M | Map and fast travel |
 | S + Space | Drop through a ledge |
 | I | Open inventory and pause the game |
+| O | Use food |
 | Esc | Pause |
 
 On touchscreen devices, use the on-screen controls. The wind streams lift Momo when he jumps into them. To use a torii gate, stand under its opening and press the interact action.
@@ -63,3 +64,11 @@ The Four Councillors' Hall is optional. To receive its key, defeat all eight min
 - [Development guide](DEVELOPMENT.md)
 - [Release IDs and fix history](RELEASES.md) — Hungarian documentation.
 - [Inventory implementation and item art](INVENTORY.md) — Hungarian documentation.
+
+## Akash's Wares
+
+O: use food. Akash sells his wares at the Forest Refuge after you free him in Yomi.
+
+- **Compass:** Points towards your next main objective. Hidden paths still keep their secrets.
+- **Pocket Map:** Shows nearby ledges, known shrines and Momo's position in the corner of the screen.
+- **Roast Meat of Unknown Origin:** Akash will not say what it is made of. Eating it has an equal chance to restore or remove 1 health, but cannot kill you. Quick use: O.

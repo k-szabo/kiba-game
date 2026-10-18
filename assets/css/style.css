@@ -219,3 +219,21 @@
 #touchControls button[data-action="heavyAttack"]{font-weight:700;border-width:2px}
 @media(max-height:500px){#devPanel{align-items:flex-start;padding:8px}#devPanel .dev-panel{max-height:calc(100dvh - 16px)}}
 @media(prefers-reduced-motion:reduce){#devPanel *{transition:none;animation:none;scroll-behavior:auto}}
+#coinPurse{display:flex;align-items:center;gap:5px;flex-shrink:0;color:#ffe1a4;font-size:16px;text-shadow:0 1px 3px #000}
+#coinPurse img{width:30px;height:34px;object-fit:contain}
+#minimap{position:absolute;right:18px;bottom:98px;z-index:3;border:2px solid #d2ba81;border-radius:7px;overflow:hidden;box-shadow:0 3px 15px #0009;pointer-events:none}
+#minimap canvas{display:block;width:220px;height:140px}
+.shop-panel{width:min(1000px,100%);max-width:1000px;max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;text-align:left}
+.shop-panel h2{margin:0 0 16px}.shop-panel p{font-size:16px!important;line-height:1.65;color:#f5edda}
+#shopCoins{font-weight:700;color:#ffe1a4}.shop-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.shop-item{display:flex;flex-direction:column;align-items:center;border:1px solid #ba9c67;border-radius:10px;padding:16px;background:#0c1b25;min-width:0}
+.shop-item h3{font:700 19px Georgia,serif;color:#ffe8b5;line-height:1.4;text-align:center;margin:12px 0}
+.shop-item p{align-self:stretch;flex:1}.shop-item button{width:100%;min-height:48px;font-size:15px;line-height:1.5;padding:10px}
+.shop-item button:disabled{opacity:1;color:#bac2c6;background:#24323c;border-color:#778188;cursor:default}
+.shop-item canvas{width:112px;height:112px;border:1px solid #8d9da8;border-radius:6px;background:radial-gradient(ellipse at 50% 42%,#354858,#101a25 78%);filter:brightness(1.18) contrast(1.08) saturate(1.12)}
+#shopStatus{min-height:1.7em;margin:12px 0}#closeShop{min-height:48px;margin:0}
+#inventory .inventory-item{position:relative}#inventory .inventory-quantity{position:absolute;top:7px;right:7px;min-width:28px;padding:2px 5px;border:1px solid #ffe5a2;border-radius:5px;background:#101d29;color:#fff0cf;font-size:14px;font-weight:700}
+#useInventoryItem{min-height:48px;font-size:16px;padding:10px 24px}#inventoryQuantity{font-weight:700;color:#ffe1a4}
+.dream-active #coinPurse,.dream-active #foodTouch{display:none!important}
+@media(max-width:800px){.shop-items{grid-template-columns:1fr}.shop-item{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px 16px}.shop-item canvas{width:90px;height:90px;grid-row:span 2}.shop-item h3{margin:0;text-align:left}.shop-item p{margin:0}.shop-item button{grid-column:1/-1}.shop-panel{padding:22px}}
+@media(max-width:650px){#coinPurse{position:absolute;left:14px;top:83px;font-size:14px}#coinPurse img{width:22px;height:26px}#minimap{right:12px;bottom:155px}#minimap canvas{width:144px;height:92px}.shop-panel{max-height:calc(100dvh - 18px);padding:20px}.shop-item{padding:12px;grid-template-columns:72px minmax(0,1fr)}.shop-item canvas{width:72px;height:72px}}

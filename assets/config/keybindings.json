@@ -12,7 +12,8 @@
     "map": ["m"],
     "train": ["u"],
     "pause": ["escape"],
-    "inventory": ["i"]
+    "inventory": ["i"],
+    "useMeat": ["o"]
   },
   "profiles": {
     "uk": {

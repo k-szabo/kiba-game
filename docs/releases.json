@@ -306,6 +306,22 @@
           "en": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to."
         }
       ]
+    },
+    {
+      "version": "0.9.21_be90a784",
+      "code": "be90a784",
+      "baseVersion": "0.9.21",
+      "slug": "akash-merchant-and-travel-gear",
+      "summary": {
+        "hu": "Akash és az elveszett utak portékái",
+        "en": "Akash and the wares of lost roads"
+      },
+      "fixes": [
+        {
+          "hu": "Kiszabadítható kereskedő, gyűjthető érmék, megvásárolható iránytű és minimap, valamint inventoryból és átállítható gyorsbillentyűvel használható sült hús került a játékba.",
+          "en": "The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut."
+        }
+      ]
     }
   ]
 }

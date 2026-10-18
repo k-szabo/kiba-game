@@ -81,3 +81,7 @@ A panel használata szabad, nem jogosultságkezelés. A játékállapotot módos
 ## Ellenőrzés
 
 Forrásmódosítás után `node scripts/build-game.mjs`, majd a releváns `scripts/test-dev-*.cjs` és a `node scripts/check-site.mjs` futtatandó. A panelteszt a közvetlen megnyitást, az elérhetőségi feltételeket, az elavult callbackek elutasítását, a fókuszt és a szünetet vizsgálja. A session- és eszköztesztek a mentésizolációt, a valódi játékmeneti írási útvonalakat és az eszközök szélértékeit fedik le. A teljes integrációhoz az összes `package.json` teszt kell; a HU/EN megjelenést, billentyűzetet és valódi mentés-visszatöltést böngészőben is ellenőrizd.
+
+### Akash portékái
+
+Az iránytű és útitérkép az inventory katalógusából adható egyszeri teszttárgy. A sült hús ugyaninnen ismételten hozzáadható, kattintásonként egy adaggal; az aktuális gyorsbillentyűvel vagy az inventoryból használható. A pénz, a vásárlások és az étel mennyisége is az elkülönített dev session része; a normál mentést nem módosítják.
