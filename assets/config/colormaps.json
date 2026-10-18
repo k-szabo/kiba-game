@@ -17646,7 +17646,9 @@
         "lines": [
           2,
           60,
-          222
+          222,
+          243,
+          246
         ],
         "dynamic": false
       },
@@ -18425,6 +18427,13 @@
         "dynamic": false
       },
       {
+        "value": "#d5edf4",
+        "lines": [
+          245
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#d6bf8e",
         "lines": [
           151
@@ -18457,6 +18466,13 @@
         "value": "#d7ded7",
         "lines": [
           2
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd80",
+        "lines": [
+          242
         ],
         "dynamic": false
       },
@@ -18873,11 +18889,25 @@
         "dynamic": false
       },
       {
+        "value": "#ffe0a3",
+        "lines": [
+          245
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#ffe1a4",
         "lines": [
           222,
           228,
           236
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          246
         ],
         "dynamic": false
       },
@@ -18998,7 +19028,8 @@
         "value": "#fff2cf",
         "lines": [
           50,
-          122
+          122,
+          244
         ],
         "dynamic": false
       },
@@ -19200,6 +19231,7 @@
         "dynamic": false
       }
     ],
+    "assets/js/compass.js": [],
     "assets/js/dev-abilities.js": [],
     "assets/js/dev-boss.js": [],
     "assets/js/dev-damage.js": [
@@ -19235,35 +19267,35 @@
       {
         "value": "#08121900",
         "lines": [
-          214
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          214
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          214
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          356
+          355
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19284,14 +19316,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          345
+          344
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          345
+          344
         ],
         "dynamic": false
       },
@@ -19333,7 +19365,7 @@
       {
         "value": "#465959",
         "lines": [
-          251
+          250
         ],
         "dynamic": false
       },
@@ -19347,7 +19379,7 @@
       {
         "value": "#60706a",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19361,7 +19393,7 @@
       {
         "value": "#718679",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19389,7 +19421,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19403,21 +19435,21 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          251
+          250
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          216
+          215
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          168
+          167
         ],
         "dynamic": false
       },
@@ -19431,7 +19463,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          216
+          215
         ],
         "dynamic": false
       },
@@ -19445,35 +19477,35 @@
       {
         "value": "#d58cf3",
         "lines": [
-          137
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          175
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          374
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          92
+          91
         ],
         "dynamic": false
       },
@@ -19487,14 +19519,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19522,49 +19554,49 @@
       {
         "value": "#e8d89b",
         "lines": [
-          216
+          215
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          374
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          374
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          165
+          164
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          135
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          175
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          251
+          250
         ],
         "dynamic": false
       },
@@ -19572,14 +19604,14 @@
         "value": "#f3d494",
         "lines": [
           23,
-          169
+          168
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          250
+          249
         ],
         "dynamic": false
       },
@@ -19593,21 +19625,21 @@
       {
         "value": "#ffcf83",
         "lines": [
-          374
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          137
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          251
+          250
         ],
         "dynamic": false
       }

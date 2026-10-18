@@ -17,7 +17,7 @@ Az érmék a meglévő fejlesztési szilánkoktól független pénznem. A zsákm
 | Portéka | Ár | Tárolás és működés |
 | --- | --- | --- |
 | Ismeretlen eredetű sült hús | 10 | Korlátlanul gyűjthető stack; inventoryból vagy az átállítható `useMeat` művelettel, alapból O-val használható. |
-| Iránytű | 220 | Egyszeri vétel; a meglévő fő feladatszöveg mellett bekapcsolja az iránynyilat. |
+| Iránytű | 220 | Egyszeri vétel; a bal felső feladatpanel alatt külön ikonnal, célmegnevezéssel, nyolcirányú nyíllal és közelségi jelzéssel mutatja a fő célt. |
 | Kis útitérkép | 360 | Egyszeri vétel; helyi minimap a képernyő sarkában. |
 
 A hús vásárláskor nem hat. Elfogyasztáskor egyszer sorsol: 50% +1 HP, 50% −1 HP; az eredmény 1 és a maximális HP között marad. A darab akkor is elfogy, ha a korlát miatt a HP nem változik. Szünetben, dialógusban, boltban, más menüben és a prológusban a gyorshasználat tiltott. Az inventory külön fogyasztógombja csak a kiválasztott húsra hat, a háttérben a játék fagyasztva marad. Az utolsó darab után a kijelölés és a fókusz érvényes tárgyra lép.
@@ -37,3 +37,11 @@ Grafikai forrás: öt önálló, jóváhagyott RGBA PNG az `assets/images/npcs/`
 ## Ellenőrzés
 
 `npm run test:merchant` ellenőrzi a mentési pillanatképek érvényességét, az őrökhöz kötött kiszabadítást, a vásárlás egyszeriségét, a stacket, a gyorshasználatot, a HP-korlátokat, a szünetet, az érmejutalmak ismétlési szabályát és a dev izolációt. A `test-save-release.cjs` tényleges WebCryptóval, szimulált IndexedDB mellett teszteli az új mezők titkosított mentését és a hibás adatok elutasítását. A valódi böngészős reload, grafika, fókusz és keskeny HU/EN elrendezés külön ellenőrzést igényel.
+
+## Iránytű-kijelzés
+
+A `compass.js` tiszta HUD-nézet a `nextObjective()` pontjára és jóváhagyott, meglévő célnevére. Momo középvonalához és talppontjához viszonyít, nyolc irányt különböztet meg. 90 világpixel vízszintes és85 függőleges távolságon belül pipa és közelségi szöveg jelenik meg. A jelzés irányt mutat; nem útvonalkereső és nem fed fel titkos mellékcélokat. A tábor és a csarnok `compass:false` célja üresjárati jelzést ad. A megvásárolt és devben adott tárgy ugyanazt a nézetet kapcsolja be.
+
+A `journeyHUD` függőleges elrendezése a feladatot, az iránytűt és az ereklyelistát egymás alá teszi, elkerülve a korábbi rögzített pozíciók átfedését. Keskeny kijelzőn harc közben az iránytű a feladatpanellel együtt elrejtőzik, hogy a telegráfok szabadon maradjanak. Alacsony ablakban a célpanel tömörül. Nincs forgó/pulzáló animáció; pause alatt a kijelzés változatlan, nyelvváltás a szöveget frissíti. A festett iránytű eredeti képét használja, új bitmap vagy képátalakítás nincs.
+
+`npm run test:compass` ellenőrzi a birtoklást, irányokat, közelséget, fő célok váltását, titkos helyek kihagyását, mellékterületeket, prológus/főmenü rejtést és a játékmenetet nem módosító renderelést.

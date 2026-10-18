@@ -35,8 +35,8 @@ try{
   r(`state=${JSON.stringify(state)};`);const old=snapshot();assert.equal(r('Merchant.eat()'),false);assert.equal(snapshot(),old);
  }
  assert.throws(()=>validate({...r('saved'),coins:-1}));assert.throws(()=>validate({...r('saved'),meatCount:1.5}));
- r("state='play';enterRealm(0);flags[1]=[];updateHUD();");assert(!/[↑↓←→]$/.test(h.elements.get('objective').textContent),'Objective arrow must require the compass');
- r("flags[1].push('compass');updateHUD();");assert(/[↑↓←→]$/.test(h.elements.get('objective').textContent));
+ r("state='play';enterRealm(0);flags[1]=[];updateHUD();");assert(h.elements.get('compass').hidden,'Compass must require ownership');
+ r("flags[1].push('compass');updateHUD();");assert(!h.elements.get('compass').hidden);
  r('Merchant.drawMinimap();');assert(h.elements.get('minimap').hidden);
  r("flags[1].push('minimap');innerWidth=360;devicePixelRatio=2;var mapLines=[],mapContext=$('minimapCanvas').getContext('2d'),originalLine=mapContext.lineTo;mapContext.lineTo=(...p)=>mapLines.push(p);Merchant.drawMinimap();");
  assert(!h.elements.get('minimap').hidden);assert.equal(h.elements.get('minimapCanvas').width,288);assert.equal(h.elements.get('minimapCanvas').height,184);
