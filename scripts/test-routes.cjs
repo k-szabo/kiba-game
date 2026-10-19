@@ -28,7 +28,20 @@ defeat();let exit=run('level.exit');place(exit.x,exit.y);press('e');tick();relea
 place(1530,450);tick();run("player.support='entry';keys.add('s');");press(' ');tick(35);release(' ');release('s');assert(snap().player.y+69>475);
 // Cages remain locked while their assigned guards are alive.
 const soul=run("level.objects.find(o=>o.id==='soulUpper')");place(soul.x,soul.y);press('e');tick();release('e');assert(!snap().flags[1].includes(soul.id));
-for(const id of ['soulUpper','soulLower']){const o=run(`level.objects.find(o=>o.id==='${id}')`);const guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>({id:e.id,x:e.x,y:e.y+e.h,kind:e.kind}))`);for(const e of guards){place(e.x-55,e.y);run('player.face=1;');for(let i=0;i<4;i++){if(e.kind==='shield'){place(e.x-40,e.y-58);run('player.face=1;player.onGround=false;');}press('j');tick(60);release('j');}}place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();}
+for(const id of ['soulUpper','soulLower']){
+ const o=run(`level.objects.find(o=>o.id==='${id}')`),guards=run(`enemies.filter(e=>e.group==='${o.group}').map(e=>e.id)`);
+ for(const guard of guards){
+  // Later-realm guards have more health. Keep using actual sword inputs and
+  // relocate to the moving target, with a bounded failure if combat stalls.
+  for(let i=0;i<16;i++){
+   const e=run(`enemies.find(e=>e.id===${JSON.stringify(guard)})`);if(e.dead)break;
+   place(e.x-(e.kind==='shield'?40:55),e.y+e.h-(e.kind==='shield'?58:0));run(`player.face=1;${e.kind==='shield'?'player.onGround=false;':''}`);
+   press('j');tick(60);release('j');
+  }
+  assert(run(`enemies.find(e=>e.id===${JSON.stringify(guard)}).dead`),'cage guard survived route combat: '+guard);
+ }
+ place(o.x,o.y);press('e');tick();release('e');assert(snap().flags[1].includes(id),'rescue did not release '+id);dismiss();
+}
 assert(run("gatePass(level.gates.find(g=>g.kind==='souls'))"));const shrine=run('level.ability');place(shrine.x,shrine.y);press('e');tick();release('e');dismiss();assert(snap().abilities[1]);
 // Checkpoint maps travel vertically and reset camera, including old-release reset.
 run("visitedRests[1].push('lower');fastTravel(level.rests.find(r=>r.id==='lower'));draw();");assert.equal(snap().player.y+69,3900);assert(snap().cameraY>2900);

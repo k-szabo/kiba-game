@@ -1,9 +1,9 @@
-/* Persistent XP and shrine training. Legacy saves are migrated by SaveVault. */
+/* Persistent XP and shrine training within the current release. */
 'use strict';
-const STAT_LIMIT = 8, LEVEL_LIMIT = 12;
+const STAT_LIMIT=PROGRESSION_RULES.statLimit,LEVEL_LIMIT=PROGRESSION_RULES.levelLimit;
 let progression = freshProgression();
 function freshProgression() {return {level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};}
-function xpForLevel(n) {return 60+(n-1)*35;}
+function xpForLevel(n) {return PROGRESSION_RULES.xpForLevel(n);}
 function normalizeProgression(data,worldFlags=[]) {
   const out=freshProgression(),integer=(n,lo,hi)=>Number.isFinite(n)?Math.max(lo,Math.min(hi,Math.floor(n))):lo;
   if(!data||typeof data!=='object')return out;
@@ -12,7 +12,7 @@ function normalizeProgression(data,worldFlags=[]) {
   for(const key of Object.keys(out.stats)){out.stats[key]=integer(data.stats?.[key],0,Math.min(STAT_LIMIT,budget));budget-=out.stats[key];}
   out.points=budget;
   out.xp=out.level===LEVEL_LIMIT?0:integer(data.xp,0,xpForLevel(out.level)-1);
-  out.totalXp=integer(data.totalXp,0,10000000);
+  out.totalXp=integer(data.totalXp,0,Number.MAX_SAFE_INTEGER);
   return out;
 }
 function momoStats() {
@@ -20,9 +20,11 @@ function momoStats() {
     dashCooldown:Math.max(.38,.8-progression.stats.spirit*.06),invulnerability:1.25+progression.stats.spirit*.05};
 }
 function awardXP(amount) {
-  if(!Number.isFinite(amount)||amount<=0)return;
-  progression.totalXp+=amount;
-  if(progression.level<LEVEL_LIMIT)progression.xp+=amount;
+  if(!Number.isSafeInteger(amount)||amount<=0)return;
+  const earned=Math.min(amount,Number.MAX_SAFE_INTEGER-progression.totalXp);
+  if(!earned)return;
+  progression.totalXp+=earned;
+  if(progression.level<LEVEL_LIMIT)progression.xp+=earned;
   let gained=0;
   while(progression.level<LEVEL_LIMIT&&progression.xp>=xpForLevel(progression.level)){
     progression.xp-=xpForLevel(progression.level);progression.level++;progression.points++;gained++;

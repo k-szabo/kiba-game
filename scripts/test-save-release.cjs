@@ -7,6 +7,7 @@ const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'
 const levelSource=fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8');
 const levelContext=vm.createContext({I18n:{t:key=>key}});vm.runInContext(levelSource,levelContext);
 const realmCount=vm.runInContext('levels.length',levelContext);
+const rules=vm.runInContext('PROGRESSION_RULES',levelContext);
 const worldArrays=(first=[])=>Array.from({length:realmCount},(_,index)=>first[index]?[...first[index]]:[]);
 const victories=(first=[])=>Array.from({length:realmCount},(_,index)=>first[index]===true);
 const current=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
@@ -130,15 +131,35 @@ async function main(){
  for(const [realm,reward] of rewards.entries()){
   if(realm===3){rewarded.flags[2].push('shadowEntered');rewarded.defeated[3]=true;rewarded.visitedRests[3]=[vm.runInContext('levels[3].rests[0].id',councilClient)];}
   rewarded.flags[realm].push(reward.claim,reward.id);rewardXP+=reward.xp;bonusPoints+=reward.points;
-  let level=1,xp=rewardXP;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
+  let level=1,xp=rewardXP;while(level<rules.levelLimit&&xp>=rules.xpForLevel(level)){xp-=rules.xpForLevel(level);level++;}
   const budget=level-1+bonusPoints,vitality=Math.min(3,budget),strength=Math.min(2,budget-vitality);
-  rewarded.progression={level,xp:level===12?0:xp,totalXp:rewardXP,points:budget-vitality-strength,stats:{vitality,strength,spirit:0}};
+  rewarded.progression={level,xp:level===rules.levelLimit?0:xp,totalXp:rewardXP,points:budget-vitality-strength,stats:{vitality,strength,spirit:0}};
   await reload.vault.write(rewarded);
   const restored=plain(await client(env).vault.ready);assert.deepEqual(restored,rewarded);
   assert(restored.flags[realm].includes(reward.id));assert.equal(restored.progression.points+vitality+strength,budget);
   const inflated=copy(rewarded);inflated.progression.points++;assert.throws(()=>reload.vault.write(inflated),/Invalid save schema/);
   const missingSoul=copy(rewarded);missingSoul.flags[realm]=missingSoul.flags[realm].filter(id=>id!==reward.id);
   assert.throws(()=>reload.vault.write(missingSoul),/Invalid boss reward/);
+ }
+
+ // Same-release high-level saves keep exact partial XP and every training
+ // point through authenticated encryption, IDB transactions and client reload.
+ // The synthetic IDB implementation above is not actual browser storage.
+ const highEnv=storageEnvironment(),highClient=client(highEnv);await highClient.vault.ready;
+ let capThreshold=0;for(let level=1;level<rules.levelLimit;level++)capThreshold+=rules.xpForLevel(level);
+ for(const level of [rules.levelLimit-1,rules.levelLimit])for(const spent of [false,true]){
+  const high=copy(rewarded),xp=level===rules.levelLimit?0:rules.xpForLevel(level)-1;
+  let totalXp=xp;for(let n=1;n<level;n++)totalXp+=rules.xpForLevel(n);
+  // Total XP may continue accumulating at cap without a new level or point.
+  if(level===rules.levelLimit)totalXp+=12345;
+  let points=level-1+bonusPoints;const stats={vitality:0,strength:0,spirit:0};
+  if(spent)for(const stat of Object.keys(stats)){stats[stat]=Math.min(rules.statLimit,points);points-=stats[stat];}
+  high.progression={level,xp,totalXp,points,stats};
+  if(level===rules.levelLimit-1)assert(xp>500);
+  else assert(totalXp>capThreshold);
+  await highClient.vault.write(high);
+  const sealed=highEnv.records.get('save');assert.match(sealed,/^MOMO2\./);assert(!sealed.includes('totalXp'));
+  assert.deepEqual(plain(await client(highEnv).vault.ready),high,`Level ${level} ${spent?'spent':'unspent'} allocation reloads exactly`);
  }
 
  // Fourth-realm entry, shrine discovery and altar activation are separate

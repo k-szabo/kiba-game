@@ -45,7 +45,7 @@ assert(run('enemies.every(e=>!e.dead&&e.hp===e.maxHp)'));assert.equal(run('proje
 }
 
 // XP awards exactly once per kill; the player chooses real stats at a nearby shrine.
-run('progression=freshProgression();var e=enemies[0];e.dead=false;e.hp=0;killEnemy(e);killEnemy(e);');assert.equal(snap().progression.totalXp,20);
+run("enterRealm(0);progression=freshProgression();var e=enemies.find(e=>!e.miniboss&&e.kind==='guard');e.dead=false;e.hp=0;killEnemy(e);killEnemy(e);");assert.equal(snap().progression.totalXp,20);
 run('awardXP(140);');assert.equal(snap().progression.level,3);assert.equal(snap().progression.points,2);
 press('u');tick();release('u');assert.equal(snap().state,'training');assert(run("spendPoint('vitality')"));assert(run("spendPoint('strength')"));assert(!run("spendPoint('spirit')"));assert.equal(snap().player.maxHp,6);assert.equal(snap().stats.damage,2.5);
 run('closeTraining();persist();mainMenu();startGame(true);');assert.equal(snap().player.maxHp,6);assert.equal(snap().progression.stats.strength,1);assert.equal(snap().progression.points,0);

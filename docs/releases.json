@@ -394,6 +394,22 @@
           "en": "The top-left item list has been removed; view your collected items in the inventory."
         }
       ]
+    },
+    {
+      "version": "0.9.24_f1cbafcc",
+      "code": "f1cbafcc",
+      "baseVersion": "0.9.24",
+      "slug": "level-cap-30-realm-scaling",
+      "summary": {
+        "hu": "Fejlődés a 30. szintig",
+        "en": "Progression to level 30"
+      },
+      "fixes": [
+        {
+          "hu": "Momo szintlimitje 30-ra, a tulajdonságok fejlesztési határa 12-re nőtt. Minden szint továbbra is egy fejlesztéspontot ad; a későbbi világok normál ellenfelei erősebbek és több XP-t érnek.",
+          "en": "Momo's level cap is now 30, and each stat can be upgraded 12 times. Each level still grants one training point; regular enemies in later realms are stronger and award more XP."
+        }
+      ]
     }
   ]
 }
