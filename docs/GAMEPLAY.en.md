@@ -37,7 +37,7 @@ Saves are encrypted in browser storage and tied to the current browser profile. 
 
 ## XP and upgrades
 
-Defeating enemies earns XP and levels. Each level grants one upgrade point. At a shrine, spend points on:
+Defeating enemies earns XP and levels, up to level 30. Regular enemies in later realms are stronger and award more XP. The first level requires 60 XP, with each following threshold increasing by 35 XP. Each level grants one upgrade point, and each stat accepts up to 12 upgrades. Total earned XP is still recorded at level 30 while the progress display shows MAX. At a shrine, spend points on:
 
 - **Vitality:** increases maximum health.
 - **Strength:** increases sword damage.

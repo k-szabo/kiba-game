@@ -1,16 +1,25 @@
 /* Explicit movement and attack states; an enemy never flips every frame at a patrol edge. */
 'use strict';
+// Authored realm difficulty stays fixed when returning with a stronger Momo.
+const ENEMY_TIERS=Object.freeze([
+  Object.freeze({health:1,damage:1,xp:1}),
+  Object.freeze({health:1.35,damage:1,xp:1.4}),
+  Object.freeze({health:1.7,damage:2,xp:1.8}),
+  Object.freeze({health:2.05,damage:2,xp:2.2})
+]);
 function createEnemies() {
   return level.enemies.map(createEnemy);
 }
 function createEnemy(spec,i=0) {
     if(spec.miniboss)return createMiniboss(spec,i);
     const h=spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.kind==='shield'?48:40;
-    const maxHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4;
+    const tier=ENEMY_TIERS[spec.summoned?0:Math.max(0,levels.indexOf(level))];
+    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=Math.ceil(baseHp*tier.health);
+    const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
     const left=Math.max(spec.x-spec.patrol,support?support.x+4:0),right=Math.min(spec.x+spec.patrol,support?support.x+support.w-w-4:level.width-w);
     return {...spec,x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
-      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,
+      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:tier.damage,xpValue:Math.round(baseXP*tier.xp),
       stun:0,cd:1+i*.13,contactCd:0,windup:0,windupDuration:0,attackTime:0,attackDuration:.42,
       recovery:0,turnCooldown:0,edgePause:0,blocks:0,guardBreak:0,blockFlash:0,walkSpeed:0,
       animTime:i*.17,attackElapsed:0,dead:false};
@@ -27,7 +36,7 @@ function killEnemy(e) {
   if(!e.summoned)Merchant.award(Merchant.rewards.enemy);
   if(e.summoned&&e.councilEligible&&e.encounterId===boss.encounterId&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
   const role=enemyRole(e);
-  awardXP(e.summoned?8:({guard:20,archer:18,shield:26,mage:24}[role]||18));
+  awardXP(e.summoned?8:(e.xpValue??({guard:20,archer:18,shield:26,mage:24}[role]||18)));
   updateHUD();
 }
 function enemyRole(e) {return e.kind==='fly'?(realm===0?'mage':'archer'):e.kind;}
@@ -59,9 +68,12 @@ function releaseEnemyAttack(e) {
     for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,realm===3?'shadowBolt':'magic');}e.cd=3.3;
   }else{
     const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
-    if(overlap(player,hit))damage(1,e.face);e.cd=e.kind==='shield'?2.5:1.8;
+    if(overlap(player,hit))damage(e.damageValue||1,e.face);e.cd=e.kind==='shield'?2.5:1.8;
   }
-  if(e.summoned)for(let i=shotsBefore;i<projectiles.length;i++)projectiles[i].source='minion';
+  for(let i=shotsBefore;i<projectiles.length;i++){
+    projectiles[i].damage=e.damageValue||1;
+    if(e.summoned)projectiles[i].source='minion';
+  }
 }
 function updateEnemies(dt) {
   for(const e of enemies){
@@ -112,7 +124,7 @@ function updateEnemies(dt) {
       }
     }
     if(e.kind==='fly')e.y=e.baseY+Math.sin(time*2+e.origin)*18;
-    if(overlap(player,e)&&e.contactCd<=0){damage(1,dx>0?1:-1);e.contactCd=1.1;}
+    if(overlap(player,e)&&e.contactCd<=0){damage(e.damageValue||1,dx>0?1:-1);e.contactCd=1.1;}
     if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
       if(e.kind==='shield')toast(I18n.t("text.shield.bearer.strike.from.above.or.behind.three.blocked"));
@@ -232,7 +244,7 @@ function updateSummons(dt){
   for(const portal of boss.summons){
     portal.warning-=dt;if(portal.warning>0)continue;
     const support=platforms.find(p=>p.id===portal.supportId),feet=support?.broken?level.arena.y:portal.y;
-    const minion=createEnemy({id:'summon-'+(++boss.summonSerial),x:portal.x,y:feet,kind:portal.kind,patrol:230,group:null},boss.summonSerial);
+    const minion=createEnemy({id:'summon-'+(++boss.summonSerial),x:portal.x,y:feet,kind:portal.kind,patrol:230,group:null,summoned:true},boss.summonSerial);
     Object.assign(minion,{summoned:true,factionOverride:'yomi',supportId:support?.broken?null:portal.supportId,hp:portal.kind==='mage'?3:4,maxHp:portal.kind==='mage'?3:4,cd:1.2,stun:.25,councilEligible:portal.councilEligible,encounterId:portal.encounterId,threshold:portal.threshold});
     enemies.push(minion);burst(portal.x+20,feet-30,'#df8568',22);
   }

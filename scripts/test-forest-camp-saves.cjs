@@ -7,13 +7,14 @@ const context=vm.createContext({I18n:{t:key=>key}});
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext(`JSON.stringify(${expression})`,context)),copy=value=>structuredClone(value);
 const rewards=read('BOSS_REWARDS'),campRest=read('forestCamp.rests[0]'),realmCount=read('levels.length');
+const rules=vm.runInContext('PROGRESSION_RULES',context);
 function fixture(){
  const flags=Array.from({length:realmCount},()=>[]);flags[0]=['forestBell','villageBell'];flags[1]=['soulUpper','soulLower'];flags[2]=['dawnSeal'];if(realmCount>3)flags[2].push('shadowEntered');
  let totalXp=0,bonus=0;for(const [realm,reward] of rewards.entries()){flags[realm].push(reward.claim,reward.id);totalXp+=reward.xp;bonus+=reward.points;}
- let level=1,xp=totalXp;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
+ let level=1,xp=totalXp;while(level<rules.levelLimit&&xp>=rules.xpForLevel(level)){xp-=rules.xpForLevel(level);level++;}
  return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
   abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},(_,index)=>index===0?['start',campRest.id]:['start']),checkpoint:copy(campRest),
-  progression:{level,xp:level===12?0:xp,totalXp,points:level-1+bonus-2,stats:{vitality:1,strength:1,spirit:0}}};
+  progression:{level,xp:level===rules.levelLimit?0:xp,totalXp,points:level-1+bonus-2,stats:{vitality:1,strength:1,spirit:0}}};
 }
 const data=fixture();assert.deepEqual(JSON.parse(JSON.stringify(validate(data))),data,'Camp retains the exact current-release progress and reward budget');
 assert.equal(read('levels.includes(forestCamp)'),false,'Camp remains a side area rather than a realm');

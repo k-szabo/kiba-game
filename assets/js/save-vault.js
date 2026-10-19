@@ -11,12 +11,12 @@ const SaveVault=(()=>{
  const random=n=>crypto.getRandomValues(new Uint8Array(n));
  const integer=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
  function validProgress(p,worldFlags){
-  const maxPoints=11+BOSS_REWARDS.reduce((sum,reward)=>sum+reward.points,0);
-  if(!p||!integer(p.level,1,12)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,500))return false;
-  if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,8)))return false;
+  const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+BOSS_REWARDS.reduce((sum,reward)=>sum+reward.points,0);
+  if(!p||!integer(p.level,1,levelLimit)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,Number.MAX_SAFE_INTEGER))return false;
+  if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,statLimit)))return false;
   if(p.points+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
-  let xp=p.totalXp,level=1;while(level<12&&xp>=60+(level-1)*35){xp-=60+(level-1)*35;level++;}
-  return level===p.level&&p.xp===(level===12?0:xp);
+  let xp=p.totalXp,level=1;while(level<levelLimit&&xp>=xpForLevel(level)){xp-=xpForLevel(level);level++;}
+  return level===p.level&&p.xp===(level===levelLimit?0:xp);
  }
  function validate(data){
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');

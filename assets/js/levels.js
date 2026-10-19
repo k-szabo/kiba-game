@@ -1,5 +1,7 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
+// Shared progression rules also load before the standalone save validator.
+const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>60+(n-1)*35});
 // Earned reward flags, rather than held items or replayable encounters, own
 // the permanent bonus-point budget. Shared with the standalone save validator.
 const BOSS_REWARDS=Object.freeze([

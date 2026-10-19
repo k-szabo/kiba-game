@@ -626,7 +626,9 @@
       "menu.changelog.0922.campDash": "A szellemlépés lila nyoma az erdei menedékben is látható.",
       "menu.changelog.0922.shadowAltarFix": "Az árnyékoltár nagyobb, sötét megjelenést, külön kanjijelölést és első aktiváláskor baljós párbeszédet kapott.",
       "menu.changelog.0923.itemListTitle": "Letisztultabb tárgykijelzés",
-      "menu.changelog.0923.itemList": "A bal felső tárgylista megszűnt; a megszerzett tárgyakat a hátizsákban tekintheted meg."
+      "menu.changelog.0923.itemList": "A bal felső tárgylista megszűnt; a megszerzett tárgyakat a hátizsákban tekintheted meg.",
+      "menu.changelog.0924.levelCapTitle": "Fejlődés a 30. szintig",
+      "menu.changelog.0924.levelCap": "Momo szintlimitje 30-ra, a tulajdonságok fejlesztési határa 12-re nőtt. Minden szint továbbra is egy fejlesztéspontot ad; a későbbi világok normál ellenfelei erősebbek és több XP-t érnek."
     }
   },
   "en": {
@@ -1256,7 +1258,9 @@
       "menu.changelog.0922.campDash": "Spirit Dash's purple trail is now visible in the Forest Refuge.",
       "menu.changelog.0922.shadowAltarFix": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation.",
       "menu.changelog.0923.itemListTitle": "Cleaner item display",
-      "menu.changelog.0923.itemList": "The top-left item list has been removed; view your collected items in the inventory."
+      "menu.changelog.0923.itemList": "The top-left item list has been removed; view your collected items in the inventory.",
+      "menu.changelog.0924.levelCapTitle": "Progression to level 30",
+      "menu.changelog.0924.levelCap": "Momo's level cap is now 30, and each stat can be upgraded 12 times. Each level still grants one training point; regular enemies in later realms are stronger and award more XP."
     }
   }
 }

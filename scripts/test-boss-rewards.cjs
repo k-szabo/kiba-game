@@ -37,7 +37,7 @@ for(let realm=0;realm<3;realm++){
  h.dismiss();r('DevTools.open();');assert(r('DevLevel.setLevel({level:1})'));
  assert.equal(r('progression.points+Object.values(progression.stats).reduce((a,b)=>a+b,0)'),reward.points,'Dev level reduction loses earned bonus');
  assert(r('DevLevel.setLevel({level:LEVEL_LIMIT})'));
- assert.equal(r('progression.points+Object.values(progression.stats).reduce((a,b)=>a+b,0)'),11+reward.points);
+ assert.equal(r('progression.points+Object.values(progression.stats).reduce((a,b)=>a+b,0)'),29+reward.points);
 }
 // Possession is not the once-only ledger. A test-spawned soul neither gives
 // stats by itself nor prevents the first legitimate reward bundle.
