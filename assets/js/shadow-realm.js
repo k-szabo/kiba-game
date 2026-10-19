@@ -24,8 +24,10 @@ const ShadowRealm=(()=>{
  function interact(c){
   if(!active())return false;
   if(c.type==='shadowAltar'){
-   if(!hasFlag('shadowAltar'))flags[3].push('shadowAltar');
-   persist();updateHUD();toast(I18n.t('shadow.altar.unlocked'));return true;
+   if(hasFlag('shadowAltar'))return true;
+   flags[3].push('shadowAltar');
+   persist();updateHUD();
+   story('shadow.label','shadow.place.altar','shadow.altar.story',()=>toast(I18n.t('shadow.altar.unlocked')));return true;
   }
   if(c.type==='prisonDoor'){
    if(!hasFlag('prisonKey')){toast(I18n.t('shadow.prison.locked'));return true;}

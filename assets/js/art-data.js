@@ -4,11 +4,13 @@ const ART_SHADOW={"actors":{"guard":{"image":"shadowGuard","frames":[{"x":23,"y"
 // END SHADOW ATLAS
 const ART_CAMP={
   akash:{image:'akash',x:0,y:0,w:1024,h:1536,anchorX:490,anchorY:1500,bodyHeight:1485},
-  backdrop:{image:'campBackdrop',w:2172,h:724,groundY:532},
+  cedar:{image:'campCedar',x:0,y:0,w:1024,h:1536,anchorX:512,anchorY:1510,bodyHeight:1500},
+  backdrop:{image:'campBackdrop',w:2172,h:724,groundY:532,panelSize:1254,panels:[{image:'campHDLeft',x:0,w:1040},{image:'campHDCenter',x:880,w:1040},{image:'campHDRight',x:1760,w:1040}]},
   daichi:{image:'campDaichi',x:0,y:0,w:1024,h:1536,anchorX:532,anchorY:1445,bodyHeight:1308},
   natsu:{image:'campNatsu',x:0,y:0,w:1024,h:1536,anchorX:480,anchorY:1438,bodyHeight:1296},
   sora:{image:'campSora',x:0,y:0,w:1024,h:1536,anchorX:480,anchorY:1411,bodyHeight:1303}
 };
+const ART_SHADOW_ALTAR={image:'shadowAltar',x:0,y:0,w:1536,h:1024,anchorX:768,anchorY:1007,bodyHeight:1000};
 const ART_CULT_GATE={w:1536,h:1024,anchorX:768,anchorY:1003,bodyHeight:995};
 // Painted spell sprites: the tip is registered to the projectile/ground impact point.
 const ART_EFFECTS={
@@ -16,6 +18,11 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "campCedar": "assets/images/props/camp-cedar-v1.png",
+  "campHDLeft": "assets/images/backgrounds/forest-camp-hd-left-v1.png",
+  "campHDCenter": "assets/images/backgrounds/forest-camp-hd-center-v1.png",
+  "campHDRight": "assets/images/backgrounds/forest-camp-hd-right-v1.png",
+  "shadowAltar": "assets/images/props/shadow-altar-v1.png",
   "shadowGuard": "assets/images/enemies/shadow-guard-v1.png",
   "shadowArcher": "assets/images/enemies/shadow-archer-v1.png",
   "shadowMage": "assets/images/enemies/shadow-mage-v1.png",

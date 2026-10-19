@@ -587,6 +587,7 @@
       "compass.direction.7": "Jobbra fent",
       "menu.changelog.0921.compassTitle": "Láthatóbb iránytű",
       "menu.changelog.0921.compass": "Az iránytű külön, kontrasztos kijelzőn mutatja a fő cél nevét és irányát, és jelzi, ha a cél közelébe értél.",
+      "shadow.altar.story": "Az oltár hideg köve alatt ismerős lüktetés ébred. A Kiba utat nyit a szentélyek között, de a mélyből egy idegen szív dobban vissza.\n\nMomo nem fordul hátra. Haru nyoma tovább vezet a sötétben.",
       "shadow.name": "Árnyékvilág",
       "shadow.label": "IV. Az elnyelt fény",
       "shadow.place.shore": "A kihunyt part",
@@ -619,7 +620,11 @@
       "shadow.prison.consumed": "A kulcs elfordul, majd porrá omlik. A börtön nyitva áll.",
       "shadow.bell.warning": "A harangszó közeledik. Szakítsd meg a papot, vagy térj ki a jelzett körből!",
       "menu.changelog.0922.title": "Az árnyékvilág kapuja",
-      "menu.changelog.0922.shadowRealm": "Haru megtalálása után új árnyékvilág nyílik kultistákkal, három új bossal, gyűjthető jutalmakkal és oltárnál feloldható gyorsutazással."
+      "menu.changelog.0922.shadowRealm": "Haru megtalálása után új árnyékvilág nyílik kultistákkal, három új bossal, gyűjthető jutalmakkal és oltárnál feloldható gyorsutazással.",
+      "menu.changelog.0922.campFixTitle": "A menedék és az árnyékoltár javításai",
+      "menu.changelog.0922.campBackground": "Az erdei menedék háttere nagy képernyőn is részletesebben jelenik meg.",
+      "menu.changelog.0922.campDash": "A szellemlépés lila nyoma az erdei menedékben is látható.",
+      "menu.changelog.0922.shadowAltarFix": "Az árnyékoltár nagyobb, sötét megjelenést, külön kanjijelölést és első aktiváláskor baljós párbeszédet kapott."
     }
   },
   "en": {
@@ -1210,6 +1215,7 @@
       "compass.direction.7": "Up-right",
       "menu.changelog.0921.compassTitle": "Clearer compass",
       "menu.changelog.0921.compass": "The compass now shows the main objective's name and direction in a separate, high-contrast display, and indicates when you are nearby.",
+      "shadow.altar.story": "A familiar pulse awakens beneath the altar's cold stone. Kiba opens a path between the shrines, but a foreign heartbeat answers from the depths.\n\nMomo does not look back. Haru's trail leads deeper into the dark.",
       "shadow.name": "Shadow Realm",
       "shadow.label": "IV. The Swallowed Light",
       "shadow.place.shore": "The Extinguished Shore",
@@ -1242,7 +1248,11 @@
       "shadow.prison.consumed": "The key turns, then crumbles to dust. The prison stands open.",
       "shadow.bell.warning": "The bell toll approaches. Interrupt the priest or leave the marked circle!",
       "menu.changelog.0922.title": "The Gate to the Shadow Realm",
-      "menu.changelog.0922.shadowRealm": "Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar."
+      "menu.changelog.0922.shadowRealm": "Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar.",
+      "menu.changelog.0922.campFixTitle": "Refuge and Shadow Altar fixes",
+      "menu.changelog.0922.campBackground": "The Forest Refuge background now shows more detail on large displays.",
+      "menu.changelog.0922.campDash": "Spirit Dash's purple trail is now visible in the Forest Refuge.",
+      "menu.changelog.0922.shadowAltarFix": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation."
     }
   }
 }

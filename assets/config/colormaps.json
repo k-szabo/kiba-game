@@ -312,6 +312,50 @@
     }
   },
   "objects": {
+    "campCedar": {
+      "kind": "scenery",
+      "paletteGroup": "object.campCedar"
+    },
+    "campPanel.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-left-v1.png",
+      "worldRegistration": {
+        "x": 0,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "campPanel.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-center-v1.png",
+      "worldRegistration": {
+        "x": 880,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "campPanel.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-right-v1.png",
+      "worldRegistration": {
+        "x": 1760,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "shadowAltar": {
+      "kind": "travel-altar",
+      "paletteGroup": "object.shadowAltar",
+      "registration": {
+        "x": 0,
+        "y": 0,
+        "w": 1536,
+        "h": 1024,
+        "anchorX": 768,
+        "anchorY": 1007,
+        "bodyHeight": 1000
+      }
+    },
     "inventoryKatana": {
       "kind": "equipment-art",
       "paletteGroup": "object.inventoryKatana"
@@ -6067,6 +6111,208 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "object.campCedar": {
+      "source": "assets/images/props/camp-cedar-v1.png",
+      "frameMetadata": "ART_CAMP.cedar",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060503",
+            "coveragePercent": 19.9795
+          },
+          {
+            "hex": "#18140b",
+            "coveragePercent": 19.8235
+          },
+          {
+            "hex": "#31250a",
+            "coveragePercent": 11.8478
+          },
+          {
+            "hex": "#2c2724",
+            "coveragePercent": 8.8106
+          },
+          {
+            "hex": "#132124",
+            "coveragePercent": 7.2163
+          },
+          {
+            "hex": "#56390b",
+            "coveragePercent": 5.9365
+          },
+          {
+            "hex": "#43392d",
+            "coveragePercent": 5.7931
+          },
+          {
+            "hex": "#273843",
+            "coveragePercent": 4.3364
+          },
+          {
+            "hex": "#85520d",
+            "coveragePercent": 3.4249
+          },
+          {
+            "hex": "#b47216",
+            "coveragePercent": 2.6079
+          },
+          {
+            "hex": "#e2951c",
+            "coveragePercent": 2.432
+          },
+          {
+            "hex": "#605d3f",
+            "coveragePercent": 2.1637
+          },
+          {
+            "hex": "#434f63",
+            "coveragePercent": 2.0244
+          },
+          {
+            "hex": "#f6c328",
+            "coveragePercent": 1.8928
+          },
+          {
+            "hex": "#f6d164",
+            "coveragePercent": 0.9821
+          },
+          {
+            "hex": "#637496",
+            "coveragePercent": 0.7284
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#93570f",
+            "coveragePercent": 26.1115
+          },
+          {
+            "hex": "#e3951e",
+            "coveragePercent": 22.2599
+          },
+          {
+            "hex": "#b97617",
+            "coveragePercent": 21.7394
+          },
+          {
+            "hex": "#f5c21e",
+            "coveragePercent": 14.5521
+          },
+          {
+            "hex": "#f7cd54",
+            "coveragePercent": 12.5811
+          },
+          {
+            "hex": "#49689c",
+            "coveragePercent": 2.7561
+          }
+        ],
+        "visibleSamples": 792275,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.shadowAltar": {
+      "source": "assets/images/props/shadow-altar-v1.png",
+      "frameMetadata": "ART_SHADOW_ALTAR",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1f1d",
+            "coveragePercent": 18.0342
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 17.223
+          },
+          {
+            "hex": "#1c0f0d",
+            "coveragePercent": 15.7808
+          },
+          {
+            "hex": "#42312f",
+            "coveragePercent": 15.2709
+          },
+          {
+            "hex": "#5b4540",
+            "coveragePercent": 8.723
+          },
+          {
+            "hex": "#805e53",
+            "coveragePercent": 4.5293
+          },
+          {
+            "hex": "#60190c",
+            "coveragePercent": 4.0498
+          },
+          {
+            "hex": "#7f4c21",
+            "coveragePercent": 3.2101
+          },
+          {
+            "hex": "#b97534",
+            "coveragePercent": 2.4511
+          },
+          {
+            "hex": "#e1a558",
+            "coveragePercent": 2.2023
+          },
+          {
+            "hex": "#b8181d",
+            "coveragePercent": 2.1159
+          },
+          {
+            "hex": "#a9806d",
+            "coveragePercent": 1.9837
+          },
+          {
+            "hex": "#f3d288",
+            "coveragePercent": 1.7201
+          },
+          {
+            "hex": "#571e6f",
+            "coveragePercent": 1.3251
+          },
+          {
+            "hex": "#f8ead0",
+            "coveragePercent": 0.9115
+          },
+          {
+            "hex": "#bc3fe8",
+            "coveragePercent": 0.4691
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965e30",
+            "coveragePercent": 30.4628
+          },
+          {
+            "hex": "#c78545",
+            "coveragePercent": 24.4772
+          },
+          {
+            "hex": "#af161b",
+            "coveragePercent": 21.61
+          },
+          {
+            "hex": "#efbe67",
+            "coveragePercent": 16.6221
+          },
+          {
+            "hex": "#7622a2",
+            "coveragePercent": 4.1303
+          },
+          {
+            "hex": "#cd42f4",
+            "coveragePercent": 2.6976
+          }
+        ],
+        "visibleSamples": 830285,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "object.inventoryKatana": {
       "source": "assets/images/ui/katana-inventory-v1.png",
       "frameMetadata": "ART_INVENTORY.katana",
@@ -11815,6 +12061,321 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/forest-camp-hd-center-v1.png": {
+      "sha256": "599ae6f258e3f2f2f63e08f4105eb8680c63440c26172354eb150f8541abe766",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDCenter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0806",
+            "coveragePercent": 23.0034
+          },
+          {
+            "hex": "#36220f",
+            "coveragePercent": 14.6871
+          },
+          {
+            "hex": "#101d29",
+            "coveragePercent": 10.868
+          },
+          {
+            "hex": "#1c334b",
+            "coveragePercent": 7.7061
+          },
+          {
+            "hex": "#1f477d",
+            "coveragePercent": 6.441
+          },
+          {
+            "hex": "#524b3a",
+            "coveragePercent": 6.1283
+          },
+          {
+            "hex": "#3461a6",
+            "coveragePercent": 5.5652
+          },
+          {
+            "hex": "#71290b",
+            "coveragePercent": 5.5377
+          },
+          {
+            "hex": "#9c5a1c",
+            "coveragePercent": 4.2421
+          },
+          {
+            "hex": "#dc710d",
+            "coveragePercent": 3.4091
+          },
+          {
+            "hex": "#d5100d",
+            "coveragePercent": 3.0501
+          },
+          {
+            "hex": "#357edf",
+            "coveragePercent": 2.897
+          },
+          {
+            "hex": "#eb9741",
+            "coveragePercent": 2.8652
+          },
+          {
+            "hex": "#f3b510",
+            "coveragePercent": 1.8399
+          },
+          {
+            "hex": "#f7cd66",
+            "coveragePercent": 1.3073
+          },
+          {
+            "hex": "#f6efcb",
+            "coveragePercent": 0.4527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#28559a",
+            "coveragePercent": 24.5186
+          },
+          {
+            "hex": "#df7c14",
+            "coveragePercent": 16.6777
+          },
+          {
+            "hex": "#9d5418",
+            "coveragePercent": 16.4377
+          },
+          {
+            "hex": "#f5b43f",
+            "coveragePercent": 15.3478
+          },
+          {
+            "hex": "#3679d6",
+            "coveragePercent": 13.6268
+          },
+          {
+            "hex": "#c80f0c",
+            "coveragePercent": 13.3915
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/forest-camp-hd-left-v1.png": {
+      "sha256": "3309c5739f624c93507134c93af10e36eff11f07972202d88e0becdc654aff8a",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDLeft"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070505",
+            "coveragePercent": 24.0476
+          },
+          {
+            "hex": "#24160d",
+            "coveragePercent": 15.0323
+          },
+          {
+            "hex": "#1e252f",
+            "coveragePercent": 11.3386
+          },
+          {
+            "hex": "#482f13",
+            "coveragePercent": 9.5698
+          },
+          {
+            "hex": "#2b4155",
+            "coveragePercent": 5.4515
+          },
+          {
+            "hex": "#ef1507",
+            "coveragePercent": 5.1547
+          },
+          {
+            "hex": "#894d15",
+            "coveragePercent": 4.6996
+          },
+          {
+            "hex": "#b8080a",
+            "coveragePercent": 3.8779
+          },
+          {
+            "hex": "#565a4a",
+            "coveragePercent": 3.8773
+          },
+          {
+            "hex": "#d77113",
+            "coveragePercent": 3.6037
+          },
+          {
+            "hex": "#740c09",
+            "coveragePercent": 3.5754
+          },
+          {
+            "hex": "#f2af57",
+            "coveragePercent": 2.7345
+          },
+          {
+            "hex": "#f1b116",
+            "coveragePercent": 2.3902
+          },
+          {
+            "hex": "#a77954",
+            "coveragePercent": 2.2571
+          },
+          {
+            "hex": "#3b629b",
+            "coveragePercent": 1.8422
+          },
+          {
+            "hex": "#ebdbb7",
+            "coveragePercent": 0.5475
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#efa734",
+            "coveragePercent": 26.172
+          },
+          {
+            "hex": "#ea1407",
+            "coveragePercent": 25.5527
+          },
+          {
+            "hex": "#af631d",
+            "coveragePercent": 24.3998
+          },
+          {
+            "hex": "#a30d0a",
+            "coveragePercent": 18.3136
+          },
+          {
+            "hex": "#2b5591",
+            "coveragePercent": 3.9359
+          },
+          {
+            "hex": "#3976c7",
+            "coveragePercent": 1.626
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/forest-camp-hd-right-v1.png": {
+      "sha256": "00b4b71a92375c5ffb9c721133ea7dd98b3f4080196e81a90a1d9392643fb087",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDRight"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080705",
+            "coveragePercent": 23.1261
+          },
+          {
+            "hex": "#241d10",
+            "coveragePercent": 14.0841
+          },
+          {
+            "hex": "#182838",
+            "coveragePercent": 12.4502
+          },
+          {
+            "hex": "#4f3a18",
+            "coveragePercent": 7.1812
+          },
+          {
+            "hex": "#1c4168",
+            "coveragePercent": 6.6202
+          },
+          {
+            "hex": "#2f5f9e",
+            "coveragePercent": 5.2536
+          },
+          {
+            "hex": "#96581b",
+            "coveragePercent": 4.4399
+          },
+          {
+            "hex": "#4c1808",
+            "coveragePercent": 4.4056
+          },
+          {
+            "hex": "#515648",
+            "coveragePercent": 4.1946
+          },
+          {
+            "hex": "#efa14d",
+            "coveragePercent": 3.7299
+          },
+          {
+            "hex": "#da7615",
+            "coveragePercent": 3.6361
+          },
+          {
+            "hex": "#3980da",
+            "coveragePercent": 3.1422
+          },
+          {
+            "hex": "#91130e",
+            "coveragePercent": 2.8561
+          },
+          {
+            "hex": "#db110d",
+            "coveragePercent": 2.1796
+          },
+          {
+            "hex": "#f3c313",
+            "coveragePercent": 1.9623
+          },
+          {
+            "hex": "#eedfac",
+            "coveragePercent": 0.7382
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f1a933",
+            "coveragePercent": 26.547
+          },
+          {
+            "hex": "#b36119",
+            "coveragePercent": 24.3676
+          },
+          {
+            "hex": "#ba100e",
+            "coveragePercent": 16.3967
+          },
+          {
+            "hex": "#225491",
+            "coveragePercent": 13.018
+          },
+          {
+            "hex": "#336ab4",
+            "coveragePercent": 11.041
+          },
+          {
+            "hex": "#3884e4",
+            "coveragePercent": 8.6297
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/forest-camp-v1.png": {
@@ -17796,6 +18357,216 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/props/camp-cedar-v1.png": {
+      "sha256": "db1689ded78fcb509d6a0f9b89d739dfca08148be8c1f25ce81812dba8e95a90",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "campCedar"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060503",
+            "coveragePercent": 19.9795
+          },
+          {
+            "hex": "#18140b",
+            "coveragePercent": 19.8235
+          },
+          {
+            "hex": "#31250a",
+            "coveragePercent": 11.8478
+          },
+          {
+            "hex": "#2c2724",
+            "coveragePercent": 8.8106
+          },
+          {
+            "hex": "#132124",
+            "coveragePercent": 7.2163
+          },
+          {
+            "hex": "#56390b",
+            "coveragePercent": 5.9365
+          },
+          {
+            "hex": "#43392d",
+            "coveragePercent": 5.7931
+          },
+          {
+            "hex": "#273843",
+            "coveragePercent": 4.3364
+          },
+          {
+            "hex": "#85520d",
+            "coveragePercent": 3.4249
+          },
+          {
+            "hex": "#b47216",
+            "coveragePercent": 2.6079
+          },
+          {
+            "hex": "#e2951c",
+            "coveragePercent": 2.432
+          },
+          {
+            "hex": "#605d3f",
+            "coveragePercent": 2.1637
+          },
+          {
+            "hex": "#434f63",
+            "coveragePercent": 2.0244
+          },
+          {
+            "hex": "#f6c328",
+            "coveragePercent": 1.8928
+          },
+          {
+            "hex": "#f6d164",
+            "coveragePercent": 0.9821
+          },
+          {
+            "hex": "#637496",
+            "coveragePercent": 0.7284
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#93570f",
+            "coveragePercent": 26.1115
+          },
+          {
+            "hex": "#e3951e",
+            "coveragePercent": 22.2599
+          },
+          {
+            "hex": "#b97617",
+            "coveragePercent": 21.7394
+          },
+          {
+            "hex": "#f5c21e",
+            "coveragePercent": 14.5521
+          },
+          {
+            "hex": "#f7cd54",
+            "coveragePercent": 12.5811
+          },
+          {
+            "hex": "#49689c",
+            "coveragePercent": 2.7561
+          }
+        ],
+        "visibleSamples": 792275,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/shadow-altar-v1.png": {
+      "sha256": "a93cdb35e660af878608c51ca7105662d6f8527cc29b568476cbee3f99c36f9c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowAltar"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1f1d",
+            "coveragePercent": 18.0342
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 17.223
+          },
+          {
+            "hex": "#1c0f0d",
+            "coveragePercent": 15.7808
+          },
+          {
+            "hex": "#42312f",
+            "coveragePercent": 15.2709
+          },
+          {
+            "hex": "#5b4540",
+            "coveragePercent": 8.723
+          },
+          {
+            "hex": "#805e53",
+            "coveragePercent": 4.5293
+          },
+          {
+            "hex": "#60190c",
+            "coveragePercent": 4.0498
+          },
+          {
+            "hex": "#7f4c21",
+            "coveragePercent": 3.2101
+          },
+          {
+            "hex": "#b97534",
+            "coveragePercent": 2.4511
+          },
+          {
+            "hex": "#e1a558",
+            "coveragePercent": 2.2023
+          },
+          {
+            "hex": "#b8181d",
+            "coveragePercent": 2.1159
+          },
+          {
+            "hex": "#a9806d",
+            "coveragePercent": 1.9837
+          },
+          {
+            "hex": "#f3d288",
+            "coveragePercent": 1.7201
+          },
+          {
+            "hex": "#571e6f",
+            "coveragePercent": 1.3251
+          },
+          {
+            "hex": "#f8ead0",
+            "coveragePercent": 0.9115
+          },
+          {
+            "hex": "#bc3fe8",
+            "coveragePercent": 0.4691
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965e30",
+            "coveragePercent": 30.4628
+          },
+          {
+            "hex": "#c78545",
+            "coveragePercent": 24.4772
+          },
+          {
+            "hex": "#af161b",
+            "coveragePercent": 21.61
+          },
+          {
+            "hex": "#efbe67",
+            "coveragePercent": 16.6221
+          },
+          {
+            "hex": "#7622a2",
+            "coveragePercent": 4.1303
+          },
+          {
+            "hex": "#cd42f4",
+            "coveragePercent": 2.6976
+          }
+        ],
+        "visibleSamples": 830285,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/props-v4.png": {
       "sha256": "4adfb92fb1286d8a3e8853058255a3aa18c0c587e901be994491bd7c83e4327a",
       "width": 1536,
@@ -21511,14 +22282,14 @@
       {
         "value": "#08141166",
         "lines": [
-          358
+          359
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21546,14 +22317,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          347
+          348
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          347
+          348
         ],
         "dynamic": false
       },
@@ -21609,7 +22380,7 @@
       {
         "value": "#465959",
         "lines": [
-          253
+          254
         ],
         "dynamic": false
       },
@@ -21630,7 +22401,7 @@
       {
         "value": "#60706a",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21644,7 +22415,7 @@
       {
         "value": "#718679",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21679,7 +22450,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21693,14 +22464,14 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          253
+          254
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          218
+          219
         ],
         "dynamic": false
       },
@@ -21728,7 +22499,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          218
+          219
         ],
         "dynamic": false
       },
@@ -21756,14 +22527,14 @@
       {
         "value": "#d98877",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          376
+          377
         ],
         "dynamic": false
       },
@@ -21784,14 +22555,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21826,21 +22597,21 @@
       {
         "value": "#e8d89b",
         "lines": [
-          218
+          219
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          376
+          377
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          376
+          377
         ],
         "dynamic": false
       },
@@ -21868,7 +22639,7 @@
       {
         "value": "#f0dfb1",
         "lines": [
-          253
+          254
         ],
         "dynamic": false
       },
@@ -21883,7 +22654,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -21897,7 +22668,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          376
+          377
         ],
         "dynamic": false
       },
@@ -21911,7 +22682,7 @@
       {
         "value": "#fff",
         "lines": [
-          253
+          254
         ],
         "dynamic": false
       }
@@ -21934,746 +22705,788 @@
       {
         "value": "#070e18",
         "lines": [
-          418
+          454
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          443
+          479
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          396
+          432
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          442
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          404
+          440
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          102,
-          111
+          122,
+          131
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          87,
-          92
+          100,
+          112
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c00",
         "lines": [
-          92
+          112
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100e20ed",
+        "lines": [
+          323
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          594
+          630
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          416,
-          422
+          452,
+          458
         ],
         "dynamic": false
       },
       {
         "value": "#11252d30",
         "lines": [
-          149
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#112b3fee",
         "lines": [
-          378
+          414
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          441
+          477
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          628
+          664
         ],
         "dynamic": false
       },
       {
         "value": "#140c2028",
         "lines": [
-          149
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#142b3f",
         "lines": [
-          719
+          755
         ],
         "dynamic": false
       },
       {
         "value": "#160f16",
         "lines": [
-          180
+          200
         ],
         "dynamic": false
       },
       {
         "value": "#163847dd",
         "lines": [
-          564
+          600
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          578
+          614
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          658
+          694
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          399
+          435
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          495
+          531
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          329
+          365
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          314
+          350
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          553
+          589
         ],
         "dynamic": false
       },
       {
         "value": "#24314820",
         "lines": [
-          149
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#251339",
         "lines": [
-          707
+          743
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          598
+          634
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          390
+          426
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          540
+          576
         ],
         "dynamic": false
       },
       {
         "value": "#455764ad",
         "lines": [
-          239
+          259
         ],
         "dynamic": false
       },
       {
         "value": "#526673d9",
         "lines": [
-          238
+          258
         ],
         "dynamic": false
       },
       {
         "value": "#72b4c9af",
         "lines": [
-          540
+          576
         ],
         "dynamic": false
       },
       {
         "value": "#83749f",
         "lines": [
-          163
+          183
         ],
         "dynamic": false
       },
       {
         "value": "#8b764eaa",
         "lines": [
-          468
+          504
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          480
+          516
         ],
         "dynamic": false
       },
       {
         "value": "#a5787d",
         "lines": [
-          163
+          183
         ],
         "dynamic": false
       },
       {
         "value": "#a893d0",
         "lines": [
-          174
+          194
         ],
         "dynamic": false
       },
       {
         "value": "#a8e8ff",
         "lines": [
-          544
+          580
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          586
+          622
         ],
         "dynamic": false
       },
       {
         "value": "#aab6b1b8",
         "lines": [
-          243
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#ab83d955",
         "lines": [
-          586
+          622
         ],
         "dynamic": false
       },
       {
         "value": "#abb78d66",
         "lines": [
-          251
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#b5a777",
         "lines": [
-          478
+          514
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          707
+          743
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          673
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          388
+          424
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          432
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          586
+          622
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          554
+          590
         ],
         "dynamic": false
       },
       {
         "value": "#c9d0cb62",
         "lines": [
-          237
+          257
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cda6ef",
+        "lines": [
+          332
         ],
         "dynamic": false
       },
       {
         "value": "#d0af77",
         "lines": [
-          703
+          739
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          559
+          595
         ],
         "dynamic": false
       },
       {
         "value": "#d199aa55",
         "lines": [
-          251
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#d1c9acaf",
         "lines": [
-          506
+          542
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          631
+          667
         ],
         "dynamic": false
       },
       {
         "value": "#d8c998bb",
         "lines": [
-          243
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          404
+          440
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          707
+          743
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          705
+          741
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          478
+          514
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          404
+          440
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          579
+          615
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          693
+          729
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          546
+          582
         ],
         "dynamic": false
       },
       {
         "value": "#e5a184",
         "lines": [
-          174
+          194
         ],
         "dynamic": false
       },
       {
         "value": "#e6b0fa22",
         "lines": [
-          437
+          473
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c6ff",
+        "lines": [
+          333
         ],
         "dynamic": false
       },
       {
         "value": "#e7616355",
         "lines": [
-          692
+          728
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          692
+          728
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          673
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#ef8b65",
         "lines": [
-          174
+          194
         ],
         "dynamic": false
       },
       {
         "value": "#f2e3b9",
         "lines": [
-          704
+          740
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          692
+          728
         ],
         "dynamic": false
       },
       {
         "value": "#f3d8ac",
         "lines": [
-          437,
-          573
+          473,
+          609
         ],
         "dynamic": false
       },
       {
         "value": "#f3dbaf",
         "lines": [
-          319
+          355
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          314
+          350
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          478
+          514
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          594
+          630
         ],
         "dynamic": false
       },
       {
         "value": "#ff7850",
         "lines": [
-          247
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#ff9c6238",
         "lines": [
-          598
+          634
         ],
         "dynamic": false
       },
       {
         "value": "#ffac69",
         "lines": [
-          247
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#ffb385",
         "lines": [
-          388
+          424
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          598
+          634
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          419
+          455
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          693
+          729
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          388
+          424
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          432
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          620
+          656
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          478,
-          621
+          514,
+          657
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          628
+          664
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          540
+          576
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          546
+          582
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          586
+          622
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          563
+          599
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b98c",
         "lines": [
-          251
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          382,
-          559
+          418,
+          595
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          330
+          366
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          379
+          415
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          417,
-          422,
-          423,
-          426,
-          598
+          453,
+          458,
+          459,
+          462,
+          634
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c8",
+        "lines": [
+          333
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          103,
-          112
+          123,
+          132
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          589
+          625
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          708
+          744
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          564
+          600
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          553
+          589
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          393
+          429
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffff00",
+        "lines": [
+          94
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffffff",
+        "lines": [
+          94
         ],
         "dynamic": false
       }
@@ -22940,7 +23753,7 @@
       {
         "value": "#be96eb",
         "lines": [
-          55
+          57
         ],
         "dynamic": false
       }

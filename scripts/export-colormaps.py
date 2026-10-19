@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -165,6 +165,16 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+cedar = atlas['camp']['cedar']
+objects['campCedar'] = {'kind': 'scenery',
+    'paletteGroup': group('object.campCedar', manifest[cedar['image']], cedar, 'ART_CAMP.cedar')}
+for index, panel in enumerate(atlas['camp']['backdrop']['panels']):
+    objects['campPanel.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[panel['image']],
+        'worldRegistration': {'x': panel['x'], 'w': panel['w'], 'groundY': 820}}
+altar = atlas['shadowAltar']
+objects['shadowAltar'] = {'kind': 'travel-altar',
+    'paletteGroup': group('object.shadowAltar', manifest[altar['image']], altar, 'ART_SHADOW_ALTAR'),
+    'registration': {k: v for k, v in altar.items() if k != 'image'}}
 katana = atlas['inventory']['katana']
 objects['inventoryKatana'] = {'kind': 'equipment-art',
     'paletteGroup': group('object.inventoryKatana', manifest[katana['image']], katana, 'ART_INVENTORY.katana')}

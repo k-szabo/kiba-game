@@ -17,7 +17,9 @@ A táborban a szentélynél gyógyulás és fejlesztés, a három túlélőnél 
 
 A `forestCamp.npcs` katalógus bejegyzései: `id`, `x`, `y`, `name`, `dialogue`, `image`, `height`. A `name` és `dialogue` lokalizációs kulcs. Később egy NPC `requiresFlag: {realm, id}` feltételt kaphat; ezt a megjelenítés és az interakció ugyanazzal a `campNPCVisible` függvénnyel ellenőrzi. Új NPC-hez külön jóváhagyott szöveg, grafikai koncepció és mentési/küldetésfeltétel szükséges.
 
-A képek az `ART_MANIFEST`, az eredeti méretek és talpillesztések az `ART_CAMP` metaadatában szerepelnek. A háttér egységesen skálázódik; a forrás `groundY=532` pontja illeszkedik a járható talajhoz. A sprite-ok eredeti RGBA-pixelei megmaradnak. A promptok a [grafikai nyilvántartásban](art-prompts/forest-camp-v1.json), a referencia-paletták a `colormaps.json` NPC-bejegyzéseiben találhatók.
+A képek az `ART_MANIFEST`, az eredeti méretek és talpillesztések az `ART_CAMP` metaadatában szerepelnek. A háttér három natív 1254 × 1254 képpanelből áll, 160 világ-egységes átfedéssel, egyszer elkészített natív felbontású alfa-maszkkal. Két festett cédrus takarja a szerkezeti illesztéseket a járható út mögött. A korábbi kép tartalék és referencia; a `groundY=532 / h=724` arány továbbra is a járható `y=820` talajhoz igazít. A panelenkénti részletsűrűség kb. 1,55-szörös a korábbihoz képest; nem a régi bitmap egyszerű nagyítása. A sprite-ok és a cédrus eredeti RGBA-pixelei megmaradnak. Promptok: [eredeti tábor](art-prompts/forest-camp-v1.json), [részletes panelek](art-prompts/forest-camp-hd-panels.json), [cédrus](art-prompts/camp-cedar-v1.json).
+
+A tábor ugyanazt a részecskerajzolót hívja Momo előtt, mint a normál pályák: a szellemlépés nyoma látható, szünetben áll, csökkentett mozgásnál nem keletkezik. A háttér részletsűrűségét és talajillesztését a `test-camp-backdrop.cjs`, a nyomot tényleges inputtal a `test-camp-dash.cjs` ellenőrzi; a látványhoz külön böngészős ellenőrzés kell.
 
 ## Ellenőrzés
 
