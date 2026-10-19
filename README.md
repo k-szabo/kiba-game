@@ -2,7 +2,7 @@
 
 [English](README.en.md)
 
-Egy kis shiba szamuráj. Négy birodalom. Egy apa, akit haza kell hozni.
+Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
 **[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)
 
