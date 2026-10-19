@@ -28,6 +28,7 @@ function setup(){
  assert(h.elements.get('mapContent').children[0].innerHTML.includes('aria-label="'+r("I18n.t('shadow.name')")+'"'));
  assert(r("travelGrid(0).children.every(button=>button.disabled)"));r('closeMap();');
  r('initPlayer(level.altar);interact();');assert(r("flags[3].includes('shadowAltar')"));
+ assert.equal(r('state'),'dialog');h.dismiss();
  assert(r("fastTravel(levels[0].rests[0],0)"));
  assert(r("fastTravel(levels[3].rests[0],3)"));
  assert.doesNotThrow(()=>validate(r('saved')));

@@ -1,0 +1,38 @@
+{
+  "task": "BUG57 — Forest Refuge native detail panels",
+  "mode": "builtin image_gen",
+  "reference": "assets/images/backgrounds/forest-camp-v1.png",
+  "approval": "Existing approved Forest Refuge layout; fidelity/detail repair, no new environment design.",
+  "requestedDimensions": [
+    1536,
+    1536
+  ],
+  "actualDimensions": [
+    1254,
+    1254
+  ],
+  "sourceThirdDimensions": [
+    724,
+    724
+  ],
+  "nativeDensityIncrease": 1.7320441988950277,
+  "walkableGroundFraction": 0.7348,
+  "compositionLimitations": "Independent generative extraction preserves overall content and ground line but is not pixel-registered to original or its neighbors. Integrator must inspect seams and reject integration if continuity cannot be maintained. Source files are unmodified tool output; no image resampling, cropping, compositing or sharpening.",
+  "panels": [
+    {
+      "id": "left",
+      "file": "assets/images/backgrounds/forest-camp-hd-left-v1.png",
+      "prompt": "Use case: precise-object-edit. Input image is the exact approved 3:1 panoramic Forest Refuge camp background. Produce ONLY THE LEFT SQUARE THIRD of this panorama as a native high-detail 1536 x 1536 square illustration; it corresponds to source x=0 through 724, y=0 through724 of the 2172x724 image. Do NOT reproduce the whole panorama. Keep exactly this crop's composition, perspective, scale and content: giant red maple trunk at upper left, rope lanterns and large indigo tent with pale emblem centered toward the right side of this crop, barrels and bundles at bottom right, flat walkable forest ground at73.48% of image height, mossy foreground rock cutaway below. The campfire is OUTSIDE this crop to the right and MUST NOT appear. Preserve content touching right boundary where main tent/bundles lead into the next panel. Maintain exact vertical placement of canopy, tent, ground and rock foreground from reference. High-detail painted Japanese fantasy videogame background, crisp individual needles, cloth weave, ropes, wood grain and moss, clean native detail rather than soft enlargement; no extra landmarks, people, creatures, text, grid, labels, blur, border or vignette. Blue twilight and warm lantern lighting exactly as reference. Output ONE square panel, not triptych, not entire panorama."
+    },
+    {
+      "id": "center",
+      "file": "assets/images/backgrounds/forest-camp-hd-center-v1.png",
+      "prompt": "Use case: precise-object-edit. Input image is the exact approved 3:1 panoramic Forest Refuge camp background. Produce ONLY THE CENTER SQUARE THIRD of this panorama as a native high-detail 1536 x 1536 square illustration; it corresponds exactly to source x=724 through1448, y=0 through724 of the2172x724image. Do NOT reproduce the whole panorama or rearrange content. Keep original crop's position, scale, perspective and content: left boundary begins beside large indigo tent's rightmost ropes/bundles; central open misty blue forest between tall straight conifers; a cooking cauldron hanging above bright orange campfire at centerx approximately50% and original yapproximately62%; hanging lantern rope traverses upper middle foreground between tent edges. Fire stone ring centered atx50%, yapproximately67%. Barrel clusters and packs lie besidefire andrightboundary begins smaller indigo tent's LEFTedge. The stone shrine is entirely OUTSIDE this crop to the right and mustnotappear. Flat walkable forest ground at73.48%imageheight with mossy rocky cutaway below. Preserve allcontent touching left/right boundary, tents must NOT be moved into frame. High-detail painted Japanese fantasy videogame background, crispindividual needles, rope braiding, ember textures, woodgrainandmoss; native microdetail not blurry enlargement. No new landmarks, figures, creatures, lettering, frames, grids, vignettes. Exactblue twilight and warmfirelighting asreference. OutputONE squarepanel, nottriptych, notentirepanorama."
+    },
+    {
+      "id": "right",
+      "file": "assets/images/backgrounds/forest-camp-hd-right-v1.png",
+      "prompt": "Use case: precise-object-edit. Input image is the exact approved3:1panoramic Forest Refuge camp background. Produce ONLY THE RIGHT SQUARE THIRD of this panorama as a native high-detail1536x1536square illustration; exactly sourcex1448through2172, y0through724of2172x724image. Do NOT reproducewholepanorama. Preserve original crop's composition, perspective, position, scale and content: small indigo supply tent occupiesleftmidground, stacked bundles and woven baskets alongitsbase. Japanese woodenshrine withtiledroof and stonebase atcenterright, stone lantern atitsright. Densegreen bambooonrightedge, redmaplefoliagearoundshrine, tall darktree trunks behind. Campfire is entirelyOUTSIDE thiscrop toleft andMUSTNOTappear. Flatwalkableforestground at73.48% imageheight, mossyrocky cutawaybelow. Keep same shrub/rope/tentcontent touchingleftedge so itcanmeetthe nextpanel. Maintain vertical scale: tentroof neary39%imageheight, shrine roofnear25%, tentfloory66%, ground73.48%. Exactblue twilight and warm lantern lighting; nativecrisp paintedJapanese fantasy videogame style with individualbamboo leaves, tileedges, ropebraids, carvedwoodgrainand mossdetail, noblur orsoft enlargement. No newlandmarks, extrashrines, figures, creatures, text, grids, labels, framesorvignette. OutputONE squarepanel, nottriptych, notentirepanorama."
+    }
+  ]
+}

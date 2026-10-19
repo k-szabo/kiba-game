@@ -1,0 +1,8 @@
+{
+  "tool": "builtin image_gen",
+  "kind": "existing forest material variant",
+  "reference": "assets/images/backgrounds/forest-camp-v1.png",
+  "path": "assets/images/props/camp-cedar-v1.png",
+  "prompt": "Minor scenery material variant for existing Kiba Forest Refuge background, reference image for exact painted style, cedar bark/moss/fern palette. Make ONE tall ancient CEDAR TREE TRUNK cutout with small mossy root mound, isolated on genuine transparent RGBA background. Portrait2:3 canvas, trunk broad and irregular, branching softly at top with sparse dark cedar needles, warm thin amberrimlight at lower edge, deeply detailed bluecharcoal/darkbrown bark and moss, small ferns/roots at foot. Fullsilhouette isolated, no groundplane, no forestbackground, no lanterns/tents/humans/UI/text. Actual fully transparent margins and gaps. Entire tree including top branches and small foot roots visible with padding, no clipping. It will stand BEHIND the walkable camp footpath to occlude joins between high-detail background panels, natural forest tree matching approved setting. Large painted dark trunk occupies central45%width with asymmetric organic silhouette; dense foliage onlyupper edge, keep mainbulk vertical. Rich crisp Japanese fantasy handpainted texture, not photorealistic/notflatvector/notcartoon. No broad haze/glowhalo, no drop shadow, no frames.",
+  "sourceAlpha": "Generated RGBA copied unchanged. Runtime renders two cedars behind the walkable path to occlude structural joins; no new collision or traversable geometry."
+}

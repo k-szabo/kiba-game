@@ -8,6 +8,7 @@ A `levels[3]` / `shadowRealm` 11 200 × 2 600 játékegység. A parttól a kolos
 
 - A mennyországi `shadowEntered` jelző rögzíti a történeti belépést. A szeráf legyőzése önmagában nem nyitja meg a negyedik világot a normál gyorsutazáshoz.
 - A `shadowAltar` csak az oltár kifejezett használatakor aktiválódik. Pihenőhely felfedezése, gyógyulás és halál nem helyettesíti ezt.
+- Az oltár külön, 260 játékegység magas feketekő grafikát és kontrasztos `影` jelölést kapott. Az első aktiválás megőrzi a feloldásjelzőt, majd két bekezdéses HU/EN párbeszéd alatt megállítja a játékot. Későbbi használata a helyi pihenő gyógyítása, a párbeszédet halál és visszatérés sem ismétli. A `test-shadow-altar.cjs` ezt tényleges, átállított interakcióbillentyűvel ellenőrzi.
 - Aktiválásig sem az Árnyékvilágból, sem oda nem indítható normál gyorsutazás. A térkép továbbra is megnyitható; az utazógombok zároltak. Halálkor a helyi mentőpont használható.
 - A börtönőr legyőzése feloldja a felvehető `prisonKey` tárgyat. Nyitáskor a kulcs elfogy, a `prisonOpen` megmarad. A börtönben a `prisonTrace` külön interakcióval rögzíti Haru nyomát.
 - Az opcionális orgonista legyőzése feloldja a `corruptedHymn` kottát. A két miniboss és jutalmaik nem ismétlődnek halál, pihenés vagy visszatérés után.

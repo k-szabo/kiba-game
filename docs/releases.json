@@ -208,6 +208,30 @@
           "en": "The compass now shows the main objective's name and direction in a separate, high-contrast display, and indicates when you are nearby."
         }
       ]
+    },
+    {
+      "version": "0.9.22_6f5ad83f",
+      "code": "6f5ad83f",
+      "baseVersion": "0.9.22",
+      "slug": "camp-detail-dash-shadow-altar",
+      "summary": {
+        "hu": "A menedék és az árnyékoltár javításai",
+        "en": "Refuge and Shadow Altar fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az erdei menedék háttere nagy képernyőn is részletesebben jelenik meg.",
+          "en": "The Forest Refuge background now shows more detail on large displays."
+        },
+        {
+          "hu": "A szellemlépés lila nyoma az erdei menedékben is látható.",
+          "en": "Spirit Dash's purple trail is now visible in the Forest Refuge."
+        },
+        {
+          "hu": "Az árnyékoltár nagyobb, sötét megjelenést, külön kanjijelölést és első aktiváláskor baljós párbeszédet kapott.",
+          "en": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation."
+        }
+      ]
     }
   ],
   "releases": [

@@ -82,11 +82,31 @@ const Visuals = (() => {
     }
     return null;
   }
+  const campPanels=new WeakMap();
+  function campPanelImage(panel,index){
+    const image=images[panel.image];if(index===0)return image;
+    let surface=campPanels.get(image);if(surface)return surface;
+    // Blend the authored panel overlap once at native density, never upscale a bitmap cache.
+    const art=ART_CAMP.backdrop,previous=art.panels[index-1],overlap=previous.x+previous.w-panel.x;
+    surface=document.createElement('canvas');surface.width=surface.height=art.panelSize;
+    const paint=surface.getContext('2d');paint.drawImage(image,0,0);
+    const fade=paint.createLinearGradient(0,0,art.panelSize,0);
+    fade.addColorStop(0,'#ffffff00');fade.addColorStop(overlap/panel.w,'#ffffffff');fade.addColorStop(1,'#ffffffff');
+    paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,art.panelSize,art.panelSize);paint.globalCompositeOperation='source-over';
+    campPanels.set(image,surface);return surface;
+  }
   function campBackdrop(){
     const art=ART_CAMP.backdrop,s=forestCamp.width/art.w,top=forestCamp.start.y-art.groundY*s;
     ctx.fillStyle='#0e202c';ctx.fillRect(0,0,viewW,H);
     if(!usable(art.image))return;
-    ctx.drawImage(images[art.image],-camera,top-cameraY,forestCamp.width,art.h*s);
+    if(art.panels?.every(panel=>usable(panel.image))){
+      ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+      art.panels.forEach((panel,index)=>ctx.drawImage(campPanelImage(panel,index),panel.x-camera,top-cameraY,panel.w,art.h*s));ctx.restore();
+      // Native painted cedars hide structural joins above the path; their roots sit behind it.
+      ctx.save();ctx.translate(-camera,-cameraY);
+      frame(ART_CAMP.cedar.image,ART_CAMP.cedar,960,forestCamp.start.y-32,950);
+      frame(ART_CAMP.cedar.image,ART_CAMP.cedar,1840,forestCamp.start.y-32,950,-1);ctx.restore();
+    }else ctx.drawImage(images[art.image],-camera,top-cameraY,forestCamp.width,art.h*s);
     // The canopy keeps its proportions; a short fade joins the quiet upper sky.
     const fade=ctx.createLinearGradient(0,top-cameraY,0,top-cameraY+42);
     fade.addColorStop(0,'#0e202c');fade.addColorStop(1,'#0e202c00');
@@ -296,7 +316,23 @@ const Visuals = (() => {
   function objects(r) {
     if(realm===3){
       const altar=level.altar;
-      if(visiblePoint(altar))BossVFX.portal(altar.x,altar.y+8,130,hasFlag('shadowAltar')?.8:.35);
+      if(visiblePoint(altar,440)){
+        const height=260,lit=hasFlag('shadowAltar');
+        BossVFX.portal(altar.x,altar.y+5,145,lit?.8:.3);
+        frame(ART_SHADOW_ALTAR.image,ART_SHADOW_ALTAR,altar.x,altar.y+2,height);
+        ctx.save();ctx.textAlign='center';ctx.fillStyle='#100e20ed';
+        ctx.font='bold 14px Manrope, sans-serif';
+        const name=I18n.t('shadow.place.altar'),width=Math.max(140,ctx.measureText(name).width+26);
+        let markerX=altar.x,top=altar.y-height-68;
+        if(viewW<600){
+          const panel=$('quest'),bounds=!panel.hidden&&typeof panel.getBoundingClientRect==='function'?panel.getBoundingClientRect():null;
+          if(bounds)top=clamp(Math.max(top,cameraY+(bounds.bottom+12)/scale),cameraY+8,cameraY+H-154);
+          markerX=clamp(markerX,camera+width/2+8,camera+viewW-width/2-8);
+        }
+        ctx.fillRect(markerX-width/2,top,width,64);ctx.strokeStyle='#cda6ef';ctx.lineWidth=1.5;ctx.strokeRect(markerX-width/2,top,width,64);
+        ctx.fillStyle=lit?'#fff0c8':'#e6c6ff';ctx.font='bold 32px serif';ctx.fillText('影',markerX,top+34);
+        ctx.font='bold 14px Manrope, sans-serif';ctx.fillText(name,markerX,top+55);ctx.restore();
+      }
     }
     if(level===yomi&&!Merchant.rescued()&&visiblePoint(yomi.akash,180)){
       shadow(yomi.akash.x,yomi.akash.y,30,.3);
