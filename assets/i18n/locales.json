@@ -624,7 +624,9 @@
       "menu.changelog.0922.campFixTitle": "A menedék és az árnyékoltár javításai",
       "menu.changelog.0922.campBackground": "Az erdei menedék háttere nagy képernyőn is részletesebben jelenik meg.",
       "menu.changelog.0922.campDash": "A szellemlépés lila nyoma az erdei menedékben is látható.",
-      "menu.changelog.0922.shadowAltarFix": "Az árnyékoltár nagyobb, sötét megjelenést, külön kanjijelölést és első aktiváláskor baljós párbeszédet kapott."
+      "menu.changelog.0922.shadowAltarFix": "Az árnyékoltár nagyobb, sötét megjelenést, külön kanjijelölést és első aktiváláskor baljós párbeszédet kapott.",
+      "menu.changelog.0923.itemListTitle": "Letisztultabb tárgykijelzés",
+      "menu.changelog.0923.itemList": "A bal felső tárgylista megszűnt; a megszerzett tárgyakat a hátizsákban tekintheted meg."
     }
   },
   "en": {
@@ -1252,7 +1254,9 @@
       "menu.changelog.0922.campFixTitle": "Refuge and Shadow Altar fixes",
       "menu.changelog.0922.campBackground": "The Forest Refuge background now shows more detail on large displays.",
       "menu.changelog.0922.campDash": "Spirit Dash's purple trail is now visible in the Forest Refuge.",
-      "menu.changelog.0922.shadowAltarFix": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation."
+      "menu.changelog.0922.shadowAltarFix": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation.",
+      "menu.changelog.0923.itemListTitle": "Cleaner item display",
+      "menu.changelog.0923.itemList": "The top-left item list has been removed; view your collected items in the inventory."
     }
   }
 }

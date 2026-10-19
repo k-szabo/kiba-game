@@ -2,6 +2,8 @@
 
 Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a fegyver helyét mutatja. Kis kijelzőn a panelek egymás alá kerülnek, és az ablak görgethető.
 
+A megszerzett tárgyak listája kizárólag a hátizsák ablakában jelenik meg. A korábbi bal felső HUD-lista megszűnt; a küldetéscél és a birtokolt iránytű kijelzése megmarad.
+
 Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Nincs második tárgypéldány-adatbázis vagy új mentésmező. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét és a pikkely megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
 
 A felszerelt fegyver Momo katanája, Yomi őrzőjének legyőzése után a Hajnalkard. A fegyver részletei a tényleges fejlesztésekből számított normál és erős támadás sebzését mutatják. A megjelenítés nem módosítja a harcot.
