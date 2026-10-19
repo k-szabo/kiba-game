@@ -7,7 +7,6 @@
 .progression{min-width:140px;color:#ead2a0;display:grid;gap:3px;font-size:11px}.progression b{font-size:13px}.xp-track{height:4px;background:#111d26;border-radius:4px;overflow:hidden}.xp-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,#b59155,#ffe3a0)}.training-panel{max-width:800px!important}.training-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}.training-stats>div{padding:18px;border:1px solid #d9ba7855;border-radius:10px;background:#14242bee;display:flex;flex-direction:column;gap:12px}.training-stats h3,.training-stats p{margin:0}.training-stats p{font-size:13px;line-height:1.5;flex:1}.training-stats b{font-size:12px;color:#edcf94}.training-stats button{border:1px solid #e6c78088;padding:10px;border-radius:6px;color:#ffe4ac;background:#be965523}.training-stats button:disabled{opacity:.35;cursor:default}@media(max-width:850px){.hud{gap:8px}.progression{min-width:95px}.hud-right button{font-size:10px;padding:7px}.hud-left{gap:8px}.training-stats{grid-template-columns:1fr}.training-stats>div{padding:12px;gap:6px}.training-panel{max-height:85vh;overflow:auto}#health{max-width:190px;flex-wrap:wrap}}
 @media(max-width:650px){.hud{padding:12px;gap:6px}.hud-left{max-width:135px;min-width:0}.hud-left .crest,.hud-left .souls{display:none}#realmLabel{display:block;max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#health{font-size:17px;letter-spacing:1px;line-height:1.3;max-width:140px}.hud-right{gap:4px}.hud-right button{padding:6px;font-size:9px}.progression{position:absolute;right:14px;top:84px;width:105px;min-width:0;font-size:9px}#quest{max-width:calc(100% - 145px)}.training-panel h2{font-size:25px}}
 
-#relicInventory{position:absolute;top:190px;left:35px;padding:8px 12px;background:#13232ed9;border:1px solid #d9ba7b66;color:#f1daab;font-size:10px;letter-spacing:.4px;pointer-events:none}@media(max-width:800px){#relicInventory{left:17px;top:182px;font-size:9px}}
 
 /* Kiba's shifting presence and the language control. */
 .kiba-current{display:block;margin-top:2px;color:#d7c693;font-size:9px;letter-spacing:.06em;text-shadow:0 1px 5px #091318}
@@ -44,13 +43,13 @@
 .training-stats{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
 .hud-right button,.training-stats button,.travel-grid button{min-height:44px}
 .eyebrow,.menu-note,.map-legend,.travel-label,#controls,#controls .area,.kiba-current{font-size:12px!important}
-#quest p,.map-node,.training-stats b,#relicInventory{font-size:12px}
+#quest p,.map-node,.training-stats b{font-size:12px}
 .map-node.locked{opacity:.62}
 #bossHud{padding:8px 12px;background:#102639d9;border:1px solid #e2c7928a;border-radius:8px;text-shadow:0 2px 4px #07131d}
 #prompt{color:#fff2cf;border-color:#e2c68e;background:#132c3df2}
 #quest{padding:10px 13px;background:#112a3cde;border:1px solid #e3cb9180;border-radius:7px;box-shadow:0 5px 18px #07131d55}
 #quest p{color:#f4f2e8;text-shadow:0 1px 3px #06111b}
-@media(max-width:800px){.training-stats{grid-template-columns:1fr}.eyebrow,.menu-note,.map-legend,.travel-label,#controls,#controls .area,.kiba-current{font-size:11px!important}.hud-right button{min-height:40px}#quest p,.map-node,#relicInventory{font-size:11px}}
+@media(max-width:800px){.training-stats{grid-template-columns:1fr}.eyebrow,.menu-note,.map-legend,.travel-label,#controls,#controls .area,.kiba-current{font-size:11px!important}.hud-right button{min-height:40px}#quest p,.map-node{font-size:11px}}
 @media(max-width:650px){#quest{left:12px;top:96px;max-width:calc(100% - 155px);padding:8px 10px}#quest p{font-size:12px;line-height:1.5}#bossHud{left:16px;right:16px;top:225px}#controls{flex-wrap:wrap;justify-content:center;gap:5px 8px;padding:8px 6px}#controls>span{font-size:11px!important}}
 @media(prefers-reduced-motion:reduce){button,#toast,#bossHealth{transition:none!important}}
 #help{z-index:20}.help-panel{max-width:1080px;max-height:92dvh;overflow:auto;padding:28px 32px}.help-panel h2{margin:8px 0 20px}.help-columns{display:grid;grid-template-columns:minmax(0,.9fr) minmax(340px,1.1fr);gap:28px}.help-guide{display:grid;align-content:start;gap:14px}.help-guide section,.help-settings{border:1px solid #d9ba7b55;background:#152b34e8;border-radius:8px;padding:17px 20px}.help-panel h3{font-size:16px;color:#ffe0a2;margin:0 0 7px}.help-panel p{font-size:13px;line-height:1.65;margin:0;color:#e3e8dc}.help-settings>p{margin-bottom:14px}.help-settings label{display:block;margin:14px 0 7px;font-size:13px;font-weight:700}.help-settings select{width:100%;min-height:44px;padding:8px 10px;border:1px solid #ddc387;background:#10242f;color:#fff0ce;font:inherit}.binding-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.binding-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 8px;background:#0f2029;border:1px solid #d9ba7b44;border-radius:6px;font-size:12px}.binding-row button{min-height:40px;min-width:66px;padding:6px 9px;background:#284354;border-color:#d9ba7b88;color:#fff0c8;font-size:12px;font-weight:700}.binding-row button:focus-visible,.help-settings select:focus-visible{outline:3px solid #f9d989;outline-offset:2px}#bindingMessage{min-height:20px;margin:10px 0 0;color:#ffdda0}.binding-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.binding-tools button{min-height:44px;padding:8px 11px;border-color:#d9ba7b80;background:#1b3540;font-size:12px}.help-panel>.primary{margin-top:20px}.help-panel #closeHelp{justify-content:center}
@@ -161,7 +160,7 @@
  .progression{position:static;order:1;width:100px;min-width:100px}
  .hud-right{order:2;flex-basis:100%;flex-wrap:wrap;justify-content:flex-end}
  .hud-right button,#inventoryButton{min-width:44px!important;min-height:44px}
- #quest{top:145px}#relicInventory{top:250px}
+ #quest{top:145px}
  .inventory-character{flex-direction:column;align-items:center;max-width:none;min-height:0;padding:0;gap:14px}
  #inventoryMomo{width:min(100%,240px)}
  .inventory-weapon-slot{position:static;align-self:flex-end;transform:none;width:140px;max-width:100%}
@@ -169,7 +168,7 @@
 }
 /* Compact battle HUD leaves the world-space attack tells unobstructed. */
 @media(max-width:650px){
- #game.encounter-active #quest,#game.encounter-active #relicInventory{display:none}
+ #game.encounter-active #quest{display:none}
  #game.encounter-active #bossHud{top:125px;left:12px;right:12px;padding:5px 8px}
  #game.encounter-active #bossName{display:block;font-size:14px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  #game.encounter-active #bossHud>div{height:4px;margin-top:4px}
@@ -238,7 +237,7 @@
 @media(max-width:800px){.shop-items{grid-template-columns:1fr}.shop-item{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px 16px}.shop-item canvas{width:90px;height:90px;grid-row:span 2}.shop-item h3{margin:0;text-align:left}.shop-item p{margin:0}.shop-item button{grid-column:1/-1}.shop-panel{padding:22px}}
 @media(max-width:650px){#coinPurse{position:absolute;left:14px;top:83px;font-size:14px}#coinPurse img{width:22px;height:26px}#minimap{right:12px;bottom:155px}#minimap canvas{width:144px;height:92px}.shop-panel{max-height:calc(100dvh - 18px);padding:20px}.shop-item{padding:12px;grid-template-columns:72px minmax(0,1fr)}.shop-item canvas{width:72px;height:72px}}
 #journeyHUD{position:absolute;left:35px;top:108px;width:350px;max-width:calc(100% - 70px);display:flex;flex-direction:column;gap:8px;pointer-events:none}
-#journeyHUD #quest,#journeyHUD #relicInventory{position:static;max-width:none;width:100%;margin:0}
+#journeyHUD #quest{position:static;max-width:none;width:100%;margin:0}
 #compass{display:grid;grid-template-columns:56px minmax(0,1fr) 44px;align-items:center;gap:9px;margin-top:10px;padding-top:10px;border-top:1px solid #d8bd80}
 #compass>img{width:56px;height:68px;object-fit:contain;filter:drop-shadow(0 1px 2px #000)}
 .compass-copy{display:flex;flex-direction:column;min-width:0;gap:3px;color:#fff2cf;font-size:14px;line-height:1.4}

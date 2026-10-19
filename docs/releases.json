@@ -378,6 +378,22 @@
           "en": "Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar."
         }
       ]
+    },
+    {
+      "version": "0.9.23_e10bf94c",
+      "code": "e10bf94c",
+      "baseVersion": "0.9.23",
+      "slug": "remove-top-left-item-list",
+      "summary": {
+        "hu": "Letisztultabb tárgykijelzés",
+        "en": "Cleaner item display"
+      },
+      "fixes": [
+        {
+          "hu": "A bal felső tárgylista megszűnt; a megszerzett tárgyakat a hátizsákban tekintheted meg.",
+          "en": "The top-left item list has been removed; view your collected items in the inventory."
+        }
+      ]
     }
   ]
 }
