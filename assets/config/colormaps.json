@@ -236,6 +236,18 @@
       "faction": "yomi",
       "paletteGroup": "npc.demonLord"
     },
+    "doomSlayer": {
+      "role": "optional-boss",
+      "faction": "yomi",
+      "variants": {
+        "slayerMelee": {
+          "paletteGroup": "npc.doomSlayer.slayerMelee"
+        },
+        "slayerRanged": {
+          "paletteGroup": "npc.doomSlayer.slayerRanged"
+        }
+      }
+    },
     "lavaSerpent": {
       "role": "miniboss",
       "faction": "yomi",
@@ -359,6 +371,14 @@
     "inventoryKatana": {
       "kind": "equipment-art",
       "paletteGroup": "object.inventoryKatana"
+    },
+    "inventoryItem.daisyPlush": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.daisyPlush"
+    },
+    "inventoryItem.slayerCrossbow": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.slayerCrossbow"
     },
     "inventoryItem.madPriestSoul": {
       "kind": "inventory-icon",
@@ -4596,6 +4616,208 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "npc.doomSlayer.slayerMelee": {
+      "source": "assets/images/enemies/slayer-melee-v1.png",
+      "frameMetadata": "ART_SLAYER.frames",
+      "frameCount": 12,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4b382b",
+            "coveragePercent": 15.1583
+          },
+          {
+            "hex": "#3d291c",
+            "coveragePercent": 14.3741
+          },
+          {
+            "hex": "#2c1c13",
+            "coveragePercent": 12.2774
+          },
+          {
+            "hex": "#1b100a",
+            "coveragePercent": 10.4106
+          },
+          {
+            "hex": "#624d39",
+            "coveragePercent": 9.8968
+          },
+          {
+            "hex": "#643a20",
+            "coveragePercent": 7.3892
+          },
+          {
+            "hex": "#816843",
+            "coveragePercent": 5.9256
+          },
+          {
+            "hex": "#86502b",
+            "coveragePercent": 5.6696
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 5.2202
+          },
+          {
+            "hex": "#a86d38",
+            "coveragePercent": 4.2437
+          },
+          {
+            "hex": "#9e835c",
+            "coveragePercent": 3.1994
+          },
+          {
+            "hex": "#c8964d",
+            "coveragePercent": 2.7884
+          },
+          {
+            "hex": "#e7c16b",
+            "coveragePercent": 1.3202
+          },
+          {
+            "hex": "#bda895",
+            "coveragePercent": 1.1128
+          },
+          {
+            "hex": "#e8e0d0",
+            "coveragePercent": 0.8663
+          },
+          {
+            "hex": "#d33806",
+            "coveragePercent": 0.1473
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#917140",
+            "coveragePercent": 25.9464
+          },
+          {
+            "hex": "#8d502c",
+            "coveragePercent": 25.598
+          },
+          {
+            "hex": "#bc8f4c",
+            "coveragePercent": 20.95
+          },
+          {
+            "hex": "#ae6b36",
+            "coveragePercent": 17.2039
+          },
+          {
+            "hex": "#e3b95f",
+            "coveragePercent": 9.3593
+          },
+          {
+            "hex": "#cf3505",
+            "coveragePercent": 0.9426
+          }
+        ],
+        "visibleSamples": 214147,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.doomSlayer.slayerRanged": {
+      "source": "assets/images/enemies/slayer-ranged-v1.png",
+      "frameMetadata": "ART_SLAYER.frames",
+      "frameCount": 12,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#38271e",
+            "coveragePercent": 20.0685
+          },
+          {
+            "hex": "#261810",
+            "coveragePercent": 14.2176
+          },
+          {
+            "hex": "#46372d",
+            "coveragePercent": 11.0759
+          },
+          {
+            "hex": "#574538",
+            "coveragePercent": 9.5514
+          },
+          {
+            "hex": "#57301d",
+            "coveragePercent": 9.2247
+          },
+          {
+            "hex": "#100906",
+            "coveragePercent": 8.1281
+          },
+          {
+            "hex": "#6c5741",
+            "coveragePercent": 6.3907
+          },
+          {
+            "hex": "#7a4129",
+            "coveragePercent": 6.0678
+          },
+          {
+            "hex": "#826c51",
+            "coveragePercent": 4.3516
+          },
+          {
+            "hex": "#9b6134",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#96826c",
+            "coveragePercent": 2.3254
+          },
+          {
+            "hex": "#bf8c4d",
+            "coveragePercent": 2.1987
+          },
+          {
+            "hex": "#baa899",
+            "coveragePercent": 0.9782
+          },
+          {
+            "hex": "#e5b970",
+            "coveragePercent": 0.9596
+          },
+          {
+            "hex": "#e7dbcb",
+            "coveragePercent": 0.6643
+          },
+          {
+            "hex": "#db1a03",
+            "coveragePercent": 0.1562
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c492e",
+            "coveragePercent": 32.913
+          },
+          {
+            "hex": "#906d42",
+            "coveragePercent": 22.8908
+          },
+          {
+            "hex": "#be8c4d",
+            "coveragePercent": 17.8481
+          },
+          {
+            "hex": "#a96934",
+            "coveragePercent": 16.6207
+          },
+          {
+            "hex": "#e6b464",
+            "coveragePercent": 8.1422
+          },
+          {
+            "hex": "#da1a03",
+            "coveragePercent": 1.5852
+          }
+        ],
+        "visibleSamples": 498505,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "npc.lavaSerpent.idle": {
       "source": "assets/images/enemies/lava-serpent-v1.png",
       "frameMetadata": "ART_SERPENT.clips.idle",
@@ -6412,6 +6634,208 @@
         ],
         "visibleSamples": 160733,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.daisyPlush": {
+      "source": "assets/images/items/slayer-daisy-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.daisyPlush",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f1607d",
+            "coveragePercent": 11.4487
+          },
+          {
+            "hex": "#f87792",
+            "coveragePercent": 10.5312
+          },
+          {
+            "hex": "#dc4c67",
+            "coveragePercent": 9.7848
+          },
+          {
+            "hex": "#c03951",
+            "coveragePercent": 7.6843
+          },
+          {
+            "hex": "#fa93a9",
+            "coveragePercent": 6.6293
+          },
+          {
+            "hex": "#9e273a",
+            "coveragePercent": 6.3442
+          },
+          {
+            "hex": "#77252f",
+            "coveragePercent": 5.9448
+          },
+          {
+            "hex": "#b06e67",
+            "coveragePercent": 5.7868
+          },
+          {
+            "hex": "#f7bdb4",
+            "coveragePercent": 5.7756
+          },
+          {
+            "hex": "#e8a597",
+            "coveragePercent": 5.3216
+          },
+          {
+            "hex": "#93524d",
+            "coveragePercent": 4.9828
+          },
+          {
+            "hex": "#cc8a80",
+            "coveragePercent": 4.945
+          },
+          {
+            "hex": "#5c121c",
+            "coveragePercent": 4.4144
+          },
+          {
+            "hex": "#340d11",
+            "coveragePercent": 3.8543
+          },
+          {
+            "hex": "#100304",
+            "coveragePercent": 3.6289
+          },
+          {
+            "hex": "#fbdbcb",
+            "coveragePercent": 2.9233
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f87892",
+            "coveragePercent": 25.5489
+          },
+          {
+            "hex": "#ed5d78",
+            "coveragePercent": 23.995
+          },
+          {
+            "hex": "#d44861",
+            "coveragePercent": 18.3402
+          },
+          {
+            "hex": "#b7344a",
+            "coveragePercent": 13.3531
+          },
+          {
+            "hex": "#932234",
+            "coveragePercent": 11.5136
+          },
+          {
+            "hex": "#99524d",
+            "coveragePercent": 7.2491
+          }
+        ],
+        "visibleSamples": 644831,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.slayerCrossbow": {
+      "source": "assets/images/items/slayer-crossbow-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.slayerCrossbow",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a100d",
+            "coveragePercent": 14.9004
+          },
+          {
+            "hex": "#070302",
+            "coveragePercent": 14.4425
+          },
+          {
+            "hex": "#301b12",
+            "coveragePercent": 12.8059
+          },
+          {
+            "hex": "#552710",
+            "coveragePercent": 8.0998
+          },
+          {
+            "hex": "#3c3027",
+            "coveragePercent": 8.0923
+          },
+          {
+            "hex": "#7d421b",
+            "coveragePercent": 6.6431
+          },
+          {
+            "hex": "#a85f26",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#55443d",
+            "coveragePercent": 5.2689
+          },
+          {
+            "hex": "#726057",
+            "coveragePercent": 4.5418
+          },
+          {
+            "hex": "#cb803a",
+            "coveragePercent": 3.8225
+          },
+          {
+            "hex": "#987f6f",
+            "coveragePercent": 3.5087
+          },
+          {
+            "hex": "#e8a656",
+            "coveragePercent": 2.9793
+          },
+          {
+            "hex": "#bca396",
+            "coveragePercent": 2.4874
+          },
+          {
+            "hex": "#e6d2bb",
+            "coveragePercent": 2.3038
+          },
+          {
+            "hex": "#f4c881",
+            "coveragePercent": 2.0832
+          },
+          {
+            "hex": "#f9f4e8",
+            "coveragePercent": 1.9476
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945622",
+            "coveragePercent": 24.2379
+          },
+          {
+            "hex": "#bc6a25",
+            "coveragePercent": 22.1701
+          },
+          {
+            "hex": "#db9247",
+            "coveragePercent": 19.2054
+          },
+          {
+            "hex": "#f4bd68",
+            "coveragePercent": 13.7448
+          },
+          {
+            "hex": "#a67349",
+            "coveragePercent": 13.0452
+          },
+          {
+            "hex": "#913717",
+            "coveragePercent": 7.5967
+          }
+        ],
+        "visibleSamples": 402375,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "object.inventoryItem.madPriestSoul": {
@@ -13218,6 +13642,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/slayer-arena-v1.png": {
+      "sha256": "02a8a18d23ff9fe35d8739088fb4ada4d92f7594ac68b71fe4ca617a92542887",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "slayerArena"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#47354f",
+            "coveragePercent": 14.142
+          },
+          {
+            "hex": "#34273b",
+            "coveragePercent": 12.7431
+          },
+          {
+            "hex": "#5b4363",
+            "coveragePercent": 11.8206
+          },
+          {
+            "hex": "#070404",
+            "coveragePercent": 9.9894
+          },
+          {
+            "hex": "#281b24",
+            "coveragePercent": 9.1573
+          },
+          {
+            "hex": "#725179",
+            "coveragePercent": 9.1411
+          },
+          {
+            "hex": "#1b0f11",
+            "coveragePercent": 9.1247
+          },
+          {
+            "hex": "#8a5f8f",
+            "coveragePercent": 7.5996
+          },
+          {
+            "hex": "#a870a4",
+            "coveragePercent": 5.2029
+          },
+          {
+            "hex": "#a65b78",
+            "coveragePercent": 2.4779
+          },
+          {
+            "hex": "#572621",
+            "coveragePercent": 2.1785
+          },
+          {
+            "hex": "#cb6e8a",
+            "coveragePercent": 1.8745
+          },
+          {
+            "hex": "#8d4041",
+            "coveragePercent": 1.7595
+          },
+          {
+            "hex": "#f47a6b",
+            "coveragePercent": 1.3636
+          },
+          {
+            "hex": "#da5549",
+            "coveragePercent": 1.1181
+          },
+          {
+            "hex": "#ecbaae",
+            "coveragePercent": 0.3074
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#bc5f7c",
+            "coveragePercent": 22.9428
+          },
+          {
+            "hex": "#9c4a5b",
+            "coveragePercent": 19.9251
+          },
+          {
+            "hex": "#e55a4b",
+            "coveragePercent": 17.6748
+          },
+          {
+            "hex": "#e26e7f",
+            "coveragePercent": 16.1587
+          },
+          {
+            "hex": "#f98969",
+            "coveragePercent": 11.748
+          },
+          {
+            "hex": "#9b3a2c",
+            "coveragePercent": 11.5505
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/yomi-v3.png": {
       "sha256": "93a5f7401e408553d8b2f1b55e50d580115a0e3052da5541bc8b1bef21441752",
       "width": 1024,
@@ -14686,6 +15215,111 @@
         ],
         "visibleSamples": 512632,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/effects/slayer-lightning-v1.png": {
+      "sha256": "25657d78b5630f71a1b26f1737f03e0ea88f956e00d38bd9414d3bcfece960af",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "slayerLightning"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fbfdfe",
+            "coveragePercent": 15.0635
+          },
+          {
+            "hex": "#055bec",
+            "coveragePercent": 11.068
+          },
+          {
+            "hex": "#056cf6",
+            "coveragePercent": 10.036
+          },
+          {
+            "hex": "#1264e0",
+            "coveragePercent": 7.8621
+          },
+          {
+            "hex": "#0683fa",
+            "coveragePercent": 7.8425
+          },
+          {
+            "hex": "#034ee0",
+            "coveragePercent": 6.2259
+          },
+          {
+            "hex": "#1f74ea",
+            "coveragePercent": 6.1151
+          },
+          {
+            "hex": "#0a9afb",
+            "coveragePercent": 5.4598
+          },
+          {
+            "hex": "#45c7fc",
+            "coveragePercent": 4.4585
+          },
+          {
+            "hex": "#2bbafc",
+            "coveragePercent": 4.1436
+          },
+          {
+            "hex": "#63d7fc",
+            "coveragePercent": 4.1255
+          },
+          {
+            "hex": "#17abfc",
+            "coveragePercent": 4.0897
+          },
+          {
+            "hex": "#d4f9fe",
+            "coveragePercent": 3.8899
+          },
+          {
+            "hex": "#acf0fd",
+            "coveragePercent": 3.7391
+          },
+          {
+            "hex": "#85e5fd",
+            "coveragePercent": 3.6839
+          },
+          {
+            "hex": "#2f93f7",
+            "coveragePercent": 2.1969
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#065ce9",
+            "coveragePercent": 38.6389
+          },
+          {
+            "hex": "#0784fa",
+            "coveragePercent": 18.4601
+          },
+          {
+            "hex": "#1ba9fc",
+            "coveragePercent": 13.4404
+          },
+          {
+            "hex": "#1e73e9",
+            "coveragePercent": 12.6306
+          },
+          {
+            "hex": "#43c5fc",
+            "coveragePercent": 9.3554
+          },
+          {
+            "hex": "#71ddfc",
+            "coveragePercent": 7.4746
+          }
+        ],
+        "visibleSamples": 271237,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/enemies/angel-dark-v5.png": {
@@ -17206,6 +17840,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/enemies/slayer-melee-v1.png": {
+      "sha256": "b5be3c8c5a93a694dc01480cb495d0efdbe7c19d0ba456c78a8086c32dd3f894",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "slayerMelee"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4b382b",
+            "coveragePercent": 15.1583
+          },
+          {
+            "hex": "#3d291c",
+            "coveragePercent": 14.3741
+          },
+          {
+            "hex": "#2c1c13",
+            "coveragePercent": 12.2774
+          },
+          {
+            "hex": "#1b100a",
+            "coveragePercent": 10.4106
+          },
+          {
+            "hex": "#624d39",
+            "coveragePercent": 9.8968
+          },
+          {
+            "hex": "#643a20",
+            "coveragePercent": 7.3892
+          },
+          {
+            "hex": "#816843",
+            "coveragePercent": 5.9256
+          },
+          {
+            "hex": "#86502b",
+            "coveragePercent": 5.6696
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 5.2202
+          },
+          {
+            "hex": "#a86d38",
+            "coveragePercent": 4.2437
+          },
+          {
+            "hex": "#9e835c",
+            "coveragePercent": 3.1994
+          },
+          {
+            "hex": "#c8964d",
+            "coveragePercent": 2.7884
+          },
+          {
+            "hex": "#e7c16b",
+            "coveragePercent": 1.3202
+          },
+          {
+            "hex": "#bda895",
+            "coveragePercent": 1.1128
+          },
+          {
+            "hex": "#e8e0d0",
+            "coveragePercent": 0.8663
+          },
+          {
+            "hex": "#d33806",
+            "coveragePercent": 0.1473
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#917140",
+            "coveragePercent": 25.9464
+          },
+          {
+            "hex": "#8d502c",
+            "coveragePercent": 25.598
+          },
+          {
+            "hex": "#bc8f4c",
+            "coveragePercent": 20.95
+          },
+          {
+            "hex": "#ae6b36",
+            "coveragePercent": 17.2039
+          },
+          {
+            "hex": "#e3b95f",
+            "coveragePercent": 9.3593
+          },
+          {
+            "hex": "#cf3505",
+            "coveragePercent": 0.9426
+          }
+        ],
+        "visibleSamples": 214147,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/slayer-ranged-v1.png": {
+      "sha256": "4f5f8fb8f8b196b55ebad9acddbda6904ed4f034ebf66117fc15ad08078f16b6",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "slayerRanged"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#38271e",
+            "coveragePercent": 20.0685
+          },
+          {
+            "hex": "#261810",
+            "coveragePercent": 14.2176
+          },
+          {
+            "hex": "#46372d",
+            "coveragePercent": 11.0759
+          },
+          {
+            "hex": "#574538",
+            "coveragePercent": 9.5514
+          },
+          {
+            "hex": "#57301d",
+            "coveragePercent": 9.2247
+          },
+          {
+            "hex": "#100906",
+            "coveragePercent": 8.1281
+          },
+          {
+            "hex": "#6c5741",
+            "coveragePercent": 6.3907
+          },
+          {
+            "hex": "#7a4129",
+            "coveragePercent": 6.0678
+          },
+          {
+            "hex": "#826c51",
+            "coveragePercent": 4.3516
+          },
+          {
+            "hex": "#9b6134",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#96826c",
+            "coveragePercent": 2.3254
+          },
+          {
+            "hex": "#bf8c4d",
+            "coveragePercent": 2.1987
+          },
+          {
+            "hex": "#baa899",
+            "coveragePercent": 0.9782
+          },
+          {
+            "hex": "#e5b970",
+            "coveragePercent": 0.9596
+          },
+          {
+            "hex": "#e7dbcb",
+            "coveragePercent": 0.6643
+          },
+          {
+            "hex": "#db1a03",
+            "coveragePercent": 0.1562
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c492e",
+            "coveragePercent": 32.913
+          },
+          {
+            "hex": "#906d42",
+            "coveragePercent": 22.8908
+          },
+          {
+            "hex": "#be8c4d",
+            "coveragePercent": 17.8481
+          },
+          {
+            "hex": "#a96934",
+            "coveragePercent": 16.6207
+          },
+          {
+            "hex": "#e6b464",
+            "coveragePercent": 8.1422
+          },
+          {
+            "hex": "#da1a03",
+            "coveragePercent": 1.5852
+          }
+        ],
+        "visibleSamples": 498505,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/yomi-attack-v4.png": {
       "sha256": "1a0aca6ef2f021557094cc5d9391e9a8b4c1af80c2bca5d32797663e591bd9f2",
       "width": 1536,
@@ -17414,6 +18258,216 @@
         ],
         "visibleSamples": 759581,
         "dominantCoveragePercent": 100.0003
+      }
+    },
+    "assets/images/items/slayer-crossbow-v1.png": {
+      "sha256": "974e0fc428c827288f80e632b23dc780d2674d43e21f200f55ee32e69c3aee43",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "slayerCrossbow"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a100d",
+            "coveragePercent": 14.9004
+          },
+          {
+            "hex": "#070302",
+            "coveragePercent": 14.4425
+          },
+          {
+            "hex": "#301b12",
+            "coveragePercent": 12.8059
+          },
+          {
+            "hex": "#552710",
+            "coveragePercent": 8.0998
+          },
+          {
+            "hex": "#3c3027",
+            "coveragePercent": 8.0923
+          },
+          {
+            "hex": "#7d421b",
+            "coveragePercent": 6.6431
+          },
+          {
+            "hex": "#a85f26",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#55443d",
+            "coveragePercent": 5.2689
+          },
+          {
+            "hex": "#726057",
+            "coveragePercent": 4.5418
+          },
+          {
+            "hex": "#cb803a",
+            "coveragePercent": 3.8225
+          },
+          {
+            "hex": "#987f6f",
+            "coveragePercent": 3.5087
+          },
+          {
+            "hex": "#e8a656",
+            "coveragePercent": 2.9793
+          },
+          {
+            "hex": "#bca396",
+            "coveragePercent": 2.4874
+          },
+          {
+            "hex": "#e6d2bb",
+            "coveragePercent": 2.3038
+          },
+          {
+            "hex": "#f4c881",
+            "coveragePercent": 2.0832
+          },
+          {
+            "hex": "#f9f4e8",
+            "coveragePercent": 1.9476
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945622",
+            "coveragePercent": 24.2379
+          },
+          {
+            "hex": "#bc6a25",
+            "coveragePercent": 22.1701
+          },
+          {
+            "hex": "#db9247",
+            "coveragePercent": 19.2054
+          },
+          {
+            "hex": "#f4bd68",
+            "coveragePercent": 13.7448
+          },
+          {
+            "hex": "#a67349",
+            "coveragePercent": 13.0452
+          },
+          {
+            "hex": "#913717",
+            "coveragePercent": 7.5967
+          }
+        ],
+        "visibleSamples": 402375,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/items/slayer-daisy-v1.png": {
+      "sha256": "5b5c03f20351a6aca2bd0c16142e514d05256764afd2cdf277e009ab01c59a59",
+      "width": 1377,
+      "height": 1142,
+      "runtimeKeys": [
+        "slayerDaisy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f1607d",
+            "coveragePercent": 11.4487
+          },
+          {
+            "hex": "#f87792",
+            "coveragePercent": 10.5312
+          },
+          {
+            "hex": "#dc4c67",
+            "coveragePercent": 9.7848
+          },
+          {
+            "hex": "#c03951",
+            "coveragePercent": 7.6843
+          },
+          {
+            "hex": "#fa93a9",
+            "coveragePercent": 6.6293
+          },
+          {
+            "hex": "#9e273a",
+            "coveragePercent": 6.3442
+          },
+          {
+            "hex": "#77252f",
+            "coveragePercent": 5.9448
+          },
+          {
+            "hex": "#b06e67",
+            "coveragePercent": 5.7868
+          },
+          {
+            "hex": "#f7bdb4",
+            "coveragePercent": 5.7756
+          },
+          {
+            "hex": "#e8a597",
+            "coveragePercent": 5.3216
+          },
+          {
+            "hex": "#93524d",
+            "coveragePercent": 4.9828
+          },
+          {
+            "hex": "#cc8a80",
+            "coveragePercent": 4.945
+          },
+          {
+            "hex": "#5c121c",
+            "coveragePercent": 4.4144
+          },
+          {
+            "hex": "#340d11",
+            "coveragePercent": 3.8543
+          },
+          {
+            "hex": "#100304",
+            "coveragePercent": 3.6289
+          },
+          {
+            "hex": "#fbdbcb",
+            "coveragePercent": 2.9233
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f87892",
+            "coveragePercent": 25.5489
+          },
+          {
+            "hex": "#ed5d78",
+            "coveragePercent": 23.995
+          },
+          {
+            "hex": "#d44861",
+            "coveragePercent": 18.3402
+          },
+          {
+            "hex": "#b7344a",
+            "coveragePercent": 13.3531
+          },
+          {
+            "hex": "#932234",
+            "coveragePercent": 11.5136
+          },
+          {
+            "hex": "#99524d",
+            "coveragePercent": 7.2491
+          }
+        ],
+        "visibleSamples": 644831,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/japan-clouds-v1.png": {
@@ -18564,6 +19618,216 @@
           }
         ],
         "visibleSamples": 830285,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/slayer-barrel-v1.png": {
+      "sha256": "b893a31ded9995c4c9cdf20f7b169f77b4aea48f48cdb623e5fa701c5217f9af",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "slayerBarrel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#311915",
+            "coveragePercent": 18.5117
+          },
+          {
+            "hex": "#1e0f0d",
+            "coveragePercent": 14.5597
+          },
+          {
+            "hex": "#422522",
+            "coveragePercent": 13.9717
+          },
+          {
+            "hex": "#632917",
+            "coveragePercent": 10.9709
+          },
+          {
+            "hex": "#060202",
+            "coveragePercent": 10.6235
+          },
+          {
+            "hex": "#83412a",
+            "coveragePercent": 8.6594
+          },
+          {
+            "hex": "#593638",
+            "coveragePercent": 7.0721
+          },
+          {
+            "hex": "#ac5e3a",
+            "coveragePercent": 4.2193
+          },
+          {
+            "hex": "#a7330d",
+            "coveragePercent": 2.5995
+          },
+          {
+            "hex": "#6d4565",
+            "coveragePercent": 2.2151
+          },
+          {
+            "hex": "#e9570c",
+            "coveragePercent": 2.209
+          },
+          {
+            "hex": "#e28945",
+            "coveragePercent": 1.7385
+          },
+          {
+            "hex": "#a37776",
+            "coveragePercent": 0.8821
+          },
+          {
+            "hex": "#e7bb8b",
+            "coveragePercent": 0.6838
+          },
+          {
+            "hex": "#f3e0dd",
+            "coveragePercent": 0.5809
+          },
+          {
+            "hex": "#a062bb",
+            "coveragePercent": 0.5028
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#913e21",
+            "coveragePercent": 44.0392
+          },
+          {
+            "hex": "#ae603c",
+            "coveragePercent": 25.5944
+          },
+          {
+            "hex": "#e1510c",
+            "coveragePercent": 16.4791
+          },
+          {
+            "hex": "#e9964b",
+            "coveragePercent": 10.3462
+          },
+          {
+            "hex": "#7b438f",
+            "coveragePercent": 2.3316
+          },
+          {
+            "hex": "#a95fc9",
+            "coveragePercent": 1.2095
+          }
+        ],
+        "visibleSamples": 867976,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/props/slayer-gravestone-v1.png": {
+      "sha256": "5e779b7f47ceb97edea2892d68c540bdd90135c62e3bf492868a2d244fc3d35d",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "slayerGravestone"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f191a",
+            "coveragePercent": 18.9278
+          },
+          {
+            "hex": "#2b2526",
+            "coveragePercent": 15.6639
+          },
+          {
+            "hex": "#383034",
+            "coveragePercent": 14.9636
+          },
+          {
+            "hex": "#120e0f",
+            "coveragePercent": 11.9119
+          },
+          {
+            "hex": "#4b3e41",
+            "coveragePercent": 9.5966
+          },
+          {
+            "hex": "#050303",
+            "coveragePercent": 7.8963
+          },
+          {
+            "hex": "#5d4f57",
+            "coveragePercent": 4.9782
+          },
+          {
+            "hex": "#76656c",
+            "coveragePercent": 3.257
+          },
+          {
+            "hex": "#503420",
+            "coveragePercent": 3.185
+          },
+          {
+            "hex": "#6e493a",
+            "coveragePercent": 2.8753
+          },
+          {
+            "hex": "#8e7b87",
+            "coveragePercent": 2.0281
+          },
+          {
+            "hex": "#94542e",
+            "coveragePercent": 1.3551
+          },
+          {
+            "hex": "#ab97a4",
+            "coveragePercent": 1.241
+          },
+          {
+            "hex": "#cab7c5",
+            "coveragePercent": 0.8963
+          },
+          {
+            "hex": "#bf7347",
+            "coveragePercent": 0.6645
+          },
+          {
+            "hex": "#ece3ea",
+            "coveragePercent": 0.5593
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c5740",
+            "coveragePercent": 27.2589
+          },
+          {
+            "hex": "#8c4820",
+            "coveragePercent": 21.2691
+          },
+          {
+            "hex": "#a85927",
+            "coveragePercent": 19.8111
+          },
+          {
+            "hex": "#a96b4d",
+            "coveragePercent": 15.5673
+          },
+          {
+            "hex": "#ca6f33",
+            "coveragePercent": 10.3289
+          },
+          {
+            "hex": "#e08f59",
+            "coveragePercent": 5.7647
+          }
+        ],
+        "visibleSamples": 564323,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -20740,6 +22004,13 @@
         "dynamic": false
       },
       {
+        "value": "#080f15",
+        "lines": [
+          257
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#091318",
         "lines": [
           12
@@ -20940,6 +22211,13 @@
         "dynamic": false
       },
       {
+        "value": "#11181e",
+        "lines": [
+          253
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#111d26",
         "lines": [
           2,
@@ -21075,6 +22353,13 @@
         "dynamic": false
       },
       {
+        "value": "#20272c",
+        "lines": [
+          253
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#24323c",
         "lines": [
           231
@@ -21086,6 +22371,20 @@
         "lines": [
           94,
           123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#251319",
+        "lines": [
+          264
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#27323a",
+        "lines": [
+          262
         ],
         "dynamic": false
       },
@@ -21295,6 +22594,14 @@
         "dynamic": false
       },
       {
+        "value": "#c1a16b",
+        "lines": [
+          253,
+          257
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#c5b4868c",
         "lines": [
           129
@@ -21382,6 +22689,13 @@
         "value": "#d4aa71a6",
         "lines": [
           133
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4bb8a",
+        "lines": [
+          262
         ],
         "dynamic": false
       },
@@ -21739,6 +23053,13 @@
         "dynamic": false
       },
       {
+        "value": "#f0e8dc",
+        "lines": [
+          255
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#f1d49b",
         "lines": [
           71
@@ -21854,6 +23175,28 @@
         "dynamic": false
       },
       {
+        "value": "#ffb4a6",
+        "lines": [
+          258,
+          264
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffc4b7",
+        "lines": [
+          259
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd3c8",
+        "lines": [
+          265
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#ffdda0",
         "lines": [
           55
@@ -21887,6 +23230,13 @@
         "value": "#ffe2a0",
         "lines": [
           245
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2aa",
+        "lines": [
+          256
         ],
         "dynamic": false
       },
@@ -21963,6 +23313,13 @@
         "dynamic": false
       },
       {
+        "value": "#fff0b3",
+        "lines": [
+          263
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#fff0c8",
         "lines": [
           55,
@@ -21997,6 +23354,21 @@
         "dynamic": false
       },
       {
+        "value": "#fff0d1",
+        "lines": [
+          254,
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0e7",
+        "lines": [
+          266
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#fff1d3",
         "lines": [
           25
@@ -22023,6 +23395,13 @@
         "value": "#fff5d8",
         "lines": [
           34
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5e1",
+        "lines": [
+          257
         ],
         "dynamic": false
       },
@@ -22112,100 +23491,100 @@
       {
         "value": "#b087dd",
         "lines": [
-          514
+          518
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          398
+          399
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          368,
-          394
+          369,
+          395
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          180
+          181
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          498
+          502
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          249
+          250
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          384
+          385
         ],
         "dynamic": false
       },
       {
         "value": "#ffa465",
         "lines": [
-          340
+          341
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          310,
-          380
+          311,
+          381
         ],
         "dynamic": false
       },
       {
         "value": "#ffbd69",
         "lines": [
-          321
+          322
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          180
+          181
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          513
+          517
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          498
+          502
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          389
+          390
         ],
         "dynamic": false
       }
@@ -22242,39 +23621,55 @@
     "assets/js/dev-session.js": [],
     "assets/js/dev-teleport.js": [],
     "assets/js/dev-tools.js": [],
+    "assets/js/doom-slayer.js": [
+      {
+        "value": "#c3d9f1",
+        "lines": [
+          53
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0a35f",
+        "lines": [
+          53
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/game.js": [
       {
         "value": "#08121900",
         "lines": [
-          216
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          216
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          216
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          359
+          364
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22302,14 +23697,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          348
+          353
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          348
+          353
         ],
         "dynamic": false
       },
@@ -22365,7 +23760,7 @@
       {
         "value": "#465959",
         "lines": [
-          254
+          258
         ],
         "dynamic": false
       },
@@ -22386,7 +23781,7 @@
       {
         "value": "#60706a",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22400,7 +23795,7 @@
       {
         "value": "#718679",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22435,7 +23830,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22449,21 +23844,21 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          254
+          258
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          219
+          223
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          170
+          173
         ],
         "dynamic": false
       },
@@ -22484,7 +23879,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          219
+          223
         ],
         "dynamic": false
       },
@@ -22498,28 +23893,28 @@
       {
         "value": "#d58cf3",
         "lines": [
-          138
+          141
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          177
+          180
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          377
+          382
         ],
         "dynamic": false
       },
@@ -22540,14 +23935,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22582,49 +23977,56 @@
       {
         "value": "#e8d89b",
         "lines": [
-          219
+          223
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          377
+          382
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ecd3a0",
+        "lines": [
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          377
+          382
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          167
+          170
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          136
+          139
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          177
+          180
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          254
+          258
         ],
         "dynamic": false
       },
@@ -22632,14 +24034,14 @@
         "value": "#f3d494",
         "lines": [
           23,
-          171
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
@@ -22653,21 +24055,21 @@
       {
         "value": "#ffcf83",
         "lines": [
-          377
+          382
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          138
+          141
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          254
+          258
         ],
         "dynamic": false
       }
@@ -22690,736 +24092,40 @@
       {
         "value": "#070e18",
         "lines": [
-          454
+          459
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          479
+          484
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          432
+          437
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          478
+          483
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          440
+          445
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
-        "lines": [
-          122,
-          131
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#0e202c",
-        "lines": [
-          100,
-          112
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#0e202c00",
-        "lines": [
-          112
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#100e20ed",
-        "lines": [
-          323
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#102236",
-        "lines": [
-          630
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#10283fee",
-        "lines": [
-          452,
-          458
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#11252d30",
-        "lines": [
-          169
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#112b3fee",
-        "lines": [
-          414
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#122739df",
-        "lines": [
-          477
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#132b42d9",
-        "lines": [
-          664
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#140c2028",
-        "lines": [
-          169
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#142b3f",
-        "lines": [
-          755
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#160f16",
-        "lines": [
-          200
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#163847dd",
-        "lines": [
-          600
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#170f27",
-        "lines": [
-          614
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#171020c7",
-        "lines": [
-          694
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#172b42e8",
-        "lines": [
-          435
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#182025",
-        "lines": [
-          531
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#183246e8",
-        "lines": [
-          365
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#193549b8",
-        "lines": [
-          350
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#234559cc",
-        "lines": [
-          589
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#24314820",
-        "lines": [
-          169
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#251339",
-        "lines": [
-          743
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#253c5899",
-        "lines": [
-          634
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#26374d",
-        "lines": [
-          426
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#326e8fa3",
-        "lines": [
-          576
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#455764ad",
-        "lines": [
-          259
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#526673d9",
-        "lines": [
-          258
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#72b4c9af",
-        "lines": [
-          576
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#83749f",
-        "lines": [
-          183
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#8b764eaa",
-        "lines": [
-          504
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#9b626b88",
-        "lines": [
-          516
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a5787d",
-        "lines": [
-          183
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a893d0",
-        "lines": [
-          194
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a8e8ff",
-        "lines": [
-          580
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#aa77dd00",
-        "lines": [
-          622
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#aab6b1b8",
-        "lines": [
-          263
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ab83d955",
-        "lines": [
-          622
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#abb78d66",
-        "lines": [
-          271
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#b5a777",
-        "lines": [
-          514
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#b683ff",
-        "lines": [
-          743
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c293dd",
-        "lines": [
-          709
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c393ff",
-        "lines": [
-          424
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c39ae7",
-        "lines": [
-          468
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c596ffad",
-        "lines": [
-          622
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c7f2ffbb",
-        "lines": [
-          590
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c9d0cb62",
-        "lines": [
-          257
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#cda6ef",
-        "lines": [
-          332
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d0af77",
-        "lines": [
-          739
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d0f5ffcc",
-        "lines": [
-          595
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d199aa55",
-        "lines": [
-          271
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d1c9acaf",
-        "lines": [
-          542
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d8bd827d",
-        "lines": [
-          667
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d8c998bb",
-        "lines": [
-          263
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d99583",
-        "lines": [
-          440
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d9a9ff",
-        "lines": [
-          743
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d9dfd4",
-        "lines": [
-          741
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#dd744a00",
-        "lines": [
-          514
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ddba72",
-        "lines": [
-          440
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e0b9ff",
-        "lines": [
-          615
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e1778800",
-        "lines": [
-          729
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e4f7ffbc",
-        "lines": [
-          582
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e5a184",
-        "lines": [
-          194
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e6b0fa22",
-        "lines": [
-          473
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e6c6ff",
-        "lines": [
-          333
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e7616355",
-        "lines": [
-          728
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ed896700",
-        "lines": [
-          728
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#edcd88",
-        "lines": [
-          709
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ef8b65",
-        "lines": [
-          194
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f2e3b9",
-        "lines": [
-          740
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3be9b11",
-        "lines": [
-          728
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3d8ac",
-        "lines": [
-          473,
-          609
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3dbaf",
-        "lines": [
-          355
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f5df9f",
-        "lines": [
-          350
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f6a47580",
-        "lines": [
-          514
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f7c0a4",
-        "lines": [
-          630
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ff7850",
-        "lines": [
-          267
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ff9c6238",
-        "lines": [
-          634
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffac69",
-        "lines": [
-          267
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffb385",
-        "lines": [
-          424
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffb889",
-        "lines": [
-          634
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffcc89",
-        "lines": [
-          455
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffd5a2",
-        "lines": [
-          729
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe098",
-        "lines": [
-          424
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe0a2",
-        "lines": [
-          468
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe0a229",
-        "lines": [
-          656
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe2a0",
-        "lines": [
-          514,
-          657
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe5a2",
-        "lines": [
-          664
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6a300",
-        "lines": [
-          576
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6a79c",
-        "lines": [
-          582
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6adbb",
-        "lines": [
-          622
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe8a6",
-        "lines": [
-          599
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe8b98c",
-        "lines": [
-          271
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0b3",
-        "lines": [
-          418,
-          595
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0ba",
-        "lines": [
-          366
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0bc",
-        "lines": [
-          415
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0bd",
-        "lines": [
-          453,
-          458,
-          459,
-          462,
-          634
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0c8",
-        "lines": [
-          333
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0cc",
         "lines": [
           123,
           132
@@ -23427,51 +24133,747 @@
         "dynamic": false
       },
       {
-        "value": "#fff0ce",
+        "value": "#0e202c",
         "lines": [
-          625
+          101,
+          113
         ],
         "dynamic": false
       },
       {
-        "value": "#fff3e3",
+        "value": "#0e202c00",
         "lines": [
-          744
+          113
         ],
         "dynamic": false
       },
       {
-        "value": "#fff4c9",
+        "value": "#100e20ed",
         "lines": [
-          600
+          326
         ],
         "dynamic": false
       },
       {
-        "value": "#fff5c6",
+        "value": "#102236",
         "lines": [
-          589
+          637
         ],
         "dynamic": false
       },
       {
-        "value": "#fffbe6",
+        "value": "#10283fee",
+        "lines": [
+          457,
+          463
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11252d30",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#112b3fee",
+        "lines": [
+          419
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#122739df",
+        "lines": [
+          482
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132b42d9",
+        "lines": [
+          671
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#140c2028",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142b3f",
+        "lines": [
+          766
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#160f16",
+        "lines": [
+          202
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#163847dd",
+        "lines": [
+          607
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#170f27",
+        "lines": [
+          621
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#171020c7",
+        "lines": [
+          701
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#172b42e8",
+        "lines": [
+          440
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#182025",
+        "lines": [
+          538
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#183246e8",
+        "lines": [
+          369
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#193549b8",
+        "lines": [
+          354
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#234559cc",
+        "lines": [
+          596
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#24314820",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#251339",
+        "lines": [
+          754
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#253c5899",
+        "lines": [
+          641
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#26374d",
+        "lines": [
+          431
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#326e8fa3",
+        "lines": [
+          583
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#455764ad",
+        "lines": [
+          261
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#526673d9",
+        "lines": [
+          260
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#72b4c9af",
+        "lines": [
+          583
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#83749f",
+        "lines": [
+          185
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8b764eaa",
+        "lines": [
+          511
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9b626b88",
+        "lines": [
+          523
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a5787d",
+        "lines": [
+          185
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a893d0",
+        "lines": [
+          196
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a8e8ff",
+        "lines": [
+          587
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aa77dd00",
+        "lines": [
+          629
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aab6b1b8",
+        "lines": [
+          265
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ab83d955",
+        "lines": [
+          629
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#abb78d66",
+        "lines": [
+          273
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b5a777",
+        "lines": [
+          521
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b683ff",
+        "lines": [
+          754
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c293dd",
+        "lines": [
+          716
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c393ff",
         "lines": [
           429
         ],
         "dynamic": false
       },
       {
+        "value": "#c39ae7",
+        "lines": [
+          473
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c596ffad",
+        "lines": [
+          629
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c7f2ffbb",
+        "lines": [
+          597
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9d0cb62",
+        "lines": [
+          259
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cda6ef",
+        "lines": [
+          335
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0af77",
+        "lines": [
+          750
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0f5ffcc",
+        "lines": [
+          602
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d199aa55",
+        "lines": [
+          273
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d1c9acaf",
+        "lines": [
+          549
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd827d",
+        "lines": [
+          674
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8c998bb",
+        "lines": [
+          265
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          445
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9a9ff",
+        "lines": [
+          754
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9dfd4",
+        "lines": [
+          752
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd744a00",
+        "lines": [
+          521
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddba72",
+        "lines": [
+          445
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          622
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e1778800",
+        "lines": [
+          736
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4f7ffbc",
+        "lines": [
+          589
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e5a184",
+        "lines": [
+          196
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6b0fa22",
+        "lines": [
+          478
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c6ff",
+        "lines": [
+          336
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e7616355",
+        "lines": [
+          735
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ed896700",
+        "lines": [
+          735
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#edcd88",
+        "lines": [
+          716
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ef8b65",
+        "lines": [
+          196
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f2e3b9",
+        "lines": [
+          751
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3be9b11",
+        "lines": [
+          735
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3d8ac",
+        "lines": [
+          478,
+          616
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3dbaf",
+        "lines": [
+          359
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5df9f",
+        "lines": [
+          354
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f6a47580",
+        "lines": [
+          521
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f7c0a4",
+        "lines": [
+          637
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff7850",
+        "lines": [
+          269
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff9c6238",
+        "lines": [
+          641
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffac69",
+        "lines": [
+          269
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb385",
+        "lines": [
+          429
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb889",
+        "lines": [
+          641
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcc89",
+        "lines": [
+          460
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd5a2",
+        "lines": [
+          736
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe098",
+        "lines": [
+          429
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a2",
+        "lines": [
+          473
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a229",
+        "lines": [
+          663
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          521,
+          664
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe5a2",
+        "lines": [
+          671
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a300",
+        "lines": [
+          583
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a79c",
+        "lines": [
+          589
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6adbb",
+        "lines": [
+          629
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8a6",
+        "lines": [
+          606
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8b98c",
+        "lines": [
+          273
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0b3",
+        "lines": [
+          423,
+          602
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ba",
+        "lines": [
+          370
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bc",
+        "lines": [
+          420
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bd",
+        "lines": [
+          458,
+          463,
+          464,
+          467,
+          641
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c8",
+        "lines": [
+          336
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          124,
+          133
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ce",
+        "lines": [
+          632
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff3e3",
+        "lines": [
+          755
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4c9",
+        "lines": [
+          607
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5c6",
+        "lines": [
+          596
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fffbe6",
+        "lines": [
+          434
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#ffffff00",
         "lines": [
-          94
+          95
         ],
         "dynamic": false
       },
       {
         "value": "#ffffffff",
         "lines": [
-          94
+          95
         ],
         "dynamic": false
       }
@@ -23742,6 +25144,108 @@
         ],
         "dynamic": false
       }
-    ]
+    ],
+    "assets/js/slayer-art.js": [
+      {
+        "value": "#06101b",
+        "lines": [
+          94
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#090e16ed",
+        "lines": [
+          35
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e1927ee",
+        "lines": [
+          89
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9badd7",
+        "lines": [
+          35
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a3e9ff",
+        "lines": [
+          40,
+          77
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3bd8a",
+        "lines": [
+          89
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd9b69",
+        "lines": [
+          94
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb07a",
+        "lines": [
+          40
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbc69",
+        "lines": [
+          35
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbd79",
+        "lines": [
+          77
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffdd91",
+        "lines": [
+          40
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a225",
+        "lines": [
+          73
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe1ad",
+        "lines": [
+          73
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ca",
+        "lines": [
+          90
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/slayer-dialog.js": []
   }
 }

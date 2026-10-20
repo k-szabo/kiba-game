@@ -151,7 +151,7 @@
 #inventoryDetailName{font-size:22px;margin:0 0 8px}
 #inventoryDetailText{margin:0}
 @media(max-width:800px){.inventory-shell{padding:0 16px 16px}.inventory-windows{gap:14px}.inventory-bag{padding-left:12%;padding-right:12%}.inventory-grid{gap:5px}.inventory-bag-content{padding:12px 8px}.inventory-equipment{padding:20px 14px}.inventory-character{padding-right:50px}.inventory-weapon-slot{width:104px}.inventory-header h2{font-size:27px}.inventory-header .eyebrow{font-size:11px!important}}
-@media(max-width:650px){#inventory{padding:9px}.inventory-shell{max-height:calc(100dvh - 18px);padding:0 12px 14px}.inventory-header{align-items:flex-start;gap:10px;padding:14px 0}.inventory-header h2{font-size:25px}#closeInventory{max-width:130px;padding:9px 10px;font-size:14px!important}.inventory-windows{grid-template-columns:minmax(0,1fr);padding-top:14px}.inventory-bag{min-height:430px;padding:88px 14% 70px}.inventory-bag-content{padding:14px 12px}.inventory-item span{font-size:13px}.inventory-equipment{padding:20px}.inventory-character{max-width:380px;min-height:330px;margin:auto;padding-right:64px}.inventory-weapon-slot{width:114px}.inventory-details{padding:16px}.inventory-header .eyebrow{letter-spacing:.3px}#inventoryButton .inventory-button-label{display:none}#inventoryButton::before{content:'🎒';font-size:20px}#inventoryButton{min-width:42px!important;padding:4px!important}}
+@media(max-width:650px){.inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#inventory{padding:9px}.inventory-shell{max-height:calc(100dvh - 18px);padding:0 12px 14px}.inventory-header{align-items:flex-start;gap:10px;padding:14px 0}.inventory-header h2{font-size:25px}#closeInventory{max-width:130px;padding:9px 10px;font-size:14px!important}.inventory-windows{grid-template-columns:minmax(0,1fr);padding-top:14px}.inventory-bag{min-height:430px;padding:88px 14% 70px}.inventory-bag-content{padding:14px 12px}.inventory-item span{font-size:13px}.inventory-equipment{padding:20px}.inventory-character{max-width:380px;min-height:330px;margin:auto;padding-right:64px}.inventory-weapon-slot{width:114px}.inventory-details{padding:16px}.inventory-header .eyebrow{letter-spacing:.3px}#inventoryButton .inventory-button-label{display:none}#inventoryButton::before{content:'🎒';font-size:20px}#inventoryButton{min-width:42px!important;padding:4px!important}}
 @media(max-width:370px){.inventory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inventory-header h2{font-size:22px}.inventory-bag{padding-left:12%;padding-right:12%}}
 @media(prefers-reduced-motion:reduce){#inventory{scroll-behavior:auto}#inventory button{transition:none}}
 @media(max-width:650px){
@@ -248,3 +248,22 @@
 @media(max-width:1000px){#journeyHUD{left:17px;top:108px;width:230px;max-width:calc(100% - 34px)}#compass{grid-template-columns:40px minmax(0,1fr) 32px;gap:6px}#compass>img{width:40px;height:52px}#compassArrow{font-size:32px}}
 @media(max-width:650px){#journeyHUD{left:12px;top:145px;width:calc(100% - 24px);max-width:none}#compass{grid-template-columns:48px minmax(0,1fr) 40px}#compass>img{width:48px;height:60px}#compassArrow{font-size:36px}#journeyHUD #quest p{margin-bottom:6px}}
 @media(max-height:500px){#journeyHUD{left:12px;top:88px;width:230px;max-width:calc(100% - 24px)}#quest:has(#compass:not([hidden])) #objective{display:none}#compass{margin-top:5px;padding-top:5px;grid-template-columns:32px minmax(0,1fr) 28px;gap:5px}#compass>img{width:32px;height:44px}#compassArrow{font-size:28px}.compass-copy{font-size:13px}#compassLabel,#compassDirection{font-size:12px}}
+/* Secret grave: readable stone-and-bronze treatment without revealing the answer. */
+#slayerSpell{padding:18px;overflow:auto;overscroll-behavior:contain}
+#slayerSpell .slayer-spell-panel{width:min(570px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:linear-gradient(145deg,#20272c,#11181e);border:2px solid #c1a16b;text-align:left}
+#slayerSpell h2{color:#fff0d1;overflow-wrap:anywhere}
+#slayerSpell p{font-size:17px;line-height:1.65;color:#f0e8dc}
+#slayerSpell label{display:block;margin:20px 0 8px;font-size:18px;font-weight:700;color:#ffe2aa}
+#slayerSpellInput{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:10px 12px;font:inherit;font-size:20px;color:#fff5e1;background:#080f15;border:2px solid #c1a16b;border-radius:4px}
+#slayerSpellInput[aria-invalid="true"]{border-color:#ffb4a6}
+#slayerSpellMessage{min-height:1.65em;margin:10px 0;color:#ffc4b7!important}
+.slayer-spell-actions{display:flex;flex-wrap:wrap;gap:12px}
+#slayerSpell button{min-height:48px;min-width:0;flex:1 1 180px;font-size:17px;line-height:1.4;padding:12px 18px;justify-content:center}
+#slayerSpell .secondary{margin:0;border:1px solid #d4bb8a;color:#fff0d1;background:#27323a}
+#slayerSpell input:focus-visible,#slayerSpell button:focus-visible{outline:3px solid #fff0b3;outline-offset:4px}
+#dialog.slayer-warning .panel{background:#251319;border:2px solid #ffb4a6;max-height:calc(100dvh - 36px);overflow:auto}
+#dialog.slayer-warning #dialogTitle{color:#ffd3c8;font-size:clamp(25px,4vw,36px)}
+#dialog.slayer-warning #dialogLabel,#dialog.slayer-warning #dialogText{color:#fff0e7}
+#dialog.slayer-warning #dialogText p{font-size:17px;line-height:1.65}
+#dialog.slayer-warning button{min-height:48px;font-size:17px}
+@media(max-width:500px),(max-height:500px){#slayerSpell{padding:10px;align-items:flex-start}#slayerSpell .slayer-spell-panel{padding:24px;max-height:calc(100dvh - 20px)}#slayerSpell h2{font-size:30px}#dialog.slayer-warning .panel{padding:24px}}

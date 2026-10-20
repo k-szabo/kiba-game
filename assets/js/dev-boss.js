@@ -31,7 +31,8 @@ const DevBoss=(()=>{
   clearEncounterEffects();if(!boss.dead)resetBossBattle();
   resetMinibosses();projectiles=[];
   // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
-  resetMiniboss(replay);replay.dead=false;replay.active=true;
+  resetMiniboss(replay);replay.dead=false;
+  if(DoomSlayer.is(replay))DoomSlayer.start(replay);else replay.active=true;
   const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;
   initPlayer({x:a.x+70,y:floor.y});particles=[];drops=[];keys.clear();pressed.clear();
   resetCamera();updateHUD();DevTools.setReturnState('play');return true;

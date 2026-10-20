@@ -410,6 +410,22 @@
           "en": "Momo's level cap is now 30, and each stat can be upgraded 12 times. Each level still grants one training point; regular enemies in later realms are stronger and award more XP."
         }
       ]
+    },
+    {
+      "version": "0.9.25_df06a46f",
+      "code": "df06a46f",
+      "baseVersion": "0.9.25",
+      "slug": "secret-doom-slayer-encounter",
+      "summary": {
+        "hu": "Belső karbantartás és technikai fejlesztések.",
+        "en": "Internal maintenance and technical improvements."
+      },
+      "fixes": [
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

@@ -47,6 +47,8 @@ const SaveVault=(()=>{
   const council=data.flags[1];
   const earned=council.includes('councilKeyEarned'),held=council.includes('councilKey'),gateOpen=council.includes('councilGateOpen');
   if(earned&&!data.defeated[1]||held&&(!earned||gateOpen)||gateOpen&&(!earned||held))throw Error('Invalid council progress');
+  if(council.some(id=>['daisyPlush','slayerCrossbow'].includes(id))&&!council.includes('guardian:doomSlayer'))throw Error('Unguarded grave reward');
+  if((council.includes('guardian:doomSlayer')||council.includes('slayerSeal'))&&!data.defeated[1])throw Error('Invalid grave progress');
   if(council.includes('serpentScale')&&(!data.defeated[0]||!['soulUpper','soulLower'].every(id=>council.includes(id))))throw Error('Invalid serpent reward');
   if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won)throw Error('Invalid victory');
   const shadowIndex=levels.findIndex(map=>map.id==='shadowRealm');

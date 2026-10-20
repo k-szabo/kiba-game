@@ -628,7 +628,21 @@
       "menu.changelog.0923.itemListTitle": "Letisztultabb tárgykijelzés",
       "menu.changelog.0923.itemList": "A bal felső tárgylista megszűnt; a megszerzett tárgyakat a hátizsákban tekintheted meg.",
       "menu.changelog.0924.levelCapTitle": "Fejlődés a 30. szintig",
-      "menu.changelog.0924.levelCap": "Momo szintlimitje 30-ra, a tulajdonságok fejlesztési határa 12-re nőtt. Minden szint továbbra is egy fejlesztéspontot ad; a későbbi világok normál ellenfelei erősebbek és több XP-t érnek."
+      "menu.changelog.0924.levelCap": "Momo szintlimitje 30-ra, a tulajdonságok fejlesztési határa 12-re nőtt. Minden szint továbbra is egy fejlesztéspontot ad; a későbbi világok normál ellenfelei erősebbek és több XP-t érnek.",
+      "slayer.name": "Démonölő",
+      "slayer.epitaph": "Itt nyugszik a Démonölő. Mondd ki a varázsigét, ha mered, és nézz szembe vele.",
+      "slayer.incantation": "Varázsige",
+      "slayer.speak": "Kimondom",
+      "slayer.silent": "A sírkő néma marad.",
+      "slayer.warning": "Figyelem, magas veszélyszintű ellenfél!",
+      "slayer.read": "E · Olvasd el a sírfeliratot",
+      "slayer.armor": "Páncél: {0}",
+      "slayer.steam": "Gőznyomás: {0}",
+      "slayer.victory": "A vas elcsendesül. A sírkőn egy rózsaszín nyúl és egy számszeríj marad.",
+      "item.daisyPlush": "Daisy plüssnyúl",
+      "inventory.description.daisyPlush": "Egy megviselt, rózsaszín plüssnyúl. Valaki a pokolban sem mondott le róla.",
+      "item.slayerCrossbow": "A Démonölő számszeríja",
+      "inventory.description.slayerCrossbow": "Momo még nem képzett ennek a használatában."
     }
   },
   "en": {
@@ -1260,7 +1274,21 @@
       "menu.changelog.0923.itemListTitle": "Cleaner item display",
       "menu.changelog.0923.itemList": "The top-left item list has been removed; view your collected items in the inventory.",
       "menu.changelog.0924.levelCapTitle": "Progression to level 30",
-      "menu.changelog.0924.levelCap": "Momo's level cap is now 30, and each stat can be upgraded 12 times. Each level still grants one training point; regular enemies in later realms are stronger and award more XP."
+      "menu.changelog.0924.levelCap": "Momo's level cap is now 30, and each stat can be upgraded 12 times. Each level still grants one training point; regular enemies in later realms are stronger and award more XP.",
+      "slayer.name": "Demon Slayer",
+      "slayer.epitaph": "Here lies the Demon Slayer. Speak the incantation, if you dare, and face him.",
+      "slayer.incantation": "Incantation",
+      "slayer.speak": "Speak",
+      "slayer.silent": "The gravestone remains silent.",
+      "slayer.warning": "Warning: extremely dangerous foe!",
+      "slayer.read": "E · Read the epitaph",
+      "slayer.armor": "Armor: {0}",
+      "slayer.steam": "Steam pressure: {0}",
+      "slayer.victory": "The iron falls silent. A pink rabbit and a crossbow remain upon the gravestone.",
+      "item.daisyPlush": "Daisy Plush Rabbit",
+      "inventory.description.daisyPlush": "A worn pink plush rabbit. Someone refused to abandon it, even in Hell.",
+      "item.slayerCrossbow": "Demon Slayer's Crossbow",
+      "inventory.description.slayerCrossbow": "Momo is not yet trained to use this weapon."
     }
   }
 }

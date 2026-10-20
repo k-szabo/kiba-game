@@ -18,6 +18,14 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  "slayerMelee": "assets/images/enemies/slayer-melee-v1.png",
+  "slayerRanged": "assets/images/enemies/slayer-ranged-v1.png",
+  "slayerDaisy": "assets/images/items/slayer-daisy-v1.png",
+  "slayerLightning": "assets/images/effects/slayer-lightning-v1.png",
+  "slayerCrossbow": "assets/images/items/slayer-crossbow-v1.png",
+  "slayerArena": "assets/images/backgrounds/slayer-arena-v1.png",
+  "slayerGravestone": "assets/images/props/slayer-gravestone-v1.png",
+  "slayerBarrel": "assets/images/props/slayer-barrel-v1.png",
   "campCedar": "assets/images/props/camp-cedar-v1.png",
   "campHDLeft": "assets/images/backgrounds/forest-camp-hd-left-v1.png",
   "campHDCenter": "assets/images/backgrounds/forest-camp-hd-center-v1.png",
@@ -100,12 +108,20 @@ const ART_MANIFEST = {
   "angelRuinBackdrop": "assets/images/backgrounds/angel-ruins-v6.png",
   "cultCaveBackdrop": "assets/images/backgrounds/cult-cave-v6.png"
 };
+// One stable body scale per atlas; animation frames are registered by the integrator.
+const ART_SLAYER={frames:[{"image":"slayerMelee","x":80,"y":162,"w":191,"h":184,"anchorX":193,"anchorY":342,"bodyHeight":176},{"image":"slayerMelee","x":439,"y":163,"w":214,"h":183,"anchorX":574,"anchorY":342,"bodyHeight":176},{"image":"slayerMelee","x":814,"y":199,"w":184,"h":147,"anchorX":922,"anchorY":342,"bodyHeight":176},{"image":"slayerMelee","x":1177,"y":149,"w":197,"h":197,"anchorX":1294,"anchorY":342,"bodyHeight":176},{"image":"slayerMelee","x":62,"y":501,"w":282,"h":158,"anchorX":158,"anchorY":655,"bodyHeight":176},{"image":"slayerMelee","x":459,"y":517,"w":239,"h":142,"anchorX":547,"anchorY":655,"bodyHeight":176},{"image":"slayerMelee","x":839,"y":472,"w":170,"h":188,"anchorX":918,"anchorY":656,"bodyHeight":176},{"image":"slayerMelee","x":1177,"y":473,"w":216,"h":186,"anchorX":1266,"anchorY":655,"bodyHeight":176},{"image":"slayerMelee","x":94,"y":776,"w":172,"h":180,"anchorX":182,"anchorY":952,"bodyHeight":176},{"image":"slayerMelee","x":467,"y":785,"w":184,"h":169,"anchorX":564,"anchorY":950,"bodyHeight":176},{"image":"slayerMelee","x":793,"y":800,"w":227,"h":154,"anchorX":892,"anchorY":950,"bodyHeight":176},{"image":"slayerMelee","x":1184,"y":776,"w":183,"h":178,"anchorX":1287,"anchorY":950,"bodyHeight":176},{"image":"slayerRanged","x":41,"y":92,"w":304,"h":268,"anchorX":195,"anchorY":356,"bodyHeight":260},{"image":"slayerRanged","x":407,"y":114,"w":285,"h":245,"anchorX":550,"anchorY":356,"bodyHeight":260},{"image":"slayerRanged","x":779,"y":70,"w":285,"h":291,"anchorX":920,"anchorY":356,"bodyHeight":260},{"image":"slayerRanged","x":1135,"y":60,"w":292,"h":301,"anchorX":1305,"anchorY":356,"bodyHeight":260},{"image":"slayerRanged","x":40,"y":457,"w":297,"h":225,"anchorX":190,"anchorY":678,"bodyHeight":260},{"image":"slayerRanged","x":392,"y":451,"w":316,"h":230,"anchorX":545,"anchorY":678,"bodyHeight":260},{"image":"slayerRanged","x":776,"y":410,"w":277,"h":271,"anchorX":930,"anchorY":678,"bodyHeight":260},{"image":"slayerRanged","x":1136,"y":425,"w":288,"h":212,"anchorX":1300,"anchorY":678,"bodyHeight":260},{"image":"slayerRanged","x":45,"y":797,"w":293,"h":218,"anchorX":220,"anchorY":1011,"bodyHeight":260},{"image":"slayerRanged","x":407,"y":746,"w":302,"h":263,"anchorX":545,"anchorY":1011,"bodyHeight":260},{"image":"slayerRanged","x":771,"y":755,"w":301,"h":259,"anchorX":905,"anchorY":1011,"bodyHeight":260},{"image":"slayerRanged","x":1130,"y":777,"w":299,"h":236,"anchorX":1260,"anchorY":1011,"bodyHeight":260}],
+ grave:{image:'slayerGravestone',x:188,y:136,w:894,h:1011,anchorX:635,anchorY:1147,bodyHeight:1011},
+ barrel:{image:'slayerBarrel',x:173,y:82,w:916,h:1120,anchorX:631,anchorY:1202,bodyHeight:1120},
+ lightning:{image:'slayerLightning',x:0,y:0,w:1024,h:1536,anchorX:520,anchorY:1474,bodyHeight:1430}
+};
 // Dedicated native-resolution equipment art; crops preserve the complete silhouette.
 const ART_INVENTORY = {
   momo:{image:'inventoryMomoPortrait',x:48,y:87,w:976,h:1388},
   katana:{image:'inventoryKatana',x:46,y:0,w:944,h:1536},
   // Inventory-only crops exclude world pedestals. Every item uses the same UI renderer.
   items:{
+    daisyPlush:{name:'item.daisyPlush',realm:1,image:'slayerDaisy',x:176,y:3,w:1098,h:1121},
+    slayerCrossbow:{name:'item.slayerCrossbow',realm:1,image:'slayerCrossbow',x:34,y:69,w:1497,h:869},
     madPriestSoul:{name:'item.madPriestSoul',realm:3,image:'madPriestSoul',x:77,y:4,w:1079,h:1246},
     corruptedHymn:{name:'item.corruptedHymn',realm:3,image:'corruptedHymn',x:39,y:166,w:1202,h:944},
     prisonKey:{name:'item.prisonKey',realm:3,image:'prisonKey',x:50,y:68,w:1178,h:1143,consumedBy:{realm:3,id:'prisonOpen'}},

@@ -4,7 +4,7 @@ const DevTools=(()=>{
  const tools=new Map();
  let initialized=false,opened=false,session=0,render=0,origin='menu',returnFocus=null,message='';
  let inertSiblings=[],overlays=[];
- const overlayIds=['menu','pause','inventory','map','training','help','dialog','shop'];
+ const overlayIds=['menu','pause','inventory','map','training','help','dialog','shop','slayerSpell'];
  const node=id=>document.getElementById(id);
  function text(id,key){node(id).textContent=I18n.t(key);}
  function refresh(){
@@ -47,7 +47,7 @@ const DevTools=(()=>{
  }
  function open(){
   if(!initialized)return false;if(opened)return true;
-  if(!['menu','play','pause','inventory','map','training','help','dialog','shop','won'].includes(state))return false;
+  if(!['menu','play','pause','inventory','map','training','help','dialog','shop','slayerSpell','won'].includes(state))return false;
   origin=state;returnFocus=document.activeElement;opened=true;session++;message='';state='developer';keys.clear();pressed.clear();
   overlays=overlayIds.map(id=>[node(id),node(id).hidden]);
   for(const [overlay] of overlays)overlay.hidden=true;

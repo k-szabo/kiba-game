@@ -74,6 +74,7 @@ const Visuals = (() => {
   function secretBackdropState(entity=player){
     if(state==='menu'||!entity)return null;
     for(const area of level.secrets||[]){
+      if(area.id==='slayerGrave')continue;
       const top=area.id==='angelRuin'?Math.min(area.y,area.arena.y-780):area.y-120;
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
@@ -177,6 +178,7 @@ const Visuals = (() => {
       }
     }
     ctx.fillRect(0, 0, viewW, H);
+    SlayerArt.backdrop();
     // Fog layers and particles move at different speeds to retain depth.
     for (let layer = 0; layer < 3; layer++) {
       ctx.save();ctx.globalAlpha = realm === 1 ? .045 : .05;
@@ -314,6 +316,7 @@ const Visuals = (() => {
     }
   }
   function objects(r) {
+    SlayerArt.objects();
     if(realm===3){
       const altar=level.altar;
       if(visiblePoint(altar,440)){
@@ -342,7 +345,8 @@ const Visuals = (() => {
     for (const o of level.objects) {
       if(!objectVisible(o))continue;
       if (!visiblePoint(o)) continue;
-      const taken = hasFlag(o.id);if(['relic','shadowItem'].includes(o.type)&&!relicUnlocked(o))continue;
+      const taken = hasFlag(o.id);if(['relic','shadowItem','slayerLoot'].includes(o.type)&&!relicUnlocked(o))continue;
+      if(o.type==='slayerLoot'&&taken)continue;
       if(o.type==='shadowItem'&&(taken||o.id==='prisonKey'&&hasFlag('prisonOpen')))continue;
       if(o.type==='councilKey'&&taken)continue;
       if(realm===2&&!taken){
@@ -350,7 +354,7 @@ const Visuals = (() => {
         ctx.save();ctx.fillStyle='#193549b8';ctx.strokeStyle='#f5df9f';ctx.lineWidth=2;
         ctx.beginPath();ctx.ellipse(o.x,cy,o.type==='bell'?62:37,o.type==='bell'?75:42,0,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
       }
-      if(o.type==='shadowItem'){
+      if(o.type==='shadowItem'||o.type==='slayerLoot'){
         const art=ART_INVENTORY.items[o.id],image=images[art.image],height=76,width=height*art.w/art.h;
         shadow(o.x,o.y,28,.35);BossVFX.marker(o.x,o.y,70,'#f3dbaf');
         if(usable(art.image))ctx.drawImage(image,art.x,art.y,art.w,art.h,o.x-width/2,o.y-height-10,width,height);
@@ -368,6 +372,7 @@ const Visuals = (() => {
   }
 
   function actor(e, r, isBoss = false) {
+    if(!isBoss&&DoomSlayer.is(e)){SlayerArt.actor(e);return;}
     if(!isBoss&&e.serpent===true){serpentActor(e);return;}
     const role=isBoss?'boss':enemyRole(e),feet=e.y+e.h,x=e.x+e.w/2;
     const height=isBoss?[164,180,176,170][realm]:e.miniboss?(e.miniboss==='organist'?290:e.miniboss==='jailer'?172:e.miniboss==='angel'?156:145):role==='shield'?102:role==='mage'?101:94;
@@ -488,8 +493,10 @@ const Visuals = (() => {
     ctx.restore();
   }
   function secretScenery(r){
+    SlayerArt.scenery();
     if(realm!==0)return;
     for(const area of level.secrets||[]){
+      if(area.id==='slayerGrave')continue;
       if(area.x+area.w<camera||area.x>camera+viewW||area.y+area.h<cameraY||area.y>cameraY+H)continue;
       ctx.save();
       if(area.id==='angelRuin'){
@@ -731,6 +738,10 @@ const Visuals = (() => {
   }
   function projectile(p) {
     if(BossVFX.projectile(p))return;
+    if(p.slayer&&p.fire&&p.kind==='arrow'){
+      const angle=Math.atan2(p.vy,p.vx);
+      BossVFX.stamp('ember',p.x-Math.cos(angle)*12,p.y-Math.sin(angle)*12,80,30,{angle,alpha:.95});
+    }
     if(p.kind==='holyArrow'){
       holySpell('holyArrow',p.x,p.y,p.source?.startsWith('mini:')?100:124,32,Math.atan2(p.vy,p.vx));return;
     }
