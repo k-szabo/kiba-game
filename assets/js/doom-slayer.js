@@ -2,6 +2,7 @@
 'use strict';
 const DoomSlayer=(()=>{
  const flag='guardian:doomSlayer',moves=['flail','oil','fireArrows','lightning','kick','arrows','doubleJump','grab','explosion'];
+ const mobility={run:480,sawRun:620,jump:460,sawRush:720,spacing:130};
  const is=e=>e?.miniboss==='slayer';
  const facing=e=>Math.sign(player.x+player.w/2-e.x-e.w/2)||e.face;
  function phase(e,name,duration){
@@ -33,7 +34,7 @@ const DoomSlayer=(()=>{
  }
  function start(e){
   if(!is(e)||e.dead||e.active)return false;
-  e.active=true;e.barrels=[.18,.5,.82].map((f,i)=>({id:i,x:e.arena.x+e.arena.w*f,y:e.arena.y,punctured:false}));
+  e.active=true;e.barrels=Array.from({length:9},(_,i)=>({id:i,x:e.arena.x+e.arena.w*(.08+i*.105),y:e.arena.y,punctured:false}));
   e.face=facing(e);e.attackFace=e.face;phase(e,'wait',.65);return true;
  }
  // Damage can synchronously revive Momo and reset this very encounter. Never
@@ -78,6 +79,8 @@ const DoomSlayer=(()=>{
  }
  function choose(e){
   e.move=e.sawReady?'saw':moves[e.cycles++%moves.length];e.face=facing(e);e.attackFace=e.face;
+  // Decide at release of the initial approach, using the actual melee reach.
+  if(!e.sawReady&&e.cycles===1&&Math.abs(player.x+player.w/2-e.x-e.w/2)>230)e.move='fireArrows';
   e.targetX=player.x+player.w/2;e.targetY=player.y+player.h/2;
   const duration={flail:.85,oil:.8,fireArrows:.7,lightning:1.05,kick:.65,arrows:1,doubleJump:.75,grab:.8,explosion:1.1,saw:.55}[e.move];
   phase(e,'windup',duration);
@@ -91,13 +94,16 @@ const DoomSlayer=(()=>{
    shot(e,x,e.arena.y-620,0,660,2);hazard(e,'arrowWarning',x,24,1,.2,0,12);
   }
   if(e.move==='oil'){
-   const barrel=e.barrels.find(b=>!b.punctured);
+   const barrel=e.barrels.filter(b=>!b.punctured).sort((a,b)=>Math.abs(a.x-e.x-e.w/2)-Math.abs(b.x-e.x-e.w/2))[0];
    if(barrel){barrel.punctured=true;e.oils.push({id:barrel.id,x:clamp(barrel.x-160,e.arena.x+15,e.arena.x+e.arena.w-335),y:e.arena.y-14,w:320,h:20,lit:false,warning:0,life:35});}
   }
   if(e.move==='fireArrows'){
-   const oil=e.oils.find(o=>!o.lit),x=e.x+e.w/2,y=e.y+22,tx=oil?oil.x+oil.w/2:e.targetX,ty=oil?oil.y+6:e.targetY;
-   const dx=tx-x,flight=Math.max(.2,Math.abs(dx)/420),angle=Math.atan2(ty-y-27.5*flight*flight,dx);
-   shot(e,x,y,Math.cos(angle)*420,Math.sin(angle)*420,2,'arrow',{fire:true,igniteOil:oil?.id});
+   const oil=e.oils.filter(o=>!o.lit).sort((a,b)=>Math.abs(a.x+a.w/2-e.x-e.w/2)-Math.abs(b.x+b.w/2-e.x-e.w/2))[0];
+   const x=e.x+e.w/2,y=e.y+22,tx=oil?oil.x+oil.w/2:e.targetX,ty=oil?oil.y+6:e.targetY;
+   const dx=tx-x,flight=Math.max(.2,Math.abs(dx)/420);
+   // Fixed flight time accounts for arrow gravity without reducing horizontal
+   // speed by normalising the corrected launch angle. Far pools need more life.
+   shot(e,x,y,dx/flight,(ty-y-27.5*flight*flight)/flight,2,'arrow',{fire:true,igniteOil:oil?.id,life:Math.max(4,flight+.5)});
   }
   if(e.move==='doubleJump'){e.vy=-720;e.jumps=1;e.jumpUsed=false;e.landed=false;e.jumpFace=facing(e);}
  }
@@ -122,6 +128,13 @@ const DoomSlayer=(()=>{
   }
   e.oils=e.oils.filter(o=>o.life>0);
  }
+ function pursue(e,dt){
+  const dx=player.x+player.w/2-e.x-e.w/2;e.face=Math.sign(dx)||e.face;
+  if(Math.abs(dx)<=mobility.spacing||e.stun>0)return;
+  const old=e.x,speed=e.sawReady?mobility.sawRun:mobility.run;
+  e.x=clamp(e.x+e.face*Math.min(speed*dt,Math.abs(dx)-mobility.spacing),e.patrolLeft,e.patrolRight);
+  e.walkSpeed=(e.x-old)/dt;
+ }
  function update(e,dt){
   if(state!=='play'||!e.active||e.dead||!Number.isFinite(dt)||dt<=0)return;
   const a=e.arena,feet=player.y+player.h;
@@ -143,20 +156,19 @@ const DoomSlayer=(()=>{
   }
   if(e.phase==='cast'){if(e.clock<=0){e.sawReady=true;phase(e,'wait',.15);}return;}
   if(e.phase==='wait'){
-   const dx=player.x+player.w/2-e.x-e.w/2;e.face=Math.sign(dx)||e.face;
-   if(Math.abs(dx)>130&&e.stun<=0){const old=e.x;e.x=clamp(e.x+e.face*(e.sawReady?310:125)*dt,e.patrolLeft,e.patrolRight);e.walkSpeed=(e.x-old)/dt;}
+   pursue(e,dt);
    if(e.clock<=0)choose(e);
   }else if(e.phase==='windup'){e.windup=Math.max(0,e.clock);if(e.clock<=0)strike(e);}
   else if(e.phase==='strike'){
    if(e.move==='doubleJump'){
     e.vy+=1550*dt;
     if(!e.jumpUsed&&e.vy>=0){e.vy=-620;e.jumps=2;e.jumpUsed=true;}
-    e.x=clamp(e.x+e.jumpFace*260*dt,e.patrolLeft,e.patrolRight);e.y+=e.vy*dt;
+    e.x=clamp(e.x+e.jumpFace*mobility.jump*dt,e.patrolLeft,e.patrolRight);e.y+=e.vy*dt;
     if(e.y>=e.baseY&&e.vy>0){e.y=e.baseY;e.vy=0;if(!e.landed){e.landed=true;hazard(e,'landing',e.x+e.w/2,230,.35,.3,3,80);e.clock=Math.min(e.clock,.3);}}
-   }else if(e.move==='saw'&&!e.victim){const old=e.x;e.x=clamp(e.x+e.attackFace*350*dt,e.patrolLeft,e.patrolRight);e.walkSpeed=(e.x-old)/dt;}
+   }else if(e.move==='saw'&&!e.victim){const old=e.x;e.x=clamp(e.x+e.attackFace*mobility.sawRush*dt,e.patrolLeft,e.patrolRight);e.walkSpeed=(e.x-old)/dt;}
    strikeContact(e);if(!e.active||e.dead)return;
    if(e.clock<=0)phase(e,'recover',e.move==='saw'?.4:.55);
-  }else if(e.phase==='recover'&&e.clock<=0)phase(e,'wait',e.sawReady?.15:.45);
+  }else if(e.phase==='recover'){pursue(e,dt);if(e.clock<=0)phase(e,'wait',e.sawReady?.15:.45);}
  }
  return Object.freeze({is,create,reset,start,update,hit,defeat,clear});
 })();

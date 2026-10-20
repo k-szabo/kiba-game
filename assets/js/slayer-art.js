@@ -51,7 +51,8 @@ const SlayerArt=(()=>{
   const phase=e.phase,move=e.move;
   if(phase==='retreat')return 21;
   if(phase==='cast')return 22;
-  if(phase==='wait')return e.sawReady?23:Math.abs(e.walkSpeed)>2?(Math.floor(e.animTime*7)%2):0;
+  if((phase==='wait'||phase==='recover')&&Math.abs(e.walkSpeed)>2)return e.sawReady?23:Math.floor(e.animTime*Math.min(13,Math.max(7,Math.abs(e.walkSpeed)/45)))%2;
+  if(phase==='wait')return e.sawReady?23:0;
   if(move==='saw')return phase==='strike'?23:22;
   if(move==='doubleJump')return phase==='windup'?18:phase==='recover'||e.landed?20:e.jumps===2?19:18;
   if(move==='flail'||move==='oil')return phase==='windup'?3:phase==='strike'?4:5;

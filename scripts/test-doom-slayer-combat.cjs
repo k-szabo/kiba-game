@@ -24,7 +24,7 @@ function contact(h,move,hp=30){
 {
  const h=fixture();assert(value(h,'DoomSlayer.is(subject)'));assert.equal(value(h,'subject.maxHp'),260);
  assert(!value(h,'subject.active'));step(h,10);assert.equal(value(h,'subject.cycles'),0,'The grave never activates on approach');
- start(h);assert.equal(value(h,'subject.barrels.length'),3);assert(!value(h,'DoomSlayer.start(subject)'));
+ start(h);assert.equal(value(h,'subject.barrels.length'),9);assert(!value(h,'DoomSlayer.start(subject)'));
  step(h,.67);assert.equal(value(h,'subject.phase'),'windup');assert.equal(value(h,'subject.move'),'flail');assert(value(h,'subject.clock>.8'));
  assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),10,'Windup leaves the shield open');
  value(h,"subject.inv=0;subject.phase='wait';subject.face=-1;player.x=subject.x-50;player.y=subject.baseY+43;");
@@ -40,6 +40,36 @@ for(const [move,damage] of [['flail',5],['kick',3],['grab',2],['saw',5]]){
  assert.equal(value(h,'player.hp'),30-damage,move+' damage');
  if(move==='kick'){assert(value(h,'player.vx< -700'));assert.equal(value(h,'player.vy'),-280);}
  if(move==='grab'||move==='saw'){assert(value(h,'player.slayerGrab'));assert(value(h,'player.stun>0'));value(h,'DoomSlayer.clear(subject)');assert.equal(value(h,'player.stun'),0);assert(!value(h,'player.slayerGrab'));}
+}
+// Use the full opening approach, not a forced attack, to verify both sides and
+// frame rates. A distant target must see a ranged tell; close targets keep melee.
+for(const rate of [30,60,120])for(const direction of [-1,1])for(const distant of [false,true]){
+ const h=fixture();
+ value(h,`initPlayer({x:${distant?(direction<0?600:3000):2238+direction*80},y:-1700});player.inv=999;`);
+ start(h);step(h,.67,rate);
+ assert.equal(value(h,'subject.phase'),'windup');
+ assert.equal(value(h,'subject.move'),distant?'fireArrows':'flail',`Opening selection: ${rate} FPS, direction ${direction}, distant=${distant}`);
+ assert(value(h,'subject.clock>.6'),'The opening still gives a visible windup');
+ for(let frame=0;frame<rate*4&&value(h,'subject.cycles')<2;frame++)step(h,1/rate,rate);
+ assert.equal(value(h,'subject.cycles'),2,'The ranged opener must not stall the move cycle');
+ assert.equal(value(h,'subject.move'),'oil','The opener still leads into barrel ignition');
+}
+for(const rate of [30,60,120]){
+ for(const phase of ['wait','recover'])for(const sawReady of [false,true]){
+  const h=fixture();start(h);
+  value(h,`player.x=600;subject.phase=${JSON.stringify(phase)};subject.clock=10;subject.sawReady=${sawReady};var oldSlayerX=subject.x;`);
+  step(h,.25,rate);
+  assert(Math.abs(value(h,'oldSlayerX-subject.x')-(sawReady?620:480)*Math.ceil(.25*rate)/rate)<1e-6,'Fast pursuit changes with frame rate');
+  assert(value(h,'Math.abs(subject.walkSpeed)>285'),'Pursuit must outrun Momo rather than shuffle');
+  value(h,'subject.stun=1;var stoppedSlayerX=subject.x;');step(h,.25,rate);
+  assert.equal(value(h,'subject.x'),value(h,'stoppedSlayerX'),'Stun must stop pursuit');
+  value(h,'subject.stun=0;player.x=subject.x+subject.w/2-player.w/2;');step(h,.25,rate);
+  assert.equal(value(h,'subject.x'),value(h,'stoppedSlayerX'),'Pursuit must not overshoot at point-blank range');
+ }
+ const h=fixture();start(h);prepare(h,'doubleJump');value(h,'var leapStart=subject.x;');step(h,.2,rate);
+ assert(Math.abs(value(h,'leapStart-subject.x')-92)<1e-6,'Double jump must cover ground at the new speed');
+ value(h,"subject.move='saw';subject.phase='strike';subject.clock=10;subject.hitDone=true;var rushStart=subject.x;player.x=600;");step(h,.2,rate);
+ assert(Math.abs(value(h,'rushStart-subject.x')-144)<1e-6,'Saw rush must cover ground at the new speed');
 }
 for(const protection of ['inv','dash','immortality']){
  const h=fixture();
@@ -104,9 +134,19 @@ for(const rate of [30,60,120]){
  const h=fixture();start(h);prepare(h,'fireArrows');assert.equal(value(h,'subject.oils.length'),0,'Fire arrows cannot invent spilled oil');
  value(h,'projectiles=[];');prepare(h,'oil');assert.equal(value(h,'subject.oils.length'),1);assert.equal(value(h,'subject.barrels.filter(b=>b.punctured).length'),1);assert(!value(h,'subject.oils[0].lit'));
  assert(value(h,'subject.oils[0].w<subject.arena.w/4'),'Oil preserves safe ground');
- prepare(h,'fireArrows');assert(value(h,'projectiles[0].fire'));assert.equal(value(h,'projectiles[0].igniteOil'),0);
+ prepare(h,'fireArrows');assert(value(h,'projectiles[0].fire'));assert.equal(value(h,'projectiles[0].igniteOil'),value(h,'subject.oils[0].id'));
  value(h,`subject.clock=99;for(let n=0;n<${rate*4};n++){for(const p of projectiles){p.life-=${1/rate};p.vy+=55*${1/rate};p.x+=p.vx*${1/rate};p.y+=p.vy*${1/rate};}DoomSlayer.update(subject,${1/rate});}`);
  assert(value(h,'subject.oils[0].lit'),'A moving fire arrow ignites the actual oil pool at '+rate+' fps');assert.equal(value(h,'projectiles[0].life>0'),false);
+}
+for(const rate of [30,60,120])for(const side of [-1,1]){
+ const h=fixture();start(h);
+ assert(value(h,'subject.barrels.every(b=>b.x>subject.arena.x+100&&b.x<subject.arena.x+subject.arena.w-100&&b.y===subject.arena.y)'),'All nine barrels must fit on the arena floor');
+ value(h,'var nearestBarrel=subject.barrels.reduce((a,b)=>Math.abs(a.x-subject.x-subject.w/2)<Math.abs(b.x-subject.x-subject.w/2)?a:b);');
+ prepare(h,'oil');assert.equal(value(h,'subject.oils[0].id'),value(h,'nearestBarrel.id'),'Puncture the nearest unused barrel');
+ value(h,`subject.x=${side<0?'subject.patrolRight':'subject.patrolLeft'};subject.oils=[{id:90,x:${side<0?150:2700},y:subject.arena.y-14,w:320,h:20,lit:false,warning:0,life:35}];projectiles=[];`);
+ prepare(h,'fireArrows');assert(value(h,'projectiles[0].life>4'),'Cross-arena oil shots need enough lifetime');
+ value(h,`subject.clock=99;for(let n=0;n<${rate*8};n++){for(const p of projectiles){if(p.life<=0)continue;p.life-=${1/rate};p.vy+=55*${1/rate};p.x+=p.vx*${1/rate};p.y+=p.vy*${1/rate};}DoomSlayer.update(subject,${1/rate});}`);
+ assert(value(h,'subject.oils[0].lit'),`Long-range oil ignition: ${rate} FPS, direction ${side}`);
 }
 {
  const h=fixture();start(h);prepare(h,'oil');prepare(h,'lightning');value(h,"var frozen=JSON.stringify(subject);var frozenShots=JSON.stringify(projectiles);state='paused';");step(h,3);
