@@ -258,7 +258,7 @@
 #slayerSpellInput[aria-invalid="true"]{border-color:#ffb4a6}
 #slayerSpellMessage{min-height:1.65em;margin:10px 0;color:#ffc4b7!important}
 .slayer-spell-actions{display:flex;flex-wrap:wrap;gap:12px}
-#slayerSpell button{min-height:48px;min-width:0;flex:1 1 180px;font-size:17px;line-height:1.4;padding:12px 18px;justify-content:center}
+#slayerSpell button{min-height:48px;min-width:0;flex:1 1 180px;margin:0;font-size:17px;line-height:1.4;padding:12px 18px;justify-content:center}
 #slayerSpell .secondary{margin:0;border:1px solid #d4bb8a;color:#fff0d1;background:#27323a}
 #slayerSpell input:focus-visible,#slayerSpell button:focus-visible{outline:3px solid #fff0b3;outline-offset:4px}
 #dialog.slayer-warning .panel{background:#251319;border:2px solid #ffb4a6;max-height:calc(100dvh - 36px);overflow:auto}
