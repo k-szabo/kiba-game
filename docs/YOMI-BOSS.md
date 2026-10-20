@@ -1,5 +1,17 @@
 # A pokol ura és a lávakígyó
 
+## A második lélek útvonala
+
+A `soulLower` foglyot a `shadowVeil` nyugati nyílásán keresztül lehet elérni, aktív szellemlépéssel. A fátyol `requiresDash` feltétele a boss legyőzése után is megmarad. A `lowerSoulRoof` és `lowerSoulFloor` festett, minden oldalról szilárd kőhatárként zárja a kamrát a pálya jobb széléig; a felső `east-river` platformról történő leejtés és az alulról megkerülés nem ad alternatív bejáratot.
+
+A nyugati `veil-approach` platform a fogoly platformjával azonos magasságban áll, így a dash oda-vissza használható. Innen balra a meglévő `west-tomb` platformra lehet ereszkedni. A kamra padlója 220 képponttal van a fogoly platformja alatt, ezért a platformról lelépő Momo 30/60/120 FPS mellett is vissza tud ugrani dupla ugrással. A fogoly és az alsó szentély helye, az őrök, illetve a két lélekhez kötött mélységkapu feltétele nem változik.
+
+Dupla ugrás nélkül a padlóról nyugat felé, a fátylon át végzett dash visz ki a meglévő alsó útvonalra; ez a kijutás szintén ellenőrzött 30/60/120 FPS mellett.
+
+A célzott `node scripts/test-yomi-soul-route.cjs` a régi leejtési útvonal negatív kontrollját, a tiltott kerülőket, a tényleges inputtal végzett kétirányú dash-t, a visszautakat és a mentett lélekállapotot ellenőrzi. A kőhatárok láthatóságát és illeszkedését böngészőben is ellenőrizni kell.
+
+## A démon harca
+
 A démon a szokásos kalapácsütéseket, földrengést és parázslövedékeket használja. A minionok nem ismétlődő véletlen támadásból érkeznek: **80%, 60%, 40% és 20% HP-nál pontosan két-két démon** jelenik meg, egy harcos és egy mágus. A korábbi életben maradt szolgák nem csökkentik a következő pár létszámát. Minden küszöb egy kísérleten belül egyszer aktiválódik.
 
 ## Félidő: menedék a láva fölött

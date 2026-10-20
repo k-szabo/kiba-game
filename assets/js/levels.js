@@ -85,14 +85,24 @@ const yomi=makeLevel('yomi',3300,6250,{x:1560,y:450});
  ['ash-shrine',1220,2700,950],['west-fire',360,3040,1030],['east-river',1990,3400,900],
  ['cage-right',2050,3900,1050],['west-tomb',440,4230,1200],['deep-center',1110,4640,1050],
  ['last-ledge',1450,5040,1280],['bottom',220,5800,2860],
- ['rescue-left-stair',1510,1420,180],['river-lip',1800,3710,210],
+ ['rescue-left-stair',1510,1420,180],['river-lip',1800,3710,120],
+ ['veil-approach',1600,3900,320],
  ['seal-return',1320,5180,300],
  ['secret-tomb',230,2350,600],['secret-step',680,2240,250]
 ].forEach(p=>ledge(yomi,...p,'stone',32));
 yomi.ability={x:1570,y:2700,name:I18n.t("text.spirit.dash")};
 rest(yomi,'start',1530,450,I18n.t("text.the.silent.well"));rest(yomi,'upper',1810,1790,I18n.t("text.ash.ledge"));rest(yomi,'lower',2470,3900,I18n.t("text.the.silent.river"));rest(yomi,'abyss',1860,5040,I18n.t("text.edge.of.the.abyss"));rest(yomi,'arena',620,5800,I18n.t("text.the.soul.s.depths"));
 yomi.objects=[{id:'soulUpper',type:'rescue',group:'upperSoul',x:680,y:1510,name:I18n.t("text.the.remembering.soul")},{id:'soulLower',type:'rescue',group:'lowerSoul',x:2440,y:3900,name:I18n.t("text.the.homesick.soul")},{id:'tombMemory',type:'memory',x:510,y:2350,name:I18n.t("text.a.memory.in.the.tombs")}];
-yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}];
+// The lower captive lives inside a closed rock chamber. A freestanding veil
+// could be bypassed from east-river above, or by circling underneath it.
+// Roof/floor overlap its ends and reach the world edge; only the western
+// smoke opening admits Spirit Dash, including on later return visits.
+yomi.gates=[
+ {id:'shadowVeil',kind:'shadow',requiresDash:true,x:1920,y:3150,w:55,h:1060},
+ {id:'lowerSoulRoof',kind:'secretRock',terrainBarrier:true,x:1920,y:3650,w:1380,h:64},
+ {id:'lowerSoulFloor',kind:'secretRock',terrainBarrier:true,x:1920,y:4120,w:1380,h:90},
+ {id:'abyssOath',kind:'souls',x:0,y:5300,w:3300,h:32}
+];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
 yomi.progressFlags=['councilKeyEarned','councilGateOpen','serpentScale'];
 yomi.progressFlags.push('akashRescued','compass','minimap');
