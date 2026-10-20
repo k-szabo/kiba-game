@@ -96,6 +96,25 @@ yomi.gates=[{id:'shadowVeil',kind:'shadow',x:1920,y:3150,w:55,h:1060},{id:'abyss
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
 yomi.progressFlags=['councilKeyEarned','councilGateOpen','serpentScale'];
 yomi.progressFlags.push('akashRescued','compass','minimap');
+// A deliberately unmapped upper annex. Keep the ordinary descent's map scale.
+yomi.top=-2300;yomi.mapTop=0;
+yomi.secrets=[{id:'slayerGrave',name:I18n.t('text.yomi.the.world.s.depths'),x:100,y:-2300,w:3000,h:680,
+ arena:{x:100,y:-1700,w:3000},guardian:'doomSlayer',unmapped:true,silent:true}];
+for(const p of [
+ ['slayer-approach',850,450,320],['slayer-step1',820,250,270],['slayer-step2',470,50,270],
+ ['slayer-step3',820,-150,270],['slayer-step4',470,-350,270],['slayer-step5',820,-550,270],
+ ['slayer-step6',470,-750,270],['slayer-step7',820,-950,270],['slayer-step8',470,-1150,270],
+ ['slayer-step9',820,-1350,270],['slayer-step10',470,-1550,270],['slayer-arena',100,-1700,3000]
+]){ledge(yomi,...p,'stone',32);Object.assign(yomi.platforms.at(-1),{secretArea:'slayerGrave',unmapped:true});}
+yomi.gates.push({id:'slayerSeal',kind:'fire',requiresDawnblade:true,x:1120,y:-350,w:50,h:950,unmapped:true});
+yomi.slayerGrave={x:1600,y:-1700};
+yomi.progressFlags.push('daisyPlush','slayerCrossbow');
+yomi.objects.push(
+ {id:'daisyPlush',type:'slayerLoot',x:1530,y:-1700,name:I18n.t('item.daisyPlush'),guardian:'doomSlayer',secretArea:'slayerGrave',unmapped:true},
+ {id:'slayerCrossbow',type:'slayerLoot',x:1680,y:-1700,name:I18n.t('item.slayerCrossbow'),guardian:'doomSlayer',secretArea:'slayerGrave',unmapped:true}
+);
+foe(yomi,'doomSlayer',2200,-1700,'guard');Object.assign(yomi.enemies.at(-1),{
+ miniboss:'slayer',name:I18n.t('slayer.name'),secretArea:'slayerGrave',factionOverride:'yomi'});
 yomi.akash={x:710,y:2350};
 yomi.councilGate={x:2770,y:3400,w:420,h:415};
 yomi.gates.push({id:'councilGate',kind:'council',x:2815,y:2985,w:70,h:415});

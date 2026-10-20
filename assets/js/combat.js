@@ -25,6 +25,7 @@ function createEnemy(spec,i=0) {
       animTime:i*.17,attackElapsed:0,dead:false};
 }
 function respawnEnemies() {
+  DoomSlayer.clear();
   enemies=createEnemies();projectiles=projectiles.filter(p=>p.source==='boss');
   burst(player.x+20,player.y+30,realms[realm].gold,22);
 }
@@ -471,6 +472,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(DoomSlayer.is(spec))return DoomSlayer.create(spec,i);
   const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:94,w:68,maxHp:spec.miniboss==='angel'?36:42};
   return {...spec,x:spec.x,y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,hp:maxHp,maxHp,
     patrolLeft:a.x+25,patrolRight:a.x+a.w-w-25,face:-1,patrolFace:-1,phase:'wait',clock:1.2,phaseDuration:1.2,
@@ -479,6 +481,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(DoomSlayer.is(e)){DoomSlayer.reset(e);return;}
   e.x=e.origin;e.y=e.baseY;e.hp=e.maxHp;e.active=false;e.phase='wait';e.clock=1.2;e.phaseDuration=1.2;
   e.cycles=0;e.move=null;e.windup=0;e.inv=0;e.stun=0;e.hazards=[];e.hitDone=false;e.walkSpeed=0;
   projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
@@ -487,10 +490,11 @@ function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.serpent&&!e.
 function discoverSecrets(){
   for(const area of level.secrets||[])if(!area.public&&!secretKnown(area.id)&&overlap(player,area)&&
     (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){
-    flags[realm].push('discovered:'+area.id);persist();toast(I18n.t('hint.hidden.area.prefix')+area.name);
+    flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+area.name);
   }
 }
 function defeatMiniboss(e){
+  if(DoomSlayer.is(e)){DoomSlayer.defeat(e);return;}
   if(e.dead)return;
   e.dead=true;e.active=false;e.hazards=[];projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
   const flag=minibossFlag(e.id),first=!flags[realm].includes(flag);
@@ -515,7 +519,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

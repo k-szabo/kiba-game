@@ -89,7 +89,7 @@ const Merchant=(()=>{
   const scale=w/1100,X=x=>w/2+(x-player.x-player.w/2)*scale,Y=y=>h/2+(y-player.y-player.h)*scale;
   c.save();c.beginPath();c.rect(3,3,w-6,h-6);c.clip();
   c.strokeStyle='#d8c7a2';c.lineWidth=3;c.beginPath();
-  for(const p of level.platforms){if(p.secretArea&&!secretKnown(p.secretArea))continue;c.moveTo(X(p.x),Y(p.y));c.lineTo(X(p.x+p.w),Y(p.y));}c.stroke();
+  for(const p of level.platforms){if(p.unmapped||p.secretArea&&!secretKnown(p.secretArea))continue;c.moveTo(X(p.x),Y(p.y));c.lineTo(X(p.x+p.w),Y(p.y));}c.stroke();
   c.fillStyle='#8ad8df';
   for(const rest of level.rests)if(visitedRests[realm].includes(rest.id)){c.beginPath();c.arc(X(rest.x),Y(rest.y),4,0,Math.PI*2);c.fill();}
   c.fillStyle='#ffcb74';c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.arc(w/2,h/2,4,0,Math.PI*2);c.fill();c.stroke();c.restore();

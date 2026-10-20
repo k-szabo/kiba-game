@@ -28,6 +28,7 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 | `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
+| `assets/js/doom-slayer.js`, `slayer-dialog.js`, `slayer-art.js` | Opcionális találkozás, szüneteltetett szövegbevitel és külön grafikai réteg; [spoileres fejlesztői referencia](DOOM-SLAYER.md). |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
 | `assets/js/shadow-animation.js` | Árnyék 24 festett póza, szemekhez igazított kivágásai és harci időzítése. |
 | `assets/js/progression.js` | XP, szintek és fejlesztések. |
