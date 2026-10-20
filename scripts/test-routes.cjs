@@ -97,12 +97,12 @@ let reach=run('firstReach');assert(reach.includes('wind-roof'),'Japan wind shrin
 run("abilities=[true,false];flags[0]=['forestBell','villageBell'];enterRealm(0);var japanReach=reachableFrom('road0',true);");reach=run('japanReach');for(const id of ['forest-bell','village-bell','river-cave','road4','road5'])assert(reach.includes(id),'Japan route disconnected: '+id+'; reached '+reach.join(', '));
 run("var caveReturn=reachableFrom('river-cave',true);");assert(run("caveReturn.includes('road4')"),'The river cave has no physical return route');
 run("initPlayer({x:3000,y:950});player.onGround=true;player.support='road1';keys.clear();pressed.clear();keys.add('d');pressed.add(' ');for(let i=0;i<220;i++){if(i===42)pressed.add(' ');input(1/120);movePlayer(1/120);pressed.clear();jumpBuffer-=1/120;coyote-=1/120;if(player.x>3200)keys.clear();}");assert(snap().player.x>3165&&snap().player.onGround,'Double jump must safely clear the root wall');
-run("abilities=[true,true];flags[1]=[];enterRealm(1);var cageReach=reachableFrom('entry',true);");for(const id of ['cage-left','ash-shrine','cage-right'])assert(run(`cageReach.includes('${id}')`),'Yomi objective inaccessible before releasing souls: '+id);
+run("abilities=[true,true];flags[1]=[];enterRealm(1);var cageReach=reachableFrom('entry',true);");for(const id of ['cage-left','ash-shrine','veil-approach'])assert(run(`cageReach.includes('${id}')`),'Yomi objective inaccessible before releasing souls: '+id);
 run("abilities=[true,false];flags[1]=[];enterRealm(1);var merchantReach=reachableFrom('entry',true),merchantReturn=reachableFrom('secret-tomb',true);");assert(run("merchantReach.includes('secret-tomb')"),'Akash must be reachable before Spirit Dash');assert(run("merchantReturn.includes('ash-shrine')"),'Akash branch must have a return route');
-run("abilities=[true,true];flags[1]=['soulUpper','soulLower'];enterRealm(1);var yomiReach=reachableFrom('entry',true);");reach=run('yomiReach');for(const id of ['cage-left','ash-shrine','cage-right','bottom'])assert(reach.includes(id),'Yomi descent disconnected: '+id);
+run("abilities=[true,true];flags[1]=['soulUpper','soulLower'];enterRealm(1);var yomiReach=reachableFrom('entry',true);");reach=run('yomiReach');for(const id of ['cage-left','ash-shrine','veil-approach','bottom'])assert(reach.includes(id),'Yomi descent disconnected: '+id);
 run("flags[2]=['dawnSeal','memorySeal'];defeated[2]=false;enterRealm(2);var heavenReach=reachableFrom('cloud-base',true);");reach=run('heavenReach');for(const id of ['first-island','second-launch','second-island','third-launch','third-island','fourth-launch','fourth-island','dawn-arena'])assert(reach.includes(id),'Heaven ascent disconnected: '+id+'; reached '+reach.join(', '));
 run("defeated[2]=true;var summitReach=reachableFrom('dawn-arena',true);");assert(run("summitReach.includes('father-island')"),'Father summit inaccessible from the guardian arena');
-console.log('PASS: physics-based route search reaches the wind shrine, both Japan bells and cave return, both Yomi cages and bottom arena, all five sky lifts, and the father summit.');
+console.log('PASS: physics-based route search reaches the wind shrine, both Japan bells and cave return, the Yomi dash approach and bottom arena (captive chamber covered by the dedicated dash route test), all five sky lifts, and the father summit.');
 
 // Missing either captive soul must never trap Momo on the closed abyss seal.
 for(const released of [[],['soulUpper'],['soulLower']]){
@@ -140,7 +140,7 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
 {
  const {run,press,release}=require('./test-harness.cjs')();
  for(const dt of [1/120,1/60,1/30])for(const face of [-1,1])for(const gap of [150,180,200])for(const keepMoving of [false,true]){
-  run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3650});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
+  run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3900});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
   if(keepMoving)press(face>0?'d':'a');
   press('k');run(`update(${dt});`);release('k');
   let overlapped=false;
@@ -162,14 +162,14 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
  }
  // A full dash still crosses in both directions; walking without dash cannot.
  for(const face of [-1,1]){
-  run(`enterRealm(1);state='play';enemies=[];initPlayer({x:${face}>0?veil.x-31.5:veil.x+veil.w+31.5,y:3650});player.face=${face};player.onGround=false;keys.clear();pressed.clear();`);
+  run(`enterRealm(1);state='play';enemies=[];initPlayer({x:${face}>0?veil.x-31.5:veil.x+veil.w+31.5,y:3900});player.face=${face};player.onGround=false;keys.clear();pressed.clear();`);
   press(face>0?'d':'a');run('for(let i=0;i<20;i++)update(1/120);');
   assert(run(face>0?'player.x+player.w<=veil.x':'player.x>=veil.x+veil.w'),'Closed veil must block normal movement');
   press('k');run('for(let i=0;i<24;i++)update(1/120);');release('k');
   assert(run(face>0?'player.x>=veil.x+veil.w':'player.x+player.w<=veil.x'),'Active dash must cross the veil');
  }
  // Pause must keep a phased player frozen, then resolve safely on resuming.
- run("initPlayer({x:1940,y:3650});player.onGround=false;keys.clear();pressed.clear();dash=.004;pause();var frozenVeilPlayer=JSON.stringify(player);");
+ run("initPlayer({x:1940,y:3900});player.onGround=false;keys.clear();pressed.clear();dash=.004;pause();var frozenVeilPlayer=JSON.stringify(player);");
  run('for(let i=0;i<60;i++)update(1/60);');
  assert(run('JSON.stringify(player)===frozenVeilPlayer&&dash===.004'));
  run('pause();update(1/60);');assert(!run('overlap(player,veil)'));

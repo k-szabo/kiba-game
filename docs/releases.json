@@ -232,6 +232,46 @@
           "en": "The Shadow Altar now has a larger, darker appearance, a distinct kanji marker and an ominous dialogue on first activation."
         }
       ]
+    },
+    {
+      "version": "0.9.25_5f9cbcfd",
+      "code": "5f9cbcfd",
+      "baseVersion": "0.9.25",
+      "slug": "yomi-soul-route-dev-travel-portability",
+      "summary": {
+        "hu": "Yomi útvonalának javítása",
+        "en": "Yomi route fix"
+      },
+      "fixes": [
+        {
+          "hu": "A második yomi lélekhez vezető akadály többé nem kerülhető meg átugrással vagy felülről leejtéssel.",
+          "en": "The barrier guarding Yomi's second soul can no longer be bypassed by jumping over it or dropping in from above."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    },
+    {
+      "version": "0.9.25_56c1874c",
+      "code": "56c1874c",
+      "baseVersion": "0.9.25",
+      "slug": "yomi-dev-travel-portability-slayer-pressure",
+      "summary": {
+        "hu": "Yomi útvonalának javítása",
+        "en": "Yomi route fix"
+      },
+      "fixes": [
+        {
+          "hu": "A második yomi lélekhez vezető akadály többé nem kerülhető meg átugrással vagy felülről leejtéssel.",
+          "en": "The barrier guarding Yomi's second soul can no longer be bypassed by jumping over it or dropping in from above."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

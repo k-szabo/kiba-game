@@ -642,7 +642,9 @@
       "item.daisyPlush": "Daisy plüssnyúl",
       "inventory.description.daisyPlush": "Egy megviselt, rózsaszín plüssnyúl. Valaki a pokolban sem mondott le róla.",
       "item.slayerCrossbow": "A Démonölő számszeríja",
-      "inventory.description.slayerCrossbow": "Momo még nem képzett ennek a használatában."
+      "inventory.description.slayerCrossbow": "Momo még nem képzett ennek a használatában.",
+      "menu.changelog.0925.yomiRouteTitle": "Yomi útvonalának javítása",
+      "menu.changelog.0925.yomiRoute": "A második yomi lélekhez vezető akadály többé nem kerülhető meg átugrással vagy felülről leejtéssel."
     }
   },
   "en": {
@@ -1288,7 +1290,9 @@
       "item.daisyPlush": "Daisy Plush Rabbit",
       "inventory.description.daisyPlush": "A worn pink plush rabbit. Someone refused to abandon it, even in Hell.",
       "item.slayerCrossbow": "Demon Slayer's Crossbow",
-      "inventory.description.slayerCrossbow": "Momo is not yet trained to use this weapon."
+      "inventory.description.slayerCrossbow": "Momo is not yet trained to use this weapon.",
+      "menu.changelog.0925.yomiRouteTitle": "Yomi route fix",
+      "menu.changelog.0925.yomiRoute": "The barrier guarding Yomi's second soul can no longer be bypassed by jumping over it or dropping in from above."
     }
   }
 }

@@ -200,7 +200,7 @@ function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove(
  const a=level.arena;if(!boss.dead&&player.x+player.w>(a.triggerX??a.x)&&player.x<a.x+a.w&&Math.abs(player.y+player.h-a.y)<160){bossStarted=true;if(!visits.has('boss')){visits.add('boss');checkpoint={...level.rests.find(r=>r.id===a.restId)};if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);persist();toast(realm===3?I18n.t('shadow.bell.warning'):realm===0?I18n.t("text.raised.sword.dodge.the.guardian.is.vulnerable.after.the"):realm===1?I18n.t("text.watch.for.cracks.in.the.ground.when.lava.rises"):I18n.t("text.gold.signals.light.arrows.violet.signals.shadow.magic.keep"));}}
  updateBoss(dt);for(const p of projectiles){p.life-=dt;if(p.kind==='arrow')p.vy+=55*dt;if(p.gravity)p.vy+=p.gravity*dt;const beforeX=p.x,beforeY=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;const radius=p.radius||7;const swept={x:Math.min(beforeX,p.x)-radius,y:Math.min(beforeY,p.y)-radius,w:Math.abs(p.x-beforeX)+radius*2,h:Math.abs(p.y-beforeY)+radius*2};if(p.life>0&&overlap(player,swept)){damage(p.damage||1,p.vx>0?1:-1);p.life=0;}}projectiles=projectiles.filter(p=>p.life>0);
  for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.kind!=='dashWisp')p.vy+=500*dt;}particles=particles.filter(p=>p.life>0);
- for(const r of level.rests)if(pointNear(r,105,85)&&!visitedRests[realm].includes(r.id)){visitedRests[realm].push(r.id);checkpoint={...r};persist();toast(I18n.t("text.new.shrine")+r.name+(realm===3&&!hasFlag('shadowAltar')?' · '+I18n.t('shadow.travel.locked'):I18n.t("text.fast.travel.here.from.the.map")));}
+ for(const r of level.rests)if(pointNear(r,105,85)&&!visitedRests[realm].includes(r.id)){visitedRests[realm].push(r.id);checkpoint={...r};persist();toast(I18n.t("text.new.shrine")+r.name+(realm===3&&!DevSession.active&&!hasFlag('shadowAltar')?' · '+I18n.t('shadow.travel.locked'):I18n.t("text.fast.travel.here.from.the.map")));}
  camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=keyedInstruction(I18n.t(context.text));const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t((region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):''));updateHUD();
  if(sound){musicClock-=dt;if(musicClock<=0){const notes=[220,261.63,293.66,329.63,392];tone(notes[Math.floor(time*.3)%5]*(realm===2?2:1),1.8,'sine',.02);musicClock=1.6;}}pressed.clear();}
@@ -235,18 +235,27 @@ function drawHazards(r){Visuals.hazards(r);}
 function drawBat(e,r){Visuals.actor(e,r);}
 
 function realmUnlocked(n){return Number.isInteger(n)&&n>=0&&n<levels.length&&(n===0||defeated[n-1])&&(n!==3||flags[2].includes('shadowEntered'));}
-function fastTravel(rest,targetRealm=realm){
- if(Prologue.active||!['play','map'].includes(state)||!realmUnlocked(targetRealm)||!ShadowRealm.travelAllowed(realm,targetRealm))return false;
+// The map and executor share one eligibility rule. Test sessions bypass only
+// travel locks, without granting abilities, boss victories or quest flags.
+function travelDestination(rest,targetRealm=realm){
+ if(!Number.isInteger(targetRealm)||targetRealm<0||targetRealm>=levels.length)return null;
  const destination=realmRests(targetRealm).find(r=>r.id===rest?.id);
- if(!destination||!visitedRests[targetRealm].includes(destination.id))return false;
+ if(!destination)return null;
+ if(!DevSession.active&&(!realmUnlocked(targetRealm)||!visitedRests[targetRealm].includes(destination.id)||!ShadowRealm.travelAllowed(realm,targetRealm)))return null;
+ return destination;
+}
+function fastTravel(rest,targetRealm=realm){
+ if(Prologue.active||!['play','map'].includes(state))return false;
+ const destination=travelDestination(rest,targetRealm);
+ if(!destination)return false;
  if(destination.id==='forestCamp'){if(!enterForestCamp({save:false,atShrine:true}))return false;}else enterRealm(targetRealm,destination);$('map').hidden=true;state='play';keys.clear();pressed.clear();persist();updateHUD();toast(I18n.t('text.light.path')+destination.name);return true;
 }
 function travelGrid(n){
  const grid=document.createElement('div');grid.className='travel-grid';
  for(const rest of realmRests(n)){
-  if(rest.id==='forestCamp'&&!visitedRests[0].includes(rest.id))continue;
-  const discovered=visitedRests[n].includes(rest.id),button=document.createElement('button');
-  button.type='button';button.textContent=(discovered?'⛩ ':'· ')+I18n.t(rest.name);button.disabled=!discovered||!ShadowRealm.travelAllowed(realm,n);
+  if(rest.id==='forestCamp'&&!DevSession.active&&!visitedRests[0].includes(rest.id))continue;
+  const discovered=DevSession.active||visitedRests[n].includes(rest.id),button=document.createElement('button');
+  button.type='button';button.textContent=(discovered?'⛩ ':'· ')+I18n.t(rest.name);button.disabled=!travelDestination(rest,n);
   button.setAttribute('data-realm',String(n));button.setAttribute('data-rest',rest.id);
   button.setAttribute('aria-label',I18n.format('travel.destination',[I18n.t(realms[n].short),I18n.t(rest.name)]));
   button.onclick=()=>fastTravel(rest,n);grid.append(button);
@@ -255,8 +264,8 @@ function travelGrid(n){
 }
 function showMap(){if(state!=='play'||Prologue.active)return;const inside=level===councilHall,inCamp=level===forestCamp,mapLevel=inCamp?forestCamp:levels[realm],mapPlatforms=inside?mapLevel.platforms:platforms,mapPlayer=inside?mapLevel.councilGate:{x:player.x+21,y:player.y+69};state='map';keys.clear();pressed.clear();$('mapContent').replaceChildren();const box=document.createElement('div');box.className='world-map';const width=620,height=320,pad=16,worldTop=mapLevel.mapTop??mapLevel.top??0,worldHeight=mapLevel.height-worldTop,s=Math.min((width-pad*2)/mapLevel.width,(height-pad*2)/worldHeight),ox=(width-mapLevel.width*s)/2,oy=(height-worldHeight*s)/2;const X=x=>ox+x*s,Y=y=>oy+(y-worldTop)*s;
  let svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${I18n.t(inCamp?'camp.name':realms[realm].name)}"><rect x="${ox}" y="${oy}" width="${mapLevel.width*s}" height="${worldHeight*s}" fill="#0b1920" stroke="#60706a" stroke-width="1"/>`;for(const p of mapPlatforms.filter(p=>!p.unmapped&&(!p.secretArea||secretKnown(p.secretArea))))svg+=`<line x1="${X(p.x)}" y1="${Y(p.y)}" x2="${X(p.x+p.w)}" y2="${Y(p.y)}" stroke="#9da68e" stroke-width="2"/>`;for(const w of mapLevel.winds)if(!w.afterBoss||defeated[realm])svg+=`<rect x="${X(w.x)}" y="${Y(w.y)}" width="${Math.max(3,w.w*s)}" height="${w.h*s}" fill="#dfc68844"/>`;for(const o of mapLevel.objects.filter(o=>!o.unmapped&&objectVisible(o)&&(!o.secretArea||secretKnown(o.secretArea)&&relicUnlocked(o))))svg+=`<circle cx="${X(o.x)}" cy="${Y(o.y)}" r="3" fill="${hasFlag(o.id)?'#718679':'#dfba76'}"/>`;if(mapLevel.ability)svg+=`<text x="${X(mapLevel.ability.x)-4}" y="${Y(mapLevel.ability.y)-5}" fill="#f4cf8a" font-size="12">✦</text>`;if(!inCamp)svg+=`<text x="${X(mapLevel.boss.x)-4}" y="${Y(mapLevel.boss.y)-6}" fill="${defeated[realm]?'#718679':'#d98877'}" font-size="12">◆</text>`;
- for(const r of mapLevel.rests)svg+=`<circle cx="${X(r.x)}" cy="${Y(r.y)}" r="3" fill="${visitedRests[realm].includes(r.id)?'#a6c9c5':'#465959'}"/>`;svg+=`<circle cx="${X(mapPlayer.x)}" cy="${Y(mapPlayer.y)}" r="5" fill="#f0dfb1" stroke="#fff" stroke-width="1"/></svg>`;box.innerHTML=I18n.t(svg);$('mapContent').append(box);
- const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t((inCamp?I18n.t('camp.name'):realms[realm].name)+I18n.t("text.light.paths.to.discovered.shrines"));if(!ShadowRealm.travelAllowed(realm,realm))label.textContent=I18n.t('shadow.travel.locked');$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmUnlocked(n)&&visitedRests[n].length);if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
+ for(const r of mapLevel.rests)svg+=`<circle cx="${X(r.x)}" cy="${Y(r.y)}" r="3" fill="${travelDestination(r,realm)?'#a6c9c5':'#465959'}"/>`;svg+=`<circle cx="${X(mapPlayer.x)}" cy="${Y(mapPlayer.y)}" r="5" fill="#f0dfb1" stroke="#fff" stroke-width="1"/></svg>`;box.innerHTML=I18n.t(svg);$('mapContent').append(box);
+ const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t((inCamp?I18n.t('camp.name'):realms[realm].name)+I18n.t("text.light.paths.to.discovered.shrines"));if(!DevSession.active&&!ShadowRealm.travelAllowed(realm,realm))label.textContent=I18n.t('shadow.travel.locked');$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmRests(n).some(rest=>travelDestination(rest,n)));if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
 function closeMap(){$('map').hidden=true;state='play';pressed.clear();}
 function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden=false;$('resumeButton').focus();}else if(state==='pause'){state='play';$('pause').hidden=true;pressed.clear();}}
 function mainMenu(){SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}

@@ -703,6 +703,10 @@ const Visuals = (() => {
         ctx.restore();continue;
       }
       if(gatePass(g))continue;
+      if(g.terrainBarrier){
+        // Solid chamber edges keep the realm's painted stone/platform material.
+        terrain(r,[{...g,kind:'stone'}]);continue;
+      }
       if(g.kind==='secretRock'||g.kind==='fragile'){
         secretRock(g);continue;
       }

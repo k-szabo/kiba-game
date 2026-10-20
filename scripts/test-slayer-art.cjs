@@ -34,6 +34,11 @@ for(const id of ['daisyPlush','slayerCrossbow']){
 }
 const samples=[['wait',null,0],['windup','flail',3],['strike','flail',4],['recover','flail',5],['windup','kick',6],['strike','kick',7],['recover','kick',8],['windup','grab',9],['strike','grab',10],['windup','fireArrows',12],['strike','fireArrows',13],['strike','arrows',14],['windup','lightning',15],['strike','lightning',16],['strike','explosion',17],['windup','doubleJump',18],['recover','doubleJump',20],['retreat','saw',21],['cast','saw',22],['strike','saw',23]];
 for(const [phase,move,index]of samples)assert.equal(r(`SlayerArt.pose({phase:${JSON.stringify(phase)},move:${JSON.stringify(move)},walkSpeed:0,jumps:1})`),index);
+for(const phase of ['wait','recover'])for(const speed of [-480,480]){
+ const poses=Array.from({length:20},(_,frame)=>r(`SlayerArt.pose({phase:${JSON.stringify(phase)},move:'flail',walkSpeed:${speed},animTime:${frame/60}})`));
+ assert(poses.includes(0)&&poses.includes(1),'Fast pursuit must animate existing walk poses, including during recovery');
+ assert(poses.every(index=>index===0||index===1),'Pursuit must not slide a stationary attack pose');
+}
 assert.equal(r("SlayerArt.pose({phase:'strike',move:'grab',victim:{}})"),11);
 assert.equal(r("SlayerArt.pose({phase:'strike',move:'doubleJump',jumps:2})"),19);
 // Render every pose without advancing a combat clock or changing registration.
