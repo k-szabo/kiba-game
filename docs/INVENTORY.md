@@ -1,6 +1,8 @@
 # Hátizsák és felszerelés – 0.9.7
 
-Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a fegyver helyét mutatja. Kis kijelzőn a panelek egymás alá kerülnek, és az ablak görgethető.
+Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a fegyver helyét mutatja. Az ablak görgethető.
+
+A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.
 
 A megszerzett tárgyak listája kizárólag a hátizsák ablakában jelenik meg. A korábbi bal felső HUD-lista megszűnt; a küldetéscél és a birtokolt iránytű kijelzése megmarad.
 
@@ -20,9 +22,9 @@ A billentyűkiosztás `inventory` művelete az `assets/config/keybindings.json` 
 - A korábbi bőrhátizsák [történeti generálási promptja és illesztési adatai](art-prompts/inventory-ui-v1.json) megmaradnak referenciának.
 - A küldetéstárgyak ikonjai az eredeti sprite-okból készülnek.
 - A 0.9.8-as frissítéstől Momo külön, nagy felbontású portrét kapott (`assets/images/ui/momo-inventory-v1.png`); a fegyver festett grafikája az `assets/images/ui/katana-inventory-v1.png`. A [generálási promptok és kivágások](art-prompts/inventory-hd-v1.json) rögzítik a referenciákat és az illesztést.
-- A portré és a katana rajzfelülete követi a kijelző pixelsűrűségét (legfeljebb 3×), a panel méretaránya változatlan. Mobilon a fegyverkártya továbbra is Momo alatt jelenik meg, átfedés nélkül.
+- A portré és a katana rajzfelülete követi a kijelző pixelsűrűségét (legfeljebb 3×), a panel méretaránya változatlan.
 
-A `scripts/test-inventory.cjs` a tárgyakat, kulcsfogyasztást, szünetet, egyéni vezérlést és a korábbi I-kiosztások megtartását ellenőrzi. A látványt, billentyűzetfókuszt, mobil HUD-ot és tényleges böngészős tárolást külön Chrome QA ellenőrzi.
+A `scripts/test-inventory.cjs` a tárgyakat, kulcsfogyasztást, szünetet, egyéni vezérlést és a korábbi I-kiosztások megtartását ellenőrzi. A látványt, billentyűzetfókuszt, asztali HUD-ot és tényleges böngészős tárolást külön böngészős QA ellenőrzi, legalább 1280×720-as nézetben.
 
 ## Tárgyikonok olvashatósága – 0.9.9
 
@@ -30,9 +32,9 @@ Az `ART_INVENTORY.items` a közös ikonkatalógus: tárgyazonosítónként a for
 
 Minden tárgy ugyanazon a rajzolón keresztül, pixelsűrűséghez igazított felbontással (legfeljebb 3×) és teljes rajzolási átlátszatlansággal jelenik meg. Az egységes, sötét kékesszürke ikonhátteret és enyhe fényerő-/kontrasztkiemelést a közös CSS adja. Ez a háttér kijelöléskor és hover alatt is megmarad, a színes tárgyak így elkülönülnek a zsák anyagától.
 
-A tárgy- és fegyverkijelölés csak a keret színét, a belső árnyékot és a hátteret módosítja. A keret vastagsága, a padding, a betűméret és a betűvastagság állandó maradjon: kattintás, hover és billentyűzetes fókusz nem tördelheti újra a nevet, és nem méretezheti át a képet vagy a gombot. Ellenőrzéskor HU/EN asztali és keskeny nézetben össze kell hasonlítani a kijelölt/kijelöletlen feliratok méreteit; különösen az „Az esküszegő lelke” és „Soul of the Oathbreaker” nevekkel.
+A tárgy- és fegyverkijelölés csak a keret színét, a belső árnyékot és a hátteret módosítja. A keret vastagsága, a padding, a betűméret és a betűvastagság állandó maradjon: kattintás, hover és billentyűzetes fókusz nem tördelheti újra a nevet, és nem méretezheti át a képet vagy a gombot. Ellenőrzéskor HU/EN asztali nézetben, a támogatott 1280×720-as minimumon és nagyobb ablakban is össze kell hasonlítani a kijelölt/kijelöletlen feliratok méreteit; különösen az „Az esküszegő lelke” és „Soul of the Oathbreaker” nevekkel.
 
-Új tárgyhoz ebbe a katalógusba kell felvenni a grafikát, a kivágást és a HU/EN fordítási kulcsot; külön rajzolóág vagy halványító stílus helyett a közös megjelenítést kell használni. A katalógus minden bejegyzésére automatikusan fut a képhatár-, DPR- és rajzolási alfaellenőrzés. A tényleges olvashatóságot böngészőben is ellenőrizni kell: magyar/angol, asztali/320 px, normál/kijelölt/hover/fókusz állapotban, a teljes tárgysziluettel és olvasható névvel.
+Új tárgyhoz ebbe a katalógusba kell felvenni a grafikát, a kivágást és a HU/EN fordítási kulcsot; külön rajzolóág vagy halványító stílus helyett a közös megjelenítést kell használni. A katalógus minden bejegyzésére automatikusan fut a képhatár-, DPR- és rajzolási alfaellenőrzés. A tényleges olvashatóságot böngészőben is ellenőrizni kell: magyar/angol, 1280×720 és nagyobb asztali nézetben, normál/kijelölt/hover/fókusz állapotban, a teljes tárgysziluettel és olvasható névvel. Asztali nagyítás mellett is maradjon elérhető a görgetés és a billentyűzetes fókusz; a minimum alá csökkent nézet a méretjelzést mutassa.
 
 ## Szamuráj útravaló zsák – 0.9.17
 

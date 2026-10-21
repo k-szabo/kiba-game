@@ -75,7 +75,10 @@ const Visuals = (() => {
     if(state==='menu'||!entity)return null;
     for(const area of level.secrets||[]){
       if(area.id==='slayerGrave')continue;
-      const top=area.id==='angelRuin'?Math.min(area.y,area.arena.y-780):area.y-120;
+      // Cave steps rise above the chamber rectangle. Include their full double
+      // jump and the 75px blend margin, without extending onto the main road.
+      const caveFloors=area.id==='cultCave'?level.platforms.filter(p=>p.secretArea===area.id&&p.x+p.w/2>=area.x&&p.x+p.w/2<=area.x+area.w).map(p=>p.y):[];
+      const top=area.id==='angelRuin'?Math.min(area.y,area.arena.y-780):caveFloors.length?Math.min(area.y,...caveFloors)-420:area.y-120;
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
       const edge=Math.min(cx-area.x,area.x+area.w-cx,feet-top,area.y+area.h-entity.y);
@@ -326,12 +329,7 @@ const Visuals = (() => {
         ctx.save();ctx.textAlign='center';ctx.fillStyle='#100e20ed';
         ctx.font='bold 14px Manrope, sans-serif';
         const name=I18n.t('shadow.place.altar'),width=Math.max(140,ctx.measureText(name).width+26);
-        let markerX=altar.x,top=altar.y-height-68;
-        if(viewW<600){
-          const panel=$('quest'),bounds=!panel.hidden&&typeof panel.getBoundingClientRect==='function'?panel.getBoundingClientRect():null;
-          if(bounds)top=clamp(Math.max(top,cameraY+(bounds.bottom+12)/scale),cameraY+8,cameraY+H-154);
-          markerX=clamp(markerX,camera+width/2+8,camera+viewW-width/2-8);
-        }
+        const markerX=altar.x,top=altar.y-height-68;
         ctx.fillRect(markerX-width/2,top,width,64);ctx.strokeStyle='#cda6ef';ctx.lineWidth=1.5;ctx.strokeRect(markerX-width/2,top,width,64);
         ctx.fillStyle=lit?'#fff0c8':'#e6c6ff';ctx.font='bold 32px serif';ctx.fillText('影',markerX,top+34);
         ctx.font='bold 14px Manrope, sans-serif';ctx.fillText(name,markerX,top+55);ctx.restore();

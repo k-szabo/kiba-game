@@ -272,6 +272,46 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.25_2de7dea9",
+      "code": "2de7dea9",
+      "baseVersion": "0.9.25",
+      "slug": "controls-cave-and-slayer-retries",
+      "summary": {
+        "hu": "Irányítás és barlangháttér javítása",
+        "en": "Control and cave background fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az irányítás egérgombokra is kiosztható, a foglalt gombok pedig közvetlenül átállíthatók.",
+          "en": "Controls can now use mouse buttons, and assigned inputs can be reassigned directly."
+        },
+        {
+          "hu": "A kultista barlang háttere dupla ugrás közben is megmarad.",
+          "en": "The cultist cave background remains visible during double jumps."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    },
+    {
+      "version": "0.9.25_30c3560f",
+      "code": "30c3560f",
+      "baseVersion": "0.9.25",
+      "slug": "desktop-only-720p",
+      "summary": {
+        "hu": "Asztali támogatás 720p-től",
+        "en": "Desktop support from 720p"
+      },
+      "fixes": [
+        {
+          "hu": "A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.",
+          "en": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse."
+        }
+      ]
     }
   ],
   "releases": [

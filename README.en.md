@@ -55,7 +55,9 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 | Esc | Pause |
 | I | Open inventory and pause the game |
 
-\* After acquiring the relevant ability. Touchscreen players can use the on-screen controls.
+\* After acquiring the relevant ability.
+
+The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse.
 
 The default bindings are in `assets/config/keybindings.json`. Open **How to Play** from the main menu or pause menu to select a keyboard layout or remap actions. Custom bindings are saved in the browser. Export them to JSON to transfer them to another browser, then import the file there.
 

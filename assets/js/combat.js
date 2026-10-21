@@ -25,8 +25,11 @@ function createEnemy(spec,i=0) {
       animTime:i*.17,attackElapsed:0,dead:false};
 }
 function respawnEnemies() {
+  // Grave retry state is separate from `summoned`, which denotes disposable minions.
+  const slayer=enemies.find(DoomSlayer.is),retry=slayer&&!slayer.dead?{graveAwake:slayer.graveAwake,replay:slayer.replay}:null;
   DoomSlayer.clear();
   enemies=createEnemies();projectiles=projectiles.filter(p=>p.source==='boss');
+  if(retry){const fresh=enemies.find(DoomSlayer.is);if(fresh){Object.assign(fresh,retry);DoomSlayer.reset(fresh);}}
   burst(player.x+20,player.y+30,realms[realm].gold,22);
 }
 function killEnemy(e) {

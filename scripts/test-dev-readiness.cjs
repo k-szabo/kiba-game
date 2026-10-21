@@ -14,7 +14,7 @@ function fixture(){
  });
  context.window=context;context.$=get;get('game').children=[get('devPanel')];
  const run=s=>vm.runInContext(s,context);
- run("let state='menu',saved=null,storageReady=false,loadingReady=false;const keys=new Set(),pressed=new Set();");
+ run("let state='menu',saved=null,storageReady=false,loadingReady=false,resolutionBlocked=false;const keys=new Set(),pressed=new Set();");
  for(const name of ['dev-session','dev-tools'])run(fs.readFileSync('assets/js/'+name+'.js','utf8'));
  run(callbacks+'\nDevSession.init();DevTools.init();DevTools.open();');
  const disabled=()=>get('devToolsList').children.find(b=>b.id==='dev-tool-test-start').disabled;

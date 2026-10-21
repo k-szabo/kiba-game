@@ -1,5 +1,12 @@
 {
   "version": 1,
+  "mouseButtons": {
+    "0": "mouse0",
+    "1": "mouse1",
+    "2": "mouse2",
+    "3": "mouse3",
+    "4": "mouse4"
+  },
   "original": {
     "moveLeft": ["a", "arrowleft"],
     "moveRight": ["d", "arrowright"],

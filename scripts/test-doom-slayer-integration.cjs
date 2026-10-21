@@ -180,4 +180,42 @@ check('ordinary and optional Yomi objectives stay independent of grave progress'
  h.run('abilities[1]=true;');assert.equal(h.run('nextObjective().point'),h.run('level.boss'));
 });
 
+check('confirmed summoning survives death and fresh same-release continuation without another incantation',()=>{
+ const h=fixture();summon(h);
+ assert(h.run("flags[1].includes('slayerSummoned')"));savesValid(h);
+ h.run('player.inv=0;damage(player.hp);');
+ assert(h.run('enemies.filter(DoomSlayer.is).length===1'));
+ assert(h.run('!enemies.find(DoomSlayer.is).active&&enemies.find(DoomSlayer.is).graveAwake&&enemies.find(DoomSlayer.is).barrels.length===9'));
+ h.run('initPlayer(yomi.slayerGrave);update(1/120);');
+ assert(h.run('enemies.find(DoomSlayer.is).active'));
+ assert.notEqual(h.run('getContext()?.type'),'slayerGrave');
+ const record=JSON.parse(h.storage.get('momo-three-worlds-v2')),fresh=makeHarness();fresh.sandbox.retrySave=record;
+ fresh.run("mainMenu();saved=retrySave;startGame(true);initPlayer(yomi.slayerGrave);update(1/120);");
+ assert(fresh.run('enemies.find(DoomSlayer.is).active&&enemies.find(DoomSlayer.is).barrels.length===9'));
+ savesValid(fresh);
+ const invalid=JSON.parse(JSON.stringify(record));invalid.flags[1]=invalid.flags[1].filter(id=>id!=='slayerSeal');
+ assert.throws(()=>validate(invalid),/Invalid grave progress/,'A summon cannot bypass the fire seal');
+});
+
+for(const previouslyDefeated of [false,true])check('dev death rebuilds the guardian with a living main boss; previous victory='+previouslyDefeated,()=>{
+ const h=fixture();
+ if(previouslyDefeated){win(h);h.dismiss();}
+ const normal=h.storage.get('momo-three-worlds-v2'),writes=h.sandbox.__saveSnapshots.length;
+ h.run('DevTools.open();DevSession.begin();');
+ assert(h.run("DevBoss.revive({encounter:'main'})"));
+ assert(h.run("DevBoss.revive({encounter:'doomSlayer'})"));h.run('DevTools.close();');
+ h.run("var retrySlayer=enemies.find(DoomSlayer.is);initPlayer({x:retrySlayer.x-65,y:retrySlayer.arena.y});player.hp=4;player.inv=0;retrySlayer.move='flail';retrySlayer.phase='strike';retrySlayer.clock=.24;retrySlayer.attackFace=-1;retrySlayer.hitDone=false;DoomSlayer.update(retrySlayer,1/120);");
+ assert(h.run('player.hp===player.maxHp'),'The lethal boss hit must actually respawn Momo');
+ assert(h.run('!boss.dead'),'Fixture needs a living main boss to exercise its cleanup path');
+ assert(h.run('enemies.filter(DoomSlayer.is).length===1'),'Minion cleanup removed the guardian');
+ assert(h.run('!retrySlayer.active&&!retrySlayer.victim'),'Old attack must stop after player replacement');
+ assert(h.run('enemies.find(DoomSlayer.is).replay&&!enemies.find(DoomSlayer.is).dead&&enemies.find(DoomSlayer.is).barrels.length===9'));
+ h.run('initPlayer(yomi.slayerGrave);update(1/120);');
+ assert(h.run('enemies.find(DoomSlayer.is).active'));
+ assert.notEqual(h.run('getContext()?.type'),'slayerGrave');
+ assert.equal(h.run("flags[1].includes('guardian:doomSlayer')"),previouslyDefeated);
+ h.run('persist();DevSession.end();');
+ assert.equal(h.storage.get('momo-three-worlds-v2'),normal);assert.equal(h.sandbox.__saveSnapshots.length,writes);
+});
+
 if(failures.length){console.error('\n'+failures.join('\n\n'));process.exitCode=1;}

@@ -79,6 +79,9 @@ async function main(){
  const council=fixture();Object.assign(council,{realm:1,abilities:[true,true],defeated:victories([true,true]),flags:worldArrays([['forestBell','villageBell'],['soulUpper','soulLower']]),visitedRests:worldArrays([['start'],['start']])});
  const councilClient=reload;
  const councilRest=vm.runInContext('levels[1].rests[0]',councilClient);council.checkpoint=plain(councilRest);
+ const summoned=copy(council);summoned.flags[1].push('slayerSeal','slayerSummoned');
+ await councilClient.vault.write(summoned);assert.deepEqual(plain(await client(env).vault.ready),summoned,'Confirmed grave summoning survives encrypted reload');
+ const noSeal=copy(summoned);noSeal.flags[1]=noSeal.flags[1].filter(id=>id!=='slayerSeal');assert.throws(()=>councilClient.vault.write(noSeal),/Invalid grave progress/);
  for(const flags of [['councilKeyEarned'],['councilKeyEarned','councilKey'],['councilKeyEarned','councilGateOpen']]){
   const data=copy(council);data.flags[1].push(...flags);await councilClient.vault.write(data);
  }

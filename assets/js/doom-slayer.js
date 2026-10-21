@@ -1,7 +1,7 @@
 /* The optional grave guardian owns no main-quest or player-level progression. */
 'use strict';
 const DoomSlayer=(()=>{
- const flag='guardian:doomSlayer',moves=['flail','oil','fireArrows','lightning','kick','arrows','doubleJump','grab','explosion'];
+ const flag='guardian:doomSlayer',summonFlag='slayerSummoned',moves=['flail','oil','fireArrows','lightning','kick','arrows','doubleJump','grab','explosion'];
  const mobility={run:480,sawRun:620,jump:460,sawRush:720,spacing:130};
  const is=e=>e?.miniboss==='slayer';
  const facing=e=>Math.sign(player.x+player.w/2-e.x-e.w/2)||e.face;
@@ -20,11 +20,14 @@ const DoomSlayer=(()=>{
   projectiles=projectiles.filter(p=>!p.slayer);
  }
  function reset(e){
-  clear(e);Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,active:false,dead:flags[1].includes(flag),
-   cycles:0,move:null,inv:0,stun:0,armor:0,sawTriggered:false,sawReady:false,jumps:0,
+  const graveAwake=!!(e.graveAwake||e.replay||flags[1].includes(summonFlag));
+  clear(e);Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,active:false,dead:!e.replay&&flags[1].includes(flag),graveAwake,
+   cycles:0,comboCount:0,move:null,inv:0,stun:0,armor:0,sawTriggered:false,sawReady:false,jumps:0,
    jumpUsed:false,landed:false,blockFlash:0,victoryPending:false,animTime:0,contactCd:0});
-  phase(e,'wait',.65);return e;
+  if(e.graveAwake&&!e.dead)barrels(e);
+  phase(e,'wait',.45);return e;
  }
+ function barrels(e){e.barrels=Array.from({length:9},(_,i)=>({id:i,x:e.arena.x+e.arena.w*(.08+i*.105),y:e.arena.y,punctured:false}));}
  function create(spec,i=0){
   const area=level.secrets.find(s=>s.id===spec.secretArea);if(!area?.arena)throw Error('Missing grave arena');
   const e={...spec,w:76,h:112,maxHp:260,origin:spec.x,baseY:spec.y-112,arena:area.arena,
@@ -34,8 +37,8 @@ const DoomSlayer=(()=>{
  }
  function start(e){
   if(!is(e)||e.dead||e.active)return false;
-  e.active=true;e.barrels=Array.from({length:9},(_,i)=>({id:i,x:e.arena.x+e.arena.w*(.08+i*.105),y:e.arena.y,punctured:false}));
-  e.face=facing(e);e.attackFace=e.face;phase(e,'wait',.65);return true;
+  e.graveAwake=true;e.active=true;if(!e.barrels.length)barrels(e);
+  e.face=facing(e);e.attackFace=e.face;phase(e,'wait',.45);return true;
  }
  // Damage can synchronously revive Momo and reset this very encounter. Never
  // grab, heal or continue an attack against the replacement player object.
@@ -59,7 +62,7 @@ const DoomSlayer=(()=>{
    w:width,h:height,warning,warningDuration:warning,life:warning+active,active:false,damage:damageValue});
  }
  function beginSaw(e){
-  e.sawTriggered=true;release(e);e.hazards=[];projectiles=projectiles.filter(p=>!p.slayer);
+  e.sawTriggered=true;e.comboCount=0;release(e);e.hazards=[];projectiles=projectiles.filter(p=>!p.slayer);
   e.move='saw';e.attackFace=facing(e);e.face=e.attackFace;e.retreatFrom=e.x;
   e.retreatTo=clamp(e.x-e.attackFace*260,e.patrolLeft,e.patrolRight);phase(e,'retreat',.65);
  }
@@ -71,27 +74,28 @@ const DoomSlayer=(()=>{
  function hit(e,hitbox,amount,kind='normal'){
   if(state!=='play'||!e.active||e.dead||e.inv>0||!Number.isFinite(amount)||amount<=0||!overlap(hitbox,e))return 0;
   const front=Math.sign(player.x+player.w/2-e.x-e.w/2)===e.face,above=player.y+player.h<e.y+e.h*.55;
-  if(kind==='normal'&&e.phase==='wait'&&front&&!above){e.blockFlash=.25;return 0;}
+  if(kind==='normal'&&['wait','recover'].includes(e.phase)&&e.y===e.baseY&&e.vy===0&&front&&!above){e.blockFlash=.25;return 0;}
   const before=e.hp;e.hp=Math.max(0,e.hp-Math.max(.25,amount-e.armor));e.inv=.12;
   if(typeof DevDamage!=='undefined')DevDamage.record('outgoing',e,before,e.hp);
   if(!e.hp)defeat(e);else if(!e.sawTriggered&&e.hp<=e.maxHp*.3)beginSaw(e);
   return before-e.hp;
  }
  function choose(e){
-  e.move=e.sawReady?'saw':moves[e.cycles++%moves.length];e.face=facing(e);e.attackFace=e.face;
-  // Decide at release of the initial approach, using the actual melee reach.
-  if(!e.sawReady&&e.cycles===1&&Math.abs(player.x+player.w/2-e.x-e.w/2)>230)e.move='fireArrows';
+  e.move=e.sawReady?'saw':moves[e.cycles++%moves.length];e.face=facing(e);e.attackFace=e.face;e.comboCount++;
+  // Re-evaluate distance for every follow-up rather than waste melee swings
+  // against a retreating target. The first distant tell remains a fire arrow.
+  if(!e.sawReady&&['flail','kick','grab'].includes(e.move)&&Math.abs(player.x+player.w/2-e.x-e.w/2)>230)e.move=e.cycles%2?'fireArrows':'lightning';
   e.targetX=player.x+player.w/2;e.targetY=player.y+player.h/2;
-  const duration={flail:.85,oil:.8,fireArrows:.7,lightning:1.05,kick:.65,arrows:1,doubleJump:.75,grab:.8,explosion:1.1,saw:.55}[e.move];
+  const duration={flail:.34,oil:.3,fireArrows:.34,lightning:.46,kick:.3,arrows:.4,doubleJump:.36,grab:.34,explosion:.48,saw:.3}[e.move];
   phase(e,'windup',duration);
  }
  function strike(e){
-  phase(e,'strike',e.move==='doubleJump'?2.4:e.move==='saw'?.95:.65);
-  if(e.move==='lightning')for(const offset of [-170,0,170])hazard(e,'lightning',e.targetX+offset,66,.65+Math.abs(offset)/900,.4,4,500);
-  if(e.move==='explosion')hazard(e,'explosion',e.targetX,260,.7,.45,5,210);
+  phase(e,'strike',e.move==='doubleJump'?1.85:e.move==='saw'?.65:.24);
+  if(e.move==='lightning')for(const offset of [-170,0,170])hazard(e,'lightning',e.targetX+offset,66,.38+Math.abs(offset)/1200,.3,4,500);
+  if(e.move==='explosion')hazard(e,'explosion',e.targetX,260,.4,.35,5,210);
   if(e.move==='arrows')for(let n=-4;n<=4;n++){
    const x=clamp(e.targetX+n*115,e.arena.x+35,e.arena.x+e.arena.w-35);
-   shot(e,x,e.arena.y-620,0,660,2);hazard(e,'arrowWarning',x,24,1,.2,0,12);
+   shot(e,x,e.arena.y-620,0,980,2);hazard(e,'arrowWarning',x,24,.6,.2,0,12);
   }
   if(e.move==='oil'){
    const barrel=e.barrels.filter(b=>!b.punctured).sort((a,b)=>Math.abs(a.x-e.x-e.w/2)-Math.abs(b.x-e.x-e.w/2))[0];
@@ -100,7 +104,7 @@ const DoomSlayer=(()=>{
   if(e.move==='fireArrows'){
    const oil=e.oils.filter(o=>!o.lit).sort((a,b)=>Math.abs(a.x+a.w/2-e.x-e.w/2)-Math.abs(b.x+b.w/2-e.x-e.w/2))[0];
    const x=e.x+e.w/2,y=e.y+22,tx=oil?oil.x+oil.w/2:e.targetX,ty=oil?oil.y+6:e.targetY;
-   const dx=tx-x,flight=Math.max(.2,Math.abs(dx)/420);
+   const dx=tx-x,flight=Math.max(.12,Math.abs(dx)/760);
    // Fixed flight time accounts for arrow gravity without reducing horizontal
    // speed by normalising the corrected launch angle. Far pools need more life.
    shot(e,x,y,dx/flight,(ty-y-27.5*flight*flight)/flight,2,'arrow',{fire:true,igniteOil:oil?.id,life:Math.max(4,flight+.5)});
@@ -136,9 +140,11 @@ const DoomSlayer=(()=>{
   e.walkSpeed=(e.x-old)/dt;
  }
  function update(e,dt){
-  if(state!=='play'||!e.active||e.dead||!Number.isFinite(dt)||dt<=0)return;
+  if(state!=='play'||e.dead||!enemies.includes(e)||!Number.isFinite(dt)||dt<=0)return;
   const a=e.arena,feet=player.y+player.h;
-  if(player.x+player.w<a.x-30||player.x>a.x+a.w+30||feet<a.y-650||feet>a.y+120){reset(e);return;}
+  const inArena=player.x+player.w>=a.x-30&&player.x<=a.x+a.w+30&&feet>=a.y-650&&feet<=a.y+120;
+  if(!e.active){if(!e.graveAwake||!inArena)return;start(e);}
+  if(!inArena){reset(e);return;}
   if(e.victim&&e.victim!==player){reset(e);return;}
   e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.blockFlash=Math.max(0,e.blockFlash-dt);
   e.animTime+=dt;e.attackElapsed+=dt;e.walkSpeed=0;
@@ -167,8 +173,11 @@ const DoomSlayer=(()=>{
     if(e.y>=e.baseY&&e.vy>0){e.y=e.baseY;e.vy=0;if(!e.landed){e.landed=true;hazard(e,'landing',e.x+e.w/2,230,.35,.3,3,80);e.clock=Math.min(e.clock,.3);}}
    }else if(e.move==='saw'&&!e.victim){const old=e.x;e.x=clamp(e.x+e.attackFace*mobility.sawRush*dt,e.patrolLeft,e.patrolRight);e.walkSpeed=(e.x-old)/dt;}
    strikeContact(e);if(!e.active||e.dead)return;
-   if(e.clock<=0)phase(e,'recover',e.move==='saw'?.4:.55);
-  }else if(e.phase==='recover'){pursue(e,dt);if(e.clock<=0)phase(e,'wait',e.sawReady?.15:.45);}
+   if(e.clock<=0)phase(e,'recover',e.comboCount>=3?.45:.12);
+  }else if(e.phase==='recover'){
+   pursue(e,dt);
+   if(e.clock<=0){if(e.comboCount<3)choose(e);else{e.comboCount=0;phase(e,'wait',.12);}}
+  }
  }
  return Object.freeze({is,create,reset,start,update,hit,defeat,clear});
 })();

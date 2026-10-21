@@ -17,6 +17,7 @@ let attackElapsed=0,attackFace=1,attackHit=false,attackKind='normal';
 let attack=0,attackCooldown=0,dash=0,dashCooldown=0,dashTrailClock=0,jumpBuffer=0,coyote=0,dropTimer=0;
 let toastTimer=0,shake=0,sound=false,audio,musicClock=0,context=null,bossStarted=false,loadingReady=false,storageReady=false,saveWarning=false;
 const keys=new Set(),pressed=new Set();
+let resolutionBlocked=false,resolutionFocus=null;
 const realms=[
  {title:'葦原',label:I18n.t("text.i.realm.of.the.living"),name:I18n.t("text.japan.the.path.of.bells"),short:I18n.t("text.japan.4f5421"),sky:['#182c37','#415d60','#a4ac8d'],fog:'#94b6a4',gold:'#e4c78a',accent:'#c96957',floor:'#253c37',boss:I18n.t("text.the.forest.oathbreaker"),ability:I18n.t("text.blessing.of.the.wind"),intro:I18n.t("story.japan.intro")},
  {title:'黄泉',label:I18n.t("text.ii.realm.of.the.dead"),name:I18n.t("text.yomi.the.world.s.depths"),short:'Yomi',sky:['#171322','#322136','#69505e'],fog:'#8b5c77',gold:'#dea58d',accent:'#b788dd',floor:'#352534',boss:I18n.t("text.guardian.of.the.silent.river"),ability:I18n.t("text.spirit.dash"),intro:I18n.t("story.yomi.intro")},
@@ -28,7 +29,19 @@ const noise=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v
 const overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 const hasFlag=id=>flags[realm].includes(id);
 const objectVisible=o=>(!o.requiresFlag||hasFlag(o.requiresFlag))&&!(o.type==='councilKey'&&hasFlag('councilGateOpen'));
-function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);scale=innerHeight/H;viewW=innerWidth/scale;ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);}
+function resize(){
+ const dpr=Math.min(devicePixelRatio||1,2),width=Math.max(1,innerWidth),height=Math.max(1,innerHeight);
+ canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);scale=height/H;viewW=width/scale;ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);
+ const wasBlocked=resolutionBlocked;resolutionBlocked=innerWidth<1280||innerHeight<H;
+ const notice=$('resolutionNotice');$('resolutionMessage').textContent=I18n.t('display.minimum');
+ if(resolutionBlocked){
+  if(!wasBlocked)resolutionFocus=document.activeElement;
+  if(state==='play')pause();keys.clear();pressed.clear();
+ }
+ $('game').inert=resolutionBlocked;notice.hidden=!resolutionBlocked;
+ if(resolutionBlocked&&!wasBlocked)notice.focus();
+ if(!resolutionBlocked&&wasBlocked){if(state==='pause')$('resumeButton').focus();else if(resolutionFocus?.isConnected)resolutionFocus.focus();resolutionFocus=null;}
+}
 addEventListener('resize',resize);resize();
 SaveVault.ready.then(data=>{storageReady=true;saved=data;$('continueButton').hidden=!data;if(SaveVault.notice)toast(I18n.t(SaveVault.notice));if(DevTools.isOpen)DevTools.refresh();});
 function persist(){if(DevSession.active)return;saved={version:2,layout:2,release:GAME_RELEASE.version,realm,location:level===forestCamp?'forestCamp':null,prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,coins,meatCount,progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
@@ -73,21 +86,21 @@ function leaveCouncilHall(toShrine=false){
  if(!toShrine){if(back){enemies=back.enemies;visits=back.visits;}initPlayer(back?.point||{x:2650,y:3400});}
  player.hp=Math.max(1,Math.min(hp,player.maxHp));state='play';keys.clear();pressed.clear();resetCamera();updateHUD();return true;
 }
-function startGame(resume=false){if(!storageReady){toast(I18n.t("text.the.save.is.still.loading"));return;}if(!loadingReady||Visuals.loaded<Visuals.total){toast(I18n.t("text.the.artwork.is.still.loading"));return;}if(Visuals.failures.length){toast(I18n.t("text.an.artwork.file.could.not.be.loaded.please.reload"));return;}
+function startGame(resume=false){if(resolutionBlocked)return;if(!storageReady){toast(I18n.t("text.the.save.is.still.loading"));return;}if(!loadingReady||Visuals.loaded<Visuals.total){toast(I18n.t("text.the.artwork.is.still.loading"));return;}if(Visuals.failures.length){toast(I18n.t("text.an.artwork.file.could.not.be.loaded.please.reload"));return;}
  const resetForRelease=!!(resume&&saved&&saved.release!==GAME_RELEASE.version),old=resume&&!resetForRelease?saved:null;
  abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;progression=normalizeProgression(old?.progression,flags);
  Prologue.stop();if(old?.location==='forestCamp')enterForestCamp({save:false,atShrine:true});else enterRealm(old?old.realm:0,old?.checkpoint);state='play';$('menu').hidden=true;showHUD(true);
  if(!old||old.prologueComplete===false){Prologue.start();persist();}else{persist();toast(I18n.t('text.your.journey.continues.where.you.last.rested'));}
  if(resetForRelease)toast(I18n.t('text.save.reset.new.version'));
 }
-function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on;$('touchControls').hidden=!on||!matchMedia('(pointer:coarse)').matches;Compass.update();}
+function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on;Compass.update();}
 function story(label,title,text,onClose){state='dialog';keys.clear();pressed.clear();$('dialogLabel').textContent=I18n.t(label);$('dialogTitle').textContent=I18n.t(title);$('dialogText').replaceChildren();for(const paragraph of I18n.t(text).split(/\n\s*\n/)){const p=document.createElement('p');p.textContent=paragraph;$('dialogText').append(p);}$('dialog').hidden=false;$('dialogOk').textContent=I18n.t("text.next.0ed851");const finish=()=>{if(state!=='dialog'||$('dialog').hidden||$('dialogOk').onclick!==finish)return;$('dialog').hidden=true;state='play';onClose?.();};$('dialogOk').onclick=finish;$('dialogOk').focus();}
 function pointNear(p,dx=100,dy=90){return Math.abs(player.x+player.w/2-p.x)<dx&&Math.abs(player.y+player.h-p.y)<dy;}
 function nextObjective(){if(ShadowRealm.active())return ShadowRealm.objective();if(level===forestCamp)return{point:level.rests[0],compass:false,text:I18n.t('camp.objective')};if(level.id==='councilHall')return{point:level.inscription,compass:false,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,name:realm===2?I18n.t('HARU'):realms[realm+1].name,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
  if(realm===0){if(!abilities[0])return{point:level.ability,name:level.ability.name,text:I18n.t("text.visit.the.wind.shrine.beside.the.path")};const bell=level.objects.find(o=>o.type==='bell'&&!hasFlag(o.id));if(bell)return{point:bell,name:bell.name,text:I18n.format("message.ring.arg0.bells.arg1.2",[bell.name,flags[0].filter(f=>f.endsWith('Bell')).length])};return{point:level.boss,name:realms[realm].boss,text:I18n.t("text.the.two.bells.have.opened.the.bamboo.temple.find")};}
  if(realm===1){const soul=level.objects.find(o=>o.type==='rescue'&&!hasFlag(o.id));if(soul)return{point:soul,name:soul.name,text:I18n.format("message.free.arg0.souls.arg1.2",[soul.name,flags[1].filter(f=>f.startsWith('soul')).length])};if(!abilities[1])return{point:level.ability,name:level.ability.name,text:I18n.t("text.the.shrine.of.shadows.grants.spirit.dash.use.the")};return{point:level.boss,name:realms[realm].boss,text:I18n.t("text.the.abyss.gate.is.open.descend.to.the.bottom")};}
  const upcoming=level.winds.find(w=>!w.afterBoss&&w.y+50<player.y&&w.y+w.h>player.y-250);return{point:upcoming?{x:upcoming.x+upcoming.w/2,y:upcoming.y}:level.boss,name:upcoming?(level.zones.find(z=>upcoming.x+upcoming.w/2>=z.x&&upcoming.x+upcoming.w/2<=z.x+z.w&&upcoming.y+10>=z.y&&upcoming.y+10<=z.y+z.h)?.name||realms[realm].name):realms[realm].boss,text:hasFlag('dawnSeal')?I18n.t("text.the.dawn.seal.is.broken.the.guardian.awaits.at"):I18n.t("text.jump.into.the.wind.streams.and.move.sideways.onto")};}
-function updateHUD(){if(!player)return;$('game').classList[!Prologue.active&&bossStarted&&!boss?.dead?'add':'remove']('encounter-active');$('coinPurse').hidden=Prologue.active;if(Prologue.active){Compass.update();Prologue.hud();return;}$('questLabel').textContent=I18n.t('quest.label');const current=realm===0?(player.y>1150?I18n.t("energy.faint"):I18n.t("energy.nourishing")):(realm===1||realm===3)?I18n.t("energy.distorted"):level.winds.some(w=>overlap(player,w))?I18n.t("energy.powerful"):I18n.t("energy.pure");$('kibaCurrent').textContent=I18n.t(current);$('realmLabel').textContent=I18n.t(level===forestCamp?'camp.name':realms[realm].label);$('health').innerHTML=I18n.t('<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp));$('health').setAttribute('aria-label',I18n.format("message.arg0.of.arg1.health",[player.hp,player.maxHp]));$('souls').textContent=I18n.t(shards);$('coinCount').textContent=coins;$('coinPurse').setAttribute('aria-label',I18n.t('merchant.coins')+': '+coins);$('foodTouch').hidden=!meatCount;$('dashHint').hidden=!abilities[1];$('jumpHint').textContent=I18n.t(abilities[0]?I18n.t("text.twice.double.jump"):I18n.t("text.jump.4e09c3"));$('dropHint').hidden=realm===0;updateProgressHUD();const objective=nextObjective();$('objective').textContent=keyedInstruction(I18n.t(objective.text));Compass.update(objective);}
+function updateHUD(){if(!player)return;$('game').classList[!Prologue.active&&bossStarted&&!boss?.dead?'add':'remove']('encounter-active');$('coinPurse').hidden=Prologue.active;if(Prologue.active){Compass.update();Prologue.hud();return;}$('questLabel').textContent=I18n.t('quest.label');const current=realm===0?(player.y>1150?I18n.t("energy.faint"):I18n.t("energy.nourishing")):(realm===1||realm===3)?I18n.t("energy.distorted"):level.winds.some(w=>overlap(player,w))?I18n.t("energy.powerful"):I18n.t("energy.pure");$('kibaCurrent').textContent=I18n.t(current);$('realmLabel').textContent=I18n.t(level===forestCamp?'camp.name':realms[realm].label);$('health').innerHTML=I18n.t('<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp));$('health').setAttribute('aria-label',I18n.format("message.arg0.of.arg1.health",[player.hp,player.maxHp]));$('souls').textContent=I18n.t(shards);$('coinCount').textContent=coins;$('coinPurse').setAttribute('aria-label',I18n.t('merchant.coins')+': '+coins);$('dashHint').hidden=!abilities[1];$('jumpHint').textContent=I18n.t(abilities[0]?I18n.t("text.twice.double.jump"):I18n.t("text.jump.4e09c3"));$('dropHint').hidden=realm===0;updateProgressHUD();const objective=nextObjective();$('objective').textContent=keyedInstruction(I18n.t(objective.text));Compass.update(objective);}
 function revive(){SlayerDialog.cancel();if(DevImmortality.active){initPlayer(Prologue.active||level===councilHall?level.start:checkpoint);projectiles=[];resetCamera();updateHUD();return;}if(Prologue.active){Prologue.lose();return;}if(level===councilHall)leaveCouncilHall(true);initPlayer(checkpoint);respawnEnemies();if(!boss.dead)resetBossBattle();resetMinibosses();projectiles=[];resetCamera();updateHUD();toast(I18n.t("text.the.shrine.has.called.you.back.your.abilities.and"));}
 function damage(amount=1,dir=0){if(DevImmortality.active)return;if(Prologue.active){Prologue.hurt(amount);return;}if(player.inv>0||dash>0)return;const before=player.hp;player.hp=Math.max(0,player.hp-amount);DevDamage.record('incoming',player,before,player.hp);player.inv=momoStats().invulnerability;player.vx=dir*240;player.vy=-220;shake=.22;tone(100,.22,'sawtooth',.03);burst(player.x+20,player.y+35,'#dd9480');if(!player.hp)revive();else updateHUD();}
 function getContext(){
@@ -194,7 +207,7 @@ function updatePlayerTimers(dt){
  attack=Math.max(0,attack-dt);attackCooldown=Math.max(0,attackCooldown-dt);dash=Math.max(0,dash-dt);dashCooldown=Math.max(0,dashCooldown-dt);
  jumpBuffer=Math.max(0,jumpBuffer-dt);coyote=Math.max(0,coyote-dt);dropTimer=Math.max(0,dropTimer-dt);player.inv=Math.max(0,player.inv-dt);player.stun=Math.max(0,(player.stun||0)-dt);shake=Math.max(0,shake-dt);
 }
-function update(dt){toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}DevDamage.update(dt);time+=dt;player.animationTime+=dt;updatePlayerTimers(dt);if(Prologue.active){Prologue.update(dt);pressed.clear();return;}movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
+function update(dt){if(resolutionBlocked){keys.clear();pressed.clear();return;}toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}DevDamage.update(dt);time+=dt;player.animationTime+=dt;updatePlayerTimers(dt);if(Prologue.active){Prologue.update(dt);pressed.clear();return;}movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}movePlayer(dt);dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);
  const slayerVictory=enemies.find(e=>DoomSlayer.is(e)&&e.victoryPending);if(slayerVictory){slayerVictory.victoryPending=false;story('text.a.gift.from.a.hidden.path','slayer.name','slayer.victory');pressed.clear();return;}
  for(const h of level.hazards)if(overlap(player,h))damage(1,player.vx>=0?-1:1);
  const a=level.arena;if(!boss.dead&&player.x+player.w>(a.triggerX??a.x)&&player.x<a.x+a.w&&Math.abs(player.y+player.h-a.y)<160){bossStarted=true;if(!visits.has('boss')){visits.add('boss');checkpoint={...level.rests.find(r=>r.id===a.restId)};if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);persist();toast(realm===3?I18n.t('shadow.bell.warning'):realm===0?I18n.t("text.raised.sword.dodge.the.guardian.is.vulnerable.after.the"):realm===1?I18n.t("text.watch.for.cracks.in.the.ground.when.lava.rises"):I18n.t("text.gold.signals.light.arrows.violet.signals.shadow.magic.keep"));}}
@@ -272,8 +285,9 @@ function mainMenu(){SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.activ
 $('startButton').onclick=()=>startGame(false);$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
-let helpOrigin='menu',captureAction=null;
+let helpOrigin='menu',captureAction=null,suppressedMouseClick=null;
 function bindingKeyLabel(key){
+ if(/^mouse[0-4]$/.test(key))return I18n.t('binding.key.'+key);
  const symbols={'arrowleft':'←','arrowright':'→','arrowup':'↑','arrowdown':'↓'};
  return symbols[key]||I18n.t('binding.key.'+({' ':'space',shift:'shift',escape:'escape',enter:'enter',backspace:'backspace'}[key]||key))?.replace(/^binding\.key\./,'').toUpperCase();
 }
@@ -283,10 +297,6 @@ function keyedInstruction(text){
 }
 function renderBindingHints(){
  for(const node of document.querySelectorAll('[data-binding]'))node.textContent=bindingKeyLabel(Bindings.read(node.dataset.binding)[0]);
- for(const button of document.querySelectorAll('#touchControls [data-action]')){
-  button.setAttribute('aria-label',I18n.t('binding.action.'+button.dataset.action));
-  if(['interact','dash','heavyAttack','useMeat'].includes(button.dataset.action))button.textContent=bindingKeyLabel(Bindings.read(button.dataset.action)[0]);
- }
  $('mapButton').title=`${I18n.t('binding.action.map')} (${bindingKeyLabel(Bindings.read('map')[0])})`;
  $('trainButton').title=`${I18n.t('binding.action.train')} (${bindingKeyLabel(Bindings.read('train')[0])})`;
  $('inventoryButton').setAttribute('aria-label',I18n.t('inventory.open'));
@@ -324,34 +334,70 @@ $('exportBindings').onclick=()=>{const blob=new Blob([JSON.stringify(Bindings.ex
 $('importBindings').onclick=()=>$('bindingFile').click();
 $('bindingFile').onchange=async event=>{const file=event.target.files?.[0];if(!file)return;let valid=false;try{valid=Bindings.importData(JSON.parse(await file.text()));}catch{}event.target.value='';captureAction=null;renderHelp();$('bindingMessage').textContent=I18n.t(valid?'help.bindings.import.done':'help.bindings.import.error');};
 function keyName(e){return Bindings.normalize(e.code==='Space'?' ':e.key);}
+function finishBindingCapture(key){
+ const action=captureAction;if(!action)return;
+ const result=Bindings.setPrimary(action,key);captureAction=null;renderHelp();
+ $('bindingMessage').textContent=I18n.t(result.ok?'help.bindings.saved':'help.bindings.invalid');
+ $('bindingRows').querySelector(`[data-action="${action}"]`).focus();
+}
+let mousePointerSource='mouse';
+function recordMousePointerSource(e){mousePointerSource=e.pointerType||'mouse';}
+function isMouseInput(e){return (!e.pointerType||e.pointerType==='mouse')&&!e.sourceCapabilities?.firesTouchEvents&&mousePointerSource==='mouse';}
+function handleMouseDown(e){
+ if(resolutionBlocked||!isMouseInput(e))return;
+ const key=Bindings.mouseKey(e.button);suppressedMouseClick=null;
+ if(state==='help'&&captureAction&&key){
+  e.preventDefault();e.stopPropagation();suppressedMouseClick={button:e.button,timeStamp:e.timeStamp};finishBindingCapture(key);return;
+ }
+ // Native menu controls keep their ordinary click behaviour. Only the game
+ // canvas supplies held mouse input, through the same action dispatcher.
+ if(state!=='play'||e.target!==canvas||!key||!Bindings.uses(key))return;
+ handleKeyDown({key,code:'',repeat:false,target:canvas,preventDefault:()=>e.preventDefault()});
+}
+function handleMouseUp(e){
+ const key=Bindings.mouseKey(e.button);if(!key)return;
+ // Release an already held mouse button even if a touch/pen gesture happened
+ // between its press and release. Device provenance only gates new actions.
+ if(keys.has(key)||isMouseInput(e)&&e.target===canvas&&Bindings.uses(key))e.preventDefault();
+ keys.delete(key);
+}
+function handleMouseCancel(){for(const key of Object.values(KEY_BINDINGS.mouseButtons)){keys.delete(key);pressed.delete(key);}}
+function mouseCaptureGesture(e){return suppressedMouseClick&&e.button===suppressedMouseClick.button&&e.timeStamp-suppressedMouseClick.timeStamp>=0&&e.timeStamp-suppressedMouseClick.timeStamp<1000;}
+function handleMouseClick(e){if(isMouseInput(e)&&mouseCaptureGesture(e)){e.preventDefault();e.stopPropagation();suppressedMouseClick=null;}}
+function handleMouseContextMenu(e){
+ if(isMouseInput(e)&&(mouseCaptureGesture(e)||e.target===canvas&&Bindings.uses(Bindings.mouseKey(2)))){e.preventDefault();e.stopPropagation();}
+}
 function handleKeyDown(e){
- if(state==='developer')return;
+ if(resolutionBlocked||state==='developer')return;
  const k=keyName(e);
  if(state==='slayerSpell'){const target=e.target||document.activeElement,editing=target===$('slayerSpellInput')||target?.matches?.('input,textarea,[contenteditable="true"]');if(!e.repeat&&(k==='escape'||!editing&&Bindings.read('pause').includes(k))){e.preventDefault();SlayerDialog.close();}return;}
  if(state==='shop'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k))){e.preventDefault();Merchant.close();}return;}
  if(state==='inventory'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k)||Bindings.read('inventory').includes(k))){e.preventDefault();Inventory.close();}return;}
  if(state==='help'){
   if(captureAction){e.preventDefault();if(e.repeat)return;if(k==='escape'){captureAction=null;renderHelp();$('bindingMessage').textContent='';return;}
-   const action=captureAction,result=Bindings.setPrimary(action,k);captureAction=null;renderHelp();
-   $('bindingMessage').textContent=I18n.t(result.ok?'help.bindings.saved':result.reason==='conflict'?I18n.format('help.bindings.conflict',[I18n.t('binding.action.'+result.action)]):'help.bindings.invalid');
-   $('bindingRows').querySelector(`[data-action="${action}"]`).focus();return;
+   finishBindingCapture(k);return;
   }
   if(k==='escape'){e.preventDefault();closeHelp();}return;
  }
  if(state!=='play'&&e.target?.closest?.('button,summary,select,input,textarea,a')&&k!=='escape')return;
  if(state==='play'&&Bindings.uses(k))e.preventDefault();if(e.repeat)return;
- if(k==='escape'||Bindings.read('pause').includes(k)){if(state==='training'){closeTraining();return;}if(state==='map'){closeMap();return;}pause();return;}
+ if(k==='escape'&&(state!=='play'||!Bindings.uses(k))||Bindings.read('pause').includes(k)){if(state==='training'){closeTraining();return;}if(state==='map'){closeMap();return;}pause();return;}
  if(Bindings.read('map').includes(k)){if(state==='map')closeMap();else showMap();return;}
  if(Bindings.read('inventory').includes(k)){if(state==='play'){e.preventDefault();Inventory.open();}return;}
  if(state==='play'){keys.add(k);pressed.add(k);}
 }
 function handleKeyUp(e){keys.delete(keyName(e));}
 addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);addEventListener('blur',()=>{keys.clear();pressed.clear();if(state==='play')pause();});
-document.querySelectorAll('#touchControls [data-action]').forEach(b=>{const token='@'+b.dataset.action;b.addEventListener('pointerdown',e=>{e.preventDefault();if(state!=='play')return;b.setPointerCapture(e.pointerId);keys.add(token);pressed.add(token);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>keys.delete(token));});
+// Pointer Events report only the first press and last release of a mouse chord.
+// Record device provenance here; native mouse events dispatch every button.
+addEventListener('pointerdown',recordMousePointerSource,true);
+addEventListener('mousedown',handleMouseDown,true);addEventListener('mouseup',handleMouseUp);addEventListener('pointercancel',handleMouseCancel);
+addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
 sheet.onload=()=>{loadingReady=true;if(DevTools.isOpen)DevTools.refresh();};sheet.onerror=()=>toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));if(sheet.complete&&sheet.naturalWidth)loadingReady=true;
 function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();Merchant.drawMinimap();requestAnimationFrame(frame);}requestAnimationFrame(frame);
 Inventory.init();Merchant.init();SlayerDialog.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':level===forestCamp?'forestCamp':['japan','yomi','heaven'][realm]);
+I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
 I18n.applyDOM();
 DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevImmortality.init();DevDamage.init();DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});

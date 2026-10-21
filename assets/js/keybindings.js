@@ -7,7 +7,8 @@ const Bindings=(()=>{
   const profiles=['original',...Object.keys(KEY_BINDINGS.profiles)];
   let profile='original',modified={};
   const normalize=value=>value==='Spacebar'||value==='Space'?' ':String(value||'').toLowerCase();
-  const validKey=value=>value===' '||/^[\p{L}\p{N}\p{P}]$/u.test(value)||['arrowleft','arrowright','arrowup','arrowdown','shift','enter','backspace','escape'].includes(value)||/^f(?:[1-9]|1[0-2])$/.test(value);
+  const mouseKey=button=>Number.isInteger(button)&&Object.hasOwn(KEY_BINDINGS.mouseButtons,button)?KEY_BINDINGS.mouseButtons[button]:null;
+  const validKey=value=>Object.values(KEY_BINDINGS.mouseButtons).includes(value)||value===' '||/^[\p{L}\p{N}\p{P}]$/u.test(value)||['arrowleft','arrowright','arrowup','arrowdown','shift','enter','backspace','escape'].includes(value)||/^f(?:[1-9]|1[0-2])$/.test(value);
   const original=action=>KEY_BINDINGS.original[action];
   const base=(which,action)=>KEY_BINDINGS.profiles[which]?.bindings[action]||original(action);
   const current=action=>modified[profile]?.[action]||base(profile,action);
@@ -54,12 +55,21 @@ const Bindings=(()=>{
   function setPrimary(action,value){
     const key=normalize(value);
     if(!actions.includes(action)||!validKey(key)||key==='tab'||key==='escape'&&action!=='pause')return {ok:false,reason:'invalid'};
-    for(const other of actions)if(other!==action&&current(other).includes(key))return {ok:false,reason:'conflict',action:other};
-    const before=current(action),next=[key,...before.slice(1).filter(item=>item!==key)];
+    const before=current(action),bindings=Object.fromEntries(actions.map(name=>[name,[...current(name)]]));
+    const owner=actions.find(other=>other!==action&&bindings[other].includes(key));
+    bindings[action]=[key,...before.slice(1).filter(item=>item!==key)];
+    if(owner){
+      // Exchange the occupied slot with the previous primary, including Escape.
+      // Dialog cancellation remains separate from gameplay action ownership.
+      const slot=bindings[owner].indexOf(key);
+      bindings[owner].splice(slot,1,before[0]);
+    }
     modified[profile]||={};
-    if(JSON.stringify(next)===JSON.stringify(base(profile,action)))delete modified[profile][action];
-    else modified[profile][action]=next;
-    save();return {ok:true};
+    for(const name of [action,...(owner?[owner]:[])]){
+      if(JSON.stringify(bindings[name])===JSON.stringify(base(profile,name)))delete modified[profile][name];
+      else modified[profile][name]=bindings[name];
+    }
+    save();return {ok:true,...(owner?{swapped:owner}:{})};
   }
   function reset(){delete modified[profile];save();}
   function importData(data){
@@ -71,5 +81,5 @@ const Bindings=(()=>{
     profile=data.selection;modified=changes;save();return true;
   }
   const exportData=()=>({version:KEY_BINDINGS.version,original:KEY_BINDINGS.original,profiles:KEY_BINDINGS.profiles,selection:profile,modified:JSON.parse(JSON.stringify(modified))});
-  return Object.freeze({actions,profiles,normalize,read:action=>[...current(action)],has:(action,set)=>set.has('@'+action)||current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
+  return Object.freeze({actions,profiles,normalize,mouseKey,read:action=>[...current(action)],has:(action,set)=>current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
 })();

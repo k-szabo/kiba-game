@@ -37,10 +37,10 @@ checkForm(links[0].href,'menu');checkForm(links[1].href,'dream');
 area='yomi';links[1].listeners.click();checkForm(links[1].href,'yomi');
 language='en';localeChanged();assert.equal(links[1].attributes['aria-label'],t('bugReport.label'));
 assert.equal(new URL(links[0].href).searchParams.get('language'),'en');
-context.innerWidth=390;context.innerHeight=844;links[1].listeners.focus();
-assert.equal(new URL(links[1].href).searchParams.get('viewport'),'390 × 844','Focus refreshes viewport context');
+context.innerWidth=1920;context.innerHeight=1080;links[1].listeners.focus();
+assert.equal(new URL(links[1].href).searchParams.get('viewport'),'1920 × 1080','Focus refreshes viewport context');
 context.matchMedia=()=>({matches:true});links[1].listeners.pointerdown();
-assert.equal(new URL(links[1].href).searchParams.get('input'),t('bugReport.touch'));
+assert.equal(new URL(links[1].href).searchParams.get('input'),t('bugReport.pointer'));
 for(const [ua,expected] of [['Edg/143.1 Chrome/142.0','Edge 143'],['FxiOS/144.0 Safari/604.1','Firefox 144'],['Version/26.0 Mobile/15E148 Safari/604.1','Safari 26'],['unrecognized SecretSession/DO_NOT_EXPORT',t('bugReport.unknown')]]){
  context.navigator.userAgent=ua;
  assert.equal(new URL(context.report.createURL()).searchParams.get('browser'),expected);

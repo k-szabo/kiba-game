@@ -25,11 +25,13 @@ function contact(h,move,hp=30){
  const h=fixture();assert(value(h,'DoomSlayer.is(subject)'));assert.equal(value(h,'subject.maxHp'),260);
  assert(!value(h,'subject.active'));step(h,10);assert.equal(value(h,'subject.cycles'),0,'The grave never activates on approach');
  start(h);assert.equal(value(h,'subject.barrels.length'),9);assert(!value(h,'DoomSlayer.start(subject)'));
- step(h,.67);assert.equal(value(h,'subject.phase'),'windup');assert.equal(value(h,'subject.move'),'flail');assert(value(h,'subject.clock>.8'));
+ step(h,.67);assert.equal(value(h,'subject.phase'),'windup');assert.equal(value(h,'subject.move'),'flail');assert(value(h,'subject.phaseDuration>=.3&&subject.clock>0'));
  assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),10,'Windup leaves the shield open');
  value(h,"subject.inv=0;subject.phase='wait';subject.face=-1;player.x=subject.x-50;player.y=subject.baseY+43;");
  assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),0,'Frontal normal attacks are shielded');
  assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'heavy')"),10,'Heavy attacks bypass the shield');
+ value(h,"subject.inv=0;subject.phase='recover';player.x=subject.x-50;");
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),0,'Grounded recovery actively shields frontal normal attacks');
  value(h,'subject.inv=0;player.x=subject.x+subject.w+5;');
  assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),10,'The rear remains vulnerable');
  value(h,'subject.inv=0;player.x=subject.x-50;player.y=subject.y-player.h;');
@@ -49,10 +51,40 @@ for(const rate of [30,60,120])for(const direction of [-1,1])for(const distant of
  start(h);step(h,.67,rate);
  assert.equal(value(h,'subject.phase'),'windup');
  assert.equal(value(h,'subject.move'),distant?'fireArrows':'flail',`Opening selection: ${rate} FPS, direction ${direction}, distant=${distant}`);
- assert(value(h,'subject.clock>.6'),'The opening still gives a visible windup');
+ assert(value(h,'subject.phaseDuration>=.3&&subject.clock>0'),'The opening still gives a visible windup');
  for(let frame=0;frame<rate*4&&value(h,'subject.cycles')<2;frame++)step(h,1/rate,rate);
  assert.equal(value(h,'subject.cycles'),2,'The ranged opener must not stall the move cycle');
  assert.equal(value(h,'subject.move'),'oil','The opener still leads into barrel ignition');
+}
+// Observe naturally selected attacks, rather than force their state: three
+// quick tells/strikes form a chain, followed by an actual guarded breathing gap.
+for(const rate of [30,60,120]){
+ const h=fixture();value(h,'player.inv=999;');start(h);
+ const strikes=[];let previous=value(h,'subject.phase'),previousCycles=0;
+ for(let frame=0;frame<Math.ceil(5.7*rate);frame++){
+  step(h,1/rate,rate);const phase=value(h,'subject.phase');
+  if(phase==='windup'&&value(h,'subject.cycles')!==previousCycles){
+   assert(value(h,'subject.phaseDuration>=.3'),'Every follow-up keeps a readable tell');previousCycles=value(h,'subject.cycles');
+  }
+  if(phase==='strike'&&previous!=='strike')strikes.push({time:(frame+1)/rate,move:value(h,'subject.move')});
+  previous=phase;
+ }
+ assert(strikes.length>=6,`Attack pressure too low at ${rate} FPS: ${JSON.stringify(strikes)}`);
+ assert.deepEqual(strikes.slice(0,6).map(s=>s.move),['flail','oil','fireArrows','lightning','kick','arrows']);
+ assert(strikes[0].time<.85,'Opening attack remains too slow');
+ for(const pair of [[0,1],[1,2],[3,4],[4,5]])assert(strikes[pair[1]].time-strikes[pair[0]].time<.85,'Combo contains an unintended long idle');
+ assert(strikes[3].time-strikes[2].time>=1.1,'Three-attack chain must leave a guarded recovery window');
+ assert(strikes[5].time<=5.5,'Six varied attacks should release within five and a half seconds');
+}
+
+// Dormant summoned encounters wait visibly with fresh resources until actual
+// reentry. An obsolete object from before respawn must never restart itself.
+{
+ const h=fixture();start(h);prepare(h,'oil');value(h,'DoomSlayer.reset(subject);player.x=-100;');
+ assert(value(h,'subject.graveAwake&&!subject.active&&subject.barrels.length===9'));
+ step(h,.5);assert(!value(h,'subject.active'));
+ value(h,'initPlayer({x:500,y:subject.arena.y});player.inv=999;');step(h,1/120);assert(value(h,'subject.active'));
+ value(h,'DoomSlayer.reset(subject);enemies=[];');step(h,.5);assert(!value(h,'subject.active'),'Old instance restarted after enemy array replacement');
 }
 for(const rate of [30,60,120]){
  for(const phase of ['wait','recover'])for(const sawReady of [false,true]){
@@ -125,8 +157,8 @@ for(const rate of [30,60,120]){
  step(h,1.6,rate);assert.equal(value(h,'subject.y'),value(h,'subject.baseY'),'Double jump lands at '+rate+' fps');assert(value(h,'subject.landed'));
 }
 {
- const h=fixture();start(h);prepare(h,'lightning');assert.equal(value(h,'subject.hazards.length'),3);assert(value(h,'subject.hazards.every(h=>!h.active&&h.warning>=.65&&h.damage===4)'));
- const hp=value(h,'player.hp');step(h,.5);assert.equal(value(h,'player.hp'),hp,'Lightning respects its warning');step(h,.2);assert.equal(value(h,'player.hp'),hp-4);
+ const h=fixture();start(h);prepare(h,'lightning');assert.equal(value(h,'subject.hazards.length'),3);assert(value(h,'subject.hazards.every(h=>!h.active&&h.warning>=.38&&h.damage===4)'));
+ const hp=value(h,'player.hp');step(h,.3);assert.equal(value(h,'player.hp'),hp,'Lightning respects its warning');step(h,.12);assert.equal(value(h,'player.hp'),hp-4);
  value(h,'DoomSlayer.reset(subject);player.inv=0;');start(h);prepare(h,'explosion');assert.equal(value(h,'subject.hazards[0].damage'),5);step(h,.75);assert.equal(value(h,'player.hp'),hp-9);
  value(h,'DoomSlayer.reset(subject);');start(h);prepare(h,'arrows');assert.equal(value(h,'projectiles.length'),9);assert(value(h,"projectiles.every(p=>p.damage===2&&p.slayer&&p.source==='slayer'&&p.vy>0)"));assert.equal(value(h,'subject.hazards.length'),9);
 }

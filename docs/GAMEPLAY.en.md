@@ -8,7 +8,7 @@ The game starts with a silent dream prologue. After Momo wakes, follow the story
 
 ## Controls
 
-These are the default keys. Open **How to Play** from the main or pause menu to choose a UK or French layout, remap individual actions, and import or export bindings as JSON.
+These are the default keys. Open **How to Play** from the main or pause menu to choose a UK or French layout, remap individual actions, and import or export bindings as JSON. Controls can now use mouse buttons. If the input is already assigned, the two actions exchange bindings.
 
 | Default keys | Action |
 | --- | --- |
@@ -25,7 +25,9 @@ These are the default keys. Open **How to Play** from the main or pause menu to 
 | O | Use food |
 | Esc | Pause |
 
-On touchscreen devices, use the on-screen controls. The wind streams lift Momo when he jumps into them. To use a torii gate, stand under its opening and press the interact action.
+The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse.
+
+The wind streams lift Momo when he jumps into them. To use a torii gate, stand under its opening and press the interact action.
 
 ## Shrines, travel, and saves
 

@@ -28,7 +28,7 @@ try{
  r('Math.random=()=>{randomCalls++;return .9;};player.hp=1;');h.press('o');h.tick();h.release('o');assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),1);
  const safe=r('JSON.stringify([player.inv,dash,player.vx,player.vy])');assert(r('Merchant.eat()'));assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),0);assert.equal(r('JSON.stringify([player.inv,dash,player.vx,player.vy])'),safe);
  const empty=snapshot(),calls=r('randomCalls');assert.equal(r('Merchant.eat()'),false);assert.equal(snapshot(),empty);assert.equal(r('randomCalls'),calls);
- r("meatCount=1;pressed.add('@useMeat');input(0);pressed.clear();");assert.equal(r('meatCount'),0,'Touch food action consumes exactly one serving');
+ r("meatCount=1;Bindings.setPrimary('useMeat','mouse2');handleMouseDown({button:2,pointerType:'mouse',target:canvas,preventDefault(){}});input(0);pressed.clear();handleMouseUp({button:2,preventDefault(){}});");assert.equal(r('meatCount'),0,'Mouse food action consumes exactly one serving');
  r('meatCount=2;persist();');const ledger=r('JSON.stringify([coins,meatCount,flags])');r('mainMenu();startGame(true);');assert.equal(r('JSON.stringify([coins,meatCount,flags])'),ledger);validate(r('saved'));
  r('player.inv=0;damage(999);');assert.equal(r('JSON.stringify([coins,meatCount,flags])'),ledger);
  for(const state of ['pause','dialog','map','training','help','developer','menu','won']){
@@ -38,8 +38,8 @@ try{
  r("state='play';enterRealm(0);flags[1]=[];updateHUD();");assert(h.elements.get('compass').hidden,'Compass must require ownership');
  r("flags[1].push('compass');updateHUD();");assert(!h.elements.get('compass').hidden);
  r('Merchant.drawMinimap();');assert(h.elements.get('minimap').hidden);
- r("flags[1].push('minimap');innerWidth=360;devicePixelRatio=2;var mapLines=[],mapContext=$('minimapCanvas').getContext('2d'),originalLine=mapContext.lineTo;mapContext.lineTo=(...p)=>mapLines.push(p);Merchant.drawMinimap();");
- assert(!h.elements.get('minimap').hidden);assert.equal(h.elements.get('minimapCanvas').width,288);assert.equal(h.elements.get('minimapCanvas').height,184);
+ r("flags[1].push('minimap');innerWidth=1280;devicePixelRatio=2;var mapLines=[],mapContext=$('minimapCanvas').getContext('2d'),originalLine=mapContext.lineTo;mapContext.lineTo=(...p)=>mapLines.push(p);Merchant.drawMinimap();");
+ assert(!h.elements.get('minimap').hidden);assert.equal(h.elements.get('minimapCanvas').width,440);assert.equal(h.elements.get('minimapCanvas').height,280);
  assert.equal(r('mapLines.length'),r('level.platforms.filter(p=>!p.secretArea).length'),'Undiscovered secret platforms must stay hidden');
  r("flags[0].push('discovered:angelRuin');mapLines=[];Merchant.drawMinimap();");assert.equal(r('mapLines.length'),r("level.platforms.filter(p=>!p.secretArea||p.secretArea==='angelRuin').length"));
  r("state='pause';mapLines=[];Merchant.drawMinimap();");assert.equal(r('mapLines.length'),0,'Paused minimap must not redraw');

@@ -82,7 +82,7 @@ const Merchant=(()=>{
   const box=$('minimap'),visible=!!player&&stock('minimap')>0&&!Prologue.active&&!['menu','won'].includes(state)&&!DevTools.menuBackground&&!(state==='help'&&helpOrigin==='menu');
   box.hidden=!visible;if(!visible||state!=='play')return;
   box.setAttribute('aria-label',I18n.t('item.minimap'));
-  const canvas=$('minimapCanvas'),w=innerWidth<=650?144:220,h=innerWidth<=650?92:140,dpr=Math.max(1,Math.min(3,window.devicePixelRatio||1));
+  const canvas=$('minimapCanvas'),w=220,h=140,dpr=Math.max(1,Math.min(3,window.devicePixelRatio||1));
   if(canvas.width!==w*dpr||canvas.height!==h*dpr){canvas.width=w*dpr;canvas.height=h*dpr;}
   const c=canvas.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);
   c.fillStyle='#101d29';c.fillRect(0,0,w,h);

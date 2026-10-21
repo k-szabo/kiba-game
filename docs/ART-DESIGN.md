@@ -32,6 +32,8 @@ A láva, földrepedés, becsapódás, kardcsóva, árnyékmágia és idézőkapu
 
 A díszítő effektek és animációs órák álljanak meg pause, dialógus, térkép, inventory és fejlesztés alatt. Csökkentett mozgásnál a dekoratív sodródás/forgás szünetel, a szükséges harci előjelzés megmarad. Art-only változtatás nem módosíthat sebzést, támadási időt, hitboxot vagy járható geometriát.
 
+A felület asztali billentyűzethez és egérhez készül; a támogatott minimum 1280×720 CSS-pixel. A grafika és a feliratok HU/EN olvashatóságát ezen a minimumon és nagyobb asztali nézetben ellenőrizzük, az asztali nagyítást, a görgetést és a billentyűzetes fókuszt megtartva. Mobilos kompozíciót és érintésre épülő vezérlőt ne tervezzünk vissza.
+
 ## Források és ellenőrzés
 
 A generálási promptok és történeti stílusreferenciák a [docs/art-prompts/](art-prompts/README.md) alatt vannak. Új promptnál repository-relatív útvonalakat használjunk. Egy régi generálás referenciája lehet már lecserélt kép; ez nem indok arra, hogy visszategyük a runtime-ba.

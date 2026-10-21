@@ -28,14 +28,14 @@ for(const [kind,damage,impact,duration] of [['normal',1.5,.16,.42],['heavy',3.5,
  h.run("initPlayer(level.start);var mini=createEnemies().find(e=>e.miniboss);enemies=[mini];mini.active=true;mini.inv=0;player.x=mini.x-40;player.y=mini.y;player.face=1;");
  const miniHp=h.run('mini.hp');h.run("melee('heavy');advanceSwordAttack(.4)");close(h.run('mini.hp'),miniHp-3.5);
 }
-// Keyboard, remapped and touch actions all drive the same attack. Heavy wins
+// Keyboard and remapped mouse inputs all drive the same attack. Heavy wins
 // simultaneous inputs deterministically; repeated inputs cannot shorten it.
 {
  const h=target();h.press('j');h.press('h');h.tick();h.release('j');h.release('h');assert.equal(h.run('attackKind'),'heavy');
  const start=h.run('attackElapsed');h.press('j');h.tick();h.release('j');assert(h.run('attackElapsed')>start);assert.equal(h.run('attackKind'),'heavy');
  h.run("initPlayer(level.start);Bindings.setPrimary('heavyAttack','r')");h.press('h');h.tick();h.release('h');assert.equal(h.run('attack'),0);
  h.press('r');h.tick();h.release('r');assert.equal(h.run('attackKind'),'heavy');
- h.run("initPlayer(level.start);pressed.add('@heavyAttack')");h.tick();assert.equal(h.run('attackKind'),'heavy');
+ h.run("initPlayer(level.start);Bindings.setPrimary('heavyAttack','mouse2');handleMouseDown({button:2,pointerType:'mouse',target:canvas,preventDefault(){}});");h.tick();h.run('handleMouseUp({button:2,preventDefault(){}})');assert.equal(h.run('attackKind'),'heavy');
 }
 // Profile timing and movement clocks remain shared in normal/dream play at
 // common frame rates, with acquired jump/dash rather than isolated bit checks.
@@ -78,4 +78,4 @@ for(const dream of [false,true])for(const fps of [30,60,120])for(const kind of [
  assert.equal(h.run('attackKind'),'heavy');close(h.run('attackElapsed'),.39);
  h.run("drawPlayer()");assert.deepEqual(draws.at(-1).slice(1,5),[0,512,548,512]);
 }
-console.log('PASS: normal/heavy balance, windup and single hit, direction/cooldown locks, upgrades, shields/minibosses, keyboard/remap/touch, pause, registered art phases and dream/dash/jump at30/60/120fps.');
+console.log('PASS: normal/heavy balance, windup and single hit, direction/cooldown locks, upgrades, shields/minibosses, keyboard/remap/mouse, pause, registered art phases and dream/dash/jump at30/60/120fps.');
