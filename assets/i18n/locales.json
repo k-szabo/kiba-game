@@ -654,7 +654,12 @@
       "menu.changelog.0925.cave": "A kultista barlang háttere dupla ugrás közben is megmarad.",
       "display.minimum": "A játékhoz legalább 1280×720-as ablak szükséges. Növeld meg az ablakot, vagy válts teljes képernyőre. Irányítás: billentyűzet és egér.",
       "menu.changelog.0925.desktopTitle": "Asztali támogatás 720p-től",
-      "menu.changelog.0925.desktop": "A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható."
+      "menu.changelog.0925.desktop": "A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.",
+      "shadow.trace.title": "Haru nyoma",
+      "shadow.trace.story": "A templom előtt ismerős melegség töri meg az árnyékvilág hidegét. Momo felismeri benne apja Kibáját — ugyanazt a szelíd lüktetést, amely gyerekként megnyugtatta a viharos éjszakákon.\n\nHaru erre járt. A sötétség még nem nyelt el minden nyomot, amely hozzá vezeti. Momo mély levegőt vesz, és új erővel indul tovább.",
+      "shadow.trace.healed": "A remény erőt ad. +{0} HP",
+      "menu.changelog.0926.title": "Remény az árnyékvilágban",
+      "menu.changelog.0926.trace": "Haru templom előtti nyoma egy rövid történeti jelenettel és egyszeri, legfeljebb 2 HP gyógyulással ad erőt Momónak."
     }
   },
   "en": {
@@ -1312,7 +1317,12 @@
       "menu.changelog.0925.cave": "The cultist cave background remains visible during double jumps.",
       "display.minimum": "The game requires a window of at least 1280×720. Enlarge the window or switch to fullscreen. Controls: keyboard and mouse.",
       "menu.changelog.0925.desktopTitle": "Desktop support from 720p",
-      "menu.changelog.0925.desktop": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse."
+      "menu.changelog.0925.desktop": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse.",
+      "shadow.trace.title": "Haru’s Trace",
+      "shadow.trace.story": "Before the temple, a familiar warmth breaks through the cold of the Shadow Realm. Momo recognises his father’s Kiba within it — the same gentle pulse that soothed him through stormy nights as a child.\n\nHaru passed this way. The darkness has not swallowed every trace that leads to him. Momo takes a deep breath and presses on with renewed strength.",
+      "shadow.trace.healed": "Hope lends you strength. +{0} HP",
+      "menu.changelog.0926.title": "Hope in the Shadow Realm",
+      "menu.changelog.0926.trace": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP."
     }
   }
 }

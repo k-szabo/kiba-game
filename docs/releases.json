@@ -506,6 +506,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.26_49f4b0b1",
+      "code": "49f4b0b1",
+      "baseVersion": "0.9.26",
+      "slug": "haru-trace-hope",
+      "summary": {
+        "hu": "Remény az árnyékvilágban",
+        "en": "Hope in the Shadow Realm"
+      },
+      "fixes": [
+        {
+          "hu": "Haru templom előtti nyoma egy rövid történeti jelenettel és egyszeri, legfeljebb 2 HP gyógyulással ad erőt Momónak.",
+          "en": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP."
+        }
+      ]
     }
   ]
 }

@@ -183,6 +183,7 @@ async function main(){
   }
   for(const fourthFlags of [
    ['guardian:cultJailer','prisonKey'],['guardian:cultJailer','prisonOpen'],
+   ['guardian:cultJailer','prisonOpen','prisonTrace'],
    ['guardian:madOrganist','corruptedHymn'],['guardian:cultJailer','prisonOpen','guardian:madOrganist','corruptedHymn','shadowAltar']
   ]){
    const data=copy(shadow);data.flags[shadowIndex]=fourthFlags;
@@ -193,6 +194,7 @@ async function main(){
    [data=>{data.defeated[2]=false;},/Invalid shadow entry/],
    [data=>{data.flags[shadowIndex]=['prisonKey'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['prisonOpen'];},/Invalid prison progress/],
+   [data=>{data.flags[shadowIndex]=['guardian:cultJailer','prisonTrace'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['guardian:cultJailer','prisonKey','prisonOpen'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['corruptedHymn'];},/Invalid shadow item/],
    [data=>{data.flags[shadowIndex]=['inventedShadowFlag'];},/Invalid quest flags/],

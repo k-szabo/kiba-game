@@ -41,7 +41,7 @@ function setup(){
  r("initPlayer(level.objects.find(o=>o.id==='prisonKey'));interact();");
  assert(r("flags[3].includes('prisonKey')"));r('initPlayer(level.prisonDoor);interact();');
  assert(r("flags[3].includes('prisonOpen')&&!flags[3].includes('prisonKey')"));
- r('initPlayer(level.prisonTrace);interact();');assert(r("flags[3].includes('prisonTrace')"));
+ r('initPlayer(level.prisonTrace);interact();');assert(r("flags[3].includes('prisonTrace')"));h.dismiss();
  r('revive();');assert(r("enemies.find(e=>e.id==='cultJailer').dead"));
  r("initPlayer(level.objects.find(o=>o.id==='prisonKey'));interact();");assert(!r("flags[3].includes('prisonKey')"));
  r('persist();');assert.doesNotThrow(()=>validate(r('saved')));
