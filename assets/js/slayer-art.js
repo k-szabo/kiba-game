@@ -13,7 +13,8 @@ const SlayerArt=(()=>{
   const alpha=clamp((-850-player.y-player.h)/450,0,1),image=Visuals.images.slayerArena;
   if(!alpha||!image?.complete||!image.naturalWidth)return;
   const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),w=image.naturalWidth*s,h=image.naturalHeight*s;
-  const pan=clamp((player.x-100)/3000,0,1);
+  const arena=yomi.secrets.find(area=>area.id==='slayerGrave').arena;
+  const pan=clamp((player.x-arena.x)/arena.w,0,1);
   ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(image,-(w-viewW)*pan,-(h-H)*.5,w,h);ctx.restore();
  }
  function icon(id,x,feet,height){
@@ -26,7 +27,7 @@ const SlayerArt=(()=>{
   if(!hasFlag('guardian:doomSlayer')){icon('daisyPlush',g.x-5,g.y-210,62);icon('slayerCrossbow',g.x+70,g.y-12,74);}
  }
  function scenery(){
-  const e=guardian();if(!e||!e.active)return;
+  const e=guardian();if(!e||!e.graveAwake||e.dead)return;
   for(const b of e.barrels){
    stamp(ART_SLAYER.barrel,b.x,b.y+2,80,1,b.punctured?.6:1);
    if(b.punctured)BossVFX.fissure(b.x,b.y,64,.8);
@@ -64,11 +65,13 @@ const SlayerArt=(()=>{
   return 0;
  }
  function actor(e){
-  // The dormant guardian is summoned by the grave, never visible beforehand.
-  if(!e.active||e.dead)return;
+  // A summoned guardian remains visible between attempts; before the first
+  // incantation the grave still appears empty.
+  if(!e.graveAwake||e.dead)return;
   const x=e.x+e.w/2,feet=e.y+e.h,progress=clamp(1-e.clock/e.phaseDuration,0,1);
   const index=e.blockFlash>0?2:pose(e);
-  stamp(ART_SLAYER.frames[index],x,feet+1,168,e.phase==='wait'?e.face:e.attackFace,e.inv>0?.78:1);
+  stamp(ART_SLAYER.frames[index],x,feet+1,168,['wait','recover'].includes(e.phase)?e.face:e.attackFace,e.inv>0?.78:1);
+  if(!e.active)return;
   if(e.phase==='windup'&&['flail','kick','grab','saw'].includes(e.move)){
    const width=e.move==='flail'?185:e.move==='grab'?105:140,left=e.attackFace>0?e.x+e.w*.4:e.x-width;
    ctx.save();ctx.fillStyle='#ffe0a225';ctx.strokeStyle='#ffe1ad';ctx.lineWidth=2;ctx.setLineDash([8,5]);

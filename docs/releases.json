@@ -272,6 +272,30 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.25_2de7dea9",
+      "code": "2de7dea9",
+      "baseVersion": "0.9.25",
+      "slug": "controls-cave-and-slayer-retries",
+      "summary": {
+        "hu": "Irányítás és barlangháttér javítása",
+        "en": "Control and cave background fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az irányítás egérgombokra is kiosztható, a foglalt gombok pedig közvetlenül átállíthatók.",
+          "en": "Controls can now use mouse buttons, and assigned inputs can be reassigned directly."
+        },
+        {
+          "hu": "A kultista barlang háttere dupla ugrás közben is megmarad.",
+          "en": "The cultist cave background remains visible during double jumps."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

@@ -42,7 +42,7 @@ Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külö
 
 Érintőképernyőn a képernyő gombjai használhatók. A leugráshoz a lefelé és az ugrás gombot együtt kell használni. A hang a felső gombbal kapcsolható.
 
-A főmenüből és a szünetmenüből a **Hogyan játszunk** ablak nyitja a tagolt játékleírást és a billentyűkiosztás szerkesztőjét. Az alapértelmezett, brit QWERTY és francia AZERTY profil közül választhatsz, majd egy-egy művelet billentyűjét külön átállíthatod. Az egyéni módosításokat a böngésző megjegyzi; a teljes kiosztás JSON-fájlként exportálható és importálható.
+A főmenüből és a szünetmenüből a **Hogyan játszunk** ablak nyitja a tagolt játékleírást és a billentyűkiosztás szerkesztőjét. Az alapértelmezett, brit QWERTY és francia AZERTY profil közül választhatsz, majd egy-egy művelet billentyűjét külön átállíthatod. Az egyéni módosításokat a böngésző megjegyzi; a teljes kiosztás JSON-fájlként exportálható és importálható. Az irányítás egérgombokra is kiosztható. Ha a gomb már foglalt, a két művelet gombja felcserélődik.
 
 A szélfolyamokba **bele kell ugrani**. Maguktól magasba emelnek; oldalirányú mozgással szállhatsz ki belőlük a felhőszigetekre. A torii használatához állj a kapu alá, és nyomj E-t; az oszlopaira nem kell felugrani.
 

@@ -8,7 +8,7 @@ The game starts with a silent dream prologue. After Momo wakes, follow the story
 
 ## Controls
 
-These are the default keys. Open **How to Play** from the main or pause menu to choose a UK or French layout, remap individual actions, and import or export bindings as JSON.
+These are the default keys. Open **How to Play** from the main or pause menu to choose a UK or French layout, remap individual actions, and import or export bindings as JSON. Controls can now use mouse buttons. If the input is already assigned, the two actions exchange bindings.
 
 | Default keys | Action |
 | --- | --- |

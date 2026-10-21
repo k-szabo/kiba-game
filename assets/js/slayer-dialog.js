@@ -52,7 +52,7 @@ const SlayerDialog=(()=>{
    warningOpen=false;
    $('dialog').classList.remove('slayer-warning');
    if(expected!==revision||state!=='play'||level!==origin||level!==yomi||!enemies.includes(e)||e.dead||e.active)return;
-   DoomSlayer.start(e);
+   if(DoomSlayer.start(e)&&!flags[1].includes('slayerSummoned')){flags[1].push('slayerSummoned');persist();}
   });
  }
  function keydown(event){

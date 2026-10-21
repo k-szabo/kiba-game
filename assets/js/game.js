@@ -272,8 +272,9 @@ function mainMenu(){SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.activ
 $('startButton').onclick=()=>startGame(false);$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
-let helpOrigin='menu',captureAction=null;
+let helpOrigin='menu',captureAction=null,suppressedMouseClick=null;
 function bindingKeyLabel(key){
+ if(/^mouse[0-4]$/.test(key))return I18n.t('binding.key.'+key);
  const symbols={'arrowleft':'←','arrowright':'→','arrowup':'↑','arrowdown':'↓'};
  return symbols[key]||I18n.t('binding.key.'+({' ':'space',shift:'shift',escape:'escape',enter:'enter',backspace:'backspace'}[key]||key))?.replace(/^binding\.key\./,'').toUpperCase();
 }
@@ -324,6 +325,39 @@ $('exportBindings').onclick=()=>{const blob=new Blob([JSON.stringify(Bindings.ex
 $('importBindings').onclick=()=>$('bindingFile').click();
 $('bindingFile').onchange=async event=>{const file=event.target.files?.[0];if(!file)return;let valid=false;try{valid=Bindings.importData(JSON.parse(await file.text()));}catch{}event.target.value='';captureAction=null;renderHelp();$('bindingMessage').textContent=I18n.t(valid?'help.bindings.import.done':'help.bindings.import.error');};
 function keyName(e){return Bindings.normalize(e.code==='Space'?' ':e.key);}
+function finishBindingCapture(key){
+ const action=captureAction;if(!action)return;
+ const result=Bindings.setPrimary(action,key);captureAction=null;renderHelp();
+ $('bindingMessage').textContent=I18n.t(result.ok?'help.bindings.saved':'help.bindings.invalid');
+ $('bindingRows').querySelector(`[data-action="${action}"]`).focus();
+}
+let mousePointerSource='mouse';
+function recordMousePointerSource(e){mousePointerSource=e.pointerType||'mouse';}
+function isMouseInput(e){return (!e.pointerType||e.pointerType==='mouse')&&!e.sourceCapabilities?.firesTouchEvents&&mousePointerSource==='mouse';}
+function handleMouseDown(e){
+ if(!isMouseInput(e))return;
+ const key=Bindings.mouseKey(e.button);suppressedMouseClick=null;
+ if(state==='help'&&captureAction&&key){
+  e.preventDefault();e.stopPropagation();suppressedMouseClick={button:e.button,timeStamp:e.timeStamp};finishBindingCapture(key);return;
+ }
+ // Native menu controls keep their ordinary click behaviour. Only the game
+ // canvas supplies held mouse input, through the same action dispatcher.
+ if(state!=='play'||e.target!==canvas||!key||!Bindings.uses(key))return;
+ handleKeyDown({key,code:'',repeat:false,target:canvas,preventDefault:()=>e.preventDefault()});
+}
+function handleMouseUp(e){
+ const key=Bindings.mouseKey(e.button);if(!key)return;
+ // Release an already held mouse button even if a touch/pen gesture happened
+ // between its press and release. Device provenance only gates new actions.
+ if(keys.has(key)||isMouseInput(e)&&e.target===canvas&&Bindings.uses(key))e.preventDefault();
+ keys.delete(key);
+}
+function handleMouseCancel(){for(const key of Object.values(KEY_BINDINGS.mouseButtons)){keys.delete(key);pressed.delete(key);}}
+function mouseCaptureGesture(e){return suppressedMouseClick&&e.button===suppressedMouseClick.button&&e.timeStamp-suppressedMouseClick.timeStamp>=0&&e.timeStamp-suppressedMouseClick.timeStamp<1000;}
+function handleMouseClick(e){if(isMouseInput(e)&&mouseCaptureGesture(e)){e.preventDefault();e.stopPropagation();suppressedMouseClick=null;}}
+function handleMouseContextMenu(e){
+ if(isMouseInput(e)&&(mouseCaptureGesture(e)||e.target===canvas&&Bindings.uses(Bindings.mouseKey(2)))){e.preventDefault();e.stopPropagation();}
+}
 function handleKeyDown(e){
  if(state==='developer')return;
  const k=keyName(e);
@@ -332,21 +366,24 @@ function handleKeyDown(e){
  if(state==='inventory'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k)||Bindings.read('inventory').includes(k))){e.preventDefault();Inventory.close();}return;}
  if(state==='help'){
   if(captureAction){e.preventDefault();if(e.repeat)return;if(k==='escape'){captureAction=null;renderHelp();$('bindingMessage').textContent='';return;}
-   const action=captureAction,result=Bindings.setPrimary(action,k);captureAction=null;renderHelp();
-   $('bindingMessage').textContent=I18n.t(result.ok?'help.bindings.saved':result.reason==='conflict'?I18n.format('help.bindings.conflict',[I18n.t('binding.action.'+result.action)]):'help.bindings.invalid');
-   $('bindingRows').querySelector(`[data-action="${action}"]`).focus();return;
+   finishBindingCapture(k);return;
   }
   if(k==='escape'){e.preventDefault();closeHelp();}return;
  }
  if(state!=='play'&&e.target?.closest?.('button,summary,select,input,textarea,a')&&k!=='escape')return;
  if(state==='play'&&Bindings.uses(k))e.preventDefault();if(e.repeat)return;
- if(k==='escape'||Bindings.read('pause').includes(k)){if(state==='training'){closeTraining();return;}if(state==='map'){closeMap();return;}pause();return;}
+ if(k==='escape'&&(state!=='play'||!Bindings.uses(k))||Bindings.read('pause').includes(k)){if(state==='training'){closeTraining();return;}if(state==='map'){closeMap();return;}pause();return;}
  if(Bindings.read('map').includes(k)){if(state==='map')closeMap();else showMap();return;}
  if(Bindings.read('inventory').includes(k)){if(state==='play'){e.preventDefault();Inventory.open();}return;}
  if(state==='play'){keys.add(k);pressed.add(k);}
 }
 function handleKeyUp(e){keys.delete(keyName(e));}
 addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);addEventListener('blur',()=>{keys.clear();pressed.clear();if(state==='play')pause();});
+// Pointer Events report only the first press and last release of a mouse chord.
+// Record device provenance here; native mouse events dispatch every button.
+addEventListener('pointerdown',recordMousePointerSource,true);
+addEventListener('mousedown',handleMouseDown,true);addEventListener('mouseup',handleMouseUp);addEventListener('pointercancel',handleMouseCancel);
+addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
 document.querySelectorAll('#touchControls [data-action]').forEach(b=>{const token='@'+b.dataset.action;b.addEventListener('pointerdown',e=>{e.preventDefault();if(state!=='play')return;b.setPointerCapture(e.pointerId);keys.add(token);pressed.add(token);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>keys.delete(token));});
 sheet.onload=()=>{loadingReady=true;if(DevTools.isOpen)DevTools.refresh();};sheet.onerror=()=>toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));if(sheet.complete&&sheet.naturalWidth)loadingReady=true;
 function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();Merchant.drawMinimap();requestAnimationFrame(frame);}requestAnimationFrame(frame);

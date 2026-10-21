@@ -20,7 +20,9 @@ assert(run("Bindings.has('moveLeft',new Set(['q']))"));
 assert(!run("Bindings.has('moveLeft',new Set(['a']))"));
 assert(run("Bindings.has('jump',new Set(['z']))"));
 assert(!run("Bindings.has('attack',new Set(['z']))"));
-assert.equal(run("Bindings.setPrimary('attack','q').reason"),'conflict');
+assert(run("Bindings.setPrimary('attack','q').ok"));
+assert.equal(run("Bindings.read('moveLeft')[0]"),'j','An occupied primary is exchanged without leaving either action unbound');
+run('Bindings.reset()');
 assert(run("Bindings.setPrimary('attack','r').ok"));
 assert(!run("Bindings.has('attack',new Set(['j']))"));
 assert(run("Bindings.has('attack',new Set(['r']))"));
@@ -40,12 +42,16 @@ for(const profile of ['original','uk','fr']){
   assert.equal(run("Bindings.read('heavyAttack')[0]"),'h','Every layout inherits the new action default');
   assert.equal(run("Bindings.read('useMeat')[0]"),'o','Every layout inherits the food action default');
   assert(run("Bindings.has('useMeat',new Set(['@useMeat']))"),'Food input also supports an action token');
-  assert.equal(run("Bindings.setPrimary('useMeat','j').reason"),'conflict');
+  assert(run("Bindings.setPrimary('useMeat','j').ok"));
+  assert.equal(run("Bindings.read('attack')[0]"),'o');
+  run('Bindings.reset()');
   assert(run("Bindings.setPrimary('useMeat','p').ok"));
   assert(run("Bindings.has('useMeat',new Set(['p']))"));
   assert(!run("Bindings.has('useMeat',new Set(['o']))"));
   assert(run("Bindings.has('heavyAttack',new Set(['@heavyAttack']))"),'Touch input uses the action rather than its physical key');
-  assert.equal(run("Bindings.setPrimary('heavyAttack','j').reason"),'conflict');
+  assert(run("Bindings.setPrimary('heavyAttack','j').ok"));
+  assert.equal(run("Bindings.read('attack')[0]"),'h');
+  run('Bindings.reset()');
   assert(run("Bindings.setPrimary('heavyAttack','l').ok"));
   assert(run("Bindings.has('heavyAttack',new Set(['l']))"));
   assert(!run("Bindings.has('heavyAttack',new Set(['h']))"));
@@ -105,4 +111,52 @@ current.read("var foodExport=Bindings.exportData();Bindings.reset();");
 assert.equal(current.read("Bindings.read('useMeat')[0]"),'o');
 assert(current.read('Bindings.importData(foodExport)'));
 assert.equal(current.read("Bindings.read('useMeat')[0]"),'f3','Food remapping survives export, reset and import');
-console.log('PASS: keyboard layouts, heavy/food defaults and remapping, action tokens, conflict-free historical imports/storage, preserved O preferences and gameplay use.');
+for(const profile of ['original','uk','fr']){
+  const custom=isolatedBindings();
+  custom.read(`Bindings.choose('${profile}')`);
+  const unique=()=>{
+    const all=custom.read('Bindings.actions.flatMap(action=>Bindings.read(action))');
+    assert.equal(new Set(all).size,all.length,'Every physical input belongs to exactly one action');
+    assert(custom.read('Bindings.actions.every(action=>Bindings.read(action).length>0)'),'Reassignment never leaves an action unbound');
+  };
+  assert(custom.read("Bindings.setPrimary('attack','e').ok"));
+  assert.equal(custom.read("Bindings.read('attack')[0]"),'e','An occupied single-key action can be assigned directly');
+  assert.equal(custom.read("Bindings.read('interact')[0]"),'j','The previous action receives the former attack key');
+  unique();
+  assert(custom.read("Bindings.setPrimary('attack','arrowleft').ok"));
+  assert.equal(custom.read("Bindings.read('moveLeft')[1]"),'e','A secondary input is exchanged in its original slot');
+  assert.equal(custom.read("Bindings.read('moveLeft')[0]"),profile==='fr'?'q':'a','A secondary conflict preserves the other action primary');
+  unique();
+  assert(custom.read("Bindings.setPrimary('jump','arrowup').ok"));
+  assert.equal(custom.read("Bindings.read('jump').filter(key=>key==='arrowup').length"),1,'Promoting an existing alias does not duplicate it');
+  unique();
+  assert(custom.read("Bindings.setPrimary('pause','e').ok"));
+  assert.equal(custom.read("Bindings.read('moveLeft')[1]"),'escape','Occupied inputs exchange exactly, including the former pause Escape binding');
+  unique();
+  for(let button=0;button<5;button++){
+    assert.equal(custom.read(`Bindings.mouseKey(${button})`),`mouse${button}`,'DOM mouse button numbers use the JSON token registry');
+    assert(custom.read(`Bindings.setPrimary('attack',Bindings.mouseKey(${button})).ok`));
+    assert(custom.read(`Bindings.has('attack',new Set(['mouse${button}']))`));
+    assert(custom.read(`Bindings.uses('mouse${button}')`));
+    unique();
+  }
+  for(const invalid of [-1,5,1.5,'0',null])assert.equal(custom.read(`Bindings.mouseKey(${JSON.stringify(invalid)})`),null);
+  for(const invalid of ['mouse5','mouse-1','mouse01','mouse','@attack','tab','escape']){
+    const before=custom.read('JSON.stringify(Bindings.exportData())');
+    assert(!custom.read(`Bindings.setPrimary('attack',${JSON.stringify(invalid)}).ok`),`Reject unsupported input ${invalid}`);
+    assert.equal(custom.read('JSON.stringify(Bindings.exportData())'),before,'Invalid reassignments are atomic');
+  }
+  const transfer=custom.read('JSON.stringify(Bindings.exportData())');
+  const restored=isolatedBindings();
+  assert(restored.read(`Bindings.importData(${transfer})`),'Mouse and swapped bindings roundtrip through JSON');
+  assert.equal(restored.read("Bindings.read('attack')[0]"),'mouse4');
+  const reloaded=isolatedBindings(JSON.parse(custom.writes.get('momo-keybindings-v1')));
+  assert.equal(reloaded.read('JSON.stringify(Bindings.exportData())'),transfer,'Mouse inputs and all displaced actions survive browser preference reload');
+  const bad=JSON.parse(transfer);bad.modified[profile].interact=['mouse4'];
+  const before=restored.read('JSON.stringify(Bindings.exportData())');
+  assert(!restored.read(`Bindings.importData(${JSON.stringify(bad)})`),'Import cannot give one mouse input to multiple actions');
+  assert.equal(restored.read('JSON.stringify(Bindings.exportData())'),before);
+  bad.modified[profile].interact=['mouse8'];
+  assert(!restored.read(`Bindings.importData(${JSON.stringify(bad)})`),'Imports reject unsupported mouse button tokens');
+}
+console.log('PASS: layouts, exact primary/secondary conflict swaps including Escape, mouse input registry, preference/JSON roundtrips, conflict-free historical storage, and gameplay use.');

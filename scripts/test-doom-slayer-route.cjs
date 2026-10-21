@@ -62,6 +62,12 @@ assert.equal(run("gatePass(level.gates.find(g=>g.id==='slayerSeal'))"),false,'A 
 console.log('PASS: walking/dash cannot open the seal; Yomi victory still needs an actual sword strike at every tested frame rate.');
 
 setup();
+const arena=run("yomi.secrets.find(area=>area.id==='slayerGrave').arena");
+assert.equal(arena.w,1500,'Combat space must be half the original 3000px arena');
+assert.equal(run("platforms.find(p=>p.id==='slayer-arena').w"),arena.w);
+for(const point of run("[yomi.slayerGrave,...yomi.objects.filter(o=>o.type==='slayerLoot'),yomi.enemies.find(e=>e.id==='doomSlayer')].map(p=>({x:p.x,y:p.y}))")){
+ assert(point.x>arena.x+70&&point.x<arena.x+arena.w-70&&point.y===arena.y,'Grave, guardian and rewards must stand inside the shortened arena');
+}
 const objective=run('JSON.stringify(nextObjective())');
 run("initPlayer(yomi.slayerGrave);resetCamera();$('toast').textContent='unchanged';toastTimer=0;");
 run('for(let i=0;i<360;i++)update(1/60);');
@@ -94,15 +100,15 @@ assert(!run('visiblePoint(enemies.find(DoomSlayer.is),190)'),'The guardian is vi
 console.log('PASS: visiting the grave does not auto-start, toast or redirect the compass; discovered annex stays absent from both maps and hidden at spawn.');
 
 setup();
-run("initPlayer({x:2200,y:-1700});var oldSlayer=enemies.find(DoomSlayer.is);DoomSlayer.start(oldSlayer);for(let i=0;i<20;i++)update(1/120);player.inv=0;damage(player.hp);");
+run("initPlayer({x:1250,y:-1700});flags[1].push('slayerSummoned');var oldSlayer=enemies.find(DoomSlayer.is);DoomSlayer.start(oldSlayer);for(let i=0;i<20;i++)update(1/120);player.inv=0;damage(player.hp);");
 assert(run('player!==oldSlayer.victim&&!player.slayerGrab'));
 assert(run('!enemies.find(DoomSlayer.is).active&&!enemies.find(DoomSlayer.is).dead'));
 assert(run('enemies.find(DoomSlayer.is).hp===enemies.find(DoomSlayer.is).maxHp'));
 assert(run('projectiles.every(p=>!p.slayer)'));
-assert(run('enemies.find(DoomSlayer.is).hazards.length===0&&enemies.find(DoomSlayer.is).oils.length===0&&enemies.find(DoomSlayer.is).barrels.length===0'));
+assert(run('enemies.find(DoomSlayer.is).graveAwake&&enemies.find(DoomSlayer.is).hazards.length===0&&enemies.find(DoomSlayer.is).oils.length===0&&enemies.find(DoomSlayer.is).barrels.length===9'));
 assert(!run("flags[1].includes('guardian:doomSlayer')"),'Losing must not defeat the optional guardian');
 // Defeat via the real encounter damage API, then exercise both death and reentry.
-run("initPlayer({x:2200,y:-1700});var victoriousSlayer=enemies.find(DoomSlayer.is);DoomSlayer.start(victoriousSlayer);victoriousSlayer.phase='recover';DoomSlayer.hit(victoriousSlayer,{...victoriousSlayer},1000,'heavy');");
+run("initPlayer({x:1250,y:-1700});var victoriousSlayer=enemies.find(DoomSlayer.is);DoomSlayer.start(victoriousSlayer);victoriousSlayer.phase='recover';DoomSlayer.hit(victoriousSlayer,{...victoriousSlayer},1000,'heavy');");
 assert(run("flags[1].includes('guardian:doomSlayer')"));
 assert(run("__saveSnapshots.some(record=>JSON.parse(record).flags[1].includes('guardian:doomSlayer'))"),'Defeat was not serialized');
 run('player.inv=0;damage(player.hp);');

@@ -103,7 +103,7 @@ node scripts/test-dev-tools.cjs
 - A harci tesztek az ellenfelek viselkedését, az XP-t, a fejlesztéseket, a mentést és a szentélynél történő újraéledést ellenőrzik.
 - A 0.5 tesztjei a kardtalálat időzítését, a boss-fázisokat, az idézést és az ereklyéket vizsgálják.
 - Az útvonalteszt a tényleges játékfizikával ellenőrzi a továbbjutást és a fontos platformok elérhetőségét.
-- A kiosztásteszt a profilváltást, ütköző billentyűk kezelését, mentést, JSON-átvitelt és a francia mozgásbillentyűket ellenőrzi.
+- A kiosztásteszt a profilváltást, a foglalt gombok pontos cseréjét, az egérgombokat, mentést, JSON-átvitelt és a francia mozgásbillentyűket ellenőrzi. A `test-mouse-controls.cjs` a bejegyzett eseménykezelőkön át ellenőrzi a több egérgomb egyidejű használatát és felengedését, a kiosztás rögzítését, illetve a menük és a játék elválasztását.
 - A prológusteszt az üres álompályát, a harci támadásokat, az elkerülhetetlen vereséget, az ébredést és a mentések kompatibilitását ellenőrzi.
 - Árnyék animációtesztje a 24 pózt, a szemek illesztését, az előjelzések és találatok időzítését, a szünetet és az elnyelés végső pózát vizsgálja.
 - A polish teszt a stabil spawn-, szünet- és interakciós képkockákat, a platformok átfedését, az égi szentélyek ritkítását és az aktuális kiadás mentőpont-validációját vizsgálja; az aktuális illesztési és szünetkezelési szabályokat a [grafikai útmutató](ART-DESIGN.md) foglalja össze.

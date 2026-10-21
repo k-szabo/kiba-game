@@ -75,7 +75,10 @@ const Visuals = (() => {
     if(state==='menu'||!entity)return null;
     for(const area of level.secrets||[]){
       if(area.id==='slayerGrave')continue;
-      const top=area.id==='angelRuin'?Math.min(area.y,area.arena.y-780):area.y-120;
+      // Cave steps rise above the chamber rectangle. Include their full double
+      // jump and the 75px blend margin, without extending onto the main road.
+      const caveFloors=area.id==='cultCave'?level.platforms.filter(p=>p.secretArea===area.id&&p.x+p.w/2>=area.x&&p.x+p.w/2<=area.x+area.w).map(p=>p.y):[];
+      const top=area.id==='angelRuin'?Math.min(area.y,area.arena.y-780):caveFloors.length?Math.min(area.y,...caveFloors)-420:area.y-120;
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
       const edge=Math.min(cx-area.x,area.x+area.w-cx,feet-top,area.y+area.h-entity.y);
