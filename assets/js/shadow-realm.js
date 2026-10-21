@@ -35,7 +35,14 @@ const ShadowRealm=(()=>{
    persist();updateHUD();toast(I18n.t('shadow.prison.consumed'));return true;
   }
   if(c.type==='prisonTrace'){
-   flags[3].push('prisonTrace');persist();updateHUD();return true;
+   if(!hasFlag('prisonOpen')||hasFlag('prisonTrace'))return true;
+   const before=player.hp;
+   player.hp=Math.min(player.maxHp,player.hp+2);
+   const restored=player.hp-before;
+   flags[3].push('prisonTrace');persist();updateHUD();
+   story('shadow.label','shadow.trace.title','shadow.trace.story',()=>{
+    if(restored>0)toast(I18n.format('shadow.trace.healed',[restored]));
+   });return true;
   }
   if(c.type==='shadowItem'){
    const o=c.object;if(hasFlag(o.id)||!relicUnlocked(o)||o.id==='prisonKey'&&hasFlag('prisonOpen'))return true;

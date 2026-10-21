@@ -79,4 +79,4 @@ O: use food. Akash sells his wares at the Forest Refuge after you free him in Yo
 
 Finding Haru opens a new Shadow Realm with cultists, three new bosses, collectible rewards and fast travel unlocked at an altar. Unlock fast travel at the Shadow Altar.
 
-Collect the jailer’s key and interact at the prison door; the key is consumed and the door stays open. Leave the marked circle or interrupt the priest with a heavy strike before the bell toll. The optional organist is hidden along an elevated platforming branch. The prison holds Haru’s trail, and the search remains open after defeating the priest.
+Collect the jailer’s key and interact at the prison door; the key is consumed and the door stays open. Leave the marked circle or interrupt the priest with a heavy strike before the bell toll. The optional organist is hidden along an elevated platforming branch. Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP. The search remains open after defeating the priest.
