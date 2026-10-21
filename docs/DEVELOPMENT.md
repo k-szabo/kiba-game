@@ -16,6 +16,8 @@ Ezután nyisd meg a [helyi játékot](http://localhost:8000/). A már generált 
 
 ## A forrás felépítése
 
+A támogatott felület asztali böngésző, billentyűzettel és egérrel, legalább 1280×720 CSS-pixel méretű nézettel. Mobilos elrendezés, érintőképernyős irányítás és érintésre épülő működési ág nincs. Az asztali nagyítás, a görgethető panelek, a látható billentyűzetfókusz és a csökkentett mozgás továbbra is ellenőrizendő. A minimum alatti ablak a lokalizált méretjelzést mutassa, és ne futtasson játékmenetet; a méret növelése ne kerülje meg a meglévő szünet- és dialógusállapotot.
+
 | Útvonal | Feladat |
 | --- | --- |
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
@@ -126,7 +128,7 @@ A főmenü és a szünetmenü natív, `noopener noreferrer` hivatkozása a [publ
 
 Az űrlap hét rejtett mezőt vár, pontosan ezekkel a nevekkel: `version`, `language`, `area`, `browser`, `viewport`, `pixel_ratio`, `input`. A játék ezeket URL-paraméterekkel adja át a [Tally rejtettmező-szabályai](https://tally.so/help/hidden-fields) szerint. A verzió a teljes kiadási azonosító; a nyelv ISO-kód, a helyszín és a bevitel felirata lokalizált. A böngészőből csak a család/főverzió kerül bele.
 
-Nyers user agent, oldal-URL, mentés, tárgyak, küldetésállapot és tárolóadatok nem kerülnek a linkbe. A hivatkozás fókuszkor és aktiváláskor frissül, ezért nyelvváltás vagy átméretezés után is az aktuális kontextust használja. A `test-bug-report.cjs` tiltott tároló-hozzáféréssel is ellenőrzi ezt; a billentyűzetes aktiválást, a szünet megőrzését és a keskeny/alacsony elrendezést valódi böngészőben kell tesztelni.
+Nyers user agent, oldal-URL, mentés, tárgyak, küldetésállapot és tárolóadatok nem kerülnek a linkbe. A hivatkozás fókuszkor és aktiváláskor frissül, ezért nyelvváltás vagy átméretezés után is az aktuális kontextust használja. A `test-bug-report.cjs` tiltott tároló-hozzáféréssel is ellenőrzi ezt; a billentyűzetes aktiválást, a szünet megőrzését és a támogatott, legalább 1280×720-as asztali elrendezést valódi böngészőben kell tesztelni.
 
 A beküldések a Tally Submissions felületén kezelhetők. A projekthez beállított Make-scenario minden új válaszból kártyát készít a Kiba Game Kanban tábla **Beérkező Hibák** listájában, **BUG** címkével. A cím a rövid hibacím, a leírás a szöveges válaszokat, a hét technikai mezőt és a Tally-beküldés azonosítóját tartalmazza. A teljes Tally–Make–Trello folyamatot két megjelölt tesztbeküldéssel ellenőriztük. A scenario és a szolgáltatások hitelesítése külső beállítás, nem a statikus játék része.
 

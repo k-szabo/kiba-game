@@ -22,18 +22,12 @@ assert(labels.some(a=>a[0]===r("I18n.t('shadow.place.altar')")),'Altar name must
 const art=r('ART_SHADOW_ALTAR'),file=r('ART_MANIFEST.shadowAltar'),png=fs.readFileSync(path.join(__dirname,'..',file));
 assert.equal(png[25],6,'Altar keeps source alpha');assert.equal(art.w,png.readUInt32BE(16));assert.equal(art.h,png.readUInt32BE(20));
 assert(art.anchorX>0&&art.anchorX<art.w&&art.anchorY>0&&art.anchorY<art.h);
-// QA-OCT19-001 r1: a world-space marker must not sit underneath the fixed quest HUD.
+// Desktop markers keep their world-space registration at every supported size.
 const plates=[];ctx.fillRect=(...a)=>{if(a[3]===64)plates.push(a);};
-const quest=h.elements.get('quest');quest.hidden=false;
-for(const [width,height,bottom] of [[390,844,215],[320,568,205],[390,844,265]]){
- h.sandbox.innerWidth=width;h.sandbox.innerHeight=height;quest.getBoundingClientRect=()=>({bottom});
+for(const [width,height] of [[1280,720],[1920,1080],[2560,1440]]){
+ h.sandbox.innerWidth=width;h.sandbox.innerHeight=height;
  r('resize();resetCamera();');plates.length=0;labels.length=0;r('Visuals.objects(realms[3]);');
- const plate=plates[0],scale=r('scale'),cam=r('camera'),camY=r('cameraY');assert(plate);
- assert((plate[1]-camY)*scale>=bottom+12-1e-8,'Full marker clears quest HUD');
- assert((plate[0]-cam)*scale>=0&&(plate[0]+plate[2]-cam)*scale<=width,'Full marker fits narrow viewport');
- assert((plate[1]+plate[3]-camY)*scale<=height,'Marker stays visible above lower prompts');
+ assert.equal(plates.length,1);assert.equal(plates[0][1],r('level.altar.y')-260-68,'Desktop marker keeps original world placement');
  assert(labels.some(a=>a[0]==='影')&&labels.some(a=>a[0]===r("I18n.t('shadow.place.altar')")));
 }
-h.sandbox.innerWidth=1280;h.sandbox.innerHeight=720;r('resize();resetCamera();');plates.length=0;r('Visuals.objects(realms[3]);');
-assert.equal(plates[0][1],r('level.altar.y')-260-68,'Desktop marker keeps original world placement');
 console.log('PASS: distinct painted altar/kanji, remapped one-time dialogue, pause, persistent unlock, travel and later shrine healing.');

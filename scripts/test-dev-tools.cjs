@@ -7,7 +7,7 @@ function fixture({hash='',initialState='play'}={}){
   setAttribute(k,v){this.attributes[k]=v;},addEventListener(k,f){this.listeners[k]=f;},replaceChildren(){this.children=[];},append(e){this.children.push(e);},focus(){document.activeElement=this;},matches(){return /Button$|^devClose$/.test(this.id);},closest(){return null;},getClientRects(){return this.hidden?[]:[{}];},querySelectorAll(){return [...document.getElementById('devToolsList').children,document.getElementById('devClose')].filter(e=>!e.disabled&&!e.hidden);}};}
  const context={console,Map,Set,document,Inventory:{render(){}},Merchant:{render(){}},location:{hash,pathname:'/kiba-game/',search:'?example=1'},history:{replaceState(_s,_t,url){assert.equal(url,'/kiba-game/?example=1');context.location.hash='';}},addEventListener(name,fn){listeners[name]=fn;}};
  context.window=context;vm.createContext(context);
- vm.runInContext(`const GAME_RELEASE={version:'test'},I18n={t:x=>x,format:(x,args)=>x+args,onChange(){}};let state=${JSON.stringify(initialState)},helpOrigin='menu';const keys=new Set(['j']),pressed=new Set([' ']);`,context);
+ vm.runInContext(`const GAME_RELEASE={version:'test'},I18n={t:x=>x,format:(x,args)=>x+args,onChange(){}};let state=${JSON.stringify(initialState)},helpOrigin='menu',resolutionBlocked=false;const keys=new Set(['j']),pressed=new Set([' ']);`,context);
  const run=s=>vm.runInContext(s,context),node=id=>document.getElementById(id);
  node('game').children=[node('world'),node('alreadyInert'),node('devPanel')];node('alreadyInert').inert=true;node('devPanel').hidden=true;node('startButton').focus();
  vm.runInContext(source+'\nDevTools.init();',context);

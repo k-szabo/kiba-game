@@ -296,6 +296,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.25_30c3560f",
+      "code": "30c3560f",
+      "baseVersion": "0.9.25",
+      "slug": "desktop-only-720p",
+      "summary": {
+        "hu": "Asztali támogatás 720p-től",
+        "en": "Desktop support from 720p"
+      },
+      "fixes": [
+        {
+          "hu": "A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.",
+          "en": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse."
+        }
+      ]
     }
   ],
   "releases": [

@@ -33,8 +33,8 @@
 - New text belongs in assets/i18n/locales.json in both hu and en with matching placeholders. Preserve language metadata and the dict schema.
 - Before finalizing any player-facing description or name for an item, menu, character, enemy, boss, ability, quest, dialogue, or other game content, show the proposed copy to the user and wait for explicit approval. Include HU and EN drafts when both are affected. Continue independent implementation work while copy approval is pending; do not merge unapproved descriptive copy into locale files, HTML, assets, or release notes.
 - Key bindings belong in assets/config/keybindings.json; use action bindings rather than new hardcoded gameplay keys.
-- UI changes need readable contrast, visible keyboard focus, usable touch targets, and reachable controls on small/zoomed displays. Respect reduced motion and freeze gameplay effects during pause/dialogs.
-- Register inventory art in ART_INVENTORY.items and use the shared DPR-aware renderer and contrasting icon style. Verify full silhouettes and HU/EN desktop/narrow readability; see docs/INVENTORY.md.
+- Support desktop keyboard/mouse input only, with a minimum viewport of 1280×720 CSS pixels. Do not add mobile layouts or touch controls. UI changes need readable contrast, visible keyboard focus, usable pointer targets, and reachable scrollable controls during desktop zoom. Below the minimum, show the localized size notice and freeze gameplay. Respect reduced motion and freeze gameplay effects during pause/dialogs.
+- Register inventory art in ART_INVENTORY.items and use the shared DPR-aware renderer and contrasting icon style. Verify full silhouettes and HU/EN readability at 1280×720 and larger desktop viewports; see docs/INVENTORY.md.
 
 ## Validation and delivery
 - For source/locale/binding changes: npm run build, then relevant checks. Run npm test before release or after changes spanning gameplay systems.

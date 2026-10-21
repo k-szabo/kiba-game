@@ -41,14 +41,14 @@ for(const profile of ['original','uk','fr']){
   run('Bindings.reset()');
   assert.equal(run("Bindings.read('heavyAttack')[0]"),'h','Every layout inherits the new action default');
   assert.equal(run("Bindings.read('useMeat')[0]"),'o','Every layout inherits the food action default');
-  assert(run("Bindings.has('useMeat',new Set(['@useMeat']))"),'Food input also supports an action token');
+  assert(!run("Bindings.has('useMeat',new Set(['@useMeat']))"),'Removed virtual touch actions cannot consume food');
   assert(run("Bindings.setPrimary('useMeat','j').ok"));
   assert.equal(run("Bindings.read('attack')[0]"),'o');
   run('Bindings.reset()');
   assert(run("Bindings.setPrimary('useMeat','p').ok"));
   assert(run("Bindings.has('useMeat',new Set(['p']))"));
   assert(!run("Bindings.has('useMeat',new Set(['o']))"));
-  assert(run("Bindings.has('heavyAttack',new Set(['@heavyAttack']))"),'Touch input uses the action rather than its physical key');
+  assert(!run("Bindings.has('heavyAttack',new Set(['@heavyAttack']))"),'Removed virtual touch actions cannot start attacks');
   assert(run("Bindings.setPrimary('heavyAttack','j').ok"));
   assert.equal(run("Bindings.read('attack')[0]"),'h');
   run('Bindings.reset()');

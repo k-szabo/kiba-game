@@ -81,5 +81,5 @@ const Bindings=(()=>{
     profile=data.selection;modified=changes;save();return true;
   }
   const exportData=()=>({version:KEY_BINDINGS.version,original:KEY_BINDINGS.original,profiles:KEY_BINDINGS.profiles,selection:profile,modified:JSON.parse(JSON.stringify(modified))});
-  return Object.freeze({actions,profiles,normalize,mouseKey,read:action=>[...current(action)],has:(action,set)=>set.has('@'+action)||current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
+  return Object.freeze({actions,profiles,normalize,mouseKey,read:action=>[...current(action)],has:(action,set)=>current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
 })();

@@ -448,7 +448,6 @@
       "bugReport.label": "Hibajelentő űrlap megnyitása új lapon",
       "bugReport.hint": "Írd le a hibát a megnyíló űrlapon; bejelentkezés nélkül beküldheted.",
       "bugReport.unknown": "Ismeretlen",
-      "bugReport.touch": "Érintés / durva mutató",
       "bugReport.pointer": "Billentyűzet / egér",
       "bugReport.area.menu": "Főmenü",
       "bugReport.area.dream": "Álomprológus",
@@ -652,7 +651,10 @@
       "binding.key.mouse4": "5. egérgomb",
       "menu.changelog.0925.controlsTitle": "Irányítás és barlangháttér javítása",
       "menu.changelog.0925.controls": "Az irányítás egérgombokra is kiosztható, a foglalt gombok pedig közvetlenül átállíthatók.",
-      "menu.changelog.0925.cave": "A kultista barlang háttere dupla ugrás közben is megmarad."
+      "menu.changelog.0925.cave": "A kultista barlang háttere dupla ugrás közben is megmarad.",
+      "display.minimum": "A játékhoz legalább 1280×720-as ablak szükséges. Növeld meg az ablakot, vagy válts teljes képernyőre. Irányítás: billentyűzet és egér.",
+      "menu.changelog.0925.desktopTitle": "Asztali támogatás 720p-től",
+      "menu.changelog.0925.desktop": "A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható."
     }
   },
   "en": {
@@ -1104,7 +1106,6 @@
       "bugReport.label": "Open the bug report form in a new tab",
       "bugReport.hint": "Describe the bug in the form that opens; no sign-in is required to submit it.",
       "bugReport.unknown": "Unknown",
-      "bugReport.touch": "Touch / coarse pointer",
       "bugReport.pointer": "Keyboard / mouse",
       "bugReport.area.menu": "Main menu",
       "bugReport.area.dream": "Dream prologue",
@@ -1308,7 +1309,10 @@
       "binding.key.mouse4": "Mouse button 5",
       "menu.changelog.0925.controlsTitle": "Control and cave background fixes",
       "menu.changelog.0925.controls": "Controls can now use mouse buttons, and assigned inputs can be reassigned directly.",
-      "menu.changelog.0925.cave": "The cultist cave background remains visible during double jumps."
+      "menu.changelog.0925.cave": "The cultist cave background remains visible during double jumps.",
+      "display.minimum": "The game requires a window of at least 1280×720. Enlarge the window or switch to fullscreen. Controls: keyboard and mouse.",
+      "menu.changelog.0925.desktopTitle": "Desktop support from 720p",
+      "menu.changelog.0925.desktop": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse."
     }
   }
 }

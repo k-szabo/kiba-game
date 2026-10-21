@@ -15,7 +15,7 @@ const BugReport=(()=>{
   const fields={
    version:GAME_RELEASE.version,language:I18n.locale,area:I18n.t('bugReport.area.'+safeArea),browser:browserName(),
    viewport:`${Math.round(innerWidth)} × ${Math.round(innerHeight)}`,pixel_ratio:Number(devicePixelRatio||1).toFixed(2),
-   input:I18n.t(typeof matchMedia==='function'&&matchMedia('(pointer:coarse)').matches?'bugReport.touch':'bugReport.pointer')
+   input:I18n.t('bugReport.pointer')
   };
   for(const [key,value] of Object.entries(fields))url.searchParams.set(key,value);
   return url.href;

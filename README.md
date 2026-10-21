@@ -55,7 +55,9 @@ A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc,
 | Esc | Szünet |
 | I | Hátizsák és felszerelés, a játék szüneteltetésével |
 
-\* A megfelelő képesség megszerzése után. Érintőképernyőn a képernyőn megjelenő gombok is használhatók.
+\* A megfelelő képesség megszerzése után.
+
+A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.
 
 Az alapértelmezett kiosztást az `assets/config/keybindings.json` tartalmazza. A főmenü vagy a szünetmenü **Hogyan játszunk** gombjával nyithatod meg a kiosztásválasztót és a billentyűk átállítását. A személyes módosításokat a böngésző helyben tárolja; a JSON-exporttal átviheted őket másik böngészőbe, majd az importtal visszatöltheted.
 
