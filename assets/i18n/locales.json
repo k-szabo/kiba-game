@@ -659,7 +659,9 @@
       "shadow.trace.story": "A templom előtt ismerős melegség töri meg az árnyékvilág hidegét. Momo felismeri benne apja Kibáját — ugyanazt a szelíd lüktetést, amely gyerekként megnyugtatta a viharos éjszakákon.\n\nHaru erre járt. A sötétség még nem nyelt el minden nyomot, amely hozzá vezeti. Momo mély levegőt vesz, és új erővel indul tovább.",
       "shadow.trace.healed": "A remény erőt ad. +{0} HP",
       "menu.changelog.0926.title": "Remény az árnyékvilágban",
-      "menu.changelog.0926.trace": "Haru templom előtti nyoma egy rövid történeti jelenettel és egyszeri, legfeljebb 2 HP gyógyulással ad erőt Momónak."
+      "menu.changelog.0926.trace": "Haru templom előtti nyoma egy rövid történeti jelenettel és egyszeri, legfeljebb 2 HP gyógyulással ad erőt Momónak.",
+      "menu.changelog.0927.title": "Opcionális börtön az árnyékvilágban",
+      "menu.changelog.0927.prison": "Az árnyékvilág börtöne és őre a főút alatti, jól látható mellékágra került. Haru nyoma és a katedrális a börtönkulcs nélkül is elérhető."
     }
   },
   "en": {
@@ -1322,7 +1324,9 @@
       "shadow.trace.story": "Before the temple, a familiar warmth breaks through the cold of the Shadow Realm. Momo recognises his father’s Kiba within it — the same gentle pulse that soothed him through stormy nights as a child.\n\nHaru passed this way. The darkness has not swallowed every trace that leads to him. Momo takes a deep breath and presses on with renewed strength.",
       "shadow.trace.healed": "Hope lends you strength. +{0} HP",
       "menu.changelog.0926.title": "Hope in the Shadow Realm",
-      "menu.changelog.0926.trace": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP."
+      "menu.changelog.0926.trace": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP.",
+      "menu.changelog.0927.title": "Optional prison in the Shadow Realm",
+      "menu.changelog.0927.prison": "The Shadow Realm’s prison and its jailer now occupy a clearly visible side route beneath the main path. Haru’s trace and the cathedral can be reached without the prison key."
     }
   }
 }

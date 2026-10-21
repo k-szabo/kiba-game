@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const harness=require('./test-harness.cjs'),validate=require('./test-save-validation.cjs');
 
-function setup({open=true,vitality=0}={}){
+function setup({open=false,vitality=0}={}){
  const h=harness(),r=h.run;
  r(`Prologue.stop();abilities=[true,true];defeated=[true,true,true,false];
  flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal','shadowEntered'],['shadowAltar'${open?",'guardian:cultJailer','prisonOpen'":''}]];
@@ -53,14 +53,21 @@ for(const [hp,vitality,restored,key] of [[1,0,2,'e'],[4,0,1,'r'],[5,0,0,'e'],[7,
  assert.equal(r('player.hp'),1);assert.equal(r('state'),'play');
 }
 
-// Locked and distant interactions cannot reveal the scene or grant its heal.
-for(const locked of [true,false]){
- const h=setup({open:!locked}),r=h.run;r('player.hp=1;');
- if(!locked)r('player.x+=350;');
+// The main-route trace is independent of the optional prison and its guardian.
+for(const open of [false,true]){
+ const h=setup({open}),r=h.run;r('player.hp=1;');use(h);
+ assert.equal(r('state'),'dialog');assert.equal(r('player.hp'),3);
+ assert.equal(r("flags[3].includes('prisonOpen')"),open);
+ assert.equal(r("flags[3].includes('guardian:cultJailer')"),open);
+ assert(!r("flags[3].includes('prisonKey')"));assert.doesNotThrow(()=>validate(r('saved')));
+ h.dismiss();alreadyClaimed(h);
+}
+// Being distant still cannot reveal the scene or grant its heal.
+for(const open of [false,true]){
+ const h=setup({open}),r=h.run;r('player.hp=1;player.x+=350;');
  const writes=r('__saveSnapshots.length');use(h);
  assert.equal(r('state'),'play');assert.equal(r('player.hp'),1);
  assert(!r("flags[3].includes('prisonTrace')"));assert.equal(r('__saveSnapshots.length'),writes);
- if(locked){r("ShadowRealm.interact({type:'prisonTrace'});");assert.equal(r('player.hp'),1);assert(!r("flags[3].includes('prisonTrace')"));}
 }
 {
  const h=setup(),r=h.run;r("enterRealm(0);player.hp=1;");
@@ -77,4 +84,4 @@ for(const transition of ['resume','death','shrine','travel']){
  assert(r("flags[3].includes('prisonTrace')"),transition);assert.doesNotThrow(()=>validate(r('saved')));
  alreadyClaimed(h);
 }
-console.log('PASS: Haru trace story and capped one-time healing, remapped input, locked/distant access, frozen scene, actual healing feedback, no shrine side effects, and persistent claim across continuation/death/rest/travel.');
+console.log('PASS: main-route Haru trace without optional prison progress, capped one-time healing, remapped input, distant access, frozen scene, actual healing feedback, no shrine side effects, and persistent claim across continuation/death/rest/travel.');

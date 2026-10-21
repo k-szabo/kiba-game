@@ -176,11 +176,12 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
 }
 console.log('PASS: shadow veil resolves dash expiry at 30/60/120 FPS in both directions, allows walking/jumping away, preserves normal blocking/full-dash passage and freezes during pause.');
 
-// The prison is mandatory; the organ gallery is optional and physically returnable.
+// The lower prison is optional: its locked hall cannot gate the main route.
 run("defeated=levels.map(()=>false);flags=levels.map(()=>[]);visitedRests=levels.map(()=>[]);abilities=[true,true];enterRealm(3);enemies=[];state='play';var shadowClosed=reachableFrom('shore',true);");
-for(const id of ['cloister','altar-road','prison-court','organ-loft'])assert(run(`shadowClosed.includes('${id}')`),'Shadow route disconnected before jailer: '+id);
+for(const id of ['cloister','altar-road','temple-road','temple-approach','cathedral','prison-court','organ-loft'])assert(run(`shadowClosed.includes('${id}')`),'Shadow main/optional route disconnected before jailer: '+id);
 assert(!run("shadowClosed.includes('prison-hall')"),'Prison door can be bypassed without its key');
-run("flags[3].push('prisonOpen');var shadowOpen=reachableFrom('shore',true),organReturn=reachableFrom('organ-loft',true);");
+run("flags[3].push('prisonOpen');var shadowOpen=reachableFrom('shore',true),prisonReturn=reachableFrom('prison-hall',true),organReturn=reachableFrom('organ-loft',true);");
 for(const id of ['prison-hall','cathedral'])assert(run(`shadowOpen.includes('${id}')`),'Shadow route disconnected after prison unlock: '+id);
+assert(run("prisonReturn.includes('temple-road')"),'The lower prison has no physical return to the main path');
 assert(run("organReturn.includes('cloister')"),'The organ gallery has no return route');
-console.log('PASS: fourth-realm prison progression and optional organ gallery return use actual jump physics.');
+console.log('PASS: fourth-realm main route bypasses the sealed optional lower prison; unlocked prison and organ gallery have physics-based returns.');

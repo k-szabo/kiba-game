@@ -182,19 +182,21 @@ async function main(){
    }
   }
   for(const fourthFlags of [
+   ['prisonTrace'],['guardian:cultJailer','prisonTrace'],
+   ['guardian:cultJailer','prisonKey','prisonTrace'],
    ['guardian:cultJailer','prisonKey'],['guardian:cultJailer','prisonOpen'],
    ['guardian:cultJailer','prisonOpen','prisonTrace'],
    ['guardian:madOrganist','corruptedHymn'],['guardian:cultJailer','prisonOpen','guardian:madOrganist','corruptedHymn','shadowAltar']
   ]){
    const data=copy(shadow);data.flags[shadowIndex]=fourthFlags;
-   await reload.vault.write(data);assert.deepEqual(plain(await client(env).vault.ready),data,'Miniboss rewards and consumed prison keys survive encrypted reloads');
+   await reload.vault.write(data);assert.deepEqual(plain(await client(env).vault.ready),data,'Independent main-route trace, miniboss rewards and consumed prison keys survive encrypted reloads');
   }
   for(const [mutate,error] of [
    [data=>{data.flags[2]=data.flags[2].filter(flag=>flag!=='shadowEntered');},/Invalid shadow entry/],
    [data=>{data.defeated[2]=false;},/Invalid shadow entry/],
    [data=>{data.flags[shadowIndex]=['prisonKey'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['prisonOpen'];},/Invalid prison progress/],
-   [data=>{data.flags[shadowIndex]=['guardian:cultJailer','prisonTrace'];},/Invalid prison progress/],
+   [data=>{data.flags[shadowIndex]=['prisonTrace','prisonKey'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['guardian:cultJailer','prisonKey','prisonOpen'];},/Invalid prison progress/],
    [data=>{data.flags[shadowIndex]=['corruptedHymn'];},/Invalid shadow item/],
    [data=>{data.flags[shadowIndex]=['inventedShadowFlag'];},/Invalid quest flags/],
