@@ -9,7 +9,6 @@ const ShadowRealm=(()=>{
   enterRealm(3);persist();story('shadow.label','shadow.name','shadow.story.entry');return true;
  }
  function objective(){
-  if(!hasFlag('prisonOpen'))return{point:level.prisonDoor,name:I18n.t('shadow.place.prison'),text:I18n.t('shadow.objective.prison')};
   if(!hasFlag('prisonTrace'))return{point:level.prisonTrace,name:I18n.t('HARU'),text:I18n.t('shadow.objective.search')};
   if(!defeated[3])return{point:level.boss,name:realms[3].boss,text:I18n.t('shadow.objective.priest')};
   return{point:level.rests.at(-1),compass:false,text:I18n.t('shadow.objective.search')};
@@ -18,7 +17,7 @@ const ShadowRealm=(()=>{
   if(!active())return null;
   if(pointNear(level.altar)&&!hasFlag('shadowAltar'))return{type:'shadowAltar',text:I18n.t('shadow.altar.prompt')};
   if(pointNear(level.prisonDoor,125,90)&&!hasFlag('prisonOpen'))return{type:'prisonDoor',text:I18n.t(hasFlag('prisonKey')?'shadow.prison.open':'shadow.prison.locked')};
-  if(pointNear(level.prisonTrace)&&hasFlag('prisonOpen')&&!hasFlag('prisonTrace'))return{type:'prisonTrace',text:I18n.format('message.e.arg0.arg1',[I18n.t('text.recall'),I18n.t('HARU')])};
+  if(pointNear(level.prisonTrace)&&!hasFlag('prisonTrace'))return{type:'prisonTrace',text:I18n.format('message.e.arg0.arg1',[I18n.t('text.recall'),I18n.t('HARU')])};
   return null;
  }
  function interact(c){
@@ -35,7 +34,7 @@ const ShadowRealm=(()=>{
    persist();updateHUD();toast(I18n.t('shadow.prison.consumed'));return true;
   }
   if(c.type==='prisonTrace'){
-   if(!hasFlag('prisonOpen')||hasFlag('prisonTrace'))return true;
+   if(hasFlag('prisonTrace'))return true;
    const before=player.hp;
    player.hp=Math.min(player.maxHp,player.hp+2);
    const restored=player.hp-before;

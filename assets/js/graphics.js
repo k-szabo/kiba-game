@@ -702,8 +702,10 @@ const Visuals = (() => {
       }
       if(gatePass(g))continue;
       if(g.terrainBarrier){
-        // Solid chamber edges keep the realm's painted stone/platform material.
-        terrain(r,[{...g,kind:'stone'}]);continue;
+        // Tall walls need full-height masonry, not a shallow platform strip.
+        if(g.wallMaterial==='cult')secretRock(g);
+        else terrain(r,[{...g,kind:'stone'}]);
+        continue;
       }
       if(g.kind==='secretRock'||g.kind==='fragile'){
         secretRock(g);continue;

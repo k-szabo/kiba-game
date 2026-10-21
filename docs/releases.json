@@ -522,6 +522,22 @@
           "en": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP."
         }
       ]
+    },
+    {
+      "version": "0.9.27_3c8983bb",
+      "code": "3c8983bb",
+      "baseVersion": "0.9.27",
+      "slug": "optional-lower-shadow-prison",
+      "summary": {
+        "hu": "Opcionális börtön az árnyékvilágban",
+        "en": "Optional prison in the Shadow Realm"
+      },
+      "fixes": [
+        {
+          "hu": "Az árnyékvilág börtöne és őre a főút alatti, jól látható mellékágra került. Haru nyoma és a katedrális a börtönkulcs nélkül is elérhető.",
+          "en": "The Shadow Realm’s prison and its jailer now occupy a clearly visible side route beneath the main path. Haru’s trace and the cathedral can be reached without the prison key."
+        }
+      ]
     }
   ]
 }

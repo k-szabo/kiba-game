@@ -15,6 +15,42 @@ function setup(){
  assert.equal(r('JSON.stringify([abilities,flags.slice(0,2),progression])'),before);
  assert.doesNotThrow(()=>validate(r('saved')));h.dismiss();
 }
+// The visible lower jailer is optional, and never aggros against the main path.
+for(const fps of [30,60,120]){
+ const h=setup(),r=h.run;
+ r("var jailer=enemies.find(e=>e.id==='cultJailer');initPlayer({x:jailer.x+20,y:level.prisonTrace.y});");
+ assert(r("level.secrets.find(s=>s.guardian==='cultJailer').public"),'Optional prison must remain public rather than hidden');
+ assert(r('jailer.arena.y>level.prisonTrace.y+500'));
+ r(`for(let i=0;i<${fps};i++)updateMiniboss(jailer,1/${fps});`);
+ assert(!r('jailer.active'),'Main-road traffic must not activate the lower jailer');
+ assert.equal(r('projectiles.length'),0);
+ r('initPlayer(level.prisonTrace);player.hp=1;');
+ assert.equal(r('nextObjective().point.x'),r('level.prisonTrace.x'));
+ h.press('e');h.tick();h.release('e');assert.equal(r('state'),'dialog');assert.equal(r('player.hp'),3);
+ assert(r("flags[3].includes('prisonTrace')&&!flags[3].includes('prisonOpen')&&!flags[3].includes('prisonKey')&&!flags[3].includes('guardian:cultJailer')"));
+ assert.doesNotThrow(()=>validate(r('saved')));h.dismiss();
+ assert.equal(r('nextObjective().point.x'),r('level.boss.x'),'The next main objective is the priest, not the optional jailer');
+}
+// Main guardian victory never unlocks the optional prison or awards its key.
+{
+ const h=setup(),r=h.run;
+ r("bossStarted=true;boss.hp=0;guardianDefeated();");
+ assert(r('defeated[3]'));assert(!r("gatePass(level.gates.find(g=>g.kind==='prison'))"));
+ for(const flag of ['prisonOpen','prisonKey','guardian:cultJailer'])assert(!r(`flags[3].includes('${flag}')`));
+ assert.doesNotThrow(()=>validate(r('saved')));
+}
+// The same lower geometry drives developer arrival and miniboss replay.
+{
+ const h=setup(),r=h.run;
+ r('DevTools.open();');assert(r('DevSession.begin()'));
+ assert(r("DevTeleport.teleport({realm:'3',rest:'prison'})"));
+ assert(r("player.onGround&&player.y+player.h===level.rests.find(rest=>rest.id==='prison').y"));
+ assert(r('player.y+player.h>level.prisonTrace.y+500'));
+ assert(r("DevBoss.revive({encounter:'cultJailer'})"));
+ assert(r("player.onGround&&player.y+player.h===enemies.find(e=>e.id==='cultJailer').arena.y"));
+ assert(r("enemies.find(e=>e.id==='cultJailer').active"));
+ r('DevSession.end();');
+}
 // Shrine discovery/resting does not activate the travel altar; lock both ways.
 {
  const h=setup(),r=h.run;

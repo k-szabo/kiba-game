@@ -173,36 +173,47 @@ const lowerMage=yomi.enemies.find(e=>e.id==='soul-lower-b');lowerMage.kind='mage
 // Low arena ledges are reachable with one jump and connect with ordinary/double jumps.
 for(let i=0;i<7;i++){ledge(yomi,'lava-island-'+i,440+i*350,5695,275,'stone',32);Object.assign(yomi.platforms.at(-1),{bossPlatform:true,broken:false,crumble:0});}
 japan.arena.triggerX=9120;yomi.arena.triggerX=1000;heaven.arena.triggerX=2050;
-// The fourth realm winds through a prison before climbing to the cathedral.
+// The cathedral route passes above a visible, optional prison branch.
 // Its optional organ gallery lies above the camera of the ordinary route.
 const shadowRealm=makeLevel('shadowRealm',11200,2600,{x:300,y:1400});
 for(const p of [
  ['shore',0,1400,1900],['cloister',2120,1400,1650],['altar-road',4000,1280,1600],
- ['prison-court',5810,1400,1750],['prison-hall',7560,1400,1200],['cathedral',8950,1200,2250]
+ ['temple-road',5810,1400,1750],['temple-approach',7560,1400,1200],['cathedral',8950,1200,2250],
+ ['prison-court',5810,2200,1750],['prison-hall',7560,2200,1200]
 ])ledge(shadowRealm,...p,'ground',220);
 for(const p of [
  ['shore-bridge',1830,1280,360],['cloister-bridge',3660,1200,420],
  ['altar-descent',5600,1280,210],['cathedral-step',8760,1300,190],
- ['prison-balcony',6240,1210,460],['prison-loft',6830,1080,420],
+ ['prison-balcony',6240,2010,460],['prison-loft',6830,1880,420],
  ['gallery-step1',3150,1220,190],['gallery-step2',2910,1060,170],
  ['gallery-step3',3140,900,180],['gallery-step4',2910,740,170],
  ['gallery-step5',3140,580,180],['organ-loft',2510,420,1200]
 ]){ledge(shadowRealm,...p);if(p[0].startsWith('gallery-')||p[0]==='organ-loft')shadowRealm.platforms.at(-1).secretArea='organLoft';}
+// The open shaft at the altar descent makes the branch visible; 100px steps
+// allow returning to the main road even when both movement shrines were missed.
+for(let i=0;i<7;i++)ledge(shadowRealm,'prison-stair-'+(i+1),i%2?5470:5600,1500+i*100,210);
 rest(shadowRealm,'start',350,1400,I18n.t('shadow.place.shore'));
 rest(shadowRealm,'altar',4700,1280,I18n.t('shadow.place.altar'));
-rest(shadowRealm,'prison',6100,1400,I18n.t('shadow.place.prison'));
+rest(shadowRealm,'prison',6100,2200,I18n.t('shadow.place.prison'));
 rest(shadowRealm,'cathedral',9180,1200,I18n.t('shadow.place.cathedral'));
-shadowRealm.altar={x:4700,y:1280};shadowRealm.prisonDoor={x:7520,y:1400};
+shadowRealm.altar={x:4700,y:1280};shadowRealm.prisonDoor={x:7520,y:2200};
 shadowRealm.prisonTrace={x:8290,y:1400};
 shadowRealm.secrets=[
  {id:'organLoft',name:I18n.t('shadow.place.gallery'),x:2460,y:0,w:1300,h:650,arena:{x:2510,y:420,w:1200},guardian:'madOrganist'},
- {id:'prisonCourt',name:I18n.t('shadow.place.prison'),x:6300,y:950,w:1230,h:550,arena:{x:6410,y:1400,w:1110},guardian:'cultJailer',public:true}
+ {id:'prisonCourt',name:I18n.t('shadow.place.prison'),x:6300,y:1750,w:1230,h:550,arena:{x:6410,y:2200,w:1110},guardian:'cultJailer',public:true}
 ];
 shadowRealm.progressFlags=['shadowAltar','prisonOpen','prisonTrace','prisonKey','corruptedHymn'];
-shadowRealm.gates=[{id:'prisonDoor',kind:'prison',x:7500,y:0,w:60,h:1400}];
+shadowRealm.gates=[
+ {id:'prisonDoor',kind:'prison',x:7500,y:1760,w:60,h:440},
+ // Solid painted chamber edges prevent entering through one-way floors or
+ // dropping in from the main road. These remain solid after the priest dies.
+ {id:'prisonRoof',kind:'secretRock',terrainBarrier:true,wallMaterial:'cult',x:7500,y:1720,w:1340,h:100},
+ {id:'prisonEastWall',kind:'secretRock',terrainBarrier:true,wallMaterial:'cult',x:8760,y:1720,w:80,h:480},
+ {id:'prisonFoundation',kind:'secretRock',terrainBarrier:true,wallMaterial:'cult',x:7500,y:2200,w:1340,h:600}
+];
 shadowRealm.objects=[
- {id:'prisonTrace',type:'shadowTrace',x:8290,y:1400,name:I18n.t('HARU'),requiresFlag:'prisonOpen'},
- {id:'prisonKey',type:'shadowItem',x:7070,y:1400,name:I18n.t('item.prisonKey'),guardian:'cultJailer'},
+ {id:'prisonTrace',type:'shadowTrace',x:8290,y:1400,name:I18n.t('HARU')},
+ {id:'prisonKey',type:'shadowItem',x:7070,y:2200,name:I18n.t('item.prisonKey'),guardian:'cultJailer'},
  {id:'corruptedHymn',type:'shadowItem',x:2730,y:420,name:I18n.t('item.corruptedHymn'),guardian:'madOrganist',secretArea:'organLoft'}
 ];
 shadowRealm.arena={x:9400,y:1200,w:1780,triggerX:9660,restId:'cathedral'};
@@ -213,10 +224,11 @@ for(const [i,x] of [950,1500,2460,3460,4280,5160,6000,7890,8480,9280].entries())
  shadowRealm.enemies.at(-1).name=I18n.t('shadow.enemy.'+fieldRoles[i%4]);
 }
 foe(shadowRealm,'madOrganist',3300,420,'mage',null,0);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'organist',name:I18n.t('shadow.boss.organist'),secretArea:'organLoft'});
-foe(shadowRealm,'cultJailer',7040,1400,'guard',null,250);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'jailer',name:I18n.t('shadow.boss.jailer'),secretArea:'prisonCourt'});
+foe(shadowRealm,'cultJailer',7040,2200,'guard',null,250);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'jailer',name:I18n.t('shadow.boss.jailer'),secretArea:'prisonCourt'});
 zone(shadowRealm,I18n.t('shadow.place.shore'),0,650,3900,1950);
 zone(shadowRealm,I18n.t('shadow.place.altar'),3900,650,1900,1950);
-zone(shadowRealm,I18n.t('shadow.place.prison'),5800,650,3100,1950);
+zone(shadowRealm,I18n.t('shadow.place.cathedral'),5800,650,3100,1090);
+zone(shadowRealm,I18n.t('shadow.place.prison'),5400,1740,3500,860);
 zone(shadowRealm,I18n.t('shadow.place.cathedral'),8900,0,2300,2600);
 heaven.progressFlags.push('shadowEntered');
 const levels=[japan,yomi,heaven,shadowRealm];

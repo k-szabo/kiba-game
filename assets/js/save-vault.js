@@ -56,7 +56,7 @@ const SaveVault=(()=>{
    const entered=data.flags[2].includes('shadowEntered'),shadow=data.flags[shadowIndex];
    if(entered&&!data.defeated[2]||(data.realm===shadowIndex||data.defeated[shadowIndex]||shadow.length||data.visitedRests[shadowIndex].length)&&(!entered||!data.defeated[2]))throw Error('Invalid shadow entry');
    const jailer=shadow.includes('guardian:cultJailer'),key=shadow.includes('prisonKey'),open=shadow.includes('prisonOpen');
-   if((key||open)&&!jailer||key&&open||shadow.includes('prisonTrace')&&!open)throw Error('Invalid prison progress');
+   if((key||open)&&!jailer||key&&open)throw Error('Invalid prison progress');
    if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
   }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
