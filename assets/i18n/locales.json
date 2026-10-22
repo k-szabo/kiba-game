@@ -171,7 +171,7 @@
       "text.stand.beneath.the.glowing.torii.and.press.e": "Lépj a fénylő torii alá, és nyomj E-t.",
       "text.stand.beneath.the.gate": "Lépj a kapu alá",
       "text.broken.light": "MEGTÖRT FÉNY",
-      "game.title": "KIBA · Három világ",
+      "game.title": "Kiba Birodalmak",
       "text.maximum": "Maximális",
       "text.momo.grows.stronger": "Momo erősebbé válik.",
       "text.momo.s.artwork.could.not.be.loaded.please.reload": "Momo képe nem töltődött be. Frissítsd az oldalt.",
@@ -268,7 +268,7 @@
       "story.kiba.flows.through.every.world.it.can.nourish.or": "A Kiba minden világot átsző: táplálhat és pusztíthat. Japán szentélyeinél éltető, a romok között elhalványul. Momo az áramlatokat követve keresi Harut.",
       "text.in.yomi.kiba.is.dense.and.distorted.cultists.and": "Yomiban a Kiba sűrű és torzított. A szekta és a démonok pusztító erőt merítenek belőle; Momo megtanulhat átsuhanni az árnyék áramlatán.",
       "text.in.heaven.kiba.is.stronger.yet.its.balance.is": "Az égben a Kiba erősebb, mégis törékeny az egyensúlya. A szélfolyamokat táplálja, de a megrontott őrző fényt és árnyékot egyaránt formál belőle.",
-      "game.title.with_world": "Kiba: Három világ",
+      "game.title.with_world": "Kiba Birodalmak",
       "story.japan.intro": "Kiba tápláló áramlata az élők világában a legerősebb. Haru nyomát két távoli harang őrzi. Az egyik az erdő lombjai között, a másik egy csendes falu tetőin vár. Haladj keletre, keresd fel a szél szentélyét, és járd be a folyó fölötti és alatti ösvényeket. A két harang hangja együtt nyitja meg a bambusztemplomot.",
       "story.yomi.intro": "Yomiban a Kiba eltorzul: tápláló ereje pusztító lávává és árnyékká válik. Yomi most alattad terül el. Ereszkedj egyre mélyebbre a kút párkányain: két fogoly lélek hangja tartja zárva a fenék kapuját. Győzd le a fogvatartóikat, majd E-vel szabadítsd ki őket. Az árnyék szentélyét félúton találod. S + Space: leugrás a párkányról. A térképen az ismert pihenőhelyekhez visszautazhatsz.",
       "story.heaven.intro": "Az égben a Kiba ritka, de tiszta; a szélfolyamokban hirtelen felerősödik. Haru a felhők fölött vár. Itt felfelé vezet az út: ugorj a fénylő szélfolyamokba, és hagyd, hogy magasba emeljenek. Oldalra kilépve szállj le a felhőszigetekre, majd kettős ugrással és szellemlépéssel folytasd az emelkedést. A legfelső pecsétet J-vel törheted fel. Az utolsó őrző fölött találod az apa oltárát.",
@@ -315,7 +315,7 @@
       "help.bindings.saved": "A kiosztás mentve.",
       "help.bindings.reset.done": "Az eredeti kiosztás visszaállítva ehhez a profilhoz.",
       "help.bindings.import.done": "A kiosztás betöltve.",
-      "help.bindings.import.error": "A JSON-fájl nem érvényes Kiba-billentyűkiosztás.",
+      "help.bindings.import.error": "A JSON-fájl nem érvényes Kiba Birodalmak-billentyűkiosztás.",
       "help.bindings.reset": "Profil visszaállítása",
       "help.bindings.export": "JSON mentése",
       "help.bindings.import": "JSON betöltése",
@@ -673,7 +673,11 @@
       "merchant.tea.started": "A tea lassan visszaadja az erődet.",
       "menu.changelog.0928.title": "Akash új útravalói",
       "menu.changelog.0928.provisions": "A rejtélyes hús ⅔ eséllyel 2 HP-t gyógyít, ⅓ eséllyel 1 HP-t sebez. Akash fokozatosan gyógyító teát is árul; a tea a hátizsákból használható, és dev módban is hozzáadható.",
-      "menu.changelog.0928.quick": "Az O gyorsgombhoz hús vagy tea rendelhető, a kifogyó tárgy pedig automatikusan a másikra vált."
+      "menu.changelog.0928.quick": "Az O gyorsgombhoz hús vagy tea rendelhető, a kifogyó tárgy pedig automatikusan a másikra vált.",
+      "menu.brand.name": "Kiba",
+      "menu.brand.realms": "Birodalmak",
+      "menu.changelog.0929.title": "Új név: Kiba Birodalmak",
+      "menu.changelog.0929.rename": "A játék neve Kiba Birodalmak lett; a felület és a projekt dokumentációja az új nevet használja."
     }
   },
   "en": {
@@ -848,7 +852,7 @@
       "text.stand.beneath.the.glowing.torii.and.press.e": "Stand beneath the glowing torii and press E.",
       "text.stand.beneath.the.gate": "Stand beneath the gate",
       "text.broken.light": "BROKEN LIGHT",
-      "game.title": "KIBA · Three Worlds",
+      "game.title": "Kiba Realms",
       "text.maximum": "Maximum",
       "text.momo.grows.stronger": "Momo grows stronger.",
       "text.momo.s.artwork.could.not.be.loaded.please.reload": "Momo's artwork could not be loaded. Please reload the page.",
@@ -945,7 +949,7 @@
       "story.kiba.flows.through.every.world.it.can.nourish.or": "Kiba flows through every world: it can nourish or destroy. Around Japan's shrines it gives life; among the ruins it fades. Momo follows its currents in search of Haru.",
       "text.in.yomi.kiba.is.dense.and.distorted.cultists.and": "In Yomi, Kiba is dense and distorted. Cultists and demons draw destructive power from it; Momo can learn to dash through its shadow current.",
       "text.in.heaven.kiba.is.stronger.yet.its.balance.is": "In heaven, Kiba is stronger, yet its balance is fragile. It feeds the wind streams, while the corrupted guardian shapes both light and shadow from it.",
-      "game.title.with_world": "Kiba: Three Worlds",
+      "game.title.with_world": "Kiba Realms",
       "story.japan.intro": "Kiba's nourishing current is strongest in the living world. Two distant bells guard Haru's trail. One waits in the forest canopy, the other on the rooftops of a quiet village. Head east, visit the wind shrine, and explore paths above and beneath the river. The two bells together open the Bamboo Temple.",
       "story.yomi.intro": "In Yomi, Kiba becomes distorted: its nourishing force turns to destructive lava and shadow. Yomi stretches below you. Descend along the well's ledges: two captive souls keep the gate at the bottom sealed. Defeat their captors, then press E to free them. The Shrine of Shadows lies halfway down. S + Space: drop through a ledge. Use the map to travel to discovered shrines.",
       "story.heaven.intro": "In heaven, Kiba is rare but pure; it suddenly surges through the wind streams. Haru waits above the clouds. Your path leads upward: jump into the glowing wind streams and let them lift you. Move sideways onto cloud islands, then continue climbing with double-jumps and Spirit Dash. Break the uppermost seal with J. Your father's altar lies above the final guardian.",
@@ -992,7 +996,7 @@
       "help.bindings.saved": "Key binding saved.",
       "help.bindings.reset.done": "This profile has been reset.",
       "help.bindings.import.done": "Key bindings imported.",
-      "help.bindings.import.error": "This JSON file is not a valid Kiba key layout.",
+      "help.bindings.import.error": "This JSON file is not a valid Kiba Realms key layout.",
       "help.bindings.reset": "Reset profile",
       "help.bindings.export": "Export JSON",
       "help.bindings.import": "Import JSON",
@@ -1350,7 +1354,11 @@
       "merchant.tea.started": "The tea slowly restores your strength.",
       "menu.changelog.0928.title": "Akash’s new provisions",
       "menu.changelog.0928.provisions": "Mysterious meat now has a ⅔ chance to restore 2 HP and a ⅓ chance to deal 1 damage. Akash also sells tea that heals gradually; it can be used from the inventory and added in developer mode.",
-      "menu.changelog.0928.quick": "Assign meat or tea to the O quick-use key; when the selected item runs out, it switches to the other if available."
+      "menu.changelog.0928.quick": "Assign meat or tea to the O quick-use key; when the selected item runs out, it switches to the other if available.",
+      "menu.brand.name": "Kiba",
+      "menu.brand.realms": "Realms",
+      "menu.changelog.0929.title": "New name: Kiba Realms",
+      "menu.changelog.0929.rename": "The game is now called Kiba Realms; the interface and project documentation use the new name."
     }
   }
 }

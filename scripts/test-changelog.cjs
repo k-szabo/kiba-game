@@ -15,7 +15,7 @@ const notes={open:true,contains:target=>target===inside,querySelector:()=>badge}
 let menuHidden=false;
 const translations=Object.keys(locales.hu.dict).filter(id=>id.startsWith('menu.changelog.')&&id!=='menu.changelog.toggle');
 const nodes=translations.map(id=>({nodeValue:locales.hu.dict[id],parentElement:{tagName:'LI'}}));
-const document={documentElement:{},body:{},title:'KIBA',
+const document={documentElement:{},body:{},title:locales.hu.dict['game.title'],
  addEventListener:(name,fn,capture)=>{listeners[name]={fn,capture};},
  createTreeWalker(){let index=0;return{nextNode:()=>nodes[index++]??null};},
  querySelector(selector){if(selector==='#menu .menu-note')return badge;if(selector==='#menu:not([hidden]) #releaseNotes[open]')return notes.open&&!menuHidden?notes:null;return null;},
@@ -25,16 +25,19 @@ const context=vm.createContext({LOCALES:locales,GAME_RELEASE:release,document,Re
 vm.runInContext(fs.readFileSync(path.join(root,'assets/js/i18n.js'),'utf8')+'\nglobalThis.uiLocale=I18n;',context);
 const ui=context.uiLocale;
 ui.applyDOM();
+assert.equal(document.title,locales.hu.dict['game.title']);
 assert.equal(badge.textContent,locales.hu.dict['menu.version'].replace('{0}',release.version));
 assert.equal(attributes['aria-label'],locales.hu.dict['menu.changelog.toggle'].replace('{0}',release.version));
 for(const id of translations)assert(html.includes(locales.hu.dict[id]),`Release note is reachable in static menu: ${id}`);
 ui.setLocale('en');
+assert.equal(document.title,locales.en.dict['game.title']);
 assert(notes.open,'Language change preserves the open release notes');
 assert.equal(stored.get('momo-language'),'en');
 assert.equal(document.documentElement.lang,'en');
 assert.equal(badge.textContent,locales.en.dict['menu.version'].replace('{0}',release.version));
 for(let i=0;i<nodes.length;i++)assert.equal(nodes[i].nodeValue,locales.en.dict[translations[i]],translations[i]);
 ui.setLocale('hu');
+assert.equal(document.title,locales.hu.dict['game.title']);
 for(let i=0;i<nodes.length;i++)assert.equal(nodes[i].nodeValue,locales.hu.dict[translations[i]],translations[i]);
 listeners.pointerdown.fn({target:inside});assert(notes.open,'Interacting inside must preserve the panel');
 listeners.pointerdown.fn({target:outside});assert(!notes.open,'Outside interaction dismisses the panel');

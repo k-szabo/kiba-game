@@ -1,4 +1,4 @@
-# Kiba: Three Realms
+# Kiba Realms
 
 [Magyar](README.md)
 
@@ -14,7 +14,7 @@ A little shiba samurai. Three realms. A father to bring home.
 
 Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He travels through Japanese forests and temples, descends into the depths of Yomi, then climbs above the clouds into the heavenly realm. **Kiba** is the energy flowing through the world. It can nourish or destroy, and its currents change from one place to another: life-giving around Japanese shrines, faint in underground passages, distorted in Yomi, and powerful in the streams of the sky.
 
-**Kiba: Three Realms** is a browser-playable 2D metroidvania with sword combat, platforming, and exploration in worlds inspired by Japanese mythology.
+**Kiba Realms** is a browser-playable 2D metroidvania with sword combat, platforming, and exploration in worlds inspired by Japanese mythology.
 
 ## Three realms, three kinds of adventure
 

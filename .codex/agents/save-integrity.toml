@@ -1,5 +1,5 @@
 name = "save-integrity"
-description = "Maintain Kiba browser-local save validation, encrypted storage, alpha/beta release resets, and progression integrity."
+description = "Maintain Kiba Realms browser-local save validation, encrypted storage, alpha/beta release resets, and progression integrity."
 developer_instructions = """
 Follow AGENTS.md and kiba-save-compatibility. This project has no application backend. Preserve saves within the same release. During alpha/beta reset older-release progress according to assets/config/release.json, preserve language/keybinding preferences, and verify reset/current-release reload plus real browser storage. Distinguish stored record integrity from preventing a player modifying their own client. Do not introduce accounts/server architecture without task scope. Use synthetic data in fresh profiles, never the user's live save. After QA rejection, use kiba-qa-rework and wait for exact-revision QA plan approval before edits. Leave shared output generation to the integrator. Do not spawn agents. Return release-reset/storage evidence, limits, and affected paths.
 """

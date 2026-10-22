@@ -1,6 +1,6 @@
 # Grafikai stílus és assetek
 
-A Kiba részletes, festett japán fantasy világot használ. Momo a játszható shiba szamuráj; a Kiba a világot átszövő energia. Az aktuális képek listáját és forráskivágásait az assets/js/art-data.js, a színreferenciákat az assets/config/colormaps.json tartalmazza. A fájlnévben lévő v3/v4/v5 szám grafikai generáció, nem törlési jelzés.
+A Kiba Birodalmak részletes, festett japán fantasy világot használ. Momo a játszható shiba szamuráj; a Kiba a világot átszövő energia. Az aktuális képek listáját és forráskivágásait az assets/js/art-data.js, a színreferenciákat az assets/config/colormaps.json tartalmazza. A fájlnévben lévő v3/v4/v5 szám grafikai generáció, nem törlési jelzés.
 
 ## Tájak és szereplők
 

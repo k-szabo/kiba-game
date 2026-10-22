@@ -578,6 +578,22 @@
           "en": "Assign meat or tea to the O quick-use key; when the selected item runs out, it switches to the other if available."
         }
       ]
+    },
+    {
+      "version": "0.9.29_6f1f9664",
+      "code": "6f1f9664",
+      "baseVersion": "0.9.29",
+      "slug": "kiba-realms-rename",
+      "summary": {
+        "hu": "Új név: Kiba Birodalmak",
+        "en": "New name: Kiba Realms"
+      },
+      "fixes": [
+        {
+          "hu": "A játék neve Kiba Birodalmak lett; a felület és a projekt dokumentációja az új nevet használja.",
+          "en": "The game is now called Kiba Realms; the interface and project documentation use the new name."
+        }
+      ]
     }
   ]
 }

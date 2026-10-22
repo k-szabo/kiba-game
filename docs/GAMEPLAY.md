@@ -1,4 +1,4 @@
-# Kiba: Három világ · Játékmenet és segítség
+# Kiba Birodalmak · Játékmenet és segítség
 
 [English gameplay guide](GAMEPLAY.en.md)
 

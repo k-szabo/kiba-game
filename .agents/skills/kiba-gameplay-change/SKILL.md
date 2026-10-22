@@ -1,6 +1,6 @@
 ---
 name: kiba-gameplay-change
-description: Change Kiba combat, movement, progression, levels, or encounter transitions with targeted gameplay and route verification.
+description: Change Kiba Realms combat, movement, progression, levels, or encounter transitions with targeted gameplay and route verification.
 ---
 
 - Trace owning modules using docs/DEVELOPMENT.md. Establish requested before/after behavior and affected spawn, damage, death, shrine, pause, boss-phase, or realm transitions.
