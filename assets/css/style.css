@@ -58,10 +58,8 @@
 #menu .menu-content{position:relative;top:auto;left:auto;transform:none;width:min(520px,100%);flex:none;margin:auto auto auto clamp(0px,5vw,80px);padding:26px 24px;background:linear-gradient(135deg,#0b1921f0,#0b1921d9);border:1px solid #d9ba7b38;border-radius:12px}
 #menu .chapter{font-size:14px;font-weight:600;line-height:1.65;letter-spacing:2px;color:#f1ddb4}
 #menu .title-mark{font-size:30px;margin-top:16px;color:#eda88c}
-#menu h1{font-size:clamp(84px,12vw,144px);letter-spacing:8px;line-height:1;margin:10px 0 18px;text-transform:uppercase}
-#menu h1 span{display:block}
-#menu h1 .brand-realms{font-size:.4em;line-height:1.2;letter-spacing:.055em;margin-top:8px;overflow-wrap:anywhere}
-#menu .subtitle{font-size:16px;line-height:1.5;letter-spacing:3px;gap:16px;color:#f1d49b}
+#menu h1{font-size:clamp(84px,12vw,144px);letter-spacing:12px;margin:10px 0 18px 12px;text-transform:uppercase}
+#menu .subtitle{font-size:16px;line-height:1.5;letter-spacing:3px;gap:16px;color:#f1d49b;text-transform:uppercase}
 #menu .subtitle span{flex:1;max-width:56px;background:#d7bd88}
 #menu .intro{font-size:26px;line-height:1.5;color:#f4f1e5;margin:22px 0}
 #menu .kiba-lore{max-width:420px;font-size:16px;line-height:1.65;color:#e0e8df;margin:0 auto 22px}
