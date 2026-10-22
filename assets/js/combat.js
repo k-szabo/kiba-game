@@ -145,12 +145,14 @@ function uniteVictoryRelics(){
   flags[2].push('eclipseRelic');return true;
 }
 const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
+const SAMURAI_JUMP={reactionChance:.4,cooldown:4,windup:.7,duration:1,height:185,maxTravel:340};
 let yomiEncounterSerial=0;
 function createBoss(){
   const max=[28,48,ANGEL_HEALTH,180][realm];
   return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
+    jumpSeen:false,jumpCooldown:0,leap:null,
     secretEligible:realm===2&&relicRitualReady(),secretTriggered:false,summons:[],summonSerial:0,councilMinionKills:0,
     autoPhase:null,autoClock:0,autoDuration:0,autoCooldown:1.5,autoFace:-1,extraCast:false,
     encounterId:realm===1?++yomiEncounterSerial:0,summonThresholds:[],yomiStage:'normal',shelterTriggered:false,raceTriggered:false,serpent:null,waveClock:0,waveWarning:0};
@@ -158,6 +160,7 @@ function createBoss(){
 function setBossPhase(phase,duration){boss.phase=phase;boss.clock=duration;boss.phaseDuration=duration;boss.animClock=0;}
 function clearEncounterEffects(){
   boss.hazards=[];boss.lava=null;boss.summons=[];boss.autoPhase=null;
+  if(realm===0&&boss.leap){boss.y=level.boss.y-boss.h;boss.leap=null;}
   enemies=enemies.filter(e=>!e.summoned&&!e.serpent);boss.serpent=null;
   for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}
   projectiles=projectiles.filter(p=>p.source!=='boss'&&p.source!=='minion'&&!p.source?.startsWith('serpent:'));
@@ -207,18 +210,30 @@ function hitBoss(amount){
   DevDamage.record('outgoing',position,before,realm===2&&stage===2&&boss.stage===3?0:boss.hp);return true;
 }
 function bossMoves(){
-  if(realm===0)return ['cleave','dash','doubleCut'];
+  if(realm===0)return ['cleave','dash','doubleCut','jumpCut'];
   if(realm===1)return ['hammer','slam','hammer','embers'];
   if(boss.stage===1)return ['lightArrows','holySweep','lightArrows'];
   if(boss.stage===2)return ['shadowBolts','shadowNova','shadowRain'];
   return ['eclipse','hellfire','lightArrows','shadowBolts','summon'];
 }
-function chooseBossMove(){
-  const patterns=bossMoves();boss.move=patterns[boss.cycles%patterns.length];boss.cycles++;
+function samuraiObserveJump(){
+  if(realm!==0||level!==levels[0]||!bossStarted||boss.dead)return;
+  if(!boss.jumpSeen){boss.jumpSeen=true;return;}
+  if(boss.phase!=='wait'||boss.jumpCooldown>0)return;
+  if(Math.random()<SAMURAI_JUMP.reactionChance)chooseBossMove('jumpCut');
+}
+function chooseBossMove(reactiveMove=null){
+  const patterns=bossMoves();boss.move=reactiveMove||patterns[boss.cycles++%patterns.length];
+  if(boss.move==='jumpCut'&&boss.jumpCooldown>0)boss.move='cleave';
   boss.face=Math.abs(player.x+player.w/2-boss.x-boss.w/2)>20?Math.sign(player.x+player.w/2-boss.x-boss.w/2):boss.face;
   boss.vx=boss.face;boss.targetX=player.x+player.w/2;boss.attackStep=0;boss.extraCast=false;
-  const duration={cleave:.9,dash:1,doubleCut:.85,hammer:.8,slam:1,lava:1.8,embers:1,summon:1.1,
+  const duration={cleave:.9,dash:1,doubleCut:.85,jumpCut:SAMURAI_JUMP.windup,hammer:.8,slam:1,lava:1.8,embers:1,summon:1.1,
     lightArrows:1.35,holySweep:1.05,shadowBolts:1,shadowNova:1.15,shadowRain:1.2,eclipse:1.5,hellfire:1.3}[boss.move];
+  if(boss.move==='jumpCut'){
+    const landingX=clamp(boss.targetX-boss.w/2,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
+    boss.leap={fromX:boss.x,toX:clamp(landingX,boss.x-SAMURAI_JUMP.maxTravel,boss.x+SAMURAI_JUMP.maxTravel),floorY:boss.y,elapsed:0};
+    boss.jumpCooldown=SAMURAI_JUMP.cooldown;
+  }
   if(boss.move==='lava'){
     let available=platforms.filter(p=>p.bossPlatform&&!p.broken).sort((a,b)=>a.x-b.x);
     if(available.length<3){for(const p of platforms.filter(p=>p.bossPlatform)){p.broken=false;p.crumble=0;}available=platforms.filter(p=>p.bossPlatform).sort((a,b)=>a.x-b.x);}
@@ -349,7 +364,7 @@ function updateLavaSerpent(e,dt){
   else if(e.phase==='recover'&&e.clock<=0)setMiniPhase(e,'wait',.7);
 }
 function startBossAttack(){
-  const duration={cleave:.28,dash:.55,doubleCut:.9,hammer:.35,slam:.3,lava:6.8,embers:1.2,summon:.45,
+  const duration={cleave:.28,dash:.55,doubleCut:.9,jumpCut:SAMURAI_JUMP.duration,hammer:.35,slam:.3,lava:6.8,embers:1.2,summon:.45,
     lightArrows:1.4,holySweep:.85,shadowBolts:1.35,shadowNova:.7,shadowRain:1.4,eclipse:1.65,hellfire:1.5}[boss.move];
   setBossPhase('strike',duration);shake=.12;tone(realm===2?600:75,.2,'triangle',.04);
   if(boss.move==='lava'&&boss.lava)boss.lava.active=true;
@@ -373,7 +388,15 @@ function aimedShadowPair(cx,cy,speed=245){
 }
 function executeBossMove(dt){
   const elapsed=boss.phaseDuration-boss.clock,cx=boss.x+boss.w/2,cy=boss.y+35;
-  if(boss.move==='dash'){boss.x=clamp(boss.x+boss.face*560*dt,level.arena.x+40,level.arena.x+level.arena.w-boss.w-40);bossMelee(90,100);}
+  if(boss.move==='jumpCut'&&boss.leap){
+    const leap=boss.leap;leap.elapsed=Math.min(SAMURAI_JUMP.duration,leap.elapsed+dt);
+    const t=leap.elapsed/SAMURAI_JUMP.duration;
+    boss.x=leap.fromX+(leap.toX-leap.fromX)*t;
+    boss.y=leap.floorY-4*SAMURAI_JUMP.height*t*(1-t);
+    if(t>=.55&&t<.95)bossMelee(125,105,2);
+    if(t===1){boss.y=leap.floorY;boss.leap=null;}
+  }
+  else if(boss.move==='dash'){boss.x=clamp(boss.x+boss.face*560*dt,level.arena.x+40,level.arena.x+level.arena.w-boss.w-40);bossMelee(90,100);}
   else if(boss.move==='cleave')bossMelee(180,110);
   else if(boss.move==='doubleCut'){if(elapsed<.2||elapsed>.58&&elapsed<.8)bossMelee(140,100);}
   else if(boss.move==='hammer')bossMelee(180,140,2,65);
@@ -450,6 +473,7 @@ function updateBoss(dt){if(ShadowRealm.active()){ShadowRealm.updateBoss(dt);retu
   if((realm===1||realm===2)&&boss.phase!=='transform'){checkBossHealth();if(boss.dead||state!=='play')return;}
   $('bossName').textContent=I18n.t(bossName());$('bossHealth').style.width=`${Math.max(0,boss.hp/boss.max)*100}%`;
   boss.inv=Math.max(0,boss.inv-dt);boss.clock-=dt;boss.animClock+=dt;
+  if(realm===0)boss.jumpCooldown=Math.max(0,boss.jumpCooldown-dt);
   if(boss.phase==='transform'){if(boss.clock<=0)setBossPhase('wait',.85);return;}
   updateBossHazards(dt);if(!bossStarted||boss.dead)return;
   if(realm===1&&boss.yomiStage!=='normal'){updateYomiWave(dt);return;}
@@ -466,9 +490,9 @@ function updateBoss(dt){if(ShadowRealm.active()){ShadowRealm.updateBoss(dt);retu
   }else if(boss.phase==='windup'){if(boss.clock<=0)startBossAttack();}
   else if(boss.phase==='strike'){
     if(realm===1&&boss.move==='lava'&&!boss.autoPhase&&Math.abs(player.x-boss.x)>180)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*55*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
-    executeBossMove(dt);if(boss.clock<=0){boss.lava=null;setBossPhase('recover',realm===1?1.25:1.1);}
+    executeBossMove(dt);if(boss.clock<=0){boss.lava=null;if(boss.leap){boss.x=boss.leap.toX;boss.y=boss.leap.floorY;boss.leap=null;}setBossPhase('recover',realm===1?1.25:1.1);}
   }else if(boss.phase==='recover'&&boss.clock<=0&&!boss.autoPhase)setBossPhase('wait',.6);
-  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava')damage(1,player.x>boss.x?1:-1);
+  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava'&&boss.move!=='jumpCut')damage(1,player.x>boss.x?1:-1);
 }
 /* Optional encounters are saved independently of the three realm guardians. */
 function minibossFlag(id){return 'guardian:'+id;}
