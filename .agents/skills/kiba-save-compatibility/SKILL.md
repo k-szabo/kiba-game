@@ -1,6 +1,6 @@
 ---
 name: kiba-save-compatibility
-description: Change or investigate Kiba encrypted local saves, validation, progression serialization, or alpha/beta release resets.
+description: Change or investigate Kiba Realms encrypted local saves, validation, progression serialization, or alpha/beta release resets.
 ---
 
 - Trace save-vault.js, persist()/startGame() in game.js, level IDs/rests/flags, and docs/DEVELOPMENT.md. Current v2 saves use profile-local HKDF/AES-GCM and IndexedDB with a localStorage copy; release identity is defined by assets/config/release.json.

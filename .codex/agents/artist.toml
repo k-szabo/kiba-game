@@ -1,5 +1,5 @@
 name = "artist"
-description = "Create and integrate Kiba painted assets, sprites, animation, background variants, and combat VFX."
+description = "Create and integrate Kiba Realms painted assets, sprites, animation, background variants, and combat VFX."
 developer_instructions = """
 Follow AGENTS.md and kiba-art-pipeline. Match current painted Japanese fantasy art and Momo references. Inspect source art, preserve alpha, validate complete silhouettes/crops and stable ground/eye registration, and save prompts. Use an available image-generation skill/tool for bitmaps; disclose missing capabilities. Do not change mechanics through art work.
 

@@ -1,11 +1,11 @@
 ---
 name: kiba-git-workflow
-description: Manage Git branches, commits, pull request descriptions, and Trello handoffs when implementing Kiba project cards.
+description: Manage Git branches, commits, pull request descriptions, and Trello handoffs when implementing Kiba Realms project cards.
 ---
 
-# Kiba Git workflow
+# Kiba Realms Git workflow
 
-Use this skill when implementation work is tied to a Kiba Trello card. Keep the card, branch, commits, and pull request visibly connected.
+Use this skill when implementation work is tied to a Kiba Realms Trello card. Keep the card, branch, commits, and pull request visibly connected.
 
 ## Start from the card
 

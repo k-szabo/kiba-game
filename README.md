@@ -1,4 +1,4 @@
-# Kiba: Három világ
+# Kiba Birodalmak
 
 [English](README.en.md)
 
@@ -14,7 +14,7 @@ Egy kis shiba szamuráj. Három birodalom. Egy apa, akit haza kell hozni.
 
 Momo, a kis shiba szamuráj útnak indul, hogy megmentse szeretett édesapját, Harut. Japán erdei és templomai után a japán alvilág mélységeibe ereszkedik, majd a felhők fölé emelkedik az égi birodalomban. A **Kiba** az egész világot átszövő energia: táplálhat, pusztíthat, és minden vidéken másként áramlik. Japánban a szentélyek körül éltető, a föld alatti járatokban elhalványul, Yomiban eltorzul, az ég szélfolyamaiban pedig felerősödik.
 
-A **Kiba: Három világ** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
+A **Kiba Birodalmak** böngészőben játszható, 2D metroidvania: kardharc, platformozás és felfedezés, japán mitológia ihlette világban.
 
 ## A birodalmak
 

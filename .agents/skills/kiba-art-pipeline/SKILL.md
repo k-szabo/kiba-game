@@ -1,6 +1,6 @@
 ---
 name: kiba-art-pipeline
-description: Create or integrate Kiba bitmap art, sprites, animation, backgrounds, or VFX while preserving visual style and gameplay geometry.
+description: Create or integrate Kiba Realms bitmap art, sprites, animation, backgrounds, or VFX while preserving visual style and gameplay geometry.
 ---
 
 - Inspect current references, relevant ART_MANIFEST/crop metadata, and assets/config/colormaps.json. Read the relevant art document, prioritizing current assets over historical filenames.

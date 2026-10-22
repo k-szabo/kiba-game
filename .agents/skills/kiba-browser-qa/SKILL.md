@@ -1,6 +1,6 @@
 ---
 name: kiba-browser-qa
-description: Verify Kiba UI, rendering, input, or browser storage with real browser evidence beyond mocked VM tests.
+description: Verify Kiba Realms UI, rendering, input, or browser storage with real browser evidence beyond mocked VM tests.
 ---
 
 - Serve the repo over localhost HTTP, including a /kiba-game/ subpath when checking Pages paths. Use available browser automation and a fresh temporary profile with synthetic saves.

@@ -1,4 +1,4 @@
-/* Kiba: Három világ — v0.8. */
+/* Kiba Realms — main game loop and world interactions. */
 'use strict';
 const $=id=>document.getElementById(id),canvas=$('world'),ctx=canvas.getContext('2d');
 const sheet=new Image();sheet.src = 'assets/images/momo.png';
@@ -330,7 +330,7 @@ function showHelp(origin){
 function closeHelp(){if(state!=='help')return;$('help').hidden=true;captureAction=null;state=helpOrigin;$(helpOrigin==='pause'?'pauseHelpButton':'helpButton').focus();}
 $('bindingProfile').onchange=event=>{Bindings.choose(event.target.value);captureAction=null;$('bindingMessage').textContent='';renderHelp();};
 $('resetBindings').onclick=()=>{Bindings.reset();captureAction=null;renderHelp();$('bindingMessage').textContent=I18n.t('help.bindings.reset.done');};
-$('exportBindings').onclick=()=>{const blob=new Blob([JSON.stringify(Bindings.exportData(),null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='kiba-keybindings.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);};
+$('exportBindings').onclick=()=>{const blob=new Blob([JSON.stringify(Bindings.exportData(),null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='kiba-realms-keybindings.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);};
 $('importBindings').onclick=()=>$('bindingFile').click();
 $('bindingFile').onchange=async event=>{const file=event.target.files?.[0];if(!file)return;let valid=false;try{valid=Bindings.importData(JSON.parse(await file.text()));}catch{}event.target.value='';captureAction=null;renderHelp();$('bindingMessage').textContent=I18n.t(valid?'help.bindings.import.done':'help.bindings.import.error');};
 function keyName(e){return Bindings.normalize(e.code==='Space'?' ':e.key);}

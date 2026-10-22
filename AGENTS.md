@@ -1,4 +1,4 @@
-# Kiba development instructions
+# Kiba Realms development instructions
 
 ## Project
 - Static HTML/CSS/Canvas JavaScript game on GitHub Pages; no application backend or production npm dependencies.

@@ -1,6 +1,6 @@
 ---
 name: kiba-qa-rework
-description: Handle a Kiba change rejected by QA, including versioned repair plans, QA approval, implementation handoff, and retest.
+description: Handle a Kiba Realms change rejected by QA, including versioned repair plans, QA approval, implementation handoff, and retest.
 ---
 
 Use the [QA rework protocol](../../../docs/AGENT-WORKFLOW.md#qa-rework).

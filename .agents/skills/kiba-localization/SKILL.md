@@ -1,6 +1,6 @@
 ---
 name: kiba-localization
-description: Add or change Kiba translations, language metadata, or localized UI/story text in the shared locale catalog.
+description: Add or change Kiba Realms translations, language metadata, or localized UI/story text in the shared locale catalog.
 ---
 
 - Use assets/i18n/locales.json: each ISO two-letter key has flag, lang_en, lang_orig, and dict. Update both current languages, matching keys and numbered placeholders.

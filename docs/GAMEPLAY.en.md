@@ -1,8 +1,8 @@
-# Kiba: Three Realms · Gameplay Guide
+# Kiba Realms · Gameplay Guide
 
 [Magyar játékmeneti útmutató](GAMEPLAY.md)
 
-Kiba is a browser-playable 2D metroidvania starring Momo, a shiba samurai searching for his father, Haru. Kiba is the energy flowing through all four realms. Its strength and nature change from place to place, and the game shows its current state in the upper HUD and through environmental effects.
+Kiba Realms is a browser-playable 2D metroidvania starring Momo, a shiba samurai searching for his father, Haru. Kiba is the energy flowing through all four realms. Its strength and nature change from place to place, and the game shows its current state in the upper HUD and through environmental effects.
 
 The game starts with a silent dream prologue. After Momo wakes, follow the story from Japan into Yomi, then climb into Takamagahara. Each realm has its own route, enemies, guardian, and optional secrets.
 

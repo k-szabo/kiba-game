@@ -1,6 +1,6 @@
 ---
 name: kiba-release
-description: Integrate and validate Kiba changes for the static GitHub Pages package, including runtime, references, and release evidence.
+description: Integrate and validate Kiba Realms changes for the static GitHub Pages package, including runtime, references, and release evidence.
 ---
 
 - Act as assigned integrator after relevant parallel source edits finish. Resolve outstanding QA findings with both repair-plan approval and implementation acceptance.

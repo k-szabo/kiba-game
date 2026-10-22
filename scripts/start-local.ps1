@@ -21,7 +21,7 @@ if ($python.Name -eq 'py.exe' -or $python.Name -eq 'py') {
 
 Push-Location $repositoryRoot
 try {
-    Write-Host "Serving Kiba from $repositoryRoot"
+    Write-Host "Serving Kiba Realms from $repositoryRoot"
     Write-Host "Open http://localhost:$Port/ (press Ctrl+C to stop)."
     try {
         Start-Process "http://localhost:$Port/"
