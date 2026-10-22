@@ -198,3 +198,7 @@ Ha a Node.js nincs a PATH-ban, add meg a `--node /path/to/node` kapcsolóval. A 
 A `combat.js` közös `SAMURAI_JUMP` táblája kezeli a 40%-os reakcióesélyt, a 4 másodperces újratöltést, a 0,7 másodperces előjelzést és az 1 másodperces, 185 egység magas ugrást. A célpont és az irány a felkészülés kezdetén rögzül; a vízszintes út legfeljebb 340 egység, az aréna határain belül. Az ereszkedés 55–95%-a alatt a kardcsapás 2 HP-t sebez. Az ugrás felkészülése és emelkedése alatt nincs érintési sebzés.
 
 Az `input` csak sikeresen végrehajtott ugrás után hívja a `samuraiObserveJump` függvényt. Az első harci ugrás megfigyelés, az utána következők indíthatnak reakciót, kizárólag várakozó bossnál és lejárt újratöltéssel. A normál támadássor önállóan is tartalmaz ugró csapást. A megfigyelés és az ugrás átmeneti harci állapot; a `createBoss` és a harc újraindítása alaphelyzetbe állítja, a mentésbe nem kerül.
+
+## Szintlépés-visszajelzés
+
+A `progression.js` átmeneti `LevelUpEffect` állapota csak valódi XP-alapú szintlépéskor indul, 1,6 másodpercre. Egy több szintet adó jutalom egyetlen effektet indít; a dev-szintbeállító és a mentés betöltése nem szimulál szintlépést. Az időt az aktív játék főciklusa lépteti egyszer képkockánként, a játékos inicializálása és a főmenü törli. A jelzés nem kerül mentésbe. A régi lélektöredék HUD-számláló és az elválasztója megszűnt; a mentések belső örökölt mezője nem látható játékosszöveg.

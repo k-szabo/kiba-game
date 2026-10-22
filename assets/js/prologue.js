@@ -27,7 +27,7 @@ const Prologue=(()=>{
     $('kibaCurrent').textContent=I18n.t('prologue.energy');$('areaLabel').textContent=I18n.t('prologue.place');
     $('health').innerHTML='<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp);
     $('health').setAttribute('aria-label',I18n.format('message.arg0.of.arg1.health',[player.hp,player.maxHp]));
-    $('souls').textContent='0';$('dashHint').hidden=true;$('dropHint').hidden=true;
+    $('dashHint').hidden=true;$('dropHint').hidden=true;
     $('jumpHint').textContent=I18n.t('text.jump.4e09c3');
     $('objective').textContent=I18n.t(phase==='walk'?'prologue.objective.walk':'prologue.objective.battle');
     $('bossHud').hidden=!['reveal','battle'].includes(phase);$('bossName').textContent=I18n.t('prologue.boss');
