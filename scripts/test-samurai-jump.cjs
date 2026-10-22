@@ -100,4 +100,35 @@ for(const realm of [1,2]){
   assert(!run("bossMoves().includes('jumpCut')"));
   run('chooseBossMove();');assert.equal(run('boss.move'),realm===1?'hammer':'lightArrows');
 }
+
+// Real atlas dimensions and all six render states are checked without claiming
+// that a mocked Canvas proves graphical quality. Render calls must stay pure.
+{
+  const fs=require('node:fs'),path=require('node:path');
+  const file=run('ART_MANIFEST.samuraiJump'),png=fs.readFileSync(path.join(__dirname,'..',file));
+  assert.equal(png.toString('ascii',1,4),'PNG');
+  const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+  assert.equal(png[25],6,'Jump atlas retains its RGBA channel');
+  const frames=run('ART_FRAMES.samuraiJump');assert.equal(frames.length,6);
+  for(const f of frames){
+    assert(f.x>=0&&f.y>=0&&f.w>0&&f.h>0&&f.x+f.w<=width&&f.y+f.h<=height,'Every crop fits the source atlas');
+    assert(f.anchorX>=f.x&&f.anchorX<=f.x+f.w&&f.anchorY>=f.y&&f.anchorY<=f.y+f.h,'Ground anchor remains inside its cell');
+    assert(f.bodyHeight>0&&f.outlines.length>0);
+    for(const polygon of f.outlines)for(const [x,y] of polygon)assert(x>=f.x&&x<=f.x+f.w&&y>=f.y&&y<=f.y+f.h,'Clip polygons fit their source crop');
+  }
+  // The diagonal split specifically retains the fifth pose's extended blade;
+  // a regular 512px grid crop would remove it again.
+  assert(frames[4].x+frames[4].w>width*2/3,'Descending sword can extend across the cell divider');
+  assert(frames[4].outlines[0].some(([x,y])=>x>width*2/3&&y>height/2));
+  arena();run("chooseBossMove('jumpCut');var qaDraws=[],qaScales=[];ctx.drawImage=(...args)=>{if(args[0]===Visuals.images.samuraiJump)qaDraws.push(args.slice(1,5));};ctx.scale=(...args)=>qaScales.push(args);");
+  const cases=[['windup',.7,0,0],['windup',.1,0,1],['strike',.9,.1,2],['strike',.6,.4,3],['strike',.3,.7,4],['recover',.8,1,5]];
+  for(const [phase,clock,elapsed,index] of cases)for(const face of [-1,1]){
+    run(`boss.phase='${phase}';boss.clock=${clock};boss.phaseDuration=${phase==='windup'?'.7':'1'};boss.face=${face};boss.leap.elapsed=${elapsed};qaDraws=[];qaScales=[];`);
+    const before=run('JSON.stringify({boss,player,flags,progression,particles,projectiles})');
+    run('Visuals.actor(boss,realms[realm],true);Visuals.bossEffects(realms[realm]);');
+    assert.equal(run('JSON.stringify({boss,player,flags,progression,particles,projectiles})'),before,'Repeated rendering cannot advance or change combat');
+    const expected=frames[index];assert.deepEqual(Array.from(run('qaDraws[0]')),[expected.x,expected.y,expected.w,expected.h]);
+    assert(run(`qaScales.some(s=>s[0]===${face}&&s[1]===1)`),'Both locked facings render through the shared sprite path');
+  }
+}
 console.log('PASS: accepted jump observations, deterministic 40% reactions, authored jump cycle, attack/cooldown guards, locked arc at 30/60/120 FPS, safe windup/ascent, 2 HP descending strike, dodge/recovery, modal freeze, death/reset/dev transitions and non-samurai isolation.');

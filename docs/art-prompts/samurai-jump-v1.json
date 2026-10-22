@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "The user explicitly approved samurai-jump-storyboard-v1.png (six poses, answer: igen) before final sprite generation.",
+  "useCase": "stylized-concept",
+  "references": [
+    "assets/images/enemies/samurai-v5.png",
+    ".codex/work/samurai-jump/samurai-jump-storyboard-v1.png"
+  ],
+  "notes": [
+    "Native source RGBA bytes preserved; no matte removal, alpha edits, colour edits or resampling.",
+    "Six alpha>=32 connected silhouettes are isolated. The descending sword extends beyond the nominal cell x1024; use the recommended custom outlines rather than cutting at x1024.",
+    "Existing gameplay code supplies position, timing, telegraphs and slash VFX. No ground or baked effects are included.",
+    "Bounds use [left,top,right-exclusive,bottom-exclusive]. Suggested anchors/bodyHeight require integrator browser alignment against the existing samurai."
+  ],
+  "assets": [
+    {
+      "key": "samuraiJump",
+      "path": "assets/images/enemies/samurai-jump-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds32": [
+        [
+          41,
+          88,
+          467,
+          484
+        ],
+        [
+          551,
+          56,
+          945,
+          484
+        ],
+        [
+          1052,
+          51,
+          1457,
+          434
+        ],
+        [
+          46,
+          539,
+          460,
+          912
+        ],
+        [
+          535,
+          574,
+          1056,
+          922
+        ],
+        [
+          1042,
+          570,
+          1512,
+          957
+        ]
+      ],
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 292,
+          "anchorY": 484,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                512,
+                0
+              ],
+              [
+                512,
+                512
+              ],
+              [
+                0,
+                512
+              ]
+            ]
+          ]
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 797,
+          "anchorY": 484,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                512,
+                0
+              ],
+              [
+                1024,
+                0
+              ],
+              [
+                1024,
+                512
+              ],
+              [
+                512,
+                512
+              ]
+            ]
+          ]
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 1307,
+          "anchorY": 484,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                1024,
+                0
+              ],
+              [
+                1536,
+                0
+              ],
+              [
+                1536,
+                512
+              ],
+              [
+                1024,
+                512
+              ]
+            ]
+          ]
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512,
+          "anchorX": 289,
+          "anchorY": 957,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                0,
+                512
+              ],
+              [
+                512,
+                512
+              ],
+              [
+                512,
+                1024
+              ],
+              [
+                0,
+                1024
+              ]
+            ]
+          ]
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 562,
+          "h": 512,
+          "anchorX": 791,
+          "anchorY": 957,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                512,
+                512
+              ],
+              [
+                1024,
+                512
+              ],
+              [
+                1024,
+                850
+              ],
+              [
+                1074,
+                930
+              ],
+              [
+                1074,
+                1024
+              ],
+              [
+                512,
+                1024
+              ]
+            ]
+          ]
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512,
+          "anchorX": 1293,
+          "anchorY": 957,
+          "bodyHeight": 352,
+          "outlines": [
+            [
+              [
+                1024,
+                512
+              ],
+              [
+                1536,
+                512
+              ],
+              [
+                1536,
+                1024
+              ],
+              [
+                1074,
+                1024
+              ],
+              [
+                1074,
+                930
+              ],
+              [
+                1024,
+                850
+              ]
+            ]
+          ]
+        }
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: FINAL PRODUCTION SIX-FRAME JUMP ATTACK SPRITE SHEET for Kiba Realms painted 2D game. Input1 is exact character/style reference samurai-v5. Input2 is USER APPROVED animation storyboard (only poses, NOT its background or writing). Produce 3 columns x 2 rows, exactly SIX separate full-body sprites. Canvas landscape 1536x1024 or greater same 3:2 ratio. True transparent RGBA background everywhere outside character. Each 512x512 region has its own single complete centered figure with generous transparent margin on all four sides, equal figure scale, NO overlapping neighboring cells. Match first reference polished, richly painted bold dark-outlined chibi HUMAN samurai boss exactly: red and black gold-trimmed lamellar armor, tall gold horned kabuto helmet, long flowing dark brown-black hair, red cloth knots, torn red gold decorated cape; same pale skin and face. Face RIGHT in every frame, keep same costume, TWO arms, TWO legs. ONE single curved silver steel katana, red wrapped handle, gold circular guard, same consistent shape/length every frame, both hands firmly gripping its ONE handle throughout. Preserve full sword tip, cape, helmet crest, hands and feet. Ordered frames: top-left1 deep crouch preparing jump with sword raised overhead; top-middle2 pushing up from ground, legs extend and sword overhead; top-right3 ascending jump, both knees bent up under body, sword overhead; bottom-left4 apex, compact tucked knees, overhead blade; bottom-middle5 falling forward downward katana slash, blade swings down-right toward ground, both hands on hilt; bottom-right6 grounded low wide landing/recovery, katana pointed down-forward, feet planted. IMPORTANT all sprite body origins should be centered consistently in their cells, depict pose only; runtime handles actual height so DO NOT place airborne sprites artificially higher inside cells. Polished game illustration not rough sketch, match original first reference style. No slash effects or trails, NO dust, no arrows, no ground, no cast shadow or shadow oval, no parchment, no paper, no background, no numbers, no text, no frame dividers, no labels, no icons, no watermark. Do not bake any VFX into character. Strict separate alpha silhouettes each cell with at least 24 px clear padding.",
+      "layoutCorrectionPrompt": "Edit only the sprite layout of this completed six-pose character sheet. Preserve every character's design, pose, face, complete sword, two hands, armor, colors and painted rendering exactly. Preserve native transparency. Output a 1536x1024 transparent RGBA sprite atlas divided conceptually into 3 columns of 512px and 2 rows of 512px (NO drawn grid). Scale each full sprite DOWN uniformly to fit within its OWN cell with at least 44 pixels of empty TRANSPARENT padding on all four edges. Current bottom-middle sword crosses x1024; move and reduce that entire sprite including sword so it ends before x980. Bottom-right sprite starts after x1068. Entire first row fits y44..468; entire second row fits y556..980. ALL SIX sprites including long katana and hair must fit entirely inside their individual cells, NOTHING straddles cell edges. Same body scale in all six poses, match first reference. No new content. No ground, shadows, particles, effects, numbers, frames, text or background; transparency outside isolated characters."
+    }
+  ]
+}

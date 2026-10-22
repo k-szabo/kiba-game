@@ -395,7 +395,14 @@ const Visuals = (() => {
       else if(pose==='strike')index=3+Math.min(1,Math.floor(clamp(1-remaining/duration,0,1)*2));
       else if(pose==='recover')index=5;
       else if(pose==='transform')index=2;
-      if(realm===0){key='samurai';rect=ART_FRAMES.samurai[index];}
+      if(realm===0){
+        key='samurai';rect=ART_FRAMES.samurai[index];
+        if(e.move==='jumpCut'){
+          const flight=e.leap?.elapsed/SAMURAI_JUMP.duration||0;
+          index=pose==='windup'?(remaining/duration>.25?0:1):pose==='strike'?(flight<.3?2:flight<.55?3:flight<.95?4:5):5;
+          key='samuraiJump';rect=ART_FRAMES.samuraiJump[index];
+        }
+      }
       else if(realm===2){key=['','angelLight','angelDark','angelEclipse'][e.stage];rect=ART_FRAMES[key][index];}
       else{key='bosses';rect=ART_FRAMES.bosses[realm][index];}
     }else{
@@ -406,7 +413,7 @@ const Visuals = (() => {
       else if(Math.abs(e.walkSpeed)>2)index=Math.floor(e.animTime*12)%6;
       key=actorFaction+(action==='walk'?'Walk':'Attack');rect=ART_FRAMES.animations[actorFaction][action][role][index];
     }
-    shadow(x,feet,isBoss?57:e.kind==='fly'?17:26,e.kind==='fly'?.1:.3);
+    shadow(x,isBoss&&realm===0&&e.leap?e.leap.floorY+e.h:feet,isBoss?57:e.kind==='fly'?17:26,e.kind==='fly'?.1:.3);
     ctx.save();ctx.globalAlpha=e.stun>0||e.inv>0?.65:1;
     const bob=isBoss&&realm===2?Math.sin(time*2)*3:!isBoss&&e.kind==='fly'?Math.sin(time*3)*2:0;
     frame(key,rect,x,feet+1,height,face,bob,0);ctx.restore();
@@ -640,6 +647,14 @@ const Visuals = (() => {
       ctx.fillStyle=realm===2?'#253c5899':'#ff9c6238';ctx.fillRect(x,boss.y-55,238,205);ctx.strokeStyle=realm===2?'#fff0bd':'#ffb889';ctx.lineWidth=3;ctx.setLineDash([9,6]);ctx.strokeRect(x,boss.y-55,238,205);ctx.setLineDash([]);
     }
     const elapsed=boss.phaseDuration-boss.clock,feet=boss.y+boss.h;
+    if(realm===0&&boss.move==='jumpCut'&&boss.leap){
+      const leap=boss.leap,t=leap.elapsed/SAMURAI_JUMP.duration;
+      if(boss.phase==='windup'){
+        BossVFX.marker(leap.toX+boss.w/2,leap.floorY+boss.h,190,r.gold);
+        ctx.strokeStyle=r.gold;ctx.lineWidth=3;ctx.setLineDash([7,6]);
+        ctx.beginPath();ctx.moveTo(boss.x+boss.w/2,feet);ctx.quadraticCurveTo((boss.x+leap.toX)/2+boss.w/2,feet-SAMURAI_JUMP.height*2,leap.toX+boss.w/2,feet);ctx.stroke();ctx.setLineDash([]);
+      }else if(boss.phase==='strike'&&t>=.55&&t<.95)BossVFX.slash('slashGold',boss.x+boss.w/2+boss.face*65,boss.y+62,180,125,boss.face,(t-.55)/.4);
+    }
     const autoStrike=boss.autoPhase==='strike',strike=boss.phase==='strike';
     if(realm===0&&strike&&['cleave','dash','doubleCut'].includes(boss.move)){
       if(boss.move!=='doubleCut'||elapsed<.2||elapsed>.58&&elapsed<.8){
