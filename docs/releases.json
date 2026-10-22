@@ -312,6 +312,26 @@
           "en": "The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse."
         }
       ]
+    },
+    {
+      "version": "0.9.27_e1b3cb9a",
+      "code": "e1b3cb9a",
+      "baseVersion": "0.9.27",
+      "slug": "jailer-telegraph-shrine-training",
+      "summary": {
+        "hu": "Támadásjelzések és szentélyüzenetek javítása",
+        "en": "Attack cue and shrine prompt fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A börtönőr fejszés támadásának előjelzése a többi bosséhoz illő, szaggatott keretet kapott.",
+          "en": "The jailer’s axe attack now uses a dashed warning outline consistent with other bosses."
+        },
+        {
+          "hu": "A szentélyek üzenete mindkét nyelven jelzi a fejlesztést és az aktuális gombkiosztást.",
+          "en": "Shrine prompts now show training and the current control bindings in both languages."
+        }
+      ]
     }
   ],
   "releases": [

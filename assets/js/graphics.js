@@ -473,7 +473,8 @@ const Visuals = (() => {
     if(realm===3&&e.move==='axe'){
       if(e.phase==='windup'){
         const hit={x:e.face>0?e.x+e.w*.4:e.x-185,y:e.y-8,w:185+e.w*.6,h:e.h+20};
-        ctx.fillStyle='#e6b0fa22';ctx.strokeStyle='#f3d8ac';ctx.lineWidth=2.5;ctx.fillRect(hit.x,hit.y,hit.w,hit.h);ctx.strokeRect(hit.x,hit.y,hit.w,hit.h);
+        ctx.fillStyle='#e6b0fa22';ctx.strokeStyle='#f3d8ac';ctx.lineWidth=2.5;ctx.fillRect(hit.x,hit.y,hit.w,hit.h);
+        ctx.setLineDash([7,6]);ctx.strokeRect(hit.x,hit.y,hit.w,hit.h);ctx.setLineDash([]);
       }else if(e.phase==='strike')BossVFX.slash('slashShadow',x+e.face*70,feet-68,220,145,e.face,1-e.clock/e.phaseDuration);
     }
     if(e.active){
