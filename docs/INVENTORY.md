@@ -67,7 +67,7 @@ A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpent
 
 ## Akash portékái – 0.9.21
 
-Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A sült hús `stack:true` bejegyzés, mennyisége a mentett `meatCount`; nem puszta küldetésjelző. A kártyán mennyiségjelvény, a részleteknél darabszám és fogyasztógomb jelenik meg. Az O alapú `useMeat` billentyű átállítható és exportálható; a leírás az aktuális kötést használja. Az utolsó darab után a kiválasztás/fókusz érvényes tárgyra tér vissza. A közös ikonrenderer minden új portéka eredeti alpha-cropját ugyanolyan kontrasztos, DPR-érzékeny háttéren rajzolja. Részletek: [Akash](MERCHANT.md).
+Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A sült hús és Akash teája külön `stack:true` bejegyzés, mennyiségük a mentett `meatCount` és `teaCount`; nem puszta küldetésjelző. A kártyán mennyiségjelvény, a részleteknél darabszám és fogyasztógomb jelenik meg. Az O alapú `useMeat` közös gyorshasználati billentyű átállítható és exportálható; a részleteknél kiválasztható hozzá hús vagy tea. A `quickHeal` kijelölés mentődik, és kifogyáskor a másik elérhető készletre vált; a leírás az aktuális kötést használja. Az utolsó darab után a kiválasztás/fókusz érvényes tárgyra tér vissza. A közös ikonrenderer minden új portéka eredeti alpha-cropját ugyanolyan kontrasztos, DPR-érzékeny háttéren rajzolja. Részletek: [Akash](MERCHANT.md).
 
 ## Árnyékvilág
 

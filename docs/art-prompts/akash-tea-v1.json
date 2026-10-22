@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "The user explicitly approved tea-concept-v1.png before production image generation. Mechanics were separately approved: 3 HP over 6 seconds, 25 coins.",
+  "useCase": "stylized-concept",
+  "references": [
+    ".codex/work/akash-tea/tea-concept-v1.png",
+    "assets/images/ui/compass-v1.png",
+    "assets/images/ui/roast-meat-v1.png"
+  ],
+  "concept": "Sealed stout indigo/teal glazed ceramic tea flask with pale bamboo-leaf decoration, cream lip/base rim, weathered copper neck collar and hemp cord with ochre tassel.",
+  "notes": [
+    "Generated using the approved concept as the referenced image.",
+    "Original image bytes and native RGBA alpha are preserved, with no matte removal, recolouring, compositing or resampling.",
+    "Bounds are [left,top,right-exclusive,bottom-exclusive]; crop is [x,y,width,height].",
+    "Complete cap, cord, side lug, tassel and ceramic base remain intact. Bright cream/copper highlights and the pale bamboo motif support dark inventory readability.",
+    "Low-alpha remote pixels extend beyond the alpha>=32 silhouette; native source transparency remains unchanged.",
+    "Root integrator owns ART_MANIFEST, ART_INVENTORY, colormap generation, browser rendering checks and build integration.",
+    "Integrator crop includes the complete nonzero-alpha bounds, including faint edge pixels."
+  ],
+  "assets": [
+    {
+      "key": "tea",
+      "path": "assets/images/ui/akash-tea-v1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaBounds1": [
+        33,
+        44,
+        1210,
+        1230
+      ],
+      "alphaBounds32": [
+        135,
+        46,
+        1183,
+        1212
+      ],
+      "alphaBounds128": [
+        136,
+        47,
+        1183,
+        1212
+      ],
+      "crop": [
+        33,
+        44,
+        1177,
+        1186
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: FINAL PRODUCTION INVENTORY ICON for Kiba, a hand-painted Japanese fantasy 2D game. The user explicitly APPROVED the supplied flask concept. Reference image is only a visual design/style reference; produce ONLY its ONE main tea flask, no concept sheet. Preserve the approved stout rounded dark indigo / teal glazed ceramic flask with short neck, tightly sealed low ceramic cap, cream ceramic lip, broad worn aged-copper neck collar, chunky hemp cord loop tied to a single small side lug on right, and ochre tassel hanging at right. Preserve the pale cream bamboo-leaf sprig painted on the belly, warm ivory base rim, scratches and subtle crackled ceramic glaze, rich dimensional dark contour, polished copper edge highlights. Exact design silhouette should match the approved main view; a small three-quarter view, body rounded but neck narrower. Transparent native RGBA background: every pixel outside the isolated object and inside cord gaps must genuinely be transparent. No parchment, shadow on floor, pedestal, cast ground shadow, decorative halo, silhouette swatch, second view or second item. Complete object including cap, rope loop, side lug, tassel tips and bottom rim all intact with at least 12 percent safe transparent margins on ALL sides. Center entire object INCLUDING right hanging cord so it fits balanced inside a square canvas at roughly 76 percent canvas height. Match the game's current roasted-meat and compass inventory icons: detailed painterly texture, bold crisp dark outline, strong warm cream highlights on rim/left shoulder and copper edges for readability on the dark inventory bag, fully opaque richly coloured material within the object. A single closed portable container for tea, no glowing fluid, no glass, no extra cup, no spilled liquid, no floating steam. Do not turn it into a potion bottle. No words, letters, symbols with writing, numbers, labels, UI, watermark, hands, people, photorealism, blur or cropping. Preserve original generated transparency and crisp detailed painted silhouette.",
+      "transparentBackground": true
+    }
+  ]
+}

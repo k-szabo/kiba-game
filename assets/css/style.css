@@ -191,7 +191,8 @@
 .shop-item canvas{width:112px;height:112px;border:1px solid #8d9da8;border-radius:6px;background:radial-gradient(ellipse at 50% 42%,#354858,#101a25 78%);filter:brightness(1.18) contrast(1.08) saturate(1.12)}
 #shopStatus{min-height:1.7em;margin:12px 0}#closeShop{min-height:48px;margin:0}
 #inventory .inventory-item{position:relative}#inventory .inventory-quantity{position:absolute;top:7px;right:7px;min-width:28px;padding:2px 5px;border:1px solid #ffe5a2;border-radius:5px;background:#101d29;color:#fff0cf;font-size:14px;font-weight:700}
-#useInventoryItem{min-height:48px;font-size:16px;padding:10px 24px}#inventoryQuantity{font-weight:700;color:#ffe1a4}
+#useInventoryItem,#assignQuickHeal{min-height:48px;font-size:16px;padding:10px 24px;margin:4px 12px 4px 0}#inventoryQuantity{font-weight:700;color:#ffe1a4}
+#inventoryQuickHeal{color:#ffe1a4;overflow-wrap:anywhere}
 .dream-active #coinPurse{display:none!important}
 
 #journeyHUD{position:absolute;left:35px;top:108px;width:350px;max-width:calc(100% - 70px);display:flex;flex-direction:column;gap:8px;pointer-events:none}

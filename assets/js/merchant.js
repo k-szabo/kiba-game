@@ -3,13 +3,26 @@
 const Merchant=(()=>{
  const catalogue=Object.freeze({
   roastMeat:Object.freeze({price:10,stack:true}),
+  tea:Object.freeze({price:25,stack:true}),
   compass:Object.freeze({price:220}),
   minimap:Object.freeze({price:360})
  });
  const rewards=Object.freeze({enemy:5,miniboss:20,boss:50});
- let initialized=false,returnFocus=null,renderId=0;
+ let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
- const stock=id=>id==='roastMeat'?meatCount:flags[1].includes(id)?1:0;
+ const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:flags[1].includes(id)?1:0;
+ function selectAvailable(){if(!stock(quickHeal)){const other=quickHeal==='tea'?'roastMeat':'tea';if(stock(other))quickHeal=other;}}
+ function selectQuick(id){
+  if(state!=='inventory'||!['roastMeat','tea'].includes(id)||!stock(id))return false;
+  quickHeal=id;persist();Inventory.render();return true;
+ }
+ function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='tea'?drink():eat();}
+ function addStock(id){
+  if(!catalogue[id]?.stack||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
+  if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else return false;
+  selectAvailable();
+  return true;
+ }
  const vendor=()=>forestCamp.npcs.find(n=>n.id==='akash');
  const nearVendor=()=>level===forestCamp&&rescued()&&pointNear(vendor(),95,85);
  function award(amount){
@@ -22,22 +35,34 @@ const Merchant=(()=>{
   flags[1].push('akashRescued');persist();updateHUD();
   story(I18n.t('merchant.name'),I18n.t('camp.name'),I18n.t('merchant.rescue.story'));return true;
  }
- function description(id){return id==='roastMeat'?I18n.format('inventory.description.roastMeat',[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
+ function description(id){return ['roastMeat','tea'].includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
  function purchase(id){
   if(state!=='shop'||$('shop').hidden||!nearVendor()||!Object.hasOwn(catalogue,id))return false;
   const product=catalogue[id];
   if(!product.stack&&stock(id))return false;
-  if(coins<product.price||product.stack&&meatCount===Number.MAX_SAFE_INTEGER)return false;
-  coins-=product.price;if(product.stack)meatCount++;else flags[1].push(id);
+  if(coins<product.price||product.stack&&stock(id)===Number.MAX_SAFE_INTEGER)return false;
+  coins-=product.price;if(product.stack)addStock(id);else flags[1].push(id);
   persist();updateHUD();render();$('shopStatus').textContent=I18n.t('merchant.purchased');return true;
  }
  function eat(fromInventory=false){
   if(Prologue.active||!player||player.hp<=0||!meatCount||state!==(fromInventory?'inventory':'play'))return false;
-  const delta=Math.random()<.5?1:-1,before=player.hp;
-  meatCount--;player.hp=Math.max(1,Math.min(player.maxHp,player.hp+delta));
+  const delta=Math.random()<2/3?2:-1,before=player.hp;
+  meatCount--;selectAvailable();player.hp=Math.max(1,Math.min(player.maxHp,player.hp+delta));
   persist();updateHUD();
-  toast(I18n.t(player.hp>before?'merchant.health.up':player.hp<before?'merchant.health.down':'merchant.health.same'));
+  toast(player.hp>before?I18n.format('message.arg0.of.arg1.health',[player.hp,player.maxHp]):I18n.t(player.hp<before?'merchant.health.down':'merchant.health.same'));
   if(fromInventory)Inventory.render();return true;
+ }
+ function canDrink(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&teaCount>0&&teaPulses===0;}
+ function drink(fromInventory=false){
+  if(state!==(fromInventory?'inventory':'play')||!canDrink())return false;
+  teaCount--;selectAvailable();teaElapsed=0;teaPulses=3;persist();updateHUD();if(fromInventory)Inventory.render();toast(I18n.t('merchant.tea.started'));return true;
+ }
+ function resetTea(){teaElapsed=0;teaPulses=0;}
+ function update(dt){
+  if(state!=='play'||Prologue.active||!player||player.hp<=0||!teaPulses||!Number.isFinite(dt)||dt<=0)return;
+  teaElapsed+=dt;
+  while(teaPulses&&teaElapsed+1e-9>=2){teaElapsed=Math.max(0,teaElapsed-2);teaPulses--;player.hp=Math.min(player.maxHp,player.hp+1);updateHUD();}
+  if(!teaPulses)teaElapsed=0;
  }
  function render(){
   const token=++renderId,focus=document.activeElement?.id;
@@ -52,7 +77,7 @@ const Merchant=(()=>{
    const body=document.createElement('p');body.textContent=description(id);
    const button=document.createElement('button');button.id='buy-'+id;button.type='button';
    const owned=!product.stack&&stock(id)>0;
-   button.disabled=!!owned||coins<product.price||product.stack&&meatCount===Number.MAX_SAFE_INTEGER;
+   button.disabled=!!owned||coins<product.price||product.stack&&stock(id)===Number.MAX_SAFE_INTEGER;
    button.textContent=owned?I18n.t('merchant.owned'):I18n.format('merchant.buy',[product.price]);
    button.onclick=()=>token===renderId&&purchase(id);card.append(name,body,button);grid.append(card);
   }
@@ -94,5 +119,5 @@ const Merchant=(()=>{
   for(const rest of level.rests)if(visitedRests[realm].includes(rest.id)){c.beginPath();c.arc(X(rest.x),Y(rest.y),4,0,Math.PI*2);c.fill();}
   c.fillStyle='#ffcb74';c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.arc(w/2,h/2,4,0,Math.PI*2);c.fill();c.stroke();c.restore();
  }
- return Object.freeze({init,open,close,render,free,purchase,eat,award,stock,description,catalogue,rewards,rescued,drawMinimap});
+ return Object.freeze({init,open,close,render,free,purchase,eat,drink,canDrink,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
 })();

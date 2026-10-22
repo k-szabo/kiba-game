@@ -37,7 +37,7 @@ assert(!run('artDraws.some(args=>args[0]===sheet)'),'Inventory portrait must not
 // alpha and crop coverage checks without another item-specific rendering branch.
 const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 for(const id of iconIds){
- run(`flags=[[],[],[],[]];meatCount=ART_INVENTORY.items[${JSON.stringify(id)}].stack?1:0;flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
+ run(`flags=[[],[],[],[]];meatCount=0;teaCount=0;if(ART_INVENTORY.items[${JSON.stringify(id)}].stack)Merchant.addStock(${JSON.stringify(id)});flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
  assert.equal(elements.get('inventoryGrid').children.length,1);
  const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
  assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);

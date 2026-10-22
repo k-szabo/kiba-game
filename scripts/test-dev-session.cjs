@@ -11,9 +11,9 @@ function saveState(h){
 }
 function assertSaveUnchanged(h,before,label){assert.deepEqual(saveState(h),before,label);}
 function begin(h){assert(h.run('DevTools.open()'));assert(h.run('DevSession.ready'));assert.equal(h.run('DevSession.begin()'),true);assert(h.run('DevSession.active'));}
-function permanent(h){return h.run('JSON.stringify({abilities,defeated,flags,visitedRests,shards,progression})');}
+function permanent(h){return h.run('JSON.stringify({abilities,defeated,flags,visitedRests,shards,coins,meatCount,teaCount,quickHeal,progression})');}
 function seedProgress(h){
- h.run("Prologue.stop();abilities=[true,true];defeated=[true,false,false,false];flags=[['forestBell','villageBell','guardian:oldAngel','angelHalo'],['soulUpper','soulLower'],[],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));progression=normalizeProgression({level:3,xp:12,totalXp:167,stats:{vitality:1,strength:1,spirit:0}});shards=17;enterRealm(1);state='play';persist();");
+ h.run("Prologue.stop();abilities=[true,true];defeated=[true,false,false,false];flags=[['forestBell','villageBell','guardian:oldAngel','angelHalo'],['soulUpper','soulLower','akashRescued'],[],[]];visitedRests=levels.map(l=>l.rests.map(r=>r.id));progression=normalizeProgression({level:3,xp:12,totalXp:167,stats:{vitality:1,strength:1,spirit:0}});shards=17;coins=100;meatCount=2;teaCount=4;quickHeal='tea';enterRealm(1);state='play';persist();");
 }
 
 // A developer-session entry point is guarded by the open panel and readiness.
@@ -48,11 +48,11 @@ function seedProgress(h){
 // Menu entry clones progression, whereas live entry keeps the running encounter.
 {
  const h=harness();seedProgress(h);const expected=permanent(h),before=saveState(h);
- h.run('mainMenu()');begin(h);
+ h.run("mainMenu();teaCount=99;quickHeal='roastMeat'");begin(h);
  assert.equal(h.run('level.id'),'japan','Menu tests start in Japan rather than replaying the dream');
  assert.equal(h.run('Prologue.active'),false);assert.equal(permanent(h),expected);
  assert(h.run('abilities!==saved.abilities&&defeated!==saved.defeated&&flags!==saved.flags&&flags.every((row,i)=>row!==saved.flags[i])&&visitedRests!==saved.visitedRests&&visitedRests.every((row,i)=>row!==saved.visitedRests[i])&&progression!==saved.progression&&progression.stats!==saved.progression.stats'),'Test progression must not share mutable save objects');
- h.run("abilities[0]=false;flags[0].push('test-only');visitedRests[0].push('test-only');progression.stats.strength++;shards++;persist()");
+ h.run("abilities[0]=false;flags[0].push('test-only');visitedRests[0].push('test-only');progression.stats.strength++;shards++;coins++;meatCount++;teaCount++;quickHeal='roastMeat';persist()");
  assertSaveUnchanged(h,before,'Mutating cloned test progression cannot mutate the saved baseline');
  h.run('mainMenu();startGame(true)');assert.equal(h.snap().realm,1);assert.equal(permanent(h),expected);
  h.run('player.hp=2;player.x+=37;enemies[0].hp=1;projectiles.push({x:10,y:20,life:5});');
@@ -85,9 +85,11 @@ function seedProgress(h){
 // First-time users may experiment without gaining a Continue save, even after
 // calling new-game/persist, and can subsequently start a normal fresh game.
 {
- const h=harness();h.run('mainMenu();saved=null;window.__saveSnapshots=[]');h.storage.clear();h.elements.get('continueButton').hidden=true;
+ const h=harness();h.run("mainMenu();saved=null;teaCount=99;quickHeal='tea';window.__saveSnapshots=[]");h.storage.clear();h.elements.get('continueButton').hidden=true;
  const baseline=saveState(h);begin(h);assert.equal(h.run('level.id'),'japan');assert.equal(h.run('Prologue.active'),false);
  assert.equal(h.snap().progression.level,1);assert.equal(h.snap().progression.totalXp,0);
+ assert.equal(h.run('teaCount'),0,'A no-save developer run discards any previous tea stack');
+ assert.equal(h.run('quickHeal'),'roastMeat','A no-save developer run restores the default quick healing item');
  h.run('DevTools.close();awardXP(120);persist();startGame(false);persist()');
  assertSaveUnchanged(h,baseline,'A no-save test must not create a Continue save or vault record');
  h.run('mainMenu()');assertSaveUnchanged(h,baseline,'Discarding a first-time test leaves no save');

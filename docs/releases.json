@@ -558,6 +558,26 @@
           "en": "The Shadow Realm’s prison and its jailer now occupy a clearly visible side route beneath the main path. Haru’s trace and the cathedral can be reached without the prison key."
         }
       ]
+    },
+    {
+      "version": "0.9.28_751b6178",
+      "code": "751b6178",
+      "baseVersion": "0.9.28",
+      "slug": "akash-tea-and-healing-quick-use",
+      "summary": {
+        "hu": "Akash új útravalói",
+        "en": "Akash’s new provisions"
+      },
+      "fixes": [
+        {
+          "hu": "A rejtélyes hús ⅔ eséllyel 2 HP-t gyógyít, ⅓ eséllyel 1 HP-t sebez. Akash fokozatosan gyógyító teát is árul; a tea a hátizsákból használható, és dev módban is hozzáadható.",
+          "en": "Mysterious meat now has a ⅔ chance to restore 2 HP and a ⅓ chance to deal 1 damage. Akash also sells tea that heals gradually; it can be used from the inventory and added in developer mode."
+        },
+        {
+          "hu": "Az O gyorsgombhoz hús vagy tea rendelhető, a kifogyó tárgy pedig automatikusan a másikra vált.",
+          "en": "Assign meat or tea to the O quick-use key; when the selected item runs out, it switches to the other if available."
+        }
+      ]
     }
   ]
 }
