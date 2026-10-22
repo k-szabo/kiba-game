@@ -116,6 +116,7 @@ def group(identifier, source, rects, metadata):
 
 
 manifest = atlas['manifest']
+entry_images = set(re.findall(r'assets/[^?"\s]+\.png', (ROOT / 'index.html').read_text(encoding='utf-8')))
 assets = {}
 for file in sorted((ROOT / 'assets').rglob('*.png')):
     source = file.relative_to(ROOT).as_posix()
@@ -123,7 +124,7 @@ for file in sorted((ROOT / 'assets').rglob('*.png')):
     keys = [k for k, v in manifest.items() if v == source]
     assets[source] = {'sha256': hashlib.sha256(file.read_bytes()).hexdigest(),
                       'width': int(arr.shape[1]), 'height': int(arr.shape[0]),
-                      'runtimeKeys': keys, 'usage': 'runtime' if keys or file.name in ('momo.png', 'momo-menu-idle-v2.png') else 'design-reference',
+                      'runtimeKeys': keys, 'usage': 'runtime' if keys or source in entry_images or file.name in ('momo.png', 'momo-menu-idle-v2.png') else 'design-reference',
                       'palette': colors(arr)}
 
 pc = {'momo': {'name': 'Momo', 'variants': {}}}

@@ -134,6 +134,8 @@ A beküldések a Tally Submissions felületén kezelhetők. A projekthez beáll�
 
 ## GitHub Pages
 
+A böngészőfül Momo-ikonját az `index.html` relatív `rel="icon"` hivatkozásai adják: `assets/images/ui/favicon-momo-v1.ico` (16/32/48 px) és `favicon-momo-v1.png` (192 px). Ezek az `assets/` mappával együtt automatikusan bekerülnek a Pages-csomagba, külön workflow-lépés nélkül. Az ikon cseréjekor a fájlverziót vagy a hivatkozás cache-azonosítóját is frissítsd.
+
 Az élő játék: **[k-szabo.github.io/kiba-game](https://k-szabo.github.io/kiba-game/)**.
 
 A mellékelt workflow minden branch pushán és pull requesten lefuttatja az ellenőrzéseket. Sikeres ellenőrzés után csak az alapértelmezett branch pusha vagy az azon kézzel indított futás publikálja a Pages-oldalt. Kizárólag az `index.html`, `.nojekyll` és `assets/` tartalmát csomagolja a Pages-oldalhoz. A README, a dokumentáció és a tesztek a repository részei, a publikált játékcsomagba nem kerülnek bele.
