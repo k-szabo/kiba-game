@@ -594,6 +594,22 @@
           "en": "The game is now called Kiba Realms; the interface and project documentation use the new name."
         }
       ]
+    },
+    {
+      "version": "0.9.30_b753f8f3",
+      "code": "b753f8f3",
+      "baseVersion": "0.9.30",
+      "slug": "samurai-aerial-attacks",
+      "summary": {
+        "hu": "A szamuráj légi támadásai",
+        "en": "The samurai’s aerial attacks"
+      },
+      "fixes": [
+        {
+          "hu": "A szamuráj boss előre jelzett ugró kardcsapásokat használ, és Momo első harci ugrása után eséllyel reagál a további ugrásokra.",
+          "en": "The samurai boss uses telegraphed jumping sword strikes and, after Momo’s first combat jump, may react to subsequent jumps."
+        }
+      ]
     }
   ]
 }
