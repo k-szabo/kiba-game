@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "User explicitly approved storyboard-v1.png (answer: elfogadom) before production generation.",
+  "useCase": "stylized-concept",
+  "references": [
+    ".codex/work/level-up/storyboard-v1.png"
+  ],
+  "notes": [
+    "Original generated RGBA bytes preserved; no recolouring, alpha edits, resampling or matte removal.",
+    "Effect-only atlas: no character, floor, symbols or text. Open center keeps Momo readable.",
+    "Native alpha 0..253; very faint alpha 1..2 pixels reach cell boundaries; visible strokes alpha>=16 stay within cells. Use full 512-square cell crops and standard source-over rendering.",
+    "Suggested local center/baseline anchor (256,438). Ring center lies approximately at y438 top row and y419 bottom row; recommended anchorY top-row438, bottom-row419 compensates this registration drift.",
+    "Suggested overall duration 1.6 seconds, frame endpoints 0.16,0.38,0.64,0.9,1.22,1.6; fade final frame smoothly to alpha0. Reduced motion may use mild static first frame with low opacity.",
+    "Draw behind Momo and before boss telegraphs; target whole-atlas cell height 140px around 96px Momo. No changes to hitboxes or combat state.",
+    "Integrating agent owns art manifest/crops, browser checks, runtime build and colormap refresh."
+  ],
+  "assets": [
+    {
+      "key": "levelUp",
+      "path": "assets/images/effects/level-up-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "transparentBackground": true,
+      "alphaBounds16Local": [
+        [
+          33,
+          271,
+          476,
+          479
+        ],
+        [
+          34,
+          187,
+          471,
+          480
+        ],
+        [
+          24,
+          70,
+          495,
+          491
+        ],
+        [
+          23,
+          12,
+          495,
+          479
+        ],
+        [
+          40,
+          63,
+          480,
+          474
+        ],
+        [
+          47,
+          199,
+          473,
+          468
+        ]
+      ],
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 438
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 438
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 438
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 419
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 419
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512,
+          "anchorX": 256,
+          "anchorY": 419
+        }
+      ],
+      "prompt": "Create a PRODUCTION sprite sheet of six isolated magical level-up VFX in a STRICT 3 columns × 2 rows grid, canvas1536×1024, each cell512×512. Native transparent PNGalpha. CRITICAL: background must be fully transparent blackzeroalpha BETWEEN effects and around all sheet edges; no amber haze, no atmospheric fog, no bloom spilling across cells, no litbackdrop. Keep EVERY stroke and spark of EACH effect inside cell rectangle x80..432,y70..440; empty transparent margin at least70pixels. All six feet-origin positions atlocalx256,y425. Only fine painted GOLD AND IVORY ribbons, thin lightstreaks, and tiny flecks. NO opaque backdrop, no broad glows, no fullfield color. The approved storyboard is design reference ONLY: remove character/body,ground,scene,background. Draw VFX ONLY. Golden elliptical brush ring at bottom around empty center, progressive sidewisps. Sequence rowmajor:1low ring and fewsmallmotes;2thin lowrise sidewisps;3golden spiral rises on left and rightaround an EMPTY middle;4brightestopen spiral with slender ivory-cored vertical lines on leftandright;5thinner breakingwisps;6few fadedflecks with only shortlow wisps. Center x170..340,y130..360 in eachcell mostlyclear: do not paint a pillar there. Detailed handmade brush filaments and golden dustlike approvedreference but confined inexactequalcells, no flatvector/sharpgeometricclipart. ALL upper wisps stay belowy70safearea. No feet, no dog, no body, no objects, no text, no symbols, no dividers. Transparent pixels should comprise most image. Brightness from concentrated narrow brushcores, not from broad fog or bloom. No shadows."
+    }
+  ]
+}

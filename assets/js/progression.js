@@ -2,6 +2,15 @@
 'use strict';
 const STAT_LIMIT=PROGRESSION_RULES.statLimit,LEVEL_LIMIT=PROGRESSION_RULES.levelLimit;
 let progression = freshProgression();
+// A transient cue, separate from saved progression and ordinary particles.
+const LevelUpEffect=(()=>{
+  const duration=1.6;
+  let remaining=0;
+  function clear(){remaining=0;}
+  function start(){if(player&&state==='play'&&!Prologue.active)remaining=duration;}
+  function update(dt){if(state==='play'&&Number.isFinite(dt)&&dt>0)remaining=Math.max(0,remaining-dt);}
+  return Object.freeze({start,update,clear,duration,get remaining(){return remaining;},get progress(){return 1-remaining/duration;}});
+})();
 function freshProgression() {return {level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};}
 function xpForLevel(n) {return PROGRESSION_RULES.xpForLevel(n);}
 function normalizeProgression(data,worldFlags=[]) {
@@ -30,7 +39,7 @@ function awardXP(amount) {
     progression.xp-=xpForLevel(progression.level);progression.level++;progression.points++;gained++;
   }
   if(progression.level===LEVEL_LIMIT)progression.xp=0;
-  if(gained){burst(player.x+player.w/2,player.y+25,'#ffe59a',35);tone(880,.5);toast(I18n.format("message.level.up.momo.is.level.arg0.arg1.training.points",[progression.level,progression.points]));}
+  if(gained){LevelUpEffect.start();tone(880,.5);toast(I18n.format("message.level.up.momo.is.level.arg0.arg1.training.points",[progression.level,progression.points]));}
   updateProgressHUD();persist();
 }
 function updateProgressHUD() {

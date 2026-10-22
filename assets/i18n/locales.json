@@ -138,7 +138,7 @@
       "text.sound.off": "Hang: ki",
       "text.sound.on": "Hang: be",
       "story.haru.waits.above.the.clouds.your.path.leads.upward": "Haru a felhők fölött vár. Itt felfelé vezet az út: ugorj a fénylő szélfolyamokba, és hagyd, hogy magasba emeljenek. Oldalra kilépve szállj le a felhőszigetekre, majd kettős ugrással és szellemlépéssel folytasd az emelkedést. A legfelső pecsétet J-vel törheted fel. Az utolsó őrző fölött találod az apa oltárát.",
-      "text.an.old.memory.of.haru.warms.the.amulet.you": "Haru egy régi emléke megmelegíti az amulettet. Nyolc lélektöredéket kaptál, és az életerőd feltöltődött.",
+      "text.an.old.memory.of.haru.warms.the.amulet.you": "Haru egy régi emléke megmelegíti az amulettet. Az életerőd feltöltődött.",
       "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru első emléke visszatér. Az őrző mögött, keletre megnyílt a fénylő torii. Állj a kapu alá, és nyomj E-t. Ha a szél áldása még nem kísér, keresd fel a szél szentélyét.",
       "story.haru.kneels.before.the.little.samurai.i.knew.you": "Haru letérdel a kis szamuráj elé. „Tudtam, hogy eljössz.” Momo végre leteszi a kardját. Erdőkön és falvakon át, a világ mélyéről az ég tetejéig jutott, és egyetlen pillanatra sem felejtette el, kit szeretne megmenteni. Apa és fia együtt indulnak haza.",
       "story.haru.s.second.memory.has.set.momo.s.sword": "Haru második emléke lángra gyújtotta Momo kardját. A hajnalkard erősebb, és J-vel feltöri az égi pecséteket. A legalsó terem keleti torii kapuján át emelkedhetsz az égbe.",
@@ -681,7 +681,10 @@
       "menu.changelog.0930.title": "A szamuráj légi támadásai",
       "menu.changelog.0930.jump": "A szamuráj boss előre jelzett ugró kardcsapásokat használ, és Momo első harci ugrása után eséllyel reagál a további ugrásokra.",
       "menu.changelog.0931.title": "Momo a böngészőfülön",
-      "menu.changelog.0931.favicon": "A játék böngészőikonján Momo arca jelenik meg."
+      "menu.changelog.0931.favicon": "A játék böngészőikonján Momo arca jelenik meg.",
+      "menu.changelog.0932.title": "Látványosabb szintlépés, tisztább felület",
+      "menu.changelog.0932.light": "Szintlépéskor aranyló Kiba-fény veszi körül Momót; csökkentett mozgás mellett visszafogott jelzés jelenik meg.",
+      "menu.changelog.0932.hud": "A használaton kívüli lélektöredék-számláló eltűnt a felületről."
     }
   },
   "en": {
@@ -823,7 +826,7 @@
       "text.sound.off": "Sound: off",
       "text.sound.on": "Sound: on",
       "story.haru.waits.above.the.clouds.your.path.leads.upward": "Haru waits above the clouds. Your path leads upward: jump into the glowing wind streams and let them lift you. Move sideways onto cloud islands, then continue climbing with double-jumps and Spirit Dash. Break the uppermost seal with J. Your father's altar lies above the final guardian.",
-      "text.an.old.memory.of.haru.warms.the.amulet.you": "An old memory of Haru warms the amulet. You received eight soul fragments and your health was restored.",
+      "text.an.old.memory.of.haru.warms.the.amulet.you": "An old memory of Haru warms the amulet. Your health was restored.",
       "story.haru.s.first.memory.returns.the.glowing.torii.has": "Haru's first memory returns. The glowing torii has opened east of the guardian. Stand beneath it and press E. If the wind's blessing is not yet with you, seek the wind shrine.",
       "story.haru.kneels.before.the.little.samurai.i.knew.you": "Haru kneels before the little samurai. “I knew you would come.” Momo finally puts down his sword. Through forests and villages, from the world's depths to the summit of heaven, he never once forgot whom he wanted to save. Father and son set off for home together.",
       "story.haru.s.second.memory.has.set.momo.s.sword": "Haru's second memory has set Momo's sword alight. The Dawnblade is stronger and breaks celestial seals with J. Pass through the eastern torii in the lowest chamber to reach heaven.",
@@ -1366,7 +1369,10 @@
       "menu.changelog.0930.title": "The samurai’s aerial attacks",
       "menu.changelog.0930.jump": "The samurai boss uses telegraphed jumping sword strikes and, after Momo’s first combat jump, may react to subsequent jumps.",
       "menu.changelog.0931.title": "Momo on the browser tab",
-      "menu.changelog.0931.favicon": "The game’s browser icon now shows Momo’s face."
+      "menu.changelog.0931.favicon": "The game’s browser icon now shows Momo’s face.",
+      "menu.changelog.0932.title": "Clearer level-ups and a cleaner HUD",
+      "menu.changelog.0932.light": "Golden Kiba light surrounds Momo on level-up, with a gentler cue when reduced motion is enabled.",
+      "menu.changelog.0932.hud": "The unused soul-fragment counter has been removed from the HUD."
     }
   }
 }

@@ -626,6 +626,26 @@
           "en": "The game’s browser icon now shows Momo’s face."
         }
       ]
+    },
+    {
+      "version": "0.9.32_5800c6b2",
+      "code": "5800c6b2",
+      "baseVersion": "0.9.32",
+      "slug": "level-up-light-and-clean-hud",
+      "summary": {
+        "hu": "Látványosabb szintlépés, tisztább felület",
+        "en": "Clearer level-ups and a cleaner HUD"
+      },
+      "fixes": [
+        {
+          "hu": "Szintlépéskor aranyló Kiba-fény veszi körül Momót; csökkentett mozgás mellett visszafogott jelzés jelenik meg.",
+          "en": "Golden Kiba light surrounds Momo on level-up, with a gentler cue when reduced motion is enabled."
+        },
+        {
+          "hu": "A használaton kívüli lélektöredék-számláló eltűnt a felületről.",
+          "en": "The unused soul-fragment counter has been removed from the HUD."
+        }
+      ]
     }
   ]
 }
