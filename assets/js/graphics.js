@@ -558,6 +558,19 @@ const Visuals = (() => {
     }
     ctx.restore();
   }
+  function levelUp(x,feet,progress,gentle=false){
+    if(progress<0||progress>=1)return;
+    const frames=ART_FRAMES.levelUp;
+    function paint(index,alpha){
+      if(alpha<=0)return;
+      ctx.save();ctx.globalAlpha*=alpha;
+      frame('levelUp',frames[index],x,feet,140);ctx.restore();
+    }
+    if(gentle){paint(0,.55);return;}
+    const position=progress*(frames.length-1),index=Math.floor(position),mix=position-index;
+    const fade=.85*Math.min(1,progress/.12,(1-progress)/.25);
+    paint(index,fade*(1-mix));if(index+1<frames.length)paint(index+1,fade*mix);
+  }
   function momoSlash(x,feet,height,elapsed,face,kind='normal'){
     if(kind==='heavy'){
       const index=ART_FRAMES.momoHeavy.findIndex(pose=>elapsed<pose.end);
@@ -787,5 +800,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,momoSlash,dashTrail,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,dashTrail,secretScenery};
 })();

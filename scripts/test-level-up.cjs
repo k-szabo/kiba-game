@@ -59,4 +59,45 @@ assert(!/id=["']souls["']/.test(fs.readFileSync(path.join(root,'index.html'),'ut
 for(const file of ['assets/js/game.js','assets/js/prologue.js','assets/css/style.css']){
  const text=fs.readFileSync(path.join(root,file),'utf8');assert(!/\$\(['"]souls['"]\)|#souls\b/.test(text),file+' has no stale counter writes/styles');
 }
-console.log('PASS: real enemy XP level-up cue, unchanged progression/health/abilities, invalid/cap/load/stat/dev exclusions, bounded multi-level duration, 30/60/120fps, paused panels/viewport, transition resets and removed soul HUD.');
+// Painted frames remain inside the real atlas; anchors are source-global.
+const png=fs.readFileSync(path.join(root,r('ART_MANIFEST.levelUp'))),width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+assert.equal(png[25],6,'The VFX atlas retains its RGBA alpha channel');
+const frames=JSON.parse(r('JSON.stringify(ART_FRAMES.levelUp)'));assert.equal(frames.length,6);
+for(const frame of frames){
+ assert(frame.x>=0&&frame.y>=0&&frame.x+frame.w<=width&&frame.y+frame.h<=height,'Each VFX crop fits its PNG');
+ assert(frame.anchorX>frame.x&&frame.anchorX<frame.x+frame.w&&frame.anchorY>frame.y&&frame.anchorY<frame.y+frame.h,'Grounding anchor is inside its own source cell');
+}
+// This small Canvas spy verifies frame/opacity choice and balanced state without
+// claiming that mocked draws prove painted visual quality.
+r(`var qaDraws=[],qaStack=[],qaTransform=[1,0,0,1,0,0];
+ ctx.globalAlpha=.37;ctx.globalCompositeOperation='source-over';
+ ctx.save=()=>qaStack.push({alpha:ctx.globalAlpha,composite:ctx.globalCompositeOperation,matrix:[...qaTransform]});
+ ctx.restore=()=>{const s=qaStack.pop();if(!s)throw Error('Unbalanced Canvas restore');ctx.globalAlpha=s.alpha;ctx.globalCompositeOperation=s.composite;qaTransform=s.matrix;};
+ ctx.translate=(x,y)=>{qaTransform[4]+=qaTransform[0]*x+qaTransform[2]*y;qaTransform[5]+=qaTransform[1]*x+qaTransform[3]*y;};
+ ctx.scale=(x,y)=>{qaTransform[0]*=x;qaTransform[1]*=x;qaTransform[2]*=y;qaTransform[3]*=y;};
+ ctx.drawImage=(image,...args)=>{if(image===Visuals.images.levelUp)qaDraws.push({args,alpha:ctx.globalAlpha,matrix:[...qaTransform]});};`);
+const draws=()=>JSON.parse(r('JSON.stringify(qaDraws)'));
+for(const progress of [.12,.4,.72,.98]){
+ r(`qaDraws=[];Visuals.levelUp(400,500,${progress},false)`);const calls=draws();assert(calls.length>0&&calls.length<=2);
+ assert(calls.every(c=>c.alpha>0&&c.alpha<=.37*.85&&c.args.every(Number.isFinite)),'Crossfade draws use bounded opacity and finite coordinates');
+ near(r('ctx.globalAlpha'),.37,'Animated effect restores inherited opacity');assert.equal(r('ctx.globalCompositeOperation'),'source-over');assert.equal(r('qaStack.length'),0);
+}
+let gentle;
+for(const progress of [0,.2,.6,.99]){
+ r(`qaDraws=[];Visuals.levelUp(400,500,${progress},true)`);const calls=draws();assert.equal(calls.length,1);
+ assert.equal(calls[0].args[0],frames[0].x);assert.equal(calls[0].args[1],frames[0].y);near(calls[0].alpha,.37*.55,'Reduced motion uses constant gentle opacity');
+ if(gentle)assert.deepEqual(calls,gentle,'Reduced-motion cue has no sprite or transform motion');gentle=calls;
+ assert.equal(r('qaStack.length'),0);near(r('ctx.globalAlpha'),.37,'Gentle effect restores opacity');
+}
+for(const p of [-.1,1,2]){r(`qaDraws=[];Visuals.levelUp(400,500,${p},false)`);assert.equal(draws().length,0,'No expired or pre-start drawing');}
+r('Prologue.stop();enterRealm(0);state="play";enemies=[];LevelUpEffect.start();LevelUpEffect.update(.5);qaDraws=[]');
+const renderBefore=r('JSON.stringify({player,progression,flags,abilities,time,remaining:LevelUpEffect.remaining})');
+r('draw();draw()');assert(draws().length>0,'The actual main draw path renders the active cue');
+assert.equal(r('JSON.stringify({player,progression,flags,abilities,time,remaining:LevelUpEffect.remaining})'),renderBefore,'Rendering does not advance cue or mutate gameplay');
+r('pause();qaDraws=[];update(.5);draw()');assert(draws().length>0,'Paused world retains its current cue');
+assert.equal(r('JSON.stringify({player,progression,flags,abilities,time,remaining:LevelUpEffect.remaining})'),renderBefore,'Pause draw freezes gameplay and VFX progress');
+r('pause();LevelUpEffect.clear();qaDraws=[];draw()');assert.equal(draws().length,0,'Inactive cue is not rendered');
+for(const scene of ['defeated[0]=true;enterForestCamp({save:false})',"enterRealm(1);defeated[1]=true;flags[1].push('councilGateOpen');enterCouncilHall()"]){
+ assert(r(scene));r('state="play";LevelUpEffect.start();LevelUpEffect.update(.5);qaDraws=[];draw()');assert(draws().length>0,'Side-area draw paths use the same effect renderer');assert.equal(r('qaStack.length'),0);
+}
+console.log('PASS: real XP cue and false-trigger exclusions; bounded timing at30/60/120fps; pause/transition resets; removed soul HUD; atlas bounds, gentle static frame, Canvas restoration, render purity and main/side-area integration.');
