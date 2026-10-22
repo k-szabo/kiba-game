@@ -106,7 +106,7 @@
       "text.cave.of.the.forgotten.cult": "Az elfeledett szekta barlangja",
       "text.summoning.minions": "CSATLÓSOK IDÉZÉSE",
       "text.e.the.guardian.s.oath.seals.the.passage": "E · Az őrző esküje zárja az átjárót",
-      "text.e.rest.heal.and.save": "E · Pihenés, gyógyulás és mentés",
+      "text.e.rest.heal.and.save": "E · Pihenés, gyógyulás és mentés · U · Fejlesztés",
       "text.e.embrace.your.father": "E · Öleld meg édesapádat",
       "text.a.little.samurai.s.great.journey": "EGY KIS SZAMURÁJ NAGY UTAZÁSA",
       "text.a.moment.of.stillness": "EGY LÉLEGZETNYI CSEND",
@@ -661,7 +661,10 @@
       "menu.changelog.0926.title": "Remény az árnyékvilágban",
       "menu.changelog.0926.trace": "Haru templom előtti nyoma egy rövid történeti jelenettel és egyszeri, legfeljebb 2 HP gyógyulással ad erőt Momónak.",
       "menu.changelog.0927.title": "Opcionális börtön az árnyékvilágban",
-      "menu.changelog.0927.prison": "Az árnyékvilág börtöne és őre a főút alatti, jól látható mellékágra került. Haru nyoma és a katedrális a börtönkulcs nélkül is elérhető."
+      "menu.changelog.0927.prison": "Az árnyékvilág börtöne és őre a főút alatti, jól látható mellékágra került. Haru nyoma és a katedrális a börtönkulcs nélkül is elérhető.",
+      "menu.changelog.0927.cues.title": "Támadásjelzések és szentélyüzenetek javítása",
+      "menu.changelog.0927.cues.jailer": "A börtönőr fejszés támadásának előjelzése a többi bosséhoz illő, szaggatott keretet kapott.",
+      "menu.changelog.0927.cues.shrine": "A szentélyek üzenete mindkét nyelven jelzi a fejlesztést és az aktuális gombkiosztást."
     }
   },
   "en": {
@@ -771,7 +774,7 @@
       "text.cave.of.the.forgotten.cult": "Cave of the Forgotten Cult",
       "text.summoning.minions": "SUMMONING MINIONS",
       "text.e.the.guardian.s.oath.seals.the.passage": "E · The guardian's oath seals the passage",
-      "text.e.rest.heal.and.save": "E · Rest, heal, and save",
+      "text.e.rest.heal.and.save": "E · Rest, heal, and save · U · Train",
       "text.e.embrace.your.father": "E · Embrace your father",
       "text.a.little.samurai.s.great.journey": "A LITTLE SAMURAI'S GREAT JOURNEY",
       "text.a.moment.of.stillness": "A MOMENT OF STILLNESS",
@@ -1326,7 +1329,10 @@
       "menu.changelog.0926.title": "Hope in the Shadow Realm",
       "menu.changelog.0926.trace": "Haru’s trace before the temple strengthens Momo with a brief story scene and a one-time heal of up to 2 HP.",
       "menu.changelog.0927.title": "Optional prison in the Shadow Realm",
-      "menu.changelog.0927.prison": "The Shadow Realm’s prison and its jailer now occupy a clearly visible side route beneath the main path. Haru’s trace and the cathedral can be reached without the prison key."
+      "menu.changelog.0927.prison": "The Shadow Realm’s prison and its jailer now occupy a clearly visible side route beneath the main path. Haru’s trace and the cathedral can be reached without the prison key.",
+      "menu.changelog.0927.cues.title": "Attack cue and shrine prompt fixes",
+      "menu.changelog.0927.cues.jailer": "The jailer’s axe attack now uses a dashed warning outline consistent with other bosses.",
+      "menu.changelog.0927.cues.shrine": "Shrine prompts now show training and the current control bindings in both languages."
     }
   }
 }
