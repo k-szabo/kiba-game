@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "User explicitly approved the phone-case concept before production generation; parent integrator conveyed this approval.",
+  "useCase": "precise-object-edit",
+  "references": [
+    ".codex/work/akash-sales/phonecase-concept-v1.png",
+    "assets/images/ui/compass-v1.png",
+    "assets/images/ui/akash-tea-v1.png"
+  ],
+  "concept": "An empty modern protective phone case rendered as a mysterious merchant oddity: indigo-charcoal textured interior, worn gold bumper and cloud ornament, small blossom crest and red cord.",
+  "notes": [
+    "Original generated PNG bytes and native RGBA alpha preserved; no recolouring, matte removal or resizing.",
+    "Complete nonzero-alpha bounds used for crop. Camera and bottom port holes sampled alpha 0.",
+    "No paper background, ground plane, text or ground shadow.",
+    "Root integrator owns ART_INVENTORY, manifest, colormaps and browser verification."
+  ],
+  "assets": [
+    {
+      "key": "phoneCase",
+      "path": "assets/images/ui/phone-case-v1.png",
+      "size": [
+        1145,
+        1374
+      ],
+      "mode": "RGBA",
+      "alphaBounds1": [
+        49,
+        26,
+        1083,
+        1354
+      ],
+      "crop": [
+        49,
+        26,
+        1034,
+        1328
+      ],
+      "transparentBackground": true,
+      "prompt": "Use case: precise-object-edit. Final transparent Japanese fantasy game inventory icon, based exactly on the supplied APPROVED empty phone-case concept. Preserve the one empty modern protective case's three-quarter diagonal perspective, indigo-charcoal lacquer/leather surface, worn gold edges and cloud scroll details, small gold blossom crest and red knotted cord inside, empty camera cutout upper left, side and bottom port cutouts. It must be clearly EMPTY, no phone, screen, glass, or camera lenses inside. Convert this approved concept into a polished hand-painted RPG inventory sprite with stronger warm gold rim highlights and slightly lighter blue-indigo middle so the full silhouette remains readable over a dark blue-grey inventory tile. Keep complete case and red cord with generous transparent margin at all sides. Remove parchment and all cast ground shadow: genuinely transparent RGBA background everywhere outside the object AND inside the open camera hole and port holes (see through to transparency, not beige paper or black solid panels). No rectangle backdrop, no ground plane, no writing, no brand, no UI, no badge. Faithfully preserve the approved visual direction; only improve finished brush detail and native legibility."
+    }
+  ]
+}

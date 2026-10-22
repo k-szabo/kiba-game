@@ -9,7 +9,7 @@ const SWORD_DURATION=.42,SWORD_IMPACT=.16;
 const SWORD_ATTACKS=Object.freeze({normal:Object.freeze({duration:SWORD_DURATION,impact:SWORD_IMPACT,cooldown:.34,damageScale:.75}),heavy:Object.freeze({duration:.9,impact:.38,cooldown:.9,damageScale:1.75})});
 const H=720;
 let viewW=1280,scale=1,camera=0,cameraY=0,time=0,levelTime=0,last=0,state='menu',realm=0,level=levels[0],platforms=[];
-let abilities=[false,false],defeated=levels.map(()=>false),flags=levels.map(()=>[]),visitedRests=levels.map(()=>[]),shards=0,saved=null;
+let abilities=[false,false],defeated=levels.map(()=>false),flags=levels.map(()=>[]),visitedRests=levels.map(()=>[]),shards=0,soldItems=[],saved=null;
 let coins=0,meatCount=0,teaCount=0,quickHeal='roastMeat';
 let player,enemies=[],boss,particles=[],drops=[],projectiles=[],checkpoint=null,visits=new Set();
 let councilReturn=null;
@@ -44,7 +44,7 @@ function resize(){
 }
 addEventListener('resize',resize);resize();
 SaveVault.ready.then(data=>{storageReady=true;saved=data;$('continueButton').hidden=!data;if(SaveVault.notice)toast(I18n.t(SaveVault.notice));if(DevTools.isOpen)DevTools.refresh();});
-function persist(){if(DevSession.active)return;saved={version:2,layout:2,release:GAME_RELEASE.version,realm,location:level===forestCamp?'forestCamp':null,prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,coins,meatCount,teaCount,quickHeal,progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
+function persist(){if(DevSession.active)return;saved={version:2,layout:2,release:GAME_RELEASE.version,realm,location:level===forestCamp?'forestCamp':null,prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,coins,meatCount,teaCount,quickHeal,soldItems:[...soldItems],progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
 function saveFailed(){if(!saveWarning){saveWarning=true;toast(I18n.t("text.saving.failed.check.your.browser.storage"));}}
 function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add('visible');toastTimer=5;}
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
@@ -88,7 +88,7 @@ function leaveCouncilHall(toShrine=false){
 }
 function startGame(resume=false){if(resolutionBlocked)return;if(!storageReady){toast(I18n.t("text.the.save.is.still.loading"));return;}if(!loadingReady||Visuals.loaded<Visuals.total){toast(I18n.t("text.the.artwork.is.still.loading"));return;}if(Visuals.failures.length){toast(I18n.t("text.an.artwork.file.could.not.be.loaded.please.reload"));return;}
  const resetForRelease=!!(resume&&saved&&saved.release!==GAME_RELEASE.version),old=resume&&!resetForRelease?saved:null;
- abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;quickHeal=old?.quickHeal??'roastMeat';progression=normalizeProgression(old?.progression,flags);
+ abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);shards=old?old.shards:0;soldItems=old?[...(old.soldItems||[])]:[];coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;quickHeal=old?.quickHeal??'roastMeat';progression=normalizeProgression(old?.progression,flags);
  Prologue.stop();if(old?.location==='forestCamp')enterForestCamp({save:false,atShrine:true});else enterRealm(old?old.realm:0,old?.checkpoint);state='play';$('menu').hidden=true;showHUD(true);
  if(!old||old.prologueComplete===false){Prologue.start();persist();}else{persist();toast(I18n.t('text.your.journey.continues.where.you.last.rested'));}
  if(resetForRelease)toast(I18n.t('text.save.reset.new.version'));

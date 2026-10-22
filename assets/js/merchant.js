@@ -5,12 +5,13 @@ const Merchant=(()=>{
   roastMeat:Object.freeze({price:10,stack:true}),
   tea:Object.freeze({price:25,stack:true}),
   compass:Object.freeze({price:220}),
-  minimap:Object.freeze({price:360})
+  minimap:Object.freeze({price:360}),
+  phoneCase:Object.freeze({price:500})
  });
  const rewards=Object.freeze({enemy:5,miniboss:20,boss:50});
  let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
- const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:flags[1].includes(id)?1:0;
+ const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
  function selectAvailable(){if(!stock(quickHeal)){const other=quickHeal==='tea'?'roastMeat':'tea';if(stock(other))quickHeal=other;}}
  function selectQuick(id){
   if(state!=='inventory'||!['roastMeat','tea'].includes(id)||!stock(id))return false;
@@ -41,8 +42,20 @@ const Merchant=(()=>{
   const product=catalogue[id];
   if(!product.stack&&stock(id))return false;
   if(coins<product.price||product.stack&&stock(id)===Number.MAX_SAFE_INTEGER)return false;
-  coins-=product.price;if(product.stack)addStock(id);else flags[1].push(id);
+  coins-=product.price;if(product.stack)addStock(id);else{if(!flags[1].includes(id))flags[1].push(id);soldItems=soldItems.filter(item=>item!==id);}
   persist();updateHUD();render();$('shopStatus').textContent=I18n.t('merchant.purchased');return true;
+ }
+ function salePrice(id){return Object.hasOwn(MERCHANT_SALES,id)?MERCHANT_SALES[id].price:0;}
+ function canSell(id){
+  const price=salePrice(id);
+  return state==='inventory'&&!$('inventory').hidden&&nearVendor()&&price>0&&Inventory.quantity(id)>0&&price<=Number.MAX_SAFE_INTEGER-coins;
+ }
+ function sell(id){
+  if(!canSell(id))return false;
+  const price=salePrice(id);
+  if(id==='roastMeat')meatCount--;else if(id==='tea')teaCount--;else soldItems.push(id);
+  selectAvailable();coins+=price;persist();updateHUD();Inventory.render();
+  $('inventoryTradeStatus').textContent=I18n.t('merchant.sold');return true;
  }
  function eat(fromInventory=false){
   if(Prologue.active||!player||player.hp<=0||!meatCount||state!==(fromInventory?'inventory':'play'))return false;
@@ -69,6 +82,7 @@ const Merchant=(()=>{
   $('shopTitle').textContent=I18n.t('merchant.shop.title');$('shopIntro').textContent=I18n.t('merchant.greeting');
   $('shopCoins').textContent=I18n.t('merchant.coins')+': '+coins;
   $('closeShop').textContent=I18n.t('inventory.close');$('shopStatus').textContent='';
+  $('shopSell').textContent=I18n.t('merchant.sell.title');
   const grid=$('shopItems');grid.replaceChildren();
   for(const [id,product]of Object.entries(catalogue)){
    const card=document.createElement('section');card.className='shop-item';
@@ -94,6 +108,7 @@ const Merchant=(()=>{
  }
  function init(){
   if(initialized)return;initialized=true;$('closeShop').onclick=close;
+  $('shopSell').onclick=()=>{if(state==='shop'&&nearVendor()){close();Inventory.open();}};
   $('shop').addEventListener('keydown',event=>{
    if(state!=='shop'||event.key!=='Tab')return;
    const nodes=[...$('shop').querySelectorAll('button:not([disabled])')].filter(node=>node.getClientRects().length);
@@ -119,5 +134,5 @@ const Merchant=(()=>{
   for(const rest of level.rests)if(visitedRests[realm].includes(rest.id)){c.beginPath();c.arc(X(rest.x),Y(rest.y),4,0,Math.PI*2);c.fill();}
   c.fillStyle='#ffcb74';c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.arc(w/2,h/2,4,0,Math.PI*2);c.fill();c.stroke();c.restore();
  }
- return Object.freeze({init,open,close,render,free,purchase,eat,drink,canDrink,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
+ return Object.freeze({init,open,close,render,free,purchase,salePrice,canSell,sell,nearVendor,eat,drink,canDrink,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
 })();

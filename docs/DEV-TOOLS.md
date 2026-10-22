@@ -99,3 +99,5 @@ Ha a panelt nyitott inventoryból vagy boltból nyitod, a visszatérés újraraj
 ### Árnyékvilág
 
 A negyedik birodalom minden pihenőhelye a közös teleportkatalógus része; a normál történeti belépést és az oltár utazási zárját a dev teleport nem kéri. A Boss újraélesztése eszköz találkozásválasztójából a főboss és az aktuális pálya minibossai külön indíthatók. A miniboss újraindítása a tartós győzelmi és jutalomjelzőket megőrzi; ismételt jutalom nincs. A pap lelke, a kotta és a börtönkulcs a közös tárgykatalóguson keresztül adható. A tesztmód továbbra sem ír normál mentést.
+
+A tárgyadó a telefontokot is tartalmazza. Egy eladott, egyedi tárgy ismételt hozzáadása a tesztmódban törli az eladásjelzőt, a megszerzési jelzőt nem duplikálja; már felhasznált kulcsok továbbra sem támadnak fel. A `soldItems` a többi inventory-állapottal együtt elszigetelt a normál mentéstől.

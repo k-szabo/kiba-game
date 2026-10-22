@@ -2,6 +2,14 @@
 'use strict';
 // Shared progression rules also load before the standalone save validator.
 const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>60+(n-1)*35});
+// Sale prices and unique-item realms are shared with strict save validation.
+const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
+ roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
+ compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
+ oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
+ seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},
+ serpentScale:{price:150,realm:1},daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
+}).map(([id,product])=>[id,Object.freeze(product)])));
 // Earned reward flags, rather than held items or replayable encounters, own
 // the permanent bonus-point budget. Shared with the standalone save validator.
 const BOSS_REWARDS=Object.freeze([
@@ -105,7 +113,7 @@ yomi.gates=[
 ];
 yomi.hazards=[{x:520,y:3025,w:180,h:15},{x:2260,y:3385,w:150,h:15},{x:860,y:4215,w:160,h:15}];
 yomi.progressFlags=['councilKeyEarned','councilGateOpen','serpentScale'];
-yomi.progressFlags.push('akashRescued','compass','minimap');
+yomi.progressFlags.push('akashRescued','compass','minimap','phoneCase');
 // A deliberately unmapped upper annex. Keep the ordinary descent's map scale.
 yomi.top=-2300;yomi.mapTop=0;
 yomi.secrets=[{id:'slayerGrave',name:I18n.t('text.yomi.the.world.s.depths'),x:100,y:-2300,w:1500,h:680,

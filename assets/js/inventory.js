@@ -1,9 +1,9 @@
 /* Inventory is a view of persistent quest flags; opening it never writes a save. */
 'use strict';
 const Inventory=(()=>{
- let initialized=false,returnFocus=null,selected=null;
+ let initialized=false,returnFocus=null,selected=null,pendingSale=null,renderId=0;
  const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue);
- function quantity(id){const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ function quantity(id){const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
  function contents(){return ids.filter(id=>quantity(id)>0);}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
@@ -26,7 +26,7 @@ const Inventory=(()=>{
  function weaponName(){return I18n.t(defeated[1]?'item.dawnblade':'inventory.weapon.sword');}
  function details(id){
   $('inventoryDetailName').textContent=id==='weapon'?weaponName():id?I18n.t(catalogue[id].name):I18n.t('inventory.empty.title');
-  $('inventoryDetailType').textContent=I18n.t(id==='weapon'?'inventory.type.equipped':id&&catalogue[id].stack?'inventory.type.consumable':id&&catalogue[id].category==='travelGear'?'inventory.type.travelGear':id?'inventory.type.quest':'inventory.type.backpack');
+  $('inventoryDetailType').textContent=I18n.t(id==='weapon'?'inventory.type.equipped':id&&catalogue[id].stack?'inventory.type.consumable':id&&catalogue[id].category==='travelGear'?'inventory.type.travelGear':id&&catalogue[id].category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
   $('inventoryDetailText').textContent=id==='weapon'?I18n.format('inventory.weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!id||!catalogue[id]?.stack;
   $('inventoryQuantity').textContent=id&&catalogue[id]?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
@@ -35,10 +35,20 @@ const Inventory=(()=>{
   $('assignQuickHeal').hidden=!['roastMeat','tea'].includes(id);$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
   $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
+  pendingSale=null;$('inventorySaleConfirm').hidden=true;
+  const price=Merchant.salePrice(id);
+  $('sellInventoryItem').hidden=!id||id==='weapon'||!price;
+  $('sellInventoryItem').disabled=!Merchant.canSell(id);
+  $('sellInventoryItem').textContent=I18n.format('merchant.sell.price',[price]);
+  $('inventorySellHint').textContent=!id?'':!price?I18n.t('merchant.unsellable'):!Merchant.nearVendor()?I18n.t('merchant.sell.visit'):'';
+  $('confirmInventorySale').textContent=I18n.t('merchant.sell.confirm');$('cancelInventorySale').textContent=I18n.t('merchant.sell.cancel');
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}
  function render(){
+  renderId++;
+  const saleFocused=['sellInventoryItem','confirmInventorySale','cancelInventorySale'].includes(document.activeElement?.id);
   const items=contents(),active=document.activeElement?.dataset?.inventoryItem,useFocused=document.activeElement?.id==='useInventoryItem',assignFocused=document.activeElement?.id==='assignQuickHeal';
+  $('inventoryTradeStatus').textContent='';
   const labels={inventoryTitle:'inventory.title',inventoryPaused:'inventory.paused',inventoryBagTitle:'inventory.bag.title',inventoryCapacity:'inventory.capacity',inventoryEquipmentTitle:'inventory.equipment.title',inventoryWeaponLabel:'inventory.weapon.slot',inventoryEquipped:'inventory.equipped',closeInventory:'inventory.close'};
   for(const [id,key] of Object.entries(labels))$(id).textContent=I18n.t(key);
   $('inventoryButton').setAttribute('aria-label',I18n.t('inventory.open'));
@@ -57,21 +67,28 @@ const Inventory=(()=>{
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
   choose(selected==='weapon'||items.includes(selected)?selected:items[0]||null);
   if(useFocused&&['roastMeat','tea'].includes(selected)&&!$('useInventoryItem').disabled)$('useInventoryItem').focus();
-  else if(active||useFocused||assignFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
+  else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
   if(state!=='play'||!player)return false;
-  returnFocus=document.activeElement;keys.clear();pressed.clear();state='inventory';render();$('inventory').hidden=false;$('closeInventory').focus();return true;
+  returnFocus=document.activeElement;keys.clear();pressed.clear();state='inventory';$('inventory').hidden=false;render();$('closeInventory').focus();return true;
  }
  function close(){
   if(state!=='inventory')return false;
-  $('inventory').hidden=true;state='play';keys.clear();pressed.clear();
+  pendingSale=null;renderId++;$('inventory').hidden=true;state='play';keys.clear();pressed.clear();
   if(returnFocus?.isConnected&&typeof returnFocus.focus==='function')returnFocus.focus();else $('inventoryButton').focus();return true;
  }
  function init(){
   if(initialized)return;initialized=true;
   $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');
   $('useInventoryItem').onclick=()=>{if(state!=='inventory')return;if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);};
+  $('sellInventoryItem').onclick=()=>{
+   if(!Merchant.canSell(selected))return;
+   pendingSale={id:selected,token:renderId};$('inventorySalePrompt').textContent=I18n.format('merchant.sell.question',[I18n.t(catalogue[selected].name)]);
+   $('inventorySaleConfirm').hidden=false;$('confirmInventorySale').focus();
+  };
+  $('confirmInventorySale').onclick=()=>{const sale=pendingSale;pendingSale=null;if(sale&&sale.token===renderId&&sale.id===selected)Merchant.sell(sale.id);};
+  $('cancelInventorySale').onclick=()=>{pendingSale=null;$('inventorySaleConfirm').hidden=true;$('sellInventoryItem').focus();};
   $('assignQuickHeal').onclick=()=>Merchant.selectQuick(selected);
   $('inventory').addEventListener('keydown',event=>{
    if(event.key!=='Tab'||state!=='inventory')return;

@@ -8,7 +8,9 @@ const DevItems=(()=>{
   if(typeof id!=='string'||!Object.hasOwn(ART_INVENTORY.items,id))return false;
   const item=ART_INVENTORY.items[id];
   if(item.stack){if(!Merchant.addStock(id))return false;updateHUD();return true;}
-  if(flags[item.realm].includes(id)||item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))return 'dev.item.owned';
+  if(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))return 'dev.item.owned';
+  if(soldItems.includes(id)&&flags[item.realm].includes(id)){soldItems=soldItems.filter(value=>value!==id);updateHUD();return true;}
+  if(flags[item.realm].includes(id))return 'dev.item.owned';
   flags[item.realm].push(id);updateHUD();return true;
  }
  function addCoins(values){

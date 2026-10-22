@@ -392,6 +392,10 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.prisonKey"
     },
+    "inventoryItem.phoneCase": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.phoneCase"
+    },
     "inventoryItem.compass": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.compass"
@@ -7143,6 +7147,107 @@
         ],
         "visibleSamples": 336740,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.phoneCase": {
+      "source": "assets/images/ui/phone-case-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.phoneCase",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1c1718",
+            "coveragePercent": 16.4871
+          },
+          {
+            "hex": "#252730",
+            "coveragePercent": 14.7846
+          },
+          {
+            "hex": "#343946",
+            "coveragePercent": 14.6614
+          },
+          {
+            "hex": "#0c0808",
+            "coveragePercent": 13.3448
+          },
+          {
+            "hex": "#424c5e",
+            "coveragePercent": 9.812
+          },
+          {
+            "hex": "#512c14",
+            "coveragePercent": 7.061
+          },
+          {
+            "hex": "#8b511d",
+            "coveragePercent": 4.2512
+          },
+          {
+            "hex": "#b7742e",
+            "coveragePercent": 3.8109
+          },
+          {
+            "hex": "#674c3a",
+            "coveragePercent": 3.7876
+          },
+          {
+            "hex": "#666872",
+            "coveragePercent": 3.0981
+          },
+          {
+            "hex": "#e5992a",
+            "coveragePercent": 2.6832
+          },
+          {
+            "hex": "#f4c74e",
+            "coveragePercent": 1.8825
+          },
+          {
+            "hex": "#f8f6de",
+            "coveragePercent": 1.2089
+          },
+          {
+            "hex": "#a69c9b",
+            "coveragePercent": 1.1574
+          },
+          {
+            "hex": "#faea90",
+            "coveragePercent": 1.1463
+          },
+          {
+            "hex": "#b91b14",
+            "coveragePercent": 0.8231
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945923",
+            "coveragePercent": 31.4031
+          },
+          {
+            "hex": "#c1792c",
+            "coveragePercent": 27.2502
+          },
+          {
+            "hex": "#e9a42f",
+            "coveragePercent": 21.3008
+          },
+          {
+            "hex": "#f7d55e",
+            "coveragePercent": 13.5613
+          },
+          {
+            "hex": "#b71a13",
+            "coveragePercent": 6.3482
+          },
+          {
+            "hex": "#476287",
+            "coveragePercent": 0.1364
+          }
+        ],
+        "visibleSamples": 740229,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "object.inventoryItem.compass": {
@@ -21612,6 +21717,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/ui/phone-case-v1.png": {
+      "sha256": "53b8095159905dca8561378b280860fd4206cc9cbfe0ae8d43b18fec38f79c20",
+      "width": 1145,
+      "height": 1374,
+      "runtimeKeys": [
+        "phoneCase"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1c1718",
+            "coveragePercent": 16.4871
+          },
+          {
+            "hex": "#252730",
+            "coveragePercent": 14.7846
+          },
+          {
+            "hex": "#343946",
+            "coveragePercent": 14.6614
+          },
+          {
+            "hex": "#0c0808",
+            "coveragePercent": 13.3448
+          },
+          {
+            "hex": "#424c5e",
+            "coveragePercent": 9.812
+          },
+          {
+            "hex": "#512c14",
+            "coveragePercent": 7.061
+          },
+          {
+            "hex": "#8b511d",
+            "coveragePercent": 4.2512
+          },
+          {
+            "hex": "#b7742e",
+            "coveragePercent": 3.8109
+          },
+          {
+            "hex": "#674c3a",
+            "coveragePercent": 3.7876
+          },
+          {
+            "hex": "#666872",
+            "coveragePercent": 3.0981
+          },
+          {
+            "hex": "#e5992a",
+            "coveragePercent": 2.6832
+          },
+          {
+            "hex": "#f4c74e",
+            "coveragePercent": 1.8825
+          },
+          {
+            "hex": "#f8f6de",
+            "coveragePercent": 1.2089
+          },
+          {
+            "hex": "#a69c9b",
+            "coveragePercent": 1.1574
+          },
+          {
+            "hex": "#faea90",
+            "coveragePercent": 1.1463
+          },
+          {
+            "hex": "#b91b14",
+            "coveragePercent": 0.8231
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945923",
+            "coveragePercent": 31.4031
+          },
+          {
+            "hex": "#c1792c",
+            "coveragePercent": 27.2502
+          },
+          {
+            "hex": "#e9a42f",
+            "coveragePercent": 21.3008
+          },
+          {
+            "hex": "#f7d55e",
+            "coveragePercent": 13.5613
+          },
+          {
+            "hex": "#b71a13",
+            "coveragePercent": 6.3482
+          },
+          {
+            "hex": "#476287",
+            "coveragePercent": 0.1364
+          }
+        ],
+        "visibleSamples": 740229,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/ui/pocket-map-v1.png": {
       "sha256": "f3ddf9a66468c9f949cf132b87047dd38720ebb00d6e5c690c404019997ec5c5",
       "width": 1254,
@@ -22855,6 +23065,13 @@
         "dynamic": false
       },
       {
+        "value": "#172938",
+        "lines": [
+          227
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#1a2d32",
         "lines": [
           2
@@ -22878,7 +23095,8 @@
       {
         "value": "#24323c",
         "lines": [
-          190
+          190,
+          227
         ],
         "dynamic": false
       },
@@ -22992,7 +23210,8 @@
       {
         "value": "#778188",
         "lines": [
-          190
+          190,
+          227
         ],
         "dynamic": false
       },
@@ -23063,7 +23282,8 @@
       {
         "value": "#bac2c6",
         "lines": [
-          190
+          190,
+          227
         ],
         "dynamic": false
       },
@@ -23313,7 +23533,8 @@
           2,
           3,
           70,
-          85
+          85,
+          227
         ],
         "dynamic": false
       },
@@ -23739,7 +23960,8 @@
           180,
           186,
           194,
-          195
+          195,
+          227
         ],
         "dynamic": false
       },
@@ -25396,35 +25618,35 @@
       {
         "value": "#101d29",
         "lines": [
-          113
+          128
         ],
         "dynamic": false
       },
       {
         "value": "#8ad8df",
         "lines": [
-          118
+          133
         ],
         "dynamic": false
       },
       {
         "value": "#d8c7a2",
         "lines": [
-          116
+          131
         ],
         "dynamic": false
       },
       {
         "value": "#ffcb74",
         "lines": [
-          120
+          135
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          120
+          135
         ],
         "dynamic": false
       }

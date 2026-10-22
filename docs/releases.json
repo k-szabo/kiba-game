@@ -646,6 +646,22 @@
           "en": "The unused soul-fragment counter has been removed from the HUD."
         }
       ]
+    },
+    {
+      "version": "0.9.33_df5905f9",
+      "code": "df5905f9",
+      "baseVersion": "0.9.33",
+      "slug": "akash-sales-and-phone-case",
+      "summary": {
+        "hu": "Adásvétel Akashnál",
+        "en": "Trading with Akash"
+      },
+      "fixes": [
+        {
+          "hu": "Akash az inventoryból eladható holmikat, bosslelkeket és zsákmányt is megveszi; kínálatában egy különös telefontok is megjelent.",
+          "en": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock."
+        }
+      ]
     }
   ]
 }

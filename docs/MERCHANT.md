@@ -4,7 +4,7 @@ Akash magas, vékony ember, indiai utazó; Yomi `secret-tomb` párkányán, a `(
 
 ## Érmék és árak
 
-Az érmék a meglévő fejlesztési szilánkoktól független pénznem. A zsákmány automatikusan bekerül a pénztárcába, és az XP-vel együtt mentődik.
+Az érmék a kereskedés pénzneme. A zsákmány automatikusan bekerül a pénztárcába, és az XP-vel együtt mentődik.
 
 | Forrás | Érme | Ismétlés |
 | --- | --- | --- |
@@ -54,3 +54,24 @@ Az O alapértelmezésű, átállítható művelet belső azonosítója kompatibi
 A tea 2, 4 és 6 aktív másodpercnél legfeljebb 1–1 HP-t gyógyít. Nem lépi túl a maximumot, teljes HP-n és aktív teahatás mellett újabb adag nem fogyasztható. Az inventory, szünet, dialógus és egyéb panelek fagyasztják az időzítőt. Halál, helyszínváltás, főmenü és a tesztmód befejezése törli a hatást, az el nem fogyasztott készletet megőrzi. A hatás átmeneti, mentésbe nem kerül. A készlet és a gyorshasználati választás szigorúan validált és az aktuális kiadáson belül mentődik.
 
 A `test-merchant-tea.cjs` ellenőrzi a hús pontos valószínűségi határát, a teát 30/60/120 FPS mellett, a szünetet, a készletek elkülönítését, a dev adást, az aktuális inputot és az automatikus váltást. A tea teljes natív alpha-képe a közös `ART_INVENTORY.items` rendererrel jelenik meg; gyártási rekord: [akash-tea-v1.json](art-prompts/akash-tea-v1.json).
+
+## Eladás Akashnak
+
+A bolt eladásgombja az inventoryt nyitja meg. Eladás csak a kiszabadított Akash közelében, a látható inventoryból végezhető, külön megerősítéssel. A kijelölés, nyelvváltás, újrarajzolás vagy bezárás érvényteleníti a függő megerősítést. A szükséges kulcsok, glória, szarv, Alkonyat Pecsétje, megrontott ének és a felszerelt kard nem eladható.
+
+| Holmi | Vétel | Eladás |
+| --- | ---: | ---: |
+| Hús | 10 | 4 |
+| Tea | 25 | 10 |
+| Iránytű | 220 | 90 |
+| Kis útitérkép | 360 | 140 |
+| Telefontok | 500 | 50 |
+| Esküszegő / Yomi-őrző / szeráf / őrült pap lelke | — | 200 / 300 / 500 / 600 |
+| Lávakígyó pikkelye | — | 150 |
+| Daisy / Démonölő számszeríja | — | 120 / 300 |
+
+A telefontok egyszerre egy példányban birtokolható, eladás után újravásárolható, használati hatása nincs. A közös árlista és egyedi tárgy–világ hozzárendelés a `levels.js` `MERCHANT_SALES` táblája; a bolti vételárak a `Merchant.catalogue` adatai. Eladáskor az érmejóváírás és a tárgy levonása egyetlen mentési állapot. Biztonságos egész túlcsordulás esetén a művelet módosítás nélkül elutasított.
+
+Az egyedi tárgyak eredeti megszerzési jelzője megmarad, a birtoklást a mentett, szigorúan validált `soldItems` lista szűri. Így a bossjutalom, XP és statpont nem vész el, a zsákmány nem jelenik meg újra, a kígyó jutalma nem farmolható újra. Az eladott iránytű/minimap kikapcsol, visszavásárláskor a régi megszerzési jelző duplikálása nélkül áll helyre. A fogyó holmik a meglévő készletből fogynak; az utolsó kijelölt adag eladása a másik készletre kapcsol, ha van belőle. A már elfogyasztott tea átmeneti hatása független a megmaradt készlet eladásától.
+
+A `test-merchant-sales.cjs` a tranzakciókat, megerősítést, védett tárgyakat, visszavásárlást és ismételt eladás kizárását ellenőrzi; a titkosított mentési köröket a `test-save-release.cjs` végzi.
