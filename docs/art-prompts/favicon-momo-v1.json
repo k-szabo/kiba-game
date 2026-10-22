@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "useCase": "identity-preserve",
+  "reference": "assets/images/ui/momo-inventory-v1.png",
+  "prompt": "Adapt the existing Momo portrait into a browser favicon: only the complete shiba head, ears and red headband. Preserve facial identity, orange/cream fur, friendly expression, dark outlines and painted style. Center the head in a square with transparent padding. No body, armor, tail, background, glow, badge or text. Keep ears and headband ends complete and readable at small sizes.",
+  "outputs": [
+    {"path": "assets/images/ui/favicon-momo-v1.png", "size": [192, 192], "mode": "RGBA"},
+    {"path": "assets/images/ui/favicon-momo-v1.ico", "sizes": [16, 32, 48], "encoding": "PNG frames, 32-bit RGBA"}
+  ],
+  "export": "Generated transparent artwork exported to standard favicon sizes with System.Drawing HighQualityBicubic resampling. Native transparency retained; no matte removal or recoloring."
+}

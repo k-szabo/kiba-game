@@ -610,6 +610,22 @@
           "en": "The samurai boss uses telegraphed jumping sword strikes and, after Momo’s first combat jump, may react to subsequent jumps."
         }
       ]
+    },
+    {
+      "version": "0.9.31_ce5a01d4",
+      "code": "ce5a01d4",
+      "baseVersion": "0.9.31",
+      "slug": "momo-browser-favicon",
+      "summary": {
+        "hu": "Momo a böngészőfülön",
+        "en": "Momo on the browser tab"
+      },
+      "fixes": [
+        {
+          "hu": "A játék böngészőikonján Momo arca jelenik meg.",
+          "en": "The game’s browser icon now shows Momo’s face."
+        }
+      ]
     }
   ]
 }

@@ -679,7 +679,9 @@
       "menu.changelog.0929.title": "Új név: Kiba Birodalmak",
       "menu.changelog.0929.rename": "A játék neve Kiba Birodalmak lett; a felület és a projekt dokumentációja az új nevet használja.",
       "menu.changelog.0930.title": "A szamuráj légi támadásai",
-      "menu.changelog.0930.jump": "A szamuráj boss előre jelzett ugró kardcsapásokat használ, és Momo első harci ugrása után eséllyel reagál a további ugrásokra."
+      "menu.changelog.0930.jump": "A szamuráj boss előre jelzett ugró kardcsapásokat használ, és Momo első harci ugrása után eséllyel reagál a további ugrásokra.",
+      "menu.changelog.0931.title": "Momo a böngészőfülön",
+      "menu.changelog.0931.favicon": "A játék böngészőikonján Momo arca jelenik meg."
     }
   },
   "en": {
@@ -1362,7 +1364,9 @@
       "menu.changelog.0929.title": "New name: Kiba Realms",
       "menu.changelog.0929.rename": "The game is now called Kiba Realms; the interface and project documentation use the new name.",
       "menu.changelog.0930.title": "The samurai’s aerial attacks",
-      "menu.changelog.0930.jump": "The samurai boss uses telegraphed jumping sword strikes and, after Momo’s first combat jump, may react to subsequent jumps."
+      "menu.changelog.0930.jump": "The samurai boss uses telegraphed jumping sword strikes and, after Momo’s first combat jump, may react to subsequent jumps.",
+      "menu.changelog.0931.title": "Momo on the browser tab",
+      "menu.changelog.0931.favicon": "The game’s browser icon now shows Momo’s face."
     }
   }
 }

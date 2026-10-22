@@ -20984,6 +20984,109 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/ui/favicon-momo-v1.png": {
+      "sha256": "b3b3e86123be81abc0e3fb883a12aa40c7d2018f140a25a461d0fa7dff5deacc",
+      "width": 192,
+      "height": 192,
+      "runtimeKeys": [],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcf4e0",
+            "coveragePercent": 29.0164
+          },
+          {
+            "hex": "#fcb034",
+            "coveragePercent": 26.4945
+          },
+          {
+            "hex": "#f91e1f",
+            "coveragePercent": 10.3091
+          },
+          {
+            "hex": "#040201",
+            "coveragePercent": 9.0522
+          },
+          {
+            "hex": "#f8d8bb",
+            "coveragePercent": 5.647
+          },
+          {
+            "hex": "#f59417",
+            "coveragePercent": 3.2145
+          },
+          {
+            "hex": "#29140d",
+            "coveragePercent": 2.942
+          },
+          {
+            "hex": "#de0914",
+            "coveragePercent": 2.8912
+          },
+          {
+            "hex": "#592206",
+            "coveragePercent": 2.1712
+          },
+          {
+            "hex": "#c16f12",
+            "coveragePercent": 1.5529
+          },
+          {
+            "hex": "#894c0b",
+            "coveragePercent": 1.4724
+          },
+          {
+            "hex": "#fac77b",
+            "coveragePercent": 1.3438
+          },
+          {
+            "hex": "#fdfdfa",
+            "coveragePercent": 1.0893
+          },
+          {
+            "hex": "#a3050e",
+            "coveragePercent": 1.0214
+          },
+          {
+            "hex": "#564f4b",
+            "coveragePercent": 0.9885
+          },
+          {
+            "hex": "#a19285",
+            "coveragePercent": 0.7936
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fcb033",
+            "coveragePercent": 56.6755
+          },
+          {
+            "hex": "#f71c1d",
+            "coveragePercent": 25.1832
+          },
+          {
+            "hex": "#ed8c14",
+            "coveragePercent": 6.7325
+          },
+          {
+            "hex": "#bd0511",
+            "coveragePercent": 4.655
+          },
+          {
+            "hex": "#a25b10",
+            "coveragePercent": 4.3563
+          },
+          {
+            "hex": "#fbc36d",
+            "coveragePercent": 2.3975
+          }
+        ],
+        "visibleSamples": 21349,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/ui/katana-inventory-v1.png": {
       "sha256": "3def1700b7a0334e715ee3229dbf8b9beea31cefb38d4f1fed01ecd67d84fb5c",
       "width": 1024,
