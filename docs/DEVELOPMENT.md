@@ -202,3 +202,7 @@ Az `input` csak sikeresen végrehajtott ugrás után hívja a `samuraiObserveJum
 ## Szintlépés-visszajelzés
 
 A `progression.js` átmeneti `LevelUpEffect` állapota csak valódi XP-alapú szintlépéskor indul, 1,6 másodpercre. Egy több szintet adó jutalom egyetlen effektet indít; a dev-szintbeállító és a mentés betöltése nem szimulál szintlépést. Az időt az aktív játék főciklusa lépteti egyszer képkockánként, a játékos inicializálása és a főmenü törli. A jelzés nem kerül mentésbe. A `Visuals.levelUp` hat natív alfás képkockát úsztat egymásba, a játékos és a boss-előjelzések mögött. Csökkentett mozgásnál az első képkocka álló, halvány változata látható. A megjelenítés önmagában nem léptet időt és nem változtat játékállapotot. A régi lélektöredék HUD-számláló és az elválasztója megszűnt; a mentések belső örökölt mezője nem látható játékosszöveg.
+
+## Tárgyeladás és megszerzési előzmény
+
+A `soldItems` mentett listát a jelenlegi birtoklás nézetei használják, az eredeti világjelzők történeti előzmények maradnak. Új eladható egyedi tárgyhoz a közös `MERCHANT_SALES` szabályt, realm-hozzárendelést és megszerzési előfeltételeket is frissíteni kell. A mentésvalidátor nem enged eladott, de meg nem szerzett vagy védett tárgyat. A `Merchant.stock` és `Inventory.quantity` az eladás figyelembevételével válaszol; közvetlen `flags.includes` nem helyettesítheti őket a birtoklás vizsgálatánál. Részletek: [MERCHANT.md](MERCHANT.md#eladás-akashnak).

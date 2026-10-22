@@ -60,7 +60,7 @@ function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={})
 }
 
 function fixture(release=current){
- return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
+ return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
 }
 function plain(value){return JSON.parse(JSON.stringify(value));}
 
@@ -247,6 +247,28 @@ async function main(){
  const campShop=copy(merchant);campShop.realm=0;campShop.location='forestCamp';
  campShop.checkpoint=plain(vm.runInContext('forestCamp.rests[0]',shopClient));campShop.visitedRests[0].push('forestCamp');
  await shopClient.vault.write(campShop);assert.deepEqual(plain(await client(shopEnv).vault.ready),campShop);
+ const soldGear=copy(campShop);soldGear.soldItems=['compass','minimap'];soldGear.coins+=230;
+ await shopClient.vault.write(soldGear);assert.deepEqual(plain(await client(shopEnv).vault.ready),soldGear,'Sold travel gear retains its acquisition history after encrypted reload');
+ const reboughtGear=copy(soldGear);reboughtGear.soldItems=reboughtGear.soldItems.filter(id=>id!=='compass');reboughtGear.coins-=220;
+ await shopClient.vault.write(reboughtGear);assert.deepEqual(plain(await client(shopEnv).vault.ready),reboughtGear,'A rebought unique restores ownership without deleting acquisition history');
+ const phone=copy(campShop);phone.flags[1].push('phoneCase');phone.coins-=500;
+ await shopClient.vault.write(phone);assert.deepEqual(plain(await client(shopEnv).vault.ready),phone,'The phone case is valid merchant inventory');
+ phone.soldItems.push('phoneCase');phone.coins+=50;
+ await shopClient.vault.write(phone);assert.deepEqual(plain(await client(shopEnv).vault.ready),phone,'The sold phone case remains recorded until repurchased');
+ const soldSoul=copy(campShop);soldSoul.flags[0].push('bossRewardClaimed','oathbreakerSoul');soldSoul.progression.points++;soldSoul.soldItems=['oathbreakerSoul'];soldSoul.coins+=200;
+ await shopClient.vault.write(soldSoul);assert.deepEqual(plain(await client(shopEnv).vault.ready),soldSoul,'Selling a soul preserves its claimed reward and permanent training-point budget');
+ const missingSoulHistory=copy(soldSoul);missingSoulHistory.flags[0]=missingSoulHistory.flags[0].filter(id=>id!=='oathbreakerSoul');
+ assert.throws(()=>shopClient.vault.write(missingSoulHistory),/Invalid sold inventory/,'Sale cannot erase soul acquisition history');
+ const missingSoulBudget=copy(soldSoul);missingSoulBudget.progression.points--;
+ assert.throws(()=>shopClient.vault.write(missingSoulBudget),/Invalid save schema/,'Sale cannot erase the earned boss point');
+ for(const invalidValue of [undefined,null,{},'compass',['compass','compass'],['unknown'],['angelHalo'],['councilKey'],['roastMeat'],['tea'],['serpentScale'],[null],[1]]){
+  const invalid=copy(campShop);invalid.soldItems=invalidValue;
+  assert.throws(()=>shopClient.vault.write(invalid),/Invalid sold inventory/,'Sold items must be a unique list of acquired, unprotected unique items');
+ }
+ const unrescuedSale=copy(soldSoul);unrescuedSale.flags[1]=[];unrescuedSale.meatCount=0;unrescuedSale.teaCount=0;
+ assert.throws(()=>shopClient.vault.write(unrescuedSale),/Invalid sold inventory/,'Sales require rescued Akash even for independently acquired loot');
+ const dreamSale=copy(soldSoul);dreamSale.prologueComplete=false;
+ assert.throws(()=>shopClient.vault.write(dreamSale),/Invalid dream inventory/,'Sales cannot be present during the prologue');
  const purchased=copy(campShop);purchased.coins-=10;purchased.meatCount++;
  await shopClient.vault.write(purchased);assert.deepEqual(plain(await client(shopEnv).vault.ready),purchased,'A purchase reloads its currency debit and food credit together');
  const consumed=copy(purchased);consumed.meatCount--;
@@ -279,7 +301,7 @@ async function main(){
   const missing=copy(campShop);delete missing[key];
   assert.throws(()=>shopClient.vault.write(missing),/Invalid merchant inventory/,`${key} is required for the current release`);
  }
- for(const item of ['compass','minimap','roastMeat','tea']){
+ for(const item of ['compass','minimap','phoneCase','roastMeat','tea']){
   const unrescued=copy(campShop);unrescued.flags[1]=['roastMeat','tea'].includes(item)?[]:[item];unrescued.meatCount=item==='roastMeat'?1:0;unrescued.teaCount=item==='tea'?1:0;
   assert.throws(()=>shopClient.vault.write(unrescued),/Invalid merchant progress/,'Purchases cannot predate Akash rescue');
  }

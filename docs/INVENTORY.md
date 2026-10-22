@@ -72,3 +72,7 @@ Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A 
 ## Árnyékvilág
 
 Az Őrült pap lelke automatikus főbossjutalom. A Megrontott szent ének az opcionális orgonista után vehető fel; a Börtönkulcs a börtönőr után. A kulcs az első börtönnyitáskor elfogy, a nyitás tartós. Mindhárom ikon a közös DPR- és kontrasztkezelést használja. A [pálya és mentés részletei](SHADOW-REALM.md), valamint a [grafikai promptok](art-prompts/shadow-realm-v1.json) tartalmazzák az integrációt.
+
+## Eladás és jelenlegi birtoklás
+
+Akash közelében az eladható kijelölt tárgy eladási gombot kap, külön megerősítéssel. A `quantity` az egyedi megszerzési jelző mellett a `soldItems` listát és az elfogyasztási jelzőket is ellenőrzi. Az eladott tárgy eltűnik, a világ történeti jelzői megmaradnak. A telefontok `trinket` kategória, közös kontrasztos DPR-es ikonrajzolóval. Árak és mentési részletek: [Akash kereskedője](MERCHANT.md#eladás-akashnak).

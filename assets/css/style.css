@@ -223,3 +223,5 @@
 #dialog.slayer-warning button{min-height:48px;font-size:17px}
 
 .resolution-notice{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;overflow:auto;background:var(--ink);color:var(--paper)}.resolution-notice p{width:100%;max-width:560px;margin:auto;font-size:18px;line-height:1.7;overflow-wrap:anywhere}.resolution-notice:focus-visible{outline:3px solid var(--gold);outline-offset:-6px}
+
+#sellInventoryItem,#confirmInventorySale,#cancelInventorySale,#shopSell{min-height:48px;font-size:16px;padding:10px 24px;margin:4px 12px 4px 0}#inventorySaleConfirm{padding:14px;border:1px solid #d9ba7b;border-radius:8px;background:#172938}#inventorySellHint,#inventoryTradeStatus{font-size:16px;line-height:1.6;color:#ffe1a4;overflow-wrap:anywhere}#sellInventoryItem:disabled{opacity:1;color:#bac2c6;background:#24323c;border-color:#778188;cursor:default}

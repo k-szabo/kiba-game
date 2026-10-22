@@ -684,7 +684,20 @@
       "menu.changelog.0931.favicon": "A játék böngészőikonján Momo arca jelenik meg.",
       "menu.changelog.0932.title": "Látványosabb szintlépés, tisztább felület",
       "menu.changelog.0932.light": "Szintlépéskor aranyló Kiba-fény veszi körül Momót; csökkentett mozgás mellett visszafogott jelzés jelenik meg.",
-      "menu.changelog.0932.hud": "A használaton kívüli lélektöredék-számláló eltűnt a felületről."
+      "menu.changelog.0932.hud": "A használaton kívüli lélektöredék-számláló eltűnt a felületről.",
+      "item.phoneCase": "Telefontok",
+      "inventory.type.trinket": "Csecsebecse",
+      "inventory.description.phoneCase": "Akash szerint egy távoli kor különös talizmánját óvja. Momo egyetlen tárgyát sem tudja beleilleszteni. Nincs használati hatása.",
+      "merchant.sell.title": "Eladás Akashnak",
+      "merchant.sell.price": "Eladás: {0} érme",
+      "merchant.sell.question": "Eladod ezt a tárgyat: {0}?",
+      "merchant.sell.confirm": "Eladás megerősítése",
+      "merchant.sell.cancel": "Mégse",
+      "merchant.sold": "A tárgyat eladtad Akashnak.",
+      "merchant.sell.visit": "Eladáshoz keresd fel Akasht az erdei menedékben.",
+      "merchant.unsellable": "Ez a tárgy nem eladható.",
+      "menu.changelog.0933.title": "Adásvétel Akashnál",
+      "menu.changelog.0933.trade": "Akash az inventoryból eladható holmikat, bosslelkeket és zsákmányt is megveszi; kínálatában egy különös telefontok is megjelent."
     }
   },
   "en": {
@@ -1372,7 +1385,20 @@
       "menu.changelog.0931.favicon": "The game’s browser icon now shows Momo’s face.",
       "menu.changelog.0932.title": "Clearer level-ups and a cleaner HUD",
       "menu.changelog.0932.light": "Golden Kiba light surrounds Momo on level-up, with a gentler cue when reduced motion is enabled.",
-      "menu.changelog.0932.hud": "The unused soul-fragment counter has been removed from the HUD."
+      "menu.changelog.0932.hud": "The unused soul-fragment counter has been removed from the HUD.",
+      "item.phoneCase": "Phone Case",
+      "inventory.type.trinket": "Trinket",
+      "inventory.description.phoneCase": "Akash claims it protects a peculiar talisman from a distant age. None of Momo’s belongings fit inside. It has no practical effect.",
+      "merchant.sell.title": "Sell to Akash",
+      "merchant.sell.price": "Sell for {0} coins",
+      "merchant.sell.question": "Sell this item: {0}?",
+      "merchant.sell.confirm": "Confirm sale",
+      "merchant.sell.cancel": "Cancel",
+      "merchant.sold": "You sold the item to Akash.",
+      "merchant.sell.visit": "Visit Akash in the Forest Refuge to sell items.",
+      "merchant.unsellable": "This item cannot be sold.",
+      "menu.changelog.0933.title": "Trading with Akash",
+      "menu.changelog.0933.trade": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock."
     }
   }
 }

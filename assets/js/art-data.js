@@ -18,6 +18,7 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  phoneCase: "assets/images/ui/phone-case-v1.png",
   levelUp: "assets/images/effects/level-up-v1.png",
   samuraiJump: "assets/images/enemies/samurai-jump-v1.png",
   "slayerMelee": "assets/images/enemies/slayer-melee-v1.png",
@@ -128,6 +129,7 @@ const ART_INVENTORY = {
     madPriestSoul:{name:'item.madPriestSoul',realm:3,image:'madPriestSoul',x:77,y:4,w:1079,h:1246},
     corruptedHymn:{name:'item.corruptedHymn',realm:3,image:'corruptedHymn',x:39,y:166,w:1202,h:944},
     prisonKey:{name:'item.prisonKey',realm:3,image:'prisonKey',x:50,y:68,w:1178,h:1143,consumedBy:{realm:3,id:'prisonOpen'}},
+    phoneCase:{name:'item.phoneCase',realm:1,category:'trinket',image:'phoneCase',x:49,y:26,w:1034,h:1328},
     compass:{name:'item.compass',realm:1,category:'travelGear',image:'compass',x:180,y:26,w:912,h:1200},
     minimap:{name:'item.minimap',realm:1,category:'travelGear',image:'minimap',x:26,y:69,w:1223,h:1090},
     tea:{name:'item.tea',realm:1,stack:true,image:'tea',x:33,y:44,w:1177,h:1186},

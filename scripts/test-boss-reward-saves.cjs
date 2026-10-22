@@ -17,7 +17,7 @@ function fixture(mask=0,{level=1,spent=false,xp=0}={}){
  let totalXp=xp;for(let n=1;n<level;n++)totalXp+=rules.xpForLevel(n);
  let budget=level-1+bonus;const stats={vitality:0,strength:0,spirit:0};
  if(spent)for(const key of Object.keys(stats)){stats[key]=Math.min(rules.statLimit,budget);budget-=stats[key];}
- return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',version:2,layout:2,release,realm:2,prologueComplete:true,shards:0,won:false,abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},()=>['start']),checkpoint:copy(start),progression:{level,xp,totalXp,points:budget,stats}};
+ return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:2,prologueComplete:true,shards:0,won:false,abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},()=>['start']),checkpoint:copy(start),progression:{level,xp,totalXp,points:budget,stats}};
 }
 for(let mask=0;mask<=allRewards;mask++)for(let level=1;level<=rules.levelLimit;level++)for(const spent of [false,true]){
  const data=fixture(mask,{level,spent});assert.deepEqual(JSON.parse(JSON.stringify(validate(data))),data,`Reward mask ${mask}, level ${level}, spent ${spent} is preserved`);
@@ -37,6 +37,8 @@ for(let level=1;level<rules.levelLimit;level++){
 }
 assert(fixture(allRewards,{level:29,xp:rules.xpForLevel(29)-1}).progression.xp>500,'Late levels can retain more than the former 500 XP bound');
 for(const [realm,reward] of rewards.entries()){
+ const sold=fixture(1<<realm);sold.flags[1].push('akashRescued');sold.soldItems=[reward.id];
+ assert.deepEqual(JSON.parse(JSON.stringify(validate(sold))),sold,'Sold soul retains the permanent reward budget in every realm');
  for(const missing of [reward.claim,reward.id]){
   const orphan=fixture(1<<realm);orphan.flags[realm]=orphan.flags[realm].filter(id=>id!==missing);
   if(missing===reward.claim)orphan.progression.points=0;

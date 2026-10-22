@@ -24,6 +24,8 @@ const SaveVault=(()=>{
   if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
   if(!['roastMeat','tea'].includes(data.quickHeal))throw Error('Invalid quick healing item');
+  const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
+  if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
   for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
   for(const key of ['flags','visitedRests'])if(!Array.isArray(data[key])||data[key].length!==levels.length)throw Error('Invalid world progress');
   for(let i=0;i<levels.length;i++){
@@ -33,8 +35,9 @@ const SaveVault=(()=>{
   }
   if(data.visitedRests[0].includes('forestCamp')&&!data.defeated[0])throw Error('Invalid camp progress');
   const rescued=data.flags[1].includes('akashRescued');
-  if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.teaCount>0||data.flags[1].some(id=>id==='compass'||id==='minimap')))throw Error('Invalid merchant progress');
-  if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount))throw Error('Invalid dream inventory');
+  if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.teaCount>0||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
+  if(data.soldItems.some(id=>!rescued||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
+  if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
   if(data.location==='forestCamp'&&(data.realm!==0||data.prologueComplete!==true||!data.defeated[0]))throw Error('Invalid camp location');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
