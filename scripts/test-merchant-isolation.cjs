@@ -25,7 +25,7 @@ for(const origin of ['live','menu','shop']){
  assert.equal(h.run('coins'),before-h.run('Merchant.catalogue.compass.price+Merchant.catalogue.minimap.price+Merchant.catalogue.roastMeat.price'));
  assert.equal(h.run('meatCount'),4);assert(h.run("flags[1].includes('compass')&&flags[1].includes('minimap')"));
  unchanged(h,baseline,origin+': test purchases cannot mutate normal saves');
- h.run('Merchant.close();player.hp=2;');assert(h.run('Merchant.eat()'));assert.equal(h.run('meatCount'),3);assert.equal(h.run('player.hp'),3);
+ h.run('Merchant.close();player.hp=2;');assert(h.run('Merchant.eat()'));assert.equal(h.run('meatCount'),3);assert.equal(h.run('player.hp'),4);
  assert(h.run('Inventory.open()'));assert(h.run('Merchant.eat(true)'));assert.equal(h.run('meatCount'),2);h.run('Inventory.close();Merchant.award(75);persist();');
  unchanged(h,baseline,origin+': food and currency remain inside the test');
  h.run('DevSession.end()');assert.equal(h.run('state'),'menu');assert.equal(h.run('DevSession.active'),false);assert(h.elements.get('shop').hidden);

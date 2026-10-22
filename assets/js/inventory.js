@@ -3,7 +3,7 @@
 const Inventory=(()=>{
  let initialized=false,returnFocus=null,selected=null;
  const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue);
- function quantity(id){const item=catalogue[id];if(!item)return 0;if(item.stack)return meatCount;return flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ function quantity(id){const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
  function contents(){return ids.filter(id=>quantity(id)>0);}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
@@ -30,12 +30,15 @@ const Inventory=(()=>{
   $('inventoryDetailText').textContent=id==='weapon'?I18n.format('inventory.weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!id||!catalogue[id]?.stack;
   $('inventoryQuantity').textContent=id&&catalogue[id]?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
-  $('useInventoryItem').hidden=id!=='roastMeat';$('useInventoryItem').disabled=!meatCount;
-  $('useInventoryItem').textContent=I18n.t('merchant.eat');
+  $('useInventoryItem').hidden=id!=='roastMeat'&&id!=='tea';$('useInventoryItem').disabled=id==='tea'?!Merchant.canDrink():!quantity(id);
+  $('useInventoryItem').textContent=I18n.t(id==='tea'?'merchant.drink':'merchant.eat');
+  $('assignQuickHeal').hidden=!['roastMeat','tea'].includes(id);$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
+  $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
+  $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}
  function render(){
-  const items=contents(),active=document.activeElement?.dataset?.inventoryItem,useFocused=document.activeElement?.id==='useInventoryItem';
+  const items=contents(),active=document.activeElement?.dataset?.inventoryItem,useFocused=document.activeElement?.id==='useInventoryItem',assignFocused=document.activeElement?.id==='assignQuickHeal';
   const labels={inventoryTitle:'inventory.title',inventoryPaused:'inventory.paused',inventoryBagTitle:'inventory.bag.title',inventoryCapacity:'inventory.capacity',inventoryEquipmentTitle:'inventory.equipment.title',inventoryWeaponLabel:'inventory.weapon.slot',inventoryEquipped:'inventory.equipped',closeInventory:'inventory.close'};
   for(const [id,key] of Object.entries(labels))$(id).textContent=I18n.t(key);
   $('inventoryButton').setAttribute('aria-label',I18n.t('inventory.open'));
@@ -53,8 +56,8 @@ const Inventory=(()=>{
   $('inventoryEmpty').hidden=items.length>0;$('inventoryEmpty').textContent=I18n.t('inventory.empty.title');
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
   choose(selected==='weapon'||items.includes(selected)?selected:items[0]||null);
-  if(useFocused&&selected==='roastMeat')$('useInventoryItem').focus();
-  else if(active||useFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
+  if(useFocused&&['roastMeat','tea'].includes(selected)&&!$('useInventoryItem').disabled)$('useInventoryItem').focus();
+  else if(active||useFocused||assignFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
   if(state!=='play'||!player)return false;
@@ -68,7 +71,8 @@ const Inventory=(()=>{
  function init(){
   if(initialized)return;initialized=true;
   $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');
-  $('useInventoryItem').onclick=()=>{if(state==='inventory'&&selected==='roastMeat')Merchant.eat(true);};
+  $('useInventoryItem').onclick=()=>{if(state!=='inventory')return;if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);};
+  $('assignQuickHeal').onclick=()=>Merchant.selectQuick(selected);
   $('inventory').addEventListener('keydown',event=>{
    if(event.key!=='Tab'||state!=='inventory')return;
    const nodes=[...$('inventory').querySelectorAll('button:not([disabled]),[tabindex="0"]')].filter(node=>!node.hidden&&node.getClientRects().length);

@@ -60,7 +60,7 @@ function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={})
 }
 
 function fixture(release=current){
- return {coins:0,meatCount:0,version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
+ return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
 }
 function plain(value){return JSON.parse(JSON.stringify(value));}
 
@@ -234,7 +234,7 @@ async function main(){
  // including when the merchant was rescued before Yomi's guardian was beaten.
  const shopEnv=storageEnvironment(),shopClient=client(shopEnv);await shopClient.vault.ready;
  const merchant=copy(council);merchant.defeated[1]=false;merchant.flags[1]=['akashRescued','compass','minimap'];
- merchant.coins=540;merchant.meatCount=3;merchant.prologueComplete=true;
+ merchant.coins=540;merchant.meatCount=3;merchant.teaCount=2;merchant.prologueComplete=true;
  for(const realm of [0,1]){
   const shopping=copy(merchant);shopping.realm=realm;
   shopping.checkpoint=plain(vm.runInContext(`levels[${realm}].rests[0]`,shopClient));
@@ -251,12 +251,27 @@ async function main(){
  await shopClient.vault.write(purchased);assert.deepEqual(plain(await client(shopEnv).vault.ready),purchased,'A purchase reloads its currency debit and food credit together');
  const consumed=copy(purchased);consumed.meatCount--;
  await shopClient.vault.write(consumed);assert.deepEqual(plain(await client(shopEnv).vault.ready),consumed,'Consumed food stays consumed after an encrypted reload');
+ const purchasedTea=copy(consumed);purchasedTea.coins-=25;purchasedTea.teaCount++;
+ await shopClient.vault.write(purchasedTea);assert.deepEqual(plain(await client(shopEnv).vault.ready),purchasedTea,'Tea purchase reloads its currency debit and stack credit together');
+ const drankTea=copy(purchasedTea);drankTea.teaCount--;
+ await shopClient.vault.write(drankTea);assert.deepEqual(plain(await client(shopEnv).vault.ready),drankTea,'A consumed tea serving stays consumed after encrypted reload');
+ for(const selected of ['roastMeat','tea'])for(const empty of [false,true]){
+  const selectedHeal=copy(campShop);selectedHeal.quickHeal=selected;
+  if(empty){selectedHeal.meatCount=0;selectedHeal.teaCount=0;}
+  await shopClient.vault.write(selectedHeal);assert.deepEqual(plain(await client(shopEnv).vault.ready),selectedHeal,'Quick healing selection survives encrypted reload independently of stack counts');
+ }
  for(const amount of [0,Number.MAX_SAFE_INTEGER]){
-  const boundary=copy(campShop);boundary.coins=amount;boundary.meatCount=amount;
+  const boundary=copy(campShop);boundary.coins=amount;boundary.meatCount=amount;boundary.teaCount=amount;
   await shopClient.vault.write(boundary);assert.deepEqual(plain(await client(shopEnv).vault.ready),boundary,'There is no smaller arbitrary currency or stack cap');
  }
  const untouched=shopEnv.records.get('save'),revision=shopEnv.records.get('profile').revision;
- for(const key of ['coins','meatCount']){
+ for(const value of ['',null,undefined,false,0,[],{},'compass','Tea']){
+  const invalid=copy(campShop);invalid.quickHeal=value;
+  assert.throws(()=>shopClient.vault.write(invalid),/Invalid quick healing item/,'Only the two known quick healing IDs may be saved');
+ }
+ const missingSelection=copy(campShop);delete missingSelection.quickHeal;
+ assert.throws(()=>shopClient.vault.write(missingSelection),/Invalid quick healing item/,'Quick healing selection is required within the current release');
+ for(const key of ['coins','meatCount','teaCount']){
   for(const value of [-1,.5,Number.MAX_SAFE_INTEGER+1,'1',null,undefined,NaN,Infinity,false]){
    const invalid=copy(campShop);invalid[key]=value;
    assert.throws(()=>shopClient.vault.write(invalid),/Invalid merchant inventory/,`${key}: ${String(value)} is not a valid safe integer`);
@@ -264,8 +279,8 @@ async function main(){
   const missing=copy(campShop);delete missing[key];
   assert.throws(()=>shopClient.vault.write(missing),/Invalid merchant inventory/,`${key} is required for the current release`);
  }
- for(const item of ['compass','minimap','roastMeat']){
-  const unrescued=copy(campShop);unrescued.flags[1]=item==='roastMeat'?[]:[item];unrescued.meatCount=item==='roastMeat'?1:0;
+ for(const item of ['compass','minimap','roastMeat','tea']){
+  const unrescued=copy(campShop);unrescued.flags[1]=['roastMeat','tea'].includes(item)?[]:[item];unrescued.meatCount=item==='roastMeat'?1:0;unrescued.teaCount=item==='tea'?1:0;
   assert.throws(()=>shopClient.vault.write(unrescued),/Invalid merchant progress/,'Purchases cannot predate Akash rescue');
  }
  const earlyRescue=fixture();earlyRescue.flags[1]=['akashRescued'];
@@ -274,6 +289,7 @@ async function main(){
  assert.deepEqual(plain(await client(shopEnv).vault.ready),dream);
  dream.coins=1;assert.throws(()=>shopClient.vault.write(dream),/Invalid dream inventory/);
  dream.coins=0;dream.meatCount=1;assert.throws(()=>shopClient.vault.write(dream),/Invalid merchant progress|Invalid dream inventory/);
+ dream.meatCount=0;dream.teaCount=1;assert.throws(()=>shopClient.vault.write(dream),/Invalid merchant progress|Invalid dream inventory/);
  // Invalid write calls are rejected before they can enqueue or seal a record.
  assert.equal(shopEnv.records.get('profile').revision,revision+1);assert.notEqual(shopEnv.records.get('save'),untouched);
  assert.deepEqual(plain(await client(shopEnv).vault.ready),{...fixture(),prologueComplete:false});
@@ -352,6 +368,6 @@ async function main(){
  const replacement=client(inflight,current,{locks:false});await replacement.vault.ready;assert.equal(replacement.vault.isReady,true);const replacementDevice=inflight.records.get('profile').device;
  continueEncryption();await assert.rejects(writing,/Storage aborted/);assert.equal(inflight.records.get('profile').device,replacementDevice);assert.equal(inflight.records.has('save'),false);assert.equal(inflight.local.has(SAVE),false);
  assert.ok([...env.opened,...update.opened,...race.opened].every(name=>name==='momo-save-v2'));
- console.log('Save release: reload, merchant currency/food/purchases and invalid saves, forest camp travel/checkpoint/reset, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
+ console.log('Save release: reload, merchant currency/meat/tea/purchases and invalid saves, forest camp travel/checkpoint/reset, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

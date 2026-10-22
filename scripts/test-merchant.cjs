@@ -23,7 +23,7 @@ try{
  assert.equal(r('coins'),390);assert.equal(r('meatCount'),3);assert.equal(r('player.hp'),2);assert.equal(r('randomCalls'),rng,'Buying food must not roll or consume it');validate(r('saved'));
  for(const id of ['__proto__','constructor','missing'])assert.equal(r(`Merchant.purchase(${JSON.stringify(id)})`),false);
  const blocked=snapshot();assert.equal(r('Merchant.eat()'),false);assert.equal(snapshot(),blocked);
- assert(r('Merchant.close()'));h.press('o');h.tick();h.release('o');assert.equal(r('meatCount'),2);assert.equal(r('player.hp'),3);assert.equal(r('randomCalls'),rng+1);
+ assert(r('Merchant.close()'));h.press('o');h.tick();h.release('o');assert.equal(r('meatCount'),2);assert.equal(r('player.hp'),4);assert.equal(r('randomCalls'),rng+1);
  r("handleKeyDown({key:'o',repeat:true,preventDefault(){}});");h.tick();assert.equal(r('meatCount'),2,'Key auto-repeat consumed food');
  r('Math.random=()=>{randomCalls++;return .9;};player.hp=1;');h.press('o');h.tick();h.release('o');assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),1);
  const safe=r('JSON.stringify([player.inv,dash,player.vx,player.vy])');assert(r('Merchant.eat()'));assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),0);assert.equal(r('JSON.stringify([player.inv,dash,player.vx,player.vy])'),safe);

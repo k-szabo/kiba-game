@@ -90,9 +90,9 @@ Forrásmódosítás után `node scripts/build-game.mjs`, majd a releváns `scrip
 
 ### Akash portékái
 
-Az iránytű és útitérkép az inventory katalógusából adható egyszeri teszttárgy. A sült hús ugyaninnen ismételten hozzáadható, kattintásonként egy adaggal; az aktuális gyorsbillentyűvel vagy az inventoryból használható. A pénz, a vásárlások és az étel mennyisége is az elkülönített dev session része; a normál mentést nem módosítják.
+Az iránytű és útitérkép az inventory katalógusából adható egyszeri teszttárgy. A sült hús és Akash teája ugyaninnen ismételten hozzáadható, kattintásonként egy adaggal, egymástól független készletbe; az aktuális gyorsbillentyűvel vagy az inventoryból használható. A pénz, a vásárlások és az étel mennyisége is az elkülönített dev session része; a normál mentést nem módosítják.
 
-Az érmeadó mezőben pozitív egész mennyiség adható meg (alapérték:100). Az eszköz kizárólag aktív tesztmódban és nyitott dev panelen működik; az érméket a HUD azonnal mutatja. Hibás vagy túlcsorduló mennyiség teljesen elutasított, részleges jóváírás nincs. A normál mentést nem írja. A tárgyválasztó hozzáadás és panel-frissítés után megőrzi a kiválasztást, ezért több adag sült hús ismételten hozzáadható. Az iránytű és a kis útitérkép egyszeri tárgy marad.
+Az érmeadó mezőben pozitív egész mennyiség adható meg (alapérték:100). Az eszköz kizárólag aktív tesztmódban és nyitott dev panelen működik; az érméket a HUD azonnal mutatja. Hibás vagy túlcsorduló mennyiség teljesen elutasított, részleges jóváírás nincs. A normál mentést nem írja. A tárgyválasztó hozzáadás és panel-frissítés után megőrzi a kiválasztást, ezért több adag sült hús vagy tea ismételten hozzáadható. Az iránytű és a kis útitérkép egyszeri tárgy marad.
 
 Ha a panelt nyitott inventoryból vagy boltból nyitod, a visszatérés újrarajzolja az adott ablakot: a hozzáadott étel darabszáma, az új érmeegyenleg és a megfizethető vásárlógombok rögtön frissülnek.
 
