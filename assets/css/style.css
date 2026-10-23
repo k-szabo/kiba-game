@@ -262,3 +262,18 @@
 
 /* Shared Japanese-inspired typography; controls retain the clear UI face. */
 h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--font-ui)}#gameTitle{font-weight:600}.intro{font-weight:500}#dialogText p{font-family:var(--font-story);font-weight:500}#dialogTitle{font-weight:600}
+
+/* Starting style selection: one scrollable desktop dialog, with explicit radio state. */
+.weapon-selection-overlay{z-index:30;background:#091318dc;display:flex;align-items:center;justify-content:center;padding:24px}
+.weapon-selection-panel{width:min(1080px,100%);max-width:1080px;max-height:calc(100dvh - 48px);overflow:auto;padding:32px;background:#101e25f7;border:1px solid #d9ba7b;scroll-padding:16px}
+.weapon-selection-panel h2{font-size:clamp(26px,2.4vw,34px);line-height:1.3;margin:0 0 14px;letter-spacing:0}
+.weapon-selection-panel>p{font-size:18px;color:#e0ddcf;line-height:1.6;margin:0 0 24px}
+.weapon-style-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.weapon-style-choice{display:flex;flex-direction:column;gap:16px;text-align:left;padding:22px 20px;position:relative;background:#142730;color:#f3eee0;border:2px solid #84928e;min-width:0;min-height:220px}
+.weapon-style-choice strong{font-size:21px;line-height:1.5;font-family:var(--font-story);padding-right:24px}
+.weapon-style-choice span{font-size:17px;line-height:1.7;overflow-wrap:break-word}
+.weapon-style-choice[aria-checked="true"]{border-color:#f1d493;background:#293832;box-shadow:inset 0 0 0 2px #101e25}
+.weapon-style-choice[aria-checked="true"]::after{content:'✓';position:absolute;top:22px;right:15px;color:#ffe7aa;font-size:23px;font-weight:800}
+.weapon-selection-actions{display:flex;justify-content:flex-end;gap:18px;margin-top:28px;flex-wrap:wrap}
+.weapon-selection-actions button{font-size:18px;min-height:52px;min-width:160px;padding:14px 24px;justify-content:center}
+.weapon-selection-panel button:focus-visible{outline:3px solid #ffe4a2;outline-offset:4px}

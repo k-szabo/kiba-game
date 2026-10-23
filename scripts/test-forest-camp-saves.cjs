@@ -12,7 +12,7 @@ function fixture(){
  const flags=Array.from({length:realmCount},()=>[]);flags[0]=['forestBell','villageBell'];flags[1]=['soulUpper','soulLower'];flags[2]=['dawnSeal'];if(realmCount>3)flags[2].push('shadowEntered');
  let totalXp=0,bonus=0;for(const [realm,reward] of rewards.entries()){flags[realm].push(reward.claim,reward.id);totalXp+=reward.xp;bonus+=reward.points;}
  let level=1,xp=totalXp;while(level<rules.levelLimit&&xp>=rules.xpForLevel(level)){xp-=rules.xpForLevel(level);level++;}
- return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
+ return {weaponStyle:'katana',coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:0,location:'forestCamp',prologueComplete:true,shards:31,won:false,
   abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},(_,index)=>index===0?['start',campRest.id]:['start']),checkpoint:copy(campRest),
   progression:{level,xp:level===rules.levelLimit?0:xp,totalXp,points:level-1+bonus-2,stats:{vitality:1,strength:1,spirit:0}}};
 }

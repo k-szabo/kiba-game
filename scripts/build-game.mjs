@@ -35,7 +35,7 @@ for(const language of languages){
     if(placeholders(entries[id])!==placeholders(locales.hu.dict[id]))throw Error(`Placeholder mismatch: ${language}.${id}`);
   }
 }
-const files=['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','progression','combat','doom-slayer','slayer-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-immortality','dev-damage','game'];
+const files=['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','weapons','weapon-selection','progression','combat','doom-slayer','slayer-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-immortality','dev-damage','game'];
 const digest=createHash('sha256');
 for(const file of [localePath,bindingPath,releasePath,registryPath,...files.map(name=>'assets/js/'+name+'.js')]){
   digest.update(file);digest.update('\0');digest.update(readSource(file));digest.update('\0');

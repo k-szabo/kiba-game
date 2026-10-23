@@ -59,7 +59,7 @@ try{
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);
-  for(const module of ['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','progression','combat','doom-slayer','slayer-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-immortality','dev-damage','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
+  for(const module of ['i18n','keybindings','levels','art-data','boss-vfx','save-vault','graphics','weapons','weapon-selection','progression','combat','doom-slayer','slayer-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-immortality','dev-damage','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
   const run=(script,args=[],ok=true)=>{
     const result=spawnSync(process.execPath,[path.join(fixture,'scripts',script),...args],{cwd:fixture,encoding:'utf8'});
     if(ok)assert.equal(result.status,0,result.stderr||result.stdout);
