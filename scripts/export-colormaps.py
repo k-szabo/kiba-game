@@ -133,6 +133,8 @@ menu_frames = [{'x': i % 3 * 512, 'y': i // 3 * 512, 'w': 512, 'h': 512} for i i
 pc['momo']['variants']['menuIdle'] = {'paletteGroup': group('pc.momo.menuIdle', 'assets/images/momo-menu-idle-v2.png', menu_frames, 'game.js: drawMenuMomo')}
 pc['momo']['variants']['sword'] = {'paletteGroup': group('pc.momo.sword', manifest['momoSlash'], atlas['frames']['momoSlash'], 'ART_FRAMES.momoSlash')}
 pc['momo']['variants']['heavySword'] = {'paletteGroup': group('pc.momo.heavySword', manifest['momoHeavy'], atlas['frames']['momoHeavy'], 'ART_FRAMES.momoHeavy')}
+for key in ('momoNaginataNormal', 'momoNaginataHeavy', 'momoShieldNormal', 'momoShieldHeavy'):
+    pc['momo']['variants'][key] = {'paletteGroup': group('pc.momo.' + key, manifest[key], atlas['frames'][key], 'ART_FRAMES.' + key)}
 portrait = atlas['inventory']['momo']
 pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
 npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
@@ -183,6 +185,11 @@ objects['shadowAltar'] = {'kind': 'travel-altar',
 katana = atlas['inventory']['katana']
 objects['inventoryKatana'] = {'kind': 'equipment-art',
     'paletteGroup': group('object.inventoryKatana', manifest[katana['image']], katana, 'ART_INVENTORY.katana')}
+for name in ('naginata', 'swordShield'):
+    definition = atlas['inventory'][name]
+    objects['inventory' + name] = {'kind': 'equipment-art', 'paletteGroup': group('object.inventory.' + name, manifest[definition['image']], definition, 'ART_INVENTORY.' + name)}
+for key in ('naginataRigid', 'swordRigid'):
+    objects[key] = {'kind': 'rigid-weapon-prop', 'asset': manifest[key]}
 for name, definition in atlas['inventory']['items'].items():
     objects['inventoryItem.' + name] = {'kind': 'inventory-icon',
         'paletteGroup': group('object.inventoryItem.' + name, manifest[definition['image']], definition, 'ART_INVENTORY.items.' + name)}

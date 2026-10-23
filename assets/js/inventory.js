@@ -16,18 +16,19 @@ const Inventory=(()=>{
  }
  function equipmentArt(){
   image($('inventoryMomo'),Visuals.images.inventoryMomoPortrait,ART_INVENTORY.momo,{w:384,h:416});
-  image($('inventoryWeaponArt'),Visuals.images.inventoryKatana,ART_INVENTORY.katana,{w:108,h:144});
+  const weaponArt=ART_INVENTORY[weaponStyle];
+  image($('inventoryWeaponArt'),Visuals.images[weaponArt.image],weaponArt,{w:108,h:144});
  }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.className='inventory-icon';canvas.setAttribute('aria-hidden','true');
   image(canvas,Visuals.images[catalogue[id].image],catalogue[id],{w:112,h:112});
   return canvas;
  }
- function weaponName(){return I18n.t(defeated[1]?'item.dawnblade':'inventory.weapon.sword');}
+ function weaponName(){return I18n.t(weaponStyle==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+weaponStyle+'.item');}
  function details(id){
   $('inventoryDetailName').textContent=id==='weapon'?weaponName():id?I18n.t(catalogue[id].name):I18n.t('inventory.empty.title');
   $('inventoryDetailType').textContent=I18n.t(id==='weapon'?'inventory.type.equipped':id&&catalogue[id].stack?'inventory.type.consumable':id&&catalogue[id].category==='travelGear'?'inventory.type.travelGear':id&&catalogue[id].category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
-  $('inventoryDetailText').textContent=id==='weapon'?I18n.format('inventory.weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
+  $('inventoryDetailText').textContent=id==='weapon'?I18n.format('weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!id||!catalogue[id]?.stack;
   $('inventoryQuantity').textContent=id&&catalogue[id]?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
   $('useInventoryItem').hidden=id!=='roastMeat'&&id!=='tea';$('useInventoryItem').disabled=id==='tea'?!Merchant.canDrink():!quantity(id);

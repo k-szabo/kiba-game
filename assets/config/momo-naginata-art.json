@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "length": 2.2,
+  "prop": {
+    "image": "naginataRigid",
+    "width": 1536,
+    "height": 1024,
+    "gripX": 585,
+    "gripY": 515,
+    "length": 1450,
+    "angle": 0
+  },
+  "normal": {
+    "image": "momoNaginataNormal",
+    "frames": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 242,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 198,
+        "gripY": 321,
+        "weaponAngle": 0
+      },
+      {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 760,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 688,
+        "gripY": 308,
+        "weaponAngle": -0.009
+      },
+      {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1270,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 1285,
+        "gripY": 307,
+        "weaponAngle": -0.023
+      },
+      {
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 245,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 330,
+        "gripY": 774,
+        "weaponAngle": 0
+      },
+      {
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 765,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 738,
+        "gripY": 806,
+        "weaponAngle": -0.032
+      },
+      {
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1280,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 1210,
+        "gripY": 809,
+        "weaponAngle": 0.017
+      }
+    ]
+  },
+  "heavy": {
+    "image": "momoNaginataHeavy",
+    "frames": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 245,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 216,
+        "gripY": 318,
+        "weaponAngle": 0
+      },
+      {
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 765,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 750,
+        "gripY": 75,
+        "weaponAngle": 0.008
+      },
+      {
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1280,
+        "anchorY": 475,
+        "bodyHeight": 420,
+        "gripX": 1265,
+        "gripY": 70,
+        "weaponAngle": 0
+      },
+      {
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 248,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 360,
+        "gripY": 770,
+        "weaponAngle": 0.415
+      },
+      {
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 765,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 896,
+        "gripY": 835,
+        "weaponAngle": 0.567
+      },
+      {
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1280,
+        "anchorY": 970,
+        "bodyHeight": 420,
+        "gripX": 1244,
+        "gripY": 809,
+        "weaponAngle": 0.009
+      }
+    ]
+  }
+}

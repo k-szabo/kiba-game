@@ -572,6 +572,16 @@ const Visuals = (() => {
     paint(index,fade*(1-mix));if(index+1<frames.length)paint(index+1,fade*mix);
   }
   function momoSlash(x,feet,height,elapsed,face,kind='normal'){
+    const loadout=ART_LOADOUTS[weaponStyle];
+    if(loadout){
+      const clip=loadout[kind],duration=SWORD_ATTACKS[kind].duration;
+      const marks=kind==='heavy'?[0,.1,.25,.38,.5,.72,.9]:[0,.05,.11,.16,.24,.34,.42];
+      const index=Math.max(0,marks.findIndex((mark,i)=>i>0&&elapsed<mark)-1);
+      const pose=clip.frames[elapsed>=duration?5:index];
+      frame(clip.image,pose,x,feet,height,face);
+      weaponStamp(loadout,pose,x,feet,height,face);
+      return;
+    }
     if(kind==='heavy'){
       const index=ART_FRAMES.momoHeavy.findIndex(pose=>elapsed<pose.end);
       frame('momoHeavy',ART_FRAMES.momoHeavy[index<0?5:index],x,feet,height,face);
@@ -579,6 +589,27 @@ const Visuals = (() => {
     }
     const index=Math.min(7,Math.floor(clamp(elapsed/SWORD_DURATION,0,.999)*8));
     frame('momoSlash',ART_FRAMES.momoSlash[index],x,feet,height,face);
+  }
+  // A weapon has one bitmap and one world scale for every pose and attack.
+  function weaponStamp(art,pose,x,feet,height,face){
+    const prop=art.prop;if(!usable(prop.image))return;
+    const bodyScale=height/pose.bodyHeight,propScale=height*art.length/prop.length;
+    ctx.save();ctx.translate(x,feet);ctx.scale(face,1);
+    ctx.translate((pose.gripX-pose.anchorX)*bodyScale,(pose.gripY-pose.anchorY)*bodyScale);
+    ctx.rotate(pose.weaponAngle-prop.angle);ctx.scale(propScale,propScale);
+    ctx.drawImage(images[prop.image],-prop.gripX,-prop.gripY);
+    ctx.restore();
+  }
+  function momoCarry(x,feet,height,face){
+    const art=ART_LOADOUTS[weaponStyle];if(!art)return;
+    if(weaponStyle==='naginata'){
+      weaponStamp(art,{bodyHeight:96,anchorX:0,anchorY:0,gripX:-12,gripY:-45,weaponAngle:-1.2},x,feet,height,face);
+    }else if(usable('inventoryStarterWeapons')){
+      // Source-space ellipse excludes the separate sword beside the shield.
+      ctx.save();ctx.translate(x,feet);ctx.scale(face*height/96,height/96);
+      ctx.translate(15,-43);ctx.beginPath();ctx.ellipse(0,0,21,25,0,0,Math.PI*2);ctx.clip();
+      ctx.drawImage(images.inventoryStarterWeapons,1320,320,415,500,-21,-25,42,50);ctx.restore();
+    }
   }
   function dashTrail(x,y,face=1,progress=0){
     const age=clamp(progress,0,1);
@@ -800,5 +831,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,dashTrail,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
 })();

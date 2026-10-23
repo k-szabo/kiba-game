@@ -72,7 +72,7 @@ function releaseEnemyAttack(e) {
     for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,realm===3?'shadowBolt':'magic');}e.cd=3.3;
   }else{
     const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
-    if(overlap(player,hit))damage(e.damageValue||1,e.face);e.cd=e.kind==='shield'?2.5:1.8;
+    if(overlap(player,hit))damage(e.damageValue||1,e.face,true);e.cd=e.kind==='shield'?2.5:1.8;
   }
   for(let i=shotsBefore;i<projectiles.length;i++){
     projectiles[i].damage=e.damageValue||1;
@@ -128,7 +128,7 @@ function updateEnemies(dt) {
       }
     }
     if(e.kind==='fly')e.y=e.baseY+Math.sin(time*2+e.origin)*18;
-    if(overlap(player,e)&&e.contactCd<=0){damage(e.damageValue||1,dx>0?1:-1);e.contactCd=1.1;}
+    if(overlap(player,e)&&e.contactCd<=0){damage(e.damageValue||1,dx>0?1:-1,true);e.contactCd=1.1;}
     if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
       if(e.kind==='shield')toast(I18n.t("text.shield.bearer.strike.from.above.or.behind.three.blocked"));
@@ -377,7 +377,7 @@ function startBossAttack(){
 }
 function bossMelee(width=145,height=115,amount=2,lift=0,face=boss.face){
   const hit={x:face>0?boss.x+boss.w*.4:boss.x-width,y:boss.y+10-lift,w:width+boss.w*.6,h:height+lift};
-  if(overlap(player,hit))damage(amount,face);
+  if(overlap(player,hit))damage(amount,face,true);
 }
 function lightArrowAt(x,warning=.7){
   boss.hazards.push({kind:'lightPillar',x:clamp(x,level.arena.x+50,level.arena.x+level.arena.w-50)-18,y:level.arena.y-490,w:36,h:490,warning,life:warning+.7,active:false});
@@ -492,7 +492,7 @@ function updateBoss(dt){if(ShadowRealm.active()){ShadowRealm.updateBoss(dt);retu
     if(realm===1&&boss.move==='lava'&&!boss.autoPhase&&Math.abs(player.x-boss.x)>180)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*55*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
     executeBossMove(dt);if(boss.clock<=0){boss.lava=null;if(boss.leap){boss.x=boss.leap.toX;boss.y=boss.leap.floorY;boss.leap=null;}setBossPhase('recover',realm===1?1.25:1.1);}
   }else if(boss.phase==='recover'&&boss.clock<=0&&!boss.autoPhase)setBossPhase('wait',.6);
-  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava'&&boss.move!=='jumpCut')damage(1,player.x>boss.x?1:-1);
+  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava'&&boss.move!=='jumpCut')damage(1,player.x>boss.x?1:-1,true);
 }
 /* Optional encounters are saved independently of the three realm guardians. */
 function minibossFlag(id){return 'guardian:'+id;}
@@ -532,7 +532,7 @@ function defeatMiniboss(e){
 function setMiniPhase(e,phase,duration){e.phase=phase;e.clock=duration;e.phaseDuration=duration;e.windup=phase==='windup'?duration:0;e.windupDuration=duration;e.hitDone=false;}
 function miniMelee(e,width,amount=2){
   const hit={x:e.face>0?e.x+e.w*.4:e.x-width,y:e.y-8,w:width+e.w*.6,h:e.h+20};
-  if(overlap(player,hit))damage(amount,e.face);
+  if(overlap(player,hit))damage(amount,e.face,true);
 }
 function miniShot(e,angle,speed,kind,color){
   shoot(e.x+e.w/2,e.y+30,Math.cos(angle)*speed,Math.sin(angle)*speed,color,4,kind);

@@ -6,8 +6,8 @@ function target(){
 }
 // The two attacks retain their own windup, direction and single-impact latch.
 for(const [kind,damage,impact,duration] of [['normal',1.5,.16,.42],['heavy',3.5,.38,.9]]){
- const h=target();assert(h.run(`melee('${kind}')`));close(h.run('attack'),duration);
- h.run(`advanceSwordAttack(${impact-.01});player.face=-1;`);close(h.run('victim.hp'),20);
+ const h=target(),tempo=h.run('WeaponStyles.profile(weaponStyle).tempo');assert(h.run(`melee('${kind}')`));close(h.run('attack'),duration*tempo);
+ h.run(`advanceSwordAttack(${impact*tempo-.01});player.face=-1;`);close(h.run('victim.hp'),20);
  assert(!h.run("melee('normal')"),'Cooldown blocks an input from cancelling the windup');
  h.run('advanceSwordAttack(.02)');close(h.run('victim.hp'),20-damage);assert.equal(h.run('attackFace'),1);
  h.run('advanceSwordAttack(.1)');close(h.run('victim.hp'),20-damage);

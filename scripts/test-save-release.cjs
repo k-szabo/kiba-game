@@ -60,7 +60,7 @@ function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={})
 }
 
 function fixture(release=current){
- return {coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
+ return {weaponStyle:'katana',coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:0,shards:7,won:false,abilities:[false,false],defeated:victories(),flags:worldArrays(),visitedRests:worldArrays([['start']]),checkpoint:{id:'start',x:330,y:1000},progression:{level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}}};
 }
 function plain(value){return JSON.parse(JSON.stringify(value));}
 
@@ -74,6 +74,20 @@ async function main(){
  assert.throws(()=>first.vault.write({...fixture(),release:'0.0.1'}),/Invalid save schema/);
  assert.throws(()=>first.vault.write({...fixture(),version:1}),/Invalid save schema/);
  const noRelease=fixture();delete noRelease.release;assert.throws(()=>first.vault.write(noRelease),/Invalid save schema/);
+
+ // Starting equipment is permanent run state, including the unfinished dream.
+ const weaponEnv=storageEnvironment(),weaponClient=client(weaponEnv);await weaponClient.vault.ready;
+ for(const weaponStyle of ['katana','naginata','swordShield'])for(const prologueComplete of [false,true]){
+  const loadout={...fixture(),weaponStyle,prologueComplete};await weaponClient.vault.write(loadout);
+  assert.deepEqual(plain(await client(weaponEnv).vault.ready),loadout,weaponStyle+' survives encrypted reload before and after waking');
+ }
+ for(const weaponStyle of [undefined,null,'','sword','__proto__','constructor',{},['katana'],42,new String('katana')]){
+  assert.throws(()=>weaponClient.vault.write({...fixture(),weaponStyle}),/Invalid weapon style/,'Reject non-catalogue weapon choice');
+ }
+ const missingWeapon=fixture();delete missingWeapon.weaponStyle;
+ assert.throws(()=>weaponClient.vault.write(missingWeapon),/Invalid weapon style/,'Choice is required in current-release saves');
+ Object.setPrototypeOf(missingWeapon,{weaponStyle:'katana'});
+ assert.throws(()=>weaponClient.vault.write(missingWeapon),/Invalid weapon style/,'Inherited weapon choice is not a persisted field');
 
  // Council key is consumed at the gate; an earned key can also lie on the floor.
  const council=fixture();Object.assign(council,{realm:1,abilities:[true,true],defeated:victories([true,true]),flags:worldArrays([['forestBell','villageBell'],['soulUpper','soulLower']]),visitedRests:worldArrays([['start'],['start']])});
