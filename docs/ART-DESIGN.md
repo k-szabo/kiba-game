@@ -16,6 +16,8 @@ Az angyali romokat ködös, festett felhők és romos párkányok rejtik. A titk
 
 ## Animáció, kivágás és illesztés
 
+A közös alsó dialógusfelület négy festett, natív alfás papírtekercset használ (`dialogue-japan/yomi/heaven/shadow-v1.png`). A motívumok helyszínhez kötöttek: bambusz, perzselt láva, angyali aranyozás, démoni árnyék. Az erdei menedék a japán, az álom az árnyékos változatot használja. A keret natív aránya és teljes dekorációja megmarad; a szöveg a promptmetaadatban rögzített belső papírfelületre kerül. A feliratok élő HTML-elemek, soha ne égessük őket a képbe. A korábbi jóváhagyott karakterképek DPR-felbontású portrékanvászokra kerülnek. Részletek és bővítés: [DIALOGUE.md](DIALOGUE.md).
+
 - Őrizzük meg a PNG eredeti alfáját. Kivágással és átlátszó hézagot követő kontúrral válasszuk szét a sprite-okat; ne töröljünk valódi fegyver-, szárny- vagy füstrészletet.
 - A teljes sziluett férjen el minden képkockán mindkét irányban. A kiálló kardhegy, glória, pajzs és talp ne vágódjon le, a szomszédos figura ne szivárogjon át.
 - Momo pózainak méretét a valódi alfa-tartalomhoz és rögzített talppontokhoz igazítjuk; a 43 × 69-es ütközőtest ettől független. Ugrás közben sem változhat a látszólagos testmérete.

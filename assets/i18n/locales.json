@@ -697,7 +697,9 @@
       "merchant.sell.visit": "Eladáshoz keresd fel Akasht az erdei menedékben.",
       "merchant.unsellable": "Ez a tárgy nem eladható.",
       "menu.changelog.0933.title": "Adásvétel Akashnál",
-      "menu.changelog.0933.trade": "Akash az inventoryból eladható holmikat, bosslelkeket és zsákmányt is megveszi; kínálatában egy különös telefontok is megjelent."
+      "menu.changelog.0933.trade": "Akash az inventoryból eladható holmikat, bosslelkeket és zsákmányt is megveszi; kínálatában egy különös telefontok is megjelent.",
+      "menu.changelog.0934.title": "Párbeszédek új köntösben",
+      "menu.changelog.0934.dialogue": "A párbeszédek alsó, JRPG-stílusú sávban jelennek meg, karakterportrékkal, a beszélő nevével és lapozható szöveggel."
     }
   },
   "en": {
@@ -1398,7 +1400,9 @@
       "merchant.sell.visit": "Visit Akash in the Forest Refuge to sell items.",
       "merchant.unsellable": "This item cannot be sold.",
       "menu.changelog.0933.title": "Trading with Akash",
-      "menu.changelog.0933.trade": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock."
+      "menu.changelog.0933.trade": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock.",
+      "menu.changelog.0934.title": "A new look for dialogue",
+      "menu.changelog.0934.dialogue": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text."
     }
   }
 }

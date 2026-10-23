@@ -662,6 +662,22 @@
           "en": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock."
         }
       ]
+    },
+    {
+      "version": "0.9.34_6e32296c",
+      "code": "6e32296c",
+      "baseVersion": "0.9.34",
+      "slug": "jrpg-paged-dialogue",
+      "summary": {
+        "hu": "Párbeszédek új köntösben",
+        "en": "A new look for dialogue"
+      },
+      "fixes": [
+        {
+          "hu": "A párbeszédek alsó, JRPG-stílusú sávban jelennek meg, karakterportrékkal, a beszélő nevével és lapozható szöveggel.",
+          "en": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text."
+        }
+      ]
     }
   ]
 }

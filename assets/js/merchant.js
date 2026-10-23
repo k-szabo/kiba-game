@@ -34,7 +34,7 @@ const Merchant=(()=>{
   if(state!=='play'||level!==yomi||rescued()||!pointNear(yomi.akash,100,85))return false;
   if(enemies.some(e=>e.group==='akash'&&!e.dead)){toast(I18n.t('merchant.guards'));return false;}
   flags[1].push('akashRescued');persist();updateHUD();
-  story(I18n.t('merchant.name'),I18n.t('camp.name'),I18n.t('merchant.rescue.story'));return true;
+  story('merchant.name','camp.name','merchant.rescue.story',null,{right:'akash'});return true;
  }
  function description(id){return ['roastMeat','tea'].includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
  function purchase(id){

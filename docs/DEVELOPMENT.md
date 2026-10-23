@@ -26,7 +26,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/merchant.js` | Akash kiszabadítása, bolt, érmék, fogyasztható étel és helyi minimap; [működés](MERCHANT.md). |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
-| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
+| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
 | `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |

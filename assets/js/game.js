@@ -50,7 +50,7 @@ function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add(
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
 function burst(x,y,color,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(noise(time*100+i)-.5)*280,vy:-noise(time*200+i)*230,life:.4+noise(i+time)*.5,color,size:2+noise(i)*4});}
 function emitDashWisp(){if(reducedMotion.matches)return;particles.push({kind:'dashWisp',x:player.x+player.w/2-player.face*12,y:player.y+player.h*.55,vx:-player.face*50,vy:0,life:.32,maxLife:.32,face:player.face});}
-function initPlayer(point=level.start){LevelUpEffect.clear();Merchant.resetTea();const support=platforms.find(p=>!p.broken&&Math.abs(p.y-point.y)<1&&point.x+21.5>p.x&&point.x-21.5<p.x+p.w);player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,stun:0,onGround:!!support,jumps:0,support:support?.id??null,animationTime:0};attack=0;attackElapsed=0;attackFace=1;attackHit=false;attackKind='normal';dash=0;dashTrailClock=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;shake=0;}
+function initPlayer(point=level.start){Dialogue.cancel();LevelUpEffect.clear();Merchant.resetTea();const support=platforms.find(p=>!p.broken&&Math.abs(p.y-point.y)<1&&point.x+21.5>p.x&&point.x-21.5<p.x+p.w);player={x:point.x-21.5,y:point.y-69,w:43,h:69,vx:0,vy:0,face:1,hp:momoStats().maxHp,maxHp:momoStats().maxHp,inv:1,stun:0,onGround:!!support,jumps:0,support:support?.id??null,animationTime:0};attack=0;attackElapsed=0;attackFace=1;attackHit=false;attackKind='normal';dash=0;dashTrailClock=0;attackCooldown=0;dashCooldown=0;jumpBuffer=0;coyote=0;dropTimer=0;shake=0;}
 function resetCamera(){camera=clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW));cameraY=clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H));}
 function enterRealm(n,point=null){SlayerDialog.cancel();DoomSlayer.clear();DevDamage.clear();councilReturn=null;realm=n;level=levels[n];platforms=level.platforms.map(p=>({...p,dx:0}));levelTime=0;checkpoint={...(level.rests.find(r=>r.id===point?.id)||level.rests[0])};initPlayer(checkpoint);bossStarted=false;particles=[];drops=[];projectiles=[];visits=new Set();
  enemies=createEnemies();boss=createBoss();Visuals.resetAtmosphere();if(!visitedRests[n].includes('start'))visitedRests[n].push('start');resetCamera();updateHUD();}
@@ -94,7 +94,66 @@ function startGame(resume=false){if(resolutionBlocked)return;if(!storageReady){t
  if(resetForRelease)toast(I18n.t('text.save.reset.new.version'));
 }
 function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on;Compass.update();}
-function story(label,title,text,onClose){state='dialog';keys.clear();pressed.clear();$('dialogLabel').textContent=I18n.t(label);$('dialogTitle').textContent=I18n.t(title);$('dialogText').replaceChildren();for(const paragraph of I18n.t(text).split(/\n\s*\n/)){const p=document.createElement('p');p.textContent=paragraph;$('dialogText').append(p);}$('dialog').hidden=false;$('dialogOk').textContent=I18n.t("text.next.0ed851");const finish=()=>{if(state!=='dialog'||$('dialog').hidden||$('dialogOk').onclick!==finish)return;$('dialog').hidden=true;state='play';onClose?.();};$('dialogOk').onclick=finish;$('dialogOk').focus();}
+// One transient scene owns its pages and completion; no dialogue state is saved.
+const Dialogue=(()=>{
+ let scene=null,revision=0;
+ const actors={momo:{name:'Momo',image:'inventoryMomoPortrait',rect:ART_INVENTORY.momo},...Object.fromEntries(['daichi','natsu','sora','akash'].map(id=>[id,{name:id==='akash'?'merchant.name':'camp.npc.'+id+'.name',image:ART_CAMP[id].image,rect:ART_CAMP[id]}]))};
+ const theme=()=>Prologue.active?'shadow':realm===1?'yomi':realm===2?'heaven':realm===3?'shadow':'japan';
+ function portrait(side,id,speaker){
+  const node=$('dialogPortrait'+side),actor=Object.hasOwn(actors,id)?actors[id]:null;
+  node.hidden=!actor;if(!actor)return;
+  node.classList[ id===speaker?'add':'remove']('speaking');
+  node.setAttribute('aria-label',I18n.t(actor.name));
+  const ratio=Math.max(1,Math.min(3,window.devicePixelRatio||1));node.width=180*ratio;node.height=280*ratio;
+  const c=node.getContext('2d'),img=Visuals.images[actor.image],r=actor.rect;c.clearRect(0,0,node.width,node.height);
+  if(!img?.complete||!img.naturalWidth)return;
+  const s=Math.min(node.width/r.w,node.height/r.h);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';
+  c.drawImage(img,r.x||0,r.y||0,r.w,r.h,(node.width-r.w*s)/2,node.height-r.h*s,r.w*s,r.h*s);
+ }
+ function render(){
+  if(!scene)return;
+  const s=scene,body=I18n.t(typeof s.text==='function'?s.text():s.text);
+  const pages=body.split(/\n\s*\n/);s.page=Math.min(s.page,pages.length-1);s.pages=pages.length;
+  $('dialog').dataset.theme=s.theme;
+  $('dialogLabel').textContent=I18n.t(s.label);$('dialogTitle').textContent=I18n.t(s.title);
+  const speaker=Object.hasOwn(actors,s.speaker)?actors[s.speaker]:null;
+  $('dialogSpeaker').hidden=!speaker||I18n.t(s.title)===I18n.t(speaker.name);$('dialogSpeaker').textContent=speaker?I18n.t(speaker.name):'';
+  $('dialogText').replaceChildren();
+  for(let i=0;i<pages.length;i++){const p=document.createElement('p');p.textContent=I18n.t(pages[i]);p.hidden=i!==s.page;$('dialogText').append(p);}
+  $('dialogText').scrollTop=0;$('dialogPage').textContent=(s.page+1)+' / '+pages.length;
+  $('dialogOk').textContent=I18n.t('text.next.0ed851');
+  portrait('Left',s.left,s.speaker);portrait('Right',s.right,s.speaker);
+ }
+ function cancel(){
+  const wasActive=!!scene;revision++;scene=null;$('dialog').hidden=true;$('dialogOk').onclick=null;
+  if(wasActive){keys.clear();pressed.clear();}
+ }
+ function open(label,title,text,onClose,options={}){
+  const token=++revision,returnFocus=document.activeElement;
+  scene={label,title,text,onClose,page:0,pages:1,theme:theme(),left:'momo',right:null,...options};
+  state='dialog';keys.clear();pressed.clear();$('dialog').hidden=false;
+  const next=()=>{
+   if(!scene||token!==revision||state!=='dialog'||$('dialog').hidden||$('dialogOk').onclick!==next)return;
+   keys.clear();pressed.clear();
+   if(scene.page+1<scene.pages){scene.page++;render();$('dialogOk').focus();return;}
+   const done=scene.onClose;cancel();state='play';
+   if(returnFocus?.isConnected&&returnFocus.matches?.('button,a[href],input,select,textarea,summary,[tabindex]')&&!returnFocus.disabled&&!returnFocus.closest?.('[hidden],[inert]'))returnFocus.focus();else $('pauseButton').focus();
+   done?.();
+  };
+  $('dialogOk').onclick=next;render();$('dialogOk').focus();
+ }
+ function keydown(event){
+  if(state!=='dialog')return;
+  if(event.repeat&&(event.key==='Enter'||event.key===' ')){event.preventDefault();return;}
+  if(event.key==='Tab'){
+   // The scrollable reading region and Next remain reachable inside the modal.
+   const nodes=[$('dialogText'),$('dialogOk')],i=nodes.indexOf(document.activeElement);
+   event.preventDefault();nodes[event.shiftKey?(i<=0?1:0):(i===0?1:0)].focus();
+  }
+ }
+ return Object.freeze({open,render,cancel,keydown});
+})();
+function story(label,title,text,onClose,options){Dialogue.open(label,title,text,onClose,options);}
 function pointNear(p,dx=100,dy=90){return Math.abs(player.x+player.w/2-p.x)<dx&&Math.abs(player.y+player.h-p.y)<dy;}
 function nextObjective(){if(ShadowRealm.active())return ShadowRealm.objective();if(level===forestCamp)return{point:level.rests[0],compass:false,text:I18n.t('camp.objective')};if(level.id==='councilHall')return{point:level.inscription,compass:false,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,name:realm===2?I18n.t('HARU'):realms[realm+1].name,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
  if(realm===0){if(!abilities[0])return{point:level.ability,name:level.ability.name,text:I18n.t("text.visit.the.wind.shrine.beside.the.path")};const bell=level.objects.find(o=>o.type==='bell'&&!hasFlag(o.id));if(bell)return{point:bell,name:bell.name,text:I18n.format("message.ring.arg0.bells.arg1.2",[bell.name,flags[0].filter(f=>f.endsWith('Bell')).length])};return{point:level.boss,name:realms[realm].boss,text:I18n.t("text.the.two.bells.have.opened.the.bamboo.temple.find")};}
@@ -139,7 +198,7 @@ function interact(){const c=getContext();if(!c)return;if(ShadowRealm.interact(c)
  if(c.type==='campReturn'){leaveForestCamp();return;}
  if(c.type==='akash'){Merchant.free();return;}
  if(c.type==='campNPC'&&c.npc.merchant){Merchant.open();return;}
- if(c.type==='campNPC'){story(I18n.t('camp.dialogue.label'),I18n.t(c.npc.name),I18n.t(c.npc.dialogue));return;}
+ if(c.type==='campNPC'){story('camp.dialogue.label',c.npc.name,c.npc.dialogue,null,{right:c.npc.id,speaker:c.npc.id});return;}
  if(c.type==='councilGate'){
   if(hasFlag('councilGateOpen')){enterCouncilHall();return;}
   if(!hasFlag('councilKey')){toast(I18n.t('council.gate.clue'));return;}
@@ -173,7 +232,7 @@ function guardianDefeated(){
  }
  persist();updateHUD();burst(boss.x+40,boss.y+40,realms[realm].gold,55);$('bossHud').hidden=true;
  const text=realm===3?I18n.t('shadow.objective.search'):realm===0?I18n.t('story.haru.s.first.memory.returns.the.glowing.torii.has'):realm===1?I18n.t('story.haru.s.second.memory.has.set.momo.s.sword'):I18n.t('text.the.final.guardian.bows.a.new.wind.stream.shines');
- const body=(relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+text:text+(keyEarned?'\n\n'+I18n.t('council.key.dropped'):''))+(firstReward?'\n\n'+I18n.format('boss.reward.summary',[reward.xp,reward.points,I18n.t('item.'+reward.id)]):'');
+ const body=()=>(relicUnited?I18n.t('relic.eclipse.dialog.body')+'\n\n'+I18n.t(text):I18n.t(text)+(keyEarned?'\n\n'+I18n.t('council.key.dropped'):''))+(firstReward?'\n\n'+I18n.format('boss.reward.summary',[reward.xp,reward.points,I18n.t('item.'+reward.id)]):'');
  story(I18n.t(relicUnited?'relic.eclipse.dialog.label':'text.a.soul.fragment.returns.home'),relicUnited?I18n.t('relic.eclipse.name'):realm===3?I18n.t('shadow.boss.priest'):realm===0?I18n.t('text.the.bells.call.you.home'):realm===1?I18n.t('text.the.dawnblade.awakens'):I18n.t('text.the.last.wind'),body);
 }
 function playerAttackDamage(kind=attackKind){return momoStats().damage*SWORD_ATTACKS[kind].damageScale;}
@@ -282,7 +341,7 @@ function showMap(){if(state!=='play'||Prologue.active)return;const inside=level=
  const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t((inCamp?I18n.t('camp.name'):realms[realm].name)+I18n.t("text.light.paths.to.discovered.shrines"));if(!DevSession.active&&!ShadowRealm.travelAllowed(realm,realm))label.textContent=I18n.t('shadow.travel.locked');$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmRests(n).some(rest=>travelDestination(rest,n)));if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
 function closeMap(){$('map').hidden=true;state='play';pressed.clear();}
 function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden=false;$('resumeButton').focus();}else if(state==='pause'){state='play';$('pause').hidden=true;pressed.clear();}}
-function mainMenu(){LevelUpEffect.clear();Merchant.resetTea();SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
+function mainMenu(){Dialogue.cancel();LevelUpEffect.clear();Merchant.resetTea();SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
 $('startButton').onclick=()=>startGame(false);$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
@@ -371,6 +430,7 @@ function handleMouseContextMenu(e){
 function handleKeyDown(e){
  if(resolutionBlocked||state==='developer')return;
  const k=keyName(e);
+ if(state==='dialog'){Dialogue.keydown(e);return;}
  if(state==='slayerSpell'){const target=e.target||document.activeElement,editing=target===$('slayerSpellInput')||target?.matches?.('input,textarea,[contenteditable="true"]');if(!e.repeat&&(k==='escape'||!editing&&Bindings.read('pause').includes(k))){e.preventDefault();SlayerDialog.close();}return;}
  if(state==='shop'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k))){e.preventDefault();Merchant.close();}return;}
  if(state==='inventory'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k)||Bindings.read('inventory').includes(k))){e.preventDefault();Inventory.close();}return;}
@@ -399,6 +459,7 @@ function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);
 Inventory.init();Merchant.init();SlayerDialog.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':level===forestCamp?'forestCamp':['japan','yomi','heaven'][realm]);
 I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
+I18n.onChange(()=>Dialogue.render());
 I18n.applyDOM();
 DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevImmortality.init();DevDamage.init();DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});

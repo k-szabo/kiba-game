@@ -18,6 +18,10 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+  dialogueJapan: "assets/images/ui/dialogue-japan-v1.png",
+  dialogueYomi: "assets/images/ui/dialogue-yomi-v1.png",
+  dialogueHeaven: "assets/images/ui/dialogue-heaven-v1.png",
+  dialogueShadow: "assets/images/ui/dialogue-shadow-v1.png",
   phoneCase: "assets/images/ui/phone-case-v1.png",
   levelUp: "assets/images/effects/level-up-v1.png",
   samuraiJump: "assets/images/enemies/samurai-jump-v1.png",
