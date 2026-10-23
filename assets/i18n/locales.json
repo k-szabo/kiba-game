@@ -722,7 +722,9 @@
       "weapon.description": "Momo választott fegyvere. Normál támadás: {0} sebzés. Erős támadás: {1} sebzés. A fegyvert a szentélyeknél fejlesztheted.",
       "menu.changelog.0936.title": "Három kezdő fegyverstílus",
       "menu.changelog.0936.weapons": "Új játék előtt katana, naginata vagy kard és pajzs választható, eltérő harci előnyökkel. A választás az adott utazás részeként mentődik.",
-      "weapon.training.title": "Fegyver"
+      "weapon.training.title": "Fegyver",
+      "menu.changelog.0937.title": "Százalékos páncélvédelem",
+      "menu.changelog.0937.armor": "A Démonölő páncélja százalékosan csökkenti a beérkező sebzést; a védelem erősödése fokozatosan lassul."
     }
   },
   "en": {
@@ -1448,7 +1450,9 @@
       "weapon.description": "Momo’s chosen weapon. Normal attack: {0} damage. Heavy attack: {1} damage. Improve it at shrines.",
       "menu.changelog.0936.title": "Three starting weapon styles",
       "menu.changelog.0936.weapons": "Choose a katana, naginata, or sword and shield before a new game, each with distinct combat advantages. The choice is saved for that journey.",
-      "weapon.training.title": "Weapon"
+      "weapon.training.title": "Weapon",
+      "menu.changelog.0937.title": "Percentage-based armor",
+      "menu.changelog.0937.armor": "The Demon Slayer’s armor reduces incoming damage by a percentage, with diminishing returns as armor increases."
     }
   }
 }

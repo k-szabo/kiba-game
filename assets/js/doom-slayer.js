@@ -2,6 +2,7 @@
 'use strict';
 const DoomSlayer=(()=>{
  const flag='guardian:doomSlayer',summonFlag='slayerSummoned',moves=['flail','oil','fireArrows','lightning','kick','arrows','doubleJump','grab','explosion'];
+ const armorGain=50,armorCap=400;
  const mobility={run:480,sawRun:620,jump:460,sawRush:720,spacing:130};
  const is=e=>e?.miniboss==='slayer';
  const facing=e=>Math.sign(player.x+player.w/2-e.x-e.w/2)||e.face;
@@ -75,7 +76,7 @@ const DoomSlayer=(()=>{
   if(state!=='play'||!e.active||e.dead||e.inv>0||!Number.isFinite(amount)||amount<=0||!overlap(hitbox,e))return 0;
   const front=Math.sign(player.x+player.w/2-e.x-e.w/2)===e.face,above=player.y+player.h<e.y+e.h*.55;
   if(kind==='normal'&&['wait','recover'].includes(e.phase)&&e.y===e.baseY&&e.vy===0&&front&&!above){e.blockFlash=.25;return 0;}
-  const before=e.hp;e.hp=Math.max(0,e.hp-Math.max(.25,amount-e.armor));e.inv=.12;
+  const before=e.hp;e.hp=Math.max(0,e.hp-Armor.damage(amount,e.armor));e.inv=.12;
   if(typeof DevDamage!=='undefined')DevDamage.record('outgoing',e,before,e.hp);
   if(!e.hp)defeat(e);else if(!e.sawTriggered&&e.hp<=e.maxHp*.3)beginSaw(e);
   return before-e.hp;
@@ -118,7 +119,7 @@ const DoomSlayer=(()=>{
   const victim=hurt(e,amount,e.attackFace,true);if(!victim)return;
   if(e.move==='kick'){victim.vx=e.attackFace*720;victim.vy=-280;}
   if(e.move==='grab')capture(e,victim,.5);
-  if(e.move==='saw'){capture(e,victim,.9);e.hp=Math.min(e.maxHp,e.hp+20);e.armor=Math.min(8,e.armor+1);}
+  if(e.move==='saw'){capture(e,victim,.9);e.hp=Math.min(e.maxHp,e.hp+20);e.armor=Math.min(armorCap,e.armor+armorGain);}
  }
  function effects(e,dt){
   for(const h of e.hazards){
