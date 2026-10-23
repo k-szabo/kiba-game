@@ -116,10 +116,44 @@ for(const protection of ['inv','dash','immortality']){
 }
 {
  const h=fixture();start(h);value(h,'subject.hp=90;');contact(h,'saw');
- assert.equal(value(h,'subject.hp'),110);assert.equal(value(h,'subject.armor'),1);
- value(h,"subject.inv=0;subject.phase='cast';");assert.equal(value(h,"DoomSlayer.hit(subject,subject,5,'heavy')"),4,'Each armor point reduces incoming damage');
- value(h,'subject.inv=0;subject.armor=8;');assert.equal(value(h,"DoomSlayer.hit(subject,subject,2,'heavy')"),.25,'Armor never makes the boss invulnerable');
- value(h,'DoomSlayer.clear(subject);subject.armor=8;');contact(h,'saw');assert.equal(value(h,'subject.armor'),8);
+ assert.equal(value(h,'subject.hp'),110);assert.equal(value(h,'subject.armor'),50,'Real saw contact grants 50 armor');
+ value(h,"subject.inv=0;subject.phase='cast';");
+ assert(Math.abs(value(h,"DoomSlayer.hit(subject,subject,6,'heavy')")-4)<1e-10,'50 armor mitigates one third of incoming damage');
+ value(h,'subject.inv=0;subject.armor=400;');
+ assert(Math.abs(value(h,"DoomSlayer.hit(subject,subject,.1,'heavy')")-.02)<1e-10,'Fractional attacks keep proportional damage below the old floor');
+ for(let hit=0;hit<9;hit++){
+  value(h,'DoomSlayer.clear(subject);subject.hp=90;');contact(h,'saw');
+  assert.equal(value(h,'subject.armor'),400,'Saw armor cannot exceed 400');
+  assert.equal(value(h,'subject.hp'),110,'Armor cap does not remove saw healing');
+ }
+ value(h,'DoomSlayer.reset(subject)');assert.equal(value(h,'subject.armor'),0,'Retry clears accumulated armor');
+ start(h);
+ for(let hit=1;hit<=8;hit++){
+  value(h,'DoomSlayer.clear(subject);subject.hp=90;');contact(h,'saw');
+  assert.equal(value(h,'subject.armor'),hit*50,'Saw armor stacks in 50-point increments');
+ }
+}
+// Directional shield blocking and percentage mitigation remain distinct: a
+// blocked normal strike deals zero; a bypass still respects armor exactly once.
+for(const phase of ['wait','recover']){
+ const h=fixture();start(h);
+ value(h,"subject.armor=100;subject.phase="+JSON.stringify(phase)+";subject.clock=2;subject.face=-1;player.x=subject.x-50;player.y=subject.baseY+43;");
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),0,'Armored frontal shield blocks normal attacks');
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'heavy')"),5,'Heavy bypass mitigates once');
+ value(h,'subject.inv=0;player.x=subject.x+subject.w+5;');
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),5,'Rear bypass mitigates once');
+ value(h,'subject.inv=0;player.x=subject.x-50;player.y=subject.y-player.h;');
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'normal')"),5,'Aerial bypass mitigates once');
+}
+{
+ const h=fixture();
+ value(h,'DevDamage.init();DevTools.open();DevSession.begin();DevDamage.toggle();DevTools.close();');
+ start(h);value(h,"subject.armor=400;subject.hp=100;subject.phase='cast';DevDamage.clear();");
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'heavy')"),2);
+ assert.equal(value(h,'DevDamage.samples.at(-1).amount'),2,'Diagnostics show actual mitigated HP loss');
+ value(h,'subject.inv=0;subject.hp=1;');
+ assert.equal(value(h,"DoomSlayer.hit(subject,subject,10,'heavy')"),1);
+ assert.equal(value(h,'DevDamage.samples.at(-1).amount'),1,'Armored lethal hits record remaining HP rather than overkill');
 }
 for(const hp of [3,4]){
  const h=fixture();start(h);

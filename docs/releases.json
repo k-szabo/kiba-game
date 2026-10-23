@@ -734,6 +734,22 @@
           "en": "Choose a katana, naginata, or sword and shield before a new game, each with distinct combat advantages. The choice is saved for that journey."
         }
       ]
+    },
+    {
+      "version": "0.9.37_d589a03d",
+      "code": "d589a03d",
+      "baseVersion": "0.9.37",
+      "slug": "percentage-armor",
+      "summary": {
+        "hu": "Százalékos páncélvédelem",
+        "en": "Percentage-based armor"
+      },
+      "fixes": [
+        {
+          "hu": "A Démonölő páncélja százalékosan csökkenti a beérkező sebzést; a védelem erősödése fokozatosan lassul.",
+          "en": "The Demon Slayer’s armor reduces incoming damage by a percentage, with diminishing returns as armor increases."
+        }
+      ]
     }
   ]
 }
