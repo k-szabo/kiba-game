@@ -26,7 +26,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/merchant.js` | Akash kiszabadítása, bolt, érmék, fogyasztható étel és helyi minimap; [működés](MERCHANT.md). |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
-| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép és a fő játékciklus. |
+| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
 | `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
@@ -46,7 +46,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
-| `assets/css/style.css` | A kezelőfelület megjelenése. |
+| `assets/css/style.css`, `assets/fonts/` | A kezelőfelület megjelenése és a [helyben tárolt betűk](TYPOGRAPHY.md). |
 | `assets/images/` | Momo, a világok, az ellenfelek és a tárgyak képei. |
 | `assets/config/colormaps.json` | Karakterek, tárgyak és összes képfájl referencia-színpalettái, zászlók és kódbeli színek. |
 | `scripts/export-colormaps.py` | A színreferencia reprodukálható frissítése a képekből és a rajzolási metaadatokból. |

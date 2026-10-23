@@ -122,7 +122,7 @@ const Visuals = (() => {
       shadow(npc.x,npc.y,26,.22);
       frame(npc.image,ART_CAMP[npc.id],npc.x,npc.y,npc.height);
       const label=I18n.t(npc.name),y=npc.y-npc.height-18;
-      ctx.save();ctx.font='600 15px Manrope, sans-serif';ctx.textAlign='center';
+      ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
       const w=ctx.measureText(label).width+20;ctx.fillStyle='#0d1b29ed';ctx.fillRect(npc.x-w/2,y-16,w,26);
       ctx.fillStyle='#fff0cc';ctx.fillText(label,npc.x,y+2);ctx.restore();
     }
@@ -130,7 +130,7 @@ const Visuals = (() => {
   function campPathMarker(point,label){
     if(!visiblePoint(point,200))return;
     prop('torii',point.x,point.y,150,.9);
-    ctx.save();ctx.font='600 15px Manrope, sans-serif';ctx.textAlign='center';
+    ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
     const w=ctx.measureText(label).width+24,y=point.y-172;
     ctx.fillStyle='#0d1b29ed';ctx.fillRect(point.x-w/2,y-19,w,30);
     ctx.fillStyle='#fff0cc';ctx.fillText(label,point.x,y+2);ctx.restore();
@@ -301,9 +301,9 @@ const Visuals = (() => {
       ctx.fillStyle = g;ctx.fillRect(x - 170, feet - 280, 340, 300);
       ctx.strokeStyle = r.gold + '90';ctx.lineWidth = 1.5;
       for (let i = 0; i < 3; i++) {ctx.beginPath();ctx.ellipse(x, feet - 100, 46 + i * 5, 88 + i * 6, 0, 0, Math.PI * 2);ctx.stroke();}
-      ctx.font = 'bold 12px Manrope, sans-serif';ctx.fillStyle = r.gold;ctx.textAlign = 'center';
+      ctx.font = 'bold 12px "Kiba UI", "Kiba Story", sans-serif';ctx.fillStyle = r.gold;ctx.textAlign = 'center';
       ctx.fillText(I18n.t((realm < 2 ? realms[realm + 1].short : I18n.t("text.passage")).toUpperCase()) + ' · ' + bindingKeyLabel(Bindings.read('interact')[0]), x, feet - 145);
-      ctx.font = '10px Manrope, sans-serif';ctx.fillText(I18n.t("text.stand.beneath.the.gate"), x, feet - 126);
+      ctx.font = '10px "Kiba UI", "Kiba Story", sans-serif';ctx.fillText(I18n.t("text.stand.beneath.the.gate"), x, feet - 126);
       ctx.restore();
     }
     shadow(x, feet, 95, .3);
@@ -314,7 +314,7 @@ const Visuals = (() => {
     g.addColorStop(0, r.gold + '38');g.addColorStop(1, r.gold + '00');ctx.fillStyle = g;ctx.fillRect(x - 90, feet - 130, 180, 150);
     shadow(x, feet, 31, .3);prop(realm === 2 ? 'skyShrine' : 'shrine', x, feet + 3, ability ? 120 : 105);
     if (ability) {
-      ctx.save();ctx.fillStyle = r.gold;ctx.textAlign = 'center';ctx.font = '20px serif';
+      ctx.save();ctx.fillStyle = r.gold;ctx.textAlign = 'center';ctx.font = '20px "Kiba Story", "Kiba Story Latin", serif';
       ctx.fillText(I18n.t(realm === 0 ? '風' : '影'), x, feet - 136 + Math.sin(time * 2) * 3);ctx.restore();
     }
   }
@@ -327,12 +327,12 @@ const Visuals = (() => {
         BossVFX.portal(altar.x,altar.y+5,145,lit?.8:.3);
         frame(ART_SHADOW_ALTAR.image,ART_SHADOW_ALTAR,altar.x,altar.y+2,height);
         ctx.save();ctx.textAlign='center';ctx.fillStyle='#100e20ed';
-        ctx.font='bold 14px Manrope, sans-serif';
+        ctx.font='bold 14px "Kiba UI", "Kiba Story", sans-serif';
         const name=I18n.t('shadow.place.altar'),width=Math.max(140,ctx.measureText(name).width+26);
         const markerX=altar.x,top=altar.y-height-68;
         ctx.fillRect(markerX-width/2,top,width,64);ctx.strokeStyle='#cda6ef';ctx.lineWidth=1.5;ctx.strokeRect(markerX-width/2,top,width,64);
-        ctx.fillStyle=lit?'#fff0c8':'#e6c6ff';ctx.font='bold 32px serif';ctx.fillText('影',markerX,top+34);
-        ctx.font='bold 14px Manrope, sans-serif';ctx.fillText(name,markerX,top+55);ctx.restore();
+        ctx.fillStyle=lit?'#fff0c8':'#e6c6ff';ctx.font='bold 32px "Kiba Story", "Kiba Story Latin", serif';ctx.fillText('影',markerX,top+34);
+        ctx.font='bold 14px "Kiba UI", "Kiba Story", sans-serif';ctx.fillText(name,markerX,top+55);ctx.restore();
       }
     }
     if(level===yomi&&!Merchant.rescued()&&visiblePoint(yomi.akash,180)){
@@ -362,7 +362,7 @@ const Visuals = (() => {
       else if (o.type === 'rescue') {if (!taken) prop('cage', o.x, o.y + 2, 125);drawSpirit(o.x, o.y - 58, r.gold);}
       else if(o.type==='relic'){if(!taken){shadow(o.x,o.y,33,.35);frame('relics',ART_FRAMES.relics[o.id],o.x,o.y+2,118);}}
       else drawSpirit(o.x, o.y - 35, r.gold);
-      ctx.save();ctx.font = 'bold 12px Manrope, sans-serif';ctx.textAlign = 'center';
+      ctx.save();ctx.font = 'bold 12px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign = 'center';
       const label=I18n.t(taken ? '✓' : o.name),labelY=o.y-(o.type==='bell'?175:148);
       if(realm===2||realm===3){const width=ctx.measureText(label).width+20;ctx.fillStyle='#183246e8';ctx.fillRect(o.x-width/2,labelY-15,width,21);}
       ctx.fillStyle = realm===2?'#fff0ba':r.gold;ctx.fillText(label,o.x,labelY);ctx.restore();
@@ -420,7 +420,7 @@ const Visuals = (() => {
     if(isBoss&&realm===1&&e.yomiStage==='shelter'){
       BossVFX.portal(x,feet+8,168,.85);
       const label=I18n.t('yomi.phase.immune');
-      ctx.save();ctx.font='bold 12px Manrope, sans-serif';ctx.textAlign='center';
+      ctx.save();ctx.font='bold 12px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
       const width=ctx.measureText(label).width+22;ctx.fillStyle='#112b3fee';ctx.fillRect(x-width/2,feet-height-88,width,24);
       ctx.fillStyle='#fff0bc';ctx.fillText(label,x,feet-height-71);ctx.restore();
     }
@@ -439,7 +439,7 @@ const Visuals = (() => {
       const glow=ctx.createRadialGradient(handX,handY,0,handX,handY,isBoss?33:22);glow.addColorStop(0,'#fffbe6');glow.addColorStop(.25,color+'b0');glow.addColorStop(1,color+'00');
       ctx.fillStyle=glow;ctx.fillRect(handX-60,handY-60,120,120);ctx.restore();
       if(isBoss){
-        ctx.save();ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#080512';ctx.shadowBlur=5;
+        ctx.save();ctx.font='bold 13px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#080512';ctx.shadowBlur=5;
         const labels={cleave:I18n.t("text.sword.slash"),dash:'ROHAM',doubleCut:I18n.t("text.double.slash"),hammer:I18n.t("text.hammer.swing"),slam:I18n.t("text.earthquake"),lava:I18n.t("text.lava.jump.onto.the.platforms"),embers:I18n.t("text.ember.rain"),summon:I18n.t("text.summoning.minions"),lightArrows:I18n.t("text.light.arrows"),holySweep:I18n.t("text.holy.arrow.rain"),shadowBolts:I18n.t("text.shadow.bolts"),shadowNova:I18n.t("text.shadow.nova"),shadowRain:I18n.t("text.shadow.rain"),eclipse:I18n.t("text.eclipse"),hellfire:I18n.t("text.hellfire.and.light")};
         const label=I18n.t(e.autoPhase?(realm===2?I18n.t("text.wing.slash"):I18n.t("text.hammer.swing")):labels[e.move]||I18n.t("text.attack"));
         if(realm===2){const width=ctx.measureText(label).width+22;ctx.shadowBlur=0;ctx.fillStyle='#172b42e8';ctx.fillRect(x-width/2,feet-height-55,width,24);ctx.fillStyle=color;}
@@ -457,7 +457,7 @@ const Visuals = (() => {
     const x=e.x+e.w/2,feet=e.y+e.h,height=138;
     ctx.save();ctx.globalAlpha=e.inv>0?.85:1;
     frame(ART_SERPENT.image,ART_SERPENT.frames[clip[index]],x,feet,height,e.face*ART_SERPENT.facing);ctx.restore();
-    ctx.save();ctx.font='bold 12px Manrope, sans-serif';ctx.textAlign='center';
+    ctx.save();ctx.font='bold 12px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
     const label=I18n.t('yomi.serpent.name'),width=Math.max(146,ctx.measureText(label).width+28);
     ctx.fillStyle='#10283fee';ctx.fillRect(x-width/2,feet-height-46,width,42);
     ctx.fillStyle='#fff0bd';ctx.fillText(label,x,feet-height-26);
@@ -487,7 +487,7 @@ const Visuals = (() => {
     if(e.active){
       ctx.fillStyle='#122739df';ctx.fillRect(x-98,feet-height-79,196,e.phase==='windup'?57:53);
       ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);
-      ctx.font='bold 11px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
+      ctx.font='bold 11px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
       if(e.phase==='windup'){
         const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};
         ctx.fillText(I18n.t(names[e.move]||'text.attack'),x,feet-height-63);
@@ -623,7 +623,7 @@ const Visuals = (() => {
       ctx.restore();
       if(w.y+w.h>cameraY&&w.y+w.h<cameraY+H+100){
         ctx.save();ctx.strokeStyle='#ffe8a6';ctx.lineWidth=3;ctx.shadowColor='#ffe8a6';ctx.shadowBlur=18;ctx.beginPath();ctx.ellipse(cx,w.y+w.h-8,w.w*.53,13,0,0,Math.PI*2);ctx.stroke();
-        ctx.shadowBlur=0;ctx.fillStyle='#163847dd';ctx.fillRect(cx-122,w.y+w.h-49,244,27);ctx.fillStyle='#fff4c9';ctx.font='bold 13px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t("text.jump.into.the.wind.stream"),cx,w.y+w.h-30);ctx.restore();
+        ctx.shadowBlur=0;ctx.fillStyle='#163847dd';ctx.fillRect(cx-122,w.y+w.h-49,244,27);ctx.fillStyle='#fff4c9';ctx.font='bold 13px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t("text.jump.into.the.wind.stream"),cx,w.y+w.h-30);ctx.restore();
       }
     }
   }
@@ -648,12 +648,12 @@ const Visuals = (() => {
       const g=ctx.createRadialGradient(x,y,5,x,y,210);g.addColorStop(0,boss.stage===2?'#c596ffad':'#ffe6adbb');g.addColorStop(.45,'#ab83d955');g.addColorStop(1,'#aa77dd00');ctx.fillStyle=g;ctx.fillRect(x-210,y-210,420,420);
       BossVFX.portal(x,boss.y+boss.h,205,.7);
       BossVFX.stamp('shadowColumn',x,boss.y+boss.h,180,230,{alpha:.35+Math.sin(pulse*Math.PI)*.4});
-      ctx.fillStyle='#fff0ce';ctx.font='bold 16px Manrope, sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t(boss.stage===2?I18n.t("text.light.turns.to.shadow"):I18n.t("text.the.ritual.of.halo.and.horn")),x,boss.y-105);
+      ctx.fillStyle='#fff0ce';ctx.font='bold 16px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillText(I18n.t(boss.stage===2?I18n.t("text.light.turns.to.shadow"):I18n.t("text.the.ritual.of.halo.and.horn")),x,boss.y-105);
     }
     for(const portal of boss.summons){
       const x=portal.x+20,y=portal.y,charge=clamp(1-portal.warning/portal.life,0,1);
       BossVFX.portal(x,y,105+charge*25,.5+charge*.5);
-      ctx.font='bold 10px Manrope, sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7c0a4';ctx.shadowColor='#102236';ctx.shadowBlur=4;ctx.fillText(I18n.t("text.summoning"),x,y-90);ctx.shadowBlur=0;
+      ctx.font='bold 10px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle='#f7c0a4';ctx.shadowColor='#102236';ctx.shadowBlur=4;ctx.fillText(I18n.t("text.summoning"),x,y-90);ctx.shadowBlur=0;
     }
     if(boss.autoPhase==='windup'){
       const x=boss.autoFace>0?boss.x+boss.w*.4:boss.x-175;

@@ -11,7 +11,7 @@ module.exports=function harness({prologue=false}={}){
   vm.runInContext(bootstrap.after,sandbox);
   const run=s=>vm.runInContext(s,sandbox),snap=()=>sandbox.momo.getState(),tick=(n=1)=>run(`for(let i=0;i<${n};i++)update(1/120);`);
   const press=k=>run(`handleKeyDown({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')},repeat:false,preventDefault(){}});`),release=k=>run(`handleKeyUp({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')}});`);
-  const dismiss=()=>{if(snap().state==='dialog')elements.get('dialogOk').onclick();},place=(x,y)=>run(`initPlayer({x:${x},y:${y}});player.onGround=true;player.inv=999;`);
+  const dismiss=()=>{for(let n=0;snap().state==='dialog'&&n<50;n++)elements.get('dialogOk').onclick();},place=(x,y)=>run(`initPlayer({x:${x},y:${y}});player.onGround=true;player.inv=999;`);
   run('startGame();');if(!prologue)run('Prologue.wake();');dismiss();
   return {run,snap,tick,press,release,dismiss,place,elements,storage,sandbox};
 };
