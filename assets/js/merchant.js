@@ -99,7 +99,9 @@ const Merchant=(()=>{
  }
  function open(){
   if(state!=='play'||!nearVendor())return false;
-  returnFocus=document.activeElement;keys.clear();pressed.clear();state='shop';$('shop').hidden=false;render();$('shop').querySelector('.shop-panel').scrollTop=0;$('shopTitle').focus({preventScroll:true});return true;
+  returnFocus=document.activeElement;keys.clear();pressed.clear();state='shop';$('shop').hidden=false;render();$('shop').querySelector('.shop-panel').scrollTop=0;
+  const focusTarget=$('shopItems').querySelector('button:not([disabled])')||$('closeShop');
+  if(typeof focusTarget.focus==='function')focusTarget.focus({preventScroll:true});return true;
  }
  function close(){
   if(state!=='shop')return false;
