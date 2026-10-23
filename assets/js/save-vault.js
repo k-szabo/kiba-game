@@ -21,6 +21,7 @@ const SaveVault=(()=>{
  function validate(data){
   if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield'].includes(data.weaponStyle))throw Error('Invalid weapon style');
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
+  if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,levels.length-1)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
   if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
@@ -42,6 +43,9 @@ const SaveVault=(()=>{
   if(data.location==='forestCamp'&&(data.realm!==0||data.prologueComplete!==true||!data.defeated[0]))throw Error('Invalid camp location');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
+  if(data.prologueComplete===false&&data.weaponStyle!=='katana')throw Error('Invalid dream weapon style');
+  // The post-dream choice is resumable only before the journey can advance.
+  if(data.weaponChoicePending===true&&(data.prologueComplete!==true||data.weaponStyle!=='katana'||data.realm!==0||data.location!=null||data.won||data.abilities.some(Boolean)||data.defeated.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp||data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid pending weapon choice');
   for(const [realm,reward] of BOSS_REWARDS.entries()){
    const claimed=data.flags[realm].includes(reward.claim),soul=data.flags[realm].includes(reward.id);
    if(claimed!==soul||claimed&&!data.defeated[realm])throw Error('Invalid boss reward');

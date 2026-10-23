@@ -12,7 +12,7 @@ const DevSession=(()=>{
  function begin(){
   if(state!=='developer'||!DevTools.isOpen||!ready())return false;
   if(active)return true;
-  normalSave=clone(saved);active=true;
+  normalSave=clone(saved);active=true;weaponChoicePending=false;
   if(DevTools.menuBackground){
    const old=normalSave;
    abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);

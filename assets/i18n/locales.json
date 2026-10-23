@@ -356,7 +356,7 @@
       "prologue.awakening.screams": "A hajnal csendjét sikoly töri meg.",
       "prologue.wake.label": "I. FEJEZET · A HARANGOK ÚTJA",
       "prologue.wake.title": "A harangok hallgatnak",
-      "prologue.wake.story": "A papírfalakon már átszűrődik a hajnal. Momo a saját szobájában ébred, de még érzi a sötétség hidegét a mellkasában. Csak álom volt, mondja magának. A lila szemek emléke nem halványul.\n\nHaru mindig azt mondta: ahol a Kiba áramlik, ott hazatalálunk. Most az amulett néma. Apja megszokott lépteit sem hallja a szomszédos szobából.\n\nOdakint sikoly hasít a csendbe. Füst száll a háztetők fölé, katonák járják a falut, a harangok pedig hallgatnak. Haru sehol. Momo magához veszi a kardját, amelynek súlyát apja tanította meg viselni. Először a falut kell elérnie. Aztán követni minden nyomot, amely hazavezetheti Harut.",
+      "prologue.wake.story": "A papírfalakon már átszűrődik a hajnal. Momo a saját szobájában ébred, de még érzi a sötétség hidegét a mellkasában. Csak álom volt, mondja magának. A lila szemek emléke nem halványul.\n\nHaru mindig azt mondta: ahol a Kiba áramlik, ott hazatalálunk. Most az amulett néma. Apja megszokott lépteit sem hallja a szomszédos szobából.\n\nOdakint sikoly hasít a csendbe. Füst száll a háztetők fölé, katonák járják a falut, a harangok pedig hallgatnak. Haru sehol. Momo magához veszi a fegyverét, amelynek súlyát apja tanította meg viselni. Először a falut kell elérnie. Aztán követni minden nyomot, amely hazavezetheti Harut.",
       "text.v0.8.prologue": "V0.8 · PROLÓGUS",
       "council.key.name": "4 tanácsos kulcsa",
       "council.key.pickup": "E · Vedd fel a 4 tanácsos kulcsát",
@@ -724,7 +724,10 @@
       "menu.changelog.0936.weapons": "Új játék előtt katana, naginata vagy kard és pajzs választható, eltérő harci előnyökkel. A választás az adott utazás részeként mentődik.",
       "weapon.training.title": "Fegyver",
       "menu.changelog.0937.title": "Százalékos páncélvédelem",
-      "menu.changelog.0937.armor": "A Démonölő páncélja százalékosan csökkenti a beérkező sebzést; a védelem erősödése fokozatosan lassul."
+      "menu.changelog.0937.armor": "A Démonölő páncélja százalékosan csökkenti a beérkező sebzést; a védelem erősödése fokozatosan lassul.",
+      "dev.weapon.equip": "Fegyver felszerelése",
+      "menu.changelog.0938.title": "Fegyverválasztás ébredés után",
+      "menu.changelog.0938.weapons": "A prológust Momo katanával járja végig; kezdő fegyverét az ébredés után választhatod ki. A nyitó párbeszéd minden fegyverhez illik."
     }
   },
   "en": {
@@ -1084,7 +1087,7 @@
       "prologue.awakening.screams": "A scream breaks the silence of dawn.",
       "prologue.wake.label": "CHAPTER I · THE PATH OF BELLS",
       "prologue.wake.title": "The bells are silent",
-      "prologue.wake.story": "Dawn is already filtering through the paper walls. Momo wakes in his own room, yet the cold of the darkness still presses against his chest. Only a dream, he tells himself. The memory of those violet eyes will not fade.\n\nHaru always said: where Kiba flows, we can find our way home. Now the amulet is silent. Nor can Momo hear his father's familiar footsteps in the next room.\n\nOutside, a scream tears through the quiet. Smoke rises above the rooftops. Soldiers stalk the village, and the bells are silent. Haru is nowhere. Momo takes up the sword his father taught him to carry. First, he must reach the village. Then follow every trace that might bring Haru home.",
+      "prologue.wake.story": "Dawn is already filtering through the paper walls. Momo wakes in his own room, yet the cold of the darkness still presses against his chest. Only a dream, he tells himself. The memory of those violet eyes will not fade.\n\nHaru always said: where Kiba flows, we can find our way home. Now the amulet is silent. Nor can Momo hear his father's familiar footsteps in the next room.\n\nOutside, a scream tears through the quiet. Smoke rises above the rooftops. Soldiers stalk the village, and the bells are silent. Haru is nowhere. Momo takes up the weapon his father taught him to carry. First, he must reach the village. Then follow every trace that might bring Haru home.",
       "text.v0.8.prologue": "V0.8 · PROLOGUE",
       "council.key.name": "Key of the Four Councillors",
       "council.key.pickup": "E · Pick up the Key of the Four Councillors",
@@ -1452,7 +1455,10 @@
       "menu.changelog.0936.weapons": "Choose a katana, naginata, or sword and shield before a new game, each with distinct combat advantages. The choice is saved for that journey.",
       "weapon.training.title": "Weapon",
       "menu.changelog.0937.title": "Percentage-based armor",
-      "menu.changelog.0937.armor": "The Demon Slayer’s armor reduces incoming damage by a percentage, with diminishing returns as armor increases."
+      "menu.changelog.0937.armor": "The Demon Slayer’s armor reduces incoming damage by a percentage, with diminishing returns as armor increases.",
+      "dev.weapon.equip": "Equip weapon",
+      "menu.changelog.0938.title": "Choose your weapon after awakening",
+      "menu.changelog.0938.weapons": "Momo carries a katana throughout the prologue; choose his starting weapon after awakening. The opening dialogue now suits every weapon."
     }
   }
 }

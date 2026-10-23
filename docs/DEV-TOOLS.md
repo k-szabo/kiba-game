@@ -101,3 +101,7 @@ Ha a panelt nyitott inventoryból vagy boltból nyitod, a visszatérés újraraj
 A negyedik birodalom minden pihenőhelye a közös teleportkatalógus része; a normál történeti belépést és az oltár utazási zárját a dev teleport nem kéri. A Boss újraélesztése eszköz találkozásválasztójából a főboss és az aktuális pálya minibossai külön indíthatók. A miniboss újraindítása a tartós győzelmi és jutalomjelzőket megőrzi; ismételt jutalom nincs. A pap lelke, a kotta és a börtönkulcs a közös tárgykatalóguson keresztül adható. A tesztmód továbbra sem ír normál mentést.
 
 A tárgyadó a telefontokot is tartalmazza. Egy eladott, egyedi tárgy ismételt hozzáadása a tesztmódban törli az eladásjelzőt, a megszerzési jelzőt nem duplikálja; már felhasznált kulcsok továbbra sem támadnak fel. A `soldItems` a többi inventory-állapottal együtt elszigetelt a normál mentéstől.
+
+## Fegyvercsere tesztmódban
+
+A Fegyver mező az aktív fegyverkatalógust használja, jelenleg katana, naginata és kard–pajzs opcióval. A felszerelési gomb csak aktív tesztmódban használható; a változtatás nem írja a normál mentést. Az eszköz a `WeaponEquipment.equip(id)` útvonalat hívja, nem saját statmásolatot tart fenn. A nagyobb maximális HP nem gyógyít automatikusan; a kisebb maximum levágja a fölös HP-t. A csere megszakítja a folyamatban lévő támadást, de nem nullázza a támadás és a pajzs újratöltését. Új profil a közös `WeaponStyles` katalógus bővítésével megjelenik a listában. A normál történet katanás prológusát ez nem írja át; tesztmódban az álompályán is ellenőrizhetők a fegyverek.

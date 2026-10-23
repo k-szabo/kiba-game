@@ -15,7 +15,7 @@ const Prologue=(()=>{
     currentPose=pose;if(boss)boss.animation={...pose};
   }
   function start(){
-    stop();phase='walk';clock=battleTime=castIndex=heartbeat=0;zoom=1;
+    stop();if(!DevSession.active)weaponStyle='katana';phase='walk';clock=battleTime=castIndex=heartbeat=0;zoom=1;
     level=dream;platforms=dream.platforms.map(p=>({...p,dx:0}));enemies=[];particles=[];drops=[];projectiles=[];
     initPlayer(dream.start);player.inv=0;bossStarted=false;
     boss={x:SHADOW_X-270,y:FLOOR-440,w:460,h:440,hp:MAX_HP,max:MAX_HP,dead:false,inv:0,flash:0};
@@ -132,8 +132,9 @@ const Prologue=(()=>{
     }catch{}
   }
   function wake(){
-    stop();enterRealm(0);state='play';showHUD(true);persist();scream();
-    story(I18n.t('prologue.wake.label'),I18n.t('prologue.wake.title'),I18n.t('prologue.wake.story'));
+    const choose=active()&&!DevSession.active;
+    stop();if(choose){weaponStyle='katana';weaponChoicePending=true;}enterRealm(0);state='play';showHUD(true);persist();scream();
+    story(I18n.t('prologue.wake.label'),I18n.t('prologue.wake.title'),I18n.t('prologue.wake.story'),()=>{if(weaponChoicePending)WeaponSelection.open();});
   }
   function update(dt){
     clock+=dt;
