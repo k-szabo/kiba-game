@@ -142,7 +142,7 @@
 .inventory-weapon-slot::before{content:"";position:absolute;top:48px;right:100%;width:35px;border-top:2px solid #ccb279;transform:rotate(-12deg);transform-origin:right}
 .inventory-weapon-slot>span{display:block;margin-bottom:5px;font-weight:700;text-shadow:0 2px 3px #07121c}
 #inventoryWeapon{width:100%;padding:5px 8px 9px;border:1px solid #dfc18c;background:#0e202ce8;display:grid;justify-items:center;gap:4px;line-height:1.4;font-size:13px!important}
-.inventory-sword{width:54px;height:72px;display:block;filter:drop-shadow(0 0 5px #dfc78045)}
+.inventory-sword{width:81px;height:108px;display:block;filter:drop-shadow(0 0 5px #dfc78045)}
 #inventoryEquipped{display:block;font-size:13px;margin-top:4px;color:#e4d8bb}
 .inventory-details{margin-top:20px;padding:18px 20px;border:1px solid #c6ab7480;border-radius:8px;background:#0c1b25;min-height:150px}
 .inventory-details .eyebrow{display:block;color:#d6bf8e;letter-spacing:1px;margin-bottom:5px}

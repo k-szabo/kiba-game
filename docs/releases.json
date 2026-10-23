@@ -718,6 +718,22 @@
           "en": "Headings and dialogue use Japanese-inspired lettering, while the interface uses a readable typeface; all fonts are hosted with the game."
         }
       ]
+    },
+    {
+      "version": "0.9.36_55ab998a",
+      "code": "55ab998a",
+      "baseVersion": "0.9.36",
+      "slug": "starter-weapon-styles",
+      "summary": {
+        "hu": "Három kezdő fegyverstílus",
+        "en": "Three starting weapon styles"
+      },
+      "fixes": [
+        {
+          "hu": "Új játék előtt katana, naginata vagy kard és pajzs választható, eltérő harci előnyökkel. A választás az adott utazás részeként mentődik.",
+          "en": "Choose a katana, naginata, or sword and shield before a new game, each with distinct combat advantages. The choice is saved for that journey."
+        }
+      ]
     }
   ]
 }

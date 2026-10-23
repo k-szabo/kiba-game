@@ -492,7 +492,7 @@ function updateBoss(dt){if(ShadowRealm.active()){ShadowRealm.updateBoss(dt);retu
     if(realm===1&&boss.move==='lava'&&!boss.autoPhase&&Math.abs(player.x-boss.x)>180)boss.x=clamp(boss.x+Math.sign(player.x-boss.x)*55*dt,level.arena.x+60,level.arena.x+level.arena.w-boss.w-60);
     executeBossMove(dt);if(boss.clock<=0){boss.lava=null;if(boss.leap){boss.x=boss.leap.toX;boss.y=boss.leap.floorY;boss.leap=null;}setBossPhase('recover',realm===1?1.25:1.1);}
   }else if(boss.phase==='recover'&&boss.clock<=0&&!boss.autoPhase)setBossPhase('wait',.6);
-  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava'&&boss.move!=='jumpCut')damage(1,player.x>boss.x?1:-1);
+  if(overlap(player,boss)&&boss.phase!=='recover'&&boss.move!=='lava'&&boss.move!=='jumpCut')damage(1,player.x>boss.x?1:-1,true);
 }
 /* Optional encounters are saved independently of the three realm guardians. */
 function minibossFlag(id){return 'guardian:'+id;}

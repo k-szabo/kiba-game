@@ -16,7 +16,8 @@ const Inventory=(()=>{
  }
  function equipmentArt(){
   image($('inventoryMomo'),Visuals.images.inventoryMomoPortrait,ART_INVENTORY.momo,{w:384,h:416});
-  image($('inventoryWeaponArt'),Visuals.images.inventoryKatana,ART_INVENTORY.katana,{w:108,h:144});
+  const weaponArt=ART_INVENTORY[weaponStyle];
+  image($('inventoryWeaponArt'),Visuals.images[weaponArt.image],weaponArt,{w:108,h:144});
  }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.className='inventory-icon';canvas.setAttribute('aria-hidden','true');

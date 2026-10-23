@@ -512,9 +512,11 @@ function drawPlayer(){
  if(dash>0&&!reducedMotion.matches){ctx.globalAlpha=.2;if(attack>0)Visuals.momoSlash(x-player.face*50,feet,92,visualElapsed,attackFace,attackKind);else drawMomo(x-player.face*50,feet,92,row,frame,player.face);ctx.globalAlpha=1;}
  // Protection is a steady translucent cue rather than a flashing disappearing sprite.
  ctx.globalAlpha=player.inv>0&&state==='play'?.82:1;
+ if(attack<=0&&weaponStyle==='naginata')Visuals.momoCarry(x,feet,96,player.face);
  if(attack>0)Visuals.momoSlash(x,feet,96,visualElapsed,attackFace,attackKind);else drawMomo(x,feet,96,row,frame,player.face);
+ if(attack<=0&&weaponStyle==='swordShield')Visuals.momoCarry(x,feet,96,player.face);
  // Heavy art includes its painted sweep; the normal slash retains its existing cue.
- if(attack>0&&attackKind==='normal'&&visualElapsed>=SWORD_IMPACT&&visualElapsed<.3)drawSlash();
+ if(weaponStyle!=='naginata'&&attack>0&&attackKind==='normal'&&visualElapsed>=SWORD_IMPACT&&visualElapsed<.3)drawSlash();
  ctx.restore();
 }
 function collectedRelics(){return flags[2].includes('eclipseRelic')?['eclipseRelic']:['angelHalo','demonHorn'].filter(id=>flags[0].includes(id));}

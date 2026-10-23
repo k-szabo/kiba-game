@@ -98,7 +98,7 @@ const ShadowRealm=(()=>{
    if(move==='sigils')sigils(boss,5,'boss');
    if(move==='cleave'){
     const hit={x:boss.face>0?boss.x:boss.x-130,y:boss.y-10,w:boss.w+130,h:boss.h+20};
-    if(overlap(player,hit))damage(2,boss.face);
+    if(overlap(player,hit))damage(2,boss.face,true);
    }
    if(move==='bell'){
     const caught=Math.abs(player.x+player.w/2-boss.targetX)<145&&Math.abs(player.y+player.h-level.arena.y)<110;

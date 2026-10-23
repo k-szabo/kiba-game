@@ -206,3 +206,7 @@ A `progression.js` átmeneti `LevelUpEffect` állapota csak valódi XP-alapú sz
 ## Tárgyeladás és megszerzési előzmény
 
 A `soldItems` mentett listát a jelenlegi birtoklás nézetei használják, az eredeti világjelzők történeti előzmények maradnak. Új eladható egyedi tárgyhoz a közös `MERCHANT_SALES` szabályt, realm-hozzárendelést és megszerzési előfeltételeket is frissíteni kell. A mentésvalidátor nem enged eladott, de meg nem szerzett vagy védett tárgyat. A `Merchant.stock` és `Inventory.quantity` az eladás figyelembevételével válaszol; közvetlen `flags.includes` nem helyettesítheti őket a birtoklás vizsgálatánál. Részletek: [MERCHANT.md](MERCHANT.md#eladás-akashnak).
+
+## Kezdő fegyverstílusok
+
+A `weapons.js` közös szabálymodulja és a `weapon-selection.js` új játék előtti választója kezeli a katana, naginata és kard–pajzs profilját. A mentett választást a halál és az ébredés megőrzi, a dev tesztmenet elkülönítetten használja. Részletek és ellenőrzések: [WEAPONS.md](WEAPONS.md).
