@@ -701,7 +701,11 @@
       "menu.changelog.0934.title": "Párbeszédek új köntösben",
       "menu.changelog.0934.dialogue": "A párbeszédek alsó, JRPG-stílusú sávban jelennek meg, karakterportrékkal, a beszélő nevével és lapozható szöveggel.",
       "menu.changelog.0935.title": "A birodalmak betűi",
-      "menu.changelog.0935.typography": "A címek és párbeszédek japán hangulatú, a kezelőfelület pedig jól olvasható, helyben tárolt betűtípusokat használ."
+      "menu.changelog.0935.typography": "A címek és párbeszédek japán hangulatú, a kezelőfelület pedig jól olvasható, helyben tárolt betűtípusokat használ.",
+      "menu.changelog.0935.e4e69d85.title": "Irányítás, pálya és bolt javításai",
+      "menu.changelog.0935.e4e69d85.0": "A dash és a bossok utáni útmutatók a tényleges billentyűkiosztást mutatják.",
+      "menu.changelog.0935.e4e69d85.1": "Az árnyékvilág korábbi börtönőri arénája új ellenfelekkel és bejárható mellékúttal telik meg.",
+      "menu.changelog.0935.e4e69d85.2": "Akash boltjának címe vásárlás után is tisztán jelenik meg."
     }
   },
   "en": {
@@ -1406,7 +1410,11 @@
       "menu.changelog.0934.title": "A new look for dialogue",
       "menu.changelog.0934.dialogue": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text.",
       "menu.changelog.0935.title": "Lettering for the realms",
-      "menu.changelog.0935.typography": "Headings and dialogue use Japanese-inspired lettering, while the interface uses a readable typeface; all fonts are hosted with the game."
+      "menu.changelog.0935.typography": "Headings and dialogue use Japanese-inspired lettering, while the interface uses a readable typeface; all fonts are hosted with the game.",
+      "menu.changelog.0935.e4e69d85.title": "Control, realm and shop fixes",
+      "menu.changelog.0935.e4e69d85.0": "Dash and post-boss prompts now show the actual key bindings.",
+      "menu.changelog.0935.e4e69d85.1": "The former jailer arena in the Shadow Realm now has new enemies and a traversable side path.",
+      "menu.changelog.0935.e4e69d85.2": "Akash's shop title now renders cleanly after purchases."
     }
   }
 }

@@ -332,6 +332,30 @@
           "en": "Shrine prompts now show training and the current control bindings in both languages."
         }
       ]
+    },
+    {
+      "version": "0.9.35_e4e69d85",
+      "code": "e4e69d85",
+      "baseVersion": "0.9.35",
+      "slug": "three-incoming-bugs",
+      "summary": {
+        "hu": "Irányítás, pálya és bolt javításai",
+        "en": "Control, realm and shop fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A dash és a bossok utáni útmutatók a tényleges billentyűkiosztást mutatják.",
+          "en": "Dash and post-boss prompts now show the actual key bindings."
+        },
+        {
+          "hu": "Az árnyékvilág korábbi börtönőri arénája új ellenfelekkel és bejárható mellékúttal telik meg.",
+          "en": "The former jailer arena in the Shadow Realm now has new enemies and a traversable side path."
+        },
+        {
+          "hu": "Akash boltjának címe vásárlás után is tisztán jelenik meg.",
+          "en": "Akash's shop title now renders cleanly after purchases."
+        }
+      ]
     }
   ],
   "releases": [

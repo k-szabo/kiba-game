@@ -231,6 +231,19 @@ for(const [i,x] of [950,1500,2460,3460,4280,5160,6000,7890,8480,9280].entries())
  foe(shadowRealm,'cultist-'+i,x,floor.y,fieldRoles[i%4],null,60);
  shadowRealm.enemies.at(-1).name=I18n.t('shadow.enemy.'+fieldRoles[i%4]);
 }
+// An elevated optional path gives the old jailer stretch a distinct route;
+// it loops back to the temple road and keeps the prison entrance below.
+for(const p of [
+ ['temple-branch-step1',6210,1300,220],['temple-branch-step2',6500,1215,240],
+ ['temple-branch-span',6830,1130,300],['temple-branch-step3',7210,1215,240],
+ ['temple-branch-return',7270,1300,220]
+])ledge(shadowRealm,...p,'stone',18);
+for(const [id,x,y,kind,patrol] of [
+ ['temple-branch-archer',6580,1215,'archer',95],['temple-branch-mage',7040,1130,'mage',75]
+]){
+ foe(shadowRealm,id,x,y,kind,null,patrol);
+ shadowRealm.enemies.at(-1).name=I18n.t('shadow.enemy.'+kind);
+}
 foe(shadowRealm,'madOrganist',3300,420,'mage',null,0);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'organist',name:I18n.t('shadow.boss.organist'),secretArea:'organLoft'});
 foe(shadowRealm,'cultJailer',7040,2200,'guard',null,250);Object.assign(shadowRealm.enemies.at(-1),{miniboss:'jailer',name:I18n.t('shadow.boss.jailer'),secretArea:'prisonCourt'});
 zone(shadowRealm,I18n.t('shadow.place.shore'),0,650,3900,1950);

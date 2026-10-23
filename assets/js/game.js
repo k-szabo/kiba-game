@@ -112,7 +112,7 @@ const Dialogue=(()=>{
  }
  function render(){
   if(!scene)return;
-  const s=scene,body=I18n.t(typeof s.text==='function'?s.text():s.text);
+  const s=scene,body=keyedInstruction(I18n.t(typeof s.text==='function'?s.text():s.text));
   const pages=body.split(/\n\s*\n/);s.page=Math.min(s.page,pages.length-1);s.pages=pages.length;
   $('dialog').dataset.theme=s.theme;
   $('dialogLabel').textContent=I18n.t(s.label);$('dialogTitle').textContent=I18n.t(s.title);
