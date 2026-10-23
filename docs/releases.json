@@ -750,6 +750,26 @@
           "en": "The Demon Slayer’s armor reduces incoming damage by a percentage, with diminishing returns as armor increases."
         }
       ]
+    },
+    {
+      "version": "0.9.38_ca123c9e",
+      "code": "ca123c9e",
+      "baseVersion": "0.9.38",
+      "slug": "post-dream-weapon-choice",
+      "summary": {
+        "hu": "Fegyverválasztás ébredés után",
+        "en": "Choose your weapon after awakening"
+      },
+      "fixes": [
+        {
+          "hu": "A prológust Momo katanával járja végig; kezdő fegyverét az ébredés után választhatod ki. A nyitó párbeszéd minden fegyverhez illik.",
+          "en": "Momo carries a katana throughout the prologue; choose his starting weapon after awakening. The opening dialogue now suits every weapon."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

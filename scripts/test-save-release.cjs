@@ -75,12 +75,19 @@ async function main(){
  assert.throws(()=>first.vault.write({...fixture(),version:1}),/Invalid save schema/);
  const noRelease=fixture();delete noRelease.release;assert.throws(()=>first.vault.write(noRelease),/Invalid save schema/);
 
- // Starting equipment is permanent run state, including the unfinished dream.
+ // Only katana is allowed in the unfinished dream; the awakened choice persists.
  const weaponEnv=storageEnvironment(),weaponClient=client(weaponEnv);await weaponClient.vault.ready;
- for(const weaponStyle of ['katana','naginata','swordShield'])for(const prologueComplete of [false,true]){
+ for(const weaponStyle of ['katana','naginata','swordShield'])for(const prologueComplete of weaponStyle==='katana'?[false,true]:[true]){
   const loadout={...fixture(),weaponStyle,prologueComplete};await weaponClient.vault.write(loadout);
-  assert.deepEqual(plain(await client(weaponEnv).vault.ready),loadout,weaponStyle+' survives encrypted reload before and after waking');
+  assert.deepEqual(plain(await client(weaponEnv).vault.ready),loadout,weaponStyle+' survives encrypted reload in its allowed story stage');
  }
+ const pending={...fixture(),weaponStyle:'katana',prologueComplete:true,weaponChoicePending:true};
+ await weaponClient.vault.write(pending);
+ assert.deepEqual(plain(await client(weaponEnv).vault.ready),pending,'Pending awakening choice survives real encrypted reload');
+ const chosen={...pending,weaponStyle:'swordShield',weaponChoicePending:false};
+ await weaponClient.vault.write(chosen);
+ assert.deepEqual(plain(await client(weaponEnv).vault.ready),chosen,'Confirmed equipment replaces pending choice through real encryption');
+ for(const weaponStyle of ['naginata','swordShield'])assert.throws(()=>weaponClient.vault.write({...fixture(),weaponStyle,prologueComplete:false}),/Invalid dream weapon/);
  for(const weaponStyle of [undefined,null,'','sword','__proto__','constructor',{},['katana'],42,new String('katana')]){
   assert.throws(()=>weaponClient.vault.write({...fixture(),weaponStyle}),/Invalid weapon style/,'Reject non-catalogue weapon choice');
  }

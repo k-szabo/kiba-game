@@ -1,8 +1,8 @@
-/* New-journey choice is committed only when Begin is pressed. */
+/* A pending journey choice is committed only after awakening and confirmation. */
 'use strict';
 const WeaponSelection=(()=>{
- const styles=['katana','naginata','swordShield'];
- let selected='katana',initialized=false,returnFocus=null;
+ const styles=WeaponStyles.ids;
+ let selected='katana',initialized=false,inertSiblings=[];
  const root=()=>$('weaponSelection');
  const choices=()=>[...root().querySelectorAll('[data-weapon-style]')];
  function refresh(){
@@ -15,21 +15,33 @@ const WeaponSelection=(()=>{
    button.querySelector('span').textContent=I18n.t('weapon.'+style+'.description');
   }
  }
- function select(style,focus=false){if(!styles.includes(style))return;selected=style;refresh();if(focus)choices().find(button=>button.dataset.weaponStyle===style).focus();}
+ function select(style,focus=false){if(!styles.includes(style))return false;selected=style;refresh();if(focus)choices().find(button=>button.dataset.weaponStyle===style)?.focus();return true;}
+ function cancel(){
+  root().hidden=true;
+  for(const [child,wasInert] of inertSiblings)child.inert=wasInert;
+  inertSiblings=[];keys.clear();pressed.clear();
+ }
  function open(){
-  if(state!=='menu'||resolutionBlocked)return false;
-  returnFocus=document.activeElement;selected='katana';state='weaponSelection';keys.clear();pressed.clear();
-  $('releaseNotes').open=false;$('menu').inert=true;root().hidden=false;refresh();
-  root().querySelector('.weapon-selection-panel').scrollTop=0;choices()[0].focus({preventScroll:true});return true;
+  if(state!=='play'||resolutionBlocked||!weaponChoicePending||Prologue.active||DevSession.active)return false;
+  selected='katana';state='weaponSelection';keys.clear();pressed.clear();
+  $('releaseNotes').open=false;
+  inertSiblings=[...$('game').children].filter(child=>child!==root()).map(child=>[child,child.inert]);
+  for(const [child] of inertSiblings)child.inert=true;
+  root().hidden=false;refresh();root().querySelector('.weapon-selection-panel').scrollTop=0;choices()[0]?.focus({preventScroll:true});return true;
  }
  function close(){
-  if(root().hidden)return;
-  root().hidden=true;$('menu').inert=false;keys.clear();pressed.clear();state='menu';
-  if(returnFocus?.isConnected)returnFocus.focus();else $('startButton').focus();
+  if(state!=='weaponSelection'||root().hidden)return false;
+  cancel();mainMenu();$('startButton').focus();return true;
+ }
+ function confirm(){
+  if(state!=='weaponSelection'||root().hidden||resolutionBlocked||!weaponChoicePending||DevSession.active||Prologue.active)return false;
+  if(!WeaponEquipment.equip(selected))return false;
+  weaponChoicePending=false;cancel();
+  // This is the fresh journey's initial loadout, before Momo can move or fight.
+  initPlayer(checkpoint);state='play';persist();updateHUD();$('pauseButton').focus();return true;
  }
  function keydown(event){
   if(state!=='weaponSelection'||resolutionBlocked)return;
-  // Keep gameplay shortcuts and held keys out of this modal menu.
   event.stopImmediatePropagation();
   if(event.repeat){event.preventDefault();return;}
   if(event.key==='Escape'){event.preventDefault();close();return;}
@@ -48,9 +60,8 @@ const WeaponSelection=(()=>{
  function init(){
   if(initialized)return;initialized=true;
   for(const button of choices())button.addEventListener('click',()=>select(button.dataset.weaponStyle));
-  $('weaponChooseBack').addEventListener('click',close);
-  $('weaponChooseBegin').addEventListener('click',()=>{if(state!=='weaponSelection'||resolutionBlocked)return;const style=selected;close();startGame(false,style);});
+  $('weaponChooseBack').addEventListener('click',close);$('weaponChooseBegin').addEventListener('click',confirm);
   addEventListener('keydown',keydown,true);I18n.onChange(refresh);refresh();
  }
- return Object.freeze({init,open,close,refresh});
+ return Object.freeze({init,open,close,cancel,refresh,select,confirm});
 })();

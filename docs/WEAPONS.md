@@ -1,6 +1,6 @@
 # Kezdő fegyverstílusok
 
-Új játék előtt Momo három fegyverstílus közül választhat. A választás az adott végigjátszásra szól; a visszalépés nem módosítja a mentést. A normál és erős támadás a meglévő, átállítható műveletet használja.
+A prológusban Momo katanát használ. Az ébredési történet után három fegyverstílus közül választhat. A választás az adott végigjátszásra szól; a visszalépés a főmenübe visz, és folytatáskor újra megjelenik a választó. A normál és erős támadás a meglévő, átállítható műveletet használja.
 
 | Stílus | Harci profil |
 | --- | --- |
@@ -13,11 +13,12 @@ Az életerő-, erő- és szellemfejlesztések közösek maradnak. A naginata szo
 ## Források és állapot
 
 - `assets/js/weapons.js`: változtathatatlan profilok, közös támadásidőzítés, tükrözött találati terület és pajzsfeltételek.
-- `assets/js/weapon-selection.js`: rádiógombos HU/EN választó; nyilak, Home/End, Tab és Escape. Az Indulás hívja a `startGame(false, selectedStyle)` függvényt.
+- `assets/js/weapon-selection.js`: rádiógombos HU/EN választó; nyilak, Home/End, Tab és Escape. Az Indulás a `WeaponEquipment.equip(id)` közös felszerelési útvonalon véglegesít, majd teljes kezdő HP-val indít. A választó alatt a játékmenet és az effektek állnak.
+- `assets/js/weapon-equipment.js`: katalógusból ellenőrzött, közös felszereléscsere a kezdőválasztóhoz és dev-eszközhöz; későbbi vásárlás is ezt használhatja. A normál csere nem gyógyít, nem törli a mozgást vagy a haladást, de megszakítja a csapást, és megőrzi a hátralévő újratöltést.
 - `assets/js/game.js`: a végigjátszáshoz tartozó `weaponStyle`; a karakter újrainicializálása csak a pajzs átmeneti újratöltését törli.
-- `assets/js/save-vault.js`: kizárólag saját, szöveges `katana`, `naginata` vagy `swordShield` értéket enged. Nincs régi verziós mentésmigráció.
+- `assets/js/save-vault.js`: kizárólag saját, szöveges `katana`, `naginata` vagy `swordShield` értéket enged. A `weaponChoicePending` az ébredés után megőrzi a még meg nem válaszolt döntést; csak friss japán kezdőállapotban lehet igaz. Befejezetlen álomban kizárólag katana menthető. Nincs régi verziós mentésmigráció.
 - `assets/js/dev-session.js`: a tesztmenet a normál választás másolatával indul; a tesztben végzett változtatások nem kerülnek a normál mentésbe.
-- `scripts/test-weapon-profiles.cjs`, `scripts/test-starter-weapons.cjs`: a profilok, valódi harci találatok, halál/ébredés/pályaváltás, pajzs és dev elkülönítés ellenőrzése.
+- `scripts/test-post-dream-weapons.cjs`, `scripts/test-weapon-choice-save.cjs`, `scripts/test-weapon-profiles.cjs`, `scripts/test-starter-weapons.cjs`: a profilok, valódi harci találatok, halál/ébredés/pályaváltás, pajzs és dev elkülönítés ellenőrzése.
 - `scripts/test-save-release.cjs`: mindhárom stílus titkosított mentése és visszatöltése, hibás értékek és verzióváltás elutasítása.
 
 A pajzs újratöltése a közös játékosórával lép, szünetben és párbeszédben áll. A gyorsabb vagy lassabb támadások animációideje a közös alapidőre normalizálódik, így a találat és a csapás képe együtt mozog.

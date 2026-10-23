@@ -1,12 +1,17 @@
 const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
 const near=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
 for(const style of ['katana','naginata','swordShield']){
- const h=harness();h.run(`startGame(false,'${style}')`);
- assert.equal(h.run('weaponStyle'),style);assert(h.run('Prologue.active'));
+ const h=harness({prologue:true});
+ assert.equal(h.run('weaponStyle'),'katana');assert(h.run('Prologue.active'));
+ assert.equal(h.run('player.maxHp'),5);assert.equal(h.run('saved.weaponStyle'),'katana');
+ h.run('mainMenu();startGame(true)');assert.equal(h.run('weaponStyle'),'katana');
+ h.run('Prologue.wake()');
+ for(let i=0;h.run("state==='dialog'")&&i<10;i++)h.elements.get('dialogOk').onclick();
+ assert.equal(h.run('state'),'weaponSelection');
+ h.run("WeaponSelection.select('STYLE');WeaponSelection.confirm()".replace('STYLE',style));
+ assert.equal(h.run('weaponStyle'),style);assert.equal(h.run('saved.weaponStyle'),style);
  assert.equal(h.run('player.maxHp'),style==='swordShield'?7:5);
- assert.equal(h.run('saved.weaponStyle'),style);
- h.run("mainMenu();startGame(true)");assert.equal(h.run('weaponStyle'),style);
- h.run('Prologue.wake()');h.dismiss();assert.equal(h.run('weaponStyle'),style);
+ assert.equal(h.run('player.hp'),h.run('player.maxHp'));assert.equal(h.run('weaponChoicePending'),false);
  h.run('revive()');assert.equal(h.run('weaponStyle'),style);
  h.run('enterRealm(1);state="play";persist()');assert.equal(h.run('saved.weaponStyle'),style);
  h.run('mainMenu()');const saved=h.run('JSON.stringify(saved)'),writes=h.run('window.__saveSnapshots.length');
