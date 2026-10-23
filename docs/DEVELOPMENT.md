@@ -46,7 +46,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
-| `assets/css/style.css` | A kezelőfelület megjelenése. |
+| `assets/css/style.css`, `assets/fonts/` | A kezelőfelület megjelenése és a [helyben tárolt betűk](TYPOGRAPHY.md). |
 | `assets/images/` | Momo, a világok, az ellenfelek és a tárgyak képei. |
 | `assets/config/colormaps.json` | Karakterek, tárgyak és összes képfájl referencia-színpalettái, zászlók és kódbeli színek. |
 | `scripts/export-colormaps.py` | A színreferencia reprodukálható frissítése a képekből és a rajzolási metaadatokból. |

@@ -28,6 +28,8 @@ A közös alsó dialógusfelület négy festett, natív alfás papírtekercset h
 
 ## Effektek és olvashatóság
 
+A japán környezethez illő cím- és történetbetűk, a magyar ékezetek helyi tartalékfontja, valamint az olvasható UI-betű részletei: [tipográfia](TYPOGRAPHY.md).
+
 A világos égi háttéren a fehér-arany tárgyak és támadásjelzések sötét alátétet vagy kontúrt kapnak. A szín mellett a forma és a felkészülési animáció is jelezze a veszélyt. A festett fénynyíl csúcsa a tényleges lövedékponthoz, az óriási lándzsa a jelzett talajbecsapódáshoz igazodik: [angyali grafika](ANGEL-ART-0.8.3.md).
 
 A láva, földrepedés, becsapódás, kardcsóva, árnyékmágia és idézőkapu közös festett atlaszokat használ. A BOSS_FX_ART kivágásai és a BossVFX rajzoló a támadás tényleges helyéhez és fázisához igazítják a grafikát: [boss-effektusok](BOSS-VFX-0.8.4.md). A dash füstnyoma a meglévő árnymágia-textúrából készül.

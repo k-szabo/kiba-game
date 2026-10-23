@@ -220,13 +220,13 @@ const Prologue=(()=>{
   function caption(text,y,dawn=false){
     ctx.save();ctx.textAlign='center';
     const size=Math.min(24,Math.max(16,viewW*.035)),width=Math.min(660,viewW-36),maxText=width-36;
-    ctx.font=`600 ${size}px Manrope, sans-serif`;
+    ctx.font=`600 ${size}px "Kiba UI", "Kiba Story", sans-serif`;
     const lines=[];let line='';
     for(const word of text.split(/\s+/)){const next=line?line+' '+word:word;const measured=ctx.measureText(next)?.width??next.length*size*.55;if(line&&measured>maxText){lines.push(line);line=word;}else line=next;}if(line)lines.push(line);
     if(dawn){
       ctx.fillStyle='#132a32ed';ctx.fillRect((viewW-width)/2,y-38,width,lines.length*(size+9)+48);
       ctx.strokeStyle='#d9ba7b99';ctx.lineWidth=1;ctx.strokeRect((viewW-width)/2,y-38,width,lines.length*(size+9)+48);
-      ctx.fillStyle='#d9ba7b';ctx.font='600 11px Manrope, sans-serif';ctx.fillText(I18n.t('prologue.wake.label'),viewW/2,y-15,maxText);ctx.font=`600 ${size}px Manrope, sans-serif`;
+      ctx.fillStyle='#d9ba7b';ctx.font='600 11px "Kiba UI", "Kiba Story", sans-serif';ctx.fillText(I18n.t('prologue.wake.label'),viewW/2,y-15,maxText);ctx.font=`600 ${size}px "Kiba UI", "Kiba Story", sans-serif`;
     }
     lines.forEach((value,index)=>{const baseline=y+16+index*(size+9);if(!dawn){ctx.strokeStyle='#070b16';ctx.lineWidth=5;ctx.strokeText(value,viewW/2,baseline);}ctx.fillStyle=dawn?'#f2e6cc':'#efddff';ctx.fillText(value,viewW/2,baseline);});
     ctx.restore();

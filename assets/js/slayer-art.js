@@ -89,10 +89,10 @@ const SlayerArt=(()=>{
    const b=panel.getBoundingClientRect(),box={x:camera+b.left/scale,y:cameraY+b.top/scale,w:b.width/scale,h:b.height/scale};
    if(overlap({x:hudX-width/2,y:top,w:width,h:height},box))top=Math.min(cameraY+H-height-8,cameraY+(b.bottom+8)/scale);
   }
-  ctx.save();ctx.textAlign='center';ctx.font='bold 14px Manrope, sans-serif';
+  ctx.save();ctx.textAlign='center';ctx.font='bold 14px "Kiba UI", "Kiba Story", sans-serif';
   ctx.fillStyle='#0e1927ee';ctx.fillRect(hudX-width/2,top,width,height);ctx.strokeStyle='#d3bd8a';ctx.lineWidth=1.5;ctx.strokeRect(hudX-width/2,top,width,height);
   ctx.fillStyle='#fff0ca';ctx.fillText(I18n.t('slayer.name'),hudX,top+19);
-  ctx.font='bold 12px Manrope, sans-serif';
+  ctx.font='bold 12px "Kiba UI", "Kiba Story", sans-serif';
   const steam=e.phase==='cast'?Math.round(progress*100)+'%':e.sawReady?'100%':'0%';
   ctx.fillText(I18n.format('slayer.armor',[e.armor]),hudX,top+37);ctx.fillText(I18n.format('slayer.steam',[steam]),hudX,top+53);
   ctx.fillStyle='#06101b';ctx.fillRect(hudX-width/2+12,top+64,width-24,9);ctx.fillStyle='#dd9b69';ctx.fillRect(hudX-width/2+12,top+64,(width-24)*clamp(e.hp/e.maxHp,0,1),9);ctx.restore();

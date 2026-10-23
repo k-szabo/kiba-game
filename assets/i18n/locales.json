@@ -699,7 +699,9 @@
       "menu.changelog.0933.title": "Adásvétel Akashnál",
       "menu.changelog.0933.trade": "Akash az inventoryból eladható holmikat, bosslelkeket és zsákmányt is megveszi; kínálatában egy különös telefontok is megjelent.",
       "menu.changelog.0934.title": "Párbeszédek új köntösben",
-      "menu.changelog.0934.dialogue": "A párbeszédek alsó, JRPG-stílusú sávban jelennek meg, karakterportrékkal, a beszélő nevével és lapozható szöveggel."
+      "menu.changelog.0934.dialogue": "A párbeszédek alsó, JRPG-stílusú sávban jelennek meg, karakterportrékkal, a beszélő nevével és lapozható szöveggel.",
+      "menu.changelog.0935.title": "A birodalmak betűi",
+      "menu.changelog.0935.typography": "A címek és párbeszédek japán hangulatú, a kezelőfelület pedig jól olvasható, helyben tárolt betűtípusokat használ."
     }
   },
   "en": {
@@ -1402,7 +1404,9 @@
       "menu.changelog.0933.title": "Trading with Akash",
       "menu.changelog.0933.trade": "Akash now buys eligible inventory items, boss souls and loot; a peculiar phone case has also joined his stock.",
       "menu.changelog.0934.title": "A new look for dialogue",
-      "menu.changelog.0934.dialogue": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text."
+      "menu.changelog.0934.dialogue": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text.",
+      "menu.changelog.0935.title": "Lettering for the realms",
+      "menu.changelog.0935.typography": "Headings and dialogue use Japanese-inspired lettering, while the interface uses a readable typeface; all fonts are hosted with the game."
     }
   }
 }

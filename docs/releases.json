@@ -678,6 +678,22 @@
           "en": "Dialogue now appears in a bottom JRPG-style panel with character portraits, the speaker’s name and paged text."
         }
       ]
+    },
+    {
+      "version": "0.9.35_24a72f99",
+      "code": "24a72f99",
+      "baseVersion": "0.9.35",
+      "slug": "local-japanese-typography",
+      "summary": {
+        "hu": "A birodalmak betűi",
+        "en": "Lettering for the realms"
+      },
+      "fixes": [
+        {
+          "hu": "A címek és párbeszédek japán hangulatú, a kezelőfelület pedig jól olvasható, helyben tárolt betűtípusokat használ.",
+          "en": "Headings and dialogue use Japanese-inspired lettering, while the interface uses a readable typeface; all fonts are hosted with the game."
+        }
+      ]
     }
   ]
 }

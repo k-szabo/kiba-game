@@ -24,7 +24,7 @@ const DevDamage=(()=>{
  }
  function draw(){
   if(!active()||!entries.length)return;
-  ctx.save();ctx.font='800 24px Manrope, sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.lineJoin='round';ctx.lineWidth=5;ctx.strokeStyle='#070b16';
+  ctx.save();ctx.font='800 24px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.lineJoin='round';ctx.lineWidth=5;ctx.strokeStyle='#070b16';
   for(const entry of entries){
    const value=String(Math.round(entry.amount*100)/100),text=(entry.kind==='incoming'?'−':'')+value;
    const y=entry.y-(reducedMotion.matches?0:(LIFETIME-entry.life)*30);
