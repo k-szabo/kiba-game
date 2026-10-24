@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-24",
+  "approval": {
+    "concept": "exec-66fde3f1-1f07-418c-b2a8-b9793a897e9b.png",
+    "note": "User explicitly approved the serpent character, environment and item concept sheet before production backgrounds."
+  },
+  "assets": [
+    {
+      "key": "whiteSerpentCave",
+      "path": "assets/images/backgrounds/white-serpent-cave-v1.png",
+      "source": "exec-ee738065-3608-437d-96c1-a7540406f1c9.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "groundLineY": 605,
+      "worldFloorY": 1790,
+      "worldRegion": {
+        "x": 6400,
+        "y": 1430,
+        "w": 2100,
+        "h": 700
+      },
+      "prompt": "Use case: stylized-concept. Asset type: FINAL PRODUCTION BACKGROUND for a detailed painted Japanese fantasy 2D side-scrolling game. The attached concept sheet is explicitly user approved. Use ONLY its MIDDLE LEFT environment panel as the visual design reference, not its creatures or item icons. Create one standalone extra-wide panoramic background, 3:1 aspect, approximately 3072x1024, full opaque canvas. NO frame, panel divisions, labels, text, glyphs, UI, numbers, watermarks. Scene: a hidden ancient underground shrine cavern, deep jade-teal and grey rock, hanging stalactites, tangled pale roots, moss, weathered Japanese stone torii and rope with plain folded paper ornaments, warmly lit small stone lanterns, mist, a quiet jade pool and a slender distant waterfall, layered rock chambers receding into darkness. Rich painterly hand-painted textures, refined game illustration and crisp material details exactly matching approved concept and Kiba game art; not photoreal, not pixel art, not flat vectors. SIDE-VIEW game camera, not isometric or bird-eye. Completely empty of characters, serpents, animals, statues resembling enemies, cages, inventory items and combat effects. ACTUAL GAMEPLAY PLATFORMS AND COLLISION GEOMETRY WILL BE DRAWN SEPARATELY: do not paint floating stepping stones, jump stairs or obstacles across the foreground. The back of a clear level stone path may be IMPLIED consistently along horizontal y=76% image height (same height from left to right), with cool stone and reflections below, and the distant pool behind it. Keep broad open space immediately above that horizontal foot line for a large white serpent and small player to be drawn by the game. Main torii and lantern decorations stay toward far left/right and rear; no giant pillar obscuring the arena center. Bright grey/ivory and gold characters must contrast against the medium-dark teal cave behind them. No pure-black crushed details or harsh bright beam over the center. Entire scenery natural edge-to-edge with dark rock sides that can blend softly into surrounding underground Japanese landscape. Production environment ONLY; preserve the chosen visual direction without inventing a new character.",
+      "registration": "Original generated pixels preserved, no cropping/resizing. The implied foreground stone foot-contact line is approximately source y605; actual collision platforms are rendered separately. Use uniform scaling, anchor source line to the authored arena floor, and fade at secret-region boundaries."
+    },
+    {
+      "key": "wingedSerpentRoost",
+      "path": "assets/images/backgrounds/winged-serpent-roost-v1.png",
+      "source": "exec-9c946539-e7df-498d-8b5e-6982141598c9.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "groundLineY": 512,
+      "worldFloorY": 2500,
+      "worldRegion": {
+        "x": 3070,
+        "y": 1940,
+        "w": 2100,
+        "h": 800
+      },
+      "prompt": "Use case: stylized-concept. Asset type: FINAL PRODUCTION BACKGROUND for the same detailed painted Japanese fantasy 2D side-scrolling game. The attached concept sheet is explicitly user approved. Use ONLY its MIDDLE RIGHT sky-ruins environment panel as the reference visual direction, not creatures or bottom items. Create one standalone extra-wide panoramic 3:1 opaque landscape approximately3072x1024, no concept-board frame, divisions, labels, letters, numbers, UI or watermark. Setting: an isolated corrupted celestial serpent roost east of a heavenly palace. Magnificent weathered ivory-white marble Japanese-fantasy sky architecture with fine gilded arch ribs, spires, carved feather and wing ornament motifs, broken elegant colonnades receding into immense blue-lavender cloud oceans, distant floating garden ruins, restrained violet-black corruption veins and dark purple wisps creeping along the far stone edges. Late golden sky lighting filtered by clouds, not apocalyptic sunset; stay within the approved middle-right panel palette of warm ivory, gold, cool navy/violet shadows, pale sky and emerald vegetation. Premium hand-painted tactile game illustration, crisp masonry carving, beautiful layered atmospheric depth, not pixel art, not flat primitives, not photoreal architectural rendering. SIDE-VIEW game camera, not isometric/bird-eye. Entirely empty of monsters, snakes, angels, people, Momo, inventory items or combat effects. ACTUAL COLLISION PLATFORMS ARE DRAWN BY GAME: do not bake floating stepping-stone jump routes into foreground. A wide quiet horizontal rear marble terrace can be IMPLIED along y=76% image height, level from left to right, with decorated arches and cloud depths below. Leave broad open arena air above that contact line, no giant foreground pillar or arch across the screen center obstructing actor silhouettes. Main tall framing architecture sits at far sides and rear. Mid-background directly behind the future white/gold/navy serpent should be medium cool blue-lavender rather than glaring white, so pale scales and bright attack cues remain distinct. Corruption accents vivid but localized around edges, no opaque purple fog covering the entire scene. Enough detail and consistent native proportions for a large playable arena panning horizontally. Canvas edge-to-edge, smooth natural cloud/ruin boundaries for a soft in-game backdrop fade. No text or dark concept-board texture. Environment ONLY.",
+      "registration": "Original generated pixels preserved, no cropping/resizing. The rear marble terrace contact line is approximately source y512; actual collision platforms and actor feet are rendered separately. Use uniform scaling and anchor this line to the authored arena floor; fade at secret-region boundaries. The bright ivory/gold scenery requires the shared contrasting telegraph outlines and dark actor contours."
+    }
+  ]
+}

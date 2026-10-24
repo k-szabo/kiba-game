@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "task": "White and winged serpent concepts, environments and three-scale relic",
+  "date": "2026-10-24",
+  "approval": "User explicitly approved the colored concept exec-66fde3f1-1f07-418c-b2a8-b9793a897e9b.png and the 16-pose animation storyboard exec-4e8c90a0-ab69-42ad-8c27-de9571ab5409.png before production.",
+  "references": [
+    "assets/images/enemies/lava-serpent-v1.png",
+    "assets/images/ui/momo-inventory-v1.png",
+    "assets/images/backgrounds/heaven-v3.png"
+  ],
+  "concept": {
+    "source": "exec-66fde3f1-1f07-418c-b2a8-b9793a897e9b.png",
+    "prompt": "Use case: stylized-concept. PREVIEW CONCEPT ART SHEET ONLY for Kiba Realms, a richly painted Japanese fantasy 2D side-scroller, NOT a production sprite atlas. Use image1 (lava serpent atlas) strictly as the established serpent anatomy/material-detail/outline reference; do NOT redesign or reproduce the lava serpent. Image2 (Momo shiba) is ONLY the painted game-character art style reference, not a character to insert. Image3 is the existing celestial architecture/light reference. Create one cohesive, text-free, widescreen concept board divided into clear spacious panels on a dark indigo/parchment artist-board background. TOP TWO LARGE PANELS: left one complete enormous ivory-white Japanese sacred serpent, one head, long S-curved neck, compact coiled body, complete tapered tail, cool jade eyes, subtle pale jade scale recesses, ivory cheek plates/fins, no hands/legs/wings, elegant dangerous readable silhouette; right one complete large celestial corrupted winged serpent, exactly one head and one pair of feathered wings, long coiled navy-violet and ivory scaled body with antique gold plates, gold eye, white feathers with subtly violet-dark tips and cracks of shadow energy, complete wings/tail inside panel. Detailed tactile scales, fierce elegant Japanese folklore anatomy, inked dark contours and painterly shading matching existing game. They must be recognizably members of the lava serpent family but with independent silhouettes. Both face LEFT, and sit on a clear shared baseline within their own panel, full silhouette with ample margins, no giant external glow obscuring limbs or anatomy. MIDDLE TWO HORIZONTAL ENVIRONMENT PANELS: left a hidden natural limestone cavern beside ancient Japanese cult ruins, muted cool jade water reflections, collapsed shrine stone, weathered ropes and moss, atmospheric detailed dark background, continuous level ledge and cave floor suitable for a side-scroller; right a celestial ruin far to the east in bright clouds, ivory stone terrace, ruined gold-trim arches, feather motifs, dark violet corruption staining some stone, strong darker silhouette edges and readable floor. No bosses/NPCs drawn into environment panels, no enemies. BOTTOM THREE DISTINCT LARGE ITEM STUDIES: one broad white-ivory shed serpent scale with cool jade center and dark readable rim; one broad celestial navy-violet scale with antique gold rim and tiny ivory feather filigree; one single wearable Japanese talisman pendant, three clearly distinct overlapping scales (ivory-jade, obsidian-ember, navy-violet-gold) bound inside an antique-gold circular clasp with a restrained red silk cord. Pendant has compact cohesive silhouette, no extra scales, no human parts. All items opaque, saturated, dark edged for readability on a dark inventory, no translucent low-contrast fog. Rich careful painted Japanese fantasy quality, not flat vector, not primitive shapes, not pixel art, not photoreal product imagery. No text, typography, names, numbers, labels, watermark, captions, UI, attacks or animation arrows. Sheet is for visual-direction approval and must feel like the exact game family.",
+    "notes": "Complete single-head limbless serpent bodies; celestial variant has one feathered wing pair. Three item studies: white scale, winged scale, talisman binding white/lava/celestial scales. Environments are direction previews, not collision geometry."
+  },
+  "storyboard": {
+    "source": "exec-4e8c90a0-ab69-42ad-8c27-de9571ab5409.png",
+    "prompt": "Use case: stylized-concept. A ROUGH ANIMATION KEY-POSE STORYBOARD for the two serpent concepts in the reference image, NOT finished sprites or production art. Preserve exact anatomical designs from reference top-left WHITE serpent and top-right WINGED serpent; ignore the environment and item panels. Show SIXTEEN separate simple pencil/ink rough poses on warm gray drafting paper, FOUR columns by FOUR rows, generous gutters. First TWO ROWS are the ivory/jade serpent without wings. Last TWO ROWS are the navy/gold/ivory WINGED serpent with exactly one pair of feathered wings. Every pose faces LEFT, one head on one continuous limbless body, complete coil and tapered tail; no extra heads, limbs, duplicate tails, body segments, legs, arms or held objects. Stable head/neck/coil proportions and same apparent body size in every frame, coiled base ground line aligns within own cell. Big clear whole-body silhouettes; every wing feather and tailtip has at least10% margin inside its own cell. Rough graphite contours, sparse muted ivory/jade or violet/gold color washes only; anatomy and motion readability over ornament. Small technical numbers1-16 okay, NO names/captions/speech or other text. NO finished illustration, no VFX obscuring the body, no background scene. Frame order left-to-right: ROW1 WHITE 1 neutral low breathingcoil mouthclosed; 2 neck retracts visibly intoSshape, head draws BACK toRIGHT as bite windup, jawopens; 3 head lunges LEFT anddown fromcoil with jawssnapping, onecontinuous neck extended, coil staysanchored; 4 head retracts, jawcloses recovery. ROW2 WHITE 5 samebody tailtip lifts behind andneck arches for groundattack tell; 6 tail strikesground nexttocoil, clear single tailcontact andsolidbody no extrahead; 7 neck lifted and oneopen mouth directedLEFT, small3thinbreathguide rays toindicate frostfan release, entirefigurevisible; 8 breathingneutral matches1. ROW3 WINGED 9 lowcoiled idle wings folded close tobody, onepair; 10 head retracts wing joints extend upward openingbothwings asattacktell; 11 strong downstroke lift with coil raised slightlyaboveground, longsinglecontinuousbody andtail notfloatingdisconnectedparts; 12 lungeLEFT lowheadopenjaw, wings sweptBACK asONEPAIR, completewings. ROW4 WINGED 13 hoveringcoil headraised oneopenmouth left, bothwingspartlyspread, threefaintgoldguidelines signifyholyfan; 14 samebody headlowering shadowcast withthreefaintvioletguidelines frommouth, wingssamepairshape; 15 coil settles wingsfolding asrecover; 16 fullreturncoiledidle consistentwith9. The sheet must make all these clearly distinct motions legible for user approval, without requiring frame labels. Keep the winged creature physically coherent: one serpentine spine and one matched pair of wings, never hands or humanoid anatomy.",
+    "approval": "Pending explicit user approval of the rough sixteen-pose animation storyboard.",
+    "layout": {
+      "columns": 4,
+      "rows": 4,
+      "white": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "winged": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "motion": "White: idle, bite tell, bite release, recovery, tail-ground tell, tail impact, frost fan, neutral. Winged: perched idle, opening tell, wingbeat rise, lunge, light fan, shadow fan, recovery, neutral."
+  }
+}

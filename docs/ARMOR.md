@@ -9,8 +9,10 @@ Trello: https://trello.com/c/cMNEpXiy. Source: `assets/js/armor.js`.
 | Armor | Reduction | Damage from a 5 HP hit |
 | --- | --- | --- |
 | 0 | 0% | 5 |
+| 20 | 16⅔% | 4⅙ |
 | 50 | 33⅓% | 3⅓ |
 | 100 | 50% | 2.5 |
+| 120 | ≈54.55% | ≈2.27 |
 | 400 | 80% | 1 |
 
 Negative, missing and non-finite armor counts as zero. Invalid or non-positive damage returns zero. Values are numbers, without string coercion. Positive fractional hits remain fractional; there is no rounding or fixed damage floor. The retained share is calculated directly to avoid cancellation at very high armor.
@@ -28,3 +30,9 @@ Positive fractional HP is retained through side-location transitions and equipme
 ## Validation
 
 `npm run test:armor` covers the formula and real guardian damage/armor lifecycle. The focused `test-camp-armor.cjs` exercises player forge ranks, shield ordering, fractional hearts, immunity, lethal falls, actual low-HP grab contact and the mandatory dream defeat. The full `npm test` includes these tests, shield/weapon combat, prologue, death/reset and encrypted release-save checks. The build, harness, route loader, site checks and release fixtures all load the shared module before its consumers.
+
+## Serpent talisman equipment
+
+The three scales can be fused by Fumi into the `triuneSerpentTalisman` accessory. Ownership alone grants no armor: `equippedTalisman` must reference the owned result. While equipped it adds 20 Armor to Ren's forge contribution, for a current combined maximum of 120 Armor (about 54.55% reduction). The accessory and weapon slots are independent. Equipping or removing it never heals, changes maximum health, grants training points or modifies weapon damage. The ordinary damage/shield ordering and forced-death bypass rules remain unchanged.
+
+See [SERPENTS.md](SERPENTS.md) for persistence and fusion prerequisites. The new fusion and save regressions complement the formula and camp-armor tests; real equipment layout and reload are browser-QA concerns.

@@ -13,6 +13,7 @@ const CampWorkshop=(()=>{
  }
  function action(request){
   if(!opened||state!=='campService'||$('campService').hidden||!accessible())return false;
+  if(request.type==='uniteScales')return kind()==='mystic'&&SerpentRelics.unite();
   if(request.type==='equip')return equipOwned(request.weapon);
   const outcome=CampServiceRules.transact(campServices,coins,request,{equipped:weaponStyle,smithRescued:(flags[0].includes('smithRescued')||DevSession.active)&&kind()==='forge',herbalistRescued:(flags[0].includes('herbalistRescued')||DevSession.active)&&kind()==='herbal'});
   if(!outcome.ok){if(outcome.reason==='insufficientCoins')$('campServiceStatus').textContent=I18n.t('merchant.insufficient');if(outcome.reason==='insufficientHerbs')$('campServiceStatus').textContent=I18n.t('service.herbs.insufficient');return false;}
@@ -47,7 +48,7 @@ const CampWorkshop=(()=>{
    const text=document.createElement('p');text.textContent=I18n.t('camp.herbal.quest');content.append(text);
    const stock=document.createElement('p');stock.textContent=I18n.t('item.forestHerb')+' ×'+campServices.herbs+' · '+I18n.t('item.healingBrew')+' ×'+campServices.potions;content.append(stock);
    button(content,I18n.t('service.brew'),{type:'brew'},campServices.herbs<3||campServices.potions>=Number.MAX_SAFE_INTEGER);
-  }else button(content,I18n.t('service.enchant'),{},true);
+  }else{button(content,I18n.t('service.enchant'),{},true);const text=document.createElement('p');text.textContent=I18n.t(SerpentRelics.united()?'serpent.fusion.complete':'serpent.fusion.requires');content.append(text);button(content,I18n.t('serpent.fusion.action'),{type:'uniteScales'},!SerpentRelics.canUnite());}
   if(focused?.startsWith('campAction-')){const node=$(focused);if(node?.isConnected&&!node.disabled)node.focus();else $('closeCampService').focus();}
  }
  function open(service){

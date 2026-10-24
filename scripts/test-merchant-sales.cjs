@@ -62,13 +62,13 @@ function fixture(){
  assert.equal(r('JSON.stringify([soldItems,flags,progression,coins])'),held);
 }
 
-// Loot remains historically collected when sold, even through replayed encounters.
+// The fusion quest scale is protected, remains held and cannot be farmed through retries.
 {
  const f=fixture(),{r,open}=f;
- r("flags[1].push('soulUpper','soulLower','serpentScale');");open();assert(r("Merchant.sell('serpentScale')"));
- r("Inventory.close();enterRealm(1);bossStarted=true;boss.serpent=createLavaSerpent();boss.serpent.active=true;");
- const before=r('JSON.stringify([flags,coins,progression,soldItems])');r('defeatLavaSerpent(boss.serpent);');assert.equal(r('JSON.stringify([flags,coins,progression,soldItems])'),before);assert.equal(r("Inventory.quantity('serpentScale')"),0);
- r("enterRealm(0);enterForestCamp();");f.place(r("forestCamp.npcs.find(n=>n.id==='akash').x"),820);open();assert.equal(r("Inventory.quantity('serpentScale')"),0);f.denied('serpentScale');validate(r('saved'));
+ r("flags[1].push('soulUpper','soulLower','serpentScale');");open();f.denied('serpentScale');assert.equal(r("Inventory.quantity('serpentScale')"),1,'The quest scale remains held');
+ r("Inventory.close();enterRealm(1);bossStarted=true;boss.serpent=createLavaSerpent();boss.serpent.active=true;enemies.push(boss.serpent);boss.serpent.hp=0;");
+ const before=r('JSON.stringify([flags,coins,progression,soldItems])');r('defeatLavaSerpent(boss.serpent);');assert.equal(r('JSON.stringify([flags,coins,progression,soldItems])'),before);assert.equal(r("Inventory.quantity('serpentScale')"),1);
+ r("enterRealm(0);enterForestCamp();");f.place(r("forestCamp.npcs.find(n=>n.id==='akash').x"),820);open();assert.equal(r("Inventory.quantity('serpentScale')"),1);f.denied('serpentScale');validate(r('saved'));
 }
 
 // Protected items remain protected even when owned, and valuable optional loot

@@ -8,7 +8,7 @@ const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
  seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},
- serpentScale:{price:150,realm:1},daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
+ daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
 }).map(([id,product])=>[id,Object.freeze(product)])));
 // Earned reward flags, rather than held items or replayable encounters, own
 // the permanent bonus-point budget. Shared with the standalone save validator.
@@ -173,6 +173,32 @@ heaven.arena={x:1120,y:850,w:1880,restId:'arena'};heaven.boss={x:2560,y:850};hea
 [[1200,5230],[1850,4960],[1510,3990],[1220,2630],[1510,2470],[2110,2340]].forEach(([x,y],i)=>foe(heaven,'cloud-'+i,x,y,i%3===0?'archer':'guard',null,35));
 [[1240,5500],[1580,4600],[970,3500],[1370,2900],[1650,1960]].forEach(([x,y],i)=>foe(heaven,'skybat-'+i,x,y,'fly',null,110));
 zone(heaven,I18n.t("text.gate.of.clouds"),0,5450,3200,1200);zone(heaven,I18n.t("text.stairway.of.winds"),0,4250,3200,1200);zone(heaven,I18n.t('place.sun.court'),0,3150,3200,1100);zone(heaven,I18n.t("text.bridge.of.stars"),0,2200,3200,950);zone(heaven,I18n.t('place.dawns.edge'),0,1100,3200,1100);zone(heaven,I18n.t("text.the.summit.of.heaven"),0,0,3200,1100);
+// Optional serpent branches use the ordinary main maps, with their own arena
+// metadata and an exit made of small, reversible single-jump links.
+japan.secrets.push({id:'whiteSerpentCave',name:'serpent.white.cave',x:6400,y:1430,w:2100,h:700,
+ arena:{x:6770,y:1790,w:1700,restId:'fields'},guardian:'whiteSerpent'});
+for(const p of [
+ ['white-serpent-entry',6430,1490,210],['white-serpent-mouth',6650,1590,210],
+ ['white-serpent-step',6860,1690,220],['white-serpent-arena',6770,1790,1700]
+]){ledge(japan,...p,'stone',32);japan.platforms.at(-1).secretArea='whiteSerpentCave';}
+japan.gates.push({id:'whiteSerpentRoof',kind:'secretRock',terrainBarrier:true,wallMaterial:'cult',x:6900,y:1430,w:1570,h:85,secretArea:'whiteSerpentCave'});
+foe(japan,'whiteSerpent',7850,1790,'serpent',null,550);
+Object.assign(japan.enemies.at(-1),{serpentType:'white',miniboss:'whiteSerpent',name:'serpent.white.name',secretArea:'whiteSerpentCave'});
+japan.progressFlags=[...(japan.progressFlags||[]),'whiteSerpentScale','triuneSerpentTalisman'];
+
+// The eastward detour stays well below the dawn seal and never creates an
+// alternate ascent to Haru or a route around the realm guardian.
+heaven.width=5250;
+heaven.secrets=[...(heaven.secrets||[]),{id:'wingedSerpentRoost',name:'serpent.winged.roost',x:3070,y:1940,w:2100,h:800,
+ arena:{x:3500,y:2500,w:1600,restId:'third'},guardian:'wingedSerpent'}];
+for(const p of [
+ ['winged-serpent-bridge1',2380,2340,280],['winged-serpent-bridge2',2760,2340,280],
+ ['winged-serpent-bridge3',3140,2420,280],['winged-serpent-arena',3500,2500,1600]
+]){ledge(heaven,...p,'cloud',38);heaven.platforms.at(-1).secretArea='wingedSerpentRoost';}
+foe(heaven,'wingedSerpent',4470,2500,'serpent',null,550);
+Object.assign(heaven.enemies.at(-1),{serpentType:'winged',miniboss:'wingedSerpent',name:'serpent.winged.name',secretArea:'wingedSerpentRoost',factionOverride:'heaven'});
+heaven.progressFlags.push('wingedSerpentScale');
+
 // Faction art and role variations share the original, proven geometry.
 const fieldRoles=['guard','archer','shield','mage'];
 for(const map of [japan,yomi,heaven]){let i=0;for(const enemy of map.enemies){if(enemy.kind==='fly'||enemy.group||enemy.miniboss)continue;enemy.kind=fieldRoles[i++%fieldRoles.length];}}

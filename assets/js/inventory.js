@@ -2,11 +2,12 @@
 'use strict';
 const Inventory=(()=>{
  let initialized=false,returnFocus=null,selected=null,pendingSale=null,renderId=0;
- const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue);
+ const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue),talisman=SerpentRelics.result;
+ const isTalisman=id=>id===talisman||id==='equippedTalisman';
  const weaponStyleFor=id=>typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
  const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
- const itemName=id=>weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
- function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ const itemName=id=>id==='equippedTalisman'?I18n.t(catalogue[talisman].name):weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
+ function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id===talisman&&equippedTalisman===talisman)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
  function contents(){return [...ids.filter(id=>quantity(id)>0),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
@@ -18,6 +19,10 @@ const Inventory=(()=>{
   c.drawImage(image,rect.x||0,rect.y||0,rect.w,rect.h,(canvas.width-w)/2,(canvas.height-h)/2,w,h);
  }
  function equipmentArt(){
+  $('inventoryTalismanLabel').textContent=I18n.t('inventory.talisman.slot');
+  const talismanArt=catalogue[talisman];image($('inventoryTalismanArt'),equippedTalisman&&talismanArt?Visuals.images[talismanArt.image]:null,talismanArt,{w:108,h:108});
+  $('inventoryTalisman').disabled=!equippedTalisman;$('inventoryTalismanName').textContent=equippedTalisman?I18n.t(talismanArt.name):'—';
+  $('inventoryTalisman').setAttribute('aria-label',I18n.t('inventory.talisman.slot')+(equippedTalisman?' · '+I18n.t(talismanArt.name):''));
   image($('inventoryMomo'),Visuals.images.inventoryMomoPortrait,ART_INVENTORY.momo,{w:384,h:416});
   const weaponArt=ART_INVENTORY[weaponStyle];
   image($('inventoryWeaponArt'),Visuals.images[weaponArt.image],weaponArt,{w:108,h:144});
@@ -29,16 +34,16 @@ const Inventory=(()=>{
  }
  function weaponName(style=weaponStyle){return I18n.t(style==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+style+'.item');}
  function details(id){
-  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id],healing=Merchant.healingItems.includes(id);
+  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id);
   $('inventoryDetailName').textContent=weapon?weaponName(style):id?itemName(id):I18n.t('inventory.empty.title');
-  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):id==='forestHerb'?'inventory.type.backpack':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':item?.category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
+  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':id==='forestHerb'?'inventory.type.backpack':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':item?.category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
   const damage=kind=>momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale;
-  $('inventoryDetailText').textContent=weapon?I18n.format('weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
+  $('inventoryDetailText').textContent=weapon?I18n.format('weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id==='equippedTalisman'?talisman:id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!item?.stack;
   $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
-  $('useInventoryItem').hidden=!healing&&!(weapon&&id!=='weapon');
-  $('useInventoryItem').disabled=id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
-  $('useInventoryItem').textContent=I18n.t(weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
+  $('useInventoryItem').hidden=!healing&&!(weapon&&id!=='weapon')&&!isTalisman(id);
+  $('useInventoryItem').disabled=isTalisman(id)?false:id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
+  $('useInventoryItem').textContent=I18n.t(isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
   $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
   $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
@@ -72,7 +77,7 @@ const Inventory=(()=>{
   }
   $('inventoryEmpty').hidden=items.length>0;$('inventoryEmpty').textContent=I18n.t('inventory.empty.title');
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
-  choose(selected==='weapon'||items.includes(selected)?selected:items[0]||null);
+  choose(selected==='weapon'||selected==='equippedTalisman'&&equippedTalisman||items.includes(selected)?selected:items[0]||null);
   if(useFocused&&(Merchant.healingItems.includes(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
   else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
@@ -87,11 +92,12 @@ const Inventory=(()=>{
  }
  function init(){
   if(initialized)return;initialized=true;
-  $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');
+  $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');$('inventoryTalisman').onclick=()=>{if(equippedTalisman)choose('equippedTalisman');};
   $('useInventoryItem').onclick=()=>{
    if(state!=='inventory')return;
    const style=weaponStyleFor(selected);
-   if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
+   if(isTalisman(selected)){const next=equippedTalisman?null:talisman;if(SerpentRelics.equip(next)){selected=next?'equippedTalisman':talisman;render();}}
+   else if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
    else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);
   };
   $('sellInventoryItem').onclick=()=>{

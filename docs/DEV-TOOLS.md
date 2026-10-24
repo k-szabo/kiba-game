@@ -114,3 +114,11 @@ A Tábormester újraélesztése kizárólag a Szamurájtáborban érhető el. A 
 A tesztindítás a `campServices` objektumot és a birtokolt fegyverek listáját is mélyen másolja. A tesztmódban vett fejlesztés, készített főzet, gyűjtött növény és dev-fegyvercsere nem ír normál mentést. Dev-felszereléskor a fegyver memóriabeli tulajdonjoga is megjelenik, hogy a kovács szabályai a tesztben is érvényes állapotot kapjanak. Tesztbefejezéskor a normál állapot helyreáll. A gyógynövény és a főzet a tárgykatalógusból halmozható készletként hozzáadható, Akash kínálatának módosítása nélkül.
 
 Célzott regressziók: `test-camp-dev.cjs`, `test-camp-consumables.cjs`, `test-camp-integration.cjs`.
+
+### Három birodalom kígyói
+
+Az önálló fehér és szárnyas kígyó a saját birodalom miniboss-választójában indítható újra. A replay nem ad normál guardian-jelzőt, pikkelyt, XP-t vagy érmét; a normál mentést a tesztmód továbbra sem írja. A meglévő lávakígyó Yomi bossának fázisa, ezért a démonharc részeként vizsgálható.
+
+A három pikkely és a `triuneSerpentTalisman` a közös tárgyadóból hozzáadható. A tárgyadás nem adja meg a kígyók legyőzését vagy a Fumi-mentőküldetés teljesítését. A talizmán külön slotban felszerelhető a tesztben, és csak ott viselve ad +20 Armort; az `equippedTalisman` állapot ugyanúgy elkülönül és a normál mentésből visszaáll, mint a fegyver és a tábori tulajdonlista. A már felhasznált pikkely nem hozható vissza a fúzió után.
+
+Célzott regressziók: `test-serpent-template.cjs`, `test-serpent-fusion.cjs`, `test-serpent-saves.cjs`; pálya- és grafikai ellenőrzések a [kígyóreferenciában](SERPENTS.md).

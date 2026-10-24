@@ -46,8 +46,8 @@ for(const id of ['angelHalo','demonHorn']){
   assert.equal(snap().progression.totalXp-before,id==='angelHalo'?80:95);
   press('e');tick();release('e');assert(snap().relics.includes(id));dismiss();
 }
-run("respawnEnemies();");assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead)'));assert(run('enemies.filter(e=>!e.miniboss).every(e=>!e.dead)'));
-run('persist();mainMenu();startGame(true);');assert.deepEqual(Array.from(snap().relics),['angelHalo','demonHorn']);assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead)'));assert(run('relicRitualReady()'));
+run("respawnEnemies();");assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].includes(minibossFlag(e.id)))'));assert(run('enemies.filter(e=>!e.miniboss).every(e=>!e.dead)'));
+run('persist();mainMenu();startGame(true);');assert.deepEqual(Array.from(snap().relics),['angelHalo','demonHorn']);assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].includes(minibossFlag(e.id)))'));assert(run('relicRitualReady()'));
 run("showMap();var discoveredMap=$('mapContent').children[0].innerHTML;closeMap();");assert(run('discoveredMap.length>initialMap.length'));
 
 // The inconspicuous stone seal is solid until an ordinary, timed sword hit breaks it.

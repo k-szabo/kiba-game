@@ -24,6 +24,6 @@ for(const won of [false,true])for(let i=0;i<3;i++){
   assert(centres.some(([cx,cy])=>x>=cx-75&&x<cx+75&&y>=cy-75&&y<cy+75),g.id+' has painted tile coverage at '+x+','+y);
  assert.equal(r('JSON.stringify([player,boss,enemies,flags,platforms,level.gates,time,levelTime])'),before,'Drawing must not alter collision, combat or clocks');
 }
-r("enterRealm(0);var oldBarriers=levels.flatMap(map=>map.gates).filter(g=>g.terrainBarrier&&!g.id.startsWith('prison')); ");
+r("enterRealm(0);var oldBarriers=levels.flatMap(map=>map.gates).filter(g=>g.terrainBarrier&&!g.id.startsWith('prison')&&g.id!=='whiteSerpentRoof'); ");
 assert(r('oldBarriers.length>0&&oldBarriers.every(g=>!g.wallMaterial)'),'Existing platform barriers retain their previous renderer');
 console.log('PASS: QA-PRISON-001 r1 full-height clipped prison masonry, fixed-scale tile/crop/alpha bounds, body coverage before/after priest victory and read-only rendering.');

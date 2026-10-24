@@ -18,7 +18,7 @@ const DevSession=(()=>{
    abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);
    flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);
    weaponStyle=old?.weaponStyle??'katana';shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;soldItems=old?[...old.soldItems]:[];quickHeal=old?.quickHeal??'roastMeat';progression=normalizeProgression(old?.progression,flags);
-   campServices=clone(old?.campServices)||CampServiceRules.fresh(weaponStyle);
+   campServices=clone(old?.campServices)||CampServiceRules.fresh(weaponStyle);equippedTalisman=old?.equippedTalisman??null;
    Prologue.stop();enterRealm(0);
   }else if(Prologue.active){Prologue.stop();enterRealm(0);}
   $('menu').hidden=true;$('pause').hidden=true;showHUD(true);DevTools.setReturnState('play');
@@ -27,7 +27,7 @@ const DevSession=(()=>{
  function end(){
   if(!active)return false;
   active=false;saved=clone(normalSave);normalSave=null;
-  weaponStyle=saved?.weaponStyle??'katana';campServices=clone(saved?.campServices)||CampServiceRules.fresh(weaponStyle);
+  equippedTalisman=saved?.equippedTalisman??null;weaponStyle=saved?.weaponStyle??'katana';campServices=clone(saved?.campServices)||CampServiceRules.fresh(weaponStyle);
   for(const handler of endHandlers)handler();
   if(DevTools.isOpen)DevTools.close();
   refresh();mainMenu();return true;

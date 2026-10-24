@@ -30,6 +30,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
+| `assets/js/serpents.js`, `serpent-relics.js` | Közös kígyótemplate, három találkozás, pikkelyfúzió és külön felszerelt talizmán; [referencia](SERPENTS.md). |
 | `assets/js/doom-slayer.js`, `slayer-dialog.js`, `slayer-art.js` | Opcionális találkozás, szüneteltetett szövegbevitel és külön grafikai réteg; [spoileres fejlesztői referencia](DOOM-SLAYER.md). |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
 | `assets/js/shadow-animation.js` | Árnyék 24 festett póza, szemekhez igazított kivágásai és harci időzítése. |
@@ -222,3 +223,9 @@ A [tábori referencia](FOREST-CAMP.md) leírja Daichi opcionális mentőküldet�
 A `campServices` permanens állapotban a fegyvertulajdon, a két kovácsrang és a növény/főzet készlet él. A `CampServiceRules.transact` a másolt adaton ellenőrzi a tranzakciót; a szolgáltatási vezérlő külön ellenőrzi az aktuális állapotot, helyszínt, közelséget és NPC-feloldást. A tárolás és dev-teszt a másolt állapotot használja, nem oszthat meg változtatható listát a normál mentéssel. A fegyverfokozatot az alap fegyversebzésbe, még a stílus sebzésszorzója előtt számoljuk; a páncél a közös [százalékos védelemhez](ARMOR.md) csatlakozik.
 
 Az `npm run test:camp-npcs` tesztcsoport a tiszta tranzakciókat, a szigorú mentési előfeltételeket, tényleges bossharcot/küldetést, gyógynövény-újratermést, szolgáltatási gombokat, fogyasztást, páncélt, dev-izolációt és grafikai regisztrációt ellenőrzi. A valós böngészőben ezen felül a HU/EN kezelhetőség, szünet, talpillesztés, teljes fegyversziluett és IndexedDB-újratöltés vizsgálandó.
+
+## Kígyótemplate és felszerelt relikvia
+
+Új kígyóváltozatnál a `Serpents.profiles` adatszerkezetét és az önálló pályabejegyzést bővítsd, ne másold az állapotgépet. A `serpent:true` hostjelölés csak a Yomi által idézett, fázisok között elrejtett lávakígyóé; a tartós opcionális minibossok `serpentType`-ot és guardian-jelzőt kapnak. A közös controller kezeli a rögzített előjelzést, sebzést követő entitásellenőrzést és egyszeri jutalmakat. A rajzolás nem léptethet harci órát.
+
+A pikkelyek régi megszerzési jelzőit a fúzió nem törli. A tartós eredmény és az `ART_INVENTORY.items.*.consumedBy` választja szét a megszerzési előzményt a jelenlegi birtoklástól. Az `equippedTalisman` külön mentett felszerelési mező: a bónuszhoz tulajdon és viselt állapot együtt kell, a fegyvertől függetlenül. A fúzió, felszerelés, dev-teszt és szigorú mentés részletei a [SERPENTS.md](SERPENTS.md) fájlban szerepelnek.

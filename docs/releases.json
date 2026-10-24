@@ -786,6 +786,22 @@
           "en": "Daichi's rescue quest leads to a new samurai camp. The rescued blacksmith, herbalist and enchanter gain their own places at the Forest Refuge; new upgrades, weapon trading and healing brews support Momo's journey."
         }
       ]
+    },
+    {
+      "version": "0.9.40_43087909",
+      "code": "43087909",
+      "baseVersion": "0.9.40",
+      "slug": "three-realms-serpents",
+      "summary": {
+        "hu": "A három birodalom kígyói",
+        "en": "Serpents of the three realms"
+      },
+      "fixes": [
+        {
+          "hu": "Japán rejtett barlangjában fehér kígyó, a mennyország keleti szélén szárnyas kígyó vár. Három pikkelyüket Fumi egy felszerelhető, +20 páncélt adó talizmánná egyesítheti.",
+          "en": "A white serpent waits in Japan’s hidden cave, and a winged serpent at heaven’s eastern edge. Fumi can unite the three scales into an equippable talisman granting +20 armor."
+        }
+      ]
     }
   ]
 }

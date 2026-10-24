@@ -49,7 +49,7 @@ A `journeyHUD` függőleges elrendezése a feladatot és a birtokolt iránytűt 
 
 ## Tea és közös gyorshasználat
 
-Az O alapértelmezésű, átállítható művelet belső azonosítója kompatibilitás miatt továbbra is `useMeat`; az elnevezése már gyógyító tárgy használata. A hátizsákban a hús vagy tea részleteinél választható ki a gyorshasználati tárgy. A mentett `quickHeal` értéke `roastMeat` vagy `tea`. Ha a kijelölt készlet elfogy, a másik készletre vált, ha abból van adag; az adott gombnyomás csak egy tárgyat használ el.
+Az O alapértelmezésű, átállítható művelet belső azonosítója kompatibilitás miatt továbbra is `useMeat`; az elnevezése már gyógyító tárgy használata. A hátizsákban a hús vagy tea részleteinél választható ki a gyorshasználati tárgy. A mentett `quickHeal` értéke `roastMeat`, `tea` vagy Sofiye főzeténél `healingBrew`. Ha a kijelölt készlet elfogy, a másik készletre vált, ha abból van adag; az adott gombnyomás csak egy tárgyat használ el.
 
 A tea 2, 4 és 6 aktív másodpercnél legfeljebb 1–1 HP-t gyógyít. Nem lépi túl a maximumot, teljes HP-n és aktív teahatás mellett újabb adag nem fogyasztható. Az inventory, szünet, dialógus és egyéb panelek fagyasztják az időzítőt. Halál, helyszínváltás, főmenü és a tesztmód befejezése törli a hatást, az el nem fogyasztott készletet megőrzi. A hatás átmeneti, mentésbe nem kerül. A készlet és a gyorshasználati választás szigorúan validált és az aktuális kiadáson belül mentődik.
 
@@ -67,11 +67,11 @@ A bolt eladásgombja az inventoryt nyitja meg. Eladás csak a kiszabadított Aka
 | Kis útitérkép | 360 | 140 |
 | Telefontok | 500 | 50 |
 | Esküszegő / Yomi-őrző / szeráf / őrült pap lelke | — | 200 / 300 / 500 / 600 |
-| Lávakígyó pikkelye | — | 150 |
+| Kígyópikkelyek / Három birodalom talizmánja | — | Nem eladható |
 | Daisy / Démonölő számszeríja | — | 120 / 300 |
 
 A telefontok egyszerre egy példányban birtokolható, eladás után újravásárolható, használati hatása nincs. A közös árlista és egyedi tárgy–világ hozzárendelés a `levels.js` `MERCHANT_SALES` táblája; a bolti vételárak a `Merchant.catalogue` adatai. Eladáskor az érmejóváírás és a tárgy levonása egyetlen mentési állapot. Biztonságos egész túlcsordulás esetén a művelet módosítás nélkül elutasított.
 
-Az egyedi tárgyak eredeti megszerzési jelzője megmarad, a birtoklást a mentett, szigorúan validált `soldItems` lista szűri. Így a bossjutalom, XP és statpont nem vész el, a zsákmány nem jelenik meg újra, a kígyó jutalma nem farmolható újra. Az eladott iránytű/minimap kikapcsol, visszavásárláskor a régi megszerzési jelző duplikálása nélkül áll helyre. A fogyó holmik a meglévő készletből fogynak; az utolsó kijelölt adag eladása a másik készletre kapcsol, ha van belőle. A már elfogyasztott tea átmeneti hatása független a megmaradt készlet eladásától.
+Az egyedi tárgyak eredeti megszerzési jelzője megmarad, a birtoklást a mentett, szigorúan validált `soldItems` lista szűri. Így a bossjutalom, XP és statpont nem vész el, a zsákmány nem jelenik meg újra, a kígyók egyszeri jutalma a fúzió után sem farmolható újra. A három pikkely és a talizmán védett: Fumi rítusa fogyasztja a pikkelyek birtoklási nézetét, az eladási rendszer nem. Az eladott iránytű/minimap kikapcsol, visszavásárláskor a régi megszerzési jelző duplikálása nélkül áll helyre. A fogyó holmik a meglévő készletből fogynak; az utolsó kijelölt adag eladása a másik készletre kapcsol, ha van belőle. A már elfogyasztott tea átmeneti hatása független a megmaradt készlet eladásától.
 
 A `test-merchant-sales.cjs` a tranzakciókat, megerősítést, védett tárgyakat, visszavásárlást és ismételt eladás kizárását ellenőrzi; a titkosított mentési köröket a `test-save-release.cjs` végzi.
