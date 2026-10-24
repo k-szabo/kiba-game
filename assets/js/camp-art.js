@@ -14,15 +14,24 @@ const CampArt=(()=>{
   const image=Visuals.images[panel.image];if(!image?.complete||!image.naturalWidth)return null;
   const canvas=document.createElement('canvas');canvas.width=ART_SAMURAI_CAMP.w;canvas.height=ART_SAMURAI_CAMP.h;
   const paint=canvas.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';
-  const edge=ART_SAMURAI_CAMP.overlap/panel.w,gradient=paint.createLinearGradient(0,0,canvas.width,0);
+  const edge=Math.min(.04,ART_SAMURAI_CAMP.overlap/panel.w),gradient=paint.createLinearGradient(0,0,canvas.width,0);
   gradient.addColorStop(0,index===0?'#fff':'#fff0');gradient.addColorStop(edge,'#fff');
-  gradient.addColorStop(1-edge,'#fff');gradient.addColorStop(1,index===ART_SAMURAI_CAMP.panels.length-1?'#fff':'#fff0');
+  // Only the incoming panel fades: two translucent edges would darken the overlap.
+  gradient.addColorStop(1,'#fff');
   paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);panelCache.set(panel.image,canvas);return canvas;
  }
  function backdrop(){
   if(level===samuraiCamp){
    ctx.save();ctx.fillStyle='#151e27';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-   ART_SAMURAI_CAMP.panels.forEach((panel,index)=>{const image=panelImage(panel,index);if(!image)return;const scale=panel.w/ART_SAMURAI_CAMP.w;ctx.drawImage(image,panel.x-camera,panel.ground-panel.sourceGround*scale-cameraY,panel.w,ART_SAMURAI_CAMP.h*scale);});ctx.restore();return;
+   // Distant scenery uses the whole native-height painting instead of enlarging
+   // one tent over the full camera. Platforms remain in their world coordinates.
+   const sourceOverlap=ART_SAMURAI_CAMP.overlap/ART_SAMURAI_CAMP.panels[0].w*ART_SAMURAI_CAMP.w,
+    sourceWidth=ART_SAMURAI_CAMP.w*ART_SAMURAI_CAMP.panels.length-sourceOverlap*(ART_SAMURAI_CAMP.panels.length-1),
+    scale=Math.max(H/ART_SAMURAI_CAMP.h,viewW/sourceWidth),width=ART_SAMURAI_CAMP.w*scale,
+    overlap=ART_SAMURAI_CAMP.overlap/ART_SAMURAI_CAMP.panels[0].w*width,
+    step=width-overlap,total=width+step*(ART_SAMURAI_CAMP.panels.length-1),
+    scroll=clamp(camera*.4,0,Math.max(0,total-viewW));
+   ART_SAMURAI_CAMP.panels.forEach((panel,index)=>{const image=panelImage(panel,index);if(!image)return;ctx.drawImage(image,index*step-scroll,Math.min(0,H-ART_SAMURAI_CAMP.h*scale)*.35,width,ART_SAMURAI_CAMP.h*scale);});ctx.restore();return;
   }
   const a=backgrounds[level.id];if(!a)return;const img=Visuals.images[a.image],s=level.width/a.w,top=level.start.y-a.ground*s;
   ctx.fillStyle='#0e202c';ctx.fillRect(0,0,viewW,H);if(!img?.complete||!img.naturalWidth)return;

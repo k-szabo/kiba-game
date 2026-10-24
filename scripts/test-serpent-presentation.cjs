@@ -28,3 +28,37 @@ for(const realm of [0,2]){
  assert(!strokes.includes('#c4f2ec')&&!strokes.includes('#e0b9ff'),'Species colors are not danger outlines');
 }
 console.log('PASS: both serpent backdrops cover desktop/wide viewports, bounded active-frame fades at30/60/120FPS, pure rendering, outgoing blend, pause/death/menu/teleport reset, unchanged geometry and shared gold warning outlines.');
+
+// Reproduce a real groundBurst release: the effect's authored base, not its
+// bitmap centre, must remain on the same floor as the warning and hitbox.
+for(const fps of [30,60,120]){
+ const h=harness(),r=h.run,ctx=h.sandbox.document.getElementById('world').getContext('2d'),translations=[],effects=[];
+ r("state='play';enterRealm(0);var frost=enemies.find(e=>e.serpentType==='white');initPlayer({x:frost.arena.x+300,y:frost.arena.y});player.inv=999;frost.cycles=2;frost.clock=0;Serpents.update(frost,1/120);");
+ assert.equal(r('frost.move'),'groundBurst');
+ while(!r('frost.hazards[0].active'))r('Serpents.update(frost,'+1/fps+')');
+ const hazards=JSON.parse(r('JSON.stringify(frost.hazards)'));
+ assert.equal(hazards.length,3);assert(hazards.every(v=>v.y+v.h===r('frost.arena.y')));
+ ctx.translate=(x,y)=>translations.push([x,y]);ctx.drawImage=(image,...args)=>{if(image===r('Visuals.images.fxImpact'))effects.push(args);};
+ const before=r('JSON.stringify([frost,player,flags,projectiles,platforms])');r('SerpentArt.actor(frost)');
+ assert.equal(r('JSON.stringify([frost,player,flags,projectiles,platforms])'),before);
+ assert.equal(effects.length,3);
+ for(const v of hazards)assert(translations.some(([x,y])=>x===v.x+v.w/2&&y===v.y+v.h),'The impact base stays on the warning/hitbox floor');
+}
+// Locomotion must not reuse alternating attack windup/lift silhouettes. The
+// held existing glide remains stable at all frame rates and facing directions.
+{
+ const h=harness(),r=h.run,ctx=h.sandbox.document.getElementById('world').getContext('2d');
+ r("enterRealm(2);var wing=enemies.find(e=>e.serpentType==='winged');wing.phase='wait';wing.walkSpeed=100;");
+ const motion=new Set();for(const fps of [30,60,120])for(const face of [-1,1])for(let frame=0;frame<fps*2;frame++){
+  r('wing.face='+face+';wing.animTime='+frame/fps);motion.add(r('SerpentArt.pose(wing)'));
+ }
+ assert.deepEqual([...motion],[2],'A single existing glide avoids full-body silhouette flicker');
+ let sampling;ctx.drawImage=image=>{if(image===r('Visuals.images.wingedSerpent'))sampling=[ctx.imageSmoothingEnabled,ctx.imageSmoothingQuality];};
+ const before=r('JSON.stringify([wing,player,flags,projectiles,platforms])');r('SerpentArt.actor(wing)');
+ assert.deepEqual(sampling,[true,'high'],'Painted feathers use high-quality native sampling');
+ assert.equal(r('JSON.stringify([wing,player,flags,projectiles,platforms])'),before);
+ r('reducedMotion.matches=true');assert.equal(r('SerpentArt.pose(wing)'),0);
+ r('reducedMotion.matches=false;wing.walkSpeed=0;wing.animTime=0;');assert.equal(r('SerpentArt.pose(wing)'),0);
+ r('wing.animTime=.3');assert.equal(r('SerpentArt.pose(wing)'),7,'Resting breath keeps its approved neutral poses');
+}
+console.log('PASS: grounded frost impact at30/60/120FPS, stable existing winged glide, high-quality sampling and reduced-motion fallback without combat mutation.');

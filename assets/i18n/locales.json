@@ -810,7 +810,11 @@
       "menu.changelog.0941.serpentFixTitle": "Verziójelölés és kígyóarénák javítása",
       "menu.changelog.0941.serpentFixes": "A Jelenlegi kiadás jelölése automatikusan követi az aktív verziót. A japán és mennyországi kígyóarénák háttere finoman vált át, támadásjelzéseik pedig a közös bossjelzések színét használják.",
       "menu.changelog.0942.title": "Új alapirányítás",
-      "menu.changelog.0942.controls": "A normál támadás alapból a bal, az erős támadás a jobb egérgombbal használható. A dash a Shift, a gyógyító tárgy a Q gombot kapta. A UK és francia profilok a saját billentyűzetükhöz igazodnak; a meglévő egyéni kiosztások megmaradnak."
+      "menu.changelog.0942.controls": "A normál támadás alapból a bal, az erős támadás a jobb egérgombbal használható. A dash a Shift, a gyógyító tárgy a Q gombot kapta. A UK és francia profilok a saját billentyűzetükhöz igazodnak; a meglévő egyéni kiosztások megmaradnak.",
+      "menu.changelog.0942.visuals.title": "Élesebb tájak és kígyóanimációk",
+      "menu.changelog.0942.visuals.0": "A fehér kígyó feltörő dércsapása a talajhoz igazodik.",
+      "menu.changelog.0942.visuals.1": "A szamurájtábor és a két kígyóaréna háttere részletesebben, természetesebb léptékben jelenik meg.",
+      "menu.changelog.0942.visuals.2": "A szárnyas kígyó mozgása stabilabb, képe tisztább."
     }
   },
   "en": {
@@ -1624,7 +1628,11 @@
       "menu.changelog.0941.serpentFixTitle": "Release marker and serpent arena fixes",
       "menu.changelog.0941.serpentFixes": "The Current release marker automatically follows the active version. The Japan and heaven serpent arenas now blend smoothly into their backgrounds, and their attack warnings use the shared boss warning color.",
       "menu.changelog.0942.title": "New default controls",
-      "menu.changelog.0942.controls": "Normal attacks now use the left mouse button and heavy attacks use the right mouse button by default. Dash uses Shift, and healing items use Q. UK and French profiles follow their keyboard layouts; existing custom bindings are preserved."
+      "menu.changelog.0942.controls": "Normal attacks now use the left mouse button and heavy attacks use the right mouse button by default. Dash uses Shift, and healing items use Q. UK and French profiles follow their keyboard layouts; existing custom bindings are preserved.",
+      "menu.changelog.0942.visuals.title": "Sharper scenery and serpent animations",
+      "menu.changelog.0942.visuals.0": "The white serpent’s rising frost attack is aligned with the ground.",
+      "menu.changelog.0942.visuals.1": "The Samurai Camp and both serpent arenas show more detailed backgrounds at a more natural scale.",
+      "menu.changelog.0942.visuals.2": "The winged serpent’s movement is steadier and its image clearer."
     }
   }
 }

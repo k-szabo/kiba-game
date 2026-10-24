@@ -372,6 +372,30 @@
           "en": "The Current release marker automatically follows the active version. The Japan and heaven serpent arenas now blend smoothly into their backgrounds, and their attack warnings use the shared boss warning color."
         }
       ]
+    },
+    {
+      "version": "0.9.42_d80d0505",
+      "code": "d80d0505",
+      "baseVersion": "0.9.42",
+      "slug": "serpent-camp-visual-clarity",
+      "summary": {
+        "hu": "Élesebb tájak és kígyóanimációk",
+        "en": "Sharper scenery and serpent animations"
+      },
+      "fixes": [
+        {
+          "hu": "A fehér kígyó feltörő dércsapása a talajhoz igazodik.",
+          "en": "The white serpent’s rising frost attack is aligned with the ground."
+        },
+        {
+          "hu": "A szamurájtábor és a két kígyóaréna háttere részletesebben, természetesebb léptékben jelenik meg.",
+          "en": "The Samurai Camp and both serpent arenas show more detailed backgrounds at a more natural scale."
+        },
+        {
+          "hu": "A szárnyas kígyó mozgása stabilabb, képe tisztább.",
+          "en": "The winged serpent’s movement is steadier and its image clearer."
+        }
+      ]
     }
   ],
   "releases": [
