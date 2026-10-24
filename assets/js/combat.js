@@ -28,6 +28,7 @@ function respawnEnemies() {
   // Grave retry state is separate from `summoned`, which denotes disposable minions.
   const slayer=enemies.find(DoomSlayer.is),retry=slayer&&!slayer.dead?{graveAwake:slayer.graveAwake,replay:slayer.replay}:null;
   DoomSlayer.clear();
+  if(typeof CampHerbs!=='undefined')CampHerbs.reset();
   enemies=createEnemies();projectiles=projectiles.filter(p=>p.source==='boss');
   if(retry){const fresh=enemies.find(DoomSlayer.is);if(fresh){Object.assign(fresh,retry);DoomSlayer.reset(fresh);}}
   burst(player.x+20,player.y+30,realms[realm].gold,22);
@@ -499,6 +500,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(CampMaster.is(spec))return CampMaster.create(spec);
   if(DoomSlayer.is(spec))return DoomSlayer.create(spec,i);
   const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:94,w:68,maxHp:spec.miniboss==='angel'?36:42};
   return {...spec,x:spec.x,y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,hp:maxHp,maxHp,
@@ -508,6 +510,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(CampMaster.is(e)){CampMaster.reset(e);return;}
   if(DoomSlayer.is(e)){DoomSlayer.reset(e);return;}
   e.x=e.origin;e.y=e.baseY;e.hp=e.maxHp;e.active=false;e.phase='wait';e.clock=1.2;e.phaseDuration=1.2;
   e.cycles=0;e.move=null;e.windup=0;e.inv=0;e.stun=0;e.hazards=[];e.hitDone=false;e.walkSpeed=0;
@@ -521,6 +524,7 @@ function discoverSecrets(){
   }
 }
 function defeatMiniboss(e){
+  if(CampMaster.is(e)){CampMaster.defeat(e);return;}
   if(DoomSlayer.is(e)){DoomSlayer.defeat(e);return;}
   if(e.dead)return;
   e.dead=true;e.active=false;e.hazards=[];projectiles=projectiles.filter(p=>p.source!=='mini:'+e.id);
@@ -546,7 +550,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

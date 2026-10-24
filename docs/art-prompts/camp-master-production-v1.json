@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "tool": "Built-in ImageGen",
+  "approval": {
+    "concept": "exec-76fb45b4-a188-4ba3-9286-5a0a6738a155.png",
+    "storyboard": "exec-6d614b15-5fa2-4818-8364-4cb6b68e3e20.png",
+    "note": "User explicitly approved Camp Master character/environment and this 15-pose storyboard before production."
+  },
+  "output": {
+    "path": "assets/images/enemies/camp-master-v1.png",
+    "width": 971,
+    "height": 1620,
+    "mode": "RGBA",
+    "columns": 3,
+    "rows": 5,
+    "frames": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 324,
+        "h": 324,
+        "anchorX": 148.5,
+        "anchorY": 308,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          34,
+          99,
+          308,
+          308
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "idle"
+      },
+      {
+        "x": 324,
+        "y": 0,
+        "w": 323,
+        "h": 324,
+        "anchorX": 461.5,
+        "anchorY": 309,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          341,
+          100,
+          626,
+          309
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "walk-leading"
+      },
+      {
+        "x": 647,
+        "y": 0,
+        "w": 324,
+        "h": 324,
+        "anchorX": 786.5,
+        "anchorY": 309,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          664,
+          100,
+          945,
+          309
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "walk-trailing"
+      },
+      {
+        "x": 0,
+        "y": 324,
+        "w": 324,
+        "h": 324,
+        "anchorX": 173,
+        "anchorY": 624,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          39,
+          386,
+          284,
+          624
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "overhead-windup"
+      },
+      {
+        "x": 324,
+        "y": 324,
+        "w": 323,
+        "h": 324,
+        "anchorX": 471.5,
+        "anchorY": 624,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          353,
+          419,
+          637,
+          624
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "overhead-cut"
+      },
+      {
+        "x": 647,
+        "y": 324,
+        "w": 324,
+        "h": 324,
+        "anchorX": 787.5,
+        "anchorY": 625,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          670,
+          419,
+          939,
+          625
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "overhead-recovery"
+      },
+      {
+        "x": 0,
+        "y": 648,
+        "w": 324,
+        "h": 324,
+        "anchorX": 171.5,
+        "anchorY": 924,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          38,
+          713,
+          313,
+          924
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "lunge-windup"
+      },
+      {
+        "x": 324,
+        "y": 648,
+        "w": 323,
+        "h": 324,
+        "anchorX": 464,
+        "anchorY": 900,
+        "bodyHeight": 160,
+        "visibleBounds": [
+          369,
+          739,
+          638,
+          900
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "lunge-thrust"
+      },
+      {
+        "x": 647,
+        "y": 648,
+        "w": 324,
+        "h": 324,
+        "anchorX": 801.5,
+        "anchorY": 924,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          685,
+          714,
+          940,
+          924
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "lunge-recovery"
+      },
+      {
+        "x": 0,
+        "y": 972,
+        "w": 324,
+        "h": 324,
+        "anchorX": 178,
+        "anchorY": 1254,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          48,
+          1013,
+          289,
+          1254
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "combo-windup"
+      },
+      {
+        "x": 324,
+        "y": 972,
+        "w": 323,
+        "h": 324,
+        "anchorX": 473,
+        "anchorY": 1253,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          346,
+          1044,
+          625,
+          1253
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "combo-downstroke"
+      },
+      {
+        "x": 647,
+        "y": 972,
+        "w": 324,
+        "h": 324,
+        "anchorX": 790.5,
+        "anchorY": 1255,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          667,
+          1005,
+          926,
+          1255
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "combo-rising"
+      },
+      {
+        "x": 0,
+        "y": 1296,
+        "w": 324,
+        "h": 324,
+        "anchorX": 174.5,
+        "anchorY": 1556,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          48,
+          1323,
+          285,
+          1556
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "execution-windup"
+      },
+      {
+        "x": 324,
+        "y": 1296,
+        "w": 323,
+        "h": 324,
+        "anchorX": 469,
+        "anchorY": 1556,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          346,
+          1349,
+          637,
+          1556
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "execution-cut"
+      },
+      {
+        "x": 647,
+        "y": 1296,
+        "w": 324,
+        "h": 324,
+        "anchorX": 800,
+        "anchorY": 1556,
+        "bodyHeight": 210,
+        "visibleBounds": [
+          675,
+          1345,
+          950,
+          1556
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "execution-recovery"
+      }
+    ]
+  },
+  "registration": {
+    "coordinates": "All rectangles, anchors and visibleBounds use absolute source-image coordinates. Visible bounds are exclusive alpha>32 rectangles.",
+    "grid": "Nominal equal square cells are 323.6667x324; integer source crops round column boundaries to 0,324,647,971 and row boundaries to multiples of324. The middle column is323px wide, others324px. Zero visible pixels touch any cell edge.",
+    "bodyScale": "bodyHeight is a calibration for a single common standing body scale, NOT the changing full painted bounding box. All original-size poses use210 source px. Frame7 (zero based lunge thrust) was uniformly reduced for a complete weapon margin; its bodyHeight160 compensates that exact pose so it does not shrink in-game. Never normalize to frame/cell height or weapon bbox; retain crouches/raised arms.",
+    "anchors": "Measured center of both lowest visible sole spans (bottom6 source rows) and bottom visible sole row. Use per-frame anchorY to prevent floating during stationary action sequences.",
+    "groups": {
+      "idleWalk": [
+        0,
+        1,
+        2
+      ],
+      "overhead": [
+        3,
+        4,
+        5
+      ],
+      "lunge": [
+        6,
+        7,
+        8
+      ],
+      "combo": [
+        9,
+        10,
+        11
+      ],
+      "execution": [
+        12,
+        13,
+        14
+      ]
+    }
+  },
+  "provenance": {
+    "initial": "exec-16d61dc0-8405-4ba7-84c5-adb026e3a99c.png",
+    "layoutCorrection": "exec-246fd35d-3e90-4a26-97b7-50804432eb80.png",
+    "selected": "exec-1c3e7f72-ebc3-459a-ae2b-d3f3959abbb3.png",
+    "initialPrompt": "Use case: stylized-concept. PRODUCTION ANIMATION SPRITE SHEET for the exact approved human Camp Master black/red/gold samurai boss in reference, reproducing reference 15 poses in exact row-major order. The input is approved storyboard, NOT an image to retain parchment/arrows. Output ONLY the polished character cutouts on TRUE TRANSPARENT RGBA. Portrait sheet 1536x2560, exactly 3 equal-width columns and 5 equal-height rows, fifteen equal square cells. Same individual stern bearded human male in CLOSED SIDES but FACE VISIBLE horned gold kabuto helmet, black lacquer layered lamellar armor, deep crimson lacing and waist cords, red flower-patterned cape, black shin guards, gold edging; one katana held with TWO hands. Identity/design exactly match reference. Maintain the same physical scale and body proportions in all fifteen frames, helmet-to-ankle distance constant except real crouching; never zoom character to fill cells. Fit each FULL sword and cape inside own cell with 8% transparent margins, no neighbors touching. The same single curved steel katana with same red-brown grip, same gold circular tsuba, same blade length and width in all frames; solid one rigid weapon, don't bend/shorten/lengthen. Katana unsheathed, NO second sword or scabbard sticking out. Exactly two arms, two hands which both grip same hilt, two legs per frame. Every torso centered near x45% of own cell; soles baseline y88% of own cell. Full complete horn, blade point, cape end, soles inside cell. Every character faces RIGHT in three-quarter side view like reference. POSES: row1 idle twohandlowguard, walk leading right foot, walk trailing left foot. Row2 overhead windup with singlekatana held abovehelmet and blade extending backwardsleft, downward cutting followthrough lowright, neutral recovery. Row3 lunge windup grip nearwaist bladepointforward, straight forward thrust right with both arms extended, recovery lowguard. Row4 overhead combo preparation, downward diagonal right cut, rising right diagonal cut. Row5 narrative execution windup high overhelmet, completed downward slash crouching bladepoint lowright, upright lowguard recovery. Copy motions shown reference precisely; remove all motion arrows. Crisp detailed hand-painted Japanese fantasy style, rich cloth texture and dark outlines, stable costume shading, polished game-ready. NO text, numbers, labels, dividing lines, parchment, background color, floor, smoke, sparks, swishes, external shadows, UI or weaponless hands. Fifteen visually distinct full poses, equal cells, transparent gutters.",
+    "layoutCorrectionPrompt": "Production sprite-sheet CORRECTION to this exact 15-pose character atlas. Preserve all fifteen poses in same5row3columnorder and exact human samurai character/costume. Fix layout and weapon anatomy only. Need MUCH LARGER transparent gutters: shrink EACH WHOLE FIGURE AND ITS SWORD uniformly to 65% of current dimensions inside its own equal grid cell, centered. Character head-to-foot painted body must occupy only 50% of cell height, not90%; complete sword+cape must occupy at most70% cellwidth. Each 3x5grid cell has AT LEAST15% emptytransparent border ON ALLFOURSIDES. Every row uses local soles y80%; columns anchor at localx45%. All weapon tips stay in SAMECELL, never cross columnboundary. Current blades cross neighbors and are notacceptable. Strictly ONE SINGLE SOLID RIGID KATANA per figure, no double/forkedblade; FIX ROW4COLUMN1(currentdoubleedgeblade) to ONEsinglecurvedsteelblade. Each katana is IDENTICALphysicaldimensions: gentlycurvedsingleblade withonepoint, goldroundtsuba andredbrownhandle, held in BOTHHANDS; changingperspectiveonly. Remove any second parallel/floatingblade and remove any second sword/scabbard. Row3column1 windup: hands at waist holding singlehilt, blade extends forward RIGHT abovefrontthigh, completebladevisible. Exactly two arms two hands twolegs each character. Stablebody/weapon scale ALL15frames, helmetgoldhorn capecrimsonflowers blackredgoldarmor unaltered. True transparent alpha, no background/grid/arrows/numbers/text/floor/shadows. The entire sheet is fifteen isolated miniatures with lots of emptytransparent space, never fillcells. Portrait3column5row exact equalcells.",
+    "thrustCellCorrectionPrompt": "Precise ONE-CELL REPAIR to this exact transparent15sprite atlas, keep every other cell/pixel and design unchanged. The ONLY defect: ROW3 COLUMN2 (the forward katana thrust, sprite8 of15, center ofsheet) sword tip crosses into right-hand column. Fix only that single sprite by UNIFORMLY shrinking its ENTIRE body+katana+cape group to85% and centering in its cell slightlyleft. Preserve its pose, one complete identicalkatana, bothhands atgrip, perfectanatomy. Every part of ROW3COLUMN2 sprite must lie x=35%-65% of WHOLESHEET, NEVER x>=66.66%; fullsword tip beforex65%. Feet ofthatpose stay at samegroundbaseliney57% ofsheet, shrinkrelativefeet. No bladecrop, weaponremoval, shorteningbladeonly, no floatingprops. The centercolumnlimits are33.333%-66.666%. Allother14sprites stay EXACTLYsamepositionsizescostumeposes. MaintaintrueRGBAtransparentbackground, NO text/grid/arrows/UI. Same5rows3equalcolumns."
+  },
+  "validation": {
+    "sourceAlphaPreserved": true,
+    "transparentFraction": 0.71133742736901,
+    "alphaMinimum": 0,
+    "alphaMaximum": 255,
+    "all15CellsHaveClearVisibleEdges": true,
+    "visual": "Exact approved human black/red/gold lamellar costume and horned kabuto; one complete curved katana per pose, no extra swords, no labels/arrows/floor. Both hands stay on the grip. Full helmet/cape/sole silhouettes remain inside their own cells. Thrust was reduced as one entire character-plus-weapon group, then scale-compensated through metadata.",
+    "remaining": "Integration must verify rendered body scale, foot grounding, combat timing alignment, pause/reduced motion, and complete weapons in the actual browser. The sprite task does not modify damage, timings, hitboxes, runtime or shared art metadata."
+  }
+}

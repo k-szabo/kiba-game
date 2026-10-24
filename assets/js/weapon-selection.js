@@ -36,7 +36,7 @@ const WeaponSelection=(()=>{
  function confirm(){
   if(state!=='weaponSelection'||root().hidden||resolutionBlocked||!weaponChoicePending||DevSession.active||Prologue.active)return false;
   if(!WeaponEquipment.equip(selected))return false;
-  weaponChoicePending=false;cancel();
+  campServices=CampServiceRules.fresh(selected);weaponChoicePending=false;cancel();
   // This is the fresh journey's initial loadout, before Momo can move or fight.
   initPlayer(checkpoint);state='play';persist();updateHUD();$('pauseButton').focus();return true;
  }

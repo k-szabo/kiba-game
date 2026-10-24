@@ -105,3 +105,12 @@ A tárgyadó a telefontokot is tartalmazza. Egy eladott, egyedi tárgy ismételt
 ## Fegyvercsere tesztmódban
 
 A Fegyver mező az aktív fegyverkatalógust használja, jelenleg katana, naginata és kard–pajzs opcióval. A felszerelési gomb csak aktív tesztmódban használható; a változtatás nem írja a normál mentést. Az eszköz a `WeaponEquipment.equip(id)` útvonalat hívja, nem saját statmásolatot tart fenn. A nagyobb maximális HP nem gyógyít automatikusan; a kisebb maximum levágja a fölös HP-t. A csere megszakítja a folyamatban lévő támadást, de nem nullázza a támadás és a pajzs újratöltését. Új profil a közös `WeaponStyles` katalógus bővítésével megjelenik a listában. A normál történet katanás prológusát ez nem írja át; tesztmódban az álompályán is ellenőrizhetők a fegyverek.
+## Tábori helyszínek és szolgáltatások
+
+A `SIDE_LOCATIONS` katalógusból a teleportlistába az Erdei menedék mellett a Szamurájtábor, Kovácsműhely, Erdei kunyhó és Misztikus sátor is bekerül, minden saját pihenőjével. A tesztmód a mentési/feloldási feltételeket megkerüli, de a geometriai alátámasztást ellenőrzi. A normál játékban továbbra is a küldetés és a megfelelő NPC megmentése oldja fel ezeket.
+
+A Tábormester újraélesztése kizárólag a Szamurájtáborban érhető el. A replay nem játszik valódi polgármester-jelenetet, nem teljesíti a küldetést, és nem ad újabb XP-t/érmét/jelzőt. A biztonságos belső terekben nincs feléleszthető főboss-helykitöltő. A szolgáltatásablak fölött megnyitott dev-panel visszaállítja a korábbi ablakot és fókuszt; teleport/tesztváltás eldobja a régi tranzakciókezelőket.
+
+A tesztindítás a `campServices` objektumot és a birtokolt fegyverek listáját is mélyen másolja. A tesztmódban vett fejlesztés, készített főzet, gyűjtött növény és dev-fegyvercsere nem ír normál mentést. Dev-felszereléskor a fegyver memóriabeli tulajdonjoga is megjelenik, hogy a kovács szabályai a tesztben is érvényes állapotot kapjanak. Tesztbefejezéskor a normál állapot helyreáll. A gyógynövény és a főzet a tárgykatalógusból halmozható készletként hozzáadható, Akash kínálatának módosítása nélkül.
+
+Célzott regressziók: `test-camp-dev.cjs`, `test-camp-consumables.cjs`, `test-camp-integration.cjs`.

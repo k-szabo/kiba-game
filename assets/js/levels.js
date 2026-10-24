@@ -269,6 +269,88 @@ forestCamp.npcs=[
  {id:'natsu',x:1710,y:820,name:'camp.npc.natsu.name',dialogue:'camp.npc.natsu.dialogue',image:'campNatsu',height:96},
  {id:'sora',x:2310,y:820,name:'camp.npc.sora.name',dialogue:'camp.npc.sora.dialogue',image:'campSora',height:72}
 ];
-function realmRests(n){return n===0?[...levels[0].rests,...forestCamp.rests]:levels[n]?.rests||[];}
+// This route is materialized by the quest when accepted, never during the
+// original guardian encounter. All four links are usable with a single jump.
+japan.campRescueSteps=[
+ {id:'camp-route-1',x:8920,y:900,w:190,h:28,kind:'stone',drop:true,baseX:8920},
+ {id:'camp-route-2',x:9110,y:800,w:190,h:28,kind:'stone',drop:true,baseX:9110},
+ {id:'camp-route-3',x:9300,y:700,w:190,h:28,kind:'stone',drop:true,baseX:9300},
+ {id:'camp-route-gate',x:9490,y:600,w:520,h:28,kind:'stone',drop:true,baseX:9490}
+];
+japan.samuraiCampEntrance={x:9770,y:600,name:'camp.rescue.name'};
+japan.progressFlags=[...(japan.progressFlags||[]),'campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted'];
+
+const samuraiCamp=makeLevel('samuraiCamp',4400,1600,{x:220,y:1000});
+samuraiCamp.name='camp.rescue.name';
+for(const p of [
+ ['samurai-approach',0,1000,1170],['samurai-courtyard',1300,1080,1320],
+ ['samurai-command-ground',2750,1000,1650]
+])ledge(samuraiCamp,...p,'ground',600);
+for(const p of [
+ ['samurai-roof-step',760,900,190],['samurai-west-roof',950,800,250],
+ ['samurai-roof-watch',1270,800,250],['samurai-roof-descent',1450,900,220],
+ ['samurai-store-step',1750,980,180],['samurai-store-roof',1960,880,220],
+ ['samurai-cell-balcony',2200,780,250],['samurai-east-step',2635,980,105]
+])ledge(samuraiCamp,...p,'stone',24);
+rest(samuraiCamp,'samuraiCampEntrance',330,1000,'camp.rescue.shrine');
+rest(samuraiCamp,'samuraiCampCourt',2950,1000,'camp.rescue.court');
+samuraiCamp.entrance={x:150,y:1000};
+samuraiCamp.returnPoint={...samuraiCamp.entrance};
+samuraiCamp.returnDestination={location:null,x:japan.samuraiCampEntrance.x,y:japan.samuraiCampEntrance.y};
+samuraiCamp.arena={x:3260,y:1000,w:1060,restId:'samuraiCampCourt'};
+// The realm guardian is a dead placeholder; the Camp Master is a miniboss.
+samuraiCamp.boss={x:-1000,y:1000};
+samuraiCamp.secrets=[{id:'campMasterCourt',name:'camp.rescue.name',x:3230,y:650,w:1110,h:500,arena:samuraiCamp.arena,guardian:'campMaster',public:true}];
+samuraiCamp.cages=[
+ {id:'smith',x:1060,y:800,name:'camp.npc.smith.name',flag:'smithRescued',requiresFlag:'guardian:campMaster'},
+ {id:'herbalist',x:2320,y:780,name:'camp.npc.herbalist.name',flag:'herbalistRescued',requiresFlag:'guardian:campMaster'},
+ {id:'enchanter',x:3090,y:1000,name:'camp.npc.enchanter.name',flag:'enchanterRescued',requiresFlag:'guardian:campMaster'}
+];
+samuraiCamp.mayor={x:3960,y:1000,name:'camp.rescue.mayor'};
+for(const [id,x,y,kind,patrol] of [
+ ['camp-approach-guard',620,1000,'guard',100],
+ ['camp-roof-archer',1370,800,'archer',70],
+ ['camp-courtyard-shield',1550,1080,'shield',100],
+ ['camp-store-archer',2040,880,'archer',55],
+ ['camp-courtyard-guard',2440,1080,'guard',100],
+ ['camp-command-shield',3100,1000,'shield',90]
+])foe(samuraiCamp,id,x,y,kind,null,patrol);
+foe(samuraiCamp,'campMaster',3790,1000,'guard',null,360);
+Object.assign(samuraiCamp.enemies.at(-1),{miniboss:'campMaster',name:'camp.rescue.boss',secretArea:'campMasterCourt',factionOverride:'japan'});
+zone(samuraiCamp,'camp.rescue.name',0,0,4400,1600);
+
+forestCamp.serviceEntrances=[
+ {id:'forgeInterior',x:1520,y:820,name:'service.forge.name',requiresFlag:{realm:0,id:'smithRescued'}},
+ {id:'herbalHut',x:1980,y:820,name:'service.herbal.name',requiresFlag:{realm:0,id:'herbalistRescued'}},
+ {id:'mysticTent',x:2530,y:820,name:'service.mystic.name',requiresFlag:{realm:0,id:'enchanterRescued'}}
+];
+function makeCampInterior(id,name,service,entrance){
+ const map=makeLevel(id,1500,1080,{x:260,y:820});
+ map.name=name;map.service=service;
+ ledge(map,id+'-floor',0,820,1500,'ground',260);
+ rest(map,id,1120,820,name);
+ map.returnPoint={x:160,y:820};
+ map.returnDestination={location:'forestCamp',x:entrance.x,y:entrance.y};
+ map.servicePoint={x:880,y:820,name};
+ map.arena={x:-1000,y:820,w:0,restId:id};map.boss={x:-1000,y:820};
+ zone(map,name,0,0,1500,1080);
+ return map;
+}
+const forgeInterior=makeCampInterior('forgeInterior','service.forge.name','forge',forestCamp.serviceEntrances[0]);
+const herbalHut=makeCampInterior('herbalHut','service.herbal.name','herbal',forestCamp.serviceEntrances[1]);
+const mysticTent=makeCampInterior('mysticTent','service.mystic.name','mystic',forestCamp.serviceEntrances[2]);
+const SIDE_LOCATIONS=Object.freeze({
+ forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),
+ samuraiCamp:Object.freeze({map:samuraiCamp,realm:0,requiredFlags:Object.freeze(['campQuestAccepted'])}),
+ forgeInterior:Object.freeze({map:forgeInterior,realm:0,requiredFlags:Object.freeze(['smithRescued'])}),
+ herbalHut:Object.freeze({map:herbalHut,realm:0,requiredFlags:Object.freeze(['herbalistRescued'])}),
+ mysticTent:Object.freeze({map:mysticTent,realm:0,requiredFlags:Object.freeze(['enchanterRescued'])})
+});
+function sideLocationUnlocked(id,worldFlags=[],defeated=[]){
+ if(typeof id!=='string'||!Object.hasOwn(SIDE_LOCATIONS,id))return false;
+ const spec=SIDE_LOCATIONS[id],known=worldFlags?.[spec.realm];
+ return defeated?.[spec.realm]===true&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
+}
+function realmRests(n){return levels[n]?[...levels[n].rests,...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>spec.map.rests)]:[];}
 for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
 

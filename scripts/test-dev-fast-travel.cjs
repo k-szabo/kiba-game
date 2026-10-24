@@ -24,7 +24,7 @@ for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
   assert(button&&!button.disabled,`Missing usable ${target.realm}/${target.id}`);
   assert(button.onclick(),`Advertised destination rejected: ${target.realm}/${target.id}`);
   assert.equal(r('realm'),target.realm);assert.equal(h.snap().checkpoint.id,target.id);
-  assert.equal(r('level.id'),target.id==='forestCamp'?'forestCamp':r(`levels[${target.realm}].id`));
+  assert.equal(r('level.id'),r(`Object.values(SIDE_LOCATIONS).find(spec=>spec.map.rests.some(rest=>rest.id===${JSON.stringify(target.id)}))?.map.id||levels[${target.realm}].id`));
   assert.equal(h.snap().checkpoint.x,target.x);assert.equal(h.snap().player.y+h.snap().player.h,target.y);
   assert(r('player.onGround&&player.vx===0&&player.vy===0&&dash===0&&dashCooldown===0'));
   assert.equal(r('state'),'play');assert(r("$('map').hidden"));

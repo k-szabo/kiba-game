@@ -25,8 +25,7 @@ const Prologue=(()=>{
   function hud(){
     $('realmLabel').textContent=I18n.t('prologue.label');$('questLabel').textContent=I18n.t('prologue.label');
     $('kibaCurrent').textContent=I18n.t('prologue.energy');$('areaLabel').textContent=I18n.t('prologue.place');
-    $('health').innerHTML='<span>♥</span>'.repeat(player.hp)+'<span class="empty">♥</span>'.repeat(player.maxHp-player.hp);
-    $('health').setAttribute('aria-label',I18n.format('message.arg0.of.arg1.health',[player.hp,player.maxHp]));
+    CampHealth.render($('health'),player.hp,player.maxHp);
     $('dashHint').hidden=true;$('dropHint').hidden=true;
     $('jumpHint').textContent=I18n.t('text.jump.4e09c3');
     $('objective').textContent=I18n.t(phase==='walk'?'prologue.objective.walk':'prologue.objective.battle');
@@ -49,10 +48,11 @@ const Prologue=(()=>{
     burst(player.x+21,player.y+30,'#bd91df',35);showHUD(false);$('bossHud').hidden=true;$('prompt').hidden=true;
     tone(48,1.5,'sawtooth',.025);
   }
-  function hurt(amount,unavoidable=false){
+  function hurt(amount,unavoidable=false,bypassArmor=false){
     if(DevImmortality.active)return;
     if(phase!=='battle'||!unavoidable&&player.inv>0)return;
-    const before=player.hp;player.hp=Math.max(0,player.hp-amount);DevDamage.record('incoming',player,before,player.hp);player.inv=1.15;shake=reducedMotion.matches?0:.15;
+    const received=unavoidable||bypassArmor?amount:Armor.damage(amount,momoStats().armor);
+    const before=player.hp;player.hp=Math.max(0,player.hp-received);DevDamage.record('incoming',player,before,player.hp);player.inv=1.15;shake=reducedMotion.matches?0:.15;
     burst(player.x+21,player.y+30,'#d6a4f5',18);tone(80,.25,'sawtooth',.03);
     if(!player.hp)lose();else hud();
   }

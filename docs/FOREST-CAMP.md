@@ -2,14 +2,14 @@
 
 Az első változat külön, biztonságos oldalhelyszín: Japán őrzőjének legyőzése után a templomi aréna nyugati részén, a `(8870, 1000)` ponton megjelenő torii vezet a táborba. Az interakció a beállított `interact` műveletet használja. A visszaút ugyanide vezet; a következő halálhoz a japán templomi szentély lesz a mentőpont.
 
-A táborban a szentélynél gyógyulás és fejlesztés, a három túlélőnél beszélgetés érhető el. Daichi, Natsu és Sora külön, statikus, átlátszó sprite-ot kapott. Nem harci szereplők: nincs HP-juk, jutalmuk vagy találati célpontjuk. A beszélgetés a meglévő dialógust nyitja, amely megállítja a játékot. Nem kapcsolódik automatikusan más, későbbi NPC-kártya küldetéseihez.
+A táborban a szentélynél gyógyulás és fejlesztés, a három túlélőnél beszélgetés érhető el. Daichi, Natsu és Sora külön, statikus, átlátszó sprite-ot kapott. Nem harci szereplők: nincs HP-juk, jutalmuk vagy találati célpontjuk. A beszélgetés a közös dialógussávot nyitja, amely megállítja a játékot. Daichi beszélgetése Japán őrzőjének legyőzése után a falusiak mentőküldetését indítja; Natsu és Sora saját beszélgetése megmarad.
 
 ## Állapot és mentés
 
-- A `forestCamp` önálló `2800 × 1080` pálya, folyamatos talajjal az `y=820` magasságban; nem kerül a `levels` három birodalma közé. A `realm` értéke `0` marad.
+- A `forestCamp` önálló `2800 × 1080` pálya, folyamatos talajjal az `y=820` magasságban; nem kerül a `levels` négy birodalma közé. A `realm` értéke `0` marad.
 - A `realmRests(0)` egyesíti Japán és a tábor szentélyeinek utazási katalógusát. A tábor szentélye nem kerül a japán pálya fizikai `rests` listájába.
 - Az első belépés regisztrálja a `visitedRests[0]` listában az egyedi `forestCamp` azonosítót. Addig a gyorsutazási cél rejtett. A saját tábori térkép a helyi geometriát és Momo helyét mutatja; a birodalmak között a meglévő gyorsutazási felület használható.
-- A mentés `location` mezője a táborban `forestCamp`, egyébként `null`. Folytatás és halál után Momo a tábori szentélynél jelenik meg. A csarnok eddigi, átmeneti helyszínkezelése nem változik.
+- A mentés `location` mezője a táborban `forestCamp`, az új oldalhelyszíneken a `SIDE_LOCATIONS` megfelelő azonosítója, a főpályákon `null`. Folytatás és halál után Momo a tábori szentélynél jelenik meg. A csarnok eddigi, átmeneti helyszínkezelése nem változik.
 - A validátor megköveteli az első boss legyőzését, a befejezett prológust, a felfedezett tábori szentélyt és annak pontos koordinátáit. Ismeretlen helyszín vagy a tábori mentőpont normál japán mentésben nem fogadható el.
 - Az utazás a meglévő világállapotokat, képességeket, XP-t, fejlesztéseket és egyszeri bossjutalom-jogcímeket megőrzi. Normál ellenfelek a meglévő gyorsutazási/újraéledési szabályt követik.
 
@@ -27,4 +27,27 @@ A tábor ugyanazt a részecskerajzolót hívja Momo előtt, mint a normál pály
 
 ## Akash – 0.9.21
 
-Yomiban történt kiszabadítása után a táborban megjelenik Akash ember kereskedő. A `(930,820)` ponton áll, `requiresFlag:{realm:1,id:"akashRescued"}` feltétellel és `merchant:true` szereppel. A közös NPC-láthatóságot használja; interakciója szüneteltető boltot nyit. A három shiba túlélő meglévő párbeszéde változatlan. [Gazdaság, portékák és mentés](MERCHANT.md).
+Yomiban történt kiszabadítása után a táborban megjelenik Akash ember kereskedő. A `(930,820)` ponton áll, `requiresFlag:{realm:1,id:"akashRescued"}` feltétellel és `merchant:true` szereppel. A közös NPC-láthatóságot használja; interakciója szüneteltető boltot nyit. Natsu és Sora meglévő párbeszéde megmarad; Daichi mentőküldetésének leírása fentebb található. [Gazdaság, portékák és mentés](MERCHANT.md).
+## Daichi mentőküldetése és a tábori szolgáltatások
+
+A küldetés felvétele után négy feltételes lépcső jelenik meg a japán templom fölött, és a `(9770,600)` kapu az opcionális Szamurájtáborba vezet. A lépcsők nem részei az első boss eredeti harci geometriájának, és dupla ugrás/dash nélkül is járhatók. A tábor külön `4400×1600` helyszín katonákkal, két pihenőhellyel, három ketreccel és a Tábormesterrel. A polgármester jelenete egyszer fut; a Tábormester legyőzése nyitja a ketreceket. Ren, Sofiye és Fumi külön menthető ki, ezután Daichi lezáró beszélgetése elérhető. A főbossok és a világok közötti továbbjutás ettől független marad.
+
+| Helyszínazonosító | Belépés az erdei menedékből | Feloldás |
+| --- | --- | --- |
+| `forgeInterior` | `(1520,820)` | `smithRescued` |
+| `herbalHut` | `(1980,820)` | `herbalistRescued` |
+| `mysticTent` | `(2530,820)` | `enchanterRescued` |
+
+Mindhárom külön, bejárható `1500×1080` belső tér, saját pihenőhellyel és visszaúttal. A szolgáltatás csak a megfelelő NPC közelében nyitható; az ablak megállítja a játékot. Bezárás, helyszínváltás vagy újrarenderelés után a régi gombkezelők nem végezhetnek új tranzakciót.
+
+Ren a fegyvert és a páncélt külön-külön öt fokozatig fejleszti. A következő fokozat ára 50 × fokozat érme; a fegyverfokozat minden birtokolt stílusnak közös +0,5 alap sebzést, a páncélfokozat +20 Armort ad. A szentélyes statpontfejlesztés külön megmarad. Másik kezdőfegyver 100 érméért vehető, 50-ért adható el; a felszerelt/utolsó fegyver nem eladható. A megvásárolt fegyver a hátizsákból is felszerelhető. A relikviafegyverek és Fumi bűvölése egyelőre letiltott szolgáltatáshelyek.
+
+Sofiye megbízásának felvétele után Japánban három gyógynövényfolt szedhető: `(1120,1000)`, `(3890,1000)`, `(7050,960)`. Három csokorból egy, legfeljebb 3 HP-t azonnal gyógyító főzet készül. A foltok pihenés/halál/helyszín-újratöltés után újrateremnek; a már gyűjtött mennyiség megmarad. A főzet a közös gyógyító gyorshasználathoz rendelhető, a meglévő hús és tea mellett; elfogyáskor a következő elérhető gyógyító tárgyra vált.
+
+## Adat- és mentési határok
+
+A `SIDE_LOCATIONS` az új kis helyszínek közös katalógusa a helyszínváltás, mentésvalidáció, gyorsutazás és dev-teleport számára. A főpályák fizikai geometriája és a teljes utazási katalógus külön marad. Normál gyorsutazáshoz a helyszín feloldása és saját pihenőjének felfedezése is szükséges. A helyi térkép/minimap az aktuális oldalhelyszínt mutatja. Mentés/folytatás a helyszín egyedi pihenőjére helyez, a helyszínváltás pedig megőrzi a pozitív tört HP-t.
+
+A mentés új `campServices` mezője: `ownedWeapons`, `weaponRank`, `armorRank`, `herbs`, `potions`. A megengedett rangok 0–5, az egész készletek nemnegatív biztonságos egészek, a felszerelt stílusnak a birtokolt listában kell lennie. A validátor ellenőrzi a küldetés, a bossjelenet és a mentések sorrendjét; kovácsfejlődéshez a kovács megmentése, növény/főzet készlethez Sofiye megbízása szükséges. Új kiadáskor az alfa/béta mentésreset változatlan.
+
+Modulok: `camp-services.js` tiszta tranzakciók; `camp-quest.js` küldetés és helyszínváltás; `camp-master.js` harc; `camp-workshop.js` szolgáltatásablak; `camp-herbs.js` gyűjtés; `camp-health.js` tört HP; `camp-art.js` festett látvány. Az új tesztcsoport `npm run test:camp-npcs`; a valódi képi minőséget és böngészős tárolást külön böngészőteszt ellenőrzi.
