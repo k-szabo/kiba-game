@@ -5,9 +5,9 @@ const DevTeleport=(()=>{
  // The picker and executor share the same catalogue, including side areas
  // that deliberately are not additional realms in the main levels array.
  const destinations=()=>[
-  ...levels.map((map,n)=>({id:String(n),label:realms[n].name,map,enter:rest=>{Prologue.stop();enterRealm(n,rest);return true;}})),
+  ...levels.map((map,n)=>({id:String(n),label:realms[n].name,map,enter:rest=>{KitsuneQuest.leaveFor(map);Prologue.stop();enterRealm(n,rest);return true;}})),
   ...Object.entries(SIDE_LOCATIONS).map(([id,spec])=>({id,label:spec.map.name||'camp.name',map:spec.map,enter:rest=>CampQuest.enter(id,{point:rest,save:false,atShrine:true})})),
-  {id:'dream',label:'prologue.label',rests:[{id:'dream',name:'prologue.place'}],enter:()=>{Prologue.start();return true;}}
+  {id:'dream',label:'prologue.label',rests:[{id:'dream',name:'prologue.place'}],enter:()=>{KitsuneQuest.leaveFor(null);Prologue.start();return true;}}
  ];
  const restsFor=target=>target.map?.rests||target.rests;
  function fields(){

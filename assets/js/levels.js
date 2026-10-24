@@ -366,7 +366,7 @@ const forgeInterior=makeCampInterior('forgeInterior','service.forge.name','forge
 const herbalHut=makeCampInterior('herbalHut','service.herbal.name','herbal',forestCamp.serviceEntrances[1]);
 const mysticTent=makeCampInterior('mysticTent','service.mystic.name','mystic',forestCamp.serviceEntrances[2]);
 // Optional prison interior: its entrance still requires the outer jailer's key.
-const shadowPrison=makeLevel('shadowPrison',4600,1800,{x:240,y:1000});
+const shadowPrison=makeLevel('shadowPrison',5400,2720,{x:240,y:1000});
 shadowPrison.name='zen.prison.name';shadowPrison.enemyRealm=3;
 for(const p of [['prison-entry-floor',0,1000,1180],['prison-cell-floor',1320,1080,1130],['prison-depths-floor',2580,1040,2020]])ledge(shadowPrison,...p,'ground',760);
 for(const p of [['prison-watch-step',680,880,200],['prison-watch-balcony',900,760,430],['prison-cell-step',1550,1000,220],['prison-upper-cells',1800,880,430],['prison-east-step',2380,1000,210],['prison-vigil',2820,920,210]])ledge(shadowPrison,...p,'stone',30);
@@ -382,11 +382,39 @@ for(const [id,x,y,kind,patrol,undead]of [['prison-forgotten-1',600,1000,'guard',
  foe(shadowPrison,id,x,y,kind,null,patrol);Object.assign(shadowPrison.enemies.at(-1),{undead,factionOverride:'shadowCult',...(undead?{name:'zen.enemy.undead'}:{})});
 }
 foe(shadowPrison,'prisonWarden',3850,1040,'guard',null,350);Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonWarden',name:'zen.warden.name',secretArea:'prisonWardenCourt'});
-zone(shadowPrison,'zen.prison.name',0,0,4600,1800);
-shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued');
+// The eastern stairwell lies outside the old prison foundations. Each rise is
+// 100px and works with an ordinary jump, so the lower wing is never a trap.
+for(let i=0;i<13;i++)ledge(shadowPrison,'prison-deep-stair-'+(i+1),i%2?4890:4630,1120+i*100,210,'stone',30);
+ledge(shadowPrison,'prison-lower-floor',2450,2360,2950,'ground',360);
+rest(shadowPrison,'shadowPrisonDepths',4500,2360,'fia.prison.rest');
+shadowPrison.hunterArena={x:3030,y:2360,w:1310,restId:'shadowPrisonDepths'};
+shadowPrison.fia={x:2670,y:2360};
+shadowPrison.fiaDetection={x:2470,y:2110,w:520,h:290};
+shadowPrison.secrets.push({id:'prisonHunterCourt',name:'fia.hunter.name',x:3010,y:1980,w:1350,h:450,arena:shadowPrison.hunterArena,guardian:'prisonHunter',public:true});
+foe(shadowPrison,'prisonHunter',3640,2360,'guard',null,360);
+Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonHunter',name:'fia.hunter.name',secretArea:'prisonHunterCourt',factionOverride:'shadowCult'});
+zone(shadowPrison,'zen.prison.name',0,0,5400,1900);
+zone(shadowPrison,'fia.prison.rest',0,1900,5400,820);
+shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued','guardian:prisonHunter','fiaSeen','fiaRescued','fiaMissed');
+// This refuge opens after the priest; Fia's absence never blocks its entrance.
+shadowRealm.denEntrance={x:11000,y:1200};
+const shadowDen=makeLevel('shadowDen',2800,1080,{x:260,y:820});
+shadowDen.name='fia.den.name';shadowDen.enemyRealm=3;
+ledge(shadowDen,'shadow-den-ground',0,820,2800,'ground',260);
+rest(shadowDen,'shadowDenCamp',1240,820,'fia.den.rest');
+shadowDen.returnPoint={x:150,y:820};
+shadowDen.returnDestination={realm:3,restId:'cathedral',x:10960,y:1200};
+shadowDen.arena={x:-1000,y:820,w:0,restId:'shadowDenCamp'};shadowDen.boss={x:-1000,y:820};
+shadowDen.npcs=[
+ {id:'fia',x:2110,y:820,name:'fia.name',dialogue:'fia.den.dialogue',image:'fia',height:136,requiresFlag:{realm:3,id:'fiaRescued'}},
+ {id:'shadowNinja',x:740,y:820,name:'fia.ninja.name',dialogue:'fia.ninja.dialogue',image:'shadowNinja',height:126},
+ {id:'shadowThief',x:1640,y:820,name:'fia.thief.name',dialogue:'fia.thief.dialogue',image:'shadowThief',height:118}
+];
+zone(shadowDen,'fia.den.name',0,0,2800,1080);
 forestCamp.npcs.push({id:'zen',x:1390,y:820,name:'zen.name',dialogue:'zen.camp.dialogue',image:'zenPriestess',height:103,requiresFlag:{realm:3,id:'zenRescued'}});
 const SIDE_LOCATIONS=Object.freeze({
  shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
+ shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze([])}),
  forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),
  samuraiCamp:Object.freeze({map:samuraiCamp,realm:0,requiredFlags:Object.freeze(['campQuestAccepted'])}),
  forgeInterior:Object.freeze({map:forgeInterior,realm:0,requiredFlags:Object.freeze(['smithRescued'])}),

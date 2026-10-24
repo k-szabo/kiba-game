@@ -32,7 +32,7 @@ const DevBoss=(()=>{
   clearEncounterEffects();if(!boss.dead)resetBossBattle();
   resetMinibosses();projectiles=[];
   // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
-  if(PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
+  if(PrisonHunter.is(replay)||PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
   if(CampMaster.is(replay))CampMaster.reset(replay);else resetMiniboss(replay);replay.dead=false;
   if(DoomSlayer.is(replay))DoomSlayer.start(replay);else replay.active=true;
   const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;
