@@ -6,7 +6,7 @@ const DevTeleport=(()=>{
  // that deliberately are not additional realms in the main levels array.
  const destinations=()=>[
   ...levels.map((map,n)=>({id:String(n),label:realms[n].name,map,enter:rest=>{Prologue.stop();enterRealm(n,rest);return true;}})),
-  {id:'forestCamp',label:'camp.name',map:forestCamp,enter:()=>{Prologue.stop();return enterForestCamp({save:false,atShrine:true});}},
+  ...Object.entries(SIDE_LOCATIONS).map(([id,spec])=>({id,label:spec.map.name||'camp.name',map:spec.map,enter:rest=>CampQuest.enter(id,{point:rest,save:false,atShrine:true})})),
   {id:'dream',label:'prologue.label',rests:[{id:'dream',name:'prologue.place'}],enter:()=>{Prologue.start();return true;}}
  ];
  const restsFor=target=>target.map?.rests||target.rests;

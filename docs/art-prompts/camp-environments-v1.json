@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "useCase": "stylized-concept",
+  "approval": "User explicitly approved the four-panel samurai-camp and service-interior environment concept before production.",
+  "references": [
+    "Approved environment concept: samurai camp, forge, herbalist hut, enchanter tent",
+    "assets/images/backgrounds/forest-camp-hd-center-v1.png"
+  ],
+  "notes": [
+    "Four separate imagegen calls, one per full opaque production background.",
+    "Original generated image pixels preserved; no resize, recolor, matte removal or cropping.",
+    "No NPCs, captives, cages or interactive collision platforms baked into these backgrounds.",
+    "Walkable floor registration is a visual estimate; renderer should align its floor to the level ground, preserve uniform scale and verify in browser.",
+    "Ground can be drawn below the registered foot line; ceilings and decorative rear furniture do not define collisions.",
+    "All paths are repository-relative; generated preview files remain outside runtime manifest."
+  ],
+  "assets": [
+    {
+      "key": "samuraiCamp",
+      "path": "assets/images/backgrounds/samurai-camp-v1.png",
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "groundLineY": 535,
+      "leftExitFootY": null,
+      "prompt": "Use case: stylized-concept. Asset type: PRODUCTION OPAQUE PANORAMIC BACKGROUND for a painted Japanese fantasy 2D side-scrolling game. The user explicitly APPROVED the supplied environment concept board. Reproduce and expand ONLY PANEL 1 TOP LEFT, the hostile samurai camp, as one complete standalone scene. Deliver an extremely wide 3:1 panoramic image, approximately 3072 by 1024. No concept sheet, parchment border, panel numbers, writing, UI or watermarks. NO CHARACTERS, humans, dogs, captive cages, weapons in motion, execution platform, chopping block, stairways, actual collision platforms or floating islands baked into this image; those gameplay objects will be rendered separately. Detailed finely painted blue-hour Japanese cedar/bamboo forest military camp with reddish-brown timber palisades at REAR, weathered crimson cloth banners with simple geometric clan patterns not letters, distant bamboo watchtower, indigo and crimson canvas army tents, warm lanterns and small covered brazier glows, tied crates and sacks tucked safely in the back. Retain the approved ominous disciplined samurai atmosphere, coarse timber grain, moss and layered forest depth, deep cool blue foliage against amber flames, worn dark red cloth. Scenery spreads naturally across the whole panoramic width, with camp entry area on left, tent area in center and a visually broad empty courtyard area at right. Entire clear level horizontal walkable earth path runs uninterrupted from left image edge to right image edge at y=800 of 1024 (78.125% image height). Its foot-contact line stays at exactly that level, no inclines, pits, steps, foreground obstacles or fence crossing the walkable strip. Keep the air above foreground path mostly open for player sprites and jumps; decorative buildings and palisades sit BEHIND the path, clearly separated by depth and lighting. Ground below y800 shows richly painted dark earthen roots, leaves and small stones all the way to bottom edge. Canvas fills all edges, no transparency. Side-view game camera with gentle scenic depth, NO bird's-eye/isometric view and NO central vanishing-point road toward viewer. Foreground light enough to distinguish black/red characters; complete high-detail foliage and material textures matching the approved board, not vector shapes. Background only, entirely empty of characters and cages."
+    },
+    {
+      "key": "campForge",
+      "path": "assets/images/backgrounds/camp-forge-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "groundLineY": 800,
+      "leftExitFootY": 760,
+      "prompt": "Use case: stylized-concept. Asset type: PRODUCTION OPAQUE BACKGROUND for a 2D side-scrolling painted Japanese fantasy game. The user explicitly APPROVED the supplied environment concept board. Extract and expand ONLY the specified panel into one complete standalone LANDSCAPE interior image approximately 1536 by 1024, no sheet borders, numbers, words, labels, UI or watermark. NO CHARACTERS, humans, dogs, body parts, ghosts or animated effects baked into the scenery. Clear level walkable floor across the entire image width, foot-contact line at about y800 of1024, open strip of floor for separate character sprites, no foreground furniture obstructing the walkway. Furnishings sit BEHIND this walking line. Side-on game camera, gentle scenic perspective but no bird's-eye/isometric camera. Keep the complete doorway on far LEFT with floor aligned to the walking strip. Detailed richly painted cedar, cloth, natural materials and warm lantern light, match approved colors and scene identity exactly. Fill all edges with opaque scenery, no transparency. No props intended for player pickup floating in open foreground. ONLY PANEL 2 TOP RIGHT: small cozy traditional Japanese blacksmith workshop interior. Heavy weathered cedar posts and roof beams, soot-stained rough plaster wall, stone charcoal forge and modest warm orange fire at rear left, leather hand bellows beside it, anvil mounted on stout timber stump safely behind walking line, complete katana and naginata racks at rear right, hanging complete hammers and tongs, water bucket and barrel, coal sacks neatly against rear wall, faded indigo banner with simple geometric clan symbol not writing. Left sliding wood-and-paper doorway opens to blue cedar woodland. Warm competent working atmosphere, richly detailed steel edges and leather, fine handpainted brush texture. No smith, no hand holding tools, no sparks painted in midair."
+    },
+    {
+      "key": "campHerbalHut",
+      "path": "assets/images/backgrounds/camp-herbal-hut-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "groundLineY": 800,
+      "leftExitFootY": 735,
+      "prompt": "Use case: stylized-concept. Asset type: PRODUCTION OPAQUE BACKGROUND for a 2D side-scrolling painted Japanese fantasy game. The user explicitly APPROVED the supplied environment concept board. Extract and expand ONLY the specified panel into one complete standalone LANDSCAPE interior image approximately 1536 by 1024, no sheet borders, numbers, words, labels, UI or watermark. NO CHARACTERS, humans, dogs, body parts, ghosts or animated effects baked into the scenery. Clear level walkable floor across the entire image width, foot-contact line at about y800 of1024, open strip of floor for separate character sprites, no foreground furniture obstructing the walkway. Furnishings sit BEHIND this walking line. Side-on game camera, gentle scenic perspective but no bird's-eye/isometric camera. Keep the complete doorway on far LEFT with floor aligned to the walking strip. Detailed richly painted cedar, cloth, natural materials and warm lantern light, match approved colors and scene identity exactly. Fill all edges with opaque scenery, no transparency. No props intended for player pickup floating in open foreground. ONLY PANEL 3 BOTTOM LEFT: small cozy forest herbalist cabin. Cedar wallboards and beams, round open window showing dark blue cedar forest, amber hanging lantern. Full tied bunches of drying green herbs and flowers suspended neatly from rafters, wicker harvest baskets and ceramic medicine jars on rear shelves, plants and mortar/pestle on a modest low preparation table behind the walking line, a few small stoppered green medicine bottles sitting naturally on back table. Green and ochre woven cloth and tatami accents, herbalist workbench and baskets do not block path. Complete left wood-and-paper sliding exit doorway with blue forest beyond. No herbalist, no spectacles floating in air, no laboratory or modern labels. Warm practical Japanese herbal medicine atmosphere, natural texture and subtle forest glow."
+    },
+    {
+      "key": "campMysticTent",
+      "path": "assets/images/backgrounds/camp-mystic-tent-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "groundLineY": 800,
+      "leftExitFootY": 735,
+      "prompt": "Use case: stylized-concept. Asset type: PRODUCTION OPAQUE BACKGROUND for a 2D side-scrolling painted Japanese fantasy game. The user explicitly APPROVED the supplied environment concept board. Extract and expand ONLY the specified panel into one complete standalone LANDSCAPE interior image approximately 1536 by 1024, no sheet borders, numbers, words, labels, UI or watermark. NO CHARACTERS, humans, dogs, body parts, ghosts or animated effects baked into the scenery. Clear level walkable floor across the entire image width, foot-contact line at about y800 of1024, open strip of floor for separate character sprites, no foreground furniture obstructing the walkway. Furnishings sit BEHIND this walking line. Side-on game camera, gentle scenic perspective but no bird's-eye/isometric camera. Keep the complete doorway on far LEFT with floor aligned to the walking strip. Detailed richly painted cedar, cloth, natural materials and warm lantern light, match approved colors and scene identity exactly. Fill all edges with opaque scenery, no transparency. No props intended for player pickup floating in open foreground. ONLY PANEL 4 BOTTOM RIGHT: small cozy mystic enchanter's tent interior. Timber crossbeams and rope ties support heavy plum and faded indigo cloth roof and walls, subtle woven gold geometric knot embroidery NOT words or glyphs. Amber paper lanterns and one restrained violet Kiba crystal talisman hanging above the rear altar, low wooden altar/table and closed bound books and rolled scrolls on shelves at rear, small brass incense burner with tiny static soft smoke only, cushions and tied travel bundles tucked against back wall. Folded open fabric flap doorway on LEFT shows blue cedar woodland. Level wood planks and a subdued woven floor runner, clear foreground path across full width. Warm mysterious welcoming colors. No enchanter, no staff hovering without a character, no disembodied hands or silhouettes, no glowing circles crossing the walkway."
+    }
+  ]
+}

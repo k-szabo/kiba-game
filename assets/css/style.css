@@ -277,3 +277,8 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 .weapon-selection-actions{display:flex;justify-content:flex-end;gap:18px;margin-top:28px;flex-wrap:wrap}
 .weapon-selection-actions button{font-size:18px;min-height:52px;min-width:160px;padding:14px 24px;justify-content:center}
 .weapon-selection-panel button:focus-visible{outline:3px solid #ffe4a2;outline-offset:4px}
+
+/* Camp service controls remain reachable at supported desktop zoom. */
+#campServiceContent{display:grid;gap:20px} .camp-service-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-top:1px solid currentColor;padding-top:16px}.camp-service-row h3{flex-basis:100%;margin:0}.camp-service-row button{min-height:48px;min-width:140px}.camp-service-row p{flex-basis:100%;margin:0;font-size:16px}#campServiceStatus{min-height:1.5em}
+
+#campService .shop-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}#campService button{min-height:48px;padding:10px 18px;font-size:16px}#campService button:focus-visible{outline:3px solid #ffe4a2;outline-offset:4px}

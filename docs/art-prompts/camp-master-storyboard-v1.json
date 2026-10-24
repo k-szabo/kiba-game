@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "useCase": "stylized-concept",
+  "approval": "User explicitly approved the revised 15-pose storyboard exec-6d614b15-5fa2-4818-8364-4cb6b68e3e20.png before production. Production atlas and registration are recorded in camp-master-production-v1.json.",
+  "reference": "Approved camp NPC character concept, human samurai captain number 4.",
+  "layout": {
+    "columns": 3,
+    "rows": 5,
+    "frames": 15
+  },
+  "rows": [
+    "Idle and alternating walking steps",
+    "Overhead preparation, downward arc, recovery",
+    "Gathered low stance, advancing thrust, recovery",
+    "Connected diagonal cut and reverse rising cut",
+    "Raised ceremonial guard, controlled descending arc, recovery"
+  ],
+  "invariants": [
+    "Same human captain with black/red/gold armor in all cells.",
+    "Single constant-size katana with natural two-handed grip.",
+    "Complete weapon endpoints and feet, separate cells.",
+    "No victim or injury depiction; final row is a solo choreography study."
+  ],
+  "prompt": "Use case: stylized-concept. Make a ROUGH NON-VIOLENT SOLO SWORD KATA ANIMATION PLANNING SHEET, not a battle scene. Use the HUMAN SAMURAI figure numbered 4 from the supplied character reference only. Black/red/gold lamellar armor and crescent kabuto, same bearded human face. Exactly one adult demonstrator and one practice katana per numbered cell, nobody else, no targets, no contact or injuries. Fifteen numbered keyposes in five rows and three columns on pale parchment, subtle cell borders. Pencil/ink construction sketches with muted armor colors. Facing RIGHT SIDE-VIEW consistently, same scale and ground line, show both complete feet and complete weapon including point in every cell. Figure plus katana must fit within central 80% of its cell, empty margin on all four sides. Same practice katana size and curve all frames, length 60% of standing figure height. Both hands correctly on one hilt with natural wrists, right hand nearest guard and left at pommel. No secondary sheathed weapon or extra limbs. Row 1: 1 idle low guard; 2 walking step with LEFT leg leading; 3 walking step with RIGHT leg leading, clearly different alternating feet. Row 2 overhead kata: 4 two-hand high guard above head; 5 downward arc ends diagonally low right; 6 balanced low guard recovery. Row 3 advancing kata: 7 gather weight on rear leg, hilt pulled toward hip; 8 long forward step and rightward horizontal extension, blade fully inside this cell; 9 balanced recovery. Row 4 connected kata: 10 high diagonal preparation; 11 descending diagonal arc ends low right; 12 reverse upward arc ends high right, tip stays within cell. Row 5 slow ceremonial kata: 13 two-hand raised guard; 14 kneebend and controlled vertical descending arc finishing low in front of lead knee, SIDE PROFILE FACING RIGHT not frontal; 15 calm low recovery guard. Mark small red directional arrows to explain movement but no bright effects, no text other than cell numbers 1-15. Preserve armor and body anatomy consistently. This is a choreography/animation study for a fantasy videogame, no scenery or harm depicted.",
+  "notes": [
+    "Earlier draft had sword-margin and side-view issues and is not the proposed approval sheet.",
+    "A requested edit was refused by image service output moderation; the current sheet was generated fresh as a nonviolent solo kata study from the character concept.",
+    "Human approval is required before any production sprite animation."
+  ]
+}

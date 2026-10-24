@@ -6,9 +6,9 @@ A mobilos felület és az érintőképernyős irányítás megszűnt. A legkiseb
 
 A megszerzett tárgyak listája kizárólag a hátizsák ablakában jelenik meg. A korábbi bal felső HUD-lista megszűnt; a küldetéscél és a birtokolt iránytű kijelzése megmarad.
 
-Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Nincs második tárgypéldány-adatbázis vagy új mentésmező. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét és a pikkely megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
+Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Az egyedi küldetéstárgyakhoz nincs második példány-adatbázis; a fogyasztható készletek és a megvásárolt fegyverek külön, mentett mennyiségeket és tulajdonlistát használnak. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét és a pikkely megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
 
-A felszerelt fegyver az új játék előtt választott katana, naginata vagy kard és pajzs. Yomi őrzőjének legyőzése mindhárom stílus sebzését javítja; a katana neve ekkor Hajnalkard. A profilokat és mentési szabályokat a [fegyverútmutató](WEAPONS.md) írja le. A fegyver részletei a tényleges fejlesztésekből számított normál és erős támadás sebzését mutatják. A megjelenítés nem módosítja a harcot.
+A felszerelt fegyver az ébredés után választott katana, naginata vagy kard és pajzs; Ren megmentése után a megvett profilok is felszerelhetők. Yomi őrzőjének legyőzése mindhárom stílus sebzését javítja; a katana neve ekkor Hajnalkard. A profilokat és mentési szabályokat a [fegyverútmutató](WEAPONS.md) írja le. A fegyver részletei a tényleges fejlesztésekből számított normál és erős támadás sebzését mutatják. A megjelenítés nem módosítja a harcot.
 
 Nyitott inventory alatt a játék `inventory` állapotba kerül, így a mozgás, ellenfelek, támadások, lövedékek, platformok és prológus megállnak. A nyitóbillentyű, Escape, az átállított szünetbillentyű vagy a bezáró gomb folytatja a játékot. A Tab fókusza az ablakban marad, bezáráskor visszatér a megnyitó vezérlőre.
 
@@ -76,3 +76,9 @@ Az Őrült pap lelke automatikus főbossjutalom. A Megrontott szent ének az opc
 ## Eladás és jelenlegi birtoklás
 
 Akash közelében az eladható kijelölt tárgy eladási gombot kap, külön megerősítéssel. A `quantity` az egyedi megszerzési jelző mellett a `soldItems` listát és az elfogyasztási jelzőket is ellenőrzi. Az eladott tárgy eltűnik, a világ történeti jelzői megmaradnak. A telefontok `trinket` kategória, közös kontrasztos DPR-es ikonrajzolóval. Árak és mentési részletek: [Akash kereskedője](MERCHANT.md#eladás-akashnak).
+
+## Sofiye készletei és Ren fegyverei
+
+Az erdei gyógynövény és a gyógyfőzet az `ART_INVENTORY.items` közös kontrasztos, DPR-követő megjelenítését használja. Készletük a `campServices.herbs` és `campServices.potions` mezőben marad meg. A főzet legfeljebb 3 HP-t azonnal visszatölt, teljes HP-n nem fogy; kiválasztható gyógyító gyorshasználatra, és kifogyáskor a többi elérhető gyógyító tárgyra vált. A tea időzített hatása külön marad.
+
+A birtokolt, de nem felszerelt fegyverek `weapon-<style>` azonosítóval jelennek meg a hátizsákban; az adat a tulajdonlistából származik, nem új questflag. Ikonjuk és valós sebzésleírásuk a közös fegyverkatalógust használja. Felszerelésük nem növeli az aktuális HP-t; a pajzs levétele levághatja a maximális HP feletti részt.

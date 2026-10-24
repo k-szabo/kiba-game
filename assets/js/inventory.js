@@ -3,8 +3,11 @@
 const Inventory=(()=>{
  let initialized=false,returnFocus=null,selected=null,pendingSale=null,renderId=0;
  const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue);
- function quantity(id){const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
- function contents(){return ids.filter(id=>quantity(id)>0);}
+ const weaponStyleFor=id=>typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
+ const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
+ const itemName=id=>weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
+ function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ function contents(){return [...ids.filter(id=>quantity(id)>0),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
   if(size){canvas.width=Math.round(size.w*ratio);canvas.height=Math.round(size.h*ratio);}
@@ -21,27 +24,30 @@ const Inventory=(()=>{
  }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.className='inventory-icon';canvas.setAttribute('aria-hidden','true');
-  image(canvas,Visuals.images[catalogue[id].image],catalogue[id],{w:112,h:112});
+  const art=itemArt(id);image(canvas,Visuals.images[art.image],art,{w:112,h:112});
   return canvas;
  }
- function weaponName(){return I18n.t(weaponStyle==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+weaponStyle+'.item');}
+ function weaponName(style=weaponStyle){return I18n.t(style==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+style+'.item');}
  function details(id){
-  $('inventoryDetailName').textContent=id==='weapon'?weaponName():id?I18n.t(catalogue[id].name):I18n.t('inventory.empty.title');
-  $('inventoryDetailType').textContent=I18n.t(id==='weapon'?'inventory.type.equipped':id&&catalogue[id].stack?'inventory.type.consumable':id&&catalogue[id].category==='travelGear'?'inventory.type.travelGear':id&&catalogue[id].category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
-  $('inventoryDetailText').textContent=id==='weapon'?I18n.format('weapon.description',[playerAttackDamage('normal'),playerAttackDamage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
-  $('inventoryQuantity').hidden=!id||!catalogue[id]?.stack;
-  $('inventoryQuantity').textContent=id&&catalogue[id]?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
-  $('useInventoryItem').hidden=id!=='roastMeat'&&id!=='tea';$('useInventoryItem').disabled=id==='tea'?!Merchant.canDrink():!quantity(id);
-  $('useInventoryItem').textContent=I18n.t(id==='tea'?'merchant.drink':'merchant.eat');
-  $('assignQuickHeal').hidden=!['roastMeat','tea'].includes(id);$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
+  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id],healing=Merchant.healingItems.includes(id);
+  $('inventoryDetailName').textContent=weapon?weaponName(style):id?itemName(id):I18n.t('inventory.empty.title');
+  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):id==='forestHerb'?'inventory.type.backpack':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':item?.category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
+  const damage=kind=>momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale;
+  $('inventoryDetailText').textContent=weapon?I18n.format('weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id):I18n.t('inventory.empty.body');
+  $('inventoryQuantity').hidden=!item?.stack;
+  $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
+  $('useInventoryItem').hidden=!healing&&!(weapon&&id!=='weapon');
+  $('useInventoryItem').disabled=id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
+  $('useInventoryItem').textContent=I18n.t(weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
+  $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
   $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
   pendingSale=null;$('inventorySaleConfirm').hidden=true;
   const price=Merchant.salePrice(id);
-  $('sellInventoryItem').hidden=!id||id==='weapon'||!price;
+  $('sellInventoryItem').hidden=!id||weapon||!price;
   $('sellInventoryItem').disabled=!Merchant.canSell(id);
   $('sellInventoryItem').textContent=I18n.format('merchant.sell.price',[price]);
-  $('inventorySellHint').textContent=!id?'':!price?I18n.t('merchant.unsellable'):!Merchant.nearVendor()?I18n.t('merchant.sell.visit'):'';
+  $('inventorySellHint').textContent=!id||weapon?'':!price?I18n.t('merchant.unsellable'):!Merchant.nearVendor()?I18n.t('merchant.sell.visit'):'';
   $('confirmInventorySale').textContent=I18n.t('merchant.sell.confirm');$('cancelInventorySale').textContent=I18n.t('merchant.sell.cancel');
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}
@@ -60,14 +66,14 @@ const Inventory=(()=>{
   const grid=$('inventoryGrid');grid.replaceChildren();
   for(const id of items){
    const button=document.createElement('button');button.type='button';button.className='inventory-item';button.dataset.inventoryItem=id;
-   const label=document.createElement('span');label.textContent=I18n.t(catalogue[id].name);button.append(itemIcon(id),label);
-   if(catalogue[id].stack){const count=document.createElement('span');count.className='inventory-quantity';count.textContent='×'+quantity(id);button.append(count);button.setAttribute('aria-label',I18n.t(catalogue[id].name)+' · '+I18n.format('merchant.quantity',[quantity(id)]));}
+   const label=document.createElement('span');label.textContent=itemName(id);button.append(itemIcon(id),label);
+   if(catalogue[id]?.stack){const count=document.createElement('span');count.className='inventory-quantity';count.textContent='×'+quantity(id);button.append(count);button.setAttribute('aria-label',itemName(id)+' · '+I18n.format('merchant.quantity',[quantity(id)]));}
    button.addEventListener('click',()=>choose(id));grid.append(button);
   }
   $('inventoryEmpty').hidden=items.length>0;$('inventoryEmpty').textContent=I18n.t('inventory.empty.title');
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
   choose(selected==='weapon'||items.includes(selected)?selected:items[0]||null);
-  if(useFocused&&['roastMeat','tea'].includes(selected)&&!$('useInventoryItem').disabled)$('useInventoryItem').focus();
+  if(useFocused&&(Merchant.healingItems.includes(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
   else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
@@ -82,7 +88,12 @@ const Inventory=(()=>{
  function init(){
   if(initialized)return;initialized=true;
   $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');
-  $('useInventoryItem').onclick=()=>{if(state!=='inventory')return;if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);};
+  $('useInventoryItem').onclick=()=>{
+   if(state!=='inventory')return;
+   const style=weaponStyleFor(selected);
+   if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
+   else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);
+  };
   $('sellInventoryItem').onclick=()=>{
    if(!Merchant.canSell(selected))return;
    pendingSale={id:selected,token:renderId};$('inventorySalePrompt').textContent=I18n.format('merchant.sell.question',[I18n.t(catalogue[selected].name)]);

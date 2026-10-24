@@ -43,9 +43,9 @@ const DoomSlayer=(()=>{
  }
  // Damage can synchronously revive Momo and reset this very encounter. Never
  // grab, heal or continue an attack against the replacement player object.
- function hurt(e,amount,dir=e.attackFace,blockable=false){
+ function hurt(e,amount,dir=e.attackFace,blockable=false,bypassArmor=false){
   const victim=player;if(!e.active||e.dead||victim.inv>0||dash>0||DevImmortality.active)return null;
-  const before=victim.hp;damage(amount,dir,blockable);
+  const before=victim.hp;damage(amount,dir,blockable,bypassArmor);
   // revive() rebuilds the enemy array too; this old instance may no longer be
   // reachable by resetMinibosses, so cancel it explicitly on player replacement.
   if(player!==victim||victim.hp<=0){reset(e);return null;}
@@ -116,7 +116,7 @@ const DoomSlayer=(()=>{
   if(e.hitDone||!['flail','kick','grab','saw'].includes(e.move)||!overlap(player,meleeBox(e,e.move==='flail'?185:e.move==='grab'?105:140)))return;
   e.hitDone=true;
   const lowGrab=e.move==='grab'&&player.hp<=3,amount=lowGrab?player.hp:({flail:5,kick:3,grab:2,saw:5}[e.move]);
-  const victim=hurt(e,amount,e.attackFace,true);if(!victim)return;
+  const victim=hurt(e,amount,e.attackFace,!lowGrab,lowGrab);if(!victim)return;
   if(e.move==='kick'){victim.vx=e.attackFace*720;victim.vy=-280;}
   if(e.move==='grab')capture(e,victim,.5);
   if(e.move==='saw'){capture(e,victim,.9);e.hp=Math.min(e.maxHp,e.hp+20);e.armor=Math.min(armorCap,e.armor+armorGain);}

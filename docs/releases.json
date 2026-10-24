@@ -770,6 +770,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.39_7d4cc188",
+      "code": "7d4cc188",
+      "baseVersion": "0.9.39",
+      "slug": "camp-villager-rescue",
+      "summary": {
+        "hu": "A falu új otthonai",
+        "en": "New homes for the village"
+      },
+      "fixes": [
+        {
+          "hu": "Daichi mentőküldetése egy új szamurájtáborba vezet. A kiszabadított kovács, herbalista és bűvölő saját helyet kap az erdei menedékben; új fejlesztések, fegyverkereskedés és gyógyfőzetek segítik Momo útját.",
+          "en": "Daichi's rescue quest leads to a new samurai camp. The rescued blacksmith, herbalist and enchanter gain their own places at the Forest Refuge; new upgrades, weapon trading and healing brews support Momo's journey."
+        }
+      ]
     }
   ]
 }

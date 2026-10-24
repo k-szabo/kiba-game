@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-23",
+  "task": "Camp NPCs static production assets",
+  "approvals": {
+    "characterConcept": "exec-76fb45b4-a188-4ba3-9286-5a0a6738a155.png",
+    "environmentConcept": "exec-ccdd9972-636e-4216-bcd2-86660078bf18.png",
+    "scope": "The user explicitly approved both character and environment concept sheets. Camp Master combat animation is a separate asset and approval gate."
+  },
+  "provenance": {
+    "npc": {
+      "initialSource": "exec-5f30714f-ff2d-4455-b193-47179d521dad.png",
+      "selectedSource": "exec-4f0d58f5-b654-4827-b780-750073ac3d6d.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION GAME SPRITE ATLAS from approved reference, not concept sheet. Reference image is approved character design: keep characters 1,2,3,5 EXACTLY; OMIT human samurai 4. Four complete anthropomorphic shiba figures LEFT TO RIGHT: 1 Ren muscular black-and-tan male shiba blacksmith, red headband, navy patterned work kimono, worn brown leather apron, tools belt, right hand holds complete heavy hammer raised beside shoulder; 2 Sofiye golden-brown female shiba herbalist, round thin spectacles, green/gold robe, cream leaf-patterned apron, red sash, herb satchel, complete bouquet held in one hand; 3 Fumi elderly cream female shiba enchantress, purple/gold layered kimono, twining wooden staff with hanging purple tassels in one hand and closed gilt book in other; 4 elderly tan-and-cream shiba mayor, white bushy eyebrows, dark teal/gold formal robe, wood ceremonial tablet in both hands. Each figure TWO ARMS and TWO LEGS, full curled tail, intact hands/paws and props. Art style exactly approved polished detailed painted Japanese fantasy game, crisp dark outer contours, tactile embroidered cloth and fur, rich saturated color, not pixel art, not flat shapes. Wide 2048x1024 atlas, exactly four evenly spaced isolated full figures with generous transparent gutters, no overlap, ample margin above ears/hammer/staff and below feet. ALL FOUR FEET share horizontal baseline at approximately 90% image height, vertical scale similar shiba sizes. Transparent background actual alpha, NO parchment, NO texture, NO labels/numbers, NO text, NO contact shadows or floor, no glow or external debris. Keep precise approved costume and silhouette; don't invent another character. Highest detail so individual sprites can be cropped for DPR-aware game portraits.",
+      "layoutCorrection": "Precise layout correction only to this production atlas. Preserve exact four character designs, rendered identities, costumes, colors, detailed painted style, true transparent alpha. Every figure currently much too close to neighboring figures and outer sheet edges. Re-layout as a WIDE 2048x1024 atlas of FOUR EQUAL WIDTH CELLS. Uniformly shrink each entire figure to occupy max 70% of its cell width and 78% of image height, CENTER in own cell. Maintain proportions; do not squeeze bodies. First Ren entirely x=4%-21%, Sofiye entirely x=29%-46%, Fumi entirely x=54%-71%, mayor entirely x=79%-96%. Thus broad empty transparent gutters at x=22%-28%,47%-53%,72%-78%. Everything including hammer, tails, book, staff, foliage, paws stays STRICTLY inside stated own region. All feet baseline y=90%. Lots of transparent space at top/bottom and edges. No shadows, no floor, no background, no text. Four fully isolated cutout sprites, no overlap or touching. Do not change arms/hands; exactly two arms and two legs each. Full silhouettes have empty transparent padding."
+    },
+    "items": {
+      "selectedSource": "exec-d6c98326-a517-4fa9-9f1b-12d97bc3c9bc.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION INVENTORY ICON ATLAS, two square cells horizontally, true transparent alpha background, NO scenery/characters/frame/text. Approved reference image panel 3 (herbalist hut) supplies only item designs: tied fresh forest herb bundle and the vivid emerald green rounded medicinal glass flask on table. Convert these props to exactly TWO detailed painted Japanese fantasy game inventory icons, matching existing Kiba Realms rich dark-outlined inventory art. LEFT CELL: one tied bundle of forest medicinal herbs: broad textured deep-green leaves, narrow sage leaves, 3 small ivory daisy blooms with golden centers, intact visible stems held together by red-brown cord. Clean compact readable silhouette with deep-dark edges and vivid opaque green leaf faces, not pale or translucent. RIGHT CELL: one complete healing brew glass flask with round lower body, short neck, lip, snug cork, simple copper collar with red cord, deep emerald liquid, bright gold-green internal highlights and dark navy/black-green edges. Glass edges mostly opaque and dark, only small intentional internal transparency, readable against a dark leather/indigo inventory. Entire bottle from cork mouth to rounded base intact. Same polished hand-painted tactile style as approved reference, no flat cartoon/primitive shapes, no photoreal glossy product shoot. WIDE 1536x768 TWO EQUAL 768 SQUARE CELLS; left icon fits x=10%-39%, y=12%-88%; right icon fits x=61%-90%, y=12%-88%. Entire center 20% stays fully empty transparent. Generous transparent padding outside complete stems and cap. No ground shadow, no glow haze, no extra props, no labels, no numbers, no borders. Icons must remain visibly saturated and full-contrast at64px."
+    }
+  },
+  "outputs": {
+    "npcs": {
+      "path": "assets/images/npcs/camp-specialists-v1.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "frames": {
+        "ren": {
+          "x": 0,
+          "y": 0,
+          "w": 475,
+          "h": 887,
+          "anchorX": 227,
+          "anchorY": 765,
+          "bodyHeight": 621,
+          "visibleBounds": [
+            32,
+            144,
+            432,
+            765
+          ]
+        },
+        "sofiye": {
+          "x": 475,
+          "y": 0,
+          "w": 450,
+          "h": 887,
+          "anchorX": 672,
+          "anchorY": 766,
+          "bodyHeight": 569,
+          "visibleBounds": [
+            511,
+            197,
+            864,
+            766
+          ]
+        },
+        "fumi": {
+          "x": 925,
+          "y": 0,
+          "w": 450,
+          "h": 887,
+          "anchorX": 1134,
+          "anchorY": 766,
+          "bodyHeight": 545,
+          "visibleBounds": [
+            975,
+            199,
+            1347,
+            766
+          ]
+        },
+        "mayor": {
+          "x": 1375,
+          "y": 0,
+          "w": 399,
+          "h": 887,
+          "anchorX": 1601,
+          "anchorY": 765,
+          "bodyHeight": 583,
+          "visibleBounds": [
+            1423,
+            182,
+            1743,
+            765
+          ]
+        }
+      }
+    },
+    "items": {
+      "path": "assets/images/items/camp-herbs-brew-v1.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "frames": {
+        "forestHerb": {
+          "x": 0,
+          "y": 0,
+          "w": 887,
+          "h": 887,
+          "visibleBounds": [
+            58,
+            40,
+            827,
+            841
+          ]
+        },
+        "healingBrew": {
+          "x": 887,
+          "y": 0,
+          "w": 887,
+          "h": 887,
+          "visibleBounds": [
+            1095,
+            100,
+            1667,
+            813
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "alpha": "Source-generated alpha is copied unchanged; all pixels and RGB are preserved. Alpha range 0–255 in both outputs. Tiny generation alpha noise of at most 8 lies outside NPC silhouettes and at most 1 in the item midpoint gutter; no matte replacement or pixel cleanup applied.",
+    "coordinates": "x/y/w/h and anchors are absolute source-image coordinates. Visible bounds are exclusive rectangles measured at alpha > 32. Foot anchors use the middle of the lowest 12 visible rows. Fumi bodyHeight excludes her staff top; other heights measure ears to soles.",
+    "npcs": {
+      "transparentFraction": 0.6135962398111771,
+      "opaque250Fraction": 0.3390302617413752,
+      "visibleSilhouettes": "Exactly four complete isolated shiba figures, no human Camp Master. Two arms and legs per figure; complete staff, hammer, foliage, book, tablet and curled tails. Feet grounded near y765/766."
+    },
+    "items": {
+      "transparentFraction": 0.5740344370456893,
+      "opaque250Fraction": 0.3865931423327559,
+      "visibleMedianAlpha": {
+        "forestHerb": 252,
+        "healingBrew": 253
+      },
+      "medianRgbSaturation": {
+        "forestHerb": 55,
+        "healingBrew": 52
+      },
+      "midpointGutterMaxAlpha": 1,
+      "visual": "Complete opaque/saturated green leaves, dark contours, bright ivory flowers and copper accents. Cork, lip, bottle base and red cord remain fully inside the right cell. No text or frames.",
+      "thumbnailInspection": {
+        "size": 64,
+        "backgroundRgb": [
+          24,
+          30,
+          37
+        ],
+        "method": "Read-only in-memory Lanczos thumbnails, alpha composite for measurement; production PNG unchanged",
+        "forestHerb": {
+          "visiblePixelFraction": 0.477,
+          "medianRgbDistanceFromBackground": 69.7,
+          "nearlyOpaquePixels": 1723
+        },
+        "healingBrew": {
+          "visiblePixelFraction": 0.331,
+          "medianRgbDistanceFromBackground": 63.9,
+          "nearlyOpaquePixels": 1263
+        }
+      }
+    },
+    "browser": "Actual in-game size, placement, and inventory contrast require integrator real-browser QA after registration."
+  }
+}

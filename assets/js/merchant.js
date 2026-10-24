@@ -9,18 +9,19 @@ const Merchant=(()=>{
   phoneCase:Object.freeze({price:500})
  });
  const rewards=Object.freeze({enemy:5,miniboss:20,boss:50});
+ const healingItems=Object.freeze(['roastMeat','tea','healingBrew']);
  let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
- const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
- function selectAvailable(){if(!stock(quickHeal)){const other=quickHeal==='tea'?'roastMeat':'tea';if(stock(other))quickHeal=other;}}
+ const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
+ function selectAvailable(){if(!stock(quickHeal)){const other=healingItems.find(id=>stock(id)>0);if(other)quickHeal=other;}}
  function selectQuick(id){
-  if(state!=='inventory'||!['roastMeat','tea'].includes(id)||!stock(id))return false;
+  if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
   quickHeal=id;persist();Inventory.render();return true;
  }
- function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='tea'?drink():eat();}
+ function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
  function addStock(id){
-  if(!catalogue[id]?.stack||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
-  if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else return false;
+  if(![...healingItems,'forestHerb'].includes(id)||!Number.isSafeInteger(stock(id))||stock(id)<0||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
+  if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else if(id==='forestHerb')campServices.herbs++;else if(id==='healingBrew')campServices.potions++;else return false;
   selectAvailable();
   return true;
  }
@@ -36,7 +37,7 @@ const Merchant=(()=>{
   flags[1].push('akashRescued');persist();updateHUD();
   story('merchant.name','camp.name','merchant.rescue.story',null,{right:'akash'});return true;
  }
- function description(id){return ['roastMeat','tea'].includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
+ function description(id){return healingItems.includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
  function purchase(id){
   if(state!=='shop'||$('shop').hidden||!nearVendor()||!Object.hasOwn(catalogue,id))return false;
   const product=catalogue[id];
@@ -60,7 +61,7 @@ const Merchant=(()=>{
  function eat(fromInventory=false){
   if(Prologue.active||!player||player.hp<=0||!meatCount||state!==(fromInventory?'inventory':'play'))return false;
   const delta=Math.random()<2/3?2:-1,before=player.hp;
-  meatCount--;selectAvailable();player.hp=Math.max(1,Math.min(player.maxHp,player.hp+delta));
+  meatCount--;selectAvailable();player.hp=Math.max(Math.min(before,1),Math.min(player.maxHp,player.hp+delta));
   persist();updateHUD();
   toast(player.hp>before?I18n.format('message.arg0.of.arg1.health',[player.hp,player.maxHp]):I18n.t(player.hp<before?'merchant.health.down':'merchant.health.same'));
   if(fromInventory)Inventory.render();return true;
@@ -69,6 +70,12 @@ const Merchant=(()=>{
  function drink(fromInventory=false){
   if(state!==(fromInventory?'inventory':'play')||!canDrink())return false;
   teaCount--;selectAvailable();teaElapsed=0;teaPulses=3;persist();updateHUD();if(fromInventory)Inventory.render();toast(I18n.t('merchant.tea.started'));return true;
+ }
+ function canUseBrew(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&campServices.potions>0;}
+ function useBrew(fromInventory=false){
+  if(state!==(fromInventory?'inventory':'play')||!canUseBrew())return false;
+  campServices.potions--;player.hp=Math.min(player.maxHp,player.hp+CampServiceRules.profile.brewHeal);selectAvailable();
+  persist();updateHUD();if(fromInventory)Inventory.render();return true;
  }
  function resetTea(){teaElapsed=0;teaPulses=0;}
  function update(dt){
@@ -136,5 +143,5 @@ const Merchant=(()=>{
   for(const rest of level.rests)if(visitedRests[realm].includes(rest.id)){c.beginPath();c.arc(X(rest.x),Y(rest.y),4,0,Math.PI*2);c.fill();}
   c.fillStyle='#ffcb74';c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.arc(w/2,h/2,4,0,Math.PI*2);c.fill();c.stroke();c.restore();
  }
- return Object.freeze({init,open,close,render,free,purchase,salePrice,canSell,sell,nearVendor,eat,drink,canDrink,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
+ return Object.freeze({init,open,close,render,free,purchase,salePrice,canSell,sell,nearVendor,eat,drink,canDrink,useBrew,canUseBrew,healingItems,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
 })();

@@ -7,7 +7,9 @@ const DevWeapons=(()=>{
   if(!available()||state!=='developer'||!DevTools.isOpen)return false;
   const id=values?.weapon;
   if(!WeaponStyles.valid(id))return false;
-  return WeaponEquipment.equip(id);
+  if(!WeaponEquipment.equip(id))return false;
+  if(!campServices.ownedWeapons.includes(id))campServices.ownedWeapons.push(id);
+  return true;
  }
  function fields(){
   // Keep an unsubmitted selection through panel re-renders, while synchronizing

@@ -36,6 +36,9 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/armor.js` | Közös százalékos páncélvédelem; [szabály és bővítés](ARMOR.md). |
 | `assets/js/weapons.js`, `weapon-equipment.js`, `weapon-selection.js` | Fegyverkatalógus, közös felszereléscsere és ébredés utáni kezdőválasztás; [részletek](WEAPONS.md). |
 | `assets/js/progression.js` | XP, szintek és fejlesztések. |
+| `assets/js/camp-services.js`, `camp-workshop.js` | Tiszta kovács/herbalista-tranzakciók és szüneteltető szolgáltatásablak. |
+| `assets/js/camp-quest.js`, `camp-master.js` | Daichi mentőküldetése, regisztrált oldalhelyszínek és Tábormester. |
+| `assets/js/camp-herbs.js`, `camp-health.js`, `camp-art.js` | Gyógynövény-újratermés, tört HP-kijelzés és tábori képi réteg. |
 | `SWORD_ATTACKS` a `game.js` fájlban | Normál/erős csapás időzítése és sebzésszorzója; az aktív `attackKind` a kezdetkor rögzül. A renderelés és a találat ugyanazt a profilt követi. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/boss-vfx.js` | A festett boss-effektusok kivágásai, illesztése, láva, csapások, árnymágia és idézés. |
@@ -211,4 +214,11 @@ A `soldItems` mentett listát a jelenlegi birtoklás nézetei használják, az e
 
 ## Kezdő fegyverstílusok
 
-A `weapons.js` közös szabálymodulja és a `weapon-selection.js` új játék előtti választója kezeli a katana, naginata és kard–pajzs profilját. A mentett választást a halál és az ébredés megőrzi, a dev tesztmenet elkülönítetten használja. Részletek és ellenőrzések: [WEAPONS.md](WEAPONS.md).
+A `weapons.js` közös szabálymodulja és a `weapon-selection.js` ébredés utáni választója kezeli a katana, naginata és kard–pajzs profilját. A mentett választást a halál és az ébredés megőrzi, a dev tesztmenet elkülönítetten használja. Részletek és ellenőrzések: [WEAPONS.md](WEAPONS.md).
+## Tábori NPC-k és közös szolgáltatási állapot
+
+A [tábori referencia](FOREST-CAMP.md) leírja Daichi opcionális mentőküldetését, a Tábormestert, a három új belső helyszínt és szolgáltatásaikat. A `SIDE_LOCATIONS` katalógust kell használni a helyszínazonosító, pihenők, normál feloldás és dev-teleport összekötéséhez; az új helyszínek nem növelik a `levels` főbirodalom-tömbjét.
+
+A `campServices` permanens állapotban a fegyvertulajdon, a két kovácsrang és a növény/főzet készlet él. A `CampServiceRules.transact` a másolt adaton ellenőrzi a tranzakciót; a szolgáltatási vezérlő külön ellenőrzi az aktuális állapotot, helyszínt, közelséget és NPC-feloldást. A tárolás és dev-teszt a másolt állapotot használja, nem oszthat meg változtatható listát a normál mentéssel. A fegyverfokozatot az alap fegyversebzésbe, még a stílus sebzésszorzója előtt számoljuk; a páncél a közös [százalékos védelemhez](ARMOR.md) csatlakozik.
+
+Az `npm run test:camp-npcs` tesztcsoport a tiszta tranzakciókat, a szigorú mentési előfeltételeket, tényleges bossharcot/küldetést, gyógynövény-újratermést, szolgáltatási gombokat, fogyasztást, páncélt, dev-izolációt és grafikai regisztrációt ellenőrzi. A valós böngészőben ezen felül a HU/EN kezelhetőség, szünet, talpillesztés, teljes fegyversziluett és IndexedDB-újratöltés vizsgálandó.

@@ -23,9 +23,9 @@ const SaveVault=(()=>{
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,levels.length-1)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
-  if(data.location!=null&&data.location!=='forestCamp')throw Error('Invalid save location');
+  if(data.location!=null&&(typeof data.location!=='string'||!Object.hasOwn(SIDE_LOCATIONS,data.location)))throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
-  if(!['roastMeat','tea'].includes(data.quickHeal))throw Error('Invalid quick healing item');
+  if(!['roastMeat','tea','healingBrew'].includes(data.quickHeal))throw Error('Invalid quick healing item');
   const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
   if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
   for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
@@ -35,12 +35,27 @@ const SaveVault=(()=>{
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
-  if(data.visitedRests[0].includes('forestCamp')&&!data.defeated[0])throw Error('Invalid camp progress');
+  const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
+  if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
+  if(['smithRescued','herbalistRescued','enchanterRescued'].some(id=>hasCampFlag(id)&&!hasCampFlag('guardian:campMaster'))||hasCampFlag('herbalistQuestAccepted')&&!hasCampFlag('herbalistRescued'))throw Error('Invalid camp rescue');
+  for(const [id,spec] of Object.entries(SIDE_LOCATIONS)){
+   if(spec.map.rests.some(rest=>data.visitedRests[spec.realm].includes(rest.id))&&!sideLocationUnlocked(id,data.flags,data.defeated))throw Error('Invalid camp progress');
+  }
+  // Older synthetic/current-format fixtures may omit this field. Runtime
+  // loading supplies fresh(equipped); explicit malformed service state fails.
+  if(Object.hasOwn(data,'campServices')){
+   const service=data.campServices;
+   if(!CampServiceRules.validate(service,data.weaponStyle))throw Error('Invalid camp services');
+   if((service.weaponRank||service.armorRank||service.ownedWeapons.length>1)&&!hasCampFlag('smithRescued'))throw Error('Invalid smith progress');
+   if((service.herbs||service.potions)&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid herbalist progress');
+   if((data.prologueComplete===false||data.weaponChoicePending===true)&&(service.ownedWeapons.length!==1||service.ownedWeapons[0]!=='katana'||service.weaponRank||service.armorRank||service.herbs||service.potions))throw Error('Invalid dream equipment');
+  }
+  if(data.quickHeal==='healingBrew'&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid quick healing progress');
   const rescued=data.flags[1].includes('akashRescued');
   if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.teaCount>0||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
   if(data.soldItems.some(id=>!rescued||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
   if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
-  if(data.location==='forestCamp'&&(data.realm!==0||data.prologueComplete!==true||!data.defeated[0]))throw Error('Invalid camp location');
+  if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideLocationUnlocked(data.location,data.flags,data.defeated)))throw Error('Invalid camp location');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
   if(data.prologueComplete===false&&data.weaponStyle!=='katana')throw Error('Invalid dream weapon style');
@@ -70,7 +85,7 @@ const SaveVault=(()=>{
   }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
-  const checkpointMap=data.location==='forestCamp'?forestCamp:levels[data.realm];
+  const checkpointMap=data.location!=null?SIDE_LOCATIONS[data.location].map:levels[data.realm];
   const checkpoint=checkpointMap.rests.find(r=>r.id===data.checkpoint?.id);
   if(!checkpoint||data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
   return JSON.parse(JSON.stringify(data));
