@@ -393,6 +393,41 @@
     }
   },
   "objects": {
+    "prisonBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-west-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-center-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-east-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonTerrain.left": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.left"
+    },
+    "prisonTerrain.middle": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.middle"
+    },
+    "prisonTerrain.right": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.right"
+    },
+    "prisonTerrain.platform": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.platform"
+    },
+    "prisonTerrain.body": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.body"
+    },
     "samuraiCampPanel.0": {
       "kind": "background-panel",
       "asset": "assets/images/backgrounds/samurai-camp-hd-west-v1.png",
@@ -8015,6 +8050,511 @@
           }
         ],
         "visibleSamples": 641481,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.prisonTerrain.left": {
+      "source": "assets/images/backgrounds/prison-terrain-v1.png",
+      "frameMetadata": "ART_PRISON.terrain.left",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#23262f",
+            "coveragePercent": 20.7428
+          },
+          {
+            "hex": "#020202",
+            "coveragePercent": 17.6992
+          },
+          {
+            "hex": "#1b1d24",
+            "coveragePercent": 14.9039
+          },
+          {
+            "hex": "#131419",
+            "coveragePercent": 10.9602
+          },
+          {
+            "hex": "#0b0b0e",
+            "coveragePercent": 9.117
+          },
+          {
+            "hex": "#32333d",
+            "coveragePercent": 6.0675
+          },
+          {
+            "hex": "#3e4050",
+            "coveragePercent": 5.8529
+          },
+          {
+            "hex": "#4d4f5e",
+            "coveragePercent": 3.6971
+          },
+          {
+            "hex": "#3d2b21",
+            "coveragePercent": 2.9861
+          },
+          {
+            "hex": "#5a3e2b",
+            "coveragePercent": 2.2748
+          },
+          {
+            "hex": "#7c5636",
+            "coveragePercent": 1.645
+          },
+          {
+            "hex": "#a27449",
+            "coveragePercent": 1.2693
+          },
+          {
+            "hex": "#68666e",
+            "coveragePercent": 1.115
+          },
+          {
+            "hex": "#8b878b",
+            "coveragePercent": 0.6783
+          },
+          {
+            "hex": "#c69762",
+            "coveragePercent": 0.5363
+          },
+          {
+            "hex": "#ddbf97",
+            "coveragePercent": 0.4547
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a7794b",
+            "coveragePercent": 24.1198
+          },
+          {
+            "hex": "#8d653f",
+            "coveragePercent": 17.9008
+          },
+          {
+            "hex": "#c28e56",
+            "coveragePercent": 17.5698
+          },
+          {
+            "hex": "#89562c",
+            "coveragePercent": 16.6719
+          },
+          {
+            "hex": "#a46c38",
+            "coveragePercent": 15.1504
+          },
+          {
+            "hex": "#e2b070",
+            "coveragePercent": 8.5874
+          }
+        ],
+        "visibleSamples": 87924,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.prisonTerrain.middle": {
+      "source": "assets/images/backgrounds/prison-terrain-v1.png",
+      "frameMetadata": "ART_PRISON.terrain.middle",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d2029",
+            "coveragePercent": 21.0113
+          },
+          {
+            "hex": "#020202",
+            "coveragePercent": 17.5943
+          },
+          {
+            "hex": "#15161b",
+            "coveragePercent": 15.3918
+          },
+          {
+            "hex": "#272a34",
+            "coveragePercent": 12.7058
+          },
+          {
+            "hex": "#0b0b0e",
+            "coveragePercent": 8.5815
+          },
+          {
+            "hex": "#434656",
+            "coveragePercent": 6.9002
+          },
+          {
+            "hex": "#363846",
+            "coveragePercent": 6.0023
+          },
+          {
+            "hex": "#545564",
+            "coveragePercent": 2.9247
+          },
+          {
+            "hex": "#3f2e23",
+            "coveragePercent": 2.7593
+          },
+          {
+            "hex": "#62442d",
+            "coveragePercent": 1.6428
+          },
+          {
+            "hex": "#836041",
+            "coveragePercent": 1.3104
+          },
+          {
+            "hex": "#a77b50",
+            "coveragePercent": 1.0266
+          },
+          {
+            "hex": "#737077",
+            "coveragePercent": 0.9285
+          },
+          {
+            "hex": "#918d8f",
+            "coveragePercent": 0.4848
+          },
+          {
+            "hex": "#d1a673",
+            "coveragePercent": 0.4152
+          },
+          {
+            "hex": "#e1c8a5",
+            "coveragePercent": 0.3206
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#956940",
+            "coveragePercent": 30.251
+          },
+          {
+            "hex": "#a5794f",
+            "coveragePercent": 21.8215
+          },
+          {
+            "hex": "#895a32",
+            "coveragePercent": 16.6569
+          },
+          {
+            "hex": "#c08f5a",
+            "coveragePercent": 14.9752
+          },
+          {
+            "hex": "#b1793e",
+            "coveragePercent": 8.7113
+          },
+          {
+            "hex": "#e0b06e",
+            "coveragePercent": 7.5842
+          }
+        ],
+        "visibleSamples": 82795,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.prisonTerrain.right": {
+      "source": "assets/images/backgrounds/prison-terrain-v1.png",
+      "frameMetadata": "ART_PRISON.terrain.right",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#22252e",
+            "coveragePercent": 20.6642
+          },
+          {
+            "hex": "#020202",
+            "coveragePercent": 17.7675
+          },
+          {
+            "hex": "#1a1c24",
+            "coveragePercent": 14.1688
+          },
+          {
+            "hex": "#141419",
+            "coveragePercent": 11.4412
+          },
+          {
+            "hex": "#0b0b0e",
+            "coveragePercent": 9.0396
+          },
+          {
+            "hex": "#343540",
+            "coveragePercent": 8.0876
+          },
+          {
+            "hex": "#444656",
+            "coveragePercent": 5.1915
+          },
+          {
+            "hex": "#39291f",
+            "coveragePercent": 3.4925
+          },
+          {
+            "hex": "#535564",
+            "coveragePercent": 2.6368
+          },
+          {
+            "hex": "#573c28",
+            "coveragePercent": 2.5538
+          },
+          {
+            "hex": "#7b5534",
+            "coveragePercent": 1.4775
+          },
+          {
+            "hex": "#a27448",
+            "coveragePercent": 1.0594
+          },
+          {
+            "hex": "#6d6d77",
+            "coveragePercent": 0.9772
+          },
+          {
+            "hex": "#c49562",
+            "coveragePercent": 0.6486
+          },
+          {
+            "hex": "#ddbb8b",
+            "coveragePercent": 0.4075
+          },
+          {
+            "hex": "#938f91",
+            "coveragePercent": 0.3864
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#976a40",
+            "coveragePercent": 27.1668
+          },
+          {
+            "hex": "#ae7b49",
+            "coveragePercent": 23.8652
+          },
+          {
+            "hex": "#8b592f",
+            "coveragePercent": 20.7852
+          },
+          {
+            "hex": "#c08e58",
+            "coveragePercent": 14.9174
+          },
+          {
+            "hex": "#d3a165",
+            "coveragePercent": 9.593
+          },
+          {
+            "hex": "#eaba72",
+            "coveragePercent": 3.6723
+          }
+        ],
+        "visibleSamples": 85209,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.prisonTerrain.platform": {
+      "source": "assets/images/backgrounds/prison-terrain-v1.png",
+      "frameMetadata": "ART_PRISON.terrain.platform",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#030202",
+            "coveragePercent": 16.4283
+          },
+          {
+            "hex": "#24262d",
+            "coveragePercent": 16.4136
+          },
+          {
+            "hex": "#1a1c23",
+            "coveragePercent": 12.3923
+          },
+          {
+            "hex": "#131419",
+            "coveragePercent": 12.0417
+          },
+          {
+            "hex": "#404151",
+            "coveragePercent": 9.3819
+          },
+          {
+            "hex": "#0d0c0e",
+            "coveragePercent": 7.435
+          },
+          {
+            "hex": "#35343c",
+            "coveragePercent": 6.6602
+          },
+          {
+            "hex": "#4d4e5d",
+            "coveragePercent": 5.5385
+          },
+          {
+            "hex": "#39261b",
+            "coveragePercent": 3.5019
+          },
+          {
+            "hex": "#5b3d28",
+            "coveragePercent": 2.5682
+          },
+          {
+            "hex": "#696770",
+            "coveragePercent": 1.8979
+          },
+          {
+            "hex": "#815a3b",
+            "coveragePercent": 1.7592
+          },
+          {
+            "hex": "#ae7b4a",
+            "coveragePercent": 1.3706
+          },
+          {
+            "hex": "#ca9962",
+            "coveragePercent": 1.2432
+          },
+          {
+            "hex": "#8d8789",
+            "coveragePercent": 0.843
+          },
+          {
+            "hex": "#dcba8a",
+            "coveragePercent": 0.5244
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#bc864f",
+            "coveragePercent": 26.8914
+          },
+          {
+            "hex": "#d09a5d",
+            "coveragePercent": 20.4876
+          },
+          {
+            "hex": "#895b36",
+            "coveragePercent": 17.9199
+          },
+          {
+            "hex": "#9f7249",
+            "coveragePercent": 16.2247
+          },
+          {
+            "hex": "#a96b34",
+            "coveragePercent": 9.739
+          },
+          {
+            "hex": "#e5b56e",
+            "coveragePercent": 8.7375
+          }
+        ],
+        "visibleSamples": 43004,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.prisonTerrain.body": {
+      "source": "assets/images/backgrounds/prison-terrain-v1.png",
+      "frameMetadata": "ART_PRISON.terrain.body",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1e222d",
+            "coveragePercent": 25.5589
+          },
+          {
+            "hex": "#1a1d27",
+            "coveragePercent": 21.9728
+          },
+          {
+            "hex": "#232733",
+            "coveragePercent": 17.4489
+          },
+          {
+            "hex": "#020202",
+            "coveragePercent": 11.2691
+          },
+          {
+            "hex": "#14151b",
+            "coveragePercent": 7.5797
+          },
+          {
+            "hex": "#0a0a0e",
+            "coveragePercent": 5.9076
+          },
+          {
+            "hex": "#2d313d",
+            "coveragePercent": 3.0368
+          },
+          {
+            "hex": "#342720",
+            "coveragePercent": 1.8618
+          },
+          {
+            "hex": "#3f434e",
+            "coveragePercent": 1.3362
+          },
+          {
+            "hex": "#525765",
+            "coveragePercent": 1.1259
+          },
+          {
+            "hex": "#656a78",
+            "coveragePercent": 0.824
+          },
+          {
+            "hex": "#513a2a",
+            "coveragePercent": 0.7651
+          },
+          {
+            "hex": "#765b45",
+            "coveragePercent": 0.4673
+          },
+          {
+            "hex": "#82848e",
+            "coveragePercent": 0.3995
+          },
+          {
+            "hex": "#99785a",
+            "coveragePercent": 0.3581
+          },
+          {
+            "hex": "#c4a177",
+            "coveragePercent": 0.0882
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#916943",
+            "coveragePercent": 41.0114
+          },
+          {
+            "hex": "#a67a50",
+            "coveragePercent": 24.8108
+          },
+          {
+            "hex": "#875a34",
+            "coveragePercent": 17.2145
+          },
+          {
+            "hex": "#bb8a58",
+            "coveragePercent": 10.6339
+          },
+          {
+            "hex": "#dda963",
+            "coveragePercent": 5.0633
+          },
+          {
+            "hex": "#f3c76b",
+            "coveragePercent": 1.2661
+          }
+        ],
+        "visibleSamples": 147456,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -16945,6 +17485,111 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/prison-terrain-v1.png": {
+      "sha256": "aad74b7136006e49904bba178723cd8d40df04a6ff521b5b782ff76cb930c6ff",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "prisonTerrain"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1e212b",
+            "coveragePercent": 33.6273
+          },
+          {
+            "hex": "#020203",
+            "coveragePercent": 16.3037
+          },
+          {
+            "hex": "#15161d",
+            "coveragePercent": 13.1658
+          },
+          {
+            "hex": "#282b35",
+            "coveragePercent": 9.5814
+          },
+          {
+            "hex": "#0d0c0f",
+            "coveragePercent": 7.7936
+          },
+          {
+            "hex": "#444656",
+            "coveragePercent": 4.3532
+          },
+          {
+            "hex": "#363845",
+            "coveragePercent": 4.2658
+          },
+          {
+            "hex": "#33241d",
+            "coveragePercent": 2.2774
+          },
+          {
+            "hex": "#545665",
+            "coveragePercent": 2.195
+          },
+          {
+            "hex": "#4f3728",
+            "coveragePercent": 2.0326
+          },
+          {
+            "hex": "#725035",
+            "coveragePercent": 1.2519
+          },
+          {
+            "hex": "#6f6f79",
+            "coveragePercent": 0.9433
+          },
+          {
+            "hex": "#996e47",
+            "coveragePercent": 0.91
+          },
+          {
+            "hex": "#be8f5d",
+            "coveragePercent": 0.5643
+          },
+          {
+            "hex": "#918d90",
+            "coveragePercent": 0.4126
+          },
+          {
+            "hex": "#debc8e",
+            "coveragePercent": 0.3223
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a37142",
+            "coveragePercent": 23.3343
+          },
+          {
+            "hex": "#b48250",
+            "coveragePercent": 21.6823
+          },
+          {
+            "hex": "#8e6540",
+            "coveragePercent": 20.5394
+          },
+          {
+            "hex": "#8b572c",
+            "coveragePercent": 14.2066
+          },
+          {
+            "hex": "#cc985e",
+            "coveragePercent": 13.8253
+          },
+          {
+            "hex": "#e5b470",
+            "coveragePercent": 6.4122
+          }
+        ],
+        "visibleSamples": 476169,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "assets/images/backgrounds/samurai-camp-hd-center-v1.png": {
@@ -32028,35 +32673,35 @@
       {
         "value": "#070e18",
         "lines": [
-          468
+          469
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          493
+          494
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          446
+          447
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          492
+          493
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          454
+          455
         ],
         "dynamic": false
       },
@@ -32086,22 +32731,22 @@
       {
         "value": "#100e20ed",
         "lines": [
-          332
+          333
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          690
+          691
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          466,
-          472
+          467,
+          473
         ],
         "dynamic": false
       },
@@ -32115,21 +32760,21 @@
       {
         "value": "#112b3fee",
         "lines": [
-          428
+          429
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          491
+          492
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          731
+          732
         ],
         "dynamic": false
       },
@@ -32143,7 +32788,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          832
+          833
         ],
         "dynamic": false
       },
@@ -32157,56 +32802,56 @@
       {
         "value": "#163847dd",
         "lines": [
-          660
+          661
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          674
+          675
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          761
+          762
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          449
+          450
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          547
+          548
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          370
+          371
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          355
+          356
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          649
+          650
         ],
         "dynamic": false
       },
@@ -32220,49 +32865,49 @@
       {
         "value": "#251339",
         "lines": [
-          820
+          821
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          694
+          695
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          440
+          441
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          636
+          637
         ],
         "dynamic": false
       },
       {
         "value": "#455764ad",
         "lines": [
-          267
+          268
         ],
         "dynamic": false
       },
       {
         "value": "#526673d9",
         "lines": [
-          266
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#72b4c9af",
         "lines": [
-          636
+          637
         ],
         "dynamic": false
       },
@@ -32276,14 +32921,14 @@
       {
         "value": "#8b764eaa",
         "lines": [
-          520
+          521
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          532
+          533
         ],
         "dynamic": false
       },
@@ -32304,196 +32949,196 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          640
+          641
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          682
+          683
         ],
         "dynamic": false
       },
       {
         "value": "#aab6b1b8",
         "lines": [
-          271
+          272
         ],
         "dynamic": false
       },
       {
         "value": "#ab83d955",
         "lines": [
-          682
+          683
         ],
         "dynamic": false
       },
       {
         "value": "#abb78d66",
         "lines": [
-          279
+          280
         ],
         "dynamic": false
       },
       {
         "value": "#b5a777",
         "lines": [
-          530
+          531
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          820
+          821
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          782
+          783
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          438
+          439
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          482
+          483
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          682
+          683
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          650
+          651
         ],
         "dynamic": false
       },
       {
         "value": "#c9d0cb62",
         "lines": [
-          265
+          266
         ],
         "dynamic": false
       },
       {
         "value": "#cda6ef",
         "lines": [
-          336
+          337
         ],
         "dynamic": false
       },
       {
         "value": "#d0af77",
         "lines": [
-          816
+          817
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          655
+          656
         ],
         "dynamic": false
       },
       {
         "value": "#d199aa55",
         "lines": [
-          279
+          280
         ],
         "dynamic": false
       },
       {
         "value": "#d1c9acaf",
         "lines": [
-          558
+          559
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          734
+          735
         ],
         "dynamic": false
       },
       {
         "value": "#d8c998bb",
         "lines": [
-          271
+          272
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          454
+          455
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          820
+          821
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          818
+          819
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          530
+          531
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          454
+          455
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          675
+          676
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          802
+          803
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          642
+          643
         ],
         "dynamic": false
       },
@@ -32507,35 +33152,35 @@
       {
         "value": "#e6b0fa22",
         "lines": [
-          487
+          488
         ],
         "dynamic": false
       },
       {
         "value": "#e6c6ff",
         "lines": [
-          337
+          338
         ],
         "dynamic": false
       },
       {
         "value": "#e7616355",
         "lines": [
-          801
+          802
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          801
+          802
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          782
+          783
         ],
         "dynamic": false
       },
@@ -32549,210 +33194,210 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          817
+          818
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          801
+          802
         ],
         "dynamic": false
       },
       {
         "value": "#f3d8ac",
         "lines": [
-          487,
-          669
+          488,
+          670
         ],
         "dynamic": false
       },
       {
         "value": "#f3dbaf",
         "lines": [
-          360
+          361
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          355
+          356
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          530
+          531
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          690
+          691
         ],
         "dynamic": false
       },
       {
         "value": "#ff7850",
         "lines": [
-          275
+          276
         ],
         "dynamic": false
       },
       {
         "value": "#ff9c6238",
         "lines": [
-          694
+          695
         ],
         "dynamic": false
       },
       {
         "value": "#ffac69",
         "lines": [
-          275
+          276
         ],
         "dynamic": false
       },
       {
         "value": "#ffb385",
         "lines": [
-          438
+          439
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          694
+          695
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          469
+          470
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          802
+          803
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          438
+          439
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          482
+          483
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          724
+          725
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          530,
-          724
+          531,
+          725
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          731
+          732
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          636
+          637
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          642
+          643
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          682
+          683
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          659
+          660
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b98c",
         "lines": [
-          279
+          280
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          432,
-          655
+          433,
+          656
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          371
+          372
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          429
+          430
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          467,
-          472,
+          468,
           473,
-          476,
-          694
+          474,
+          477,
+          695
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c8",
         "lines": [
-          337
+          338
         ],
         "dynamic": false
       },
@@ -32767,35 +33412,35 @@
       {
         "value": "#fff0ce",
         "lines": [
-          685
+          686
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          821
+          822
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          660
+          661
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          649
+          650
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          443
+          444
         ],
         "dynamic": false
       },
@@ -32859,21 +33504,21 @@
       {
         "value": "#070d17",
         "lines": [
-          65
+          82
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          60
+          77
         ],
         "dynamic": false
       },
       {
         "value": "#101725ed",
         "lines": [
-          65
+          82
         ],
         "dynamic": false
       },
@@ -32887,14 +33532,14 @@
       {
         "value": "#cea5ef",
         "lines": [
-          65
+          82
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          60
+          77
         ],
         "dynamic": false
       },
@@ -32915,7 +33560,7 @@
       {
         "value": "#fff0c4",
         "lines": [
-          65
+          82
         ],
         "dynamic": false
       }

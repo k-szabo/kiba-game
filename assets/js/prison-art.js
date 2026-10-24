@@ -38,6 +38,23 @@ const PrisonArt=(()=>{
    ctx.drawImage(source,x,(H-height)*.35,widths[i]*height,height);x+=(widths[i]-overlap)*height;
   }ctx.restore();
  }
+ function terrain(platform){
+  if(level!==shadowPrison)return false;
+  const a=art()?.terrain,image=Visuals.images[a?.image];if(!a||!image?.complete||!image.naturalWidth)return false;
+  const p=platform;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  const paint=(rect,x,y,s)=>ctx.drawImage(image,rect.x,rect.y,rect.w,rect.h,x,y-(rect.surfaceY-rect.y)*s,rect.w*s,rect.h*s);
+  if(p.kind!=='ground'){
+   // A whole floating slab keeps both painted ends, at its native aspect ratio.
+   paint(a.platform,p.x,p.y,p.w/a.platform.w);ctx.restore();return true;
+  }
+  ctx.beginPath();ctx.rect(p.x,p.y-70,p.w,p.h+70);ctx.clip();
+  const body=a.body,s=.55,bw=body.w*s,bh=body.h*s;
+  for(let y=p.y+35;y<Math.min(p.y+p.h,cameraY+H+bh);y+=bh-1)for(let x=p.x+Math.max(0,Math.floor((camera-p.x-bw)/(bw-1)))*(bw-1);x<Math.min(p.x+p.w,camera+viewW+bw);x+=bw-1)ctx.drawImage(image,body.x,body.y,body.w,body.h,x,y,bw,bh);
+  const width=a.middle.w*s;
+  for(let x=p.x+Math.max(0,Math.floor((camera-p.x-width)/(width-1)))*(width-1);x<p.x+p.w&&x<camera+viewW+width;x+=width-1)paint(a.middle,x,p.y,s);
+  paint(a.left,p.x,p.y,s);paint(a.right,p.x+p.w-a.right.w*s,p.y,s);
+  ctx.restore();return true;
+ }
  function zen(point,height=103){
   const pose=reducedMotion.matches?0:Math.floor(levelTime*.55)%4;stamp(art()?.zen,pose,point.x,point.y,height);
  }
@@ -71,5 +88,5 @@ const PrisonArt=(()=>{
   if(enemy.phase==='strike'&&enemy.move==='chainSweep')BossVFX.slash('slashShadow',x+enemy.attackFace*90,enemy.y+enemy.h*.5,270,140,enemy.attackFace,clamp(enemy.attackElapsed/enemy.attackDuration,0,1));
   return true;
  }
- return Object.freeze({dialogueActors,backdrop,zen,scenery,actor});
+ return Object.freeze({dialogueActors,backdrop,terrain,zen,scenery,actor});
 })();

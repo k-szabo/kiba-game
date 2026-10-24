@@ -33,6 +33,23 @@ for(const width of [1280,1432,2560,3840])for(const camera of [0,2000,Math.max(0,
  r('viewW='+width+';camera='+camera+';cameraY=800');calls=[];const before=r('JSON.stringify([enemies,player,projectiles,flags,platforms,levelTime])');r('PrisonArt.backdrop()');assert.equal(r('JSON.stringify([enemies,player,projectiles,flags,platforms,levelTime])'),before);
  calls=calls.filter(call=>call.args.length===4);assert.equal(calls.length,art.backdrops.length);const first=calls[0].args,last=calls.at(-1).args;assert(first[0]<=1e-6&&last[0]+last[2]>=width-1e-6);assert(calls.every(c=>c.args[1]<=0&&c.args[1]+c.args[3]>=720));
 }
+// A deep ground collider must tile native brick pixels, never stretch a strip.
+const terrain=art.terrain,stone=pixels(path.join(__dirname,'..',manifest[terrain.image]));
+for(const name of ['left','middle','right','platform','body']){
+ const b=terrain[name];assert(b.x>=0&&b.y>=0&&b.x+b.w<=stone.w&&b.y+b.h<=stone.height);
+ if(name!=='body')assert(b.surfaceY>=b.y&&b.surfaceY<b.y+b.h,'A painted walking surface must have source registration');
+}
+r('camera=0;cameraY=600;viewW=1280;');
+const collision=r('JSON.stringify(platforms)');
+for(const id of ['prison-entry-floor','prison-watch-step']){
+ calls=[];assert.equal(r('PrisonArt.terrain(platforms.find(p=>p.id==='+JSON.stringify(id)+'))'),true);
+ const painted=calls.filter(c=>c.image===r('Visuals.images.'+terrain.image));assert(painted.length);
+ for(const c of painted){const [sx,sy,sw,sh,dx,dy,dw,dh]=c.args;assert(Math.abs(dw/sw-dh/sh)<1e-10,'Stone caps, slabs and brick bodies preserve native aspect');}
+ const p=r('platforms.find(p=>p.id==='+JSON.stringify(id)+')'),top=terrain[id==='prison-watch-step'?'platform':'middle'];
+ assert(painted.some(c=>c.args[0]===top.x&&c.args[1]===top.y&&Math.abs(c.args[5]+(top.surfaceY-top.y)*c.args[7]/top.h-p.y)<1e-8),'The painted top stays on the collider surface');
+}
+assert.equal(r('JSON.stringify(platforms)'),collision,'Terrain art never rewrites collision');
+r('enterRealm(0);');assert.equal(r('PrisonArt.terrain(platforms[0])'),false,'Only the new prison uses its material');
 const actors=r('PrisonArt.dialogueActors()');for(const id of ['zen','prisonWarden'])assert(actors[id].rect.w>0&&actors[id].rect.h>0&&manifest[actors[id].image]);
-r('viewW=1280;');assert.doesNotThrow(()=>r('draw()'),'The complete side-map render does not assume the main realm altar exists');
+r("viewW=1280;CampQuest.enter('shadowPrison');");assert.doesNotThrow(()=>r('draw()'),'The complete side-map render does not assume the main realm altar exists');
 console.log('PASS: sixteen native alpha-preserving prison poses, isolated full silhouettes and fixed body registration, pure phase-driven render, complete portrait crops and gap-free desktop scenery.');

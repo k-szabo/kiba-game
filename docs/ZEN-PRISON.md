@@ -37,3 +37,5 @@ A fejlesztői teleport a közös oldalhelyszín-katalógusból automatikusan lis
 - test-prison-saves.cjs: szintetikus mentésvalidáció a részleges és kész történeti állapotokkal.
 
 A VM-tesztek mellett friss böngészőprofillal kell ellenőrizni a grafikát, a HU/EN párbeszédet és az IndexedDB újratöltését; egy beállított képkocka nem teljes végigjátszás.
+
+A börtön saját, natív RGBA feketekő-/bronzszegélyes talajatlaszt használ. A járható felső elemek és az alsó falazat képaránya megmarad: a mély talajtest ismételt téglatextúrából áll, a lebegő párkány teljes sziluettje egyenletes léptékű. A source surfaceY pontosan az eredeti ütközési felületre kerül; más birodalmak továbbra is a korábbi anyagaikat használják. A talajatlasz eredete: [prompt és regisztráció](art-prompts/zen-prison-terrain-v1.json).

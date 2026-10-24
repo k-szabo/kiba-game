@@ -182,6 +182,11 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+for index, key in enumerate(atlas['prison']['backdrops']):
+    objects['prisonBackdrop.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[key], 'registration': 'ART_PRISON.backdrops'}
+for name in ('left', 'middle', 'right', 'platform', 'body'):
+    definition = atlas['prison']['terrain']
+    objects['prisonTerrain.' + name] = {'kind': 'terrain', 'paletteGroup': group('object.prisonTerrain.' + name, manifest[definition['image']], definition[name], 'ART_PRISON.terrain.' + name)}
 for index, panel in enumerate(atlas['samuraiCamp']['panels']):
     objects['samuraiCampPanel.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[panel['image']], 'worldRegistration': panel}
 for part in ('left', 'middle', 'right', 'roof', 'body'):

@@ -20,7 +20,7 @@ const PrisonQuest=(()=>{
   if(actual.type==='zenRescue'){
    if(actual.locked||rescued())return true;
    flags[3].push('zenRescued');persist();updateHUD();
-   story('camp.dialogue.label','zen.name','zen.rescue.dialogue',null,{right:'zen',speaker:'zen'});return true;
+   story('zen.prison.name','zen.name','zen.rescue.dialogue',null,{right:'zen',speaker:'zen'});return true;
   }
   return false;
  }
