@@ -874,6 +874,22 @@
           "en": "Normal attacks now use the left mouse button and heavy attacks use the right mouse button by default. Dash uses Shift, and healing items use Q. UK and French profiles follow their keyboard layouts; existing custom bindings are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.43_2c57dd6c",
+      "code": "2c57dd6c",
+      "baseVersion": "0.9.43",
+      "slug": "zen-priestess-prison",
+      "summary": {
+        "hu": "Zen és a néma börtön",
+        "en": "Zen and the Silent Prison"
+      },
+      "fixes": [
+        {
+          "hu": "Az árnyékvilág börtönkapuja külön pályára vezet élőhalottakkal, kultistákkal és egy új börtönnagy bossal. A kiszabadított Zen az erdei menedék szentélyét gondozza.",
+          "en": "The Shadow Realm’s prison gate leads to a separate area with undead, cultists and a new Warden boss. Once rescued, Zen tends the shrine at the Forest Refuge."
+        }
+      ]
     }
   ]
 }

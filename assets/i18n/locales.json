@@ -814,7 +814,25 @@
       "menu.changelog.0942.visuals.title": "Élesebb tájak és kígyóanimációk",
       "menu.changelog.0942.visuals.0": "A fehér kígyó feltörő dércsapása a talajhoz igazodik.",
       "menu.changelog.0942.visuals.1": "A szamurájtábor és a két kígyóaréna háttere részletesebben, természetesebb léptékben jelenik meg.",
-      "menu.changelog.0942.visuals.2": "A szárnyas kígyó mozgása stabilabb, képe tisztább."
+      "menu.changelog.0942.visuals.2": "A szárnyas kígyó mozgása stabilabb, képe tisztább.",
+      "zen.name": "Zen, csaucsau papnő",
+      "zen.prison.name": "A néma börtön mélye",
+      "zen.enemy.undead": "Elfeledett fogoly",
+      "zen.warden.name": "Kultista börtönnagy",
+      "zen.prison.start": "Börtönelőcsarnok",
+      "zen.prison.wardenRest": "Az őr láncai",
+      "zen.prison.enter": "E · Belépés a börtönbe",
+      "zen.prison.return": "E · Vissza az árnyékvilágba",
+      "zen.free": "E · Zen kiszabadítása",
+      "zen.locked": "A zárat a börtönnagy Kibája tartja fogva.",
+      "zen.objective.warden": "Juss át a börtönön, és győzd le a börtönnagyot.",
+      "zen.objective.rescue": "Szabadítsd ki Zent a cellájából.",
+      "zen.objective.return": "Zen biztonságban van. Térj vissza a menedékbe.",
+      "zen.rescue.dialogue": "Momo! Hát tényleg eljöttél értem! Gyerekkorunkban is mindig te találtál meg, ha elbújtam… most mégis úgy dobog a szívem, mintha először látnál. Tudom, hogy Harut keresed. Az erdei menedékben vigyázok a többiekre — de ígérd meg, hogy te is visszatérsz hozzám!",
+      "zen.camp.dialogue": "Momo, visszajöttél! Hagytam neked helyet a mécsesek mellett, közvetlenül magam mellett. Már gyerekkorunkban is mindig melléd akartam ülni. Haruért és a túlélőkért minden este imádkozom… érted pedig egy kicsit tovább. Gyere, meséld el, merre jártál! Amíg itt vagy, hadd vigyázzak most én rád.",
+      "zen.warden.victory": "A láncok utolsót csörrennek, majd elnémulnak. A cellák felől halk ima hallatszik. Valaki még remél odabent.",
+      "menu.changelog.0943.title": "Zen és a néma börtön",
+      "menu.changelog.0943.zen": "Az árnyékvilág börtönkapuja külön pályára vezet élőhalottakkal, kultistákkal és egy új börtönnagy bossal. A kiszabadított Zen az erdei menedék szentélyét gondozza."
     }
   },
   "en": {
@@ -1632,7 +1650,25 @@
       "menu.changelog.0942.visuals.title": "Sharper scenery and serpent animations",
       "menu.changelog.0942.visuals.0": "The white serpent’s rising frost attack is aligned with the ground.",
       "menu.changelog.0942.visuals.1": "The Samurai Camp and both serpent arenas show more detailed backgrounds at a more natural scale.",
-      "menu.changelog.0942.visuals.2": "The winged serpent’s movement is steadier and its image clearer."
+      "menu.changelog.0942.visuals.2": "The winged serpent’s movement is steadier and its image clearer.",
+      "zen.name": "Zen, Chow Chow Priestess",
+      "zen.prison.name": "Depths of the Silent Prison",
+      "zen.enemy.undead": "Forgotten Prisoner",
+      "zen.warden.name": "Cultist Warden",
+      "zen.prison.start": "Prison Antechamber",
+      "zen.prison.wardenRest": "The Warden’s Chains",
+      "zen.prison.enter": "E · Enter the prison",
+      "zen.prison.return": "E · Return to the Shadow Realm",
+      "zen.free": "E · Free Zen",
+      "zen.locked": "The Warden’s Kiba holds the lock shut.",
+      "zen.objective.warden": "Make your way through the prison and defeat the Warden.",
+      "zen.objective.rescue": "Free Zen from her cell.",
+      "zen.objective.return": "Zen is safe. Return to the refuge.",
+      "zen.rescue.dialogue": "Momo! You really came for me! When we were little, you always found me when I hid… yet my heart is racing as though you were seeing me for the first time. I know you’re looking for Haru. I’ll look after everyone at the Forest Refuge — but promise you’ll come back to me too!",
+      "zen.camp.dialogue": "Momo, you’re back! I saved you a place beside the candles, right next to me. Even when we were little, I always wanted to sit beside you. I pray for Haru and the survivors every evening… and a little longer for you. Come, tell me where you’ve been! While you’re here, let me take care of you for a change.",
+      "zen.warden.victory": "The chains rattle once more, then fall silent. A quiet prayer comes from the cells. Someone within still has hope.",
+      "menu.changelog.0943.title": "Zen and the Silent Prison",
+      "menu.changelog.0943.zen": "The Shadow Realm’s prison gate leads to a separate area with undead, cultists and a new Warden boss. Once rescued, Zen tends the shrine at the Forest Refuge."
     }
   }
 }

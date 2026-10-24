@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-25",
+  "qaRepair": {
+    "finding": "ZEN-QA-001",
+    "plan": "r1",
+    "approval": "PLAN_APPROVED ZEN-QA-001 r1 was confirmed by coordinator before generating this repair."
+  },
+  "design": "Material variant of the already approved shadow-prison environment; black chiseled slate/navy masonry with restrained antique-bronze iron edging. No new design or mechanics.",
+  "selected": "exec-c5c5089c-c56f-40d9-b7d5-bf81a08f4e50.png",
+  "reference": "assets/images/backgrounds/zen-prison-center-v1.png",
+  "prompt": "Use case: precise-object-edit. PRODUCTION NATIVE RGBA TERRAIN ATLAS material-variant of the attached USER-APPROVED SHADOW PRISON background. This is the exact same blackchiseledbasalt/navyslate/rustedbronze/iron architecture,notnewdesign. Generate EXACTLY FIVE fullyisolated opaque paintedterrainpieces on REAL TRANSPARENTBACKGROUND in TWO EQUAL COLUMNS by THREE EQUAL ROWS, preferred1024x1536PORTRAITcanvas. Sixthcell(bottomright)completelyemptyalpha. No labels/grid/text. EachcompletepieceSMALLinsideowncellwithatleast15%cleartransparentmarginallsides;nooverlap,touchingcellsorouteredge. Pixel-detailedpaintedJapanese-fantasygamestylematchingreference,crispstonegrain/chiselededges/copper-rivetironstraps,manysmallflatrectangularslateblocks,NOmoss/grass/lava/fire/neonhotglow/drips/spikes/candles. Pieces must look like readable walkable stone,notcorruptedredorganicflesh. GroundTOPS are FLAT HORIZONTAL straightplanes withsparsefinechippedstoneedges; SAMEtileheight/material/flatwalkablesurface throughout. Lowbronzeedginganddarkironbracesunderneath;plainrectilinearstoneunderside,notelaboratehangingstalactites. ROW1 LEFT: LEFTCAPGROUNDSECTION,wideflatblackslatewalkwaywithfinishedverticalLEFTofferedgeandRIGHTopenbuttjointfortiling;frontfaceabout120pxhighunderflatwalkablesurface,wholepieceabout360pxwide,thinbronzerivetstrip. ROW1 RIGHT: MIDDLESEAMLESSHORIZONTALWALKWAYSEGMENT,matchingflatwalkablesurfaceandsame120pxfrontfaceheight;left/rightstraightverticalcutedgesmatchtilejoints,repeatingbrickpattern,noendcap;about360pxwide. ROW2 LEFT: RIGHTCAPGROUNDSECTION,matchingfinishedverticalRIGHTedgeandLEFTopenbuttjoint,otherwisesamematerials/thickness/surfaceasleftcap. ROW2 RIGHT: SHALLOWFLOATINGSTONEPLATFORM,completebothendcaps,thinflatblackslatetopsabout360pxwide,simple60px-highunderfaceandtwodarkbronzeironbraces,cleansilhouette,notgroundmass. ROW3 LEFT: LARGE SQUARE BODYFILL BRICKTILE,about340x340pxsolidopaquerectangle of smallmidnightnavyblackchiseledslatebricks, subtlyrustedbronzerivetsatrarejoints. Uniformquietmediumdarkvalues, noouterframe,perspective,bevel,cap,ledge,groundshadoworborder. BodytileextendsitsbricktexturetotileedgesforcleanhorizontalANDverticalrepeat; surroundingmarginisREALALPHA. ROW3 RIGHT: EMPTY. Important: samephysicalbricksizeandsharpnativepaintdetailineachpiece,noperspectivestretch. No characters/background/buildings/floorplate/outlinedpanelboxes/VFX. TrueRGBAalphaoutsidefivepieces;opaqueactualstoneswithcleanantialiasededges. Keepfullentirepieceandallironbraceswithtransparentpadding.",
+  "notes": [
+    "Selected generated PNG copied byte-for-byte; no source pixel/alpha modification.",
+    "Native1024x1536RGBA atlas of five isolated painted pieces.",
+    "Registration uses safe actual crops rather than assuming equal512px rows: the brick square begins before nominal row3 and must not leak into the right-cap crop.",
+    "SurfaceY is an absolute source coordinate on each painted walkable top, not the highest decorative end post.",
+    "Body crop is an interior384x384opaque brick rectangle (minimum alpha251) for repeated fill; no vertical stretching of top art.",
+    "Root integrator owns renderer, unchanged colliders, runtime, colormaps and browser retest."
+  ],
+  "output": {
+    "image": "prisonTerrain",
+    "path": "assets/images/backgrounds/prison-terrain-v1.png",
+    "width": 1024,
+    "height": 1536,
+    "left": {
+      "x": 35,
+      "y": 192,
+      "w": 460,
+      "h": 288,
+      "surfaceY": 274
+    },
+    "middle": {
+      "x": 534,
+      "y": 255,
+      "w": 454,
+      "h": 216,
+      "surfaceY": 274
+    },
+    "right": {
+      "x": 36,
+      "y": 615,
+      "w": 444,
+      "h": 285,
+      "surfaceY": 696
+    },
+    "platform": {
+      "x": 539,
+      "y": 707,
+      "w": 454,
+      "h": 167,
+      "surfaceY": 737
+    },
+    "body": {
+      "x": 62,
+      "y": 1024,
+      "w": 384,
+      "h": 384,
+      "sourceBounds": [
+        45,
+        999,
+        469,
+        1421
+      ],
+      "opaqueInterior": true
+    }
+  },
+  "sha256": "aad74b7136006e49904bba178723cd8d40df04a6ff521b5b782ff76cb930c6ff"
+}

@@ -99,7 +99,7 @@ function showHUD(on){for(const id of ['hud','quest','controls'])$(id).hidden=!on
 // One transient scene owns its pages and completion; no dialogue state is saved.
 const Dialogue=(()=>{
  let scene=null,revision=0;
- const actors={...CampArt.dialogueActors(),momo:{name:'Momo',image:'inventoryMomoPortrait',rect:ART_INVENTORY.momo},...Object.fromEntries(['daichi','natsu','sora','akash'].map(id=>[id,{name:id==='akash'?'merchant.name':'camp.npc.'+id+'.name',image:ART_CAMP[id].image,rect:ART_CAMP[id]}]))};
+ const actors={...CampArt.dialogueActors(),...PrisonArt.dialogueActors(),momo:{name:'Momo',image:'inventoryMomoPortrait',rect:ART_INVENTORY.momo},...Object.fromEntries(['daichi','natsu','sora','akash'].map(id=>[id,{name:id==='akash'?'merchant.name':'camp.npc.'+id+'.name',image:ART_CAMP[id].image,rect:ART_CAMP[id]}]))};
  const theme=()=>Prologue.active?'shadow':realm===1?'yomi':realm===2?'heaven':realm===3?'shadow':'japan';
  function portrait(side,id,speaker){
   const node=$('dialogPortrait'+side),actor=Object.hasOwn(actors,id)?actors[id]:null;
@@ -157,7 +157,7 @@ const Dialogue=(()=>{
 })();
 function story(label,title,text,onClose,options){Dialogue.open(label,title,text,onClose,options);}
 function pointNear(p,dx=100,dy=90){return Math.abs(player.x+player.w/2-p.x)<dx&&Math.abs(player.y+player.h-p.y)<dy;}
-function nextObjective(){const optional=CampQuest.objective();if(optional)return optional;if(ShadowRealm.active())return ShadowRealm.objective();if(level===forestCamp)return{point:level.rests[0],compass:false,text:I18n.t('camp.objective')};if(level.id==='councilHall')return{point:level.inscription,compass:false,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,name:realm===2?I18n.t('HARU'):realms[realm+1].name,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
+function nextObjective(){const optional=PrisonQuest.objective()||CampQuest.objective();if(optional)return optional;if(ShadowRealm.active())return ShadowRealm.objective();if(level===forestCamp)return{point:level.rests[0],compass:false,text:I18n.t('camp.objective')};if(level.id==='councilHall')return{point:level.inscription,compass:false,text:I18n.t('council.hall.objective')};if(defeated[realm])return{point:realm===2?level.father:level.exit,name:realm===2?I18n.t('HARU'):realms[realm+1].name,text:realm===2?I18n.t("text.ride.the.final.wind.stream.up.to.your.father"):I18n.t("text.stand.beneath.the.glowing.torii.and.press.e")};
  if(realm===0){if(!abilities[0])return{point:level.ability,name:level.ability.name,text:I18n.t("text.visit.the.wind.shrine.beside.the.path")};const bell=level.objects.find(o=>o.type==='bell'&&!hasFlag(o.id));if(bell)return{point:bell,name:bell.name,text:I18n.format("message.ring.arg0.bells.arg1.2",[bell.name,flags[0].filter(f=>f.endsWith('Bell')).length])};return{point:level.boss,name:realms[realm].boss,text:I18n.t("text.the.two.bells.have.opened.the.bamboo.temple.find")};}
  if(realm===1){const soul=level.objects.find(o=>o.type==='rescue'&&!hasFlag(o.id));if(soul)return{point:soul,name:soul.name,text:I18n.format("message.free.arg0.souls.arg1.2",[soul.name,flags[1].filter(f=>f.startsWith('soul')).length])};if(!abilities[1])return{point:level.ability,name:level.ability.name,text:I18n.t("text.the.shrine.of.shadows.grants.spirit.dash.use.the")};return{point:level.boss,name:realms[realm].boss,text:I18n.t("text.the.abyss.gate.is.open.descend.to.the.bottom")};}
  const upcoming=level.winds.find(w=>!w.afterBoss&&w.y+50<player.y&&w.y+w.h>player.y-250);return{point:upcoming?{x:upcoming.x+upcoming.w/2,y:upcoming.y}:level.boss,name:upcoming?(level.zones.find(z=>upcoming.x+upcoming.w/2>=z.x&&upcoming.x+upcoming.w/2<=z.x+z.w&&upcoming.y+10>=z.y&&upcoming.y+10<=z.y+z.h)?.name||realms[realm].name):realms[realm].boss,text:hasFlag('dawnSeal')?I18n.t("text.the.dawn.seal.is.broken.the.guardian.awaits.at"):I18n.t("text.jump.into.the.wind.streams.and.move.sideways.onto")};}
@@ -166,7 +166,7 @@ function revive(){SlayerDialog.cancel();if(DevImmortality.active){initPlayer(Pro
 function damage(amount=1,dir=0,blockable=false,bypassArmor=false){if(DevImmortality.active)return;if(Prologue.active){Prologue.hurt(amount,false,bypassArmor);return;}if(player.inv>0||dash>0)return;const guard=WeaponStyles.guard(weaponStyle,amount,{face:player.face,direction:dir,grounded:player.onGround,attacking:attack>0,dashing:dash>0,cooldown:player.guardCooldown,environmental:!blockable});player.guardCooldown=guard.cooldown;if(guard.blocked){amount=guard.damage;burst(player.x+20+player.face*18,player.y+30,'#e4c78a',8);tone(610,.08,'triangle',.03);if(!amount)return;}if(!bypassArmor)amount=Armor.damage(amount,momoStats().armor);const before=player.hp;player.hp=Math.max(0,player.hp-amount);DevDamage.record('incoming',player,before,player.hp);player.inv=momoStats().invulnerability;player.vx=dir*240;player.vy=-220;shake=.22;tone(100,.22,'sawtooth',.03);burst(player.x+20,player.y+35,'#dd9480');if(!player.hp)revive();else updateHUD();}
 function getContext(){
  if(Prologue.active)return null;
- const campContext=CampHerbs.context()||CampQuest.context();if(campContext)return campContext;if(CampQuest.isSide())return null;
+ const campContext=PrisonQuest.context()||CampHerbs.context()||CampQuest.context();if(campContext)return campContext;if(CampQuest.isSide())return null;
  const shadowContext=ShadowRealm.context();if(shadowContext)return shadowContext;
  if(level===forestCamp){
   if(pointNear(level.returnPoint,100,90))return{type:'campReturn',text:I18n.t('camp.return')};
@@ -195,7 +195,7 @@ function getContext(){
  const seal=level.gates.find(g=>g.kind==='fire'&&!gatePass(g)&&overlap({x:player.x-95,y:player.y-70,w:player.w+190,h:player.h+140},g));
  if(seal)return{type:'seal',text:I18n.t('text.j.break.the.seal.with.the.dawnblade')};return null;
 }
-function interact(){const c=getContext();if(!c)return;if(CampHerbs.interact(c)||CampQuest.interact(c))return;if(ShadowRealm.interact(c))return;
+function interact(){const c=getContext();if(!c)return;if(PrisonQuest.interact(c)||CampHerbs.interact(c)||CampQuest.interact(c))return;if(ShadowRealm.interact(c))return;
  if(c.type==='slayerGrave'){SlayerDialog.open(c.enemy);return;}
  if(c.type==='campEntrance'){enterForestCamp();return;}
  if(c.type==='campReturn'){leaveForestCamp();return;}
@@ -289,7 +289,7 @@ function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prolog
  if(level===forestCamp){
   ctx.save();ctx.translate(-camera,-cameraY);Visuals.campScenery();CampArt.scenery();drawShrine(level.rests[0].x,level.rests[0].y,r,false);Visuals.campPathMarker(level.returnPoint,I18n.t(realms[0].short));drawParticles();drawLevelUp();drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
  }
- ctx.save();ctx.translate(-camera+(!level.service&&!reducedMotion.matches&&shake>0?(noise(time*500)-.5)*10:0),-cameraY);if(!CampQuest.isSide())Visuals.secretScenery(r);CampArt.scenery();if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);CampHerbs.draw();drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest)&&!(realm===3&&rest.id==='altar'))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);drawLevelUp();Visuals.bossEffects(r);
+ ctx.save();ctx.translate(-camera+(!level.service&&!reducedMotion.matches&&shake>0?(noise(time*500)-.5)*10:0),-cameraY);if(!CampQuest.isSide())Visuals.secretScenery(r);PrisonArt.scenery();CampArt.scenery();if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);CampHerbs.draw();drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest)&&!(realm===3&&rest.id==='altar'))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);drawLevelUp();Visuals.bossEffects(r);
  for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){drawMomo(level.father.x,level.father.y+4,90,0,Math.floor(time*3)%6,1);ctx.font='11px "Kiba UI", "Kiba Story", sans-serif';ctx.fillStyle=r.gold;ctx.textAlign='center';ctx.fillText(I18n.t('HARU'),level.father.x,level.father.y-105);}
  for(const p of projectiles)if(!SerpentArt.projectile(p))Visuals.projectile(p);
@@ -299,7 +299,7 @@ function drawLevelUp(){if(LevelUpEffect.remaining>0)Visuals.levelUp(player.x+pla
 function drawParticles(){for(const p of particles){if(p.kind==='dashWisp'){ctx.globalAlpha=1;Visuals.dashTrail(p.x,p.y,p.face,1-p.life/p.maxLife);continue;}ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;}
 function visiblePoint(p,margin=280){return p.x>camera-margin&&p.x<camera+viewW+margin&&p.y>cameraY-margin&&p.y<cameraY+H+margin;}
 function drawKibaCurrent(){const weak=realm===0&&player.y>1150;ctx.save();ctx.lineWidth=realm===1?2:1.5;ctx.strokeStyle=realm===1?'#c872b8':realm===2?'#e8d89b':'#addbb5';for(let i=0;i<(weak?7:22);i++){const x=camera+noise(i*14.7+realm)*viewW+Math.sin(time*.7+i)*18,y=cameraY+noise(i*29.3+realm*17)*H;ctx.globalAlpha=(weak?.14:.24)+Math.sin(time*2+i)*.08;ctx.beginPath();ctx.moveTo(x,y);if(realm===1){ctx.lineTo(x+8,y-9);ctx.lineTo(x+2,y-18);}else{ctx.quadraticCurveTo(x+8+Math.sin(time+i)*5,y-12,x+6,y-26);}ctx.stroke();}ctx.restore();}
-function background(r){if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
+function background(r){if(PrisonQuest.active())PrisonArt.backdrop();else if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
 
 function drawLandscape(r,items){if(!level.service)Visuals.terrain(r,items);}
 
@@ -497,7 +497,7 @@ function drawMenuMomo(x,feet,size){
  ctx.drawImage(menuSheet,(frame%3)*512,Math.floor(frame/3)*512,512,512,x-size/2,feet-menuFrameBottom[frame]*size/512,size,size);
  ctx.restore();
 }
-function drawEnemy(e,r){if(!CampArt.actor(e))Visuals.actor(e,r);}
+function drawEnemy(e,r){if(!PrisonArt.actor(e)&&!CampArt.actor(e))Visuals.actor(e,r);}
 
 function drawBoss(r){Visuals.actor(boss,r,true);}
 

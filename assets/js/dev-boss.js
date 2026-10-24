@@ -2,7 +2,7 @@
 'use strict';
 const DevBoss=(()=>{
  let encounter='main';
- const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp);
+ const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp||level===shadowPrison);
  const encounters=()=>[...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
   ...(Prologue.active?[]:level.enemies.filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
  function fields(){
@@ -32,7 +32,7 @@ const DevBoss=(()=>{
   clearEncounterEffects();if(!boss.dead)resetBossBattle();
   resetMinibosses();projectiles=[];
   // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
-  if(DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
+  if(PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
   if(CampMaster.is(replay))CampMaster.reset(replay);else resetMiniboss(replay);replay.dead=false;
   if(DoomSlayer.is(replay))DoomSlayer.start(replay);else replay.active=true;
   const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;
