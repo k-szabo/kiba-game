@@ -26,7 +26,7 @@ for(const scene of ['dream','japan','forestCamp','shadowRealm']){
 for(const scene of ['japan','dream','forestCamp','shadowRealm'])for(const fps of [30,60,120])for(const mask of [0,1,2,3])for(const face of [-1,1]){
  const h=fixture(scene,mask),label=`${scene}/${fps}fps/abilities${mask}/face${face}`;
  h.run(`player.face=${face}`);const start=h.snap().player.x;
- h.press('k');seconds(h,1/fps,fps);h.release('k');
+ h.press({action:'dash'});seconds(h,1/fps,fps);h.release({action:'dash'});
  assert.equal(h.run('dash>0'),!!(mask&2),label+' dash permission');
  if(mask&2)near(h.run('dash'),.2,label+' initial duration');
  // Jump during the dash used to preserve negative vy forever without gravity.
@@ -40,20 +40,20 @@ for(const scene of ['japan','dream','forestCamp','shadowRealm'])for(const fps of
  assert(h.snap().player.onGround,label+' gravity must return Momo to the floor');
  near(h.snap().player.y+h.snap().player.h,h.run('level.start.y'),label+' grounded height');
  assert(Math.abs(h.snap().player.x-start)<400,label+' bounded dash displacement');
- if(mask&2){h.press('k');seconds(h,1/fps,fps);h.release('k');assert(h.run('dash>0'),label+' dash can be reused');}
+ if(mask&2){h.press({action:'dash'});seconds(h,1/fps,fps);h.release({action:'dash'});assert(h.run('dash>0'),label+' dash can be reused');}
 }
 // Crossing controllers, re-entering the dream and respawning reset transient
 // motion while preserving the granted test abilities and the normal save.
 const h=fixture('japan'),normal=h.run('JSON.stringify(saved)'),writes=h.run('window.__saveSnapshots.length');
 for(const target of [{realm:'dream',rest:'dream'},{realm:'forestCamp',rest:'forestCamp'},{realm:'1',rest:'start'},{realm:'2',rest:'start'},{realm:'3',rest:'start'},{realm:'0',rest:'start'},{realm:'dream',rest:'dream'}]){
- h.press('k');h.tick();h.release('k');assert(h.run('dash>0'));
+ h.press({action:'dash'});h.tick();h.release({action:'dash'});assert(h.run('dash>0'));
  h.run('DevTools.open()');assert(h.run(`DevTeleport.teleport(${JSON.stringify(target)})`));
  assert(h.run('dash===0&&dashCooldown===0&&jumpBuffer===0&&coyote===0&&dropTimer===0&&player.vx===0&&player.vy===0'));
  assert.deepEqual(Array.from(h.run('abilities')),[true,true]);h.run('DevTools.close()');
 }
 h.run('Prologue.lose()');assert(h.run('dash===0&&player.vx===0&&player.vy===0'));seconds(h,7,120);h.dismiss();
 assert(h.run('!Prologue.active'));assert.deepEqual(Array.from(h.run('abilities')),[true,true]);
-h.run('DevTools.open();DevImmortality.toggle();DevTools.close()');h.press('k');h.tick();h.release('k');h.run('revive()');
+h.run('DevTools.open();DevImmortality.toggle();DevTools.close()');h.press({action:'dash'});h.tick();h.release({action:'dash'});h.run('revive()');
 assert(h.run('dash===0&&player.vx===0&&player.vy===0'));
 assert.equal(h.run('JSON.stringify(saved)'),normal);assert.equal(h.run('window.__saveSnapshots.length'),writes);
 console.log('PASS: once-per-frame shared player clocks, pause freezes, grant/teleport/input matrix at30/60/120fps, bounded dash, gravity, cooldown reuse and transition/save isolation.');

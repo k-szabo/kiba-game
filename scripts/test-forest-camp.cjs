@@ -143,7 +143,7 @@ for(const fps of [30,60,120])for(const doubleJump of [false,true])for(const spir
  frames(h,.17,fps);h.press(' ');frames(h,1/fps,fps);h.release(' ');
  assert.equal(r('player.jumps'),doubleJump?2:1,'Double jump ignored its ability state');
  if(doubleJump)assert(r('player.vy< -550'),'Double jump did not renew upward velocity');
- h.press('k');frames(h,1/fps,fps);h.release('k');assert.equal(r('dash>0'),spiritDash);
+ h.press({action:'dash'});frames(h,1/fps,fps);h.release({action:'dash'});assert.equal(r('dash>0'),spiritDash);
  if(spiritDash){
   const frozen=r('JSON.stringify([player,time,levelTime,dash,dashCooldown])');r('pause();');frames(h,1,fps);
   assert.equal(r('JSON.stringify([player,time,levelTime,dash,dashCooldown])'),frozen,'Pause advanced a camp dash');r('pause();');

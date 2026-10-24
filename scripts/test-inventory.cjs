@@ -6,7 +6,7 @@ press('i');release('i');assert.equal(snap().state,'inventory');assert(!elements.
 assert.deepEqual(Array.from(run('Inventory.contents()')),[]);assert(!elements.get('inventoryEmpty').hidden);
 const frozen=run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})');
 tick(180);assert.equal(run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),frozen);
-press('j');press(' ');press('m');assert.equal(snap().state,'inventory');assert(run('keys.size===0&&pressed.size===0'));
+press({action:'attack'});press(' ');press('m');assert.equal(snap().state,'inventory');assert(run('keys.size===0&&pressed.size===0'));
 run("handleKeyDown({key:'i',code:'KeyI',repeat:false,target:{closest:()=>({})},preventDefault(){}});");assert.equal(snap().state,'play','Focused inventory buttons must not swallow the inventory close binding');
 press('i');release('i');press('escape');release('escape');assert.equal(snap().state,'play');
 
@@ -61,7 +61,7 @@ const loaded=loadBindings(legacy);assert.equal(loaded.bindings.profile,'fr');ass
 assert.notEqual(loaded.bindings.read('inventory')[0],'i');assert.equal(loaded.bindings.read('moveLeft')[0],'q');
 assert(loaded.bindings.choose('uk'));assert.equal(loaded.bindings.read('map')[0],'i');assert.notEqual(loaded.bindings.read('inventory')[0],'i');
 const persisted=JSON.parse(loaded.storage.get('momo-keybindings-v1')),again=loadBindings(persisted);assert.deepEqual(Array.from(again.bindings.read('inventory')),Array.from(loaded.bindings.read('inventory')));
-const oldDefaults={...defaults.original};delete oldDefaults.inventory;
+const oldDefaults={...defaults.legacyDefaults.original};delete oldDefaults.inventory;
 const imported=loadBindings();assert(imported.bindings.importData({version:1,original:oldDefaults,selection:legacy.profile,modified:legacy.modified}));assert.equal(imported.bindings.read('attack')[0],'i');assert.notEqual(imported.bindings.read('inventory')[0],'i');
 assert(!imported.bindings.importData({version:1,original:oldDefaults,selection:'fr',modified:{fr:{attack:['i'],inventory:['i']}}}),'Explicitly conflicting modern overrides must still be rejected');
 console.log('PASS: inventory flag-backed items/consumed key/weapon, empty grid, full pause including dream, focused close/custom bindings, no progression changes and legacy custom-I preference/import compatibility.');

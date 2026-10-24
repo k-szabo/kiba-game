@@ -10,7 +10,11 @@ module.exports=function harness({prologue=false}={}){
   for(const name of ['keybindings','levels','camp-services','serpent-relics','camp-health','art-data','boss-vfx','graphics','armor','weapons','weapon-equipment','weapon-selection','progression','serpents','combat','camp-master','doom-slayer','slayer-art','serpent-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-weapons','dev-immortality','dev-damage','camp-quest','camp-workshop','camp-herbs','camp-art','game'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js',name+'.js'),'utf8'),sandbox,{filename:name+'.js'});
   vm.runInContext(bootstrap.after,sandbox);
   const run=s=>vm.runInContext(s,sandbox),snap=()=>sandbox.momo.getState(),tick=(n=1)=>run(`for(let i=0;i<${n};i++)update(1/120);`);
-  const press=k=>run(`handleKeyDown({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')},repeat:false,preventDefault(){}});`),release=k=>run(`handleKeyUp({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')}});`);
+  // Explicit action inputs resolve the selected profile and enter the real
+  // keyboard/mouse handlers. Literal keys are intentionally never translated.
+  const keyFor=value=>value&&typeof value==='object'?run('Bindings.read('+JSON.stringify(value.action)+')[0]'):value;
+  const sendInput=(value,down)=>{const key=keyFor(value);if(/^mouse[0-4]$/.test(key))return run('handleMouse'+(down?'Down':'Up')+'({button:'+Number(key.slice(5))+',pointerType:"mouse",target:canvas,preventDefault(){},stopPropagation(){}})');return run((down?'handleKeyDown':'handleKeyUp')+'({key:'+JSON.stringify(key)+',code:'+JSON.stringify(key===' '?'Space':'')+',repeat:false,preventDefault(){}})');};
+  const press=value=>sendInput(value,true),release=value=>sendInput(value,false);
   const dismiss=()=>{for(let n=0;snap().state==='dialog'&&n<50;n++)elements.get('dialogOk').onclick();if(run("state==='weaponSelection'"))run('WeaponSelection.confirm()');},place=(x,y)=>run(`initPlayer({x:${x},y:${y}});player.onGround=true;player.inv=999;`);
   run('startGame();');if(!prologue)run('Prologue.wake();');dismiss();
   return {run,snap,tick,press,release,dismiss,place,elements,storage,sandbox};

@@ -14,7 +14,7 @@ assert(!run("toastTimer>0&&$('toast').textContent===I18n.t('prologue.warning.arr
 tick(350);
 assert.equal(run('Prologue.phase'),'battle');assert.equal(snap().boss.max,100000);
 run('pause();');const hp=snap().boss.hp;tick(500);assert.equal(snap().boss.hp,hp);assert.equal(run('Prologue.phase'),'battle');run('pause();');
-place(3420,720);press('j');tick(26);release('j');assert(snap().boss.hp<snap().boss.max,'Momo can visibly strike the entity');
+place(3420,720);press({action:'attack'});tick(26);release({action:'attack'});assert(snap().boss.hp<snap().boss.max,'Momo can visibly strike the entity');
 assert.equal(snap().progression.totalXp,0);assert.equal(snap().shards,0);assert(!snap().defeated.some(Boolean));
 run('boss.inv=0;hitBoss(Number.MAX_SAFE_INTEGER);guardianDefeated();');assert(snap().boss.hp>0);assert(!snap().boss.dead);assert(!snap().defeated[0]);
 const moves=new Set();let sawAuto=false,sawAOE=false,sawBolt=false;

@@ -45,13 +45,14 @@ A **Kiba Birodalmak** böngészőben játszható, 2D metroidvania: kardharc, pla
 | --- | --- |
 | A / D vagy ← / → | Mozgás |
 | Space, W vagy ↑ | Ugrás; felengedés után újra megnyomva kettős ugrás* |
-| J vagy Z | Kardcsapás |
-| K vagy Shift | Szellemlépés* |
+| Bal egérgomb vagy Z | Normál támadás |
+| Jobb egérgomb | Erős támadás |
+| Shift | Szellemlépés* |
 | E | Interakció, gyógyulás, kapuk és tárgyak használata |
 | U | Fejlesztés a pihenőszentélynél |
 | M | Térkép és gyorsutazás |
 | S + Space | Leugrás a párkányról |
-| O | Étel használata |
+| Q | Gyógyító tárgy használata |
 | Esc | Szünet |
 | I | Hátizsák és felszerelés, a játék szüneteltetésével |
 
@@ -59,7 +60,7 @@ A **Kiba Birodalmak** böngészőben játszható, 2D metroidvania: kardharc, pla
 
 A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.
 
-Az alapértelmezett kiosztást az `assets/config/keybindings.json` tartalmazza. A főmenü vagy a szünetmenü **Hogyan játszunk** gombjával nyithatod meg a kiosztásválasztót és a billentyűk átállítását. A személyes módosításokat a böngésző helyben tárolja; a JSON-exporttal átviheted őket másik böngészőbe, majd az importtal visszatöltheted.
+Az alapértelmezett kiosztást az `assets/config/keybindings.json` tartalmazza. A főmenü vagy a szünetmenü **Hogyan játszunk** gombjával nyithatod meg a kiosztásválasztót és a billentyűk átállítását. A francia AZERTY profilban Q a balra mozgás, Z az ugrás, A a gyógyítás, W a másodlagos normál támadás. A személyes módosításokat a böngésző helyben tárolja; a JSON-exporttal átviheted őket másik böngészőbe, majd az importtal visszatöltheted.
 
 **Tipp:** a torii kapu alá állva nyomj E-t; a szélfolyamokba ugorj bele, hogy magasba emeljenek.
 

@@ -10,7 +10,7 @@ function fixture(scene,face){
 const frames=(h,count,fps)=>h.run(`for(let frame=0;frame<${count};frame++)update(${1/fps});`);
 for(const scene of ['forestCamp','japan'])for(const fps of [30,60,120])for(const face of [-1,1]){
  const h=fixture(scene,face),r=h.run,label=`${scene}/${fps}fps/face${face}`;
- h.press('k');frames(h,1,fps);h.release('k');
+ h.press({action:'dash'});frames(h,1,fps);h.release({action:'dash'});
  assert(r('dash>0'),label+' actual bound input starts the granted dash');
  assert(r("particles.some(p=>p.kind==='dashWisp')"),label+' dash generates wisps');
  r('draw()');
@@ -28,7 +28,7 @@ for(const scene of ['forestCamp','japan'])for(const fps of [30,60,120])for(const
  assert.equal(r("particles.some(p=>p.kind==='dashWisp')"),false,label+' trail expires after dash ends');
  assert.equal(r('trailCalls.length'),0,label+' expired wisps are not rendered');
  r('reducedMotion.matches=true;dashCooldown=0');
- h.press('k');frames(h,Math.ceil(fps*.1),fps);h.release('k');r('trailCalls=[];draw()');
+ h.press({action:'dash'});frames(h,Math.ceil(fps*.1),fps);h.release({action:'dash'});r('trailCalls=[];draw()');
  assert(r('dash>0'),label+' reduced motion preserves dash gameplay');
  assert.equal(r("particles.some(p=>p.kind==='dashWisp')"),false,label+' reduced motion suppresses trail creation');
  assert.equal(r('trailCalls.length'),0,label+' reduced motion leaves no moving wisp renderer calls');

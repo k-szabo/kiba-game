@@ -16,7 +16,7 @@ Az érmék a kereskedés pénzneme. A zsákmány automatikusan bekerül a pénzt
 
 | Portéka | Ár | Tárolás és működés |
 | --- | --- | --- |
-| Ismeretlen eredetű sült hús | 10 | Korlátlanul gyűjthető stack; inventoryból vagy az átállítható `useMeat` művelettel, alapból O-val használható. |
+| Ismeretlen eredetű sült hús | 10 | Korlátlanul gyűjthető stack; inventoryból vagy az átállítható `useMeat` művelettel, alapból Q-val (FR AZERTY: A) használható. |
 | Akash teája | 25 | Külön `teaCount` stack; 6 aktív másodperc alatt három, egyenként 1 HP-s gyógyulás. |
 | Iránytű | 220 | Egyszeri vétel; a bal felső feladatpanel alatt külön ikonnal, célmegnevezéssel, nyolcirányú nyíllal és közelségi jelzéssel mutatja a fő célt. |
 | Kis útitérkép | 360 | Egyszeri vétel; helyi minimap a képernyő sarkában. |
@@ -49,7 +49,7 @@ A `journeyHUD` függőleges elrendezése a feladatot és a birtokolt iránytűt 
 
 ## Tea és közös gyorshasználat
 
-Az O alapértelmezésű, átállítható művelet belső azonosítója kompatibilitás miatt továbbra is `useMeat`; az elnevezése már gyógyító tárgy használata. A hátizsákban a hús vagy tea részleteinél választható ki a gyorshasználati tárgy. A mentett `quickHeal` értéke `roastMeat`, `tea` vagy Sofiye főzeténél `healingBrew`. Ha a kijelölt készlet elfogy, a másik készletre vált, ha abból van adag; az adott gombnyomás csak egy tárgyat használ el.
+A Q alapértelmezésű (FR AZERTY: A), átállítható művelet belső azonosítója kompatibilitás miatt továbbra is `useMeat`; az elnevezése már gyógyító tárgy használata. A hátizsákban a hús vagy tea részleteinél választható ki a gyorshasználati tárgy. A mentett `quickHeal` értéke `roastMeat`, `tea` vagy Sofiye főzeténél `healingBrew`. Ha a kijelölt készlet elfogy, a másik készletre vált, ha abból van adag; az adott gombnyomás csak egy tárgyat használ el.
 
 A tea 2, 4 és 6 aktív másodpercnél legfeljebb 1–1 HP-t gyógyít. Nem lépi túl a maximumot, teljes HP-n és aktív teahatás mellett újabb adag nem fogyasztható. Az inventory, szünet, dialógus és egyéb panelek fagyasztják az időzítőt. Halál, helyszínváltás, főmenü és a tesztmód befejezése törli a hatást, az el nem fogyasztott készletet megőrzi. A hatás átmeneti, mentésbe nem kerül. A készlet és a gyorshasználati választás szigorúan validált és az aktuális kiadáson belül mentődik.
 

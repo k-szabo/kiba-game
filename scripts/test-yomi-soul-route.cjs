@@ -59,11 +59,11 @@ for(const fps of [30,60,120]){
  // It works with and without double jump and can be reversed immediately once
  // the dash cooldown recovers. Real input advances the shared dash clocks.
  for(const twice of [false,true]){
-  run(`soulRouteReset(${dt},${twice},true);soulRoutePlace(1860,3900);player.face=1;pressed.add('k');`);
+  run(`soulRouteReset(${dt},${twice},true);soulRoutePlace(1860,3900);player.face=1;pressed.add(Bindings.read('dash')[0]);`);
   assert(run(`soulRouteFrames(.9,${dt})`),`Spirit Dash cannot enter at ${fps} FPS`);
   assert.equal(run('player.support'),'cage-right');
   assert.equal(run('dash'),0,'Dash never expired in the chamber');
-  run(`soulRoutePlace(2075,3900);player.face=-1;pressed.add('k');`);
+  run(`soulRoutePlace(2075,3900);player.face=-1;pressed.add(Bindings.read('dash')[0]);`);
   run(`soulRouteFrames(.9,${dt});`);
   assert.equal(run('player.support'),'veil-approach',`No safe dash return at ${fps} FPS`);
   assert(run('player.x+player.w<=1920'),'Return ended inside the veil');
@@ -79,7 +79,7 @@ for(const fps of [30,60,120]){
  run(`soulRouteFrames(4,${dt},()=>{
   const x=player.x+player.w/2;keys.delete('s');keys.delete('a');
   if(x>1550)keys.add('a');
-  if(!floorExitDashed&&x<2080){pressed.add('k');floorExitDashed=true;}
+  if(!floorExitDashed&&x<2080){pressed.add(Bindings.read('dash')[0]);floorExitDashed=true;}
  });`);
  assert(run('floorExitDashed&&!abilities[0]&&abilities[1]'),'Floor exit must use only Spirit Dash');
  assert(run("player.onGround&&['west-tomb','deep-center'].includes(player.support)"),

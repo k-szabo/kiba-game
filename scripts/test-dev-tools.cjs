@@ -68,7 +68,7 @@ for(const operation of ["DevTeleport.teleport({realm:'1',rest:levels[1].rests[0]
 }
 h.run('DevSession.end();startGame(true)');h.dismiss();
 const before=h.run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),writes=h.run('window.__saveSnapshots.length');
-assert(h.run('DevTools.open()'));h.press('j');h.press(' ');h.tick(240);assert.equal(h.run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),before,'Developer panel freezes the game');assert.equal(h.run('window.__saveSnapshots.length'),writes,'Panel does not write gameplay saves');
+assert(h.run('DevTools.open()'));h.press({action:'attack'});h.press(' ');h.tick(240);assert.equal(h.run('JSON.stringify({player,enemies,boss,platforms,projectiles,particles,time,levelTime})'),before,'Developer panel freezes the game');assert.equal(h.run('window.__saveSnapshots.length'),writes,'Panel does not write gameplay saves');
 h.run('DevTools.close();mainMenu();DevTools.open();draw();mainMenu();');assert.equal(h.snap().state,'menu');assert(h.elements.get('devPanel').hidden);
 const root=path.join(__dirname,'..'),runtime=fs.readFileSync(path.join(root,'assets/js/runtime.js'),'utf8');
 assert(!runtime.includes('window.DevTools='),'No public developer export');assert(!runtime.includes('DEV_AUTH'),'No developer password configuration');
