@@ -22,7 +22,7 @@ run('DevTools.open()');assert(run('DevAbilities.acquire({ability:"dash"})'));
 assert.equal(run('DevAbilities.acquire({ability:"dash"})'),'dev.ability.owned');
 assert.equal(h.elements.get('dashHint').hidden,false,'HUD immediately reflects the unlock');
 assert.equal(run('DevTools.returnState'),'play');assert.equal(h.snap().state,'developer','Acquiring does not close the panel');
-run('DevTools.close();dashCooldown=0');h.press('k');h.tick();h.release('k');
+run('DevTools.close();dashCooldown=0');h.press({action:'dash'});h.tick();h.release({action:'dash'});
 assert(run('dash>0'),'Granted dash works through normal input');
 run('DevTools.open();DevTeleport.teleport({realm:"1",rest:"start"});DevTools.close();revive()');
 assert.deepEqual(Array.from(run('abilities')),[true,true],'Test unlocks survive travel and death');

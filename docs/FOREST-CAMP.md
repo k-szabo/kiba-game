@@ -42,7 +42,7 @@ Mindhárom külön, bejárható `1500×1080` belső tér, saját pihenőhellyel 
 
 Ren a fegyvert és a páncélt külön-külön öt fokozatig fejleszti. A következő fokozat ára 50 × fokozat érme; a fegyverfokozat minden birtokolt stílusnak közös +0,5 alap sebzést, a páncélfokozat +20 Armort ad. A szentélyes statpontfejlesztés külön megmarad. Másik kezdőfegyver 100 érméért vehető, 50-ért adható el; a felszerelt/utolsó fegyver nem eladható. A megvásárolt fegyver a hátizsákból is felszerelhető. A relikviafegyverek és Fumi bűvölése egyelőre letiltott szolgáltatáshelyek.
 
-Sofiye megbízásának felvétele után Japánban három gyógynövényfolt szedhető: `(1120,1000)`, `(3890,1000)`, `(7050,960)`. Három csokorból egy, legfeljebb 3 HP-t azonnal gyógyító főzet készül. A foltok pihenés/halál/helyszín-újratöltés után újrateremnek; a már gyűjtött mennyiség megmarad. A főzet a közös gyógyító gyorshasználathoz rendelhető, a meglévő hús és tea mellett; elfogyáskor a következő elérhető gyógyító tárgyra vált.
+Sofiye megbízásának felvétele után Japán mind a hat főútszakaszán összesen kilenc gyógynövényfolt szedhető. A pontos helyek a `CampHerbs.patches` katalógusban vannak; minden folt járható talajon áll, és a platformok után rajzolódik, ezért a növényeket nem takarja el a terepgrafika. Három csokorból egy, legfeljebb 3 HP-t azonnal gyógyító főzet készül. A foltok pihenés/halál/helyszín-újratöltés után újrateremnek; a már gyűjtött mennyiség megmarad. A főzet a közös gyógyító gyorshasználathoz rendelhető, a meglévő hús és tea mellett; elfogyáskor a következő elérhető gyógyító tárgyra vált.
 
 ## Adat- és mentési határok
 
@@ -51,3 +51,13 @@ A `SIDE_LOCATIONS` az új kis helyszínek közös katalógusa a helyszínváltá
 A mentés új `campServices` mezője: `ownedWeapons`, `weaponRank`, `armorRank`, `herbs`, `potions`. A megengedett rangok 0–5, az egész készletek nemnegatív biztonságos egészek, a felszerelt stílusnak a birtokolt listában kell lennie. A validátor ellenőrzi a küldetés, a bossjelenet és a mentések sorrendjét; kovácsfejlődéshez a kovács megmentése, növény/főzet készlethez Sofiye megbízása szükséges. Új kiadáskor az alfa/béta mentésreset változatlan.
 
 Modulok: `camp-services.js` tiszta tranzakciók; `camp-quest.js` küldetés és helyszínváltás; `camp-master.js` harc; `camp-workshop.js` szolgáltatásablak; `camp-herbs.js` gyűjtés; `camp-health.js` tört HP; `camp-art.js` festett látvány. Az új tesztcsoport `npm run test:camp-npcs`; a valódi képi minőséget és böngészős tárolást külön böngészőteszt ellenőrzi.
+
+## Küldetésjelölések és a Tábormester harca
+
+A küldetésadó feje felett az elérhető megbízást **!**, a leadhatót **?** jelzi. Daichi lezárásakor a `campQuestCompleted` mentett jelző eltünteti a jelet és a visszatérési célt. Sofiye új főzethez ismét megbízást kínál; a `herbalistQuestTurnedIn` a következő műhelybeszélgetéskor törlődik. Fumi első látogatása a `serpentRitualKnown` jelzőt állítja be; három birtokolt pikkelynél kérdőjel, elkészült talizmánnál semmilyen jel nem látszik. A jelölések álló, nagy kontrasztú jelek, szünetben sem animálnak.
+
+A Tábormester 150 világ-egység magas. A régi 15 pózt hat külön ugrópóz egészíti ki; az ugrás célpontja a felkészüléskor rögzül. A 60 és 40 százalékos HP-küszöb egyenként két katonát idéz, nagy sebzésugrás esetén is pontosan egyszer. Tíz százaléknál három íjász célozza a foglyokat: az előjelzés után 15 másodperc áll rendelkezésre az íjászok vagy a boss legyőzésére. Az összes íjász halála megállítja a kivégzést. Sikertelen kísérletkor a harc teljesen újrapróbálható, a foglyok nem vesznek el végleg. A közös frissítési út és a párbeszéd alatti megállás a számlálóra is vonatkozik. Az idézések nem adnak farmolható XP-t vagy pénzt.
+
+Első győzelemkor a meglévő 150 XP és 60 érme mellett a `campMasterSoul` tárgy is jár, és megjelenik a győzelmi párbeszéd. A dev-újrajátszás nem ad új jutalmat. A lélek ugyanúgy eladható Akashnak, mint a többi bosslélek. A `BossCues.box` közös rajzoló egyező szaggatott útvonalon rajzolja a sötét kontrasztkeretet és a világos jelzést; a sötét vonal nem tölti ki a szaggatás hézagait.
+
+A szamurájtábor három natív 1536×1024-es háttérpanelt és külön nagy felbontású talaj-/kőplatform-atlaszt használ. A panelek egyszer készülő átmeneti maszkja és a helyszíni felszínillesztés nem változtatja meg az ütközési geometriát. A belső terekben a támadási képernyőrázás kikapcsolt, így a háttérbe festett és külön rajzolt tárgyak együtt maradnak.

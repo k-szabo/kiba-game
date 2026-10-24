@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": {
+    "concept": "exec-5a306507-708f-44c9-a440-6ae2ac883ae7.png",
+    "status": "User explicitly approved soul concept and six-pose jump storyboard before production."
+  },
+  "asset": {
+    "path": "assets/images/items/camp-master-soul-v1.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "alpha32Bounds": [
+      97,
+      261,
+      1182,
+      1023
+    ],
+    "edgeVisiblePixels": 0,
+    "recommendedCrop": {
+      "x": 85,
+      "y": 249,
+      "w": 1109,
+      "h": 786
+    }
+  },
+  "prompt": "Use case: stylized-concept. FINAL PRODUCTION SINGLE INVENTORY COLLECTIBLE for Kiba Realms. User explicitly approved top soul icon in reference concept board. Recreate ONLY THE TOP OBJECT, not the six human figures below it. A dense, highly detailed miniature red lacquered samurai kabuto helmet with golden crescent crest, dark face opening, layered scarlet/gold neck armor and a single complete silver curved katana angled from upper left dark hilt to lower right sharp tip, red cord knot. Close ember-red and warm pale-gold Kiba spirit curls around helmet. Object clearly reflects same red/gold Camp Master human samurai in source sheet. Richly painted Japanese fantasy loot art, crisp dark contour, strong opaque red/gold/steel cores and subtle translucent fringes. No human face, hands, body, skull, shaman totem or other object. Single centered object on GENUINELY TRANSPARENT RGBA background with transparent internal gaps. ENTIRE complete crescent crest, katana hilt and blade tip, lower cord and every wispy flame end fit INSIDE 78% of canvas width AND height, at least10% totally clear empty transparent margin allfour sides. Square canvas≥1024px. No ground, pedestal, colored matte, checkerboard pattern, words, UI or watermark. Keep exact approved design, refine only detail and framing for legible112pxinventoryuse.",
+  "repairPrompt": "Precise framing repair ONLY of the supplied production soul icon. Preserve exact red/gold kabuto, single katana, red cord and red/gold flames, all existing detail, painting, colors, transparency. Uniformly shrink the ENTIRE existing collectible including all flame curls and sparks to fit inside central76% width and76%height of same square canvas, leaving at least12% fully empty genuinely transparent margin on ALL4 sides. Current leftmost flame/sparks approach image edge; ALL tips/particles must be fully visible and detached from edges. Do not redraw item, change design, add other items, crop, rotate or recolor. No text, matte, backdrop, grid, ground, labels. TrueRGBAtransparency outside and naturalgaps, stronglyopaque materialcores. Complete swordhilt/blade/crest/flameends safelywithin canvas.",
+  "notes": [
+    "Native generated RGBA pixels preserved without resizing, recoloring, compositing or matte removal.",
+    "Complete katana, kabuto crest, cord and spirit curls fit within canvas.",
+    "Production framing repair retained approved design and created safe empty margins.",
+    "Register through shared DPR-aware ART_INVENTORY.items renderer; integrator owns metadata, runtime and colormaps."
+  ]
+}

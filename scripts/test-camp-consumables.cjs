@@ -46,7 +46,7 @@ for(const [selected,meat,tea,brew,expected] of [
  assert(r('Merchant.useQuick()'));assert.equal(r('quickHeal'),expected);assert.equal(r('saved.quickHeal'),expected);validate(r('saved'));
 }
 {
- const h=setup(),r=h.run;r("campServices.potions=1;player.hp=1;quickHeal='roastMeat';");h.press('o');h.tick();h.release('o');assert.equal(r('campServices.potions'),0);assert.equal(r('player.hp'),4,'Default O dispatches to the available brew');
+ const h=setup(),r=h.run;r("campServices.potions=1;player.hp=1;quickHeal='roastMeat';");h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('campServices.potions'),0);assert.equal(r('player.hp'),4,'The configured healing action dispatches to the available brew');
  r('campServices.potions=1;player.hp=1;Inventory.open();');assert(!r('Merchant.useQuick()'),'Quick input cannot bypass an inventory overlay');assert(r("Merchant.selectQuick('healingBrew')"));assert(!r("Merchant.selectQuick('forestHerb')"));
 }
 {

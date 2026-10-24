@@ -17,7 +17,7 @@ const CampWorkshop=(()=>{
   if(request.type==='equip')return equipOwned(request.weapon);
   const outcome=CampServiceRules.transact(campServices,coins,request,{equipped:weaponStyle,smithRescued:(flags[0].includes('smithRescued')||DevSession.active)&&kind()==='forge',herbalistRescued:(flags[0].includes('herbalistRescued')||DevSession.active)&&kind()==='herbal'});
   if(!outcome.ok){if(outcome.reason==='insufficientCoins')$('campServiceStatus').textContent=I18n.t('merchant.insufficient');if(outcome.reason==='insufficientHerbs')$('campServiceStatus').textContent=I18n.t('service.herbs.insufficient');return false;}
-  campServices=outcome.state;coins=outcome.coins;persist();updateHUD();render();return true;
+  campServices=outcome.state;coins=outcome.coins;if(request.type==='brew'&&!flags[0].includes('herbalistQuestTurnedIn'))flags[0].push('herbalistQuestTurnedIn');persist();updateHUD();render();return true;
  }
  function button(parent,label,request,disabled=false){
   const node=document.createElement('button'),token=revision;node.type='button';node.id='campAction-'+(request.type||'placeholder')+'-'+(request.weapon||'');node.textContent=label;node.disabled=disabled;
@@ -54,6 +54,9 @@ const CampWorkshop=(()=>{
  function open(service){
   if(state!=='play'||!accessible()||service!==kind())return false;
   if(service==='herbal'&&!flags[0].includes('herbalistQuestAccepted')){flags[0].push('herbalistQuestAccepted');persist();}
+  if(service==='herbal')flags[0]=flags[0].filter(id=>id!=='herbalistQuestTurnedIn');
+  if(service==='mystic'&&!flags[0].includes('serpentRitualKnown'))flags[0].push('serpentRitualKnown');
+  persist();
   returnFocus=document.activeElement;opened=true;state='campService';keys.clear();pressed.clear();$('campService').hidden=false;render();$('closeCampService').focus();return true;
  }
  function init(){

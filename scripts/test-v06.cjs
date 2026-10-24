@@ -11,7 +11,7 @@ for(const owned of [false,true]){
   assert.equal(snap().progression.totalXp,400);assert.equal(snap().shards,20);assert(run("flags[1].includes('councilKeyEarned')"));
   validateSave(run('saved'));
   run('guardianDefeated();mainMenu();startGame(true)');assert.equal(snap().abilities[1],owned);assert.equal(snap().progression.totalXp,400);
-  press('k');tick();release('k');assert.equal(run('dash>0'),owned,'Actual dash input must match ownership after Continue');
+  press({action:'dash'});tick();release({action:'dash'});assert.equal(run('dash>0'),owned,'Actual dash input must match ownership after Continue');
   run('revive();persist()');assert.equal(snap().abilities[1],owned);validateSave(run('saved'));
   run('showTraining()');assert.equal(elements.get('spiritTraining').hidden,!owned);run('closeTraining()');
   const portal=run('level.exit');place(portal.x,portal.y);press('e');tick();release('e');dismiss();
@@ -20,7 +20,7 @@ for(const owned of [false,true]){
   assert(run("fastTravel(yomi.rests.find(r=>r.id==='lower'),1)"));
   const altar=run('level.ability');place(altar.x,altar.y);press('e');tick();release('e');dismiss();
   assert(snap().abilities[1],'The skipped altar must still grant dash after victory and returning from heaven');validateSave(run('saved'));
-  run('mainMenu();startGame(true)');assert(snap().abilities[1]);press('k');tick();release('k');assert(run('dash>0'));
+  run('mainMenu();startGame(true)');assert(snap().abilities[1]);press({action:'dash'});tick();release({action:'dash'});assert(run('dash>0'));
 }
 
 // Both UI and direct purchase reject spirit training until the actual ability is acquired.
@@ -41,7 +41,7 @@ for(const id of ['angelHalo','demonHorn']){
   const o=run(`level.objects.find(o=>o.id==='${id}')`);place(o.x,o.y);assert(!run(`relicUnlocked(level.objects.find(o=>o.id==='${id}'))`));press('e');tick();release('e');assert(!snap().relics.includes(id));
   const enemy=run(`enemies.find(e=>e.id==='${o.guardian}')`);assert(enemy.miniboss);assert(enemy.hp>=36);assert(run(`secretKnown('${o.secretArea}')`));
   const before=snap().progression.totalXp;run(`var guard=enemies.find(e=>e.id==='${o.guardian}');guard.phase='wait';guard.clock=999;`);place(run('guard.x-65'),run('guard.y+guard.h'));run('player.face=1;');
-  for(let i=0;i<30&&!run('guard.dead');i++){press('j');tick(60);release('j');}
+  for(let i=0;i<30&&!run('guard.dead');i++){press({action:'attack'});tick(60);release({action:'attack'});}
   assert(run('guard.dead'),'Timed Momo sword hits cannot defeat '+o.guardian);run('killEnemy(guard);');place(o.x,o.y);
   assert.equal(snap().progression.totalXp-before,id==='angelHalo'?80:95);
   press('e');tick();release('e');assert(snap().relics.includes(id));dismiss();
@@ -51,7 +51,7 @@ run('persist();mainMenu();startGame(true);');assert.deepEqual(Array.from(snap().
 run("showMap();var discoveredMap=$('mapContent').children[0].innerHTML;closeMap();");assert(run('discoveredMap.length>initialMap.length'));
 
 // The inconspicuous stone seal is solid until an ordinary, timed sword hit breaks it.
-run("flags=levels.map(()=>[]);defeated[0]=false;enterRealm(0);state='play';enemies=[];");place(4550,1510);run("player.face=-1;var wall=level.gates.find(g=>g.id==='cultEntrance');");assert(!run('gatePass(wall)'));press('j');tick(12);release('j');assert(!run('gatePass(wall)'));tick(12);assert(run('gatePass(wall)'));assert(snap().flags[0].includes('cultEntrance'));
+run("flags=levels.map(()=>[]);defeated[0]=false;enterRealm(0);state='play';enemies=[];");place(4550,1510);run("player.face=-1;var wall=level.gates.find(g=>g.id==='cultEntrance');");assert(!run('gatePass(wall)'));press({action:'attack'});tick(12);release({action:'attack'});assert(!run('gatePass(wall)'));tick(12);assert(run('gatePass(wall)'));assert(snap().flags[0].includes('cultEntrance'));
 run("defeated[0]=true;");assert(!run("gatePass(level.gates.find(g=>g.kind==='secretRock'))"),'Realm boss defeat must not erase the cave structure');
 
 // Each mini has three actual attacks; tells lock facing, and spells/hazards release afterwards.

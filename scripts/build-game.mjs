@@ -46,7 +46,7 @@ for(const name of files)runtime+=`\n/* ${name}.js */\n${readSource('assets/js/'+
 runtime+='})();\n';
 const output=path.join(root,'assets/js/runtime.js');
 const entryPath=path.join(root,'index.html'),entry=fs.readFileSync(entryPath,'utf8');
-const updatedEntry=synchronizeEntry(entry,release.version,locales.hu.dict['menu.version']);
+const updatedEntry=synchronizeEntry(entry,release.version,locales.hu.dict['menu.version'],locales.hu.dict['menu.changelog.current']);
 if(process.argv.includes('--check')){
   if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==runtime){console.error('runtime.js is out of date; run node scripts/build-game.mjs');process.exitCode=1;}
   else console.log('PASS: generated runtime is current.');

@@ -798,7 +798,19 @@
       "serpent.move.holyFan": "Fénynyilak",
       "serpent.move.shadowSweep": "Árnysöprés",
       "menu.changelog.0940.title": "A három birodalom kígyói",
-      "menu.changelog.0940.serpents": "Japán rejtett barlangjában fehér kígyó, a mennyország keleti szélén szárnyas kígyó vár. Három pikkelyüket Fumi egy felszerelhető, +20 páncélt adó talizmánná egyesítheti."
+      "menu.changelog.0940.serpents": "Japán rejtett barlangjában fehér kígyó, a mennyország keleti szélén szárnyas kígyó vár. Három pikkelyüket Fumi egy felszerelhető, +20 páncélt adó talizmánná egyesítheti.",
+      "item.campMasterSoul": "A Tábormester lelke",
+      "inventory.description.campMasterSoul": "A parancsnok lelkében még visszhangzik az utolsó parancs. A vörös páncél mögött foglyul ejtett Kiba végre elcsendesül.",
+      "camp.master.victory": "A Tábormester kardja a porba hull. A ketrecek felől még hallatszik lélegzet. Momo a foglyok felé fordul.",
+      "camp.master.execution.warning": "Az íjászok a foglyokat célozzák! Győzd le őket vagy a Tábormestert: {0} mp.",
+      "camp.master.failed": "Az íjászok elengedik a húrt. Momo egy pillanattal később ér oda, mint kellett volna. A kísérlet újrakezdhető; a foglyok sorsa még megváltoztatható.",
+      "camp.master.retry": "Újrapróbálom",
+      "menu.changelog.0941.title": "Tábori javítások és küldetésjelölések",
+      "menu.changelog.0941.camp": "A szamurájtábor részletesebb látványt és egységes támadásjelzéseket kapott. A Tábormester ugrással, erősítéssel és megakadályozható kivégzéssel támad; győzelemkor párbeszéd és lélekjutalom jár. A belső terek stabilak maradnak támadáskor, az inventory mutatja Momo harci értékeit, Japánban több gyógynövény gyűjthető. A küldetésadók ! és ? jelölése mutatja az elérhető és leadható feladatokat.",
+      "menu.changelog.0941.serpentFixTitle": "Verziójelölés és kígyóarénák javítása",
+      "menu.changelog.0941.serpentFixes": "A Jelenlegi kiadás jelölése automatikusan követi az aktív verziót. A japán és mennyországi kígyóarénák háttere finoman vált át, támadásjelzéseik pedig a közös bossjelzések színét használják.",
+      "menu.changelog.0942.title": "Új alapirányítás",
+      "menu.changelog.0942.controls": "A normál támadás alapból a bal, az erős támadás a jobb egérgombbal használható. A dash a Shift, a gyógyító tárgy a Q gombot kapta. A UK és francia profilok a saját billentyűzetükhöz igazodnak; a meglévő egyéni kiosztások megmaradnak."
     }
   },
   "en": {
@@ -1600,7 +1612,19 @@
       "serpent.move.holyFan": "Light arrows",
       "serpent.move.shadowSweep": "Shadow sweep",
       "menu.changelog.0940.title": "Serpents of the three realms",
-      "menu.changelog.0940.serpents": "A white serpent waits in Japan’s hidden cave, and a winged serpent at heaven’s eastern edge. Fumi can unite the three scales into an equippable talisman granting +20 armor."
+      "menu.changelog.0940.serpents": "A white serpent waits in Japan’s hidden cave, and a winged serpent at heaven’s eastern edge. Fumi can unite the three scales into an equippable talisman granting +20 armor.",
+      "item.campMasterSoul": "Soul of the Camp Master",
+      "inventory.description.campMasterSoul": "The commander's last order still echoes within his soul. The Kiba trapped behind the crimson armor finally falls silent.",
+      "camp.master.victory": "The Camp Master's sword falls into the dust. Breathing can still be heard from the cages. Momo turns toward the prisoners.",
+      "camp.master.execution.warning": "The archers are targeting the prisoners! Defeat them or the Camp Master: {0}s.",
+      "camp.master.failed": "The archers loose their arrows. Momo arrives a moment too late. You can retry the encounter; the prisoners' fate can still be changed.",
+      "camp.master.retry": "Retry",
+      "menu.changelog.0941.title": "Camp fixes and quest markers",
+      "menu.changelog.0941.camp": "The Samurai Camp has more detailed scenery and consistent attack warnings. The Camp Master uses jumping attacks, reinforcements and a preventable execution; victory grants a dialogue and a soul. Interiors remain stable during attacks, the inventory shows Momo's combat stats, and Japan has more herbs to gather. Quest givers use ! and ? markers for available quests and ready turn-ins.",
+      "menu.changelog.0941.serpentFixTitle": "Release marker and serpent arena fixes",
+      "menu.changelog.0941.serpentFixes": "The Current release marker automatically follows the active version. The Japan and heaven serpent arenas now blend smoothly into their backgrounds, and their attack warnings use the shared boss warning color.",
+      "menu.changelog.0942.title": "New default controls",
+      "menu.changelog.0942.controls": "Normal attacks now use the left mouse button and heavy attacks use the right mouse button by default. Dash uses Shift, and healing items use Q. UK and French profiles follow their keyboard layouts; existing custom bindings are preserved."
     }
   }
 }

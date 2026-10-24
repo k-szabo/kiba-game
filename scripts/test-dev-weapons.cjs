@@ -73,7 +73,7 @@ run('persist()');assert.equal(run('JSON.stringify(saved)'),originalSave);assert.
 assert(run('DevTeleport.teleport({realm:"dream",rest:"dream"})'));assert(run('Prologue.active'));
 for(const id of ids){
  assert(run('DevWeapons.equip({weapon:'+JSON.stringify(id)+'})'));
- run('DevTools.close();attackCooldown=0;player.stun=0');h.press('j');h.tick();h.release('j');
+ run('DevTools.close();attackCooldown=0;player.stun=0');h.press({action:'attack'});h.tick();h.release({action:'attack'});
  assert(run('attack>0'),'Equipped '+id+' attacks in the dream');
  run('DevTools.open()');
 }

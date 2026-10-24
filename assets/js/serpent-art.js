@@ -3,11 +3,27 @@
 const SerpentArt=(()=>{
  const areas={whiteSerpentCave:{image:'whiteSerpentBackdrop',sourceFloor:605,worldFloor:1790},wingedSerpentRoost:{image:'wingedSerpentBackdrop',sourceFloor:512,worldFloor:2500}};
  const hasBackdrop=area=>Object.hasOwn(areas,area?.id);
- function backdrop(secretState){
-  if(!secretState||!hasBackdrop(secretState.area))return;
-  const a=areas[secretState.area.id],image=Visuals.images[a.image];if(!image?.complete||!image.naturalWidth)return;
-  const s=Math.max(viewW/2172,H/724,secretState.area.w/2172),width=2172*s,height=724*s;
-  ctx.save();ctx.globalAlpha*=secretState.alpha;ctx.drawImage(image,secretState.area.x+(secretState.area.w-width)/2-camera,a.worldFloor-a.sourceFloor*s-cameraY,width,height);ctx.restore();
+ let painted=null;
+ function resetBackdrop(){painted=null;}
+ function backdropState(){return painted?Object.freeze({area:painted.area,alpha:painted.alpha}):null;}
+ function updateBackdrop(dt){
+  if(state!=='play'||Prologue.active||!Number.isFinite(dt)||dt<=0)return;
+  if(painted?.map!==level)painted=null;
+  const selected=Visuals.secretBackdropState(),target=selected&&hasBackdrop(selected.area)?selected:null;
+  if(target&&painted?.area!==target.area)painted={map:level,area:target.area,alpha:0};
+  if(!painted)return;
+  const wanted=target?.alpha||0,step=dt*2.8;
+  painted.alpha=clamp(painted.alpha+clamp(wanted-painted.alpha,-step,step),0,1);
+  if(!target&&painted.alpha===0)painted=null;
+ }
+ function backdrop(){
+  if(state==='menu'||!painted||painted.map!==level||painted.alpha<=0)return;
+  const a=areas[painted.area.id],image=Visuals.images[a.image];if(!image?.complete||!image.naturalWidth)return;
+  // Secret scenery covers the viewport like the cave/tower backdrops. A world-
+  // sized bitmap exposed its hard edges while the camera entered the arena.
+  const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*s,height=image.naturalHeight*s,
+   drift=clamp((camera+viewW/2-painted.area.x-painted.area.w/2)*.08,-(width-viewW)/2,(width-viewW)/2);
+  ctx.save();ctx.globalAlpha*=painted.alpha;ctx.drawImage(image,(viewW-width)/2-drift,(H-height)*.35,width,height);ctx.restore();
  }
  function pose(e){
   const white=e.serpentType==='white';
@@ -18,7 +34,7 @@ const SerpentArt=(()=>{
   return reducedMotion.matches?0:[0,7][Math.floor(e.animTime*4)%2];
  }
  function outline(b,color){
-  ctx.save();ctx.strokeStyle='#10283f';ctx.lineWidth=6;ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.strokeStyle=color;ctx.lineWidth=3;ctx.setLineDash([9,6]);ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.restore();
+  BossCues.box(b,color);
  }
  function actor(e){
   if(!Serpents.is(e)||e.serpentType==='lava')return false;
@@ -30,10 +46,10 @@ const SerpentArt=(()=>{
   ctx.fillStyle='#10283fee';ctx.fillRect(x-width/2,top,width,50);ctx.fillStyle='#fff0bd';ctx.fillText(label,x,top+20);ctx.fillStyle='#070e18';ctx.fillRect(x-width/2+8,top+31,width-16,9);ctx.fillStyle=color;ctx.fillRect(x-width/2+8,top+31,(width-16)*Math.max(0,e.hp/e.maxHp),9);
   if(e.phase==='windup'){
    const text=I18n.t('serpent.move.'+e.move),w=ctx.measureText(text).width+22;ctx.fillStyle='#10283fee';ctx.fillRect(x-w/2,feet+9,w,28);ctx.fillStyle='#fff0bd';ctx.fillText(text,x,feet+29);
-   if(e.attackBox)outline(e.attackBox,color);
+   if(e.attackBox)outline(e.attackBox,BossCues.color);
   }
   for(const h of e.hazards){
-   if(!h.active){outline(h,color);BossVFX.marker(h.x+h.w/2,h.y+h.h,h.w,color);}
+   if(!h.active){outline(h,BossCues.color);BossVFX.marker(h.x+h.w/2,h.y+h.h,h.w,BossCues.color);}
    else{ctx.save();ctx.filter='hue-rotate(145deg) saturate(.65) brightness(1.15)';BossVFX.stamp('impact',h.x+h.w/2,h.y+h.h-h.h/2,h.w*1.2,h.h*1.3);ctx.restore();}
   }
   if(e.phase==='strike'&&['bite','shadowSweep'].includes(e.move))BossVFX.slash(white?'slashGold':'slashShadow',x+e.attackFace*75,feet-e.h*.45,190,115,e.attackFace,Math.min(1,e.attackElapsed/e.attackDuration));
@@ -43,5 +59,5 @@ const SerpentArt=(()=>{
   if(p.serpentType!=='white')return false;
   ctx.save();ctx.filter='hue-rotate(145deg) saturate(.65) brightness(1.15)';Visuals.projectile({...p,kind:'holyArrow'});ctx.restore();return true;
  }
- return Object.freeze({areas,hasBackdrop,backdrop,actor,projectile,pose});
+ return Object.freeze({areas,hasBackdrop,backdrop,backdropState,updateBackdrop,resetBackdrop,actor,projectile,pose});
 })();

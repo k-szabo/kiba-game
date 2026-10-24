@@ -5,7 +5,12 @@ const draw=new Proxy({createLinearGradient(){return{addColorStop(){}}},createRad
 const storage=new Map(),sandbox={console,Math,Set,JSON,Image:class{complete=true;naturalWidth=1536;addEventListener(){}},document:{getElementById(id){if(!elements.has(id))elements.set(id,el());return elements.get(id);},createElement:el,querySelectorAll(){return[]}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},innerWidth:1280,innerHeight:720,devicePixelRatio:1,addEventListener(){},matchMedia:()=>({matches:false}),requestAnimationFrame(){}};
 sandbox.window=sandbox;sandbox.document.getElementById('world').getContext=()=>draw;vm.createContext(sandbox);
 const inputFile=process.argv[2]||require('node:path').join(__dirname,'../assets/js/game.js');let source=fs.readFileSync(inputFile,'utf8');if(source.startsWith('<!doctype'))source=source.match(/<script>([\s\S]*)<\/script>/)[1];else {const dir=require('node:path').dirname(inputFile);const files=['keybindings.js','levels.js','camp-services.js','serpent-relics.js','camp-health.js','art-data.js','boss-vfx.js','graphics.js','armor.js','weapons.js','weapon-equipment.js','weapon-selection.js','progression.js','serpents.js','combat.js','camp-master.js','doom-slayer.js','slayer-art.js','serpent-art.js','shadow-realm.js','shadow-animation.js','prologue.js','inventory.js','merchant.js','compass.js','slayer-dialog.js','bug-report.js','dev-session.js','dev-tools.js','dev-boss.js','dev-teleport.js','dev-level.js','dev-items.js','dev-abilities.js','dev-weapons.js','dev-immortality.js','dev-damage.js','camp-quest.js','camp-workshop.js','camp-herbs.js','camp-art.js'].filter(f=>fs.existsSync(require('node:path').join(dir,f)));source=files.map(f=>fs.readFileSync(require('node:path').join(dir,f),'utf8')).join('\n')+'\n'+source;}vm.runInContext(bootstrap.before+source+bootstrap.after,sandbox);
-const run=s=>vm.runInContext(s,sandbox),snap=()=>sandbox.momo.getState(),tick=(n=1)=>run(`for(let i=0;i<${n};i++)update(1/120);`),press=k=>run(`handleKeyDown({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')},repeat:false,preventDefault(){}});`),release=k=>run(`handleKeyUp({key:${JSON.stringify(k)},code:${JSON.stringify(k===' '?'Space':'')}});`),dismiss=()=>{for(let n=0;snap().state==='dialog'&&n<50;n++)elements.get('dialogOk').onclick();assert.notEqual(snap().state,'dialog','Story paging must terminate');if(run("state==='weaponSelection'"))run('WeaponSelection.confirm()');};
+const run=s=>vm.runInContext(s,sandbox),snap=()=>sandbox.momo.getState(),tick=(n=1)=>run(`for(let i=0;i<${n};i++)update(1/120);`),dismiss=()=>{for(let n=0;snap().state==='dialog'&&n<50;n++)elements.get('dialogOk').onclick();assert.notEqual(snap().state,'dialog','Story paging must terminate');if(run("state==='weaponSelection'"))run('WeaponSelection.confirm()');};
+  // Explicit action inputs resolve the selected profile and enter the real
+  // keyboard/mouse handlers. Literal keys are intentionally never translated.
+  const keyFor=value=>value&&typeof value==='object'?run('Bindings.read('+JSON.stringify(value.action)+')[0]'):value;
+  const sendInput=(value,down)=>{const key=keyFor(value);if(/^mouse[0-4]$/.test(key))return run('handleMouse'+(down?'Down':'Up')+'({button:'+Number(key.slice(5))+',pointerType:"mouse",target:canvas,preventDefault(){},stopPropagation(){}})');return run((down?'handleKeyDown':'handleKeyUp')+'({key:'+JSON.stringify(key)+',code:'+JSON.stringify(key===' '?'Space':'')+',repeat:false,preventDefault(){}})');};
+  const press=value=>sendInput(value,true),release=value=>sendInput(value,false);
 const place=(x,y)=>run(`initPlayer({x:${x},y:${y}});player.onGround=true;player.inv=999;`);
 run('startGame();Prologue.wake();');dismiss();tick(30);assert.equal(snap().world.width,10400);assert.equal(snap().player.y+69,1000);
 // Real keyboard path, second jump, repeat suppression, and landing recharge.
@@ -20,7 +25,7 @@ function defeat(){
   // The route fixture relocates between authored combat surfaces, as it does
   // between checkpoints; hits still use the real key, sword timing and damage.
   if(snap().realm===1){const target=run("boss.yomiStage==='shelter'?boss.serpent:boss");place(target.x-60,target.y+target.h);run('player.face=1;');}
-  press('j');tick(60);release('j');
+  press({action:'attack'});tick(60);release({action:'attack'});
  }assert(snap().boss.dead);dismiss();
 }
 defeat();let exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('e');assert.equal(snap().realm,1);dismiss();assert.equal(snap().world.height,6250);
@@ -36,7 +41,7 @@ for(const id of ['soulUpper','soulLower']){
   for(let i=0;i<16;i++){
    const e=run(`enemies.find(e=>e.id===${JSON.stringify(guard)})`);if(e.dead)break;
    place(e.x-(e.kind==='shield'?40:55),e.y+e.h-(e.kind==='shield'?58:0));run(`player.face=1;${e.kind==='shield'?'player.onGround=false;':''}`);
-   press('j');tick(60);release('j');
+   press({action:'attack'});tick(60);release({action:'attack'});
   }
   assert(run(`enemies.find(e=>e.id===${JSON.stringify(guard)}).dead`),'cage guard survived route combat: '+guard);
  }
@@ -49,7 +54,7 @@ defeat();exit=run('level.exit');place(exit.x,exit.y);press('e');tick();release('
 // Wind is a real physical lift; the ascending camera follows it.
 place(635,6300);press(' ');tick(180);release(' ');assert(snap().player.y+69<5900);assert(snap().cameraY<5500);
 // The horizontal dawn seal blocks upward travel and can be cut FROM BELOW.
-place(1980,1130);run('player.y=1078;player.onGround=false;');press('j');tick(30);release('j');assert(snap().flags[2].includes('dawnSeal'));
+place(1980,1130);run('player.y=1078;player.onGround=false;');press({action:'attack'});tick(30);release({action:'attack'});assert(snap().flags[2].includes('dawnSeal'));
 // Moving clouds carry a grounded player, rather than moving out from under them.
 run("const cloud=platforms.find(p=>p.kind==='moving');initPlayer({x:cloud.x+90,y:cloud.y});player.onGround=true;player.support=cloud.id;");const cloudBefore=snap().player.x;run('movingPlatforms(.25);');assert.notEqual(snap().player.x,cloudBefore);
 defeat();const father=run('level.father');place(father.x,father.y);press('e');tick();release('e');assert.equal(JSON.parse(storage.get('momo-three-worlds-v2')).won,false);assert.equal(snap().realm,3);assert(snap().flags[2].includes('shadowEntered'));dismiss();assert.equal(snap().state,'play');
@@ -142,7 +147,7 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
  for(const dt of [1/120,1/60,1/30])for(const face of [-1,1])for(const gap of [150,180,200])for(const keepMoving of [false,true]){
   run(`Prologue.stop();abilities=[true,true];defeated=[false,false,false,false];flags=[[],[],[],[]];enterRealm(1);state='play';enemies=[];var veil=level.gates.find(g=>g.kind==='shadow');initPlayer({x:${face}>0?veil.x-${gap}-21.5:veil.x+veil.w+${gap}+21.5,y:3900});player.face=${face};player.onGround=false;player.inv=999;keys.clear();pressed.clear();`);
   if(keepMoving)press(face>0?'d':'a');
-  press('k');run(`update(${dt});`);release('k');
+  press({action:'dash'});run(`update(${dt});`);release({action:'dash'});
   let overlapped=false;
   for(let i=0;i<40;i++){
    if(run('dash<=0'))break;
@@ -165,7 +170,7 @@ console.log('PASS: hidden tower requires double jump; sealed cult cave cannot be
   run(`enterRealm(1);state='play';enemies=[];initPlayer({x:${face}>0?veil.x-31.5:veil.x+veil.w+31.5,y:3900});player.face=${face};player.onGround=false;keys.clear();pressed.clear();`);
   press(face>0?'d':'a');run('for(let i=0;i<20;i++)update(1/120);');
   assert(run(face>0?'player.x+player.w<=veil.x':'player.x>=veil.x+veil.w'),'Closed veil must block normal movement');
-  press('k');run('for(let i=0;i<24;i++)update(1/120);');release('k');
+  press({action:'dash'});run('for(let i=0;i<24;i++)update(1/120);');release({action:'dash'});
   assert(run(face>0?'player.x>=veil.x+veil.w':'player.x+player.w<=veil.x'),'Active dash must cross the veil');
  }
  // Pause must keep a phased player frozen, then resolve safely on resuming.

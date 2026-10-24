@@ -60,12 +60,12 @@ for(const dt of [1/30,1/60,1/120])for(const face of [-1,1]){
  for(const defeatedJapan of [false,true]){
   reset({dashAbility:false,defeatedJapan});
   run(`var cultWall=level.gates.find(g=>g.id==='cultWestWall');initPlayer({x:${face}>0?cultWall.x-31.5:cultWall.x+cultWall.w+31.5,y:2160});player.face=${face};`);
-  press(face>0?'d':'a');press('k');run(`for(let i=0;i<Math.ceil(.45/${dt});i++)update(${dt});`);release('k');
+  press(face>0?'d':'a');press({action:'dash'});run(`for(let i=0;i<Math.ceil(.45/${dt});i++)update(${dt});`);release({action:'dash'});
   assert(run(face>0?'player.x+player.w<=cultWall.x':'player.x>=cultWall.x+cultWall.w'),'No-dash ability fixture crossed the wall');
  }
  reset();
  run(`var cultWall=level.gates.find(g=>g.id==='cultWestWall');initPlayer({x:${face}>0?cultWall.x-31.5:cultWall.x+cultWall.w+31.5,y:2160});player.face=${face};`);
- press(face>0?'d':'a');press('k');run(`for(let i=0;i<Math.ceil(.25/${dt});i++)update(${dt});`);release('k');
+ press(face>0?'d':'a');press({action:'dash'});run(`for(let i=0;i<Math.ceil(.25/${dt});i++)update(${dt});`);release({action:'dash'});
  assert(run(face>0?'player.x>=cultWall.x+cultWall.w':'player.x+player.w<=cultWall.x'),'Full input dash did not cross');
  assert.equal(run('dash'),0);
  assert(!run('overlap(player,cultWall)'));
@@ -74,7 +74,7 @@ for(const dt of [1/30,1/60,1/120])for(const face of [-1,1]){
  // timer updates rather than forcing the final timer value in the test.
  reset();
  run(`var cultWall=level.gates.find(g=>g.id==='cultWestWall');initPlayer({x:${face}>0?cultWall.x-191.5:cultWall.x+cultWall.w+191.5,y:2160});player.face=${face};`);
- press(face>0?'d':'a');press('k');run(`update(${dt});`);release('k');let overlapped=run('overlap(player,cultWall)');
+ press(face>0?'d':'a');press({action:'dash'});run(`update(${dt});`);release({action:'dash'});let overlapped=run('overlap(player,cultWall)');
  for(let i=0;i<Math.ceil(.3/dt);i++){overlapped||=run('overlap(player,cultWall)');run(`update(${dt});`);}
  assert(overlapped,'Expiry fixture never entered wall');assert.equal(run('dash'),0);assert(!run('overlap(player,cultWall)'));
 }

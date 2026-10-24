@@ -28,12 +28,12 @@ for(const [kind,damage,impact,duration] of [['normal',1.5,.16,.42],['heavy',3.5,
  h.run("initPlayer(level.start);var mini=createEnemies().find(e=>e.miniboss);enemies=[mini];mini.active=true;mini.inv=0;player.x=mini.x-40;player.y=mini.y;player.face=1;");
  const miniHp=h.run('mini.hp');h.run("melee('heavy');advanceSwordAttack(.4)");close(h.run('mini.hp'),miniHp-3.5);
 }
-// Keyboard and remapped mouse inputs all drive the same attack. Heavy wins
+// Configured native mouse and remapped keyboard inputs share the attack path. Heavy wins
 // simultaneous inputs deterministically; repeated inputs cannot shorten it.
 {
- const h=target();h.press('j');h.press('h');h.tick();h.release('j');h.release('h');assert.equal(h.run('attackKind'),'heavy');
- const start=h.run('attackElapsed');h.press('j');h.tick();h.release('j');assert(h.run('attackElapsed')>start);assert.equal(h.run('attackKind'),'heavy');
- h.run("initPlayer(level.start);Bindings.setPrimary('heavyAttack','r')");h.press('h');h.tick();h.release('h');assert.equal(h.run('attack'),0);
+ const h=target();h.press({action:'attack'});h.press({action:'heavyAttack'});h.tick();h.release({action:'attack'});h.release({action:'heavyAttack'});assert.equal(h.run('attackKind'),'heavy');
+ const start=h.run('attackElapsed');h.press({action:'attack'});h.tick();h.release({action:'attack'});assert(h.run('attackElapsed')>start);assert.equal(h.run('attackKind'),'heavy');
+ const oldHeavy=h.run("Bindings.read('heavyAttack')[0]");h.run("initPlayer(level.start);Bindings.setPrimary('heavyAttack','r')");h.press(oldHeavy);h.tick();h.release(oldHeavy);assert.equal(h.run('attack'),0);
  h.press('r');h.tick();h.release('r');assert.equal(h.run('attackKind'),'heavy');
  h.run("initPlayer(level.start);Bindings.setPrimary('heavyAttack','mouse2');handleMouseDown({button:2,pointerType:'mouse',target:canvas,preventDefault(){}});");h.tick();h.run('handleMouseUp({button:2,preventDefault(){}})');assert.equal(h.run('attackKind'),'heavy');
 }
@@ -42,7 +42,7 @@ for(const [kind,damage,impact,duration] of [['normal',1.5,.16,.42],['heavy',3.5,
 for(const dream of [false,true])for(const fps of [30,60,120])for(const kind of ['normal','heavy']){
  const h=harness();h.run('DevTools.open();DevSession.begin();DevAbilities.acquire({ability:"double-jump"});DevAbilities.acquire({ability:"dash"})');
  if(dream)h.run('DevTeleport.teleport({realm:"dream",rest:"dream"})');h.run('DevTools.close()');
- const button=kind==='heavy'?'h':'j';h.press(button);h.press('k');h.press(' ');h.run(`update(${1/fps})`);h.release(button);h.release('k');h.release(' ');
+ const button={action:kind==='heavy'?'heavyAttack':'attack'};h.press(button);h.press({action:'dash'});h.press(' ');h.run(`update(${1/fps})`);h.release(button);h.release({action:'dash'});h.release(' ');
  assert.equal(h.run('attackKind'),kind);h.run(`for(let i=0;i<${fps*2};i++)update(${1/fps})`);
  assert(h.run('attack===0&&attackCooldown===0&&dash===0&&dashCooldown===0&&player.onGround'));
  h.press(button);h.run(`update(${1/fps})`);h.release(button);assert(h.run('attack>0'));

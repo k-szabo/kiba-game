@@ -23,9 +23,9 @@ try{
  assert.equal(r('coins'),390);assert.equal(r('meatCount'),3);assert.equal(r('player.hp'),2);assert.equal(r('randomCalls'),rng,'Buying food must not roll or consume it');validate(r('saved'));
  for(const id of ['__proto__','constructor','missing'])assert.equal(r(`Merchant.purchase(${JSON.stringify(id)})`),false);
  const blocked=snapshot();assert.equal(r('Merchant.eat()'),false);assert.equal(snapshot(),blocked);
- assert(r('Merchant.close()'));h.press('o');h.tick();h.release('o');assert.equal(r('meatCount'),2);assert.equal(r('player.hp'),4);assert.equal(r('randomCalls'),rng+1);
+ assert(r('Merchant.close()'));h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('meatCount'),2);assert.equal(r('player.hp'),4);assert.equal(r('randomCalls'),rng+1);
  r("handleKeyDown({key:'o',repeat:true,preventDefault(){}});");h.tick();assert.equal(r('meatCount'),2,'Key auto-repeat consumed food');
- r('Math.random=()=>{randomCalls++;return .9;};player.hp=1;');h.press('o');h.tick();h.release('o');assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),1);
+ r('Math.random=()=>{randomCalls++;return .9;};player.hp=1;');h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),1);
  const safe=r('JSON.stringify([player.inv,dash,player.vx,player.vy])');assert(r('Merchant.eat()'));assert.equal(r('player.hp'),1);assert.equal(r('meatCount'),0);assert.equal(r('JSON.stringify([player.inv,dash,player.vx,player.vy])'),safe);
  const empty=snapshot(),calls=r('randomCalls');assert.equal(r('Merchant.eat()'),false);assert.equal(snapshot(),empty);assert.equal(r('randomCalls'),calls);
  r("meatCount=1;Bindings.setPrimary('useMeat','mouse2');handleMouseDown({button:2,pointerType:'mouse',target:canvas,preventDefault(){}});input(0);pressed.clear();handleMouseUp({button:2,preventDefault(){}});");assert.equal(r('meatCount'),0,'Mouse food action consumes exactly one serving');

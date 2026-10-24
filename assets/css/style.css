@@ -285,3 +285,12 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 
 /* Equipment slots share the inventory icon contrast and stable sizing. */
 .inventory-character{min-height:410px;padding-right:120px}.inventory-weapon-slot{top:52%;transform:none;width:110px}.inventory-talisman-slot{position:absolute;right:0;top:6%;width:110px;text-align:center;font-size:15px;color:#ffebbf}.inventory-talisman-slot>span{display:block;font-weight:700;margin-bottom:5px}#inventoryTalisman{width:100%;padding:5px 8px;border:1px solid #dfc18c;background:#0e202ce8;display:grid;justify-items:center;gap:4px;font-size:13px!important;line-height:1.4}#inventoryTalismanArt{width:81px;height:81px;background:radial-gradient(ellipse at 50% 42%,#354858,#101a25 78%);filter:brightness(1.18) contrast(1.08) saturate(1.12)}#inventoryTalismanName{overflow-wrap:anywhere}
+
+/* Character values remain visible beside equipment, including fractional armor damage. */
+.inventory-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin:16px 0 0;padding:14px;border:1px solid #c6ab7480;border-radius:8px;background:#0c1b25}
+.inventory-stat{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.inventory-stat>span{font-size:15px;line-height:1.45;color:#f1dfb7;overflow-wrap:anywhere}
+.inventory-stat>strong{margin:0;font-size:18px;line-height:1.45;font-weight:700;color:#fff4d7;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.inventory-stat:first-child,.inventory-stat-armor{grid-column:1/-1}.inventory-stat-armor{font-size:16px;line-height:1.6;color:#fff4d7;overflow-wrap:anywhere}
+
+#campExecutionWarning{margin:10px 0 0;padding:10px 14px;border:2px solid #ffd487;border-radius:6px;background:#221626f2;color:#fff1cf;font:600 16px/1.4 "Kiba UI",sans-serif;text-align:center;white-space:normal;box-shadow:0 3px 16px #0009}

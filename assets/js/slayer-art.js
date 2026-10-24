@@ -41,7 +41,7 @@ const SlayerArt=(()=>{
    const x=h.x+h.w/2,feet=h.y+h.h,color=h.kind==='lightning'?'#a3e9ff':h.kind==='arrowWarning'?'#ffdd91':'#ffb07a';
    BossVFX.marker(x,feet,h.w+4,color);
    if(!h.active){
-    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.setLineDash([8,5]);ctx.strokeRect(h.x,h.y,h.w,h.h);ctx.restore();
+    BossCues.box(h,color);
     BossVFX.fissure(x,feet,h.w+8,.55);continue;
    }
    if(h.kind==='lightning')stamp(ART_SLAYER.lightning,x,feet,h.h);
@@ -74,8 +74,7 @@ const SlayerArt=(()=>{
   if(!e.active)return;
   if(e.phase==='windup'&&['flail','kick','grab','saw'].includes(e.move)){
    const width=e.move==='flail'?185:e.move==='grab'?105:140,left=e.attackFace>0?e.x+e.w*.4:e.x-width;
-   ctx.save();ctx.fillStyle='#ffe0a225';ctx.strokeStyle='#ffe1ad';ctx.lineWidth=2;ctx.setLineDash([8,5]);
-   ctx.fillRect(left,e.y-4,width+e.w*.6,e.h+12);ctx.strokeRect(left,e.y-4,width+e.w*.6,e.h+12);ctx.restore();
+   BossCues.box({x:left,y:e.y-4,w:width+e.w*.6,h:e.h+12},'#ffe1ad','#ffe0a225');
   }
   if(e.phase==='windup'&&['lightning','explosion'].includes(e.move)){
    BossVFX.marker(e.targetX,e.arena.y,e.move==='lightning'?420:260,e.move==='lightning'?'#a3e9ff':'#ffbd79');

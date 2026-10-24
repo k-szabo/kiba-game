@@ -7,7 +7,7 @@ for(const rate of [30,60,120])for(const style of ['katana','naginata','swordShie
  r('Prologue.wake()');assert.equal(r('state'),'dialog');assert.equal(r('saved.weaponChoicePending'),true);
  finishStory(h);assert.equal(r('state'),'weaponSelection');assert.equal(r('saved.weaponStyle'),'katana');
  const frozen=r('JSON.stringify([time,player,attack,attackCooldown,dash,dashCooldown,enemies,projectiles])');
- r('keys.add("d");pressed.add("j");for(let i=0;i<'+rate+';i++)update('+1/rate+');');
+ r('keys.add("d");pressed.add(Bindings.read("attack")[0]);for(let i=0;i<'+rate+';i++)update('+1/rate+');');
  assert.equal(r('JSON.stringify([time,player,attack,attackCooldown,dash,dashCooldown,enemies,projectiles])'),frozen,'Choice freezes gameplay at '+rate+' FPS');
  r('WeaponSelection.select('+JSON.stringify(style)+')');
  assert.equal(r('saved.weaponStyle'),'katana','Preview does not commit equipment');

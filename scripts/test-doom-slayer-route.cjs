@@ -46,10 +46,10 @@ for(const fps of [30,60,120])for(const sword of [false,true]){
   run("initPlayer({x:1191.5,y:450});player.inv=999;");
   press('a');run(`for(let i=0;i<${fps};i++)update(1/${fps});`);release('a');
   assert(run('player.x>=1170-1e-6'),'Closed seal allows walking into the annex');
-  press('k');run(`for(let i=0;i<${Math.ceil(fps*.25)};i++)update(1/${fps});`);release('k');
+  press({action:'dash'});run(`for(let i=0;i<${Math.ceil(fps*.25)};i++)update(1/${fps});`);release({action:'dash'});
   assert(run('player.x>=1170-1e-6'),'Closed fire seal allows Spirit Dash into the annex');
   assert(!run("flags[1].includes('slayerSeal')"),'Movement must not break the seal');
-  run('player.face=-1;');press('j');run(`for(let i=0;i<${Math.ceil(fps*.6)};i++)update(1/${fps});`);release('j');
+  run('player.face=-1;');press({action:'attack'});run(`for(let i=0;i<${Math.ceil(fps*.6)};i++)update(1/${fps});`);release({action:'attack'});
   assert.equal(run("flags[1].includes('slayerSeal')"),sword,'Only a Dawnblade melee hit may record the seal flag');
   assert.equal(run("gatePass(level.gates.find(g=>g.id==='slayerSeal'))"),sword);
   if(sword){

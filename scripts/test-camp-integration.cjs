@@ -28,7 +28,7 @@ function find(node,id){if(node.id===id)return node;return(node.children||[]).map
  r('initPlayer(levels[0].rests[0]);interact();initPlayer(CampHerbs.patches[0]);');assert.equal(r('CampHerbs.context().type'),'campHerb','Shrine rest regrows herbs');r('interact();');assert.equal(r('campServices.herbs'),4);
  r('player.y=level.height+200;movePlayer(1/120);initPlayer(CampHerbs.patches[0]);');assert.equal(r('CampHerbs.context().type'),'campHerb','Death regrows patches but retains gathered stock');assert.equal(r('campServices.herbs'),4);
  r("CampQuest.enter('herbalHut');initPlayer(herbalHut.servicePoint);CampWorkshop.open('herbal');");assert(r("CampWorkshop.action({type:'brew'})"));assert.equal(r('campServices.herbs'),1);assert.equal(r('campServices.potions'),1);validate(r('saved'));
- r("CampWorkshop.close();player.hp=1;quickHeal='healingBrew';");h.press('o');h.tick();h.release('o');assert.equal(r('player.hp'),4);assert.equal(r('campServices.potions'),0);
+ r("CampWorkshop.close();player.hp=1;quickHeal='healingBrew';");h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('player.hp'),4);assert.equal(r('campServices.potions'),0);
  const herbs=r('campServices.herbs');r('startGame(true);');assert.equal(r('campServices.herbs'),herbs);assert.equal(r('campServices.potions'),0);
 }
 {

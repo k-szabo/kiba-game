@@ -4,7 +4,7 @@ const harness=require('./test-harness.cjs');
 const root=path.join(__dirname,'..'),read=file=>fs.readFileSync(path.join(root,file),'utf8');
 for(const [width,height,blocked] of [[1280,720,false],[1920,1080,false],[2560,1440,false],[1279,720,true],[1280,719,true],[720,1280,true],[390,844,true],[1,1,true]]){
  const h=harness(),r=h.run;
- r("Bindings.setPrimary('attack','mouse2');keys.add('d');pressed.add('j');dash=.12;dashCooldown=.5;player.inv=.7;");
+ r("Bindings.setPrimary('attack','mouse2');keys.add('d');pressed.add(Bindings.read('attack')[0]);dash=.12;dashCooldown=.5;player.inv=.7;");
  const preferences=JSON.stringify([...h.storage]),writes=r('__saveSnapshots.length');
  h.sandbox.innerWidth=width;h.sandbox.innerHeight=height;h.sandbox.devicePixelRatio=2;r('resize()');
  assert.equal(r('resolutionBlocked'),blocked,`${width}x${height}`);

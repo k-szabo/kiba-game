@@ -32,8 +32,8 @@ for(const fps of [30,60,120]){
  assert(r("Merchant.purchase('roastMeat')"));assert.equal(r('meatCount'),1);assert.equal(r('teaCount'),1);r('Merchant.close();player.hp=1;');
  assert(!r("Merchant.selectQuick('roastMeat')"),'Selection requires inventory');r('Inventory.open();');
  assert(r("Merchant.selectQuick('roastMeat')"));assert.equal(r('saved.quickHeal'),'roastMeat');r('Inventory.close();Math.random=()=>0;');
- h.press('o');h.tick();h.release('o');assert.equal(r('player.hp'),3);assert.equal(r('meatCount'),0);assert.equal(r('quickHeal'),'tea');assert.equal(r('saved.quickHeal'),'tea');
- h.press('o');h.tick();h.release('o');assert.equal(r('teaCount'),0);assert.equal(r('player.hp'),3,'Quick tea starts the timer');
+ h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('player.hp'),3);assert.equal(r('meatCount'),0);assert.equal(r('quickHeal'),'tea');assert.equal(r('saved.quickHeal'),'tea');
+ h.press({action:'useMeat'});h.tick();h.release({action:'useMeat'});assert.equal(r('teaCount'),0);assert.equal(r('player.hp'),3,'Quick tea starts the timer');
  r('teaCount=2;quickHeal="tea";Bindings.setPrimary("useMeat","mouse2");Merchant.resetTea();player.hp=1;handleMouseDown({button:2,pointerType:"mouse",target:canvas,preventDefault(){}});input(0);pressed.clear();handleMouseUp({button:2,preventDefault(){}});');assert.equal(r('teaCount'),1);
  r('Merchant.resetTea();meatCount=1;quickHeal="tea";');assert(r('Merchant.drink()'));assert.equal(r('quickHeal'),'roastMeat','Last tea switches to remaining food');
  r('teaCount=1;Merchant.resetTea();quickHeal="tea";state="pause";');const before=r('JSON.stringify([player,teaCount,meatCount,quickHeal])');assert(!r('Merchant.useQuick()'));assert.equal(r('JSON.stringify([player,teaCount,meatCount,quickHeal])'),before);

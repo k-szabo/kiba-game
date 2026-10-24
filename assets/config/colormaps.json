@@ -98,7 +98,14 @@
     "campMaster": {
       "role": "miniboss",
       "faction": "japan",
-      "paletteGroup": "npc.campMaster"
+      "variants": {
+        "campMaster": {
+          "paletteGroup": "npc.campMaster.campMaster"
+        },
+        "campMasterJump": {
+          "paletteGroup": "npc.campMaster.campMasterJump"
+        }
+      }
     },
     "whiteSerpent": {
       "role": "miniboss",
@@ -371,6 +378,59 @@
     }
   },
   "objects": {
+    "samuraiCampPanel.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-west-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDWest",
+        "x": 0,
+        "w": 1620,
+        "sourceGround": 780,
+        "ground": 1000
+      }
+    },
+    "samuraiCampPanel.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-center-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDCenter",
+        "x": 1390,
+        "w": 1620,
+        "sourceGround": 730,
+        "ground": 1080
+      }
+    },
+    "samuraiCampPanel.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-east-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDEast",
+        "x": 2780,
+        "w": 1620,
+        "sourceGround": 730,
+        "ground": 1000
+      }
+    },
+    "samuraiCampTerrain.left": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.left"
+    },
+    "samuraiCampTerrain.middle": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.middle"
+    },
+    "samuraiCampTerrain.right": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.right"
+    },
+    "samuraiCampTerrain.roof": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.roof"
+    },
+    "samuraiCampTerrain.body": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.body"
+    },
     "campCedar": {
       "kind": "scenery",
       "paletteGroup": "object.campCedar"
@@ -434,6 +494,10 @@
     "swordRigid": {
       "kind": "rigid-weapon-prop",
       "asset": "assets/images/ui/sword-rigid-v1.png"
+    },
+    "inventoryItem.campMasterSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.campMasterSoul"
     },
     "inventoryItem.daisyPlush": {
       "kind": "inventory-icon",
@@ -2384,7 +2448,7 @@
         "dominantCoveragePercent": 100.0001
       }
     },
-    "npc.campMaster": {
+    "npc.campMaster.campMaster": {
       "source": "assets/images/enemies/camp-master-v1.png",
       "frameMetadata": "ART_CAMP_MASTER.frames",
       "frameCount": 15,
@@ -2483,6 +2547,107 @@
         ],
         "visibleSamples": 354566,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.campMaster.campMasterJump": {
+      "source": "assets/images/enemies/camp-master-jump-v1.png",
+      "frameMetadata": "ART_CAMP_MASTER.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 12.541
+          },
+          {
+            "hex": "#860b0b",
+            "coveragePercent": 10.069
+          },
+          {
+            "hex": "#bb0b0e",
+            "coveragePercent": 9.4697
+          },
+          {
+            "hex": "#5b0c07",
+            "coveragePercent": 9.4486
+          },
+          {
+            "hex": "#330904",
+            "coveragePercent": 9.1745
+          },
+          {
+            "hex": "#f00a15",
+            "coveragePercent": 8.9488
+          },
+          {
+            "hex": "#221c1c",
+            "coveragePercent": 8.3702
+          },
+          {
+            "hex": "#3c3335",
+            "coveragePercent": 6.5761
+          },
+          {
+            "hex": "#594f52",
+            "coveragePercent": 4.9974
+          },
+          {
+            "hex": "#f63b27",
+            "coveragePercent": 4.5091
+          },
+          {
+            "hex": "#854014",
+            "coveragePercent": 3.6003
+          },
+          {
+            "hex": "#f1962f",
+            "coveragePercent": 3.333
+          },
+          {
+            "hex": "#c06218",
+            "coveragePercent": 2.9227
+          },
+          {
+            "hex": "#fbcc66",
+            "coveragePercent": 2.8755
+          },
+          {
+            "hex": "#88746a",
+            "coveragePercent": 2.1055
+          },
+          {
+            "hex": "#ede9e0",
+            "coveragePercent": 1.0586
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f31519",
+            "coveragePercent": 27.1155
+          },
+          {
+            "hex": "#c3090f",
+            "coveragePercent": 21.765
+          },
+          {
+            "hex": "#930d0c",
+            "coveragePercent": 20.2068
+          },
+          {
+            "hex": "#ea7127",
+            "coveragePercent": 11.5844
+          },
+          {
+            "hex": "#a5531a",
+            "coveragePercent": 10.0376
+          },
+          {
+            "hex": "#fac052",
+            "coveragePercent": 9.2907
+          }
+        ],
+        "visibleSamples": 279176,
+        "dominantCoveragePercent": 100.0
       }
     },
     "npc.whiteSerpent": {
@@ -7535,6 +7700,511 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "object.samuraiCampTerrain.left": {
+      "source": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+      "frameMetadata": "ART_CAMP_TERRAIN.left",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070403",
+            "coveragePercent": 20.933
+          },
+          {
+            "hex": "#23180e",
+            "coveragePercent": 14.4934
+          },
+          {
+            "hex": "#3b3422",
+            "coveragePercent": 10.9924
+          },
+          {
+            "hex": "#564b43",
+            "coveragePercent": 8.844
+          },
+          {
+            "hex": "#5f451d",
+            "coveragePercent": 8.6634
+          },
+          {
+            "hex": "#48210f",
+            "coveragePercent": 7.0338
+          },
+          {
+            "hex": "#5d6572",
+            "coveragePercent": 4.8518
+          },
+          {
+            "hex": "#836a53",
+            "coveragePercent": 3.9246
+          },
+          {
+            "hex": "#846c1b",
+            "coveragePercent": 3.7356
+          },
+          {
+            "hex": "#88868c",
+            "coveragePercent": 3.6116
+          },
+          {
+            "hex": "#15504f",
+            "coveragePercent": 2.9646
+          },
+          {
+            "hex": "#eb0e1f",
+            "coveragePercent": 2.8265
+          },
+          {
+            "hex": "#c1951e",
+            "coveragePercent": 2.6454
+          },
+          {
+            "hex": "#9d080b",
+            "coveragePercent": 1.5724
+          },
+          {
+            "hex": "#b6aeab",
+            "coveragePercent": 1.5144
+          },
+          {
+            "hex": "#c7a162",
+            "coveragePercent": 1.393
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#916a29",
+            "coveragePercent": 29.0169
+          },
+          {
+            "hex": "#ed0e1f",
+            "coveragePercent": 23.1729
+          },
+          {
+            "hex": "#ba9119",
+            "coveragePercent": 18.6921
+          },
+          {
+            "hex": "#a7090c",
+            "coveragePercent": 12.805
+          },
+          {
+            "hex": "#d1a747",
+            "coveragePercent": 11.8121
+          },
+          {
+            "hex": "#39778b",
+            "coveragePercent": 4.501
+          }
+        ],
+        "visibleSamples": 226211,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.samuraiCampTerrain.middle": {
+      "source": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+      "frameMetadata": "ART_CAMP_TERRAIN.middle",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090603",
+            "coveragePercent": 20.6582
+          },
+          {
+            "hex": "#483219",
+            "coveragePercent": 14.8732
+          },
+          {
+            "hex": "#2c1b0d",
+            "coveragePercent": 14.3058
+          },
+          {
+            "hex": "#53483d",
+            "coveragePercent": 9.4815
+          },
+          {
+            "hex": "#68511c",
+            "coveragePercent": 7.1825
+          },
+          {
+            "hex": "#666363",
+            "coveragePercent": 6.1237
+          },
+          {
+            "hex": "#8a8381",
+            "coveragePercent": 4.6992
+          },
+          {
+            "hex": "#896643",
+            "coveragePercent": 4.6615
+          },
+          {
+            "hex": "#1d372c",
+            "coveragePercent": 4.0347
+          },
+          {
+            "hex": "#958316",
+            "coveragePercent": 2.9316
+          },
+          {
+            "hex": "#cb9f2e",
+            "coveragePercent": 2.5657
+          },
+          {
+            "hex": "#baa999",
+            "coveragePercent": 2.4683
+          },
+          {
+            "hex": "#1b6760",
+            "coveragePercent": 2.3656
+          },
+          {
+            "hex": "#ee0d1d",
+            "coveragePercent": 1.9525
+          },
+          {
+            "hex": "#ad080d",
+            "coveragePercent": 0.9187
+          },
+          {
+            "hex": "#650707",
+            "coveragePercent": 0.7773
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f6a31",
+            "coveragePercent": 33.7358
+          },
+          {
+            "hex": "#af8f17",
+            "coveragePercent": 23.1413
+          },
+          {
+            "hex": "#ed0c1c",
+            "coveragePercent": 17.3864
+          },
+          {
+            "hex": "#d2a843",
+            "coveragePercent": 14.0697
+          },
+          {
+            "hex": "#a5090c",
+            "coveragePercent": 8.0893
+          },
+          {
+            "hex": "#308984",
+            "coveragePercent": 3.5775
+          }
+        ],
+        "visibleSamples": 260925,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.samuraiCampTerrain.right": {
+      "source": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+      "frameMetadata": "ART_CAMP_TERRAIN.right",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070503",
+            "coveragePercent": 21.2003
+          },
+          {
+            "hex": "#42311b",
+            "coveragePercent": 14.2635
+          },
+          {
+            "hex": "#27180d",
+            "coveragePercent": 13.3236
+          },
+          {
+            "hex": "#544b44",
+            "coveragePercent": 9.6206
+          },
+          {
+            "hex": "#62491d",
+            "coveragePercent": 8.4421
+          },
+          {
+            "hex": "#6b666a",
+            "coveragePercent": 7.2821
+          },
+          {
+            "hex": "#8a6c2d",
+            "coveragePercent": 5.6791
+          },
+          {
+            "hex": "#8b878a",
+            "coveragePercent": 4.6445
+          },
+          {
+            "hex": "#1d3835",
+            "coveragePercent": 3.0554
+          },
+          {
+            "hex": "#bb9816",
+            "coveragePercent": 2.5797
+          },
+          {
+            "hex": "#f0111c",
+            "coveragePercent": 2.2757
+          },
+          {
+            "hex": "#cda15b",
+            "coveragePercent": 1.8582
+          },
+          {
+            "hex": "#21686a",
+            "coveragePercent": 1.8057
+          },
+          {
+            "hex": "#bcb0a5",
+            "coveragePercent": 1.674
+          },
+          {
+            "hex": "#b3090b",
+            "coveragePercent": 1.1624
+          },
+          {
+            "hex": "#6a0807",
+            "coveragePercent": 1.1332
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#916a2d",
+            "coveragePercent": 34.7545
+          },
+          {
+            "hex": "#b79615",
+            "coveragePercent": 19.6367
+          },
+          {
+            "hex": "#ee101b",
+            "coveragePercent": 19.299
+          },
+          {
+            "hex": "#d6a94f",
+            "coveragePercent": 11.8472
+          },
+          {
+            "hex": "#a7090a",
+            "coveragePercent": 9.7579
+          },
+          {
+            "hex": "#347b89",
+            "coveragePercent": 4.7048
+          }
+        ],
+        "visibleSamples": 221039,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.samuraiCampTerrain.roof": {
+      "source": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+      "frameMetadata": "ART_CAMP_TERRAIN.roof",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070603",
+            "coveragePercent": 20.1971
+          },
+          {
+            "hex": "#252216",
+            "coveragePercent": 13.4738
+          },
+          {
+            "hex": "#3f3c35",
+            "coveragePercent": 11.3672
+          },
+          {
+            "hex": "#535351",
+            "coveragePercent": 10.7588
+          },
+          {
+            "hex": "#61666f",
+            "coveragePercent": 9.5555
+          },
+          {
+            "hex": "#707a8a",
+            "coveragePercent": 8.4342
+          },
+          {
+            "hex": "#414311",
+            "coveragePercent": 5.3239
+          },
+          {
+            "hex": "#696815",
+            "coveragePercent": 4.2754
+          },
+          {
+            "hex": "#8c929e",
+            "coveragePercent": 3.7953
+          },
+          {
+            "hex": "#84785d",
+            "coveragePercent": 3.4153
+          },
+          {
+            "hex": "#9a900c",
+            "coveragePercent": 3.0982
+          },
+          {
+            "hex": "#e7d4b7",
+            "coveragePercent": 1.9528
+          },
+          {
+            "hex": "#cab086",
+            "coveragePercent": 1.8813
+          },
+          {
+            "hex": "#cabd0f",
+            "coveragePercent": 1.3541
+          },
+          {
+            "hex": "#e30f07",
+            "coveragePercent": 0.6045
+          },
+          {
+            "hex": "#881206",
+            "coveragePercent": 0.5124
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#918615",
+            "coveragePercent": 48.9849
+          },
+          {
+            "hex": "#bfb209",
+            "coveragePercent": 27.168
+          },
+          {
+            "hex": "#d1b85b",
+            "coveragePercent": 8.6391
+          },
+          {
+            "hex": "#e70e07",
+            "coveragePercent": 7.9231
+          },
+          {
+            "hex": "#9e1606",
+            "coveragePercent": 5.7242
+          },
+          {
+            "hex": "#517d9c",
+            "coveragePercent": 1.5608
+          }
+        ],
+        "visibleSamples": 65280,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "object.samuraiCampTerrain.body": {
+      "source": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+      "frameMetadata": "ART_CAMP_TERRAIN.body",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070403",
+            "coveragePercent": 19.7496
+          },
+          {
+            "hex": "#3f2815",
+            "coveragePercent": 13.3111
+          },
+          {
+            "hex": "#24160b",
+            "coveragePercent": 11.7878
+          },
+          {
+            "hex": "#463d2f",
+            "coveragePercent": 9.3256
+          },
+          {
+            "hex": "#5f524b",
+            "coveragePercent": 9.2349
+          },
+          {
+            "hex": "#604420",
+            "coveragePercent": 7.373
+          },
+          {
+            "hex": "#6c6a6e",
+            "coveragePercent": 5.8427
+          },
+          {
+            "hex": "#7a6c25",
+            "coveragePercent": 4.1584
+          },
+          {
+            "hex": "#8d8b8f",
+            "coveragePercent": 3.905
+          },
+          {
+            "hex": "#977557",
+            "coveragePercent": 3.6785
+          },
+          {
+            "hex": "#134036",
+            "coveragePercent": 2.6932
+          },
+          {
+            "hex": "#beaa98",
+            "coveragePercent": 2.5681
+          },
+          {
+            "hex": "#206e67",
+            "coveragePercent": 2.1554
+          },
+          {
+            "hex": "#e90b1c",
+            "coveragePercent": 1.8015
+          },
+          {
+            "hex": "#b1a025",
+            "coveragePercent": 1.5468
+          },
+          {
+            "hex": "#91060c",
+            "coveragePercent": 0.8682
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92623b",
+            "coveragePercent": 28.5885
+          },
+          {
+            "hex": "#928e1f",
+            "coveragePercent": 23.3414
+          },
+          {
+            "hex": "#ec0b1d",
+            "coveragePercent": 20.0446
+          },
+          {
+            "hex": "#c9a648",
+            "coveragePercent": 13.1099
+          },
+          {
+            "hex": "#a5070e",
+            "coveragePercent": 8.7315
+          },
+          {
+            "hex": "#308a86",
+            "coveragePercent": 6.1841
+          }
+        ],
+        "visibleSamples": 155166,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "object.campCedar": {
       "source": "assets/images/props/camp-cedar-v1.png",
       "frameMetadata": "ART_CAMP.cedar",
@@ -8038,6 +8708,107 @@
         ],
         "visibleSamples": 195155,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.campMasterSoul": {
+      "source": "assets/images/items/camp-master-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.campMasterSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#ed0e0a",
+            "coveragePercent": 12.5688
+          },
+          {
+            "hex": "#f83b1f",
+            "coveragePercent": 10.742
+          },
+          {
+            "hex": "#f49c52",
+            "coveragePercent": 8.7327
+          },
+          {
+            "hex": "#b20402",
+            "coveragePercent": 8.5962
+          },
+          {
+            "hex": "#f26c3a",
+            "coveragePercent": 8.4262
+          },
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 7.0133
+          },
+          {
+            "hex": "#fbcf68",
+            "coveragePercent": 6.9897
+          },
+          {
+            "hex": "#750b01",
+            "coveragePercent": 6.8213
+          },
+          {
+            "hex": "#fcf9ea",
+            "coveragePercent": 5.6738
+          },
+          {
+            "hex": "#fceca5",
+            "coveragePercent": 5.2545
+          },
+          {
+            "hex": "#400702",
+            "coveragePercent": 4.573
+          },
+          {
+            "hex": "#f59910",
+            "coveragePercent": 4.1836
+          },
+          {
+            "hex": "#b54f09",
+            "coveragePercent": 4.1099
+          },
+          {
+            "hex": "#493d3e",
+            "coveragePercent": 2.4323
+          },
+          {
+            "hex": "#856560",
+            "coveragePercent": 1.9829
+          },
+          {
+            "hex": "#c4a29e",
+            "coveragePercent": 1.8998
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ec110c",
+            "coveragePercent": 23.8001
+          },
+          {
+            "hex": "#f28d3a",
+            "coveragePercent": 21.4613
+          },
+          {
+            "hex": "#f84926",
+            "coveragePercent": 18.2613
+          },
+          {
+            "hex": "#fbc864",
+            "coveragePercent": 15.0294
+          },
+          {
+            "hex": "#a50702",
+            "coveragePercent": 14.3564
+          },
+          {
+            "hex": "#b6550f",
+            "coveragePercent": 7.0915
+          }
+        ],
+        "visibleSamples": 559530,
+        "dominantCoveragePercent": 100.0
       }
     },
     "object.inventoryItem.daisyPlush": {
@@ -15858,6 +16629,426 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/samurai-camp-hd-center-v1.png": {
+      "sha256": "b19adb1ca9ad1eed4b1f04aab1a33d684516cebab1f4e9ebc7a19947533b3253",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDCenter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080606",
+            "coveragePercent": 21.8939
+          },
+          {
+            "hex": "#321910",
+            "coveragePercent": 12.038
+          },
+          {
+            "hex": "#101929",
+            "coveragePercent": 10.8448
+          },
+          {
+            "hex": "#6a1a13",
+            "coveragePercent": 8.3074
+          },
+          {
+            "hex": "#3a3837",
+            "coveragePercent": 6.4066
+          },
+          {
+            "hex": "#a21a15",
+            "coveragePercent": 5.8432
+          },
+          {
+            "hex": "#0b284d",
+            "coveragePercent": 5.409
+          },
+          {
+            "hex": "#7e462b",
+            "coveragePercent": 5.1921
+          },
+          {
+            "hex": "#0447b2",
+            "coveragePercent": 3.9061
+          },
+          {
+            "hex": "#b2663b",
+            "coveragePercent": 3.7716
+          },
+          {
+            "hex": "#0b397e",
+            "coveragePercent": 3.4828
+          },
+          {
+            "hex": "#d6280b",
+            "coveragePercent": 3.4476
+          },
+          {
+            "hex": "#f6a132",
+            "coveragePercent": 3.4119
+          },
+          {
+            "hex": "#e26e12",
+            "coveragePercent": 2.9655
+          },
+          {
+            "hex": "#1062df",
+            "coveragePercent": 2.8569
+          },
+          {
+            "hex": "#e9d188",
+            "coveragePercent": 0.2228
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9d1a15",
+            "coveragePercent": 23.2616
+          },
+          {
+            "hex": "#a75a2f",
+            "coveragePercent": 17.9677
+          },
+          {
+            "hex": "#f0952c",
+            "coveragePercent": 17.8673
+          },
+          {
+            "hex": "#0540a1",
+            "coveragePercent": 14.9024
+          },
+          {
+            "hex": "#d93409",
+            "coveragePercent": 14.0102
+          },
+          {
+            "hex": "#0d5ed9",
+            "coveragePercent": 11.9908
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/samurai-camp-hd-east-v1.png": {
+      "sha256": "2fe14455282c1d5b4059ce25484cf5c98f8b8df06b630846c6a88c2e2525aaeb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDEast"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080505",
+            "coveragePercent": 21.9992
+          },
+          {
+            "hex": "#34160d",
+            "coveragePercent": 11.4764
+          },
+          {
+            "hex": "#111723",
+            "coveragePercent": 9.4877
+          },
+          {
+            "hex": "#6a1710",
+            "coveragePercent": 8.9973
+          },
+          {
+            "hex": "#413735",
+            "coveragePercent": 6.3805
+          },
+          {
+            "hex": "#7e422a",
+            "coveragePercent": 5.912
+          },
+          {
+            "hex": "#0c2646",
+            "coveragePercent": 5.5656
+          },
+          {
+            "hex": "#a1180e",
+            "coveragePercent": 5.5173
+          },
+          {
+            "hex": "#af6138",
+            "coveragePercent": 5.2582
+          },
+          {
+            "hex": "#0440a9",
+            "coveragePercent": 4.3659
+          },
+          {
+            "hex": "#d92c06",
+            "coveragePercent": 3.3515
+          },
+          {
+            "hex": "#e5791e",
+            "coveragePercent": 3.3124
+          },
+          {
+            "hex": "#0b3776",
+            "coveragePercent": 3.2302
+          },
+          {
+            "hex": "#0d5ad3",
+            "coveragePercent": 2.6713
+          },
+          {
+            "hex": "#f8ae3a",
+            "coveragePercent": 2.3868
+          },
+          {
+            "hex": "#e4dfc9",
+            "coveragePercent": 0.0877
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#0748b3",
+            "coveragePercent": 25.2221
+          },
+          {
+            "hex": "#981a10",
+            "coveragePercent": 20.7702
+          },
+          {
+            "hex": "#a05632",
+            "coveragePercent": 20.642
+          },
+          {
+            "hex": "#dd7423",
+            "coveragePercent": 13.1248
+          },
+          {
+            "hex": "#d52807",
+            "coveragePercent": 11.8993
+          },
+          {
+            "hex": "#f8ac38",
+            "coveragePercent": 8.3416
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/samurai-camp-hd-west-v1.png": {
+      "sha256": "af45b2f0d2f0304114106c57be4e1a02657c22b49144e3136aaf25df2513a3b9",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDWest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080507",
+            "coveragePercent": 22.4076
+          },
+          {
+            "hex": "#291814",
+            "coveragePercent": 12.6379
+          },
+          {
+            "hex": "#091a32",
+            "coveragePercent": 9.7396
+          },
+          {
+            "hex": "#511e12",
+            "coveragePercent": 7.6988
+          },
+          {
+            "hex": "#7f1b11",
+            "coveragePercent": 5.6886
+          },
+          {
+            "hex": "#313943",
+            "coveragePercent": 5.5794
+          },
+          {
+            "hex": "#6e402e",
+            "coveragePercent": 5.3692
+          },
+          {
+            "hex": "#082f68",
+            "coveragePercent": 4.6684
+          },
+          {
+            "hex": "#b01e13",
+            "coveragePercent": 4.5679
+          },
+          {
+            "hex": "#0644ac",
+            "coveragePercent": 4.3838
+          },
+          {
+            "hex": "#a25f38",
+            "coveragePercent": 4.1824
+          },
+          {
+            "hex": "#e47a1d",
+            "coveragePercent": 4.0145
+          },
+          {
+            "hex": "#e4300a",
+            "coveragePercent": 3.1677
+          },
+          {
+            "hex": "#f7b039",
+            "coveragePercent": 2.9055
+          },
+          {
+            "hex": "#0c64df",
+            "coveragePercent": 2.7241
+          },
+          {
+            "hex": "#f7f0d6",
+            "coveragePercent": 0.2645
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e1c13",
+            "coveragePercent": 22.2659
+          },
+          {
+            "hex": "#f09a2f",
+            "coveragePercent": 19.0863
+          },
+          {
+            "hex": "#a45b30",
+            "coveragePercent": 17.0727
+          },
+          {
+            "hex": "#0641a5",
+            "coveragePercent": 15.7351
+          },
+          {
+            "hex": "#e0380a",
+            "coveragePercent": 15.566
+          },
+          {
+            "hex": "#0b61dd",
+            "coveragePercent": 10.2739
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/samurai-camp-terrain-v1.png": {
+      "sha256": "e6793817719a15f903712592c419d765cef70dba47682f127dc3c83ecd927475",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "campTerrain"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070503",
+            "coveragePercent": 20.0348
+          },
+          {
+            "hex": "#23190e",
+            "coveragePercent": 13.4847
+          },
+          {
+            "hex": "#3c3521",
+            "coveragePercent": 11.5012
+          },
+          {
+            "hex": "#524a43",
+            "coveragePercent": 8.5548
+          },
+          {
+            "hex": "#62481e",
+            "coveragePercent": 8.2932
+          },
+          {
+            "hex": "#48210e",
+            "coveragePercent": 6.7882
+          },
+          {
+            "hex": "#61646a",
+            "coveragePercent": 6.4585
+          },
+          {
+            "hex": "#83838a",
+            "coveragePercent": 5.0041
+          },
+          {
+            "hex": "#866647",
+            "coveragePercent": 4.3248
+          },
+          {
+            "hex": "#847715",
+            "coveragePercent": 3.2649
+          },
+          {
+            "hex": "#165752",
+            "coveragePercent": 2.6296
+          },
+          {
+            "hex": "#c39c1e",
+            "coveragePercent": 2.6132
+          },
+          {
+            "hex": "#ec0e1c",
+            "coveragePercent": 2.2934
+          },
+          {
+            "hex": "#bd9a68",
+            "coveragePercent": 1.8481
+          },
+          {
+            "hex": "#c0b4a9",
+            "coveragePercent": 1.6584
+          },
+          {
+            "hex": "#9d080a",
+            "coveragePercent": 1.2481
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#906b2c",
+            "coveragePercent": 33.3233
+          },
+          {
+            "hex": "#b69515",
+            "coveragePercent": 21.1518
+          },
+          {
+            "hex": "#ed0e1d",
+            "coveragePercent": 19.0984
+          },
+          {
+            "hex": "#d2a84b",
+            "coveragePercent": 12.3458
+          },
+          {
+            "hex": "#a7090b",
+            "coveragePercent": 9.9798
+          },
+          {
+            "hex": "#357e89",
+            "coveragePercent": 4.1008
+          }
+        ],
+        "visibleSamples": 773455,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/samurai-camp-v1.png": {
       "sha256": "16df6905dcd710f60ddec82c7ec10be9c095b6290d05c319967c4c4f4634c569",
       "width": 2172,
@@ -18585,6 +19776,111 @@
           }
         ],
         "visibleSamples": 869151,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/camp-master-jump-v1.png": {
+      "sha256": "a0af52a636ff7321409afa75d58951ebb3bb1a36769f261c1c06e16414993881",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "campMasterJump"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 12.541
+          },
+          {
+            "hex": "#860b0b",
+            "coveragePercent": 10.069
+          },
+          {
+            "hex": "#bb0b0e",
+            "coveragePercent": 9.4697
+          },
+          {
+            "hex": "#5b0c07",
+            "coveragePercent": 9.4486
+          },
+          {
+            "hex": "#330904",
+            "coveragePercent": 9.1745
+          },
+          {
+            "hex": "#f00a15",
+            "coveragePercent": 8.9488
+          },
+          {
+            "hex": "#221c1c",
+            "coveragePercent": 8.3702
+          },
+          {
+            "hex": "#3c3335",
+            "coveragePercent": 6.5761
+          },
+          {
+            "hex": "#594f52",
+            "coveragePercent": 4.9974
+          },
+          {
+            "hex": "#f63b27",
+            "coveragePercent": 4.5091
+          },
+          {
+            "hex": "#854014",
+            "coveragePercent": 3.6003
+          },
+          {
+            "hex": "#f1962f",
+            "coveragePercent": 3.333
+          },
+          {
+            "hex": "#c06218",
+            "coveragePercent": 2.9227
+          },
+          {
+            "hex": "#fbcc66",
+            "coveragePercent": 2.8755
+          },
+          {
+            "hex": "#88746a",
+            "coveragePercent": 2.1055
+          },
+          {
+            "hex": "#ede9e0",
+            "coveragePercent": 1.0586
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f31519",
+            "coveragePercent": 27.1155
+          },
+          {
+            "hex": "#c3090f",
+            "coveragePercent": 21.765
+          },
+          {
+            "hex": "#930d0c",
+            "coveragePercent": 20.2068
+          },
+          {
+            "hex": "#ea7127",
+            "coveragePercent": 11.5844
+          },
+          {
+            "hex": "#a5531a",
+            "coveragePercent": 10.0376
+          },
+          {
+            "hex": "#fac052",
+            "coveragePercent": 9.2907
+          }
+        ],
+        "visibleSamples": 279176,
         "dominantCoveragePercent": 100.0
       }
     },
@@ -21629,6 +22925,111 @@
         ],
         "visibleSamples": 642239,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/items/camp-master-soul-v1.png": {
+      "sha256": "d4b06e2655e290c97fa39d8c9b163c61f1d3ce40cadc76b178f985f7f5550d40",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campMasterSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#ed0e0a",
+            "coveragePercent": 12.5688
+          },
+          {
+            "hex": "#f83b1f",
+            "coveragePercent": 10.742
+          },
+          {
+            "hex": "#f49c52",
+            "coveragePercent": 8.7327
+          },
+          {
+            "hex": "#b20402",
+            "coveragePercent": 8.5962
+          },
+          {
+            "hex": "#f26c3a",
+            "coveragePercent": 8.4262
+          },
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 7.0133
+          },
+          {
+            "hex": "#fbcf68",
+            "coveragePercent": 6.9897
+          },
+          {
+            "hex": "#750b01",
+            "coveragePercent": 6.8213
+          },
+          {
+            "hex": "#fcf9ea",
+            "coveragePercent": 5.6738
+          },
+          {
+            "hex": "#fceca5",
+            "coveragePercent": 5.2545
+          },
+          {
+            "hex": "#400702",
+            "coveragePercent": 4.573
+          },
+          {
+            "hex": "#f59910",
+            "coveragePercent": 4.1836
+          },
+          {
+            "hex": "#b54f09",
+            "coveragePercent": 4.1099
+          },
+          {
+            "hex": "#493d3e",
+            "coveragePercent": 2.4323
+          },
+          {
+            "hex": "#856560",
+            "coveragePercent": 1.9829
+          },
+          {
+            "hex": "#c4a29e",
+            "coveragePercent": 1.8998
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ec110c",
+            "coveragePercent": 23.8001
+          },
+          {
+            "hex": "#f28d3a",
+            "coveragePercent": 21.4613
+          },
+          {
+            "hex": "#f84926",
+            "coveragePercent": 18.2613
+          },
+          {
+            "hex": "#fbc864",
+            "coveragePercent": 15.0294
+          },
+          {
+            "hex": "#a50702",
+            "coveragePercent": 14.3564
+          },
+          {
+            "hex": "#b6550f",
+            "coveragePercent": 7.0915
+          }
+        ],
+        "visibleSamples": 559530,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/items/serpent-relics-v1.png": {
@@ -26977,7 +28378,8 @@
         "value": "#0009",
         "lines": [
           96,
-          193
+          193,
+          296
         ],
         "dynamic": false
       },
@@ -27168,7 +28570,8 @@
         "value": "#0c1b25",
         "lines": [
           147,
-          198
+          198,
+          290
         ],
         "dynamic": false
       },
@@ -27449,6 +28852,13 @@
         "value": "#20272c",
         "lines": [
           219
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#221626f2",
+        "lines": [
+          296
         ],
         "dynamic": false
       },
@@ -27800,7 +29210,8 @@
       {
         "value": "#c6ab7480",
         "lines": [
-          147
+          147,
+          290
         ],
         "dynamic": false
       },
@@ -28308,6 +29719,13 @@
         "dynamic": false
       },
       {
+        "value": "#f1dfb7",
+        "lines": [
+          292
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#f2e3ff",
         "lines": [
           63
@@ -28419,6 +29837,13 @@
         "value": "#ffc4b7",
         "lines": [
           225
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd487",
+        "lines": [
+          296
         ],
         "dynamic": false
       },
@@ -28606,6 +30031,13 @@
         "dynamic": false
       },
       {
+        "value": "#fff1cf",
+        "lines": [
+          296
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#fff1d3",
         "lines": [
           32
@@ -28618,6 +30050,14 @@
           55,
           119,
           213
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4d7",
+        "lines": [
+          293,
+          294
         ],
         "dynamic": false
       },
@@ -28660,6 +30100,13 @@
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
     "assets/js/boss-vfx.js": [
+      {
+        "value": "#091521",
+        "lines": [
+          177
+        ],
+        "dynamic": false
+      },
       {
         "value": "#102236d9",
         "lines": [
@@ -28722,49 +30169,116 @@
           152
         ],
         "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          173
+        ],
+        "dynamic": false
       }
     ],
     "assets/js/bug-report.js": [],
     "assets/js/camp-art.js": [
       {
-        "value": "#0d1b29",
+        "value": "#0a1828f2",
         "lines": [
-          37
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          18
+          43
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          13
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#151e27",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a9e5eb",
+        "lines": [
+          47
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c0f6ff",
+        "lines": [
+          49
         ],
         "dynamic": false
       },
       {
         "value": "#f5cb83",
         "lines": [
-          37
+          68
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5cb831c",
+        "lines": [
+          68
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          47,
+          49
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          18,
+          19
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          18,
+          19
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          18
+          43
         ],
         "dynamic": false
       }
     ],
     "assets/js/camp-health.js": [],
     "assets/js/camp-herbs.js": [],
-    "assets/js/camp-master.js": [],
+    "assets/js/camp-master.js": [
+      {
+        "value": "#f5cb83",
+        "lines": [
+          120
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/camp-quest.js": [],
     "assets/js/camp-services.js": [],
     "assets/js/camp-workshop.js": [],
@@ -28772,86 +30286,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          522
+          524
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          396
+          398
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          358,
-          392
+          360,
+          394
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          188
+          190
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          506
+          508
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          269
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          382
+          384
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          327,
-          378
+          329,
+          380
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          188
+          190
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          521
+          523
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          506
+          508
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          387
+          389
         ],
         "dynamic": false
       }
@@ -29347,115 +30861,115 @@
       {
         "value": "#050c1200",
         "lines": [
-          67
+          68
         ],
         "dynamic": false
       },
       {
         "value": "#050c12bb",
         "lines": [
-          67
+          68
         ],
         "dynamic": false
       },
       {
         "value": "#070e18",
         "lines": [
-          466
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          492
+          493
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          444
+          446
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          491
+          492
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          452
+          454
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          126,
-          135
+          127,
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          104,
-          116
+          105,
+          117
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c00",
         "lines": [
-          116
+          117
         ],
         "dynamic": false
       },
       {
         "value": "#100e20ed",
         "lines": [
-          330
+          332
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          689
+          690
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          464,
-          470
+          466,
+          472
         ],
         "dynamic": false
       },
       {
         "value": "#11252d30",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#112b3fee",
         "lines": [
-          426
+          428
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          490
+          491
         ],
         "dynamic": false
       },
@@ -29469,7 +30983,7 @@
       {
         "value": "#140c2028",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
@@ -29483,21 +30997,21 @@
       {
         "value": "#160f16",
         "lines": [
-          206
+          207
         ],
         "dynamic": false
       },
       {
         "value": "#163847dd",
         "lines": [
-          659
+          660
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          673
+          674
         ],
         "dynamic": false
       },
@@ -29511,42 +31025,42 @@
       {
         "value": "#172b42e8",
         "lines": [
-          447
+          449
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          546
+          547
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          368
+          370
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          353
+          355
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          648
+          649
         ],
         "dynamic": false
       },
       {
         "value": "#24314820",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
@@ -29560,119 +31074,119 @@
       {
         "value": "#253c5899",
         "lines": [
-          693
+          694
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          438
+          440
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          635
+          636
         ],
         "dynamic": false
       },
       {
         "value": "#455764ad",
         "lines": [
-          265
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#526673d9",
         "lines": [
-          264
+          266
         ],
         "dynamic": false
       },
       {
         "value": "#72b4c9af",
         "lines": [
-          635
+          636
         ],
         "dynamic": false
       },
       {
         "value": "#83749f",
         "lines": [
-          189
+          190
         ],
         "dynamic": false
       },
       {
         "value": "#8b764eaa",
         "lines": [
-          519
+          520
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          531
+          532
         ],
         "dynamic": false
       },
       {
         "value": "#a5787d",
         "lines": [
-          189
+          190
         ],
         "dynamic": false
       },
       {
         "value": "#a893d0",
         "lines": [
-          200
+          201
         ],
         "dynamic": false
       },
       {
         "value": "#a8e8ff",
         "lines": [
-          639
+          640
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          681
+          682
         ],
         "dynamic": false
       },
       {
         "value": "#aab6b1b8",
         "lines": [
-          269
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#ab83d955",
         "lines": [
-          681
+          682
         ],
         "dynamic": false
       },
       {
         "value": "#abb78d66",
         "lines": [
-          277
+          279
         ],
         "dynamic": false
       },
       {
         "value": "#b5a777",
         "lines": [
-          529
+          530
         ],
         "dynamic": false
       },
@@ -29693,42 +31207,42 @@
       {
         "value": "#c393ff",
         "lines": [
-          436
+          438
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          480
+          482
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          681
+          682
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          649
+          650
         ],
         "dynamic": false
       },
       {
         "value": "#c9d0cb62",
         "lines": [
-          263
+          265
         ],
         "dynamic": false
       },
       {
         "value": "#cda6ef",
         "lines": [
-          334
+          336
         ],
         "dynamic": false
       },
@@ -29742,21 +31256,21 @@
       {
         "value": "#d0f5ffcc",
         "lines": [
-          654
+          655
         ],
         "dynamic": false
       },
       {
         "value": "#d199aa55",
         "lines": [
-          277
+          279
         ],
         "dynamic": false
       },
       {
         "value": "#d1c9acaf",
         "lines": [
-          557
+          558
         ],
         "dynamic": false
       },
@@ -29770,14 +31284,14 @@
       {
         "value": "#d8c998bb",
         "lines": [
-          269
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          452
+          454
         ],
         "dynamic": false
       },
@@ -29798,21 +31312,21 @@
       {
         "value": "#dd744a00",
         "lines": [
-          529
+          530
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          452
+          454
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          674
+          675
         ],
         "dynamic": false
       },
@@ -29826,28 +31340,28 @@
       {
         "value": "#e4f7ffbc",
         "lines": [
-          641
+          642
         ],
         "dynamic": false
       },
       {
         "value": "#e5a184",
         "lines": [
-          200
+          201
         ],
         "dynamic": false
       },
       {
         "value": "#e6b0fa22",
         "lines": [
-          485
+          487
         ],
         "dynamic": false
       },
       {
         "value": "#e6c6ff",
         "lines": [
-          335
+          337
         ],
         "dynamic": false
       },
@@ -29875,7 +31389,7 @@
       {
         "value": "#ef8b65",
         "lines": [
-          200
+          201
         ],
         "dynamic": false
       },
@@ -29896,78 +31410,78 @@
       {
         "value": "#f3d8ac",
         "lines": [
-          485,
-          668
+          487,
+          669
         ],
         "dynamic": false
       },
       {
         "value": "#f3dbaf",
         "lines": [
-          358
+          360
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          353
+          355
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          529
+          530
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          689
+          690
         ],
         "dynamic": false
       },
       {
         "value": "#ff7850",
         "lines": [
-          273
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#ff9c6238",
         "lines": [
-          693
+          694
         ],
         "dynamic": false
       },
       {
         "value": "#ffac69",
         "lines": [
-          273
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#ffb385",
         "lines": [
-          436
+          438
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          693
+          694
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          467
+          469
         ],
         "dynamic": false
       },
@@ -29981,28 +31495,28 @@
       {
         "value": "#ffe098",
         "lines": [
-          436
+          438
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          480
+          482
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          723
+          724
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          529,
+          530,
           724
         ],
         "dynamic": false
@@ -30017,90 +31531,90 @@
       {
         "value": "#ffe6a300",
         "lines": [
-          635
+          636
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          641
+          642
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          681
+          682
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          658
+          659
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b98c",
         "lines": [
-          277
+          279
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          430,
-          654
+          432,
+          655
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          369
+          371
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          427
+          429
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          465,
-          470,
-          471,
-          474,
-          693
+          467,
+          472,
+          473,
+          476,
+          694
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c8",
         "lines": [
-          335
+          337
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          127,
-          136
+          128,
+          137
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          684
+          685
         ],
         "dynamic": false
       },
@@ -30114,35 +31628,35 @@
       {
         "value": "#fff4c9",
         "lines": [
-          659
+          660
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          648
+          649
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          441
+          443
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff00",
         "lines": [
-          98
+          99
         ],
         "dynamic": false
       },
       {
         "value": "#ffffffff",
         "lines": [
-          98
+          99
         ],
         "dynamic": false
       }
@@ -30400,44 +31914,37 @@
       {
         "value": "#070e18",
         "lines": [
-          30
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#10283f",
-        "lines": [
-          21
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          30,
-          32
+          46,
+          48
         ],
         "dynamic": false
       },
       {
         "value": "#c4f2ec",
         "lines": [
-          28
+          44
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          28
+          44
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          30,
-          32
+          46,
+          48
         ],
         "dynamic": false
       }
@@ -30495,7 +32002,7 @@
       {
         "value": "#06101b",
         "lines": [
-          98
+          97
         ],
         "dynamic": false
       },
@@ -30509,7 +32016,7 @@
       {
         "value": "#0e1927ee",
         "lines": [
-          93
+          92
         ],
         "dynamic": false
       },
@@ -30524,21 +32031,21 @@
         "value": "#a3e9ff",
         "lines": [
           41,
-          81
+          80
         ],
         "dynamic": false
       },
       {
         "value": "#d3bd8a",
         "lines": [
-          93
+          92
         ],
         "dynamic": false
       },
       {
         "value": "#dd9b69",
         "lines": [
-          98
+          97
         ],
         "dynamic": false
       },
@@ -30559,7 +32066,7 @@
       {
         "value": "#ffbd79",
         "lines": [
-          81
+          80
         ],
         "dynamic": false
       },
@@ -30587,7 +32094,7 @@
       {
         "value": "#fff0ca",
         "lines": [
-          94
+          93
         ],
         "dynamic": false
       }

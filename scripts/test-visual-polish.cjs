@@ -34,12 +34,12 @@ for(const face of [-1,1])for(const velocity of [-400,0,400]){
 assert(run('player.w===43&&player.h===69'),'Presentation sizing must not alter collision geometry');
 
 run("abilities=[true,true];enterRealm(1);state='play';enemies=[];initPlayer({x:1600,y:2700});keys.clear();pressed.clear();");
-press('k');tick();release('k');tick(8);
+press({action:'dash'});tick();release({action:'dash'});tick(8);
 assert(run("particles.filter(p=>p.kind==='dashWisp').length>=2"),'Dash must leave a continuous wisp trail');
 assert(!run("particles.some(p=>p.color==='#c8a8ed')"),'Old purple dash dots remain');
 run('draw();pause();var frozenDashParticles=JSON.stringify(particles);');tick(60);
 assert(run('JSON.stringify(particles)===frozenDashParticles'),'Pause advances the dash trail');
 run('pause();');tick(120);assert(!run("particles.some(p=>p.kind==='dashWisp')"),'Dash trail never expires');
-run("reducedMotion.matches=true;dashCooldown=0;particles=[];keys.clear();pressed.clear();");press('k');tick(10);release('k');
+run("reducedMotion.matches=true;dashCooldown=0;particles=[];keys.clear();pressed.clear();");press({action:'dash'});tick(10);release({action:'dash'});
 assert(!run("particles.some(p=>p.kind==='dashWisp')"),'Reduced motion must suppress the moving trail');
 console.log('PASS: actual PNG alpha confirms stable Momo jump size/paw registration in both directions; unchanged hitbox, continuous painted dash particles, pause freezing, cleanup and reduced motion.');

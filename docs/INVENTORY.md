@@ -67,7 +67,7 @@ A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpent
 
 ## Akash portékái – 0.9.21
 
-Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A sült hús és Akash teája külön `stack:true` bejegyzés, mennyiségük a mentett `meatCount` és `teaCount`; nem puszta küldetésjelző. A kártyán mennyiségjelvény, a részleteknél darabszám és fogyasztógomb jelenik meg. Az O alapú `useMeat` közös gyorshasználati billentyű átállítható és exportálható; a részleteknél kiválasztható hozzá hús vagy tea. A `quickHeal` kijelölés mentődik, és kifogyáskor a másik elérhető készletre vált; a leírás az aktuális kötést használja. Az utolsó darab után a kiválasztás/fókusz érvényes tárgyra tér vissza. A közös ikonrenderer minden új portéka eredeti alpha-cropját ugyanolyan kontrasztos, DPR-érzékeny háttéren rajzolja. Részletek: [Akash](MERCHANT.md).
+Az iránytű és a kis útitérkép egyszer megszerezhető úti felszerelés. A sült hús és Akash teája külön `stack:true` bejegyzés, mennyiségük a mentett `meatCount` és `teaCount`; nem puszta küldetésjelző. A kártyán mennyiségjelvény, a részleteknél darabszám és fogyasztógomb jelenik meg. A Q alapú (FR AZERTY: A) `useMeat` közös gyorshasználati billentyű átállítható és exportálható; a részleteknél kiválasztható hozzá hús vagy tea. A `quickHeal` kijelölés mentődik, és kifogyáskor a másik elérhető készletre vált; a leírás az aktuális kötést használja. Az utolsó darab után a kiválasztás/fókusz érvényes tárgyra tér vissza. A közös ikonrenderer minden új portéka eredeti alpha-cropját ugyanolyan kontrasztos, DPR-érzékeny háttéren rajzolja. Részletek: [Akash](MERCHANT.md).
 
 ## Árnyékvilág
 
@@ -88,3 +88,7 @@ A birtokolt, de nem felszerelt fegyverek `weapon-<style>` azonosítóval jelenne
 A `whiteSerpentScale`, `serpentScale` és `wingedSerpentScale` három külön védett tárgy. Fumi a misztikus sátorban egyszer egyesíti őket; a történeti megszerzési jelzők megmaradnak, de a fúzió után a felhasznált pikkelyek `consumedBy` feltétele elrejti őket a birtoklási nézetből. A korábbi Yomi-pikkely azonosítója változatlan.
 
 A `triuneSerpentTalisman` új, fegyvertől független felszereléshelyet kap. Felszerelés előtt a táskában látható, viselve a talizmánhelyen; a levétel visszahelyezi a táskába. A `quantity` a felszerelt példányt nem számolja a táskába, a tartós tulajdont a megszerzési jelző őrzi. A +20 Armor kizárólag viselve aktív; fel-/levétel és fúzió nem gyógyít és nem változtatja Momo maximális HP-ját. A külön ikon ugyanazt a DPR- és kontrasztkezelést használja, mint minden más inventorygrafika. Részletek: [SERPENTS.md](SERPENTS.md).
+
+## A karakter aktuális harci értékei
+
+A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális HP-ját, a felszerelt fegyver normál és erős sebzését, valamint a páncélt és a százalékos sebzéscsökkentést. A számok a tényleges `playerAttackDamage`, `momoStats` és `Armor.reduction` függvényekből származnak; a táskában kijelölt, de nem felszerelt fegyver nem módosítja őket. A talizmán fel-/levétele, a kovácsfejlesztés és a gyógyítás után újrarendereléskor frissülnek. A Tábormester lelke a közös `ART_INVENTORY.items` katalógus része, teljes sziluettel és DPR-követő megjelenítéssel.

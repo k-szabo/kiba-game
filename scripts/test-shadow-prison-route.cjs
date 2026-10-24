@@ -12,7 +12,7 @@ function setup(fps=60,abilities=[false,false],won=false){
  function routeStep(direction=0,jump=false,drop=false,dashInput=false){
   keys.clear();pressed.clear();
   if(direction)keys.add(direction>0?'d':'a');
-  if(drop)keys.add('s');if(jump)pressed.add(' ');if(dashInput)pressed.add('k');
+  if(drop)keys.add('s');if(jump)pressed.add(' ');if(dashInput)pressed.add(Bindings.read('dash')[0]);
   update(routeDt);player.inv=999;
  }
  function routePlace(id,at=null){

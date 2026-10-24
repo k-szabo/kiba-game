@@ -43,7 +43,7 @@ function fixture(){
  assert.equal(h.run('captureAction'),null);
  attackRow.onclick();
  assert.equal(h.run('captureAction'),'attack');
- assert.equal(h.run("Bindings.read('attack')[0]"),'j','The click that opens capture is not itself the binding');
+ assert.equal(h.run("Bindings.read('attack')[0]"),'mouse0','The click that opens capture is not itself the binding');
  const opening=h.mouse('handleMouseClick',{target:attackRow,timeStamp:101});
  assert(!opening.prevented,'The original activating click is not suppressed');
  const otherRow=h.rows.querySelector('[data-action="jump"]');
@@ -67,7 +67,7 @@ function fixture(){
  assert.equal(h.run('JSON.stringify(Bindings.exportData())'),before,'Escape cancels capture without rebinding');
  h.run("captureAction='attack'");h.press('e');
  assert.equal(h.run("Bindings.read('attack')[0]"),'e');
- assert.equal(h.run("Bindings.read('interact')[0]"),'j','The help UI can directly take an occupied key');
+ assert.equal(h.run("Bindings.read('interact')[0]"),'mouse0','The help UI can directly take an occupied key');
  const freeze=h.run('JSON.stringify({player,attack,dash,levelTime,time})');h.tick(30);
  assert.equal(h.run('JSON.stringify({player,attack,dash,levelTime,time})'),freeze,'Rebinding keeps physics and effects paused');
 }
@@ -96,11 +96,11 @@ for(const [action,state] of [['pause','pause'],['map','map'],['inventory','inven
  const h=fixture();h.bind(action);h.mouse('handleMouseDown');assert.equal(h.run('state'),state,`Mouse ${action} uses the same immediate dispatch as keyboard`);
 }
 {
- const h=fixture();assert(h.run("Bindings.setPrimary('pause','j').ok"));
+ const h=fixture();assert(h.run("Bindings.setPrimary('pause',Bindings.read('attack')[0]).ok"));
  assert.equal(h.run("Bindings.read('attack')[0]"),'escape','Taking an occupied key performs the exact requested swap');
  h.press('Escape');h.tick();h.release('Escape');
  assert.equal(h.run('state'),'play','Escape belongs to its swapped gameplay action during play');assert(h.run('attack>0'));
- h.press('j');assert.equal(h.run('state'),'pause','The exchanged pause key remains usable');
+ h.mouse('handleMouseDown');h.mouse('handleMouseUp');assert.equal(h.run('state'),'pause','The exchanged pause key remains usable');
  h.run("state='inventory';$('inventory').hidden=false");h.press('Escape');
  assert.equal(h.run('state'),'play','Escape remains a dialog close key independently of gameplay swaps');
 }
@@ -109,7 +109,7 @@ for(const [action,state] of [['pause','pause'],['map','map'],['inventory','inven
  assert(press.prevented,'Assigned gameplay inputs prevent native mouse behavior');
  assert(h.mouse('handleMouseContextMenu',{button:2}).prevented,'Assigned right click on the game suppresses its context menu');
  assert(!h.mouse('handleMouseContextMenu',{button:2,target:'pauseButton'}).prevented,'UI retains its native context menu outside capture');
- h.mouse('handleMouseUp',{button:2});h.run('Bindings.reset()');
+ h.mouse('handleMouseUp',{button:2});h.run("Bindings.reset();Bindings.setPrimary('heavyAttack','h');");
  assert(!h.mouse('handleMouseContextMenu',{button:2}).prevented,'Unassigned mouse input does not suppress browser behavior');
 }
 

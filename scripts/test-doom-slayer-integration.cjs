@@ -29,7 +29,7 @@ function summon(h){
 function win(h){
  summon(h);
  h.run("var integrationSlayer=enemies.find(DoomSlayer.is);initPlayer({x:integrationSlayer.x-35,y:integrationSlayer.arena.y});player.face=1;player.inv=999;integrationSlayer.hp=1;integrationSlayer.inv=0;integrationSlayer.phase='recover';integrationSlayer.clock=999;");
- h.press('j');h.tick(30);h.release('j');
+ h.press({action:'attack'});h.tick(30);h.release({action:'attack'});
  assert(h.run('integrationSlayer.dead'),'Actual sword impact did not defeat the encounter');
  assert.equal(h.run('state'),'dialog');
  assert.equal(h.elements.get('dialogText').children.map(p=>p.textContent).join('\n'),locales.hu.dict['slayer.victory']);

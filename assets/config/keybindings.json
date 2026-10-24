@@ -8,19 +8,51 @@
     "4": "mouse4"
   },
   "original": {
-    "moveLeft": ["a", "arrowleft"],
-    "moveRight": ["d", "arrowright"],
-    "jump": [" ", "w", "arrowup"],
-    "drop": ["s", "arrowdown"],
-    "attack": ["j", "z"],
-    "heavyAttack": ["h"],
-    "dash": ["k", "shift"],
-    "interact": ["e"],
-    "map": ["m"],
-    "train": ["u"],
-    "pause": ["escape"],
-    "inventory": ["i"],
-    "useMeat": ["o"]
+    "moveLeft": [
+      "a",
+      "arrowleft"
+    ],
+    "moveRight": [
+      "d",
+      "arrowright"
+    ],
+    "jump": [
+      " ",
+      "w",
+      "arrowup"
+    ],
+    "drop": [
+      "s",
+      "arrowdown"
+    ],
+    "attack": [
+      "mouse0",
+      "z"
+    ],
+    "heavyAttack": [
+      "mouse2"
+    ],
+    "dash": [
+      "shift"
+    ],
+    "interact": [
+      "e"
+    ],
+    "map": [
+      "m"
+    ],
+    "train": [
+      "u"
+    ],
+    "pause": [
+      "escape"
+    ],
+    "inventory": [
+      "i"
+    ],
+    "useMeat": [
+      "q"
+    ]
   },
   "profiles": {
     "uk": {
@@ -30,11 +62,99 @@
     "fr": {
       "name": "FR AZERTY",
       "bindings": {
-        "moveLeft": ["q", "arrowleft"],
-        "jump": [" ", "z", "arrowup"],
-        "attack": ["j"]
+        "moveLeft": [
+          "q",
+          "arrowleft"
+        ],
+        "jump": [
+          " ",
+          "z",
+          "arrowup"
+        ],
+        "attack": [
+          "mouse0",
+          "w"
+        ],
+        "useMeat": [
+          "a"
+        ]
       }
     }
   },
-  "modified": {}
+  "modified": {},
+  "revision": 2,
+  "legacyDefaults": {
+    "revision": 1,
+    "original": {
+      "moveLeft": [
+        "a",
+        "arrowleft"
+      ],
+      "moveRight": [
+        "d",
+        "arrowright"
+      ],
+      "jump": [
+        " ",
+        "w",
+        "arrowup"
+      ],
+      "drop": [
+        "s",
+        "arrowdown"
+      ],
+      "attack": [
+        "j",
+        "z"
+      ],
+      "heavyAttack": [
+        "h"
+      ],
+      "dash": [
+        "k",
+        "shift"
+      ],
+      "interact": [
+        "e"
+      ],
+      "map": [
+        "m"
+      ],
+      "train": [
+        "u"
+      ],
+      "pause": [
+        "escape"
+      ],
+      "inventory": [
+        "i"
+      ],
+      "useMeat": [
+        "o"
+      ]
+    },
+    "profiles": {
+      "uk": {
+        "name": "UK QWERTY",
+        "bindings": {}
+      },
+      "fr": {
+        "name": "FR AZERTY",
+        "bindings": {
+          "moveLeft": [
+            "q",
+            "arrowleft"
+          ],
+          "jump": [
+            " ",
+            "z",
+            "arrowup"
+          ],
+          "attack": [
+            "j"
+          ]
+        }
+      }
+    }
+  }
 }

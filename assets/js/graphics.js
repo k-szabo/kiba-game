@@ -4,9 +4,10 @@ const Visuals = (() => {
   const images = {};
   const heavenMix=[1,0,0];
   function backdropPhase(){return realm===2&&bossStarted&&boss&&!boss.dead?clamp(boss.stage,1,3):1;}
-  function resetAtmosphere(){heavenMix.splice(0,3,1,0,0);}
+  function resetAtmosphere(){heavenMix.splice(0,3,1,0,0);SerpentArt.resetBackdrop();}
   function updateAtmosphere(dt){
-    if(realm!==2){resetAtmosphere();return;}
+    SerpentArt.updateBackdrop(dt);
+    if(realm!==2){heavenMix.splice(0,3,1,0,0);return;}
     const phase=backdropPhase()-1;
     for(let i=0;i<3;i++)heavenMix[i]+=((i===phase?1:0)-heavenMix[i])*Math.min(1,dt*3);
     if(heavenMix[phase]>.998)heavenMix.splice(0,3,...[0,1,2].map(i=>i===phase?1:0));
@@ -82,7 +83,7 @@ const Visuals = (() => {
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
       const edge=Math.min(cx-area.x,area.x+area.w-cx,feet-top,area.y+area.h-entity.y);
-      return {area,alpha:clamp(edge/75,0,1)};
+      return {area,alpha:clamp(edge/(SerpentArt.hasBackdrop(area)?220:75),0,1)};
     }
     return null;
   }
@@ -124,7 +125,7 @@ const Visuals = (() => {
       const label=I18n.t(npc.name),y=npc.y-npc.height-18;
       ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
       const w=ctx.measureText(label).width+20;ctx.fillStyle='#0d1b29ed';ctx.fillRect(npc.x-w/2,y-16,w,26);
-      ctx.fillStyle='#fff0cc';ctx.fillText(label,npc.x,y+2);ctx.restore();
+      ctx.fillStyle='#fff0cc';ctx.fillText(label,npc.x,y+2);ctx.restore();CampArt.questMarker(npc.id,npc,npc.height);
     }
   }
   function campPathMarker(point,label){
@@ -172,7 +173,7 @@ const Visuals = (() => {
     }
     ctx.fillStyle = realm === 1 ? '#140c2028' : realm === 2 ? '#24314820' : '#11252d30';
     const secretState=secretBackdropState();
-    if(secretState&&SerpentArt.hasBackdrop(secretState.area))SerpentArt.backdrop(secretState);
+    if(SerpentArt.backdropState()||secretState&&SerpentArt.hasBackdrop(secretState.area))SerpentArt.backdrop();
     else if(secretState&&realm!==3){
       const secret=secretState.area;
       const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';
@@ -243,6 +244,7 @@ const Visuals = (() => {
       const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
+      if(level===samuraiCamp&&CampArt.terrain(p))continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
       const lift = 0;
       shadow(p.x + p.w / 2, p.y + height * .75, Math.min(p.w / 2, 220), .18);
@@ -471,7 +473,7 @@ const Visuals = (() => {
       BossVFX.marker(x,feet,170,'#fff0bd');
       if(e.move==='bite'){
         const hitX=e.face>0?e.x+e.w*.45:e.x-125;
-        ctx.strokeStyle='#fff0bd';ctx.lineWidth=2.5;ctx.setLineDash([7,5]);ctx.strokeRect(hitX,e.y-20,125+e.w*.55,e.h+35);ctx.setLineDash([]);
+        BossCues.box({x:hitX,y:e.y-20,w:125+e.w*.55,h:e.h+35},'#fff0bd');
       }else BossVFX.stamp('ember',x+e.face*37,e.y+e.h*.35,65,32,{face:e.face,alpha:.6+progress*.4});
     }else if(e.phase==='strike'&&e.move==='bite')BossVFX.slash('slashFire',x+e.face*60,e.y+e.h*.5,160,86,e.face,progress);
     ctx.restore();
@@ -482,8 +484,7 @@ const Visuals = (() => {
     if(realm===3&&e.move==='axe'){
       if(e.phase==='windup'){
         const hit={x:e.face>0?e.x+e.w*.4:e.x-185,y:e.y-8,w:185+e.w*.6,h:e.h+20};
-        ctx.fillStyle='#e6b0fa22';ctx.strokeStyle='#f3d8ac';ctx.lineWidth=2.5;ctx.fillRect(hit.x,hit.y,hit.w,hit.h);
-        ctx.setLineDash([7,6]);ctx.strokeRect(hit.x,hit.y,hit.w,hit.h);ctx.setLineDash([]);
+        BossCues.box(hit,'#f3d8ac','#e6b0fa22');
       }else if(e.phase==='strike')BossVFX.slash('slashShadow',x+e.face*70,feet-68,220,145,e.face,1-e.clock/e.phaseDuration);
     }
     if(e.active){
@@ -493,7 +494,7 @@ const Visuals = (() => {
       if(e.phase==='windup'){
         const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};
         ctx.fillText(I18n.t(names[e.move]||'text.attack'),x,feet-height-63);
-        if(['glaive','staff','lunge'].includes(e.move)){ctx.shadowBlur=0;ctx.fillStyle=color+'25';const w=e.move==='lunge'?300:175;ctx.fillRect(e.face>0?x:x-w,feet-95,w,95);ctx.strokeStyle=color;ctx.setLineDash([7,6]);ctx.strokeRect(e.face>0?x:x-w,feet-95,w,95);ctx.setLineDash([]);}
+        if(['glaive','staff','lunge'].includes(e.move)){ctx.shadowBlur=0;const w=e.move==='lunge'?300:175;BossCues.box({x:e.face>0?x:x-w,y:feet-95,w,h:95},color,color+'25');}
       }
     }
     if(e.phase==='strike'&&['glaive','staff','lunge'].includes(e.move))BossVFX.slash(e.miniboss==='angel'?'slashGold':'slashShadow',x+e.face*60,feet-62,165,112,e.face,1-e.clock/e.phaseDuration);
@@ -690,7 +691,7 @@ const Visuals = (() => {
     }
     if(boss.autoPhase==='windup'){
       const x=boss.autoFace>0?boss.x+boss.w*.4:boss.x-175;
-      ctx.fillStyle=realm===2?'#253c5899':'#ff9c6238';ctx.fillRect(x,boss.y-55,238,205);ctx.strokeStyle=realm===2?'#fff0bd':'#ffb889';ctx.lineWidth=3;ctx.setLineDash([9,6]);ctx.strokeRect(x,boss.y-55,238,205);ctx.setLineDash([]);
+      BossCues.box({x,y:boss.y-55,w:238,h:205},realm===2?'#fff0bd':'#ffb889',realm===2?'#253c5899':'#ff9c6238');
     }
     const elapsed=boss.phaseDuration-boss.clock,feet=boss.y+boss.h;
     if(realm===0&&boss.move==='jumpCut'&&boss.leap){
@@ -720,8 +721,7 @@ const Visuals = (() => {
     }
     if(boss.phase==='windup'&&['cleave','dash','doubleCut'].includes(boss.move)){
       const x=boss.face>0?boss.x+40:boss.x-220,width=boss.move==='dash'?460:240;
-      ctx.fillStyle='#ffe0a229';ctx.fillRect(boss.face>0?x:x-width+240,boss.y+30,width,85);
-      ctx.strokeStyle='#ffe2a0';ctx.lineWidth=2;ctx.setLineDash([12,8]);ctx.strokeRect(boss.face>0?x:x-width+240,boss.y+30,width,85);ctx.setLineDash([]);
+      BossCues.box({x:boss.face>0?x:x-width+240,y:boss.y+30,w:width,h:85},'#ffe2a0','#ffe0a229');
     }
     if(boss.lava)BossVFX.lava(boss.lava);
     for(const h of boss.hazards){

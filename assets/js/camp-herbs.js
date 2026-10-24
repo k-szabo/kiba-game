@@ -1,7 +1,14 @@
 /* Repeatable Japan herbs: only gathered stock persists, shrine regrowth is local. */
 'use strict';
 const CampHerbs=(()=>{
- const patches=Object.freeze([{id:'herb-forest',x:1120,y:1000},{id:'herb-village',x:3890,y:1000},{id:'herb-temple',x:7050,y:960}].map(Object.freeze));
+ // Spread supplies along the six authored road segments. Each patch's feet
+ // sit on a traversable surface; none requires a secret path or movement upgrade.
+ const patches=Object.freeze([
+  {id:'herb-forest',x:1120,y:1000},{id:'herb-village',x:3890,y:1000},{id:'herb-temple',x:7050,y:960},
+  {id:'herb-outskirts',x:640,y:1000},{id:'herb-bamboo',x:1800,y:950},
+  {id:'herb-wind-road',x:2770,y:950},{id:'herb-riverbank',x:4640,y:1000},
+  {id:'herb-rice-fields',x:5680,y:920},{id:'herb-temple-road',x:8290,y:1000}
+ ].map(Object.freeze));
  const harvested=new Set();
  const visible=()=>level===levels[0]&&!Prologue.active&&flags[0].includes('herbalistQuestAccepted');
  function reset(){harvested.clear();}

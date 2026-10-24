@@ -99,7 +99,7 @@ function fixture(){
  choose('roastMeat');click('sellInventoryItem');r('Inventory.close();Inventory.open();');click('confirmInventorySale');assert.equal(snapshot(),before,'Close/reopen kept a pending sale');
  choose('roastMeat');click('sellInventoryItem');click('confirmInventorySale');assert.equal(r('meatCount'),2);const once=snapshot();click('confirmInventorySale');assert.equal(snapshot(),once,'Double confirmation sold twice');
  r('meatCount=1;teaCount=0;Inventory.render();');choose('roastMeat');click('sellInventoryItem');click('confirmInventorySale');assert.equal(f.d.activeElement.id,'closeInventory','Last-item sale must return focus to a live control');
- const world=r('JSON.stringify([player,enemies,projectiles,time,levelTime])');f.press('d');f.press('j');f.tick(120);f.release('d');f.release('j');assert.equal(r('JSON.stringify([player,enemies,projectiles,time,levelTime])'),world,'Inventory sale UI must freeze gameplay');
+ const world=r('JSON.stringify([player,enemies,projectiles,time,levelTime])');f.press('d');f.press({action:'attack'});f.tick(120);f.release('d');f.release({action:'attack'});assert.equal(r('JSON.stringify([player,enemies,projectiles,time,levelTime])'),world,'Inventory sale UI must freeze gameplay');
  validate(r('saved'));
 }
 console.log('PASS: atomic vendor-only sales, guarded confirmations/focus, resale/rebuy ownership, boss-point and loot history, stock fallback/active tea, pause/death/reload and dev-save isolation.');

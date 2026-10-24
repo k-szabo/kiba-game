@@ -48,6 +48,7 @@ const CampQuest=(()=>{
   if(state!=='play'||level!==forestCamp||Prologue.active||!defeated[0]||!pointNear(npc,95,85))return false;
   const complete=rescueFlags.every(owns);
   if(!owns('campQuestAccepted')){flags[0].push('campQuestAccepted');persist();updateHUD();}
+  if(complete&&!owns('campQuestCompleted')){flags[0].push('campQuestCompleted');persist();updateHUD();}
   story('camp.dialogue.label',npc.name,complete?'camp.rescue.complete.story':'camp.rescue.quest.story',null,{right:'daichi',speaker:'daichi'});
   return true;
  }
@@ -99,17 +100,40 @@ const CampQuest=(()=>{
   },{onPage:page=>{execution={enemy,stage:Math.min(2,page)};enemy.poseIndex=12+execution.stage;},right:'campMaster',speaker:'campMaster'});
   return true;
  }
+ function masterVictory(enemy){
+  if(state!=='play'||level!==samuraiCamp||!enemies.includes(enemy)||!enemy.dead||!owns('guardian:campMaster'))return false;
+  story('camp.dialogue.label','camp.rescue.boss','camp.master.victory',null,{right:'campMaster'});return true;
+ }
+ function executionFailed(enemy){
+  if(state!=='play'||level!==samuraiCamp||!enemies.includes(enemy)||enemy.dead||owns('guardian:campMaster'))return false;
+  const map=level,rest=map.rests.find(point=>point.id==='samuraiCampCourt');
+  initPlayer(rest);resetCamera();updateHUD();
+  story('camp.dialogue.label','camp.rescue.boss','camp.master.failed',()=>{
+   if(level!==map||!enemies.includes(enemy)||enemy.dead)return;
+   CampMaster.reset(enemy);initPlayer(rest);resetCamera();updateHUD();
+  },{right:'campMaster',button:'camp.master.retry'});return true;
+ }
+ function questMarker(id){
+  if(Prologue.active||state==='menu')return null;
+  if(id==='daichi'&&level===forestCamp&&defeated[0])return !owns('campQuestAccepted')?'!':rescueFlags.every(owns)&&!owns('campQuestCompleted')?'?':null;
+  if(id==='herbalist'&&level===herbalHut&&(DevSession.active||owns('herbalistRescued'))){
+   if(campServices.herbs>=CampServiceRules.profile.herbsPerBrew)return '?';
+   return !owns('herbalistQuestAccepted')||owns('herbalistQuestTurnedIn')?'!':null;
+  }
+  if(id==='enchanter'&&level===mysticTent&&(DevSession.active||owns('enchanterRescued'))&&!SerpentRelics.united())return SerpentRelics.scales.every(SerpentRelics.held)?'?':!owns('serpentRitualKnown')?'!':null;
+  return null;
+ }
  function objective(){
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};
    return {...target,x:target.point.x,y:target.point.y,compass:false};
   }
-  if(level===forestCamp&&owns('campQuestAccepted')&&rescueFlags.every(owns)){
+  if(level===forestCamp&&owns('campQuestAccepted')&&!owns('campQuestCompleted')&&rescueFlags.every(owns)){
    const point=level.npcs.find(candidate=>candidate.id==='daichi');return {point,x:point.x,y:point.y,text:'camp.rescue.objective.daichi',compass:false};
   }
   if(isSide()){const point=level.servicePoint;return {point,x:point.x,y:point.y,text:'camp.objective',compass:false};}
   return null;
  }
- return Object.freeze({get execution(){return state==='dialog'&&level===samuraiCamp&&enemies.includes(execution?.enemy)?execution:null;},locationId,isSide,enter,leave,materializeRoute,talkDaichi,context:getContext,interact,rescue,masterScene,objective});
+ return Object.freeze({get execution(){return state==='dialog'&&level===samuraiCamp&&enemies.includes(execution?.enemy)?execution:null;},locationId,isSide,enter,leave,materializeRoute,talkDaichi,context:getContext,interact,rescue,masterScene,masterVictory,executionFailed,questMarker,objective});
 })();

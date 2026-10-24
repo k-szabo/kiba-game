@@ -96,7 +96,7 @@ for(const fps of [30,60,120]){
  const h=setup(),r=h.run;
  r("initPlayer({x:10000,y:1200});player.inv=0;bossStarted=true;boss.hp=100;boss.move='bell';boss.targetX=player.x+player.w/2;setBossPhase('windup',.01);");
  r('ShadowRealm.updateBoss(.02);');assert(r('player.stun>0'));
- r("keys.add('d');pressed.add(' ');pressed.add('k');input(.05);");assert.equal(r('player.vx'),0);assert.equal(r('dash'),0);
+ r("keys.add('d');pressed.add(' ');pressed.add(Bindings.read('dash')[0]);input(.05);");assert.equal(r('player.vx'),0);assert.equal(r('dash'),0);
  const stun=r('player.stun');r('state="pause";update(.2);');assert.equal(r('player.stun'),stun);r('state="play";');
  const before=r('player.hp');r(`for(let i=0;i<${fps};i++){updatePlayerTimers(1/${fps});ShadowRealm.updateBoss(1/${fps});}`);
  assert.equal(r('player.hp'),before-2);assert.equal(r('boss.hp'),106);assert.equal(r('player.stun'),0);

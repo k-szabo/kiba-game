@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": {
+    "concept": "exec-5a306507-708f-44c9-a440-6ae2ac883ae7.png",
+    "storyboard": "Same board, six numbered poses; explicitly approved by user before production."
+  },
+  "asset": {
+    "path": "assets/images/enemies/camp-master-jump-v1.png",
+    "image": "campMasterJump",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      254
+    ],
+    "columns": 3,
+    "rows": 2,
+    "firstPoseIndex": 15,
+    "frames": [
+      {
+        "image": "campMasterJump",
+        "x": 0,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 313,
+        "anchorY": 464,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          111,
+          178,
+          463,
+          464
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-windup"
+      },
+      {
+        "image": "campMasterJump",
+        "x": 512,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 795,
+        "anchorY": 463,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          600,
+          117,
+          896,
+          463
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-takeoff"
+      },
+      {
+        "image": "campMasterJump",
+        "x": 1024,
+        "y": 0,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1305,
+        "anchorY": 414,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          1109,
+          105,
+          1405,
+          414
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-ascent"
+      },
+      {
+        "image": "campMasterJump",
+        "x": 0,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 330,
+        "anchorY": 848,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          114,
+          568,
+          409,
+          848
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-apex"
+      },
+      {
+        "image": "campMasterJump",
+        "x": 512,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 795,
+        "anchorY": 906,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          575,
+          605,
+          1002,
+          906
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-downcut"
+      },
+      {
+        "image": "campMasterJump",
+        "x": 1024,
+        "y": 512,
+        "w": 512,
+        "h": 512,
+        "anchorX": 1280,
+        "anchorY": 928,
+        "bodyHeight": 270,
+        "visibleBounds": [
+          1065,
+          678,
+          1483,
+          928
+        ],
+        "edgeVisiblePixels": 0,
+        "pose": "jump-landing"
+      }
+    ]
+  },
+  "prompt": "FINAL PRODUCTION TRANSPARENT SPRITE ATLAS. Use first reference for six APPROVED jumpattackposes, second reference for exact Camp Master visualidentity. Render SIX SMALL complete figures in a3column×2row regulargrid on a1536×1024canvas. Eachcell512×512. CRUCIAL: every whole figure INCLUDING ENTIRE KATANA,CAPE,HELMET,TWOBOOTS occupies atmost340pixelswide and360pixelshigh, leavingatleast80pixelsofEMPTYFULLYTRANSPARENTSPACE onLEFTandRIGHTofeverycell. Largeemptyguttersbetweentinyfiguresaremandatory. No figure may approach a cellboundary. Exactlysix figures,sameuniformcharacterscale. No giantcloseups, no backdrop,haze,gradient,glow,dust,shadow,ground,numbers,writing,grid,UI. Cleanalpha0 everywhere outside crispsilhouette. Right-facinghumansamuraiwithblackmoustache,redandgoldlayeredarmor,goldcrescentkabuto,redfloralcape,blacktrousers,goldboots; sameCOMPLETEsilvercurvedkatanaandtwohands onhilt. Fixedweaponlengthandbodyproportionseverypose. Rowmajorposes: crouchedtelegraphkatanaoverhead; takeofflegsextendingkatanaoverhead; ascentkneesfoldingkatanaoverhead; apexkneestuckedkatanaoverhead; descendingdiagonalswordcut;lowgroundedlandingrecovery. Finelypaintedgameart,soliddenseopaque red/gold/steelcores,crispedges. Fullsilhouettesfitcomfortablywithhugetransparentmargins; designsmustnevertouch oroverlap.",
+  "earlierAttemptNotes": [
+    "First production closely packed figures, descending katana crossed cell boundary. Discarded before final registration.",
+    "Final regenerated sheet uses larger blank gutters and original approved pose references."
+  ],
+  "notes": [
+    "Native generated RGBA pixels preserved. No image resizing, recoloring or matte deletion.",
+    "Fixed bodyHeight270 for allsixposes; do notnormalizeeachposebyvaryingvisibleheight.",
+    "Individualfeet anchors measured fromalpha>=32bounds; horizontalrootcenters estimated underpelvis forstablebodyregistration.",
+    "Allsixcell perimeterchecks showzero visiblealpha>=32pixels, completeweapon/cape/helmet intact.",
+    "RGB contains coloredvalues inalpha0pixels; originalalpha mustbeused rather thanRGB matte extraction.",
+    "Integrator owns mergedmetadata/perframeimageoverride, browseranimationreview,runtime,colormaps."
+  ]
+}
