@@ -1,12 +1,12 @@
 # Hátizsák és felszerelés – 0.9.7
 
-Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a fegyver helyét mutatja. Az ablak görgethető.
+Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a külön fegyver-/talizmánhelyet mutatja. Az ablak görgethető.
 
 A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.
 
 A megszerzett tárgyak listája kizárólag a hátizsák ablakában jelenik meg. A korábbi bal felső HUD-lista megszűnt; a küldetéscél és a birtokolt iránytű kijelzése megmarad.
 
-Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Az egyedi küldetéstárgyakhoz nincs második példány-adatbázis; a fogyasztható készletek és a megvásárolt fegyverek külön, mentett mennyiségeket és tulajdonlistát használnak. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét és a pikkely megmarad. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
+Az inventoryban megjelenő egyedi küldetéstárgyak az angyalglória, a démon szarva, a négy tanácsos csontkulcsa, a titkos végső boss után összeolvadó Alkonyat Pecsétje és a lávakígyó pikkelye. A lista közvetlenül a meglévő mentett küldetésjelzőkből épül fel. Az egyedi küldetéstárgyakhoz nincs második példány-adatbázis; a fogyasztható készletek és a megvásárolt fegyverek külön, mentett mennyiségeket és tulajdonlistát használnak. A kapunyitáskor elfogyasztott kulcs és az egyesítés után lecserélt ereklyék eltűnnek; az új Pecsét megmarad, a pikkelyek Fumi egyszeri egyesítéséig birtokolhatók. Tárgykiválasztáskor név és leírás jelenik meg, eldobás vagy küldetéstárgy-felszerelés nincs.
 
 A felszerelt fegyver az ébredés után választott katana, naginata vagy kard és pajzs; Ren megmentése után a megvett profilok is felszerelhetők. Yomi őrzőjének legyőzése mindhárom stílus sebzését javítja; a katana neve ekkor Hajnalkard. A profilokat és mentési szabályokat a [fegyverútmutató](WEAPONS.md) írja le. A fegyver részletei a tényleges fejlesztésekből számított normál és erős támadás sebzését mutatják. A megjelenítés nem módosítja a harcot.
 
@@ -63,7 +63,7 @@ A mentett `flags[2].eclipseRelic` jelző az egyesült ereklyét birtokolja. A k�
 
 A katalógus `realm` mezője adja meg a birtoklási jelző birodalmát. Az opcionális `consumedBy: {realm, id}` a felhasznált tárgyat elrejti, így a kulcsfogyasztás és az ereklyeegyesítés ugyanazt a közös inventory-megjelenítést használja. Az új grafika és prompt: `assets/images/ui/eclipse-relic-v1.png`, [generálási adatok](art-prompts/eclipse-relic-v1.json).
 
-A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpentScale`, Yomi) is megjelenik. A megölt kígyótól automatikusan bekerül a hátizsákba, és a félbemaradt bosskísérlet után is megmarad. Jelenleg nincs felhasználása vagy statbónusza. A közös kontrasztos ikonkatalógust használja; [a harc szabályai](YOMI-BOSS.md).
+A 0.9.11-es kiadástól a lávakígyó egyszer megszerezhető pikkelye (`serpentScale`, Yomi) is megjelenik. A megölt kígyótól automatikusan bekerül a hátizsákba, és a félbemaradt bosskísérlet után is megmarad. A pikkely önmagában nem ad statbónuszt; a japán és mennyei pikkellyel együtt Fuminál egyesíthető, a megmaradó történeti jelző mellett. A közös kontrasztos ikonkatalógust használja; [a harc szabályai](YOMI-BOSS.md).
 
 ## Akash portékái – 0.9.21
 
@@ -82,3 +82,9 @@ Akash közelében az eladható kijelölt tárgy eladási gombot kap, külön meg
 Az erdei gyógynövény és a gyógyfőzet az `ART_INVENTORY.items` közös kontrasztos, DPR-követő megjelenítését használja. Készletük a `campServices.herbs` és `campServices.potions` mezőben marad meg. A főzet legfeljebb 3 HP-t azonnal visszatölt, teljes HP-n nem fogy; kiválasztható gyógyító gyorshasználatra, és kifogyáskor a többi elérhető gyógyító tárgyra vált. A tea időzített hatása külön marad.
 
 A birtokolt, de nem felszerelt fegyverek `weapon-<style>` azonosítóval jelennek meg a hátizsákban; az adat a tulajdonlistából származik, nem új questflag. Ikonjuk és valós sebzésleírásuk a közös fegyverkatalógust használja. Felszerelésük nem növeli az aktuális HP-t; a pajzs levétele levághatja a maximális HP feletti részt.
+
+## Három pikkely és talizmánhely
+
+A `whiteSerpentScale`, `serpentScale` és `wingedSerpentScale` három külön védett tárgy. Fumi a misztikus sátorban egyszer egyesíti őket; a történeti megszerzési jelzők megmaradnak, de a fúzió után a felhasznált pikkelyek `consumedBy` feltétele elrejti őket a birtoklási nézetből. A korábbi Yomi-pikkely azonosítója változatlan.
+
+A `triuneSerpentTalisman` új, fegyvertől független felszereléshelyet kap. Felszerelés előtt a táskában látható, viselve a talizmánhelyen; a levétel visszahelyezi a táskába. A `quantity` a felszerelt példányt nem számolja a táskába, a tartós tulajdont a megszerzési jelző őrzi. A +20 Armor kizárólag viselve aktív; fel-/levétel és fúzió nem gyógyít és nem változtatja Momo maximális HP-ját. A külön ikon ugyanazt a DPR- és kontrasztkezelést használja, mint minden más inventorygrafika. Részletek: [SERPENTS.md](SERPENTS.md).

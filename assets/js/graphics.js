@@ -172,7 +172,8 @@ const Visuals = (() => {
     }
     ctx.fillStyle = realm === 1 ? '#140c2028' : realm === 2 ? '#24314820' : '#11252d30';
     const secretState=secretBackdropState();
-    if(secretState&&realm!==3){
+    if(secretState&&SerpentArt.hasBackdrop(secretState.area))SerpentArt.backdrop(secretState);
+    else if(secretState&&realm!==3){
       const secret=secretState.area;
       const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';
       if(usable(key)){
@@ -371,6 +372,7 @@ const Visuals = (() => {
 
   function actor(e, r, isBoss = false) {
     if(!isBoss&&DoomSlayer.is(e)){SlayerArt.actor(e);return;}
+    if(!isBoss&&SerpentArt.actor(e))return;
     if(!isBoss&&e.serpent===true){serpentActor(e);return;}
     const role=isBoss?'boss':enemyRole(e),feet=e.y+e.h,x=e.x+e.w/2;
     const height=isBoss?[164,180,176,170][realm]:e.miniboss?(e.miniboss==='organist'?290:e.miniboss==='jailer'?172:e.miniboss==='angel'?156:145):role==='shield'?102:role==='mage'?101:94;
@@ -502,7 +504,7 @@ const Visuals = (() => {
     SlayerArt.scenery();
     if(realm!==0)return;
     for(const area of level.secrets||[]){
-      if(area.id==='slayerGrave')continue;
+      if(!['angelRuin','cultCave'].includes(area.id))continue;
       if(area.x+area.w<camera||area.x>camera+viewW||area.y+area.h<cameraY||area.y>cameraY+H)continue;
       ctx.save();
       if(area.id==='angelRuin'){

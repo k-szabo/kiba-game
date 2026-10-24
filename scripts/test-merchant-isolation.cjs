@@ -82,9 +82,9 @@ for(const origin of ['live','menu','shop']){
 }
 {
  const h=harness(),r=h.run;
- r("Prologue.stop();defeated=[true,false,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];coins=0;enterRealm(1);state='play';bossStarted=true;boss.serpent=createLavaSerpent();boss.serpent.hp=0;killEnemy(boss.serpent);");
+ r("Prologue.stop();defeated=[true,false,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],[],[]];coins=0;enterRealm(1);state='play';bossStarted=true;boss.serpent=createLavaSerpent();enemies.push(boss.serpent);boss.serpent.hp=0;killEnemy(boss.serpent);");
  assert.equal(r('coins'),r('Merchant.rewards.miniboss'));assert.equal(r('saved.coins'),r('coins'));
- r('killEnemy(boss.serpent);boss.serpent=createLavaSerpent();boss.serpent.hp=0;killEnemy(boss.serpent);');
+ r('killEnemy(boss.serpent);boss.serpent=createLavaSerpent();enemies.push(boss.serpent);boss.serpent.hp=0;killEnemy(boss.serpent);');
  assert.equal(r('coins'),r('Merchant.rewards.miniboss'),'The permanent serpent reward cannot be earned twice');
  r('coins=Number.MAX_SAFE_INTEGER-2;');assert.equal(r('Merchant.award(5)'),2);assert.equal(r('coins'),Number.MAX_SAFE_INTEGER);
  assert.equal(r('Merchant.award(5)'),0);assert.equal(r('coins'),Number.MAX_SAFE_INTEGER);

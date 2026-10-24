@@ -35,7 +35,7 @@ for(const n of r('levels.map((_,n)=>n)')){
  const specs=r('level.enemies.filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name}))');
  for(const spec of specs){
   assert(options.includes(spec.id),'Authored miniboss missing from encounter picker: '+spec.id);
-  assert(field().children.some(option=>option.value===spec.id&&option.textContent===spec.name),'The picker must reuse the authored miniboss name');
+  assert(field().children.some(option=>option.value===spec.id&&option.textContent===r('I18n.t('+JSON.stringify(spec.name)+')')),'The picker must reuse the authored miniboss name');
   r(`flags[realm].push(minibossFlag(${JSON.stringify(spec.id)}));enemies.find(enemy=>enemy.id===${JSON.stringify(spec.id)}).dead=true;`);
   const progress=r('JSON.stringify({flags,defeated,progression,coins,shards})');
   const selector=field();selector.value=spec.id;selector.onchange();

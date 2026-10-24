@@ -35,7 +35,7 @@ function respawnEnemies() {
 }
 function killEnemy(e) {
   if(e.dead||e.hp>0)return;
-  if(e.serpent){defeatLavaSerpent(e);return;}
+  if(Serpents.is(e)){Serpents.defeat(e);return;}
   if(e.miniboss){defeatMiniboss(e);return;}
   e.dead=true;shards+=e.summoned?1:2;
   if(!e.summoned)Merchant.award(Merchant.rewards.enemy);
@@ -83,7 +83,7 @@ function releaseEnemyAttack(e) {
 function updateEnemies(dt) {
   for(const e of enemies){
     if(e.dead)continue;
-    if(e.serpent){updateLavaSerpent(e,dt);continue;}
+    if(Serpents.is(e)){Serpents.update(e,dt);continue;}
     if(e.miniboss){updateMiniboss(e,dt);continue;}
     // An original-fight summon follows Momo across this arena, rather than
     // forgetting the target at its spawn-local patrol/detection boundary.
@@ -278,11 +278,8 @@ function queueYomiThresholds(){
 }
 function createLavaSerpent(){
   const feet=platforms.find(p=>p.bossPlatform)?.y||level.arena.y-105;
-  return {id:'lava-serpent-'+boss.encounterId,name:I18n.t('yomi.serpent.name'),serpent:true,miniboss:'serpent',kind:'serpent',
-    x:clamp(player.x+180,level.arena.x+30,level.arena.x+level.arena.w-150),y:feet-84,w:120,h:84,
-    hp:24,maxHp:24,active:true,dead:false,phase:'windup',clock:1.1,phaseDuration:1.1,move:'emberFan',
-    face:-1,inv:0,stun:0,animTime:0,walkSpeed:0,windup:1.1,windupDuration:1.1,attackTime:0,attackDuration:.42,attackElapsed:0,
-    recovery:0,cycles:0,targetX:player.x+player.w/2,targetY:player.y+player.h*.5,encounterId:boss.encounterId,hazards:[]};
+  return Serpents.create({id:'lava-serpent-'+boss.encounterId,serpentType:'lava',miniboss:'serpent',
+    x:clamp(player.x+180,level.arena.x+30,level.arena.x+level.arena.w-150),y:feet,encounterId:boss.encounterId});
 }
 function startYomiLavaWave(stage){
   if(realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
@@ -334,36 +331,9 @@ function updateYomiWave(dt){
   if(boss!==fight||!bossStarted||boss.dead)return;
   demonAutoAttack(dt);
 }
-function defeatLavaSerpent(e){
-  if(e.dead||e!==boss.serpent||!e.active||realm!==1||level!==levels[1]||!bossStarted||boss.dead)return;
-  e.dead=true;e.active=false;e.phase='dead';e.hazards=[];
-  if(!flags[1].includes('serpentScale')){flags[1].push('serpentScale');Merchant.award(Merchant.rewards.miniboss);awardXP(70);persist();updateHUD();toast(I18n.t('yomi.serpent.scale.gained'));}
-  burst(e.x+e.w/2,e.y+e.h*.5,'#ffbd69',36);
-  if(boss.yomiStage==='shelter')endYomiShelter();
-}
-function updateLavaSerpent(e,dt){
-  if(!e.active||e.dead||e!==boss.serpent||realm!==1||!bossStarted||boss.dead)return;
-  e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.clock-=dt;e.animTime+=dt;e.walkSpeed=0;
-  if(e.phase==='wait'){
-    const dx=player.x+player.w/2-e.x-e.w/2;e.face=Math.sign(dx)||e.face;
-    const feet=clamp(player.y+player.h,level.arena.y-220,level.arena.y-75);
-    e.y+=(feet-e.h-e.y)*Math.min(1,dt*3);
-    if(Math.abs(dx)>135){const old=e.x;e.x=clamp(e.x+e.face*115*dt,level.arena.x+25,level.arena.x+level.arena.w-e.w-25);e.walkSpeed=(e.x-old)/dt;}
-    if(e.clock<=0){e.move=e.cycles++%2?'bite':'emberFan';e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;setMiniPhase(e,'windup',e.move==='bite'?.8:1.1);}
-  }else if(e.phase==='windup'){
-    e.windup=Math.max(0,e.clock);
-    if(e.clock<=0){
-      setMiniPhase(e,'strike',.42);e.attackTime=.42;e.attackElapsed=0;
-      if(e.move==='bite')miniMelee(e,125,2);
-      else{
-        const angle=Math.atan2(e.targetY-e.y-e.h*.5,e.targetX-e.x-e.w*.5);
-        for(const spread of [-.22,0,.22]){shoot(e.x+e.w/2,e.y+e.h*.5,Math.cos(angle+spread)*240,Math.sin(angle+spread)*240,'#ffa465',4,'ember');Object.assign(projectiles.at(-1),{source:'serpent:'+e.id,damage:1,radius:9});}
-      }
-      if(e!==boss.serpent||!bossStarted)return;
-    }
-  }else if(e.phase==='strike'){e.attackElapsed+=dt;if(e.clock<=0){e.attackTime=0;setMiniPhase(e,'recover',.65);}}
-  else if(e.phase==='recover'&&e.clock<=0)setMiniPhase(e,'wait',.7);
-}
+// Legacy host helpers delegate to the same species controller.
+function defeatLavaSerpent(e){return Serpents.defeat(e);}
+function updateLavaSerpent(e,dt){return Serpents.update(e,dt);}
 function startBossAttack(){
   const duration={cleave:.28,dash:.55,doubleCut:.9,jumpCut:SAMURAI_JUMP.duration,hammer:.35,slam:.3,lava:6.8,embers:1.2,summon:.45,
     lightArrows:1.4,holySweep:.85,shadowBolts:1.35,shadowNova:.7,shadowRain:1.4,eclipse:1.65,hellfire:1.5}[boss.move];
@@ -500,6 +470,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(Serpents.is(spec))return Serpents.create(spec);
   if(CampMaster.is(spec))return CampMaster.create(spec);
   if(DoomSlayer.is(spec))return DoomSlayer.create(spec,i);
   const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:94,w:68,maxHp:spec.miniboss==='angel'?36:42};
@@ -510,6 +481,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(Serpents.is(e)){Serpents.reset(e);return;}
   if(CampMaster.is(e)){CampMaster.reset(e);return;}
   if(DoomSlayer.is(e)){DoomSlayer.reset(e);return;}
   e.x=e.origin;e.y=e.baseY;e.hp=e.maxHp;e.active=false;e.phase='wait';e.clock=1.2;e.phaseDuration=1.2;
@@ -520,10 +492,11 @@ function resetMinibosses(){for(const e of enemies)if(e.miniboss&&!e.serpent&&!e.
 function discoverSecrets(){
   for(const area of level.secrets||[])if(!area.public&&!secretKnown(area.id)&&overlap(player,area)&&
     (platforms.some(p=>p.secretArea===area.id&&player.support===p.id)||player.x>=area.arena.x&&player.x+player.w<=area.arena.x+area.arena.w&&player.y+player.h<=area.arena.y+12&&player.y+player.h>=area.arena.y-180)){
-    flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+area.name);
+    flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+I18n.t(area.name));
   }
 }
 function defeatMiniboss(e){
+  if(Serpents.is(e)){Serpents.defeat(e);return;}
   if(CampMaster.is(e)){CampMaster.defeat(e);return;}
   if(DoomSlayer.is(e)){DoomSlayer.defeat(e);return;}
   if(e.dead)return;
@@ -550,7 +523,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

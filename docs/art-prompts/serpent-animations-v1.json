@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-24",
+  "approval": {
+    "concept": "User explicitly approved exec-66fde3f1-1f07-418c-b2a8-b9793a897e9b.png before production.",
+    "storyboard": "User explicitly approved the sixteen-pose storyboard exec-4e8c90a0-ab69-42ad-8c27-de9571ab5409.png before production."
+  },
+  "sources": {
+    "white": {
+      "initial": "exec-e519f13f-324b-446c-80b8-1d889c3bc1aa.png",
+      "selected": "exec-cd9cb813-9868-44c6-82fa-8d07ac9d39ef.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION EIGHT-POSE GAME ANIMATION ATLAS, not a concept sheet. Reference1 TOP-LEFT WHITE SERPENT defines the exact approved creature identity and painted material detail. Reference2 FIRST EIGHT CELLS define the approved motion only; ignore its winged rows. Generate ONE transparent RGBA atlas with exactly FOUR EQUAL COLUMNS and TWO EQUAL ROWS,8isolatedcompleteposes (preferred2048x1024). NO gridlines, labels, arrows, typography, background, groundplate, shadows or VFX. Each cell depicts the SAME one-head, long-neck, coiled ivory-white sacred Japanese serpent facing LEFT, exact pale jade scale recesses and eye, layered ivory/gold cheek/spine plates, complete tapered tail. NO wings, hands, legs or humanoid anatomy. Anatomy is one continuous limbless body from single head through neck into coiled base and single tail. Match approved richly painted detailed Japanese fantasy game style, sharp dark outlined plates, opaque ivory/jade faces, antique gold edge accents and fine textured shading, not flat vector/pixel art. Keep body size/proportions, coil volume and head size consistent in all8frames. Every full headcrest, jaw, neck, coiled base, tailtip and tailspine stays STRICTLY in its OWN equal cell with15%clear transparent padding, no overlap or bleed between cells. All bases use the same horizontal registration line at85%cellheight, completebodymax70%cellwidth. The raised and lunging head fits by posture changes, not by resizing the creature. Same virtual root/coil anchor nearcenter ofeachcell. ROW1 LEFTTORIGHT: 1 closed-mouth neutral breathingcoil, neck risesSshape andheadleft; 2 bite WINDUP neck retracted towardRIGHT andjawopen, headpulledback; 3 bite RELEASE neck sharplyextendsLEFT/down andjawssnap, coilbase staysanchored; 4 bite RECOVERY neckretracting towardbase jawclosing. ROW2: 5 tail-strike WINDUP single tailtip raisedhighbehindcoil, headremainswatchfulleft; 6 tail-strike IMPACT single tailtip strikeslowatRIGHTbesidecoil, visiblycompressedhead/bodyposture butnoactualfloor orimpactdebris; 7 frost-fan CAST necklifts jawwidelyopenleft, tongue/fangsreadable, NO emittedprojectiles/mist/FX; 8 closedmouth neutralreturn closematchframe1forloop. Frames must have distinct motion silhouettes while preserving same identity and stable physical scale. Crisp native-resolution opaque painted creature only, with real transparent alpha in margins and inside coil gaps. Do not create scenery or a full-canvas white/black background.",
+      "layoutCorrection": "Exact layout correction ONLY to this eight-pose production atlas. Preserve the SAME white/jade serpent identity, ALL EIGHT pose designs and left-facing movement, painted pixel detail, and true RGBA alpha. The current creatures fill nearly100% of each grid cell, some touch each other; this is unusable. Re-layout in FOUR COLUMNS by TWO ROWS of equal cells. Uniformly SCALE DOWN EACH ENTIRE CREATURE (head+body+tail together) to 70% of its current size; do not crop, shorten or deform it. Center each whole creature within its own cell. All8creatures must be visibly smaller with LARGE empty transparent gutters: at least12%of cell width on both sides and12%cellheight above/below ALL complete extremities. Every cell has exactly one complete separate serpent. Align coiled bases on85%height of owncell. Do not expand head/neck/tail back to oldsize. Specific sprite content stays within each cell central rectangle x=[cellleft+15%,cellright-15%], y=[celltop+12%,cellbottom-12%]. The entire atlas outer edge also has visible empty transparency. Keep onehead/onecontinuousbody/onesingletail perframe, no wings or legs. No new poses, no missing tailtip, no gridlines/text/effects/ground/background. Outputimage same4x2atlas with generous transparent separation, never touchingneighborcells."
+    },
+    "winged": {
+      "initial": "exec-bf2c0ea0-3a62-4b6c-8160-2f2c9ba346dd.png",
+      "selected": "exec-d07d15c1-db9a-4c35-af58-a1645cebe547.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION EIGHT-POSE TRANSPARENT ANIMATION ATLAS for the approved WINGED SERPENT, not concept art. Reference1 TOP-RIGHT creature defines exact identity; reference2 LAST EIGHT cells define approved movements; ignore all white-serpent, scenery and item panels. Produce FOUR EQUAL COLUMNS by TWO EQUAL ROWS,8fullyseparatecomplete left-facing creatures, preferred2048x1024 image. VERY IMPORTANT: All creatures and their entire wings are SMALL inside their own cells: maximum70%cellwidth and70%cellheight, centered with15%emptytransparentpadding on ALL sides. Wings opened or folded never extend beyond owncell or overlapnextsprite. No crop, no touchingedges, no resizingbodybetweenframes; wingtips must fit by their correct pose, not by clipping. Clear empty alpha gutters between4columns and2rows. Each pose is SAME single-head navy/violet scaled Japanese serpent with ivory underneck, antique gold browplate/horns/cheek/spine ornament, gold eye and exactly ONE matched pair of feathered wings (two wings total) attached behind shoulders on SAME continuous serpentine body; no limbs, arms, hands or legs. Ivory feathers, deepviolet/darktips, subtle corruption accents, exactconceptfamily, not anotherdragon. One longneck feeds into onecoiledbase andonetaperedtail. Rich painted Japanese fantasy game art, fine textured plates/feathers, crisp darkcontours and opaque saturated colors, no surroundingglow. Coiledbase/root has samevirtualgroundline at85%eachcellheight. Same fixedbody/headscale inallframes; airborneposes liftcoilwithinowncellbutkeepvirtualgroundregistration. ROW1 LEFTTORIGHT: 1 coiledperched idle mouthclosed, bothwingsfoldedalongback; 2 lunge WINDUP head retracts towardRIGHT jawopen, bothwingsopeningup; 3 wingbeat LIFT bothwings angleddownward outward, coil liftedslightlyabovevirtualground, onecompletebody/tail; 4 LUNGE left lowhead and openjaws, neckstretchedleft, wingssweptback together asonepair. ROW2: 5 HOLY-FAN CAST hoveringcoil, headraised oneopenmouthleft, matchedwingshalfspread; 6 SHADOW-FAN CAST headlowerandneckretracted oneopenmouthleft, wingsholdsamepairedstructure, subtle violet mouth interior only; 7 RECOVERY coilsettles neckrises, bothwingsfolding; 8 neutralreturnmatching1, bothwingsfolded. NO emittedmagic/projectiles/flame/mist/lightbeams or effect sprites; engine renders effects separately. NO drawn grid, labels, numbers, arrows, typography, ground, shadows, scenery or opaque background. Actual transparent RGBA background and internal gaps. Keep EVERY complete headcrest/tailtip/wingfeather inside its own central70%cellrectangle; ample empty outercanvasmargin.",
+      "layoutCorrection": "Precise layout correction ONLY to this approved eight-pose winged-serpent atlas. Preserve exact same8pose designs, wingedcreature identity, onehead/onebody/onepairwings, original leftfacing, painterlydetail and true transparentRGBA. Do not invent any pose or change wing anatomy. The third and fourth frames in top row currently touch and bleed across their cell boundary; other sprites also too large. Uniformly SHRINK EACH ENTIRE CREATURE by 70%of its current size, including head/neck/body/wings/tail together, then place each in its own equal cell. FOUR columns TWO rows unchanged. Do not crop or shorten wings/tail or rescale onlyparts. Center each pose with broad transparent gutters and at least15%cellwidth empty toleftandright,10%aboveandbelow. Every tip strictly remains in its owncell, all8sprites visibly separate. Align restingcoils on85%cellheight, airborneframes3/5hover slightlyabove samevirtualgroundline. Keepsamebody/headscale inallframes, correctwholeposeuniformscale. NO grid,text,arrows,effects,ground,shadowplate,scenery or background. Preserve nativeopaquecolorsandalpha. The finalimage must show much more emptytransparentspace betweencreatures thanthisinput."
+    }
+  },
+  "registration": "Original generated RGBA copied byte-for-byte, no resizing or pixel modification. Facing is LEFT (-1). Native bodyHeight is a FIXED calibration within each species: white260, winged190; never normalize by each cell/visible bounding height, as extended necks/wings are intentional. Anchors are absolute source coordinates. Resting base anchors follow the bottom of their coiled base; winged lift/lunge use the same virtual ground line as idle, preserving their small airborne lift. Holy fan frame has an additional8px virtual lift. Full cell rectangles are isolated and preserve entire silhouettes; no polygon clipping needed. Parent should verify natural scale, floor registration and animation continuity in the actual browser.",
+  "outputs": {
+    "white": {
+      "path": "assets/images/enemies/white-serpent-v1.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "image": "whiteSerpent",
+      "facing": -1,
+      "columns": 4,
+      "rows": 2,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 443,
+          "h": 443,
+          "anchorX": 236,
+          "anchorY": 378,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            84,
+            120,
+            389,
+            378
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "idle"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 444,
+          "h": 443,
+          "anchorX": 675.5,
+          "anchorY": 378,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            524,
+            111,
+            828,
+            378
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "biteWindup"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 443,
+          "h": 443,
+          "anchorX": 1137.5,
+          "anchorY": 381,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            945,
+            159,
+            1272,
+            381
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "bite"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 444,
+          "h": 443,
+          "anchorX": 1560.5,
+          "anchorY": 381,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            1415,
+            145,
+            1707,
+            381
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "recover"
+        },
+        {
+          "x": 0,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 238,
+          "anchorY": 809,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            84,
+            525,
+            401,
+            809
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "tailWindup"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 674.5,
+          "anchorY": 809,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            537,
+            613,
+            837,
+            809
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "tailImpact"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 1116,
+          "anchorY": 809,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            960,
+            525,
+            1277,
+            809
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "frostFan"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 1559,
+          "anchorY": 809,
+          "bodyHeight": 260,
+          "visibleBounds": [
+            1412,
+            565,
+            1713,
+            809
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "neutral"
+        }
+      ]
+    },
+    "winged": {
+      "path": "assets/images/enemies/winged-serpent-v1.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "image": "wingedSerpent",
+      "facing": -1,
+      "columns": 4,
+      "rows": 2,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 443,
+          "h": 443,
+          "anchorX": 226.5,
+          "anchorY": 414,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            100,
+            224,
+            364,
+            414
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "idle"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 444,
+          "h": 443,
+          "anchorX": 664.5,
+          "anchorY": 415,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            542,
+            167,
+            794,
+            415
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "wingOpen"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 443,
+          "h": 443,
+          "anchorX": 1159,
+          "anchorY": 414,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            974,
+            182,
+            1244,
+            406
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "lift"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 444,
+          "h": 443,
+          "anchorX": 1616.5,
+          "anchorY": 414,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            1391,
+            224,
+            1690,
+            401
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "lunge"
+        },
+        {
+          "x": 0,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 268.5,
+          "anchorY": 792,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            109,
+            535,
+            370,
+            784
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "holyFan"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 685,
+          "anchorY": 775,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            536,
+            569,
+            818,
+            775
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "shadowFan"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 1100,
+          "anchorY": 764,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            968,
+            569,
+            1231,
+            764
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "recover"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 1549,
+          "anchorY": 772,
+          "bodyHeight": 190,
+          "visibleBounds": [
+            1420,
+            582,
+            1685,
+            772
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "neutral"
+        }
+      ]
+    }
+  }
+}

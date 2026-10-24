@@ -13,7 +13,7 @@ const japanButton=groups[0].children.find(button=>button.textContent.includes(ri
 japanButton.onclick();assert.equal(snap().realm,0);assert.equal(snap().checkpoint.id,'river');
 assert.equal(snap().player.y+snap().player.h,river.y);assert.equal(permanent(),before);
 assert(run('boss.dead&&enemies.filter(e=>!e.miniboss).every(e=>!e.dead&&e.hp===e.maxHp)'));
-assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead)'));
+assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].includes(minibossFlag(e.id)))'));
 assert(run("gatePass(level.gates.find(g=>g.id==='cultEntrance'))"));validate(run('saved'));
 
 // Returning to the already-visited unfinished realm must remain possible.

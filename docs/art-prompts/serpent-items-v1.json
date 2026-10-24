@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-24",
+  "approval": "User explicitly approved serpent-realms concept exec-66fde3f1-1f07-418c-b2a8-b9793a897e9b.png before production. No animation approval is needed for these static icons.",
+  "references": [
+    "docs/art-prompts/serpent-realms-concept-v1.json"
+  ],
+  "source": "exec-33b751a6-4981-45e1-bcb3-edb311bfc358.png",
+  "initialSource": "exec-f4f37896-28b6-4193-bff0-ea3d8f77a043.png",
+  "prompt": "Use case: stylized-concept. PRODUCTION INVENTORY ICON ATLAS for Kiba Realms, precisely based on the three bottom item studies in the approved concept reference. This is a finished game asset, not a concept board. Make one WIDE image with THREE EQUAL SQUARE CELLS in a horizontal row (preferred 2304x768), each containing exactly ONE fully isolated complete item on true transparent alpha. No panel background, no frame, no labels or text. LEFT CELL: the approved white-ivory serpent scale, broad pointed curved leaf/diamond shape, overlapping fine ivory scale plates and pale cool jade facets inside, antique gold edge, crisp deep dark green-gray outer contour; completely opaque and clearly visible on a dark blue-gray inventory tile, not white fog. CENTER CELL: the approved winged-serpent scale, broad pointed leaf/diamond shape, deep navy-violet plates with thin subtle violet fissures and ivory feather-like filigree along one edge, antique-gold mineral rim, saturated opaque surface with dark black-blue contour, not translucent. RIGHT CELL: the approved single three-scale Japanese protective pendant: antique gold circular clasp with exactly THREE DISTINCT overlapping broad scales (ivory-jade on left, navy-violet/gold on right, dark obsidian ember with narrow orange-red cracks centered in front), compact worn gold rim, complete red silk knot and short cord loop at top; exactly three scales bound into ONE talisman. Entire cord, gold ring and sharp scale tips are intact. Preserve the reference designs and detailed painted Japanese fantasy game style: crisp inked contours, textured materials, careful hand-painted highlights and shadows, similar tactile detail as Momo and existing lava-serpent-scale item. NOT flat vectors, not primitive shapes, not pixel art, not photoreal product photography. Each entire item occupies at most 70% of its own cell width and 76% height, centered; outer item silhouettes strictly inside their own cell with at least 12% transparent gutters on all sides and generous empty alpha separation. No floor, pedestal, shadow blob, surrounding glow, mist, debris, extra objects, scenery, anatomy or characters. Rich full-opacity colors and clear silhouettes that remain legible at64px. The only nontransparent pixels are the three item silhouettes.",
+  "correction": "Precise-object-edit, production sprite correction only. Keep the existing THREE inventory icons, their order, detailed painted designs, colors, shapes, dimensions and positions, and true transparent alpha. Keep both LEFT and CENTER scale icons unchanged. In RIGHT talisman only fix the red silk cord above the gold ring: it is currently unnaturally chopped flat into two open upper ends. Replace those open cut ends with a SMALL COMPLETE CLOSED OVAL RED BRAIDED LOOP above the existing knot, with intact smooth curved top. The loop attaches to same knot and must fit entirely inside image, leaving generous clear transparent padding above and to both sides. If needed reduce ONLY this complete rightmost talisman uniformly a little to fit the entire loop, ring and scale tips, keeping its proportions and all three scales. The new loop must be completely self-contained, no strand continues outside the image or cell. Do not add any item, lettering, backgrounds, borders, shadows, glow or extra ornament; no changes to other two icons. Preserve saturated opaque surfaces, crisp dark outlines and native transparency.",
+  "output": {
+    "path": "assets/images/items/serpent-relics-v1.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "frames": {
+      "whiteSerpentScale": {
+        "x": 0,
+        "y": 0,
+        "w": 724,
+        "h": 724,
+        "visibleBounds": [
+          83,
+          140,
+          702,
+          604
+        ],
+        "edgeVisiblePixels": 0,
+        "medianVisibleAlpha": 253
+      },
+      "wingedSerpentScale": {
+        "x": 724,
+        "y": 0,
+        "w": 724,
+        "h": 724,
+        "visibleBounds": [
+          787,
+          146,
+          1423,
+          611
+        ],
+        "edgeVisiblePixels": 0,
+        "medianVisibleAlpha": 253
+      },
+      "triuneSerpentTalisman": {
+        "x": 1448,
+        "y": 0,
+        "w": 724,
+        "h": 724,
+        "visibleBounds": [
+          1549,
+          43,
+          2015,
+          633
+        ],
+        "edgeVisiblePixels": 0,
+        "medianVisibleAlpha": 253
+      }
+    }
+  },
+  "notes": "Original generated RGBA copied byte-for-byte. Full scale tips and closed red cord loop are inside cell bounds. Use visible bounds with a small transparent pad for inventory registration, retaining original alpha and the common DPR-aware contrasting renderer."
+}

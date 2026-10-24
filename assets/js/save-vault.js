@@ -74,6 +74,9 @@ const SaveVault=(()=>{
   if(council.some(id=>['daisyPlush','slayerCrossbow'].includes(id))&&!council.includes('guardian:doomSlayer'))throw Error('Unguarded grave reward');
   if((council.includes('guardian:doomSlayer')||council.includes('slayerSeal')||council.includes('slayerSummoned'))&&!data.defeated[1]||council.includes('slayerSummoned')&&!council.includes('slayerSeal'))throw Error('Invalid grave progress');
   if(council.includes('serpentScale')&&(!data.defeated[0]||!['soulUpper','soulLower'].every(id=>council.includes(id))))throw Error('Invalid serpent reward');
+  for(const [n,id] of [[0,'white'],[2,'winged']]){const guardian=data.flags[n].includes('guardian:'+id+'Serpent'),scale=data.flags[n].includes(id+'SerpentScale');if(guardian!==scale||n===2&&(guardian||scale)&&!data.defeated[1])throw Error('Invalid realm serpent reward');}
+  if(data.equippedTalisman!=null&&(data.equippedTalisman!=='triuneSerpentTalisman'||!data.flags[0].includes('triuneSerpentTalisman')||data.soldItems.includes('triuneSerpentTalisman')))throw Error('Invalid equipped talisman');
+  if(data.flags[0].includes('triuneSerpentTalisman')&&(!data.flags[0].includes('enchanterRescued')||![[0,'whiteSerpentScale'],[1,'serpentScale'],[2,'wingedSerpentScale']].every(([n,id])=>data.flags[n].includes(id))))throw Error('Invalid serpent fusion');
   if(data.defeated[2]&&!data.flags[2].includes('dawnSeal')||data.won)throw Error('Invalid victory');
   const shadowIndex=levels.findIndex(map=>map.id==='shadowRealm');
   if(shadowIndex>=0){
