@@ -37,6 +37,7 @@ function killEnemy(e) {
   if(e.dead||e.hp>0)return;
   if(Serpents.is(e)){Serpents.defeat(e);return;}
   if(e.miniboss){defeatMiniboss(e);return;}
+  if(e.noReward){e.dead=true;updateHUD();return;}
   e.dead=true;shards+=e.summoned?1:2;
   if(!e.summoned)Merchant.award(Merchant.rewards.enemy);
   if(e.summoned&&e.councilEligible&&e.encounterId===boss.encounterId&&realm===1&&level===levels[1]&&!defeated[1]&&bossStarted&&!boss.dead)boss.councilMinionKills++;
@@ -83,6 +84,7 @@ function releaseEnemyAttack(e) {
 function updateEnemies(dt) {
   for(const e of enemies){
     if(e.dead)continue;
+    if(CampMaster.updateSupport(e,dt))continue;
     if(Serpents.is(e)){Serpents.update(e,dt);continue;}
     if(e.miniboss){updateMiniboss(e,dt);continue;}
     // An original-fight summon follows Momo across this arena, rather than

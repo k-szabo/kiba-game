@@ -6,7 +6,7 @@ const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
- oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
+ campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
  seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},
  daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
 }).map(([id,product])=>[id,Object.freeze(product)])));
@@ -304,7 +304,7 @@ japan.campRescueSteps=[
  {id:'camp-route-gate',x:9490,y:600,w:520,h:28,kind:'stone',drop:true,baseX:9490}
 ];
 japan.samuraiCampEntrance={x:9770,y:600,name:'camp.rescue.name'};
-japan.progressFlags=[...(japan.progressFlags||[]),'campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted'];
+japan.progressFlags=[...(japan.progressFlags||[]),'campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted','campQuestCompleted','herbalistQuestTurnedIn','serpentRitualKnown','campMasterSoul'];
 
 const samuraiCamp=makeLevel('samuraiCamp',4400,1600,{x:220,y:1000});
 samuraiCamp.name='camp.rescue.name';

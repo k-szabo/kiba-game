@@ -38,6 +38,7 @@ const SaveVault=(()=>{
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
   if(['smithRescued','herbalistRescued','enchanterRescued'].some(id=>hasCampFlag(id)&&!hasCampFlag('guardian:campMaster'))||hasCampFlag('herbalistQuestAccepted')&&!hasCampFlag('herbalistRescued'))throw Error('Invalid camp rescue');
+  if(hasCampFlag('campMasterSoul')&&!hasCampFlag('guardian:campMaster')||hasCampFlag('campQuestCompleted')&&!['smithRescued','herbalistRescued','enchanterRescued'].every(hasCampFlag)||hasCampFlag('herbalistQuestTurnedIn')&&!hasCampFlag('herbalistQuestAccepted')||hasCampFlag('serpentRitualKnown')&&!hasCampFlag('enchanterRescued'))throw Error('Invalid camp quest completion');
   for(const [id,spec] of Object.entries(SIDE_LOCATIONS)){
    if(spec.map.rests.some(rest=>data.visitedRests[spec.realm].includes(rest.id))&&!sideLocationUnlocked(id,data.flags,data.defeated))throw Error('Invalid camp progress');
   }

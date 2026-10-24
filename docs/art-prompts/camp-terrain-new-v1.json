@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "Fidelity repair of existing approved painted camp terrain style.",
+  "asset": {
+    "path": "assets/images/backgrounds/samurai-camp-terrain-v1.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "columns": 2,
+    "rows": 2,
+    "frames": [
+      {
+        "id": "left",
+        "x": 26,
+        "y": 68,
+        "w": 720,
+        "h": 430,
+        "surfaceY": 114,
+        "alpha32Bounds": [
+          30,
+          72,
+          742,
+          494
+        ]
+      },
+      {
+        "id": "middle",
+        "x": 791,
+        "y": 97,
+        "w": 715,
+        "h": 391,
+        "surfaceY": 114,
+        "alpha32Bounds": [
+          795,
+          101,
+          1502,
+          484
+        ]
+      },
+      {
+        "id": "right",
+        "x": 31,
+        "y": 548,
+        "w": 700,
+        "h": 427,
+        "surfaceY": 594,
+        "alpha32Bounds": [
+          35,
+          552,
+          727,
+          971
+        ]
+      },
+      {
+        "id": "roof",
+        "x": 791,
+        "y": 714,
+        "w": 719,
+        "h": 131,
+        "surfaceY": 732,
+        "alpha32Bounds": [
+          795,
+          718,
+          1506,
+          841
+        ]
+      }
+    ],
+    "edgeVisiblePixels": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "prompt": "Use case: stylized-concept. PRODUCTION 2D SIDE-SCROLLING TERRAIN TILE ATLAS for existing approved painted Japanese fantasy samurai camp at blue hour. Improve detail of stone/earth/roots without changing style. Genuinely transparent RGBA sheet, exactly FOUR isolated complete pieces in a regular2columns×2rows grid, equalcellsize approximately768×512 in landscape1536×1024. No touching/overlapping cells, eachpiece leaves8%transparentmargininsideitsowncell. NO words,numbers,labels,gridlines,backgroundscene,characters,floatingparticles,trees,flames,weapons. Richly detailed handpainted mossy brown earth, tiny stones, grayrockslabs, dark tangledroots, sparse dryredleaves matching nocturnal cedar-camp terrain, solidtexturedopaquecores, crispedges. Sideviewterrain, NO isometric or perspective topplane. Each topedge perfectly LEVEL horizontal. Top-left: LEFTENDCAP of deepsoil/rock platform, topgrass/dirtlip horizontal, irregular rounded hangingrock/root exterior edge onLEFT, straightvertical tilejoin onRIGHT; fullpieceprofile. Top-right: MIDDLE REPEAT segment of deepbrownsoilandroughstonewithroots, topthin dirt/mosslip horizontal, STRAIGHTverticaljoin edges atleft/right with similarcolors for seamless horizontalrepeat. Bottom-left: RIGHTENDCAP mirrorfunctionofleftcap, exterior irregularrock/roots onRIGHT,straightverticaljoinLEFT. Bottom-right: thin cleanrectangular ROOF/STONELEDGE piece, weatheredgraystoneblocks withmossyupperlip and shallowdetailedrockunderside, no soil tower; 4:1widthtoheightpiecewithin cellcenter. Groundpiecesaspectroughly1.3:1,roofpiece4:1. Complete silhouttes and cleartransparentgaps; no clipped roots. White/goldhighlightsrestrained, darkblueambientshadow, readablefirm topedges. Detailed painted existinggamequality, no flatvector primitives or blurrytexture.",
+  "repairPrompt": "Precise background-removal repair ONLY. Keep all four supplied terrain pieces EXACTLY unchanged: top-left left earth/root endcap, top-right rectangular repeating earth/rock middle, bottom-left right earth/root endcap, bottom-right thin mossy stone ledge. Preserve their positions, dimensions, painting, colors and every rock/root/leaf. Completely remove ALL brown, amber, gray and black blurred backdrop, vignette, colored glow, fog and soft shadows around them. Every pixel outside the actual crisp solid terrain silhouettes must be FULLY EMPTY TRANSPARENT RGBA alpha0, including all gaps between cells and holes between hanging roots. NO lowopacity colored haze whatsoever. Genuine clean cutout sprite atlas, not painting on a gradient. Do not add checkerboard, white background, numbers,text or borders. Keep exactly2columns×2rows layout1536x1024, no crop or resize. Fullrootsintactwithsafeemptytransparentmargins.",
+  "notes": [
+    "Native generated alpha preserved without edit; colored RGB values in transparent pixels remain invisible at alpha0.",
+    "SurfaceY uses flat lip, while small moss/rocks may protrude above it.",
+    "Middle crop may repeat horizontally; keep texture near native scale rather than stretching tiny fragments.",
+    "Integrator owns tile placement and browser verification; collision geometry remains unchanged."
+  ]
+}

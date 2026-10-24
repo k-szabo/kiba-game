@@ -167,3 +167,13 @@ const BossVFX=(()=>{
   }
   return Object.freeze({stamp,marker,fissure,impact,portal,slash,lava,column,eruption,projectile,devour});
 })();
+
+/* Geometry-only boss warnings share their readable dash style. No combat clock is advanced. */
+const BossCues=Object.freeze({
+ box(box,color='#ffe2a0',fill=null){
+  if(!box||![box.x,box.y,box.w,box.h].every(Number.isFinite)||box.w<=0||box.h<=0)return;
+  ctx.save();ctx.shadowBlur=0;if(fill){ctx.fillStyle=fill;ctx.fillRect(box.x,box.y,box.w,box.h);}
+  ctx.setLineDash([7,6]);ctx.lineDashOffset=0;ctx.lineJoin='round';ctx.strokeStyle='#091521';ctx.lineWidth=7;ctx.strokeRect(box.x,box.y,box.w,box.h);
+  ctx.strokeStyle=color;ctx.lineWidth=3;ctx.strokeRect(box.x,box.y,box.w,box.h);ctx.setLineDash([]);ctx.restore();
+ }
+});

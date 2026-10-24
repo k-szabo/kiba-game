@@ -802,6 +802,22 @@
           "en": "A white serpent waits in Japan’s hidden cave, and a winged serpent at heaven’s eastern edge. Fumi can unite the three scales into an equippable talisman granting +20 armor."
         }
       ]
+    },
+    {
+      "version": "0.9.41_44b0ac4b",
+      "code": "44b0ac4b",
+      "baseVersion": "0.9.41",
+      "slug": "camp-fixes-quest-markers",
+      "summary": {
+        "hu": "Tábori javítások és küldetésjelölések",
+        "en": "Camp fixes and quest markers"
+      },
+      "fixes": [
+        {
+          "hu": "A szamurájtábor részletesebb látványt és egységes támadásjelzéseket kapott. A Tábormester ugrással, erősítéssel és megakadályozható kivégzéssel támad; győzelemkor párbeszéd és lélekjutalom jár. A belső terek stabilak maradnak támadáskor, az inventory mutatja Momo harci értékeit, Japánban több gyógynövény gyűjthető. A küldetésadók ! és ? jelölése mutatja az elérhető és leadható feladatokat.",
+          "en": "The Samurai Camp has more detailed scenery and consistent attack warnings. The Camp Master uses jumping attacks, reinforcements and a preventable execution; victory grants a dialogue and a soul. Interiors remain stable during attacks, the inventory shows Momo's combat stats, and Japan has more herbs to gather. Quest givers use ! and ? markers for available quests and ready turn-ins."
+        }
+      ]
     }
   ]
 }

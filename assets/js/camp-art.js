@@ -8,14 +8,45 @@ const CampArt=(()=>{
   ctx.drawImage(img,art.x,art.y,art.w,art.h,(art.x-art.anchorX)*s,(art.y-art.anchorY)*s,art.w*s,art.h*s);ctx.restore();
  }
  function dialogueActors(){return Object.fromEntries([...Object.keys(ART_CAMP).filter(id=>['smith','herbalist','enchanter','mayor'].includes(id)).map(id=>[id,{name:id==='mayor'?'camp.rescue.mayor':'camp.npc.'+id+'.name',image:ART_CAMP[id].image,rect:ART_CAMP[id]}]),['campMaster',{name:'camp.rescue.boss',image:ART_CAMP_MASTER.image,rect:ART_CAMP_MASTER.frames[0]}]]);}
+ const panelCache=new Map();
+ function panelImage(panel,index){
+  if(panelCache.has(panel.image))return panelCache.get(panel.image);
+  const image=Visuals.images[panel.image];if(!image?.complete||!image.naturalWidth)return null;
+  const canvas=document.createElement('canvas');canvas.width=ART_SAMURAI_CAMP.w;canvas.height=ART_SAMURAI_CAMP.h;
+  const paint=canvas.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';
+  const edge=ART_SAMURAI_CAMP.overlap/panel.w,gradient=paint.createLinearGradient(0,0,canvas.width,0);
+  gradient.addColorStop(0,index===0?'#fff':'#fff0');gradient.addColorStop(edge,'#fff');
+  gradient.addColorStop(1-edge,'#fff');gradient.addColorStop(1,index===ART_SAMURAI_CAMP.panels.length-1?'#fff':'#fff0');
+  paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);panelCache.set(panel.image,canvas);return canvas;
+ }
  function backdrop(){
+  if(level===samuraiCamp){
+   ctx.save();ctx.fillStyle='#151e27';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+   ART_SAMURAI_CAMP.panels.forEach((panel,index)=>{const image=panelImage(panel,index);if(!image)return;const scale=panel.w/ART_SAMURAI_CAMP.w;ctx.drawImage(image,panel.x-camera,panel.ground-panel.sourceGround*scale-cameraY,panel.w,ART_SAMURAI_CAMP.h*scale);});ctx.restore();return;
+  }
   const a=backgrounds[level.id];if(!a)return;const img=Visuals.images[a.image],s=level.width/a.w,top=level.start.y-a.ground*s;
   ctx.fillStyle='#0e202c';ctx.fillRect(0,0,viewW,H);if(!img?.complete||!img.naturalWidth)return;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,-camera,top-cameraY,level.width,a.h*s);ctx.restore();
  }
+ function terrain(platform){
+  if(level!==samuraiCamp)return false;
+  const art=ART_CAMP_TERRAIN,image=Visuals.images[art.image];if(!image?.complete||!image.naturalWidth)return false;
+  const p=platform,ground=p.kind==='ground',rect=ground?art.middle:art.roof,s=ground?.9:.55,width=rect.w*s;
+  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.beginPath();ctx.rect(p.x,p.y-55,p.w,ground?p.h+55:125);ctx.clip();
+  if(ground){const b=art.body,bw=b.w*s,bh=b.h*s;for(let y=p.y+160;y<p.y+p.h;y+=bh-1)for(let x=p.x;x<p.x+p.w;x+=bw-1)ctx.drawImage(image,b.x,b.y,b.w,b.h,x,y,bw,bh);}
+  for(let x=p.x;x<p.x+p.w;x+=width-1)ctx.drawImage(image,rect.x,rect.y,rect.w,rect.h,x,p.y-(rect.surfaceY-rect.y)*s,width,rect.h*s);
+  if(ground)for(const [cap,x]of [[art.left,p.x],[art.right,p.x+p.w-art.right.w*s]])ctx.drawImage(image,cap.x,cap.y,cap.w,cap.h,x,p.y-(cap.surfaceY-cap.y)*s,cap.w*s,cap.h*s);
+  ctx.restore();return true;
+ }
  function label(point,text,height=145){
   const textValue=I18n.t(text);ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';const w=ctx.measureText(textValue).width+22,y=point.y-height-22;
   ctx.fillStyle='#0d1b29ed';ctx.fillRect(point.x-w/2,y-20,w,30);ctx.fillStyle='#fff0cc';ctx.fillText(textValue,point.x,y);ctx.restore();
+ }
+ function questMarker(id,point,height){
+  const marker=CampQuest.questMarker(id);if(!marker)return;
+  const y=point.y-height-55;ctx.save();ctx.fillStyle='#0a1828f2';ctx.strokeStyle=marker==='?'?'#a9e5eb':'#ffe2a0';ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(point.x,y-12,20,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.font='800 30px "Kiba UI", sans-serif';ctx.textAlign='center';ctx.fillStyle=marker==='?'?'#c0f6ff':'#ffe2a0';ctx.fillText(marker,point.x,y-1);ctx.restore();
  }
  function prop(name,point,height){stamp({image:'props',...ART_FRAMES.props[name]},point.x,point.y,height);}
  function scenery(){
@@ -28,15 +59,16 @@ const CampArt=(()=>{
     stamp(ART_CAMP[cage.id],cage.x,cage.y,90);prop('cage',cage,145);label(cage,cage.name,150);
    }
    if(!flags[0].includes('mayorExecuted')||CampQuest.execution?.stage<2)stamp(ART_CAMP.mayor,level.mayor.x,level.mayor.y,98);
-  }else if(level.service){const id=level.service==='forge'?'smith':level.service==='herbal'?'herbalist':'enchanter';stamp(ART_CAMP[id],level.servicePoint.x,level.servicePoint.y,115);label(level.servicePoint,'camp.npc.'+id+'.name',130);Visuals.campPathMarker(level.returnPoint,I18n.t('camp.name'));}
+  }else if(level.service){const id=level.service==='forge'?'smith':level.service==='herbal'?'herbalist':'enchanter';stamp(ART_CAMP[id],level.servicePoint.x,level.servicePoint.y,115);label(level.servicePoint,'camp.npc.'+id+'.name',130);questMarker(id,level.servicePoint,145);Visuals.campPathMarker(level.returnPoint,I18n.t('camp.name'));}
  }
  function actor(enemy){
   if(!CampMaster.is(enemy))return false;
   const frame=ART_CAMP_MASTER.frames[enemy.poseIndex]||ART_CAMP_MASTER.frames[0];
-  stamp({...frame,image:ART_CAMP_MASTER.image},enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,enemy.face||1);
-  if(enemy.phase==='windup'&&enemy.attackBox){const b=enemy.attackBox;ctx.save();ctx.lineWidth=3;ctx.strokeStyle='#0d1b29';ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.strokeStyle='#f5cb83';ctx.setLineDash([10,7]);ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.restore();}
-  if(enemy.phase==='strike')BossVFX.slash('slashGold',enemy.x+enemy.w/2,enemy.y+enemy.h*.5,enemy.move==='lunge'?210:165,110,enemy.attackFace,Math.min(1,enemy.attackElapsed/Math.max(.01,enemy.attackDuration)));
+  stamp({...frame,image:frame.image||ART_CAMP_MASTER.image},enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,enemy.face||1);
+  if(enemy.phase==='windup'&&enemy.attackBox)BossCues.box(enemy.attackBox,'#f5cb83','#f5cb831c');
+  for(const portal of enemy.summons||[])BossVFX.portal(portal.x,portal.y,100,clamp(1-portal.warning/portal.warningDuration,.3,1));
+  if(enemy.phase==='strike'&&(enemy.move!=='jumpCut'||enemy.attackElapsed/enemy.attackDuration>=.9)){const progress=enemy.attackElapsed/Math.max(.01,enemy.attackDuration);BossVFX.slash('slashGold',enemy.x+enemy.w/2,enemy.y+enemy.h*.5,enemy.move==='lunge'?210:165,110,enemy.attackFace,enemy.move==='jumpCut'?clamp((progress-.9)/.1,0,1):Math.min(1,progress));}
   return true;
  }
- return Object.freeze({dialogueActors,backdrop,scenery,actor});
+ return Object.freeze({dialogueActors,backdrop,scenery,actor,questMarker,terrain});
 })();

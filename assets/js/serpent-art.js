@@ -18,7 +18,7 @@ const SerpentArt=(()=>{
   return reducedMotion.matches?0:[0,7][Math.floor(e.animTime*4)%2];
  }
  function outline(b,color){
-  ctx.save();ctx.strokeStyle='#10283f';ctx.lineWidth=6;ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.strokeStyle=color;ctx.lineWidth=3;ctx.setLineDash([9,6]);ctx.strokeRect(b.x,b.y,b.w,b.h);ctx.restore();
+  BossCues.box(b,color);
  }
  function actor(e){
   if(!Serpents.is(e)||e.serpentType==='lava')return false;

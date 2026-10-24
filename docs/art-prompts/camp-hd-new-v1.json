@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "Minor fidelity repair of the existing user-approved camp design; no new composition design or character introduced.",
+  "references": [
+    "assets/images/backgrounds/samurai-camp-v1.png"
+  ],
+  "notes": [
+    "Native opaque generated PNG pixels preserved, without resize, recolor, crop or matte removal.",
+    "Three individual 1536x1024 panels replace stretching one 2172x724 panorama across4400 worldunits.",
+    "No actors, cages, foreground collision platforms, floating items or text baked into scenery.",
+    "Requested ground line780; actual drawn path placement varies by panel. Use measured individual sourceGroundY entries and verify feathered overlaps in browser.",
+    "Integrator owns background blending/registration, ART_MANIFEST, colormaps and runtime."
+  ],
+  "assets": [
+    {
+      "path": "assets/images/backgrounds/samurai-camp-hd-west-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sourceGroundY": 780,
+      "prompt": "Use case: precise-object-edit. Asset type: native high-detail replacement background panel for existing approved side-scrolling Japanese fantasy samurai camp. Source reference is existing camp panorama; preserve exact art style, midnight blue cedar forest, warm amber lanterns, palisade timber, crimson cloth military banners with geometric diamond symbols, moss and dark roots. Generate ONLY THE WEST / ENTRY SECTION as a standalone detailed landscape panel, about 1536x1024, entire opaque painting. This is one of three horizontal panels that will overlap; fill left and right edges with dense naturally repeated cedar tree trunks / palisade textures suitable for feathered blending, no frame or borders. Side-on scenic backdrop behind separate 2D game platforms and characters. Background slatted palisade entry gate on left, wooden watchtower mid-left, crimson army tent to right, rear crates, controlled braziers. NO characters, humans, dogs, captives, cages, weapons in motion, floating platforms, signs, text or UI. NO foreground props crossing the walkable strip. Uninterrupted LEVEL horizontal earth walking strip runs across the whole image at exactly y=780 of1024 (76.17%imageheight). Keep ground foot-contact registration visually obvious; below it thick richly painted exposed roots, dark soil, moss, ferns and autumn leaves. Richly detailed fine brushwork and crisp material grain at native pixel scale, no blurry enlargement, no depth-of-field blur. Camp details seen front-side, not top-down/isometric. Preserve existing hostile disciplined camp design and palette; improve only local detail. Open blue forest above the low tents and walls so airborne characters remain readable. No giant structures, no new architecture style. Opaque image all edges."
+    },
+    {
+      "path": "assets/images/backgrounds/samurai-camp-hd-center-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sourceGroundY": 730,
+      "prompt": "Use case: precise-object-edit. Asset type: native high-detail replacement background panel for existing approved 2D side-scrolling Japanese fantasy samurai camp. Reference existing panorama preserves exact painted style and midnight blue cedar forest, amber lanterns, rough palisade timber, crimson military banners with simple diamond motifs, moss/roots. Generate ONLY THE MIDDLE / SUPPLY TENTS SECTION as a standalone detailed opaque landscape panel, about1536x1024. One of3 horizontalpanels that overlap; left/rightedges mostly palisade/cedar textures for featheredblend, no borders. Side-on scenic backdrop behind separately rendered game platforms andcharacters. Central broad crimson-and-indigo army canvas tent with detailed stitching and tiedropes, lowrear supply crates/barrels, lantern posts, roughrearwood wall, redbanners. Show ground clear infront; NO characters,humans,dogs,captives,cages,weaponsinmotion,floatingplatforms,text,UI. NO foreground props crossingwalkingstrip. Uninterrupted LEVEL horizontalearthwalkingstrip acrosswholeimage at exactly y780 of1024(76.17%imageheight); below richly painted roots,darksoil,moss,ferns,autumnleaves tobottomedge. Crispnativefinebrushwork/materialgrain,no blurry enlargement,no depthoffieldblur. Frontsideview nottopdown/isometric,no vanishingpointroad. Preserveexistinghostiledisciplinedcampdesign. Openblueforest above lowtents/walls for airbornecharacters. No giantstructures,newarchitecture,or paneldivisions. All edgesopaque."
+    },
+    {
+      "path": "assets/images/backgrounds/samurai-camp-hd-east-v1.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sourceGroundY": 730,
+      "prompt": "Use case: precise-object-edit. Asset type: native high-detail replacement background panel for the existing approved side-scrolling Japanese fantasy samurai camp. Reference existing panorama: preserve its exact finely painted midnight-blue cedar forest, warm amber lanterns, rough timber palisade, crimson banners with simple geometric diamond clan patterns, moss and roots. Generate ONLY THE EAST / COMMANDER COURTYARD SECTION as one standalone detailed opaque landscape panel approximately1536x1024. This is one of three horizontal panels that overlap; left/right edges mainly cedar trunks and palisade textures for feathered blending, no borders. Side-on scenic backdrop behind separate game characters and platforms. Broad OPEN EMPTY courtyard foreground, commander's large dark crimson canvas tent behind center/right, palisade with tied red banners behind, small brazier stands and supply boxes tucked at rear. NO characters, humans, dogs, mayor, captives, cages, execution props, weapons in motion, floating platforms, writing, signs or UI. NO furniture on the walking strip. Uninterrupted LEVEL horizontal earth walking line across the whole image at exactly y780 of1024 (76.17% image height); below it richly painted exposed dark roots, soil, moss, scattered small stones and autumn leaves continue to bottom. Render intricate crisp wood grain, cloth weave, foliage and brush texture at native scale; no enlarged blur or depth-of-field. Front-side camera, no bird's eye/isometric view, no receding central road. Preserve existing hostile disciplined Japanese army-camp identity. Upper half remains open dark blue forest above low walls/tents, readable for jumps. Opaque every edge, no new architecture style."
+    }
+  ]
+}

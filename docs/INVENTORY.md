@@ -88,3 +88,7 @@ A birtokolt, de nem felszerelt fegyverek `weapon-<style>` azonosítóval jelenne
 A `whiteSerpentScale`, `serpentScale` és `wingedSerpentScale` három külön védett tárgy. Fumi a misztikus sátorban egyszer egyesíti őket; a történeti megszerzési jelzők megmaradnak, de a fúzió után a felhasznált pikkelyek `consumedBy` feltétele elrejti őket a birtoklási nézetből. A korábbi Yomi-pikkely azonosítója változatlan.
 
 A `triuneSerpentTalisman` új, fegyvertől független felszereléshelyet kap. Felszerelés előtt a táskában látható, viselve a talizmánhelyen; a levétel visszahelyezi a táskába. A `quantity` a felszerelt példányt nem számolja a táskába, a tartós tulajdont a megszerzési jelző őrzi. A +20 Armor kizárólag viselve aktív; fel-/levétel és fúzió nem gyógyít és nem változtatja Momo maximális HP-ját. A külön ikon ugyanazt a DPR- és kontrasztkezelést használja, mint minden más inventorygrafika. Részletek: [SERPENTS.md](SERPENTS.md).
+
+## A karakter aktuális harci értékei
+
+A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális HP-ját, a felszerelt fegyver normál és erős sebzését, valamint a páncélt és a százalékos sebzéscsökkentést. A számok a tényleges `playerAttackDamage`, `momoStats` és `Armor.reduction` függvényekből származnak; a táskában kijelölt, de nem felszerelt fegyver nem módosítja őket. A talizmán fel-/levétele, a kovácsfejlesztés és a gyógyítás után újrarendereléskor frissülnek. A Tábormester lelke a közös `ART_INVENTORY.items` katalógus része, teljes sziluettel és DPR-követő megjelenítéssel.

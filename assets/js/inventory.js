@@ -27,6 +27,22 @@ const Inventory=(()=>{
   const weaponArt=ART_INVENTORY[weaponStyle];
   image($('inventoryWeaponArt'),Visuals.images[weaponArt.image],weaponArt,{w:108,h:144});
  }
+ // Stats use the same combat profiles as hit resolution, rather than the
+ // currently highlighted backpack weapon or a cached equipment snapshot.
+ function characterStats(){
+  const stats=momoStats(),number=value=>Number(value.toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2}),
+   rows=[['text.health',CampHealth.number(player.hp)+' / '+CampHealth.number(player.maxHp)],
+    ['binding.action.attack',number(playerAttackDamage('normal'))],['binding.action.heavyAttack',number(playerAttackDamage('heavy'))]],
+   list=$('inventoryStats');
+  list.replaceChildren();
+  for(const [key,value] of rows){
+   const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');
+   row.className='inventory-stat';row.dataset.stat=key;label.textContent=I18n.t(key);amount.textContent=value;
+   row.append(label,amount);list.append(row);
+  }
+  const armor=document.createElement('div');armor.className='inventory-stat inventory-stat-armor';armor.dataset.stat='service.armor';
+  armor.textContent=I18n.format('service.armor',[number(stats.armor),number(Armor.reduction(stats.armor)*100)]);list.append(armor);
+ }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.className='inventory-icon';canvas.setAttribute('aria-hidden','true');
   const art=itemArt(id);image(canvas,Visuals.images[art.image],art,{w:112,h:112});
@@ -66,7 +82,7 @@ const Inventory=(()=>{
   $('inventoryButton').setAttribute('aria-label',I18n.t('inventory.open'));
   $('inventoryButton').title=`${I18n.t('inventory.open')} (${bindingKeyLabel(Bindings.read('inventory')[0])})`;
   $('inventoryMomo').setAttribute('aria-label',I18n.t('inventory.character'));
-  equipmentArt();
+  equipmentArt();characterStats();
   $('inventoryCount').textContent=I18n.format('inventory.count',[items.length]);
   const grid=$('inventoryGrid');grid.replaceChildren();
   for(const id of items){

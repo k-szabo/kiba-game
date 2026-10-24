@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,realmSerpents:ART_REALM_SERPENTS})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -142,7 +142,10 @@ for name in ('daichi', 'natsu', 'sora', 'akash', 'smith', 'herbalist', 'enchante
     definition = atlas['camp'][name]
     npcs[name] = {'name': name.capitalize(), 'role': 'merchant' if name == 'akash' else 'camp-survivor',
                   'paletteGroup': group('npc.camp.' + name, manifest[definition['image']], definition, 'ART_CAMP.' + name)}
-npcs['campMaster'] = {'role': 'miniboss', 'faction': 'japan', 'paletteGroup': group('npc.campMaster', manifest[atlas['campMaster']['image']], atlas['campMaster']['frames'], 'ART_CAMP_MASTER.frames')}
+npcs['campMaster'] = {'role': 'miniboss', 'faction': 'japan', 'variants': {}}
+for image in dict.fromkeys(frame.get('image', atlas['campMaster']['image']) for frame in atlas['campMaster']['frames']):
+    frames = [frame for frame in atlas['campMaster']['frames'] if frame.get('image', atlas['campMaster']['image']) == image]
+    npcs['campMaster']['variants'][image] = {'paletteGroup': group('npc.campMaster.' + image, manifest[image], frames, 'ART_CAMP_MASTER.frames')}
 for species, definition in atlas['realmSerpents'].items():
     npcs[species + 'Serpent'] = {'role': 'miniboss', 'faction': 'japan' if species == 'white' else 'heaven', 'paletteGroup': group('npc.' + species + 'Serpent', manifest[definition['image']], definition['frames'], 'ART_REALM_SERPENTS.' + species + '.frames')}
 for faction, actions in atlas['frames']['animations'].items():
@@ -175,6 +178,10 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+for index, panel in enumerate(atlas['samuraiCamp']['panels']):
+    objects['samuraiCampPanel.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[panel['image']], 'worldRegistration': panel}
+for part in ('left', 'middle', 'right', 'roof', 'body'):
+    objects['samuraiCampTerrain.' + part] = {'kind': 'terrain', 'paletteGroup': group('object.samuraiCampTerrain.' + part, manifest[atlas['campTerrain']['image']], atlas['campTerrain'][part], 'ART_CAMP_TERRAIN.' + part)}
 cedar = atlas['camp']['cedar']
 objects['campCedar'] = {'kind': 'scenery',
     'paletteGroup': group('object.campCedar', manifest[cedar['image']], cedar, 'ART_CAMP.cedar')}
