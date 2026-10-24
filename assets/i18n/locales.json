@@ -806,7 +806,9 @@
       "camp.master.failed": "Az íjászok elengedik a húrt. Momo egy pillanattal később ér oda, mint kellett volna. A kísérlet újrakezdhető; a foglyok sorsa még megváltoztatható.",
       "camp.master.retry": "Újrapróbálom",
       "menu.changelog.0941.title": "Tábori javítások és küldetésjelölések",
-      "menu.changelog.0941.camp": "A szamurájtábor részletesebb látványt és egységes támadásjelzéseket kapott. A Tábormester ugrással, erősítéssel és megakadályozható kivégzéssel támad; győzelemkor párbeszéd és lélekjutalom jár. A belső terek stabilak maradnak támadáskor, az inventory mutatja Momo harci értékeit, Japánban több gyógynövény gyűjthető. A küldetésadók ! és ? jelölése mutatja az elérhető és leadható feladatokat."
+      "menu.changelog.0941.camp": "A szamurájtábor részletesebb látványt és egységes támadásjelzéseket kapott. A Tábormester ugrással, erősítéssel és megakadályozható kivégzéssel támad; győzelemkor párbeszéd és lélekjutalom jár. A belső terek stabilak maradnak támadáskor, az inventory mutatja Momo harci értékeit, Japánban több gyógynövény gyűjthető. A küldetésadók ! és ? jelölése mutatja az elérhető és leadható feladatokat.",
+      "menu.changelog.0941.serpentFixTitle": "Verziójelölés és kígyóarénák javítása",
+      "menu.changelog.0941.serpentFixes": "A Jelenlegi kiadás jelölése automatikusan követi az aktív verziót. A japán és mennyországi kígyóarénák háttere finoman vált át, támadásjelzéseik pedig a közös bossjelzések színét használják."
     }
   },
   "en": {
@@ -1616,7 +1618,9 @@
       "camp.master.failed": "The archers loose their arrows. Momo arrives a moment too late. You can retry the encounter; the prisoners' fate can still be changed.",
       "camp.master.retry": "Retry",
       "menu.changelog.0941.title": "Camp fixes and quest markers",
-      "menu.changelog.0941.camp": "The Samurai Camp has more detailed scenery and consistent attack warnings. The Camp Master uses jumping attacks, reinforcements and a preventable execution; victory grants a dialogue and a soul. Interiors remain stable during attacks, the inventory shows Momo's combat stats, and Japan has more herbs to gather. Quest givers use ! and ? markers for available quests and ready turn-ins."
+      "menu.changelog.0941.camp": "The Samurai Camp has more detailed scenery and consistent attack warnings. The Camp Master uses jumping attacks, reinforcements and a preventable execution; victory grants a dialogue and a soul. Interiors remain stable during attacks, the inventory shows Momo's combat stats, and Japan has more herbs to gather. Quest givers use ! and ? markers for available quests and ready turn-ins.",
+      "menu.changelog.0941.serpentFixTitle": "Release marker and serpent arena fixes",
+      "menu.changelog.0941.serpentFixes": "The Current release marker automatically follows the active version. The Japan and heaven serpent arenas now blend smoothly into their backgrounds, and their attack warnings use the shared boss warning color."
     }
   }
 }

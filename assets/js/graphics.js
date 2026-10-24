@@ -4,9 +4,10 @@ const Visuals = (() => {
   const images = {};
   const heavenMix=[1,0,0];
   function backdropPhase(){return realm===2&&bossStarted&&boss&&!boss.dead?clamp(boss.stage,1,3):1;}
-  function resetAtmosphere(){heavenMix.splice(0,3,1,0,0);}
+  function resetAtmosphere(){heavenMix.splice(0,3,1,0,0);SerpentArt.resetBackdrop();}
   function updateAtmosphere(dt){
-    if(realm!==2){resetAtmosphere();return;}
+    SerpentArt.updateBackdrop(dt);
+    if(realm!==2){heavenMix.splice(0,3,1,0,0);return;}
     const phase=backdropPhase()-1;
     for(let i=0;i<3;i++)heavenMix[i]+=((i===phase?1:0)-heavenMix[i])*Math.min(1,dt*3);
     if(heavenMix[phase]>.998)heavenMix.splice(0,3,...[0,1,2].map(i=>i===phase?1:0));
@@ -82,7 +83,7 @@ const Visuals = (() => {
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
       const edge=Math.min(cx-area.x,area.x+area.w-cx,feet-top,area.y+area.h-entity.y);
-      return {area,alpha:clamp(edge/75,0,1)};
+      return {area,alpha:clamp(edge/(SerpentArt.hasBackdrop(area)?220:75),0,1)};
     }
     return null;
   }
@@ -172,7 +173,7 @@ const Visuals = (() => {
     }
     ctx.fillStyle = realm === 1 ? '#140c2028' : realm === 2 ? '#24314820' : '#11252d30';
     const secretState=secretBackdropState();
-    if(secretState&&SerpentArt.hasBackdrop(secretState.area))SerpentArt.backdrop(secretState);
+    if(SerpentArt.backdropState()||secretState&&SerpentArt.hasBackdrop(secretState.area))SerpentArt.backdrop();
     else if(secretState&&realm!==3){
       const secret=secretState.area;
       const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';

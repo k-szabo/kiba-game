@@ -356,6 +356,22 @@
           "en": "Akash's shop title now renders cleanly after purchases."
         }
       ]
+    },
+    {
+      "version": "0.9.41_3c1a7d31",
+      "code": "3c1a7d31",
+      "baseVersion": "0.9.41",
+      "slug": "release-marker-serpent-scenes",
+      "summary": {
+        "hu": "Verziójelölés és kígyóarénák javítása",
+        "en": "Release marker and serpent arena fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A Jelenlegi kiadás jelölése automatikusan követi az aktív verziót. A japán és mennyországi kígyóarénák háttere finoman vált át, támadásjelzéseik pedig a közös bossjelzések színét használják.",
+          "en": "The Current release marker automatically follows the active version. The Japan and heaven serpent arenas now blend smoothly into their backgrounds, and their attack warnings use the shared boss warning color."
+        }
+      ]
     }
   ],
   "releases": [

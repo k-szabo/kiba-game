@@ -87,8 +87,40 @@ export function prepareRelease(metadata,release,registry){
   validateRegistry(nextRegistry);
   return {entry,release:{...release,version:entry.version},registry:nextRegistry,unchanged:false};
 }
-export function synchronizeEntry(entry,version,versionLabel){
+// The menu's current-release badge is derived from the full registered ID,
+// rather than whichever historical section last received a hand-written span.
+export function synchronizeReleaseMarker(entry,version,label){
   if(!releasePattern.test(version))throw Error('Invalid entrypoint release version.');
-  return entry.replace(/(assets\/(?:js\/runtime\.js|css\/style\.css)\?v=)[0-9A-Za-z._-]+/g,(_,prefix)=>prefix+version)
+  const markerText=text(label,'current release marker');
+  const escapeHTML=value=>value.replace(/[&<>"']/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+  const isPanel=attributes=>/(?:^|\s)id\s*=\s*(["'])releaseNotesPanel\1(?:\s|$)/i.test(attributes);
+  const articles=[...entry.matchAll(/<article\b([^>]*)>([\s\S]*?)<\/article\s*>/gi)].filter(match=>isPanel(match[1]));
+  if(articles.length!==1)throw Error('Expected exactly one releaseNotesPanel for the current release marker.');
+  const panel=articles[0],sections=[...panel[2].matchAll(/<section\b[^>]*>[\s\S]*?<\/section\s*>/gi)];
+  const headingVersion=section=>{
+    const heading=section.match(/<h3\b[^>]*>([\s\S]*?)<\/h3\s*>/i);
+    const plain=heading?.[1].replace(/<[^>]*>/g,' ').replace(/&nbsp;|&#160;/gi,' ').trim();
+    return plain?.match(/^(\d+\.\d+\.\d+(?:_[a-z0-9]{8})?)(?=$|[\s·–—:])/u)?.[1];
+  };
+  const matches=sections.filter(match=>headingVersion(match[0])===version);
+  if(matches.length!==1)throw Error('Expected exactly one changelog section for current release '+version+'; found '+matches.length+'.');
+  const removeMarkers=html=>html.replace(/<span\b([^>]*)>[\s\S]*?<\/span\s*>/gi,(span,attributes)=>{
+    const classes=attributes.match(/(?:^|\s)class\s*=\s*(["'])(.*?)\1/i)?.[2].split(/\s+/)||[];
+    return classes.includes('release-current')?'':span;
+  });
+  const clean=removeMarkers(panel[2]);
+  const updated=clean.replace(/<section\b[^>]*>[\s\S]*?<\/section\s*>/gi,section=>{
+    if(headingVersion(section)!==version)return section;
+    return section.replace(/(<h3\b[^>]*>)([\s\S]*?)(<\/h3\s*>)/i,(_,start,heading,end)=>start+heading.trimEnd()+' <span class="release-current">'+escapeHTML(markerText)+'</span>'+end);
+  });
+  const panelStart=panel.index+panel[0].indexOf('>')+1;
+  return entry.slice(0,panelStart)+updated+entry.slice(panelStart+panel[2].length);
+}
+export function synchronizeEntry(entry,version,versionLabel,currentReleaseLabel){
+  if(!releasePattern.test(version))throw Error('Invalid entrypoint release version.');
+  const synchronized=entry.replace(/(assets\/(?:js\/runtime\.js|css\/style\.css)\?v=)[0-9A-Za-z._-]+/g,(_,prefix)=>prefix+version)
     .replace(/(<summary class="menu-note"[^>]*>)[^<]*(<\/summary>)/,(_,before,after)=>before+versionLabel.replace('{0}',version)+after);
+  // Minimal/static build fixtures may have no changelog. The production menu
+  // always has this panel; an absent/ambiguous active section inside it fails.
+  return /\bid\s*=\s*(["'])releaseNotesPanel\1/i.test(entry)?synchronizeReleaseMarker(synchronized,version,currentReleaseLabel):synchronized;
 }
