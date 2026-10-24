@@ -121,7 +121,7 @@ const Visuals = (() => {
     for(const npc of forestCamp.npcs){
       if(!campNPCVisible(npc)||!visiblePoint(npc,180))continue;
       shadow(npc.x,npc.y,26,.22);
-      frame(npc.image,ART_CAMP[npc.id],npc.x,npc.y,npc.height);
+      if(npc.id==='zen')PrisonArt.zen(npc,npc.height);else frame(npc.image,ART_CAMP[npc.id],npc.x,npc.y,npc.height);
       const label=I18n.t(npc.name),y=npc.y-npc.height-18;
       ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';
       const w=ctx.measureText(label).width+20;ctx.fillStyle='#0d1b29ed';ctx.fillRect(npc.x-w/2,y-16,w,26);
@@ -325,7 +325,7 @@ const Visuals = (() => {
     SlayerArt.objects();
     if(realm===3){
       const altar=level.altar;
-      if(visiblePoint(altar,440)){
+      if(altar&&visiblePoint(altar,440)){
         const height=260,lit=hasFlag('shadowAltar');
         BossVFX.portal(altar.x,altar.y+5,145,lit?.8:.3);
         frame(ART_SHADOW_ALTAR.image,ART_SHADOW_ALTAR,altar.x,altar.y+2,height);

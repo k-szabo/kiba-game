@@ -117,6 +117,21 @@
       "faction": "heaven",
       "paletteGroup": "npc.wingedSerpent"
     },
+    "prison.zen": {
+      "role": "priestess",
+      "faction": "japan",
+      "paletteGroup": "npc.prison.zen"
+    },
+    "prison.undead": {
+      "role": "undead",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.prison.undead"
+    },
+    "prison.warden": {
+      "role": "miniboss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.prison.warden"
+    },
     "japan.guard": {
       "faction": "japan",
       "role": "guard",
@@ -2850,6 +2865,309 @@
         ],
         "visibleSamples": 302213,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.prison.zen": {
+      "source": "assets/images/npcs/zen-priestess-v1.png",
+      "frameMetadata": "ART_PRISON.zen.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#c15a26",
+            "coveragePercent": 11.9254
+          },
+          {
+            "hex": "#df7d3e",
+            "coveragePercent": 9.5528
+          },
+          {
+            "hex": "#9e4118",
+            "coveragePercent": 9.414
+          },
+          {
+            "hex": "#eba461",
+            "coveragePercent": 9.0544
+          },
+          {
+            "hex": "#751e0f",
+            "coveragePercent": 7.7237
+          },
+          {
+            "hex": "#e9c299",
+            "coveragePercent": 7.3433
+          },
+          {
+            "hex": "#f1d8bf",
+            "coveragePercent": 6.6402
+          },
+          {
+            "hex": "#faeddf",
+            "coveragePercent": 6.4003
+          },
+          {
+            "hex": "#490d08",
+            "coveragePercent": 5.7657
+          },
+          {
+            "hex": "#ca292e",
+            "coveragePercent": 5.2581
+          },
+          {
+            "hex": "#180807",
+            "coveragePercent": 5.1822
+          },
+          {
+            "hex": "#a31c20",
+            "coveragePercent": 5.0228
+          },
+          {
+            "hex": "#432f35",
+            "coveragePercent": 2.9522
+          },
+          {
+            "hex": "#a87a5d",
+            "coveragePercent": 2.8086
+          },
+          {
+            "hex": "#c7a289",
+            "coveragePercent": 2.6835
+          },
+          {
+            "hex": "#7a5342",
+            "coveragePercent": 2.2728
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#aa4b1f",
+            "coveragePercent": 22.1022
+          },
+          {
+            "hex": "#cc6730",
+            "coveragePercent": 20.791
+          },
+          {
+            "hex": "#e48a49",
+            "coveragePercent": 16.7325
+          },
+          {
+            "hex": "#932617",
+            "coveragePercent": 15.2325
+          },
+          {
+            "hex": "#edad6b",
+            "coveragePercent": 12.9577
+          },
+          {
+            "hex": "#c5272c",
+            "coveragePercent": 12.1841
+          }
+        ],
+        "visibleSamples": 386224,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.prison.undead": {
+      "source": "assets/images/enemies/prison-undead-v1.png",
+      "frameMetadata": "ART_PRISON.undead.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#573e36",
+            "coveragePercent": 7.6792
+          },
+          {
+            "hex": "#412c26",
+            "coveragePercent": 7.499
+          },
+          {
+            "hex": "#302c3f",
+            "coveragePercent": 7.4887
+          },
+          {
+            "hex": "#403d57",
+            "coveragePercent": 7.4072
+          },
+          {
+            "hex": "#6c5044",
+            "coveragePercent": 7.0134
+          },
+          {
+            "hex": "#9d7965",
+            "coveragePercent": 6.8241
+          },
+          {
+            "hex": "#856352",
+            "coveragePercent": 6.5817
+          },
+          {
+            "hex": "#160e11",
+            "coveragePercent": 6.4693
+          },
+          {
+            "hex": "#b6937c",
+            "coveragePercent": 6.4651
+          },
+          {
+            "hex": "#201c2a",
+            "coveragePercent": 6.3287
+          },
+          {
+            "hex": "#514e6c",
+            "coveragePercent": 6.2345
+          },
+          {
+            "hex": "#2c1b15",
+            "coveragePercent": 6.1456
+          },
+          {
+            "hex": "#070405",
+            "coveragePercent": 6.024
+          },
+          {
+            "hex": "#cfaf98",
+            "coveragePercent": 5.2068
+          },
+          {
+            "hex": "#e5cbb8",
+            "coveragePercent": 3.5173
+          },
+          {
+            "hex": "#69637f",
+            "coveragePercent": 3.1154
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#895e43",
+            "coveragePercent": 53.0745
+          },
+          {
+            "hex": "#9e714e",
+            "coveragePercent": 32.53
+          },
+          {
+            "hex": "#ba8b5c",
+            "coveragePercent": 11.683
+          },
+          {
+            "hex": "#923c92",
+            "coveragePercent": 1.2554
+          },
+          {
+            "hex": "#65118a",
+            "coveragePercent": 0.9864
+          },
+          {
+            "hex": "#b857ce",
+            "coveragePercent": 0.4709
+          }
+        ],
+        "visibleSamples": 238074,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.prison.warden": {
+      "source": "assets/images/enemies/prison-warden-v1.png",
+      "frameMetadata": "ART_PRISON.warden.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#261715",
+            "coveragePercent": 12.7619
+          },
+          {
+            "hex": "#4a211f",
+            "coveragePercent": 11.4786
+          },
+          {
+            "hex": "#322624",
+            "coveragePercent": 11.0031
+          },
+          {
+            "hex": "#68252b",
+            "coveragePercent": 9.6494
+          },
+          {
+            "hex": "#89303a",
+            "coveragePercent": 9.2416
+          },
+          {
+            "hex": "#423636",
+            "coveragePercent": 9.0562
+          },
+          {
+            "hex": "#120b0a",
+            "coveragePercent": 6.9619
+          },
+          {
+            "hex": "#5b4439",
+            "coveragePercent": 6.5752
+          },
+          {
+            "hex": "#a63e49",
+            "coveragePercent": 5.8543
+          },
+          {
+            "hex": "#735a49",
+            "coveragePercent": 5.5637
+          },
+          {
+            "hex": "#514855",
+            "coveragePercent": 4.4883
+          },
+          {
+            "hex": "#927055",
+            "coveragePercent": 3.8033
+          },
+          {
+            "hex": "#b88e65",
+            "coveragePercent": 1.9076
+          },
+          {
+            "hex": "#deb988",
+            "coveragePercent": 0.9233
+          },
+          {
+            "hex": "#8853a6",
+            "coveragePercent": 0.4618
+          },
+          {
+            "hex": "#e0bee7",
+            "coveragePercent": 0.2697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d303b",
+            "coveragePercent": 44.0417
+          },
+          {
+            "hex": "#a63d49",
+            "coveragePercent": 34.2772
+          },
+          {
+            "hex": "#996942",
+            "coveragePercent": 13.4365
+          },
+          {
+            "hex": "#ce9b5f",
+            "coveragePercent": 6.208
+          },
+          {
+            "hex": "#703b96",
+            "coveragePercent": 1.3038
+          },
+          {
+            "hex": "#9b5dc4",
+            "coveragePercent": 0.7329
+          }
+        ],
+        "visibleSamples": 389114,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.japan.guard.walk": {
@@ -17990,6 +18308,321 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/backgrounds/zen-prison-center-v1.png": {
+      "sha256": "fb3dc18c862db05a2dc7e5a06394a6d7b53e776ea8d639dc3ebc72e7f5cdd0c5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonCenter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#161720",
+            "coveragePercent": 19.7776
+          },
+          {
+            "hex": "#202331",
+            "coveragePercent": 15.9063
+          },
+          {
+            "hex": "#0f0c10",
+            "coveragePercent": 14.7732
+          },
+          {
+            "hex": "#030203",
+            "coveragePercent": 14.6671
+          },
+          {
+            "hex": "#38201b",
+            "coveragePercent": 8.7218
+          },
+          {
+            "hex": "#593024",
+            "coveragePercent": 6.293
+          },
+          {
+            "hex": "#272d51",
+            "coveragePercent": 5.0964
+          },
+          {
+            "hex": "#824224",
+            "coveragePercent": 3.6826
+          },
+          {
+            "hex": "#303778",
+            "coveragePercent": 3.3346
+          },
+          {
+            "hex": "#ae5d29",
+            "coveragePercent": 2.366
+          },
+          {
+            "hex": "#4645a5",
+            "coveragePercent": 1.8401
+          },
+          {
+            "hex": "#e67817",
+            "coveragePercent": 1.3346
+          },
+          {
+            "hex": "#633ddd",
+            "coveragePercent": 0.9403
+          },
+          {
+            "hex": "#eab053",
+            "coveragePercent": 0.756
+          },
+          {
+            "hex": "#b060e9",
+            "coveragePercent": 0.2771
+          },
+          {
+            "hex": "#f8e7d7",
+            "coveragePercent": 0.2331
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#984c24",
+            "coveragePercent": 34.0655
+          },
+          {
+            "hex": "#3a3d95",
+            "coveragePercent": 21.9846
+          },
+          {
+            "hex": "#d56e1d",
+            "coveragePercent": 19.3656
+          },
+          {
+            "hex": "#5641cc",
+            "coveragePercent": 12.0296
+          },
+          {
+            "hex": "#efad46",
+            "coveragePercent": 8.3773
+          },
+          {
+            "hex": "#974bf1",
+            "coveragePercent": 4.1774
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/zen-prison-east-v1.png": {
+      "sha256": "bb1c2d606c897e8010490f2b01b0a79ad9919179442eac69f35167014b1bf12f",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonEast"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#16151d",
+            "coveragePercent": 19.6754
+          },
+          {
+            "hex": "#202234",
+            "coveragePercent": 15.7429
+          },
+          {
+            "hex": "#060405",
+            "coveragePercent": 15.3381
+          },
+          {
+            "hex": "#272b4e",
+            "coveragePercent": 11.0922
+          },
+          {
+            "hex": "#37201a",
+            "coveragePercent": 7.7407
+          },
+          {
+            "hex": "#2c346c",
+            "coveragePercent": 7.2306
+          },
+          {
+            "hex": "#553329",
+            "coveragePercent": 5.9093
+          },
+          {
+            "hex": "#7c4124",
+            "coveragePercent": 4.2193
+          },
+          {
+            "hex": "#3a4087",
+            "coveragePercent": 3.9975
+          },
+          {
+            "hex": "#aa5a2a",
+            "coveragePercent": 2.6057
+          },
+          {
+            "hex": "#4045b2",
+            "coveragePercent": 2.1043
+          },
+          {
+            "hex": "#e27b1f",
+            "coveragePercent": 1.6683
+          },
+          {
+            "hex": "#f1ae4e",
+            "coveragePercent": 1.1241
+          },
+          {
+            "hex": "#5a44e5",
+            "coveragePercent": 1.0652
+          },
+          {
+            "hex": "#9e67ec",
+            "coveragePercent": 0.2814
+          },
+          {
+            "hex": "#f9ebd3",
+            "coveragePercent": 0.205
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#353e91",
+            "coveragePercent": 27.4318
+          },
+          {
+            "hex": "#994d23",
+            "coveragePercent": 26.4844
+          },
+          {
+            "hex": "#d77322",
+            "coveragePercent": 16.2846
+          },
+          {
+            "hex": "#4545c0",
+            "coveragePercent": 14.1865
+          },
+          {
+            "hex": "#f3ae49",
+            "coveragePercent": 8.9754
+          },
+          {
+            "hex": "#724cef",
+            "coveragePercent": 6.6372
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/zen-prison-west-v1.png": {
+      "sha256": "0f4465837a95cfc4145301ba19b99b4aa86a461ce657a214fb2eef87a26866ce",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonWest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1b1c27",
+            "coveragePercent": 17.8276
+          },
+          {
+            "hex": "#111015",
+            "coveragePercent": 15.6034
+          },
+          {
+            "hex": "#24283d",
+            "coveragePercent": 15.5122
+          },
+          {
+            "hex": "#2d335c",
+            "coveragePercent": 10.9417
+          },
+          {
+            "hex": "#040304",
+            "coveragePercent": 10.377
+          },
+          {
+            "hex": "#372221",
+            "coveragePercent": 7.4628
+          },
+          {
+            "hex": "#57332b",
+            "coveragePercent": 5.6584
+          },
+          {
+            "hex": "#3b3f7d",
+            "coveragePercent": 5.4897
+          },
+          {
+            "hex": "#81452a",
+            "coveragePercent": 3.2134
+          },
+          {
+            "hex": "#4f50ac",
+            "coveragePercent": 2.2214
+          },
+          {
+            "hex": "#b15e2b",
+            "coveragePercent": 1.833
+          },
+          {
+            "hex": "#e4852d",
+            "coveragePercent": 1.3161
+          },
+          {
+            "hex": "#7650e4",
+            "coveragePercent": 1.0126
+          },
+          {
+            "hex": "#efb463",
+            "coveragePercent": 0.709
+          },
+          {
+            "hex": "#845c67",
+            "coveragePercent": 0.627
+          },
+          {
+            "hex": "#f8e6db",
+            "coveragePercent": 0.1946
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#984f2a",
+            "coveragePercent": 26.5231
+          },
+          {
+            "hex": "#40438e",
+            "coveragePercent": 25.7551
+          },
+          {
+            "hex": "#d3752c",
+            "coveragePercent": 16.3008
+          },
+          {
+            "hex": "#5253b7",
+            "coveragePercent": 15.239
+          },
+          {
+            "hex": "#f2ae51",
+            "coveragePercent": 8.2248
+          },
+          {
+            "hex": "#7a4ee8",
+            "coveragePercent": 7.9572
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/council-gate-closed-v1.png": {
       "sha256": "e32cf36f69c16ed9c64397fdb3a1a3e3bf9558edbdc5ffe49774201a4f2a9b48",
       "width": 1254,
@@ -20928,6 +21561,216 @@
         ],
         "visibleSamples": 434796,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/enemies/prison-undead-v1.png": {
+      "sha256": "2827e274071dc13f44a84744599917878e6b12d7c62cb30799bddea067cc0299",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "prisonUndead"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#573e36",
+            "coveragePercent": 7.6792
+          },
+          {
+            "hex": "#412c26",
+            "coveragePercent": 7.499
+          },
+          {
+            "hex": "#302c3f",
+            "coveragePercent": 7.4887
+          },
+          {
+            "hex": "#403d57",
+            "coveragePercent": 7.4072
+          },
+          {
+            "hex": "#6c5044",
+            "coveragePercent": 7.0134
+          },
+          {
+            "hex": "#9d7965",
+            "coveragePercent": 6.8241
+          },
+          {
+            "hex": "#856352",
+            "coveragePercent": 6.5817
+          },
+          {
+            "hex": "#160e11",
+            "coveragePercent": 6.4693
+          },
+          {
+            "hex": "#b6937c",
+            "coveragePercent": 6.4651
+          },
+          {
+            "hex": "#201c2a",
+            "coveragePercent": 6.3287
+          },
+          {
+            "hex": "#514e6c",
+            "coveragePercent": 6.2345
+          },
+          {
+            "hex": "#2c1b15",
+            "coveragePercent": 6.1456
+          },
+          {
+            "hex": "#070405",
+            "coveragePercent": 6.024
+          },
+          {
+            "hex": "#cfaf98",
+            "coveragePercent": 5.2068
+          },
+          {
+            "hex": "#e5cbb8",
+            "coveragePercent": 3.5173
+          },
+          {
+            "hex": "#69637f",
+            "coveragePercent": 3.1154
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#895e43",
+            "coveragePercent": 53.0745
+          },
+          {
+            "hex": "#9e714e",
+            "coveragePercent": 32.53
+          },
+          {
+            "hex": "#ba8b5c",
+            "coveragePercent": 11.683
+          },
+          {
+            "hex": "#923c92",
+            "coveragePercent": 1.2554
+          },
+          {
+            "hex": "#65118a",
+            "coveragePercent": 0.9864
+          },
+          {
+            "hex": "#b857ce",
+            "coveragePercent": 0.4709
+          }
+        ],
+        "visibleSamples": 238074,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/prison-warden-v1.png": {
+      "sha256": "0e799b2c34926759692711f43bc7cc6de02f4c6017967a44a722c95fc7e633e5",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "prisonWarden"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#261715",
+            "coveragePercent": 12.7619
+          },
+          {
+            "hex": "#4a211f",
+            "coveragePercent": 11.4786
+          },
+          {
+            "hex": "#322624",
+            "coveragePercent": 11.0031
+          },
+          {
+            "hex": "#68252b",
+            "coveragePercent": 9.6494
+          },
+          {
+            "hex": "#89303a",
+            "coveragePercent": 9.2416
+          },
+          {
+            "hex": "#423636",
+            "coveragePercent": 9.0562
+          },
+          {
+            "hex": "#120b0a",
+            "coveragePercent": 6.9619
+          },
+          {
+            "hex": "#5b4439",
+            "coveragePercent": 6.5752
+          },
+          {
+            "hex": "#a63e49",
+            "coveragePercent": 5.8543
+          },
+          {
+            "hex": "#735a49",
+            "coveragePercent": 5.5637
+          },
+          {
+            "hex": "#514855",
+            "coveragePercent": 4.4883
+          },
+          {
+            "hex": "#927055",
+            "coveragePercent": 3.8033
+          },
+          {
+            "hex": "#b88e65",
+            "coveragePercent": 1.9076
+          },
+          {
+            "hex": "#deb988",
+            "coveragePercent": 0.9233
+          },
+          {
+            "hex": "#8853a6",
+            "coveragePercent": 0.4618
+          },
+          {
+            "hex": "#e0bee7",
+            "coveragePercent": 0.2697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d303b",
+            "coveragePercent": 44.0417
+          },
+          {
+            "hex": "#a63d49",
+            "coveragePercent": 34.2772
+          },
+          {
+            "hex": "#996942",
+            "coveragePercent": 13.4365
+          },
+          {
+            "hex": "#ce9b5f",
+            "coveragePercent": 6.208
+          },
+          {
+            "hex": "#703b96",
+            "coveragePercent": 1.3038
+          },
+          {
+            "hex": "#9b5dc4",
+            "coveragePercent": 0.7329
+          }
+        ],
+        "visibleSamples": 389114,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/enemies/samurai-jump-v1.png": {
@@ -25017,6 +25860,111 @@
         ],
         "visibleSamples": 820201,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/npcs/zen-priestess-v1.png": {
+      "sha256": "5c617a0094dd06627042d2b918804883ceebb4cb725b64865e64c16e5c2033e1",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "zenPriestess"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#c15a26",
+            "coveragePercent": 11.9254
+          },
+          {
+            "hex": "#df7d3e",
+            "coveragePercent": 9.5528
+          },
+          {
+            "hex": "#9e4118",
+            "coveragePercent": 9.414
+          },
+          {
+            "hex": "#eba461",
+            "coveragePercent": 9.0544
+          },
+          {
+            "hex": "#751e0f",
+            "coveragePercent": 7.7237
+          },
+          {
+            "hex": "#e9c299",
+            "coveragePercent": 7.3433
+          },
+          {
+            "hex": "#f1d8bf",
+            "coveragePercent": 6.6402
+          },
+          {
+            "hex": "#faeddf",
+            "coveragePercent": 6.4003
+          },
+          {
+            "hex": "#490d08",
+            "coveragePercent": 5.7657
+          },
+          {
+            "hex": "#ca292e",
+            "coveragePercent": 5.2581
+          },
+          {
+            "hex": "#180807",
+            "coveragePercent": 5.1822
+          },
+          {
+            "hex": "#a31c20",
+            "coveragePercent": 5.0228
+          },
+          {
+            "hex": "#432f35",
+            "coveragePercent": 2.9522
+          },
+          {
+            "hex": "#a87a5d",
+            "coveragePercent": 2.8086
+          },
+          {
+            "hex": "#c7a289",
+            "coveragePercent": 2.6835
+          },
+          {
+            "hex": "#7a5342",
+            "coveragePercent": 2.2728
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#aa4b1f",
+            "coveragePercent": 22.1022
+          },
+          {
+            "hex": "#cc6730",
+            "coveragePercent": 20.791
+          },
+          {
+            "hex": "#e48a49",
+            "coveragePercent": 16.7325
+          },
+          {
+            "hex": "#932617",
+            "coveragePercent": 15.2325
+          },
+          {
+            "hex": "#edad6b",
+            "coveragePercent": 12.9577
+          },
+          {
+            "hex": "#c5272c",
+            "coveragePercent": 12.1841
+          }
+        ],
+        "visibleSamples": 386224,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/props/camp-cedar-v1.png": {
@@ -30491,7 +31439,7 @@
       {
         "value": "#b087dd",
         "lines": [
-          524
+          527
         ],
         "dynamic": false
       },
@@ -30520,7 +31468,7 @@
       {
         "value": "#cf8aff",
         "lines": [
-          508
+          511
         ],
         "dynamic": false
       },
@@ -30556,14 +31504,14 @@
       {
         "value": "#ffe6a2",
         "lines": [
-          523
+          526
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          508
+          511
         ],
         "dynamic": false
       },
@@ -31903,6 +32851,81 @@
         "value": "#fff",
         "lines": [
           144
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/prison-art.js": [
+      {
+        "value": "#070d17",
+        "lines": [
+          65
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0a172bcc",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101725ed",
+        "lines": [
+          65
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#161323",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cea5ef",
+        "lines": [
+          65
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          34
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          34
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c4",
+        "lines": [
+          65
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/prison-quest.js": [],
+    "assets/js/prison-warden.js": [
+      {
+        "value": "#bd92e8",
+        "lines": [
+          59
         ],
         "dynamic": false
       }

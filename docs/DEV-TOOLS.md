@@ -122,3 +122,5 @@ Az önálló fehér és szárnyas kígyó a saját birodalom miniboss-választó
 A három pikkely és a `triuneSerpentTalisman` a közös tárgyadóból hozzáadható. A tárgyadás nem adja meg a kígyók legyőzését vagy a Fumi-mentőküldetés teljesítését. A talizmán külön slotban felszerelhető a tesztben, és csak ott viselve ad +20 Armort; az `equippedTalisman` állapot ugyanúgy elkülönül és a normál mentésből visszaáll, mint a fegyver és a tábori tulajdonlista. A már felhasznált pikkely nem hozható vissza a fúzió után.
 
 Célzott regressziók: `test-serpent-template.cjs`, `test-serpent-fusion.cjs`, `test-serpent-saves.cjs`; pálya- és grafikai ellenőrzések a [kígyóreferenciában](SERPENTS.md).
+
+Zen börtöne külön teleportcél a pályakatalógusban, két pihenőhellyel. Aktív tesztmódban a külső kapu vagy a pap legyőzése nélkül is elérhető, és a Kultista börtönnagy önállóan újraéleszthető. A replay megőrzi a normál megmentési/jutalomjelzőket; a próba nem ír mentést.

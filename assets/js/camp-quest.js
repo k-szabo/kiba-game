@@ -6,7 +6,7 @@ const CampQuest=(()=>{
  const owns=id=>flags[0].includes(id);
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
  function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
- const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent'].includes(locationId());
+ const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -14,7 +14,7 @@ const CampQuest=(()=>{
  }
  function restoreHp(hp){if(Number.isFinite(hp)&&hp>0)player.hp=Math.min(hp,player.maxHp);}
  function finishEntry(save){
-  if(!visitedRests[0].includes(checkpoint.id))visitedRests[0].push(checkpoint.id);
+  if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);
   state='play';keys.clear();pressed.clear();context=null;
   $('prompt').hidden=true;$('bossHud').hidden=true;
   resetCamera();updateHUD();if(save)persist();return true;
@@ -26,7 +26,7 @@ const CampQuest=(()=>{
   if(DevSession.active)Prologue.stop();
   if(id==='forestCamp')return enterForestCamp({save,atShrine});
   const hp=player?.hp;
-  enterRealm(0);level=map;platforms=map.platforms.map(platform=>({...platform,dx:0}));levelTime=0;
+  enterRealm(SIDE_LOCATIONS[id].realm);level=map;platforms=map.platforms.map(platform=>({...platform,dx:0}));levelTime=0;
   checkpoint={...rest};enemies=createEnemies();boss=createBoss();boss.dead=true;bossStarted=false;
   initPlayer(atShrine?checkpoint:map.start);if(!atShrine)restoreHp(hp);
   return finishEntry(save);
@@ -38,7 +38,7 @@ const CampQuest=(()=>{
    if(!enterForestCamp({save:false}))return false;
    initPlayer(destination);
   }else{
-   enterRealm(0,levels[0].rests.find(rest=>rest.id==='temple'));
+   const target=destination.realm??0;enterRealm(target,levels[target].rests.find(rest=>rest.id===(destination.restId||'temple')));
    initPlayer(destination);
   }
   restoreHp(hp);return finishEntry(true);
@@ -64,7 +64,7 @@ const CampQuest=(()=>{
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag)&&pointNear(candidate,90,85));
    if(cage){const locked=!owns('guardian:campMaster');return {type:'campCage',cage,locked,text:locked?I18n.t('camp.rescue.cage.locked'):I18n.format('camp.rescue.cage.open',[I18n.t(cage.name)])};}
-  }else if(pointNear(level.servicePoint,95,85))return {type:'campServiceOpen',service:level.service,text:I18n.format('service.enter',[I18n.t(level.name)])};
+  }else if(level.servicePoint&&pointNear(level.servicePoint,95,85))return {type:'campServiceOpen',service:level.service,text:I18n.format('service.enter',[I18n.t(level.name)])};
   const rest=level.rests.find(candidate=>pointNear(candidate,90,80));
   return rest?{type:'checkpoint',rest,text:I18n.t('text.e.rest.heal.and.save')}:null;
  }
@@ -124,6 +124,7 @@ const CampQuest=(()=>{
   return null;
  }
  function objective(){
+  if(level===shadowPrison)return null;
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};

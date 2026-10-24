@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-25",
+  "approval": {
+    "concept": "User explicitly approved the warm revised concept exec-9134b764-ec9d-4116-aa9e-bc7e32fbe2dd.png before production.",
+    "storyboard": "User explicitly approved the sixteen-pose storyboard exec-b41dad10-4d7c-4f58-a3f8-0931d84f50ba.png before production.",
+    "characterDirection": "Zen is Momo's affectionate childhood friend; her warm smile, welcoming eyes and gentle prayer follow the approved revision."
+  },
+  "notes": [
+    "Selected generated PNG bytes are copied unchanged. No image resizing, recoloring, sharpening or alpha alteration.",
+    "Actors retain true native RGBA; backgrounds are native1536x1024RGB.",
+    "All sixteen crops have zero alpha>32 pixels on crop boundaries; whole weapons, claws, robes, tails and feet remain within their registered crops.",
+    "Warden upper row uses unequal safe horizontal cut positions0/443/887/1280/1774 to isolate the complete sweep censer from the windup pose. Remaining cuts are regular quarter-width cells.",
+    "Body height remains fixed per character: Warden300, Zen502, undead371. Anchors use feet and exclude the low censer or ankle-chain extensions.",
+    "Only the approved poses are included. Warden belt lantern and right-hand chain/censer remain present; Zen keeps two paws on one bead strand."
+  ],
+  "assets": [
+    {
+      "kind": "warden",
+      "path": "assets/images/enemies/prison-warden-v1.png",
+      "selected": "exec-5263daf6-4869-425d-8e10-44f45a5d8acb.png",
+      "initial": "exec-44a26e77-d0d4-4f8c-8b79-21a4539f79d4.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION GAME SPRITE ATLAS for the EXACT USER-APPROVED WARDEN from reference1 and TOP EIGHT poses in reference2. Not a conceptboard; outputONLYthe8 isolated fullyrendered characterposes inFOUREQUALCOLUMNS andTWOEQUALROWS, realRGBAtransparentbackground, preferred2048x1024(orhighestnative2:1). Ignore ALL Chowpriestess/undead/environment/parchment/labels/grid inreferences. MatchcrisprichpaintedJapanese-fantasyart: blackenedlamellararmor,antiquebronzefiligree,cage-facedclosedhelmet,mutedwinerobe,keysandvioletlanternCLIPPEDTOBELT. TWOarms/TWOhands/TWOfeet,identicalarmor/head/bodyproportions across8poses. RIGHTHANDalwaysgripsONEshortwoodflailhandleconnectedbyONEcontinuousironchain toONEbronze cage-shapedincensecenserweight,identicalhandle/chainlength/weightdesignallposes;neverstaff/axe/swordandnevermissingchain. LEFT HANDalwaysEMPTY. Frontthree-quarterfacingLEFT inall8poses, weaponhand onVIEWERLEFT, emptyhandVIEWERRIGHT. BELT lantern onVIEWERRIGHTwaistneverheld/cloned. Fixedcreature/headsizeandfeetregistrationline at80%cellheight, body is NOTscaledbysilhouettebounds. Allcompleteweaponextremities/helmet/robe/feetstaySTRICTLYinOWNCELL withatleast15%transparentpaddingonallsides;wideemptygutters,nooverlap,clippedchainoradjacentframes. Samebodyrootaroundcellcenter,footlineconsistent. ROW1 LEFTTORIGHT:1guardedIDLEweaponhandlowleftweightdanglinglowleft;2smallAPPROACHSTEPonefootforwardkneeflexion,otherwisecloseidentity/root/heightto1;3CHAINRAISEDWINDUP rightelbowraisedviewerleft,handleabovehelmetandchain+censerarchbehindtowardRIGHT,emptyhandright;4CHAINSWEEPIMPACT rightweaponarmextendsLEFT,chain+censeroutstretchedLEFTforhorizontalstrike,emptyhandright. ROW2LEFTTORIGHT:5RECOVERYrightelbowrelaxedleftweightlowleftbodystraightens;6LANTERNCASTemptyLEFTPALMviewerRIGHTopensbesideBELTlantern,rightweaponhandviewerLEFTholdsflailhandlewithcenserhanginglowleft,NOemittedmagic/glow/VFX;7GROUNDSLAMkneebendrightweaponarmDOWNviewerLEFT,connectedcenserweightatvirtualfloorLEFTinfront,emptyhandbalancesRIGHT;8NEUTRALRETURNclosematch1. No actual ground,shadows,smoke,projectiles,VFX,labels,numbers,grid,borders,scenery,parchmentoropaquebackground. Actual opaque painted creature pixels with clean1–2pxantialiasededges;nocontaminatedred/magenta/greenfringeortransparentnoisewithinsurfaces. Truealphaemptybackground. ThisisproductionoftheAPPROVED8poses,donotinventoromitmoves.",
+      "layoutCorrection": "Use case: precise-object-edit. Technical LAYOUT REPAIR ONLY of this approved8poseWarden RGBAatlas. Preserveexactall8poses,bodyarmor,cagehelmet,oneflailright-hand/onechain/onecenser,beltlanternandkeys,renderingdetailandtruealpha. Currentfiguresfillcellsand horizontalstrike(frame4)bleedsintoframe3;unusable. UniformlySHRINK EACH ENTIRE FIGURE to70%itscurrent size, INCLUDINGwholebody,head,robes,chainandcenser,together. DoNOTcrop,changeweapons/pose,resizeindividualpartsorstretchbody. Repositioneverycompletefigure intoitsOWN equalcell ofFOURCOLUMNS byTWOROWS. AllfiguresMUSTbevisiblySMALLER with BROADtransparentgutters: allcompleteink(weapon,chain,weight,cloak,helmet,feet)STRICTLYinsideCENTRAL75%ofeachcell horizontallyandCENTRAL78%vertically. Atleast12%cellwidthemptyalphaonBOTHsidesand10%heightabove/beloweveryfigure. Frame4censerandright-handmustmovecompletelyintofourthcell,x>=fourthcellleft+12%cellwidth. Neverletsilhouettesmeetneighbors. Wholeimageouteredgehascleartransparentmargin. Matchsamecharacterphysicalbody/headscaleinallframes; restingfeetlineat80%cellheight. Preservepaintdetailcleanedgeswithoutnewred/magentamatte,opaquecharactersurfaceswithnativeRGBAbackgroundalpha. Same8poses/order,theeightoutlinedfiguresseparatedbyEMPTYTRANSPARENTSPACE,nomarks/grid/text/shadows/background. ThisisJUSTuniformindividualfigureshrinkandrelayoutnotredesign.",
+      "sha256": "0e799b2c34926759692711f43bc7cc6de02f4c6017967a44a722c95fc7e633e5"
+    },
+    {
+      "kind": "zen",
+      "path": "assets/images/npcs/zen-priestess-v1.png",
+      "selected": "exec-a7d1a5cc-4d0d-470f-a7ac-4457d9fa3523.png",
+      "initial": "exec-659ace09-ea2f-4499-a7aa-5a8f29b97f01.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION FOUR-POSE TRANSPARENT CHARACTER ATLAS of Zen, the exact user-approved warm affectionate CHOW CHOW PRIESTESS in reference1 and BOTTOM FOUR poses of reference2. Ignore allothercharacters/environments. FOUR EQUAL COLUMNS and ONE ROW,only4isolatedfullbodyfigures,preferred2048x1024landscapeRGBA,emptytransparentgutters. Same cinnamon-goldbroadChowmuzzle/roundlionmane/smallroundedears/fluffycurledtail, brightfriendlyyoungadulteyes/happygentlesmile, modestcreamwhite-goldembroideredmikorobe,redhakama,indigoinnerlayer,redcord,oneprayerbeadstrandheldbyBOTHP frontpaws. NOhumanface/hair, noshibasnout, noextraarms/legs/tails. ExactlyTWOarms/TWOpaws/TWOfeet;bothpawsremainincontactwiththesamebeadstrand,readableindividualpawcontours. ALL4posesSAMEbodysize/headscale/robevolumeandfixedfootlineat82%cellheight,rootcenterfixed;eyes/headmovebygentleposturechange,neverstretchorresizewholebody. MatchrichlydetailedpaintedJapanese-fantasygamestylewithcrispfinecloth/furcontours,opaquenativepixelsandcleanantialiasedalphaedges. LEFTTORIGHT:1uprightwelcomingneutral happysoftsmileandfriendlyeyes,headtinywarmtilt;2gentleheadbow,pawsliftbeadsveryslightly,affectionatecalmexpression;3eyesclosedinprayerwithsmallwarmSMILE,headbowandbothpawssteady;4returnuprighthappysmilematching1forseamlessloop. Warmromanticaffectionisthroughfaceonly, nohearts,symbols,particlesorVFX. Wholefigures(allmane,ears,tail,robe,feet)strictlyinsideowncentral70%cellwidthandcentral76%cellheight withatleast15%emptytransparentmarginsallsides;NOtouchingneighborsorouteredge, nocroporcutofftail. No scenery,ground/shadows,checkerboard,parchment,grid,title,labels,numbers,text,UIorwatermarks. TrueRGBAtransparentbackgroundincludingtailgaps;opaqueactualcharactersurfaces, NOcoloredmatte/red/magentafringe ornoisypartialtransparencyinsidefur.",
+      "layoutCorrection": "Use case: precise-object-edit. STRICTTECHNICALLAYOUTFIXONLY. Preserve these EXACT FOUR fullypaintedChowpriestessposes,clothing,beads,anatomy,smilingexpressionsandnativeRGBAalpha. UNIFORMLYSCALEEACHWHOLEFIGURE to70%ofitscurrentsize(allhead,mane,body,tail,robe,feet,pawstogether),THENplaceeachstrictlyinitsOWN equalcell of4COLUMNS1ROW. All4figuresmustbeVISIBLYSMALLERthaninput,withLARGEEMPTYTRANSPARENTGUTTERS. Currentlytailsofneighborscrosscolumnboundaries;notusable. EverycompletefiguremustfitinCENTRAL70%ofowncellwidth andCENTRAL75%ofheight,minimum15%emptyspaceonleftANDrightofeverycell,12%aboveandbelow. DoNOTexpandtailsbacktooldsize, clipfurorshortentails. DO NOTcroporresizeonlyparts. Allfourfeetlinesat82%cellheight,exactsamebody/headscaleacrossposes; preservegentleheadbowandhappyprayerface. Keeporiginalfourposes/order,nofifthfigure,nolabels,text,grid,scenery,ground,VFX,shadows,checkerboardoropaquebackground. RealtransparentRGBA,opaqueactualfur/clothes,cleanalphaedgeswithnored/magentamattenoise. Outputsame4x1spriteatlaswithmuchmoreemptyalphabetweenfigures.",
+      "sha256": "5c617a0094dd06627042d2b918804883ceebb4cb725b64865e64c16e5c2033e1"
+    },
+    {
+      "kind": "undead",
+      "path": "assets/images/enemies/prison-undead-v1.png",
+      "selected": "exec-f032af2a-759b-4b7e-a8d8-0822beee8309.png",
+      "initial": "exec-68c2b092-6892-4b21-9882-7acc92302826.png",
+      "prompt": "Use case: stylized-concept. PRODUCTION4POSETRANSPARENTATLAS of exactUNDEADPRISONER from reference1 lowerright and reference2 CELLS9–12. IgnoreALLWarden/Chow/environment. Output4EQUALCOLUMNS1ROW of4fullyseparatecompleteLEFT-FACINGundead,preferred2048x1024landscapeRGBA. SAMEgauntskeletalHUMANidentity,onehead,twoarms/twohands/twolegs,graybones/palegraydryskin,sunkenvioleteyes,raggedindigoprisonrobe,brokenironwrist/ankleshackles. Nohumanfreshgore,extrafaces,missinglimbsornewweapons. ExactpaintedJapanesefantasygamestyle: sharplyoutlinedbones/fabric/metal,texturednativepaintandopaquecharactersurfaces. LEFTTORIGHT:1walkingstepLEFTfootforwardandhunchedwatchfulhead,2walkingstepRIGHTfootforwardwhilehead/bodymaintainscalefrom1,3CLAWWINDUPbotharmsretractrightarmmorevisible,4CLAWRELEASEbothbonyopenhandsreachLEFTwithfivefingersperhand. Maintainexactphysicalhead/bodyheightacrossall4poses, virtualfloor/footlineat82%owncellheight, no resizingbychangingextremities. IMPORTANT WHOLEFIGURES SMALLINSIDECELLS: everywholehead/robe/finger/chain/footfitscentral65%ofeachcellwidthandcentral72%height,withatleast17%cleartransparentmargineachsiderightleftand12%abovebelow. Clawreachmustfitbybendingbody/arms,nobodyresizingorclippingfingers. NOcontactwithneighbors/outeredge andnooverlap. Largeemptyalpha gutters. NOground,shadows,scenery,VFX/magicglow,labels,numbers,grid,parchment,checkerboard,text,UIorwatermark. TrueRGBAtransparentemptybackgroundandbodygaps;cleanalphaedges1–2pxantialiasing,NOred/magentafringemattemultipixelnoise.",
+      "layoutCorrection": "Use case: precise-object-edit. Technicalindividualfigurere-layoutONLY ofthis4poseRGBAundeadatlas. KeepEXACTsamefourposes/character/anatomy/fingers/robes/shackles/nativepaintdetail. UniformlySHRINK EACH ENTIRE FIGURE to65%current size, INCLUDINGhead/body/botharms/allfingers/legs/anklechains together. RecenterwholefigureinitsOWNequalcellFOURCOLUMNS1ROW,feetlineat80%cellheight. All4figuresmustbeclearlySMALLERwithLARGECLEARALPHAGUTTERS:allvisiblepixelsstrictlyinsidecentral65%ofowncellwidth andcentral72%cellheight. Atleast17%cellwidthcleartransparentonleftANDrightineachcelland12%heightabovebelow. Currentfirstspriteanklechainbleedsrightintocell2andfourthspritefingersbleedleftintocell3;movetheCOMPLETEfigureincludingextremitiesfullyintoowncell,donotcroporshortenchains/fingers. Samebody/headscaleacrossall4poses,existingfirst2walk/thirdwindup/fourthclawreleaseonly. Noextrasprites/noextrahands/nolabels/grid/text/ground/shadows/scenery/VFX/background. RealRGBAtransparentemptyspace,nocheckerboard;opaquecharactersurfacecleanantialphaedgeswithoutred/magentamatte. Preserveexactfouroriginalposesbyuniformscalingwholefiguresonly.",
+      "sha256": "2827e274071dc13f44a84744599917878e6b12d7c62cb30799bddea067cc0299"
+    },
+    {
+      "kind": "west",
+      "path": "assets/images/backgrounds/zen-prison-west-v1.png",
+      "selected": "exec-69c68bb7-7aa6-4a72-b198-64c9fa3b11c7.png",
+      "prompt": "Use case: precise-object-edit. PRODUCTION ENVIRONMENT BACKGROUND derived ONLY from the upper-right SHADOW PRISON interior panel of this user-approved concept. Make that environment fullcanvas, discardALLotherpanels/characters/parchment/dividers/labels. This is the WEST ENTRANCE third of a long horizontal2DJapanese-fantasyprison map. Native portraitishLANDSCAPE3:2composition preferred1536x1024, NOTultrawidepanoramaandNOTtallportrait. Detailed crisp painterlyJapaneseart in samehand-paintedlanguage asconcept, blackbasaltmasonry/navytimber/antiquebronze/agedwinebanners/violetKiba, tinywarmcandles. Viewslightlyintodepthfromside,frontplatformsoverlaidbygame. Camera seesmultiplelayersofdistant barredcells,deepvaulted timberandstone rafters,tallcolumns,smallcagebellchains. ThelargeentryarchshouldbeatfarLEFT,thecorridordeeprunsRIGHTtowardcentralcells. Near-bottomaround78%imageheighta readablehorizontalstonewalkway; lower22%darkvaultedfoundation. Upperhalfdeepdetailedarchitecture/rafters,moderatelyhighceilingenablingplatforming. Keepallcellbars/doorways/propsatnaturalbackgroundscale, smallenoughthatMomo(~80pixels)belongs;nohugeforegrounddoorframeacrossimage, largestarchatmost30%heightand18%width, nooversizedlamps. Confinewarmcandlestolowercorners,sparsevioletcracklightanddistantportalglow,notbroadneonfog. Nocharacters,creatures,skullswithfaces,animatedflames,UI,text,calligraphy,parchmentframe,grid,montageorwatermarks. Entireimageopaqueedge-to-edge;richsharpnativepaintdetail/noGaussianblur/depthoffield/motionblur. Preserveapprovedprisonidentityandmaterials. Sceneryonly:donotpaintprominentcollisionplatformsintheclearcenterwheregameoverlaysownledges. Westedgeandrightedgequietwalltextureforgentleblendwithneighborpanel.",
+      "sha256": "0f4465837a95cfc4145301ba19b99b4aa86a461ce657a214fb2eef87a26866ce"
+    },
+    {
+      "kind": "center",
+      "path": "assets/images/backgrounds/zen-prison-center-v1.png",
+      "selected": "exec-3b226822-b1ff-44cf-9512-94468facda8f.png",
+      "prompt": "Use case: precise-object-edit. PRODUCTION CENTER BACKGROUND PANEL continuing this exact approved paintedJapanese-fantasySHADOWPRISONinterior. Use reference1westpanelasEXACTmaterial/color/detailcontinuity,reference2upperrightprisonpanelasapproveddesign;ignoreALLcharacters/otherconceptpanels. Generateoneopaque3:2landscapepainting1536x1024native. ThisistheCENTERcellgallery: multiplelayeredrowsof SMALLbarredcells,weatheredblackbasaltmasonryandnavycarvedtimbergalleries,oldwinefabricbannerswithabstractgeometricembroideries(noreadableletters),antiquebronzebells,heavyironchainssuspendedfromrafters. CentraldistancefeaturesdeepvioletKibafissurebehindpairedcellgates,notgiantportal. Farbackstonewalkwayat75%heightleadingfromLEFTtoRIGHT;brokensecond-levelbalconiesaboveforvisualdepth,notprominentforegroundplatforms. LOWER20%darkarchedprisonfoundation. Upperhalfceilingrafterdetailanddistantcellgalleries. CompositionseenfromSIDEatmoderatedistance withsmallnaturalscaledoorways/props,NOmassivecloseforegroundcolumnoccupyingthecamera. Mainplayablepath/platformsoverlaidseparatelybygame,so foregroundcenterremainssimpleandreadable. Keepedgeareasquietblackstoneandchainsforgentleneighborblend. Exactsharpdetailedhand-paintedtextures,rustonbarseams,finebrickchips,carvedjoinery,fewtinywarmcandles,controlledvioletrimbreaks,richnavyblackcoppercontrast. No blur/depthoffield/motionblur/softfocus,sharpnativedetail. NOcharacters,enemies,priestess,creatures,text,labels,UI,grid,parchment,watermarks,framesormontage. Entireimagefilledwithprisonscenery,blackshadowsonlywherearchitectural;nogenericblackborders.",
+      "sha256": "fb3dc18c862db05a2dc7e5a06394a6d7b53e776ea8d639dc3ebc72e7f5cdd0c5"
+    },
+    {
+      "kind": "east",
+      "path": "assets/images/backgrounds/zen-prison-east-v1.png",
+      "selected": "exec-d2d35086-2933-499d-a65e-9a24e3dd59a5.png",
+      "prompt": "Use case: precise-object-edit. PRODUCTION EAST/WARDEN-HALL BACKGROUND PANEL continuing theexactuser-approvedpaintedJapanese-fantasySHADOWPRISONinterior. Reference1westpanel=exacttexture/palette/detail;reference2conceptupperright=approvedenvironmentidentity. GenerateoneOPAQUE3:2landscapepainting1536x1024native,notapanoramaandsingleimageNOTmontage. ThisisinnerWardenhallandcaptivityalcove: spaciousreadablehorizontalstonewalkwayatabout72%imageheight;distantbarredcellsanddeepblackbasaltarchesbehind,navytimberraftersandantiquebronzechainhoistsabove. A recessednarrowbarredalcoveatfarRIGHT guardedbybronzelockplatesandnearbyunlitprayerniche,NOoccupant(characterZenrenderedseparately); mid-backgroundlargeclosedironcelldooratmodestscaleandpairs ofsmallbronzelanterns. Suspendedchainsandfewsmallcagebellsframeuppercorners,smallwinebannerswithabstractgeometricembroidery(noreadableletters). Centerremainssimpleopencombatspace;avoidgiantclosecolumnsorarchitecturefillingcamera. Lowerquarterdarkprisonfoundationstoneandchainshadow. ControlledvioletKibafissure/lightdeepbehindbars,tinywarmgoldcandlesalongdistantwall,gold/black/navy/winematerialsconsistent. Finechiseltexture,brickchips,rustedrivets,carvedwoodjoinery,layeredgalleries;allnativedetailscrispwithoutGaussianblur/depthoffield/motionblur. Sceneryonly,gameownsforegroundcollisionfloorandplatforms,so noprominentforegroundobstacles/stepsincenter. KeepLEFTandRIGHTedgesquietstoneforgentleneighborblend. NOpeople/characters/creatures/giantstatues/faces,NOUI/text/labels/grid/frames/parchment/watermark. Fulledge-to-edgeopaquepainting,architecturalshadowsnotblackcanvasborders.",
+      "sha256": "bb1c2d606c897e8010490f2b01b0a79ad9919179442eac69f35167014b1bf12f"
+    }
+  ],
+  "outputs": {
+    "warden": {
+      "path": "assets/images/enemies/prison-warden-v1.png",
+      "image": "prisonWarden",
+      "width": 1774,
+      "height": 887,
+      "facing": -1,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 443,
+          "h": 443,
+          "anchorX": 248.5,
+          "anchorY": 402,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            70,
+            104,
+            392,
+            402
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "idle"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 444,
+          "h": 443,
+          "anchorX": 661,
+          "anchorY": 402,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            503,
+            102,
+            803,
+            402
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "approach"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 393,
+          "h": 443,
+          "anchorX": 1062,
+          "anchorY": 403,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            935,
+            97,
+            1235,
+            403
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "chainWindup"
+        },
+        {
+          "x": 1280,
+          "y": 0,
+          "w": 494,
+          "h": 443,
+          "anchorX": 1564.5,
+          "anchorY": 402,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            1319,
+            127,
+            1714,
+            402
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "chainSweep"
+        },
+        {
+          "x": 0,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 247,
+          "anchorY": 806,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            70,
+            514,
+            389,
+            806
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "recover"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 676.5,
+          "anchorY": 807,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            504,
+            512,
+            817,
+            807
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "lanternBolts"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 443,
+          "h": 444,
+          "anchorX": 1114,
+          "anchorY": 807,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            925,
+            560,
+            1256,
+            807
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "gravePulse"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 444,
+          "h": 444,
+          "anchorX": 1560,
+          "anchorY": 806,
+          "bodyHeight": 300,
+          "visibleBounds": [
+            1386,
+            513,
+            1700,
+            806
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "neutral"
+        }
+      ]
+    },
+    "zen": {
+      "path": "assets/images/npcs/zen-priestess-v1.png",
+      "image": "zenPriestess",
+      "width": 1774,
+      "height": 887,
+      "facing": 1,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 443,
+          "h": 887,
+          "anchorX": 223,
+          "anchorY": 708,
+          "bodyHeight": 502,
+          "visibleBounds": [
+            68,
+            206,
+            354,
+            708
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "idle"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 444,
+          "h": 887,
+          "anchorX": 671,
+          "anchorY": 709,
+          "bodyHeight": 502,
+          "visibleBounds": [
+            515,
+            218,
+            795,
+            709
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "bow"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 443,
+          "h": 887,
+          "anchorX": 1100.5,
+          "anchorY": 708,
+          "bodyHeight": 502,
+          "visibleBounds": [
+            947,
+            224,
+            1226,
+            708
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "prayer"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 444,
+          "h": 887,
+          "anchorX": 1569,
+          "anchorY": 708,
+          "bodyHeight": 502,
+          "visibleBounds": [
+            1412,
+            206,
+            1698,
+            708
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "return"
+        }
+      ]
+    },
+    "undead": {
+      "path": "assets/images/enemies/prison-undead-v1.png",
+      "image": "prisonUndead",
+      "width": 1774,
+      "height": 887,
+      "facing": -1,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 443,
+          "h": 887,
+          "anchorX": 256.5,
+          "anchorY": 701,
+          "bodyHeight": 371,
+          "visibleBounds": [
+            82,
+            330,
+            436,
+            701
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "walkLeft"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 444,
+          "h": 887,
+          "anchorX": 700,
+          "anchorY": 699,
+          "bodyHeight": 371,
+          "visibleBounds": [
+            541,
+            330,
+            869,
+            699
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "walkRight"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 443,
+          "h": 887,
+          "anchorX": 1131.5,
+          "anchorY": 696,
+          "bodyHeight": 371,
+          "visibleBounds": [
+            953,
+            340,
+            1292,
+            696
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "windup"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 444,
+          "h": 887,
+          "anchorX": 1590.5,
+          "anchorY": 698,
+          "bodyHeight": 371,
+          "visibleBounds": [
+            1363,
+            352,
+            1733,
+            698
+          ],
+          "edgeVisiblePixels": 0,
+          "pose": "claw"
+        }
+      ]
+    },
+    "backdrop": [
+      {
+        "image": "zenPrisonWest",
+        "path": "assets/images/backgrounds/zen-prison-west-v1.png",
+        "width": 1536,
+        "height": 1024
+      },
+      {
+        "image": "zenPrisonCenter",
+        "path": "assets/images/backgrounds/zen-prison-center-v1.png",
+        "width": 1536,
+        "height": 1024
+      },
+      {
+        "image": "zenPrisonEast",
+        "path": "assets/images/backgrounds/zen-prison-east-v1.png",
+        "width": 1536,
+        "height": 1024
+      }
+    ]
+  }
+}

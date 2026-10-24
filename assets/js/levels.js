@@ -365,7 +365,28 @@ function makeCampInterior(id,name,service,entrance){
 const forgeInterior=makeCampInterior('forgeInterior','service.forge.name','forge',forestCamp.serviceEntrances[0]);
 const herbalHut=makeCampInterior('herbalHut','service.herbal.name','herbal',forestCamp.serviceEntrances[1]);
 const mysticTent=makeCampInterior('mysticTent','service.mystic.name','mystic',forestCamp.serviceEntrances[2]);
+// Optional prison interior: its entrance still requires the outer jailer's key.
+const shadowPrison=makeLevel('shadowPrison',4600,1800,{x:240,y:1000});
+shadowPrison.name='zen.prison.name';shadowPrison.enemyRealm=3;
+for(const p of [['prison-entry-floor',0,1000,1180],['prison-cell-floor',1320,1080,1130],['prison-depths-floor',2580,1040,2020]])ledge(shadowPrison,...p,'ground',760);
+for(const p of [['prison-watch-step',680,880,200],['prison-watch-balcony',900,760,430],['prison-cell-step',1550,1000,220],['prison-upper-cells',1800,880,430],['prison-east-step',2380,1000,210],['prison-vigil',2820,920,210]])ledge(shadowPrison,...p,'stone',30);
+rest(shadowPrison,'shadowPrisonEntrance',320,1000,'zen.prison.start');
+rest(shadowPrison,'shadowPrisonCourt',3060,1040,'zen.prison.wardenRest');
+shadowPrison.returnPoint={x:160,y:1000};
+shadowPrison.returnDestination={realm:3,restId:'prison',x:7730,y:2200};
+shadowPrison.arena={x:3250,y:1040,w:1050,restId:'shadowPrisonCourt'};
+shadowPrison.boss={x:-1000,y:1040};
+shadowPrison.zen={x:4430,y:1040};
+shadowPrison.secrets=[{id:'prisonWardenCourt',name:'zen.warden.name',x:3230,y:660,w:1090,h:450,arena:shadowPrison.arena,guardian:'prisonWarden',public:true}];
+for(const [id,x,y,kind,patrol,undead]of [['prison-forgotten-1',600,1000,'guard',100,true],['prison-cult-archer',1110,760,'archer',70,false],['prison-forgotten-2',1530,1080,'guard',100,true],['prison-cult-shield',2030,1080,'shield',110,false],['prison-cult-mage',1980,880,'mage',65,false],['prison-forgotten-3',2720,1040,'guard',95,true],['prison-forgotten-4',2860,920,'guard',55,true]]){
+ foe(shadowPrison,id,x,y,kind,null,patrol);Object.assign(shadowPrison.enemies.at(-1),{undead,factionOverride:'shadowCult',...(undead?{name:'zen.enemy.undead'}:{})});
+}
+foe(shadowPrison,'prisonWarden',3850,1040,'guard',null,350);Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonWarden',name:'zen.warden.name',secretArea:'prisonWardenCourt'});
+zone(shadowPrison,'zen.prison.name',0,0,4600,1800);
+shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued');
+forestCamp.npcs.push({id:'zen',x:1390,y:820,name:'zen.name',dialogue:'zen.camp.dialogue',image:'zenPriestess',height:103,requiresFlag:{realm:3,id:'zenRescued'}});
 const SIDE_LOCATIONS=Object.freeze({
+ shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
  forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),
  samuraiCamp:Object.freeze({map:samuraiCamp,realm:0,requiredFlags:Object.freeze(['campQuestAccepted'])}),
  forgeInterior:Object.freeze({map:forgeInterior,realm:0,requiredFlags:Object.freeze(['smithRescued'])}),
@@ -375,7 +396,7 @@ const SIDE_LOCATIONS=Object.freeze({
 function sideLocationUnlocked(id,worldFlags=[],defeated=[]){
  if(typeof id!=='string'||!Object.hasOwn(SIDE_LOCATIONS,id))return false;
  const spec=SIDE_LOCATIONS[id],known=worldFlags?.[spec.realm];
- return defeated?.[spec.realm]===true&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
+ return (spec.requiresRealmBoss===false||defeated?.[spec.realm]===true)&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
 }
 function realmRests(n){return levels[n]?[...levels[n].rests,...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>spec.map.rests)]:[];}
 for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
