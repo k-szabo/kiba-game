@@ -11,4 +11,24 @@ for(let i=0;i<21;i++)run('visualMaster.poseIndex='+i+';CampArt.actor(visualMaste
 run('visualMaster.poseIndex=0;');assert.equal(run('JSON.stringify({player,enemies,flags,platforms,levelTime})'),before,'Drawing never advances battle/quest clocks');
 run('DevTools.open();DevSession.begin();DevTools.close();');
 for(const id of ['samuraiCamp','forgeInterior','herbalHut','mysticTent']){run("CampQuest.enter('"+id+"');CampArt.backdrop();CampArt.scenery();draw();");assert.equal(run('CampQuest.locationId()'),id);}
-console.log('PASS: native camp crops, intact twenty-one-pose margins, body registration, inventory catalogue and immutable rendering across all side areas.');
+
+// Scenery must cover the camera while remaining a distant, native-density layer.
+// Tall world coordinates and jumps must not reveal an edge or enlarge a tent.
+run("CampQuest.enter('samuraiCamp');window.campPaint=[];ctx.drawImage=(image,...rect)=>campPaint.push(rect);");
+const geometry=run('JSON.stringify(platforms)');
+for(const width of [1280,1432,2560,3840])for(const x of [0,1500,4400-width])for(const y of [-300,500,1250]){
+ run('viewW='+width+';camera='+Math.max(0,x)+';cameraY='+y+';campPaint=[];CampArt.backdrop();');
+ const draws=JSON.parse(run('JSON.stringify(campPaint)'));
+ assert.equal(draws.length,3,'All native panels paint once');
+ const first=draws[0],last=draws.at(-1);
+ assert(first[0]<=1e-6&&last[0]+last[2]>=width-1e-6,'Scenery covers both camera edges');
+ for(let i=0;i<draws.length;i++){
+  const [left,top,w,height]=draws[i];
+  assert(top<=0&&top+height>=720,'Jump/vertical camera cannot expose canvas edges');
+  if(i)assert(left<=draws[i-1][0]+draws[i-1][2],'No horizontal panel gaps');
+  if(width<=2560)assert(w<=1536&&height<=1024,'Standard desktop scenery is never upscaled in world space');
+ }
+}
+assert.equal(run('JSON.stringify(platforms)'),geometry,'Backdrop repair cannot change collision platforms');
+run('viewW=1280;');
+console.log('PASS: native camp crops, intact twenty-one-pose margins, body registration, inventory catalogue, immutable rendering and gap-free native-density scenery across desktop camera sizes.');

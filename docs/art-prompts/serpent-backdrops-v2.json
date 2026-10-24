@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-24",
+  "approval": "Quality and scale repair of the already approved white cave and winged roost environments; no new design or animation.",
+  "notes": [
+    "Generated native pixels copied byte-for-byte, without resizing, sharpening, recoloring or alpha modification.",
+    "Taller 2:1 composition replaces 3:1 panorama enlargement at viewport height; landmarks retain identity at a more distant visual scale.",
+    "Requested 2048x1024, actual native output1774x887; do not claim the requested resolution was produced.",
+    "Game collisions, attack timing/damage and world geometry remain separate from scenery."
+  ],
+  "assets": [
+    {
+      "path": "assets/images/backgrounds/white-serpent-cave-v2.png",
+      "reference": "assets/images/backgrounds/white-serpent-cave-v1.png",
+      "width": 1774,
+      "height": 887,
+      "prompt": "Use case: precise-object-edit. Quality repair of this EXISTING APPROVED painted Japanese fantasy WHITE SERPENT CAVE background, not a new design. Preserve limestone cave, teal water, ivy, old torii, small stone lanterns, cold ivory/jade palette and exact detailed painterly material language. Make a native high-resolution landscape background approximately2048x1024 (2:1 aspect), with MORE VERTICAL CANOPY/ROCK SPACE and scenery seen at a modestly GREATER DISTANCE, so viewing the entire image at720pixels tall does not enlarge its architectural details. Keep all torii, lanterns, waterfalls and cliff shrines proportionately SMALLER than in reference: distant torii roughly100pixels high in a1024pixel-high painting, lanterns30–45pixels, never giant foreground architecture. Elaborate crisp microdetail in rock texture, moss, hanging ivy, water ripples and wooden joinery, no blur/depth-of-field/motion blur, no upscaled soft edges. Draw much taller richly detailed upper cavern ceiling tapering into deep teal shadow; lower half includes distant turquoise still pool and connected stone path at about75%imageheight. Side-view scenic backdrop, clear central horizontal combat space; platform collisions are rendered separately by game. Atmospheric distance through palette layering, not blur. Entire opaque image, no black borders. NO serpent, creatures, people, dogs, treasure, UI, text, lettering, giant close columns, overlapping montage or panels. This is an exact art-style fidelity repair and camera-composition zoom-out of reference, preserve the identity and geography."
+    },
+    {
+      "path": "assets/images/backgrounds/winged-serpent-roost-v2.png",
+      "reference": "assets/images/backgrounds/winged-serpent-roost-v1.png",
+      "width": 1774,
+      "height": 887,
+      "prompt": "Use case: precise-object-edit. Quality repair of this EXISTING APPROVED painted Japanese fantasy FALLEN WINGED SERPENT ROOST background, not a new design. Preserve exact white marble and ornate gilded angelic arches, broken floating terraces, small shrines, navy-and-violet corrupt ivy, pale gold sunlit clouds, original light/cloud palette and detailed painterly materials. Make a native very high-resolution landscape approximately2048x1024 (2:1 aspect) with EXTRA VERTICAL SKY/CLOUD SPACE and architecture viewed at modestly GREATER DISTANCE, so showing entireimage at720pixels tall never enlarges landmark details. Shrink side arches/columns and terrace ornaments relative tocanvas: small distantpagodas, fararches, manyfinegildeddetails instead of enormous closepillars. Largestnear pillars occupy atmost12%width atouterleft/right. Detailed crisp stonechiseltexture, filigree, feathercarvings, ivy leaves and cloudbrushwork, absolutely NO softfocus, depthoffield, motionblur or blurryupscale. More open central sky and layered distant sky-islands; fine violet corruption reservedforivy and cracks. Horizontal scenic stonewalkway around75%imageheight; gameplatforms are rendered separately. Atmosphericdistance through crisp layeredpalette,notblur. Entireopaqueimage, no blackborders. NO serpent, creatures, people, dogs, UI, text, lettering, giantforegroundcolumns or panelmontage. This is the same approvedenvironment with a camera-composition zoom-out and nativequalityrepair."
+    }
+  ]
+}

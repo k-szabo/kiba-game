@@ -17473,10 +17473,8 @@
       "sha256": "e867cdd853d3161dfce896511a1d0c738f9dcb17f94ea11b2b6246543e2140eb",
       "width": 2172,
       "height": 724,
-      "runtimeKeys": [
-        "whiteSerpentBackdrop"
-      ],
-      "usage": "runtime",
+      "runtimeKeys": [],
+      "usage": "design-reference",
       "palette": {
         "dominant": [
           {
@@ -17574,14 +17572,117 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/white-serpent-cave-v2.png": {
+      "sha256": "967a068198848cbf231abc068249ff6aa795cfdcfd92c5b19152fa173dd5d129",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "whiteSerpentBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#040505",
+            "coveragePercent": 14.1861
+          },
+          {
+            "hex": "#1d2623",
+            "coveragePercent": 13.1188
+          },
+          {
+            "hex": "#21373a",
+            "coveragePercent": 12.2432
+          },
+          {
+            "hex": "#2e4d52",
+            "coveragePercent": 11.3129
+          },
+          {
+            "hex": "#0f1615",
+            "coveragePercent": 10.9572
+          },
+          {
+            "hex": "#3b656a",
+            "coveragePercent": 8.52
+          },
+          {
+            "hex": "#4e8083",
+            "coveragePercent": 5.9876
+          },
+          {
+            "hex": "#46442a",
+            "coveragePercent": 5.2843
+          },
+          {
+            "hex": "#5ca1a2",
+            "coveragePercent": 3.7564
+          },
+          {
+            "hex": "#736a42",
+            "coveragePercent": 3.449
+          },
+          {
+            "hex": "#82babe",
+            "coveragePercent": 2.5856
+          },
+          {
+            "hex": "#90987c",
+            "coveragePercent": 2.058
+          },
+          {
+            "hex": "#edf4e8",
+            "coveragePercent": 1.8097
+          },
+          {
+            "hex": "#d4d198",
+            "coveragePercent": 1.7702
+          },
+          {
+            "hex": "#a9dbe2",
+            "coveragePercent": 1.7016
+          },
+          {
+            "hex": "#bea248",
+            "coveragePercent": 1.2595
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#3b8487",
+            "coveragePercent": 34.1564
+          },
+          {
+            "hex": "#44a89f",
+            "coveragePercent": 19.3801
+          },
+          {
+            "hex": "#937634",
+            "coveragePercent": 15.8748
+          },
+          {
+            "hex": "#ba9f46",
+            "coveragePercent": 12.7666
+          },
+          {
+            "hex": "#5cc5bc",
+            "coveragePercent": 9.4108
+          },
+          {
+            "hex": "#e4d160",
+            "coveragePercent": 8.4113
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/winged-serpent-roost-v1.png": {
       "sha256": "410e2679e981fed09f3966542ae6ca11930f6ac098fbde26466fbdb5cbe30a78",
       "width": 2172,
       "height": 724,
-      "runtimeKeys": [
-        "wingedSerpentBackdrop"
-      ],
-      "usage": "runtime",
+      "runtimeKeys": [],
+      "usage": "design-reference",
       "palette": {
         "dominant": [
           {
@@ -17677,6 +17778,111 @@
         ],
         "visibleSamples": 1572528,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/winged-serpent-roost-v2.png": {
+      "sha256": "d6b1cc08363ec142c22bbc950dad3730fefc74451b573ce77c93a9561a97b2e4",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "wingedSerpentBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcf5ed",
+            "coveragePercent": 14.9389
+          },
+          {
+            "hex": "#f8e1cd",
+            "coveragePercent": 11.1998
+          },
+          {
+            "hex": "#bdbae1",
+            "coveragePercent": 10.5546
+          },
+          {
+            "hex": "#ddcee2",
+            "coveragePercent": 10.1635
+          },
+          {
+            "hex": "#99a5df",
+            "coveragePercent": 7.7421
+          },
+          {
+            "hex": "#968da0",
+            "coveragePercent": 5.5778
+          },
+          {
+            "hex": "#6895e4",
+            "coveragePercent": 5.4878
+          },
+          {
+            "hex": "#736a82",
+            "coveragePercent": 5.0823
+          },
+          {
+            "hex": "#100b0f",
+            "coveragePercent": 4.4738
+          },
+          {
+            "hex": "#4c4464",
+            "coveragePercent": 4.2656
+          },
+          {
+            "hex": "#cbb29e",
+            "coveragePercent": 4.1691
+          },
+          {
+            "hex": "#4579dd",
+            "coveragePercent": 3.6165
+          },
+          {
+            "hex": "#2d253c",
+            "coveragePercent": 3.5794
+          },
+          {
+            "hex": "#88613e",
+            "coveragePercent": 3.3147
+          },
+          {
+            "hex": "#b18b63",
+            "coveragePercent": 3.2042
+          },
+          {
+            "hex": "#5b3a21",
+            "coveragePercent": 2.6299
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#6794e5",
+            "coveragePercent": 40.4516
+          },
+          {
+            "hex": "#457bdd",
+            "coveragePercent": 27.3483
+          },
+          {
+            "hex": "#935f2f",
+            "coveragePercent": 11.8115
+          },
+          {
+            "hex": "#b58449",
+            "coveragePercent": 9.3992
+          },
+          {
+            "hex": "#5c3ba0",
+            "coveragePercent": 6.3127
+          },
+          {
+            "hex": "#dfb664",
+            "coveragePercent": 4.6767
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/backgrounds/yomi-v3.png": {
@@ -30183,64 +30389,64 @@
       {
         "value": "#0a1828f2",
         "lines": [
-          47
+          56
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          43
+          52
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          28
+          37
         ],
         "dynamic": false
       },
       {
         "value": "#151e27",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#a9e5eb",
         "lines": [
-          47
+          56
         ],
         "dynamic": false
       },
       {
         "value": "#c0f6ff",
         "lines": [
-          49
+          58
         ],
         "dynamic": false
       },
       {
         "value": "#f5cb83",
         "lines": [
-          68
+          77
         ],
         "dynamic": false
       },
       {
         "value": "#f5cb831c",
         "lines": [
-          68
+          77
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          47,
-          49
+          56,
+          58
         ],
         "dynamic": false
       },
@@ -30248,22 +30454,21 @@
         "value": "#fff",
         "lines": [
           18,
-          19
+          20
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          18,
-          19
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          43
+          52
         ],
         "dynamic": false
       }
@@ -31914,37 +32119,37 @@
       {
         "value": "#070e18",
         "lines": [
-          46
+          48
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          46,
-          48
+          48,
+          50
         ],
         "dynamic": false
       },
       {
         "value": "#c4f2ec",
         "lines": [
-          44
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          44
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          46,
-          48
+          48,
+          50
         ],
         "dynamic": false
       }
