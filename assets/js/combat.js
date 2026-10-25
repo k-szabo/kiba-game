@@ -472,6 +472,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(PrisonHunter.is(spec))return PrisonHunter.create(spec);
   if(PrisonWarden.is(spec))return PrisonWarden.create(spec);
   if(Serpents.is(spec))return Serpents.create(spec);
   if(CampMaster.is(spec))return CampMaster.create(spec);
@@ -484,6 +485,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(PrisonHunter.is(e)){PrisonHunter.reset(e);return;}
   if(PrisonWarden.is(e)){PrisonWarden.reset(e);return;}
   if(Serpents.is(e)){Serpents.reset(e);return;}
   if(CampMaster.is(e)){CampMaster.reset(e);return;}
@@ -500,6 +502,7 @@ function discoverSecrets(){
   }
 }
 function defeatMiniboss(e){
+  if(PrisonHunter.is(e)){PrisonHunter.defeat(e);return;}
   if(PrisonWarden.is(e)){PrisonWarden.defeat(e);return;}
   if(Serpents.is(e)){Serpents.defeat(e);return;}
   if(CampMaster.is(e)){CampMaster.defeat(e);return;}
@@ -528,7 +531,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

@@ -890,6 +890,22 @@
           "en": "The Shadow Realm’s prison gate leads to a separate area with undead, cultists and a new Warden boss. Once rescued, Zen tends the shrine at the Forest Refuge."
         }
       ]
+    },
+    {
+      "version": "0.9.44_5db631c5",
+      "code": "5db631c5",
+      "baseVersion": "0.9.44",
+      "slug": "kitsune-rescue-shadow-den",
+      "summary": {
+        "hu": "A rókakirálynő menedéke",
+        "en": "The Fox Queen’s Refuge"
+      },
+      "fixes": [
+        {
+          "hu": "A börtön mélyén új vadász őrzi Fiát, a kitsunét. Megmentése után rókaalakban távozik, és a pap legyőzése után megnyíló Árnyékzugban vár. Ha cellájának elérése után megmentés nélkül hagyod el a börtönt, végleg kimarad az adott utazásból.",
+          "en": "A new hunter guards Fia the kitsune in the prison depths. Once rescued, she leaves in fox form and awaits you in the Shadow Den, which opens after the priest’s defeat. If you reach her cell and leave the prison without rescuing her, she is permanently missed for that journey."
+        }
+      ]
     }
   ]
 }

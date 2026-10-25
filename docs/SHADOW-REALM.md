@@ -35,3 +35,5 @@ A pályaadat a `levels.js`, a külön harc/interakció a `shadow-realm.js` rész
 `scripts/test-shadow-prison-route.cjs`: 30/60/120 FPS-es tényleges input és teljes játékciklus a lejutáshoz, a hét lépcső egyszeres ugrásos visszaútjához és a felső főúthoz minden képességkombinációval. Ellenőrzi a zárt csarnok felülről, keletről és alulról való megkerülési kísérleteit, a pap utáni ütközést, a kulcsnyitást és a szabad visszautat.
 
 A nyitott külső börtönkapu immár külön belső pályára is vezet, új börtönnaggyal és Zen megmentésével. A külső őr, kulcs és zár megmarad; a részletes működés és a mentési előfeltételek a [Zen és a börtön mélye](ZEN-PRISON.md) dokumentumban találhatók.
+
+A börtön alsó szárnya Fia opcionális megmentéséhez és a kultista vadászhoz vezet; a pap után külön Árnyékzug nyílik meg. A tartós kihagyási szabályok és az útvonal a [Kitsune-referenciában](KITSUNE.md) találhatók.

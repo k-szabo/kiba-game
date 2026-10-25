@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "tool": "built-in image_gen",
+  "approval": "Environment/resident concept explicitly approved by user before production.",
+  "style": "Detailed painted Japanese fantasy; crisp textures, restrained violet/indigo and small amber lanterns. No UI, text, or characters baked into scenery.",
+  "assets": [
+    {
+      "path": "assets/images/backgrounds/fia-prison-depths-v1.png",
+      "nativeGeneration": "exec-d25bafa7-7e83-4ca2-9151-477b635895ef",
+      "width": 1536,
+      "height": 1024,
+      "groundY": 790,
+      "prompt": "Use case: stylized-concept. Asset type: FINAL detailed painted BACKGROUND for a side-scrolling Japanese fantasy 2D game. Create a wide landscape1536x1024 painting, NO concept borders, NO characters, NO text, NO UI. This is the deep -2 floor of a Shadow Realm prison, an ancient underground CULTIST HUNTER'S GALLERY. Straight side-view composition, readable horizontal combat space, dark basalt masonry and navy weathered timber, bronze iron fittings, high ribbed arches across upper half, small barred niches inset far back, hanging long chains and empty old cages at the sides, ropes/hunting gear on distant wall, thin violet Kiba fissures in stone. Foreground should be largely empty for live game actors. A clear horizontal old black-stone floor/path runs across entire width at roughly80% image height; no foreground objects block silhouettes. Detail at natural scale: tiny wall candles, age cracks, hand-hewn stone, carved lintels, cloth banners without lettering. Deep black-violet and smoky indigo palette, soft muted warm candlelight, subtle purple fissures, cinematic depth without blur. Match detailed hand-painted Japanese fantasy game art with crisp fine brush texture and clean shape definition, not cartoon flat shapes or photo3D. No lava, no oversized skulls, no readable symbols or words. Keep stone architecture extending beyond both left/right edges for smooth background cropping. Produce finished polished scene, not a storyboard."
+    },
+    {
+      "path": "assets/images/backgrounds/fia-den-west-v1.png",
+      "nativeGeneration": "exec-7555952a-8c5e-4fef-bf67-09357d04aa2f",
+      "width": 1536,
+      "height": 1024,
+      "groundY": 700,
+      "prompt": "Use case: stylized-concept. Asset type: FINAL native1536x1024 BACKGROUND PANEL WEST for detailed hand-painted Japanese fantasy side-scrolling2Dgame. Fill whole image, no borders, UI, words, people or characters. The SHADOW DEN is a secret village of outcast ninjas and thieves in a vast purple ravine, not Hell. Side-view walkable stone path runs horizontally across ENTIRE WIDTH at approximatelyy820/1024, bottom200px dark stone earth/cobbles. Above path in back/midground: crooked layered Japanese timber houses, patched indigo canvas awnings, small warm red/lilac paper lanterns, tied cloth bundles and discreet stacked treasurecrates. WEST/left entrance has an old weathered torii, tiny covered guardhut, gnarled black tree framing topleft, restrained ropebridge farbehind. TowardRIGHT panel edge simplifyinto irregular dark crags, mossy trees and lavender mist, NO prominentclosebuildings cut at edge; this edge will overlap anotherpainting. Farabove highdarkcliffs and ruined shrine towers swallowed by violet fog. Natural-scale architectural details, one-storey shopfronts about1/3ofimageheight, not giantforegroundobjects. Allground clear forliveactors. Quiet shady refuge, mysterious yet softly welcoming, crispstory-book paintedtextures on woodbarkstonecloth, finebrushwork, highdetail, layereddepthbutNO photographicblur. Palette muted violet/indigo/charcoal withsmallamberlanterns, matching currentJapanese fantasygame. No lava, moltenflames, futuristicneon, readable signs, skullpile, drawnNPCsorforegroundbarriers. Entirefloorlevelconsistent, no stairs risingacross playableforeground."
+    },
+    {
+      "path": "assets/images/backgrounds/fia-den-east-v1.png",
+      "nativeGeneration": "exec-d9ea29e0-2c59-438e-9ca9-abcafac21871",
+      "width": 1536,
+      "height": 1024,
+      "groundY": 700,
+      "prompt": "Use this painting as STYLE, LIGHTING and FLOOR REGISTRATION REFERENCE for a NEW companion EAST background panel, not a duplicate. FINAL detailed painted side-view Japanese fantasy SHADOW DEN. Same native1536x1024 landscape and stone walking path absolutely HORIZONTAL at y700, samebottom324px dark stone foundation, same lavender ravine sky, blacktrees, farclifftowers, quietamberlanterns. LEFTmost20% must be mostlysoftvioletmist/distantrocksandlowdarkvegetation withoutlargeforegroundstructure to blendwithwestpanel'srightedge. In center/rightmidground add the KITSUNE QUEEN'S small elevated Japanese pavilion, carved darkwood posts, purple/lilac silk drapes, small gold fittings, EMPTYlowseat, a few tastefulfoxmotifcarvings but noletters. Pavilionsizeaboutone-storeyhouse1/3imageheight, NOT giantpalace. Arounditpatched-indigo vendorawnings, warm red/purplepaperlanterns, ropebundles, treasurecrates. Groundpathclearfullwidth, NO livecharacters, noNPCs,noUI, text,borders,signs,watermarks. Gnarledtreebranches above, distantropebridgesthroughmist. Polishednativefinebrushtextures/crispshapes on cloth,stone,wood; NOT blurry3D,flatcartoon,neonorlava. Matchmaterial/paletteandgroundexactly toreferencewhilecomplementingwestscene. Finishedproductionbackground."
+    },
+    {
+      "path": "assets/images/npcs/fia-den-residents-v1.png",
+      "nativeGeneration": "exec-1c1627bd-a99f-42e4-a259-12173587240c",
+      "width": 1536,
+      "height": 1024,
+      "alpha": "original generated RGBA preserved",
+      "layout": "Two equal 768x1024 cells: shadowNinja, shadowThief.",
+      "prompt": "Create FINAL GAME NPC SPRITE ATLAS using the TWO HUMAN RESIDENTS in the LOWER ROW of the provided approved concept as identity/style references. Transparent RGBA background; no parchment, scenery, shadows on a ground plane, labels, numbers, borders, grids or text. Wide1536x1024 canvas split into TWO equal768pxwide cells with at least100px fully TRANSPARENT margin around each complete figure, no overlap. LEFTCELL: SAME slim masked adult HUMAN NINJA, dark indigo shinobi robes and clothfacemask, long auberginescarf, sheathedsingle shortstraight sword securely at belt, relaxedwatchfulside/threequarterstance facingRIGHT. Handsrestnaturally, exactlytwoarms/twohands/twolegs, clothesnotfloating, allfingerscoveredbygloves. RIGHTCELL: SAME sly adult HUMAN THIEF, stockybuild, darkbrownolivepatchedtravelercoat, rustredneckscarf, severalclosedpouches, aclosedcoinpurseheldnaturally inlefthandnearwaist, right handonhip, friendlyuntrustworthygrin, facingRIGHT. Exactlytwoarms/twohands/twofeet. BothFULLBODYfiguresgroundedonsamebaselinearoundy900, naturaladultheadtobodyratio, similarphysicalheight, completeheadhairscarfweaponsfeet insideowncell. CrispdetailedPAINTEDJAPANESEFANTASYgame renderingwithfineclothleatherwoodtextures andslightcleanoutline, matchreference, NOT flatclipart, photo3D, blurryormuddy. Strongreadablesilhouettesontransparentbackground, highqualitynativeRGBA. TheseareONEstaticidleposeperresident, noadditionalposesorweapons. Preserveoriginalcharacteroutfitsandfaces, do notinventnamesorlettering."
+    }
+  ],
+  "registration": "Atlas bounds and absolute foot anchors are registered by the integrator in ART_KITSUNE; original PNG pixels and alpha are retained. Den panels share source groundY700, overlap by the incoming edge only. Prison depths source groundY790."
+}

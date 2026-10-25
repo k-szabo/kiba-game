@@ -31,6 +31,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/prison-quest.js`, `prison-warden.js`, `prison-art.js` | Zen opcionális [börtönága](ZEN-PRISON.md), a belső börtönnagy, megmentés és natív grafika. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
+| `assets/js/kitsune-quest.js`, `prison-hunter.js`, `kitsune-art.js` | Fia [megmentése és árnyéktábora](KITSUNE.md), a vadász, a végleges kihagyás és az átváltozás. |
 | `assets/js/serpents.js`, `serpent-relics.js` | Közös kígyótemplate, három találkozás, pikkelyfúzió és külön felszerelt talizmán; [referencia](SERPENTS.md). |
 | `assets/js/doom-slayer.js`, `slayer-dialog.js`, `slayer-art.js` | Opcionális találkozás, szüneteltetett szövegbevitel és külön grafikai réteg; [spoileres fejlesztői referencia](DOOM-SLAYER.md). |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
