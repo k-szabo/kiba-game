@@ -359,8 +359,9 @@ function bindingKeyLabel(key){
  return symbols[key]||I18n.t('binding.key.'+({' ':'space',shift:'shift',escape:'escape',enter:'enter',backspace:'backspace'}[key]||key))?.replace(/^binding\.key\./,'').toUpperCase();
 }
 function keyedInstruction(text){
+ // Unicode letters/marks stay part of prose; only standalone control tokens are substituted.
  const action={E:'interact',J:'attack',K:'dash',U:'train',Space:'jump'};
- return text.replace(/\b(?:E|J|K|U|Space)\b/g,token=>bindingKeyLabel(Bindings.read(action[token])[0]));
+ return text.replace(/(?<![\p{L}\p{M}\p{N}_])(?:E|J|K|U|Space)(?![\p{L}\p{M}\p{N}_])/gu,token=>bindingKeyLabel(Bindings.read(action[token])[0]));
 }
 function renderBindingHints(){
  for(const node of document.querySelectorAll('[data-binding]'))node.textContent=bindingKeyLabel(Bindings.read(node.dataset.binding)[0]);

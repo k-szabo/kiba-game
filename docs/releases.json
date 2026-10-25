@@ -396,6 +396,38 @@
           "en": "The winged serpent’s movement is steadier and its image clearer."
         }
       ]
+    },
+    {
+      "version": "0.9.46_5780d71d",
+      "code": "5780d71d",
+      "baseVersion": "0.9.46",
+      "slug": "shadow-den-arena-combat-and-motion-fixes",
+      "summary": {
+        "hu": "Arénajavítások",
+        "en": "Arena fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A következő menet felirata helyesen jelenik meg az átállított irányítás mellett is.",
+          "en": "The next-round prompt displays correctly with remapped controls."
+        },
+        {
+          "hu": "Az aréna háttere nyugodtabban követi a kamerát, a kapitány és a kétfejű kígyó pedig nagyobb, hozzájuk igazított találati testet kapott.",
+          "en": "The arena background follows the camera more gently, and the captain and two-headed serpent are larger with matching hitboxes."
+        },
+        {
+          "hu": "A küklopszok önállóan, változatosabban támadnak, dobbantásuk pontosan jelzi a célterületet.",
+          "en": "The cyclopes attack independently with more variety, and their stomps accurately mark the targeted area."
+        },
+        {
+          "hu": "A bajnok gyorsabb kombinációkat, nagyobb területi támadásokat és küklopszidézést használ. Kimerülése után öt másodperc marad a végső találatra; utána agresszívebb pajzsciklus indul.",
+          "en": "The champion uses faster combos, larger area attacks and cyclops summons. After exhaustion, you have five seconds to land the final hit before a more aggressive shield cycle begins."
+        },
+        {
+          "hu": "A bajnok győzelem utáni távozása lépésanimációt kapott.",
+          "en": "The champion now leaves with a walking animation after the fight."
+        }
+      ]
     }
   ],
   "releases": [

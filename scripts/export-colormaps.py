@@ -166,6 +166,8 @@ for name in ('captain', 'serpent', 'cyclops', 'fia'):
     for image in dict.fromkeys(frame.get('image', definition['image']) for frame in definition['frames']):
         frames = [frame for frame in definition['frames'] if frame.get('image', definition['image']) == image]
         npcs['arena.' + name]['variants'][image] = {'paletteGroup': group('npc.arena.' + name + '.' + image, manifest[image], frames, 'ART_ARENA.' + name + '.frames')}
+walk = atlas['arena']['fiaWalk']
+npcs['arena.fia']['variants']['fiaArenaWalk'] = {'paletteGroup': group('npc.arena.fia.walk', manifest[walk['image']], walk['frames'], 'ART_ARENA.fiaWalk.frames')}
 for name, definition in atlas['arena']['minions'].items():
     npcs['arena.' + name] = {'role': 'arena-minion', 'faction': 'shadowDen', 'paletteGroup': group('npc.arena.' + name, manifest[definition['image']], definition['frames'], 'ART_ARENA.minions.' + name)}
 for name in ('captain', 'necromancer', 'council'):

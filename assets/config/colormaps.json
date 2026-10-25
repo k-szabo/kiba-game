@@ -193,6 +193,9 @@
         },
         "fiaArenaYield": {
           "paletteGroup": "npc.arena.fia.fiaArenaYield"
+        },
+        "fiaArenaWalk": {
+          "paletteGroup": "npc.arena.fia.walk"
         }
       }
     },
@@ -4382,6 +4385,107 @@
           }
         ],
         "visibleSamples": 491804,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.arena.fia.walk": {
+      "source": "assets/images/enemies/fia-arena-walk-v1.png",
+      "frameMetadata": "ART_ARENA.fiaWalk.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#994b97",
+            "coveragePercent": 11.2177
+          },
+          {
+            "hex": "#793275",
+            "coveragePercent": 10.0813
+          },
+          {
+            "hex": "#593446",
+            "coveragePercent": 9.7499
+          },
+          {
+            "hex": "#db91c5",
+            "coveragePercent": 9.5242
+          },
+          {
+            "hex": "#745350",
+            "coveragePercent": 9.5025
+          },
+          {
+            "hex": "#ba6dae",
+            "coveragePercent": 7.9348
+          },
+          {
+            "hex": "#3f1d31",
+            "coveragePercent": 6.9309
+          },
+          {
+            "hex": "#e9bef3",
+            "coveragePercent": 6.1388
+          },
+          {
+            "hex": "#fbeffc",
+            "coveragePercent": 5.5881
+          },
+          {
+            "hex": "#f2a990",
+            "coveragePercent": 4.6194
+          },
+          {
+            "hex": "#1b0a13",
+            "coveragePercent": 4.5297
+          },
+          {
+            "hex": "#c3705a",
+            "coveragePercent": 3.7698
+          },
+          {
+            "hex": "#fcdfcd",
+            "coveragePercent": 3.1479
+          },
+          {
+            "hex": "#bd66f1",
+            "coveragePercent": 2.7257
+          },
+          {
+            "hex": "#d593fa",
+            "coveragePercent": 2.674
+          },
+          {
+            "hex": "#9942d5",
+            "coveragePercent": 1.8654
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#893c88",
+            "coveragePercent": 32.138
+          },
+          {
+            "hex": "#a854a5",
+            "coveragePercent": 27.9784
+          },
+          {
+            "hex": "#a45048",
+            "coveragePercent": 11.7273
+          },
+          {
+            "hex": "#c670f3",
+            "coveragePercent": 10.699
+          },
+          {
+            "hex": "#e59568",
+            "coveragePercent": 9.7
+          },
+          {
+            "hex": "#9f48db",
+            "coveragePercent": 7.7573
+          }
+        ],
+        "visibleSamples": 470869,
         "dominantCoveragePercent": 100.0001
       }
     },
@@ -25852,6 +25956,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/enemies/fia-arena-walk-v1.png": {
+      "sha256": "6b55f1698313830957401d468e348b7065a80c74f864bc80135e13e6ccb654b5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaArenaWalk"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#994b97",
+            "coveragePercent": 11.2177
+          },
+          {
+            "hex": "#793275",
+            "coveragePercent": 10.0813
+          },
+          {
+            "hex": "#593446",
+            "coveragePercent": 9.7499
+          },
+          {
+            "hex": "#db91c5",
+            "coveragePercent": 9.5242
+          },
+          {
+            "hex": "#745350",
+            "coveragePercent": 9.5025
+          },
+          {
+            "hex": "#ba6dae",
+            "coveragePercent": 7.9348
+          },
+          {
+            "hex": "#3f1d31",
+            "coveragePercent": 6.9309
+          },
+          {
+            "hex": "#e9bef3",
+            "coveragePercent": 6.1388
+          },
+          {
+            "hex": "#fbeffc",
+            "coveragePercent": 5.5881
+          },
+          {
+            "hex": "#f2a990",
+            "coveragePercent": 4.6194
+          },
+          {
+            "hex": "#1b0a13",
+            "coveragePercent": 4.5297
+          },
+          {
+            "hex": "#c3705a",
+            "coveragePercent": 3.7698
+          },
+          {
+            "hex": "#fcdfcd",
+            "coveragePercent": 3.1479
+          },
+          {
+            "hex": "#bd66f1",
+            "coveragePercent": 2.7257
+          },
+          {
+            "hex": "#d593fa",
+            "coveragePercent": 2.674
+          },
+          {
+            "hex": "#9942d5",
+            "coveragePercent": 1.8654
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#893c88",
+            "coveragePercent": 32.138
+          },
+          {
+            "hex": "#a854a5",
+            "coveragePercent": 27.9784
+          },
+          {
+            "hex": "#a45048",
+            "coveragePercent": 11.7273
+          },
+          {
+            "hex": "#c670f3",
+            "coveragePercent": 10.699
+          },
+          {
+            "hex": "#e59568",
+            "coveragePercent": 9.7
+          },
+          {
+            "hex": "#9f48db",
+            "coveragePercent": 7.7573
+          }
+        ],
+        "visibleSamples": 470869,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/enemies/fia-arena-yield-v1.png": {
       "sha256": "3ab649688aeb30982ff775cc80d31e8d1b359ebf07c1bb56f44d368a1aa74371",
       "width": 1536,
@@ -37537,14 +37746,14 @@
       {
         "value": "#100e1a",
         "lines": [
-          25
+          29
         ],
         "dynamic": false
       },
       {
         "value": "#101524ed",
         "lines": [
-          28
+          32
         ],
         "dynamic": false
       },
@@ -37565,7 +37774,7 @@
       {
         "value": "#fff0cc",
         "lines": [
-          28
+          32
         ],
         "dynamic": false
       }
@@ -37575,7 +37784,7 @@
       {
         "value": "#ba88e9",
         "lines": [
-          80
+          84
         ],
         "dynamic": false
       }
@@ -37967,7 +38176,7 @@
       {
         "value": "#08141166",
         "lines": [
-          488
+          489
         ],
         "dynamic": false
       },
@@ -38002,14 +38211,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          477
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          477
+          478
         ],
         "dynamic": false
       },
@@ -38219,7 +38428,7 @@
       {
         "value": "#d9e8ce",
         "lines": [
-          506
+          507
         ],
         "dynamic": false
       },
@@ -38290,7 +38499,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          506
+          507
         ],
         "dynamic": false
       },
@@ -38304,7 +38513,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          506
+          507
         ],
         "dynamic": false
       },
@@ -38361,7 +38570,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          506
+          507
         ],
         "dynamic": false
       },

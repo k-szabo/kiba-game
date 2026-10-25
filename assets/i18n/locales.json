@@ -930,7 +930,14 @@
       "bugReport.area.yomiDungeon2": "A néma sírboltok",
       "bugReport.area.yomiDungeon3": "A négyek alkonya",
       "menu.changelog.0946.title": "A Yomi Királyság bukása",
-      "menu.changelog.0946.dungeon": "A tanácsosi csarnok tekercse háromszintes, újrajátszható dungeonbe vezet, három új bossal, mentett előrehaladással és jutalomládával."
+      "menu.changelog.0946.dungeon": "A tanácsosi csarnok tekercse háromszintes, újrajátszható dungeonbe vezet, három új bossal, mentett előrehaladással és jutalomládával.",
+      "arena.exhausted.time": "Kimerült · Most támadj! {0} mp",
+      "menu.changelog.0946.arena.title": "Arénajavítások",
+      "menu.changelog.0946.arena.0": "A következő menet felirata helyesen jelenik meg az átállított irányítás mellett is.",
+      "menu.changelog.0946.arena.1": "Az aréna háttere nyugodtabban követi a kamerát, a kapitány és a kétfejű kígyó pedig nagyobb, hozzájuk igazított találati testet kapott.",
+      "menu.changelog.0946.arena.2": "A küklopszok önállóan, változatosabban támadnak, dobbantásuk pontosan jelzi a célterületet.",
+      "menu.changelog.0946.arena.3": "A bajnok gyorsabb kombinációkat, nagyobb területi támadásokat és küklopszidézést használ. Kimerülése után öt másodperc marad a végső találatra; utána agresszívebb pajzsciklus indul.",
+      "menu.changelog.0946.arena.4": "A bajnok győzelem utáni távozása lépésanimációt kapott."
     }
   },
   "en": {
@@ -1864,7 +1871,14 @@
       "bugReport.area.yomiDungeon2": "The Silent Crypts",
       "bugReport.area.yomiDungeon3": "Twilight of the Four",
       "menu.changelog.0946.title": "The Fall of the Kingdom of Yomi",
-      "menu.changelog.0946.dungeon": "A scroll in the Council Hall leads to a replayable three-floor dungeon with three new bosses, saved progress and a reward chest."
+      "menu.changelog.0946.dungeon": "A scroll in the Council Hall leads to a replayable three-floor dungeon with three new bosses, saved progress and a reward chest.",
+      "arena.exhausted.time": "Exhausted · Strike now! {0}s",
+      "menu.changelog.0946.arena.title": "Arena fixes",
+      "menu.changelog.0946.arena.0": "The next-round prompt displays correctly with remapped controls.",
+      "menu.changelog.0946.arena.1": "The arena background follows the camera more gently, and the captain and two-headed serpent are larger with matching hitboxes.",
+      "menu.changelog.0946.arena.2": "The cyclopes attack independently with more variety, and their stomps accurately mark the targeted area.",
+      "menu.changelog.0946.arena.3": "The champion uses faster combos, larger area attacks and cyclops summons. After exhaustion, you have five seconds to land the final hit before a more aggressive shield cycle begins.",
+      "menu.changelog.0946.arena.4": "The champion now leaves with a walking animation after the fight."
     }
   }
 }
