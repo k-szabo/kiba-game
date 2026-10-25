@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "tool": "built-in image_gen",
+  "approval": "Revised colored character concept v2 and revised16pose storyboard v2 explicitly approved by user before production.",
+  "asset": "assets/images/enemies/prison-hunter-v1.png",
+  "width": 1774,
+  "height": 887,
+  "alpha": "original generated RGBA preserved",
+  "facing": -1,
+  "bodyHeight": 300,
+  "poses": [
+    "idle",
+    "step",
+    "spearWindup",
+    "spearThrust",
+    "spearRecover",
+    "bowReady",
+    "bowDraw",
+    "bowRelease"
+  ],
+  "sourceCells": {
+    "rowY": [
+      0,
+      444,
+      887
+    ],
+    "topRowX": [
+      0,
+      443,
+      887,
+      1270,
+      1774
+    ],
+    "bottomRowX": [
+      0,
+      443,
+      887,
+      1330,
+      1774
+    ],
+    "anchors": [
+      [
+        225,
+        417
+      ],
+      [
+        640,
+        417
+      ],
+      [
+        1087,
+        417
+      ],
+      [
+        1556,
+        417
+      ],
+      [
+        230,
+        820
+      ],
+      [
+        687,
+        820
+      ],
+      [
+        1100,
+        820
+      ],
+      [
+        1556,
+        820
+      ]
+    ]
+  },
+  "constraints": "Exactly one spear per figure, either held or slung. Same bow, quiver, mask, anatomy and physical body scale throughout. Whole spear silhouettes retained through asymmetric source cuts; no visible alpha>32 at crop edges.",
+  "prompt": "Asset type: FINAL transparent RGBA GAME ANIMATION SPRITE SHEET, eight FULL BODY poses of the SAME hooded CULTIST HUNTER from the approved colored reference and approved lower8keyposes of the storyboard. Use references foridentity,outfit,mask,woodenspearandbow, notforparchment/grid. WIDE2:1 sheet intended2048x1024; EXACTLY4EQUALCOLUMNS×2EQUALROWS; each512×512cellatrequestedsize, fullytransparentbackground, noletters/numbers/grid/border/groundshadows. Give EACH figure+weapon at least35pxtransparentmargin fromitsowncelledges. AllfacingLEFT, identicalphysicalbody/headsizeandwardrobe, consistentbootsbaseline at~90%ofeachcellheight. Body~300pxhighpercell sothatlongweaponsfit, noresizebetweenposes. DetailedpaintedJapanese-fantasygameart, crispsubtleoutlinedreadablesilhouettes, worncharcoal/olivelamellararmorcloth, narrowwoodenfoxhuntingmask, bronzebindings, leatherquiver witharrows, nohumanearsneeded. ONE spear: fixed-length straightwoodshaftwithONEleafshapedsteelhead, noforkedtip/extra shaft. ONE bow: fixedwoodcurvewithTWOtipsONEtautstring. Handsmustholdweaponsnaturally, twoarms/twohands, noprotrudingthirdhand.\nTOPROW LEFT→RIGHT:0idleLEFTonebowheldlowinlefthand, spearclearlySLUNGonback;1stepLEFTsamebowheldlow,spearslung,feetmoving;2SPEARWINDUPbothhandsholdthesamespearhorizontallyaboveshoulder, bowSTOWEDacrossback, leftpalmforwardnearheadrightpalmatrearshaft;3SPEARTHRUSTLEFTbothhandssamegrippositionsonthesamefixedlengthspear, extendedforward,leftfootplanted, nostretchedweapon,nocroppedtip.\nBOTTOMROW LEFT→RIGHT:4SPEARRECOVERslightlyloweredbutbothhandssameweaponandbowstowed;5BOWREADYLEFTleftarmholdsonebowcentergrip,right handnocksonestraightarrow,spearSLUNGonback;6BOWDRAWLEFTleftarmstraightfixedgrip,rightelbowbackrightfingersPULLSTRINGnearcheek,ONESINGLEstraightarrowrestsatbowgrippointingLEFT;7BOWRELEASELEFTsamebowgrip/shape,leftarmfixed,rightfingersopennearcheek,NOarrowfloatingextra inhand, spearstillstowedback. No magicaleffects, blood, scenery, finaltextorlogos. Paintedfullsilhouettescompleteineverycell, fixedweapons/gear anatomyclear. Genuinetransparentbackground, retainfinesourcealpha, nohalo.",
+  "iterations": [
+    {
+      "reason": "Initial sheet had crowded cells and clipped weapon tips; shrink groups and retain wide transparent gutters.",
+      "prompt": "REPAIR THIS SPRITE SHEET LAYOUT. It is too crowded and weapons are clipped/overlapping. Create a NEW TRANSPARENT sheet with SAME8poses, SAMEcharacter, SAMEweaponsbut make EACH full figure+weapon group ONLY60% of its current LINEAR SIZE, centered completely inside its own equalcell. EXACT4COLUMNS×2ROWS. Large obvious TRANSPARENTGUTTERS must separate EVERYpose. Target eachbodyonlyabout220pixels tallwithin~443pixelshighcell, allfigures+spearsatmost350pixelswidewithin~443pixelwidecell. Plentyunusedtransparentbackgroundisrequired. AllweaponsmustfitENTIRELYinsideowncellatleast35pxfromcelledges. Pose0upperleftMUSTincludecompletespearheadabovebackwithtransparentmargin, currentlyclipped. Pose2upperthirdandpose3upperfourthcurrentlycrosscellboundary: reduceandcenterbothfullspearsentirelyintheirowncells; fixedsamephysicalweaponlengthbetweenspearposes. Keepbody/headscaleidentical acrossalleightposes. Rowsalignedbaselineat85%owncellheight. NO newposes,nocopyingneighbors, noextraweapons,handsorlimbs. Bow/speargripsandwoodenmaskunchanged. Bottomrow4recover/5bowready/6bowdraw/7bowrelease. Preservepaintedstyle,RGBAalpha. NO labels, numbers, grids, backgrounds, cropcutoffs. Thecleanmarginconstraintismoreimportantthanlargefigures. Whole8smallfiguresfarapart.",
+      "generation": "exec-f65b690c-e43f-4b4a-be0e-1357f217ce5d"
+    },
+    {
+      "reason": "Remove duplicate back-slung spear in thrust and recovery poses.",
+      "prompt": "Precise game sprite repair of THIS transparent8pose sheet, preserve EVERYTHINGelse pixelcomposition/posepositions/scale/alphagaps. Change ONLY TWO duplicate SPEARS: In the TOP-RIGHT spearTHRUST pose(index3), remove the EXTRA broad metal spearhead and short shaft protruding behind the hunter's head/right shoulder; he is already holding his ONLYspear horizontally in bothhands, so the back must show only cloakandnormalquiverarrows, no secondspear. In the BOTTOM-LEFT spearRECOVERY pose(index4), likewise remove the extra broad spearhead/shaft sticking upward from his back behindhead; preserve the complete SINGLEspear already heldhorizontallyacrossbothhands. Restore underlying cloak/quiver naturally in those tiny areas. Ordinary arrows remain fine. Keep ALL eight full figures, exact originalpositions, fixedbody/weapon dimensions, faces, hands, clothing, bowposes, heldweapons, generous transparentgutters unchanged. Do not add words, shadows, background, weapons or figures. GenuineRGBAtransparency unchanged. Only ONE spear existsperfigure, eitherheldORslungbutneverboth.",
+      "generation": "exec-fbfdabab-8d67-4327-9de0-1a38f16cbae5"
+    },
+    {
+      "reason": "Restore one slung spear only in idle/walk/bow poses; no additional spear in melee poses.",
+      "prompt": "ONE precise equipment continuity correction to this8pose RGBAatlas. Keep exactallpositions, size, figures, pose, weapons, colors, masks, hands andtransparentgaps. The hunter owns ONE huntingSPEAR and ONEbow. Add ONE back-slung woodshaft spear with leaf-shapedsteeltip to ONLY frames0,1,5,6,7 (upperleft idle, uppersecondwalk, lowersecondbowready, lowerthirdbowdraw, lowerfourthbowrelease). Its steeltip rises visibly only40pixelsabove the rightshoulder, samefixedsize/anglefromframetoframe, shaftstrappedbehindquiverandcloak so no extra hand; no touchingcelledges. DO NOT add anyback-slung spear to frames2,3,4 (upperthirdspearwindup,upperfourthspearTHRUST,lowerfirstspearRECOVER), because those alreadyhaveONEheldspear. Preserve their heldspearsentirely. Pose2/3/4 stillneedoneSTOWEDBOWonback, it can be partiallyhiddenbycloak. ExactlyONEspearPERfigure, eitherheldORslungNEVERboth. Nootherchanges. Noletters/numbers, background, shadows, grids, missingfeet, croppedtips. ActualtransparentRGBAretained.",
+      "generation": "exec-c3d8577b-f77c-41b2-93cd-e4abcb928f89"
+    }
+  ],
+  "nativeGeneration": "exec-c3d8577b-f77c-41b2-93cd-e4abcb928f89"
+}

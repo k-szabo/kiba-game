@@ -4,11 +4,11 @@ A [Trello-kártya](https://trello.com/c/y5Vq6UtU) az Árnyékvilág opcionális 
 
 ## Helyszín és belépés
 
-A shadowPrison 4600×1800 világ-egységes oldalhelyszín a negyedik birodalomhoz tartozik, nem egy ötödik világ. A SIDE_LOCATIONS katalógusban realm=3, requiredFlags=[prisonOpen], requiresRealmBoss=false: az Őrült pap legyőzése nem előfeltétel. Az általános tábori belépési segéd a katalógus szerinti birodalmat használja; Japán korábbi oldalhelyszíneinek feloldása változatlan.
+A shadowPrison 5400×2720 világ-egységes oldalhelyszín a negyedik birodalomhoz tartozik, nem egy ötödik világ. A SIDE_LOCATIONS katalógusban realm=3, requiredFlags=[prisonOpen], requiresRealmBoss=false: az Őrült pap legyőzése nem előfeltétel. Az általános tábori belépési segéd a katalógus szerinti birodalmat használja; Japán korábbi oldalhelyszíneinek feloldása változatlan.
 
 A bejárat a meglévő külső kapunál van, a visszaút a börtönelőcsarnokban. Belépés és visszatérés megőrzi az aktuális HP-t; gyógyítás a szentélynél, halálkor vagy szabályos gyorsutazáskor történik. Az érkezés a közös initPlayer útvonalon törli a dash, ugrás, támadás, sebesség és gravitáció régi átmeneti állapotát. A fő talajszintek 1000/1080/1040; a két rés és a visszaút egyszeres ugrással járható, az emelt cellasorok opcionális útvonalak.
 
-Két pihenőhely tartozik hozzá: shadowPrisonEntrance és shadowPrisonCourt. Felfedezésük visitedRests[3]-ba kerül. Normál gyorsutazásnál a meglévő árnyékoltár-zár érvényes; a pálya puszta felkeresése nem aktiválja az oltárt. A belső őr külön miniboss, a főbirodalmi boss csak inaktív helyettesítő.
+A felső szárny két pihenőhelye shadowPrisonEntrance és shadowPrisonCourt; a Fia megmentéséhez vezető mélyebb szárnyban a shadowPrisonDepths egészíti ki őket. A bővítés részletei a [Kitsune-referenciában](KITSUNE.md) találhatók. Felfedezésük visitedRests[3]-ba kerül. Normál gyorsutazásnál a meglévő árnyékoltár-zár érvényes; a pálya puszta felkeresése nem aktiválja az oltárt. A belső őr külön miniboss, a főbirodalmi boss csak inaktív helyettesítő.
 
 ## Harc és megmentés
 

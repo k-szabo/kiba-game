@@ -300,7 +300,7 @@ function drawLevelUp(){if(LevelUpEffect.remaining>0)Visuals.levelUp(player.x+pla
 function drawParticles(){for(const p of particles){if(p.kind==='dashWisp'){ctx.globalAlpha=1;Visuals.dashTrail(p.x,p.y,p.face,1-p.life/p.maxLife);continue;}ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;}
 function visiblePoint(p,margin=280){return p.x>camera-margin&&p.x<camera+viewW+margin&&p.y>cameraY-margin&&p.y<cameraY+H+margin;}
 function drawKibaCurrent(){const weak=realm===0&&player.y>1150;ctx.save();ctx.lineWidth=realm===1?2:1.5;ctx.strokeStyle=realm===1?'#c872b8':realm===2?'#e8d89b':'#addbb5';for(let i=0;i<(weak?7:22);i++){const x=camera+noise(i*14.7+realm)*viewW+Math.sin(time*.7+i)*18,y=cameraY+noise(i*29.3+realm*17)*H;ctx.globalAlpha=(weak?.14:.24)+Math.sin(time*2+i)*.08;ctx.beginPath();ctx.moveTo(x,y);if(realm===1){ctx.lineTo(x+8,y-9);ctx.lineTo(x+2,y-18);}else{ctx.quadraticCurveTo(x+8+Math.sin(time+i)*5,y-12,x+6,y-26);}ctx.stroke();}ctx.restore();}
-function background(r){if(KitsuneQuest.den())KitsuneArt.backdrop();else if(PrisonQuest.active())PrisonArt.backdrop();else if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
+function background(r){if(KitsuneQuest.den())KitsuneArt.backdrop();else if(PrisonQuest.active()){PrisonArt.backdrop();KitsuneArt.depthsBackdrop();}else if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
 
 function drawLandscape(r,items){if(!level.service)Visuals.terrain(r,items);}
 

@@ -79,6 +79,7 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 - [Grafikai stílus, animáció és assetek](docs/ART-DESIGN.md).
 - [Titkos helyek és minibossok](docs/SECRETS-0.6.md) – spoileres részletek lenyitható leírásban.
 - [Prológus és Árnyék](docs/PROLOGUE.md).
+- [Fia megmentése és az Árnyékzug](docs/KITSUNE.md).
 - [A Yomi boss és a lávakígyó](docs/YOMI-BOSS.md).
 - [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md).
 - [Inventory és tárgyak](docs/INVENTORY.md).

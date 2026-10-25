@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "tool": "image_gen built-in",
+  "approval": {
+    "characterConcept": "characters-concept-v2 explicitly approved",
+    "motionSketch": "motion-sketch-v2 explicitly approved"
+  },
+  "invariants": [
+    "Pale adult human kitsune, long purple hair, yellow eyes, floral purple kimono",
+    "Only two fox ears atop head; human ear area covered by hair; one purple tail",
+    "Four humanoid poses: idle, bow, crouch, purple-mist transformation",
+    "Four fox poses: idle, walk A, walk B, departure",
+    "Same fixed native bodyHeight within each actor; absolute opaque-foot registration",
+    "Native RGBA pixels copied without editing, resizing or alpha changes; full margins"
+  ],
+  "prompts": [
+    {
+      "asset": "assets/images/npcs/fia-kitsune-v1.png",
+      "initial": "Produce a polished native RGBA transparent 2x2 four-pose Fia humanoid sprite atlas. Approved character identity and motion poses1–4 are references. Detailed hand-painted Japanese fantasy, crisp fabric/fur/hair, pale adult kitsune, long plum hair covering human ear area, only two fox ears, yellow eyes, lavender floral kimono, dark plum obi and antique gold ornaments, sandals, one purple tail. Same body proportions and scale across idle, bow, crouch, mist transformation. Facing right, exactly two arms and hands, no weapons/text/background. Complete silhouettes and empty cell gutters.",
+      "finalRepair": "Keep identity, colors and four poses. Shrink and recenter within each quadrant, preserve transparent outer margins and gutters, all silhouettes fully within cells. Correct bow to exactly two arms/hands: right hand alone over heart, left hand hangs naturally from sleeve; remove duplicated clasped hand. Keep only top fox ears and one tail. No diffuse background haze; localized final transformation wisps only. No text, grids, floor or shadows. Preserve crisp native details."
+    },
+    {
+      "asset": "assets/images/npcs/fia-fox-v1.png",
+      "prompt": "Approved purple fox identity and poses5–8 reference. Exactly four complete quadruped fox sprites in a clean2x2 transparent RGBA atlas: alert idle, walk A, opposite walking step B, walk/departure with small purple wisps by tail only. Detailed painted Japanese fantasy, crisp plum/violet fur, lighter lavender chest, one thick tail, angular fox muzzle, yellow eyes, two ears. All face right with same body/head/leg dimensions, four anatomically connected natural legs each. Same spine/ground registration, large empty transparent margins, full fur/ears/tail/paws inside cells. No humans, clothing, weapons, ground, shadow, labels, grid, matte or checkerboard."
+    }
+  ],
+  "registrationNotes": "Humanoid atlas has unequal row cuts at y550 to preserve original full silhouettes. Fixed bodyHeight512 is shared across standing and crouching frames; fox bodyHeight386. No per-pose stretch. Bounds use alpha>32 and every cell has zero visible edge pixels.",
+  "assets": [
+    {
+      "path": "assets/images/npcs/fia-kitsune-v1.png",
+      "sha256": "3de592d0328b7003ace3d103475c2ad49360f032cc678fcd18f697772de079e2"
+    },
+    {
+      "path": "assets/images/npcs/fia-fox-v1.png",
+      "sha256": "c328f43bd52284a415de8d694c1adc000901df193e514ecf3944d00f9f6c6b65"
+    }
+  ]
+}

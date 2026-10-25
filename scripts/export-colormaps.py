@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -152,6 +152,14 @@ for name, role in (('zen', 'priestess'), ('undead', 'undead'), ('warden', 'minib
     definition = atlas['prison'][name]
     npcs['prison.' + name] = {'role': role, 'faction': 'japan' if name == 'zen' else 'shadowCult',
         'paletteGroup': group('npc.prison.' + name, manifest[definition['image']], definition['frames'], 'ART_PRISON.' + name + '.frames')}
+for name, role in (('fia', 'kitsune'), ('fox', 'kitsune-form'), ('hunter', 'miniboss')):
+    definition = atlas['kitsune'].get(name)
+    if definition:
+        npcs['kitsune.' + name] = {'role': role, 'faction': 'shadowCult' if name == 'hunter' else 'shadowDen',
+            'paletteGroup': group('npc.kitsune.' + name, manifest[definition['image']], definition['frames'], 'ART_KITSUNE.' + name + '.frames')}
+for name, definition in atlas['kitsune'].get('residents', {}).items():
+    npcs['shadowDen.' + name] = {'role': 'camp-resident', 'faction': 'shadowDen',
+        'paletteGroup': group('npc.shadowDen.' + name, manifest[definition['image']], definition['frames'], 'ART_KITSUNE.residents.' + name + '.frames')}
 for faction, actions in atlas['frames']['animations'].items():
     for role in actions['walk']:
         variants = {}
@@ -281,7 +289,8 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 44, 'Missing current character entry'
+assert len(npcs) == 49, 'Missing current character entry'
+assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'

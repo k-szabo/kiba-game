@@ -124,3 +124,7 @@ A három pikkely és a `triuneSerpentTalisman` a közös tárgyadóból hozzáad
 Célzott regressziók: `test-serpent-template.cjs`, `test-serpent-fusion.cjs`, `test-serpent-saves.cjs`; pálya- és grafikai ellenőrzések a [kígyóreferenciában](SERPENTS.md).
 
 Zen börtöne külön teleportcél a pályakatalógusban, két pihenőhellyel. Aktív tesztmódban a külső kapu vagy a pap legyőzése nélkül is elérhető, és a Kultista börtönnagy önállóan újraéleszthető. A replay megőrzi a normál megmentési/jutalomjelzőket; a próba nem ír mentést.
+
+## Kitsune és alsó börtön
+
+A teleportkatalógus a börtön `shadowPrisonDepths` pihenőjét és a külön `shadowDen` tábort is tartalmazza. A tesztmód megkerülheti a normál kapu- és papfeltételeket; a bosslistában a `prisonHunter` külön újraindítható. Visszahívása nem ad újabb XP-t, érmét vagy megmentési előfeltételt. A Fia-cellát már elért tesztkarakter börtönből teleportálása csak az elkülönített állapotban jelöli a kihagyást; a normál mentés megmarad.
