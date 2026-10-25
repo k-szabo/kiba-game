@@ -1,0 +1,7 @@
+{
+  "tool": "built-in imagegen",
+  "asset": "assets/images/backgrounds/fia-chambers-v1.png",
+  "prompt": "Finished native videogame BACKGROUND. ONE private Japanese chamber matching BOTTOMHALF ofreference. Fillwhole1536x1024landscape noborders. Detailedpainted richpurpletextiles, shojipartitions, brasslanterns, foxstatues, carveddarkwood, lowcushionsandteatable againstfarwall, openbalconyoverpurpleShadowDen mountains. Emptyraisedseatingalcove at rightwhereNPCcanstand; lowbedalcoveleft. Nopeople, text, UI, bakedglows, borders. Crisp artisticwoodgrainandfabric, warmlanterns, violetexterior. Straightwalkablefloor y700of1024; clearforegroundplanksbelow. Sideview platformgamecamera. Cozybutmysterious. SameapprovedcompositionbutONEroomonly.",
+  "approval": "Concept and motion explicitly approved in the project conversation (2026-10-25).",
+  "alpha": "Native generated pixels preserved byte-for-byte; runtime crop/outline metadata only."
+}

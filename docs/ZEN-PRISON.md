@@ -39,3 +39,5 @@ A fejlesztői teleport a közös oldalhelyszín-katalógusból automatikusan lis
 A VM-tesztek mellett friss böngészőprofillal kell ellenőrizni a grafikát, a HU/EN párbeszédet és az IndexedDB újratöltését; egy beállított képkocka nem teljes végigjátszás.
 
 A börtön saját, natív RGBA feketekő-/bronzszegélyes talajatlaszt használ. A járható felső elemek és az alsó falazat képaránya megmarad: a mély talajtest ismételt téglatextúrából áll, a lebegő párkány teljes sziluettje egyenletes léptékű. A source surfaceY pontosan az eredeti ütközési felületre kerül; más birodalmak továbbra is a korábbi anyagaikat használják. A talajatlasz eredete: [prompt és regisztráció](art-prompts/zen-prison-terrain-v1.json).
+
+Zen aktuális képlapja a `zen-priestess-v2.png`: Momo rajzos, festett világához igazított csaucsau papnő, négy változatlan rendeltetésű pózzal. A `ART_PRISON.zen` rögzített testméretet és képkockánként ellenőrzött talpillesztést használ; a megmentés, személyiség és játékmenet változatlan. A grafika eredete: [prompt](art-prompts/zen-priestess-v2.json).

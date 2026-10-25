@@ -7,7 +7,7 @@ const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
- seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},
+ seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},arenaSerpentScale:{price:80,realm:3},
  daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
 }).map(([id,product])=>[id,Object.freeze(product)])));
 // Earned reward flags, rather than held items or replayable encounters, own
@@ -412,7 +412,35 @@ shadowDen.npcs=[
 ];
 zone(shadowDen,'fia.den.name',0,0,2800,1080);
 forestCamp.npcs.push({id:'zen',x:1390,y:820,name:'zen.name',dialogue:'zen.camp.dialogue',image:'zenPriestess',height:103,requiresFlag:{realm:3,id:'zenRescued'}});
+// The arena and private chambers share the Shadow Realm's permanent progress.
+shadowDen.arenaEntrance={x:430,y:820};shadowDen.chambersEntrance={x:2470,y:820};
+const shadowArena=makeLevel('shadowArena',2900,2100,{x:260,y:1700});
+shadowArena.name='arena.name';shadowArena.enemyRealm=3;
+ledge(shadowArena,'shadow-arena-ground',0,1700,2900,'ground',400);
+rest(shadowArena,'shadowArenaEntrance',260,1700,'arena.rest');
+shadowArena.returnPoint={x:100,y:1700};shadowArena.challengePoint={x:460,y:1700};
+shadowArena.returnDestination={location:'shadowDen',x:430,y:820};
+shadowArena.arena={x:600,y:1700,w:1700,restId:'shadowArenaEntrance'};shadowArena.boss={x:-1000,y:1700};
+shadowArena.arenaEncounters=[['arenaCaptain','arena.boss.captain',1750],['arenaSerpent','arena.boss.serpent',1700],['arenaCyclops','arena.boss.guards',1550],['arenaFia','arena.boss.fia',1850]].map(([id,name,x])=>({id,miniboss:id,name,x,y:1700,kind:'guard',patrol:500,arena:shadowArena.arena}));
+zone(shadowArena,'arena.name',0,0,2900,2100);
+const fiaChambers=makeLevel('fiaChambers',1600,1080,{x:230,y:820});
+fiaChambers.name='arena.chambers.name';fiaChambers.enemyRealm=3;
+ledge(fiaChambers,'fia-chambers-ground',0,820,1600,'ground',260);
+rest(fiaChambers,'fiaChambersRest',430,820,'arena.chambers.rest');
+fiaChambers.returnPoint={x:90,y:820};fiaChambers.returnDestination={location:'shadowDen',x:2470,y:820};
+fiaChambers.arena={x:-1000,y:820,w:0,restId:'fiaChambersRest'};fiaChambers.boss={x:-1000,y:820};
+fiaChambers.npcs=[{id:'fia',x:1160,y:820,height:136,name:'fia.name',dialogue:'arena.chambers.dialogue'}];
+zone(fiaChambers,'arena.chambers.name',0,0,1600,1080);
+const ARENA_REWARDS=Object.freeze({
+ arenaCaptain:Object.freeze({flag:'arenaRewardCaptain',xp:350}),
+ arenaSerpent:Object.freeze({flag:'arenaRewardSerpent',xp:450,item:'arenaSerpentScale'}),
+ arenaCyclops:Object.freeze({flag:'arenaRewardGuards',xp:600})
+});
+shadowRealm.progressFlags.push('arenaQuestAccepted','arenaRewardCaptain','arenaRewardSerpent','arenaRewardGuards','arenaSerpentScale','arenaChampion');
+
 const SIDE_LOCATIONS=Object.freeze({
+ shadowArena:Object.freeze({map:shadowArena,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaQuestAccepted'])}),
+ fiaChambers:Object.freeze({map:fiaChambers,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaChampion'])}),
  shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
  shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze([])}),
  forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),

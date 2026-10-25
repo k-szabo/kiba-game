@@ -88,6 +88,8 @@ const SaveVault=(()=>{
    if(shadow.includes('guardian:prisonWarden')&&!open||shadow.includes('zenRescued')&&!shadow.includes('guardian:prisonWarden'))throw Error('Invalid priestess rescue');
    const hunter=shadow.includes('guardian:prisonHunter'),seen=shadow.includes('fiaSeen'),rescuedFia=shadow.includes('fiaRescued'),missedFia=shadow.includes('fiaMissed');
    if(hunter&&!open||seen&&!hunter||(rescuedFia||missedFia)&&!seen||rescuedFia&&missedFia)throw Error('Invalid kitsune rescue');
+   const accepted=shadow.includes('arenaQuestAccepted'),captain=shadow.includes('arenaRewardCaptain'),serpent=shadow.includes('arenaRewardSerpent'),guards=shadow.includes('arenaRewardGuards'),champion=shadow.includes('arenaChampion');
+   if(accepted&&(!rescuedFia||!data.defeated[shadowIndex])||captain&&!accepted||serpent&&!captain||guards&&!serpent||champion&&!guards||shadow.includes('arenaSerpentScale')!==serpent)throw Error('Invalid arena progress');
    if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
   }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');

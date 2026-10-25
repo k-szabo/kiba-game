@@ -1,0 +1,7 @@
+{
+  "tool": "built-in imagegen",
+  "asset": "assets/images/backgrounds/shadow-arena-west-v1.png",
+  "prompt": "Finished native videogame BACKGROUND, detailed painterly Japanese dark fantasy matching reference. ONE scene filling whole1536x1024landscape, no borders/parchment/text, no characters or UI or gameplay effects. Crisp layered wood grain, carvedstone, brass, ropes, richpurplefabric, warmamberlanterns, atmosphericvioletdepths. Static sideview platformgame, NOT overhead. Arena belongs underground Shadow Den outlaw settlement. Actual combat floor perfectlyhorizontal at y790 of1024source; ground beneath y790darksolidstone. Keep lowercombatlane clear. Uppergalleries detailed but not busy in center. WEST arena panel: heavy entryarch to left, twolevels of darkwood audiencegalleries recedingright, hangingbanners, braziers, rockyvaultroof. Architecture continues seamlessly offrightedge; noqueenbalcony in thispanel.",
+  "approval": "Concept and motion explicitly approved in the project conversation (2026-10-25).",
+  "alpha": "Native generated pixels preserved byte-for-byte; runtime crop/outline metadata only."
+}

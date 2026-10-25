@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "tool": "built-in image_gen",
+  "approval": "User explicitly approved redesigned Zen concept and four-pose storyboard before production.",
+  "asset": "assets/images/npcs/zen-priestess-v2.png",
+  "nativeGeneration": "exec-03b63695-8207-4544-a527-4ae4baf1bfb8",
+  "references": [
+    "assets/images/npcs/zen-priestess-v1.png",
+    "assets/images/momo.png"
+  ],
+  "style": "Compact expressive Chow Chow matching Momo's illustrated character style; white/gold/red priestess palette and dog paws.",
+  "prompt": "Create the FINAL production transparent RGBA SPRITE ATLAS for Zen from this USER-APPROVED concept-and-motion reference. Preserve the redesigned compact CHOW CHOW priestess identity exactly: round orange fluffy head, small rounded ears, large friendly dark eyes, short soft muzzle, one curled orange tail, compact stylized dog body and dog paws, black clean contour linework and painted cel-like shading matching Momo. Do not revert to realistic dog fur/realistic muzzle/human body. Keep white priestess haori/kimono with antique-gold patterned trim, indigo collar, red skirt/hakama and red cords, one dark prayer-bead necklace held by both paws, same charm pendant. EXACTLY FOUR whole-body poses across ONE HORIZONTAL ROW of FOUR EQUAL SPACED CELLS, no extra face detail drawing: 1 welcoming upright idle with gentle affectionate smile, beads held at chest; 2 polite modest bow lookingdown whilebothpaws hold SAME beads; 3 calm eyes-closed prayer withpaws together andsamebeads; 4 returnupright warm slightlybashful smile, samebeads inbothpaws. Samehead/body size and SAMEfixed standing-height scale inallcells, bow naturallyshorter but no stretch, SAMEfootbaseline. All four face slightly right, same outfit details/markings and tailcount. Every figure completely inside its own cell with wide transparent gutters and large margins top/bottom/left/right; full paws/ears/tail/charm and robe hems, no overlap or cropped fur. Broad horizontal canvas ideally1774x887, transparent background ACTUALALPHA, no paper, no grid, no labels/numbers, no floor/shadowmatte, no background glow, no outlineboxes, no props outsidecharacter. Finished polished painted game sprite quality. Retainoriginal generatedalpha, clean transparent pixels aroundeachfigure.",
+  "registration": {
+    "bodyHeight": 648,
+    "cuts": [
+      0,
+      488,
+      892,
+      1319,
+      1774
+    ],
+    "alpha": "Native generated RGBA preserved byte-for-byte; conservative unequal columns retain complete robes and tails."
+  }
+}

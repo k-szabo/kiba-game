@@ -1,0 +1,7 @@
+{
+  "tool": "built-in imagegen",
+  "asset": "assets/images/enemies/arena-minions-v1.png",
+  "prompt": "Production videogame sprite atlas on TRUE transparent RGBA. Reference1 approved thief/guard design and poses. Exactly8 sprites arranged FOUR columns TWO rows. OMIT the large standing reference figures: only poses1-8. Row1 thief idle crouch, run step, raised dagger tell, dagger lunge. Row2 guard idle, step, spear windup, spear thrust. Same full-body painted Japanese-fantasy characters as reference, crisp dark outlines, rich fabrics and detailed weathered metal. Exactly2 arms2hands each. Guard keeps same ONE wooden shield LEFTarm and ONE same-length spear RIGHT hand throughout. Thief same ONE dagger. All face RIGHT sideview. IMPORTANT PACKING: generous transparent margin ALLaround every figure, figures occupy only central65percent of eachcell, NO WEAPON can cross a cell border. Atleast30px clear gutters and30pxouterborder. Reduce figure size if needed to fit full horizontal spear in last cell. Every complete head, toe, dagger and spear TIP visible. No castshadows, floor, numbers, text, checkerboard or panelborders. Widescreen atlas native2048x1024. Body scale consistent per character acrossfourposes.",
+  "approval": "Concept and motion explicitly approved in the project conversation (2026-10-25).",
+  "alpha": "Native generated pixels preserved byte-for-byte; runtime crop/outline metadata only."
+}

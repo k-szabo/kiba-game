@@ -32,6 +32,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/prison-quest.js`, `prison-warden.js`, `prison-art.js` | Zen opcionális [börtönága](ZEN-PRISON.md), a belső börtönnagy, megmentés és natív grafika. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
 | `assets/js/kitsune-quest.js`, `prison-hunter.js`, `kitsune-art.js` | Fia [megmentése és árnyéktábora](KITSUNE.md), a vadász, a végleges kihagyás és az átváltozás. |
+| `assets/js/arena-challenge.js`, `arena-combat.js`, `arena-art.js` | Ötmenetes [árnyékzugi aréna](SHADOW-DEN-ARENA.md), közös bossvezérlő, egyszeri jutalmak és lakosztály; a referencia spoileres. |
 | `assets/js/serpents.js`, `serpent-relics.js` | Közös kígyótemplate, három találkozás, pikkelyfúzió és külön felszerelt talizmán; [referencia](SERPENTS.md). |
 | `assets/js/doom-slayer.js`, `slayer-dialog.js`, `slayer-art.js` | Opcionális találkozás, szüneteltetett szövegbevitel és külön grafikai réteg; [spoileres fejlesztői referencia](DOOM-SLAYER.md). |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
@@ -231,3 +232,9 @@ Az `npm run test:camp-npcs` tesztcsoport a tiszta tranzakciókat, a szigorú men
 Új kígyóváltozatnál a `Serpents.profiles` adatszerkezetét és az önálló pályabejegyzést bővítsd, ne másold az állapotgépet. A `serpent:true` hostjelölés csak a Yomi által idézett, fázisok között elrejtett lávakígyóé; a tartós opcionális minibossok `serpentType`-ot és guardian-jelzőt kapnak. A közös controller kezeli a rögzített előjelzést, sebzést követő entitásellenőrzést és egyszeri jutalmakat. A rajzolás nem léptethet harci órát.
 
 A pikkelyek régi megszerzési jelzőit a fúzió nem törli. A tartós eredmény és az `ART_INVENTORY.items.*.consumedBy` választja szét a megszerzési előzményt a jelenlegi birtoklástól. Az `equippedTalisman` külön mentett felszerelési mező: a bónuszhoz tulajdon és viselt állapot együtt kell, a fegyvertől függetlenül. A fúzió, felszerelés, dev-teszt és szigorú mentés részletei a [SERPENTS.md](SERPENTS.md) fájlban szerepelnek.
+
+## Árnyékzug arénája
+
+Az aréna és a győzelem után nyíló lakosztály az Árnyékvilág két `SIDE_LOCATIONS` oldalhelyszíne. Az `ArenaChallenge` az átmeneti próbát és az egyszeri jutalmakat, az `ArenaCombat` a négy harci profilt, az `ArenaArt` a rajzolást kezeli. A mentés csak a küldetés-, jutalom- és teljesítésjelzőket tárolja; félbehagyott kihívás az első menettől próbálható újra, a korábbi jutalmak duplikálása nélkül. A `level.arenaEncounters` katalógus a dev bossválasztó forrása is.
+
+A `test-arena-combat.cjs` és `test-arena-challenge.cjs` célzott tesztek a harci előjelzést, két testőr közös HP-ját, túlélési időket, szünetet, jutalomláncot, normál/dev feloldást, mentésvalidációt és az új helyszínek mozgásinputját fedik le. A grafika és tényleges böngészős tárolás külön ellenőrzendő; a [technikai arénareferencia](SHADOW-DEN-ARENA.md) a történeti meglepetéseket is részletezi.

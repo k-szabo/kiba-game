@@ -157,6 +157,55 @@
       "faction": "shadowDen",
       "paletteGroup": "npc.shadowDen.shadowThief"
     },
+    "arena.captain": {
+      "role": "arena-boss",
+      "faction": "shadowDen",
+      "variants": {
+        "arenaCaptain": {
+          "paletteGroup": "npc.arena.captain.arenaCaptain"
+        }
+      }
+    },
+    "arena.serpent": {
+      "role": "arena-boss",
+      "faction": "shadowDen",
+      "variants": {
+        "arenaSerpent": {
+          "paletteGroup": "npc.arena.serpent.arenaSerpent"
+        }
+      }
+    },
+    "arena.cyclops": {
+      "role": "arena-boss",
+      "faction": "shadowDen",
+      "variants": {
+        "arenaCyclops": {
+          "paletteGroup": "npc.arena.cyclops.arenaCyclops"
+        }
+      }
+    },
+    "arena.fia": {
+      "role": "arena-boss",
+      "faction": "shadowDen",
+      "variants": {
+        "fiaArenaCasting": {
+          "paletteGroup": "npc.arena.fia.fiaArenaCasting"
+        },
+        "fiaArenaYield": {
+          "paletteGroup": "npc.arena.fia.fiaArenaYield"
+        }
+      }
+    },
+    "arena.thief": {
+      "role": "arena-minion",
+      "faction": "shadowDen",
+      "paletteGroup": "npc.arena.thief"
+    },
+    "arena.guard": {
+      "role": "arena-minion",
+      "faction": "shadowDen",
+      "paletteGroup": "npc.arena.guard"
+    },
     "japan.guard": {
       "faction": "japan",
       "role": "guard",
@@ -418,6 +467,26 @@
     }
   },
   "objects": {
+    "arenaBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-west-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "arenaBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-center-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "arenaBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-east-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "fiaChambersBackdrop": {
+      "kind": "background",
+      "asset": "assets/images/backgrounds/fia-chambers-v1.png",
+      "registration": "ART_ARENA.chambers"
+    },
     "prisonBackdrop.0": {
       "kind": "background-panel",
       "asset": "assets/images/backgrounds/zen-prison-west-v1.png",
@@ -665,6 +734,10 @@
     "inventoryItem.triuneSerpentTalisman": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.triuneSerpentTalisman"
+    },
+    "inventoryItem.arenaSerpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.arenaSerpentScale"
     },
     "secretWall.angel": {
       "kind": "scenery",
@@ -2928,104 +3001,104 @@
       }
     },
     "npc.prison.zen": {
-      "source": "assets/images/npcs/zen-priestess-v1.png",
+      "source": "assets/images/npcs/zen-priestess-v2.png",
       "frameMetadata": "ART_PRISON.zen.frames",
       "frameCount": 4,
       "palette": {
         "dominant": [
           {
-            "hex": "#c15a26",
-            "coveragePercent": 11.9254
+            "hex": "#fcc074",
+            "coveragePercent": 9.183
           },
           {
-            "hex": "#df7d3e",
-            "coveragePercent": 9.5528
+            "hex": "#fcf1e4",
+            "coveragePercent": 8.5842
           },
           {
-            "hex": "#9e4118",
-            "coveragePercent": 9.414
+            "hex": "#f9a253",
+            "coveragePercent": 8.4046
           },
           {
-            "hex": "#eba461",
-            "coveragePercent": 9.0544
+            "hex": "#e96324",
+            "coveragePercent": 8.3786
           },
           {
-            "hex": "#751e0f",
-            "coveragePercent": 7.7237
+            "hex": "#f48039",
+            "coveragePercent": 7.8143
           },
           {
-            "hex": "#e9c299",
-            "coveragePercent": 7.3433
+            "hex": "#cc4c19",
+            "coveragePercent": 7.7251
           },
           {
-            "hex": "#f1d8bf",
-            "coveragePercent": 6.6402
+            "hex": "#d3132a",
+            "coveragePercent": 7.2078
           },
           {
-            "hex": "#faeddf",
-            "coveragePercent": 6.4003
+            "hex": "#f5d6b3",
+            "coveragePercent": 7.1507
           },
           {
-            "hex": "#490d08",
-            "coveragePercent": 5.7657
+            "hex": "#320907",
+            "coveragePercent": 6.6762
           },
           {
-            "hex": "#ca292e",
-            "coveragePercent": 5.2581
+            "hex": "#a73810",
+            "coveragePercent": 6.1473
           },
           {
-            "hex": "#180807",
-            "coveragePercent": 5.1822
+            "hex": "#601009",
+            "coveragePercent": 5.3812
           },
           {
-            "hex": "#a31c20",
-            "coveragePercent": 5.0228
+            "hex": "#910e11",
+            "coveragePercent": 5.3552
           },
           {
-            "hex": "#432f35",
-            "coveragePercent": 2.9522
+            "hex": "#100304",
+            "coveragePercent": 4.9512
           },
           {
-            "hex": "#a87a5d",
-            "coveragePercent": 2.8086
+            "hex": "#4c3240",
+            "coveragePercent": 2.9514
           },
           {
-            "hex": "#c7a289",
-            "coveragePercent": 2.6835
+            "hex": "#cfa18b",
+            "coveragePercent": 2.1889
           },
           {
-            "hex": "#7a5342",
-            "coveragePercent": 2.2728
+            "hex": "#9f6b55",
+            "coveragePercent": 1.9005
           }
         ],
         "accents": [
           {
-            "hex": "#aa4b1f",
-            "coveragePercent": 22.1022
+            "hex": "#e86527",
+            "coveragePercent": 23.5929
           },
           {
-            "hex": "#cc6730",
-            "coveragePercent": 20.791
+            "hex": "#fcbb6e",
+            "coveragePercent": 18.6331
           },
           {
-            "hex": "#e48a49",
-            "coveragePercent": 16.7325
+            "hex": "#f69348",
+            "coveragePercent": 17.8866
           },
           {
-            "hex": "#932617",
-            "coveragePercent": 15.2325
+            "hex": "#ba4518",
+            "coveragePercent": 17.331
           },
           {
-            "hex": "#edad6b",
-            "coveragePercent": 12.9577
+            "hex": "#d5142a",
+            "coveragePercent": 11.4099
           },
           {
-            "hex": "#c5272c",
-            "coveragePercent": 12.1841
+            "hex": "#981611",
+            "coveragePercent": 11.1466
           }
         ],
-        "visibleSamples": 386224,
-        "dominantCoveragePercent": 100.0
+        "visibleSamples": 723339,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "npc.prison.undead": {
@@ -3733,6 +3806,713 @@
         ],
         "visibleSamples": 290580,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.arena.captain.arenaCaptain": {
+      "source": "assets/images/enemies/arena-captain-v1.png",
+      "frameMetadata": "ART_ARENA.captain.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2a30",
+            "coveragePercent": 13.116
+          },
+          {
+            "hex": "#4d3943",
+            "coveragePercent": 12.3153
+          },
+          {
+            "hex": "#080406",
+            "coveragePercent": 10.5641
+          },
+          {
+            "hex": "#634953",
+            "coveragePercent": 10.4972
+          },
+          {
+            "hex": "#2d1d21",
+            "coveragePercent": 10.3695
+          },
+          {
+            "hex": "#1a1014",
+            "coveragePercent": 9.9513
+          },
+          {
+            "hex": "#874f4b",
+            "coveragePercent": 7.0171
+          },
+          {
+            "hex": "#a1665e",
+            "coveragePercent": 5.7034
+          },
+          {
+            "hex": "#786468",
+            "coveragePercent": 5.1857
+          },
+          {
+            "hex": "#67352c",
+            "coveragePercent": 4.9109
+          },
+          {
+            "hex": "#bc826c",
+            "coveragePercent": 3.0241
+          },
+          {
+            "hex": "#9f8e90",
+            "coveragePercent": 1.9483
+          },
+          {
+            "hex": "#d7a985",
+            "coveragePercent": 1.7993
+          },
+          {
+            "hex": "#d7c3b9",
+            "coveragePercent": 1.3592
+          },
+          {
+            "hex": "#f4f2ee",
+            "coveragePercent": 1.2034
+          },
+          {
+            "hex": "#8e568c",
+            "coveragePercent": 1.0352
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f4043",
+            "coveragePercent": 30.3143
+          },
+          {
+            "hex": "#ae5556",
+            "coveragePercent": 21.5134
+          },
+          {
+            "hex": "#93643a",
+            "coveragePercent": 19.8484
+          },
+          {
+            "hex": "#bc7e57",
+            "coveragePercent": 16.6014
+          },
+          {
+            "hex": "#dda869",
+            "coveragePercent": 7.5595
+          },
+          {
+            "hex": "#89498c",
+            "coveragePercent": 4.1629
+          }
+        ],
+        "visibleSamples": 476640,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.arena.serpent.arenaSerpent": {
+      "source": "assets/images/enemies/arena-serpent-v1.png",
+      "frameMetadata": "ART_ARENA.serpent.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4d4658",
+            "coveragePercent": 13.5879
+          },
+          {
+            "hex": "#645d6e",
+            "coveragePercent": 11.9933
+          },
+          {
+            "hex": "#382e40",
+            "coveragePercent": 8.8642
+          },
+          {
+            "hex": "#8a6959",
+            "coveragePercent": 7.9963
+          },
+          {
+            "hex": "#2b1819",
+            "coveragePercent": 7.857
+          },
+          {
+            "hex": "#a78775",
+            "coveragePercent": 7.4953
+          },
+          {
+            "hex": "#7e7c87",
+            "coveragePercent": 6.9515
+          },
+          {
+            "hex": "#bba393",
+            "coveragePercent": 6.8904
+          },
+          {
+            "hex": "#120707",
+            "coveragePercent": 6.5661
+          },
+          {
+            "hex": "#6e4c3a",
+            "coveragePercent": 6.5003
+          },
+          {
+            "hex": "#512e1f",
+            "coveragePercent": 4.9802
+          },
+          {
+            "hex": "#dac1af",
+            "coveragePercent": 4.4377
+          },
+          {
+            "hex": "#f5e7d9",
+            "coveragePercent": 2.7475
+          },
+          {
+            "hex": "#591180",
+            "coveragePercent": 1.7557
+          },
+          {
+            "hex": "#a95dc0",
+            "coveragePercent": 1.2776
+          },
+          {
+            "hex": "#eba50f",
+            "coveragePercent": 0.0989
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91573b",
+            "coveragePercent": 37.3409
+          },
+          {
+            "hex": "#b47c58",
+            "coveragePercent": 22.5236
+          },
+          {
+            "hex": "#803e9d",
+            "coveragePercent": 16.4034
+          },
+          {
+            "hex": "#5f1292",
+            "coveragePercent": 13.4194
+          },
+          {
+            "hex": "#b654d3",
+            "coveragePercent": 8.6633
+          },
+          {
+            "hex": "#f2b512",
+            "coveragePercent": 1.6494
+          }
+        ],
+        "visibleSamples": 585079,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.arena.cyclops.arenaCyclops": {
+      "source": "assets/images/enemies/arena-cyclops-v1.png",
+      "frameMetadata": "ART_ARENA.cyclops.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#514740",
+            "coveragePercent": 11.8636
+          },
+          {
+            "hex": "#2e1f19",
+            "coveragePercent": 10.9037
+          },
+          {
+            "hex": "#3b322d",
+            "coveragePercent": 10.4936
+          },
+          {
+            "hex": "#1d110d",
+            "coveragePercent": 9.9707
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 9.1634
+          },
+          {
+            "hex": "#53241a",
+            "coveragePercent": 8.2506
+          },
+          {
+            "hex": "#696159",
+            "coveragePercent": 7.3639
+          },
+          {
+            "hex": "#763627",
+            "coveragePercent": 7.0006
+          },
+          {
+            "hex": "#a94939",
+            "coveragePercent": 5.2577
+          },
+          {
+            "hex": "#82573d",
+            "coveragePercent": 5.2213
+          },
+          {
+            "hex": "#8f7b69",
+            "coveragePercent": 5.1335
+          },
+          {
+            "hex": "#b79b80",
+            "coveragePercent": 3.4626
+          },
+          {
+            "hex": "#c27050",
+            "coveragePercent": 3.2236
+          },
+          {
+            "hex": "#d8bf9f",
+            "coveragePercent": 1.7804
+          },
+          {
+            "hex": "#f1e9d7",
+            "coveragePercent": 0.8019
+          },
+          {
+            "hex": "#f5bc09",
+            "coveragePercent": 0.1089
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e3d2e",
+            "coveragePercent": 28.0961
+          },
+          {
+            "hex": "#b14b3c",
+            "coveragePercent": 24.3136
+          },
+          {
+            "hex": "#956342",
+            "coveragePercent": 21.8415
+          },
+          {
+            "hex": "#c26c4f",
+            "coveragePercent": 17.0746
+          },
+          {
+            "hex": "#d59666",
+            "coveragePercent": 7.9087
+          },
+          {
+            "hex": "#f5bd09",
+            "coveragePercent": 0.7655
+          }
+        ],
+        "visibleSamples": 412164,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.arena.fia.fiaArenaCasting": {
+      "source": "assets/images/enemies/fia-arena-casting-v1.png",
+      "frameMetadata": "ART_ARENA.fia.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#85438b",
+            "coveragePercent": 10.7382
+          },
+          {
+            "hex": "#5c3546",
+            "coveragePercent": 10.0467
+          },
+          {
+            "hex": "#6f356b",
+            "coveragePercent": 9.6056
+          },
+          {
+            "hex": "#412334",
+            "coveragePercent": 8.4529
+          },
+          {
+            "hex": "#9c56aa",
+            "coveragePercent": 8.1519
+          },
+          {
+            "hex": "#b971a0",
+            "coveragePercent": 7.5427
+          },
+          {
+            "hex": "#b359f5",
+            "coveragePercent": 6.517
+          },
+          {
+            "hex": "#cc88be",
+            "coveragePercent": 6.0241
+          },
+          {
+            "hex": "#f7cdfb",
+            "coveragePercent": 4.7663
+          },
+          {
+            "hex": "#e69d8f",
+            "coveragePercent": 4.5922
+          },
+          {
+            "hex": "#fdf1f9",
+            "coveragePercent": 4.3815
+          },
+          {
+            "hex": "#e5a4f1",
+            "coveragePercent": 4.3587
+          },
+          {
+            "hex": "#220d19",
+            "coveragePercent": 4.3351
+          },
+          {
+            "hex": "#cd79ef",
+            "coveragePercent": 4.0514
+          },
+          {
+            "hex": "#a3605f",
+            "coveragePercent": 3.6792
+          },
+          {
+            "hex": "#facfba",
+            "coveragePercent": 2.7565
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#84418c",
+            "coveragePercent": 33.0493
+          },
+          {
+            "hex": "#b35af5",
+            "coveragePercent": 22.1936
+          },
+          {
+            "hex": "#9c53ad",
+            "coveragePercent": 20.9292
+          },
+          {
+            "hex": "#cc74f1",
+            "coveragePercent": 10.8279
+          },
+          {
+            "hex": "#995154",
+            "coveragePercent": 8.1481
+          },
+          {
+            "hex": "#dd926c",
+            "coveragePercent": 4.8519
+          }
+        ],
+        "visibleSamples": 583523,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.arena.fia.fiaArenaYield": {
+      "source": "assets/images/enemies/fia-arena-yield-v1.png",
+      "frameMetadata": "ART_ARENA.fia.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5a3645",
+            "coveragePercent": 11.8373
+          },
+          {
+            "hex": "#6e385e",
+            "coveragePercent": 11.8234
+          },
+          {
+            "hex": "#7f417d",
+            "coveragePercent": 10.9776
+          },
+          {
+            "hex": "#422334",
+            "coveragePercent": 9.1028
+          },
+          {
+            "hex": "#914e9c",
+            "coveragePercent": 8.626
+          },
+          {
+            "hex": "#ae69a3",
+            "coveragePercent": 6.8585
+          },
+          {
+            "hex": "#cf84ac",
+            "coveragePercent": 6.0437
+          },
+          {
+            "hex": "#eda698",
+            "coveragePercent": 4.7093
+          },
+          {
+            "hex": "#250f1a",
+            "coveragePercent": 4.6605
+          },
+          {
+            "hex": "#fad8fd",
+            "coveragePercent": 4.141
+          },
+          {
+            "hex": "#d48fde",
+            "coveragePercent": 4.0518
+          },
+          {
+            "hex": "#ae6961",
+            "coveragePercent": 3.8244
+          },
+          {
+            "hex": "#b064dc",
+            "coveragePercent": 3.6828
+          },
+          {
+            "hex": "#ebb3f5",
+            "coveragePercent": 3.2979
+          },
+          {
+            "hex": "#fcdfc7",
+            "coveragePercent": 3.2329
+          },
+          {
+            "hex": "#fef4fc",
+            "coveragePercent": 3.1302
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#85438a",
+            "coveragePercent": 40.3993
+          },
+          {
+            "hex": "#9a53a9",
+            "coveragePercent": 23.3872
+          },
+          {
+            "hex": "#b767e3",
+            "coveragePercent": 14.6893
+          },
+          {
+            "hex": "#8e4757",
+            "coveragePercent": 10.8916
+          },
+          {
+            "hex": "#b76a5c",
+            "coveragePercent": 6.2488
+          },
+          {
+            "hex": "#e39871",
+            "coveragePercent": 4.3839
+          }
+        ],
+        "visibleSamples": 491804,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.arena.thief": {
+      "source": "assets/images/enemies/arena-minions-v1.png",
+      "frameMetadata": "ART_ARENA.minions.thief",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f1614",
+            "coveragePercent": 14.0212
+          },
+          {
+            "hex": "#32251f",
+            "coveragePercent": 13.3662
+          },
+          {
+            "hex": "#4d372b",
+            "coveragePercent": 12.3462
+          },
+          {
+            "hex": "#0c0807",
+            "coveragePercent": 11.6607
+          },
+          {
+            "hex": "#5e4b3f",
+            "coveragePercent": 9.4052
+          },
+          {
+            "hex": "#705a4a",
+            "coveragePercent": 8.2777
+          },
+          {
+            "hex": "#333033",
+            "coveragePercent": 8.092
+          },
+          {
+            "hex": "#414045",
+            "coveragePercent": 7.9711
+          },
+          {
+            "hex": "#71412c",
+            "coveragePercent": 4.2744
+          },
+          {
+            "hex": "#95593b",
+            "coveragePercent": 3.3227
+          },
+          {
+            "hex": "#896f5c",
+            "coveragePercent": 2.3705
+          },
+          {
+            "hex": "#c48758",
+            "coveragePercent": 1.6293
+          },
+          {
+            "hex": "#e4ab78",
+            "coveragePercent": 1.4687
+          },
+          {
+            "hex": "#a28c78",
+            "coveragePercent": 1.0009
+          },
+          {
+            "hex": "#baaca0",
+            "coveragePercent": 0.537
+          },
+          {
+            "hex": "#decebc",
+            "coveragePercent": 0.2562
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965a3d",
+            "coveragePercent": 26.2254
+          },
+          {
+            "hex": "#874c34",
+            "coveragePercent": 22.6509
+          },
+          {
+            "hex": "#a86c45",
+            "coveragePercent": 15.2525
+          },
+          {
+            "hex": "#d69765",
+            "coveragePercent": 13.9137
+          },
+          {
+            "hex": "#c08354",
+            "coveragePercent": 12.3079
+          },
+          {
+            "hex": "#e7ac76",
+            "coveragePercent": 9.6496
+          }
+        ],
+        "visibleSamples": 171828,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.arena.guard": {
+      "source": "assets/images/enemies/arena-minions-v1.png",
+      "frameMetadata": "ART_ARENA.minions.guard",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#432f22",
+            "coveragePercent": 15.3855
+          },
+          {
+            "hex": "#2d2019",
+            "coveragePercent": 13.1102
+          },
+          {
+            "hex": "#534034",
+            "coveragePercent": 11.4099
+          },
+          {
+            "hex": "#1b120e",
+            "coveragePercent": 8.895
+          },
+          {
+            "hex": "#695241",
+            "coveragePercent": 8.2165
+          },
+          {
+            "hex": "#684121",
+            "coveragePercent": 7.8602
+          },
+          {
+            "hex": "#89572b",
+            "coveragePercent": 7.3091
+          },
+          {
+            "hex": "#a56b34",
+            "coveragePercent": 6.7996
+          },
+          {
+            "hex": "#0a0605",
+            "coveragePercent": 6.4419
+          },
+          {
+            "hex": "#7e695a",
+            "coveragePercent": 3.1982
+          },
+          {
+            "hex": "#465265",
+            "coveragePercent": 2.8791
+          },
+          {
+            "hex": "#303844",
+            "coveragePercent": 2.5443
+          },
+          {
+            "hex": "#bf7f44",
+            "coveragePercent": 2.4518
+          },
+          {
+            "hex": "#9d8674",
+            "coveragePercent": 1.8043
+          },
+          {
+            "hex": "#caa383",
+            "coveragePercent": 1.3596
+          },
+          {
+            "hex": "#d7cdc4",
+            "coveragePercent": 0.3349
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#986231",
+            "coveragePercent": 29.8918
+          },
+          {
+            "hex": "#aa6f36",
+            "coveragePercent": 28.0915
+          },
+          {
+            "hex": "#88562b",
+            "coveragePercent": 24.3374
+          },
+          {
+            "hex": "#bc7d40",
+            "coveragePercent": 13.0437
+          },
+          {
+            "hex": "#d49261",
+            "coveragePercent": 4.6168
+          },
+          {
+            "hex": "#466282",
+            "coveragePercent": 0.0189
+          }
+        ],
+        "visibleSamples": 208434,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "npc.japan.guard.walk": {
@@ -12522,6 +13302,107 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "object.inventoryItem.arenaSerpentScale": {
+      "source": "assets/images/ui/arena-serpent-scale-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.arenaSerpentScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c3d41",
+            "coveragePercent": 14.7928
+          },
+          {
+            "hex": "#281e24",
+            "coveragePercent": 14.7586
+          },
+          {
+            "hex": "#0a0707",
+            "coveragePercent": 11.3147
+          },
+          {
+            "hex": "#58585e",
+            "coveragePercent": 10.2921
+          },
+          {
+            "hex": "#faf5f1",
+            "coveragePercent": 7.3425
+          },
+          {
+            "hex": "#7c777d",
+            "coveragePercent": 6.6244
+          },
+          {
+            "hex": "#42215c",
+            "coveragePercent": 6.3609
+          },
+          {
+            "hex": "#ad9f9e",
+            "coveragePercent": 4.781
+          },
+          {
+            "hex": "#663587",
+            "coveragePercent": 4.4693
+          },
+          {
+            "hex": "#59331a",
+            "coveragePercent": 4.3668
+          },
+          {
+            "hex": "#e4d2be",
+            "coveragePercent": 4.2756
+          },
+          {
+            "hex": "#905627",
+            "coveragePercent": 3.2096
+          },
+          {
+            "hex": "#ca8337",
+            "coveragePercent": 2.182
+          },
+          {
+            "hex": "#994fc0",
+            "coveragePercent": 2.1025
+          },
+          {
+            "hex": "#f1bf64",
+            "coveragePercent": 1.5847
+          },
+          {
+            "hex": "#d996e4",
+            "coveragePercent": 1.5425
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#985a27",
+            "coveragePercent": 25.7777
+          },
+          {
+            "hex": "#673090",
+            "coveragePercent": 21.9927
+          },
+          {
+            "hex": "#cd8638",
+            "coveragePercent": 18.0478
+          },
+          {
+            "hex": "#8d44b7",
+            "coveragePercent": 13.7478
+          },
+          {
+            "hex": "#f2bf5f",
+            "coveragePercent": 13.0347
+          },
+          {
+            "hex": "#bf60e3",
+            "coveragePercent": 7.3992
+          }
+        ],
+        "visibleSamples": 483310,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "object.secretWall.angel": {
       "source": "assets/images/angel-ruin-wall-v1.png",
       "frameMetadata": "ART_SECRET_WALLS.angel",
@@ -17072,6 +17953,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/fia-chambers-v1.png": {
+      "sha256": "7d0d8920df2e9ddbb190f4b7bf2dba07eb63a4a7ec733cf33fc0097f5bb0ed18",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaChambersBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1e1018",
+            "coveragePercent": 16.8058
+          },
+          {
+            "hex": "#351f34",
+            "coveragePercent": 15.0346
+          },
+          {
+            "hex": "#2f191e",
+            "coveragePercent": 13.452
+          },
+          {
+            "hex": "#0b0507",
+            "coveragePercent": 13.0276
+          },
+          {
+            "hex": "#502521",
+            "coveragePercent": 8.004
+          },
+          {
+            "hex": "#532b4b",
+            "coveragePercent": 7.8663
+          },
+          {
+            "hex": "#76372a",
+            "coveragePercent": 5.3382
+          },
+          {
+            "hex": "#7c3d62",
+            "coveragePercent": 3.8569
+          },
+          {
+            "hex": "#a04e36",
+            "coveragePercent": 3.4305
+          },
+          {
+            "hex": "#b65e71",
+            "coveragePercent": 2.6054
+          },
+          {
+            "hex": "#d47042",
+            "coveragePercent": 2.4544
+          },
+          {
+            "hex": "#3d286b",
+            "coveragePercent": 2.195
+          },
+          {
+            "hex": "#f2995f",
+            "coveragePercent": 2.0194
+          },
+          {
+            "hex": "#7b4fbe",
+            "coveragePercent": 1.8481
+          },
+          {
+            "hex": "#5c3c95",
+            "coveragePercent": 1.8459
+          },
+          {
+            "hex": "#f7cdbe",
+            "coveragePercent": 0.216
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95462f",
+            "coveragePercent": 26.0006
+          },
+          {
+            "hex": "#ca6948",
+            "coveragePercent": 21.4536
+          },
+          {
+            "hex": "#f1955d",
+            "coveragePercent": 14.8965
+          },
+          {
+            "hex": "#9f4669",
+            "coveragePercent": 14.4625
+          },
+          {
+            "hex": "#5a3b96",
+            "coveragePercent": 11.6326
+          },
+          {
+            "hex": "#7b4fbe",
+            "coveragePercent": 11.5542
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/fia-den-east-v1.png": {
       "sha256": "50ea27e98af930e8abc4ab61e15df0e3e3ce3a7cd7505fa901d53f21fcd752ca",
       "width": 1536,
@@ -18959,6 +19945,321 @@
           }
         ],
         "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/shadow-arena-center-v1.png": {
+      "sha256": "41f64b5f84e237b4514f25995d99d42bdc13bc47e913398b57f5c1b75274eb2b",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaCenter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130c13",
+            "coveragePercent": 21.8646
+          },
+          {
+            "hex": "#060305",
+            "coveragePercent": 14.1153
+          },
+          {
+            "hex": "#1e1428",
+            "coveragePercent": 11.5205
+          },
+          {
+            "hex": "#38191a",
+            "coveragePercent": 9.6665
+          },
+          {
+            "hex": "#311d42",
+            "coveragePercent": 8.7162
+          },
+          {
+            "hex": "#592a28",
+            "coveragePercent": 7.1481
+          },
+          {
+            "hex": "#44285e",
+            "coveragePercent": 6.0514
+          },
+          {
+            "hex": "#873c25",
+            "coveragePercent": 3.9751
+          },
+          {
+            "hex": "#563587",
+            "coveragePercent": 3.7542
+          },
+          {
+            "hex": "#753a56",
+            "coveragePercent": 3.2445
+          },
+          {
+            "hex": "#b35639",
+            "coveragePercent": 3.1197
+          },
+          {
+            "hex": "#7749a7",
+            "coveragePercent": 2.0941
+          },
+          {
+            "hex": "#e2722f",
+            "coveragePercent": 2.0099
+          },
+          {
+            "hex": "#f3a455",
+            "coveragePercent": 1.3
+          },
+          {
+            "hex": "#9e63d0",
+            "coveragePercent": 1.1129
+          },
+          {
+            "hex": "#fcf2d1",
+            "coveragePercent": 0.307
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#964431",
+            "coveragePercent": 30.2242
+          },
+          {
+            "hex": "#ce6332",
+            "coveragePercent": 20.6861
+          },
+          {
+            "hex": "#59368f",
+            "coveragePercent": 18.3747
+          },
+          {
+            "hex": "#f29c4a",
+            "coveragePercent": 12.054
+          },
+          {
+            "hex": "#7b47a5",
+            "coveragePercent": 11.8962
+          },
+          {
+            "hex": "#995fd3",
+            "coveragePercent": 6.7648
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/shadow-arena-east-v1.png": {
+      "sha256": "237e3ad9745af012eca649a61016c68abb0b643992d690f8dc8851309b5fa68c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaEast"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#180e19",
+            "coveragePercent": 21.6395
+          },
+          {
+            "hex": "#080306",
+            "coveragePercent": 17.2158
+          },
+          {
+            "hex": "#33191f",
+            "coveragePercent": 12.1146
+          },
+          {
+            "hex": "#2f1c3c",
+            "coveragePercent": 10.6579
+          },
+          {
+            "hex": "#442657",
+            "coveragePercent": 8.3045
+          },
+          {
+            "hex": "#5a2825",
+            "coveragePercent": 7.2774
+          },
+          {
+            "hex": "#59307f",
+            "coveragePercent": 4.2175
+          },
+          {
+            "hex": "#8e3c26",
+            "coveragePercent": 3.7387
+          },
+          {
+            "hex": "#723656",
+            "coveragePercent": 3.7017
+          },
+          {
+            "hex": "#753fab",
+            "coveragePercent": 2.8543
+          },
+          {
+            "hex": "#af555b",
+            "coveragePercent": 2.1381
+          },
+          {
+            "hex": "#d1531e",
+            "coveragePercent": 1.9243
+          },
+          {
+            "hex": "#e9813d",
+            "coveragePercent": 1.8392
+          },
+          {
+            "hex": "#9f58d9",
+            "coveragePercent": 1.26
+          },
+          {
+            "hex": "#f6b765",
+            "coveragePercent": 0.7991
+          },
+          {
+            "hex": "#faf3e1",
+            "coveragePercent": 0.3176
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#673699",
+            "coveragePercent": 24.1757
+          },
+          {
+            "hex": "#983e25",
+            "coveragePercent": 21.3922
+          },
+          {
+            "hex": "#d96229",
+            "coveragePercent": 16.9578
+          },
+          {
+            "hex": "#a3495d",
+            "coveragePercent": 14.7104
+          },
+          {
+            "hex": "#934dcf",
+            "coveragePercent": 11.9672
+          },
+          {
+            "hex": "#f19d51",
+            "coveragePercent": 10.7968
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/shadow-arena-west-v1.png": {
+      "sha256": "7eca5707b7257ff7d5f21516ea46e7f5446bd0a9ae24a9eafe138b163bd11d91",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaWest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#100a10",
+            "coveragePercent": 18.9978
+          },
+          {
+            "hex": "#1e1322",
+            "coveragePercent": 16.5417
+          },
+          {
+            "hex": "#040203",
+            "coveragePercent": 11.3492
+          },
+          {
+            "hex": "#2d1d3e",
+            "coveragePercent": 10.1734
+          },
+          {
+            "hex": "#3e1e23",
+            "coveragePercent": 8.1174
+          },
+          {
+            "hex": "#3e245c",
+            "coveragePercent": 5.6306
+          },
+          {
+            "hex": "#5b3349",
+            "coveragePercent": 5.4008
+          },
+          {
+            "hex": "#662c23",
+            "coveragePercent": 4.5949
+          },
+          {
+            "hex": "#573375",
+            "coveragePercent": 4.2577
+          },
+          {
+            "hex": "#99442b",
+            "coveragePercent": 3.6634
+          },
+          {
+            "hex": "#683d9a",
+            "coveragePercent": 2.7545
+          },
+          {
+            "hex": "#da672e",
+            "coveragePercent": 2.6711
+          },
+          {
+            "hex": "#a05265",
+            "coveragePercent": 2.5166
+          },
+          {
+            "hex": "#f0a05e",
+            "coveragePercent": 1.6949
+          },
+          {
+            "hex": "#8d53c2",
+            "coveragePercent": 1.3259
+          },
+          {
+            "hex": "#faedcb",
+            "coveragePercent": 0.3101
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#994229",
+            "coveragePercent": 24.1629
+          },
+          {
+            "hex": "#603693",
+            "coveragePercent": 22.337
+          },
+          {
+            "hex": "#da672d",
+            "coveragePercent": 17.5706
+          },
+          {
+            "hex": "#a64f60",
+            "coveragePercent": 14.648
+          },
+          {
+            "hex": "#f1a159",
+            "coveragePercent": 11.1016
+          },
+          {
+            "hex": "#894cbf",
+            "coveragePercent": 10.1799
+          }
+        ],
+        "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
       }
     },
@@ -22003,6 +23304,426 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/enemies/arena-captain-v1.png": {
+      "sha256": "ced596616eb405e6bac86dd496403be7d910505588f981fb69d789938d569444",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaCaptain"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2a30",
+            "coveragePercent": 13.116
+          },
+          {
+            "hex": "#4d3943",
+            "coveragePercent": 12.3153
+          },
+          {
+            "hex": "#080406",
+            "coveragePercent": 10.5641
+          },
+          {
+            "hex": "#634953",
+            "coveragePercent": 10.4972
+          },
+          {
+            "hex": "#2d1d21",
+            "coveragePercent": 10.3695
+          },
+          {
+            "hex": "#1a1014",
+            "coveragePercent": 9.9513
+          },
+          {
+            "hex": "#874f4b",
+            "coveragePercent": 7.0171
+          },
+          {
+            "hex": "#a1665e",
+            "coveragePercent": 5.7034
+          },
+          {
+            "hex": "#786468",
+            "coveragePercent": 5.1857
+          },
+          {
+            "hex": "#67352c",
+            "coveragePercent": 4.9109
+          },
+          {
+            "hex": "#bc826c",
+            "coveragePercent": 3.0241
+          },
+          {
+            "hex": "#9f8e90",
+            "coveragePercent": 1.9483
+          },
+          {
+            "hex": "#d7a985",
+            "coveragePercent": 1.7993
+          },
+          {
+            "hex": "#d7c3b9",
+            "coveragePercent": 1.3592
+          },
+          {
+            "hex": "#f4f2ee",
+            "coveragePercent": 1.2034
+          },
+          {
+            "hex": "#8e568c",
+            "coveragePercent": 1.0352
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f4043",
+            "coveragePercent": 30.3143
+          },
+          {
+            "hex": "#ae5556",
+            "coveragePercent": 21.5134
+          },
+          {
+            "hex": "#93643a",
+            "coveragePercent": 19.8484
+          },
+          {
+            "hex": "#bc7e57",
+            "coveragePercent": 16.6014
+          },
+          {
+            "hex": "#dda869",
+            "coveragePercent": 7.5595
+          },
+          {
+            "hex": "#89498c",
+            "coveragePercent": 4.1629
+          }
+        ],
+        "visibleSamples": 476640,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/arena-cyclops-v1.png": {
+      "sha256": "91a64f63a80d3ec9ff99b82bce3f462234532fdd1007ead45a9928a76f4fab8d",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaCyclops"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#514740",
+            "coveragePercent": 11.8636
+          },
+          {
+            "hex": "#2e1f19",
+            "coveragePercent": 10.9037
+          },
+          {
+            "hex": "#3b322d",
+            "coveragePercent": 10.4936
+          },
+          {
+            "hex": "#1d110d",
+            "coveragePercent": 9.9707
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 9.1634
+          },
+          {
+            "hex": "#53241a",
+            "coveragePercent": 8.2506
+          },
+          {
+            "hex": "#696159",
+            "coveragePercent": 7.3639
+          },
+          {
+            "hex": "#763627",
+            "coveragePercent": 7.0006
+          },
+          {
+            "hex": "#a94939",
+            "coveragePercent": 5.2577
+          },
+          {
+            "hex": "#82573d",
+            "coveragePercent": 5.2213
+          },
+          {
+            "hex": "#8f7b69",
+            "coveragePercent": 5.1335
+          },
+          {
+            "hex": "#b79b80",
+            "coveragePercent": 3.4626
+          },
+          {
+            "hex": "#c27050",
+            "coveragePercent": 3.2236
+          },
+          {
+            "hex": "#d8bf9f",
+            "coveragePercent": 1.7804
+          },
+          {
+            "hex": "#f1e9d7",
+            "coveragePercent": 0.8019
+          },
+          {
+            "hex": "#f5bc09",
+            "coveragePercent": 0.1089
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e3d2e",
+            "coveragePercent": 28.0961
+          },
+          {
+            "hex": "#b14b3c",
+            "coveragePercent": 24.3136
+          },
+          {
+            "hex": "#956342",
+            "coveragePercent": 21.8415
+          },
+          {
+            "hex": "#c26c4f",
+            "coveragePercent": 17.0746
+          },
+          {
+            "hex": "#d59666",
+            "coveragePercent": 7.9087
+          },
+          {
+            "hex": "#f5bd09",
+            "coveragePercent": 0.7655
+          }
+        ],
+        "visibleSamples": 412164,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/arena-minions-v1.png": {
+      "sha256": "2217ad74ef357b6bcce5335c5aeef7df2f6db272831726d1eff4bbfb5bf97aba",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "arenaMinions"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#33261f",
+            "coveragePercent": 14.2882
+          },
+          {
+            "hex": "#201713",
+            "coveragePercent": 12.5104
+          },
+          {
+            "hex": "#0c0806",
+            "coveragePercent": 9.9519
+          },
+          {
+            "hex": "#4c3b31",
+            "coveragePercent": 9.615
+          },
+          {
+            "hex": "#5f493b",
+            "coveragePercent": 9.3473
+          },
+          {
+            "hex": "#51321e",
+            "coveragePercent": 7.4493
+          },
+          {
+            "hex": "#37363b",
+            "coveragePercent": 6.6313
+          },
+          {
+            "hex": "#715a4a",
+            "coveragePercent": 6.4583
+          },
+          {
+            "hex": "#764828",
+            "coveragePercent": 5.7282
+          },
+          {
+            "hex": "#975f32",
+            "coveragePercent": 5.6463
+          },
+          {
+            "hex": "#b4763e",
+            "coveragePercent": 3.3833
+          },
+          {
+            "hex": "#464e5b",
+            "coveragePercent": 3.0251
+          },
+          {
+            "hex": "#877160",
+            "coveragePercent": 2.4367
+          },
+          {
+            "hex": "#d8a071",
+            "coveragePercent": 1.5722
+          },
+          {
+            "hex": "#a68f7c",
+            "coveragePercent": 1.3829
+          },
+          {
+            "hex": "#d2c2b2",
+            "coveragePercent": 0.5737
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e6635",
+            "coveragePercent": 33.3431
+          },
+          {
+            "hex": "#8a552e",
+            "coveragePercent": 32.7362
+          },
+          {
+            "hex": "#b3763d",
+            "coveragePercent": 20.4638
+          },
+          {
+            "hex": "#ca8a59",
+            "coveragePercent": 8.5065
+          },
+          {
+            "hex": "#e2a571",
+            "coveragePercent": 4.9363
+          },
+          {
+            "hex": "#466282",
+            "coveragePercent": 0.0141
+          }
+        ],
+        "visibleSamples": 380262,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/arena-serpent-v1.png": {
+      "sha256": "470ea8dca6a5e0a4772adb4c9ba29d39acfb9c46d6410279e17471e66240f73b",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaSerpent"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c4455",
+            "coveragePercent": 13.7424
+          },
+          {
+            "hex": "#615c6c",
+            "coveragePercent": 12.8264
+          },
+          {
+            "hex": "#856351",
+            "coveragePercent": 8.8988
+          },
+          {
+            "hex": "#342b3c",
+            "coveragePercent": 8.6516
+          },
+          {
+            "hex": "#150a0b",
+            "coveragePercent": 8.5092
+          },
+          {
+            "hex": "#7f7b7f",
+            "coveragePercent": 8.4741
+          },
+          {
+            "hex": "#a98978",
+            "coveragePercent": 8.255
+          },
+          {
+            "hex": "#381e17",
+            "coveragePercent": 7.1477
+          },
+          {
+            "hex": "#bfa796",
+            "coveragePercent": 6.5853
+          },
+          {
+            "hex": "#643f2d",
+            "coveragePercent": 6.3545
+          },
+          {
+            "hex": "#ddc6b1",
+            "coveragePercent": 3.7965
+          },
+          {
+            "hex": "#f6e8da",
+            "coveragePercent": 2.5041
+          },
+          {
+            "hex": "#500d78",
+            "coveragePercent": 1.6943
+          },
+          {
+            "hex": "#8546a1",
+            "coveragePercent": 1.5645
+          },
+          {
+            "hex": "#bd77d1",
+            "coveragePercent": 0.8957
+          },
+          {
+            "hex": "#eba510",
+            "coveragePercent": 0.0998
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91563b",
+            "coveragePercent": 36.7619
+          },
+          {
+            "hex": "#b47c58",
+            "coveragePercent": 22.1843
+          },
+          {
+            "hex": "#813d9e",
+            "coveragePercent": 16.6125
+          },
+          {
+            "hex": "#5f1392",
+            "coveragePercent": 14.2239
+          },
+          {
+            "hex": "#b654d4",
+            "coveragePercent": 8.5944
+          },
+          {
+            "hex": "#f2b512",
+            "coveragePercent": 1.6231
+          }
+        ],
+        "visibleSamples": 586333,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/bosses-v4.png": {
       "sha256": "ff6e195180ccc354832954133b57ca8182982674575d3e6a7c127019264212ee",
       "width": 1536,
@@ -22316,6 +24037,216 @@
         ],
         "visibleSamples": 354566,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/fia-arena-casting-v1.png": {
+      "sha256": "3ab97e92403916bf94138c505c0073adbf49000c7d6862427f73e621643689d3",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaArenaCasting"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#85438b",
+            "coveragePercent": 10.7365
+          },
+          {
+            "hex": "#5c3546",
+            "coveragePercent": 10.0451
+          },
+          {
+            "hex": "#6f356b",
+            "coveragePercent": 9.6041
+          },
+          {
+            "hex": "#412334",
+            "coveragePercent": 8.4515
+          },
+          {
+            "hex": "#9c56aa",
+            "coveragePercent": 8.1506
+          },
+          {
+            "hex": "#b971a0",
+            "coveragePercent": 7.5415
+          },
+          {
+            "hex": "#b359f5",
+            "coveragePercent": 6.5265
+          },
+          {
+            "hex": "#cc88be",
+            "coveragePercent": 6.0232
+          },
+          {
+            "hex": "#f7cdfb",
+            "coveragePercent": 4.7666
+          },
+          {
+            "hex": "#e69d8f",
+            "coveragePercent": 4.5915
+          },
+          {
+            "hex": "#fdf1f9",
+            "coveragePercent": 4.3823
+          },
+          {
+            "hex": "#e5a4f1",
+            "coveragePercent": 4.3589
+          },
+          {
+            "hex": "#220d19",
+            "coveragePercent": 4.3344
+          },
+          {
+            "hex": "#cd79ef",
+            "coveragePercent": 4.0527
+          },
+          {
+            "hex": "#a3605f",
+            "coveragePercent": 3.6786
+          },
+          {
+            "hex": "#facfba",
+            "coveragePercent": 2.7561
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#84418c",
+            "coveragePercent": 33.0351
+          },
+          {
+            "hex": "#b35af5",
+            "coveragePercent": 22.2203
+          },
+          {
+            "hex": "#9c53ad",
+            "coveragePercent": 20.9201
+          },
+          {
+            "hex": "#cc74f1",
+            "coveragePercent": 10.8302
+          },
+          {
+            "hex": "#995154",
+            "coveragePercent": 8.1445
+          },
+          {
+            "hex": "#dd926c",
+            "coveragePercent": 4.8498
+          }
+        ],
+        "visibleSamples": 583720,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/fia-arena-yield-v1.png": {
+      "sha256": "3ab649688aeb30982ff775cc80d31e8d1b359ebf07c1bb56f44d368a1aa74371",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaArenaYield"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5a3645",
+            "coveragePercent": 11.8373
+          },
+          {
+            "hex": "#6e385e",
+            "coveragePercent": 11.8234
+          },
+          {
+            "hex": "#7f417d",
+            "coveragePercent": 10.9776
+          },
+          {
+            "hex": "#422334",
+            "coveragePercent": 9.1028
+          },
+          {
+            "hex": "#914e9c",
+            "coveragePercent": 8.626
+          },
+          {
+            "hex": "#ae69a3",
+            "coveragePercent": 6.8585
+          },
+          {
+            "hex": "#cf84ac",
+            "coveragePercent": 6.0437
+          },
+          {
+            "hex": "#eda698",
+            "coveragePercent": 4.7093
+          },
+          {
+            "hex": "#250f1a",
+            "coveragePercent": 4.6605
+          },
+          {
+            "hex": "#fad8fd",
+            "coveragePercent": 4.141
+          },
+          {
+            "hex": "#d48fde",
+            "coveragePercent": 4.0518
+          },
+          {
+            "hex": "#ae6961",
+            "coveragePercent": 3.8244
+          },
+          {
+            "hex": "#b064dc",
+            "coveragePercent": 3.6828
+          },
+          {
+            "hex": "#ebb3f5",
+            "coveragePercent": 3.2979
+          },
+          {
+            "hex": "#fcdfc7",
+            "coveragePercent": 3.2329
+          },
+          {
+            "hex": "#fef4fc",
+            "coveragePercent": 3.1302
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#85438a",
+            "coveragePercent": 40.3993
+          },
+          {
+            "hex": "#9a53a9",
+            "coveragePercent": 23.3872
+          },
+          {
+            "hex": "#b767e3",
+            "coveragePercent": 14.6893
+          },
+          {
+            "hex": "#8e4757",
+            "coveragePercent": 10.8916
+          },
+          {
+            "hex": "#b76a5c",
+            "coveragePercent": 6.2488
+          },
+          {
+            "hex": "#e39871",
+            "coveragePercent": 4.3839
+          }
+        ],
+        "visibleSamples": 491804,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/enemies/heaven-attack-v4.png": {
@@ -27776,10 +29707,8 @@
       "sha256": "5c617a0094dd06627042d2b918804883ceebb4cb725b64865e64c16e5c2033e1",
       "width": 1774,
       "height": 887,
-      "runtimeKeys": [
-        "zenPriestess"
-      ],
-      "usage": "runtime",
+      "runtimeKeys": [],
+      "usage": "design-reference",
       "palette": {
         "dominant": [
           {
@@ -27875,6 +29804,111 @@
         ],
         "visibleSamples": 386224,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/npcs/zen-priestess-v2.png": {
+      "sha256": "1bcb2504de61e1c279340ef9e288930821a835e3c4399d58d80fed242b8a29ae",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "zenPriestess"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcc074",
+            "coveragePercent": 9.183
+          },
+          {
+            "hex": "#fcf1e4",
+            "coveragePercent": 8.5842
+          },
+          {
+            "hex": "#f9a253",
+            "coveragePercent": 8.4046
+          },
+          {
+            "hex": "#e96324",
+            "coveragePercent": 8.3786
+          },
+          {
+            "hex": "#f48039",
+            "coveragePercent": 7.8143
+          },
+          {
+            "hex": "#cc4c19",
+            "coveragePercent": 7.7251
+          },
+          {
+            "hex": "#d3132a",
+            "coveragePercent": 7.2078
+          },
+          {
+            "hex": "#f5d6b3",
+            "coveragePercent": 7.1507
+          },
+          {
+            "hex": "#320907",
+            "coveragePercent": 6.6762
+          },
+          {
+            "hex": "#a73810",
+            "coveragePercent": 6.1473
+          },
+          {
+            "hex": "#601009",
+            "coveragePercent": 5.3812
+          },
+          {
+            "hex": "#910e11",
+            "coveragePercent": 5.3552
+          },
+          {
+            "hex": "#100304",
+            "coveragePercent": 4.9512
+          },
+          {
+            "hex": "#4c3240",
+            "coveragePercent": 2.9514
+          },
+          {
+            "hex": "#cfa18b",
+            "coveragePercent": 2.1889
+          },
+          {
+            "hex": "#9f6b55",
+            "coveragePercent": 1.9005
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e86527",
+            "coveragePercent": 23.5929
+          },
+          {
+            "hex": "#fcbb6e",
+            "coveragePercent": 18.6331
+          },
+          {
+            "hex": "#f69348",
+            "coveragePercent": 17.8866
+          },
+          {
+            "hex": "#ba4518",
+            "coveragePercent": 17.331
+          },
+          {
+            "hex": "#d5142a",
+            "coveragePercent": 11.4099
+          },
+          {
+            "hex": "#981611",
+            "coveragePercent": 11.1466
+          }
+        ],
+        "visibleSamples": 723339,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "assets/images/props/camp-cedar-v1.png": {
@@ -28715,6 +30749,111 @@
         ],
         "visibleSamples": 760361,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/ui/arena-serpent-scale-v1.png": {
+      "sha256": "d68c2d6708dbdc4fc5cfc4e14ce45b745c19ab65dd7b72155b851b399a104388",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "arenaScale"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c3d41",
+            "coveragePercent": 14.7928
+          },
+          {
+            "hex": "#281e24",
+            "coveragePercent": 14.7586
+          },
+          {
+            "hex": "#0a0707",
+            "coveragePercent": 11.3147
+          },
+          {
+            "hex": "#58585e",
+            "coveragePercent": 10.2921
+          },
+          {
+            "hex": "#faf5f1",
+            "coveragePercent": 7.3425
+          },
+          {
+            "hex": "#7c777d",
+            "coveragePercent": 6.6244
+          },
+          {
+            "hex": "#42215c",
+            "coveragePercent": 6.3609
+          },
+          {
+            "hex": "#ad9f9e",
+            "coveragePercent": 4.781
+          },
+          {
+            "hex": "#663587",
+            "coveragePercent": 4.4693
+          },
+          {
+            "hex": "#59331a",
+            "coveragePercent": 4.3668
+          },
+          {
+            "hex": "#e4d2be",
+            "coveragePercent": 4.2756
+          },
+          {
+            "hex": "#905627",
+            "coveragePercent": 3.2096
+          },
+          {
+            "hex": "#ca8337",
+            "coveragePercent": 2.182
+          },
+          {
+            "hex": "#994fc0",
+            "coveragePercent": 2.1025
+          },
+          {
+            "hex": "#f1bf64",
+            "coveragePercent": 1.5847
+          },
+          {
+            "hex": "#d996e4",
+            "coveragePercent": 1.5425
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#985a27",
+            "coveragePercent": 25.7777
+          },
+          {
+            "hex": "#673090",
+            "coveragePercent": 21.9927
+          },
+          {
+            "hex": "#cd8638",
+            "coveragePercent": 18.0478
+          },
+          {
+            "hex": "#8d44b7",
+            "coveragePercent": 13.7478
+          },
+          {
+            "hex": "#f2bf5f",
+            "coveragePercent": 13.0347
+          },
+          {
+            "hex": "#bf60e3",
+            "coveragePercent": 7.3992
+          }
+        ],
+        "visibleSamples": 483310,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/ui/backpack-leather-v1.png": {
@@ -33161,6 +35300,53 @@
         "dynamic": false
       }
     ],
+    "assets/js/arena-art.js": [
+      {
+        "value": "#100e1a",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101524ed",
+        "lines": [
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          17
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          17
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          28
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/arena-challenge.js": [],
+    "assets/js/arena-combat.js": [
+      {
+        "value": "#ba88e9",
+        "lines": [
+          80
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
     "assets/js/boss-vfx.js": [
@@ -33349,86 +35535,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          530
+          534
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          398
+          399
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          360,
-          394
+          361,
+          395
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          190
+          191
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          514
+          518
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          271
+          272
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          384
+          385
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          329,
-          380
+          330,
+          381
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          190
+          191
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          529
+          533
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          514
+          518
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          389
+          390
         ],
         "dynamic": false
       }
