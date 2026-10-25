@@ -49,7 +49,7 @@ A [66-os hibajegynél](https://trello.com/c/zd5FSRSR) a dev teleport megkerülte
 
 Az [51-es hibajegynél](https://trello.com/c/kG5Dtu8Q) a választó a háromelemű `levels` tömbből és egy külön álombejegyzésből épült; a végrehajtó ettől függetlenül, kézzel felsorolt azonosítókat engedett. A tábor nem birodalom, ezért mindkét helyről kimaradt. A tábori belépés normál bossfeltétele a lista egyszerű bővítése után is blokkolta volna a tesztelést.
 
-A `DevTeleport` közös, késleltetve felépített célpontkatalógust használ a mezőkhöz és a végrehajtáshoz. A birodalmak pihenőhelyei és a külön tábori/álomcél ugyanitt szerepelnek. A tábor a meglévő `enterForestCamp` belépést használja; a bossfeltétel csak aktív `DevSession` alatt kerülhető meg. A képességek, legyőzött bossok és normál mentések nem változnak. Új oldalhelyszín dev támogatásához ezt a katalógust kell bővíteni, nem a három birodalom tömbjét.
+A `DevTeleport` közös, késleltetve felépített célpontkatalógust használ a mezőkhöz és a végrehajtáshoz. A birodalmak pihenőhelyei és a külön tábori/álomcél ugyanitt szerepelnek. A tábor a meglévő `enterForestCamp` belépést használja; a bossfeltétel csak aktív `DevSession` alatt kerülhető meg. A képességek, legyőzött bossok és normál mentések nem változnak. Az oldalhelyszínek ma a közös `SIDE_LOCATIONS` katalógusból kerülnek ide; új helyszínnél ezt a regisztrációt és a valódi pihenőpontot kell hozzáadni, nem a főbirodalmak tömbjét.
 
 A `test-dev-teleport.cjs` a ténylegesen felépített select opcióit és változáskezelőit is ellenőrzi: minden listázott cél összes érkezési pontjának működnie kell. Külön lefedi a táborba érkezést az álomból és későbbi birodalmakból, a hibás pont elutasítását állapotváltozás nélkül, a normál feloldás és a mentés izolációját. A `test-player-timers.cjs` a dev képességadás → tábori teleport → tényleges input útvonalat is vizsgálja 30/60/120 FPS, mindkét irány és minden képességkombináció mellett.
 
@@ -128,3 +128,13 @@ Zen börtöne külön teleportcél a pályakatalógusban, két pihenőhellyel. A
 ## Kitsune és alsó börtön
 
 A teleportkatalógus a börtön `shadowPrisonDepths` pihenőjét és a külön `shadowDen` tábort is tartalmazza. A tesztmód megkerülheti a normál kapu- és papfeltételeket; a bosslistában a `prisonHunter` külön újraindítható. Visszahívása nem ad újabb XP-t, érmét vagy megmentési előfeltételt. A Fia-cellát már elért tesztkarakter börtönből teleportálása csak az elkülönített állapotban jelöli a kihagyást; a normál mentés megmarad.
+
+## Árnyékzug arénája – spoileres fejlesztői rész
+
+Az `Árnyékzug arénája` (`shadowArena`) és `Fia lakosztálya` (`fiaChambers`) külön teleportcél, saját `shadowArenaEntrance`, illetve `fiaChambersRest` pihenővel. A tesztmód normál küldetés- vagy bajnoki jelzők nélkül is beléphet. A teleport nem teljesíti az arénát és nem ad normál jutalmat. Az aréna előteréből az interakcióval az egész ötmenetes próba indítható, 45 másodperces első menettel; vereség után itt is az első menettől kezdődik újra.
+
+Az arénában a bossválasztó a `level.arenaEncounters` listát használja: `arenaCaptain`, `arenaSerpent`, `arenaCyclops` és `arenaFia` külön újraindítható. A két küklopsz egy találkozásként, közös HP-val indul. A Fia-replay ugyanúgy 90 másodpercig immunis, majd ereszkedés után sebezhető; a győzelmi küldetést nem adja meg. Az egyedi replayek `replay=true` jelölése tiltja az XP-, pikkely- és küldetésjutalmat, és nem kezd önálló arénapróbát. Újraindítás előtt a korábbi átmeneti arénaharci állapot törlődik.
+
+A megkínzott kígyó pikkelyének azonosítója `arenaSerpentScale`. Az `ART_INVENTORY.items` regisztrációjából kerül a közös tárgyadóba; tesztbeli hozzáadása nem teljesíti a kígyó menetét, és nem ír normál mentést. Nem keverendő a három világ kígyópikkelyéből készülő, felszerelhető talizmánnal.
+
+A teljes kihívás tesztmódban adhat átmeneti jutalomjelzőket és megnyithatja a lakosztályt, de a `persist()` a DevSession alatt nem írja felül a normál mentést. A teszt befejezése eldobja ezeket. Célzott ellenőrzés: `node scripts/test-arena-combat.cjs` és `node scripts/test-arena-challenge.cjs`; a natív grafika és az IndexedDB tényleges viselkedése külön böngészős QA-t igényel. Részletes működés és spoilerkezelés: [SHADOW-DEN-ARENA.md](SHADOW-DEN-ARENA.md).

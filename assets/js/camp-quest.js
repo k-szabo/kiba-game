@@ -6,7 +6,7 @@ const CampQuest=(()=>{
  const owns=id=>flags[0].includes(id);
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
  function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
- const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen'].includes(locationId());
+ const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -36,8 +36,8 @@ const CampQuest=(()=>{
   if(state!=='play'||!isSide())return false;
   const map=level,hp=player.hp,destination=map.returnDestination;
   KitsuneQuest.leaveFor(destination.location?SIDE_LOCATIONS[destination.location]?.map:levels[destination.realm??0]);
-  if(destination.location==='forestCamp'){
-   if(!enterForestCamp({save:false}))return false;
+  if(destination.location&&Object.hasOwn(SIDE_LOCATIONS,destination.location)){
+   if(!enter(destination.location,{save:false}))return false;
    initPlayer(destination);
   }else{
    const target=destination.realm??0;enterRealm(target,levels[target].rests.find(rest=>rest.id===(destination.restId||'temple')));
@@ -116,6 +116,7 @@ const CampQuest=(()=>{
   },{right:'campMaster',button:'camp.master.retry'});return true;
  }
  function questMarker(id){
+  const arenaMarker=ArenaChallenge.questMarker(id);if(arenaMarker)return arenaMarker;
   if(Prologue.active||state==='menu')return null;
   if(id==='daichi'&&level===forestCamp&&defeated[0])return !owns('campQuestAccepted')?'!':rescueFlags.every(owns)&&!owns('campQuestCompleted')?'?':null;
   if(id==='herbalist'&&level===herbalHut&&(DevSession.active||owns('herbalistRescued'))){
@@ -126,7 +127,7 @@ const CampQuest=(()=>{
   return null;
  }
  function objective(){
-  if(level===shadowPrison||level===shadowDen)return null;
+  if(level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};

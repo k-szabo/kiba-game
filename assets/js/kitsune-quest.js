@@ -44,6 +44,7 @@ const KitsuneQuest=(()=>{
   if(actual.type==='fiaDenTalk'){
    if(actual.id!==candidate.id)return false;
    const npc=level.npcs.find(entry=>entry.id===actual.id);
+   if(npc.id==='fia'&&ArenaChallenge.talkFia())return true;
    story('fia.den.name',npc.name,npc.dialogue,null,{right:npc.id,speaker:npc.id});return true;
   }
   if(actual.type!=='fiaRescue')return false;

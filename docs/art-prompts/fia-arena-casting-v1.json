@@ -1,0 +1,7 @@
+{
+  "tool": "built-in imagegen",
+  "asset": "assets/images/enemies/fia-arena-casting-v1.png",
+  "prompt": "Generate a new production sprite sheet using reference character Fia. ONLY the four TOP ROW poses ofreference: floatingidle, twohandwindup, forwardboltcast, twohandsraisedoverheadAoE. Recompose those4figures in2columns2rows, NOT4columns. AoE halo whole andsmall. ExactlyFOUR wholebody figures total. Native1536x1024wide transparentRGBA sheet. Each cell768x512 with at least60px EMPTYTRANSPARENT GUTTER every side. Each character must occupy ONLY about350x350pixels, surrounded byplentyblankspace. Preserve herface purplehair ONLYtwofoxears onepurpletail black/plumgoldcostume twoarms/twohands. AllfaceRIGHT, samebodylengthandheadsize. Crisp detailedpaintedJapanese fantasy. NOshadoworbackground, no lettering/border/checkerboard. Do not drawall8poses; FOURONLY. Completehairtailfeetandspellhalofitinside eachcell. Smallquietspells. Entirefigurefloatsinemptytransparentair.",
+  "approval": "Concept and motion explicitly approved in the project conversation (2026-10-25).",
+  "alpha": "Native generated pixels preserved byte-for-byte; runtime crop/outline metadata only."
+}

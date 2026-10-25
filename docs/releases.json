@@ -906,6 +906,22 @@
           "en": "A new hunter guards Fia the kitsune in the prison depths. Once rescued, she leaves in fox form and awaits you in the Shadow Den, which opens after the priest’s defeat. If you reach her cell and leave the prison without rescuing her, she is permanently missed for that journey."
         }
       ]
+    },
+    {
+      "version": "0.9.45_724384fb",
+      "code": "724384fb",
+      "baseVersion": "0.9.45",
+      "slug": "shadow-den-arena-zen-style",
+      "summary": {
+        "hu": "Árnyékzug bajnoka",
+        "en": "Champion of the Shadow Den"
+      },
+      "fixes": [
+        {
+          "hu": "Az Árnyékzug ötmenetes arénakihívása új ellenfelekkel, egyszeri jutalmakkal és egy rejtélyes bajnokkal vár. A győzelem Fia lakosztályába és Haru új nyomához vezet. Zen megjelenése Momo festett, stilizált világához igazodik.",
+          "en": "The Shadow Den’s five-round arena challenge brings new enemies, one-time rewards and a mysterious champion. Victory leads to Fia’s chambers and a new clue about Haru. Zen’s appearance now matches Momo’s painted, stylized world."
+        }
+      ]
     }
   ]
 }

@@ -51,7 +51,7 @@ const KitsuneArt=(()=>{
   if(KitsuneQuest.den()){
    for(const npc of level.npcs){
     if(!campNPCVisible(npc)||!visiblePoint(npc,210))continue;
-    stamp(npc.id==='fia'?a?.fia:a?.residents?.[npc.id],0,npc.x,npc.y,npc.height);label(npc,npc.name,npc.height);
+    stamp(npc.id==='fia'?a?.fia:a?.residents?.[npc.id],0,npc.x,npc.y,npc.height);label(npc,npc.name,npc.height);CampArt.questMarker(npc.id,npc,npc.height);
    }
    Visuals.campPathMarker(level.returnPoint,I18n.t('shadow.name'));return;
   }

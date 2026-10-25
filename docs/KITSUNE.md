@@ -1,6 +1,6 @@
 # Fia megmentése és az Árnyékzug
 
-A [Kitsune-kártya](https://trello.com/c/AtUX7Ziq) első változata a megmentést, az átváltozást és a tábort tartalmazza. A későbbi questvonal külön feladat; egyelőre nincs félkész küldetés vagy felkiáltójel.
+A [Kitsune-kártya](https://trello.com/c/AtUX7Ziq) a megmentést, az átváltozást és a tábort alapozza meg. A megmentett Fia az Árnyékzugban már az ötmenetes arénakihívást is felajánlja; a harcok és a későbbi történeti jutalom részleteit a **spoileres** [arénareferencia](SHADOW-DEN-ARENA.md) írja le.
 
 ## Útvonal és feloldás
 
@@ -8,7 +8,7 @@ A külső börtönőr, az elhasználódó kulcs és Zen belső börtönnagya meg
 
 A `shadowPrisonDepths` pihenő a vadász arénájától keletre, aktiválási területén kívül áll. A `prisonHunter` után, nyugaton található Fia cellája. A vadász legyőzése előtt nem nyitható.
 
-A `shadowDen` az Őrült pap legyőzése után, a katedrális keleti végéről nyílik. A főbirodalmak száma nem változik: a tábor az Árnyékvilág állapotát és pihenőkatalógusát használja. A ninja és a tolvaj Fia sorsától függetlenül jelen van; Fia csak megmentés után jelenik meg. Egy pihenő és HU/EN beszélgetések érhetők el.
+A `shadowDen` az Őrült pap legyőzése után, a katedrális keleti végéről nyílik. A főbirodalmak száma nem változik: a tábor az Árnyékvilág állapotát és pihenőkatalógusát használja. A ninja és a tolvaj Fia sorsától függetlenül jelen van; Fia csak megmentés után jelenik meg. Egy pihenő és HU/EN beszélgetések érhetők el. Megmentett Fia fölött a felvehető arénaküldetést `!` jelzi. A felvétel után az Árnyékzug külön arénabejárata nyílik meg; az ötödik menet ellenfelét a feladat csak jelenlegi bajnokként említi. A teljesítés külön lakosztályt old fel.
 
 ## Tartós állapot
 
@@ -31,8 +31,10 @@ Kiszabadításkor a végleges jelző a párbeszéd előtt mentődik. Bezárás u
 
 A `prison-hunter.js` 140 HP-s, lándzsás–íjas minibosst kezel. A lándzsa 0,8, az íj 1 másodpercig jelez; az irány és a cél előre rögzül. A támadások 2 sebzést okoznak, az íj három, fél HP alatt öt nyilat lő ki. Rövid, arénán belüli visszalépés követi a csapásokat. Első legyőzése 200 XP-t és a közös miniboss-érmejutalmat adja; halál és pihenés nem hozza vissza.
 
-A `kitsune-quest.js` a megmentés, kihagyás, beszélgetések és átmeneti jelenet egyetlen állapotgazdája. A `kitsune-art.js` csak olvassa ezt és a harci állapotot. A `SIDE_LOCATIONS` kezeli a tábor feloldását és utazási pontjait. A dev-integráció a [fejlesztői eszközök](DEV-TOOLS.md) dokumentációjában szerepel.
+A `kitsune-quest.js` a megmentés, kihagyás és kiszabadítási jelenet állapotgazdája; az Árnyékzugban Fia beszélgetését az `ArenaChallenge.talkFia()` kezeli, hogy a feladatfelvétel és a későbbi meghívás ugyanazt az interakciót használja. A `kitsune-art.js` csak olvassa ezt és a harci állapotot. A `SIDE_LOCATIONS` kezeli a tábor feloldását és utazási pontjait. A dev-integráció a [fejlesztői eszközök](DEV-TOOLS.md) dokumentációjában szerepel.
 
 ## Ellenőrzés
 
 `npm run test:kitsune`: harc, teljes lépcsős út oda-vissza 30/60/120 FPS-en alapugrással; megmentés, halál, pihenés, menü/folytatás, sikeres és sikertelen utazás, kizáró állapotok, táborfeloldás és dev-izoláció. Mindkét teszt a teljes `npm test` része. A valódi böngészős tárolás és natív grafika külön QA-t igényel.
+
+A tábori folytatás célzott regressziói a `test-arena-combat.cjs` és `test-arena-challenge.cjs` fájlokban vannak. Fia kihagyása továbbra sem blokkolja az Árnyékvilág fő történeti útvonalát; az aréna és a lakosztály opcionális marad.
