@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -168,6 +168,9 @@ for name in ('captain', 'serpent', 'cyclops', 'fia'):
         npcs['arena.' + name]['variants'][image] = {'paletteGroup': group('npc.arena.' + name + '.' + image, manifest[image], frames, 'ART_ARENA.' + name + '.frames')}
 for name, definition in atlas['arena']['minions'].items():
     npcs['arena.' + name] = {'role': 'arena-minion', 'faction': 'shadowDen', 'paletteGroup': group('npc.arena.' + name, manifest[definition['image']], definition['frames'], 'ART_ARENA.minions.' + name)}
+for name in ('captain', 'necromancer', 'council'):
+    definition = atlas['dungeon'][name]
+    npcs['dungeon.' + name] = {'role': 'dungeon-boss', 'faction': 'japan' if name == 'captain' else 'shadowCult', 'paletteGroup': group('npc.dungeon.' + name, manifest[definition['image']], definition['frames'], 'ART_DUNGEON.' + name + '.frames')}
 for faction, actions in atlas['frames']['animations'].items():
     for role in actions['walk']:
         variants = {}
@@ -198,6 +201,12 @@ for action, clip in atlas['shadow'].items():
     npcs['shadow']['variants'][action] = {'paletteGroup': group('npc.shadow.' + action, manifest[clip['image']], clip['frames'], 'SHADOW_CLIPS.' + action)}
 
 objects = {}
+for floor, definition in enumerate(atlas['dungeon']['backdrops']):
+    for index, key in enumerate(definition.get('panels', [definition.get('image')])):
+        objects['dungeonBackdrop.' + str(floor) + '.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[key], 'registration': 'ART_DUNGEON.backdrops'}
+for name, definition in atlas['dungeon']['props'].items():
+    objects['dungeonProp.' + name] = {'kind': 'dungeon-prop', 'paletteGroup': group('object.dungeonProp.' + name, manifest[definition['image']], definition, 'ART_DUNGEON.props.' + name)}
+
 for index, key in enumerate(atlas['arena']['arena']['panels']):
     objects['arenaBackdrop.' + str(index)] = {'kind': 'background-panel', 'asset': manifest[key], 'registration': 'ART_ARENA.arena'}
 objects['fiaChambersBackdrop'] = {'kind': 'background', 'asset': manifest[atlas['arena']['chambers']['image']], 'registration': 'ART_ARENA.chambers'}
@@ -301,8 +310,9 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 55, 'Missing current character entry'
+assert len(npcs) == 58, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
+assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'

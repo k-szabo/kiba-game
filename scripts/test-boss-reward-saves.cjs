@@ -4,6 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 const rewards=JSON.parse(vm.runInContext('JSON.stringify(BOSS_REWARDS)',context));
 const realmCount=vm.runInContext('levels.length',context),allRewards=(1<<rewards.length)-1;

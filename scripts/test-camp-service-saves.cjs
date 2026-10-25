@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
-for(const name of ['levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+for(const name of ['dungeon-rules','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext('JSON.stringify('+expression+')',context));
 const count=read('levels.length'),copy=value=>structuredClone(value),fresh=style=>({ownedWeapons:[style],weaponRank:0,armorRank:0,herbs:0,potions:0});
 const quest=['campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted'];

@@ -5,6 +5,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 const count=vm.runInContext('levels.length',context),start=JSON.parse(vm.runInContext('JSON.stringify(levels[0].rests[0])',context));
 const flags=()=>Array.from({length:count},()=>[]);

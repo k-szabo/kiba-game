@@ -922,6 +922,22 @@
           "en": "The Shadow Den’s five-round arena challenge brings new enemies, one-time rewards and a mysterious champion. Victory leads to Fia’s chambers and a new clue about Haru. Zen’s appearance now matches Momo’s painted, stylized world."
         }
       ]
+    },
+    {
+      "version": "0.9.46_6ebfc0b6",
+      "code": "6ebfc0b6",
+      "baseVersion": "0.9.46",
+      "slug": "yomi-fall-replayable-dungeon",
+      "summary": {
+        "hu": "A Yomi Királyság bukása",
+        "en": "The Fall of the Kingdom of Yomi"
+      },
+      "fixes": [
+        {
+          "hu": "A tanácsosi csarnok tekercse háromszintes, újrajátszható dungeonbe vezet, három új bossal, mentett előrehaladással és jutalomládával.",
+          "en": "A scroll in the Council Hall leads to a replayable three-floor dungeon with three new bosses, saved progress and a reward chest."
+        }
+      ]
     }
   ]
 }

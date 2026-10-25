@@ -82,6 +82,7 @@ A weboldal statikus, GitHub Pagesen fut. A játékhoz nincs szükség felhaszná
 - [Fia megmentése és az Árnyékzug](docs/KITSUNE.md).
 - [A Yomi boss és a lávakígyó](docs/YOMI-BOSS.md).
 - [Yomi oldalága: a Négy Tanácsos Csarnoka](docs/COUNCIL-BRANCH.md).
+- [Yomi újrajátszható emlékdungeonja](docs/DUNGEONS.md) – spoileres fejlesztői referencia.
 - [Inventory és tárgyak](docs/INVENTORY.md).
 - [Agentek, skillek és QA-jóváhagyási folyamat](docs/AGENT-WORKFLOW.md).
 - [Kiadásazonosítók és hibajavítások](docs/RELEASES.md).

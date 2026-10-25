@@ -294,3 +294,6 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 .inventory-stat:first-child,.inventory-stat-armor{grid-column:1/-1}.inventory-stat-armor{font-size:16px;line-height:1.6;color:#fff4d7;overflow-wrap:anywhere}
 
 #campExecutionWarning{margin:10px 0 0;padding:10px 14px;border:2px solid #ffd487;border-radius:6px;background:#221626f2;color:#fff1cf;font:600 16px/1.4 "Kiba UI",sans-serif;text-align:center;white-space:normal;box-shadow:0 3px 16px #0009}
+
+/* The memory-scroll actions are primary dialog choices, readable at the desktop minimum. */
+#dungeonMenu .travel-grid button{font-size:16px;line-height:1.5;min-height:48px;padding:10px 14px;overflow-wrap:anywhere}

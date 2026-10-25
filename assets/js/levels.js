@@ -5,6 +5,7 @@ const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
+ dungeonSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
  seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},arenaSerpentScale:{price:80,realm:3},
@@ -18,7 +19,12 @@ const BOSS_REWARDS=Object.freeze([
  Object.freeze({id:'seraphSoul',claim:'bossRewardClaimed',xp:600,points:1}),
  Object.freeze({id:'madPriestSoul',claim:'bossRewardClaimed',xp:800,points:1})
 ]);
-function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0);}
+const DUNGEON_REWARDS=Object.freeze([
+ Object.freeze({type:'dungeonCaptain',claim:'dungeonCaptainReward',stage:'dungeonStage1Clear',xp:300,coins:80,points:1}),
+ Object.freeze({type:'dungeonNecromancer',claim:'dungeonNecromancerReward',stage:'dungeonStage2Clear',xp:450,coins:120,points:1}),
+ Object.freeze({type:'dungeonCouncil',claim:'dungeonCouncilReward',stage:'dungeonStage3Clear',xp:650,coins:200,points:1,soul:'councilSoul'})
+]);
+function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+DUNGEON_REWARDS.reduce((sum,reward)=>sum+(worldFlags?.[1]?.includes(reward.claim)?reward.points:0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -438,7 +444,45 @@ const ARENA_REWARDS=Object.freeze({
 });
 shadowRealm.progressFlags.push('arenaQuestAccepted','arenaRewardCaptain','arenaRewardSerpent','arenaRewardGuards','arenaSerpentScale','arenaChampion');
 
+// Reusable floor records keep three memories within Yomi's world state.
+const dungeonCourtyard=makeLevel('yomiDungeon1',6200,1800,{x:220,y:1100});
+for(const p of [[0,1100,1500],[1620,1020,1500],[3240,1100,2960]])ledge(dungeonCourtyard,'dungeon-courtyard-ground'+p[0],...p,'ground',220);
+for(const p of [['dungeon-upper-timber',620,940,400],['dungeon-upper-watch',1120,850,260],['dungeon-upper-wall',1540,810,650]])ledge(dungeonCourtyard,...p);
+const dungeonCrypt=makeLevel('yomiDungeon2',4200,2100,{x:220,y:650});
+ledge(dungeonCrypt,'dungeon-crypt-entry',0,650,900,'ground',150);
+for(const p of [['crypt-step1',1020,740,220],['crypt-gallery1',1360,830,900],['crypt-step2',2380,920,220],['crypt-gallery2',2720,1010,900],['crypt-turn',3740,1100,240],['crypt-descent1',3140,1190,630],['crypt-descent2',2520,1280,500],['crypt-descent3',1880,1370,520],['crypt-descent4',1240,1460,520]])ledge(dungeonCrypt,...p);
+ledge(dungeonCrypt,'dungeon-crypt-depths',0,1550,2000,'ground',400);
+const dungeonThrones=makeLevel('yomiDungeon3',6200,1800,{x:220,y:1200});
+for(const p of [[0,1200,1000],[1120,1120,1100],[2340,1200,1300],[3760,1200,2440]])ledge(dungeonThrones,'dungeon-thrones-ground'+p[0],...p,'ground',230);
+const DUNGEON_FLOORS=Object.freeze([dungeonCourtyard,dungeonCrypt,dungeonThrones]);
+const layouts=[
+ {key:'courtyard',floorY:1100,arenaX:4500,arenaW:1550,bossX:5350,restX:4350,entryY:1100,exitX:6070,exitY:1100},
+ {key:'crypt',floorY:1550,arenaX:80,arenaW:1500,bossX:650,restX:1830,entryY:650,exitX:130,exitY:1550},
+ {key:'thrones',floorY:1200,arenaX:4400,arenaW:1650,bossX:5300,restX:4210,entryY:1200,exitX:6060,exitY:1200}
+];
+for(const [index,map]of DUNGEON_FLOORS.entries()){
+ const layout=layouts[index],reward=DUNGEON_REWARDS[index];map.name='dungeon.floor.'+layout.key;map.enemyRealm=1;
+ map.dungeon={id:'yomiFall',floor:index,stage:reward.stage};
+ map.checkpoints=[{id:map.id+'Entry',x:map.start.x,y:map.start.y,name:map.name,checkpointOnly:true}];
+ rest(map,map.id+'Shrine',layout.restX,layout.floorY,'dungeon.rest.'+layout.key);
+ map.returnPoint={x:110,y:layout.entryY};map.nextPoint={x:layout.exitX,y:layout.exitY};
+ map.returnDestination={location:'councilHall'};map.arena={x:layout.arenaX,y:layout.floorY,w:layout.arenaW,restId:map.rests[0].id};map.boss={x:-10000,y:layout.floorY};
+ map.enemies.push({id:reward.type,miniboss:reward.type,name:'dungeon.boss.'+['captain','necromancer','council'][index],kind:'guard',x:layout.bossX,y:layout.floorY,patrol:300,arena:map.arena});
+ map.arenaEncounters=map.enemies.filter(e=>e.miniboss);
+ zone(map,map.name,0,0,map.width,map.height);
+}
+for(const [map,specs] of [[dungeonCourtyard,[[700,1100,'guard','japan'],[940,1100,'guard','shadowCult'],[1950,1020,'archer','japan'],[2190,1020,'mage','shadowCult'],[3400,1100,'shield','japan'],[3660,1100,'guard','shadowCult'],[3950,1100,'archer','shadowCult']]],
+ [dungeonCrypt,[[600,650,'guard','shadowCult'],[1540,830,'mage','shadowCult'],[1820,830,'guard','japan'],[2920,1010,'guard','japan'],[3200,1010,'archer','shadowCult'],[2710,1280,'guard','shadowCult'],[2050,1370,'shield','japan']]],
+ [dungeonThrones,[[600,1200,'shield','japan'],[830,1200,'guard','shadowCult'],[1460,1120,'mage','shadowCult'],[1750,1120,'archer','japan'],[2640,1200,'guard','japan'],[2920,1200,'shield','shadowCult'],[3400,1200,'mage','shadowCult'],[3920,1200,'guard','japan']]]]){
+ for(const [i,[x,y,kind,faction]] of specs.entries())map.enemies.push({id:map.id+'-soldier'+i,x,y,kind,factionOverride:faction,dungeonEnemy:true,dungeonSide:faction,patrol:260});
+}
+dungeonThrones.rewardChest={x:5950,y:1200};
+councilHall.memoryScroll={x:1850,y:820};
+levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const SIDE_LOCATIONS=Object.freeze({
+ yomiDungeon1:Object.freeze({map:dungeonCourtyard,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted'])}),
+ yomiDungeon2:Object.freeze({map:dungeonCrypt,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted','dungeonStage1Clear'])}),
+ yomiDungeon3:Object.freeze({map:dungeonThrones,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted','dungeonStage2Clear'])}),
  shadowArena:Object.freeze({map:shadowArena,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaQuestAccepted'])}),
  fiaChambers:Object.freeze({map:fiaChambers,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaChampion'])}),
  shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
@@ -454,6 +498,6 @@ function sideLocationUnlocked(id,worldFlags=[],defeated=[]){
  const spec=SIDE_LOCATIONS[id],known=worldFlags?.[spec.realm];
  return (spec.requiresRealmBoss===false||defeated?.[spec.realm]===true)&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
 }
-function realmRests(n){return levels[n]?[...levels[n].rests,...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>spec.map.rests)]:[];}
+function realmRests(n){return levels[n]?[...levels[n].rests,...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>[...spec.map.rests,...(spec.map.checkpoints||[])])]:[];}
 for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
 

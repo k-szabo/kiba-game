@@ -10,7 +10,7 @@ const grids=()=>{
 // A genuinely fresh test starts without boss, shrine or shadow-altar unlocks.
 assert(r('defeated.every(v=>!v)&&flags.every(f=>!f.length)'));
 r('DevTools.open();DevSession.begin();');
-const destinations=Array.from(r('levels.flatMap((_,n)=>realmRests(n).map(rest=>({realm:n,id:rest.id,x:rest.x,y:rest.y})))'));
+const destinations=Array.from(r('levels.flatMap((_,n)=>realmRests(n).filter(rest=>!rest.checkpointOnly).map(rest=>({realm:n,id:rest.id,x:rest.x,y:rest.y})))'));
 for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
  assert(r(`DevTeleport.teleport({realm:'${origin}',rest:'start'})`));
  r('DevTools.close();showMap();');
@@ -33,6 +33,8 @@ for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
  }
  r('DevTools.open();');
 }
+// Hidden entry checkpoints validate saves but must not appear as extra shrines, even in dev.
+for(const entry of Array.from(r('DUNGEON_FLOORS.flatMap(map=>map.checkpoints)'))){const before=JSON.stringify(h.snap());assert(!r('fastTravel('+JSON.stringify(entry)+',1)'));assert.equal(JSON.stringify(h.snap()),before);}
 // Invalid inputs remain rejected; supplied coordinates are never trusted.
 r('visitedRests[3]=[];');assert(r("DevTeleport.teleport({realm:'3',rest:'cathedral'})"));r('DevTools.close();');h.tick();
 assert(!h.elements.get('toast').textContent.includes(r("I18n.t('shadow.travel.locked')")),'A dev shrine arrival must not claim that available travel is locked');

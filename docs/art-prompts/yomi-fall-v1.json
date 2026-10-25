@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-25",
+  "approval": {
+    "bossConcept": "exec-56e49d99-f671-4169-9f0c-305a121fe576.png explicitly approved.",
+    "environmentAndItems": "exec-51ca8b65-1956-42bf-b490-8d9460207e54.png explicitly approved.",
+    "storyboard": "exec-3fb08d67-6902-44fc-aa76-e0c578bd112c.png: all eighteen poses explicitly approved."
+  },
+  "notes": [
+    "Selected native PNG bytes copied unchanged; source alpha preserved. Python registration analyzes pixels only, never edits images.",
+    "Three connected-component masks isolate six poses per actor, including naginata tips crossing ideal grid boundaries. Each actor has a fixed body scale and explicit foot anchors.",
+    "Necromancer faces consistently right with one staff gripped; external magic removed from Council sprites and rendered by the shared VFX layer.",
+    "Three forecourt panels blend horizontally. Covered interior backdrops follow camera depth gently."
+  ],
+  "assets": [
+    {
+      "path": "assets/images/enemies/yomi-fall-captain-v1.png",
+      "prompt": "Six poses, dark navy/gold naginata captain; idle, step, windup, thrust, recovery, airborne attack. Fixed horizontal straight weapon and two-hand grip; native alpha.",
+      "sha256": "643cbb968cf7357a6df0bd99c222bee5f3178aa2d1908a627aa538e540dc0a37"
+    },
+    {
+      "path": "assets/images/enemies/yomi-fall-necromancer-v1.png",
+      "prompt": "Six poses of the approved hooded staff-wielding cultist. One right-hand ritual staff always held. Idle, step, telegraph, cast, recover, summon. Repair all faces to viewer-right and remove external spell swirls.",
+      "sha256": "1b58d0d1fb6befcd26cc01f3655f266d59575745305fe840fc24f5deb6eeaaa8"
+    },
+    {
+      "path": "assets/images/enemies/yomi-fall-council-v1.png",
+      "prompt": "Six poses of the four councillors fused into one armored body, four faces, two arms and two legs. Idle, heavy step, raised claw, sweep, recover, shared magic. Remove external VFX to isolate complete silhouettes.",
+      "sha256": "8c9f296025db4c63556f653d182cb3bb436c0defab6a59a4f068b3cc9c5ec1f0"
+    },
+    {
+      "path": "assets/images/ui/yomi-fall-props-v1.png",
+      "prompt": "Three separate transparent props: approved memory scroll, closed black/red lacquer reward chest, same open chest with golden interior.",
+      "sha256": "cff11e6629dd5b559cc7fe81ef5a1e8e9b0a096ce708f65472d7bd99bb077848"
+    },
+    {
+      "path": "assets/images/ui/yomi-fall-items-v1.png",
+      "prompt": "Five inventory icons, three columns/two rows: four-face soul, bronze council seal, orange weapon shard, metal armor rivet, violet spirit thread spool. Complete saturated silhouettes, true alpha.",
+      "sha256": "0d807b953ce8acf111f5c64100e5d0ee2b7cc1bd73a628072f2dd856e137eaef"
+    },
+    {
+      "path": "assets/images/backgrounds/yomi-fall-crypt-v1.png",
+      "prompt": "Approved crypt panel5 expanded into full detailed painted Japanese crypt with timber beams, stone guardians, tomb niches, bronze braziers and violet Kiba among amber candles. No characters or text.",
+      "sha256": "79ff1ae6348ca960be42d88bcdcf48a2238ea2bdce947ddccf6ded45a41e821e"
+    },
+    {
+      "path": "assets/images/backgrounds/yomi-fall-thrones-v1.png",
+      "prompt": "Approved hall panel6, exactly four empty golden thrones, broken Japanese demon palace roof, violet sky, black timber, bronze lanterns and rich stone floor. No text/characters.",
+      "sha256": "43d75bf11d2ec0ef855f508f52e95bc32a5ae9f9f5a14bce3fe512ca3f937ed6"
+    },
+    {
+      "path": "assets/images/backgrounds/yomi-fall-courtyard-west-v1.png",
+      "prompt": "Approved burning forecourt environment expanded into detailed painted Japanese castle war scenery. Smoke, fire, banners, stone fortification; no actors/text, natural scale and continuous walkable foreground for game collision overlay.",
+      "sha256": "b892fe2a1763e3f3df3028ff1f5ef2aecd7de83ff89f3183e82a48878daa806e"
+    },
+    {
+      "path": "assets/images/backgrounds/yomi-fall-courtyard-center-v1.png",
+      "prompt": "Approved burning forecourt environment expanded into detailed painted Japanese castle war scenery. Smoke, fire, banners, stone fortification; no actors/text, natural scale and continuous walkable foreground for game collision overlay.",
+      "sha256": "388cfe4c337d5d26d1db682556326cba306324d6e20b4db4083f6f18460659af"
+    },
+    {
+      "path": "assets/images/backgrounds/yomi-fall-courtyard-east-v1.png",
+      "prompt": "Approved burning forecourt environment expanded into detailed painted Japanese castle war scenery. Smoke, fire, banners, stone fortification; no actors/text, natural scale and continuous walkable foreground for game collision overlay.",
+      "sha256": "d09d456ce58bc0ea14838c057cd6af8200286cfebf721ac4523907f2ce2f298f"
+    }
+  ]
+}

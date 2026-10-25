@@ -4,7 +4,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {webcrypto}=require('node:crypto');
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8');
-const levelSource=fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8');
+const levelSource=fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8');
 const levelContext=vm.createContext({I18n:{t:key=>key}});vm.runInContext(levelSource,levelContext);
 const realmCount=vm.runInContext('levels.length',levelContext);
 const rules=vm.runInContext('PROGRESSION_RULES',levelContext);

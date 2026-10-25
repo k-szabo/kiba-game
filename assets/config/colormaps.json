@@ -206,6 +206,21 @@
       "faction": "shadowDen",
       "paletteGroup": "npc.arena.guard"
     },
+    "dungeon.captain": {
+      "role": "dungeon-boss",
+      "faction": "japan",
+      "paletteGroup": "npc.dungeon.captain"
+    },
+    "dungeon.necromancer": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dungeon.necromancer"
+    },
+    "dungeon.council": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dungeon.council"
+    },
     "japan.guard": {
       "faction": "japan",
       "role": "guard",
@@ -467,6 +482,43 @@
     }
   },
   "objects": {
+    "dungeonBackdrop.0.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-west-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.0.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-center-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.0.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-east-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.1.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-crypt-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.2.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-thrones-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonProp.scroll": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.scroll"
+    },
+    "dungeonProp.closedChest": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.closedChest"
+    },
+    "dungeonProp.openChest": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.openChest"
+    },
     "arenaBackdrop.0": {
       "kind": "background-panel",
       "asset": "assets/images/backgrounds/shadow-arena-west-v1.png",
@@ -738,6 +790,26 @@
     "inventoryItem.arenaSerpentScale": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.arenaSerpentScale"
+    },
+    "inventoryItem.councilSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.councilSoul"
+    },
+    "inventoryItem.dungeonSeal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dungeonSeal"
+    },
+    "inventoryItem.weaponEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.weaponEnhancement"
+    },
+    "inventoryItem.armorEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.armorEnhancement"
+    },
+    "inventoryItem.spiritEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.spiritEnhancement"
     },
     "secretWall.angel": {
       "kind": "scenery",
@@ -4513,6 +4585,309 @@
         ],
         "visibleSamples": 208434,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.dungeon.captain": {
+      "source": "assets/images/enemies/yomi-fall-captain-v1.png",
+      "frameMetadata": "ART_DUNGEON.captain.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#312c2a",
+            "coveragePercent": 14.1216
+          },
+          {
+            "hex": "#3f3a39",
+            "coveragePercent": 10.7532
+          },
+          {
+            "hex": "#231d1c",
+            "coveragePercent": 10.2193
+          },
+          {
+            "hex": "#4c494c",
+            "coveragePercent": 10.1325
+          },
+          {
+            "hex": "#14100f",
+            "coveragePercent": 8.8262
+          },
+          {
+            "hex": "#605c5e",
+            "coveragePercent": 8.5673
+          },
+          {
+            "hex": "#6f6f76",
+            "coveragePercent": 6.9757
+          },
+          {
+            "hex": "#866c54",
+            "coveragePercent": 5.4003
+          },
+          {
+            "hex": "#858182",
+            "coveragePercent": 5.3563
+          },
+          {
+            "hex": "#674b33",
+            "coveragePercent": 5.1285
+          },
+          {
+            "hex": "#070404",
+            "coveragePercent": 4.3675
+          },
+          {
+            "hex": "#ae8b61",
+            "coveragePercent": 2.7104
+          },
+          {
+            "hex": "#a99a8e",
+            "coveragePercent": 2.526
+          },
+          {
+            "hex": "#ceaf8a",
+            "coveragePercent": 2.4842
+          },
+          {
+            "hex": "#d4c5b2",
+            "coveragePercent": 1.5248
+          },
+          {
+            "hex": "#ecedec",
+            "coveragePercent": 0.9064
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c6842",
+            "coveragePercent": 23.9701
+          },
+          {
+            "hex": "#a0784a",
+            "coveragePercent": 22.793
+          },
+          {
+            "hex": "#b48b56",
+            "coveragePercent": 19.4233
+          },
+          {
+            "hex": "#ca9f63",
+            "coveragePercent": 13.2289
+          },
+          {
+            "hex": "#895c30",
+            "coveragePercent": 12.7956
+          },
+          {
+            "hex": "#e2b773",
+            "coveragePercent": 7.7891
+          }
+        ],
+        "visibleSamples": 314698,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.dungeon.necromancer": {
+      "source": "assets/images/enemies/yomi-fall-necromancer-v1.png",
+      "frameMetadata": "ART_DUNGEON.necromancer.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5b4b50",
+            "coveragePercent": 14.24
+          },
+          {
+            "hex": "#46383c",
+            "coveragePercent": 12.7417
+          },
+          {
+            "hex": "#705f65",
+            "coveragePercent": 11.6818
+          },
+          {
+            "hex": "#887277",
+            "coveragePercent": 10.0981
+          },
+          {
+            "hex": "#33272b",
+            "coveragePercent": 9.0818
+          },
+          {
+            "hex": "#231514",
+            "coveragePercent": 7.1807
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 6.171
+          },
+          {
+            "hex": "#a38991",
+            "coveragePercent": 6.1236
+          },
+          {
+            "hex": "#ccaa8f",
+            "coveragePercent": 3.9133
+          },
+          {
+            "hex": "#8a674e",
+            "coveragePercent": 3.482
+          },
+          {
+            "hex": "#b58d66",
+            "coveragePercent": 3.3921
+          },
+          {
+            "hex": "#4b250c",
+            "coveragePercent": 3.2496
+          },
+          {
+            "hex": "#dfc3b1",
+            "coveragePercent": 3.1232
+          },
+          {
+            "hex": "#6f4522",
+            "coveragePercent": 2.8194
+          },
+          {
+            "hex": "#f2e3d9",
+            "coveragePercent": 1.6845
+          },
+          {
+            "hex": "#a66d29",
+            "coveragePercent": 1.0171
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c623e",
+            "coveragePercent": 25.3689
+          },
+          {
+            "hex": "#a77a4f",
+            "coveragePercent": 20.3911
+          },
+          {
+            "hex": "#c69558",
+            "coveragePercent": 19.471
+          },
+          {
+            "hex": "#8f5415",
+            "coveragePercent": 13.6886
+          },
+          {
+            "hex": "#e4b76c",
+            "coveragePercent": 10.5582
+          },
+          {
+            "hex": "#b37729",
+            "coveragePercent": 10.5223
+          }
+        ],
+        "visibleSamples": 612575,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.dungeon.council": {
+      "source": "assets/images/enemies/yomi-fall-council-v1.png",
+      "frameMetadata": "ART_DUNGEON.council.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1b17",
+            "coveragePercent": 11.3326
+          },
+          {
+            "hex": "#5c4845",
+            "coveragePercent": 11.0293
+          },
+          {
+            "hex": "#43322f",
+            "coveragePercent": 10.7919
+          },
+          {
+            "hex": "#755c56",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#8c7168",
+            "coveragePercent": 8.4962
+          },
+          {
+            "hex": "#110806",
+            "coveragePercent": 7.9648
+          },
+          {
+            "hex": "#6d3c2c",
+            "coveragePercent": 7.7515
+          },
+          {
+            "hex": "#52271c",
+            "coveragePercent": 6.3637
+          },
+          {
+            "hex": "#914f3a",
+            "coveragePercent": 6.1275
+          },
+          {
+            "hex": "#a58978",
+            "coveragePercent": 6.0025
+          },
+          {
+            "hex": "#c4a186",
+            "coveragePercent": 4.3162
+          },
+          {
+            "hex": "#bd654d",
+            "coveragePercent": 3.7647
+          },
+          {
+            "hex": "#d8baa3",
+            "coveragePercent": 3.1218
+          },
+          {
+            "hex": "#e9d6cb",
+            "coveragePercent": 1.4585
+          },
+          {
+            "hex": "#75498f",
+            "coveragePercent": 1.2236
+          },
+          {
+            "hex": "#ab7bc9",
+            "coveragePercent": 0.8591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914336",
+            "coveragePercent": 34.0597
+          },
+          {
+            "hex": "#986d46",
+            "coveragePercent": 23.6838
+          },
+          {
+            "hex": "#bc5849",
+            "coveragePercent": 22.6481
+          },
+          {
+            "hex": "#d09263",
+            "coveragePercent": 12.8519
+          },
+          {
+            "hex": "#754493",
+            "coveragePercent": 4.1667
+          },
+          {
+            "hex": "#975ebb",
+            "coveragePercent": 2.5898
+          }
+        ],
+        "visibleSamples": 722448,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.japan.guard.walk": {
@@ -9363,6 +9738,309 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "object.dungeonProp.scroll": {
+      "source": "assets/images/ui/yomi-fall-props-v1.png",
+      "frameMetadata": "ART_DUNGEON.props.scroll",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f7cca7",
+            "coveragePercent": 15.3497
+          },
+          {
+            "hex": "#0e0405",
+            "coveragePercent": 12.4662
+          },
+          {
+            "hex": "#fcdfbe",
+            "coveragePercent": 9.8341
+          },
+          {
+            "hex": "#e5b18b",
+            "coveragePercent": 8.9002
+          },
+          {
+            "hex": "#450f07",
+            "coveragePercent": 8.1098
+          },
+          {
+            "hex": "#683d76",
+            "coveragePercent": 6.1907
+          },
+          {
+            "hex": "#8d5a8d",
+            "coveragePercent": 6.0559
+          },
+          {
+            "hex": "#281b24",
+            "coveragePercent": 5.0955
+          },
+          {
+            "hex": "#753914",
+            "coveragePercent": 4.9564
+          },
+          {
+            "hex": "#ce915b",
+            "coveragePercent": 4.487
+          },
+          {
+            "hex": "#a8632b",
+            "coveragePercent": 4.4455
+          },
+          {
+            "hex": "#b981a2",
+            "coveragePercent": 4.1138
+          },
+          {
+            "hex": "#462a52",
+            "coveragePercent": 4.0814
+          },
+          {
+            "hex": "#990921",
+            "coveragePercent": 2.242
+          },
+          {
+            "hex": "#fbf2e0",
+            "coveragePercent": 2.2102
+          },
+          {
+            "hex": "#e52e59",
+            "coveragePercent": 1.4615
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#98521c",
+            "coveragePercent": 22.8407
+          },
+          {
+            "hex": "#bf7b3f",
+            "coveragePercent": 20.1854
+          },
+          {
+            "hex": "#e5a76b",
+            "coveragePercent": 19.8756
+          },
+          {
+            "hex": "#874295",
+            "coveragePercent": 18.0596
+          },
+          {
+            "hex": "#a60b26",
+            "coveragePercent": 11.2924
+          },
+          {
+            "hex": "#e8335f",
+            "coveragePercent": 7.7462
+          }
+        ],
+        "visibleSamples": 133652,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.dungeonProp.closedChest": {
+      "source": "assets/images/ui/yomi-fall-props-v1.png",
+      "frameMetadata": "ART_DUNGEON.props.closedChest",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090505",
+            "coveragePercent": 21.5775
+          },
+          {
+            "hex": "#181212",
+            "coveragePercent": 18.5434
+          },
+          {
+            "hex": "#681c0b",
+            "coveragePercent": 8.2158
+          },
+          {
+            "hex": "#282325",
+            "coveragePercent": 7.4982
+          },
+          {
+            "hex": "#3d0f07",
+            "coveragePercent": 7.3401
+          },
+          {
+            "hex": "#ac5a1b",
+            "coveragePercent": 6.6774
+          },
+          {
+            "hex": "#843d11",
+            "coveragePercent": 6.5014
+          },
+          {
+            "hex": "#a21d15",
+            "coveragePercent": 5.8375
+          },
+          {
+            "hex": "#db782d",
+            "coveragePercent": 3.8991
+          },
+          {
+            "hex": "#d93d27",
+            "coveragePercent": 3.4698
+          },
+          {
+            "hex": "#423a3c",
+            "coveragePercent": 3.2391
+          },
+          {
+            "hex": "#eea051",
+            "coveragePercent": 2.3531
+          },
+          {
+            "hex": "#695b5d",
+            "coveragePercent": 1.473
+          },
+          {
+            "hex": "#f1cb94",
+            "coveragePercent": 1.2869
+          },
+          {
+            "hex": "#b68465",
+            "coveragePercent": 1.069
+          },
+          {
+            "hex": "#fbf4e1",
+            "coveragePercent": 1.0185
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a6571b",
+            "coveragePercent": 27.7343
+          },
+          {
+            "hex": "#8e2811",
+            "coveragePercent": 21.9615
+          },
+          {
+            "hex": "#d57c30",
+            "coveragePercent": 15.8144
+          },
+          {
+            "hex": "#b52418",
+            "coveragePercent": 14.6757
+          },
+          {
+            "hex": "#e2482e",
+            "coveragePercent": 10.9492
+          },
+          {
+            "hex": "#f0a95a",
+            "coveragePercent": 8.8648
+          }
+        ],
+        "visibleSamples": 142685,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "object.dungeonProp.openChest": {
+      "source": "assets/images/ui/yomi-fall-props-v1.png",
+      "frameMetadata": "ART_DUNGEON.props.openChest",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0707",
+            "coveragePercent": 17.4165
+          },
+          {
+            "hex": "#1e191a",
+            "coveragePercent": 11.124
+          },
+          {
+            "hex": "#6e2808",
+            "coveragePercent": 10.7887
+          },
+          {
+            "hex": "#8c430b",
+            "coveragePercent": 10.387
+          },
+          {
+            "hex": "#4a1806",
+            "coveragePercent": 8.2083
+          },
+          {
+            "hex": "#280b04",
+            "coveragePercent": 7.533
+          },
+          {
+            "hex": "#af570d",
+            "coveragePercent": 7.3217
+          },
+          {
+            "hex": "#a42016",
+            "coveragePercent": 4.6626
+          },
+          {
+            "hex": "#e07808",
+            "coveragePercent": 4.0656
+          },
+          {
+            "hex": "#b46e35",
+            "coveragePercent": 3.8204
+          },
+          {
+            "hex": "#3e3434",
+            "coveragePercent": 3.7908
+          },
+          {
+            "hex": "#e3954e",
+            "coveragePercent": 2.8816
+          },
+          {
+            "hex": "#fbb416",
+            "coveragePercent": 2.6083
+          },
+          {
+            "hex": "#e1432a",
+            "coveragePercent": 2.2683
+          },
+          {
+            "hex": "#f5d07a",
+            "coveragePercent": 1.8223
+          },
+          {
+            "hex": "#fbf3d1",
+            "coveragePercent": 1.301
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#94300d",
+            "coveragePercent": 29.475
+          },
+          {
+            "hex": "#a45315",
+            "coveragePercent": 26.5402
+          },
+          {
+            "hex": "#d35e11",
+            "coveragePercent": 17.392
+          },
+          {
+            "hex": "#d27f3f",
+            "coveragePercent": 11.23
+          },
+          {
+            "hex": "#f7a10e",
+            "coveragePercent": 9.1645
+          },
+          {
+            "hex": "#f5c35b",
+            "coveragePercent": 6.1982
+          }
+        ],
+        "visibleSamples": 162507,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "object.prisonTerrain.left": {
       "source": "assets/images/backgrounds/prison-terrain-v1.png",
       "frameMetadata": "ART_PRISON.terrain.left",
@@ -13401,6 +14079,511 @@
         ],
         "visibleSamples": 483310,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.councilSoul": {
+      "source": "assets/images/ui/yomi-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.councilSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0f0604",
+            "coveragePercent": 12.5514
+          },
+          {
+            "hex": "#301b13",
+            "coveragePercent": 11.8071
+          },
+          {
+            "hex": "#7828ce",
+            "coveragePercent": 10.0341
+          },
+          {
+            "hex": "#a146ef",
+            "coveragePercent": 7.4873
+          },
+          {
+            "hex": "#cb76f7",
+            "coveragePercent": 7.0767
+          },
+          {
+            "hex": "#eaaffb",
+            "coveragePercent": 6.681
+          },
+          {
+            "hex": "#fcecf7",
+            "coveragePercent": 6.5615
+          },
+          {
+            "hex": "#5f2808",
+            "coveragePercent": 6.0671
+          },
+          {
+            "hex": "#9b3da3",
+            "coveragePercent": 5.9045
+          },
+          {
+            "hex": "#5314a9",
+            "coveragePercent": 5.1374
+          },
+          {
+            "hex": "#97480e",
+            "coveragePercent": 4.046
+          },
+          {
+            "hex": "#de7786",
+            "coveragePercent": 3.8828
+          },
+          {
+            "hex": "#fad79c",
+            "coveragePercent": 3.6522
+          },
+          {
+            "hex": "#d4771f",
+            "coveragePercent": 3.1774
+          },
+          {
+            "hex": "#614742",
+            "coveragePercent": 3.1249
+          },
+          {
+            "hex": "#f5b846",
+            "coveragePercent": 2.8085
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e35c8",
+            "coveragePercent": 32.4541
+          },
+          {
+            "hex": "#c064f2",
+            "coveragePercent": 21.6294
+          },
+          {
+            "hex": "#5e19b4",
+            "coveragePercent": 18.1616
+          },
+          {
+            "hex": "#dd784b",
+            "coveragePercent": 10.3146
+          },
+          {
+            "hex": "#a14e10",
+            "coveragePercent": 9.9454
+          },
+          {
+            "hex": "#f9c15c",
+            "coveragePercent": 7.4949
+          }
+        ],
+        "visibleSamples": 166131,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.dungeonSeal": {
+      "source": "assets/images/ui/yomi-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.dungeonSeal",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090404",
+            "coveragePercent": 17.816
+          },
+          {
+            "hex": "#321507",
+            "coveragePercent": 11.3238
+          },
+          {
+            "hex": "#3d2d24",
+            "coveragePercent": 9.2215
+          },
+          {
+            "hex": "#c57626",
+            "coveragePercent": 8.0106
+          },
+          {
+            "hex": "#9c561c",
+            "coveragePercent": 7.8274
+          },
+          {
+            "hex": "#e49939",
+            "coveragePercent": 7.0132
+          },
+          {
+            "hex": "#090421",
+            "coveragePercent": 6.3285
+          },
+          {
+            "hex": "#6b300a",
+            "coveragePercent": 6.0975
+          },
+          {
+            "hex": "#604633",
+            "coveragePercent": 4.8652
+          },
+          {
+            "hex": "#f2c05c",
+            "coveragePercent": 4.5412
+          },
+          {
+            "hex": "#140c4f",
+            "coveragePercent": 4.3102
+          },
+          {
+            "hex": "#271d84",
+            "coveragePercent": 3.5628
+          },
+          {
+            "hex": "#f8e392",
+            "coveragePercent": 2.9772
+          },
+          {
+            "hex": "#443cba",
+            "coveragePercent": 2.5938
+          },
+          {
+            "hex": "#f9f5db",
+            "coveragePercent": 1.9931
+          },
+          {
+            "hex": "#7774e5",
+            "coveragePercent": 1.518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c47525",
+            "coveragePercent": 25.3061
+          },
+          {
+            "hex": "#99521a",
+            "coveragePercent": 22.6688
+          },
+          {
+            "hex": "#e59c3a",
+            "coveragePercent": 22.0266
+          },
+          {
+            "hex": "#f7cb65",
+            "coveragePercent": 13.5317
+          },
+          {
+            "hex": "#32299d",
+            "coveragePercent": 10.3972
+          },
+          {
+            "hex": "#5d58da",
+            "coveragePercent": 6.0698
+          }
+        ],
+        "visibleSamples": 156101,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.weaponEnhancement": {
+      "source": "assets/images/ui/yomi-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.weaponEnhancement",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5b1208",
+            "coveragePercent": 10.4897
+          },
+          {
+            "hex": "#861506",
+            "coveragePercent": 10.3365
+          },
+          {
+            "hex": "#ec250a",
+            "coveragePercent": 9.5382
+          },
+          {
+            "hex": "#f44b04",
+            "coveragePercent": 9.4102
+          },
+          {
+            "hex": "#b5280b",
+            "coveragePercent": 8.8318
+          },
+          {
+            "hex": "#340a07",
+            "coveragePercent": 8.1509
+          },
+          {
+            "hex": "#0f0202",
+            "coveragePercent": 6.8434
+          },
+          {
+            "hex": "#f77107",
+            "coveragePercent": 6.3273
+          },
+          {
+            "hex": "#fca40a",
+            "coveragePercent": 5.4825
+          },
+          {
+            "hex": "#764231",
+            "coveragePercent": 4.4466
+          },
+          {
+            "hex": "#fdf9e9",
+            "coveragePercent": 4.1059
+          },
+          {
+            "hex": "#fde015",
+            "coveragePercent": 3.9391
+          },
+          {
+            "hex": "#ec6e4a",
+            "coveragePercent": 3.4463
+          },
+          {
+            "hex": "#f5dca9",
+            "coveragePercent": 3.1651
+          },
+          {
+            "hex": "#fad863",
+            "coveragePercent": 3.075
+          },
+          {
+            "hex": "#aa7565",
+            "coveragePercent": 2.4118
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ed3407",
+            "coveragePercent": 31.0325
+          },
+          {
+            "hex": "#a0210b",
+            "coveragePercent": 25.6546
+          },
+          {
+            "hex": "#f97907",
+            "coveragePercent": 18.5051
+          },
+          {
+            "hex": "#fdcf11",
+            "coveragePercent": 10.5367
+          },
+          {
+            "hex": "#d86844",
+            "coveragePercent": 8.4669
+          },
+          {
+            "hex": "#fbd862",
+            "coveragePercent": 5.8042
+          }
+        ],
+        "visibleSamples": 115106,
+        "dominantCoveragePercent": 100.0003
+      }
+    },
+    "object.inventoryItem.armorEnhancement": {
+      "source": "assets/images/ui/yomi-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.armorEnhancement",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060302",
+            "coveragePercent": 15.9475
+          },
+          {
+            "hex": "#170c0a",
+            "coveragePercent": 13.9283
+          },
+          {
+            "hex": "#271e20",
+            "coveragePercent": 11.3301
+          },
+          {
+            "hex": "#3f3335",
+            "coveragePercent": 8.5536
+          },
+          {
+            "hex": "#371707",
+            "coveragePercent": 7.0013
+          },
+          {
+            "hex": "#5a2909",
+            "coveragePercent": 6.4032
+          },
+          {
+            "hex": "#5c4d4d",
+            "coveragePercent": 6.0964
+          },
+          {
+            "hex": "#813f0e",
+            "coveragePercent": 5.779
+          },
+          {
+            "hex": "#ac5d16",
+            "coveragePercent": 4.8769
+          },
+          {
+            "hex": "#7e6d69",
+            "coveragePercent": 3.8539
+          },
+          {
+            "hex": "#d98523",
+            "coveragePercent": 3.8201
+          },
+          {
+            "hex": "#f3b946",
+            "coveragePercent": 3.0025
+          },
+          {
+            "hex": "#f8f4e3",
+            "coveragePercent": 2.9086
+          },
+          {
+            "hex": "#a69288",
+            "coveragePercent": 2.6897
+          },
+          {
+            "hex": "#fae48a",
+            "coveragePercent": 1.9776
+          },
+          {
+            "hex": "#cdbdb2",
+            "coveragePercent": 1.8313
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91480e",
+            "coveragePercent": 26.7767
+          },
+          {
+            "hex": "#b96413",
+            "coveragePercent": 21.9887
+          },
+          {
+            "hex": "#e18b21",
+            "coveragePercent": 17.4719
+          },
+          {
+            "hex": "#f1b445",
+            "coveragePercent": 15.5822
+          },
+          {
+            "hex": "#a77140",
+            "coveragePercent": 9.1991
+          },
+          {
+            "hex": "#fadb6e",
+            "coveragePercent": 8.9813
+          }
+        ],
+        "visibleSamples": 98175,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.spiritEnhancement": {
+      "source": "assets/images/ui/yomi-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.spiritEnhancement",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341a14",
+            "coveragePercent": 12.9361
+          },
+          {
+            "hex": "#10050a",
+            "coveragePercent": 11.1906
+          },
+          {
+            "hex": "#892aed",
+            "coveragePercent": 9.3292
+          },
+          {
+            "hex": "#5e10d1",
+            "coveragePercent": 8.1259
+          },
+          {
+            "hex": "#68320f",
+            "coveragePercent": 7.432
+          },
+          {
+            "hex": "#b04af7",
+            "coveragePercent": 6.8017
+          },
+          {
+            "hex": "#3e089b",
+            "coveragePercent": 6.4719
+          },
+          {
+            "hex": "#d777fc",
+            "coveragePercent": 5.4713
+          },
+          {
+            "hex": "#1f0356",
+            "coveragePercent": 5.2592
+          },
+          {
+            "hex": "#50323c",
+            "coveragePercent": 5.1037
+          },
+          {
+            "hex": "#fcedf8",
+            "coveragePercent": 5.0412
+          },
+          {
+            "hex": "#f2b0fd",
+            "coveragePercent": 4.5388
+          },
+          {
+            "hex": "#a35718",
+            "coveragePercent": 4.154
+          },
+          {
+            "hex": "#e39531",
+            "coveragePercent": 3.0479
+          },
+          {
+            "hex": "#8e5e63",
+            "coveragePercent": 2.7545
+          },
+          {
+            "hex": "#ecca85",
+            "coveragePercent": 2.3421
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9736f0",
+            "coveragePercent": 24.9644
+          },
+          {
+            "hex": "#6714da",
+            "coveragePercent": 20.5221
+          },
+          {
+            "hex": "#cd67fc",
+            "coveragePercent": 16.6255
+          },
+          {
+            "hex": "#4209a2",
+            "coveragePercent": 16.3735
+          },
+          {
+            "hex": "#a3581d",
+            "coveragePercent": 13.3164
+          },
+          {
+            "hex": "#ebaa45",
+            "coveragePercent": 8.1981
+          }
+        ],
+        "visibleSamples": 148331,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "object.secretWall.angel": {
@@ -20994,6 +22177,531 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/backgrounds/yomi-fall-courtyard-center-v1.png": {
+      "sha256": "388cfe4c337d5d26d1db682556326cba306324d6e20b4db4083f6f18460659af",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCourtyardCenter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#131313",
+            "coveragePercent": 12.9977
+          },
+          {
+            "hex": "#1d1c1c",
+            "coveragePercent": 12.153
+          },
+          {
+            "hex": "#0c0c0b",
+            "coveragePercent": 12.0649
+          },
+          {
+            "hex": "#333538",
+            "coveragePercent": 11.7887
+          },
+          {
+            "hex": "#282727",
+            "coveragePercent": 10.6056
+          },
+          {
+            "hex": "#434246",
+            "coveragePercent": 10.4493
+          },
+          {
+            "hex": "#040403",
+            "coveragePercent": 7.7062
+          },
+          {
+            "hex": "#555153",
+            "coveragePercent": 6.9002
+          },
+          {
+            "hex": "#6b605d",
+            "coveragePercent": 3.988
+          },
+          {
+            "hex": "#8a7164",
+            "coveragePercent": 2.6291
+          },
+          {
+            "hex": "#4f3526",
+            "coveragePercent": 2.5933
+          },
+          {
+            "hex": "#b28a72",
+            "coveragePercent": 1.8928
+          },
+          {
+            "hex": "#794d39",
+            "coveragePercent": 1.5916
+          },
+          {
+            "hex": "#d5a47f",
+            "coveragePercent": 1.4466
+          },
+          {
+            "hex": "#f6c796",
+            "coveragePercent": 0.7156
+          },
+          {
+            "hex": "#be673e",
+            "coveragePercent": 0.4773
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945b44",
+            "coveragePercent": 31.7728
+          },
+          {
+            "hex": "#904b26",
+            "coveragePercent": 18.4432
+          },
+          {
+            "hex": "#ba7857",
+            "coveragePercent": 16.7851
+          },
+          {
+            "hex": "#e2a472",
+            "coveragePercent": 13.325
+          },
+          {
+            "hex": "#c06032",
+            "coveragePercent": 11.5136
+          },
+          {
+            "hex": "#e98244",
+            "coveragePercent": 8.1603
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/yomi-fall-courtyard-east-v1.png": {
+      "sha256": "d09d456ce58bc0ea14838c057cd6af8200286cfebf721ac4523907f2ce2f298f",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCourtyardEast"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#141315",
+            "coveragePercent": 16.7498
+          },
+          {
+            "hex": "#25272e",
+            "coveragePercent": 14.3625
+          },
+          {
+            "hex": "#030303",
+            "coveragePercent": 14.2616
+          },
+          {
+            "hex": "#0c0b0c",
+            "coveragePercent": 13.2328
+          },
+          {
+            "hex": "#191c20",
+            "coveragePercent": 12.6923
+          },
+          {
+            "hex": "#35373f",
+            "coveragePercent": 8.2004
+          },
+          {
+            "hex": "#291c17",
+            "coveragePercent": 5.2153
+          },
+          {
+            "hex": "#454752",
+            "coveragePercent": 4.896
+          },
+          {
+            "hex": "#402b20",
+            "coveragePercent": 3.5545
+          },
+          {
+            "hex": "#5c3b2a",
+            "coveragePercent": 2.1561
+          },
+          {
+            "hex": "#62585d",
+            "coveragePercent": 1.8941
+          },
+          {
+            "hex": "#7f4c31",
+            "coveragePercent": 1.093
+          },
+          {
+            "hex": "#91756e",
+            "coveragePercent": 0.6554
+          },
+          {
+            "hex": "#ad6437",
+            "coveragePercent": 0.6166
+          },
+          {
+            "hex": "#da8949",
+            "coveragePercent": 0.3281
+          },
+          {
+            "hex": "#eccb93",
+            "coveragePercent": 0.0914
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ae6335",
+            "coveragePercent": 24.018
+          },
+          {
+            "hex": "#8d4c26",
+            "coveragePercent": 23.2777
+          },
+          {
+            "hex": "#915a3d",
+            "coveragePercent": 20.3937
+          },
+          {
+            "hex": "#c97740",
+            "coveragePercent": 18.6735
+          },
+          {
+            "hex": "#e4924b",
+            "coveragePercent": 9.6234
+          },
+          {
+            "hex": "#f6be6a",
+            "coveragePercent": 4.0137
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/yomi-fall-courtyard-west-v1.png": {
+      "sha256": "b892fe2a1763e3f3df3028ff1f5ef2aecd7de83ff89f3183e82a48878daa806e",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCourtyardWest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#171717",
+            "coveragePercent": 14.2539
+          },
+          {
+            "hex": "#0d0d0d",
+            "coveragePercent": 12.5997
+          },
+          {
+            "hex": "#424047",
+            "coveragePercent": 12.2423
+          },
+          {
+            "hex": "#252323",
+            "coveragePercent": 12.2134
+          },
+          {
+            "hex": "#030303",
+            "coveragePercent": 10.616
+          },
+          {
+            "hex": "#4d4d56",
+            "coveragePercent": 10.058
+          },
+          {
+            "hex": "#343438",
+            "coveragePercent": 9.0558
+          },
+          {
+            "hex": "#5d5b64",
+            "coveragePercent": 6.2171
+          },
+          {
+            "hex": "#766769",
+            "coveragePercent": 3.304
+          },
+          {
+            "hex": "#674d49",
+            "coveragePercent": 3.0443
+          },
+          {
+            "hex": "#51311f",
+            "coveragePercent": 1.9899
+          },
+          {
+            "hex": "#966e64",
+            "coveragePercent": 1.5229
+          },
+          {
+            "hex": "#905738",
+            "coveragePercent": 1.0953
+          },
+          {
+            "hex": "#cc7a4c",
+            "coveragePercent": 0.834
+          },
+          {
+            "hex": "#b48473",
+            "coveragePercent": 0.5683
+          },
+          {
+            "hex": "#f3ac6c",
+            "coveragePercent": 0.3852
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#975e46",
+            "coveragePercent": 22.5036
+          },
+          {
+            "hex": "#e08855",
+            "coveragePercent": 21.1064
+          },
+          {
+            "hex": "#ba7356",
+            "coveragePercent": 18.099
+          },
+          {
+            "hex": "#8e502a",
+            "coveragePercent": 14.9415
+          },
+          {
+            "hex": "#ba6d38",
+            "coveragePercent": 13.6506
+          },
+          {
+            "hex": "#f6b26d",
+            "coveragePercent": 9.699
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/yomi-fall-crypt-v1.png": {
+      "sha256": "79ff1ae6348ca960be42d88bcdcf48a2238ea2bdce947ddccf6ded45a41e821e",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCrypt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#140e12",
+            "coveragePercent": 24.711
+          },
+          {
+            "hex": "#060305",
+            "coveragePercent": 14.2136
+          },
+          {
+            "hex": "#271b23",
+            "coveragePercent": 13.7763
+          },
+          {
+            "hex": "#2a150f",
+            "coveragePercent": 8.9855
+          },
+          {
+            "hex": "#452419",
+            "coveragePercent": 8.0286
+          },
+          {
+            "hex": "#3a2639",
+            "coveragePercent": 7.9159
+          },
+          {
+            "hex": "#603627",
+            "coveragePercent": 6.1924
+          },
+          {
+            "hex": "#52335b",
+            "coveragePercent": 3.6411
+          },
+          {
+            "hex": "#864625",
+            "coveragePercent": 3.333
+          },
+          {
+            "hex": "#915f51",
+            "coveragePercent": 2.1135
+          },
+          {
+            "hex": "#bb6026",
+            "coveragePercent": 1.7275
+          },
+          {
+            "hex": "#d88848",
+            "coveragePercent": 1.6146
+          },
+          {
+            "hex": "#72448c",
+            "coveragePercent": 1.583
+          },
+          {
+            "hex": "#ac75ba",
+            "coveragePercent": 0.9065
+          },
+          {
+            "hex": "#efb770",
+            "coveragePercent": 0.7806
+          },
+          {
+            "hex": "#eecdde",
+            "coveragePercent": 0.477
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#934a24",
+            "coveragePercent": 32.8004
+          },
+          {
+            "hex": "#a86645",
+            "coveragePercent": 20.5049
+          },
+          {
+            "hex": "#d2722c",
+            "coveragePercent": 16.7802
+          },
+          {
+            "hex": "#eaa459",
+            "coveragePercent": 14.9568
+          },
+          {
+            "hex": "#6e3493",
+            "coveragePercent": 10.1887
+          },
+          {
+            "hex": "#a459c8",
+            "coveragePercent": 4.7689
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/yomi-fall-thrones-v1.png": {
+      "sha256": "43d75bf11d2ec0ef855f508f52e95bc32a5ae9f9f5a14bce3fe512ca3f937ed6",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonThrones"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d1114",
+            "coveragePercent": 20.7157
+          },
+          {
+            "hex": "#070406",
+            "coveragePercent": 19.8786
+          },
+          {
+            "hex": "#312028",
+            "coveragePercent": 15.4634
+          },
+          {
+            "hex": "#4f312e",
+            "coveragePercent": 8.7798
+          },
+          {
+            "hex": "#4b2117",
+            "coveragePercent": 5.9355
+          },
+          {
+            "hex": "#4a3351",
+            "coveragePercent": 5.718
+          },
+          {
+            "hex": "#73483d",
+            "coveragePercent": 4.1915
+          },
+          {
+            "hex": "#7f341e",
+            "coveragePercent": 3.9844
+          },
+          {
+            "hex": "#aa5d31",
+            "coveragePercent": 3.2581
+          },
+          {
+            "hex": "#5b3684",
+            "coveragePercent": 3.2278
+          },
+          {
+            "hex": "#dc843e",
+            "coveragePercent": 2.207
+          },
+          {
+            "hex": "#894dc5",
+            "coveragePercent": 1.7405
+          },
+          {
+            "hex": "#886085",
+            "coveragePercent": 1.7187
+          },
+          {
+            "hex": "#c07dde",
+            "coveragePercent": 1.3604
+          },
+          {
+            "hex": "#f1b66b",
+            "coveragePercent": 1.1232
+          },
+          {
+            "hex": "#f4d3e9",
+            "coveragePercent": 0.6975
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#934629",
+            "coveragePercent": 31.2794
+          },
+          {
+            "hex": "#c16d36",
+            "coveragePercent": 21.8722
+          },
+          {
+            "hex": "#eea452",
+            "coveragePercent": 13.9784
+          },
+          {
+            "hex": "#5d3592",
+            "coveragePercent": 13.6621
+          },
+          {
+            "hex": "#8447b9",
+            "coveragePercent": 11.0296
+          },
+          {
+            "hex": "#b065e5",
+            "coveragePercent": 8.1783
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/yomi-v3.png": {
       "sha256": "93a5f7401e408553d8b2f1b55e50d580115a0e3052da5541bc8b1bef21441752",
       "width": 1024,
@@ -27292,6 +29000,321 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/enemies/yomi-fall-captain-v1.png": {
+      "sha256": "643cbb968cf7357a6df0bd99c222bee5f3178aa2d1908a627aa538e540dc0a37",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCaptain"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#312c2a",
+            "coveragePercent": 14.1216
+          },
+          {
+            "hex": "#3f3a39",
+            "coveragePercent": 10.7532
+          },
+          {
+            "hex": "#231d1c",
+            "coveragePercent": 10.2193
+          },
+          {
+            "hex": "#4c494c",
+            "coveragePercent": 10.1325
+          },
+          {
+            "hex": "#14100f",
+            "coveragePercent": 8.8262
+          },
+          {
+            "hex": "#605c5e",
+            "coveragePercent": 8.5673
+          },
+          {
+            "hex": "#6f6f76",
+            "coveragePercent": 6.9757
+          },
+          {
+            "hex": "#866c54",
+            "coveragePercent": 5.4003
+          },
+          {
+            "hex": "#858182",
+            "coveragePercent": 5.3563
+          },
+          {
+            "hex": "#674b33",
+            "coveragePercent": 5.1285
+          },
+          {
+            "hex": "#070404",
+            "coveragePercent": 4.3675
+          },
+          {
+            "hex": "#ae8b61",
+            "coveragePercent": 2.7104
+          },
+          {
+            "hex": "#a99a8e",
+            "coveragePercent": 2.526
+          },
+          {
+            "hex": "#ceaf8a",
+            "coveragePercent": 2.4842
+          },
+          {
+            "hex": "#d4c5b2",
+            "coveragePercent": 1.5248
+          },
+          {
+            "hex": "#ecedec",
+            "coveragePercent": 0.9064
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c6842",
+            "coveragePercent": 23.9701
+          },
+          {
+            "hex": "#a0784a",
+            "coveragePercent": 22.793
+          },
+          {
+            "hex": "#b48b56",
+            "coveragePercent": 19.4233
+          },
+          {
+            "hex": "#ca9f63",
+            "coveragePercent": 13.2289
+          },
+          {
+            "hex": "#895c30",
+            "coveragePercent": 12.7956
+          },
+          {
+            "hex": "#e2b773",
+            "coveragePercent": 7.7891
+          }
+        ],
+        "visibleSamples": 314698,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/enemies/yomi-fall-council-v1.png": {
+      "sha256": "8c9f296025db4c63556f653d182cb3bb436c0defab6a59a4f068b3cc9c5ec1f0",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCouncil"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1b17",
+            "coveragePercent": 11.3326
+          },
+          {
+            "hex": "#5c4845",
+            "coveragePercent": 11.0293
+          },
+          {
+            "hex": "#43322f",
+            "coveragePercent": 10.7919
+          },
+          {
+            "hex": "#755c56",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#8c7168",
+            "coveragePercent": 8.4962
+          },
+          {
+            "hex": "#110806",
+            "coveragePercent": 7.9648
+          },
+          {
+            "hex": "#6d3c2c",
+            "coveragePercent": 7.7515
+          },
+          {
+            "hex": "#52271c",
+            "coveragePercent": 6.3637
+          },
+          {
+            "hex": "#914f3a",
+            "coveragePercent": 6.1275
+          },
+          {
+            "hex": "#a58978",
+            "coveragePercent": 6.0025
+          },
+          {
+            "hex": "#c4a186",
+            "coveragePercent": 4.3162
+          },
+          {
+            "hex": "#bd654d",
+            "coveragePercent": 3.7647
+          },
+          {
+            "hex": "#d8baa3",
+            "coveragePercent": 3.1218
+          },
+          {
+            "hex": "#e9d6cb",
+            "coveragePercent": 1.4585
+          },
+          {
+            "hex": "#75498f",
+            "coveragePercent": 1.2236
+          },
+          {
+            "hex": "#ab7bc9",
+            "coveragePercent": 0.8591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914336",
+            "coveragePercent": 34.0597
+          },
+          {
+            "hex": "#986d46",
+            "coveragePercent": 23.6838
+          },
+          {
+            "hex": "#bc5849",
+            "coveragePercent": 22.6481
+          },
+          {
+            "hex": "#d09263",
+            "coveragePercent": 12.8519
+          },
+          {
+            "hex": "#754493",
+            "coveragePercent": 4.1667
+          },
+          {
+            "hex": "#975ebb",
+            "coveragePercent": 2.5898
+          }
+        ],
+        "visibleSamples": 722448,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/yomi-fall-necromancer-v1.png": {
+      "sha256": "1b58d0d1fb6befcd26cc01f3655f266d59575745305fe840fc24f5deb6eeaaa8",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonNecromancer"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5b4b50",
+            "coveragePercent": 14.24
+          },
+          {
+            "hex": "#46383c",
+            "coveragePercent": 12.7417
+          },
+          {
+            "hex": "#705f65",
+            "coveragePercent": 11.6818
+          },
+          {
+            "hex": "#887277",
+            "coveragePercent": 10.0981
+          },
+          {
+            "hex": "#33272b",
+            "coveragePercent": 9.0818
+          },
+          {
+            "hex": "#231514",
+            "coveragePercent": 7.1807
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 6.171
+          },
+          {
+            "hex": "#a38991",
+            "coveragePercent": 6.1236
+          },
+          {
+            "hex": "#ccaa8f",
+            "coveragePercent": 3.9133
+          },
+          {
+            "hex": "#8a674e",
+            "coveragePercent": 3.482
+          },
+          {
+            "hex": "#b58d66",
+            "coveragePercent": 3.3921
+          },
+          {
+            "hex": "#4b250c",
+            "coveragePercent": 3.2496
+          },
+          {
+            "hex": "#dfc3b1",
+            "coveragePercent": 3.1232
+          },
+          {
+            "hex": "#6f4522",
+            "coveragePercent": 2.8194
+          },
+          {
+            "hex": "#f2e3d9",
+            "coveragePercent": 1.6845
+          },
+          {
+            "hex": "#a66d29",
+            "coveragePercent": 1.0171
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c623e",
+            "coveragePercent": 25.3689
+          },
+          {
+            "hex": "#a77a4f",
+            "coveragePercent": 20.3911
+          },
+          {
+            "hex": "#c69558",
+            "coveragePercent": 19.471
+          },
+          {
+            "hex": "#8f5415",
+            "coveragePercent": 13.6886
+          },
+          {
+            "hex": "#e4b76c",
+            "coveragePercent": 10.5582
+          },
+          {
+            "hex": "#b37729",
+            "coveragePercent": 10.5223
+          }
+        ],
+        "visibleSamples": 612575,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/yomi-walk-v4.png": {
       "sha256": "6076bf4e4b31de7ce2906246d1f4ba15a8b5df8b8e5ed8ed582024894f1ac640",
       "width": 1536,
@@ -33372,6 +35395,216 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/ui/yomi-fall-items-v1.png": {
+      "sha256": "0d807b953ce8acf111f5c64100e5d0ee2b7cc1bd73a628072f2dd856e137eaef",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonItems"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0e0607",
+            "coveragePercent": 17.6562
+          },
+          {
+            "hex": "#381b12",
+            "coveragePercent": 15.1561
+          },
+          {
+            "hex": "#792909",
+            "coveragePercent": 8.4159
+          },
+          {
+            "hex": "#7c2ad6",
+            "coveragePercent": 6.4399
+          },
+          {
+            "hex": "#57403b",
+            "coveragePercent": 6.4045
+          },
+          {
+            "hex": "#a95d1d",
+            "coveragePercent": 5.8438
+          },
+          {
+            "hex": "#e88b1f",
+            "coveragePercent": 5.4909
+          },
+          {
+            "hex": "#fbebf4",
+            "coveragePercent": 4.5687
+          },
+          {
+            "hex": "#b053f4",
+            "coveragePercent": 4.4943
+          },
+          {
+            "hex": "#ea3809",
+            "coveragePercent": 4.2539
+          },
+          {
+            "hex": "#4815aa",
+            "coveragePercent": 4.1547
+          },
+          {
+            "hex": "#f5c14b",
+            "coveragePercent": 4.0683
+          },
+          {
+            "hex": "#e197f9",
+            "coveragePercent": 3.6804
+          },
+          {
+            "hex": "#f5da9e",
+            "coveragePercent": 3.2413
+          },
+          {
+            "hex": "#ac707b",
+            "coveragePercent": 3.0762
+          },
+          {
+            "hex": "#1c0a58",
+            "coveragePercent": 3.0549
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e36316",
+            "coveragePercent": 21.2475
+          },
+          {
+            "hex": "#9f4115",
+            "coveragePercent": 20.3666
+          },
+          {
+            "hex": "#8530d6",
+            "coveragePercent": 18.5508
+          },
+          {
+            "hex": "#f2b849",
+            "coveragePercent": 17.0662
+          },
+          {
+            "hex": "#c262f3",
+            "coveragePercent": 11.507
+          },
+          {
+            "hex": "#4915ac",
+            "coveragePercent": 11.2619
+          }
+        ],
+        "visibleSamples": 683844,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/ui/yomi-fall-props-v1.png": {
+      "sha256": "cff11e6629dd5b559cc7fe81ef5a1e8e9b0a096ce708f65472d7bd99bb077848",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonProps"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 15.1423
+          },
+          {
+            "hex": "#1a1212",
+            "coveragePercent": 14.5312
+          },
+          {
+            "hex": "#68220b",
+            "coveragePercent": 8.6541
+          },
+          {
+            "hex": "#3e1006",
+            "coveragePercent": 7.9676
+          },
+          {
+            "hex": "#8b420e",
+            "coveragePercent": 7.9313
+          },
+          {
+            "hex": "#f6cca4",
+            "coveragePercent": 7.1425
+          },
+          {
+            "hex": "#b1611f",
+            "coveragePercent": 6.8034
+          },
+          {
+            "hex": "#332a2f",
+            "coveragePercent": 5.8986
+          },
+          {
+            "hex": "#a61d18",
+            "coveragePercent": 4.3949
+          },
+          {
+            "hex": "#fce8cc",
+            "coveragePercent": 3.67
+          },
+          {
+            "hex": "#d8a082",
+            "coveragePercent": 3.5166
+          },
+          {
+            "hex": "#603f68",
+            "coveragePercent": 3.3767
+          },
+          {
+            "hex": "#e9a345",
+            "coveragePercent": 2.938
+          },
+          {
+            "hex": "#e38312",
+            "coveragePercent": 2.85
+          },
+          {
+            "hex": "#97648f",
+            "coveragePercent": 2.8002
+          },
+          {
+            "hex": "#e34335",
+            "coveragePercent": 2.3826
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a95717",
+            "coveragePercent": 29.7218
+          },
+          {
+            "hex": "#992a11",
+            "coveragePercent": 29.7199
+          },
+          {
+            "hex": "#d55e39",
+            "coveragePercent": 15.6186
+          },
+          {
+            "hex": "#e9ab5f",
+            "coveragePercent": 11.4075
+          },
+          {
+            "hex": "#ea8f14",
+            "coveragePercent": 10.2014
+          },
+          {
+            "hex": "#874396",
+            "coveragePercent": 3.3307
+          }
+        ],
+        "visibleSamples": 438844,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/ui/yomi-guardian-soul-v1.png": {
       "sha256": "c8524b0343b6d3d0bd59d4e8468fe2e0ea2892723abe493e13269f9fb8e90fd2",
       "width": 1254,
@@ -35535,86 +37768,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          534
+          538
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          399
+          400
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          361,
-          395
+          362,
+          396
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          191
+          192
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          518
+          522
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          272
+          273
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          385
+          386
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          330,
-          381
+          331,
+          382
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          191
+          192
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          533
+          537
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          518
+          522
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          390
+          391
         ],
         "dynamic": false
       }
@@ -35668,6 +37901,47 @@
         "dynamic": false
       }
     ],
+    "assets/js/dungeon-art.js": [
+      {
+        "value": "#15121c",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9bd80",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          20
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          20
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dungeon-combat.js": [
+      {
+        "value": "#bd82dc",
+        "lines": [
+          78
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dungeon-rules.js": [],
+    "assets/js/dungeon-run.js": [],
     "assets/js/game.js": [
       {
         "value": "#08121900",
@@ -36972,35 +39246,35 @@
       {
         "value": "#101d29",
         "lines": [
-          137
+          140
         ],
         "dynamic": false
       },
       {
         "value": "#8ad8df",
         "lines": [
-          142
+          145
         ],
         "dynamic": false
       },
       {
         "value": "#d8c7a2",
         "lines": [
-          140
+          143
         ],
         "dynamic": false
       },
       {
         "value": "#ffcb74",
         "lines": [
-          144
+          147
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          144
+          147
         ],
         "dynamic": false
       }

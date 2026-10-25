@@ -4,6 +4,7 @@ const Inventory=(()=>{
  let initialized=false,returnFocus=null,selected=null,pendingSale=null,renderId=0;
  const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue),talisman=SerpentRelics.result;
  const isTalisman=id=>id===talisman||id==='equippedTalisman';
+ const isEnhancement=id=>typeof DungeonRules!=='undefined'&&DungeonRules.enhancements.includes(id);
  const weaponStyleFor=id=>typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
  const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
  const itemName=id=>id==='equippedTalisman'?I18n.t(catalogue[talisman].name):weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
@@ -50,16 +51,16 @@ const Inventory=(()=>{
  }
  function weaponName(style=weaponStyle){return I18n.t(style==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+style+'.item');}
  function details(id){
-  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id);
+  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id),enhancement=isEnhancement(id);
   $('inventoryDetailName').textContent=weapon?weaponName(style):id?itemName(id):I18n.t('inventory.empty.title');
-  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':id==='forestHerb'?'inventory.type.backpack':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':item?.category==='trinket'?'inventory.type.trinket':id?'inventory.type.quest':'inventory.type.backpack');
+  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':id==='forestHerb'?'inventory.type.backpack':item?.category==='trinket'?'inventory.type.trinket':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':id?'inventory.type.quest':'inventory.type.backpack');
   const damage=kind=>momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale;
   $('inventoryDetailText').textContent=weapon?I18n.format('weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id==='equippedTalisman'?talisman:id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!item?.stack;
   $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
-  $('useInventoryItem').hidden=!healing&&!(weapon&&id!=='weapon')&&!isTalisman(id);
-  $('useInventoryItem').disabled=isTalisman(id)?false:id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
-  $('useInventoryItem').textContent=I18n.t(isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
+  $('useInventoryItem').hidden=!healing&&!enhancement&&!(weapon&&id!=='weapon')&&!isTalisman(id);
+  $('useInventoryItem').disabled=enhancement?!DungeonRun.canConsume(id):isTalisman(id)?false:id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
+  $('useInventoryItem').textContent=I18n.t(enhancement?'dungeon.enhancement.apply':isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
   $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
   $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
@@ -94,7 +95,7 @@ const Inventory=(()=>{
   $('inventoryEmpty').hidden=items.length>0;$('inventoryEmpty').textContent=I18n.t('inventory.empty.title');
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
   choose(selected==='weapon'||selected==='equippedTalisman'&&equippedTalisman||items.includes(selected)?selected:items[0]||null);
-  if(useFocused&&(Merchant.healingItems.includes(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
+  if(useFocused&&(Merchant.healingItems.includes(selected)||isEnhancement(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
   else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
@@ -114,6 +115,7 @@ const Inventory=(()=>{
    const style=weaponStyleFor(selected);
    if(isTalisman(selected)){const next=equippedTalisman?null:talisman;if(SerpentRelics.equip(next)){selected=next?'equippedTalisman':talisman;render();}}
    else if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
+   else if(isEnhancement(selected)){if(DungeonRun.consume(selected))render();}
    else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);
   };
   $('sellInventoryItem').onclick=()=>{
