@@ -15,7 +15,9 @@ const DungeonCombat=(()=>{
   e.attackTime=next==='strike'?duration:0;e.attackDuration=duration;e.attackElapsed=0;e.hitDone=false;
  }
  function syncParts(e){e.parts=[{x:e.x,y:e.y,w:e.w,h:e.h,face:e.face,poseIndex:e.poseIndex,index:0}];}
- function clearEffects(e){projectiles=projectiles.filter(p=>p.source!==source(e));e.hazards=[];e.summons=[];e.attackBox=null;e.attackBoxes=[];}
+ function clearEffects(e){projectiles=projectiles.filter(p=>p.source!==source(e));e.hazards=[];e.summons=[];e.attackBox=null;e.attackBoxes=[];
+  if(typeof DungeonRun!=='undefined'&&typeof DungeonRun.cleanupSummons==='function')DungeonRun.cleanupSummons(e);
+ }
  function reset(e){
   if(!is(e))return false;clearEffects(e);
   Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,dead:false,active:false,face:-1,attackFace:-1,inv:0,stun:0,

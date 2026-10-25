@@ -24,7 +24,11 @@ A bossokat a `DungeonCombat` közös állapotgépe kezeli: várakozás, célrög
 - A nekromanta árnylövedékekkel, talajjelekkel és feltámasztott szamurájokkal támad. A portálok a varázslat előjelzése után további 0,8 másodpercet várnak; az élő szolgák és függő portálok közös maximuma négy. A szolgák nem adnak külön jutalmat.
 - A négy tanácsos egyetlen boss, egy HP- és jutalomkészlettel. Két időzített karcsapást, négy talajjelet és lövedéklegyezőt használ. Az erős karcsapás 3, a többi támadás 2 alap sebzést okoz. A talajjelek között járható rések maradnak, szélre igazításkor sem rakódnak egymásra.
 
-A normál ellenfelek `dungeonEnemy` és `dungeonSide` mezőket kapnak. A japán szamurájok és az árnykultisták a másik oldal közeli tagjait, illetve Momót is célba vehetik. Saját oldalukat nem sebzik; a frakciólövedékek megőrzik oldaluk azonosítóját. Az NPC által megölt ellenfél nem ad Momónak XP-t, érmét vagy más ölési jutalmat. A nekromanta által feltámasztott szamurájok külön, `necromancer` oldalhoz tartoznak, miközben japán megjelenésűek.
+A normál ellenfelek `dungeonEnemy` és `dungeonSide` mezőket kapnak. A japán szamurájok és az árnykultisták a másik oldal közeli tagjait, illetve Momót is célba vehetik. Saját oldalukat nem sebzik; a frakciólövedékek megőrzik oldaluk azonosítóját. Az NPC által megölt ellenfél nem ad Momónak XP-t, érmét vagy más ölési jutalmat.
+
+A nekromanta feltámasztott szamurájai külön, `necromancer` oldalhoz tartoznak. Megjelenésüktől kizárólag Momót követik az aktív bossaréna egész területén; a normál 520 egységes észlelési határ és a közeli NPC-k nem térítik el őket. A cél követése ugrás közben is megmarad, de a közelharci támadáshoz továbbra is kell a megfelelő függőleges távolság, és a 0,7 másodperces előjelzés változatlan. A `raisedSamurai` megjelenítési jelölés különíti el őket az élő katonáktól.
+
+Az idézésekhez tartozó átmeneti `WeakMap` a nekromanta konkrét példányát és a `dungeonState.run` értékét köti össze. A függő portálok is a példányt őrzik, nem csupán az újra felhasználható bossazonosítót. A `DungeonRun.cleanupSummons(owner)` csak a megadott boss saját portáljait és katonáit zárja le; teljes megszakításnál mindet. Reset, vereség, eltávolított vagy lecserélt boss, új emlékút és pályaváltás után régi idézés nem folytathat támadást. A katonák és tulajdonoskapcsolataik nem mentődnek.
 
 A bossok lövedékforrása `dungeon:<boss-id>`. A boss halála vagy visszaállítása a saját lövedékeit és jelzéseit törli; a győzelem a runvezérlőben a hozzá tartozó idézéseket is lezárja. A közös játékciklus aktív képkockánként egyszer frissíti a harcot; szünetben, párbeszédben és játékablakok alatt az órák állnak. Halál vagy pályaváltás után a korábbi játékos-/ellenfélpéldány nem folytathatja a sebzést vagy jutalmazást.
 
@@ -78,6 +82,7 @@ node scripts/test-dungeon-combat.cjs
 node scripts/test-dungeon-routes.cjs
 node scripts/test-dungeon-items.cjs
 node scripts/test-dungeon-factions.cjs
+node scripts/test-dungeon-summon-aggro.cjs
 node scripts/test-dungeon-art.cjs
 ```
 
