@@ -84,6 +84,7 @@ node scripts/test-dungeon-items.cjs
 node scripts/test-dungeon-factions.cjs
 node scripts/test-dungeon-summon-aggro.cjs
 node scripts/test-dungeon-art.cjs
+node scripts/test-japan-enemy-art.cjs
 ```
 
 Ezek az állapot- és jutalomszabályokat, ugyanazon kiadás folytatását, a tényleges inputtal járható útvonalakat és harcot, az inventory műveleteit és a frakciósebzést ellenőrzik. A Canvas/DOM/mentési környezetet részben modellezik; nem igazolnak kész grafikai minőséget vagy valódi böngészős IndexedDB-viselkedést. A HU/EN tekercsmenü, fókusz, 1280×720-as olvashatóság, támadásjelzések, natív képek és mentés-visszatöltés külön böngészős QA-t igényel.

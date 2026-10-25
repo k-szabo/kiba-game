@@ -229,9 +229,15 @@
       "role": "guard",
       "variants": {
         "walk": {
-          "paletteGroup": "npc.japan.guard.walk"
+          "paletteGroup": "npc.japan.guard.walk.v5"
         },
         "attack": {
+          "paletteGroup": "npc.japan.guard.attack.v5"
+        },
+        "legacyWalk": {
+          "paletteGroup": "npc.japan.guard.walk"
+        },
+        "legacyAttack": {
           "paletteGroup": "npc.japan.guard.attack"
         }
       }
@@ -241,9 +247,15 @@
       "role": "archer",
       "variants": {
         "walk": {
-          "paletteGroup": "npc.japan.archer.walk"
+          "paletteGroup": "npc.japan.archer.walk.v5"
         },
         "attack": {
+          "paletteGroup": "npc.japan.archer.attack.v5"
+        },
+        "legacyWalk": {
+          "paletteGroup": "npc.japan.archer.walk"
+        },
+        "legacyAttack": {
           "paletteGroup": "npc.japan.archer.attack"
         }
       }
@@ -253,9 +265,15 @@
       "role": "shield",
       "variants": {
         "walk": {
-          "paletteGroup": "npc.japan.shield.walk"
+          "paletteGroup": "npc.japan.shield.walk.v5"
         },
         "attack": {
+          "paletteGroup": "npc.japan.shield.attack.v5"
+        },
+        "legacyWalk": {
+          "paletteGroup": "npc.japan.shield.walk"
+        },
+        "legacyAttack": {
           "paletteGroup": "npc.japan.shield.attack"
         }
       }
@@ -265,9 +283,15 @@
       "role": "mage",
       "variants": {
         "walk": {
-          "paletteGroup": "npc.japan.mage.walk"
+          "paletteGroup": "npc.japan.mage.walk.v5"
         },
         "attack": {
+          "paletteGroup": "npc.japan.mage.attack.v5"
+        },
+        "legacyWalk": {
+          "paletteGroup": "npc.japan.mage.walk"
+        },
+        "legacyAttack": {
           "paletteGroup": "npc.japan.mage.attack"
         }
       }
@@ -365,6 +389,18 @@
         },
         "attack": {
           "paletteGroup": "npc.heaven.mage.attack"
+        }
+      }
+    },
+    "dungeon.raisedSamurai": {
+      "role": "summoned-guard",
+      "faction": "necromancer",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.dungeon.raisedSamurai.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.dungeon.raisedSamurai.attack"
         }
       }
     },
@@ -5196,6 +5232,208 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "npc.japan.guard.walk.v5": {
+      "source": "assets/images/enemies/japan-guard-v5.png",
+      "frameMetadata": "ART_JAPAN.guard.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#201314",
+            "coveragePercent": 11.0683
+          },
+          {
+            "hex": "#352a2c",
+            "coveragePercent": 10.5824
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 9.9263
+          },
+          {
+            "hex": "#421311",
+            "coveragePercent": 8.2081
+          },
+          {
+            "hex": "#cc212b",
+            "coveragePercent": 7.5259
+          },
+          {
+            "hex": "#a0161f",
+            "coveragePercent": 7.1962
+          },
+          {
+            "hex": "#701115",
+            "coveragePercent": 7.1805
+          },
+          {
+            "hex": "#5e3625",
+            "coveragePercent": 7.1671
+          },
+          {
+            "hex": "#50464a",
+            "coveragePercent": 6.7683
+          },
+          {
+            "hex": "#8d512d",
+            "coveragePercent": 5.6936
+          },
+          {
+            "hex": "#c1733a",
+            "coveragePercent": 5.0605
+          },
+          {
+            "hex": "#e7a24e",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#79645e",
+            "coveragePercent": 3.5976
+          },
+          {
+            "hex": "#f2ca8a",
+            "coveragePercent": 2.6409
+          },
+          {
+            "hex": "#f4eada",
+            "coveragePercent": 1.8792
+          },
+          {
+            "hex": "#ad9187",
+            "coveragePercent": 1.6842
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ca202b",
+            "coveragePercent": 27.4937
+          },
+          {
+            "hex": "#99151e",
+            "coveragePercent": 24.4967
+          },
+          {
+            "hex": "#95562f",
+            "coveragePercent": 16.0093
+          },
+          {
+            "hex": "#c0723a",
+            "coveragePercent": 14.0695
+          },
+          {
+            "hex": "#e19849",
+            "coveragePercent": 11.1954
+          },
+          {
+            "hex": "#f4c369",
+            "coveragePercent": 6.7354
+          }
+        ],
+        "visibleSamples": 312146,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.japan.guard.attack.v5": {
+      "source": "assets/images/enemies/japan-guard-v5.png",
+      "frameMetadata": "ART_JAPAN.guard.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352725",
+            "coveragePercent": 11.1272
+          },
+          {
+            "hex": "#201112",
+            "coveragePercent": 10.0755
+          },
+          {
+            "hex": "#0c0607",
+            "coveragePercent": 9.3337
+          },
+          {
+            "hex": "#cd202c",
+            "coveragePercent": 7.7026
+          },
+          {
+            "hex": "#463c40",
+            "coveragePercent": 7.6617
+          },
+          {
+            "hex": "#6f1116",
+            "coveragePercent": 7.2936
+          },
+          {
+            "hex": "#a01620",
+            "coveragePercent": 7.2252
+          },
+          {
+            "hex": "#44100f",
+            "coveragePercent": 7.0241
+          },
+          {
+            "hex": "#673c26",
+            "coveragePercent": 6.8989
+          },
+          {
+            "hex": "#965b35",
+            "coveragePercent": 5.8064
+          },
+          {
+            "hex": "#685756",
+            "coveragePercent": 5.3223
+          },
+          {
+            "hex": "#c8793c",
+            "coveragePercent": 4.4924
+          },
+          {
+            "hex": "#e9a753",
+            "coveragePercent": 3.5472
+          },
+          {
+            "hex": "#eec78e",
+            "coveragePercent": 2.5754
+          },
+          {
+            "hex": "#a68574",
+            "coveragePercent": 2.3834
+          },
+          {
+            "hex": "#f0e5d3",
+            "coveragePercent": 1.5305
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b61825",
+            "coveragePercent": 20.6753
+          },
+          {
+            "hex": "#9b5c33",
+            "coveragePercent": 19.988
+          },
+          {
+            "hex": "#91151c",
+            "coveragePercent": 17.0154
+          },
+          {
+            "hex": "#ce8242",
+            "coveragePercent": 16.9969
+          },
+          {
+            "hex": "#d72630",
+            "coveragePercent": 14.764
+          },
+          {
+            "hex": "#f0b860",
+            "coveragePercent": 10.5602
+          }
+        ],
+        "visibleSamples": 325713,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "npc.japan.archer.walk": {
       "source": "assets/images/enemies/japan-walk-v4.png",
       "frameMetadata": "ART_FRAMES.animations.japan.walk.archer",
@@ -5396,6 +5634,208 @@
         ],
         "visibleSamples": 184261,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.japan.archer.walk.v5": {
+      "source": "assets/images/enemies/japan-archer-v5.png",
+      "frameMetadata": "ART_JAPAN.archer.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#322116",
+            "coveragePercent": 15.7091
+          },
+          {
+            "hex": "#423324",
+            "coveragePercent": 14.8823
+          },
+          {
+            "hex": "#20130d",
+            "coveragePercent": 11.8225
+          },
+          {
+            "hex": "#5f4c35",
+            "coveragePercent": 10.2741
+          },
+          {
+            "hex": "#5d361e",
+            "coveragePercent": 7.316
+          },
+          {
+            "hex": "#0e0706",
+            "coveragePercent": 6.383
+          },
+          {
+            "hex": "#816444",
+            "coveragePercent": 6.1888
+          },
+          {
+            "hex": "#854e24",
+            "coveragePercent": 5.195
+          },
+          {
+            "hex": "#b17236",
+            "coveragePercent": 4.5441
+          },
+          {
+            "hex": "#eec397",
+            "coveragePercent": 3.0169
+          },
+          {
+            "hex": "#a7846b",
+            "coveragePercent": 2.837
+          },
+          {
+            "hex": "#c9a791",
+            "coveragePercent": 2.7776
+          },
+          {
+            "hex": "#ebd4bd",
+            "coveragePercent": 2.7724
+          },
+          {
+            "hex": "#dc9e4b",
+            "coveragePercent": 2.7299
+          },
+          {
+            "hex": "#f7f1e5",
+            "coveragePercent": 1.8351
+          },
+          {
+            "hex": "#86130a",
+            "coveragePercent": 1.7161
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c6f41",
+            "coveragePercent": 27.0658
+          },
+          {
+            "hex": "#8d5529",
+            "coveragePercent": 25.6829
+          },
+          {
+            "hex": "#c98d4a",
+            "coveragePercent": 19.153
+          },
+          {
+            "hex": "#eab260",
+            "coveragePercent": 11.1355
+          },
+          {
+            "hex": "#bd6c24",
+            "coveragePercent": 9.9612
+          },
+          {
+            "hex": "#9b1a0d",
+            "coveragePercent": 7.0016
+          }
+        ],
+        "visibleSamples": 253676,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.archer.attack.v5": {
+      "source": "assets/images/enemies/japan-archer-v5.png",
+      "frameMetadata": "ART_JAPAN.archer.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#392b1d",
+            "coveragePercent": 15.4264
+          },
+          {
+            "hex": "#271810",
+            "coveragePercent": 15.0677
+          },
+          {
+            "hex": "#503f2a",
+            "coveragePercent": 13.3315
+          },
+          {
+            "hex": "#6b573a",
+            "coveragePercent": 9.5334
+          },
+          {
+            "hex": "#100907",
+            "coveragePercent": 9.1244
+          },
+          {
+            "hex": "#73401d",
+            "coveragePercent": 5.4765
+          },
+          {
+            "hex": "#995e29",
+            "coveragePercent": 4.737
+          },
+          {
+            "hex": "#551f0d",
+            "coveragePercent": 4.5825
+          },
+          {
+            "hex": "#c2813d",
+            "coveragePercent": 4.1059
+          },
+          {
+            "hex": "#91704f",
+            "coveragePercent": 4.002
+          },
+          {
+            "hex": "#edd1b4",
+            "coveragePercent": 3.3905
+          },
+          {
+            "hex": "#e0b691",
+            "coveragePercent": 3.3693
+          },
+          {
+            "hex": "#b6947d",
+            "coveragePercent": 2.506
+          },
+          {
+            "hex": "#e7ab4e",
+            "coveragePercent": 2.453
+          },
+          {
+            "hex": "#f7eee1",
+            "coveragePercent": 1.9421
+          },
+          {
+            "hex": "#a51c0c",
+            "coveragePercent": 0.9517
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#996a3c",
+            "coveragePercent": 29.7764
+          },
+          {
+            "hex": "#c68640",
+            "coveragePercent": 26.8496
+          },
+          {
+            "hex": "#94531f",
+            "coveragePercent": 20.6649
+          },
+          {
+            "hex": "#e9b15c",
+            "coveragePercent": 16.2366
+          },
+          {
+            "hex": "#921b0b",
+            "coveragePercent": 4.6798
+          },
+          {
+            "hex": "#d22d14",
+            "coveragePercent": 1.7927
+          }
+        ],
+        "visibleSamples": 297164,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.japan.shield.walk": {
@@ -5600,6 +6040,208 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "npc.japan.shield.walk.v5": {
+      "source": "assets/images/enemies/japan-shield-v5.png",
+      "frameMetadata": "ART_JAPAN.shield.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f1815",
+            "coveragePercent": 10.5337
+          },
+          {
+            "hex": "#3c2b26",
+            "coveragePercent": 9.975
+          },
+          {
+            "hex": "#511614",
+            "coveragePercent": 9.2846
+          },
+          {
+            "hex": "#721b1b",
+            "coveragePercent": 8.8719
+          },
+          {
+            "hex": "#1e0c0b",
+            "coveragePercent": 8.7179
+          },
+          {
+            "hex": "#982121",
+            "coveragePercent": 8.5496
+          },
+          {
+            "hex": "#563e34",
+            "coveragePercent": 8.4413
+          },
+          {
+            "hex": "#c02829",
+            "coveragePercent": 6.7559
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 6.0527
+          },
+          {
+            "hex": "#79452f",
+            "coveragePercent": 5.8106
+          },
+          {
+            "hex": "#8f5e42",
+            "coveragePercent": 5.6252
+          },
+          {
+            "hex": "#bf6a3e",
+            "coveragePercent": 3.7946
+          },
+          {
+            "hex": "#d9955a",
+            "coveragePercent": 2.8111
+          },
+          {
+            "hex": "#e9bd88",
+            "coveragePercent": 1.9185
+          },
+          {
+            "hex": "#a07f6e",
+            "coveragePercent": 1.6308
+          },
+          {
+            "hex": "#f4e5cd",
+            "coveragePercent": 1.2265
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#941f20",
+            "coveragePercent": 30.653
+          },
+          {
+            "hex": "#bf2828",
+            "coveragePercent": 24.7163
+          },
+          {
+            "hex": "#915133",
+            "coveragePercent": 15.693
+          },
+          {
+            "hex": "#b0673f",
+            "coveragePercent": 13.5213
+          },
+          {
+            "hex": "#d0844e",
+            "coveragePercent": 9.8224
+          },
+          {
+            "hex": "#eaaf69",
+            "coveragePercent": 5.5939
+          }
+        ],
+        "visibleSamples": 269843,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.shield.attack.v5": {
+      "source": "assets/images/enemies/japan-shield-v5.png",
+      "frameMetadata": "ART_JAPAN.shield.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#741d1c",
+            "coveragePercent": 10.2887
+          },
+          {
+            "hex": "#2e1916",
+            "coveragePercent": 9.9581
+          },
+          {
+            "hex": "#521513",
+            "coveragePercent": 9.6252
+          },
+          {
+            "hex": "#3a2b26",
+            "coveragePercent": 9.2204
+          },
+          {
+            "hex": "#9b1f21",
+            "coveragePercent": 8.8588
+          },
+          {
+            "hex": "#1f0b0b",
+            "coveragePercent": 8.8034
+          },
+          {
+            "hex": "#543b31",
+            "coveragePercent": 8.1518
+          },
+          {
+            "hex": "#c42728",
+            "coveragePercent": 6.3992
+          },
+          {
+            "hex": "#724d3c",
+            "coveragePercent": 6.3602
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 6.0943
+          },
+          {
+            "hex": "#a25432",
+            "coveragePercent": 4.3993
+          },
+          {
+            "hex": "#cb7d4a",
+            "coveragePercent": 3.8959
+          },
+          {
+            "hex": "#956c53",
+            "coveragePercent": 3.0153
+          },
+          {
+            "hex": "#e7b378",
+            "coveragePercent": 2.5572
+          },
+          {
+            "hex": "#f2e1c7",
+            "coveragePercent": 1.3671
+          },
+          {
+            "hex": "#ad8f81",
+            "coveragePercent": 1.005
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f1f1f",
+            "coveragePercent": 25.8375
+          },
+          {
+            "hex": "#b22023",
+            "coveragePercent": 23.7076
+          },
+          {
+            "hex": "#975636",
+            "coveragePercent": 18.3219
+          },
+          {
+            "hex": "#c17848",
+            "coveragePercent": 13.823
+          },
+          {
+            "hex": "#ce3630",
+            "coveragePercent": 10.8883
+          },
+          {
+            "hex": "#e5a865",
+            "coveragePercent": 7.4217
+          }
+        ],
+        "visibleSamples": 267199,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "npc.japan.mage.walk": {
       "source": "assets/images/enemies/japan-walk-v4.png",
       "frameMetadata": "ART_FRAMES.animations.japan.walk.mage",
@@ -5800,6 +6442,208 @@
         ],
         "visibleSamples": 205211,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.japan.mage.walk.v5": {
+      "source": "assets/images/enemies/japan-mage-v5.png",
+      "frameMetadata": "ART_JAPAN.mage.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3d2d45",
+            "coveragePercent": 12.189
+          },
+          {
+            "hex": "#2c1c28",
+            "coveragePercent": 11.6965
+          },
+          {
+            "hex": "#533f61",
+            "coveragePercent": 10.4631
+          },
+          {
+            "hex": "#140b12",
+            "coveragePercent": 7.6121
+          },
+          {
+            "hex": "#705380",
+            "coveragePercent": 7.0118
+          },
+          {
+            "hex": "#efc7a8",
+            "coveragePercent": 6.9415
+          },
+          {
+            "hex": "#f5dec7",
+            "coveragePercent": 6.8738
+          },
+          {
+            "hex": "#faf3ec",
+            "coveragePercent": 5.4738
+          },
+          {
+            "hex": "#613b29",
+            "coveragePercent": 4.7906
+          },
+          {
+            "hex": "#c69e9d",
+            "coveragePercent": 4.5139
+          },
+          {
+            "hex": "#c39dd2",
+            "coveragePercent": 4.2327
+          },
+          {
+            "hex": "#a17b78",
+            "coveragePercent": 4.1788
+          },
+          {
+            "hex": "#9572ae",
+            "coveragePercent": 4.0389
+          },
+          {
+            "hex": "#976034",
+            "coveragePercent": 3.676
+          },
+          {
+            "hex": "#ecb477",
+            "coveragePercent": 3.4989
+          },
+          {
+            "hex": "#d3933f",
+            "coveragePercent": 2.8087
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935a2c",
+            "coveragePercent": 21.4348
+          },
+          {
+            "hex": "#b87a3a",
+            "coveragePercent": 20.6219
+          },
+          {
+            "hex": "#f0b671",
+            "coveragePercent": 20.3157
+          },
+          {
+            "hex": "#dd9d46",
+            "coveragePercent": 19.775
+          },
+          {
+            "hex": "#674691",
+            "coveragePercent": 13.3118
+          },
+          {
+            "hex": "#8c64d0",
+            "coveragePercent": 4.5408
+          }
+        ],
+        "visibleSamples": 335834,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.japan.mage.attack.v5": {
+      "source": "assets/images/enemies/japan-mage-v5.png",
+      "frameMetadata": "ART_JAPAN.mage.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2c44",
+            "coveragePercent": 11.0645
+          },
+          {
+            "hex": "#2b1c28",
+            "coveragePercent": 10.5572
+          },
+          {
+            "hex": "#533e5f",
+            "coveragePercent": 10.3455
+          },
+          {
+            "hex": "#71547d",
+            "coveragePercent": 7.7477
+          },
+          {
+            "hex": "#f5ddc8",
+            "coveragePercent": 7.0901
+          },
+          {
+            "hex": "#140a12",
+            "coveragePercent": 6.9485
+          },
+          {
+            "hex": "#f1c9a8",
+            "coveragePercent": 6.6118
+          },
+          {
+            "hex": "#fbf4ec",
+            "coveragePercent": 5.9741
+          },
+          {
+            "hex": "#cfa7a5",
+            "coveragePercent": 5.2315
+          },
+          {
+            "hex": "#aa8380",
+            "coveragePercent": 4.914
+          },
+          {
+            "hex": "#8f6ca9",
+            "coveragePercent": 4.5912
+          },
+          {
+            "hex": "#623a28",
+            "coveragePercent": 4.4409
+          },
+          {
+            "hex": "#ecb476",
+            "coveragePercent": 3.9306
+          },
+          {
+            "hex": "#976237",
+            "coveragePercent": 3.8899
+          },
+          {
+            "hex": "#b993d0",
+            "coveragePercent": 3.6901
+          },
+          {
+            "hex": "#d5943d",
+            "coveragePercent": 2.9723
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b602f",
+            "coveragePercent": 27.2337
+          },
+          {
+            "hex": "#efb569",
+            "coveragePercent": 27.0095
+          },
+          {
+            "hex": "#ce8e3f",
+            "coveragePercent": 25.8581
+          },
+          {
+            "hex": "#66468e",
+            "coveragePercent": 12.305
+          },
+          {
+            "hex": "#7e56b0",
+            "coveragePercent": 5.0005
+          },
+          {
+            "hex": "#976dde",
+            "coveragePercent": 2.5931
+          }
+        ],
+        "visibleSamples": 390160,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.yomi.guard.walk": {
@@ -7416,6 +8260,208 @@
         ],
         "visibleSamples": 213800,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dungeon.raisedSamurai.walk": {
+      "source": "assets/images/enemies/japan-raised-v5.png",
+      "frameMetadata": "ART_JAPAN.raised.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4a342e",
+            "coveragePercent": 13.0812
+          },
+          {
+            "hex": "#30211e",
+            "coveragePercent": 12.1774
+          },
+          {
+            "hex": "#180a0b",
+            "coveragePercent": 11.3526
+          },
+          {
+            "hex": "#6e161b",
+            "coveragePercent": 11.1899
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 9.4551
+          },
+          {
+            "hex": "#481112",
+            "coveragePercent": 8.0916
+          },
+          {
+            "hex": "#5f4b47",
+            "coveragePercent": 7.3198
+          },
+          {
+            "hex": "#b6202b",
+            "coveragePercent": 6.7864
+          },
+          {
+            "hex": "#79452c",
+            "coveragePercent": 4.5155
+          },
+          {
+            "hex": "#856a60",
+            "coveragePercent": 3.9888
+          },
+          {
+            "hex": "#a46137",
+            "coveragePercent": 3.1079
+          },
+          {
+            "hex": "#c7834d",
+            "coveragePercent": 2.5571
+          },
+          {
+            "hex": "#ae9389",
+            "coveragePercent": 2.0767
+          },
+          {
+            "hex": "#dabfad",
+            "coveragePercent": 1.7292
+          },
+          {
+            "hex": "#e9b067",
+            "coveragePercent": 1.5984
+          },
+          {
+            "hex": "#f5ece4",
+            "coveragePercent": 0.9725
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f1720",
+            "coveragePercent": 34.516
+          },
+          {
+            "hex": "#b41f2a",
+            "coveragePercent": 30.7831
+          },
+          {
+            "hex": "#915330",
+            "coveragePercent": 11.963
+          },
+          {
+            "hex": "#b06c40",
+            "coveragePercent": 10.3728
+          },
+          {
+            "hex": "#d08b50",
+            "coveragePercent": 7.8662
+          },
+          {
+            "hex": "#eeb664",
+            "coveragePercent": 4.4989
+          }
+        ],
+        "visibleSamples": 249627,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.dungeon.raisedSamurai.attack": {
+      "source": "assets/images/enemies/japan-raised-v5.png",
+      "frameMetadata": "ART_JAPAN.raised.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#46322c",
+            "coveragePercent": 11.54
+          },
+          {
+            "hex": "#6e171c",
+            "coveragePercent": 10.4368
+          },
+          {
+            "hex": "#31221f",
+            "coveragePercent": 10.2888
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 8.8537
+          },
+          {
+            "hex": "#574541",
+            "coveragePercent": 7.9497
+          },
+          {
+            "hex": "#231110",
+            "coveragePercent": 7.8949
+          },
+          {
+            "hex": "#4c1313",
+            "coveragePercent": 7.8645
+          },
+          {
+            "hex": "#b7212a",
+            "coveragePercent": 6.6519
+          },
+          {
+            "hex": "#0e0607",
+            "coveragePercent": 5.5223
+          },
+          {
+            "hex": "#78452c",
+            "coveragePercent": 5.3019
+          },
+          {
+            "hex": "#7a5f54",
+            "coveragePercent": 5.1557
+          },
+          {
+            "hex": "#ae683e",
+            "coveragePercent": 3.9552
+          },
+          {
+            "hex": "#a28476",
+            "coveragePercent": 2.6795
+          },
+          {
+            "hex": "#db9a59",
+            "coveragePercent": 2.5907
+          },
+          {
+            "hex": "#d7b79d",
+            "coveragePercent": 2.181
+          },
+          {
+            "hex": "#f1e5d9",
+            "coveragePercent": 1.1335
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901720",
+            "coveragePercent": 34.4805
+          },
+          {
+            "hex": "#b6212a",
+            "coveragePercent": 28.8013
+          },
+          {
+            "hex": "#905332",
+            "coveragePercent": 12.8239
+          },
+          {
+            "hex": "#b16b42",
+            "coveragePercent": 11.2755
+          },
+          {
+            "hex": "#d08a50",
+            "coveragePercent": 8.1985
+          },
+          {
+            "hex": "#edb466",
+            "coveragePercent": 4.4203
+          }
+        ],
+        "visibleSamples": 255263,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "npc.samurai": {
@@ -26376,6 +27422,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/enemies/japan-archer-v5.png": {
+      "sha256": "86545f8c640ff15817f80dd71e3509d85217e09114bbc2cedaf1fae2b5373605",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "japanArcher"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#271810",
+            "coveragePercent": 15.3158
+          },
+          {
+            "hex": "#382a1e",
+            "coveragePercent": 15.031
+          },
+          {
+            "hex": "#503e2a",
+            "coveragePercent": 13.418
+          },
+          {
+            "hex": "#110907",
+            "coveragePercent": 9.0832
+          },
+          {
+            "hex": "#6c583b",
+            "coveragePercent": 8.5139
+          },
+          {
+            "hex": "#704220",
+            "coveragePercent": 5.9415
+          },
+          {
+            "hex": "#512210",
+            "coveragePercent": 4.8551
+          },
+          {
+            "hex": "#975c29",
+            "coveragePercent": 4.5681
+          },
+          {
+            "hex": "#92704e",
+            "coveragePercent": 4.2673
+          },
+          {
+            "hex": "#c07f3c",
+            "coveragePercent": 3.8091
+          },
+          {
+            "hex": "#dfb694",
+            "coveragePercent": 3.5332
+          },
+          {
+            "hex": "#eed1b4",
+            "coveragePercent": 3.3635
+          },
+          {
+            "hex": "#b4937d",
+            "coveragePercent": 2.5557
+          },
+          {
+            "hex": "#e4a950",
+            "coveragePercent": 2.3749
+          },
+          {
+            "hex": "#f6eee2",
+            "coveragePercent": 2.0225
+          },
+          {
+            "hex": "#94170b",
+            "coveragePercent": 1.347
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d592d",
+            "coveragePercent": 28.7447
+          },
+          {
+            "hex": "#a37343",
+            "coveragePercent": 23.1568
+          },
+          {
+            "hex": "#cf9047",
+            "coveragePercent": 19.1527
+          },
+          {
+            "hex": "#ecb661",
+            "coveragePercent": 11.4468
+          },
+          {
+            "hex": "#bb6b20",
+            "coveragePercent": 10.0984
+          },
+          {
+            "hex": "#9b200d",
+            "coveragePercent": 7.4005
+          }
+        ],
+        "visibleSamples": 550840,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/enemies/japan-attack-v4.png": {
       "sha256": "f6dc9c950017a670619fde9b8e6b4c2a61173cd691536b39790f85738090835a",
       "width": 1536,
@@ -26479,6 +27630,426 @@
         ],
         "visibleSamples": 746072,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/japan-guard-v5.png": {
+      "sha256": "d2b7f0af8bc82ec0f7c0591545a14347873249102354a7f97eb26a2494b27e31",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "japanGuard"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#201314",
+            "coveragePercent": 10.8228
+          },
+          {
+            "hex": "#352929",
+            "coveragePercent": 10.3688
+          },
+          {
+            "hex": "#0c0607",
+            "coveragePercent": 9.8055
+          },
+          {
+            "hex": "#431110",
+            "coveragePercent": 7.6525
+          },
+          {
+            "hex": "#cd212c",
+            "coveragePercent": 7.6213
+          },
+          {
+            "hex": "#6f1115",
+            "coveragePercent": 7.3056
+          },
+          {
+            "hex": "#a01620",
+            "coveragePercent": 7.2044
+          },
+          {
+            "hex": "#633926",
+            "coveragePercent": 7.1434
+          },
+          {
+            "hex": "#494045",
+            "coveragePercent": 6.8582
+          },
+          {
+            "hex": "#915631",
+            "coveragePercent": 5.4948
+          },
+          {
+            "hex": "#c1743b",
+            "coveragePercent": 4.7924
+          },
+          {
+            "hex": "#6d5b59",
+            "coveragePercent": 4.5048
+          },
+          {
+            "hex": "#e6a14e",
+            "coveragePercent": 3.8407
+          },
+          {
+            "hex": "#f0c889",
+            "coveragePercent": 2.7472
+          },
+          {
+            "hex": "#a8897c",
+            "coveragePercent": 2.0865
+          },
+          {
+            "hex": "#f2e8d6",
+            "coveragePercent": 1.7511
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b91825",
+            "coveragePercent": 20.0772
+          },
+          {
+            "hex": "#9a5b32",
+            "coveragePercent": 19.565
+          },
+          {
+            "hex": "#93161d",
+            "coveragePercent": 19.1297
+          },
+          {
+            "hex": "#cf8241",
+            "coveragePercent": 16.7852
+          },
+          {
+            "hex": "#d72830",
+            "coveragePercent": 13.6858
+          },
+          {
+            "hex": "#f0b760",
+            "coveragePercent": 10.7571
+          }
+        ],
+        "visibleSamples": 637859,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/japan-mage-v5.png": {
+      "sha256": "ed0621adfc0728873eb1879f459cf91f6a3885e58874feda2451eb931144fbe8",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "japanMage"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2c44",
+            "coveragePercent": 11.5096
+          },
+          {
+            "hex": "#2c1c27",
+            "coveragePercent": 10.9551
+          },
+          {
+            "hex": "#533e60",
+            "coveragePercent": 10.5376
+          },
+          {
+            "hex": "#70547d",
+            "coveragePercent": 7.6251
+          },
+          {
+            "hex": "#f4dcc7",
+            "coveragePercent": 7.4289
+          },
+          {
+            "hex": "#140a12",
+            "coveragePercent": 7.2518
+          },
+          {
+            "hex": "#f2caa4",
+            "coveragePercent": 6.1241
+          },
+          {
+            "hex": "#faf4ec",
+            "coveragePercent": 5.7618
+          },
+          {
+            "hex": "#d0a8a7",
+            "coveragePercent": 5.2503
+          },
+          {
+            "hex": "#aa8380",
+            "coveragePercent": 4.786
+          },
+          {
+            "hex": "#623c29",
+            "coveragePercent": 4.661
+          },
+          {
+            "hex": "#8f6da9",
+            "coveragePercent": 4.1879
+          },
+          {
+            "hex": "#ba94d0",
+            "coveragePercent": 3.8896
+          },
+          {
+            "hex": "#986236",
+            "coveragePercent": 3.7436
+          },
+          {
+            "hex": "#ebb273",
+            "coveragePercent": 3.5387
+          },
+          {
+            "hex": "#d3933d",
+            "coveragePercent": 2.7491
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b87a3a",
+            "coveragePercent": 20.3261
+          },
+          {
+            "hex": "#f0b771",
+            "coveragePercent": 20.3254
+          },
+          {
+            "hex": "#935a2c",
+            "coveragePercent": 20.3005
+          },
+          {
+            "hex": "#de9f46",
+            "coveragePercent": 20.0514
+          },
+          {
+            "hex": "#684791",
+            "coveragePercent": 14.0111
+          },
+          {
+            "hex": "#8d64cd",
+            "coveragePercent": 4.9855
+          }
+        ],
+        "visibleSamples": 725994,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/enemies/japan-raised-v5.png": {
+      "sha256": "de4a360444a721f37d03d91199c1f4ebe0276a4c6989b2d4377a5e2305e0fdb5",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "japanRaised"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#49342e",
+            "coveragePercent": 13.2909
+          },
+          {
+            "hex": "#30211e",
+            "coveragePercent": 12.5134
+          },
+          {
+            "hex": "#180a0b",
+            "coveragePercent": 11.532
+          },
+          {
+            "hex": "#6e171b",
+            "coveragePercent": 10.6321
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 9.1497
+          },
+          {
+            "hex": "#4b1213",
+            "coveragePercent": 8.0255
+          },
+          {
+            "hex": "#5e4b46",
+            "coveragePercent": 7.1688
+          },
+          {
+            "hex": "#b7212b",
+            "coveragePercent": 6.6977
+          },
+          {
+            "hex": "#79462c",
+            "coveragePercent": 4.7232
+          },
+          {
+            "hex": "#83685c",
+            "coveragePercent": 4.3437
+          },
+          {
+            "hex": "#a76238",
+            "coveragePercent": 3.075
+          },
+          {
+            "hex": "#c8834e",
+            "coveragePercent": 2.5335
+          },
+          {
+            "hex": "#ac9086",
+            "coveragePercent": 2.0923
+          },
+          {
+            "hex": "#dac0ad",
+            "coveragePercent": 1.6626
+          },
+          {
+            "hex": "#e8af6a",
+            "coveragePercent": 1.6529
+          },
+          {
+            "hex": "#f5ece3",
+            "coveragePercent": 0.9068
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901720",
+            "coveragePercent": 35.3871
+          },
+          {
+            "hex": "#b5202a",
+            "coveragePercent": 28.934
+          },
+          {
+            "hex": "#905331",
+            "coveragePercent": 12.3238
+          },
+          {
+            "hex": "#b06b41",
+            "coveragePercent": 10.7552
+          },
+          {
+            "hex": "#d08a50",
+            "coveragePercent": 8.1581
+          },
+          {
+            "hex": "#eeb565",
+            "coveragePercent": 4.4419
+          }
+        ],
+        "visibleSamples": 504890,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/japan-shield-v5.png": {
+      "sha256": "d9ec035ed398ab78e492e07fa242b81c4eb50c18848f30a89e2320a4a282a519",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "japanShield"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#33221e",
+            "coveragePercent": 11.2001
+          },
+          {
+            "hex": "#270f0e",
+            "coveragePercent": 10.7525
+          },
+          {
+            "hex": "#741e1c",
+            "coveragePercent": 9.6053
+          },
+          {
+            "hex": "#49332b",
+            "coveragePercent": 9.5949
+          },
+          {
+            "hex": "#531413",
+            "coveragePercent": 9.0218
+          },
+          {
+            "hex": "#0e0606",
+            "coveragePercent": 8.6378
+          },
+          {
+            "hex": "#9b1e20",
+            "coveragePercent": 8.356
+          },
+          {
+            "hex": "#664537",
+            "coveragePercent": 7.4584
+          },
+          {
+            "hex": "#c32829",
+            "coveragePercent": 6.1283
+          },
+          {
+            "hex": "#954c2f",
+            "coveragePercent": 4.3615
+          },
+          {
+            "hex": "#bd6c41",
+            "coveragePercent": 4.0614
+          },
+          {
+            "hex": "#85614c",
+            "coveragePercent": 3.5887
+          },
+          {
+            "hex": "#da975c",
+            "coveragePercent": 2.7618
+          },
+          {
+            "hex": "#e9bf8b",
+            "coveragePercent": 1.8631
+          },
+          {
+            "hex": "#a58371",
+            "coveragePercent": 1.4641
+          },
+          {
+            "hex": "#f3e6cf",
+            "coveragePercent": 1.1442
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f2020",
+            "coveragePercent": 25.1191
+          },
+          {
+            "hex": "#b02023",
+            "coveragePercent": 22.1722
+          },
+          {
+            "hex": "#975736",
+            "coveragePercent": 19.4914
+          },
+          {
+            "hex": "#c27848",
+            "coveragePercent": 14.2338
+          },
+          {
+            "hex": "#cd332f",
+            "coveragePercent": 11.2895
+          },
+          {
+            "hex": "#e5a865",
+            "coveragePercent": 7.6939
+          }
+        ],
+        "visibleSamples": 537991,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/enemies/japan-walk-v4.png": {
@@ -38144,7 +39715,7 @@
       {
         "value": "#bd82dc",
         "lines": [
-          78
+          80
         ],
         "dynamic": false
       }
@@ -38607,35 +40178,35 @@
       {
         "value": "#070e18",
         "lines": [
-          469
+          476
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          494
+          501
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          447
+          454
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          493
+          500
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          455
+          462
         ],
         "dynamic": false
       },
@@ -38672,15 +40243,15 @@
       {
         "value": "#102236",
         "lines": [
-          691
+          698
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          467,
-          473
+          474,
+          480
         ],
         "dynamic": false
       },
@@ -38694,21 +40265,21 @@
       {
         "value": "#112b3fee",
         "lines": [
-          429
+          436
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          492
+          499
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          732
+          739
         ],
         "dynamic": false
       },
@@ -38722,7 +40293,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          833
+          840
         ],
         "dynamic": false
       },
@@ -38736,35 +40307,35 @@
       {
         "value": "#163847dd",
         "lines": [
-          661
+          668
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          675
+          682
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          762
+          769
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          450
+          457
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          548
+          555
         ],
         "dynamic": false
       },
@@ -38785,7 +40356,7 @@
       {
         "value": "#234559cc",
         "lines": [
-          650
+          657
         ],
         "dynamic": false
       },
@@ -38799,28 +40370,28 @@
       {
         "value": "#251339",
         "lines": [
-          821
+          828
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          695
+          702
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          441
+          448
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          637
+          644
         ],
         "dynamic": false
       },
@@ -38841,7 +40412,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          637
+          644
         ],
         "dynamic": false
       },
@@ -38855,14 +40426,14 @@
       {
         "value": "#8b764eaa",
         "lines": [
-          521
+          528
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          533
+          540
         ],
         "dynamic": false
       },
@@ -38883,14 +40454,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          641
+          648
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          683
+          690
         ],
         "dynamic": false
       },
@@ -38904,7 +40475,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          683
+          690
         ],
         "dynamic": false
       },
@@ -38918,49 +40489,49 @@
       {
         "value": "#b5a777",
         "lines": [
-          531
+          538
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          821
+          828
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          783
+          790
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          439
+          446
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          483
+          490
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          683
+          690
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          651
+          658
         ],
         "dynamic": false
       },
@@ -38981,14 +40552,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          817
+          824
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          656
+          663
         ],
         "dynamic": false
       },
@@ -39002,14 +40573,14 @@
       {
         "value": "#d1c9acaf",
         "lines": [
-          559
+          566
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          735
+          742
         ],
         "dynamic": false
       },
@@ -39023,56 +40594,56 @@
       {
         "value": "#d99583",
         "lines": [
-          455
+          462
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          821
+          828
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          819
+          826
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          531
+          538
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          455
+          462
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          676
+          683
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          803
+          810
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          643
+          650
         ],
         "dynamic": false
       },
@@ -39086,7 +40657,7 @@
       {
         "value": "#e6b0fa22",
         "lines": [
-          488
+          495
         ],
         "dynamic": false
       },
@@ -39100,21 +40671,21 @@
       {
         "value": "#e7616355",
         "lines": [
-          802
+          809
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          802
+          809
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          783
+          790
         ],
         "dynamic": false
       },
@@ -39128,22 +40699,22 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          818
+          825
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          802
+          809
         ],
         "dynamic": false
       },
       {
         "value": "#f3d8ac",
         "lines": [
-          488,
-          670
+          495,
+          677
         ],
         "dynamic": false
       },
@@ -39164,14 +40735,14 @@
       {
         "value": "#f6a47580",
         "lines": [
-          531
+          538
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          691
+          698
         ],
         "dynamic": false
       },
@@ -39185,7 +40756,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          695
+          702
         ],
         "dynamic": false
       },
@@ -39199,92 +40770,92 @@
       {
         "value": "#ffb385",
         "lines": [
-          439
+          446
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          695
+          702
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          470
+          477
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          803
+          810
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          439
+          446
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          483
+          490
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          725
+          732
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          531,
-          725
+          538,
+          732
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          732
+          739
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          637
+          644
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          643
+          650
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          683
+          690
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          660
+          667
         ],
         "dynamic": false
       },
@@ -39298,8 +40869,8 @@
       {
         "value": "#fff0b3",
         "lines": [
-          433,
-          656
+          440,
+          663
         ],
         "dynamic": false
       },
@@ -39313,18 +40884,18 @@
       {
         "value": "#fff0bc",
         "lines": [
-          430
+          437
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          468,
-          473,
-          474,
-          477,
-          695
+          475,
+          480,
+          481,
+          484,
+          702
         ],
         "dynamic": false
       },
@@ -39346,35 +40917,35 @@
       {
         "value": "#fff0ce",
         "lines": [
-          686
+          693
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          822
+          829
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          661
+          668
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          650
+          657
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          444
+          451
         ],
         "dynamic": false
       },

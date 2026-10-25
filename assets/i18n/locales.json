@@ -937,7 +937,9 @@
       "menu.changelog.0946.arena.1": "Az aréna háttere nyugodtabban követi a kamerát, a kapitány és a kétfejű kígyó pedig nagyobb, hozzájuk igazított találati testet kapott.",
       "menu.changelog.0946.arena.2": "A küklopszok önállóan, változatosabban támadnak, dobbantásuk pontosan jelzi a célterületet.",
       "menu.changelog.0946.arena.3": "A bajnok gyorsabb kombinációkat, nagyobb területi támadásokat és küklopszidézést használ. Kimerülése után öt másodperc marad a végső találatra; utána agresszívebb pajzsciklus indul.",
-      "menu.changelog.0946.arena.4": "A bajnok győzelem utáni távozása lépésanimációt kapott."
+      "menu.changelog.0946.arena.4": "A bajnok győzelem utáni távozása lépésanimációt kapott.",
+      "menu.changelog.0946.summons.title": "Szamurájok és nekromanta-idézések javítása",
+      "menu.changelog.0946.summons.0": "A nekromanta feltámasztott katonái megjelenésüktől Momót üldözik. A szamurájok egységesebb, részletesebb megjelenést, az idézett harcosok élőhalott külsőt kaptak."
     }
   },
   "en": {
@@ -1878,7 +1880,9 @@
       "menu.changelog.0946.arena.1": "The arena background follows the camera more gently, and the captain and two-headed serpent are larger with matching hitboxes.",
       "menu.changelog.0946.arena.2": "The cyclopes attack independently with more variety, and their stomps accurately mark the targeted area.",
       "menu.changelog.0946.arena.3": "The champion uses faster combos, larger area attacks and cyclops summons. After exhaustion, you have five seconds to land the final hit before a more aggressive shield cycle begins.",
-      "menu.changelog.0946.arena.4": "The champion now leaves with a walking animation after the fight."
+      "menu.changelog.0946.arena.4": "The champion now leaves with a walking animation after the fight.",
+      "menu.changelog.0946.summons.title": "Samurai and necromancer summon fixes",
+      "menu.changelog.0946.summons.0": "The necromancer’s raised soldiers pursue Momo as soon as they appear. Samurai now have a more consistent, detailed appearance, while summoned warriors have an undead look."
     }
   }
 }

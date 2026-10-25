@@ -428,6 +428,22 @@
           "en": "The champion now leaves with a walking animation after the fight."
         }
       ]
+    },
+    {
+      "version": "0.9.46_f6c1784b",
+      "code": "f6c1784b",
+      "baseVersion": "0.9.46",
+      "slug": "japanese-soldiers-and-necromancer-summons",
+      "summary": {
+        "hu": "Szamurájok és nekromanta-idézések javítása",
+        "en": "Samurai and necromancer summon fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A nekromanta feltámasztott katonái megjelenésüktől Momót üldözik. A szamurájok egységesebb, részletesebb megjelenést, az idézett harcosok élőhalott külsőt kaptak.",
+          "en": "The necromancer’s raised soldiers pursue Momo as soon as they appear. Samurai now have a more consistent, detailed appearance, while summoned warriors have an undead look."
+        }
+      ]
     }
   ],
   "releases": [

@@ -10,6 +10,7 @@ A referenciaútvonalak a repository gyökeréhez képest értendők. A korai gen
 | [scenery-v3.json](scenery-v3.json) | A később átdolgozott terep és kellékek eredeti terve. |
 | [enemy-animation-v4.json](enemy-animation-v4.json) | Frakciónkénti mozgás/támadás és bossatlasz. |
 | [enemy-animation-repairs-v4.json](enemy-animation-repairs-v4.json) | Sisak- és pajzsazonosság javításai. |
+| [japan-enemies-v5.json](japan-enemies-v5.json) | A japán katonák közös festett frissítése és a nekromanta élőhalott szamurája; jóváhagyott koncepció és javított lándzsás mozgásterv. |
 | [scenery-repairs-v4.json](scenery-repairs-v4.json) | Az aktív terep/kellékatlasz elrendezési javításai. |
 | [combat-v5.json](combat-v5.json) | Momo kardcsapása, szamuráj, angyalformák és ereklyék. |
 | [secrets-v6.json](secrets-v6.json) | Öreg angyal, kultista és titkos helyszínek. |

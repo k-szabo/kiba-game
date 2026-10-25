@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,japan:ART_JAPAN})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -180,7 +180,20 @@ for faction, actions in atlas['frames']['animations'].items():
             key = faction + action.capitalize()
             identifier = f'npc.{faction}.{role}.{action}'
             variants[action] = {'paletteGroup': group(identifier, manifest[key], roles[role], f'ART_FRAMES.animations.{faction}.{action}.{role}')}
+        if faction == 'japan':
+            # Keep the v4 atlas as a historical reference; the shared renderer
+            # uses the new per-role sheets in every Japanese soldier location.
+            definition = atlas['japan'][role]
+            for action in ('walk', 'attack'):
+                identifier = f'npc.japan.{role}.{action}.v5'
+                variants['legacy' + action.capitalize()] = variants[action]
+                variants[action] = {'paletteGroup': group(identifier, manifest[definition['image']], definition[action], f'ART_JAPAN.{role}.{action}')}
         npcs[f'{faction}.{role}'] = {'faction': faction, 'role': role, 'variants': variants}
+
+raised = atlas['japan']['raised']
+npcs['dungeon.raisedSamurai'] = {'role': 'summoned-guard', 'faction': 'necromancer', 'variants': {
+    action: {'paletteGroup': group('npc.dungeon.raisedSamurai.' + action, manifest[raised['image']], raised[action], 'ART_JAPAN.raised.' + action)}
+    for action in ('walk', 'attack')}}
 
 for key in ('samurai', 'angelLight', 'angelDark', 'angelEclipse', 'oldAngel', 'oldCultist'):
     identifier = f'npc.{key}'
@@ -312,7 +325,7 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 58, 'Missing current character entry'
+assert len(npcs) == 59, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
