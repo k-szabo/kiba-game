@@ -244,7 +244,7 @@ const Visuals = (() => {
       const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
-      if([shadowPrison,shadowDen,shadowArena,fiaChambers].includes(level)&&PrisonArt.terrain(p))continue;
+      if((level.dungeon||[shadowPrison,shadowDen,shadowArena,fiaChambers].includes(level))&&PrisonArt.terrain(p))continue;
       if(level===samuraiCamp&&CampArt.terrain(p))continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
       const lift = 0;
@@ -383,7 +383,7 @@ const Visuals = (() => {
     const actorFaction=e.factionOverride||faction();
     const palette=e.factionOverride==='yomi'?realms[1]:e.factionOverride==='heaven'?realms[2]:r;
     let index=0,key,rect;
-    if(realm===3){
+    if(realm===3||!isBoss&&!e.miniboss&&actorFaction==='shadowCult'){
       const name=isBoss?'madPriest':e.miniboss?e.id:role;
       const art=ART_SHADOW.actors[name],phase=e.miniboss||isBoss?e.phase:e.windup>0?'windup':e.attackTime>0?'strike':e.recovery>0?'recover':'wait';
       if(phase==='windup')index=(isBoss||e.miniboss?e.clock/e.phaseDuration:e.windup/e.windupDuration)>.5?2:3;

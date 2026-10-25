@@ -10,15 +10,17 @@ Yomi középső mélységének jobb oldalán, a keleti folyópárkányon egy nag
 - Halál, szentélypihenés vagy az összecsapás elhagyása új próbát jelent. A külön harcok ölési számai nem adódnak össze.
 - A kulcsdobás jogosultsága és a kapu feloldása az adott verzión belül mentődik, halál után is megmarad. Az első kapunyitáskor a kulcs elporlad és eltűnik a tárgyak közül; a nyitott kapun később kulcs nélkül is átjárhatsz.
 
-A boss nem hívható vissza. Ha a győzelemkor nem volt meg a nyolc minion, az opcionális ág azon az utazáson kimarad; új játékban próbálható ismét. A fő történet továbbra is végigjátszható.
+Normál játékban a boss nem hívható vissza. Ha a győzelemkor nem volt meg a nyolc minion, az opcionális ág azon az utazáson kimarad; új játékban próbálható ismét. A fő történet továbbra is végigjátszható.
 
 ## A kastély
 
-A láncos kapu a megszerzett kulccsal nyitható. Bent egy **ellenfelek nélküli**, démoni japán kastélybelső járható be, a négy üres tanácsosi hellyel és egy elolvasható felirattal. A bejáratnál az interakciógombbal lehet visszatérni Yomiba.
+A láncos kapu a megszerzett kulccsal nyitható. Bent egy **ellenfelek nélküli**, démoni japán kastélybelső járható be, a négy üres tanácsosi hellyel, egy elolvasható felirattal és az emléktekerccsel. A bejáratnál az interakciógombbal lehet visszatérni Yomiba.
+
+Az emléktekercs külön, szüneteltető választóablakból indítja vagy folytatja **A Yomi Királyság bukása** háromszintes dungeonját. A csarnok maga ettől nem kapott ellenfeleket vagy bosst. A dungeon szintjei, ismételhető XP-/érmejutalmai, egyszeri pontjai és lelke, ládája, megerősítései és mentési szabályai a spoileres [DUNGEONS.md](DUNGEONS.md) referenciában szerepelnek.
 
 Ez külön belső pálya Yomi birodalmán belül, nem negyedik birodalom. A fő térkép és a gyorsutazás továbbra is Yomi szentélyeit mutatja. A normál kijárat visszavisz a kapu előtti párkányra az előző életerővel és kültéri ellenfélállapottal. Halál, leesés vagy gyorsutazás a megfelelő kültéri szentélyre vezet.
 
-A mentés a megszokott, érvényes Yomi-szentélyt őrzi: **újratöltés/Folytatás után a kültéri mentőpontnál ébredsz**, a még fel nem használt kulcs vagy a már nyitott kapu viszont megmarad. Új alfa/béta verziónál ez a haladás is törlődik. A belső pálya nem ad új szentélyt vagy mentési sémaverziót.
+A csarnokban tartózkodás mentése a megszokott, érvényes Yomi-szentélyt őrzi: **újratöltés/Folytatás után a kültéri mentőpontnál ébredsz**, a még fel nem használt kulcs vagy a már nyitott kapu viszont megmarad. A csarnok nem ad új szentélyt. A tekercsből megnyíló dungeon saját szentélyeket, belépési checkpointokat és mentett runállapotot használ; ezek szabályait a dungeon-referencia külön részletezi. Új alfa/béta verziónál ez a haladás is törlődik.
 
 ## Grafika és referencia
 
@@ -36,4 +38,4 @@ Az ART_COUNCIL metaadatok őrzik a méreteket és illesztési pontokat. A kasté
 
 A scripts/test-council-branch.cjs a 0/7/8 minionos feltételt, tényleges kardtalálatos minionölést, belső számláló-visszaállítást és rejtettséget, a végleg kimaradt kulcsot, a visszahívás hiányát, egyszeri bossjutalmat, tárgyfelvételt, mentési láncot, verzióhoz kötött mentéseket, az üres belső pályát és a visszatérési útvonalakat ellenőrzi. Része az npm test parancsnak és a Pages workflow-nak; a képméreteket, alfát és padlóregisztrációt is vizsgálja.
 
-A független Chrome QA HU/EN asztali és mobilnézetben ellenőrizte a kaput, a kulcsot, az átjárást, a feliratot, a szünetet, a térképes visszatérést és a valódi titkosított IndexedDB-mentés újratöltését. A böngészős teszt szintetikus haladási adatot, pozicionálást és sebzést használt egy kizárólag tesztként kiszolgált példányban; a valódi idézést, öléskezelést, bossgyőzelmet és interakciókat futtatta. A kardtalálat időzítését külön a VM-teszt ellenőrzi. Ez nem teljes, kézi végigjátszás.
+A kapu korábbi független Chrome QA-ja HU/EN megjelenést, kulcsfelvételt, átjárást, feliratot, szünetet, térképes visszatérést és valódi titkosított IndexedDB-mentést ellenőrzött. Ez történeti bizonyíték az eredeti tanácsosi ágra, nem az új dungeon böngészős ellenőrzése. A teszt szintetikus haladási adatot, pozicionálást és sebzést használt egy kizárólag tesztként kiszolgált példányban; a valódi idézést, öléskezelést, bossgyőzelmet és interakciókat futtatta. A kardtalálat időzítését külön a VM-teszt ellenőrzi. A jelenlegi támogatott nézet asztali, legalább 1280×720; a dungeon megjelenése és valódi mentés-visszatöltése külön QA-t igényel.

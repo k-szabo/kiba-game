@@ -12,7 +12,8 @@ const Merchant=(()=>{
  const healingItems=Object.freeze(['roastMeat','tea','healingBrew']);
  let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
- const stock=id=>id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
+ const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
+ const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
  function selectAvailable(){if(!stock(quickHeal)){const other=healingItems.find(id=>stock(id)>0);if(other)quickHeal=other;}}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
@@ -20,6 +21,7 @@ const Merchant=(()=>{
  }
  function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
  function addStock(id){
+  if(dungeonItem(id))return DungeonRun.addItem(id);
   if(![...healingItems,'forestHerb'].includes(id)||!Number.isSafeInteger(stock(id))||stock(id)<0||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
   if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else if(id==='forestHerb')campServices.herbs++;else if(id==='healingBrew')campServices.potions++;else return false;
   selectAvailable();
@@ -54,7 +56,8 @@ const Merchant=(()=>{
  function sell(id){
   if(!canSell(id))return false;
   const price=salePrice(id);
-  if(id==='roastMeat')meatCount--;else if(id==='tea')teaCount--;else soldItems.push(id);
+  if(dungeonItem(id)){if(!DungeonRun.removeItem(id))return false;}
+  else if(id==='roastMeat')meatCount--;else if(id==='tea')teaCount--;else soldItems.push(id);
   selectAvailable();coins+=price;persist();updateHUD();Inventory.render();
   $('inventoryTradeStatus').textContent=I18n.t('merchant.sold');return true;
  }

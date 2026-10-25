@@ -138,3 +138,15 @@ Az arénában a bossválasztó a `level.arenaEncounters` listát használja: `ar
 A megkínzott kígyó pikkelyének azonosítója `arenaSerpentScale`. Az `ART_INVENTORY.items` regisztrációjából kerül a közös tárgyadóba; tesztbeli hozzáadása nem teljesíti a kígyó menetét, és nem ír normál mentést. Nem keverendő a három világ kígyópikkelyéből készülő, felszerelhető talizmánnal.
 
 A teljes kihívás tesztmódban adhat átmeneti jutalomjelzőket és megnyithatja a lakosztályt, de a `persist()` a DevSession alatt nem írja felül a normál mentést. A teszt befejezése eldobja ezeket. Célzott ellenőrzés: `node scripts/test-arena-combat.cjs` és `node scripts/test-arena-challenge.cjs`; a natív grafika és az IndexedDB tényleges viselkedése külön böngészős QA-t igényel. Részletes működés és spoilerkezelés: [SHADOW-DEN-ARENA.md](SHADOW-DEN-ARENA.md).
+
+## Yomi emlékdungeonja – spoileres fejlesztői rész
+
+A `yomiDungeon1`, `yomiDungeon2` és `yomiDungeon3` a közös `SIDE_LOCATIONS` katalógusból külön teleportcélként jelenik meg. Mindegyik egy saját, boss előtti szentélyre érkezik (`yomiDungeon1Shrine`, `yomiDungeon2Shrine`, `yomiDungeon3Shrine`). A dev teleport a normál kapu-, run- és előzőszint-feltételeket megkerülheti, de nem teljesíti azokat és nem ad képességet. A rejtett belépési checkpointok nem további választóelemek.
+
+Az aktuális szint egyedi bossa a Boss újraélesztése listájából újraindítható: `dungeonCaptain`, `dungeonNecromancer` vagy `dungeonCouncil`. A replay megőrzi a run- és jutalomjelzőket; nem nyit következő szintet, nem ad XP-t, érmét, fejlesztéspontot vagy lelket. A teljes dungeon normál játékmeneti indítása tesztmódban viszont fejlesztheti a tesztkarakter állapotát; ez továbbra sem normál mentés. A tanácsosi csarnokban magában nincs feléleszthető boss.
+
+A `dungeonSeal`, `weaponEnhancement`, `armorEnhancement` és `spiritEnhancement` a tárgykatalógus halmozható elemei; az egyedi `councilSoul` is hozzáadható teszteléshez. A tárgyadás nem teljesít bossfázist, nem állít jutalomjogcímet, és nem ad extra statpontot. A megerősítések felhasználása a normál inventory műveletét követi: típusonként legfeljebb öt fokozat, a szellemmegerősítéshez előbb dash kell. Az inventoryból vagy Akash eladási folyamatán keresztül a készlet és az árak ugyanúgy ellenőrizhetők, mint a többi tárgynál.
+
+A `dungeonState` készlete, fokozatai, runazonosítója és előre kisorsolt ládajutalma a DevSession másolatának része. Új teszt vagy kilépés után a normál állapot helyreáll; a `persist()` a tesztben nem ír SaveVault-rekordot. A láda újranyitása nem sorsolhat új jutalmat; az explicit új emlékút tesztelése a csarnok tekercsénél kezdhető.
+
+Célzott ellenőrzések: `test-dungeon-rules.cjs`, `test-dungeon-run.cjs`, `test-dungeon-combat.cjs`, `test-dungeon-routes.cjs`, `test-dungeon-items.cjs`, `test-dungeon-factions.cjs`. Ezek nem helyettesítik a valódi böngészős grafikai és mentési ellenőrzést. A teljes run-, checkpoint-, frakció- és jutalomszabályokat a [DUNGEONS.md](DUNGEONS.md) rögzíti.

@@ -76,6 +76,7 @@ The site is static and hosted on GitHub Pages. You do not need an account or a s
 - [Gameplay, abilities, and saves](docs/GAMEPLAY.en.md) · [Magyar játékmeneti útmutató](docs/GAMEPLAY.md)
 - [Yomi boss and Lava Serpent](docs/YOMI-BOSS.md) — summon thresholds, both lava stages, and the serpent scale.
 - [The Four Councillors' Hall](docs/COUNCIL-BRANCH.md) — the chained gate, bone key, and empty demonic castle interior.
+- [Yomi’s replayable memory dungeon](docs/DUNGEONS.md) – spoiler developer reference (Hungarian).
 - [Inventory and items](docs/INVENTORY.md) — backpack, equipment, relics, and item icons.
 - [Prologue](docs/PROLOGUE.md) — the dream, Shadow, and Momo's awakening.
 - [Development guide](docs/DEVELOPMENT.md) — local setup, checks, and GitHub Pages.

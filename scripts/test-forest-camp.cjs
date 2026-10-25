@@ -15,7 +15,7 @@ function frames(h,seconds,fps=120){h.run(`for(let f=0;f<${Math.ceil(seconds*fps)
  assert.equal(r('levels.length'),4);assert.equal(r('levels.includes(forestCamp)'),false);
  assert.equal(r('japan.rests.some(s=>s.id===\'forestCamp\')'),false);
  assert.equal(r('realmRests(0).filter(s=>s.id===\'forestCamp\').length'),1);
- assert.equal(r('realmRests(1).length'),r('yomi.rests.length'));
+ assert.equal(r('realmRests(1).filter(rest=>yomi.rests.some(main=>main.id===rest.id)).length'),r('yomi.rests.length'),'Yomi main shrines remain alongside the optional dungeon checkpoints');
  assert.equal(r('realmRests(2).length'),r('heaven.rests.length'));
  assert.equal(r("travelGrid(0).children.some(b=>b.textContent.includes(forestCamp.rests[0].name))"),false,'Unvisited camp is revealed by travel UI');
  const before=r('JSON.stringify([realm,level.id,flags,visitedRests,checkpoint,saved])');

@@ -33,6 +33,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |
 | `assets/js/kitsune-quest.js`, `prison-hunter.js`, `kitsune-art.js` | Fia [megmentése és árnyéktábora](KITSUNE.md), a vadász, a végleges kihagyás és az átváltozás. |
 | `assets/js/arena-challenge.js`, `arena-combat.js`, `arena-art.js` | Ötmenetes [árnyékzugi aréna](SHADOW-DEN-ARENA.md), közös bossvezérlő, egyszeri jutalmak és lakosztály; a referencia spoileres. |
+| `assets/js/dungeon-rules.js`, `dungeon-run.js`, `dungeon-combat.js`, `dungeon-art.js` | Yomi háromszintes [emlékdungeonja](DUNGEONS.md): közös állapot- és készletszabályok, tekercses belépés, frakcióharc, bossok, megjelenítés, egyszeri és ismételhető jutalmak. |
 | `assets/js/serpents.js`, `serpent-relics.js` | Közös kígyótemplate, három találkozás, pikkelyfúzió és külön felszerelt talizmán; [referencia](SERPENTS.md). |
 | `assets/js/doom-slayer.js`, `slayer-dialog.js`, `slayer-art.js` | Opcionális találkozás, szüneteltetett szövegbevitel és külön grafikai réteg; [spoileres fejlesztői referencia](DOOM-SLAYER.md). |
 | `assets/js/prologue.js` | A néma álompálya, Árnyék harca, vereség és ébredési átvezetés. |
@@ -92,6 +93,13 @@ node scripts/test-bindings.cjs
 node scripts/test-prologue.cjs
 node scripts/test-shadow-animation.cjs
 node scripts/test-polish.cjs
+node scripts/test-dungeon-rules.cjs
+node scripts/test-dungeon-run.cjs
+node scripts/test-dungeon-combat.cjs
+node scripts/test-dungeon-routes.cjs
+node scripts/test-dungeon-items.cjs
+node scripts/test-dungeon-factions.cjs
+node scripts/test-dungeon-art.cjs
 node scripts/test-angel-art.cjs
 node scripts/test-boss-vfx.cjs
 node scripts/test-council-branch.cjs

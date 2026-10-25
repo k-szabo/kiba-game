@@ -2,7 +2,7 @@
 'use strict';
 const BugReport=(()=>{
  const endpoint='https://tally.so/r/8Nojjr';
- const areas=new Set(['menu','dream','japan','yomi','heaven','council','forestCamp']);
+ const areas=new Set(['menu','dream','japan','yomi','heaven','council','forestCamp','yomiDungeon1','yomiDungeon2','yomiDungeon3']);
  function browserName(){
   const agent=navigator.userAgent||'';
   for(const [pattern,name] of [[/(?:Edg|EdgA|EdgiOS)\/(\d+)/,'Edge'],[/(?:Firefox|FxiOS)\/(\d+)/,'Firefox'],[/(?:OPR|OPiOS)\/(\d+)/,'Opera'],[/(?:Chrome|CriOS)\/(\d+)/,'Chrome'],[/Version\/(\d+).*Safari\//,'Safari']]){

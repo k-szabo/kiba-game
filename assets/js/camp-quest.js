@@ -6,7 +6,7 @@ const CampQuest=(()=>{
  const owns=id=>flags[0].includes(id);
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
  function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
- const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
+ const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','yomiDungeon1','yomiDungeon2','yomiDungeon3'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -21,7 +21,7 @@ const CampQuest=(()=>{
  }
  function enter(id,{point=null,atShrine=false,save=true}={}){
   if(typeof id!=='string'||!Object.hasOwn(SIDE_LOCATIONS,id)||Prologue.active&&!DevSession.active||!eligible(id))return false;
-  const map=SIDE_LOCATIONS[id].map,rest=point==null?map.rests[0]:map.rests.find(candidate=>candidate.id===point.id);
+  const map=SIDE_LOCATIONS[id].map,rest=point==null?(map.checkpoints?.[0]||map.rests[0]):[...map.rests,...(map.checkpoints||[])].find(candidate=>candidate.id===point.id);
   if(!rest)return false;
   if(DevSession.active)Prologue.stop();
   KitsuneQuest.leaveFor(map);
@@ -127,7 +127,7 @@ const CampQuest=(()=>{
   return null;
  }
  function objective(){
-  if(level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
+  if(level.dungeon||level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};
