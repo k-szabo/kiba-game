@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "tool": "Built-in ImageGen",
+  "date": "2026-10-26",
+  "approval": {
+    "concept": "exec-b946ea20-f4a1-4c36-9a08-a9045340ac02.png explicitly approved for all four shared Japanese roles and the necromancer-raised variant.",
+    "motion": "exec-624e005c-4904-4e42-a943-17ff3644572b.png with row C replaced by exec-aa774c83-d272-4cef-85fd-7dc04e058e79.png explicitly approved after correcting the shield soldier's weapon consistency."
+  },
+  "references": [
+    "assets/images/enemies/japan-walk-v4.png",
+    "assets/images/enemies/shadow-guard-v1.png",
+    "assets/images/enemies/yomi-fall-necromancer-v1.png"
+  ],
+  "notes": [
+    "All five selected PNGs are native generated RGBA files copied byte-for-byte; no source-pixel edits, recoloring, resizing or background removal were performed.",
+    "The four living roles retain established faction equipment/colors while matching the detailed painted illustration of current cultists. The raised guard has corpse-gray skin, skull features and violet eyes.",
+    "Every sheet has twelve complete figures in three columns and four rows. Tool output sizes differ from the requested canvas; registration uses measured native alpha components rather than blindly dividing into equal crops.",
+    "Walking and attacks derive solely from gameplay-owned clocks. External arrows, spell projectiles and slash effects belong to existing gameplay/VFX renderers.",
+    "Shield attacks use the same short straight leaf-headed yari throughout; source pose 8 supplies contact, with pose 7 repeated for the final windup so the visual strike matches attack timing."
+  ],
+  "assets": [
+    {
+      "role": "guard",
+      "path": "assets/images/enemies/japan-guard-v5.png",
+      "nativeGeneration": "exec-2ebb4480-ee1b-49d9-9a86-24e5ec0194d2.png",
+      "sha256": "d2b7f0af8bc82ec0f7c0591545a14347873249102354a7f97eb26a2494b27e31",
+      "width": 1024,
+      "height": 1536,
+      "layout": {
+        "columns": 3,
+        "rows": 4,
+        "walkSource": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attackSource": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "prompt": "Use case: stylized-concept; Asset type: FINAL transparent game sprite sheet. The supplied concept and rough storyboard are APPROVED references. Render ONE character only, SAME character repeated in twelve full-body side-view poses. Native transparent RGBA background, no colored/checkerboard background, no ground shadows, labels, grids, text or effects. Canvas portrait1536x2048, exact THREE COLUMNS FOUR ROWS, each cell512x512. Center bodies near localx240, feet on localy470 for EVERY cell, same fixed body scale about350px tall including helmet, safe minimum24px transparent margins around whole silhouette and weapons. Each figure faces viewer-RIGHT. All twelve complete separated silhouettes, no cell bleed, no cropping of gear/feet/head. Detailed painted Japanese fantasy illustration, crisp ink contours, worn layered armor/fabric, about5.5heads tall, match approved concept exactly; not tiny chibi, not photorealism. Consistent face, materials, colors and unchanging weapon dimensions in all poses. Native alpha preserved. Cells read row-major left-to-right top-to-bottom. Indices0-5 (first two rows) form SIX-FRAME smooth WALK LOOP: left foot contact, left leg down/pass, passing, right foot contact, right leg down/pass, passing to left. Walk holds equipment securely with subtle opposite shoulder motion, body height/scale stable, no hopping, feet ground contact. Indices6-11 (last two rows) attack: early preparation, mid preparation, late preparation, attack contact/release, follow-through, recovery back to neutral. Existing game clocks drive these poses; no projectile/magic/slash VFX baked into sheet. Exactly two arms/two legs/two hands, continuous physical grips. Subject is concept figure1: human navy/gold kabuto helmet katana samurai, red scarf, worn navy/gold lamellar armor. Helmet and horns stay identical and worn in every pose. ONE slightly curved single-edged katana of fixed length, same gold tsuba/hilt. Walk carries katana low pointing right. Attack follows rough rowA: two hands on ONE hilt lift blade above shoulder, windup with elbows naturally bent, same blade cuts diagonally forward, then returns to low guard. Full same-length katana tip fits every cell. No extra swords, unhelmeted head, detached wrist or reversed blade."
+    },
+    {
+      "role": "archer",
+      "path": "assets/images/enemies/japan-archer-v5.png",
+      "nativeGeneration": "exec-e1a85801-60c5-4eb1-b365-a6288d72aafe.png",
+      "sha256": "86545f8c640ff15817f80dd71e3509d85217e09114bbc2cedaf1fae2b5373605",
+      "width": 1086,
+      "height": 1448,
+      "layout": {
+        "columns": 3,
+        "rows": 4,
+        "walkSource": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attackSource": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "prompt": "Use case: stylized-concept; Asset type: FINAL transparent game sprite sheet. The supplied concept and rough storyboard are APPROVED references. Render ONE character only, SAME character repeated in twelve full-body side-view poses. Native transparent RGBA background, no colored/checkerboard background, no ground shadows, labels, grids, text or effects. Canvas portrait1536x2048, exact THREE COLUMNS FOUR ROWS, each cell512x512. Center bodies near localx240, feet on localy470 for EVERY cell, same fixed body scale about350px tall including helmet, safe minimum24px transparent margins around whole silhouette and weapons. Each figure faces viewer-RIGHT. All twelve complete separated silhouettes, no cell bleed, no cropping of gear/feet/head. Detailed painted Japanese fantasy illustration, crisp ink contours, worn layered armor/fabric, about5.5heads tall, match approved concept exactly; not tiny chibi, not photorealism. Consistent face, materials, colors and unchanging weapon dimensions in all poses. Native alpha preserved. Cells read row-major left-to-right top-to-bottom. Indices0-5 (first two rows) form SIX-FRAME smooth WALK LOOP: left foot contact, left leg down/pass, passing, right foot contact, right leg down/pass, passing to left. Walk holds equipment securely with subtle opposite shoulder motion, body height/scale stable, no hopping, feet ground contact. Indices6-11 (last two rows) attack: early preparation, mid preparation, late preparation, attack contact/release, follow-through, recovery back to neutral. Existing game clocks drive these poses; no projectile/magic/slash VFX baked into sheet. Exactly two arms/two legs/two hands, continuous physical grips. Subject is concept figure2: human olive/forest-green and gold armored Japanese yumi archer, white headband, dark tied hair, same quiver. ONE fixed-size asymmetric Japanese yumi bow in left hand, always same curvature and one string. During WALK carry bow lowered/diagonal, same size. Attack follows rough rowB: raise bow, nock ONE arrow, draw string halfway then fully to cheek with right hand, release (NO arrow flying outside bow), follow-through, lower. Only one held/nocked arrow in loaded preparation poses; no arrow in midair or sticking through hands at release. One string, natural bow grip and drawing fingers; no multiple bows. Keep full bow including top tip inside cell with safe margins."
+    },
+    {
+      "role": "shield",
+      "path": "assets/images/enemies/japan-shield-v5.png",
+      "nativeGeneration": "exec-3d0b6de6-a2a8-4f5a-be22-a4a0a854aaf3.png",
+      "sha256": "d9ec035ed398ab78e492e07fa242b81c4eb50c18848f30a89e2320a4a282a519",
+      "width": 1086,
+      "height": 1448,
+      "layout": {
+        "columns": 3,
+        "rows": 4,
+        "walkSource": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attackSource": [
+          6,
+          7,
+          7,
+          8,
+          9,
+          11
+        ]
+      },
+      "prompt": "Create a NEW final transparent game spritesheet, NOT a concept page. Reference1 is approved character design (red shield samurai is third figure); reference2 approved motion. Character: red jingasa hat, worn red/gold Japanese lamellar armor, left rectangular wooden shield, ONE SHORT YARI held RIGHT hand. EXACTLY12 SMALL full-body sprites arranged3columns4rows on a1536x2048 transparent canvas. IMPORTANT: each sprite INCLUDING spear takes only60percent cellwidth and65percent cellheight; broad empty transparent moat around every figure. All silhouettes must be completely separate, never touching. No oversize bodies, no tight packing. Every sprite faces RIGHT, same scale and feet baseline. FIRST6 poses are walking cycle, LAST6 are attack. Weapon invariants dominate: one SAME rigid darkwood SHORT yari, small symmetrical silver leafhead, redsocket, goldbutt. Entire weapon always visible IN FRONT of body and shield. Weapon horizontal rightwards in ALL12poses, same length equal70percent samuraiheight, no shortening, no hiding rearshaft, no sword or javelin or longpolearm. Right hand grips rearquarter, spearshaft runs visibly behind grip to goldbutt; allshaft visible. Shield carried on left forearm without hiding spear. Walk held spear low at waist. ATTACK sixposes: shift weight back, pull SAME horizontal spear a little back, crouched windup, short modest waist-level thrust by a HANDWIDTH, return, neutral. Do not extend rightarm far away; elbow remains BENT and ENTIRE spear visible foregound, like approved technical guide. Never twist spear overhead. Exactly2arms2hands2legs. Fixed helmet, shield, armor and spear size/materials allposes. Detailed painted Japanese fantasy game illustration, crisp ink edge, match concept. NativeRGBA alpha, no labels, grid, shadow, matte, effects, detached weapon samples or projectiles. Small characters with big transparent margins: fullfigurewidth must stay within60percent cellwidth including spear."
+    },
+    {
+      "role": "mage",
+      "path": "assets/images/enemies/japan-mage-v5.png",
+      "nativeGeneration": "exec-2238aa40-897b-4c71-898e-ea80755fb9ce.png",
+      "sha256": "ed0621adfc0728873eb1879f459cf91f6a3885e58874feda2451eb931144fbe8",
+      "width": 1086,
+      "height": 1448,
+      "layout": {
+        "columns": 3,
+        "rows": 4,
+        "walkSource": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attackSource": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "prompt": "Use case: stylized-concept; Asset type: FINAL transparent game sprite sheet. The supplied concept and rough storyboard are APPROVED references. Render ONE character only, SAME character repeated in twelve full-body side-view poses. Native transparent RGBA background, no colored/checkerboard background, no ground shadows, labels, grids, text or effects. Canvas portrait1536x2048, exact THREE COLUMNS FOUR ROWS, each cell512x512. Center bodies near localx240, feet on localy470 for EVERY cell, same fixed body scale about350px tall including helmet, safe minimum24px transparent margins around whole silhouette and weapons. Each figure faces viewer-RIGHT. All twelve complete separated silhouettes, no cell bleed, no cropping of gear/feet/head. Detailed painted Japanese fantasy illustration, crisp ink contours, worn layered armor/fabric, about5.5heads tall, match approved concept exactly; not tiny chibi, not photorealism. Consistent face, materials, colors and unchanging weapon dimensions in all poses. Native alpha preserved. Cells read row-major left-to-right top-to-bottom. Indices0-5 (first two rows) form SIX-FRAME smooth WALK LOOP: left foot contact, left leg down/pass, passing, right foot contact, right leg down/pass, passing to left. Walk holds equipment securely with subtle opposite shoulder motion, body height/scale stable, no hopping, feet ground contact. Indices6-11 (last two rows) attack: early preparation, mid preparation, late preparation, attack contact/release, follow-through, recovery back to neutral. Existing game clocks drive these poses; no projectile/magic/slash VFX baked into sheet. Exactly two arms/two legs/two hands, continuous physical grips. Subject is concept figure4: human ivory/lilac onmyoji, tall navy/gold ceremonial hat, dark long hair, same layered patterned robe. ONE rectangular lilac PAPER TALISMAN visible and pinched in RIGHT hand in ALL poses, including preparation/recovery. Exactly one paper, no duplicates, no staff, no detached floating paper, no writing/text beyond tiny abstract decorative ink marks. WALK opposite leg contacts with same paper lowered right hand, free left hand at chest. Attack follows approved revised rough rowD: bring same paper visibly up to chest, then near right shoulder without hiding it, free left hand forms spell sign, extend RIGHT hand with same gripped paper forward to cast, follow-through, lower. No magic orb, flame, projectile, glow or spell effects. Both arms anatomically natural under sleeves."
+    },
+    {
+      "role": "raised",
+      "path": "assets/images/enemies/japan-raised-v5.png",
+      "nativeGeneration": "exec-9acc9b88-5987-48c2-a30b-c6b53a744468.png",
+      "sha256": "de4a360444a721f37d03d91199c1f4ebe0276a4c6989b2d4377a5e2305e0fdb5",
+      "width": 1086,
+      "height": 1448,
+      "layout": {
+        "columns": 3,
+        "rows": 4,
+        "walkSource": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "attackSource": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "prompt": "Use case: stylized-concept; Asset type: FINAL transparent game sprite sheet. The supplied concept and rough storyboard are APPROVED references. Render ONE character only, SAME character repeated in twelve full-body side-view poses. Native transparent RGBA background, no colored/checkerboard background, no ground shadows, labels, grids, text or effects. Canvas portrait1536x2048, exact THREE COLUMNS FOUR ROWS, each cell512x512. Center bodies near localx240, feet on localy470 for EVERY cell, same fixed body scale about350px tall including helmet, safe minimum24px transparent margins around whole silhouette and weapons. Each figure faces viewer-RIGHT. All twelve complete separated silhouettes, no cell bleed, no cropping of gear/feet/head. Detailed painted Japanese fantasy illustration, crisp ink contours, worn layered armor/fabric, about5.5heads tall, match approved concept exactly; not tiny chibi, not photorealism. Consistent face, materials, colors and unchanging weapon dimensions in all poses. Native alpha preserved. Cells read row-major left-to-right top-to-bottom. Indices0-5 (first two rows) form SIX-FRAME smooth WALK LOOP: left foot contact, left leg down/pass, passing, right foot contact, right leg down/pass, passing to left. Walk holds equipment securely with subtle opposite shoulder motion, body height/scale stable, no hopping, feet ground contact. Indices6-11 (last two rows) attack: early preparation, mid preparation, late preparation, attack contact/release, follow-through, recovery back to neutral. Existing game clocks drive these poses; no projectile/magic/slash VFX baked into sheet. Exactly two arms/two legs/two hands, continuous physical grips. Subject is concept figure5 and rough rowE: UNDEAD version of navy/gold kabuto katana samurai, same worn helmet/horns and armor as living figure1, corpse-gray skull-like face and forearms, hollow violet eyes, chipped tarnished armor, shredded red scarf/cloth. Non-gory. Mild hunched posture, readable shuffling six-frame walk with secure ONE fixed-length katana carried low. Attack: two hands grip same hilt, lift same katana above shoulder, strong diagonal forward slash, follow-through then lower; preserve helmet, same full rigid katana size and matching guard silhouette all poses. Do not swap weapon, add extra arms, lose helmet, or add purple magic/cloud effects; violet eyes only small color accents.",
+      "layoutRepair": {
+        "source": "exec-f38a346e-e89b-4d95-94d4-a5ff66fed0e5.png",
+        "prompt": "Precise layout repair of final transparent undead samurai spritesheet target image. Keep exact same twelve character poses, corpse face, helmet, armor, sword, materials, orientation and style. Native RGBA actual transparent background. CRITICAL FIX: characters and their swords overlap/touch neighbors, especially all3bottom-row poses. Make ALL twelve COMPLETE SPRITES noticeably SMALLER within their cells and separate them with broad EMPTY TRANSPARENT gutters. Exact3columns4rows, eachsprite centered in its cell with whole character, raggedcloth, katana and goldenhilt fitting central75percent width and height. At least12percent of cellsize empty EACH edge, enough space around full weapon strokes. Bottom-left swordtip must end well before bottom-middle cloak, bottom-middle swordtip well before bottom-right cloak. No connected silhouettes, no overlapping cloth, no touching neighbor or canvas borders. Keep complete SAME katana size relative to body in all poses, no amputated sword tips or cropped parts. Eachfigure same fixed scale including attack poses, eachcell baseline same localheight. Preserve six walking poses firsttwo rows and six authored attack poses lasttwo rows; full two-hand sword grips and exactlytwoarms/twohands; same right-facing undead samurai. No added objects/effects/labels/grids/background/shadows; empty pixels alpha0, no matte. This is an approved design layout repair, not redesign. Same1086x1448 canvas if useful, reduce sprites rather than pack tighter."
+      }
+    }
+  ]
+}

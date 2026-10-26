@@ -23,7 +23,7 @@ for(const fps of [30,60,120]){
  r("projectiles.push({source:ArenaCombat.source(arenaEnemy),life:5},{source:'unrelated',life:5});");advance(h,1,fps);assert.equal(r('arenaEnemy.phase'),'fall');assert.equal(r('arenaEnemy.immuneRemaining'),0);assert(r('ArenaCombat.protects(arenaEnemy)'));
  assert(!r('projectiles.some(p=>p.source===ArenaCombat.source(arenaEnemy))'));assert(r("projectiles.some(p=>p.source==='unrelated')"));
  advance(h,.81,fps);assert.equal(r('arenaEnemy.phase'),'exhausted');assert.equal(r('arenaEnemy.y'),r('arenaEnemy.baseY'));assert.equal(r('arenaEnemy.hp'),1);assert(!r('ArenaCombat.protects(arenaEnemy)'));
- const clock=r('JSON.stringify([arenaEnemy.phase,arenaEnemy.immuneRemaining,arenaEnemy.y,arenaEnemy.move,arenaEnemy.hazards,projectiles])');advance(h,5,fps);assert.equal(r('JSON.stringify([arenaEnemy.phase,arenaEnemy.immuneRemaining,arenaEnemy.y,arenaEnemy.move,arenaEnemy.hazards,projectiles])'),clock,'Exhaustion starts no new attacks');
+ const clock=r('JSON.stringify([arenaEnemy.phase,arenaEnemy.immuneRemaining,arenaEnemy.y,arenaEnemy.move,arenaEnemy.hazards,projectiles])');advance(h,4,fps);assert.equal(r('JSON.stringify([arenaEnemy.phase,arenaEnemy.immuneRemaining,arenaEnemy.y,arenaEnemy.move,arenaEnemy.hazards,projectiles])'),clock,'The five-second final-hit window starts no new attacks');
  r('arenaEnemy.hp=0;');assert(r('ArenaCombat.defeat(arenaEnemy)'));assert(r('arenaEnemy.spared&&arenaEnemy.dead&&arenaEnemy.phase==="spared"'));assert(!r('ArenaCombat.defeat(arenaEnemy)'),'Fia yields exactly once rather than dying/rewarding twice');
 }
 {
@@ -48,6 +48,6 @@ for(const [type,cycle,expected]of [['arenaCaptain',2,3],['arenaSerpent',1,6],['a
 }
 // Once integrated, actual key/mouse sword dispatch must enforce the same immunity.
 {
- const h=setup('arenaFia'),r=h.run;r('player.x=arenaEnemy.x-30;player.y=arenaEnemy.y;player.face=1;');h.press({action:'heavyAttack'});r('for(let n=0;n<60;n++){updatePlayerTimers(1/120);advanceSwordAttack(1/120);}');h.release({action:'heavyAttack'});assert.equal(r('arenaEnemy.hp'),1,'Actual heavy attack cannot bypass Fia immunity');
+ const h=setup('arenaFia'),r=h.run;r('player.x=arenaEnemy.x-30;player.y=arenaEnemy.y;player.face=1;');h.press({action:'heavyAttack'});r('input(1/120);pressed.clear();for(let n=0;n<60;n++){updatePlayerTimers(1/120);advanceSwordAttack(1/120);}');h.release({action:'heavyAttack'});assert(r('attackHit'),'The actual heavy input reaches its impact');assert.equal(r('arenaEnemy.hp'),1,'Actual heavy attack cannot bypass Fia immunity');
 }
 console.log('PASS: source-scoped arena bosses, locked fair warnings, pause/death guards,90-second Fia immunity/fall/exhaustion, two real cyclops bodies with one HP/reward and pure reward handoff.');

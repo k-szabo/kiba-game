@@ -12,6 +12,7 @@ SPECS={
  'cyclops':('arena-cyclops-v1.png','arenaCyclops',6,3,375,[(287,504),(776,502),(1262,503),(227,964),(815,965),(1250,963)]),
  'minions':('arena-minions-v1.png','arenaMinions',8,4,370,[(220,429),(618,428),(1050,428),(1520,427),(205,849),(600,842),(1045,842),(1450,842)]),
  'fiaCasting':('fia-arena-casting-v1.png','fiaArenaCasting',4,2,470,[(440,491),(1165,493),(440,992),(1205,1007)]),
+ 'fiaWalk':('fia-arena-walk-v1.png','fiaArenaWalk',4,2,470,[(500,483),(1205,488),(510,984),(1220,986)]),
  'fiaYield':('fia-arena-yield-v1.png','fiaArenaYield',4,2,470,[(435,517),(1170,528),(450,974),(1190,997)])
 }
 def register(key,spec):

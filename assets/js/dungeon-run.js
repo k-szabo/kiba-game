@@ -3,6 +3,7 @@
 let dungeonState=DungeonRules.fresh();
 const DungeonRun=(()=>{
  let menuToken=0,pending=[];
+ const summonOwners=new WeakMap();
  const active=()=>!Prologue.active&&!!level.dungeon;
  const floor=()=>active()?level.dungeon.floor:-1;
  const owns=id=>flags[1].includes(id);
@@ -11,7 +12,7 @@ const DungeonRun=(()=>{
  const checkpointFloor=point=>DUNGEON_FLOORS.find(map=>[...map.rests,...map.checkpoints].some(r=>r.id===point?.id));
  const saveLocation=()=>active()?checkpointFloor(checkpoint)?.id||level.id:CampQuest.locationId();
  const atScroll=()=>level===councilHall&&pointNear(level.memoryScroll,130,110);
- function cancel(){menuToken++;$('dungeonMenu').hidden=true;pending=[];}
+ function cancel(){menuToken++;$('dungeonMenu').hidden=true;cleanupSummons();}
  function menu(){
   if(state!=='play'||!atScroll())return false;
   const token=++menuToken;state='dungeonMenu';keys.clear();pressed.clear();$('dungeonMenu').hidden=false;
@@ -108,27 +109,45 @@ const DungeonRun=(()=>{
   if(level===councilHall)return {point:level.memoryScroll,compass:false,text:'dungeon.scroll.prompt'};
   if(!active())return null;const index=floor();return {point:cleared(index)?index===2?level.rewardChest:level.nextPoint:level.arena,compass:false,text:cleared(2)?'dungeon.objective.chest':'dungeon.objective.boss'};
  }
+ function currentOwner(owner){
+  return active()&&realm===1&&level.dungeon.id==='yomiFall'&&level.dungeon.floor===1&&
+   DungeonCombat.is(owner)&&owner.miniboss==='dungeonNecromancer'&&owner.active&&!owner.dead&&owner.hp>0&&enemies.includes(owner);
+ }
+ function currentSummon(e){const token=summonOwners.get(e);return !!token&&token.run===dungeonState.run&&currentOwner(token.owner);}
+ function retireSummon(e){e.dead=true;e.active=false;e.windup=e.attackTime=e.walkSpeed=0;}
+ function cleanupSummons(owner=null){
+  pending=pending.filter(portal=>owner&&portal.owner!==owner);
+  for(const e of enemies)if(e.dungeonSummon&&(!owner||summonOwners.get(e)?.owner===owner))retireSummon(e);
+  if(!enemies.some(e=>e.dungeonSummon&&!e.dead))projectiles=projectiles.filter(p=>p.source!=='dungeon-minion');
+ }
  function summon(owner){
-  if(!active()||state!=='play'||owner.dead||!enemies.includes(owner))return false;
+  if(state!=='play'||!currentOwner(owner))return false;
   if(enemies.filter(e=>e.dungeonSummon&&!e.dead).length+pending.length>=4)return false;
-  for(const portal of owner.summons||[])if(enemies.filter(e=>e.dungeonSummon&&!e.dead).length+pending.length<4)pending.push({x:clamp(portal.x,level.arena.x+45,level.arena.x+level.arena.w-100),y:level.arena.y,warning:.8,run:dungeonState.run,owner:owner.id});return true;
+  for(const portal of owner.summons||[])if(enemies.filter(e=>e.dungeonSummon&&!e.dead).length+pending.length<4)pending.push({x:clamp(portal.x,level.arena.x+45,level.arena.x+level.arena.w-100),y:level.arena.y,warning:.8,run:dungeonState.run,owner});return true;
  }
  function update(dt){
   if(!active()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   const enemy=enemies.find(e=>DungeonCombat.is(e)&&!e.dead&&e.active);
   if(enemy){const x=clamp(player.x,level.arena.x+5,level.arena.x+level.arena.w-player.w-5);if(x!==player.x){player.x=x;player.vx=0;}}
+  for(const e of enemies)if(e.dungeonSummon&&!e.dead&&!currentSummon(e))retireSummon(e);
   for(const portal of pending){portal.warning-=dt;if(portal.warning>0)continue;
-   const owner=enemies.find(e=>e.id===portal.owner&&!e.dead);if(!owner||portal.run!==dungeonState.run)continue;
-   const e=createEnemy({id:'dungeon-raised-'+portal.owner+'-'+Math.random(),x:portal.x,y:portal.y,kind:'guard',patrol:level.arena.w,noReward:true,dungeonEnemy:true,dungeonSummon:true,dungeonSide:'necromancer',factionOverride:'japan',raisedSamurai:true});e.patrolLeft=level.arena.x+5;e.patrolRight=level.arena.x+level.arena.w-e.w-5;enemies.push(e);
+   const owner=portal.owner;if(!currentOwner(owner)||portal.run!==dungeonState.run)continue;
+   const e=createEnemy({id:'dungeon-raised-'+owner.id+'-'+Math.random(),x:portal.x,y:portal.y,kind:'guard',patrol:level.arena.w,noReward:true,dungeonEnemy:true,dungeonSummon:true,dungeonSide:'necromancer',factionOverride:'japan',raisedSamurai:true});e.patrolLeft=level.arena.x+5;e.patrolRight=level.arena.x+level.arena.w-e.w-5;enemies.push(e);
+   summonOwners.set(e,{owner,run:portal.run});
   }pending=pending.filter(p=>p.warning>0);
  }
  // Factions fight each other as well as Momo, without granting player kill rewards for their own casualties.
  function updateEnemy(e,dt){
-  if(!e.dungeonEnemy)return false;if(!active()||!enemies.includes(e)||state!=='play'||e.dead)return true;
+  if(!e.dungeonEnemy)return false;if(!active()||!enemies.includes(e)||state!=='play'||e.dead||!Number.isFinite(dt)||dt<=0)return true;
+  if(e.dungeonSummon&&!currentSummon(e)){retireSummon(e);return true;}
   for(const key of ['stun','cd','contactCd','recovery','guardBreak','blockFlash','turnCooldown','edgePause'])e[key]=Math.max(0,e[key]-dt);
   e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
   const others=enemies.filter(other=>other!==e&&other.dungeonEnemy&&!other.dead&&other.dungeonSide!==e.dungeonSide&&Math.abs(other.y+other.h/2-e.y-e.h/2)<70&&Math.abs(other.x-e.x)<520),
-   target=[player,...others].sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y))[0],dx=target.x+target.w/2-e.x-e.w/2,dy=target.y+target.h/2-e.y-e.h/2,role=enemyRole(e),range=role==='mage'?500:role==='archer'?440:110,near=Math.abs(dx)<520&&Math.abs(dy)<150;
+   // Raised soldiers belong to this boss encounter, not to the ambient faction
+   // skirmish. They pursue Momo across the arena even beyond normal sight range.
+   target=e.dungeonSummon?player:[player,...others].sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y))[0],dx=target.x+target.w/2-e.x-e.w/2,dy=target.y+target.h/2-e.y-e.h/2,role=enemyRole(e),range=role==='mage'?500:role==='archer'?440:110,
+   a=level.arena,feet=player.y+player.h,summonAggro=e.dungeonSummon&&player.x+player.w>a.x&&player.x<a.x+a.w&&feet>=a.y-420&&feet<=a.y+30,
+   near=summonAggro||Math.abs(dx)<520&&Math.abs(dy)<150;
   if(e.stun<=0&&e.windup>0){
    e.windup=Math.max(0,e.windup-dt);if(e.windup===0){
     const oldPlayer=player;
@@ -143,7 +162,7 @@ const DungeonRun=(()=>{
     }
    }
   }else if(e.stun<=0&&e.recovery<=0&&e.attackTime<=0){
-   if(near&&Math.abs(dx)<range&&e.cd<=0){
+   if(near&&Math.abs(dy)<150&&Math.abs(dx)<range&&e.cd<=0){
     turnEnemy(e,Math.abs(dx)>18?Math.sign(dx):e.face);
     if(Math.abs(dx)<18||Math.sign(dx)===e.face){e.windupDuration=role==='mage'?1:role==='archer'?.7:.7;e.windup=e.windupDuration;e.targetX=target.x+target.w/2;e.targetY=target.y+target.h/2;}
    }else{
@@ -162,5 +181,5 @@ const DungeonRun=(()=>{
  function hud(){
   if(!active())return false;const e=enemies.find(e=>DungeonCombat.is(e)&&!e.dead&&e.active);$('bossHud').hidden=!e;if(e){$('bossName').textContent=I18n.t(e.name);$('bossHealth').style.width=100*clamp(e.hp/e.maxHp,0,1)+'%';}return true;
  }
- return Object.freeze({active,floor,cleared,saveLocation,cancel,menu,keydown,newRun,resume,enterFloor,leave,respawn,stock,addItem,removeItem,consume,canConsume,onBossDefeated,openChest,context,interact,objective,summon,update,updateEnemy,projectile,hud,get pending(){return pending;}});
+ return Object.freeze({active,floor,cleared,saveLocation,cancel,menu,keydown,newRun,resume,enterFloor,leave,respawn,stock,addItem,removeItem,consume,canConsume,onBossDefeated,openChest,context,interact,objective,summon,cleanupSummons,update,updateEnemy,projectile,hud,get pending(){return pending;}});
 })();

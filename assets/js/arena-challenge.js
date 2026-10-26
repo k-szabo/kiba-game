@@ -16,22 +16,33 @@ const ArenaChallenge=(()=>{
   if(!running())return;const a=level.arena,left=a.x+10,right=a.x+a.w-player.w-10;
   const x=clamp(player.x,left,right);if(x!==player.x){player.x=x;player.vx=0;}
  }
- function queueMinion(x,owner=null){
+ function cleanupSummons(owner){
+  const owned=enemies.filter(e=>e.arenaMinion&&e.arenaOwner===owner.id),sources=new Set(owned.filter(ArenaCombat.is).map(ArenaCombat.source));
+  for(const e of owned){e.dead=true;e.active=false;e.hazards=[];e.attackBoxes=[];e.windup=e.attackTime=0;}
+  const retireOrdinary=owned.some(e=>!ArenaCombat.is(e));enemies=enemies.filter(e=>!owned.includes(e));projectiles=projectiles.filter(p=>!sources.has(p.source)&&!(retireOrdinary&&p.source==='arena-minion'));
+  if(attempt)attempt.pending=attempt.pending.filter(p=>p.owner!==owner.id);
+ }
+ function queueMinion(x,owner=null,role=null){
   if(!active()||!attempt||attempt.status!=='fighting')return;
   if(enemies.filter(e=>e.arenaMinion&&!e.dead).length+attempt.pending.length>=4)return;
-  const a=level.arena;attempt.pending.push({x:clamp(x,a.x+45,a.x+a.w-110),y:a.y,warning:.85,owner});
+  if(role==='cyclops'&&(enemies.some(e=>e.arenaRole==='cyclops'&&!e.dead)||attempt.pending.some(p=>p.role==='cyclops')))return;
+  const a=level.arena;attempt.pending.push({x:clamp(x,a.x+45,a.x+a.w-110),y:a.y,warning:.85,owner,role});
  }
  function summon(owner){
-  if(!active()||state!=='play'||!enemies.includes(owner)||owner.dead)return false;
+  if(!active()||state!=='play'||!enemies.includes(owner)||owner.dead||!owner.active||owner.miniboss!=='arenaFia')return false;
   if(attempt?.status==='fighting'){
-   for(const portal of owner.summons||[])queueMinion(portal.x,owner.id);return true;
+   for(const portal of owner.summons||[])queueMinion(portal.x,owner.id,portal.role);return true;
   }
   // A developer replay can exercise its summons without creating quest progress.
-  if(DevSession.active&&owner.replay){for(const portal of owner.summons||[])spawnMinion(portal.x,owner.id);return true;}
+  if(DevSession.active&&owner.replay){for(const portal of owner.summons||[])spawnMinion(portal.x,owner.id,portal.role);return true;}
   return false;
  }
- function spawnMinion(x,owner){
+ function spawnMinion(x,owner,role=null){
   if(enemies.filter(e=>e.arenaMinion&&!e.dead).length>=4)return;
+  if(role==='cyclops'){
+   if(enemies.some(e=>e.arenaRole==='cyclops'&&!e.dead)||!enemies.some(e=>e.id===owner&&!e.dead))return;
+   const e=ArenaCombat.create({id:'arena-cyclops-'+(++serial),miniboss:'arenaCyclops',singleGuard:true,x,y:level.arena.y,noReward:true,arenaMinion:true,arenaRole:'cyclops',arenaOwner:owner});e.active=true;enemies.push(e);return;
+  }
   const guard=(serial++%3)===0,e=createEnemy({id:'arena-minion-'+serial,x,y:level.arena.y,kind:guard?'shield':'guard',patrol:level.arena.w,noReward:true,arenaMinion:true,arenaRole:guard?'guard':'thief',arenaOwner:owner,factionOverride:'shadowCult'});
   e.y=level.arena.y-100;e.h=100;e.w=54;e.baseY=e.y;e.patrolLeft=level.arena.x+10;e.patrolRight=level.arena.x+level.arena.w-e.w-10;e.origin=e.x;e.cd=1.2;e.face=player.x<e.x?-1:1;
   enemies.push(e);
@@ -54,7 +65,7 @@ const ArenaChallenge=(()=>{
  }
  function finishRound(){if(!attempt)return;clean();attempt.pending=[];attempt.status='between';updateHUD();toast(I18n.t('arena.round.complete'));}
  function onBossDefeated(enemy){
-  if(!active()||!attempt||attempt.status!=='fighting'||!enemies.includes(enemy)||!enemy.dead||enemy.replay||enemy.attemptId!==attempt.id||enemy.miniboss!==order[attempt.round-1])return false;
+  if(!active()||!attempt||attempt.status!=='fighting'||!enemies.includes(enemy)||!enemy.dead||enemy.replay||enemy.arenaMinion||enemy.attemptId!==attempt.id||enemy.miniboss!==order[attempt.round-1])return false;
   const reward=ARENA_REWARDS[enemy.miniboss];
   if(reward&&!owns(reward.flag)){
    flags[3].push(reward.flag);if(reward.item&&!owns(reward.item))flags[3].push(reward.item);
@@ -77,7 +88,7 @@ const ArenaChallenge=(()=>{
    attempt.clock=Math.max(0,attempt.clock-dt);if(attempt.clock<1e-9)attempt.clock=0;if(attempt.clock<=0){finishRound();return;}
    attempt.spawnClock-=dt;if(attempt.spawnClock<=0){queueMinion(level.arena.x+60);queueMinion(level.arena.x+level.arena.w-100);attempt.spawnClock=2.5;}
   }
-  const pending=attempt.pending;for(const portal of pending){portal.warning-=dt;if(portal.warning<=0)spawnMinion(portal.x,portal.owner);}
+  const pending=attempt.pending;for(const portal of pending){portal.warning-=dt;if(portal.warning<=0&&(!portal.owner||enemies.some(e=>e.id===portal.owner&&!e.dead)))spawnMinion(portal.x,portal.owner,portal.role);}
   attempt.pending=pending.filter(portal=>portal.warning>0);
  }
  function talkFia(){
@@ -121,12 +132,12 @@ const ArenaChallenge=(()=>{
  function questMarker(id){return id==='fia'&&level===shadowDen&&owns('fiaRescued')&&!owns('arenaQuestAccepted')?'!':null;}
  function hud(){
   if(!active())return false;
-  const enemy=enemies.find(e=>ArenaCombat.is(e)&&!e.dead&&e.active),round=attempt?.round||(enemy?order.indexOf(enemy.miniboss)+1:0);
+  const enemy=enemies.find(e=>ArenaCombat.is(e)&&!e.arenaMinion&&!e.dead&&e.active),round=attempt?.round||(enemy?order.indexOf(enemy.miniboss)+1:0);
   $('bossHud').hidden=!round;if(!round)return true;
-  const title=round===1?I18n.format('arena.survive',[Math.ceil(attempt.clock)]):enemy?.miniboss==='arenaFia'?(enemy.immuneRemaining>0?I18n.format('arena.shield',[Math.ceil(enemy.immuneRemaining)]):I18n.t('arena.exhausted')):enemy?I18n.t(enemy.name):I18n.t('arena.round.complete');
+  const title=round===1?I18n.format('arena.survive',[Math.ceil(attempt.clock)]):enemy?.miniboss==='arenaFia'?(enemy.immuneRemaining>0?I18n.format('arena.shield',[Math.ceil(enemy.immuneRemaining)]):enemy.phase==='exhausted'?I18n.format('arena.exhausted.time',[Math.ceil(enemy.vulnerableRemaining)]):I18n.t('arena.exhausted')):enemy?I18n.t(enemy.name):I18n.t('arena.round.complete');
   const text=I18n.format('arena.round',[round,title]);if($('bossName').textContent!==text)$('bossName').textContent=text;
   $('bossHealth').style.width=(round===1?attempt.clock/45:enemy?enemy.hp/enemy.maxHp:1)*100+'%';return true;
  }
- return Object.freeze({active,room,running,reset,update,confine,start,context,interact,objective,talkFia,questMarker,onBossDefeated,summon,hud,
+ return Object.freeze({active,room,running,reset,cleanupSummons,update,confine,start,context,interact,objective,talkFia,questMarker,onBossDefeated,summon,hud,
   get attempt(){return attempt;},get departure(){return departure;}});
 })();

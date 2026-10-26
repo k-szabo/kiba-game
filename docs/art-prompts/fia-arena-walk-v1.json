@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "tool": "built-in image_gen",
+  "task": "BUG121: replace static sliding departure with grounded walking poses",
+  "asset": "assets/images/enemies/fia-arena-walk-v1.png",
+  "designReference": "assets/images/enemies/fia-arena-yield-v1.png",
+  "approval": {
+    "stage": "rough-motion-approved",
+    "generation": "exec-18132481-4f98-4688-9392-2d6ac083a2db",
+    "note": "User explicitly approved this revised four-pose walking storyboard before production. Existing black-violet arena costume retained."
+  },
+  "rough": {
+    "initialGeneration": "exec-ef757362-806d-403c-a949-fe9d69736948",
+    "revisedGeneration": "exec-18132481-4f98-4688-9392-2d6ac083a2db",
+    "prompt": "Use case: stylized-concept. Create ONLY a ROUGH FOUR-KEY-POSE WALKING STORYBOARD for the SAME adult kitsune woman Fia in this existing arena-costume reference. This is motion approval, NOT a polished production asset. Wide1536x1024 light-paper board, EXACT2EQUALCOLUMNS×2EQUALROWS,4wellseparatednumberedframes1–4. Clean pencil/sepialine sketch with limited black/violet/colorwashes, ample blankgutter, no scenery, shadows, glow, magic, UI or finaltext. Numbers1–4only.\nPRESERVEIDENTITYANDCOSTUME: long flowing PURPLEhair, yelloweyes, ONLYTWOFOXEARSontopofhead(NOHUMANEARS), ONEfluffypurplefoxTAIL, dark black-violet shortkimono/combatdress withgoldtrim,longsplitsleevepanels, samevioletobi/flowerornamentandhairpin, samethigh-highdarkbootswithgolddecorativebindings. ExactlyTWOarms,TWOhands,TWOlegs,TWOfeet inEVERYpose. Calmcomposedslyexpressionafternonlethalarenaencounter, no newweaponorcostume.\nAll4posesFULLBODY SIDEVIEW facingRIGHT; sameheadsize,sameactualbodyheightandbaseline, cameraunchanged. Fia WALKSAWAYONFOOT, neverruns,jumps,floatsorlevitates. AtleastONEbootsolealwaysfirmlytouchesthesameclearthinhorizontalgroundline. Realweightshiftsandvisibleoppositelegmovement, clothingdoesnotconcealbootplacement. HairandONEtailtrailgentlybehindleft, do notduplicatelegswithclothtails.\n1RIGHTLEGFORWARDcontact: rightbootheelcontactsgroundinfront, LEFTlegextendedbackwithlefttoepushingground. Leftarmswingsslightlyforward,rightarmslightlyback.\n2RIGHTLEGWEIGHTBEARINGpass: rightbootsolePLANTEDFLATunderhip, leftlegbentpassingforwardwithleftboottoesclearlyoffground, oppositearmsnaturallyswing.\n3LEFTLEGFORWARDcontact: LEFTbootheelcontactsgroundinfront, RIGHTlegextendedbackwithrighttoepushingground. Rightarmswingsslightlyforward,leftarmslightlyback. ThismustbeclearlytheOPPOSITELEADLEGfromframe1, notacopy.\n4LEFTLEGWEIGHTBEARINGpass: LEFTbootsolePLANTEDFLATunderhip, rightlegbentpassingforwardwithrightboottoesclearlyoffground, oppositearmsnatural. Thismustclearlyalternatefromframe2.\nUse restrainedsmallwalkingstrides, consistenthips/headheightwithonlytinyweightbob. Entirehair, ears, tail, sleeves, fingers, boots fitowncell withgenerousmargins. Noextrahands,nohumanears,noadditionaltails,nokneelingpose,noairbornebody. Simplemotionclarityandanatomyaccuracyaremoreimportantthanpolish. Keepreferenceoutfit/identityfaithful.",
+    "revisionPrompt": "Precisely revise this FOUR-FRAME WALKING APPROVAL STORYBOARD, keepingFia'sidentity,outfit,fullbody/scale,onlytwofoxears,onepurpletailandall4groundlinesunchanged. The walkingcycle must show TWOOPPOSITEleadlegs andoppositearmswing, nottwocopiesofsamecontactpose.\nKEEPFRAME1: closest-to-camera leg extendsFORWARDtoRIGHT withheelcontact, farlegextendsBACKtoLEFTtoepush. ClosestarmrestsBACKtoLEFT,fararmswingsforwardright.\nCHANGEFRAME3(bottomleft)clearly: closest-to-camera leg extendsBACKtoLEFT anditsBOOTTOEtouchesgroundbehind, FARLEGextendsFORWARDtoRIGHTanditsBOOTHEELtouchesgroundinfront. Drawnearbackthigh/knee/bootclearlyINFRONTOFfarlegatcrossing; farforwardthighnaturallypartlyoccludedbehindnearhip. SWAPARMSWINGinFRAME3: closestarmwithlongsleeveswingsFORWARDtoRIGHT, handvisiblyinfrontnearwaist, fararmrestsBACKtoLEFTbesidetail, onlytwohands. Thismustvisiblycontrastframe1, noextralegsorarms.\nKEEPFRAME2passingwithclosestleggroundedunderhipandfarlegmovingforward; KEEPFRAME4oppositepassingwithfarleggroundedunderhipandclosestlegbentmovingforward. AtleastonebootsolealwaysPLANTEDONGROUNDallframes. Nojumpingorlevitation.\nMotionisgentleconfidentwalkingonfoot,notrunning. Keepalreadyapprovedblackvioletgoldkimono-combatcostume/thighboots/longhair/singlefox-tail, nohumanears, noadditionalparts. ThisremainsROUGHmotionpreviewonlightpaperwithnumbers1–4, nopolishedspriteorproductionalpha. Allwholebody/costumeinsidepanelswithmargins. Updateonlynecessarylimbposes/occlusionandarmmovement, nofacialorwardrobered esign."
+  },
+  "production": {
+    "initialGeneration": "exec-8eb85ba5-f412-489a-9b21-d6349901f8d4",
+    "nativeGeneration": "exec-04f91cf2-132f-42f2-b01a-a5b11900b7c7",
+    "prompt": "Asset type: FINAL native1536x1024 TRANSPARENT RGBA four-pose WALKING ANIMATION ATLAS. Re-render the APPROVED walking storyboard reference as production-quality detailed painted Japanese fantasy game sprites, retaining its SAME four walking poses, characteridentity, outfit, anatomy and movement. Remove paper, grid, numbers and groundlines completely. Actual transparent background, no background gradient, aura, magic, smoke, particles, ground shadows or floating decoration. EXACT2equalcolumns×2equalrows. Eachfigure fully inside itsown768×512cellwith at least45pixels of TRANSPARENTgutter around complete hair/ears/tail/boots/sleeves/hands. Bodyhead-to-bootsheight~360pxineverycell, consistentphysicalheadsizeandheight, samefootbaseline~y450inthefirstrowand~y962inthesecondrow. Lots of emptytransparentmarginisintentional; do NOT enlargeposesuntiltheytouchcelledges.\nSAME Fia adult kitsune: longPURPLEhair,yelloweyes, ONLY TWO FOX EARS ontopofhead andNOhumanears, ONEfluffypurplefoxTAIL, sameblack-violetshortkimono/combatdresswithgoldtrim,longsplit-sleevepanels,violetobi/flowerornaments,hairpin, darkthigh-highheeledbootswithgoldbindings. ExactlyTWOarms,TWOhands,TWOlegs,TWOfeetandONEtailperfigure. Preserveapprovedcostume, do notredesign/addweapons. Nativecrispfinepaintedcloth/fur/leathertexturesandcleansilhouette, notflatvector,photo3D,pixelartormuddyblur. No text or symbols.\nAllposesSIDEVIEWfacingRIGHTand WALKINGONFOOT, groundedwithatleastONEbootsoleatthecommonfootbaseline atalltimes; nohovering,running,jumping,kneeling. TopLEFTpose0: nearlegforwardRIGHTheelcontact, farlegbackLEFTtoepush, neararmback/fararmforward. TopRIGHTpose1: nearbootsoleplantedunderhip, farlegpassingforwardwithraisedtoe, subtleoppositearmswing. BottomLEFTpose2: FARlegforwardRIGHTheelcontact, NEARlegbackLEFTtoepush, NEARarmclearlyswingsFORWARDtoRIGHT, fararmbackLEFT; visiblyoppositearmswingto0, notduplicate. BottomRIGHTpose3: FARbootsoleplantedunderhip, NEARlegbentpassingforwardwithbootlifted, oppositepassingstancefrom1. Smallconfidentwalkingstrides; minimalbodybob. HairandONEtailtrailLEFTasonecoherentsilhouette, no detachedfurbitsorbundlethatlooksadditionalleg. Complete fingers/wholebootsandheeltips, allsilhouettesfitcells. Final4clearlyisolatedspritesonnativealpha, no opaqueorcoloredbackground.",
+    "layoutRepairPrompt": "LAYOUT-ONLY REPAIR of this final4pose transparentRGBAwalkingatlas. Preserve exactFOURapprovedwalkingposes, characteridentity, anatomy, costume, individualfingers/boots,paintedstyle, onlytwofoxears/oneTail, colorsandrelativephysicalsizebetweenposes. Eachcharacteristoolargeforitscell. Make EACH ofthefourfullcharacter+hair+tail+clothgroups ONLY78% OFITS CURRENT LINEAR SIZE, and center thecompletefigureinsideitsown equal768x512cell. KeepEXACT2columns2rows. Everyfullsilhouettemusthaveatleast45pixelsoffullyTRANSPARENTpaddingbeforecelledges(includinginternalrow512/col768)andoutercanvasedges. Noear/hairtipmaytouchacelledge. Figureheighthead-to-bottombootroughly370pixels, samephysicalhead/bodyheightineveryframe. Baselineatabouty450inthefirstrowandy962inthesecondrow, solidbootpixelatthebaseline, neverhover. EnlargeEMPTYTRANSPARENTguttersNOTthecanvas. DO NOTchangebodyposes/movehandsorlegs/addparts,justscaleeachwholeposeuniformlyandpositionwithcleartransparentpadding. Do NOTresizebodyseparatelyfromhairtailcostume. Nolevitation, magic, smoke, effectglow, groundshadow, labels, numbers,grid/paperbackground. Fourcleanisolatedpaintedsprites onactualtransparentalpha, absolutelynooverlapbetweencells. Thisisfinalnativeanimationlayoutrepairnotredesign.",
+    "alpha": "Original generated RGBA retained without image editing. Four large isolated figure components at alpha>32; tiny1–4pixel antialias islands remain intact.",
+    "width": 1536,
+    "height": 1024,
+    "layout": "2 columns by2 rows,768x512cells",
+    "facing": 1,
+    "bodyHeight": 470,
+    "poses": [
+      "near-leg-forward-contact",
+      "near-leg-weight-bearing-pass",
+      "far-leg-forward-contact",
+      "far-leg-weight-bearing-pass"
+    ],
+    "cells": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 768,
+        "h": 512,
+        "anchorX": 500,
+        "anchorY": 483,
+        "visibleBounds": [
+          139,
+          17,
+          651,
+          484
+        ]
+      },
+      {
+        "x": 768,
+        "y": 0,
+        "w": 768,
+        "h": 512,
+        "anchorX": 1205,
+        "anchorY": 488,
+        "visibleBounds": [
+          868,
+          17,
+          1369,
+          489
+        ]
+      },
+      {
+        "x": 0,
+        "y": 512,
+        "w": 768,
+        "h": 512,
+        "anchorX": 510,
+        "anchorY": 984,
+        "visibleBounds": [
+          135,
+          519,
+          682,
+          985
+        ]
+      },
+      {
+        "x": 768,
+        "y": 512,
+        "w": 768,
+        "h": 512,
+        "anchorX": 1220,
+        "anchorY": 986,
+        "visibleBounds": [
+          891,
+          520,
+          1357,
+          987
+        ]
+      }
+    ],
+    "checks": {
+      "cropEdgePixelsAbove32": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "largeAlphaComponents": 4,
+      "anatomy": "Two human arms/hands, two legs/boots, only fox ears and one purple tail throughout.",
+      "grounding": "Each pose includes one planted boot. Per-frame ground anchors normalize the foot baseline without changing body scale."
+    },
+    "sha256": "6b55f1698313830957401d468e348b7065a80c74f864bc80135e13e6ccb654b5"
+  }
+}

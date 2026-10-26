@@ -415,8 +415,15 @@ const Visuals = (() => {
       if(e.windup>0){action='attack';index=Math.min(2,Math.floor(clamp(1-e.windup/e.windupDuration,0,1)*3));}
       else if(e.attackTime>0){action='attack';index=3+Math.min(1,Math.floor(e.attackElapsed/e.attackDuration*2));}
       else if(e.recovery>0||e.stun>0){action='attack';index=5;}
-      else if(Math.abs(e.walkSpeed)>2)index=Math.floor(e.animTime*12)%6;
-      key=actorFaction+(action==='walk'?'Walk':'Attack');rect=ART_FRAMES.animations[actorFaction][action][role][index];
+      else if(Math.abs(e.walkSpeed)>2&&(actorFaction!=='japan'||!reducedMotion.matches))index=Math.floor(e.animTime*12)%6;
+      if(actorFaction==='japan'){
+        // Raised soldiers keep their authored guard mechanics; only their
+        // complete native body/weapon atlas differs from the living faction.
+        const definition=ART_JAPAN[e.raisedSamurai?'raised':role];
+        key=definition.image;rect=definition[action][index];
+      }else{
+        key=actorFaction+(action==='walk'?'Walk':'Attack');rect=ART_FRAMES.animations[actorFaction][action][role][index];
+      }
     }
     shadow(x,isBoss&&realm===0&&e.leap?e.leap.floorY+e.h:feet,isBoss?57:e.kind==='fly'?17:26,e.kind==='fly'?.1:.3);
     ctx.save();ctx.globalAlpha=e.stun>0||e.inv>0?.65:1;
