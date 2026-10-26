@@ -1014,6 +1014,22 @@
           "en": "A scroll in the Council Hall leads to a replayable three-floor dungeon with three new bosses, saved progress and a reward chest."
         }
       ]
+    },
+    {
+      "version": "0.9.47_19585b48",
+      "code": "19585b48",
+      "baseVersion": "0.9.47",
+      "slug": "refuge-daisy-keepsake-and-phone-case-price",
+      "summary": {
+        "hu": "Új remény a menedékben",
+        "en": "New hope at the refuge"
+      },
+      "fixes": [
+        {
+          "hu": "Az erdei menedék oltáránál elhelyezhető egy különleges emléktárgy, amelyhez Sora új párbeszéde kapcsolódik. Akash telefontokjának ára 1500 érme lett.",
+          "en": "A special keepsake can now be placed beside the Forest Refuge’s altar, unlocking new dialogue with Sora. Akash’s phone case now costs 1,500 coins."
+        }
+      ]
     }
   ]
 }

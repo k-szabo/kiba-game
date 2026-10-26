@@ -11,7 +11,7 @@ function fixture(){
  for(const [id,el]of h.elements){el.id=id;el.getClientRects=()=>el.hidden?[]:[{}];el.focus=()=>d.activeElement=el;}
  d.querySelectorAll=()=>h.elements.get('inventoryGrid').children;
  d.querySelector=selector=>{const id=selector.match(/data-inventory-item="([^"]+)"/)?.[1];return h.elements.get('inventoryGrid').children.find(el=>el.dataset.inventoryItem===id)||null;};
- r("flags=[['forestBell','villageBell'],['akashRescued'],[],[]];defeated=[true,false,false,false];enterRealm(0);enterForestCamp();coins=2000;persist();");
+ r("flags=[['forestBell','villageBell'],['akashRescued'],[],[]];defeated=[true,false,false,false];enterRealm(0);enterForestCamp();coins=5000;persist();");
  h.place(r("forestCamp.npcs.find(n=>n.id==='akash').x"),820);
  const open=()=>{r("state='play';Inventory.open();");};
  const choose=id=>{const item=h.elements.get('inventoryGrid').children.find(el=>el.dataset.inventoryItem===id);assert(item,'Missing fixture item '+id);item.onclick();};
@@ -35,13 +35,31 @@ function fixture(){
   if(id==='minimap'){r('Merchant.drawMinimap();');assert(f.elements.get('minimap').hidden);}
   buy(id);assert.equal(r(`flags[1].filter(id=>id==='${id}').length`),1);assert.equal(r(`soldItems.includes('${id}')`),false);assert.equal(r(`Inventory.quantity('${id}')`),1);
  }
- assert.equal(r('Merchant.salePrice("phoneCase")'),50);assert.equal(r('Merchant.catalogue.phoneCase.price'),500);
+ assert.equal(r('Merchant.salePrice("phoneCase")'),50);assert.equal(r('Merchant.catalogue.phoneCase.price'),1500);
  r('meatCount=2;persist();');open();
  for(const state of ['play','pause','shop','developer','dialog','menu','won']){r(`state='${state}'`);denied('roastMeat');}
  r("state='inventory';$('inventory').hidden=true;");denied('roastMeat');r("$('inventory').hidden=false;player.x=0;");denied('roastMeat');
  f.place(r("forestCamp.npcs.find(n=>n.id==='akash').x"),820);
  r("flags[1]=flags[1].filter(id=>id!=='akashRescued');");denied('roastMeat');r("flags[1].push('akashRescued');coins=Number.MAX_SAFE_INTEGER-3;");denied('roastMeat');
  r('coins=Number.MAX_SAFE_INTEGER-4;');assert(r("Merchant.sell('roastMeat')"));assert.equal(r('coins'),Number.MAX_SAFE_INTEGER);denied('roastMeat');
+}
+
+// The displayed offer and actual transaction share the new 1500-coin price.
+{
+ const f=fixture(),{r,open,snapshot}=f;
+ const offer=()=>f.elements.get('shopItems').children.flatMap(card=>card.children).find(button=>button.id==='buy-phoneCase');
+ r('coins=1499;Merchant.open();');
+ assert.equal(offer().disabled,true,'The phone case offer is disabled below1500 coins');
+ assert.equal(offer().textContent,r("I18n.format('merchant.buy',[1500])"));
+ const insufficient=snapshot();assert.equal(offer().onclick(),false);assert.equal(r("Merchant.purchase('phoneCase')"),false);assert.equal(snapshot(),insufficient,'Insufficient funds leave inventory, coins and save untouched');
+ r('coins=1500;Merchant.render();');assert(!offer().disabled);assert.equal(offer().onclick(),true);
+ assert.equal(r('coins'),0);assert.equal(r("Inventory.quantity('phoneCase')"),1);validate(r('saved'));
+ r('coins=1500;Merchant.render();');assert.equal(offer().disabled,true,'An owned unique item remains unavailable even with enough coins');
+ const owned=snapshot();assert.equal(r("Merchant.purchase('phoneCase')"),false);assert.equal(snapshot(),owned);
+ r('coins=0;Merchant.close();');open();assert.equal(r("Merchant.sell('phoneCase')"),true);assert.equal(r('coins'),50,'Resale stays at50 coins');
+ assert.equal(r("Inventory.quantity('phoneCase')"),0);validate(r('saved'));
+ r('coins+=1450;Inventory.close();Merchant.open();');assert(!offer().disabled);assert.equal(offer().onclick(),true);
+ assert.equal(r('coins'),0);assert.equal(r("Inventory.quantity('phoneCase')"),1);assert.equal(r("flags[1].filter(id=>id==='phoneCase').length"),1);assert.equal(r("soldItems.includes('phoneCase')"),false);validate(r('saved'));
 }
 
 // Real transaction writes must retain quest history and earned boss-point budgets.

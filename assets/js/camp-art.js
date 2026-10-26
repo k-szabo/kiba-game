@@ -61,7 +61,14 @@ const CampArt=(()=>{
  function scenery(){
   if(Prologue.active||state==='menu')return;
   if(level===levels[0]&&flags[0].includes('campQuestAccepted')&&defeated[0])Visuals.campPathMarker(level.samuraiCampEntrance,I18n.t('camp.rescue.name'));
-  if(level===forestCamp){for(const entry of forestCamp.serviceEntrances)if(DevSession.active||sideLocationUnlocked(entry.id,flags,defeated))Visuals.campPathMarker(entry,I18n.t(entry.name));return;}
+  if(level===forestCamp){
+   for(const entry of forestCamp.serviceEntrances)if(DevSession.active||sideLocationUnlocked(entry.id,flags,defeated))Visuals.campPathMarker(entry,I18n.t(entry.name));
+   if(CampQuest.daisyPlaced()){
+    const art=ART_INVENTORY.items.daisyPlush,point=forestCamp.daisy;
+    stamp({...art,anchorX:art.x+art.w/2,anchorY:art.y+art.h,bodyHeight:art.h},point.x,point.y,point.height);
+   }
+   return;
+  }
   if(level===samuraiCamp){
    Visuals.campPathMarker(level.returnPoint,I18n.t('camp.name'));
    for(const cage of level.cages)if(!flags[0].includes(cage.flag)){

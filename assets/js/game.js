@@ -203,7 +203,7 @@ function interact(){const c=getContext();if(!c)return;if(DungeonRun.interact(c)|
  if(c.type==='akash'){Merchant.free();return;}
  if(c.type==='campNPC'&&c.npc.merchant){Merchant.open();return;}
  if(c.type==='campNPC'&&c.npc.id==='daichi'){CampQuest.talkDaichi();return;}
- if(c.type==='campNPC'){story('camp.dialogue.label',c.npc.name,c.npc.dialogue,null,{right:c.npc.id,speaker:c.npc.id});return;}
+ if(c.type==='campNPC'){story('camp.dialogue.label',c.npc.name,c.npc.id==='sora'&&CampQuest.daisyPlaced()?'camp.npc.sora.daisy':c.npc.dialogue,null,{right:c.npc.id,speaker:c.npc.id});return;}
  if(c.type==='councilGate'){
   if(hasFlag('councilGateOpen')){enterCouncilHall();return;}
   if(!hasFlag('councilKey')){toast(I18n.t('council.gate.clue'));return;}
