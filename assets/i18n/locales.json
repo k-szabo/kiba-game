@@ -536,6 +536,9 @@
       "camp.npc.daichi.dialogue": "A falu szétszóródott, de nem tűnt el. Én őrködöm az ösvénynél; aki kijutott a lángok közül, itt találhat ránk.",
       "camp.npc.natsu.dialogue": "Amit magunkkal hoztunk, abból varrok új otthont. Egyelőre csak vászon és kötél, de minden visszatérő hanggal erősebb lesz.",
       "camp.npc.sora.dialogue": "Éjjel hallom, ahogy az erdő lélegzik. Szerinted a Kiba emlékszik azokra is, akiket még nem találtunk meg?",
+      "camp.daisy.place": "E · Daisy elhelyezése az oltárnál",
+      "camp.daisy.story": "Momo a mécsesek mellé ülteti a megviselt nyulat. Az oltár kövében szelíd Kiba ébred; a túlélők közelebb húzódnak a fényhez, és a beszélgetésükből lassan eltűnik a félelem.\n\nDaisy itt marad. Apró őrszem a démonok árnyékával szemben, és emlékeztető arra, hogy ebben az erdőben még van miért hazatérni.",
+      "camp.npc.sora.daisy": "Daisy mellett már nem olyan ijesztő az éjszaka. Natsu szerint csak egy plüssnyúl… de tegnap Daichi is rámosolygott. Szerintem a démonoknak itt már nincs helyük.",
       "bugReport.area.forestCamp": "Erdei menedék",
       "menu.changelog.0920.title": "Erdei menedék és túlélők",
       "menu.changelog.0920.camp": "Japán őrzőjének legyőzése után új erdei tábor nyílik meg, pihenőszentéllyel, gyorsutazással és beszélgethető shiba túlélőkkel.",
@@ -639,7 +642,7 @@
       "slayer.steam": "Gőznyomás: {0}",
       "slayer.victory": "A vas elcsendesül. A sírkőn egy rózsaszín nyúl és egy számszeríj marad.",
       "item.daisyPlush": "Daisy plüssnyúl",
-      "inventory.description.daisyPlush": "Egy megviselt, rózsaszín plüssnyúl. Valaki a pokolban sem mondott le róla.",
+      "inventory.description.daisyPlush": "Egy megviselt, rózsaszín plüssnyúl. Valaki a pokolban sem mondott le róla. Az erdei menedék oltáránál végleg elhelyezheted, hogy reményt adjon a túlélőknek.",
       "item.slayerCrossbow": "A Démonölő számszeríja",
       "inventory.description.slayerCrossbow": "Momo még nem képzett ennek a használatában.",
       "menu.changelog.0925.yomiRouteTitle": "Yomi útvonalának javítása",
@@ -944,7 +947,9 @@
       "menu.changelog.0946.travelFia.0": "Az arénagyőzelem után Fia már csak a lakosztályában található.",
       "menu.changelog.0946.travelFia.1": "A lakosztály berendezései támadás közben is a helyükön maradnak.",
       "menu.changelog.0946.travelFia.2": "A feloldott dungeonbejárat, az aréna és Fia lakosztálya gyorsutazással is elérhető. A dungeon belső pihenői csak belülről használhatók gyorsutazásra.",
-      "menu.changelog.0946.travelFia.3": "A tanácsosok csarnokában is látható a szellemlépés lila nyoma."
+      "menu.changelog.0946.travelFia.3": "A tanácsosok csarnokában is látható a szellemlépés lila nyoma.",
+      "menu.changelog.0947.title": "Új remény a menedékben",
+      "menu.changelog.0947.0": "Az erdei menedék oltáránál elhelyezhető egy különleges emléktárgy, amelyhez Sora új párbeszéde kapcsolódik. Akash telefontokjának ára 1500 érme lett."
     }
   },
   "en": {
@@ -1484,6 +1489,9 @@
       "camp.npc.daichi.dialogue": "The village is scattered, but it is not gone. I keep watch by the path; anyone who escaped the flames can find us here.",
       "camp.npc.natsu.dialogue": "I am sewing a new home from what we carried here. For now it is only canvas and rope, but every returning voice makes it stronger.",
       "camp.npc.sora.dialogue": "At night I hear the forest breathing. Do you think Kiba remembers the ones we have not found yet?",
+      "camp.daisy.place": "E · Place Daisy beside the altar",
+      "camp.daisy.story": "Momo seats the worn rabbit beside the candles. Gentle Kiba stirs within the altar’s stone; the survivors draw closer to the light, and fear slowly leaves their voices.\n\nDaisy will stay here. A small sentinel against the demons’ shadows, and a reminder that this forest still holds something worth coming home to.",
+      "camp.npc.sora.daisy": "The night feels less frightening with Daisy here. Natsu says she’s only a stuffed rabbit… but yesterday even Daichi smiled at her. I don’t think there’s room for demons here anymore.",
       "bugReport.area.forestCamp": "Forest Refuge",
       "menu.changelog.0920.title": "Forest refuge and survivors",
       "menu.changelog.0920.camp": "Defeating Japan's guardian opens a forest camp with a resting shrine, fast travel and shiba survivors to talk to.",
@@ -1587,7 +1595,7 @@
       "slayer.steam": "Steam pressure: {0}",
       "slayer.victory": "The iron falls silent. A pink rabbit and a crossbow remain upon the gravestone.",
       "item.daisyPlush": "Daisy Plush Rabbit",
-      "inventory.description.daisyPlush": "A worn pink plush rabbit. Someone refused to abandon it, even in Hell.",
+      "inventory.description.daisyPlush": "A worn pink plush rabbit. Someone refused to abandon it, even in Hell. You can leave her permanently beside the Forest Refuge’s altar to bring hope to the survivors.",
       "item.slayerCrossbow": "Demon Slayer's Crossbow",
       "inventory.description.slayerCrossbow": "Momo is not yet trained to use this weapon.",
       "menu.changelog.0925.yomiRouteTitle": "Yomi route fix",
@@ -1892,7 +1900,9 @@
       "menu.changelog.0946.travelFia.0": "After the arena victory, Fia can be found only in her chambers.",
       "menu.changelog.0946.travelFia.1": "The furnishings in Fia’s chambers stay in place during attacks.",
       "menu.changelog.0946.travelFia.2": "The unlocked dungeon entrance, arena and Fia’s chambers are available for fast travel. Internal dungeon rests can be used as fast-travel destinations only from within the dungeon.",
-      "menu.changelog.0946.travelFia.3": "Spirit Dash’s purple trail is now visible in the Council Hall."
+      "menu.changelog.0946.travelFia.3": "Spirit Dash’s purple trail is now visible in the Council Hall.",
+      "menu.changelog.0947.title": "New hope at the refuge",
+      "menu.changelog.0947.0": "A special keepsake can now be placed beside the Forest Refuge’s altar, unlocking new dialogue with Sora. Akash’s phone case now costs 1,500 coins."
     }
   }
 }

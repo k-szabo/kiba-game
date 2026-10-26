@@ -197,7 +197,7 @@ const ART_INVENTORY = {
   // Inventory-only crops exclude world pedestals. Every item uses the same UI renderer.
   items:{
     campMasterSoul:{name:'item.campMasterSoul',realm:0,image:'campMasterSoul',x:85,y:249,w:1109,h:786},
-    daisyPlush:{name:'item.daisyPlush',realm:1,image:'slayerDaisy',x:176,y:3,w:1098,h:1121},
+    daisyPlush:{name:'item.daisyPlush',realm:1,image:'slayerDaisy',x:176,y:3,w:1098,h:1121,consumedBy:{realm:0,id:'daisyPlaced'}},
     slayerCrossbow:{name:'item.slayerCrossbow',realm:1,image:'slayerCrossbow',x:34,y:69,w:1497,h:869},
     madPriestSoul:{name:'item.madPriestSoul',realm:3,image:'madPriestSoul',x:77,y:4,w:1079,h:1246},
     corruptedHymn:{name:'item.corruptedHymn',realm:3,image:'corruptedHymn',x:39,y:166,w:1202,h:944},

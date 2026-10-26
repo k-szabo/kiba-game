@@ -36,6 +36,7 @@ const SaveVault=(()=>{
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
+  if(hasCampFlag('daisyPlaced')&&(!data.defeated[0]||!data.flags[1].includes('daisyPlush')||!data.flags[1].includes('guardian:doomSlayer')||data.soldItems.includes('daisyPlush')))throw Error('Invalid Daisy placement');
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
   if(['smithRescued','herbalistRescued','enchanterRescued'].some(id=>hasCampFlag(id)&&!hasCampFlag('guardian:campMaster'))||hasCampFlag('herbalistQuestAccepted')&&!hasCampFlag('herbalistRescued'))throw Error('Invalid camp rescue');
   if(hasCampFlag('campMasterSoul')&&!hasCampFlag('guardian:campMaster')||hasCampFlag('campQuestCompleted')&&!['smithRescued','herbalistRescued','enchanterRescued'].every(hasCampFlag)||hasCampFlag('herbalistQuestTurnedIn')&&!hasCampFlag('herbalistQuestAccepted')||hasCampFlag('serpentRitualKnown')&&!hasCampFlag('enchanterRescued'))throw Error('Invalid camp quest completion');

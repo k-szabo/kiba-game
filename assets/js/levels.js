@@ -293,6 +293,9 @@ const forestCamp=makeLevel('forestCamp',2800,1080,{x:280,y:820});
 ledge(forestCamp,'camp-ground',0,820,2800,'ground',260);
 rest(forestCamp,'forestCamp',1250,820,I18n.t('camp.shrine'));
 forestCamp.returnPoint={x:180,y:820};
+// A keepsake beside the existing shrine, not an additional resting point.
+forestCamp.daisy={x:1130,y:820,height:64};
+japan.progressFlags.push('daisyPlaced');
 forestCamp.arena={x:-1000,y:820,w:0,restId:'forestCamp'};forestCamp.boss={x:-1000,y:820};
 zone(forestCamp,I18n.t('camp.name'),0,0,2800,1080);
 forestCamp.npcs=[

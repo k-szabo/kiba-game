@@ -4,6 +4,13 @@ const CampQuest=(()=>{
  let execution=null;
  const rescueFlags=['smithRescued','herbalistRescued','enchanterRescued'];
  const owns=id=>flags[0].includes(id);
+ const daisyPlaced=()=>owns('daisyPlaced');
+ const canPlaceDaisy=()=>state==='play'&&!Prologue.active&&realm===0&&level===forestCamp&&(defeated[0]||DevSession.active)&&!daisyPlaced()&&Inventory.quantity('daisyPlush')>0&&pointNear(forestCamp.daisy,75,85);
+ function placeDaisy(){
+  if(!canPlaceDaisy())return false;
+  flags[0].push('daisyPlaced');persist();updateHUD();
+  story('camp.dialogue.label','item.daisyPlush','camp.daisy.story');return true;
+ }
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
  function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
  const isSide=()=>['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','yomiDungeon1','yomiDungeon2','yomiDungeon3'].includes(locationId());
@@ -58,6 +65,7 @@ const CampQuest=(()=>{
   if(Prologue.active)return null;
   if(level===levels[0])return defeated[0]&&owns('campQuestAccepted')&&pointNear(level.samuraiCampEntrance,105,90)?{type:'campRescueEnter',text:I18n.t('camp.rescue.enter')}:null;
   if(level===forestCamp){
+   if(canPlaceDaisy())return {type:'campDaisy',text:I18n.t('camp.daisy.place')};
    const entry=level.serviceEntrances.find(candidate=>eligible(candidate.id)&&pointNear(candidate,95,85));
    return entry?{type:'campServiceEnter',id:entry.id,text:I18n.format('service.enter',[I18n.t(entry.name)])}:null;
   }
@@ -81,6 +89,7 @@ const CampQuest=(()=>{
  function interact(candidate){
   if(state!=='play'||!candidate)return false;
   const actual=getContext();if(!actual||candidate.type!==actual.type)return false;
+  if(actual.type==='campDaisy')return placeDaisy();
   if(actual.type==='campRescueEnter')return enter('samuraiCamp');
   if(actual.type==='campServiceEnter')return candidate.id===actual.id&&enter(actual.id);
   if(actual.type==='campSideReturn')return leave();
@@ -139,5 +148,5 @@ const CampQuest=(()=>{
   if(isSide()){const point=level.servicePoint;return {point,x:point.x,y:point.y,text:'camp.objective',compass:false};}
   return null;
  }
- return Object.freeze({get execution(){return state==='dialog'&&level===samuraiCamp&&enemies.includes(execution?.enemy)?execution:null;},locationId,isSide,enter,leave,materializeRoute,talkDaichi,context:getContext,interact,rescue,masterScene,masterVictory,executionFailed,questMarker,objective});
+ return Object.freeze({get execution(){return state==='dialog'&&level===samuraiCamp&&enemies.includes(execution?.enemy)?execution:null;},daisyPlaced,canPlaceDaisy,placeDaisy,locationId,isSide,enter,leave,materializeRoute,talkDaichi,context:getContext,interact,rescue,masterScene,masterVictory,executionFailed,questMarker,objective});
 })();

@@ -75,7 +75,7 @@ Az Őrült pap lelke automatikus főbossjutalom. A Megrontott szent ének az opc
 
 ## Eladás és jelenlegi birtoklás
 
-Akash közelében az eladható kijelölt tárgy eladási gombot kap, külön megerősítéssel. A `quantity` az egyedi megszerzési jelző mellett a `soldItems` listát és az elfogyasztási jelzőket is ellenőrzi. Az eladott tárgy eltűnik, a világ történeti jelzői megmaradnak. A telefontok `trinket` kategória, közös kontrasztos DPR-es ikonrajzolóval. Árak és mentési részletek: [Akash kereskedője](MERCHANT.md#eladás-akashnak).
+Akash közelében az eladható kijelölt tárgy eladási gombot kap, külön megerősítéssel. A `quantity` az egyedi megszerzési jelző mellett a `soldItems` listát és az elfogyasztási jelzőket is ellenőrzi. Az eladott tárgy eltűnik, a világ történeti jelzői megmaradnak. Daisy is ezt a `consumedBy` szabályt használja: az erdei oltárnál elhelyezett nyúl már nem hordozott tárgy, nem eladható és dev módban sem adható újra. A telefontok `trinket` kategória, közös kontrasztos DPR-es ikonrajzolóval. Árak és mentési részletek: [Akash kereskedője](MERCHANT.md#eladás-akashnak).
 
 ## Sofiye készletei és Ren fegyverei
 

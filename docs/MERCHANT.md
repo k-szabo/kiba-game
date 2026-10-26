@@ -65,10 +65,12 @@ A bolt eladásgombja az inventoryt nyitja meg. Eladás csak a kiszabadított Aka
 | Tea | 25 | 10 |
 | Iránytű | 220 | 90 |
 | Kis útitérkép | 360 | 140 |
-| Telefontok | 500 | 50 |
+| Telefontok | 1500 | 50 |
 | Esküszegő / Yomi-őrző / szeráf / őrült pap lelke | — | 200 / 300 / 500 / 600 |
 | Kígyópikkelyek / Három birodalom talizmánja | — | Nem eladható |
 | Daisy / Démonölő számszeríja | — | 120 / 300 |
+
+Daisy csak a kihelyezése előtt adható el. Az oltárnál hagyott nyulat a közös `consumedBy` szabály az inventory és a kereskedő birtoklási nézetéből is eltávolítja; a megszerzés történeti jelzője megmarad.
 
 A telefontok egyszerre egy példányban birtokolható, eladás után újravásárolható, használati hatása nincs. A közös árlista és egyedi tárgy–világ hozzárendelés a `levels.js` `MERCHANT_SALES` táblája; a bolti vételárak a `Merchant.catalogue` adatai. Eladáskor az érmejóváírás és a tárgy levonása egyetlen mentési állapot. Biztonságos egész túlcsordulás esetén a művelet módosítás nélkül elutasított.
 

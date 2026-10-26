@@ -252,6 +252,33 @@ async function main(){
  assert.equal(campUpdate.records.has('save'),false);assert.equal(campUpdate.local.has(SAVE),false);
  assert.equal(campUpdate.local.get('momo-language'),'en');assert.equal(campUpdate.local.get('momo-keybindings-v1'),'custom');
 
+ // Daisy's placement consumes ownership, not the historical hidden-boss reward.
+ // It is one permanent camp flag within this release, without save migration.
+ const daisyEnv=storageEnvironment(),daisyClient=client(daisyEnv);await daisyClient.vault.ready;
+ const placedDaisy=copy(camp);placedDaisy.flags[0].push('daisyPlaced');placedDaisy.flags[1].push('guardian:doomSlayer','daisyPlush');
+ await daisyClient.vault.write(placedDaisy);
+ assert.deepEqual(plain(await client(daisyEnv).vault.ready),placedDaisy,'Placed Daisy and original acquisition history survive authenticated encrypted reload');
+ for(const realm of [0,1,2]){
+  const away=copy(placedDaisy);away.realm=realm;away.location=null;
+  away.checkpoint=plain(vm.runInContext(`levels[${realm}].rests[0]`,daisyClient));
+  await daisyClient.vault.write(away);assert.deepEqual(plain(await client(daisyEnv).vault.ready),away,'Placement survives leaving the camp and saving at another realm checkpoint');
+ }
+ const daisyCipher=daisyEnv.records.get('save'),daisyRevision=daisyEnv.records.get('profile').revision;
+ for(const remove of ['daisyPlush','guardian:doomSlayer']){
+  const invalid=copy(placedDaisy);invalid.flags[1]=invalid.flags[1].filter(id=>id!==remove);
+  assert.throws(()=>daisyClient.vault.write(invalid),/Invalid Daisy placement/,'Placed Daisy requires both the acquired plush and its guardian history');
+ }
+ const soldDaisy=copy(placedDaisy);soldDaisy.flags[1].push('akashRescued');soldDaisy.soldItems.push('daisyPlush');
+ assert.throws(()=>daisyClient.vault.write(soldDaisy),/Invalid Daisy placement/,'One plush cannot be sold and placed at the shrine');
+ const earlyDaisy=copy(placedDaisy);earlyDaisy.defeated[0]=false;
+ assert.throws(()=>daisyClient.vault.write(earlyDaisy),/Invalid Daisy placement/,'The camp must be unlocked before Daisy can be placed');
+ assert.equal(daisyEnv.records.get('save'),daisyCipher);assert.equal(daisyEnv.records.get('profile').revision,daisyRevision,'Invalid placement writes cannot alter the authenticated record');
+ daisyEnv.local.set('momo-language','en');daisyEnv.local.set('momo-keybindings-v1','custom');
+ const resetDaisy=client(daisyEnv,(BigInt(current.split('.')[0])+1n)+'.0.0');
+ assert.equal(await resetDaisy.vault.ready,null);assert.equal(resetDaisy.vault.notice,'text.save.reset.new.version');
+ assert.equal(daisyEnv.records.has('save'),false);assert.equal(daisyEnv.local.has(SAVE),false);
+ assert.equal(daisyEnv.local.get('momo-language'),'en');assert.equal(daisyEnv.local.get('momo-keybindings-v1'),'custom');
+
  // Currency, stacked food and permanent purchases are one authenticated save,
  // including when the merchant was rescued before Yomi's guardian was beaten.
  const shopEnv=storageEnvironment(),shopClient=client(shopEnv);await shopClient.vault.ready;
@@ -273,7 +300,7 @@ async function main(){
  await shopClient.vault.write(soldGear);assert.deepEqual(plain(await client(shopEnv).vault.ready),soldGear,'Sold travel gear retains its acquisition history after encrypted reload');
  const reboughtGear=copy(soldGear);reboughtGear.soldItems=reboughtGear.soldItems.filter(id=>id!=='compass');reboughtGear.coins-=220;
  await shopClient.vault.write(reboughtGear);assert.deepEqual(plain(await client(shopEnv).vault.ready),reboughtGear,'A rebought unique restores ownership without deleting acquisition history');
- const phone=copy(campShop);phone.flags[1].push('phoneCase');phone.coins-=500;
+ const phone=copy(campShop);phone.coins=1540;phone.flags[1].push('phoneCase');phone.coins-=1500;
  await shopClient.vault.write(phone);assert.deepEqual(plain(await client(shopEnv).vault.ready),phone,'The phone case is valid merchant inventory');
  phone.soldItems.push('phoneCase');phone.coins+=50;
  await shopClient.vault.write(phone);assert.deepEqual(plain(await client(shopEnv).vault.ready),phone,'The sold phone case remains recorded until repurchased');
@@ -412,6 +439,6 @@ async function main(){
  const replacement=client(inflight,current,{locks:false});await replacement.vault.ready;assert.equal(replacement.vault.isReady,true);const replacementDevice=inflight.records.get('profile').device;
  continueEncryption();await assert.rejects(writing,/Storage aborted/);assert.equal(inflight.records.get('profile').device,replacementDevice);assert.equal(inflight.records.has('save'),false);assert.equal(inflight.local.has(SAVE),false);
  assert.ok([...env.opened,...update.opened,...race.opened].every(name=>name==='momo-save-v2'));
- console.log('Save release: reload, merchant currency/meat/tea/purchases and invalid saves, forest camp travel/checkpoint/reset, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
+ console.log('Save release: reload, merchant currency/meat/tea/purchases and invalid saves, forest camp travel/checkpoint/reset, permanent Daisy placement, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

@@ -8,12 +8,20 @@ A táborban a szentélynél gyógyulás és fejlesztés, a három túlélőnél 
 
 - A `forestCamp` önálló `2800 × 1080` pálya, folyamatos talajjal az `y=820` magasságban; nem kerül a `levels` négy birodalma közé. A `realm` értéke `0` marad.
 - A `realmRests(0)` egyesíti Japán és a tábor szentélyeinek utazási katalógusát. A tábor szentélye nem kerül a japán pálya fizikai `rests` listájába.
-- Az első belépés regisztrálja a `visitedRests[0]` listában az egyedi `forestCamp` azonosítót. Addig a gyorsutazási cél rejtett. A saját tábori térkép a helyi geometriát és Momo helyét mutatja; a birodalmak között a meglévő gyorsutazási felület használható.
+- Az első belépés regisztrálja a `visitedRests[0]` listában az egyedi `forestCamp` azonosítót. A feloldott, még meg nem látogatott cél látható, de letiltott. A saját tábori térkép a helyi geometriát és Momo helyét mutatja; a birodalmak között a meglévő gyorsutazási felület használható.
 - A mentés `location` mezője a táborban `forestCamp`, az új oldalhelyszíneken a `SIDE_LOCATIONS` megfelelő azonosítója, a főpályákon `null`. Folytatás és halál után Momo a tábori szentélynél jelenik meg. A csarnok eddigi, átmeneti helyszínkezelése nem változik.
 - A validátor megköveteli az első boss legyőzését, a befejezett prológust, a felfedezett tábori szentélyt és annak pontos koordinátáit. Ismeretlen helyszín vagy a tábori mentőpont normál japán mentésben nem fogadható el.
 - Az utazás a meglévő világállapotokat, képességeket, XP-t, fejlesztéseket és egyszeri bossjutalom-jogcímeket megőrzi. Normál ellenfelek a meglévő gyorsutazási/újraéledési szabályt követik.
 
-## Bővítés
+## Daisy az oltár mellett
+
+A már megszerzett Daisy a meglévő szentélytől balra, a `(1130,820)` pont közelében helyezhető el a beállított interakciógombbal. A `CampQuest` csak aktív játékban, a menedékben, közelség és tényleges birtoklás mellett engedi a műveletet; egy régi interakció sem fogyaszthat tárgyat máshonnan vagy kétszer. Az elhelyezés végleges az adott utazáson, rövid, szüneteltető jelenettel és Sora új párbeszédével. A démonok elleni oltalom és a tábor jobb morálja történeti hatás, nem HP-, páncél- vagy sebzésbónusz. A szentély pihenése és fejlesztése változatlan.
+
+A `flags[0].daisyPlaced` jelző mentődik, az eredeti Yomi-beli megszerzési és bossgyőzelmi jelzők megmaradnak. Az inventory közös `consumedBy` szabálya miatt Daisy kikerül a hátizsákból, nem eladható és dev tárgyadással sem duplázható. A validátor megköveteli Daisy megszerzését, őrzőjének legyőzését és kizárja az eladott nyúl kihelyezését. Halál, pihenés, helyszínváltás és ugyanazon kiadás folytatása megőrzi; új utazás vagy új kiadás reseteli. A meglévő alfás inventorygrafika teljes kivágása, álló pózban, a járható talajra illesztve jelenik meg, külön új szentély vagy animáció nélkül.
+
+Célzott regresszió: `npm run test:refuge-keepsake`. A titkosított mentési ellenőrzések a `test-save-release.cjs` részei; tényleges böngészős tárolás és vizuális minőség külön ellenőrzendő.
+
+## NPC-k és grafika bővítése
 
 A `forestCamp.npcs` katalógus bejegyzései: `id`, `x`, `y`, `name`, `dialogue`, `image`, `height`. A `name` és `dialogue` lokalizációs kulcs. Később egy NPC `requiresFlag: {realm, id}` feltételt kaphat; ezt a megjelenítés és az interakció ugyanazzal a `campNPCVisible` függvénnyel ellenőrzi. Új NPC-hez külön jóváhagyott szöveg, grafikai koncepció és mentési/küldetésfeltétel szükséges.
 

@@ -6,14 +6,15 @@ const Merchant=(()=>{
   tea:Object.freeze({price:25,stack:true}),
   compass:Object.freeze({price:220}),
   minimap:Object.freeze({price:360}),
-  phoneCase:Object.freeze({price:500})
+  phoneCase:Object.freeze({price:1500})
  });
  const rewards=Object.freeze({enemy:5,miniboss:20,boss:50});
  const healingItems=Object.freeze(['roastMeat','tea','healingBrew']);
  let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
  const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
- const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)?1:0;
+ const consumed=id=>{const by=ART_INVENTORY.items[id]?.consumedBy;return !!by&&flags[by.realm].includes(by.id);};
+ const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
  function selectAvailable(){if(!stock(quickHeal)){const other=healingItems.find(id=>stock(id)>0);if(other)quickHeal=other;}}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
