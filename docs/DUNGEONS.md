@@ -57,6 +57,14 @@ Felhasználás az inventoryból történik, egy adagot fogyaszt és egy fokozato
 
 Akashnál a pecsét 50, a megerősítések darabonként 20, a tanácsosi lélek 350 érméért adható el. Az eladás a tényleges tárgykészletet csökkenti, a már alkalmazott megerősítést és az egyszeri jutalomjogcímet nem törli.
 
+## Bejárat és gyorsutazás
+
+A tanácsosi kapu felnyitása után a `COUNCIL_TRAVEL` virtuális útvonalpontja a meglévő csarnokhoz, közvetlenül az emléktekercshez vezet. A `realmRests(1)` katalógus tartalmazza, de a fizikai `yomi.rests` nem: nem új szentély, nem gyógyít, és nem válhat mentési checkpointtá. Az engedélyhez a `councilGateOpen` jelző és a normál birodalmi feltételek kellenek; a bejáratnak nincs külön meglátogatási követelménye. A csarnok meglévő, valódi szabadtéri Yomi-checkpointot megőrző mentési/halálozási modellje változatlan.
+
+A `travelScope` a cél kanonikus helyszínét vizsgálja, ugyanúgy a listázásnál és a `fastTravel` végrehajtásakor. Dungeonbelső szentélyre csak ugyanazon dungeonből lehet gyorsutazni. Külső pályáról, a tekercses csarnokból, másik dungeonből és korábban eltett menügomb callbackjével sem kerülhető meg a bejárat. Ez az általános gyorsutazási panelen dev tesztmódban is érvényes; a külön fejlesztői teleport továbbra is használható közvetlen tesztbelépésre.
+
+Az oldalhelyszínek céljai a meglévő lokalizált helyszín- és szentélynevet együtt mutatják. A feloldott, még meg nem látogatott pihenő látszik, de letiltott; a normál meglátogatási és történeti követelmények megmaradnak. Az aréna és Fia lakosztálya ugyanazt a közös célkatalógust használja.
+
 ## Mentés, halál és új emlékút
 
 A mentés a `dungeon` mezőben tárolja a `run`, `roll`, `stock` és `boosts` adatokat; a világjelzők az előrehaladás és a jutalmak jogcímei. A validátor a pályasorrendet, a kapu- és Yomi-boss-előfeltételt, a készleteket és az ötös korlátokat is ellenőrzi. Korábbi kiadásból nincs migráció: az alfa/béta kiadásreset itt is érvényes.
@@ -85,6 +93,8 @@ node scripts/test-dungeon-factions.cjs
 node scripts/test-dungeon-summon-aggro.cjs
 node scripts/test-dungeon-art.cjs
 node scripts/test-japan-enemy-art.cjs
+node scripts/test-travel-destinations.cjs
+node scripts/test-council-dash.cjs
 ```
 
 Ezek az állapot- és jutalomszabályokat, ugyanazon kiadás folytatását, a tényleges inputtal járható útvonalakat és harcot, az inventory műveleteit és a frakciósebzést ellenőrzik. A Canvas/DOM/mentési környezetet részben modellezik; nem igazolnak kész grafikai minőséget vagy valódi böngészős IndexedDB-viselkedést. A HU/EN tekercsmenü, fókusz, 1280×720-as olvashatóság, támadásjelzések, natív képek és mentés-visszatöltés külön böngészős QA-t igényel.

@@ -35,7 +35,7 @@ A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz 
 
 A tesztmódban hozzáadott csontkulcs a boss legyőzése nélkül is nyitja a tanácsosi kaput, és használatkor elfogy. Az így megnyitott kapu újra használható. Ez csak a memóriában futó tesztre érvényes; normál játékban a boss- és kulcsszabályok változatlanok.
 
-Aktív tesztmódban a játék térképéről is minden birodalom minden szentélye elérhető, az Erdei menedékkel együtt. Ehhez nem kell korábbi felfedezés, bossgyőzelem vagy az árnyékoltár aktiválása. Az álomprológus továbbra is csak a fejlesztői teleport külön célpontja; térképes gyorsutazás nincs benne. A teszt befejezésével az összes utazási kivétel megszűnik, a normál mentés és feloldási feltételei megmaradnak.
+Aktív tesztmódban a játék térképéről is minden birodalom kültéri és normál oldalhelyszíni szentélye elérhető, az Erdei menedékkel együtt. Ehhez nem kell korábbi felfedezés, bossgyőzelem vagy az árnyékoltár aktiválása. A dungeon belső pihenői azonban csak ugyanazon dungeon belsejéből érhetők el térképes gyorsutazással; kívülről a fejlesztői teleporttal lehet közvetlenül belépni. Az álomprológus továbbra is csak a fejlesztői teleport külön célpontja; térképes gyorsutazás nincs benne. A teszt befejezésével az összes utazási kivétel megszűnik, a normál mentés és feloldási feltételei megmaradnak.
 
 A fejlesztői kapcsolók a teszt végén törlődnek, nem kerülnek a mentési sémába. Az eszközök belső állapotát nem exportáljuk a `window` objektumra.
 
@@ -43,7 +43,7 @@ A képességválasztót az `assets/js/dev-abilities.js` `catalogue` listája ép
 
 ## RCA: dev módban blokkolt gyorsutazás
 
-A [66-os hibajegynél](https://trello.com/c/zd5FSRSR) a dev teleport megkerülte a normál belépési feltételeket, de a térkép külön végrehajtója továbbra is bossgyőzelmet, felfedezett szentélyt és az árnyékoltár jelzőjét kérte. A megjelenített és a ténylegesen használható célpontok ezért eltérhettek. A `game.js` közös `travelDestination` függvénye most a térkép és a végrehajtó egyetlen jogosultsági forrása: a katalógus és a célazonosító mindig ellenőrzött, a normál előfeltételek kizárólag aktív, nem mentődő `DevSession` alatt hagyhatók ki. A `test-dev-fast-travel.cjs` az összes szentélyt tényleges térképgombbal járja be minden birodalomból, ellenőrzi a talajra érkezést, a mentés izolációját, a hibás célok elutasítását és a normál zárak visszaállását.
+A [66-os hibajegynél](https://trello.com/c/zd5FSRSR) a dev teleport megkerülte a normál belépési feltételeket, de a térkép külön végrehajtója továbbra is bossgyőzelmet, felfedezett szentélyt és az árnyékoltár jelzőjét kérte. A megjelenített és a ténylegesen használható célpontok ezért eltérhettek. A `game.js` közös `travelDestination` függvénye most a térkép és a végrehajtó egyetlen jogosultsági forrása: a katalógus és a célazonosító mindig ellenőrzött, a normál előfeltételek kizárólag aktív, nem mentődő `DevSession` alatt hagyhatók ki. A dungeon helyszíni korlátját a `travelScope` a dev kivételek előtt érvényesíti. A `test-dev-fast-travel.cjs` tényleges térképgombokkal ellenőrzi a birodalmak közti utazást, a dungeon belső céljainak elkülönítését, a talajra érkezést, a mentés izolációját, a hibás célok elutasítását és a normál zárak visszaállását.
 
 ## RCA: hiányzó tábori teleport
 
