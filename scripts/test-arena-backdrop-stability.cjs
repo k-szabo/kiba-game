@@ -19,7 +19,7 @@ function fixture(room,height,width){
  };
  return {sandbox,draw,level,rangeX:Math.max(0,level.width-width),rangeY:Math.max(0,level.height-height)};
 }
-for(const room of [false,true])for(const height of [720,1080])for(const width of [1280,1920,2560,3840]){
+for(const room of [false])for(const height of [720,1080])for(const width of [1280,1920,2560,3840]){
  const f=fixture(room,height,width),y=f.rangeY*.6,origin=f.draw(0,y);let before=origin,beforeX=0;
  for(let step=1;step<=40;step++){
   const x=f.rangeX*step/40,next=f.draw(x,y),delta=x-beforeX,motion=Math.abs(next[0].args[0]-before[0].args[0]);assert(motion<=delta*.18+1e-7,'Decorative panorama moves no faster than18% of camera travel');assert(next[0].args[0]<=before[0].args[0]+1e-7,'Parallax direction never reverses');assert.deepEqual(next.map(p=>p.args.slice(2)),origin.map(p=>p.args.slice(2)),'Camera motion cannot change magnification or detail scale');before=next;beforeX=x;
@@ -33,6 +33,23 @@ for(const room of [false,true])for(const height of [720,1080])for(const width of
  f.sandbox.reducedMotion.matches=true;const calm=f.draw(0,0);assert.deepEqual(f.draw(f.rangeX,f.rangeY),calm,'Reduced motion keeps the decorative panorama stationary');assert.deepEqual(f.draw(-500,-300),calm);assert.deepEqual(f.draw(f.rangeX+500,f.rangeY+300),calm);
  f.sandbox.reducedMotion.matches=false;const target=f.draw(f.rangeX*.3,f.rangeY*.7);f.sandbox.innerWidth=6400;f.sandbox.innerHeight=2160;f.sandbox.devicePixelRatio=3;assert.deepEqual(f.draw(f.rangeX*.3,f.rangeY*.7),target,'Canvas layout uses viewW/H world units, not CSS/DPR pixel dimensions');
  assert.deepEqual(f.draw(-500,-300),f.draw(0,0),'Out-of-bounds camera shake does not expose image edges');assert.deepEqual(f.draw(f.rangeX+500,f.rangeY+300),f.draw(f.rangeX,f.rangeY));
+}
+// The private room's furniture is world geometry, not a decorative panorama.
+// A landmark plus the camera position must stay invariant while walking/jumping.
+for(const height of [720,1080])for(const width of [1280,1920,2560,3840]){
+ const f=fixture(true,height,width),origin=f.draw(0,0)[0].args;
+ for(let step=0;step<=40;step++){
+  const x=f.rangeX*step/40,y=f.rangeY*step/40,picture=f.draw(x,y)[0].args;
+  assert(Math.abs(picture[0]+x-origin[0])<1e-7,'Furniture follows horizontal world camera exactly');
+  assert(Math.abs(picture[1]+y-origin[1])<1e-7,'Furniture follows vertical world camera exactly');
+  assert.deepEqual(picture.slice(2),origin.slice(2),'Room camera motion cannot resize furniture');
+ }
+ for(const mode of ['play','pause','dialog','inventory','developer'])for(const reduced of [false,true]){
+  f.sandbox.state=mode;f.sandbox.shake=1;f.sandbox.time+=5;f.sandbox.reducedMotion.matches=reduced;
+  const x=f.rangeX*.5,y=f.rangeY*.5,picture=f.draw(x,y)[0].args;
+  assert(Math.abs(picture[0]+x-origin[0])<1e-7);assert(Math.abs(picture[1]+y-origin[1])<1e-7);
+  assert.deepEqual(picture.slice(2),origin.slice(2),'Pause, reduced motion and attack shake preserve world registration');
+ }
 }
 for(const fps of [30,60,120]){
  const f=fixture(false,720,1280),endX=Math.min(500,f.rangeX),endY=Math.min(250,f.rangeY),start=f.draw(0,0);let previous=start;
@@ -53,4 +70,4 @@ for(const fps of [30,60,120]){
  const before=r('JSON.stringify([posePair,player,enemies,projectiles,flags,levelTime])');assert(r('ArenaArt.actor(posePair)'));assert.equal(r('JSON.stringify([posePair,player,enemies,projectiles,flags,levelTime])'),before);const bodies=draws.filter(draw=>draw.source===image);assert.equal(bodies.length,2);assert.deepEqual(bodies.map(draw=>draw.args.slice(0,4)),[2,3].map(index=>{const f=frames[index];return [f.x,f.y,f.w,f.h];}),'Each independent guard uses its own pose');assert(dashes.some(pattern=>pattern.length>0),'A part windup remains visible even when the aggregate phase is idle');
  r('posePair.singleGuard=true;posePair.arenaMinion=true;posePair.arenaRole="cyclops";posePair.parts=posePair.parts.slice(0,1);');draws=[];assert(r('ArenaArt.actor(posePair)'));assert.equal(draws.filter(draw=>draw.source===image).length,1,'An owned summon is a full single cyclops, without a generic minion fallback');
 }
-console.log('PASS: native arena panorama18% horizontal/8% vertical speed bounds, fixed scale/aspect, full desktop coverage, deterministic30/60/120FPS paths, pause/shake purity, stationary reduced motion and world-unit layout. Real-browser QA verifies perceived clarity and comfort.');
+console.log('PASS: native arena panorama18% horizontal/8% vertical speed bounds, world-locked chamber furniture, fixed scale/aspect, full desktop coverage, deterministic30/60/120FPS paths, pause/shake purity, reduced motion and world-unit layout. Real-browser QA verifies perceived clarity and comfort.');

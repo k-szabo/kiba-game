@@ -103,7 +103,7 @@ function frames(h,seconds,fps=120){h.run(`for(let f=0;f<${Math.ceil(seconds*fps)
 {
  const h=victorious(),r=h.run;
  assert.equal(r("fastTravel({id:'forestCamp'},0)"),false,'Unvisited camp cannot be fast-travelled to');
- assert.equal(r("travelGrid(0).children.some(b=>b.textContent.includes(forestCamp.rests[0].name))"),false);
+ assert.equal(r("travelGrid(0).children.find(b=>b.textContent.includes(forestCamp.rests[0].name))?.disabled"),true,'Unlocked, unvisited camp is discoverable but cannot be used yet');
  r('enterForestCamp();leaveForestCamp();enterRealm(1);');
  r("flags[1].push('soulUpper','soulLower');abilities[1]=true;bossStarted=true;boss.hp=0;guardianDefeated();");h.dismiss();
  r('enterRealm(2);');const before=ledger(h);

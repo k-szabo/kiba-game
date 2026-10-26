@@ -478,6 +478,9 @@ for(const [map,specs] of [[dungeonCourtyard,[[700,1100,'guard','japan'],[940,110
 }
 dungeonThrones.rewardChest={x:5950,y:1200};
 councilHall.memoryScroll={x:1850,y:820};
+// A virtual route anchor: unlocking the chained entrance makes the scroll
+// reachable again without adding a shrine or changing the hall's save model.
+const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.x,y:yomi.councilGate.y,name:'council.hall.name',location:'councilHall',travelOnly:true,unlockFlag:'councilGateOpen'});
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const SIDE_LOCATIONS=Object.freeze({
  yomiDungeon1:Object.freeze({map:dungeonCourtyard,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted'])}),
@@ -498,6 +501,6 @@ function sideLocationUnlocked(id,worldFlags=[],defeated=[]){
  const spec=SIDE_LOCATIONS[id],known=worldFlags?.[spec.realm];
  return (spec.requiresRealmBoss===false||defeated?.[spec.realm]===true)&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
 }
-function realmRests(n){return levels[n]?[...levels[n].rests,...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>[...spec.map.rests,...(spec.map.checkpoints||[])])]:[];}
+function realmRests(n){return levels[n]?[...levels[n].rests,...(n===1?[COUNCIL_TRAVEL]:[]),...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>[...spec.map.rests,...(spec.map.checkpoints||[])])]:[];}
 for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
 

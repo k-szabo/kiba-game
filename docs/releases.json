@@ -444,6 +444,34 @@
           "en": "The necromancer’s raised soldiers pursue Momo as soon as they appear. Samurai now have a more consistent, detailed appearance, while summoned warriors have an undead look."
         }
       ]
+    },
+    {
+      "version": "0.9.46_71810a0d",
+      "code": "71810a0d",
+      "baseVersion": "0.9.46",
+      "slug": "fia-fast-travel-and-council-trail-fixes",
+      "summary": {
+        "hu": "Fia és a gyorsutazás javításai",
+        "en": "Fia and fast travel fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az arénagyőzelem után Fia már csak a lakosztályában található.",
+          "en": "After the arena victory, Fia can be found only in her chambers."
+        },
+        {
+          "hu": "A lakosztály berendezései támadás közben is a helyükön maradnak.",
+          "en": "The furnishings in Fia’s chambers stay in place during attacks."
+        },
+        {
+          "hu": "A feloldott dungeonbejárat, az aréna és Fia lakosztálya gyorsutazással is elérhető. A dungeon belső pihenői csak belülről használhatók gyorsutazásra.",
+          "en": "The unlocked dungeon entrance, arena and Fia’s chambers are available for fast travel. Internal dungeon rests can be used as fast-travel destinations only from within the dungeon."
+        },
+        {
+          "hu": "A tanácsosok csarnokában is látható a szellemlépés lila nyoma.",
+          "en": "Spirit Dash’s purple trail is now visible in the Council Hall."
+        }
+      ]
     }
   ],
   "releases": [

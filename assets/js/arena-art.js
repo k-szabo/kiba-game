@@ -20,6 +20,16 @@ const ArenaArt=(()=>{
   if(!ArenaChallenge.active()&&!ArenaChallenge.room())return false;
   const a=ArenaChallenge.active()?art().arena:art().chambers,keys=a.panels||[a.image],images=keys.map(key=>Visuals.images[key]);
   if(images.some(image=>!image?.complete||!image.naturalWidth))return false;
+  if(ArenaChallenge.room()){
+   // Furniture belongs to this room, unlike the distant arena panorama.
+   // Cover its complete world once, then translate one-to-one with its floor
+   // and NPCs. Neither attack shake nor jump height may rescale the painting.
+   const scale=Math.max(level.width/a.w,viewW/a.w,level.start.y/a.groundY,
+    (Math.max(level.height,H)-level.start.y)/(a.h-a.groundY)),
+    width=a.w*scale,height=a.h*scale,x=(Math.max(level.width,viewW)-width)/2-camera,y=level.start.y-a.groundY*scale-cameraY;
+   ctx.save();ctx.fillStyle='#100e1a';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+   ctx.drawImage(images[0],x,y,width,height);ctx.restore();return true;
+  }
   // The native panorama is decorative depth, not another world-sized camera.
   // Keep its aspect/cover scale fixed and cap travel per world-camera unit.
   const overlap=a.overlap||0,units=a.w*(keys.length-overlap*(keys.length-1)),scale=Math.max(1,viewW/units,(H+120)/a.h),width=units*scale,height=a.h*scale,

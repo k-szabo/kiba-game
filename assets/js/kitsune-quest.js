@@ -6,6 +6,9 @@ const KitsuneQuest=(()=>{
  const prison=()=>realm===3&&level===shadowPrison&&!Prologue.active;
  const den=()=>realm===3&&level===shadowDen&&!Prologue.active;
  const rescued=()=>owns('fiaRescued'),missed=()=>owns('fiaMissed');
+ // This location-specific exclusion is shared by NPC rendering, prompts and
+ // direct dialogue callbacks through campNPCVisible. Other residents stay put.
+ const npcVisible=npc=>npc?.id!=='fia'||level!==shadowDen||!owns('arenaChampion');
  const hunterDefeated=()=>owns('guardian:prisonHunter');
  function rememberSeen(){
   if(!prison()||!hunterDefeated()||owns('fiaSeen')||rescued()||missed()||!overlap(player,level.fiaDetection))return false;
@@ -63,6 +66,6 @@ const KitsuneQuest=(()=>{
   const point=!hunterDefeated()?level.hunterArena:!rescued()&&!missed()?level.fia:level.returnPoint;
   return {point,compass:false,text:!hunterDefeated()?'fia.objective.hunter':!rescued()&&!missed()?'fia.objective.rescue':'zen.objective.return'};
  }
- return Object.freeze({prison,den,rescued,missed,context,interact,update,leaveFor,reset,objective,
+ return Object.freeze({prison,den,rescued,missed,npcVisible,context,interact,update,leaveFor,reset,objective,
   get departure(){return departure;},get rescueScene(){return rescueScene;}});
 })();

@@ -939,7 +939,12 @@
       "menu.changelog.0946.arena.3": "A bajnok gyorsabb kombinációkat, nagyobb területi támadásokat és küklopszidézést használ. Kimerülése után öt másodperc marad a végső találatra; utána agresszívebb pajzsciklus indul.",
       "menu.changelog.0946.arena.4": "A bajnok győzelem utáni távozása lépésanimációt kapott.",
       "menu.changelog.0946.summons.title": "Szamurájok és nekromanta-idézések javítása",
-      "menu.changelog.0946.summons.0": "A nekromanta feltámasztott katonái megjelenésüktől Momót üldözik. A szamurájok egységesebb, részletesebb megjelenést, az idézett harcosok élőhalott külsőt kaptak."
+      "menu.changelog.0946.summons.0": "A nekromanta feltámasztott katonái megjelenésüktől Momót üldözik. A szamurájok egységesebb, részletesebb megjelenést, az idézett harcosok élőhalott külsőt kaptak.",
+      "menu.changelog.0946.travelFia.title": "Fia és a gyorsutazás javításai",
+      "menu.changelog.0946.travelFia.0": "Az arénagyőzelem után Fia már csak a lakosztályában található.",
+      "menu.changelog.0946.travelFia.1": "A lakosztály berendezései támadás közben is a helyükön maradnak.",
+      "menu.changelog.0946.travelFia.2": "A feloldott dungeonbejárat, az aréna és Fia lakosztálya gyorsutazással is elérhető. A dungeon belső pihenői csak belülről használhatók gyorsutazásra.",
+      "menu.changelog.0946.travelFia.3": "A tanácsosok csarnokában is látható a szellemlépés lila nyoma."
     }
   },
   "en": {
@@ -1882,7 +1887,12 @@
       "menu.changelog.0946.arena.3": "The champion uses faster combos, larger area attacks and cyclops summons. After exhaustion, you have five seconds to land the final hit before a more aggressive shield cycle begins.",
       "menu.changelog.0946.arena.4": "The champion now leaves with a walking animation after the fight.",
       "menu.changelog.0946.summons.title": "Samurai and necromancer summon fixes",
-      "menu.changelog.0946.summons.0": "The necromancer’s raised soldiers pursue Momo as soon as they appear. Samurai now have a more consistent, detailed appearance, while summoned warriors have an undead look."
+      "menu.changelog.0946.summons.0": "The necromancer’s raised soldiers pursue Momo as soon as they appear. Samurai now have a more consistent, detailed appearance, while summoned warriors have an undead look.",
+      "menu.changelog.0946.travelFia.title": "Fia and fast travel fixes",
+      "menu.changelog.0946.travelFia.0": "After the arena victory, Fia can be found only in her chambers.",
+      "menu.changelog.0946.travelFia.1": "The furnishings in Fia’s chambers stay in place during attacks.",
+      "menu.changelog.0946.travelFia.2": "The unlocked dungeon entrance, arena and Fia’s chambers are available for fast travel. Internal dungeon rests can be used as fast-travel destinations only from within the dungeon.",
+      "menu.changelog.0946.travelFia.3": "Spirit Dash’s purple trail is now visible in the Council Hall."
     }
   }
 }

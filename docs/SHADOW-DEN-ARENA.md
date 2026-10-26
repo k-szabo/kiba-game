@@ -43,6 +43,8 @@ A 90 másodperc lejártakor saját lövedékei és területi veszélyei törlőd
 
 A győzelmi párbeszéd kizárólag a bajnoki címről és a lakosztályba szóló meghívásról beszél. Haru börtönbeli jelenléte, élve elhurcolása és az említett démon lord **csak a lakosztály beszélgetésében** derül ki. Fia közvetlenebb, flörtölő stílusa az elfogadott HU/EN szövegeket követi; a tábori és a harci öltözet külön grafika.
 
+Az `arenaChampion` után Fia nem marad az Árnyékzug táborában: csak a lakosztályban jelenik meg és szólítható meg. A közös `campNPCVisible` a `KitsuneQuest.npcVisible` helyszínfüggő kizárását is ellenőrzi; ugyanazt a szabályt használja a rajzolás, a kontextus, a küldetésjel és a közvetlen `ArenaChallenge.talkFia` hívás. Egy korábban eltett beszélgetés-callback sem hozhatja vissza a tábori példányt. A többi táborlakó és Fia megmentési/teljesítési jelzői megmaradnak.
+
 ## Állapotgazdák és mentés
 
 | Modul | Felelősség |
@@ -83,6 +85,7 @@ node scripts/test-arena-art.cjs
 node scripts/test-instruction-bindings.cjs
 node scripts/test-arena-backdrop-stability.cjs
 node scripts/test-arena-rework.cjs
+node scripts/test-fia-presence-and-room.cjs
 ```
 
 A harci teszt a felkészülést, rögzített célokat, forrásazonosítókat, szünetet, 90 másodperces immunitást, két testőr találati testét és valódi támadásinputot vizsgálja. A kihívásteszt a normál feloldást, 45 másodperces hullámot, egyszeri jutalmakat, újrapróbálást/folytatást, megadást, lakosztályt, hibás mentési láncot és dev-izolációt ellenőrzi. Az új helyszínek és az álom dupla ugrás/dash kombinációja 30/60/120 FPS-es inputtesztet is kapott.
@@ -100,5 +103,7 @@ Az aréna és a lakosztály a közös natív börtönkő-elemeket ismétli, kép
 A kapitány teste 88 × 180, a kétfejű kígyóé 380 × 360 világkoordináta-egység. A talpuk továbbra is a padlóhoz illeszkedik; a látható törzs, a sebezhető test és a nagyított támadásjelzések együtt változnak. A kígyó körül marad kitérhető és bejárható terület.
 
 A három jóváhagyott háttérpanel natív képarányt használ. A dekoratív kép vízszintesen legfeljebb a kamera útjának 18%-ával, függőlegesen 8%-ával mozdul, a teljes képfedést megtartva. A nagyítás nem változik kameramozgáskor, a képernyőrázás és a harci órák nem módosítják a panorámát. Csökkentett mozgás mellett a dekoratív háttér álló marad. A célzott teszt a korábbi, egynél nagyobb háttér/kamera sebességarány visszatérését is megfogja.
+
+A lakosztály berendezései a járható helyiség részei. Háttérképük a padlóval és az NPC-kkel egy az egyben követi a világkamerát, állandó, a teljes helyiséget lefedő léptékkel. Ugrás, szünet és csökkentett mozgás nem változtatja a bútorok világkoordinátáit. A lakosztály az üzletbelsőkhöz hasonlóan kimarad a támadások képernyőrázásából, így a padló és Fia sem csúszik el a festett berendezéshez képest. Ez nem változtatja meg az aréna távoli panorámáját vagy a harci támadások időzítését.
 
 A gombjelölések cseréje Unicode-betűk, számok és kombináló ékezetek között nem történhet meg: a „Következő” szó része nem kezelhető külön K billentyűként. Az aktuális interakciót és a különálló E/J/K/U/Space jelöléseket a tényleges kiosztás továbbra is egyszer, láncolt csere nélkül alakítja át.

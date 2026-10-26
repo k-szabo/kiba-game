@@ -92,7 +92,8 @@ const ArenaChallenge=(()=>{
   attempt.pending=pending.filter(portal=>portal.warning>0);
  }
  function talkFia(){
-  if(state!=='play'||level!==shadowDen||!owns('fiaRescued')||!pointNear(level.npcs.find(n=>n.id==='fia'),95,85))return false;
+  const npc=level===shadowDen&&level.npcs.find(n=>n.id==='fia');
+  if(state!=='play'||!npc||!campNPCVisible(npc)||!owns('fiaRescued')||!pointNear(npc,95,85))return false;
   if(!owns('arenaQuestAccepted')){flags[3].push('arenaQuestAccepted');persist();updateHUD();}
   story('arena.quest.name','fia.name',owns('arenaChampion')?'arena.invitation':'arena.quest.dialogue',null,{right:'fia',speaker:'fia'});return true;
  }
@@ -129,7 +130,7 @@ const ArenaChallenge=(()=>{
   if(active())return {point:running()?level.arena:owns('arenaChampion')?level.returnPoint:level.challengePoint,compass:false,text:owns('arenaChampion')?'arena.objective.chambers':'arena.objective.complete'};
   return null;
  }
- function questMarker(id){return id==='fia'&&level===shadowDen&&owns('fiaRescued')&&!owns('arenaQuestAccepted')?'!':null;}
+ function questMarker(id){return id==='fia'&&level===shadowDen&&owns('fiaRescued')&&campNPCVisible(level.npcs.find(n=>n.id===id))&&!owns('arenaQuestAccepted')?'!':null;}
  function hud(){
   if(!active())return false;
   const enemy=enemies.find(e=>ArenaCombat.is(e)&&!e.arenaMinion&&!e.dead&&e.active),round=attempt?.round||(enemy?order.indexOf(enemy.miniboss)+1:0);
