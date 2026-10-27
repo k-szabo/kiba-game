@@ -2,24 +2,24 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),harness=require('./test-harness.cjs');
 const near=(actual,expected,message)=>assert(Math.abs(actual-expected)<1e-8,`${message}: ${actual} !== ${expected}`);
 const h=harness(),r=h.run;
-const permanent='JSON.stringify({abilities,defeated,flags,stats:progression.stats,hp:player.hp,maxHp:player.maxHp})';
+const permanent='JSON.stringify({abilities,defeated,flags,stats:progression.stats,maxHp:player.maxHp})';
 // An actual ordinary enemy death crosses the XP threshold exactly once.
-r('progression=freshProgression();awardXP(59);');assert.equal(r('LevelUpEffect.remaining'),0);
+r('progression=freshProgression();player.hp=1.25;awardXP(59);');assert.equal(r('LevelUpEffect.remaining'),0);assert.equal(r('player.hp'),1.25,'Below-threshold XP does not heal');
 const before=r(permanent);
 r("var foe=createEnemy({id:'level-up-test',x:level.start.x,y:level.start.y,kind:'guard',patrol:20});foe.hp=0;killEnemy(foe);");
 assert.equal(r('LevelUpEffect.remaining'),r('LevelUpEffect.duration'));
 assert.equal(r('progression.level'),2);assert.equal(r('progression.points'),1);assert.equal(r('progression.xp'),19);assert.equal(r('progression.totalXp'),79);
-assert.equal(r(permanent),before,'The cue does not alter health, upgrades, abilities or quest flags');
-r('LevelUpEffect.update(.2);killEnemy(foe);');near(r('LevelUpEffect.remaining'),1.4,'A duplicate death does not replay the cue');
+assert.equal(r(permanent),before,'Level-up preserves maximum HP, upgrades, abilities and quest flags');assert.equal(r('player.hp'),r('player.maxHp'),'An actual enemy kill restores current maximum HP');
+r('LevelUpEffect.update(.2);player.hp=2;killEnemy(foe);');near(r('LevelUpEffect.remaining'),1.4,'A duplicate death does not replay the cue');assert.equal(r('player.hp'),2,'A duplicate kill cannot heal again');
 assert.equal(r('progression.totalXp'),79);
 assert(!r('JSON.stringify(saved)').includes('LevelUpEffect'),'Transient cue is absent from saves');
 // Invalid, below-threshold, capped and normalized XP do not manufacture level-ups.
 for(const bad of ['NaN','Infinity','-2','0','.5','Number.MAX_SAFE_INTEGER+1']){
- r('LevelUpEffect.clear();');const old=r('JSON.stringify(progression)');r(`awardXP(${bad});`);
- assert.equal(r('JSON.stringify(progression)'),old);assert.equal(r('LevelUpEffect.remaining'),0);
+ r('LevelUpEffect.clear();player.hp=1.25;');const old=r('JSON.stringify(progression)');r(`awardXP(${bad});`);
+ assert.equal(r('JSON.stringify(progression)'),old);assert.equal(r('LevelUpEffect.remaining'),0);assert.equal(r('player.hp'),1.25,'Invalid XP cannot heal');
 }
 r('LevelUpEffect.clear();awardXP(1);');assert.equal(r('LevelUpEffect.remaining'),0);
-r('progression=normalizeProgression({level:30,totalXp:15950},flags);awardXP(100);');assert.equal(r('LevelUpEffect.remaining'),0);
+r('progression=normalizeProgression({level:30,totalXp:15950},flags);awardXP(100);');assert.equal(r('LevelUpEffect.remaining'),0);assert.equal(r('player.hp'),1.25,'Capped XP cannot heal');
 r('progression=normalizeProgression({level:8,totalXp:1155},flags);');assert.equal(r('LevelUpEffect.remaining'),0);
 r('progression=freshProgression();awardXP(10000);');assert(r('progression.level>2'));
 near(r('LevelUpEffect.remaining'),1.6,'A multi-level award starts one bounded cue');
@@ -28,7 +28,26 @@ r('LevelUpEffect.update(.7);awardXP(10000);');near(r('LevelUpEffect.remaining'),
 r('mainMenu();startGame(true);');assert.equal(r('LevelUpEffect.remaining'),0);
 r('initPlayer(checkpoint);state="play";showTraining();');assert.equal(r('state'),'training');
 assert(r("spendPoint('strength')"));assert.equal(r('LevelUpEffect.remaining'),0);r('closeTraining()');
-r('DevTools.open();DevSession.begin();');assert(r('DevLevel.setLevel({level:8})'));assert.equal(r('LevelUpEffect.remaining'),0);r('DevTools.close();DevSession.end();startGame(true)');
+r('DevTools.open();DevSession.begin();player.hp=1.25;');assert(r('DevLevel.setLevel({level:8})'));assert.equal(r('LevelUpEffect.remaining'),0);assert.equal(r('player.hp'),1.25,'Developer level selection does not grant a level-up heal');r('DevTools.close();DevSession.end();startGame(true)');
+// Each loadout and vitality rank heals to its own current maximum, without
+// changing upgrades or recharging a partially charged/broken Kiba Shield.
+for(const style of ['katana','naginata','swordShield'])for(const vitality of [0,4,12])for(const broken of [false,true]){
+ const test=harness(),run=test.run;
+ run(`weaponStyle=${JSON.stringify(style)};flags[3].push('kibaShield');progression=normalizeProgression({level:${vitality+2},stats:{vitality:${vitality}}},flags);initPlayer(checkpoint);FiaConflict.absorb(${broken?2:1});player.hp=1.25;updateHUD();`);
+ const stable=run('JSON.stringify([player.maxHp,progression.stats,FiaConflict.shield,FiaConflict.recharge,abilities,flags])'),oldLevel=run('progression.level');
+ run('awardXP(xpForLevel(progression.level)+xpForLevel(progression.level+1))');
+ assert.equal(run('progression.level'),oldLevel+2,'A combined award can gain multiple levels');
+ assert.equal(run('player.hp'),run('player.maxHp'),'Loadout/vitality maximum is restored');
+ assert.equal(run('JSON.stringify([player.maxHp,progression.stats,FiaConflict.shield,FiaConflict.recharge,abilities,flags])'),stable,'Healing preserves stats and shield state');
+ assert(!test.elements.get('health').innerHTML.includes('empty'),'The health HUD updates immediately');
+ run('player.hp=1.25;awardXP(1)');assert.equal(run('player.hp'),1.25,'Later XP without a level gain does not heal');
+}
+{
+ const test=harness(),run=test.run;
+ run('progression=normalizeProgression({level:29},flags);player.hp=1;awardXP(xpForLevel(29));');
+ assert.equal(run('progression.level'),30);assert.equal(run('player.hp'),run('player.maxHp'),'Reaching the final level still heals');
+ run('player.hp=1;awardXP(10000)');assert.equal(run('player.hp'),1,'Further XP at the level cap does not heal');
+}
 // The shared outer loop advances exactly once at all supported frame rates.
 for(const fps of [30,60,120]){
  r('enterRealm(0);state="play";enemies=[];boss.dead=true;player.inv=999;LevelUpEffect.start();');
