@@ -521,7 +521,7 @@ function drawMenuMomo(x,feet,size){
  ctx.drawImage(menuSheet,(frame%3)*512,Math.floor(frame/3)*512,512,512,x-size/2,feet-menuFrameBottom[frame]*size/512,size,size);
  ctx.restore();
 }
-function drawEnemy(e,r){if(!FiaArt.actor(e)&&!DungeonArt.actor(e)&&!ArenaArt.actor(e)&&!KitsuneArt.actor(e)&&!PrisonArt.actor(e)&&!CampArt.actor(e))Visuals.actor(e,r);if(e.denResidentRole||e.denRetaliation)Visuals.healthBar(e,e.x+e.w/2,e.y+e.h,e.h,e.denRetaliation?70:56,6,true);}
+function drawEnemy(e,r){if(!FiaArt.actor(e)&&!DungeonArt.actor(e)&&!ArenaArt.actor(e)&&!KitsuneArt.actor(e)&&!PrisonArt.actor(e)&&!CampArt.actor(e))Visuals.actor(e,r);if(e.denResidentRole||e.denRetaliation)Visuals.healthBar(e);}
 
 function drawBoss(r){Visuals.actor(boss,r,true);}
 

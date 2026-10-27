@@ -458,8 +458,8 @@ const Visuals = (() => {
     if(e.miniboss)miniEffects(e,height);
     if(!isBoss&&!e.miniboss)healthBar(e,x,feet,height,38,3);
   }
-  function healthBar(e,x=e.x+e.w/2,feet=e.y+e.h,height=e.h,width=56,thickness=6,always=false){
-    if(e.dead||!Number.isFinite(e.hp)||!Number.isFinite(e.maxHp)||e.maxHp<=0||!always&&e.hp>=e.maxHp)return;
+  function healthBar(e,x=e.x+e.w/2,feet=e.y+e.h,height=e.h,width=38,thickness=3){
+    if(e.dead||!Number.isFinite(e.hp)||!Number.isFinite(e.maxHp)||e.maxHp<=0||e.hp>=e.maxHp)return;
     ctx.save();ctx.globalAlpha=1;ctx.fillStyle='#0a172bcc';ctx.fillRect(x-width/2,feet-height-17,width,thickness);
     ctx.fillStyle=e.kind==='shield'?'#ddba72':'#d99583';ctx.fillRect(x-width/2,feet-height-17,width*clamp(e.hp/e.maxHp,0,1),thickness);ctx.restore();
   }
