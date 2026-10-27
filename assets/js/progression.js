@@ -40,8 +40,8 @@ function awardXP(amount) {
     progression.xp-=xpForLevel(progression.level);progression.level++;progression.points++;gained++;
   }
   if(progression.level===LEVEL_LIMIT)progression.xp=0;
-  if(gained){LevelUpEffect.start();tone(880,.5);toast(I18n.format("message.level.up.momo.is.level.arg0.arg1.training.points",[progression.level,progression.points]));}
-  updateProgressHUD();persist();
+  if(gained){player.hp=player.maxHp;LevelUpEffect.start();tone(880,.5);toast(I18n.format("message.level.up.momo.is.level.arg0.arg1.training.points",[progression.level,progression.points]));}
+  if(gained)updateHUD();else updateProgressHUD();persist();
 }
 function updateProgressHUD() {
   $('levelLabel').textContent=I18n.format("message.level.arg0",[progression.level]);

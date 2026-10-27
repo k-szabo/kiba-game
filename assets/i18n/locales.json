@@ -1003,7 +1003,9 @@
       "ability.kibaShield.training": "+0,25 elnyelt sebzés, −0,5 mp újratöltés",
       "ability.kibaShield.training.value": "{0} elnyelés · {1} mp újratöltés",
       "menu.changelog.0950shield.title": "Árnyékzugi életcsíkok és Kiba-pajzs",
-      "menu.changelog.0950shield.0": "Az ellenséges árnyékzugiak életcsíkot kaptak. A megszerzett Kiba-pajzs újratöltését visszaszámláló mutatja, a szentélyeknél pedig növelhető az elnyelése és csökkenthető az újratöltési ideje."
+      "menu.changelog.0950shield.0": "Az ellenséges árnyékzugiak életcsíkot kaptak. A megszerzett Kiba-pajzs újratöltését visszaszámláló mutatja, a szentélyeknél pedig növelhető az elnyelése és csökkenthető az újratöltési ideje.",
+      "menu.changelog.0951.title": "Teljes életerő szintlépéskor",
+      "menu.changelog.0951.0": "Momo életereje szintlépéskor visszatöltődik az aktuális maximumra."
     }
   },
   "en": {
@@ -2010,7 +2012,9 @@
       "ability.kibaShield.training": "+0.25 damage absorption, −0.5s recharge",
       "ability.kibaShield.training.value": "{0} absorption · {1}s recharge",
       "menu.changelog.0950shield.title": "Shadow Den health bars and Kiba Shield",
-      "menu.changelog.0950shield.0": "Hostile Shadow Den residents now show health bars. A countdown tracks the acquired Kiba Shield’s recharge; shrine upgrades increase absorption and reduce recharge time."
+      "menu.changelog.0950shield.0": "Hostile Shadow Den residents now show health bars. A countdown tracks the acquired Kiba Shield’s recharge; shrine upgrades increase absorption and reduce recharge time.",
+      "menu.changelog.0951.title": "Full health on level-up",
+      "menu.changelog.0951.0": "Momo’s health is restored to his current maximum whenever he levels up."
     }
   }
 }

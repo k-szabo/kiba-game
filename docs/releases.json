@@ -1102,6 +1102,22 @@
           "en": "The game uses a local image cache for each release and automatically removes its own older caches."
         }
       ]
+    },
+    {
+      "version": "0.9.51_2d78d59b",
+      "code": "2d78d59b",
+      "baseVersion": "0.9.51",
+      "slug": "full-health-on-level-up",
+      "summary": {
+        "hu": "Teljes életerő szintlépéskor",
+        "en": "Full health on level-up"
+      },
+      "fixes": [
+        {
+          "hu": "Momo életereje szintlépéskor visszatöltődik az aktuális maximumra.",
+          "en": "Momo’s health is restored to his current maximum whenever he levels up."
+        }
+      ]
     }
   ]
 }
