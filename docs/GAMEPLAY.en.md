@@ -35,7 +35,7 @@ Discover a shrine to add it to the map. Resting restores health, creates a check
 
 Every fall is fatal. Momo returns to the last shrine at full health, and normal enemies respawn. XP and upgrades remain. A boss encounter interrupted by death or rest starts over, including its temporary enemies and hazards.
 
-Saves are encrypted in browser storage and tied to the current browser profile. Continue from the main menu to resume the current release. During alpha and beta, each new game version resets progress; language and key bindings are kept. Reloading the same version preserves the save.
+Saves are encrypted in browser storage and tied to the current browser profile. Continue from the main menu to resume your journey. Compatible updates preserve progress; saves reset only when a change makes them incompatible. Language and key bindings are kept. Reloading the same version preserves the save.
 
 ## XP and upgrades
 

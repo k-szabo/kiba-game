@@ -1,4 +1,5 @@
 {
-  "version": "0.9.51_2d78d59b",
-  "savePolicy": "reset-on-version-change"
+  "version": "0.9.52_9a07f20b",
+  "savePolicy": "preserve-compatible",
+  "saveCompatibility": "0.9.51_2d78d59b"
 }

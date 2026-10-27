@@ -14,7 +14,7 @@ const ArenaArt=(()=>{
  function panel(image,incoming){
   if(!incoming)return image;if(masks.has(image))return masks.get(image);
   const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;const paint=surface.getContext('2d');paint.drawImage(image,0,0);
-  paint.globalCompositeOperation='destination-in';const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.06,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);masks.set(image,surface);return surface;
+  paint.globalCompositeOperation='destination-in';const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.06,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);return surface;
  }
  function backdrop(){
   if(!ArenaChallenge.active()&&!ArenaChallenge.room())return false;
@@ -28,7 +28,7 @@ const ArenaArt=(()=>{
     (Math.max(level.height,H)-level.start.y)/(a.h-a.groundY)),
     width=a.w*scale,height=a.h*scale,x=(Math.max(level.width,viewW)-width)/2-camera,y=level.start.y-a.groundY*scale-cameraY;
    ctx.save();ctx.fillStyle='#100e1a';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-   ctx.drawImage(images[0],x,y,width,height);ctx.restore();return true;
+   BackgroundMotion.draw(images[0],x,y,width,height);ctx.restore();return true;
   }
   // The native panorama is decorative depth, not another world-sized camera.
   // Keep its aspect/cover scale fixed and cap travel per world-camera unit.
@@ -37,7 +37,7 @@ const ArenaArt=(()=>{
    panX=reducedMotion.matches?0:(clamp(camera,0,rangeX)-rangeX/2)*.18,panY=reducedMotion.matches?0:(clamp(cameraY,0,rangeY)-referenceY)*.08,
    scroll=clamp((width-viewW)/2+panX,0,Math.max(0,width-viewW)),anchorY=clamp(level.start.y-a.groundY*scale-referenceY,H-height,0),top=clamp(anchorY-panY,H-height,0);
   ctx.save();ctx.fillStyle='#100e1a';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-  images.forEach((image,i)=>ctx.drawImage(panel(image,i>0),i*a.w*(1-overlap)*scale-scroll,top,a.w*scale,a.h*scale));ctx.restore();return true;
+  images.forEach((image,i)=>BackgroundMotion.draw(panel(image,i>0),i*a.w*(1-overlap)*scale-scroll,top,a.w*scale,a.h*scale));ctx.restore();return true;
  }
  function label(point,key,height){ctx.save();ctx.font='600 16px "Kiba UI", sans-serif';ctx.textAlign='center';const text=I18n.t(key),w=ctx.measureText(text).width+24,y=point.y-height-22;ctx.fillStyle='#101524ed';ctx.fillRect(point.x-w/2,y-22,w,32);ctx.fillStyle='#fff0cc';ctx.fillText(text,point.x,y);ctx.restore();}
  function portal(point,width=90){BossVFX.portal(point.x,point.y,width,.7);}

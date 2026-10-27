@@ -1118,6 +1118,30 @@
           "en": "Momo’s health is restored to his current maximum whenever he levels up."
         }
       ]
+    },
+    {
+      "version": "0.9.52_9a07f20b",
+      "code": "9a07f20b",
+      "baseVersion": "0.9.52",
+      "slug": "living-scenery-compatible-saves",
+      "summary": {
+        "hu": "Élő tájak és megőrzött kalandok",
+        "en": "Living scenery and preserved journeys"
+      },
+      "fixes": [
+        {
+          "hu": "A dungeonbejáratok külön ikont kaptak a gyorsutazásnál.",
+          "en": "Dungeon entrances now have a distinct fast-travel icon."
+        },
+        {
+          "hu": "A helyszínek finom háttéranimációkat kaptak; szünetben megállnak, csökkentett mozgás mellett visszafogottak.",
+          "en": "Locations now feature subtle background animations that pause with the game and respect reduced motion."
+        },
+        {
+          "hu": "A kompatibilis frissítések megőrzik a haladást; mentésreset csak a mentéssel nem kompatibilis változáskor történik.",
+          "en": "Compatible updates preserve progress; saves reset only when a change makes them incompatible."
+        }
+      ]
     }
   ]
 }

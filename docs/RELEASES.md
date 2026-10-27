@@ -1,6 +1,6 @@
 # Kiadások és visszakereshető hibajavítások
 
-A játék a `0.9.48_9c622a1b` kiadástól béta állapotú. A főmenü HU/EN verziójelölése `BÉTA` / `BETA`; a nyolckarakteres kiadásazonosító és az új verziók közötti mentésreset szabálya változatlan. A béta átállás a még nem publikált második dungeon kiadásának része, nem írja át a kiadási nyilvántartás történeti rekordjait.
+A játék a `0.9.48_9c622a1b` kiadástól béta állapotú. A főmenü HU/EN verziójelölése `BÉTA` / `BETA`; minden új kiadás nyolckarakteres azonosítót kap. A `0.9.52` UI-frissítéstől a kompatibilis kiadások megőrzik a haladást. A korábbi kiadások történeti rekordjai változatlanok.
 
 Minden új kiadás, funkció és hibajavítás egyaránt `major.minor.patch_8hex` formátumot használ, például `0.9.14_8a586f97`. A feature új alapverziót kap, a javítás megtartja az aktuális alapverziót. A generátor `0–9`, `a–f` karaktereket használ. A korábbi, már közzétett egyszerű verzióazonosítókat nem írjuk át.
 
@@ -36,6 +36,8 @@ node scripts/release.mjs bugfix --metadata path/to/fix.json
 node scripts/release.mjs bugfix --metadata path/to/fix.json --write
 node scripts/release.mjs release --metadata path/to/feature.json
 node scripts/release.mjs release --metadata path/to/feature.json --write
+node scripts/release.mjs release --metadata path/to/feature.json --preserve-saves-from 0.9.51_2d78d59b --write
+node scripts/release.mjs bugfix --metadata path/to/breaking-fix.json --reset-saves --write
 node scripts/release.mjs validate
 ```
 
@@ -61,7 +63,7 @@ npm run build
 npm test
 ```
 
-Az előkészített kiadást `--write` után a build teljes azonosítóként használja a főmenüben, CSS/runtime cache URL-jeiben és a mentések kiadási kulcsában. Ismételt buildnél nincs dupla utótag. Alfa/béta alatt **minden új kiadáskód törli az előző verzió haladását**, a nyelv és billentyűkiosztás megmarad. Kiadáskor soha ne szerkesszük kézzel az `assets/config/release.json` verzióját; a megfelelő `release.mjs` parancs frissíti a regisztert és a verziót.
+Az előkészített kiadást `--write` után a build teljes azonosítóként használja a főmenüben, CSS/runtime cache URL-jeiben és a mentések kiadási kulcsában. Ismételt buildnél nincs dupla utótag. A kiadásazonosító és a mentéskompatibilitási korszak külön adat: **a normál kiadás változatlanul hagyja a `saveCompatibility` értékét**, így a haladás megmarad. Csak dokumentált, mentést törő változáskor használd a `--reset-saves` kapcsolót; ez az új kiadásra lépteti a korszakot. A nyelv és billentyűkiosztás resetkor is megmarad. A kezdeti átállás a `--preserve-saves-from 0.9.51_2d78d59b` kapcsolóval köti össze a korábbi profilt az új korszakkal. Részletek és tárolási ellenőrzések: [SAVE-COMPATIBILITY.md](SAVE-COMPATIBILITY.md). Kiadáskor a megfelelő `release.mjs` parancs frissítse a regisztert és a konfigurációt; ne szerkeszd kézzel a verziót vagy a kompatibilitási határt.
 
 A runtime `GAME_RELEASE.bugfixHistory` mezőjében a build alapverziónként beágyazza a kódokat a nyilvántartás hozzáfűzési sorrendjében. A mentésvédelem ezt használja az ugyanazon alapverzióhoz tartozó javítások időrendi összehasonlításához; a hash betűrendje nem jelent időrendet. A nyilvántartás változása is elavulttá teszi a buildet. Korábbi böngészőlap egy számára ismeretlen új kódú profilt nem írhat felül.
 

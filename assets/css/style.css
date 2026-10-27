@@ -106,6 +106,9 @@
 .map-panel .travel-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .map-panel .travel-grid button{min-width:0;min-height:48px;padding:10px 8px;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
 .map-panel .travel-label{font-size:14px!important}
+.map-panel .travel-grid button[data-travel-kind="dungeon"]{position:relative;padding-left:42px;text-align:left;border-color:#a6c9c5}
+.map-panel .travel-grid button[data-travel-kind="dungeon"]::before{content:"";position:absolute;left:10px;top:calc(50% - 13px);width:24px;height:26px;background:#a6c9c5;mask:url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 26"%3E%3Cpath d="M3 24V10a9 9 0 0 1 18 0v14M7 23V10a5 5 0 0 1 10 0v4M9 24v-3h3v-3h3v-3h6M3 10h4M4 6l4 2M8 2l2 4M16 2l-2 4M20 6l-4 2M17 10h4" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E') center/contain no-repeat}
+.map-panel .travel-grid button[data-travel-kind="dungeon"]::after{content:attr(data-type-label);display:block;font-size:12px;line-height:1.5;color:#a6c9c5}
 .realm-travel{margin-top:24px;padding-top:16px;border-top:1px solid var(--muted)}
 .realm-travel h3{font-size:18px;line-height:1.5;margin:0 0 16px;color:var(--gold)}
 .realm-travel h4{font-size:16px;line-height:1.5;margin:18px 0 10px;overflow-wrap:anywhere}

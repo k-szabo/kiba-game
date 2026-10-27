@@ -8,6 +8,9 @@ function fixture(room,height,width){
  const makeSurface=()=>{const surface={width:0,height:0},paint={drawImage(image){surface.source=image.key;},createLinearGradient(){return {addColorStop(){}};},fillRect(){}};surface.getContext=()=>paint;return surface;};
  const level=JSON.parse(r('JSON.stringify('+(room?'fiaChambers':'shadowArena')+')'));
  const sandbox={ART_ARENA:art,ArenaChallenge:{active:()=>!room,room:()=>room},Visuals:{images},ctx,document:{createElement:makeSurface},Math,H:height,viewW:width,camera:0,cameraY:0,level,reducedMotion:{matches:false},clamp:(n,min,max)=>Math.max(min,Math.min(max,n)),state:'play',shake:0,time:0,levelTime:0,player:{x:240,y:400},enemies:[{hp:3,phase:'wait'}],projectiles:[{life:1}],flags:[[],[],[],[]],platforms:level.platforms};
+ // This private VM checks base projections; real motion is covered by the
+ // shared harness and browser tests rather than this minimal Canvas stub.
+ sandbox.BackgroundMotion={draw:(...args)=>ctx.drawImage(...args),alias:surface=>surface};
  vm.createContext(sandbox);vm.runInContext(source,sandbox);
  const snapshot=()=>JSON.stringify([sandbox.level,sandbox.player,sandbox.enemies,sandbox.projectiles,sandbox.flags,sandbox.platforms,sandbox.time,sandbox.levelTime,sandbox.camera,sandbox.cameraY,sandbox.shake]);
  const draw=(x,y)=>{

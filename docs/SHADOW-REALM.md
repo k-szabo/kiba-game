@@ -26,7 +26,7 @@ A börtönőr 75 HP-s, közeledő fejszés miniboss; arénája és indulópontja
 
 ## Forrás és ellenőrzés
 
-A pályaadat a `levels.js`, a külön harc/interakció a `shadow-realm.js` része. A `game.js` a történeti belépést, közös időzítőket és utazási korlátot kapcsolja hozzá. A `prison` pihenő azonosítója megmarad, koordinátája 6100/2200; a dev-teleport és boss-visszahívás a közös pályakatalógusból használja az új talajszintet. A mentés minden birodalomtömb méretét a `levels.length` alapján ellenőrzi; a mozgásképességek száma továbbra is kettő. Új kiadáskor a megszokott alfa/béta reset érvényes.
+A pályaadat a `levels.js`, a külön harc/interakció a `shadow-realm.js` része. A `game.js` a történeti belépést, közös időzítőket és utazási korlátot kapcsolja hozzá. A `prison` pihenő azonosítója megmarad, koordinátája 6100/2200; a dev-teleport és boss-visszahívás a közös pályakatalógusból használja az új talajszintet. A mentés minden birodalomtömb méretét a `levels.length` alapján ellenőrzi; a mozgásképességek száma továbbra is kettő. Kompatibilis új kiadáskor a haladás megmarad; reset csak kifejezett, mentést érintő kompatibilitástöréskor történik.
 
 `scripts/test-shadow-realm.cjs`: történeti belépés, oltár és pihenés különbsége, kétirányú utazási zár, minibossok és tárgyaik, kulcsfogyasztás, bénítás és elszívás 30/60/120 FPS-en, szünet, megszakítás, egyszeri bossjutalom. A `test-routes.cjs` a tényleges ugrásfizikával vizsgálja a börtönzárat, a katedrálishoz vezető utat és az orgonakarzat visszaútját. A grafika és a valódi böngészős mentés külön ellenőrzést igényel.
 

@@ -121,6 +121,7 @@ const SaveVault=(()=>{
  async function keyFor(profile,salt){return crypto.subtle.deriveKey({name:'HKDF',hash:'SHA-256',salt,info:encode.encode('momo-save-v2|'+scope+'|'+profile.release+'|'+profile.device)},profile.key,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
  function aad(profile,revision){return encode.encode('momo-save-v2|'+scope+'|'+profile.release+'|'+profile.device+'|'+revision);}
  async function seal(data,profile){
+  if(profile.revision>=Number.MAX_SAFE_INTEGER)throw Error('Save revision limit reached');
   const salt=random(16),iv=random(12),revision=profile.revision+1,key=await keyFor(profile,salt);
   const ciphertext=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:aad(profile,revision),tagLength:128},key,encode.encode(JSON.stringify(validate(data))));
   return prefix+btoa(JSON.stringify({v:2,release:profile.release,device:profile.device,revision,salt:b64(salt),iv:b64(iv),data:b64(new Uint8Array(ciphertext))}));
@@ -128,17 +129,19 @@ const SaveVault=(()=>{
  async function open(sealed,profile){
   if(typeof sealed!=='string'||!sealed.startsWith(prefix)||sealed.length>30000)throw Error('Invalid save envelope');
   const entry=JSON.parse(atob(sealed.slice(prefix.length)));
-  if(entry.v!==2||entry.release!==GAME_RELEASE.version||profile.release!==GAME_RELEASE.version||entry.device!==profile.device||entry.revision!==profile.revision||!integer(entry.revision,1,Number.MAX_SAFE_INTEGER))throw Error('Foreign or replayed save');
+  if(entry.v!==2||entry.release!==profile.release||entry.device!==profile.device||entry.revision!==profile.revision||!integer(entry.revision,1,Number.MAX_SAFE_INTEGER))throw Error('Foreign or replayed save');
+  if(profile.release!==GAME_RELEASE.version&&!compatibleProfile(profile))throw Error('Incompatible save release');
   const salt=bytes(entry.salt,16),iv=bytes(entry.iv,12),ciphertext=bytes(entry.data);if(ciphertext.length>18000)throw Error('Save too large');
   const key=await keyFor(profile,salt),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv,additionalData:aad(profile,entry.revision),tagLength:128},key,ciphertext);
-  return validate(JSON.parse(decode.decode(plain)));
+  const data=JSON.parse(decode.decode(plain));if(data.release!==profile.release)throw Error('Mismatched save release');
+  return validate({...data,release:GAME_RELEASE.version});
  }
  async function writeOne(snapshot){
   const {profile}=await records();requireCurrent(profile);
   const sealed=await seal(snapshot,profile);
   const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName);
   const current=await request(store.get('profile'));
-  if(current?.release!==GAME_RELEASE.version||current?.device!==profile.device||current?.revision!==profile.revision){tx.abort();await done;return;}
+  if(!sameProfile(current,profile)){tx.abort();await done;return;}
   store.put({...profile,revision:profile.revision+1},'profile');store.put(sealed,'save');await done;
   try{localStorage.setItem(SAVE_KEY,sealed);}catch{/* IndexedDB remains the durable source. */}
  }
@@ -177,36 +180,45 @@ const SaveVault=(()=>{
   return 0;
  }
  function requireCurrent(profile){
-  if(profile?.release!==GAME_RELEASE.version){const error=Error('Save belongs to another game release');error.notice='text.save.newer.version';throw error;}
+  if(profile?.release!==GAME_RELEASE.version||preservesSaves()&&profile.compatibility!==GAME_RELEASE.saveCompatibility){const error=Error('Save belongs to another game release');error.notice='text.save.newer.version';throw error;}
  }
+ function preservesSaves(){return GAME_RELEASE.savePolicy==='preserve-compatible';}
+ function compatibleProfile(profile){return preservesSaves()&&!!profile&&(profile.compatibility===GAME_RELEASE.saveCompatibility||profile.compatibility===undefined&&profile.release===GAME_RELEASE.saveCompatibility);}
+ function profileKey(profile){if(profile?.key?.extractable!==false||profile.key?.algorithm?.name!=='HKDF'||!integer(profile.revision,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid profile key');}
+ function sameProfile(a,b){return a?.release===b?.release&&a?.device===b?.device&&a?.revision===b?.revision&&a?.compatibility===b?.compatibility;}
  function localProgress(){try{return !!(localStorage.getItem(SAVE_KEY)||localStorage.getItem(LEGACY_SAVE_KEY));}catch{return false;}}
  function clearOldMirrors(){try{localStorage.removeItem(SAVE_KEY);localStorage.removeItem(LEGACY_SAVE_KEY);}catch{/* IndexedDB remains the durable source. */}}
- async function initializeStored(){
-  let {profile,sealed}=await records(),reset=false;
-  if(profile?.release!==GAME_RELEASE.version){
-   if(profile?.release!=null){const order=compareRelease(profile.release,GAME_RELEASE.version);if(order===null||order>=0)requireCurrent(profile);}
-   const seed=random(32),key=await crypto.subtle.importKey('raw',seed,'HKDF',false,['deriveKey']);seed.fill(0);
-   const candidate={release:GAME_RELEASE.version,device:b64(random(16)),key,revision:0};
-   const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName),existing=await request(store.get('profile'));
-   // Recheck after async key generation, including browsers without Web Locks.
-   if(existing?.release!==GAME_RELEASE.version){
-    if(existing?.release!=null){const order=compareRelease(existing.release,GAME_RELEASE.version);if(order===null||order>=0){await done;requireCurrent(existing);}}
-    const oldSave=await request(store.get('save'));
-    reset=!!(oldSave||existing?.revision>0||localProgress());
-    store.delete('save');store.put(candidate,'profile');
+ async function initializeStored(attempt=0){
+  if(attempt>=8)throw Error('Save changed during initialization');
+  let {profile,sealed}=await records(),migratedFrom;
+  const current=profile?.release===GAME_RELEASE.version&&(!preservesSaves()||profile.compatibility===GAME_RELEASE.saveCompatibility);
+  if(!current){
+   if(profile?.release!=null){const order=compareRelease(profile.release,GAME_RELEASE.version);if(order===null||order>0||order===0&&!compatibleProfile(profile))requireCurrent(profile);}
+   const migrating=compatibleProfile(profile);let candidate,nextSave;
+   if(migrating){
+    profileKey(profile);const progress=sealed?await open(sealed,profile):null;
+    candidate={...profile,release:GAME_RELEASE.version,compatibility:GAME_RELEASE.saveCompatibility};
+    if(progress){nextSave=await seal(progress,candidate);candidate={...candidate,revision:candidate.revision+1};}
+   }else{
+    const seed=random(32),key=await crypto.subtle.importKey('raw',seed,'HKDF',false,['deriveKey']);seed.fill(0);
+    candidate={release:GAME_RELEASE.version,device:b64(random(16)),key,revision:0,...(preservesSaves()?{compatibility:GAME_RELEASE.saveCompatibility}:{})};
    }
-   await done;
-   if(reset)initialNotice='text.save.reset.new.version';
-   // Only the tab that replaced the profile may discard its old mirrors.
-   if(!existing||existing.release!==GAME_RELEASE.version)clearOldMirrors();
+   const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName),existing=await request(store.get('profile')),existingSave=await request(store.get('save'));
+   // A source change during crypto work retries without replacing newer data.
+   if(!sameProfile(existing,profile)||existingSave!==sealed){await done;return initializeStored(attempt+1);}
+   store.put(candidate,'profile');if(nextSave)store.put(nextSave,'save');else store.delete('save');await done;
+   if(migrating)migratedFrom=sealed;
+   if(!migrating){
+    if(sealed||profile?.revision>0||localProgress())initialNotice='text.save.reset.new.version';
+    const latest=await records();if(sameProfile(latest.profile,candidate))clearOldMirrors();
+   }
    ({profile,sealed}=await records());
   }
-  requireCurrent(profile);
-  if(profile.key?.extractable!==false||profile.key?.algorithm?.name!=='HKDF'||!integer(profile.revision,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid profile key');
+  requireCurrent(profile);profileKey(profile);
   let result=null;
   if(sealed){
    result=await open(sealed,profile);let mirror;try{mirror=localStorage.getItem(SAVE_KEY);}catch{}
-   if(mirror&&mirror!==sealed)initialNotice='text.save.recovered';
+   if(mirror&&mirror!==sealed&&mirror!==migratedFrom)initialNotice='text.save.recovered';
    try{localStorage.setItem(SAVE_KEY,sealed);}catch{}
   }else if(localProgress()){
    clearOldMirrors();initialNotice='text.save.reset.new.version';

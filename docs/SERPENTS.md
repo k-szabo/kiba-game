@@ -39,7 +39,7 @@ Fumi a misztikus sátor élő, közeli szolgáltatásablakából egyesíti a há
 
 A birtoklás és felszerelés külön állapot. Az új `equippedTalisman` mező értéke `null` vagy `'triuneSerpentTalisman'`. Az inventory külön talizmánhelyén viselhető; nem váltja le a fegyvert. A táskában az éppen nem felszerelt talizmán jelenik meg. Csak viselve ad +20 Armort a kovácsrangból származó védelemhez. A százalékos képlet közös: `Armor / (Armor + 100)`; ez nem +20 százalékpont.
 
-A felszerelés, levétel és fúzió nem gyógyít, nem emel maximális HP-t, nem ad sebzést, XP-t vagy fejlesztéspontot. Normál halál, pihenés és azonos kiadású folytatás megőrzi a viselt állapotot. Új végigjátszás és új kiadás az alfa/béta szabály szerint törli; korábbi kiadás haladása nem migrálható. A validátor nem fogad el viselt, de meg nem szerzett talizmánt vagy hiányzó fúziós előzményt.
+A felszerelés, levétel és fúzió nem gyógyít, nem emel maximális HP-t, nem ad sebzést, XP-t vagy fejlesztéspontot. Normál halál, pihenés és azonos kiadású folytatás megőrzi a viselt állapotot. Új végigjátszás vagy kifejezett, mentést érintő kompatibilitástörés törli; a kompatibilis kiadások megőrzik. A validátor nem fogad el viselt, de meg nem szerzett talizmánt vagy hiányzó fúziós előzményt.
 
 ## Grafika és tesztelés
 

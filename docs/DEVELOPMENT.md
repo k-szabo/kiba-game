@@ -47,14 +47,15 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `SWORD_ATTACKS` a `game.js` fájlban | Normál/erős csapás időzítése és sebzésszorzója; az aktív `attackKind` a kezdetkor rögzül. A renderelés és a találat ugyanazt a profilt követi. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
 | `assets/js/asset-cache.js`, `dev-cache.js` | Kiadásonkénti [képgyorsítótár](ASSET-CACHE.md), hibabiztos képletöltés és fejlesztői kikapcsolás. |
+| `assets/js/background-motion.js` | Forrásképhez rögzített [háttéranimáció](BACKGROUND-MOTION.md), saját aktív órával, szünettel és csökkentett mozgással. |
 | `assets/js/boss-vfx.js` | A festett boss-effektusok kivágásai, illesztése, láva, csapások, árnymágia és idézés. |
 | `assets/config/lava-serpent-art.json` | A 12 festett lávakígyópóz kivágása, kontúrja és illesztése; szinkronban az ART_SERPENT metaadattal. A [pokolboss harca](YOMI-BOSS.md). |
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
 | `assets/js/fia-quest.js`, `fia-conflict.js`, `fia-combat.js`, `fia-art.js` | Fia második megbízása, visszaállítható provokáció, tartós ellenségesség és passzív pajzs; [spoileres referencia](FIA-JOURNEY.md). |
-| `assets/js/save-vault.js` | Titkosított, profilhoz és kiadáshoz kötött mentés, verzióváltáskor haladásreset. |
-| `assets/config/release.json` | Közös játékverzió és alfa/béta mentésreset-politika. |
+| `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés, kompatibilis kiadások közötti megőrzés; [szabályok](SAVE-COMPATIBILITY.md). |
+| `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
@@ -133,7 +134,7 @@ node scripts/test-dev-tools.cjs
 - Az angyali grafika tesztje a festett lövedékek illesztését, a fázisfüggő háttereket, az áttűnés szünetét és a világos ég visszaállítását vizsgálja; lásd a [0.8.3 grafikáit](ANGEL-ART-0.8.3.md).
 - A boss-effektus teszt minden támadáscsaládot és a rajzolás alatt változatlan harci állapotot ellenőrzi; lásd a [0.8.4 effektuscsomagját](BOSS-VFX-0.8.4.md).
 - A tanácsosi oldalág tesztje a minionfeltételt, az egyszer megszerezhető és elhasználódó csontkulcsot, a visszahívás hiányát és az üres kastélyból visszatérést ellenőrzi; lásd az [oldalág leírását](COUNCIL-BRANCH.md).
-- A mentésverzió tesztje valódi Node WebCryptóval és szimulált IndexedDB-tranzakciókkal ellenőrzi a resetet, az azonos verzión belüli folytatást, a beállítások megtartását és a régebbi lapok írásának elutasítását. A valódi böngészős tárolást külön QA ellenőrzi.
+- A mentésverzió és a mentéskompatibilitás tesztje valódi Node WebCryptóval és szimulált IndexedDB-tranzakciókkal ellenőrzi a kompatibilis frissítést, az explicit resetet, az azonos verzión belüli folytatást, a beállítások megtartását és a régebbi lapok írásának elutasítását. A valódi böngészős tárolást külön QA ellenőrzi.
 
 Forrásmódosítás után `npm run build` szükséges a futó fájl újragenerálásához. A build Node.js-en kívül nem igényel csomagokat; a kész Pages-csomag továbbra is statikus.
 
@@ -173,11 +174,11 @@ A 0.9.7 [inventory leírása](INVENTORY.md) a panel, a szünetállapot és a kor
 
 ## Frissítés és mentések
 
-Az alfa/béta időszakban minden új játékverzió törli a korábbi haladást. A közös verzió és a resetpolitika az `assets/config/release.json` fájlban van; kiadáskor növeld a verziót, majd futtasd az `npm run build` parancsot. Ez a runtime mellett a főmenü verziójelzését és az index cache-azonosítóit is frissíti. A mentés, a titkosított rekord és a helyi profil a pontos kiadáshoz kötött.
+A kompatibilis kiadások megőrzik a haladást. Az `assets/config/release.json` játékverziója minden kiadáskor változik, a `saveCompatibility` korszakazonosító viszont csak kifejezetten mentést törő változáskor. A release CLI generálja a verziót; az `npm run build` frissíti a runtime-ot, a főmenü verzióját és a cache-azonosítókat. A titkosított rekord kiadáshoz kötött marad, kompatibilis frissítéskor ellenőrzés után atomikusan újrazáródik. Részletek: [mentéskompatibilitás](SAVE-COMPATIBILITY.md).
 
 A mentés AES-GCM titkosított rekordként kerül az IndexedDB tárhelyére, minden mentéshez új sóval és nonce-szal. A feloldáshoz szükséges, nem exportálható kulcsot ugyanabban a böngészőprofilban tárolja; a `localStorage` csak a titkosított rekord másolatát tartalmazza. A másolat átmásolása önmagában nem ad használható mentést egy másik profilban. Az oldaladatok törlése a mentést is törli.
 
-Verzióváltáskor az alkalmazás eltávolítja a korábbi játékmentést és helyi másolatait, és új, nem exportálható profilkulcsot készít. Korábbi titkosított vagy nyílt v1 mentést nem vesz át. A nyelv és a billentyűkiosztás megmarad. Ugyanazon verzió újratöltése nem törli a haladást. Az új szabályt ismerő régebbi lap nem írhatja felül az új verzió profilját; korábban már kiszolgált, még verzióellenőrzés nélküli kódot frissíteni/bezárni kell.
+Kompatibilis frissítéskor az alkalmazás a meglévő profilkulccsal ellenőrzi a korábbi rekordot, az új kiadáshoz zárja, és egy tranzakcióban frissíti a profilt és a mentést. Kifejezett kompatibilitástöréskor új profilkulcs készül és a korábbi haladás törlődik; nyílt v1 mentést továbbra sem vesz át. A nyelv és a billentyűkiosztás megmarad. Régebbi vagy más kompatibilitási korszakhoz tartozó lap nem írhatja felül az újabb profilt.
 
 Az új játék a prológusban kezdődik. Ugyanazon verzión belül a `prologueComplete` jelzi az ébredést; megszakított álom az elejéről indul. Ha frissítés után régi tartalmat látsz, használj teljes újratöltést (Ctrl+F5); a főmenüben a közös kiadási verzió látható.
 

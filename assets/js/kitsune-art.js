@@ -23,14 +23,14 @@ const KitsuneArt=(()=>{
   if(!incoming)return image;if(masks.has(image))return masks.get(image);
   const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;
   const paint=surface.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';
-  const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.035,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);masks.set(image,surface);return surface;
+  const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.035,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);return surface;
  }
  function backdrop(){
   const a=art()?.den;if(!a)return;
   const images=a.panels.map(key=>Visuals.images[key]);if(images.some(image=>!image?.complete||!image.naturalWidth))return;
   const overlap=a.overlap??.06,sourceWidth=a.w*(images.length-overlap*(images.length-1)),s=level.width/sourceWidth,step=a.w*s*(1-overlap),top=level.start.y-a.groundY*s-cameraY;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#161120';ctx.fillRect(0,0,viewW,H);
-  images.forEach((image,index)=>ctx.drawImage(panelSource(image,index>0),index*step-camera,top,a.w*s,a.h*s));ctx.restore();
+  images.forEach((image,index)=>BackgroundMotion.draw(panelSource(image,index>0),index*step-camera,top,a.w*s,a.h*s));ctx.restore();
  }
  function depthsBackdrop(){
   const a=art()?.depths,image=Visuals.images[a?.image],alpha=clamp((cameraY-1300)/400,0,1);
@@ -38,7 +38,7 @@ const KitsuneArt=(()=>{
   const groundY=a.groundY??790,floor=level.hunterArena.y-cameraY,s=Math.max(H/a.h,viewW/a.w,floor/groundY),w=a.w*s,height=a.h*s;
   ctx.save();ctx.globalAlpha=alpha;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   const top=floor-groundY*s;
-  ctx.drawImage(image,(viewW-w)*clamp(camera/Math.max(1,level.width-viewW),0,1),top,w,height);ctx.restore();
+  BackgroundMotion.draw(image,(viewW-w)*clamp(camera/Math.max(1,level.width-viewW),0,1),top,w,height);ctx.restore();
  }
  function label(point,key,height){
   const text=I18n.t(key);ctx.save();ctx.font='600 16px "Kiba UI", sans-serif';ctx.textAlign='center';const w=ctx.measureText(text).width+24,y=point.y-height-25;

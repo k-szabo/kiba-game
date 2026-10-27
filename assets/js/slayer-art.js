@@ -15,7 +15,7 @@ const SlayerArt=(()=>{
   const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),w=image.naturalWidth*s,h=image.naturalHeight*s;
   const arena=yomi.secrets.find(area=>area.id==='slayerGrave').arena;
   const pan=clamp((player.x-arena.x)/arena.w,0,1);
-  ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(image,-(w-viewW)*pan,-(h-H)*.5,w,h);ctx.restore();
+  ctx.save();ctx.globalAlpha=alpha;BackgroundMotion.draw(image,-(w-viewW)*pan,-(h-H)*.5,w,h);ctx.restore();
  }
  function icon(id,x,feet,height){
   const a=ART_INVENTORY.items[id],image=Visuals.images[a.image];if(!image?.complete||!image.naturalWidth)return;

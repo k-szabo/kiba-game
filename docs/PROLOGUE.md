@@ -17,7 +17,7 @@ Momo összeesik, a kép elsötétül. Az ébredés egy festett japán szobában 
 
 ## Mentés és ellenőrzés
 
-Az álomhoz a mentés egy érvényes japán kezdőszentélyt és `prologueComplete: false` állapotot tárol. A Folytatás ilyenkor újrakezdi az álmot. Ébredés után a mező igaz lesz, így azonos kiadáson belüli folytatáskor már a normál pályáról indul a játék. Alfa/béta alatt új verziónál a korábbi haladás törlődik, a prológus újrakezdődik; régebbi kiadás mentését nem migráljuk. A nyelv és a billentyűkiosztás megmarad.
+Az álomhoz a mentés egy érvényes japán kezdőszentélyt és `prologueComplete: false` állapotot tárol. A Folytatás ilyenkor újrakezdi az álmot. Ébredés után a mező igaz lesz, így azonos kiadáson belüli folytatáskor már a normál pályáról indul a játék. Kompatibilis frissítéskor a haladás megmarad; új utazás vagy mentéssel nem kompatibilis frissítés után a prológus újrakezdődik. A nyelv és a billentyűkiosztás megmarad.
 
 Az álom állapotgépe az `assets/js/prologue.js` fájlban van. A `scripts/test-prologue.cjs` a támadásokat, a vereség és ébredés sorrendjét, az XP és jutalmak hiányát, a megszakított álom folytatását, valamint az aktuális kiadáson belüli mentési állapotokat és az érvénytelen bemenetek kezelését ellenőrzi. Ez a teszt a GitHub Pages workflow része is.
 

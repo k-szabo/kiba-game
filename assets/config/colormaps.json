@@ -40756,9 +40756,9 @@
         "lines": [
           14,
           63,
-          200,
-          221,
-          224
+          203,
+          224,
+          227
         ],
         "dynamic": false
       },
@@ -40780,8 +40780,8 @@
         "value": "#0009",
         "lines": [
           96,
-          202,
-          305
+          205,
+          308
         ],
         "dynamic": false
       },
@@ -40789,21 +40789,21 @@
         "value": "#000a",
         "lines": [
           39,
-          115
+          118
         ],
         "dynamic": false
       },
       {
         "value": "#050f1680",
         "lines": [
-          138
+          141
         ],
         "dynamic": false
       },
       {
         "value": "#060c1699",
         "lines": [
-          140
+          143
         ],
         "dynamic": false
       },
@@ -40817,7 +40817,7 @@
       {
         "value": "#061019df",
         "lines": [
-          114
+          117
         ],
         "dynamic": false
       },
@@ -40831,21 +40831,21 @@
       {
         "value": "#07101ba6",
         "lines": [
-          127
+          130
         ],
         "dynamic": false
       },
       {
         "value": "#071118b8",
         "lines": [
-          247
+          250
         ],
         "dynamic": false
       },
       {
         "value": "#07121c",
         "lines": [
-          143
+          146
         ],
         "dynamic": false
       },
@@ -40866,7 +40866,7 @@
       {
         "value": "#080f15",
         "lines": [
-          232
+          235
         ],
         "dynamic": false
       },
@@ -40880,7 +40880,7 @@
       {
         "value": "#091318dc",
         "lines": [
-          276
+          279
         ],
         "dynamic": false
       },
@@ -40971,9 +40971,9 @@
       {
         "value": "#0c1b25",
         "lines": [
-          147,
-          207,
-          299
+          150,
+          210,
+          302
         ],
         "dynamic": false
       },
@@ -40987,8 +40987,8 @@
       {
         "value": "#0e202ce8",
         "lines": [
-          144,
-          296
+          147,
+          299
         ],
         "dynamic": false
       },
@@ -41009,9 +41009,9 @@
       {
         "value": "#101a25",
         "lines": [
-          132,
-          211,
-          296
+          135,
+          214,
+          299
         ],
         "dynamic": false
       },
@@ -41025,29 +41025,29 @@
       {
         "value": "#101b28e8",
         "lines": [
-          127
+          130
         ],
         "dynamic": false
       },
       {
         "value": "#101d29",
         "lines": [
-          138,
-          213
+          141,
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#101e25",
         "lines": [
-          284
+          287
         ],
         "dynamic": false
       },
       {
         "value": "#101e25f7",
         "lines": [
-          277
+          280
         ],
         "dynamic": false
       },
@@ -41090,7 +41090,7 @@
       {
         "value": "#11181e",
         "lines": [
-          228
+          231
         ],
         "dynamic": false
       },
@@ -41105,14 +41105,14 @@
       {
         "value": "#11232b",
         "lines": [
-          116
+          119
         ],
         "dynamic": false
       },
       {
         "value": "#11232bf7",
         "lines": [
-          115
+          118
         ],
         "dynamic": false
       },
@@ -41190,14 +41190,14 @@
       {
         "value": "#142730",
         "lines": [
-          281
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#142934c9",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
@@ -41218,7 +41218,7 @@
       {
         "value": "#17100de8",
         "lines": [
-          131
+          134
         ],
         "dynamic": false
       },
@@ -41232,7 +41232,7 @@
       {
         "value": "#172938",
         "lines": [
-          244
+          247
         ],
         "dynamic": false
       },
@@ -41253,30 +41253,30 @@
       {
         "value": "#20272c",
         "lines": [
-          228
+          231
         ],
         "dynamic": false
       },
       {
         "value": "#221626f2",
         "lines": [
-          305
+          308
         ],
         "dynamic": false
       },
       {
         "value": "#241b19",
         "lines": [
-          256,
-          265
+          259,
+          268
         ],
         "dynamic": false
       },
       {
         "value": "#24323c",
         "lines": [
-          210,
-          244
+          213,
+          247
         ],
         "dynamic": false
       },
@@ -41284,14 +41284,14 @@
         "value": "#243e48",
         "lines": [
           95,
-          121
+          124
         ],
         "dynamic": false
       },
       {
         "value": "#27323a",
         "lines": [
-          237
+          240
         ],
         "dynamic": false
       },
@@ -41305,35 +41305,35 @@
       {
         "value": "#293832",
         "lines": [
-          284
+          287
         ],
         "dynamic": false
       },
       {
         "value": "#2a514c",
         "lines": [
-          269
+          272
         ],
         "dynamic": false
       },
       {
         "value": "#2d3e3a",
         "lines": [
-          268
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#302219",
         "lines": [
-          262
+          265
         ],
         "dynamic": false
       },
       {
         "value": "#30414c",
         "lines": [
-          138
+          141
         ],
         "dynamic": false
       },
@@ -41368,9 +41368,9 @@
       {
         "value": "#354858",
         "lines": [
-          132,
-          211,
-          296
+          135,
+          214,
+          299
         ],
         "dynamic": false
       },
@@ -41384,49 +41384,49 @@
       {
         "value": "#3b5960",
         "lines": [
-          122
+          125
         ],
         "dynamic": false
       },
       {
         "value": "#3c2820",
         "lines": [
-          263
+          266
         ],
         "dynamic": false
       },
       {
         "value": "#4a3829",
         "lines": [
-          267
+          270
         ],
         "dynamic": false
       },
       {
         "value": "#4b4935",
         "lines": [
-          268
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#513b29",
         "lines": [
-          136
+          139
         ],
         "dynamic": false
       },
       {
         "value": "#56402a",
         "lines": [
-          261
+          264
         ],
         "dynamic": false
       },
       {
         "value": "#58472e",
         "lines": [
-          264
+          267
         ],
         "dynamic": false
       },
@@ -41440,15 +41440,15 @@
       {
         "value": "#6a4c2f",
         "lines": [
-          135
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#778188",
         "lines": [
-          210,
-          244
+          213,
+          247
         ],
         "dynamic": false
       },
@@ -41462,14 +41462,14 @@
       {
         "value": "#831e24",
         "lines": [
-          239
+          242
         ],
         "dynamic": false
       },
       {
         "value": "#84928e",
         "lines": [
-          281
+          284
         ],
         "dynamic": false
       },
@@ -41483,15 +41483,24 @@
       {
         "value": "#8d9da8",
         "lines": [
-          132,
-          211
+          135,
+          214
         ],
         "dynamic": false
       },
       {
         "value": "#a5262b",
         "lines": [
-          240
+          243
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a6c9c5",
+        "lines": [
+          109,
+          110,
+          111
         ],
         "dynamic": false
       },
@@ -41505,7 +41514,7 @@
       {
         "value": "#a99060",
         "lines": [
-          138
+          141
         ],
         "dynamic": false
       },
@@ -41533,15 +41542,15 @@
       {
         "value": "#ba9c67",
         "lines": [
-          207
+          210
         ],
         "dynamic": false
       },
       {
         "value": "#bac2c6",
         "lines": [
-          210,
-          244
+          213,
+          247
         ],
         "dynamic": false
       },
@@ -41590,15 +41599,15 @@
       {
         "value": "#c1a16b",
         "lines": [
-          228,
-          232
+          231,
+          235
         ],
         "dynamic": false
       },
       {
         "value": "#c5b4868c",
         "lines": [
-          127
+          130
         ],
         "dynamic": false
       },
@@ -41612,8 +41621,8 @@
       {
         "value": "#c6ab7480",
         "lines": [
-          147,
-          299
+          150,
+          302
         ],
         "dynamic": false
       },
@@ -41627,21 +41636,21 @@
       {
         "value": "#c9b27b",
         "lines": [
-          115
+          118
         ],
         "dynamic": false
       },
       {
         "value": "#c9b27b66",
         "lines": [
-          116
+          119
         ],
         "dynamic": false
       },
       {
         "value": "#ccb279",
         "lines": [
-          142
+          145
         ],
         "dynamic": false
       },
@@ -41655,14 +41664,14 @@
       {
         "value": "#cfb67c",
         "lines": [
-          249
+          252
         ],
         "dynamic": false
       },
       {
         "value": "#d2ba81",
         "lines": [
-          202
+          205
         ],
         "dynamic": false
       },
@@ -41690,14 +41699,14 @@
       {
         "value": "#d4aa71a6",
         "lines": [
-          131
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#d4bb8a",
         "lines": [
-          237
+          240
         ],
         "dynamic": false
       },
@@ -41718,7 +41727,7 @@
       {
         "value": "#d5bc87",
         "lines": [
-          121
+          124
         ],
         "dynamic": false
       },
@@ -41732,14 +41741,14 @@
       {
         "value": "#d5edf4",
         "lines": [
-          223
+          226
         ],
         "dynamic": false
       },
       {
         "value": "#d6bf8e",
         "lines": [
-          148
+          151
         ],
         "dynamic": false
       },
@@ -41775,7 +41784,7 @@
       {
         "value": "#d8bd80",
         "lines": [
-          220
+          223
         ],
         "dynamic": false
       },
@@ -41800,8 +41809,8 @@
           15,
           81,
           96,
-          244,
-          277
+          247,
+          280
         ],
         "dynamic": false
       },
@@ -41918,29 +41927,29 @@
       {
         "value": "#dfc18c",
         "lines": [
-          144,
-          296
+          147,
+          299
         ],
         "dynamic": false
       },
       {
         "value": "#dfc78045",
         "lines": [
-          145
+          148
         ],
         "dynamic": false
       },
       {
         "value": "#e0cda3",
         "lines": [
-          264
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#e0ddcf",
         "lines": [
-          279
+          282
         ],
         "dynamic": false
       },
@@ -41969,7 +41978,7 @@
       {
         "value": "#e2cfab",
         "lines": [
-          118
+          121
         ],
         "dynamic": false
       },
@@ -41997,7 +42006,7 @@
       {
         "value": "#e4d8bb",
         "lines": [
-          146
+          149
         ],
         "dynamic": false
       },
@@ -42018,7 +42027,7 @@
       {
         "value": "#e7c27e44",
         "lines": [
-          250
+          253
         ],
         "dynamic": false
       },
@@ -42074,21 +42083,21 @@
       {
         "value": "#f0d9b7",
         "lines": [
-          137
+          140
         ],
         "dynamic": false
       },
       {
         "value": "#f0e8dc",
         "lines": [
-          230
+          233
         ],
         "dynamic": false
       },
       {
         "value": "#f1d493",
         "lines": [
-          284
+          287
         ],
         "dynamic": false
       },
@@ -42102,7 +42111,7 @@
       {
         "value": "#f1d9b3",
         "lines": [
-          128
+          131
         ],
         "dynamic": false
       },
@@ -42123,7 +42132,7 @@
       {
         "value": "#f1dfb7",
         "lines": [
-          301
+          304
         ],
         "dynamic": false
       },
@@ -42137,7 +42146,7 @@
       {
         "value": "#f3e7d1",
         "lines": [
-          125
+          128
         ],
         "dynamic": false
       },
@@ -42151,14 +42160,14 @@
       {
         "value": "#f3eee0",
         "lines": [
-          281
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#f4d895",
         "lines": [
-          250
+          253
         ],
         "dynamic": false
       },
@@ -42209,8 +42218,8 @@
       {
         "value": "#f5edda",
         "lines": [
-          115,
-          205
+          118,
+          208
         ],
         "dynamic": false
       },
@@ -42231,21 +42240,21 @@
       {
         "value": "#ffb4a6",
         "lines": [
-          233
+          236
         ],
         "dynamic": false
       },
       {
         "value": "#ffc4b7",
         "lines": [
-          234
+          237
         ],
         "dynamic": false
       },
       {
         "value": "#ffd487",
         "lines": [
-          305
+          308
         ],
         "dynamic": false
       },
@@ -42266,32 +42275,32 @@
       {
         "value": "#ffe0a3",
         "lines": [
-          223
+          226
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a4",
         "lines": [
-          200,
-          206,
-          214,
-          215,
-          244
+          203,
+          209,
+          217,
+          218,
+          247
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          224
+          227
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2aa",
         "lines": [
-          231
+          234
         ],
         "dynamic": false
       },
@@ -42313,15 +42322,15 @@
       {
         "value": "#ffe3af",
         "lines": [
-          129
+          132
         ],
         "dynamic": false
       },
       {
         "value": "#ffe4a2",
         "lines": [
-          288,
-          293
+          291,
+          296
         ],
         "dynamic": false
       },
@@ -42335,58 +42344,58 @@
       {
         "value": "#ffe5a2",
         "lines": [
-          135,
-          213
+          138,
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#ffe7aa",
         "lines": [
-          285
+          288
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b5",
         "lines": [
-          208
+          211
         ],
         "dynamic": false
       },
       {
         "value": "#ffebbd",
         "lines": [
-          124
+          127
         ],
         "dynamic": false
       },
       {
         "value": "#ffebbf",
         "lines": [
-          141,
-          296
+          144,
+          299
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          135
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ad",
         "lines": [
-          120
+          123
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          238
+          241
         ],
         "dynamic": false
       },
@@ -42398,7 +42407,7 @@
           98,
           100,
           101,
-          117
+          120
         ],
         "dynamic": false
       },
@@ -42412,30 +42421,30 @@
       {
         "value": "#fff0cf",
         "lines": [
-          133,
-          213
+          136,
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cf80",
         "lines": [
-          132
+          135
         ],
         "dynamic": false
       },
       {
         "value": "#fff0d1",
         "lines": [
-          229,
-          237
+          232,
+          240
         ],
         "dynamic": false
       },
       {
         "value": "#fff1cf",
         "lines": [
-          305
+          308
         ],
         "dynamic": false
       },
@@ -42450,23 +42459,23 @@
         "value": "#fff2cf",
         "lines": [
           55,
-          119,
-          222
+          122,
+          225
         ],
         "dynamic": false
       },
       {
         "value": "#fff4d7",
         "lines": [
-          302,
-          303
+          305,
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#fff4da",
         "lines": [
-          268
+          271
         ],
         "dynamic": false
       },
@@ -42480,7 +42489,7 @@
       {
         "value": "#fff5e1",
         "lines": [
-          232
+          235
         ],
         "dynamic": false
       },
@@ -42550,6 +42559,7 @@
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
     "assets/js/asset-cache.js": [],
+    "assets/js/background-motion.js": [],
     "assets/js/boss-vfx.js": [
       {
         "value": "#091521",
@@ -42963,14 +42973,14 @@
       {
         "value": "#08141166",
         "lines": [
-          511
+          513
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -42998,14 +43008,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          500
+          502
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          500
+          502
         ],
         "dynamic": false
       },
@@ -43061,7 +43071,7 @@
       {
         "value": "#465959",
         "lines": [
-          368
+          370
         ],
         "dynamic": false
       },
@@ -43082,7 +43092,7 @@
       {
         "value": "#60706a",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -43096,7 +43106,7 @@
       {
         "value": "#718679",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -43131,7 +43141,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -43145,7 +43155,7 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          368
+          370
         ],
         "dynamic": false
       },
@@ -43208,14 +43218,14 @@
       {
         "value": "#d98877",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          529
+          531
         ],
         "dynamic": false
       },
@@ -43236,14 +43246,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -43286,7 +43296,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          529
+          531
         ],
         "dynamic": false
       },
@@ -43300,7 +43310,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          529
+          531
         ],
         "dynamic": false
       },
@@ -43328,7 +43338,7 @@
       {
         "value": "#f0dfb1",
         "lines": [
-          368
+          370
         ],
         "dynamic": false
       },
@@ -43343,7 +43353,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          367
+          369
         ],
         "dynamic": false
       },
@@ -43357,7 +43367,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          529
+          531
         ],
         "dynamic": false
       },
@@ -43371,7 +43381,7 @@
       {
         "value": "#fff",
         "lines": [
-          368
+          370
         ],
         "dynamic": false
       }

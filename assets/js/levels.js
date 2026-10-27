@@ -524,10 +524,10 @@ const DUNGEON_CATALOGUE=Object.freeze({
  sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'})
 });
 japan.progressFlags.push('cultTempleDiscovered','sectRunStarted','sectStage1Clear','sectStage2Clear','sectStage3Clear','sectChestClaimed','sectGuardReward','sectAngelReward','sectPriestessReward','highPriestessSoul');
-const CULT_TRAVEL=Object.freeze({id:'cultTempleEntrance',x:1150,y:2620,name:'cultDungeon.memory.title',travelOnly:true,unlockFlag:'cultTempleDiscovered'});
+const CULT_TRAVEL=Object.freeze({id:'cultTempleEntrance',x:1150,y:2620,name:'cultDungeon.memory.title',travelOnly:true,dungeonEntrance:true,unlockFlag:'cultTempleDiscovered'});
 // A virtual route anchor: unlocking the chained entrance makes the scroll
 // reachable again without adding a shrine or changing the hall's save model.
-const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.x,y:yomi.councilGate.y,name:'council.hall.name',location:'councilHall',travelOnly:true,unlockFlag:'councilGateOpen'});
+const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.x,y:yomi.councilGate.y,name:'council.hall.name',location:'councilHall',travelOnly:true,dungeonEntrance:true,unlockFlag:'councilGateOpen'});
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const SIDE_LOCATIONS=Object.freeze({
  cultDungeon1:Object.freeze({map:cultForecourt,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted'])}),

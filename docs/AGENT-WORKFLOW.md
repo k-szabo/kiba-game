@@ -11,7 +11,7 @@ A főagent koordinál és integrál; az önálló részfeladatokat specialisták
 | Artist | Képek, animáció, hátterek, VFX; art-data.js, graphics.js, boss-vfx.js, shadow-animation.js. |
 | Frontend | HTML/CSS, HUD, menük, accessibility, lokalizáció és inputkezelő felület. |
 | Worldbuilder | levels.js, prologue.js, útvonalak, titkok, történet és párbeszédek. |
-| Save-integrity | save-vault.js, validáció, verzióváltásos reset és valódi böngészős tárolás. |
+| Save-integrity | save-vault.js, validáció, kompatibilis frissítések, kifejezett mentésreset és valódi böngészős tárolás. |
 | QA | Reprodukció, tervjóváhagyás, regresszió, böngészős bizonyíték és független review. |
 
 A táblázat nem engedély ugyanazon fájl párhuzamos szerkesztésére: a koordinátor kiosztja a konkrét tulajdonost. Grafika és játékmenet együttműködésénél először a szükséges állapotokat, pózokat és illesztési pontokat egyeztessék. A runtime.js és colormaps.json generálását egy integrátor végezze a releváns szerkesztések lezárása után.

@@ -19,16 +19,27 @@ try{
     const matches=[...registry.releases,...registry.bugfixes].filter(entry=>entry.code===args[0]||entry.version===args[0]);
     if(matches.length!==1)throw Error(`No unique registered release matches: ${args[0]}.`);
     console.log(json(matches[0]));
-  }else if(command==='bugfix'&&args[0]==='--metadata'&&(args.length===2||(args.length===3&&args[2]==='--write'))){
-    const proposal=prepareBugfix(read(path.resolve(args[1])),release,registry);
-    printProposal(proposal,'bugfix');
-  }else if(command==='release'&&args[0]==='--metadata'&&(args.length===2||(args.length===3&&args[2]==='--write'))){
-    const proposal=prepareRelease(read(path.resolve(args[1])),release,registry);
-    printProposal(proposal,'feature release');
-  }else throw Error('Usage: node scripts/release.mjs validate | lookup <8-character-code|full-version> | bugfix --metadata <JSON-file> [--write] | release --metadata <JSON-file> [--write]');
-  function printProposal(proposal,label){
+  }else if(['bugfix','release'].includes(command)&&args[0]==='--metadata'&&args[1]){
+    let write=false,reset=false,preserveFrom;const seen=new Set();
+    for(let i=2;i<args.length;i++){
+      const flag=args[i];if(seen.has(flag))throw Error('Duplicate release option: '+flag);seen.add(flag);
+      if(flag==='--write')write=true;else if(flag==='--reset-saves')reset=true;
+      else if(flag==='--preserve-saves-from'&&args[i+1]&&!args[i+1].startsWith('--'))preserveFrom=args[++i];
+      else throw Error('Unknown or incomplete release option: '+flag);
+    }
+    if(reset&&preserveFrom)throw Error('Choose either --reset-saves or --preserve-saves-from.');
+    const proposal=(command==='bugfix'?prepareBugfix:prepareRelease)(read(path.resolve(args[1])),release,registry);
+    if(preserveFrom){
+      if(proposal.unchanged||release.savePolicy!=='reset-on-version-change'||preserveFrom!==release.version)throw Error('--preserve-saves-from must name the current legacy release when creating the first compatible release.');
+      proposal.release={...proposal.release,savePolicy:'preserve-compatible',saveCompatibility:preserveFrom};
+    }
+    if(reset){if(proposal.unchanged)throw Error('A save reset requires a new release record.');proposal.release={...proposal.release,savePolicy:'preserve-compatible',saveCompatibility:proposal.entry.version};}
+    validateRelease(proposal.release,proposal.registry);
+    printProposal(proposal,command==='bugfix'?'bugfix':'feature release',write);
+  }else throw Error('Usage: node scripts/release.mjs validate | lookup <code|version> | bugfix|release --metadata <JSON-file> [--preserve-saves-from <current-version> | --reset-saves] [--write]');
+  function printProposal(proposal,label,write){
     console.log(json(proposal.entry));
-    if(args[2]!=='--write')console.log(`DRY RUN: no files changed. Add --write to append this ${label} and update release.json.`);
+    if(!write)console.log(`DRY RUN: no files changed. Add --write to append this ${label} and update release.json.`);
     else if(proposal.unchanged)console.log('Already current; no files changed.');
     else{
       // Keep the old registry if updating the release marker fails. The build
