@@ -105,7 +105,7 @@ const ArenaChallenge=(()=>{
   }
   if(room()){
    if(pointNear(level.returnPoint,90,85))return {type:'arenaReturn',text:I18n.t('arena.return')};
-   const npc=level.npcs[0];if(pointNear(npc,95,85))return {type:'chambersTalk',text:I18n.format('camp.talk',[I18n.t('fia.name')])};
+   const npc=level.npcs[0];if(campNPCVisible(npc)&&pointNear(npc,95,85))return {type:'chambersTalk',text:I18n.format('camp.talk',[I18n.t('fia.name')])};
   }
   if(!active())return null;
   if(attempt?.status==='between')return {type:'arenaNext',round:attempt.round,text:I18n.t('arena.next')};
@@ -121,11 +121,12 @@ const ArenaChallenge=(()=>{
   if(actual.type==='arenaReturn')return CampQuest.leave();
   if(actual.type==='arenaStart')return start();
   if(actual.type==='arenaNext')return actual.round===candidate.round&&beginRound(actual.round+1);
-  if(actual.type==='chambersTalk'){story('arena.chambers.name','fia.name','arena.chambers.dialogue',null,{right:'fia',speaker:'fia'});return true;}
+  if(actual.type==='chambersTalk')return FiaQuest.talk();
   return false;
  }
  function objective(){
-  if(room())return {point:level.npcs[0],compass:false,text:'arena.chambers.objective'};
+  if([shadowDen,fiaChambers].includes(level)&&FiaConflict.slain())return {point:level.returnPoint,compass:false,text:'shadow.objective.search'};
+  if(room())return FiaQuest.objective()||{point:level.npcs[0],compass:false,text:'arena.chambers.objective'};
   if(level===shadowDen&&owns('fiaRescued')&&owns('arenaQuestAccepted'))return {point:owns('arenaChampion')?level.chambersEntrance:level.arenaEntrance,compass:false,text:owns('arenaChampion')?'arena.objective.chambers':'arena.objective.complete'};
   if(active())return {point:running()?level.arena:owns('arenaChampion')?level.returnPoint:level.challengePoint,compass:false,text:owns('arenaChampion')?'arena.objective.chambers':'arena.objective.complete'};
   return null;

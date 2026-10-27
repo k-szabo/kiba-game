@@ -9,22 +9,22 @@ const Merchant=(()=>{
   phoneCase:Object.freeze({price:1500})
  });
  const rewards=Object.freeze({enemy:5,miniboss:20,boss:50});
- const healingItems=Object.freeze(['roastMeat','tea','healingBrew']);
+ const healingItems=Object.freeze(['roastMeat','tea','healingBrew','roastChicken']);
  let initialized=false,returnFocus=null,renderId=0,teaElapsed=0,teaPulses=0;
  const rescued=()=>flags[1].includes('akashRescued');
  const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
  const consumed=id=>{const by=ART_INVENTORY.items[id]?.consumedBy;return !!by&&flags[by.realm].includes(by.id);};
- const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
+ const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
  function selectAvailable(){if(!stock(quickHeal)){const other=healingItems.find(id=>stock(id)>0);if(other)quickHeal=other;}}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
   quickHeal=id;persist();Inventory.render();return true;
  }
- function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
+ function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='roastChicken'?FiaQuest.eat():quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
  function addStock(id){
   if(dungeonItem(id))return DungeonRun.addItem(id);
   if(![...healingItems,'forestHerb'].includes(id)||!Number.isSafeInteger(stock(id))||stock(id)<0||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
-  if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else if(id==='forestHerb')campServices.herbs++;else if(id==='healingBrew')campServices.potions++;else return false;
+  if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else if(id==='forestHerb')campServices.herbs++;else if(id==='healingBrew')campServices.potions++;else if(id==='roastChicken')chickenCount++;else return false;
   selectAvailable();
   return true;
  }
@@ -82,6 +82,8 @@ const Merchant=(()=>{
   persist();updateHUD();if(fromInventory)Inventory.render();return true;
  }
  function resetTea(){teaElapsed=0;teaPulses=0;}
+ function teaSnapshot(){return {elapsed:teaElapsed,pulses:teaPulses};}
+ function restoreTea(value){if(!value||!Number.isFinite(value.elapsed)||value.elapsed<0||value.elapsed>=2||!Number.isInteger(value.pulses)||value.pulses<0||value.pulses>3)return false;teaElapsed=value.elapsed;teaPulses=value.pulses;return true;}
  function update(dt){
   if(state!=='play'||Prologue.active||!player||player.hp<=0||!teaPulses||!Number.isFinite(dt)||dt<=0)return;
   teaElapsed+=dt;
@@ -147,5 +149,5 @@ const Merchant=(()=>{
   for(const rest of level.rests)if(visitedRests[realm].includes(rest.id)){c.beginPath();c.arc(X(rest.x),Y(rest.y),4,0,Math.PI*2);c.fill();}
   c.fillStyle='#ffcb74';c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.arc(w/2,h/2,4,0,Math.PI*2);c.fill();c.stroke();c.restore();
  }
- return Object.freeze({init,open,close,render,free,purchase,salePrice,canSell,sell,nearVendor,eat,drink,canDrink,useBrew,canUseBrew,healingItems,update,resetTea,addStock,selectQuick,useQuick,award,stock,description,catalogue,rewards,rescued,drawMinimap});
+ return Object.freeze({init,open,close,render,free,purchase,salePrice,canSell,sell,nearVendor,eat,drink,canDrink,useBrew,canUseBrew,healingItems,update,resetTea,addStock,selectQuick,selectAvailable,useQuick,teaSnapshot,restoreTea,award,stock,description,catalogue,rewards,rescued,drawMinimap});
 })();

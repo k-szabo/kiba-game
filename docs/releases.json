@@ -1046,6 +1046,26 @@
           "en": "The temple gate beyond the elder cultist leads to a new three-floor memory dungeon with three bosses, independently saved progress and a reward chest."
         }
       ]
+    },
+    {
+      "version": "0.9.49_7bbb45b1",
+      "code": "7bbb45b1",
+      "baseVersion": "0.9.49",
+      "slug": "fia-request-and-hidden-conflict",
+      "summary": {
+        "hu": "Fia új megbízása",
+        "en": "Fia’s new request"
+      },
+      "fixes": [
+        {
+          "hu": "Az arénagyőzelem után Fia új küldetést ad a templom emlékéhez; jutalma XP és gyorshasználatra kijelölhető sült csirkecomb.",
+          "en": "After the arena victory, Fia offers a new quest tied to the temple’s memory, rewarding XP and roast chicken that can be assigned to quick use."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

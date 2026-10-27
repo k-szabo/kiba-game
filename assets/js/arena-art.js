@@ -48,7 +48,7 @@ const ArenaArt=(()=>{
    if(DevSession.active||sideLocationUnlocked('fiaChambers',flags,defeated))Visuals.campPathMarker(level.chambersEntrance,I18n.t('arena.chambers.name'));return;
   }
   if(ArenaChallenge.room()){
-   const npc=level.npcs[0];stamp(ART_KITSUNE.fia,0,npc.x,npc.y,npc.height);label(npc,npc.name,npc.height);portal(level.returnPoint);return;
+   const npc=level.npcs[0];if(campNPCVisible(npc)){stamp(ART_KITSUNE.fia,0,npc.x,npc.y,npc.height);label(npc,npc.name,npc.height);CampArt.questMarker('fia',npc,npc.height);}portal(level.returnPoint);return;
   }
   if(!ArenaChallenge.active())return;
   if(!ArenaChallenge.running())portal(level.returnPoint);
@@ -85,5 +85,5 @@ const ArenaArt=(()=>{
   if(enemy.miniboss==='arenaFia'&&ArenaCombat.protects(enemy))BossVFX.portal(enemy.x+enemy.w/2,enemy.y+enemy.h*.9,130,.4);
   return true;
  }
- return Object.freeze({actors,backdrop,scenery,actor});
+ return Object.freeze({actors,backdrop,scenery,actor,stamp});
 })();

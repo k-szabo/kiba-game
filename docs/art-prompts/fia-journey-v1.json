@@ -1,0 +1,38 @@
+{
+  "tool": "built-in image_gen",
+  "approval": "User approved revised one-bone cylindrical chicken/talisman/soul concept, five VFX concepts and20-pose effect storyboard, and revised12-pose resident motion sheet. Existing Fia body/cyclops art reused.",
+  "items": {
+    "path": "assets/images/ui/fia-items-v1.png",
+    "prompt": "Three isolated transparent columns: dark crescent/bell obsidian ritual talisman, narrow cylindrical roast drumstick with ONE continuous bone, violet fox-flame amethyst soul. Match approved revised concept. Rich opaque painted Japanese fantasy materials; complete silhouettes, ample alpha margins, no text or background."
+  },
+  "vfx": {
+    "teleport": {
+      "path": "assets/images/effects/fia-teleport-v1.png",
+      "prompt": "Approved violet-gold painted Japanese fantasy hollow smoke gather, peak, low swept curl and reforming wisps. Four isolated phases in2x2transparentRGBA. Effect-only, no character, text or UI. Uniform scale/origin and broad alpha gutters. Preserve complete wisps and readable center."
+    },
+    "foxfire": {
+      "path": "assets/images/effects/fia-foxfire-v1.png",
+      "prompt": "Approved violet-gold painted Japanese fantasy ear-tipped condensation, right-facing fox-flame projectile, impact burst and fading wisps. Four isolated phases in2x2transparentRGBA. Effect-only, no character, text or UI. Uniform scale/origin and broad alpha gutters. Preserve complete wisps and readable center."
+    },
+    "drain": {
+      "path": "assets/images/effects/fia-drain-v1.png",
+      "prompt": "Approved violet-gold painted Japanese fantasy thin curved ribbon, linked endpoints, beads traveling from target back to caster and retracting ribbon. Four isolated phases in2x2transparentRGBA. Effect-only, no character, text or UI. Uniform scale/origin and broad alpha gutters. Preserve complete wisps and readable center."
+    },
+    "charm": {
+      "path": "assets/images/effects/fia-charm-v1.png",
+      "prompt": "Approved violet-gold painted Japanese fantasy crescent/petal runes, expanding ripples, inward pulling curls and fading strands. Four isolated phases in2x2transparentRGBA. Effect-only, no character, text or UI. Uniform scale/origin and broad alpha gutters. Preserve complete wisps and readable center."
+    },
+    "shield": {
+      "path": "assets/images/effects/kiba-shield-v1.png",
+      "prompt": "Approved violet-gold painted Japanese fantasy hollow shield shell, right-edge impact crack, curling broken fragments and reforming shell. Four isolated phases in2x2transparentRGBA. Effect-only, no character, text or UI. Uniform scale/origin and broad alpha gutters. Preserve complete wisps and readable center."
+    }
+  },
+  "residents": {
+    "prompt": "Exact original masked ninja and pickpocket identities and clothes. Each has six poses: idle, contact stride, passing step, windup, slash, recovery. Threecolumns two rows, transparentRGBA. Ninja SAME short curved katana in every pose; thief SAME short steel dagger. Fixed body scale and footline, complete weapon/scarf margins; no ground/UI. Technical correction uniformly shrinks complete figures for gutters and preserves blade continuity.",
+    "paths": [
+      "assets/images/enemies/den-ninja-v1.png",
+      "assets/images/enemies/den-thief-v1.png"
+    ]
+  },
+  "registration": "scripts/register-fia-art.py"
+}

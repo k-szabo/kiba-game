@@ -38,3 +38,5 @@ A `kitsune-quest.js` a megmentés, kihagyás és kiszabadítási jelenet állapo
 `npm run test:kitsune`: harc, teljes lépcsős út oda-vissza 30/60/120 FPS-en alapugrással; megmentés, halál, pihenés, menü/folytatás, sikeres és sikertelen utazás, kizáró állapotok, táborfeloldás és dev-izoláció. Mindkét teszt a teljes `npm test` része. A valódi böngészős tárolás és natív grafika külön QA-t igényel.
 
 A tábori folytatás célzott regressziói a `test-arena-combat.cjs` és `test-arena-challenge.cjs` fájlokban vannak. Fia kihagyása továbbra sem blokkolja az Árnyékvilág fő történeti útvonalát; az aréna és a lakosztály opcionális marad.
+
+Fia második, templomemlékhez kötött megbízása és az opcionális provokáció tartós következményei a **spoileres** [Fia-referenciában](FIA-JOURNEY.md) szerepelnek.

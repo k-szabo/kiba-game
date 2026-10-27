@@ -2,8 +2,8 @@
 'use strict';
 const DevBoss=(()=>{
  let encounter='main';
- const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||!!level.dungeon);
- const encounters=()=>[...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
+ const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||!!level.dungeon);
+ const encounters=()=>[...([shadowDen,fiaChambers].includes(level)?[{id:'fiaVengeance',name:'fia.name'}]:[]),...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
   ...(Prologue.active?[]:(level.arenaEncounters||level.enemies).filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
  function fields(){
   const options=encounters();if(!options.some(entry=>entry.id===encounter))encounter=options[0]?.id??'main';
@@ -12,6 +12,7 @@ const DevBoss=(()=>{
  function revive(values){
   if(!available()||state!=='developer'||!DevTools.isOpen)return false;
   const target=values?.encounter??encounters()[0]?.id;if(!encounters().some(entry=>entry.id===target))return false;
+  if(target==='fiaVengeance')return FiaConflict.replay();
   if(target!=='main')return reviveMiniboss(target);
   if(Prologue.active){Prologue.start();state='developer';DevTools.setReturnState('play');return true;}
   clearEncounterEffects();defeated[realm]=false;resetBossBattle();

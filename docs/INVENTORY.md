@@ -96,3 +96,7 @@ A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális
 ## A Szekta Bukása tárgyai
 
 A `highPriestessSoul` egyszeri lélektárgy és a halmozható `sectSeal` a közös `ART_INVENTORY.items` katalógusból, a `sect-fall-items-v1.png` eredeti alfájával jelenik meg. A lélek tulajdonát a japán világ flagje, a pecsét készletét a közös `dungeonState.stock` tárolja. Akashnál mindkettő eladható; az egyszeri jutalomjogcímet az eladás nem törli. A két emlékút ugyanazokat az enhancementeket és felhasználási korlátokat használja.
+
+## Fia megbízásának tárgyai
+
+A `priestessTalisman` védett questtárgy: leadáskor a történeti jelző megmarad, a `fiaTalismanCompleted` feltétel elfogyasztja a birtoklási nézetből. A `roastChicken` halmozható4HP-s gyógyító tárgy (`chickenCount`), inventoryból és a közös gyorshasználattal fogyasztható. A `kitsuneSoul` külön, egyszeri lélektárgy. Mindhárom az `ART_INVENTORY.items` katalógus és a natív `fia-items-v1.png` kontrasztos, DPR-követő rajzolását használja. A megszerzett passzív pajzs aktuális értéke és leírása a karakterkártyán olvasható.

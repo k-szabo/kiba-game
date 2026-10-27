@@ -24,7 +24,7 @@ const DevTeleport=(()=>{
   if(!target)return false;
   const rest=restsFor(target).find(r=>r.id===values?.rest);
   if(!rest||target.map&&!target.map.platforms.some(p=>!p.broken&&Math.abs(p.y-rest.y)<2&&rest.x>p.x&&rest.x<p.x+p.w))return false;
-  if(!target.enter(rest))return false;
+  FiaConflict.abort();if(!target.enter(rest))return false;
   if(target.map&&!visitedRests[realm].includes(rest.id))visitedRests[realm].push(rest.id);
   state='developer';DevTools.setReturnState('play');keys.clear();pressed.clear();context=null;$('prompt').hidden=true;showHUD(true);updateHUD();return true;
  }

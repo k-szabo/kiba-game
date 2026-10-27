@@ -25,7 +25,8 @@ const SaveVault=(()=>{
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,levels.length-1)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
   if(data.location!=null&&(typeof data.location!=='string'||!Object.hasOwn(SIDE_LOCATIONS,data.location)))throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
-  if(!['roastMeat','tea','healingBrew'].includes(data.quickHeal))throw Error('Invalid quick healing item');
+  const chickenCount=Object.hasOwn(data,'chickenCount')?data.chickenCount:0;if(!integer(chickenCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid chicken inventory');
+  if(!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
   const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
   if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
   for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
@@ -93,10 +94,20 @@ const SaveVault=(()=>{
    if(hunter&&!open||seen&&!hunter||(rescuedFia||missedFia)&&!seen||rescuedFia&&missedFia)throw Error('Invalid kitsune rescue');
    const accepted=shadow.includes('arenaQuestAccepted'),captain=shadow.includes('arenaRewardCaptain'),serpent=shadow.includes('arenaRewardSerpent'),guards=shadow.includes('arenaRewardGuards'),champion=shadow.includes('arenaChampion');
    if(accepted&&(!rescuedFia||!data.defeated[shadowIndex])||captain&&!accepted||serpent&&!captain||guards&&!serpent||champion&&!guards||shadow.includes('arenaSerpentScale')!==serpent)throw Error('Invalid arena progress');
+   const heard=shadow.includes('fiaChambersHeard'),talismanAccepted=shadow.includes('fiaTalismanAccepted'),talisman=shadow.includes('priestessTalisman'),completed=shadow.includes('fiaTalismanCompleted'),slain=shadow.includes('fiaSlain');
+   if(heard&&!champion||talismanAccepted&&(!heard||!champion)||talisman&&(!talismanAccepted||!camp.includes('sectPriestessReward'))||completed&&(!talisman||!talismanAccepted))throw Error('Invalid Fia quest progress');
+   if((chickenCount>0||data.quickHeal==='roastChicken')&&!completed)throw Error('Invalid chicken reward');
+   if(slain&&(!rescuedFia||!data.defeated[shadowIndex])||['fiaRewardClaimed','kitsuneSoul','kibaShield'].some(id=>shadow.includes(id)!==slain))throw Error('Invalid Fia victory');
    if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
   }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
+  if(Object.hasOwn(data,'fiaRecovery')){
+   const a=data.fiaRecovery,shadow=data.flags[3],keys=['location','x','feet','hp','face','tea'],map=SIDE_LOCATIONS[a?.location]?.map;
+   if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).length!==keys.length||!keys.every(key=>Object.hasOwn(a,key))||!['shadowDen','fiaChambers'].includes(a.location)||data.realm!==3||a.location!==data.location||!sideLocationUnlocked(a.location,data.flags,data.defeated)||!shadow.includes('fiaRescued')||shadow.includes('fiaSlain')||(a.location==='shadowDen')===shadow.includes('arenaChampion'))throw Error('Invalid Fia recovery');
+   if(!Number.isFinite(a.x)||a.x<21.5||a.x>map.width-21.5||!Number.isFinite(a.feet)||a.feet<69||a.feet>map.height||!Number.isFinite(a.hp)||a.hp<=0||a.hp>5+data.progression.stats.vitality+(data.weaponStyle==='swordShield'?2:0)||![1,-1].includes(a.face))throw Error('Invalid Fia recovery anchor');
+   const tea=a.tea;if(!tea||typeof tea!=='object'||Array.isArray(tea)||Object.keys(tea).length!==2||!Object.hasOwn(tea,'elapsed')||!Object.hasOwn(tea,'pulses')||!Number.isFinite(tea.elapsed)||tea.elapsed<0||tea.elapsed>=2||!integer(tea.pulses,0,3)||!tea.pulses&&tea.elapsed!==0)throw Error('Invalid Fia recovery tea');
+  }
   const checkpointMap=data.location!=null?SIDE_LOCATIONS[data.location].map:levels[data.realm];
   const checkpoint=[...checkpointMap.rests,...(checkpointMap.checkpoints||[])].find(r=>r.id===data.checkpoint?.id);
   if(!checkpoint||data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');

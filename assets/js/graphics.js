@@ -811,6 +811,7 @@ const Visuals = (() => {
     }
   }
   function projectile(p) {
+    if(FiaArt.projectile(p))return;
     if(BossVFX.projectile(p))return;
     if(p.slayer&&p.fire&&p.kind==='arrow'){
       const angle=Math.atan2(p.vy,p.vx);

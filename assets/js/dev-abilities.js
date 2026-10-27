@@ -3,7 +3,8 @@
 const DevAbilities=(()=>{
  const catalogue=Object.freeze([
   Object.freeze({id:'double-jump',index:0,label:'text.blessing.of.the.wind'}),
-  Object.freeze({id:'dash',index:1,label:'text.spirit.dash'})
+  Object.freeze({id:'dash',index:1,label:'text.spirit.dash'}),
+  Object.freeze({id:'kiba-shield',flag:'kibaShield',label:'ability.kibaShield'})
  ]);
  let selected=catalogue[0].id;
  const available=()=>DevSession.active&&!!player;
@@ -11,6 +12,7 @@ const DevAbilities=(()=>{
   if(!available()||state!=='developer'||!DevTools.isOpen)return false;
   const ability=catalogue.find(entry=>entry.id===values?.ability);
   if(!ability)return false;
+  if(ability.flag){if(flags[3].includes(ability.flag))return 'dev.ability.owned';flags[3].push(ability.flag);FiaConflict.resetPlayer();updateHUD();return true;}
   if(abilities[ability.index])return 'dev.ability.owned';
   abilities[ability.index]=true;updateHUD();return true;
  }
