@@ -993,7 +993,12 @@
       "ability.kibaShield.status": "Kiba-pajzs: {0}/{1}",
       "menu.changelog.0949.title": "Fia új megbízása",
       "menu.changelog.0949.0": "Az arénagyőzelem után Fia új küldetést ad a templom emlékéhez; jutalma XP és gyorshasználatra kijelölhető sült csirkecomb.",
-      "menu.changelog.0949.1": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0949.1": "Belső karbantartás és technikai fejlesztések.",
+      "dev.cache.disable": "Képek gyorsítótárának kikapcsolása",
+      "dev.cache.help": "A már betöltött képek a memóriában maradnak; a teljes ellenőrzéshez töltsd újra az oldalt.",
+      "menu.changelog.0950.title": "Stabilabb tájak és képi gyorsítótár",
+      "menu.changelog.0950.0": "A hátterek támadás közben is a terephez igazodnak az Árnyékzugban és a többi érintett helyszínen.",
+      "menu.changelog.0950.1": "A játék kiadásonként elkülönített helyi képgyorsítótárat használ, és automatikusan törli a saját korábbi gyorsítótárait."
     }
   },
   "en": {
@@ -1990,7 +1995,12 @@
       "ability.kibaShield.status": "Kiba Shield: {0}/{1}",
       "menu.changelog.0949.title": "Fia’s new request",
       "menu.changelog.0949.0": "After the arena victory, Fia offers a new quest tied to the temple’s memory, rewarding XP and roast chicken that can be assigned to quick use.",
-      "menu.changelog.0949.1": "Internal maintenance and technical improvements."
+      "menu.changelog.0949.1": "Internal maintenance and technical improvements.",
+      "dev.cache.disable": "Disable image cache",
+      "dev.cache.help": "Loaded images remain in memory; reload the page for a complete check.",
+      "menu.changelog.0950.title": "Steadier scenery and image cache",
+      "menu.changelog.0950.0": "Backgrounds stay aligned with the terrain during attacks in the Shadow Den and other affected locations.",
+      "menu.changelog.0950.1": "The game uses a local image cache for each release and automatically removes its own older caches."
     }
   }
 }

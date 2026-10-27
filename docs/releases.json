@@ -1066,6 +1066,26 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.50_8249ceed",
+      "code": "8249ceed",
+      "baseVersion": "0.9.50",
+      "slug": "steady-scenery-and-image-cache",
+      "summary": {
+        "hu": "Stabilabb tájak és képi gyorsítótár",
+        "en": "Steadier scenery and image cache"
+      },
+      "fixes": [
+        {
+          "hu": "A hátterek támadás közben is a terephez igazodnak az Árnyékzugban és a többi érintett helyszínen.",
+          "en": "Backgrounds stay aligned with the terrain during attacks in the Shadow Den and other affected locations."
+        },
+        {
+          "hu": "A játék kiadásonként elkülönített helyi képgyorsítótárat használ, és automatikusan törli a saját korábbi gyorsítótárait.",
+          "en": "The game uses a local image cache for each release and automatically removes its own older caches."
+        }
+      ]
     }
   ]
 }

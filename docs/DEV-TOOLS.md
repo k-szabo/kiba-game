@@ -1,5 +1,7 @@
 # Fejlesztői eszközpanel
 
+A képek Cache API tárolója a panel checkboxával tesztmód nélkül is kikapcsolható. A `cacheDisable` böngészőpreferencia és a kiadásonkénti takarítás részletei: [képgyorsítótár](ASSET-CACHE.md). A már betöltött képek ellenőrzéséhez újratöltés szükséges.
+
 A panel jelszó és külön konfiguráció nélkül elérhető, helyi futtatásban és GitHub Pagesen is. A külön eszközök elkülönített tesztmódban használhatók.
 
 ## Megnyitás és bezárás

@@ -42,10 +42,7 @@ const Visuals = (() => {
       progress();
       resolve(ok);
     };
-    image.onload = () => finish(true);
-    image.onerror = () => finish(false);
-    image.src = src;
-    if (image.complete && image.naturalWidth) finish(true);
+    AssetCache.load(image,src,finish);
   })));
   const usable = key => images[key]?.complete && images[key].naturalWidth > 0;
   const faction = () => ['japan', 'yomi', 'heaven', 'shadowCult'][realm];

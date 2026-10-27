@@ -1,8 +1,8 @@
 /* Kiba Realms — main game loop and world interactions. */
 'use strict';
 const $=id=>document.getElementById(id),canvas=$('world'),ctx=canvas.getContext('2d');
-const sheet=new Image();sheet.src = 'assets/images/momo.png';
-const menuSheet=new Image();menuSheet.src='assets/images/momo-menu-idle-v2.png';
+const sheet=new Image();
+const menuSheet=new Image();
 const menuFrameBottom=[500,491,498,451,451,450];
 const reducedMotion=typeof matchMedia==='function'?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
 const SWORD_DURATION=.42,SWORD_IMPACT=.16;
@@ -292,7 +292,7 @@ function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prolog
  if(level===forestCamp){
   ctx.save();ctx.translate(-camera,-cameraY);Visuals.campScenery();CampArt.scenery();drawShrine(level.rests[0].x,level.rests[0].y,r,false);Visuals.campPathMarker(level.returnPoint,I18n.t(realms[0].short));drawParticles();drawLevelUp();drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
  }
- ctx.save();ctx.translate(-camera+(!level.service&&level!==fiaChambers&&!reducedMotion.matches&&shake>0?(noise(time*500)-.5)*10:0),-cameraY);if(!CampQuest.isSide())Visuals.secretScenery(r);PrisonArt.scenery();KitsuneArt.scenery();ArenaArt.scenery();DungeonArt.scenery();CampArt.scenery();if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);CampHerbs.draw();drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest)&&!(realm===3&&rest.id==='altar'))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);drawLevelUp();Visuals.bossEffects(r);
+ ctx.save();ctx.translate(-camera,-cameraY);if(!CampQuest.isSide())Visuals.secretScenery(r);PrisonArt.scenery();KitsuneArt.scenery();ArenaArt.scenery();DungeonArt.scenery();CampArt.scenery();if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);CampHerbs.draw();drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest)&&!(realm===3&&rest.id==='altar'))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);drawLevelUp();Visuals.bossEffects(r);
  for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){drawMomo(level.father.x,level.father.y+4,90,0,Math.floor(time*3)%6,1);ctx.font='11px "Kiba UI", "Kiba Story", sans-serif';ctx.fillStyle=r.gold;ctx.textAlign='center';ctx.fillText(I18n.t('HARU'),level.father.x,level.father.y-105);}
  for(const p of projectiles)if(!SerpentArt.projectile(p))Visuals.projectile(p);
@@ -483,14 +483,15 @@ addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);
 addEventListener('pointerdown',recordMousePointerSource,true);
 addEventListener('mousedown',handleMouseDown,true);addEventListener('mouseup',handleMouseUp);addEventListener('pointercancel',handleMouseCancel);
 addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
-sheet.onload=()=>{loadingReady=true;if(DevTools.isOpen)DevTools.refresh();};sheet.onerror=()=>toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));if(sheet.complete&&sheet.naturalWidth)loadingReady=true;
+AssetCache.load(sheet,'assets/images/momo.png',ok=>{if(ok){loadingReady=true;if(DevTools.isOpen)DevTools.refresh();}else toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));});
+AssetCache.load(menuSheet,'assets/images/momo-menu-idle-v2.png');
 function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();Merchant.drawMinimap();requestAnimationFrame(frame);}requestAnimationFrame(frame);
 Inventory.init();Merchant.init();SlayerDialog.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':CampQuest.locationId()||['japan','yomi','heaven','shadow'][realm]);
 I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
 I18n.onChange(()=>Dialogue.render());
 I18n.applyDOM();
-DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevWeapons.init();DevImmortality.init();DevDamage.init();DevTools.init();
+DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevWeapons.init();DevImmortality.init();DevDamage.init();DevCache.init();DevTools.init();
 I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
 renderBindingHints();
 for(const select of document.querySelectorAll('.language-picker select'))select.addEventListener('change',e=>I18n.setLocale(e.target.value));
