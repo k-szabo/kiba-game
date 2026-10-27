@@ -40756,9 +40756,9 @@
         "lines": [
           14,
           63,
-          191,
-          212,
-          215
+          200,
+          221,
+          224
         ],
         "dynamic": false
       },
@@ -40780,8 +40780,8 @@
         "value": "#0009",
         "lines": [
           96,
-          193,
-          296
+          202,
+          305
         ],
         "dynamic": false
       },
@@ -40838,7 +40838,7 @@
       {
         "value": "#071118b8",
         "lines": [
-          238
+          247
         ],
         "dynamic": false
       },
@@ -40866,7 +40866,7 @@
       {
         "value": "#080f15",
         "lines": [
-          223
+          232
         ],
         "dynamic": false
       },
@@ -40880,7 +40880,7 @@
       {
         "value": "#091318dc",
         "lines": [
-          267
+          276
         ],
         "dynamic": false
       },
@@ -40972,8 +40972,8 @@
         "value": "#0c1b25",
         "lines": [
           147,
-          198,
-          290
+          207,
+          299
         ],
         "dynamic": false
       },
@@ -40988,7 +40988,7 @@
         "value": "#0e202ce8",
         "lines": [
           144,
-          287
+          296
         ],
         "dynamic": false
       },
@@ -41010,8 +41010,8 @@
         "value": "#101a25",
         "lines": [
           132,
-          202,
-          287
+          211,
+          296
         ],
         "dynamic": false
       },
@@ -41033,21 +41033,21 @@
         "value": "#101d29",
         "lines": [
           138,
-          204
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#101e25",
         "lines": [
-          275
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#101e25f7",
         "lines": [
-          268
+          277
         ],
         "dynamic": false
       },
@@ -41090,7 +41090,7 @@
       {
         "value": "#11181e",
         "lines": [
-          219
+          228
         ],
         "dynamic": false
       },
@@ -41190,14 +41190,14 @@
       {
         "value": "#142730",
         "lines": [
-          272
+          281
         ],
         "dynamic": false
       },
       {
         "value": "#142934c9",
         "lines": [
-          240
+          249
         ],
         "dynamic": false
       },
@@ -41232,7 +41232,7 @@
       {
         "value": "#172938",
         "lines": [
-          235
+          244
         ],
         "dynamic": false
       },
@@ -41253,30 +41253,30 @@
       {
         "value": "#20272c",
         "lines": [
-          219
+          228
         ],
         "dynamic": false
       },
       {
         "value": "#221626f2",
         "lines": [
-          296
+          305
         ],
         "dynamic": false
       },
       {
         "value": "#241b19",
         "lines": [
-          247,
-          256
+          256,
+          265
         ],
         "dynamic": false
       },
       {
         "value": "#24323c",
         "lines": [
-          201,
-          235
+          210,
+          244
         ],
         "dynamic": false
       },
@@ -41291,7 +41291,7 @@
       {
         "value": "#27323a",
         "lines": [
-          228
+          237
         ],
         "dynamic": false
       },
@@ -41305,28 +41305,28 @@
       {
         "value": "#293832",
         "lines": [
-          275
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#2a514c",
         "lines": [
-          260
+          269
         ],
         "dynamic": false
       },
       {
         "value": "#2d3e3a",
         "lines": [
-          259
+          268
         ],
         "dynamic": false
       },
       {
         "value": "#302219",
         "lines": [
-          253
+          262
         ],
         "dynamic": false
       },
@@ -41369,8 +41369,8 @@
         "value": "#354858",
         "lines": [
           132,
-          202,
-          287
+          211,
+          296
         ],
         "dynamic": false
       },
@@ -41391,21 +41391,21 @@
       {
         "value": "#3c2820",
         "lines": [
-          254
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#4a3829",
         "lines": [
-          258
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#4b4935",
         "lines": [
-          259
+          268
         ],
         "dynamic": false
       },
@@ -41419,14 +41419,14 @@
       {
         "value": "#56402a",
         "lines": [
-          252
+          261
         ],
         "dynamic": false
       },
       {
         "value": "#58472e",
         "lines": [
-          255
+          264
         ],
         "dynamic": false
       },
@@ -41447,8 +41447,8 @@
       {
         "value": "#778188",
         "lines": [
-          201,
-          235
+          210,
+          244
         ],
         "dynamic": false
       },
@@ -41462,14 +41462,14 @@
       {
         "value": "#831e24",
         "lines": [
-          230
+          239
         ],
         "dynamic": false
       },
       {
         "value": "#84928e",
         "lines": [
-          272
+          281
         ],
         "dynamic": false
       },
@@ -41484,14 +41484,14 @@
         "value": "#8d9da8",
         "lines": [
           132,
-          202
+          211
         ],
         "dynamic": false
       },
       {
         "value": "#a5262b",
         "lines": [
-          231
+          240
         ],
         "dynamic": false
       },
@@ -41533,15 +41533,15 @@
       {
         "value": "#ba9c67",
         "lines": [
-          198
+          207
         ],
         "dynamic": false
       },
       {
         "value": "#bac2c6",
         "lines": [
-          201,
-          235
+          210,
+          244
         ],
         "dynamic": false
       },
@@ -41590,8 +41590,8 @@
       {
         "value": "#c1a16b",
         "lines": [
-          219,
-          223
+          228,
+          232
         ],
         "dynamic": false
       },
@@ -41613,7 +41613,7 @@
         "value": "#c6ab7480",
         "lines": [
           147,
-          290
+          299
         ],
         "dynamic": false
       },
@@ -41655,14 +41655,14 @@
       {
         "value": "#cfb67c",
         "lines": [
-          240
+          249
         ],
         "dynamic": false
       },
       {
         "value": "#d2ba81",
         "lines": [
-          193
+          202
         ],
         "dynamic": false
       },
@@ -41697,7 +41697,7 @@
       {
         "value": "#d4bb8a",
         "lines": [
-          228
+          237
         ],
         "dynamic": false
       },
@@ -41732,7 +41732,7 @@
       {
         "value": "#d5edf4",
         "lines": [
-          214
+          223
         ],
         "dynamic": false
       },
@@ -41775,7 +41775,7 @@
       {
         "value": "#d8bd80",
         "lines": [
-          211
+          220
         ],
         "dynamic": false
       },
@@ -41800,8 +41800,8 @@
           15,
           81,
           96,
-          235,
-          268
+          244,
+          277
         ],
         "dynamic": false
       },
@@ -41919,7 +41919,7 @@
         "value": "#dfc18c",
         "lines": [
           144,
-          287
+          296
         ],
         "dynamic": false
       },
@@ -41933,14 +41933,14 @@
       {
         "value": "#e0cda3",
         "lines": [
-          255
+          264
         ],
         "dynamic": false
       },
       {
         "value": "#e0ddcf",
         "lines": [
-          270
+          279
         ],
         "dynamic": false
       },
@@ -42018,7 +42018,7 @@
       {
         "value": "#e7c27e44",
         "lines": [
-          241
+          250
         ],
         "dynamic": false
       },
@@ -42081,14 +42081,14 @@
       {
         "value": "#f0e8dc",
         "lines": [
-          221
+          230
         ],
         "dynamic": false
       },
       {
         "value": "#f1d493",
         "lines": [
-          275
+          284
         ],
         "dynamic": false
       },
@@ -42123,7 +42123,7 @@
       {
         "value": "#f1dfb7",
         "lines": [
-          292
+          301
         ],
         "dynamic": false
       },
@@ -42151,14 +42151,14 @@
       {
         "value": "#f3eee0",
         "lines": [
-          272
+          281
         ],
         "dynamic": false
       },
       {
         "value": "#f4d895",
         "lines": [
-          241
+          250
         ],
         "dynamic": false
       },
@@ -42210,7 +42210,7 @@
         "value": "#f5edda",
         "lines": [
           115,
-          196
+          205
         ],
         "dynamic": false
       },
@@ -42231,21 +42231,21 @@
       {
         "value": "#ffb4a6",
         "lines": [
-          224
+          233
         ],
         "dynamic": false
       },
       {
         "value": "#ffc4b7",
         "lines": [
-          225
+          234
         ],
         "dynamic": false
       },
       {
         "value": "#ffd487",
         "lines": [
-          296
+          305
         ],
         "dynamic": false
       },
@@ -42266,32 +42266,32 @@
       {
         "value": "#ffe0a3",
         "lines": [
-          214
+          223
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a4",
         "lines": [
-          191,
-          197,
-          205,
+          200,
           206,
-          235
+          214,
+          215,
+          244
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          215
+          224
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2aa",
         "lines": [
-          222
+          231
         ],
         "dynamic": false
       },
@@ -42320,8 +42320,8 @@
       {
         "value": "#ffe4a2",
         "lines": [
-          279,
-          284
+          288,
+          293
         ],
         "dynamic": false
       },
@@ -42336,21 +42336,21 @@
         "value": "#ffe5a2",
         "lines": [
           135,
-          204
+          213
         ],
         "dynamic": false
       },
       {
         "value": "#ffe7aa",
         "lines": [
-          276
+          285
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b5",
         "lines": [
-          199
+          208
         ],
         "dynamic": false
       },
@@ -42365,7 +42365,7 @@
         "value": "#ffebbf",
         "lines": [
           141,
-          287
+          296
         ],
         "dynamic": false
       },
@@ -42386,7 +42386,7 @@
       {
         "value": "#fff0b3",
         "lines": [
-          229
+          238
         ],
         "dynamic": false
       },
@@ -42413,7 +42413,7 @@
         "value": "#fff0cf",
         "lines": [
           133,
-          204
+          213
         ],
         "dynamic": false
       },
@@ -42427,15 +42427,15 @@
       {
         "value": "#fff0d1",
         "lines": [
-          220,
-          228
+          229,
+          237
         ],
         "dynamic": false
       },
       {
         "value": "#fff1cf",
         "lines": [
-          296
+          305
         ],
         "dynamic": false
       },
@@ -42451,22 +42451,22 @@
         "lines": [
           55,
           119,
-          213
+          222
         ],
         "dynamic": false
       },
       {
         "value": "#fff4d7",
         "lines": [
-          293,
-          294
+          302,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#fff4da",
         "lines": [
-          259
+          268
         ],
         "dynamic": false
       },
@@ -42480,7 +42480,7 @@
       {
         "value": "#fff5e1",
         "lines": [
-          223
+          232
         ],
         "dynamic": false
       },
@@ -42549,6 +42549,7 @@
     ],
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
+    "assets/js/asset-cache.js": [],
     "assets/js/boss-vfx.js": [
       {
         "value": "#091521",
@@ -42822,6 +42823,7 @@
     "assets/js/compass.js": [],
     "assets/js/dev-abilities.js": [],
     "assets/js/dev-boss.js": [],
+    "assets/js/dev-cache.js": [],
     "assets/js/dev-damage.js": [
       {
         "value": "#070b16",
@@ -42930,7 +42932,7 @@
       {
         "value": "#d8b9ef",
         "lines": [
-          88
+          97
         ],
         "dynamic": false
       }
@@ -42961,7 +42963,7 @@
       {
         "value": "#08141166",
         "lines": [
-          510
+          511
         ],
         "dynamic": false
       },
@@ -42996,14 +42998,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          499
+          500
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          499
+          500
         ],
         "dynamic": false
       },
@@ -43213,7 +43215,7 @@
       {
         "value": "#d9e8ce",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
@@ -43284,7 +43286,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
@@ -43298,7 +43300,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
@@ -43355,7 +43357,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
@@ -43378,802 +43380,802 @@
       {
         "value": "#050c1200",
         "lines": [
-          68
+          65
         ],
         "dynamic": false
       },
       {
         "value": "#050c12bb",
         "lines": [
-          68
+          65
         ],
         "dynamic": false
       },
       {
         "value": "#070e18",
         "lines": [
-          476
+          478
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          501
+          503
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          454
+          451
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          500
+          502
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          462
+          463
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          127,
-          136
+          124,
+          133
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          105,
-          117
+          102,
+          114
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c00",
         "lines": [
-          117
+          114
         ],
         "dynamic": false
       },
       {
         "value": "#100e20ed",
         "lines": [
-          333
+          330
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          698
+          700
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          474,
-          480
+          476,
+          482
         ],
         "dynamic": false
       },
       {
         "value": "#11252d30",
         "lines": [
-          174
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#112b3fee",
         "lines": [
-          436
+          433
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          499
+          501
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          739
+          741
         ],
         "dynamic": false
       },
       {
         "value": "#140c2028",
         "lines": [
-          174
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#142b3f",
         "lines": [
-          841
+          843
         ],
         "dynamic": false
       },
       {
         "value": "#160f16",
         "lines": [
-          207
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#163847dd",
         "lines": [
-          668
+          670
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          682
+          684
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          769
+          771
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          457
+          454
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          555
+          557
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          371
+          368
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          356
+          353
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          657
+          659
         ],
         "dynamic": false
       },
       {
         "value": "#24314820",
         "lines": [
-          174
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#251339",
         "lines": [
-          829
+          831
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          702
+          704
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          448
+          445
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          644
+          646
         ],
         "dynamic": false
       },
       {
         "value": "#455764ad",
         "lines": [
-          268
+          265
         ],
         "dynamic": false
       },
       {
         "value": "#526673d9",
         "lines": [
-          267
+          264
         ],
         "dynamic": false
       },
       {
         "value": "#72b4c9af",
         "lines": [
-          644
+          646
         ],
         "dynamic": false
       },
       {
         "value": "#83749f",
         "lines": [
-          190
+          187
         ],
         "dynamic": false
       },
       {
         "value": "#8b764eaa",
         "lines": [
-          528
+          530
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          540
+          542
         ],
         "dynamic": false
       },
       {
         "value": "#a5787d",
         "lines": [
-          190
+          187
         ],
         "dynamic": false
       },
       {
         "value": "#a893d0",
         "lines": [
-          201
+          198
         ],
         "dynamic": false
       },
       {
         "value": "#a8e8ff",
         "lines": [
-          648
+          650
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          690
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#aab6b1b8",
         "lines": [
-          272
+          269
         ],
         "dynamic": false
       },
       {
         "value": "#ab83d955",
         "lines": [
-          690
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#abb78d66",
         "lines": [
-          280
+          277
         ],
         "dynamic": false
       },
       {
         "value": "#b5a777",
         "lines": [
-          538
+          540
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          829
+          831
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          790
+          792
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          446
+          443
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          490
+          492
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          690
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          658
+          660
         ],
         "dynamic": false
       },
       {
         "value": "#c9d0cb62",
         "lines": [
-          266
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#cda6ef",
         "lines": [
-          337
+          334
         ],
         "dynamic": false
       },
       {
         "value": "#d0af77",
         "lines": [
-          825
+          827
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          663
+          665
         ],
         "dynamic": false
       },
       {
         "value": "#d199aa55",
         "lines": [
-          280
+          277
         ],
         "dynamic": false
       },
       {
         "value": "#d1c9acaf",
         "lines": [
-          566
+          568
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          742
+          744
         ],
         "dynamic": false
       },
       {
         "value": "#d8c998bb",
         "lines": [
-          272
+          269
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          462
+          464
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          829
+          831
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          827
+          829
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          538
+          540
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          462
+          464
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          683
+          685
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          810
+          812
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          650
+          652
         ],
         "dynamic": false
       },
       {
         "value": "#e5a184",
         "lines": [
-          201
+          198
         ],
         "dynamic": false
       },
       {
         "value": "#e6b0fa22",
         "lines": [
-          495
+          497
         ],
         "dynamic": false
       },
       {
         "value": "#e6c6ff",
         "lines": [
-          338
+          335
         ],
         "dynamic": false
       },
       {
         "value": "#e7616355",
         "lines": [
-          809
+          811
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          809
+          811
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          790
+          792
         ],
         "dynamic": false
       },
       {
         "value": "#ef8b65",
         "lines": [
-          201
+          198
         ],
         "dynamic": false
       },
       {
         "value": "#f2e3b9",
         "lines": [
-          826
+          828
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          809
+          811
         ],
         "dynamic": false
       },
       {
         "value": "#f3d8ac",
         "lines": [
-          495,
-          677
+          497,
+          679
         ],
         "dynamic": false
       },
       {
         "value": "#f3dbaf",
         "lines": [
-          361
+          358
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          356
+          353
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          538
+          540
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          698
+          700
         ],
         "dynamic": false
       },
       {
         "value": "#ff7850",
         "lines": [
-          276
+          273
         ],
         "dynamic": false
       },
       {
         "value": "#ff9c6238",
         "lines": [
-          702
+          704
         ],
         "dynamic": false
       },
       {
         "value": "#ffac69",
         "lines": [
-          276
+          273
         ],
         "dynamic": false
       },
       {
         "value": "#ffb385",
         "lines": [
-          446
+          443
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          702
+          704
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          477
+          479
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          810
+          812
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          446
+          443
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          490
+          492
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          732
+          734
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          538,
-          732
+          540,
+          734
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          739
+          741
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          644
+          646
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          650
+          652
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          690
+          692
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          667
+          669
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b98c",
         "lines": [
-          280
+          277
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          440,
-          663
+          437,
+          665
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          372
+          369
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          437
+          434
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          475,
-          480,
-          481,
-          484,
-          702
+          477,
+          482,
+          483,
+          486,
+          704
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c8",
         "lines": [
-          338
+          335
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          128,
-          137
+          125,
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          693
+          695
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          830
+          832
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          668
+          670
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          657
+          659
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          451
+          448
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff00",
         "lines": [
-          99
+          96
         ],
         "dynamic": false
       },
       {
         "value": "#ffffffff",
         "lines": [
-          99
+          96
         ],
         "dynamic": false
       }

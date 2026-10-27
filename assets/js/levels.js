@@ -2,6 +2,7 @@
 'use strict';
 // Shared progression rules also load before the standalone save validator.
 const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>60+(n-1)*35});
+const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},

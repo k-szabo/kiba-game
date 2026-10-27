@@ -472,6 +472,22 @@
           "en": "Spirit Dash’s purple trail is now visible in the Council Hall."
         }
       ]
+    },
+    {
+      "version": "0.9.50_62518b15",
+      "code": "62518b15",
+      "baseVersion": "0.9.50",
+      "slug": "shadow-den-health-and-shield-training",
+      "summary": {
+        "hu": "Árnyékzugi életcsíkok és Kiba-pajzs",
+        "en": "Shadow Den health bars and Kiba Shield"
+      },
+      "fixes": [
+        {
+          "hu": "Az ellenséges árnyékzugiak életcsíkot kaptak. A megszerzett Kiba-pajzs újratöltését visszaszámláló mutatja, a szentélyeknél pedig növelhető az elnyelése és csökkenthető az újratöltési ideje.",
+          "en": "Hostile Shadow Den residents now show health bars. A countdown tracks the acquired Kiba Shield’s recharge; shrine upgrades increase absorption and reduce recharge time."
+        }
+      ]
     }
   ],
   "releases": [
@@ -1064,6 +1080,26 @@
         {
           "hu": "Belső karbantartás és technikai fejlesztések.",
           "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    },
+    {
+      "version": "0.9.50_8249ceed",
+      "code": "8249ceed",
+      "baseVersion": "0.9.50",
+      "slug": "steady-scenery-and-image-cache",
+      "summary": {
+        "hu": "Stabilabb tájak és képi gyorsítótár",
+        "en": "Steadier scenery and image cache"
+      },
+      "fixes": [
+        {
+          "hu": "A hátterek támadás közben is a terephez igazodnak az Árnyékzugban és a többi érintett helyszínen.",
+          "en": "Backgrounds stay aligned with the terrain during attacks in the Shadow Den and other affected locations."
+        },
+        {
+          "hu": "A játék kiadásonként elkülönített helyi képgyorsítótárat használ, és automatikusan törli a saját korábbi gyorsítótárait.",
+          "en": "The game uses a local image cache for each release and automatically removes its own older caches."
         }
       ]
     }

@@ -1,0 +1,35 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const code=fs.readFileSync(path.join(__dirname,'../assets/js/asset-cache.js'),'utf8');
+const png=()=>new Response('valid-image',{headers:{'Content-Type':'image/png'}});
+function fixture(options={}){
+ const records=new Map(),preferences=new Map(options.disabled?[['cacheDisable','true']]:[]),calls={fetch:[],open:[],deleted:[],puts:[],direct:[],revoked:[]},blobs=new Map(),listeners={};let serial=0;
+ class URLMock extends URL{static createObjectURL(blob){const key='blob:test-'+(++serial);blobs.set(key,blob);return key;}static revokeObjectURL(key){calls.revoked.push(key);blobs.delete(key);}}
+ const caches={async keys(){if(options.denied)throw Error('Denied');return [...records.keys()];},async delete(key){calls.deleted.push(key);return records.delete(key);},async open(key){calls.open.push(key);if(options.openError)throw Error('Open failed');if(!records.has(key))records.set(key,new Map());const entries=records.get(key);return{async match(url){if(options.matchError)throw Error('Read failed');if(options.gate)await options.gate;return entries.get(url)?.clone();},async put(url,response){calls.puts.push(url);if(options.quota)throw Error('Quota');entries.set(url,response.clone());},async delete(url){return entries.delete(url);}};}};
+ class ImageMock{
+  complete=false;naturalWidth=0;
+  set src(value){this.value=value;this.complete=false;if(!value.startsWith('blob:'))calls.direct.push(value);queueMicrotask(async()=>{const bad=options.imageError||value.startsWith('blob:')&&(await blobs.get(value)?.text())==='corrupt';this.complete=true;this.naturalWidth=bad?0:100;if(bad)this.onerror?.();else this.onload?.();});}
+ }
+ const sandbox={console,Promise,Map,URL:options.noURL?undefined:URLMock,document:{baseURI:options.base||'https://example.github.io/kiba-game/index.html'},location:{href:'https://example.github.io/kiba-game/'},GAME_RELEASE:{version:'0.9.50_aaaaaaaa',bugfixHistory:{'0.9.50':['zzzzzzzz','aaaaaaaa']}},caches:options.noCache?undefined:caches,localStorage:{getItem:k=>preferences.get(k)||null,setItem(k,v){if(options.storageError)throw Error('Denied');preferences.set(k,v);}},addEventListener:(name,fn)=>listeners[name]=fn,fetch:async(url,settings)=>{calls.fetch.push({url,settings});if(options.networkError)throw Error('Offline');return options.response?options.response():png();}};
+ vm.createContext(sandbox);vm.runInContext(code+';globalThis.subject=AssetCache;',sandbox);
+ const load=source=>new Promise(resolve=>sandbox.subject.load(new ImageMock(),source||'assets/images/momo.png',ok=>resolve(ok)));
+ return{api:sandbox.subject,records,preferences,calls,load,listeners,sandbox,ImageMock};
+}
+(async()=>{
+ const f=fixture(),prefix=f.api.name.slice(0,-'0.9.50_aaaaaaaa'.length);
+ for(const suffix of ['0.9.49_12345678','0.9.50_zzzzzzzz','0.9.50','0.9.51_12345678','0.9.50_unknown1'])f.records.set(prefix+suffix,new Map());f.records.set('unrelated',new Map());f.records.set('kiba-images:%2Fother%2F:0.1.0',new Map());
+ assert(await f.load());await Promise.resolve();assert.equal(f.calls.fetch.length,1);assert.equal(f.calls.puts.length,1);assert(f.records.has(f.api.name));assert.deepEqual(f.calls.deleted,[prefix+'0.9.49_12345678',prefix+'0.9.50_zzzzzzzz',prefix+'0.9.50']);assert(f.records.has(prefix+'0.9.51_12345678'));assert(f.records.has('unrelated'));
+ assert(await f.load());assert.equal(f.calls.fetch.length,1,'Warm reads use the persistent response');assert.equal(f.calls.revoked.length,2,'Every decoded blob URL is released');assert.equal(f.calls.direct.length,0);assert(f.calls.fetch[0].url.endsWith('/kiba-game/assets/images/momo.png?v=0.9.50_aaaaaaaa'));
+ assert(f.api.setDisabled(true));assert(await f.load());assert.equal(f.calls.fetch.at(-1).settings.cache,'no-store');assert.equal(f.calls.puts.length,1);assert(f.api.setDisabled(false));assert(await f.load());assert.equal(f.calls.fetch.length,2);
+ f.preferences.set('cacheDisable','true');f.listeners.storage({key:'cacheDisable'});assert(f.api.disabled);assert(!f.api.setDisabled('true'));
+ for(const option of [{disabled:true},{noCache:true},{denied:true},{openError:true},{matchError:true},{quota:true},{networkError:true},{noURL:true},{response:()=>new Response('missing',{status:404})},{response:()=>new Response('<html>',{headers:{'Content-Type':'text/html'}})}]){
+  const h=fixture(option);assert(await h.load(),'Optional cache failure cannot block native image loading: '+JSON.stringify(option));if(option.disabled){assert.equal(h.calls.open.length,0);assert.equal(h.calls.puts.length,0);assert.equal(h.calls.fetch[0].settings.cache,'no-store');}if(option.response)assert.equal(h.calls.puts.length,0);
+ }
+ const bad=fixture();bad.records.set(bad.api.name,new Map([['https://example.github.io/kiba-game/assets/images/momo.png?v=0.9.50_aaaaaaaa',new Response('corrupt',{headers:{'Content-Type':'image/png'}})]]));assert(await bad.load());assert.equal(bad.records.get(bad.api.name).size,0,'Decode failure evicts poisoned responses');assert.equal(bad.calls.direct.length,1);
+ const fail=fixture({imageError:true});assert.equal(await fail.load(),false);assert.equal(fail.calls.puts.length,0);
+ const storage=fixture({storageError:true});assert.equal(storage.api.setDisabled(true),false);assert.equal(storage.api.disabled,false);
+ let unblock;const race=fixture({gate:new Promise(resolve=>unblock=resolve)}),loading=race.load();await new Promise(resolve=>setImmediate(resolve));race.api.setDisabled(true);unblock();assert(await loading);assert.equal(race.calls.puts.length,0,'A request started before disabling cannot write later');assert.equal(race.calls.fetch[0].settings.cache,'no-store');
+ const root=fixture({base:'https://example.github.io/'});assert(await root.load());assert.equal(root.api.name,'kiba-images:%2F:0.9.50_aaaaaaaa');assert(await root.load('https://external.example/image.png'));assert.equal(root.calls.fetch.length,1,'External images cannot enter the project cache');
+ const h=require('./test-harness.cjs')(),r=h.run;r('DevTools.open()');const writes=r('window.__saveSnapshots.length'),normal=r('JSON.stringify(saved)'),input=h.elements.get('devToolsList').children.find(x=>x.className==='dev-cache-setting').children[0].children[0];assert.equal(input.type,'checkbox');input.checked=true;input.onchange();assert(r('AssetCache.disabled'));assert.equal(h.storage.get('cacheDisable'),'true');assert.equal(r('window.__saveSnapshots.length'),writes);assert.equal(r('JSON.stringify(saved)'),normal);r('DevTools.close();DevTools.open()');input.checked=false;input.onchange();assert(r('AssetCache.disabled'),'Stale checkbox callbacks cannot mutate settings');
+ console.log('PASS: version/project-scoped Cache API hits/misses and ordered cleanup, future/sibling isolation, blob lifetime, corrupted/error/quota/offline fallback, disable races/storage preference and accessible stale-safe developer checkbox without save writes.');
+})().catch(error=>{console.error(error);process.exitCode=1;});

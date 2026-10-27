@@ -16,6 +16,13 @@ const DevTools=(()=>{
   const currentSession=session,currentRender=++render;
   if(opened)for(const tool of tools.values()){
    const valid=()=>opened&&currentSession===session&&currentRender===render&&state==='developer'&&(!tool.available||tool.available());
+   if(tool.checkbox){
+    const group=document.createElement('section'),label=document.createElement('label'),input=document.createElement('input'),description=document.createElement('p');
+    group.className='dev-cache-setting';input.id='dev-tool-'+tool.id;input.type='checkbox';input.checked=!!tool.toggled();input.disabled=!!tool.available&&!tool.available();label.htmlFor=input.id;
+    const caption=document.createElement('span');caption.textContent=I18n.t(tool.labelKey);label.append(input,caption);description.id=input.id+'-help';description.textContent=I18n.t(tool.descriptionKey);input.setAttribute('aria-describedby',description.id);
+    input.onchange=()=>{if(!valid())return;try{const result=tool.run({checked:input.checked});message=result===false?'dev.invalid':'dev.applied';}catch{message='dev.toolError';}refresh();};
+    group.append(label,description);list.append(group);continue;
+   }
    const controls=[],fields=tool.fields?.()||[];
    const group=fields.length?document.createElement('section'):list;
    if(fields.length){group.className='dev-tool-fields';list.append(group);}

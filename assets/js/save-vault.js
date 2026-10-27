@@ -14,7 +14,9 @@ const SaveVault=(()=>{
   const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+bossBonusPoints(levels.map(map=>map.progressFlags));
   if(!p||!integer(p.level,1,levelLimit)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,Number.MAX_SAFE_INTEGER))return false;
   if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,statLimit)))return false;
-  if(p.points+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
+  const shield=Object.hasOwn(p.stats,'shield')?p.stats.shield:0;
+  if(!integer(shield,0,statLimit)||shield>0&&!worldFlags[3]?.includes('kibaShield'))return false;
+  if(p.points+shield+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
   let xp=p.totalXp,level=1;while(level<levelLimit&&xp>=xpForLevel(level)){xp-=xpForLevel(level);level++;}
   return level===p.level&&p.xp===(level===levelLimit?0:xp);
  }

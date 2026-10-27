@@ -989,11 +989,21 @@
       "fia.conflict.provoked": "Szóval a halált választod.",
       "fia.conflict.victory": "Fia lángja kialszik. Az Árnyékzugban egyenként fordulnak Momo felé az arcok. Többé nem vendég közöttük.",
       "ability.kibaShield": "Kiba-pajzs",
-      "ability.kibaShield.description": "Passzívan legfeljebb 2 sebzést nyel el. Törés után 12 aktív játékmásodperc alatt újratölt. A halálos lezuhanást nem akadályozza meg.",
+      "ability.kibaShield.description": "Passzívan legfeljebb {0} sebzést nyel el. Törés után {1} aktív játékmásodperc alatt újratölt. A szentélyeknél fejleszthető. A halálos lezuhanást nem akadályozza meg.",
       "ability.kibaShield.status": "Kiba-pajzs: {0}/{1}",
       "menu.changelog.0949.title": "Fia új megbízása",
       "menu.changelog.0949.0": "Az arénagyőzelem után Fia új küldetést ad a templom emlékéhez; jutalma XP és gyorshasználatra kijelölhető sült csirkecomb.",
-      "menu.changelog.0949.1": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0949.1": "Belső karbantartás és technikai fejlesztések.",
+      "dev.cache.disable": "Képek gyorsítótárának kikapcsolása",
+      "dev.cache.help": "A már betöltött képek a memóriában maradnak; a teljes ellenőrzéshez töltsd újra az oldalt.",
+      "menu.changelog.0950.title": "Stabilabb tájak és képi gyorsítótár",
+      "menu.changelog.0950.0": "A hátterek támadás közben is a terephez igazodnak az Árnyékzugban és a többi érintett helyszínen.",
+      "menu.changelog.0950.1": "A játék kiadásonként elkülönített helyi képgyorsítótárat használ, és automatikusan törli a saját korábbi gyorsítótárait.",
+      "ability.kibaShield.recharge": "Újratöltés: {0} mp",
+      "ability.kibaShield.training": "+0,25 elnyelt sebzés, −0,5 mp újratöltés",
+      "ability.kibaShield.training.value": "{0} elnyelés · {1} mp újratöltés",
+      "menu.changelog.0950shield.title": "Árnyékzugi életcsíkok és Kiba-pajzs",
+      "menu.changelog.0950shield.0": "Az ellenséges árnyékzugiak életcsíkot kaptak. A megszerzett Kiba-pajzs újratöltését visszaszámláló mutatja, a szentélyeknél pedig növelhető az elnyelése és csökkenthető az újratöltési ideje."
     }
   },
   "en": {
@@ -1986,11 +1996,21 @@
       "fia.conflict.provoked": "So you choose death.",
       "fia.conflict.victory": "Fia’s flame goes out. One by one, the faces of the Shadow Den turn toward Momo. He is no longer their guest.",
       "ability.kibaShield": "Kiba Shield",
-      "ability.kibaShield.description": "Passively absorbs up to 2 damage. Recharges 12 seconds after breaking, while gameplay is active. It cannot prevent a fatal fall.",
+      "ability.kibaShield.description": "Passively absorbs up to {0} damage. Recharges {1} seconds after breaking, while gameplay is active. Upgrade it at shrines. It cannot prevent a fatal fall.",
       "ability.kibaShield.status": "Kiba Shield: {0}/{1}",
       "menu.changelog.0949.title": "Fia’s new request",
       "menu.changelog.0949.0": "After the arena victory, Fia offers a new quest tied to the temple’s memory, rewarding XP and roast chicken that can be assigned to quick use.",
-      "menu.changelog.0949.1": "Internal maintenance and technical improvements."
+      "menu.changelog.0949.1": "Internal maintenance and technical improvements.",
+      "dev.cache.disable": "Disable image cache",
+      "dev.cache.help": "Loaded images remain in memory; reload the page for a complete check.",
+      "menu.changelog.0950.title": "Steadier scenery and image cache",
+      "menu.changelog.0950.0": "Backgrounds stay aligned with the terrain during attacks in the Shadow Den and other affected locations.",
+      "menu.changelog.0950.1": "The game uses a local image cache for each release and automatically removes its own older caches.",
+      "ability.kibaShield.recharge": "Recharging: {0}s",
+      "ability.kibaShield.training": "+0.25 damage absorption, −0.5s recharge",
+      "ability.kibaShield.training.value": "{0} absorption · {1}s recharge",
+      "menu.changelog.0950shield.title": "Shadow Den health bars and Kiba Shield",
+      "menu.changelog.0950shield.0": "Hostile Shadow Den residents now show health bars. A countdown tracks the acquired Kiba Shield’s recharge; shrine upgrades increase absorption and reduce recharge time."
     }
   }
 }

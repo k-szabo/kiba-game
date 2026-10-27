@@ -42,10 +42,7 @@ const Visuals = (() => {
       progress();
       resolve(ok);
     };
-    image.onload = () => finish(true);
-    image.onerror = () => finish(false);
-    image.src = src;
-    if (image.complete && image.naturalWidth) finish(true);
+    AssetCache.load(image,src,finish);
   })));
   const usable = key => images[key]?.complete && images[key].naturalWidth > 0;
   const faction = () => ['japan', 'yomi', 'heaven', 'shadowCult'][realm];
@@ -459,7 +456,12 @@ const Visuals = (() => {
       }
     }
     if(e.miniboss)miniEffects(e,height);
-    if(!isBoss&&!e.miniboss&&e.hp<e.maxHp){ctx.fillStyle='#0a172bcc';ctx.fillRect(x-19,feet-height-17,38,3);ctx.fillStyle=e.kind==='shield'?'#ddba72':'#d99583';ctx.fillRect(x-19,feet-height-17,38*Math.max(0,e.hp/e.maxHp),3);}
+    if(!isBoss&&!e.miniboss)healthBar(e,x,feet,height,38,3);
+  }
+  function healthBar(e,x=e.x+e.w/2,feet=e.y+e.h,height=e.h,width=38,thickness=3){
+    if(e.dead||!Number.isFinite(e.hp)||!Number.isFinite(e.maxHp)||e.maxHp<=0||e.hp>=e.maxHp)return;
+    ctx.save();ctx.globalAlpha=1;ctx.fillStyle='#0a172bcc';ctx.fillRect(x-width/2,feet-height-17,width,thickness);
+    ctx.fillStyle=e.kind==='shield'?'#ddba72':'#d99583';ctx.fillRect(x-width/2,feet-height-17,width*clamp(e.hp/e.maxHp,0,1),thickness);ctx.restore();
   }
   function serpentActor(e){
     if(e.dead||!e.active||e.phase==='dormant')return;
@@ -842,5 +844,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
 })();

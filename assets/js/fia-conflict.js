@@ -4,6 +4,14 @@ const FiaConflict=(()=>{
  let encounter=null,serial=0,shield=0,recharge=0,shieldFlash=0,shieldBreak=0;
  const clone=data=>JSON.parse(JSON.stringify(data));
  const owned=()=>flags[3].includes('kibaShield');
+ const profile=()=>{const rank=clamp(progression.stats.shield||0,0,STAT_LIMIT),rules=KIBA_SHIELD_RULES;return {capacity:rules.capacity+rank*rules.capacityStep,recharge:rules.recharge-rank*rules.rechargeStep};};
+ const number=value=>Number(value.toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2});
+ const description=()=>{const p=profile();return I18n.format('ability.kibaShield.description',[number(p.capacity),number(p.recharge)]);};
+ function statusHUD(){
+  const node=$('kibaShieldStatus');node.hidden=!owned()||Prologue.active||state==='menu';if(node.hidden)return;
+  const label=shield>0?I18n.format('ability.kibaShield.status',[number(shield),number(profile().capacity)]):I18n.t('ability.kibaShield')+' · '+I18n.format('ability.kibaShield.recharge',[Math.ceil(recharge)]);
+  if(node.textContent!==label)node.textContent=label;node.title=description();
+ }
  const slain=()=>flags[3].includes('fiaSlain');
  const location=()=>level===shadowDen?'shadowDen':level===fiaChambers?'fiaChambers':null;
  const blocked=()=>!!encounter;
@@ -73,18 +81,19 @@ const FiaConflict=(()=>{
   return !slain();
  }
  const retaliator=e=>!!e?.denRetaliation&&slain()&&!!location()&&enemies.includes(e);
- function resetPlayer(){shieldFlash=shieldBreak=0;shield=owned()?2:0;recharge=0;FiaCombat.clear();}
+ function clampProfile(){if(!owned()){shield=recharge=0;return;}const p=profile();shield=Math.min(shield,p.capacity);recharge=Math.min(recharge,p.recharge);}
+ function resetPlayer(){shieldFlash=shieldBreak=0;shield=owned()?profile().capacity:0;recharge=0;FiaCombat.clear();}
  function update(dt){
   if(state!=='play'||Prologue.active||!Number.isFinite(dt)||dt<=0)return;
   FiaCombat.updateStatus(dt);shieldFlash=Math.max(0,shieldFlash-dt);shieldBreak=Math.max(0,shieldBreak-dt);
-  if(owned()&&shield<=0){recharge=Math.max(0,recharge-dt);if(recharge<=0)shield=2;}
+  if(owned()&&shield<=0){recharge=Math.max(0,recharge-dt);if(recharge<=0)shield=profile().capacity;}
   if(blocked()){
    const a=arena(level),x=clamp(player.x,a.x,a.x+a.w-player.w);if(x!==player.x){player.x=x;player.vx=0;}
   }
  }
  function absorb(amount){
   if(!owned()||!Number.isFinite(amount)||amount<=0||shield<=0)return amount;
-  shieldFlash=.22;const absorbed=Math.min(amount,shield);shield-=absorbed;if(shield<1e-9){shield=0;recharge=12;shieldBreak=.5;}
+  shieldFlash=.22;const absorbed=Math.min(amount,shield);shield-=absorbed;if(shield<1e-9){shield=0;recharge=profile().recharge;shieldBreak=.5;}
   burst(player.x+player.w/2,player.y+player.h*.5,'#d8b9ef',8);return Math.max(0,amount-absorbed);
  }
  function hud(){
@@ -93,6 +102,6 @@ const FiaConflict=(()=>{
   if(e&&!e.dead){$('bossName').textContent=I18n.t('fia.name');$('bossHealth').style.width=clamp(e.hp/e.maxHp*100,0,100)+'%';}
   return true;
  }
- return Object.freeze({blocked,current,friendly,pendingSave,restoreAnchor,clear,abort,provoke,replay,onDefeated,populateHostiles,npcVisible,retaliator,resetPlayer,update,absorb,hud,owned,slain,
+ return Object.freeze({blocked,current,friendly,pendingSave,restoreAnchor,clear,abort,provoke,replay,onDefeated,populateHostiles,npcVisible,retaliator,resetPlayer,update,absorb,hud,statusHUD,profile,clampProfile,number,description,owned,slain,
   get shieldFlash(){return shieldFlash;},get shieldBreak(){return shieldBreak;},get shield(){return shield;},get recharge(){return recharge;},get enemy(){return encounter?.enemy||null;}});
 })();
