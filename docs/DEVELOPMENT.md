@@ -51,6 +51,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/art-data.js` | A betöltött képek listája és sprite-kivágások. |
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
+| `assets/js/fia-quest.js`, `fia-conflict.js`, `fia-combat.js`, `fia-art.js` | Fia második megbízása, visszaállítható provokáció, tartós ellenségesség és passzív pajzs; [spoileres referencia](FIA-JOURNEY.md). |
 | `assets/js/save-vault.js` | Titkosított, profilhoz és kiadáshoz kötött mentés, verzióváltáskor haladásreset. |
 | `assets/config/release.json` | Közös játékverzió és alfa/béta mentésreset-politika. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |

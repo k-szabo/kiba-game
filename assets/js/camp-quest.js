@@ -27,6 +27,7 @@ const CampQuest=(()=>{
   resetCamera();updateHUD();if(save)persist();return true;
  }
  function enter(id,{point=null,atShrine=false,save=true}={}){
+  if(FiaConflict.blocked()&&!DevSession.active)return false;
   if(typeof id!=='string'||!Object.hasOwn(SIDE_LOCATIONS,id)||Prologue.active&&!DevSession.active||!eligible(id))return false;
   const map=SIDE_LOCATIONS[id].map,rest=point==null?(map.checkpoints?.[0]||map.rests[0]):[...map.rests,...(map.checkpoints||[])].find(candidate=>candidate.id===point.id);
   if(map.dungeon?.id==='sectFall'&&!DevSession.active&&!abilities[1])return false;
@@ -37,7 +38,7 @@ const CampQuest=(()=>{
   const hp=player?.hp;
   enterRealm(SIDE_LOCATIONS[id].realm);level=map;platforms=map.platforms.map(platform=>({...platform,dx:0}));levelTime=0;
   checkpoint={...rest};enemies=createEnemies();boss=createBoss();boss.dead=true;bossStarted=false;
-  initPlayer(atShrine?checkpoint:map.start);if(!atShrine)restoreHp(hp);
+  initPlayer(atShrine?checkpoint:map.start);FiaConflict.populateHostiles();if(!atShrine)restoreHp(hp);
   return finishEntry(save);
  }
  function leave(){
@@ -126,6 +127,7 @@ const CampQuest=(()=>{
   },{right:'campMaster',button:'camp.master.retry'});return true;
  }
  function questMarker(id){
+  const fiaMarker=FiaQuest.questMarker(id);if(fiaMarker)return fiaMarker;
   const arenaMarker=ArenaChallenge.questMarker(id);if(arenaMarker)return arenaMarker;
   if(Prologue.active||state==='menu')return null;
   if(id==='daichi'&&level===forestCamp&&defeated[0])return !owns('campQuestAccepted')?'!':rescueFlags.every(owns)&&!owns('campQuestCompleted')?'?':null;

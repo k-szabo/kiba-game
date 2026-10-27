@@ -92,7 +92,7 @@ const DungeonRun=(()=>{
   if(!owns(reward.claim)){flags[spec.realm].push(reward.claim);progression.points+=reward.points;if(reward.soul&&!owns(reward.soul))flags[spec.realm].push(reward.soul);}
   pending=[];for(const e of enemies)if(e.dungeonSummon){e.dead=true;e.active=false;}
   projectiles=projectiles.filter(p=>p.source!==DungeonCombat.source(enemy)&&p.source!=='dungeon-minion');
-  Merchant.award(reward.coins);awardXP(reward.xp);persist();updateHUD();
+  FiaQuest.onPriestessDefeated(enemy);Merchant.award(reward.coins);awardXP(reward.xp);persist();updateHUD();
   if(index===2)story(spec.name,enemy.name,spec.victory);return true;
  }
  function openChest(){

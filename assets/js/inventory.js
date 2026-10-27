@@ -35,10 +35,11 @@ const Inventory=(()=>{
    rows=[['text.health',CampHealth.number(player.hp)+' / '+CampHealth.number(player.maxHp)],
     ['binding.action.attack',number(playerAttackDamage('normal'))],['binding.action.heavyAttack',number(playerAttackDamage('heavy'))]],
    list=$('inventoryStats');
+  if(FiaConflict.owned())rows.push(['ability.kibaShield',number(FiaConflict.shield)+' / 2']);
   list.replaceChildren();
   for(const [key,value] of rows){
    const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');
-   row.className='inventory-stat';row.dataset.stat=key;label.textContent=I18n.t(key);amount.textContent=value;
+   row.className='inventory-stat';if(key==='ability.kibaShield')row.title=I18n.t('ability.kibaShield.description');row.dataset.stat=key;label.textContent=I18n.t(key);amount.textContent=value;
    row.append(label,amount);list.append(row);
   }
   const armor=document.createElement('div');armor.className='inventory-stat inventory-stat-armor';armor.dataset.stat='service.armor';
@@ -59,7 +60,7 @@ const Inventory=(()=>{
   $('inventoryQuantity').hidden=!item?.stack;
   $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
   $('useInventoryItem').hidden=!healing&&!enhancement&&!(weapon&&id!=='weapon')&&!isTalisman(id);
-  $('useInventoryItem').disabled=enhancement?!DungeonRun.canConsume(id):isTalisman(id)?false:id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
+  $('useInventoryItem').disabled=enhancement?!DungeonRun.canConsume(id):isTalisman(id)?false:id==='roastChicken'?!FiaQuest.canEat():id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
   $('useInventoryItem').textContent=I18n.t(enhancement?'dungeon.enhancement.apply':isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
   $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
@@ -116,7 +117,7 @@ const Inventory=(()=>{
    if(isTalisman(selected)){const next=equippedTalisman?null:talisman;if(SerpentRelics.equip(next)){selected=next?'equippedTalisman':talisman;render();}}
    else if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
    else if(isEnhancement(selected)){if(DungeonRun.consume(selected))render();}
-   else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);
+   else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);else if(selected==='roastChicken')FiaQuest.eat(true);
   };
   $('sellInventoryItem').onclick=()=>{
    if(!Merchant.canSell(selected))return;

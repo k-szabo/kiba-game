@@ -154,3 +154,7 @@ Célzott ellenőrzések: `test-dungeon-rules.cjs`, `test-dungeon-run.cjs`, `test
 ## A Szekta Bukása – spoileres fejlesztői rész
 
 A `cultDungeon1`, `cultDungeon2`, `cultDungeon3` külön teleportcélok, saját boss előtti oltárral. Az újraélesztő az adott szint `cultTempleGuard`, `woundedAngel`, illetve `cultHighPriestess` bossát használja; a replay nem oszt jutalmat vagy haladást. A `highPriestessSoul` és a halmozható `sectSeal` az inventoryba adható. A két dungeon runja különálló, készletük és ötös enhancement-korlátjuk közös. Tesztmódban a normál mentés változatlan marad. Célzott ellenőrzés: `node --run test:cult-dungeon`.
+
+## Fia új megbízása és titkos harca – spoileres fejlesztői rész
+
+Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengeance` replayt kínál. Ez nem írja a halál-, aréna- vagy küldetésjelzőket, és nem ad jutalmat. A `priestessTalisman`, `roastChicken` és `kitsuneSoul` a tárgyadóban elérhető; a Kiba-pajzs a képességadóban külön passzív elem, nem változtatja a dupla ugrás/dash indexeit. A dev-kísérlet megszakítása és vége megőrzi a normál mentést. Részletek és validálás: [FIA-JOURNEY.md](FIA-JOURNEY.md).

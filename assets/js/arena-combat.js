@@ -10,7 +10,7 @@ const ArenaCombat=(()=>{
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss);
  const profile=e=>profiles[e.miniboss];
  const source=e=>'arena:'+e.id;
- const current=e=>is(e)&&realm===3&&level.id==='shadowArena'&&enemies.includes(e)&&!e.dead;
+ const current=e=>is(e)&&realm===3&&(level.id==='shadowArena'||FiaConflict.retaliator(e))&&enemies.includes(e)&&!e.dead;
  const protects=e=>is(e)&&e.miniboss==='arenaFia'&&e.phase!=='exhausted';
  function phase(e,next,duration){
   e.phase=next;e.clock=duration;e.phaseDuration=duration;e.windup=next==='windup'?duration:0;e.windupDuration=duration;

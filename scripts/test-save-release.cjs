@@ -452,4 +452,5 @@ async function main(){
  assert.ok([...env.opened,...update.opened,...race.opened].every(name=>name==='momo-save-v2'));
  console.log('Save release: reload, merchant currency/meat/tea/purchases and invalid saves, forest camp travel/checkpoint/reset, permanent Daisy placement, boss souls and bonus points, version reset, legacy discard, preferences, consumed key, stale clients, crypto binding, and concurrent initialization passed.');
 }
-main().catch(error=>{console.error(error);process.exitCode=1;});
+if(require.main===module)main().catch(error=>{console.error(error);process.exitCode=1;});
+module.exports={storageEnvironment,client,fixture};

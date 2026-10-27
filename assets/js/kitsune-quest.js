@@ -8,7 +8,7 @@ const KitsuneQuest=(()=>{
  const rescued=()=>owns('fiaRescued'),missed=()=>owns('fiaMissed');
  // This location-specific exclusion is shared by NPC rendering, prompts and
  // direct dialogue callbacks through campNPCVisible. Other residents stay put.
- const npcVisible=npc=>npc?.id!=='fia'||level!==shadowDen||!owns('arenaChampion');
+ const npcVisible=npc=>FiaConflict.npcVisible(npc)&&(npc?.id!=='fia'||level!==shadowDen||!owns('arenaChampion'));
  const hunterDefeated=()=>owns('guardian:prisonHunter');
  function rememberSeen(){
   if(!prison()||!hunterDefeated()||owns('fiaSeen')||rescued()||missed()||!overlap(player,level.fiaDetection))return false;
