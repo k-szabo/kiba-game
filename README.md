@@ -2,6 +2,8 @@
 
 [English](README.en.md)
 
+**Fejlesztési állapot: béta.**
+
 Egy kis shiba szamuráj. Veszélyes birodalmak. Egy apa, akit haza kell hozni.
 
 **[Játssz a böngészőben →](https://k-szabo.github.io/kiba-game/)** · [Játékmenet és segítség](docs/GAMEPLAY.md) · [Fejlesztői útmutató](docs/DEVELOPMENT.md)

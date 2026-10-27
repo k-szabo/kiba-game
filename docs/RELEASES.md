@@ -1,5 +1,7 @@
 # Kiadások és visszakereshető hibajavítások
 
+A játék a `0.9.48_9c622a1b` kiadástól béta állapotú. A főmenü HU/EN verziójelölése `BÉTA` / `BETA`; a nyolckarakteres kiadásazonosító és az új verziók közötti mentésreset szabálya változatlan. A béta átállás a még nem publikált második dungeon kiadásának része, nem írja át a kiadási nyilvántartás történeti rekordjait.
+
 Minden új kiadás, funkció és hibajavítás egyaránt `major.minor.patch_8hex` formátumot használ, például `0.9.14_8a586f97`. A feature új alapverziót kap, a javítás megtartja az aktuális alapverziót. A generátor `0–9`, `a–f` karaktereket használ. A korábbi, már közzétett egyszerű verzióazonosítókat nem írjuk át.
 
 A kód a kiadás **jóváhagyott HU/EN metaadatának** SHA-256 lenyomatából az első nyolc hexadecimális karakter. Nem véletlenszám, dátum, gépfüggő adat vagy a generált runtime hash-e. Azonos metaadatból minden gépen ugyanaz lesz; a build nem készít új verziót. A normalizált alapverzió, slug, összefoglaló és változáslista egyszerre dokumentálja a kiadást és adja a kód bemenetét. A rövid kód nem biztonsági ellenőrzőösszeg.
