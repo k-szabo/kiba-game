@@ -162,7 +162,7 @@ const Prologue=(()=>{
   function cover(image,alpha=1){
     if(!image?.complete||!image.naturalWidth)return;
     const s=Math.max(viewW/image.naturalWidth,H/(image.naturalHeight||image.naturalWidth));
-    ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(image,(viewW-image.naturalWidth*s)/2,(H-(image.naturalHeight||image.naturalWidth)*s)/2,image.naturalWidth*s,(image.naturalHeight||image.naturalWidth)*s);ctx.restore();
+    ctx.save();ctx.globalAlpha=alpha;BackgroundMotion.draw(image,(viewW-image.naturalWidth*s)/2,(H-(image.naturalHeight||image.naturalWidth)*s)/2,image.naturalWidth*s,(image.naturalHeight||image.naturalWidth)*s);ctx.restore();
   }
   function fog(x,y,w,h,alpha=.2){
     const g=ctx.createRadialGradient(x,y,1,x,y,w);g.addColorStop(0,'#b999d6');g.addColorStop(1,'#35214600');

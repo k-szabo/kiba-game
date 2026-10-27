@@ -87,7 +87,7 @@ Az oldalhelyszínek céljai a meglévő lokalizált helyszín- és szentélyneve
 
 ## Mentés, halál és új emlékút
 
-A mentés a `dungeon` mezőben tárolja a `run`, `roll`, `stock` és `boosts` adatokat; a világjelzők az előrehaladás és a jutalmak jogcímei. A validátor a pályasorrendet, a kapu- és Yomi-boss-előfeltételt, a készleteket és az ötös korlátokat is ellenőrzi. Korábbi kiadásból nincs migráció: az alfa/béta kiadásreset itt is érvényes.
+A mentés a `dungeon` mezőben tárolja a `run`, `roll`, `stock` és `boosts` adatokat; a világjelzők az előrehaladás és a jutalmak jogcímei. A validátor a pályasorrendet, a kapu- és Yomi-boss-előfeltételt, a készleteket és az ötös korlátokat is ellenőrzi. A kompatibilis frissítések a dungeon haladását is megőrzik; a validátor változatlanul ellenőrzi az előfeltételeket.
 
 Halálkor a legutóbbi valódi dungeon-szentélyhez tér vissza Momo, akkor is, ha az egy korábbi szinten van. Az első szentély előtt külön belépési checkpoint gondoskodik az érvényes visszatérésről. Szintváltás önmagában nem gyógyít, és nem írja át a korábbi valódi szentélyt. A már legyőzött szintboss, készlet, megerősítés és jutalomjelző megmarad; a normál ellenfelek újrateremtődnek.
 

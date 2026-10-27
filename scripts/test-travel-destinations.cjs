@@ -14,6 +14,13 @@ function button(r,realm,id){
 // The unlocked scroll entrance is a route, not a new shrine/checkpoint.
 {
  const h=setup(),r=h.run;assert(!r('yomi.rests.some(rest=>rest.id===COUNCIL_TRAVEL.id)'));assert(!r('visitedRests[1].includes(COUNCIL_TRAVEL.id)'));
+ r("flags[0].push('guardian:oldCultist','cultTempleDiscovered');");
+ for(const [realm,id]of [[0,'cultTempleEntrance'],[1,'councilHallEntrance']]){
+  const target=r('realmRests('+realm+').find(rest=>rest.id==='+JSON.stringify(id)+')');assert.equal(target.dungeonEntrance,true,'Explicit entrance metadata');
+  const built=[],original=h.sandbox.document.createElement;h.sandbox.document.createElement=()=>{const entry=original();entry.attributes={};entry.setAttribute=(key,value)=>entry.attributes[key]=value;built.push(entry);return entry;};r('travelGrid('+realm+')');h.sandbox.document.createElement=original;
+  const attributes=built.find(entry=>entry.textContent.endsWith(r('I18n.t('+JSON.stringify(target.name)+')'))).attributes;
+  assert.equal(attributes['data-travel-kind'],'dungeon');assert.equal(attributes['data-type-label'],r("I18n.t('travel.dungeonEntrance')"));assert(attributes['aria-label'].startsWith(attributes['data-type-label']+' · '));
+ }
  r('player.hp=2;showMap();');const entry=button(r,1,'councilHallEntrance');assert(entry&&!entry.disabled,'Gate unlock alone exposes the entrance');
  const before=permanent(r);assert(entry.onclick());assert.equal(r('level.id'),'councilHall');assert.equal(r('player.x+player.w/2'),r('councilHall.memoryScroll.x'));assert.equal(r('player.y+player.h'),r('councilHall.memoryScroll.y'));assert.equal(r('player.hp'),2,'A route anchor does not heal Momo');
  assert.equal(permanent(r),before);assert.equal(r('saved.location'),null);assert(r('yomi.rests.some(rest=>rest.id===saved.checkpoint.id)'));assert.doesNotThrow(()=>validate(r('saved')));

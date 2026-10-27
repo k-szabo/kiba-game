@@ -4,7 +4,7 @@ description: Change Kiba Realms combat, movement, progression, levels, or encoun
 ---
 
 - Trace owning modules using docs/DEVELOPMENT.md. Establish requested before/after behavior and affected spawn, damage, death, shrine, pause, boss-phase, or realm transitions.
-- Preserve permanent progression and saved IDs within one release. The alpha/beta release policy intentionally resets old-release progress; never bypass that reset by migration. Keep optional secrets distinct from required progression.
+- Preserve permanent progression and saved IDs across compatible releases. Declare a save-breaking change explicitly through the release CLI --reset-saves only when existing progress cannot remain valid; ordinary releases retain saveCompatibility. Do not weaken validation to accept incompatible records. Keep optional secrets distinct from required progression.
 - Make scoped changes in assigned sources; coordinate shared game.js, combat.js, levels.js, and prologue.js ownership.
 - Add meaningful regression cases when warranted. Use scripts/test-harness.cjs; test-save-validation.cjs and test-only-bootstrap.cjs are helpers, not standalone test suites.
 - When a feature grants abilities or adds an alternate update path/teleport destination, exercise their combinations through real gameplay input, including the prologue. Shared player timers must advance exactly once per active frame before mode dispatch, freeze in dialogs/pause, and reset on player initialization. Cover dash expiry, gravity, cooldown reuse, and movement at several frame rates; testing grant bits or destination entry alone is insufficient. Add new regression suites to package.json so the same npm test command runs locally and in CI.

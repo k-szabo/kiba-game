@@ -95,7 +95,7 @@ const Visuals = (() => {
     const fade=paint.createLinearGradient(0,0,art.panelSize,0);
     fade.addColorStop(0,'#ffffff00');fade.addColorStop(overlap/panel.w,'#ffffffff');fade.addColorStop(1,'#ffffffff');
     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,art.panelSize,art.panelSize);paint.globalCompositeOperation='source-over';
-    campPanels.set(image,surface);return surface;
+    BackgroundMotion.alias(surface,image);campPanels.set(image,surface);return surface;
   }
   function campBackdrop(){
     const art=ART_CAMP.backdrop,s=forestCamp.width/art.w,top=forestCamp.start.y-art.groundY*s;
@@ -103,12 +103,12 @@ const Visuals = (() => {
     if(!usable(art.image))return;
     if(art.panels?.every(panel=>usable(panel.image))){
       ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-      art.panels.forEach((panel,index)=>ctx.drawImage(campPanelImage(panel,index),panel.x-camera,top-cameraY,panel.w,art.h*s));ctx.restore();
+      art.panels.forEach((panel,index)=>BackgroundMotion.draw(campPanelImage(panel,index),panel.x-camera,top-cameraY,panel.w,art.h*s));ctx.restore();
       // Native painted cedars hide structural joins above the path; their roots sit behind it.
       ctx.save();ctx.translate(-camera,-cameraY);
       frame(ART_CAMP.cedar.image,ART_CAMP.cedar,960,forestCamp.start.y-32,950);
       frame(ART_CAMP.cedar.image,ART_CAMP.cedar,1840,forestCamp.start.y-32,950,-1);ctx.restore();
-    }else ctx.drawImage(images[art.image],-camera,top-cameraY,forestCamp.width,art.h*s);
+    }else BackgroundMotion.draw(images[art.image],-camera,top-cameraY,forestCamp.width,art.h*s);
     // The canopy keeps its proportions; a short fade joins the quiet upper sky.
     const fade=ctx.createLinearGradient(0,top-cameraY,0,top-cameraY+42);
     fade.addColorStop(0,'#0e202c');fade.addColorStop(1,'#0e202c00');
@@ -150,14 +150,14 @@ const Visuals = (() => {
           ctx.save();
           if (Math.abs(i % 2) === 1) {ctx.translate(x + width, -35);ctx.scale(-1, 1);}
           else ctx.translate(x, -35);
-          ctx.drawImage(image, 0, 0, width + 1, height);
+          BackgroundMotion.draw(image, 0, 0, width + 1, height);
           ctx.restore();
         }
       } else {
         const paintCover=image=>{
           const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*s,height=image.naturalHeight*s;
           const ratio=clamp(cameraY/Math.max(1,level.height-H),0,1);
-          ctx.drawImage(image,(viewW-width)*.5+Math.sin(camera*.0003)*6,-(height-H)*ratio,width,height);
+          BackgroundMotion.draw(image,(viewW-width)*.5+Math.sin(camera*.0003)*6,-(height-H)*ratio,width,height);
         };
         if(realm===2){
           let accumulated=0;
@@ -176,7 +176,7 @@ const Visuals = (() => {
       const key=secret.id==='angelRuin'?'angelRuinBackdrop':'cultCaveBackdrop';
       if(usable(key)){
         const image=images[key],s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*s,height=image.naturalHeight*s;
-        ctx.save();ctx.globalAlpha=secretState.alpha;ctx.drawImage(image,(viewW-width)/2,-(height-H)*.35,width,height);ctx.restore();
+        ctx.save();ctx.globalAlpha=secretState.alpha;BackgroundMotion.draw(image,(viewW-width)/2,-(height-H)*.35,width,height);ctx.restore();
       }
     }
     ctx.fillRect(0, 0, viewW, H);
@@ -206,8 +206,8 @@ const Visuals = (() => {
     const floor=art.worldFloorY,width=level.width,height=level.height;
     // Anchor the painted wall/floor join to the real walking surface. Both
     // original source regions remain visible as the camera follows the room.
-    ctx.drawImage(images[art.image],0,0,art.w,art.floorY,-camera,-cameraY,width,floor);
-    ctx.drawImage(images[art.image],0,art.floorY,art.w,art.h-art.floorY,
+    BackgroundMotion.draw(images[art.image],0,0,art.w,art.floorY,-camera,-cameraY,width,floor);
+    BackgroundMotion.draw(images[art.image],0,art.floorY,art.w,art.h-art.floorY,
       -camera,floor-cameraY,width,Math.max(1,height-floor));
   }
   function councilGate(g,open=false) {

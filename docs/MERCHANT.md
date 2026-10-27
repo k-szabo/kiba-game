@@ -27,7 +27,7 @@ A minimap az aktuális helyszín közeli párkányait, a már ismert szentélyek
 
 ## Állapot, UI és bővítés
 
-A `coins`, `meatCount` és `teaCount` nemnegatív biztonságos egész a mentésben. Az eszközöket a Yomi-jelzők `compass` és `minimap` értékei birtokolják. Vásárlás csak a látható boltból, kiszabadított Akash közelében végezhető; az érmelevonás és a tárgyjóváírás egy mentési állapot. Halál, utazás és azonos kiadású újratöltés megőrzi az adatokat. Az új kiadás a szokásos haladásresetet használja; nincs korábbi verziójú merchant-adat migráció.
+A `coins`, `meatCount` és `teaCount` nemnegatív biztonságos egész a mentésben. Az eszközöket a Yomi-jelzők `compass` és `minimap` értékei birtokolják. Vásárlás csak a látható boltból, kiszabadított Akash közelében végezhető; az érmelevonás és a tárgyjóváírás egy mentési állapot. Halál, utazás és azonos kiadású újratöltés megőrzi az adatokat. A kompatibilis frissítések a kereskedőhöz kapcsolódó adatokat is megőrzik.
 
 A `merchant.js` kezeli a katalógust, a gazdaságot, a boltot, az ételt és a minimapot. Az inventory közös `ART_INVENTORY.items` katalógusát, teljes sziluettet őrző cropjait és DPR-es ikonrajzolóját használja; `stack:true` és `category:'travelGear'` egészíti ki a korábbi egyedi küldetéstárgyakat. A shop asztali elrendezésű, görgethető, legalább 48px-es vásárlógombokkal és körbezárt billentyűfókusszal. Minden felirat a közös HU/EN locale-katalógusban szerepel.
 

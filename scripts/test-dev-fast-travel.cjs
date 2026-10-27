@@ -10,7 +10,7 @@ const grids=()=>{
 // A genuinely fresh test starts without boss, shrine or shadow-altar unlocks.
 assert(r('defeated.every(v=>!v)&&flags.every(f=>!f.length)'));
 r('DevTools.open();DevSession.begin();');
-const destinations=Array.from(r('levels.flatMap((_,n)=>realmRests(n).filter(rest=>!rest.checkpointOnly&&!travelSide(rest,n)?.[1].map.dungeon).map(rest=>({realm:n,id:rest.id,x:rest.x,y:rest.y,travelOnly:!!rest.travelOnly})))'));
+const destinations=Array.from(r('levels.flatMap((_,n)=>realmRests(n).filter(rest=>!rest.checkpointOnly&&!travelSide(rest,n)?.[1].map.dungeon).map(rest=>({realm:n,id:rest.id,x:rest.x,y:rest.y,travelOnly:!!rest.travelOnly,dungeonEntrance:!!rest.dungeonEntrance})))'));
 for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
  assert(r(`DevTeleport.teleport({realm:'${origin}',rest:'start'})`));
  r('DevTools.close();showMap();');
@@ -20,7 +20,7 @@ for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
   // Open the actual map after every arrival and execute its current button.
   if(r('state')!=='map')r('showMap();');
   const name=r(`I18n.t(realmRests(${target.realm}).find(rest=>rest.id===${JSON.stringify(target.id)}).name)`);
-  const button=grids().flatMap(g=>g.children).find(b=>b.textContent==='⛩ '+name||b.textContent.endsWith(' · '+name));
+  const button=grids().flatMap(g=>g.children).find(b=>b.textContent===(target.dungeonEntrance?'':'⛩ ')+name||b.textContent.endsWith(' · '+name));
   assert(button&&!button.disabled,`Missing usable ${target.realm}/${target.id}`);
   assert(button.onclick(),`Advertised destination rejected: ${target.realm}/${target.id}`);
   assert.equal(r('realm'),target.realm);

@@ -52,8 +52,8 @@ function storageEnvironment(){
  return env;
 }
 
-function client(env,release=current,{locks=true,crypto=webcrypto,history={}}={}){
- const context={TextEncoder,TextDecoder,Uint8Array,BigInt,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,crypto,indexedDB:env.indexedDB,localStorage:env.localStorage,navigator:locks?{locks:env.locks}:{},I18n:{t:key=>key},GAME_RELEASE:{version:release,savePolicy:'reset-on-version-change',bugfixHistory:history}};
+function client(env,release=current,{locks=true,crypto=webcrypto,history={},policy='reset-on-version-change',compatibility}={}){
+ const context={TextEncoder,TextDecoder,Uint8Array,BigInt,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,crypto,indexedDB:env.indexedDB,localStorage:env.localStorage,navigator:locks?{locks:env.locks}:{},I18n:{t:key=>key},GAME_RELEASE:{version:release,savePolicy:policy,...(compatibility?{saveCompatibility:compatibility}:{}),bugfixHistory:history}};
  vm.createContext(context);vm.runInContext(levelSource,context);
  vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.js'),'utf8'),context);
  vm.runInContext(source+'\nglobalThis.vault=SaveVault;',context);

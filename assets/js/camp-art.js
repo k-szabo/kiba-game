@@ -18,7 +18,7 @@ const CampArt=(()=>{
   gradient.addColorStop(0,index===0?'#fff':'#fff0');gradient.addColorStop(edge,'#fff');
   // Only the incoming panel fades: two translucent edges would darken the overlap.
   gradient.addColorStop(1,'#fff');
-  paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);panelCache.set(panel.image,canvas);return canvas;
+  paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);BackgroundMotion.alias(canvas,image);panelCache.set(panel.image,canvas);return canvas;
  }
  function backdrop(){
   if(level===samuraiCamp){
@@ -31,11 +31,11 @@ const CampArt=(()=>{
     overlap=ART_SAMURAI_CAMP.overlap/ART_SAMURAI_CAMP.panels[0].w*width,
     step=width-overlap,total=width+step*(ART_SAMURAI_CAMP.panels.length-1),
     scroll=clamp(camera*.4,0,Math.max(0,total-viewW));
-   ART_SAMURAI_CAMP.panels.forEach((panel,index)=>{const image=panelImage(panel,index);if(!image)return;ctx.drawImage(image,index*step-scroll,Math.min(0,H-ART_SAMURAI_CAMP.h*scale)*.35,width,ART_SAMURAI_CAMP.h*scale);});ctx.restore();return;
+   ART_SAMURAI_CAMP.panels.forEach((panel,index)=>{const image=panelImage(panel,index);if(!image)return;BackgroundMotion.draw(image,index*step-scroll,Math.min(0,H-ART_SAMURAI_CAMP.h*scale)*.35,width,ART_SAMURAI_CAMP.h*scale);});ctx.restore();return;
   }
   const a=backgrounds[level.id];if(!a)return;const img=Visuals.images[a.image],s=level.width/a.w,top=level.start.y-a.ground*s;
   ctx.fillStyle='#0e202c';ctx.fillRect(0,0,viewW,H);if(!img?.complete||!img.naturalWidth)return;
-  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,-camera,top-cameraY,level.width,a.h*s);ctx.restore();
+  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';BackgroundMotion.draw(img,-camera,top-cameraY,level.width,a.h*s);ctx.restore();
  }
  function terrain(platform){
   if(level!==samuraiCamp)return false;

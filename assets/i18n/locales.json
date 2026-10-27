@@ -376,7 +376,7 @@
       "council.inscription.story": "A korhadt gerendák alatt négy üres hely néz a sötétbe. Az egykori tanácsosok neveit kivésték a fából, esküjük nyoma mégis itt maradt.\n\n„A szolgák hangja elnémult. A küszöb megnyílt, de a tanács még nem ült össze.”\n\nMomo fülel. Nincs lépés, nincs lélegzet. Csak a falakba ivódott Kiba áramlik tovább.",
       "menu.version": "V{0} · BÉTA",
       "council.gate.consumed": "A csontkulcs elporlad a zárban. A láncok lehullanak; a kapu ezentúl nyitva marad.",
-      "text.save.reset.new.version": "Új alfa/béta verzió érkezett. A korábbi játékhaladás törlődött; új utazást kezdhetsz. A nyelv- és billentyűbeállításaid megmaradtak.",
+      "text.save.reset.new.version": "Ez a frissítés nem kompatibilis a korábbi mentéssel. Új utazást kezdhetsz; a nyelv- és billentyűbeállításaid megmaradtak.",
       "text.save.unavailable": "A mentés most nem érhető el. Az utazás elindítható, de ebben a munkamenetben nem tudunk menteni.",
       "text.save.recovered": "A módosított vagy régebbi másolat helyett az utolsó érvényes mentést töltöttük be.",
       "text.save.newer.version": "Ez a mentés a játék egy újabb verziójához tartozik. Frissítsd az oldalt; a régebbi verzió nem írhatja felül.",
@@ -1005,7 +1005,12 @@
       "menu.changelog.0950shield.title": "Árnyékzugi életcsíkok és Kiba-pajzs",
       "menu.changelog.0950shield.0": "Az ellenséges árnyékzugiak életcsíkot kaptak. A megszerzett Kiba-pajzs újratöltését visszaszámláló mutatja, a szentélyeknél pedig növelhető az elnyelése és csökkenthető az újratöltési ideje.",
       "menu.changelog.0951.title": "Teljes életerő szintlépéskor",
-      "menu.changelog.0951.0": "Momo életereje szintlépéskor visszatöltődik az aktuális maximumra."
+      "menu.changelog.0951.0": "Momo életereje szintlépéskor visszatöltődik az aktuális maximumra.",
+      "travel.dungeonEntrance": "Dungeonbejárat",
+      "menu.changelog.0952.title": "Élő tájak és megőrzött kalandok",
+      "menu.changelog.0952.0": "A dungeonbejáratok külön ikont kaptak a gyorsutazásnál.",
+      "menu.changelog.0952.1": "A helyszínek finom háttéranimációkat kaptak; szünetben megállnak, csökkentett mozgás mellett visszafogottak.",
+      "menu.changelog.0952.2": "A kompatibilis frissítések megőrzik a haladást; mentésreset csak a mentéssel nem kompatibilis változáskor történik."
     }
   },
   "en": {
@@ -1385,7 +1390,7 @@
       "council.inscription.story": "Beneath the rotting beams, four empty seats face the darkness. The former councillors’ names have been cut from the wood, but the trace of their oaths remains.\n\n“The servants’ voices have fallen silent. The threshold has opened, yet the council has not assembled.”\n\nMomo listens. No footsteps, no breathing. Only Kiba, steeped into the walls, continues to flow.",
       "menu.version": "V{0} · BETA",
       "council.gate.consumed": "The bone key crumbles in the lock. The chains fall away; the gate will remain open.",
-      "text.save.reset.new.version": "A new alpha/beta version has arrived. Previous game progress has been reset; a new journey awaits. Your language and key bindings have been kept.",
+      "text.save.reset.new.version": "This update is incompatible with the previous save. You can start a new journey; your language and control preferences have been preserved.",
       "text.save.unavailable": "Saving is currently unavailable. You can start a journey, but progress cannot be saved in this session.",
       "text.save.recovered": "The last valid save was loaded instead of the modified or older copy.",
       "text.save.newer.version": "This save belongs to a newer game version. Refresh the page; an older version cannot overwrite it.",
@@ -2014,7 +2019,12 @@
       "menu.changelog.0950shield.title": "Shadow Den health bars and Kiba Shield",
       "menu.changelog.0950shield.0": "Hostile Shadow Den residents now show health bars. A countdown tracks the acquired Kiba Shield’s recharge; shrine upgrades increase absorption and reduce recharge time.",
       "menu.changelog.0951.title": "Full health on level-up",
-      "menu.changelog.0951.0": "Momo’s health is restored to his current maximum whenever he levels up."
+      "menu.changelog.0951.0": "Momo’s health is restored to his current maximum whenever he levels up.",
+      "travel.dungeonEntrance": "Dungeon entrance",
+      "menu.changelog.0952.title": "Living scenery and preserved journeys",
+      "menu.changelog.0952.0": "Dungeon entrances now have a distinct fast-travel icon.",
+      "menu.changelog.0952.1": "Locations now feature subtle background animations that pause with the game and respect reduced motion.",
+      "menu.changelog.0952.2": "Compatible updates preserve progress; saves reset only when a change makes them incompatible."
     }
   }
 }

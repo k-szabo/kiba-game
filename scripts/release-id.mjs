@@ -44,9 +44,14 @@ export function validateRegistry(registry){
   return registry;
 }
 export function validateRelease(release,registry){
-  if(!release||typeof release.version!=='string'||!releasePattern.test(release.version)||release.savePolicy!=='reset-on-version-change')throw Error('Invalid release version or save policy.');
+  if(!release||typeof release.version!=='string'||!releasePattern.test(release.version)||!['reset-on-version-change','preserve-compatible'].includes(release.savePolicy))throw Error('Invalid release version or save policy.');
   validateRegistry(registry);
   if(release.version.includes('_')&&![...registry.releases,...registry.bugfixes].some(entry=>entry.version===release.version))throw Error(`Unregistered release: ${release.version}. Use scripts/release.mjs.`);
+  if(release.savePolicy==='preserve-compatible'){
+    const epoch=release.saveCompatibility,known=[...registry.releases,...registry.bugfixes];
+    if(typeof epoch!=='string'||!releasePattern.test(epoch)||compareBaseVersions(epoch.split('_')[0],release.version.split('_')[0])>0||epoch.includes('_')&&!known.some(entry=>entry.version===epoch))throw Error('Invalid save compatibility epoch.');
+    if(epoch.split('_')[0]===release.version.split('_')[0]&&epoch!==release.version){const history=bugfixHistory(registry)[epoch.split('_')[0]]||[],ordinal=value=>value.includes('_')?history.indexOf(value.split('_')[1])+1:0;if(ordinal(epoch)>ordinal(release.version))throw Error('Save compatibility epoch is newer than the active release.');}
+  }else if(Object.hasOwn(release,'saveCompatibility'))throw Error('Legacy reset policy cannot declare a save compatibility epoch.');
   return release;
 }
 export function bugfixHistory(registry){

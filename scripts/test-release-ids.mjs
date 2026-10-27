@@ -59,7 +59,7 @@ try{
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);
-  for(const module of ['i18n','keybindings','dungeon-rules','levels','camp-services','serpent-relics','camp-health','art-data','asset-cache','boss-vfx','save-vault','graphics','armor','weapons','weapon-equipment','weapon-selection','progression','serpents','combat','camp-master','prison-warden','prison-hunter','prison-quest','kitsune-quest','prison-art','kitsune-art','arena-combat','arena-challenge','arena-art','fia-quest','fia-conflict','fia-combat','fia-art','dungeon-combat','dungeon-run','dungeon-art','doom-slayer','slayer-art','serpent-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-cache','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-weapons','dev-immortality','dev-damage','camp-quest','camp-workshop','camp-herbs','camp-art','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
+  for(const module of ['i18n','keybindings','dungeon-rules','levels','camp-services','serpent-relics','camp-health','art-data','asset-cache','background-motion','boss-vfx','save-vault','graphics','armor','weapons','weapon-equipment','weapon-selection','progression','serpents','combat','camp-master','prison-warden','prison-hunter','prison-quest','kitsune-quest','prison-art','kitsune-art','arena-combat','arena-challenge','arena-art','fia-quest','fia-conflict','fia-combat','fia-art','dungeon-combat','dungeon-run','dungeon-art','doom-slayer','slayer-art','serpent-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-cache','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-weapons','dev-immortality','dev-damage','camp-quest','camp-workshop','camp-herbs','camp-art','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
   const run=(script,args=[],ok=true)=>{
     const result=spawnSync(process.execPath,[path.join(fixture,'scripts',script),...args],{cwd:fixture,encoding:'utf8'});
     if(ok)assert.equal(result.status,0,result.stderr||result.stdout);
@@ -99,6 +99,24 @@ try{
   write('docs/releases.json',{schemaVersion:1,bugfixes:[entry,second],releases:[makeRelease(nextMetadata)]});
   run('build-game.mjs',['--check'],false);run('build-game.mjs');run('build-game.mjs',['--check']);
   assert.ok(fs.readFileSync(path.join(fixture,'assets/js/runtime.js'),'utf8').includes(`"0.9.10":["${entry.code}","${second.code}"]`),'Append order, not hash order, establishes published revision order');
+  const anchor=makeRelease(nextMetadata).version,compatibleMetadata={...metadata,baseVersion:'0.9.12',slug:'compatible-ui'};
+  write('compatible.json',compatibleMetadata);
+  const beforePolicy=fs.readFileSync(path.join(fixture,'assets/config/release.json'),'utf8');
+  run('release.mjs',['release','--metadata','compatible.json','--preserve-saves-from','0.9.1'],false);
+  assert.equal(fs.readFileSync(path.join(fixture,'assets/config/release.json'),'utf8'),beforePolicy);
+  run('release.mjs',['release','--metadata','compatible.json','--preserve-saves-from',anchor,'--write']);
+  const readRelease=()=>JSON.parse(fs.readFileSync(path.join(fixture,'assets/config/release.json'),'utf8'));
+  assert.equal(readRelease().savePolicy,'preserve-compatible');assert.equal(readRelease().saveCompatibility,anchor);
+  const following={...metadata,baseVersion:'0.9.13',slug:'compatible-next'};write('following.json',following);
+  run('release.mjs',['release','--metadata','following.json','--write']);assert.equal(readRelease().saveCompatibility,anchor,'Ordinary releases retain the epoch');
+  const breakingMetadata={...following,slug:'breaking-save-fix'};write('breaking.json',breakingMetadata);
+  run('release.mjs',['bugfix','--metadata','breaking.json','--reset-saves','--preserve-saves-from',anchor],false);
+  run('release.mjs',['bugfix','--metadata','breaking.json','--write','--reset-saves']);assert.equal(readRelease().saveCompatibility,readRelease().version,'Explicit reset advances the epoch');
+  run('release.mjs',['bugfix','--metadata','breaking.json','--reset-saves','--write'],false,'A recorded version cannot be silently changed into a different policy');
+  run('release.mjs',['validate']);
+  const registeredPolicy=JSON.parse(fs.readFileSync(path.join(fixture,'docs/releases.json'),'utf8'));
+  assert.throws(()=>validateRelease({...readRelease(),saveCompatibility:'99.0.0'},registeredPolicy),/compatibility/);
+  assert.throws(()=>validateRelease({...readRelease(),saveCompatibility:'0.9.13_ffffffff'},registeredPolicy),/compatibility/);
   write('docs/releases.json',empty);run('build-game.mjs',[],false);
 }finally{
   const resolved=path.resolve(fixture),temp=path.resolve(os.tmpdir());

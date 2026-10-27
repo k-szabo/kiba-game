@@ -32,10 +32,10 @@ const PrisonArt=(()=>{
     if(!masks.has(image)){
      const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;const paint=surface.getContext('2d');paint.drawImage(image,0,0);
      const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(Math.min(.035,overlap/widths[i]),'#fff');fade.addColorStop(1,'#fff');
-     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);masks.set(image,surface);
+     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);
     }source=masks.get(image);
    }
-   ctx.drawImage(source,x,(H-height)*.35,widths[i]*height,height);x+=(widths[i]-overlap)*height;
+   BackgroundMotion.draw(source,x,(H-height)*.35,widths[i]*height,height);x+=(widths[i]-overlap)*height;
   }ctx.restore();
  }
  function terrain(platform){

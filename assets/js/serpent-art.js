@@ -23,7 +23,7 @@ const SerpentArt=(()=>{
   // sized bitmap exposed its hard edges while the camera entered the arena.
   const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*s,height=image.naturalHeight*s,
    drift=clamp((camera+viewW/2-painted.area.x-painted.area.w/2)*.08,-(width-viewW)/2,(width-viewW)/2);
-  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.globalAlpha*=painted.alpha;ctx.drawImage(image,(viewW-width)/2-drift,(H-height)*.35,width,height);ctx.restore();
+  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.globalAlpha*=painted.alpha;BackgroundMotion.draw(image,(viewW-width)/2-drift,(H-height)*.35,width,height);ctx.restore();
  }
  function pose(e){
   const white=e.serpentType==='white';

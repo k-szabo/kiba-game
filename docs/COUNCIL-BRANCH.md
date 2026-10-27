@@ -20,7 +20,7 @@ Az emléktekercs külön, szüneteltető választóablakból indítja vagy folyt
 
 Ez külön belső pálya Yomi birodalmán belül, nem negyedik birodalom. A fő térkép és a gyorsutazás továbbra is Yomi szentélyeit mutatja. A normál kijárat visszavisz a kapu előtti párkányra az előző életerővel és kültéri ellenfélállapottal. Halál, leesés vagy gyorsutazás a megfelelő kültéri szentélyre vezet.
 
-A csarnokban tartózkodás mentése a megszokott, érvényes Yomi-szentélyt őrzi: **újratöltés/Folytatás után a kültéri mentőpontnál ébredsz**, a még fel nem használt kulcs vagy a már nyitott kapu viszont megmarad. A csarnok nem ad új szentélyt. A tekercsből megnyíló dungeon saját szentélyeket, belépési checkpointokat és mentett runállapotot használ; ezek szabályait a dungeon-referencia külön részletezi. Új alfa/béta verziónál ez a haladás is törlődik.
+A csarnokban tartózkodás mentése a megszokott, érvényes Yomi-szentélyt őrzi: **újratöltés/Folytatás után a kültéri mentőpontnál ébredsz**, a még fel nem használt kulcs vagy a már nyitott kapu viszont megmarad. A csarnok nem ad új szentélyt. A tekercsből megnyíló dungeon saját szentélyeket, belépési checkpointokat és mentett runállapotot használ; ezek szabályait a dungeon-referencia külön részletezi. A kompatibilis frissítések ezt a haladást is megőrzik.
 
 ## Grafika és referencia
 

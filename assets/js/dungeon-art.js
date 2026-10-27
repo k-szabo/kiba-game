@@ -18,18 +18,18 @@ const DungeonArt=(()=>{
  const masks=new Map();
  function faded(image){
   if(masks.has(image))return masks.get(image);const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;
-  const paint=surface.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.06,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);masks.set(image,surface);return surface;
+  const paint=surface.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.06,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);return surface;
  }
  function backdrop(){
   if(!DungeonRun.active())return false;const a=art(DungeonRun.dungeonId()).backdrops[DungeonRun.floor()],keys=a.panels||[a.image],images=keys.map(key=>Visuals.images[key]);if(images.some(image=>!image?.complete||!image.naturalWidth))return false;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#15121c';ctx.fillRect(0,0,viewW,H);
   if(a.panels){
    const overlap=a.overlap||0,units=a.w*(keys.length-overlap*(keys.length-1)),scale=Math.max(1,viewW/units,H/790),width=units*scale,scroll=clamp(camera/Math.max(1,level.width-viewW),0,1)*(width-viewW),top=Math.min(0,level.start.y-a.groundY*scale-cameraY);
-   images.forEach((image,i)=>ctx.drawImage(i?faded(image):image,i*a.w*(1-overlap)*scale-scroll,top,a.w*scale,a.h*scale));
+   images.forEach((image,i)=>BackgroundMotion.draw(i?faded(image):image,i*a.w*(1-overlap)*scale-scroll,top,a.w*scale,a.h*scale));
   }else{
    // A covered interior backdrop follows depth gently; jumps never expose another realm or empty sky.
    const scale=Math.max(viewW/a.w,(H+120)/a.h),w=a.w*scale,h=a.h*scale,x=-(w-viewW)*clamp(camera/Math.max(1,level.width-viewW),0,1),y=-(h-H)*clamp(cameraY/Math.max(1,level.height-H),0,1);
-   ctx.drawImage(images[0],x,y,w,h);
+   BackgroundMotion.draw(images[0],x,y,w,h);
   }ctx.restore();return true;
  }
  function scenery(){

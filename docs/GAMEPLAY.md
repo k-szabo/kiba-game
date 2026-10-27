@@ -8,11 +8,11 @@ Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj 
 
 Az **index.html** indítja a játékot a mellette található **assets** mappával együtt. GitHub Pagesen vagy helyi HTTP-kiszolgálón játszható mentéssel; a generált runtime már a repository része.
 
-Új utazáshoz válaszd **Az utazás kezdetét**, a korábbi mentés folytatásához pedig a **Folytatás** gombot. Az alfa/béta időszakban minden új játékverzió alaphelyzetbe állítja a haladást, hogy a változó pályák és mentési szabályok ne keveredjenek. A nyelv- és billentyűbeállítások megmaradnak. Azonos verzió újratöltése megőrzi a mentést; részletek a [fejlesztői útmutatóban](DEVELOPMENT.md).
+Új utazáshoz válaszd **Az utazás kezdetét**, a korábbi mentés folytatásához pedig a **Folytatás** gombot. A kompatibilis frissítések megőrzik a haladást; mentésreset csak a mentéssel nem kompatibilis változáskor történik. A nyelv- és billentyűbeállítások megmaradnak. Azonos verzió újratöltése megőrzi a mentést; részletek a [fejlesztői útmutatóban](DEVELOPMENT.md).
 
 ## Eltérő kalandok
 
-Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. Ugyanazon verzión belül a Folytatás visszatölt; új alfa/béta verziónál a haladás törlődik és újra a prológusban kezdhetsz. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
+Az új játék egy külön, néma árnyvilágban indul. A prológusban mozgással, ugrással és karddal haladhatsz; nincs térkép, pihenőszentély vagy fejlesztés. A történet innen vezet a japán falut ért támadáshoz. A Folytatás kompatibilis frissítés után is visszatölti a haladást. [A prológus részletes leírása](PROLOGUE.md) a történeti lezárását is tartalmazza lenyitható részben.
 
 | Világ | Felépítés | Fő feladat | Mellékutak |
 | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ Momo **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásak
 
 A kész játékhoz telepítés és build nem szükséges. Helyi kipróbáláshoz HTTP-kiszolgálót használj. A tájak és szereplők illusztrált képek; a köd, fények és Kiba-áramlatok a játékban készülnek. A normál ellenfelek hat mozgási és hat támadási képkockát használnak szerepkörönként és birodalmanként. A helyi mentés törlődik az oldaladatok törlésével.
 
-A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol között. A titkosított mentés az adott böngészőprofilban tölthető vissza; az alfa/béta időszakban minden új játékverzió törli a korábbi haladást. A nyelv- és billentyűbeállítások megmaradnak.
+A nyelvet a főmenüben vagy a szünetmenüben válthatod magyar és angol között. A titkosított mentés az adott böngészőprofilban tölthető vissza; a kompatibilis frissítések megőrzik a haladást; mentésreset csak a mentéssel nem kompatibilis változáskor történik. A nyelv- és billentyűbeállítások megmaradnak.
 
 ## Ellenőrzés
 
