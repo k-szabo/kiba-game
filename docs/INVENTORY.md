@@ -1,5 +1,7 @@
 # Hátizsák és felszerelés – 0.9.7
 
+A megszerzett Kiba-pajzs karakterértéke az aktuális töltést és a fejlesztett kapacitást mutatja. A leírás ugyanabból a profilból kapja az elnyelést és az újratöltést, mint a harc és a szentélyi fejlesztés; nincs külön, rögzített „2” maximális érték.
+
 Az alapértelmezett **I** billentyű vagy a HUD hátizsák gombja két panelt nyit meg. A festett szamuráj útravaló zsák dinamikus rácsa kapacitáskorlát nélkül jeleníti meg a birtokolt tárgyakat; a másik panel Momót és a külön fegyver-/talizmánhelyet mutatja. Az ablak görgethető.
 
 A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.

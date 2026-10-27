@@ -22,7 +22,11 @@ Első győzelemkor együtt kerül be a `fiaSlain`, `fiaRewardClaimed`, `kitsuneS
 
 A barátságos Fia és táborlakó-példányok eltűnnek. Az Árnyékzug nindzsája és tolvaja valódi, animált ellenségként jelenik meg; két külön küklopsztestőr is támad. A lakosztályban szintén két testőr marad. Ezek nem adnak új Fia-/arénajutalmat. A normál halál/pihenés újra létrehozhatja őket, a tábor tartós ellenségességét nem törli.
 
-A passzív Kiba-pajzs 2 sebzést nyel el a fegyveres blokk/páncél számítása után. Ha teljesen elfogy, 12 aktív játékmásodperc múlva újratölt. Szünet, dialógus és játékablak alatt áll; a halálos lezuhanás továbbra is halálos. A szint- és mozgásképesség-tömb változatlan, a pajzs külön jelző.
+A passzív Kiba-pajzs alapból 2 sebzést nyel el a fegyveres blokk/páncél számítása után. Ha teljesen elfogy, alapból 12 aktív játékmásodperc múlva újratölt. A feladatpanel időzítője a hátralévő időt, töltött állapotban az aktuális/maximális elnyelést mutatja. Szünet, dialógus és játékablak alatt áll; a halálos lezuhanás továbbra is halálos. A mozgásképesség-tömb változatlan, a pajzs külön jelző.
+
+A megszerzett pajzs a szentélyeknél külön fejleszthető. A `progression.stats.shield` fokozat 0–12 közötti; egy fokozat egy fejlesztéspont, +0,25 elnyelés és −0,5 másodperc újratöltés. A maximum 5 elnyelés / 6 másodperc. A szabályokat a `KIBA_SHIELD_RULES` rögzíti. Fejlesztéskor az aktuális töltés nem nő; a futó visszaszámláló legfeljebb az új újratöltési időre rövidül. A statpont a közös pontkeret része, tulajdonjog nélkül pozitív fokozat nem menthető. A dev-szintcsökkentés a közös normalizálással visszavágja a meg nem fizethető fokozatokat és a pajzs aktuális kapacitását. Halál/utazás/folytatás továbbra is a fejlesztett kapacitásra inicializál.
+
+Az ellenséges nindzsa, tolvaj és a két külön testőr a közös `Visuals.healthBar` rajzolót használja a natív sprite-jától függetlenül. Teljes életnél is látszik a csík, a halott ellenfélnél nem. A rajzolás nem módosít harci állapotot, jutalmat vagy találati testet.
 
 ## Modulok, grafika és ellenőrzés
 

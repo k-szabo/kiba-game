@@ -11,6 +11,7 @@ const DevLevel=(()=>{
   // same budget normalization used by ordinary progression.
   progression=normalizeProgression({level:target,xp:0,totalXp,stats:progression.stats},flags);
   player.maxHp=momoStats().maxHp;player.hp=Math.max(1,Math.min(player.hp,player.maxHp));
+  FiaConflict.clampProfile();
   updateHUD();return true;
  }
  function init(){DevTools.register({id:'player-level',labelKey:'dev.level.set',available,

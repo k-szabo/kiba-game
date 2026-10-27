@@ -35,11 +35,11 @@ const Inventory=(()=>{
    rows=[['text.health',CampHealth.number(player.hp)+' / '+CampHealth.number(player.maxHp)],
     ['binding.action.attack',number(playerAttackDamage('normal'))],['binding.action.heavyAttack',number(playerAttackDamage('heavy'))]],
    list=$('inventoryStats');
-  if(FiaConflict.owned())rows.push(['ability.kibaShield',number(FiaConflict.shield)+' / 2']);
+  if(FiaConflict.owned())rows.push(['ability.kibaShield',number(FiaConflict.shield)+' / '+number(FiaConflict.profile().capacity)]);
   list.replaceChildren();
   for(const [key,value] of rows){
    const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');
-   row.className='inventory-stat';if(key==='ability.kibaShield')row.title=I18n.t('ability.kibaShield.description');row.dataset.stat=key;label.textContent=I18n.t(key);amount.textContent=value;
+   row.className='inventory-stat';if(key==='ability.kibaShield')row.title=FiaConflict.description();row.dataset.stat=key;label.textContent=I18n.t(key);amount.textContent=value;
    row.append(label,amount);list.append(row);
   }
   const armor=document.createElement('div');armor.className='inventory-stat inventory-stat-armor';armor.dataset.stat='service.armor';

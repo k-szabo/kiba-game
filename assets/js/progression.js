@@ -11,14 +11,14 @@ const LevelUpEffect=(()=>{
   function update(dt){if(state==='play'&&Number.isFinite(dt)&&dt>0)remaining=Math.max(0,remaining-dt);}
   return Object.freeze({start,update,clear,duration,get remaining(){return remaining;},get progress(){return 1-remaining/duration;}});
 })();
-function freshProgression() {return {level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0}};}
+function freshProgression() {return {level:1,xp:0,totalXp:0,points:0,stats:{vitality:0,strength:0,spirit:0,shield:0}};}
 function xpForLevel(n) {return PROGRESSION_RULES.xpForLevel(n);}
 function normalizeProgression(data,worldFlags=[]) {
   const out=freshProgression(),integer=(n,lo,hi)=>Number.isFinite(n)?Math.max(lo,Math.min(hi,Math.floor(n))):lo;
   if(!data||typeof data!=='object')return out;
   out.level=integer(data.level,1,LEVEL_LIMIT);
   let budget=out.level-1+bossBonusPoints(worldFlags);
-  for(const key of Object.keys(out.stats)){out.stats[key]=integer(data.stats?.[key],0,Math.min(STAT_LIMIT,budget));budget-=out.stats[key];}
+  for(const key of Object.keys(out.stats)){out.stats[key]=key==='shield'&&!worldFlags[3]?.includes('kibaShield')?0:integer(data.stats?.[key],0,Math.min(STAT_LIMIT,budget));budget-=out.stats[key];}
   out.points=budget;
   out.xp=out.level===LEVEL_LIMIT?0:integer(data.xp,0,xpForLevel(out.level)-1);
   out.totalXp=integer(data.totalXp,0,Number.MAX_SAFE_INTEGER);
@@ -64,16 +64,19 @@ function refreshTraining() {
   $('strengthValue').textContent=I18n.format("message.arg0.sword.damage",[s.damage]);
   $('spiritTraining').hidden=!abilities[1];
   if(abilities[1])$('spiritValue').textContent=I18n.format("message.arg0.s.spirit.dash.cooldown",[s.dashCooldown.toFixed(2)]);
-  for(const key of ['vitality','strength','spirit']){
-    const locked=key==='spirit'&&!abilities[1];
+  const shield=FiaConflict.profile(),owned=FiaConflict.owned();$('shieldTraining').hidden=!owned;$('trainingStats').classList[owned?'add':'remove']('training-with-shield');
+  if(owned)$('shieldValue').textContent=I18n.format('ability.kibaShield.training.value',[FiaConflict.number(shield.capacity),FiaConflict.number(shield.recharge)]);
+  for(const key of ['vitality','strength','spirit','shield']){
+    const locked=key==='spirit'&&!abilities[1]||key==='shield'&&!owned;
     $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=STAT_LIMIT;
     $('train-'+key).textContent=I18n.t(locked?I18n.t("text.ability.required"):progression.stats[key]>=STAT_LIMIT?I18n.t("text.maximum"):I18n.t("text.1.point"));
   }
 }
 function spendPoint(key) {
-  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||key==='spirit'&&!abilities[1]||progression.points<=0||progression.stats[key]>=STAT_LIMIT)return false;
+  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||key==='spirit'&&!abilities[1]||key==='shield'&&!FiaConflict.owned()||progression.points<=0||progression.stats[key]>=STAT_LIMIT)return false;
   progression.stats[key]++;progression.points--;
   const oldMax=player.maxHp;player.maxHp=momoStats().maxHp;player.hp=Math.min(player.maxHp,player.hp+player.maxHp-oldMax);
+  FiaConflict.clampProfile();
   persist();updateHUD();refreshTraining();tone(660,.15);return true;
 }
 function closeTraining() {if(state!=='training')return;$('training').hidden=true;state='play';pressed.clear();}
