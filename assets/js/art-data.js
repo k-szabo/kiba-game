@@ -18,6 +18,15 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ hannahWalk:'assets/images/enemies/hannah-walk-v1.png',
+ hannahCombo:'assets/images/enemies/hannah-combo-v1.png',
+ hannahJump:'assets/images/enemies/hannah-jump-v1.png',
+ hannahRitual:'assets/images/enemies/hannah-ritual-v1.png',
+ momoDawnblade:'assets/images/momo-dawnblade-v1.png',
+ zigguratApproach:'assets/images/backgrounds/ziggurat-approach-v1.png',
+ zigguratInterior:'assets/images/backgrounds/ziggurat-interior-v1.png',
+ zigguratThrone:'assets/images/backgrounds/ziggurat-throne-v1.png',
+ zigguratStorm:'assets/images/backgrounds/ziggurat-storm-v1.png',
  fiaJourneyItems:'assets/images/ui/fia-items-v1.png',
  fiaTeleport:'assets/images/effects/fia-teleport-v1.png',
  fiaFoxfire:'assets/images/effects/fia-foxfire-v1.png',

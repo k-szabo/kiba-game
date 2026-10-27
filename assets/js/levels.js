@@ -30,7 +30,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return (worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return (worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -529,7 +529,13 @@ const CULT_TRAVEL=Object.freeze({id:'cultTempleEntrance',x:1150,y:2620,name:'cul
 // reachable again without adding a shrine or changing the hall's save model.
 const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.x,y:yomi.councilGate.y,name:'council.hall.name',location:'councilHall',travelOnly:true,dungeonEntrance:true,unlockFlag:'councilGateOpen'});
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
+const {zigguratApproach,zigguratInterior,zigguratSummit}=createZigguratMaps({makeLevel,ledge,rest,foe,zone});
+shadowRealm.zigguratEntrance={x:10680,y:1200};
+shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','discovered:hannahCourt','guardian:Hannah');
 const SIDE_LOCATIONS=Object.freeze({
+ zigguratApproach:Object.freeze({map:zigguratApproach,realm:3,requiredFlags:Object.freeze([])}),
+ zigguratInterior:Object.freeze({map:zigguratInterior,realm:3,requiredFlags:Object.freeze([])}),
+ zigguratSummit:Object.freeze({map:zigguratSummit,realm:3,requiredFlags:Object.freeze([])}),
  cultDungeon1:Object.freeze({map:cultForecourt,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted'])}),
  cultDungeon2:Object.freeze({map:cultHall,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted','sectStage1Clear'])}),
  cultDungeon3:Object.freeze({map:cultSanctum,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted','sectStage2Clear'])}),

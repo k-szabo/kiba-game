@@ -13,7 +13,7 @@ const CampQuest=(()=>{
  }
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
  function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
- const isSide=()=>!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
+ const isSide=()=>!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -139,7 +139,7 @@ const CampQuest=(()=>{
   return null;
  }
  function objective(){
-  if(level.dungeon||level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
+  if(level.ziggurat||level.dungeon||level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};

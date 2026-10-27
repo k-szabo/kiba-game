@@ -4,7 +4,8 @@ const DevAbilities=(()=>{
  const catalogue=Object.freeze([
   Object.freeze({id:'double-jump',index:0,label:'text.blessing.of.the.wind'}),
   Object.freeze({id:'dash',index:1,label:'text.spirit.dash'}),
-  Object.freeze({id:'kiba-shield',flag:'kibaShield',label:'ability.kibaShield'})
+  Object.freeze({id:'kiba-shield',flag:'kibaShield',label:'ability.kibaShield'}),
+  Object.freeze({id:'dawnblade',flag:'dawnblade',label:'ability.dawnblade'})
  ]);
  let selected=catalogue[0].id;
  const available=()=>DevSession.active&&!!player;

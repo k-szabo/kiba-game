@@ -30,14 +30,15 @@ Japán 2,6-szor szélesebb az előző változatnál; az ősi angyaltorony külö
 | Space, W, fel nyíl | Ugrás |
 | Space → felengedés → újra Space | Kettős ugrás a szél áldása után |
 | S + Space | Leugrás a kő- vagy felhőpárkányról |
-| J vagy Z | Normál támadás; a hajnalkarddal pecsétek feltörése |
-| H | Erős támadás; lassabban indul és nagyobbat sebez |
-| K vagy Shift | Szellemlépés az árnyék szentélye után |
+| Bal egérgomb vagy Z | Normál támadás; a hajnalkarddal pecsétek feltörése |
+| Jobb egérgomb | Erős támadás; lassabban indul és nagyobbat sebez |
+| Shift | Szellemlépés az árnyék szentélye után |
+| F | Hajnalkard, miután Haru felébresztette az erejét |
 | E | Harang, lélek, emlék, szentély, torii, apa |
 | U / Fejlesztés gomb | Fejlesztéspontok elköltése a pihenőszentélynél |
 | M | Térkép és gyorsutazás az ismert pihenőhelyekhez |
 | I | Hátizsák és Momo felszerelése; megnyitva szünetelteti a játékot |
-| O | Étel használata |
+| Q | Étel használata |
 | Esc | Szünet |
 
 A mobilos felület és az érintőképernyős irányítás megszűnt. A legkisebb támogatott nézet 1280×720; a játék billentyűzettel és egérrel használható.

@@ -49,8 +49,8 @@ const ShadowRealm=(()=>{
   }
   return false;
  }
- function interrupt(){
-  if(active()&&boss.phase==='windup'&&boss.move==='bell'&&attackKind==='heavy'){
+ function interrupt(kind=attackKind){
+  if(active()&&boss.phase==='windup'&&boss.move==='bell'&&kind==='heavy'){
    boss.move=null;setBossPhase('recover',1.1);return true;
   }
   return false;

@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const validate=require('./test-save-validation.cjs'),release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
-const context=vm.createContext({I18n:{t:key=>key}});for(const name of ['dungeon-rules','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+const context=vm.createContext({I18n:{t:key=>key}});for(const name of ['dungeon-rules','ziggurat-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext('JSON.stringify('+expression+')',context)),copy=value=>structuredClone(value),count=read('levels.length');
 function fixture(stage='open',restIndex=0){
  const progress=['guardian:cultJailer','prisonOpen'];if(stage==='warden'||stage==='rescued')progress.push('guardian:prisonWarden');if(stage==='rescued')progress.push('zenRescued');

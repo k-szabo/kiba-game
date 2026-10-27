@@ -380,7 +380,7 @@ const Visuals = (() => {
     const actorFaction=e.factionOverride||faction();
     const palette=e.factionOverride==='yomi'?realms[1]:e.factionOverride==='heaven'?realms[2]:r;
     let index=0,key,rect;
-    if(realm===3||!isBoss&&!e.miniboss&&actorFaction==='shadowCult'){
+    if((isBoss||e.miniboss)?realm===3:actorFaction==='shadowCult'){
       const name=isBoss?'madPriest':e.miniboss?e.id:role;
       const art=ART_SHADOW.actors[name],phase=e.miniboss||isBoss?e.phase:e.windup>0?'windup':e.attackTime>0?'strike':e.recovery>0?'recover':'wait';
       if(phase==='windup')index=(isBoss||e.miniboss?e.clock/e.phaseDuration:e.windup/e.windupDuration)>.5?2:3;

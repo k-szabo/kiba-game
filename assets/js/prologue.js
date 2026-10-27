@@ -15,6 +15,7 @@ const Prologue=(()=>{
     currentPose=pose;if(boss)boss.animation={...pose};
   }
   function start(){
+    HannahEncounter.clear();
     stop();if(!DevSession.active)weaponStyle='katana';phase='walk';clock=battleTime=castIndex=heartbeat=0;zoom=1;
     level=dream;platforms=dream.platforms.map(p=>({...p,dx:0}));enemies=[];particles=[];drops=[];projectiles=[];
     initPlayer(dream.start);player.inv=0;bossStarted=false;
