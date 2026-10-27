@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
 function setup(){
  const h=harness(),r=h.run;
- r("Prologue.stop();defeated=[true,true,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower','councilGateOpen','dungeonRunStarted','dungeonStage1Clear'],[],[]];dungeonState=DungeonRules.fresh();dungeonState.run=1;CampQuest.enter('yomiDungeon2',{save:false});initPlayer({x:level.arena.x+level.arena.w-100,y:level.arena.y});player.inv=999;enemies=enemies.filter(DungeonCombat.is);var owner=enemies[0];owner.active=true;owner.cycles=2;owner.clock=0;state='play';");
+ r("Prologue.stop();defeated=[true,true,false,false];flags=[['forestBell','villageBell'],['soulUpper','soulLower','councilGateOpen','dungeonRunStarted','dungeonStage1Clear'],[],[]];dungeonState=DungeonRules.fresh();dungeonState.runs.yomiFall.run=1;CampQuest.enter('yomiDungeon2',{save:false});initPlayer({x:level.arena.x+level.arena.w-100,y:level.arena.y});player.inv=999;enemies=enemies.filter(DungeonCombat.is);var owner=enemies[0];owner.active=true;owner.cycles=2;owner.clock=0;state='play';");
  return h;
 }
 const advance=(h,seconds,fps=120)=>h.run('for(let i=0;i<'+Math.ceil(seconds*fps)+';i++)update('+1/fps+');');
@@ -41,7 +41,7 @@ for(const state of ['pause','dialog','inventory','training','map','developer','d
  r('state="pause";');const before=r('JSON.stringify(DungeonRun.pending)');advance(h,2);assert.equal(r('JSON.stringify(DungeonRun.pending)'),before,'Pending portals also freeze');
  r('state="play";DungeonCombat.reset(owner);');assert.equal(r('DungeonRun.pending.length'),0);advance(h,2);assert(!r('enemies.some(e=>e.dungeonSummon&&!e.dead)'),'Reset cancels pending portals');
 }
-for(const mutation of ['DungeonCombat.reset(owner)','owner.hp=0;killEnemy(owner)','enemies=enemies.filter(e=>e!==owner)','dungeonState.run++']){
+for(const mutation of ['DungeonCombat.reset(owner)','owner.hp=0;killEnemy(owner)','enemies=enemies.filter(e=>e!==owner)','dungeonState.runs.yomiFall.run++']){
  const h=spawn(setup()),r=h.run;const before=ledger(h);r(mutation);const after=ledger(h);advance(h,1/120);
  assert(r('raised.every(e=>e.dead&&e.windup===0&&e.attackTime===0)'),mutation+' retires owned summons');
  if(!mutation.includes('killEnemy'))assert.equal(ledger(h),after,'Retiring summons grants no reward');

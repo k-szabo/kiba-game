@@ -66,6 +66,17 @@ function fixture(release=current){
 function plain(value){return JSON.parse(JSON.stringify(value));}
 
 async function main(){
+ // CULT-QA-001: both memories contribute to the same legitimate point budget.
+ const cultEnv=storageEnvironment(),cultClient=client(cultEnv);await cultClient.vault.ready;
+ const both=fixture();both.prologueComplete=true;both.abilities=[true,true];both.defeated=[true,true,true,true];
+ both.flags=plain(vm.runInContext("levels.map((map,index)=>{const list=[BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];if(index===0)list.push('forestBell','villageBell','guardian:oldCultist','cultTempleDiscovered');if(index===1)list.push('soulUpper','soulLower','councilKeyEarned','councilGateOpen');if(index===2)list.push('dawnSeal','shadowEntered');for(const spec of Object.values(DungeonRules.definitions))if(spec.realm===index)list.push(spec.started,...spec.stages,...spec.rewards,spec.soul);return list;})",cultClient));
+ both.dungeon=plain(vm.runInContext("(()=>{const state=DungeonRules.fresh();state.runs.yomiFall.run=1;state.runs.sectFall.run=1;return state;})()",cultClient));
+ both.progression={level:30,totalXp:15950,xp:0,points:39,stats:{vitality:0,strength:0,spirit:0}};
+ await cultClient.vault.write(both);assert.deepEqual(plain(await client(cultEnv).vault.ready),both,'All ten boss bonuses and39 unspent points survive authenticated same-release reload');
+ const spent=copy(both);spent.progression.stats={vitality:12,strength:12,spirit:12};spent.progression.points=3;
+ await cultClient.vault.write(spent);assert.deepEqual(plain(await client(cultEnv).vault.ready),spent,'Allocated points retain the same full shared budget');
+ for(const count of [38,40,Number.MAX_SAFE_INTEGER]){const bad=copy(both);bad.progression.points=count;assert.throws(()=>cultClient.vault.write(bad),/Invalid save schema/,'The larger legitimate ceiling must not accept inflated or missing points');}
+ const fake=copy(both);fake.flags[0].push('sectUnknownReward');assert.throws(()=>cultClient.vault.write(fake),/Invalid/);
  const env=storageEnvironment();env.local.set('language','en');env.local.set('bindings','custom');env.local.set('other-app','keep');
  const first=client(env);assert.equal(await first.vault.ready,null);assert.equal(first.vault.isReady,true);assert.equal(first.vault.notice,'');
  const initial=env.records.get('profile');assert.equal(initial.release,current);assert.equal(initial.key.extractable,false);assert.equal(initial.key.algorithm.name,'HKDF');

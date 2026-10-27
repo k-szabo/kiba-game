@@ -6,7 +6,7 @@ const flags=(...extra)=>[[],['councilGateOpen','dungeonRunStarted',...extra]],de
 const first=['dungeonCaptainReward'],second=[...first,'dungeonNecromancerReward'],all=[...second,'dungeonCouncilReward','councilSoul'];
 const staged=['dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear'];
 const initial=rules.fresh();assert(rules.validate(initial));assert(Object.isFrozen(rules));assert(Object.isFrozen(rules.items));assert(Object.isFrozen(rules.enhancements));
-same(initial,{run:0,roll:null,stock:{dungeonSeal:0,weaponEnhancement:0,armorEnhancement:0,spiritEnhancement:0},boosts:{weapon:0,armor:0,spirit:0}});
+same(initial,{runs:{yomiFall:{run:0,roll:null},sectFall:{run:0,roll:null}},stock:{dungeonSeal:0,sectSeal:0,weaponEnhancement:0,armorEnhancement:0,spiritEnhancement:0},boosts:{weapon:0,armor:0,spirit:0}});
 const independent=rules.fresh();independent.stock.dungeonSeal=7;independent.boosts.weapon=2;assert.equal(initial.stock.dungeonSeal,0);assert.equal(initial.boosts.weapon,0);
 {
  const copy=rules.copy(initial);assert.notEqual(copy,initial);assert.notEqual(copy.stock,initial.stock);assert.notEqual(copy.boosts,initial.boosts);copy.stock.dungeonSeal++;assert.equal(initial.stock.dungeonSeal,0);
@@ -17,9 +17,9 @@ for(const bad of [null,[],{},true,0,{...plain(initial),extra:0},{...plain(initia
  for(const fn of [()=>rules.begin(bad,null),()=>rules.addStock(bad,'dungeonSeal'),()=>rules.removeStock(bad,'dungeonSeal'),()=>rules.consume(bad,'weaponEnhancement',[true,true])])same(fn(),{ok:false,state:null,reason:'invalidState'});
 }
 {
- for(const roll of [null,...rules.enhancements]){const result=rules.begin(initial,roll);assert(result.ok);assert.equal(result.state.run,1);assert.equal(result.state.roll,roll);assert.equal(initial.run,0);assert(rules.validate(result.state,flags(),defeated));}
+ for(const roll of [null,...rules.enhancements]){const result=rules.begin(initial,roll);assert(result.ok);assert.equal(result.state.runs.yomiFall.run,1);assert.equal(result.state.runs.yomiFall.roll,roll);assert.equal(initial.runs.yomiFall.run,0);assert(rules.validate(result.state,flags(),defeated));}
  for(const roll of ['dungeonSeal','invalid',0,false,{},[],NaN]){const result=rules.begin(initial,roll);assert(!result.ok);same(result.state,initial);assert.equal(result.reason,'invalidRoll');}
- const full=rules.fresh();full.run=Number.MAX_SAFE_INTEGER;assert.equal(rules.begin(full,null).reason,'runOverflow');assert.equal(full.run,Number.MAX_SAFE_INTEGER);
+ const full=rules.fresh();full.runs.yomiFall.run=Number.MAX_SAFE_INTEGER;assert.equal(rules.begin(full,null).reason,'runOverflow');assert.equal(full.runs.yomiFall.run,Number.MAX_SAFE_INTEGER);
 }
 const run=rules.begin(initial,'armorEnhancement').state;
 assert(!rules.validate(run),'A positive run needs its matching world flag');assert(!rules.validate(initial,flags(),defeated),'Started requires a positive run');assert(!rules.validate(run,[[],['dungeonRunStarted']],defeated),'Normal started runs require the council gate');assert(!rules.validate(run,flags(),[true,false]),'Normal started runs require Yomi victory');
@@ -32,12 +32,12 @@ for(const extras of [['dungeonStage1Clear'],['dungeonStage2Clear',...second],['d
 assert(rules.validate(run,flags(...all),defeated),'New run can retain permanent first-clear rewards without current stage clears');assert(rules.validate(run,flags(...all,...staged,'dungeonChestClaimed'),defeated));
 assert(!rules.validate(initial,[[],['councilGateOpen',...all]],defeated),'Permanent rewards need a historical run');
 {
- let state=plain(run);for(const id of Object.keys(rules.items)){
+ let state=plain(run);for(const id of Object.keys(rules.items).filter(id=>id!=='sectSeal')){
   const before=plain(state),result=rules.addStock(state,id,3);assert(result.ok);assert.equal(rules.quantity(result.state,id),3);same(state,before,'Adding stock never mutates input');state=result.state;
   const remove=rules.removeStock(state,id,2);assert(remove.ok);assert.equal(rules.quantity(remove.state,id),1);assert.equal(state.stock[id],3);state=remove.state;
  }
  assert(rules.validate(state,flags(...all),defeated));assert(!rules.validate(state,flags(...second),defeated),'Chest stock cannot predate the final first-clear reward');
- state.boosts={weapon:2,armor:3,spirit:4};const before=plain(state),next=rules.begin(state,null);assert(next.ok);assert.equal(next.state.run,2);assert.equal(next.state.roll,null);same(next.state.stock,state.stock);same(next.state.boosts,state.boosts);same(state,before,'Explicit new run preserves inventory and consumed enhancements');
+ state.boosts={weapon:2,armor:3,spirit:4};const before=plain(state),next=rules.begin(state,null);assert(next.ok);assert.equal(next.state.runs.yomiFall.run,2);assert.equal(next.state.runs.yomiFall.roll,null);same(next.state.stock,state.stock);same(next.state.boosts,state.boosts);same(state,before,'Explicit new run preserves inventory and consumed enhancements');
 }
 for(const id of ['unknown','__proto__','toString',null,4,{}])for(const method of ['addStock','removeStock']){
  const result=rules[method](run,id,1);assert(!result.ok);assert.equal(result.reason,'invalidItem');same(result.state,run);
@@ -60,4 +60,16 @@ for(const [id,key]of [['weaponEnhancement','weapon'],['armorEnhancement','armor'
  const one=rules.addStock(run,'spiritEnhancement').state;for(const abilities of [undefined,[],[true,false],[true,1],null,{}]){const result=rules.consume(one,'spiritEnhancement',abilities);assert.equal(result.reason,'abilityRequired');same(result.state,one);}
  assert.equal(rules.consume(run,'weaponEnhancement').reason,'insufficientStock');assert.equal(rules.consume(run,'armorEnhancement').reason,'insufficientStock');assert.equal(rules.consume(run,'dungeonSeal',[true,true]).reason,'invalidItem');
 }
-console.log('PASS: standalone exact dungeon schema, deep immutable transactions, run/flag and permanent reward chains, predetermined rolls, safe counted stock, cap-five boosts, dash ability guard and preserved new-run inventory.');
+{
+ const spec=rules.definitions.sectFall,world=[['guardian:oldCultist','cultTempleDiscovered',spec.started,...spec.stages,...spec.rewards,spec.soul],[]];
+ const sect=rules.begin(initial,'spiritEnhancement','sectFall');assert(sect.ok);assert.equal(sect.state.runs.sectFall.run,1);assert.equal(sect.state.runs.yomiFall.run,0);assert(rules.validate(sect.state,world,[true,false]));
+ const held=rules.addStock(sect.state,'sectSeal').state;assert(rules.validate(held,world,[true,false]));
+ const shared=rules.addStock(held,'armorEnhancement').state;assert(rules.validate(shared,world,[true,false]));const enhanced=rules.consume(shared,'armorEnhancement').state;assert.equal(enhanced.boosts.armor,1);
+ const yomi=rules.begin(enhanced,null,'yomiFall').state;same(yomi.runs.sectFall,enhanced.runs.sectFall,'Starting Yomi cannot reroll the other memory');same(yomi.stock,enhanced.stock);same(yomi.boosts,enhanced.boosts);
+ assert.equal(rules.begin(initial,null,'unknown').reason,'invalidDungeon');assert.equal(rules.runInfo(initial,'unknown'),null);
+ for(const flag of [spec.started,...spec.requiredFlags,...spec.rewards,spec.soul]){const bad=plain(world);bad[0]=bad[0].filter(id=>id!==flag);assert(!rules.validate(held,bad,[true,false]),'Reject missing sect requirement '+flag);}
+ for(const malformed of [{...plain(initial),run:0},{...plain(initial),runs:{}},{...plain(initial),runs:{...plain(initial.runs),extra:{run:0,roll:null}}}])assert.equal(rules.copy(malformed),null);
+ for(const id of ['yomiFall','sectFall'])for(const bad of [-1,.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1]){const broken=plain(initial);broken.runs[id].run=bad;assert.equal(rules.copy(broken),null);}
+ const detached=rules.copy(yomi);detached.runs.sectFall.run++;assert.notEqual(detached.runs.sectFall.run,yomi.runs.sectFall.run);
+}
+console.log('PASS: exact two-dungeon schema, independent immutable runs/rolls/reward chains, shared stock/capped boosts, strict IDs and preserved inventory.');

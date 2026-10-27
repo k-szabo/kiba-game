@@ -150,3 +150,7 @@ A `dungeonSeal`, `weaponEnhancement`, `armorEnhancement` és `spiritEnhancement`
 A `dungeonState` készlete, fokozatai, runazonosítója és előre kisorsolt ládajutalma a DevSession másolatának része. Új teszt vagy kilépés után a normál állapot helyreáll; a `persist()` a tesztben nem ír SaveVault-rekordot. A láda újranyitása nem sorsolhat új jutalmat; az explicit új emlékút tesztelése a csarnok tekercsénél kezdhető.
 
 Célzott ellenőrzések: `test-dungeon-rules.cjs`, `test-dungeon-run.cjs`, `test-dungeon-combat.cjs`, `test-dungeon-routes.cjs`, `test-dungeon-items.cjs`, `test-dungeon-factions.cjs`. Ezek nem helyettesítik a valódi böngészős grafikai és mentési ellenőrzést. A teljes run-, checkpoint-, frakció- és jutalomszabályokat a [DUNGEONS.md](DUNGEONS.md) rögzíti.
+
+## A Szekta Bukása – spoileres fejlesztői rész
+
+A `cultDungeon1`, `cultDungeon2`, `cultDungeon3` külön teleportcélok, saját boss előtti oltárral. Az újraélesztő az adott szint `cultTempleGuard`, `woundedAngel`, illetve `cultHighPriestess` bossát használja; a replay nem oszt jutalmat vagy haladást. A `highPriestessSoul` és a halmozható `sectSeal` az inventoryba adható. A két dungeon runja különálló, készletük és ötös enhancement-korlátjuk közös. Tesztmódban a normál mentés változatlan marad. Célzott ellenőrzés: `node --run test:cult-dungeon`.

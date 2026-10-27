@@ -1030,6 +1030,22 @@
           "en": "A special keepsake can now be placed beside the Forest Refuge’s altar, unlocking new dialogue with Sora. Akash’s phone case now costs 1,500 coins."
         }
       ]
+    },
+    {
+      "version": "0.9.48_9c622a1b",
+      "code": "9c622a1b",
+      "baseVersion": "0.9.48",
+      "slug": "fall-of-the-sect",
+      "summary": {
+        "hu": "A Szekta Bukása",
+        "en": "The Fall of the Sect"
+      },
+      "fixes": [
+        {
+          "hu": "Az öreg kultista mögötti templomkapu új, háromszintes emlékdungeonbe vezet, három bossal, külön mentett előrehaladással és jutalomládával.",
+          "en": "The temple gate beyond the elder cultist leads to a new three-floor memory dungeon with three bosses, independently saved progress and a reward chest."
+        }
+      ]
     }
   ]
 }

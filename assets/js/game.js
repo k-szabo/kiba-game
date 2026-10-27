@@ -326,8 +326,9 @@ function travelDestination(rest,targetRealm=realm){
  const destination=realmRests(targetRealm).find(r=>r.id===rest?.id);
  if(!destination||destination.checkpointOnly||!travelScope(destination,targetRealm))return null;
  const side=travelSide(destination,targetRealm)?.[0];if(side&&!DevSession.active&&!sideLocationUnlocked(side,flags,defeated))return null;
- const entrance=destination===COUNCIL_TRAVEL;
- if(!DevSession.active&&entrance&&(!defeated[1]||!flags[1].includes(destination.unlockFlag)))return null;
+ const entrance=!!destination.travelOnly;
+ if(!DevSession.active&&entrance&&(!defeated[targetRealm]||!flags[targetRealm].includes(destination.unlockFlag)))return null;
+ if(!DevSession.active&&(destination===CULT_TRAVEL||side&&SIDE_LOCATIONS[side].map.dungeon?.id==='sectFall')&&!abilities[1])return null;
  if(!DevSession.active&&(!realmUnlocked(targetRealm)||!entrance&&!visitedRests[targetRealm].includes(destination.id)||!ShadowRealm.travelAllowed(realm,targetRealm)))return null;
  return destination;
 }
@@ -341,6 +342,9 @@ function fastTravel(rest,targetRealm=realm){
   KitsuneQuest.leaveFor(levels[1]);enterRealm(1,rest);
   if(!enterCouncilHall())return false;
   initPlayer(councilHall.memoryScroll);player.hp=Math.min(hp,player.maxHp);resetCamera();
+ }else if(destination===CULT_TRAVEL){
+  const hp=player.hp,rest=japan.rests.findLast(point=>visitedRests[0].includes(point.id))||japan.rests[0];
+  KitsuneQuest.leaveFor(japan);enterRealm(0,rest);initPlayer(japan.cultPassage.ruinedGate);player.hp=Math.min(hp,player.maxHp);resetCamera();
  }else if(side){if(!CampQuest.enter(side,{point:destination,save:false,atShrine:true}))return false;}else{KitsuneQuest.leaveFor(levels[targetRealm]);enterRealm(targetRealm,destination);}
  $('map').hidden=true;state='play';keys.clear();pressed.clear();persist();updateHUD();toast(I18n.t('text.light.path')+I18n.t(destination.name));return true;
 }
@@ -348,8 +352,8 @@ function travelGrid(n){
  const grid=document.createElement('div');grid.className='travel-grid';
  for(const rest of realmRests(n).filter(rest=>!rest.checkpointOnly)){
   const side=travelSide(rest,n);if(!travelScope(rest,n))continue;
-  if(!DevSession.active&&(side&&!sideLocationUnlocked(side[0],flags,defeated)||rest===COUNCIL_TRAVEL&&!flags[1].includes(rest.unlockFlag)))continue;
-  const discovered=DevSession.active||rest===COUNCIL_TRAVEL||visitedRests[n].includes(rest.id),button=document.createElement('button'),name=side?I18n.t(side[1].map.name||'camp.name')+' · '+I18n.t(rest.name):I18n.t(rest.name);
+  if(!DevSession.active&&(side&&!sideLocationUnlocked(side[0],flags,defeated)||rest.travelOnly&&!flags[n].includes(rest.unlockFlag)))continue;
+  const discovered=DevSession.active||rest.travelOnly||visitedRests[n].includes(rest.id),button=document.createElement('button'),name=side?I18n.t(side[1].map.name||'camp.name')+' · '+I18n.t(rest.name):I18n.t(rest.name);
   button.type='button';button.textContent=(discovered?'⛩ ':'· ')+name;button.disabled=!travelDestination(rest,n);
   button.setAttribute('data-realm',String(n));button.setAttribute('data-rest',rest.id);
   button.setAttribute('aria-label',I18n.format('travel.destination',[I18n.t(realms[n].short),name]));

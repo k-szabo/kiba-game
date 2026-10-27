@@ -25,8 +25,9 @@ for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
   assert(button.onclick(),`Advertised destination rejected: ${target.realm}/${target.id}`);
   assert.equal(r('realm'),target.realm);
   if(target.travelOnly){
-   assert.equal(r('level.id'),'councilHall');assert.equal(h.snap().player.y+h.snap().player.h,r('councilHall.memoryScroll.y'));assert.equal(h.snap().player.x+h.snap().player.w/2,r('councilHall.memoryScroll.x'));
-   assert(r('yomi.rests.some(rest=>rest.id===checkpoint.id)'),'Virtual entrance preserves an actual outdoor save checkpoint');
+   const council=target.id==='councilHallEntrance',point=council?'councilHall.memoryScroll':'japan.cultPassage.ruinedGate';
+   assert.equal(r('level.id'),council?'councilHall':'japan');assert.equal(h.snap().player.y+h.snap().player.h,r(point+'.y'));assert.equal(h.snap().player.x+h.snap().player.w/2,r(point+'.x'));
+   assert(r((council?'yomi':'japan')+'.rests.some(rest=>rest.id===checkpoint.id)'),'Virtual entrance preserves an actual outdoor save checkpoint');
   }else{
    assert.equal(h.snap().checkpoint.id,target.id);assert.equal(r('level.id'),r(`Object.values(SIDE_LOCATIONS).find(spec=>spec.map.rests.some(rest=>rest.id===${JSON.stringify(target.id)}))?.map.id||levels[${target.realm}].id`));
    assert.equal(h.snap().checkpoint.x,target.x);assert.equal(h.snap().player.y+h.snap().player.h,target.y);

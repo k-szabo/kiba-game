@@ -2,6 +2,8 @@
 
 [Magyar](README.md)
 
+**Development status: beta.**
+
 A little shiba samurai. Dangerous realms. A father to bring home.
 
 **[Play in your browser →](https://k-szabo.github.io/kiba-game/)** · [Gameplay guide](docs/GAMEPLAY.en.md) · [Development guide](docs/DEVELOPMENT.md)
