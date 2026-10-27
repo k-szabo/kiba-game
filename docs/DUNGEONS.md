@@ -1,10 +1,30 @@
 # Dungeonok – spoileres fejlesztői referencia
 
+## Második emlékút: A Szekta Bukása
+
+A `japan.cultPassage.ruinedGate` a dashsel átjárható barlangfal mögötti meglévő kapu. A `sectFall` emlékút három külön `cultDungeon1`–`cultDungeon3` oldalhelyszínt kapcsol össze: ostromlott templomudvar, felfelé vezető szárnyas csarnok, majd a rituális szentélybe ereszkedő út. A pályákon a szamurájok és angyalok közös `alliance` oldalt alkotnak a szektával szemben. Momo mindkét oldal számára ellenfél, de NPC-k egymás közti harca nem ad játékosjutalmat. Mindhárom pályán egyetlen valódi oltár áll a boss megközelítési oldalán; az egyéb belépési checkpointok nem új szentélyek.
+
+| Boss | Azonosító | HP | Ismételhető jutalom | Első győzelem |
+| --- | --- | ---: | --- | --- |
+| Kultista templomőr | `cultTempleGuard` | 260 | 350 XP, 90 érme | +1 fejlesztéspont |
+| Sebesült angyal fanatikus | `woundedAngel` | 320 | 500 XP, 130 érme | +1 fejlesztéspont |
+| Kultista főpapnő | `cultHighPriestess` | 460 | 700 XP, 220 érme | +1 fejlesztéspont és `highPriestessSoul` |
+
+A templomőr pajzzsal és láncos buzogánnyal harcol, a sebesült angyal alacsony HP-n gyorsabb és erősebb kard-/fénymágia-támadásokat használ. A főpapnő saját idézett fanatikusait korrupt énekkel erősíti; az idézések a gazda konkrét példányához, dungeonazonosítójához és az aktuális runhoz kötődnek. Pihenés, halál, bossreset, új run és helyszínváltás után régi idézési callback nem adhat katonát vagy jutalmat.
+
+A harmadik boss mögötti láda runonként egyszer 250 érmét és `sectSeal` pecsétet ad, valamint ugyanazzal a 25%-os eséllyel egy közös megerősítést, mint Yomiban. A sorsolás az adott dungeon új runjának kezdetén rögzül. Az XP és érme új runban ismét jár; további boss-statpont és lélek nem. Fia kapcsolódó küldetése külön fejlesztés, a dungeon önállóan teljesíthető.
+
+A `DUNGEON_CATALOGUE` kapcsolja össze a dungeonazonosítót, világot, pályákat, jutalmakat és bejárati szövegeket. A `DungeonRules` mentett állapota `runs: {yomiFall:{run,roll},sectFall:{run,roll}}`, közös `stock` és `boosts` mezőkkel. Egy emlékút indítása kizárólag annak runját, aktuális szintjelzőit és látogatott belső pontjait törli; a másik dungeon haladása és ládasorsolása megmarad. A megerősítések ötös korlátja közös, nem dungeonönként duplázódik. Régi kiadási mentést nem migrálunk.
+
+A megtalált templomkapu virtuális `cultTempleEntrance` gyorsutazási cél; nem gyógyít és nem checkpoint. Belső pihenők továbbra is csak ugyanazon dungeonből érhetők el általános gyorsutazással, a két emlékút között sem. A dev teleport a közös `SIDE_LOCATIONS` katalógusból mind a hat dungeonpályát látja, a bossválasztó az adott pálya saját `arenaEncounters` bejegyzéseit használja. Tesztmódban a runok és tárgykészlet másolatai sem írják a normál mentést.
+
+## Első emlékút: A Yomi Királyság bukása
+
 Az első dungeon, **A Yomi Királyság bukása**, a Négy Tanácsos Csarnokának emléktekercséből indul. A csarnok továbbra is harcmentes belső tér; a tekercs három külön pályából álló, megismételhető emlékutat nyit. Ez Yomi opcionális oldalága, nem új birodalom. A kapukulcs megszerzését és egyszeri felhasználását a [tanácsosi ág referenciája](COUNCIL-BRANCH.md) írja le.
 
 ## Belépés és a három szint
 
-A `councilHall.memoryScroll` melletti interakció szüneteltető választóablakot nyit (`state='dungeonMenu'`). Folytatni csak már elkezdett emlékutat lehet. Az új emlékút elindítása növeli a `dungeonState.run` számlálót, rögzíti a láda véletlen eredményét, majd a bevezető párbeszéd után az első pályára léptet. Bezárt ablak régi callbackje nem indíthat utazást.
+A `councilHall.memoryScroll` melletti interakció szüneteltető választóablakot nyit (`state='dungeonMenu'`). Folytatni csak már elkezdett emlékutat lehet. Az új emlékút elindítása növeli a `dungeonState.runs.yomiFall.run` számlálót, rögzíti a láda véletlen eredményét, majd a bevezető párbeszéd után az első pályára léptet. Bezárt ablak régi callbackje nem indíthat utazást.
 
 | Pályaazonosító | Helyszín és útvonal | Boss | HP | Győzelem jutalma |
 | --- | --- | --- | --- | --- |
@@ -28,7 +48,7 @@ A normál ellenfelek `dungeonEnemy` és `dungeonSide` mezőket kapnak. A japán 
 
 A nekromanta feltámasztott szamurájai külön, `necromancer` oldalhoz tartoznak. Megjelenésüktől kizárólag Momót követik az aktív bossaréna egész területén; a normál 520 egységes észlelési határ és a közeli NPC-k nem térítik el őket. A cél követése ugrás közben is megmarad, de a közelharci támadáshoz továbbra is kell a megfelelő függőleges távolság, és a 0,7 másodperces előjelzés változatlan. A `raisedSamurai` megjelenítési jelölés különíti el őket az élő katonáktól.
 
-Az idézésekhez tartozó átmeneti `WeakMap` a nekromanta konkrét példányát és a `dungeonState.run` értékét köti össze. A függő portálok is a példányt őrzik, nem csupán az újra felhasználható bossazonosítót. A `DungeonRun.cleanupSummons(owner)` csak a megadott boss saját portáljait és katonáit zárja le; teljes megszakításnál mindet. Reset, vereség, eltávolított vagy lecserélt boss, új emlékút és pályaváltás után régi idézés nem folytathat támadást. A katonák és tulajdonoskapcsolataik nem mentődnek.
+Az idézésekhez tartozó átmeneti `WeakMap` a nekromanta konkrét példányát és a `dungeonState.runs.yomiFall.run` értékét köti össze. A függő portálok is a példányt őrzik, nem csupán az újra felhasználható bossazonosítót. A `DungeonRun.cleanupSummons(owner)` csak a megadott boss saját portáljait és katonáit zárja le; teljes megszakításnál mindet. Reset, vereség, eltávolított vagy lecserélt boss, új emlékút és pályaváltás után régi idézés nem folytathat támadást. A katonák és tulajdonoskapcsolataik nem mentődnek.
 
 A bossok lövedékforrása `dungeon:<boss-id>`. A boss halála vagy visszaállítása a saját lövedékeit és jelzéseit törli; a győzelem a runvezérlőben a hozzá tartozó idézéseket is lezárja. A közös játékciklus aktív képkockánként egyszer frissíti a harcot; szünetben, párbeszédben és játékablakok alatt az órák állnak. Halál vagy pályaváltás után a korábbi játékos-/ellenfélpéldány nem folytathatja a sebzést vagy jutalmazást.
 
@@ -41,7 +61,7 @@ A `flags[1]` két külön réteget tárol:
 
 Egy boss az aktuális emlékúton csak egyszer jutalmazható. Kifejezetten új emlékút indítása után az XP és érme ismét jár; további fejlesztéspont vagy újabb tanácsosi lélek nem. Az első teljes győzelmi sor összesen 1400 XP-t, 400 érmét és három extra pontot ad, a ládán felül. Az XP-ből kapott szintlépések pontjai a szokásos fejlődési szabályt követik. Az egyszeri bossjelzők a közös pontkeret-számítás részei; a lélek későbbi eladása nem vonja vissza a pontot.
 
-A harmadik boss után a ládát külön, közelről kell kinyitni. Emlékutanként egyszer ad **250 érmét és egy `dungeonSeal` tárgyat**, valamint 25% eséllyel egy megerősítést. A 25%-os ágon a három megerősítéstípus egyenlő eséllyel választható. Az eredmény már az emlékút indításakor a `dungeonState.roll` mezőbe kerül; a láda nyitása vagy ugyanazon kiadás mentésének visszatöltése nem sorsol újra. A pecsét gyűjthető és eladható csecsebecse, jelenleg nincs használati művelete.
+A harmadik boss után a ládát külön, közelről kell kinyitni. Emlékutanként egyszer ad **250 érmét és egy `dungeonSeal` tárgyat**, valamint 25% eséllyel egy megerősítést. A 25%-os ágon a három megerősítéstípus egyenlő eséllyel választható. Az eredmény már az emlékút indításakor a `dungeonState.runs.yomiFall.roll` mezőbe kerül; a láda nyitása vagy ugyanazon kiadás mentésének visszatöltése nem sorsol újra. A pecsét gyűjthető és eladható csecsebecse, jelenleg nincs használati művelete.
 
 ## Tárgykészlet és megerősítések
 

@@ -3,7 +3,10 @@ const assert=require('node:assert/strict'),harness=require('./test-harness.cjs')
 const routes=[
  {map:'yomiDungeon1',path:['dungeon-courtyard-ground0','dungeon-courtyard-ground1620','dungeon-courtyard-ground3240']},
  {map:'yomiDungeon2',path:['dungeon-crypt-entry','crypt-step1','crypt-gallery1','crypt-step2','crypt-gallery2','crypt-turn','crypt-descent1','crypt-descent2','crypt-descent3','crypt-descent4','dungeon-crypt-depths']},
- {map:'yomiDungeon3',path:['dungeon-thrones-ground0','dungeon-thrones-ground1120','dungeon-thrones-ground2340','dungeon-thrones-ground3760']}
+ {map:'yomiDungeon3',path:['dungeon-thrones-ground0','dungeon-thrones-ground1120','dungeon-thrones-ground2340','dungeon-thrones-ground3760']},
+ {map:'cultDungeon1',path:['sect-forecourt-ground0','sect-forecourt-ground1620','sect-forecourt-ground3520']},
+ {map:'cultDungeon2',path:['sect-hall-ground0','sect-hall-ground1020','sect-hall-ground1440','sect-hall-ground2460','sect-hall-ground2880','sect-hall-ground4000','sect-hall-ground4420']},
+ {map:'cultDungeon3',path:['sect-sanctum-ground0','sect-sanctum-ground1120','sect-sanctum-ground2240','sect-sanctum-ground3560','sect-sanctum-ground4580']}
 ];
 function fixture(map,fps){
  const h=harness(),r=h.run;r('DevTools.open();DevSession.begin();DevTools.close();CampQuest.enter('+JSON.stringify(map)+');enemies=[];boss.dead=true;abilities=[false,false];const dungeonRouteDt=1/'+fps+';'+`
@@ -25,4 +28,4 @@ for(const fps of [30,60,120])for(const route of routes){
  assert.equal(r('level.rests.length'),1,'Only the boss approach has a travel shrine');
  assert(r('level.checkpoints.every(p=>p.checkpointOnly===true)'),'Entry checkpoints are separate from shrines');
 }
-console.log('PASS: all three dungeon main routes and continuous returns use actual single-jump physics at30/60/120FPS; no extra travel shrines.');
+console.log('PASS: all six dungeon main routes and continuous returns use actual single-jump physics at30/60/120FPS; no extra travel shrines.');

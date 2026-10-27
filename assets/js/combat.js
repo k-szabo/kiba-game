@@ -474,7 +474,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
-  if(DungeonCombat.is(spec)){const e=DungeonCombat.create(spec);e.runId=dungeonState.run;return e;}
+  if(DungeonCombat.is(spec)){const e=DungeonCombat.create(spec);e.dungeonId=level.dungeon?.id;e.runId=DungeonRun.runId(e.dungeonId);return e;}
   if(ArenaCombat.is(spec))return ArenaCombat.create(spec);
   if(PrisonHunter.is(spec))return PrisonHunter.create(spec);
   if(PrisonWarden.is(spec))return PrisonWarden.create(spec);

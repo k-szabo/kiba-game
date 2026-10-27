@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),vm=require('node:vm');
-const h=require('./test-harness.cjs')(),r=h.run,art=JSON.parse(r('JSON.stringify(ART_DUNGEON)')),manifest=r('ART_MANIFEST'),root=path.resolve(__dirname,'..'),pixels=new Map();
+const h=require('./test-harness.cjs')(),r=h.run,art=JSON.parse(r('JSON.stringify(ART_DUNGEON)')),cult=JSON.parse(r('JSON.stringify(ART_CULT_DUNGEON)')),allActors={...art,...cult},manifest=r('ART_MANIFEST'),root=path.resolve(__dirname,'..'),pixels=new Map();
 function png(key){
  assert.equal(typeof manifest[key],'string','Image '+key+' is registered');const file=path.join(root,manifest[key]);assert(fs.existsSync(file),'Native asset exists: '+manifest[key]);const data=fs.readFileSync(file);assert.equal(data.toString('hex',0,8),'89504e470d0a1a0a');return {data,w:data.readUInt32BE(16),h:data.readUInt32BE(20)};
 }
@@ -17,8 +17,8 @@ function rgba(key){
 function rectInImage(rect,image,label){
  assert([rect.x,rect.y,rect.w,rect.h].every(Number.isFinite),label+' has finite crop geometry');assert(rect.w>0&&rect.h>0);assert(rect.x>=0&&rect.y>=0&&rect.x+rect.w<=image.w&&rect.y+rect.h<=image.h,label+' stays within the native bitmap');
 }
-for(const role of ['captain','necromancer','council']){
- const definition=art[role];assert.equal(definition.frames.length,6,role+' has all six approved poses');assert([-1,1].includes(definition.facing));
+for(const role of ['captain','necromancer','council','templeGuard','woundedAngel','highPriestess']){
+ const definition=allActors[role];assert.equal(definition.frames.length,6,role+' has all six approved poses');assert([-1,1].includes(definition.facing));
  for(const [index,frame]of definition.frames.entries()){
   const label=role+' pose'+index,image=rgba(frame.image||definition.image);rectInImage(frame,image,label);assert(frame.bodyHeight>0);assert.equal(frame.bodyHeight,definition.frames[0].bodyHeight,label+' keeps a fixed body scale');
   assert(frame.anchorX>=frame.x&&frame.anchorX<frame.x+frame.w&&frame.anchorY>=frame.y&&frame.anchorY<frame.y+frame.h,label+' foot anchor belongs to its complete crop');
@@ -35,11 +35,11 @@ assert.deepEqual(Object.keys(art.props).sort(),['closedChest','openChest','scrol
 r('DevTools.open();DevSession.begin();DevTools.close();');
 const ctx=h.sandbox.document.getElementById('world').getContext('2d');let calls=[],scales=[];ctx.drawImage=(image,...args)=>calls.push({image,args});ctx.scale=(...args)=>scales.push(args);
 const snapshot=()=>r('JSON.stringify([player,enemies,projectiles,flags,platforms,progression,dungeonState,DungeonRun.pending,time,levelTime])');
-for(const [floor,type,role]of [[0,'dungeonCaptain','captain'],[1,'dungeonNecromancer','necromancer'],[2,'dungeonCouncil','council']]){
- assert(r('CampQuest.enter(DUNGEON_FLOORS['+floor+'].id)'));r('enemies=[DungeonCombat.create(level.enemies.find(e=>e.miniboss==='+JSON.stringify(type)+'))];window.renderDungeonEnemy=enemies[0];renderDungeonEnemy.active=true;reducedMotion.matches=false;');
+for(const [floor,type,role]of [[0,'dungeonCaptain','captain'],[1,'dungeonNecromancer','necromancer'],[2,'dungeonCouncil','council'],[3,'cultTempleGuard','templeGuard'],[4,'woundedAngel','woundedAngel'],[5,'cultHighPriestess','highPriestess']]){
+ const atlas=allActors;assert(r('CampQuest.enter([ ...DUNGEON_FLOORS,...CULT_DUNGEON_FLOORS]['+floor+'].id)'));r('enemies=[DungeonCombat.create(level.enemies.find(e=>e.miniboss==='+JSON.stringify(type)+'))];window.renderDungeonEnemy=enemies[0];renderDungeonEnemy.active=true;reducedMotion.matches=false;');
  for(const pose of [0,1,2,3,4,5])for(const face of [-1,1]){
   r('renderDungeonEnemy.poseIndex='+pose+';renderDungeonEnemy.face='+face+';renderDungeonEnemy.phase="strike";renderDungeonEnemy.move=null;');const before=snapshot();calls=[];scales=[];assert(r('DungeonArt.actor(renderDungeonEnemy)'));assert.equal(snapshot(),before,'Every pose is rendered without advancing combat or journey state');assert.equal(calls.length,1,'One complete native body is drawn per pose');
-  const call=calls[0],frame=art[role].frames[pose],[sx,sy,sw,sh,dx,dy,dw,dh]=call.args,body=r('renderDungeonEnemy.h');assert.equal(call.image,r('Visuals.images['+JSON.stringify(frame.image||art[role].image)+']'));assert.deepEqual([sx,sy,sw,sh],[frame.x,frame.y,frame.w,frame.h]);assert(Math.abs(dw/sw-dh/sh)<1e-10,'Weapons and bodies retain their aspect ratio');assert(Math.abs(dw/sw-body/frame.bodyHeight)<1e-10,'Every pose uses its registered fixed body scale');assert(Math.abs(dx-(frame.x-frame.anchorX)*body/frame.bodyHeight)<1e-10);assert(Math.abs(dy-(frame.y-frame.anchorY)*body/frame.bodyHeight)<1e-10);assert(scales.some(([x,y])=>x===face*art[role].facing&&y===1),'Facing mirrors only the full registered silhouette');
+  const call=calls[0],frame=atlas[role].frames[pose],[sx,sy,sw,sh,dx,dy,dw,dh]=call.args,body=r('renderDungeonEnemy.h');assert.equal(call.image,r('Visuals.images['+JSON.stringify(frame.image||atlas[role].image)+']'));assert.deepEqual([sx,sy,sw,sh],[frame.x,frame.y,frame.w,frame.h]);assert(Math.abs(dw/sw-dh/sh)<1e-10,'Weapons and bodies retain their aspect ratio');assert(Math.abs(dw/sw-body/frame.bodyHeight)<1e-10,'Every pose uses its registered fixed body scale');assert(Math.abs(dx-(frame.x-frame.anchorX)*body/frame.bodyHeight)<1e-10);assert(Math.abs(dy-(frame.y-frame.anchorY)*body/frame.bodyHeight)<1e-10);assert(scales.some(([x,y])=>x===face*atlas[role].facing&&y===1),'Facing mirrors only the full registered silhouette');
  }
  r('renderDungeonEnemy.dead=true;');calls=[];assert(r('DungeonArt.actor(renderDungeonEnemy)'));assert.equal(calls.length,0,'Dead bodies are not redrawn as live enemies');
  const before=snapshot();assert(!r('DungeonArt.actor({kind:"guard",dead:false})'));assert.equal(snapshot(),before);
@@ -52,7 +52,7 @@ for(const height of [720,1080]){
  let floorIndex=0,paint=[];const images={};for(const a of art.backdrops)for(const key of a.panels||[a.image]){const image=png(key);assert.equal(image.w,a.w);assert.equal(image.h,a.h);images[key]={key,complete:true,naturalWidth:image.w,naturalHeight:image.h};}
  const draw={save(){},restore(){},fillRect(...args){paint.push({fill:true,args});},drawImage(image,...args){paint.push({image,args});},createLinearGradient(){return {addColorStop(){}};}};
  const surface=()=>({width:0,height:0,getContext:()=>draw});
- const sandbox={ART_DUNGEON:art,Visuals:{images},DungeonRun:{active:()=>true,floor:()=>floorIndex},ctx:draw,document:{createElement:surface},Math,H:height,viewW:1280,camera:0,cameraY:0,level:floors[0],clamp:(n,min,max)=>Math.max(min,Math.min(max,n))};vm.createContext(sandbox);vm.runInContext(artSource,sandbox);
+ const sandbox={ART_DUNGEON:art,Visuals:{images},DungeonRun:{active:()=>true,floor:()=>floorIndex,dungeonId:()=> 'yomiFall'},ctx:draw,document:{createElement:surface},Math,H:height,viewW:1280,camera:0,cameraY:0,level:floors[0],clamp:(n,min,max)=>Math.max(min,Math.min(max,n))};vm.createContext(sandbox);vm.runInContext(artSource,sandbox);
  for(floorIndex=0;floorIndex<3;floorIndex++)for(const width of [1280,1920,2560,3840])for(const endX of [false,true])for(const endY of [false,true]){
   sandbox.level=floors[floorIndex];sandbox.viewW=width;sandbox.camera=endX?Math.max(0,sandbox.level.width-width):0;sandbox.cameraY=endY?Math.max(0,sandbox.level.height-height):0;paint=[];const before=JSON.stringify([sandbox.level,sandbox.camera,sandbox.cameraY]);assert(vm.runInContext('DungeonArt.backdrop()',sandbox));assert.equal(JSON.stringify([sandbox.level,sandbox.camera,sandbox.cameraY]),before);
   assert(paint.some(call=>call.fill&&call.args[0]===0&&call.args[1]===0&&call.args[2]===width&&call.args[3]===height),'All views repaint the whole canvas');const rects=paint.filter(call=>!call.fill&&call.args.length===4).map(call=>call.args);assert(rects.length>0);assert(rects[0][0]<=1e-7&&rects.at(-1)[0]+rects.at(-1)[2]>=width-1e-7,'Camera extremes keep the entire supported width covered');
@@ -76,4 +76,4 @@ for(let floor=0;floor<3;floor++){
   const before=snapshot();assert.doesNotThrow(()=>r('draw()'),'Both faction atlases render on floor'+floor+' during '+phase);assert.equal(snapshot(),before);
  }
 }
-console.log('PASS: eighteen native dungeon poses/alpha/silhouette bounds, stable anchors and scaling, pure actor/scenery rendering, full-height interiors at all desktop camera/height variants, native terrain dispatch, scroll/chests, portraits and five registered inventory items. Browser QA still verifies visible anatomy and contrast.');
+console.log('PASS: thirty-six native dungeon poses/alpha/silhouette bounds, stable anchors and scaling, pure actor/scenery rendering, full-height interiors at all desktop camera/height variants, native terrain dispatch, scroll/chests, portraits and five registered inventory items. Browser QA still verifies visible anatomy and contrast.');

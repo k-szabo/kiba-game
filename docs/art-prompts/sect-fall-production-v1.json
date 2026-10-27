@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "approval": "User explicitly approved the three-boss concept, three environment panels and18-pose combat storyboard.",
+  "style": "Detailed painted Japanese fantasy, matching the current Kiba Realms art.",
+  "sprites": {
+    "layout": "Six isolated transparent poses in three columns and two rows. Preserve alpha, complete weapons and wings, consistent body scale and grounding. No labels, floor or baked large effects.",
+    "guard": "Black-red shield bearer with identical chain mace and round shield in every pose: idle, walk, preparation, flail strike, recovery, shield charge.",
+    "angel": "Wounded ivory-gold angel with identical katana and torn wings: idle, walk, sword raise, cut, recovery, light magic.",
+    "priestess": "Adult Japanese cult high priestess, violet-red ceremonial robes, crescent bell staff held throughout: idle, walk, preparation, shadow casting, recovery, chant/summon."
+  },
+  "backgrounds": {
+    "forecourt": "A single detailed stormy besieged Japanese temple courtyard. Foreground floor remains gameplay geometry. No labels, characters or UI.",
+    "hall": "A single detailed damaged temple interior with wooden galleries, massive pillars, bronze bells and torn banners. No labels, characters or UI.",
+    "sanctum": "A single detailed ruined ritual sanctuary with crescent altar, candles, red banners and violet Shadow Kiba. Empty altar plinth; no characters or text."
+  },
+  "registration": "scripts/register-cult-dungeon-art.py; original pixels unchanged, per-pose silhouette crop and foot anchor."
+}

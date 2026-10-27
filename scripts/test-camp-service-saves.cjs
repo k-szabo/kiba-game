@@ -23,7 +23,7 @@ function rejects(mutate,message,base=fixture()){
 const normal=fixture();valid(normal,'A completed rescue quest can retain default equipment');
 for(const style of ['katana','naginata','swordShield'])valid(fixture({complete:false,style}),'Each unrescued starting style has an independent default service inventory');
 const absent=fixture();delete absent.campServices;valid(absent,'Existing same-format fixtures may omit new service state');
-for(const id of read('Object.keys(SIDE_LOCATIONS).filter(id=>SIDE_LOCATIONS[id].realm===0)')){
+for(const id of read('Object.keys(SIDE_LOCATIONS).filter(id=>SIDE_LOCATIONS[id].realm===0&&!SIDE_LOCATIONS[id].map.dungeon)')){
  const save=fixture(),rest=read('SIDE_LOCATIONS['+JSON.stringify(id)+'].map.rests[0]');
  save.location=id;save.checkpoint=rest;save.visitedRests[0].push(rest.id);valid(save,'Exact canonical checkpoint restores '+id);
  const elsewhere=copy(save);elsewhere.location=null;elsewhere.checkpoint=read('japan.rests[0]');valid(elsewhere,'Visited '+id+' remains recorded outside the side area');

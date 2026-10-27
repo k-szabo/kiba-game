@@ -5,7 +5,7 @@ const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
- dungeonSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},
+ dungeonSeal:{price:50,stack:true},sectSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},highPriestessSoul:{price:400,realm:0},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
  seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},arenaSerpentScale:{price:80,realm:3},
@@ -24,7 +24,12 @@ const DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'dungeonNecromancer',claim:'dungeonNecromancerReward',stage:'dungeonStage2Clear',xp:450,coins:120,points:1}),
  Object.freeze({type:'dungeonCouncil',claim:'dungeonCouncilReward',stage:'dungeonStage3Clear',xp:650,coins:200,points:1,soul:'councilSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+DUNGEON_REWARDS.reduce((sum,reward)=>sum+(worldFlags?.[1]?.includes(reward.claim)?reward.points:0),0);}
+const CULT_DUNGEON_REWARDS=Object.freeze([
+ Object.freeze({type:'cultTempleGuard',claim:'sectGuardReward',stage:'sectStage1Clear',xp:350,coins:90,points:1}),
+ Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
+ Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
+]);
+function bossBonusPoints(worldFlags=[]){return BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -481,11 +486,51 @@ for(const [map,specs] of [[dungeonCourtyard,[[700,1100,'guard','japan'],[940,110
 }
 dungeonThrones.rewardChest={x:5950,y:1200};
 councilHall.memoryScroll={x:1850,y:820};
+// The second memory has its own route/progress, sharing the run controller and
+// enhancement inventory rather than duplicating a dungeon implementation.
+const cultForecourt=makeLevel('cultDungeon1',6600,1800,{x:220,y:1120});
+for(const p of [[0,1120,1500],[1620,1040,1780],[3520,1120,3080]])ledge(cultForecourt,'sect-forecourt-ground'+p[0],...p,'ground',230);
+for(const p of [['sect-watch-step',650,970,220],['sect-watch-gallery',1000,860,400],['sect-watch-return',1510,900,210]])ledge(cultForecourt,...p);
+const cultHall=makeLevel('cultDungeon2',6600,2000,{x:220,y:1600});
+for(const p of [[0,1600,900],[1020,1500,300],[1440,1400,900],[2460,1300,300],[2880,1200,1000],[4000,1100,300],[4420,1000,2180]])ledge(cultHall,'sect-hall-ground'+p[0],...p,'ground',230);
+const cultSanctum=makeLevel('cultDungeon3',6600,1900,{x:220,y:800});
+for(const p of [[0,800,1000],[1120,890,1000],[2240,980,1200],[3560,1070,900],[4580,1160,2020]])ledge(cultSanctum,'sect-sanctum-ground'+p[0],...p,'ground',230);
+const CULT_DUNGEON_FLOORS=Object.freeze([cultForecourt,cultHall,cultSanctum]);
+const cultLayouts=[
+ {key:'forecourt',floorY:1120,arenaX:4920,arenaW:1550,bossX:5750,restX:4750,entryY:1120,exitX:6480,exitY:1120},
+ {key:'hall',floorY:1000,arenaX:4900,arenaW:1550,bossX:5650,restX:4700,entryY:1600,exitX:6480,exitY:1000},
+ {key:'sanctum',floorY:1160,arenaX:4940,arenaW:1500,bossX:5720,restX:4770,entryY:800,exitX:6480,exitY:1160}
+];
+for(const [index,map]of CULT_DUNGEON_FLOORS.entries()){
+ const layout=cultLayouts[index],reward=CULT_DUNGEON_REWARDS[index];map.name='cultDungeon.floor.'+layout.key;map.enemyRealm=3;
+ map.dungeon={id:'sectFall',floor:index,stage:reward.stage};
+ map.checkpoints=[{id:map.id+'Entry',x:map.start.x,y:map.start.y,name:map.name,checkpointOnly:true}];
+ rest(map,map.id+'Shrine',layout.restX,layout.floorY,'cultDungeon.rest.'+layout.key);
+ map.returnPoint={x:110,y:layout.entryY};map.nextPoint={x:layout.exitX,y:layout.exitY};
+ map.returnDestination={realm:0,...japan.cultPassage.ruinedGate};map.arena={x:layout.arenaX,y:layout.floorY,w:layout.arenaW,restId:map.rests[0].id};map.boss={x:-10000,y:layout.floorY};
+ map.enemies.push({id:reward.type,miniboss:reward.type,name:'cultDungeon.boss.'+['guard','angel','priestess'][index],kind:'guard',x:layout.bossX,y:layout.floorY,patrol:300,arena:map.arena});
+ map.arenaEncounters=map.enemies.filter(e=>e.miniboss);zone(map,map.name,0,0,map.width,map.height);
+}
+for(const [map,specs]of [[cultForecourt,[[650,1120,'shield','japan'],[940,1120,'guard','shadowCult'],[1950,1040,'archer','heaven'],[2240,1040,'mage','shadowCult'],[3660,1120,'guard','japan'],[3950,1120,'shield','shadowCult'],[4300,1120,'guard','heaven']]],
+ [cultHall,[[550,1600,'guard','shadowCult'],[1600,1400,'archer','heaven'],[1940,1400,'shield','shadowCult'],[3010,1200,'guard','japan'],[3350,1200,'mage','shadowCult'],[4030,1100,'guard','heaven']]],
+ [cultSanctum,[[600,800,'mage','shadowCult'],[1300,890,'guard','japan'],[1690,890,'guard','shadowCult'],[2400,980,'archer','heaven'],[2770,980,'shield','shadowCult'],[3700,1070,'guard','japan'],[4100,1070,'mage','shadowCult']]]]){
+ for(const [i,[x,y,kind,faction]]of specs.entries())map.enemies.push({id:map.id+'-soldier'+i,x,y,kind,factionOverride:faction,dungeonEnemy:true,dungeonSide:faction==='shadowCult'?'sect':'alliance',patrol:230});
+}
+cultSanctum.rewardChest={x:6240,y:1160};
+const DUNGEON_CATALOGUE=Object.freeze({
+ yomiFall:Object.freeze({id:'yomiFall',realm:1,floors:DUNGEON_FLOORS,rewards:DUNGEON_REWARDS,entryMap:councilHall,entryPoint:councilHall.memoryScroll,name:'dungeon.name',title:'dungeon.scroll.title',intro:'dungeon.intro',victory:'dungeon.victory',prompt:'dungeon.scroll.prompt',returnPrompt:'dungeon.return'}),
+ sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'})
+});
+japan.progressFlags.push('cultTempleDiscovered','sectRunStarted','sectStage1Clear','sectStage2Clear','sectStage3Clear','sectChestClaimed','sectGuardReward','sectAngelReward','sectPriestessReward','highPriestessSoul');
+const CULT_TRAVEL=Object.freeze({id:'cultTempleEntrance',x:1150,y:2620,name:'cultDungeon.memory.title',travelOnly:true,unlockFlag:'cultTempleDiscovered'});
 // A virtual route anchor: unlocking the chained entrance makes the scroll
 // reachable again without adding a shrine or changing the hall's save model.
 const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.x,y:yomi.councilGate.y,name:'council.hall.name',location:'councilHall',travelOnly:true,unlockFlag:'councilGateOpen'});
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const SIDE_LOCATIONS=Object.freeze({
+ cultDungeon1:Object.freeze({map:cultForecourt,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted'])}),
+ cultDungeon2:Object.freeze({map:cultHall,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted','sectStage1Clear'])}),
+ cultDungeon3:Object.freeze({map:cultSanctum,realm:0,requiredFlags:Object.freeze(['cultTempleDiscovered','guardian:oldCultist','sectRunStarted','sectStage2Clear'])}),
  yomiDungeon1:Object.freeze({map:dungeonCourtyard,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted'])}),
  yomiDungeon2:Object.freeze({map:dungeonCrypt,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted','dungeonStage1Clear'])}),
  yomiDungeon3:Object.freeze({map:dungeonThrones,realm:1,requiredFlags:Object.freeze(['councilGateOpen','dungeonRunStarted','dungeonStage2Clear'])}),
@@ -504,6 +549,6 @@ function sideLocationUnlocked(id,worldFlags=[],defeated=[]){
  const spec=SIDE_LOCATIONS[id],known=worldFlags?.[spec.realm];
  return (spec.requiresRealmBoss===false||defeated?.[spec.realm]===true)&&Array.isArray(known)&&spec.requiredFlags.every(flag=>known.includes(flag));
 }
-function realmRests(n){return levels[n]?[...levels[n].rests,...(n===1?[COUNCIL_TRAVEL]:[]),...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>[...spec.map.rests,...(spec.map.checkpoints||[])])]:[];}
+function realmRests(n){return levels[n]?[...levels[n].rests,...(n===1?[COUNCIL_TRAVEL]:n===0?[CULT_TRAVEL]:[]),...Object.values(SIDE_LOCATIONS).filter(spec=>spec.realm===n).flatMap(spec=>[...spec.map.rests,...(spec.map.checkpoints||[])])]:[];}
 for(const [index,map] of levels.entries())map.progressFlags=[...(map.progressFlags||[]),BOSS_REWARDS[index].id,BOSS_REWARDS[index].claim];
 

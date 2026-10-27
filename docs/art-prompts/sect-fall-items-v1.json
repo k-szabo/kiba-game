@@ -1,0 +1,11 @@
+{
+  "asset": "assets/images/ui/sect-fall-items-v1.png",
+  "tool": "built-in image_gen",
+  "approval": "User explicitly approved the three-boss and two-item concept sheet before production; framing was corrected to preserve complete flame and tassel silhouettes.",
+  "sourceDimensions": [1774, 887],
+  "prompt": "Isolate the two approved items from concept panel4 on a genuine transparent two-cell atlas: ivory ritual-mask soul with bronze crescent, bells, crimson tassel and purple flame; worn bronze Sect Seal with red engraved emblem, cord, tassel and bell. Rich opaque painted Japanese fantasy detail, high contrast on dark inventory tiles, complete silhouettes. No parchment, floor, labels or extra props. Reframe with generous empty alpha margins to keep all flame tips and tassels intact.",
+  "registration": {
+    "highPriestessSoul": [260, 60, 460, 785],
+    "sectSeal": [1040, 245, 605, 560]
+  }
+}

@@ -4,7 +4,7 @@ const types=['dungeonCaptain','dungeonNecromancer','dungeonCouncil'];
 function setup(type='dungeonCaptain'){
  const h=harness(),r=h.run,index=types.indexOf(type);
  r("Prologue.stop();realm=1;level=makeLevel('testDungeon',2900,2100,{x:250,y:1700});level.dungeon={id:'yomiFall',floor:"+index+"};level.arena={x:600,y:1700,w:1700,restId:'testDungeon'};ledge(level,'test-floor',0,1700,2900,'ground',400);rest(level,'testDungeon',250,1700,'dungeon.name');platforms=level.platforms.map(p=>({...p}));checkpoint={...level.rests[0]};flags=levels.map(()=>[]);state='play';boss={dead:true};bossStarted=false;projectiles=[];updateHUD=function(){};");
- r('initPlayer({x:1650,y:1700});enemies=[DungeonCombat.create({id:'+JSON.stringify(type)+',miniboss:'+JSON.stringify(type)+",x:1750,y:1700})];var dungeonEnemy=enemies[0];player.inv=999;dungeonEnemy.active=true;");
+ r('initPlayer({x:1650,y:1700});enemies=[DungeonCombat.create({id:'+JSON.stringify(type)+',miniboss:'+JSON.stringify(type)+",x:1750,y:1700})];var dungeonEnemy=enemies[0];dungeonEnemy.runId=DungeonRun.runId();dungeonEnemy.dungeonId='yomiFall';player.inv=999;dungeonEnemy.active=true;");
  return h;
 }
 const advance=(h,seconds,fps=120)=>h.run('for(let n=0;n<'+Math.ceil(seconds*fps)+';n++)DungeonCombat.update(dungeonEnemy,'+1/fps+');');

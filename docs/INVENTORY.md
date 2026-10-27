@@ -92,3 +92,7 @@ A `triuneSerpentTalisman` új, fegyvertől független felszereléshelyet kap. Fe
 ## A karakter aktuális harci értékei
 
 A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális HP-ját, a felszerelt fegyver normál és erős sebzését, valamint a páncélt és a százalékos sebzéscsökkentést. A számok a tényleges `playerAttackDamage`, `momoStats` és `Armor.reduction` függvényekből származnak; a táskában kijelölt, de nem felszerelt fegyver nem módosítja őket. A talizmán fel-/levétele, a kovácsfejlesztés és a gyógyítás után újrarendereléskor frissülnek. A Tábormester lelke a közös `ART_INVENTORY.items` katalógus része, teljes sziluettel és DPR-követő megjelenítéssel.
+
+## A Szekta Bukása tárgyai
+
+A `highPriestessSoul` egyszeri lélektárgy és a halmozható `sectSeal` a közös `ART_INVENTORY.items` katalógusból, a `sect-fall-items-v1.png` eredeti alfájával jelenik meg. A lélek tulajdonát a japán világ flagje, a pecsét készletét a közös `dungeonState.stock` tárolja. Akashnál mindkettő eladható; az egyszeri jutalomjogcímet az eladás nem törli. A két emlékút ugyanazokat az enhancementeket és felhasználási korlátokat használja.

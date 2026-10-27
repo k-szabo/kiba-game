@@ -11,7 +11,7 @@ const SaveVault=(()=>{
  const random=n=>crypto.getRandomValues(new Uint8Array(n));
  const integer=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
  function validProgress(p,worldFlags){
-  const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+BOSS_REWARDS.reduce((sum,reward)=>sum+reward.points,0)+DUNGEON_REWARDS.reduce((sum,reward)=>sum+reward.points,0);
+  const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+bossBonusPoints(levels.map(map=>map.progressFlags));
   if(!p||!integer(p.level,1,levelLimit)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,Number.MAX_SAFE_INTEGER))return false;
   if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,statLimit)))return false;
   if(p.points+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
@@ -59,6 +59,7 @@ const SaveVault=(()=>{
   if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
   if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideLocationUnlocked(data.location,data.flags,data.defeated)))throw Error('Invalid camp location');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
+  if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
   if(data.prologueComplete===false&&data.weaponStyle!=='katana')throw Error('Invalid dream weapon style');

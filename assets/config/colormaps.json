@@ -224,6 +224,21 @@
       "faction": "shadowCult",
       "paletteGroup": "npc.dungeon.council"
     },
+    "cultDungeon.templeGuard": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.cultDungeon.templeGuard"
+    },
+    "cultDungeon.woundedAngel": {
+      "role": "dungeon-boss",
+      "faction": "heaven",
+      "paletteGroup": "npc.cultDungeon.woundedAngel"
+    },
+    "cultDungeon.highPriestess": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.cultDungeon.highPriestess"
+    },
     "japan.guard": {
       "faction": "japan",
       "role": "guard",
@@ -546,6 +561,21 @@
       "asset": "assets/images/backgrounds/yomi-fall-thrones-v1.png",
       "registration": "ART_DUNGEON.backdrops"
     },
+    "cultDungeonBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-forecourt-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
+    "cultDungeonBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-hall-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
+    "cultDungeonBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-sanctum-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
     "dungeonProp.scroll": {
       "kind": "dungeon-prop",
       "paletteGroup": "object.dungeonProp.scroll"
@@ -849,6 +879,14 @@
     "inventoryItem.spiritEnhancement": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.spiritEnhancement"
+    },
+    "inventoryItem.highPriestessSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.highPriestessSoul"
+    },
+    "inventoryItem.sectSeal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.sectSeal"
     },
     "secretWall.angel": {
       "kind": "scenery",
@@ -5028,6 +5066,309 @@
         ],
         "visibleSamples": 722448,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.cultDungeon.templeGuard": {
+      "source": "assets/images/enemies/sect-fall-guard-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.templeGuard.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0a",
+            "coveragePercent": 14.4222
+          },
+          {
+            "hex": "#2f1e17",
+            "coveragePercent": 13.04
+          },
+          {
+            "hex": "#0b0503",
+            "coveragePercent": 10.4037
+          },
+          {
+            "hex": "#422f26",
+            "coveragePercent": 10.0811
+          },
+          {
+            "hex": "#481710",
+            "coveragePercent": 9.7055
+          },
+          {
+            "hex": "#642519",
+            "coveragePercent": 8.4611
+          },
+          {
+            "hex": "#803123",
+            "coveragePercent": 7.496
+          },
+          {
+            "hex": "#594234",
+            "coveragePercent": 6.7255
+          },
+          {
+            "hex": "#9d382d",
+            "coveragePercent": 5.6106
+          },
+          {
+            "hex": "#775640",
+            "coveragePercent": 4.1721
+          },
+          {
+            "hex": "#a85b38",
+            "coveragePercent": 2.7542
+          },
+          {
+            "hex": "#90715c",
+            "coveragePercent": 2.2153
+          },
+          {
+            "hex": "#c2804e",
+            "coveragePercent": 1.5152
+          },
+          {
+            "hex": "#b79176",
+            "coveragePercent": 1.35
+          },
+          {
+            "hex": "#d7b08a",
+            "coveragePercent": 1.2871
+          },
+          {
+            "hex": "#e9d0b4",
+            "coveragePercent": 0.7604
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a2e24",
+            "coveragePercent": 28.2686
+          },
+          {
+            "hex": "#9d382e",
+            "coveragePercent": 26.9797
+          },
+          {
+            "hex": "#915b34",
+            "coveragePercent": 18.0413
+          },
+          {
+            "hex": "#b5784a",
+            "coveragePercent": 11.7163
+          },
+          {
+            "hex": "#b74c39",
+            "coveragePercent": 10.0513
+          },
+          {
+            "hex": "#d8a062",
+            "coveragePercent": 4.9427
+          }
+        ],
+        "visibleSamples": 507617,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.cultDungeon.woundedAngel": {
+      "source": "assets/images/enemies/sect-fall-angel-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.woundedAngel.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bf9a86",
+            "coveragePercent": 8.9119
+          },
+          {
+            "hex": "#d5b6a2",
+            "coveragePercent": 8.6226
+          },
+          {
+            "hex": "#40160d",
+            "coveragePercent": 8.4464
+          },
+          {
+            "hex": "#a47e6b",
+            "coveragePercent": 7.9327
+          },
+          {
+            "hex": "#774529",
+            "coveragePercent": 7.712
+          },
+          {
+            "hex": "#572d1c",
+            "coveragePercent": 7.2048
+          },
+          {
+            "hex": "#761e18",
+            "coveragePercent": 6.9167
+          },
+          {
+            "hex": "#ead4bd",
+            "coveragePercent": 6.8934
+          },
+          {
+            "hex": "#180805",
+            "coveragePercent": 6.8814
+          },
+          {
+            "hex": "#9e2c27",
+            "coveragePercent": 6.8807
+          },
+          {
+            "hex": "#85604f",
+            "coveragePercent": 5.7096
+          },
+          {
+            "hex": "#a46231",
+            "coveragePercent": 4.9447
+          },
+          {
+            "hex": "#c43c34",
+            "coveragePercent": 3.8964
+          },
+          {
+            "hex": "#f7efe3",
+            "coveragePercent": 3.7544
+          },
+          {
+            "hex": "#cc864f",
+            "coveragePercent": 3.4843
+          },
+          {
+            "hex": "#eebd76",
+            "coveragePercent": 1.8079
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965931",
+            "coveragePercent": 25.2242
+          },
+          {
+            "hex": "#8d2920",
+            "coveragePercent": 21.0873
+          },
+          {
+            "hex": "#ac2f2b",
+            "coveragePercent": 18.6234
+          },
+          {
+            "hex": "#bc7b4b",
+            "coveragePercent": 17.8505
+          },
+          {
+            "hex": "#cb4238",
+            "coveragePercent": 9.5612
+          },
+          {
+            "hex": "#e6ad65",
+            "coveragePercent": 7.6535
+          }
+        ],
+        "visibleSamples": 653126,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.cultDungeon.highPriestess": {
+      "source": "assets/images/enemies/sect-fall-priestess-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.highPriestess.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#220e12",
+            "coveragePercent": 10.4649
+          },
+          {
+            "hex": "#391f28",
+            "coveragePercent": 9.5142
+          },
+          {
+            "hex": "#53303b",
+            "coveragePercent": 8.8323
+          },
+          {
+            "hex": "#5d1b18",
+            "coveragePercent": 8.4675
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.949
+          },
+          {
+            "hex": "#3f0f10",
+            "coveragePercent": 7.8234
+          },
+          {
+            "hex": "#7f2321",
+            "coveragePercent": 7.783
+          },
+          {
+            "hex": "#a9272c",
+            "coveragePercent": 6.6743
+          },
+          {
+            "hex": "#714449",
+            "coveragePercent": 6.093
+          },
+          {
+            "hex": "#ce3a39",
+            "coveragePercent": 5.0176
+          },
+          {
+            "hex": "#bf7953",
+            "coveragePercent": 4.0793
+          },
+          {
+            "hex": "#986155",
+            "coveragePercent": 4.0012
+          },
+          {
+            "hex": "#d39673",
+            "coveragePercent": 3.8744
+          },
+          {
+            "hex": "#975126",
+            "coveragePercent": 3.2419
+          },
+          {
+            "hex": "#e6b89b",
+            "coveragePercent": 3.1144
+          },
+          {
+            "hex": "#f5dac6",
+            "coveragePercent": 3.0697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912324",
+            "coveragePercent": 24.0302
+          },
+          {
+            "hex": "#b62c30",
+            "coveragePercent": 22.1816
+          },
+          {
+            "hex": "#975438",
+            "coveragePercent": 17.9611
+          },
+          {
+            "hex": "#bc7651",
+            "coveragePercent": 15.0825
+          },
+          {
+            "hex": "#d53f3d",
+            "coveragePercent": 12.1824
+          },
+          {
+            "hex": "#de9e67",
+            "coveragePercent": 8.5622
+          }
+        ],
+        "visibleSamples": 610024,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "npc.japan.guard.walk": {
@@ -15736,6 +16077,208 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "object.inventoryItem.highPriestessSoul": {
+      "source": "assets/images/ui/sect-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.highPriestessSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2b0406",
+            "coveragePercent": 13.6195
+          },
+          {
+            "hex": "#520d08",
+            "coveragePercent": 12.6842
+          },
+          {
+            "hex": "#090101",
+            "coveragePercent": 11.8592
+          },
+          {
+            "hex": "#80380d",
+            "coveragePercent": 8.0681
+          },
+          {
+            "hex": "#81050b",
+            "coveragePercent": 7.1622
+          },
+          {
+            "hex": "#650536",
+            "coveragePercent": 6.4914
+          },
+          {
+            "hex": "#f6d2af",
+            "coveragePercent": 5.8877
+          },
+          {
+            "hex": "#bb6515",
+            "coveragePercent": 5.5091
+          },
+          {
+            "hex": "#bf0a0e",
+            "coveragePercent": 5.1521
+          },
+          {
+            "hex": "#ef2328",
+            "coveragePercent": 4.1956
+          },
+          {
+            "hex": "#fcf2e1",
+            "coveragePercent": 3.8137
+          },
+          {
+            "hex": "#df9f8e",
+            "coveragePercent": 3.7785
+          },
+          {
+            "hex": "#a70742",
+            "coveragePercent": 3.5131
+          },
+          {
+            "hex": "#e9ad41",
+            "coveragePercent": 3.4814
+          },
+          {
+            "hex": "#bd685d",
+            "coveragePercent": 2.9336
+          },
+          {
+            "hex": "#ec0f72",
+            "coveragePercent": 1.8507
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b061b",
+            "coveragePercent": 26.4494
+          },
+          {
+            "hex": "#9c4810",
+            "coveragePercent": 19.8176
+          },
+          {
+            "hex": "#e1181f",
+            "coveragePercent": 18.8868
+          },
+          {
+            "hex": "#ce792c",
+            "coveragePercent": 15.4655
+          },
+          {
+            "hex": "#efb95c",
+            "coveragePercent": 9.8724
+          },
+          {
+            "hex": "#db1e6c",
+            "coveragePercent": 9.5083
+          }
+        ],
+        "visibleSamples": 170944,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.sectSeal": {
+      "source": "assets/images/ui/sect-fall-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.sectSeal",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0101",
+            "coveragePercent": 10.6287
+          },
+          {
+            "hex": "#8f0508",
+            "coveragePercent": 8.2747
+          },
+          {
+            "hex": "#230601",
+            "coveragePercent": 8.2597
+          },
+          {
+            "hex": "#3d0802",
+            "coveragePercent": 8.0631
+          },
+          {
+            "hex": "#ba0c11",
+            "coveragePercent": 7.3112
+          },
+          {
+            "hex": "#b76929",
+            "coveragePercent": 7.0471
+          },
+          {
+            "hex": "#640204",
+            "coveragePercent": 6.7821
+          },
+          {
+            "hex": "#954f1c",
+            "coveragePercent": 6.7389
+          },
+          {
+            "hex": "#d6883c",
+            "coveragePercent": 6.2096
+          },
+          {
+            "hex": "#743911",
+            "coveragePercent": 6.039
+          },
+          {
+            "hex": "#532307",
+            "coveragePercent": 5.9621
+          },
+          {
+            "hex": "#e81320",
+            "coveragePercent": 5.0707
+          },
+          {
+            "hex": "#ecad5a",
+            "coveragePercent": 4.6318
+          },
+          {
+            "hex": "#f8333d",
+            "coveragePercent": 3.2658
+          },
+          {
+            "hex": "#f6d590",
+            "coveragePercent": 3.2213
+          },
+          {
+            "hex": "#fcf4d9",
+            "coveragePercent": 2.4942
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b521c",
+            "coveragePercent": 21.1399
+          },
+          {
+            "hex": "#cb7c35",
+            "coveragePercent": 20.2747
+          },
+          {
+            "hex": "#970609",
+            "coveragePercent": 17.8826
+          },
+          {
+            "hex": "#c70e14",
+            "coveragePercent": 15.6263
+          },
+          {
+            "hex": "#f42531",
+            "coveragePercent": 12.6148
+          },
+          {
+            "hex": "#efb35e",
+            "coveragePercent": 12.4617
+          }
+        ],
+        "visibleSamples": 183989,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "object.secretWall.angel": {
       "source": "assets/images/angel-ruin-wall-v1.png",
       "frameMetadata": "ART_SECRET_WALLS.angel",
@@ -22279,6 +22822,321 @@
         ],
         "visibleSamples": 1572528,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/sect-fall-forecourt-v1.png": {
+      "sha256": "b57668d42ac008fc7ea7c906aee73922daca4c36d4d6766e4e5011bacfa46964",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "cultDungeonForecourt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070404",
+            "coveragePercent": 15.5448
+          },
+          {
+            "hex": "#1b1516",
+            "coveragePercent": 15.2787
+          },
+          {
+            "hex": "#2d2a2f",
+            "coveragePercent": 14.3506
+          },
+          {
+            "hex": "#3c414e",
+            "coveragePercent": 13.5157
+          },
+          {
+            "hex": "#4f5669",
+            "coveragePercent": 9.2417
+          },
+          {
+            "hex": "#3c0d0b",
+            "coveragePercent": 6.0133
+          },
+          {
+            "hex": "#522e2b",
+            "coveragePercent": 5.367
+          },
+          {
+            "hex": "#734840",
+            "coveragePercent": 3.7312
+          },
+          {
+            "hex": "#6d7691",
+            "coveragePercent": 3.728
+          },
+          {
+            "hex": "#726870",
+            "coveragePercent": 3.6612
+          },
+          {
+            "hex": "#791914",
+            "coveragePercent": 2.0887
+          },
+          {
+            "hex": "#a18980",
+            "coveragePercent": 2.0516
+          },
+          {
+            "hex": "#9797b0",
+            "coveragePercent": 1.9983
+          },
+          {
+            "hex": "#dcb28b",
+            "coveragePercent": 1.3217
+          },
+          {
+            "hex": "#b56845",
+            "coveragePercent": 1.2827
+          },
+          {
+            "hex": "#f4e7d0",
+            "coveragePercent": 0.8249
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92503e",
+            "coveragePercent": 33.3741
+          },
+          {
+            "hex": "#952217",
+            "coveragePercent": 22.1177
+          },
+          {
+            "hex": "#bf6f46",
+            "coveragePercent": 19.7908
+          },
+          {
+            "hex": "#e79c63",
+            "coveragePercent": 11.6802
+          },
+          {
+            "hex": "#704195",
+            "coveragePercent": 8.7196
+          },
+          {
+            "hex": "#ba5bc2",
+            "coveragePercent": 4.3178
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/sect-fall-hall-v1.png": {
+      "sha256": "0ff258aa7a91870b6b94114af9e460ab3ec87bc216e20d4b1d08920f3bdb6f95",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "cultDungeonHall"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#160d0e",
+            "coveragePercent": 22.6115
+          },
+          {
+            "hex": "#050203",
+            "coveragePercent": 17.4432
+          },
+          {
+            "hex": "#231a1f",
+            "coveragePercent": 12.0225
+          },
+          {
+            "hex": "#361612",
+            "coveragePercent": 9.2709
+          },
+          {
+            "hex": "#342933",
+            "coveragePercent": 8.8472
+          },
+          {
+            "hex": "#55291e",
+            "coveragePercent": 5.9979
+          },
+          {
+            "hex": "#483a49",
+            "coveragePercent": 5.8368
+          },
+          {
+            "hex": "#7a3e2b",
+            "coveragePercent": 3.6487
+          },
+          {
+            "hex": "#5c4d69",
+            "coveragePercent": 3.529
+          },
+          {
+            "hex": "#636995",
+            "coveragePercent": 3.0684
+          },
+          {
+            "hex": "#a15d41",
+            "coveragePercent": 2.2017
+          },
+          {
+            "hex": "#7a85b3",
+            "coveragePercent": 2.1816
+          },
+          {
+            "hex": "#d87b3b",
+            "coveragePercent": 1.216
+          },
+          {
+            "hex": "#9ea8d6",
+            "coveragePercent": 0.9441
+          },
+          {
+            "hex": "#eeb370",
+            "coveragePercent": 0.6596
+          },
+          {
+            "hex": "#e4e7ee",
+            "coveragePercent": 0.5209
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914124",
+            "coveragePercent": 25.396
+          },
+          {
+            "hex": "#a45e3e",
+            "coveragePercent": 23.3871
+          },
+          {
+            "hex": "#5b5d9d",
+            "coveragePercent": 19.0961
+          },
+          {
+            "hex": "#d77738",
+            "coveragePercent": 17.3543
+          },
+          {
+            "hex": "#f2ac5e",
+            "coveragePercent": 9.7969
+          },
+          {
+            "hex": "#9a5fca",
+            "coveragePercent": 4.9697
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/sect-fall-sanctum-v1.png": {
+      "sha256": "5792f740b1cd7bc75241e0ed798b9275b57b0424293c52fb5f0fea4b861c3ed4",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "cultDungeonSanctum"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#160c0f",
+            "coveragePercent": 23.1029
+          },
+          {
+            "hex": "#24181f",
+            "coveragePercent": 16.3225
+          },
+          {
+            "hex": "#050303",
+            "coveragePercent": 15.3579
+          },
+          {
+            "hex": "#352837",
+            "coveragePercent": 9.7381
+          },
+          {
+            "hex": "#421817",
+            "coveragePercent": 8.216
+          },
+          {
+            "hex": "#483b58",
+            "coveragePercent": 5.6116
+          },
+          {
+            "hex": "#5c302e",
+            "coveragePercent": 5.3477
+          },
+          {
+            "hex": "#584e7c",
+            "coveragePercent": 3.8636
+          },
+          {
+            "hex": "#884b43",
+            "coveragePercent": 2.6348
+          },
+          {
+            "hex": "#6e649c",
+            "coveragePercent": 2.351
+          },
+          {
+            "hex": "#832224",
+            "coveragePercent": 2.1614
+          },
+          {
+            "hex": "#858bbe",
+            "coveragePercent": 1.4968
+          },
+          {
+            "hex": "#c56a44",
+            "coveragePercent": 1.3674
+          },
+          {
+            "hex": "#a8b6e1",
+            "coveragePercent": 1.1074
+          },
+          {
+            "hex": "#eaaa76",
+            "coveragePercent": 0.6613
+          },
+          {
+            "hex": "#e2e4ed",
+            "coveragePercent": 0.6594
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#575794",
+            "coveragePercent": 26.2567
+          },
+          {
+            "hex": "#944e3f",
+            "coveragePercent": 23.1741
+          },
+          {
+            "hex": "#922426",
+            "coveragePercent": 17.2795
+          },
+          {
+            "hex": "#c8693e",
+            "coveragePercent": 14.8584
+          },
+          {
+            "hex": "#9a51b3",
+            "coveragePercent": 10.4568
+          },
+          {
+            "hex": "#eca161",
+            "coveragePercent": 7.9745
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 99.9998
       }
     },
     "assets/images/backgrounds/shadow-arena-center-v1.png": {
@@ -28995,6 +29853,321 @@
         ],
         "visibleSamples": 602704,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/sect-fall-angel-v1.png": {
+      "sha256": "ddd406efe1c60eb04fdad8c6c3bc9f9f40ddc7c79843173c92428ccb35a32082",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultWoundedAngel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bf9a86",
+            "coveragePercent": 8.9119
+          },
+          {
+            "hex": "#d5b6a2",
+            "coveragePercent": 8.6226
+          },
+          {
+            "hex": "#40160d",
+            "coveragePercent": 8.4464
+          },
+          {
+            "hex": "#a47e6b",
+            "coveragePercent": 7.9327
+          },
+          {
+            "hex": "#774529",
+            "coveragePercent": 7.712
+          },
+          {
+            "hex": "#572d1c",
+            "coveragePercent": 7.2048
+          },
+          {
+            "hex": "#761e18",
+            "coveragePercent": 6.9167
+          },
+          {
+            "hex": "#ead4bd",
+            "coveragePercent": 6.8934
+          },
+          {
+            "hex": "#180805",
+            "coveragePercent": 6.8814
+          },
+          {
+            "hex": "#9e2c27",
+            "coveragePercent": 6.8807
+          },
+          {
+            "hex": "#85604f",
+            "coveragePercent": 5.7096
+          },
+          {
+            "hex": "#a46231",
+            "coveragePercent": 4.9447
+          },
+          {
+            "hex": "#c43c34",
+            "coveragePercent": 3.8964
+          },
+          {
+            "hex": "#f7efe3",
+            "coveragePercent": 3.7544
+          },
+          {
+            "hex": "#cc864f",
+            "coveragePercent": 3.4843
+          },
+          {
+            "hex": "#eebd76",
+            "coveragePercent": 1.8079
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965931",
+            "coveragePercent": 25.2242
+          },
+          {
+            "hex": "#8d2920",
+            "coveragePercent": 21.0873
+          },
+          {
+            "hex": "#ac2f2b",
+            "coveragePercent": 18.6234
+          },
+          {
+            "hex": "#bc7b4b",
+            "coveragePercent": 17.8505
+          },
+          {
+            "hex": "#cb4238",
+            "coveragePercent": 9.5612
+          },
+          {
+            "hex": "#e6ad65",
+            "coveragePercent": 7.6535
+          }
+        ],
+        "visibleSamples": 653126,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/sect-fall-guard-v1.png": {
+      "sha256": "420157253422f596d0ec582d4ea69537b609b740bbe231425b90f9089e3b7622",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultTempleGuard"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0a",
+            "coveragePercent": 14.4222
+          },
+          {
+            "hex": "#2f1e17",
+            "coveragePercent": 13.04
+          },
+          {
+            "hex": "#0b0503",
+            "coveragePercent": 10.4037
+          },
+          {
+            "hex": "#422f26",
+            "coveragePercent": 10.0811
+          },
+          {
+            "hex": "#481710",
+            "coveragePercent": 9.7055
+          },
+          {
+            "hex": "#642519",
+            "coveragePercent": 8.4611
+          },
+          {
+            "hex": "#803123",
+            "coveragePercent": 7.496
+          },
+          {
+            "hex": "#594234",
+            "coveragePercent": 6.7255
+          },
+          {
+            "hex": "#9d382d",
+            "coveragePercent": 5.6106
+          },
+          {
+            "hex": "#775640",
+            "coveragePercent": 4.1721
+          },
+          {
+            "hex": "#a85b38",
+            "coveragePercent": 2.7542
+          },
+          {
+            "hex": "#90715c",
+            "coveragePercent": 2.2153
+          },
+          {
+            "hex": "#c2804e",
+            "coveragePercent": 1.5152
+          },
+          {
+            "hex": "#b79176",
+            "coveragePercent": 1.35
+          },
+          {
+            "hex": "#d7b08a",
+            "coveragePercent": 1.2871
+          },
+          {
+            "hex": "#e9d0b4",
+            "coveragePercent": 0.7604
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a2e24",
+            "coveragePercent": 28.2686
+          },
+          {
+            "hex": "#9d382e",
+            "coveragePercent": 26.9797
+          },
+          {
+            "hex": "#915b34",
+            "coveragePercent": 18.0413
+          },
+          {
+            "hex": "#b5784a",
+            "coveragePercent": 11.7163
+          },
+          {
+            "hex": "#b74c39",
+            "coveragePercent": 10.0513
+          },
+          {
+            "hex": "#d8a062",
+            "coveragePercent": 4.9427
+          }
+        ],
+        "visibleSamples": 507617,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/sect-fall-priestess-v1.png": {
+      "sha256": "26120a7f8cd6f6e03600575561820add4bad9e90a6cb281fba913637c544071c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultHighPriestess"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#220e12",
+            "coveragePercent": 10.4649
+          },
+          {
+            "hex": "#391f28",
+            "coveragePercent": 9.5142
+          },
+          {
+            "hex": "#53303b",
+            "coveragePercent": 8.8323
+          },
+          {
+            "hex": "#5d1b18",
+            "coveragePercent": 8.4675
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.949
+          },
+          {
+            "hex": "#3f0f10",
+            "coveragePercent": 7.8234
+          },
+          {
+            "hex": "#7f2321",
+            "coveragePercent": 7.783
+          },
+          {
+            "hex": "#a9272c",
+            "coveragePercent": 6.6743
+          },
+          {
+            "hex": "#714449",
+            "coveragePercent": 6.093
+          },
+          {
+            "hex": "#ce3a39",
+            "coveragePercent": 5.0176
+          },
+          {
+            "hex": "#bf7953",
+            "coveragePercent": 4.0793
+          },
+          {
+            "hex": "#986155",
+            "coveragePercent": 4.0012
+          },
+          {
+            "hex": "#d39673",
+            "coveragePercent": 3.8744
+          },
+          {
+            "hex": "#975126",
+            "coveragePercent": 3.2419
+          },
+          {
+            "hex": "#e6b89b",
+            "coveragePercent": 3.1144
+          },
+          {
+            "hex": "#f5dac6",
+            "coveragePercent": 3.0697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912324",
+            "coveragePercent": 24.0302
+          },
+          {
+            "hex": "#b62c30",
+            "coveragePercent": 22.1816
+          },
+          {
+            "hex": "#975438",
+            "coveragePercent": 17.9611
+          },
+          {
+            "hex": "#bc7651",
+            "coveragePercent": 15.0825
+          },
+          {
+            "hex": "#d53f3d",
+            "coveragePercent": 12.1824
+          },
+          {
+            "hex": "#de9e67",
+            "coveragePercent": 8.5622
+          }
+        ],
+        "visibleSamples": 610024,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/enemies/shadow-archer-v1.png": {
@@ -36755,6 +37928,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/ui/sect-fall-items-v1.png": {
+      "sha256": "65accac0b10d0cf2ab98ccb199776156a6f3f846d0ec468fdc0330e2d71bef4f",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "cultDungeonItems"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0101",
+            "coveragePercent": 11.2173
+          },
+          {
+            "hex": "#450b06",
+            "coveragePercent": 10.5861
+          },
+          {
+            "hex": "#260403",
+            "coveragePercent": 10.2408
+          },
+          {
+            "hex": "#99060b",
+            "coveragePercent": 7.5921
+          },
+          {
+            "hex": "#672d0b",
+            "coveragePercent": 6.7393
+          },
+          {
+            "hex": "#b76727",
+            "coveragePercent": 6.7012
+          },
+          {
+            "hex": "#904715",
+            "coveragePercent": 6.6928
+          },
+          {
+            "hex": "#6a0307",
+            "coveragePercent": 6.6579
+          },
+          {
+            "hex": "#ca0d17",
+            "coveragePercent": 6.3034
+          },
+          {
+            "hex": "#da8c3e",
+            "coveragePercent": 5.5434
+          },
+          {
+            "hex": "#f42630",
+            "coveragePercent": 4.7003
+          },
+          {
+            "hex": "#e8b06e",
+            "coveragePercent": 4.5165
+          },
+          {
+            "hex": "#f5d0a8",
+            "coveragePercent": 4.3428
+          },
+          {
+            "hex": "#6f0539",
+            "coveragePercent": 3.5579
+          },
+          {
+            "hex": "#fcf2de",
+            "coveragePercent": 3.1762
+          },
+          {
+            "hex": "#db156b",
+            "coveragePercent": 1.432
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c4f18",
+            "coveragePercent": 20.2868
+          },
+          {
+            "hex": "#960712",
+            "coveragePercent": 19.9317
+          },
+          {
+            "hex": "#cb7b33",
+            "coveragePercent": 18.5992
+          },
+          {
+            "hex": "#cb0d17",
+            "coveragePercent": 17.0094
+          },
+          {
+            "hex": "#f1243f",
+            "coveragePercent": 12.623
+          },
+          {
+            "hex": "#efb45e",
+            "coveragePercent": 11.5499
+          }
+        ],
+        "visibleSamples": 354933,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/ui/seraph-soul-v1.png": {
       "sha256": "087591a3a366863ff1ca5a51419990fb749e26e7732ab0f0148b3be9ff1dd6c0",
       "width": 1254,
@@ -39686,28 +40964,28 @@
       {
         "value": "#15121c",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#d9bd80",
         "lines": [
-          36
+          37
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          20
+          21
         ],
         "dynamic": false
       }
@@ -39716,7 +40994,14 @@
       {
         "value": "#bd82dc",
         "lines": [
-          80
+          102
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffdb8c",
+        "lines": [
+          126
         ],
         "dynamic": false
       }
@@ -39748,14 +41033,14 @@
       {
         "value": "#08141166",
         "lines": [
-          504
+          508
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -39783,14 +41068,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          493
+          497
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          493
+          497
         ],
         "dynamic": false
       },
@@ -39846,7 +41131,7 @@
       {
         "value": "#465959",
         "lines": [
-          362
+          366
         ],
         "dynamic": false
       },
@@ -39867,7 +41152,7 @@
       {
         "value": "#60706a",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -39881,7 +41166,7 @@
       {
         "value": "#718679",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -39916,7 +41201,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -39930,7 +41215,7 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          362
+          366
         ],
         "dynamic": false
       },
@@ -39993,14 +41278,14 @@
       {
         "value": "#d98877",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          522
+          526
         ],
         "dynamic": false
       },
@@ -40021,14 +41306,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -40071,7 +41356,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          522
+          526
         ],
         "dynamic": false
       },
@@ -40085,7 +41370,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          522
+          526
         ],
         "dynamic": false
       },
@@ -40113,7 +41398,7 @@
       {
         "value": "#f0dfb1",
         "lines": [
-          362
+          366
         ],
         "dynamic": false
       },
@@ -40128,7 +41413,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          361
+          365
         ],
         "dynamic": false
       },
@@ -40142,7 +41427,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          522
+          526
         ],
         "dynamic": false
       },
@@ -40156,7 +41441,7 @@
       {
         "value": "#fff",
         "lines": [
-          362
+          366
         ],
         "dynamic": false
       }
