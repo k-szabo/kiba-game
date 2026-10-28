@@ -43,7 +43,7 @@ const Inventory=(()=>{
    row.append(label,amount);list.append(row);
   }
   const armor=document.createElement('div');armor.className='inventory-stat inventory-stat-armor';armor.dataset.stat='service.armor';
-  armor.textContent=I18n.format('service.armor',[number(stats.armor),number(Armor.reduction(stats.armor)*100)]);list.append(armor);
+  armor.textContent=I18n.format('service.armor',[number(stats.armor),number(Armor.playerReduction(stats.armor)*100)]);list.append(armor);
  }
  function itemIcon(id){
   const canvas=document.createElement('canvas');canvas.className='inventory-icon';canvas.setAttribute('aria-hidden','true');

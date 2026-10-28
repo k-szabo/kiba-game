@@ -32,7 +32,7 @@ const ArenaArt=(()=>{
   }
   // The native panorama is decorative depth, not another world-sized camera.
   // Keep its aspect/cover scale fixed and cap travel per world-camera unit.
-  const overlap=a.overlap||0,units=a.w*(keys.length-overlap*(keys.length-1)),scale=Math.max(1,viewW/units,(H+120)/a.h),width=units*scale,height=a.h*scale,
+  const overlap=a.overlap||0,units=a.w*(keys.length-overlap*(keys.length-1)),scale=Math.max(viewW/units,H/a.h),width=units*scale,height=a.h*scale,
    rangeX=Math.max(0,level.width-viewW),rangeY=Math.max(0,level.height-H),referenceY=clamp(level.start.y-H*.57,0,rangeY),
    panX=reducedMotion.matches?0:(clamp(camera,0,rangeX)-rangeX/2)*.18,panY=reducedMotion.matches?0:(clamp(cameraY,0,rangeY)-referenceY)*.08,
    scroll=clamp((width-viewW)/2+panX,0,Math.max(0,width-viewW)),anchorY=clamp(level.start.y-a.groundY*scale-referenceY,H-height,0),top=clamp(anchorY-panY,H-height,0);

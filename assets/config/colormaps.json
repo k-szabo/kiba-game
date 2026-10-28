@@ -55,8 +55,8 @@
   "npcs": {
     "haru": {
       "name": "Haru",
-      "paletteRef": "pc.momo",
-      "note": "The father shares Momo's base sprite; scene-specific rendering colors are listed under codeColors."
+      "role": "father",
+      "paletteGroup": "npc.haru"
     },
     "daichi": {
       "name": "Daichi",
@@ -143,7 +143,8 @@
     "kitsune.fox": {
       "role": "kitsune-form",
       "faction": "shadowDen",
-      "paletteGroup": "npc.kitsune.fox"
+      "paletteGroup": "npc.kitsune.fox",
+      "deadPaletteGroup": "npc.kitsune.fox.dead"
     },
     "kitsune.hunter": {
       "role": "miniboss",
@@ -288,78 +289,6 @@
       },
       "registration": "ART_ARENA.fia (shared approved body sprites)"
     },
-    "japan.guard": {
-      "faction": "japan",
-      "role": "guard",
-      "variants": {
-        "walk": {
-          "paletteGroup": "npc.japan.guard.walk.v5"
-        },
-        "attack": {
-          "paletteGroup": "npc.japan.guard.attack.v5"
-        },
-        "legacyWalk": {
-          "paletteGroup": "npc.japan.guard.walk"
-        },
-        "legacyAttack": {
-          "paletteGroup": "npc.japan.guard.attack"
-        }
-      }
-    },
-    "japan.archer": {
-      "faction": "japan",
-      "role": "archer",
-      "variants": {
-        "walk": {
-          "paletteGroup": "npc.japan.archer.walk.v5"
-        },
-        "attack": {
-          "paletteGroup": "npc.japan.archer.attack.v5"
-        },
-        "legacyWalk": {
-          "paletteGroup": "npc.japan.archer.walk"
-        },
-        "legacyAttack": {
-          "paletteGroup": "npc.japan.archer.attack"
-        }
-      }
-    },
-    "japan.shield": {
-      "faction": "japan",
-      "role": "shield",
-      "variants": {
-        "walk": {
-          "paletteGroup": "npc.japan.shield.walk.v5"
-        },
-        "attack": {
-          "paletteGroup": "npc.japan.shield.attack.v5"
-        },
-        "legacyWalk": {
-          "paletteGroup": "npc.japan.shield.walk"
-        },
-        "legacyAttack": {
-          "paletteGroup": "npc.japan.shield.attack"
-        }
-      }
-    },
-    "japan.mage": {
-      "faction": "japan",
-      "role": "mage",
-      "variants": {
-        "walk": {
-          "paletteGroup": "npc.japan.mage.walk.v5"
-        },
-        "attack": {
-          "paletteGroup": "npc.japan.mage.attack.v5"
-        },
-        "legacyWalk": {
-          "paletteGroup": "npc.japan.mage.walk"
-        },
-        "legacyAttack": {
-          "paletteGroup": "npc.japan.mage.attack"
-        }
-      }
-    },
     "yomi.guard": {
       "faction": "yomi",
       "role": "guard",
@@ -453,6 +382,54 @@
         },
         "attack": {
           "paletteGroup": "npc.heaven.mage.attack"
+        }
+      }
+    },
+    "japan.guard": {
+      "faction": "japan",
+      "role": "guard",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.japan.guard.walk.v5"
+        },
+        "attack": {
+          "paletteGroup": "npc.japan.guard.attack.v5"
+        }
+      }
+    },
+    "japan.archer": {
+      "faction": "japan",
+      "role": "archer",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.japan.archer.walk.v5"
+        },
+        "attack": {
+          "paletteGroup": "npc.japan.archer.attack.v5"
+        }
+      }
+    },
+    "japan.shield": {
+      "faction": "japan",
+      "role": "shield",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.japan.shield.walk.v5"
+        },
+        "attack": {
+          "paletteGroup": "npc.japan.shield.attack.v5"
+        }
+      }
+    },
+    "japan.mage": {
+      "faction": "japan",
+      "role": "mage",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.japan.mage.walk.v5"
+        },
+        "attack": {
+          "paletteGroup": "npc.japan.mage.attack.v5"
         }
       }
     },
@@ -968,6 +945,14 @@
     "inventoryItem.sectSeal": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.sectSeal"
+    },
+    "inventoryItem.demonLordSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.demonLordSoul"
+    },
+    "inventoryItem.demonLordHeart": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.demonLordHeart"
     },
     "secretWall.angel": {
       "kind": "scenery",
@@ -2016,6 +2001,107 @@
         ],
         "visibleSamples": 891827,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.haru": {
+      "source": "assets/images/npcs/haru-elder-v1.png",
+      "frameMetadata": "HannahArt.haru",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c4651",
+            "coveragePercent": 11.1986
+          },
+          {
+            "hex": "#fde3c6",
+            "coveragePercent": 9.2094
+          },
+          {
+            "hex": "#a46a45",
+            "coveragePercent": 7.9935
+          },
+          {
+            "hex": "#3b353d",
+            "coveragePercent": 7.7608
+          },
+          {
+            "hex": "#262229",
+            "coveragePercent": 7.5132
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 6.9162
+          },
+          {
+            "hex": "#875335",
+            "coveragePercent": 6.7254
+          },
+          {
+            "hex": "#b9845c",
+            "coveragePercent": 6.2364
+          },
+          {
+            "hex": "#d7a276",
+            "coveragePercent": 6.021
+          },
+          {
+            "hex": "#663e28",
+            "coveragePercent": 5.8747
+          },
+          {
+            "hex": "#f6d0aa",
+            "coveragePercent": 4.8643
+          },
+          {
+            "hex": "#e9bb90",
+            "coveragePercent": 4.5862
+          },
+          {
+            "hex": "#1d1313",
+            "coveragePercent": 4.5265
+          },
+          {
+            "hex": "#492817",
+            "coveragePercent": 3.804
+          },
+          {
+            "hex": "#da9053",
+            "coveragePercent": 3.5596
+          },
+          {
+            "hex": "#695754",
+            "coveragePercent": 3.2102
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5736",
+            "coveragePercent": 23.1809
+          },
+          {
+            "hex": "#a66942",
+            "coveragePercent": 21.818
+          },
+          {
+            "hex": "#b47d55",
+            "coveragePercent": 20.0596
+          },
+          {
+            "hex": "#cf8c57",
+            "coveragePercent": 17.5158
+          },
+          {
+            "hex": "#df9f66",
+            "coveragePercent": 11.9446
+          },
+          {
+            "hex": "#eeb277",
+            "coveragePercent": 5.4812
+          }
+        ],
+        "visibleSamples": 782711,
+        "dominantCoveragePercent": 100.0
       }
     },
     "npc.camp.daichi": {
@@ -5453,204 +5539,204 @@
       }
     },
     "npc.hannah.walk": {
-      "source": "assets/images/enemies/hannah-walk-v1.png",
+      "source": "assets/images/enemies/hannah-walk-v2.png",
       "frameMetadata": "ART_HANNAH.walk.frames",
       "frameCount": 6,
       "palette": {
         "dominant": [
           {
-            "hex": "#302221",
-            "coveragePercent": 24.0827
+            "hex": "#382526",
+            "coveragePercent": 14.4258
           },
           {
-            "hex": "#422f2d",
-            "coveragePercent": 20.3731
+            "hex": "#281413",
+            "coveragePercent": 11.8771
           },
           {
-            "hex": "#523e3b",
-            "coveragePercent": 12.5361
+            "hex": "#59231f",
+            "coveragePercent": 10.7081
           },
           {
-            "hex": "#1c1211",
-            "coveragePercent": 8.5477
+            "hex": "#543939",
+            "coveragePercent": 9.8668
           },
           {
-            "hex": "#613128",
-            "coveragePercent": 7.6864
+            "hex": "#7e3938",
+            "coveragePercent": 9.8233
           },
           {
-            "hex": "#6d4a3f",
-            "coveragePercent": 5.6295
+            "hex": "#f43122",
+            "coveragePercent": 8.8836
           },
           {
-            "hex": "#8c3d2e",
-            "coveragePercent": 5.3351
+            "hex": "#0c0505",
+            "coveragePercent": 6.2877
           },
           {
-            "hex": "#bc4c35",
-            "coveragePercent": 3.8846
+            "hex": "#bb2d25",
+            "coveragePercent": 5.9701
           },
           {
-            "hex": "#926047",
-            "coveragePercent": 3.1191
+            "hex": "#87231a",
+            "coveragePercent": 5.6271
           },
           {
-            "hex": "#eb5f2f",
-            "coveragePercent": 2.0784
+            "hex": "#7f564c",
+            "coveragePercent": 4.4945
           },
           {
-            "hex": "#b6805d",
-            "coveragePercent": 1.9988
+            "hex": "#b07046",
+            "coveragePercent": 3.5079
           },
           {
-            "hex": "#f78949",
-            "coveragePercent": 1.4383
+            "hex": "#f55e31",
+            "coveragePercent": 2.6339
           },
           {
-            "hex": "#e8ab79",
-            "coveragePercent": 1.346
+            "hex": "#e59657",
+            "coveragePercent": 2.5777
           },
           {
-            "hex": "#f6cda9",
-            "coveragePercent": 0.9638
+            "hex": "#f0be8d",
+            "coveragePercent": 1.2891
           },
           {
-            "hex": "#786074",
-            "coveragePercent": 0.7075
+            "hex": "#fae7de",
+            "coveragePercent": 1.2126
           },
           {
-            "hex": "#fcf1dc",
-            "coveragePercent": 0.2729
+            "hex": "#9557c6",
+            "coveragePercent": 0.8146
           }
         ],
         "accents": [
           {
-            "hex": "#904432",
-            "coveragePercent": 35.0862
+            "hex": "#f03624",
+            "coveragePercent": 35.1962
           },
           {
-            "hex": "#bd4c34",
-            "coveragePercent": 22.1958
+            "hex": "#93443b",
+            "coveragePercent": 22.0819
           },
           {
-            "hex": "#ab714f",
-            "coveragePercent": 15.2521
+            "hex": "#a4261e",
+            "coveragePercent": 21.993
           },
           {
-            "hex": "#eb5e2e",
-            "coveragePercent": 11.8516
+            "hex": "#c67541",
+            "coveragePercent": 11.0391
           },
           {
-            "hex": "#f68446",
-            "coveragePercent": 8.8714
+            "hex": "#efa15b",
+            "coveragePercent": 7.4714
           },
           {
-            "hex": "#f0aa6c",
-            "coveragePercent": 6.7429
+            "hex": "#8d4ec1",
+            "coveragePercent": 2.2184
           }
         ],
-        "visibleSamples": 699021,
-        "dominantCoveragePercent": 100.0
+        "visibleSamples": 704508,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.hannah.combo": {
-      "source": "assets/images/enemies/hannah-combo-v1.png",
+      "source": "assets/images/enemies/hannah-combo-v2.png",
       "frameMetadata": "ART_HANNAH.combo.frames",
       "frameCount": 6,
       "palette": {
         "dominant": [
           {
-            "hex": "#3a2623",
-            "coveragePercent": 20.6658
+            "hex": "#2f1c1a",
+            "coveragePercent": 18.1271
           },
           {
-            "hex": "#493430",
-            "coveragePercent": 15.15
+            "hex": "#432d2a",
+            "coveragePercent": 17.5634
           },
           {
-            "hex": "#2a1a19",
-            "coveragePercent": 13.3058
+            "hex": "#5f403b",
+            "coveragePercent": 12.2179
           },
           {
-            "hex": "#61443e",
-            "coveragePercent": 10.88
+            "hex": "#845749",
+            "coveragePercent": 8.1897
           },
           {
-            "hex": "#602d24",
-            "coveragePercent": 7.5797
+            "hex": "#170c0c",
+            "coveragePercent": 8.015
           },
           {
-            "hex": "#180e0e",
-            "coveragePercent": 6.122
+            "hex": "#60281e",
+            "coveragePercent": 7.9368
           },
           {
-            "hex": "#863a2b",
-            "coveragePercent": 5.3979
+            "hex": "#8a3423",
+            "coveragePercent": 5.687
           },
           {
-            "hex": "#845746",
-            "coveragePercent": 4.985
+            "hex": "#b97350",
+            "coveragePercent": 4.3852
           },
           {
-            "hex": "#b9442c",
-            "coveragePercent": 3.4026
+            "hex": "#b5462e",
+            "coveragePercent": 4.1091
           },
           {
-            "hex": "#ad6e50",
-            "coveragePercent": 2.9609
+            "hex": "#f35c2b",
+            "coveragePercent": 3.4089
           },
           {
-            "hex": "#f15f2b",
-            "coveragePercent": 2.7845
+            "hex": "#e7a66d",
+            "coveragePercent": 2.3332
           },
           {
-            "hex": "#ecbe95",
-            "coveragePercent": 1.8865
+            "hex": "#e53915",
+            "coveragePercent": 2.1416
           },
           {
-            "hex": "#fa964c",
-            "coveragePercent": 1.6344
+            "hex": "#f2cba4",
+            "coveragePercent": 2.0154
           },
           {
-            "hex": "#c99374",
-            "coveragePercent": 1.5164
+            "hex": "#f8903b",
+            "coveragePercent": 1.8893
           },
           {
-            "hex": "#fadfc6",
-            "coveragePercent": 1.0589
+            "hex": "#fcecd8",
+            "coveragePercent": 1.2511
           },
           {
-            "hex": "#8d727b",
-            "coveragePercent": 0.6697
+            "hex": "#97768f",
+            "coveragePercent": 0.7294
           }
         ],
         "accents": [
           {
-            "hex": "#904331",
-            "coveragePercent": 33.1966
+            "hex": "#9c5b43",
+            "coveragePercent": 23.098
           },
           {
-            "hex": "#a96b4c",
-            "coveragePercent": 19.3997
+            "hex": "#943624",
+            "coveragePercent": 20.8991
           },
           {
-            "hex": "#bf452b",
-            "coveragePercent": 16.7658
+            "hex": "#d03e25",
+            "coveragePercent": 16.5136
           },
           {
-            "hex": "#f2602a",
-            "coveragePercent": 14.7551
+            "hex": "#f86327",
+            "coveragePercent": 16.4188
           },
           {
-            "hex": "#ee8c4e",
-            "coveragePercent": 10.5594
+            "hex": "#ca7c54",
+            "coveragePercent": 13.6999
           },
           {
-            "hex": "#f8b96d",
-            "coveragePercent": 5.3234
+            "hex": "#f7b15d",
+            "coveragePercent": 9.3707
           }
         ],
-        "visibleSamples": 737402,
+        "visibleSamples": 774016,
         "dominantCoveragePercent": 100.0001
       }
     },
@@ -5756,103 +5842,103 @@
       }
     },
     "npc.hannah.ritual": {
-      "source": "assets/images/enemies/hannah-ritual-v1.png",
+      "source": "assets/images/enemies/hannah-ritual-v2.png",
       "frameMetadata": "ART_HANNAH.ritual.frames",
-      "frameCount": 5,
+      "frameCount": 6,
       "palette": {
         "dominant": [
           {
-            "hex": "#462d2a",
-            "coveragePercent": 21.758
+            "hex": "#4a312d",
+            "coveragePercent": 16.904
           },
           {
-            "hex": "#321f1e",
-            "coveragePercent": 16.8071
+            "hex": "#3b221f",
+            "coveragePercent": 14.2999
           },
           {
-            "hex": "#583e39",
-            "coveragePercent": 12.0519
+            "hex": "#281715",
+            "coveragePercent": 10.55
           },
           {
-            "hex": "#1b0f0f",
-            "coveragePercent": 8.8705
+            "hex": "#6e2b1e",
+            "coveragePercent": 10.3755
           },
           {
-            "hex": "#743225",
-            "coveragePercent": 8.8633
+            "hex": "#69453b",
+            "coveragePercent": 7.8963
           },
           {
-            "hex": "#7d5243",
-            "coveragePercent": 6.7513
+            "hex": "#a43721",
+            "coveragePercent": 7.37
           },
           {
-            "hex": "#a73d27",
-            "coveragePercent": 5.3783
+            "hex": "#ea451a",
+            "coveragePercent": 6.6309
           },
           {
-            "hex": "#e6491f",
-            "coveragePercent": 4.277
+            "hex": "#130909",
+            "coveragePercent": 6.0058
           },
           {
-            "hex": "#ac6645",
-            "coveragePercent": 4.1839
+            "hex": "#905a45",
+            "coveragePercent": 5.1628
           },
           {
-            "hex": "#f6742b",
-            "coveragePercent": 2.4975
+            "hex": "#c07048",
+            "coveragePercent": 4.3847
           },
           {
-            "hex": "#c58865",
-            "coveragePercent": 1.9401
+            "hex": "#f77e2d",
+            "coveragePercent": 2.8803
           },
           {
-            "hex": "#fbdcc6",
-            "coveragePercent": 1.6377
+            "hex": "#edb072",
+            "coveragePercent": 2.2518
           },
           {
-            "hex": "#f7a553",
-            "coveragePercent": 1.4522
+            "hex": "#fbddc6",
+            "coveragePercent": 2.2058
           },
           {
-            "hex": "#f3c290",
-            "coveragePercent": 1.4331
+            "hex": "#8934b7",
+            "coveragePercent": 1.1107
           },
           {
-            "hex": "#9e52c9",
-            "coveragePercent": 1.1348
+            "hex": "#b850eb",
+            "coveragePercent": 1.0929
           },
           {
-            "hex": "#612d85",
-            "coveragePercent": 0.9633
+            "hex": "#501975",
+            "coveragePercent": 0.8786
           }
         ],
         "accents": [
           {
-            "hex": "#983f2b",
-            "coveragePercent": 36.6312
+            "hex": "#9a3823",
+            "coveragePercent": 33.0311
           },
           {
-            "hex": "#ea5321",
-            "coveragePercent": 24.8636
+            "hex": "#ec4c1c",
+            "coveragePercent": 26.4138
           },
           {
-            "hex": "#b16745",
-            "coveragePercent": 19.9186
+            "hex": "#b16440",
+            "coveragePercent": 21.0948
           },
           {
-            "hex": "#f1a055",
-            "coveragePercent": 12.4995
+            "hex": "#f19e4f",
+            "coveragePercent": 11.4115
           },
           {
-            "hex": "#a352d2",
-            "coveragePercent": 3.3021
+            "hex": "#b14ae6",
+            "coveragePercent": 4.3479
           },
           {
-            "hex": "#71349a",
-            "coveragePercent": 2.7851
+            "hex": "#792ba6",
+            "coveragePercent": 3.7011
           }
         ],
-        "visibleSamples": 337451,
+        "visibleSamples": 490123,
         "dominantCoveragePercent": 100.0
       }
     },
@@ -6066,1622 +6152,6 @@
         ],
         "visibleSamples": 423613,
         "dominantCoveragePercent": 100.0
-      }
-    },
-    "npc.japan.guard.walk": {
-      "source": "assets/images/enemies/japan-walk-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.walk.guard",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#130a0c",
-            "coveragePercent": 14.7105
-          },
-          {
-            "hex": "#1e1b22",
-            "coveragePercent": 13.2695
-          },
-          {
-            "hex": "#302d37",
-            "coveragePercent": 12.3895
-          },
-          {
-            "hex": "#3a170f",
-            "coveragePercent": 9.2163
-          },
-          {
-            "hex": "#49444d",
-            "coveragePercent": 7.0957
-          },
-          {
-            "hex": "#58321d",
-            "coveragePercent": 6.6445
-          },
-          {
-            "hex": "#864c24",
-            "coveragePercent": 5.5909
-          },
-          {
-            "hex": "#b96d29",
-            "coveragePercent": 5.1315
-          },
-          {
-            "hex": "#e59832",
-            "coveragePercent": 5.0339
-          },
-          {
-            "hex": "#fadbae",
-            "coveragePercent": 4.4467
-          },
-          {
-            "hex": "#f5c25d",
-            "coveragePercent": 4.019
-          },
-          {
-            "hex": "#76160f",
-            "coveragePercent": 3.4939
-          },
-          {
-            "hex": "#b82116",
-            "coveragePercent": 3.0546
-          },
-          {
-            "hex": "#f2efec",
-            "coveragePercent": 2.5146
-          },
-          {
-            "hex": "#797075",
-            "coveragePercent": 2.0448
-          },
-          {
-            "hex": "#b1a19e",
-            "coveragePercent": 1.3442
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#975625",
-            "coveragePercent": 21.7958
-          },
-          {
-            "hex": "#c6762a",
-            "coveragePercent": 21.7034
-          },
-          {
-            "hex": "#ea9f36",
-            "coveragePercent": 20.3308
-          },
-          {
-            "hex": "#f7c660",
-            "coveragePercent": 16.1311
-          },
-          {
-            "hex": "#c12418",
-            "coveragePercent": 10.3648
-          },
-          {
-            "hex": "#931d12",
-            "coveragePercent": 9.674
-          }
-        ],
-        "visibleSamples": 156744,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
-    "npc.japan.guard.attack": {
-      "source": "assets/images/enemies/japan-attack-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.attack.guard",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#150d0f",
-            "coveragePercent": 15.8215
-          },
-          {
-            "hex": "#2b252a",
-            "coveragePercent": 15.5646
-          },
-          {
-            "hex": "#463d42",
-            "coveragePercent": 10.8998
-          },
-          {
-            "hex": "#3e170f",
-            "coveragePercent": 9.5155
-          },
-          {
-            "hex": "#63361c",
-            "coveragePercent": 7.5741
-          },
-          {
-            "hex": "#945927",
-            "coveragePercent": 6.3454
-          },
-          {
-            "hex": "#f1b246",
-            "coveragePercent": 5.6453
-          },
-          {
-            "hex": "#ce7e28",
-            "coveragePercent": 5.3927
-          },
-          {
-            "hex": "#c5201a",
-            "coveragePercent": 5.2987
-          },
-          {
-            "hex": "#841310",
-            "coveragePercent": 4.8384
-          },
-          {
-            "hex": "#f8d6a6",
-            "coveragePercent": 4.1604
-          },
-          {
-            "hex": "#f7f8f8",
-            "coveragePercent": 3.4748
-          },
-          {
-            "hex": "#9a8789",
-            "coveragePercent": 1.805
-          },
-          {
-            "hex": "#58a5f4",
-            "coveragePercent": 1.7552
-          },
-          {
-            "hex": "#aac5e5",
-            "coveragePercent": 1.3689
-          },
-          {
-            "hex": "#2f58bc",
-            "coveragePercent": 0.5397
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#9d5c23",
-            "coveragePercent": 22.3658
-          },
-          {
-            "hex": "#d5872b",
-            "coveragePercent": 20.2584
-          },
-          {
-            "hex": "#f4b94e",
-            "coveragePercent": 18.6453
-          },
-          {
-            "hex": "#c9211b",
-            "coveragePercent": 16.7901
-          },
-          {
-            "hex": "#961712",
-            "coveragePercent": 13.1242
-          },
-          {
-            "hex": "#5297e9",
-            "coveragePercent": 8.8161
-          }
-        ],
-        "visibleSamples": 179012,
-        "dominantCoveragePercent": 100.0
-      }
-    },
-    "npc.japan.guard.walk.v5": {
-      "source": "assets/images/enemies/japan-guard-v5.png",
-      "frameMetadata": "ART_JAPAN.guard.walk",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#201314",
-            "coveragePercent": 11.0683
-          },
-          {
-            "hex": "#352a2c",
-            "coveragePercent": 10.5824
-          },
-          {
-            "hex": "#0d0607",
-            "coveragePercent": 9.9263
-          },
-          {
-            "hex": "#421311",
-            "coveragePercent": 8.2081
-          },
-          {
-            "hex": "#cc212b",
-            "coveragePercent": 7.5259
-          },
-          {
-            "hex": "#a0161f",
-            "coveragePercent": 7.1962
-          },
-          {
-            "hex": "#701115",
-            "coveragePercent": 7.1805
-          },
-          {
-            "hex": "#5e3625",
-            "coveragePercent": 7.1671
-          },
-          {
-            "hex": "#50464a",
-            "coveragePercent": 6.7683
-          },
-          {
-            "hex": "#8d512d",
-            "coveragePercent": 5.6936
-          },
-          {
-            "hex": "#c1733a",
-            "coveragePercent": 5.0605
-          },
-          {
-            "hex": "#e7a24e",
-            "coveragePercent": 3.8209
-          },
-          {
-            "hex": "#79645e",
-            "coveragePercent": 3.5976
-          },
-          {
-            "hex": "#f2ca8a",
-            "coveragePercent": 2.6409
-          },
-          {
-            "hex": "#f4eada",
-            "coveragePercent": 1.8792
-          },
-          {
-            "hex": "#ad9187",
-            "coveragePercent": 1.6842
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#ca202b",
-            "coveragePercent": 27.4937
-          },
-          {
-            "hex": "#99151e",
-            "coveragePercent": 24.4967
-          },
-          {
-            "hex": "#95562f",
-            "coveragePercent": 16.0093
-          },
-          {
-            "hex": "#c0723a",
-            "coveragePercent": 14.0695
-          },
-          {
-            "hex": "#e19849",
-            "coveragePercent": 11.1954
-          },
-          {
-            "hex": "#f4c369",
-            "coveragePercent": 6.7354
-          }
-        ],
-        "visibleSamples": 312146,
-        "dominantCoveragePercent": 100.0
-      }
-    },
-    "npc.japan.guard.attack.v5": {
-      "source": "assets/images/enemies/japan-guard-v5.png",
-      "frameMetadata": "ART_JAPAN.guard.attack",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#352725",
-            "coveragePercent": 11.1272
-          },
-          {
-            "hex": "#201112",
-            "coveragePercent": 10.0755
-          },
-          {
-            "hex": "#0c0607",
-            "coveragePercent": 9.3337
-          },
-          {
-            "hex": "#cd202c",
-            "coveragePercent": 7.7026
-          },
-          {
-            "hex": "#463c40",
-            "coveragePercent": 7.6617
-          },
-          {
-            "hex": "#6f1116",
-            "coveragePercent": 7.2936
-          },
-          {
-            "hex": "#a01620",
-            "coveragePercent": 7.2252
-          },
-          {
-            "hex": "#44100f",
-            "coveragePercent": 7.0241
-          },
-          {
-            "hex": "#673c26",
-            "coveragePercent": 6.8989
-          },
-          {
-            "hex": "#965b35",
-            "coveragePercent": 5.8064
-          },
-          {
-            "hex": "#685756",
-            "coveragePercent": 5.3223
-          },
-          {
-            "hex": "#c8793c",
-            "coveragePercent": 4.4924
-          },
-          {
-            "hex": "#e9a753",
-            "coveragePercent": 3.5472
-          },
-          {
-            "hex": "#eec78e",
-            "coveragePercent": 2.5754
-          },
-          {
-            "hex": "#a68574",
-            "coveragePercent": 2.3834
-          },
-          {
-            "hex": "#f0e5d3",
-            "coveragePercent": 1.5305
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#b61825",
-            "coveragePercent": 20.6753
-          },
-          {
-            "hex": "#9b5c33",
-            "coveragePercent": 19.988
-          },
-          {
-            "hex": "#91151c",
-            "coveragePercent": 17.0154
-          },
-          {
-            "hex": "#ce8242",
-            "coveragePercent": 16.9969
-          },
-          {
-            "hex": "#d72630",
-            "coveragePercent": 14.764
-          },
-          {
-            "hex": "#f0b860",
-            "coveragePercent": 10.5602
-          }
-        ],
-        "visibleSamples": 325713,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
-    "npc.japan.archer.walk": {
-      "source": "assets/images/enemies/japan-walk-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.walk.archer",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#372218",
-            "coveragePercent": 15.788
-          },
-          {
-            "hex": "#241710",
-            "coveragePercent": 12.843
-          },
-          {
-            "hex": "#553423",
-            "coveragePercent": 12.1681
-          },
-          {
-            "hex": "#3b3627",
-            "coveragePercent": 9.2825
-          },
-          {
-            "hex": "#120a08",
-            "coveragePercent": 8.1462
-          },
-          {
-            "hex": "#644d33",
-            "coveragePercent": 7.1111
-          },
-          {
-            "hex": "#f7d6ad",
-            "coveragePercent": 6.4255
-          },
-          {
-            "hex": "#8e572c",
-            "coveragePercent": 5.5223
-          },
-          {
-            "hex": "#f8e9ce",
-            "coveragePercent": 3.9745
-          },
-          {
-            "hex": "#fbf7ed",
-            "coveragePercent": 3.5521
-          },
-          {
-            "hex": "#c88137",
-            "coveragePercent": 3.3598
-          },
-          {
-            "hex": "#782310",
-            "coveragePercent": 2.753
-          },
-          {
-            "hex": "#ebb359",
-            "coveragePercent": 2.6782
-          },
-          {
-            "hex": "#d4ab8e",
-            "coveragePercent": 2.5348
-          },
-          {
-            "hex": "#9d795d",
-            "coveragePercent": 2.4785
-          },
-          {
-            "hex": "#bf2e18",
-            "coveragePercent": 1.3824
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#8f552b",
-            "coveragePercent": 27.2619
-          },
-          {
-            "hex": "#b07238",
-            "coveragePercent": 22.3097
-          },
-          {
-            "hex": "#d79344",
-            "coveragePercent": 19.2147
-          },
-          {
-            "hex": "#f0bd66",
-            "coveragePercent": 15.5443
-          },
-          {
-            "hex": "#972111",
-            "coveragePercent": 9.2689
-          },
-          {
-            "hex": "#cd351b",
-            "coveragePercent": 6.4007
-          }
-        ],
-        "visibleSamples": 173217,
-        "dominantCoveragePercent": 100.0
-      }
-    },
-    "npc.japan.archer.attack": {
-      "source": "assets/images/enemies/japan-attack-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.attack.archer",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#372a1e",
-            "coveragePercent": 16.1358
-          },
-          {
-            "hex": "#493828",
-            "coveragePercent": 12.8344
-          },
-          {
-            "hex": "#291911",
-            "coveragePercent": 12.6464
-          },
-          {
-            "hex": "#604b32",
-            "coveragePercent": 8.2768
-          },
-          {
-            "hex": "#140c09",
-            "coveragePercent": 6.7803
-          },
-          {
-            "hex": "#602a12",
-            "coveragePercent": 6.6825
-          },
-          {
-            "hex": "#854d23",
-            "coveragePercent": 6.046
-          },
-          {
-            "hex": "#f1c7a3",
-            "coveragePercent": 5.0962
-          },
-          {
-            "hex": "#f9ddbf",
-            "coveragePercent": 5.0696
-          },
-          {
-            "hex": "#b16d2a",
-            "coveragePercent": 4.055
-          },
-          {
-            "hex": "#faf6ed",
-            "coveragePercent": 3.7181
-          },
-          {
-            "hex": "#dd9338",
-            "coveragePercent": 3.2865
-          },
-          {
-            "hex": "#8c6b56",
-            "coveragePercent": 2.9531
-          },
-          {
-            "hex": "#f1b660",
-            "coveragePercent": 2.5281
-          },
-          {
-            "hex": "#bc957e",
-            "coveragePercent": 2.2719
-          },
-          {
-            "hex": "#bf2511",
-            "coveragePercent": 1.6191
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#935929",
-            "coveragePercent": 29.3917
-          },
-          {
-            "hex": "#ba7632",
-            "coveragePercent": 22.6502
-          },
-          {
-            "hex": "#e1993f",
-            "coveragePercent": 19.0928
-          },
-          {
-            "hex": "#f3bb66",
-            "coveragePercent": 13.4725
-          },
-          {
-            "hex": "#962810",
-            "coveragePercent": 10.0434
-          },
-          {
-            "hex": "#d72d13",
-            "coveragePercent": 5.3495
-          }
-        ],
-        "visibleSamples": 184261,
-        "dominantCoveragePercent": 99.9998
-      }
-    },
-    "npc.japan.archer.walk.v5": {
-      "source": "assets/images/enemies/japan-archer-v5.png",
-      "frameMetadata": "ART_JAPAN.archer.walk",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#322116",
-            "coveragePercent": 15.7091
-          },
-          {
-            "hex": "#423324",
-            "coveragePercent": 14.8823
-          },
-          {
-            "hex": "#20130d",
-            "coveragePercent": 11.8225
-          },
-          {
-            "hex": "#5f4c35",
-            "coveragePercent": 10.2741
-          },
-          {
-            "hex": "#5d361e",
-            "coveragePercent": 7.316
-          },
-          {
-            "hex": "#0e0706",
-            "coveragePercent": 6.383
-          },
-          {
-            "hex": "#816444",
-            "coveragePercent": 6.1888
-          },
-          {
-            "hex": "#854e24",
-            "coveragePercent": 5.195
-          },
-          {
-            "hex": "#b17236",
-            "coveragePercent": 4.5441
-          },
-          {
-            "hex": "#eec397",
-            "coveragePercent": 3.0169
-          },
-          {
-            "hex": "#a7846b",
-            "coveragePercent": 2.837
-          },
-          {
-            "hex": "#c9a791",
-            "coveragePercent": 2.7776
-          },
-          {
-            "hex": "#ebd4bd",
-            "coveragePercent": 2.7724
-          },
-          {
-            "hex": "#dc9e4b",
-            "coveragePercent": 2.7299
-          },
-          {
-            "hex": "#f7f1e5",
-            "coveragePercent": 1.8351
-          },
-          {
-            "hex": "#86130a",
-            "coveragePercent": 1.7161
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#9c6f41",
-            "coveragePercent": 27.0658
-          },
-          {
-            "hex": "#8d5529",
-            "coveragePercent": 25.6829
-          },
-          {
-            "hex": "#c98d4a",
-            "coveragePercent": 19.153
-          },
-          {
-            "hex": "#eab260",
-            "coveragePercent": 11.1355
-          },
-          {
-            "hex": "#bd6c24",
-            "coveragePercent": 9.9612
-          },
-          {
-            "hex": "#9b1a0d",
-            "coveragePercent": 7.0016
-          }
-        ],
-        "visibleSamples": 253676,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
-    "npc.japan.archer.attack.v5": {
-      "source": "assets/images/enemies/japan-archer-v5.png",
-      "frameMetadata": "ART_JAPAN.archer.attack",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#392b1d",
-            "coveragePercent": 15.4264
-          },
-          {
-            "hex": "#271810",
-            "coveragePercent": 15.0677
-          },
-          {
-            "hex": "#503f2a",
-            "coveragePercent": 13.3315
-          },
-          {
-            "hex": "#6b573a",
-            "coveragePercent": 9.5334
-          },
-          {
-            "hex": "#100907",
-            "coveragePercent": 9.1244
-          },
-          {
-            "hex": "#73401d",
-            "coveragePercent": 5.4765
-          },
-          {
-            "hex": "#995e29",
-            "coveragePercent": 4.737
-          },
-          {
-            "hex": "#551f0d",
-            "coveragePercent": 4.5825
-          },
-          {
-            "hex": "#c2813d",
-            "coveragePercent": 4.1059
-          },
-          {
-            "hex": "#91704f",
-            "coveragePercent": 4.002
-          },
-          {
-            "hex": "#edd1b4",
-            "coveragePercent": 3.3905
-          },
-          {
-            "hex": "#e0b691",
-            "coveragePercent": 3.3693
-          },
-          {
-            "hex": "#b6947d",
-            "coveragePercent": 2.506
-          },
-          {
-            "hex": "#e7ab4e",
-            "coveragePercent": 2.453
-          },
-          {
-            "hex": "#f7eee1",
-            "coveragePercent": 1.9421
-          },
-          {
-            "hex": "#a51c0c",
-            "coveragePercent": 0.9517
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#996a3c",
-            "coveragePercent": 29.7764
-          },
-          {
-            "hex": "#c68640",
-            "coveragePercent": 26.8496
-          },
-          {
-            "hex": "#94531f",
-            "coveragePercent": 20.6649
-          },
-          {
-            "hex": "#e9b15c",
-            "coveragePercent": 16.2366
-          },
-          {
-            "hex": "#921b0b",
-            "coveragePercent": 4.6798
-          },
-          {
-            "hex": "#d22d14",
-            "coveragePercent": 1.7927
-          }
-        ],
-        "visibleSamples": 297164,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
-    "npc.japan.shield.walk": {
-      "source": "assets/images/enemies/japan-walk-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.walk.shield",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#2a2323",
-            "coveragePercent": 11.4876
-          },
-          {
-            "hex": "#2b100d",
-            "coveragePercent": 10.8351
-          },
-          {
-            "hex": "#110808",
-            "coveragePercent": 10.2235
-          },
-          {
-            "hex": "#7d1c12",
-            "coveragePercent": 9.7289
-          },
-          {
-            "hex": "#53170e",
-            "coveragePercent": 8.9825
-          },
-          {
-            "hex": "#413633",
-            "coveragePercent": 7.5582
-          },
-          {
-            "hex": "#9d421d",
-            "coveragePercent": 6.4133
-          },
-          {
-            "hex": "#af1c14",
-            "coveragePercent": 6.1386
-          },
-          {
-            "hex": "#d52d18",
-            "coveragePercent": 5.3331
-          },
-          {
-            "hex": "#cb6b23",
-            "coveragePercent": 4.9115
-          },
-          {
-            "hex": "#eb9730",
-            "coveragePercent": 4.6809
-          },
-          {
-            "hex": "#6a4631",
-            "coveragePercent": 4.1774
-          },
-          {
-            "hex": "#f6d5ac",
-            "coveragePercent": 3.7479
-          },
-          {
-            "hex": "#f4c05d",
-            "coveragePercent": 2.8803
-          },
-          {
-            "hex": "#967e75",
-            "coveragePercent": 1.785
-          },
-          {
-            "hex": "#f8f1e5",
-            "coveragePercent": 1.1163
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#902716",
-            "coveragePercent": 22.9036
-          },
-          {
-            "hex": "#e1882b",
-            "coveragePercent": 17.6624
-          },
-          {
-            "hex": "#ad5823",
-            "coveragePercent": 17.4503
-          },
-          {
-            "hex": "#b31d15",
-            "coveragePercent": 17.2071
-          },
-          {
-            "hex": "#d82f19",
-            "coveragePercent": 14.2139
-          },
-          {
-            "hex": "#f5be54",
-            "coveragePercent": 10.5628
-          }
-        ],
-        "visibleSamples": 177470,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
-    "npc.japan.shield.attack": {
-      "source": "assets/images/enemies/japan-attack-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.attack.shield",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#281918",
-            "coveragePercent": 10.4783
-          },
-          {
-            "hex": "#3c2f2e",
-            "coveragePercent": 10.3045
-          },
-          {
-            "hex": "#170807",
-            "coveragePercent": 10.1555
-          },
-          {
-            "hex": "#79160f",
-            "coveragePercent": 10.0682
-          },
-          {
-            "hex": "#4c160d",
-            "coveragePercent": 9.0902
-          },
-          {
-            "hex": "#b51a16",
-            "coveragePercent": 8.5671
-          },
-          {
-            "hex": "#953a1a",
-            "coveragePercent": 7.1843
-          },
-          {
-            "hex": "#ba5925",
-            "coveragePercent": 6.0751
-          },
-          {
-            "hex": "#e32c1e",
-            "coveragePercent": 5.6311
-          },
-          {
-            "hex": "#e48e2e",
-            "coveragePercent": 5.6275
-          },
-          {
-            "hex": "#614134",
-            "coveragePercent": 5.3379
-          },
-          {
-            "hex": "#f3bc55",
-            "coveragePercent": 3.8554
-          },
-          {
-            "hex": "#f8d5aa",
-            "coveragePercent": 3.1559
-          },
-          {
-            "hex": "#816a68",
-            "coveragePercent": 1.9084
-          },
-          {
-            "hex": "#f6efea",
-            "coveragePercent": 1.4112
-          },
-          {
-            "hex": "#b4a2a6",
-            "coveragePercent": 1.1494
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#931e14",
-            "coveragePercent": 22.0859
-          },
-          {
-            "hex": "#aa5123",
-            "coveragePercent": 19.9308
-          },
-          {
-            "hex": "#be1e18",
-            "coveragePercent": 19.8847
-          },
-          {
-            "hex": "#df892d",
-            "coveragePercent": 15.2028
-          },
-          {
-            "hex": "#e53220",
-            "coveragePercent": 12.099
-          },
-          {
-            "hex": "#f4bc53",
-            "coveragePercent": 10.7969
-          }
-        ],
-        "visibleSamples": 177599,
-        "dominantCoveragePercent": 100.0
-      }
-    },
-    "npc.japan.shield.walk.v5": {
-      "source": "assets/images/enemies/japan-shield-v5.png",
-      "frameMetadata": "ART_JAPAN.shield.walk",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#2f1815",
-            "coveragePercent": 10.5337
-          },
-          {
-            "hex": "#3c2b26",
-            "coveragePercent": 9.975
-          },
-          {
-            "hex": "#511614",
-            "coveragePercent": 9.2846
-          },
-          {
-            "hex": "#721b1b",
-            "coveragePercent": 8.8719
-          },
-          {
-            "hex": "#1e0c0b",
-            "coveragePercent": 8.7179
-          },
-          {
-            "hex": "#982121",
-            "coveragePercent": 8.5496
-          },
-          {
-            "hex": "#563e34",
-            "coveragePercent": 8.4413
-          },
-          {
-            "hex": "#c02829",
-            "coveragePercent": 6.7559
-          },
-          {
-            "hex": "#0b0404",
-            "coveragePercent": 6.0527
-          },
-          {
-            "hex": "#79452f",
-            "coveragePercent": 5.8106
-          },
-          {
-            "hex": "#8f5e42",
-            "coveragePercent": 5.6252
-          },
-          {
-            "hex": "#bf6a3e",
-            "coveragePercent": 3.7946
-          },
-          {
-            "hex": "#d9955a",
-            "coveragePercent": 2.8111
-          },
-          {
-            "hex": "#e9bd88",
-            "coveragePercent": 1.9185
-          },
-          {
-            "hex": "#a07f6e",
-            "coveragePercent": 1.6308
-          },
-          {
-            "hex": "#f4e5cd",
-            "coveragePercent": 1.2265
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#941f20",
-            "coveragePercent": 30.653
-          },
-          {
-            "hex": "#bf2828",
-            "coveragePercent": 24.7163
-          },
-          {
-            "hex": "#915133",
-            "coveragePercent": 15.693
-          },
-          {
-            "hex": "#b0673f",
-            "coveragePercent": 13.5213
-          },
-          {
-            "hex": "#d0844e",
-            "coveragePercent": 9.8224
-          },
-          {
-            "hex": "#eaaf69",
-            "coveragePercent": 5.5939
-          }
-        ],
-        "visibleSamples": 269843,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
-    "npc.japan.shield.attack.v5": {
-      "source": "assets/images/enemies/japan-shield-v5.png",
-      "frameMetadata": "ART_JAPAN.shield.attack",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#741d1c",
-            "coveragePercent": 10.2887
-          },
-          {
-            "hex": "#2e1916",
-            "coveragePercent": 9.9581
-          },
-          {
-            "hex": "#521513",
-            "coveragePercent": 9.6252
-          },
-          {
-            "hex": "#3a2b26",
-            "coveragePercent": 9.2204
-          },
-          {
-            "hex": "#9b1f21",
-            "coveragePercent": 8.8588
-          },
-          {
-            "hex": "#1f0b0b",
-            "coveragePercent": 8.8034
-          },
-          {
-            "hex": "#543b31",
-            "coveragePercent": 8.1518
-          },
-          {
-            "hex": "#c42728",
-            "coveragePercent": 6.3992
-          },
-          {
-            "hex": "#724d3c",
-            "coveragePercent": 6.3602
-          },
-          {
-            "hex": "#0b0404",
-            "coveragePercent": 6.0943
-          },
-          {
-            "hex": "#a25432",
-            "coveragePercent": 4.3993
-          },
-          {
-            "hex": "#cb7d4a",
-            "coveragePercent": 3.8959
-          },
-          {
-            "hex": "#956c53",
-            "coveragePercent": 3.0153
-          },
-          {
-            "hex": "#e7b378",
-            "coveragePercent": 2.5572
-          },
-          {
-            "hex": "#f2e1c7",
-            "coveragePercent": 1.3671
-          },
-          {
-            "hex": "#ad8f81",
-            "coveragePercent": 1.005
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#8f1f1f",
-            "coveragePercent": 25.8375
-          },
-          {
-            "hex": "#b22023",
-            "coveragePercent": 23.7076
-          },
-          {
-            "hex": "#975636",
-            "coveragePercent": 18.3219
-          },
-          {
-            "hex": "#c17848",
-            "coveragePercent": 13.823
-          },
-          {
-            "hex": "#ce3630",
-            "coveragePercent": 10.8883
-          },
-          {
-            "hex": "#e5a865",
-            "coveragePercent": 7.4217
-          }
-        ],
-        "visibleSamples": 267199,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
-    "npc.japan.mage.walk": {
-      "source": "assets/images/enemies/japan-walk-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.walk.mage",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#312634",
-            "coveragePercent": 15.9687
-          },
-          {
-            "hex": "#201721",
-            "coveragePercent": 15.3535
-          },
-          {
-            "hex": "#42374b",
-            "coveragePercent": 14.6335
-          },
-          {
-            "hex": "#0f0910",
-            "coveragePercent": 8.9786
-          },
-          {
-            "hex": "#fcf8f1",
-            "coveragePercent": 7.0812
-          },
-          {
-            "hex": "#f6e4d5",
-            "coveragePercent": 6.6928
-          },
-          {
-            "hex": "#f2d3b6",
-            "coveragePercent": 4.8248
-          },
-          {
-            "hex": "#bfa9c2",
-            "coveragePercent": 3.6768
-          },
-          {
-            "hex": "#8076bb",
-            "coveragePercent": 3.528
-          },
-          {
-            "hex": "#663e29",
-            "coveragePercent": 3.3076
-          },
-          {
-            "hex": "#6f5a62",
-            "coveragePercent": 3.1961
-          },
-          {
-            "hex": "#a08286",
-            "coveragePercent": 3.1835
-          },
-          {
-            "hex": "#544d8f",
-            "coveragePercent": 3.0347
-          },
-          {
-            "hex": "#daae8a",
-            "coveragePercent": 2.4604
-          },
-          {
-            "hex": "#ab6d34",
-            "coveragePercent": 2.2691
-          },
-          {
-            "hex": "#e7a73d",
-            "coveragePercent": 1.8106
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#bf8040",
-            "coveragePercent": 21.3811
-          },
-          {
-            "hex": "#97592b",
-            "coveragePercent": 21.347
-          },
-          {
-            "hex": "#4c4794",
-            "coveragePercent": 17.1797
-          },
-          {
-            "hex": "#eaa931",
-            "coveragePercent": 14.3214
-          },
-          {
-            "hex": "#eeba68",
-            "coveragePercent": 13.0753
-          },
-          {
-            "hex": "#6a62bf",
-            "coveragePercent": 12.6956
-          }
-        ],
-        "visibleSamples": 185644,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
-    "npc.japan.mage.attack": {
-      "source": "assets/images/enemies/japan-attack-v4.png",
-      "frameMetadata": "ART_FRAMES.animations.japan.attack.mage",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#3c3247",
-            "coveragePercent": 18.9775
-          },
-          {
-            "hex": "#2a202e",
-            "coveragePercent": 17.2098
-          },
-          {
-            "hex": "#140e18",
-            "coveragePercent": 9.8871
-          },
-          {
-            "hex": "#4b4786",
-            "coveragePercent": 6.0586
-          },
-          {
-            "hex": "#f4e1d4",
-            "coveragePercent": 5.8616
-          },
-          {
-            "hex": "#eacab7",
-            "coveragePercent": 5.2278
-          },
-          {
-            "hex": "#f6f7f4",
-            "coveragePercent": 5.14
-          },
-          {
-            "hex": "#6d7ac3",
-            "coveragePercent": 5.0125
-          },
-          {
-            "hex": "#b2a3c2",
-            "coveragePercent": 4.7186
-          },
-          {
-            "hex": "#724f3f",
-            "coveragePercent": 4.3636
-          },
-          {
-            "hex": "#51b6f6",
-            "coveragePercent": 3.8889
-          },
-          {
-            "hex": "#8c767a",
-            "coveragePercent": 3.3994
-          },
-          {
-            "hex": "#268def",
-            "coveragePercent": 3.2591
-          },
-          {
-            "hex": "#cb8b36",
-            "coveragePercent": 2.7534
-          },
-          {
-            "hex": "#ddaa7a",
-            "coveragePercent": 2.646
-          },
-          {
-            "hex": "#8de2fc",
-            "coveragePercent": 1.5962
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#3590eb",
-            "coveragePercent": 27.1882
-          },
-          {
-            "hex": "#4f52a7",
-            "coveragePercent": 24.0957
-          },
-          {
-            "hex": "#5cc2f7",
-            "coveragePercent": 20.6257
-          },
-          {
-            "hex": "#d19039",
-            "coveragePercent": 10.4414
-          },
-          {
-            "hex": "#9e6333",
-            "coveragePercent": 9.9429
-          },
-          {
-            "hex": "#edb163",
-            "coveragePercent": 7.7061
-          }
-        ],
-        "visibleSamples": 205211,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
-    "npc.japan.mage.walk.v5": {
-      "source": "assets/images/enemies/japan-mage-v5.png",
-      "frameMetadata": "ART_JAPAN.mage.walk",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#3d2d45",
-            "coveragePercent": 12.189
-          },
-          {
-            "hex": "#2c1c28",
-            "coveragePercent": 11.6965
-          },
-          {
-            "hex": "#533f61",
-            "coveragePercent": 10.4631
-          },
-          {
-            "hex": "#140b12",
-            "coveragePercent": 7.6121
-          },
-          {
-            "hex": "#705380",
-            "coveragePercent": 7.0118
-          },
-          {
-            "hex": "#efc7a8",
-            "coveragePercent": 6.9415
-          },
-          {
-            "hex": "#f5dec7",
-            "coveragePercent": 6.8738
-          },
-          {
-            "hex": "#faf3ec",
-            "coveragePercent": 5.4738
-          },
-          {
-            "hex": "#613b29",
-            "coveragePercent": 4.7906
-          },
-          {
-            "hex": "#c69e9d",
-            "coveragePercent": 4.5139
-          },
-          {
-            "hex": "#c39dd2",
-            "coveragePercent": 4.2327
-          },
-          {
-            "hex": "#a17b78",
-            "coveragePercent": 4.1788
-          },
-          {
-            "hex": "#9572ae",
-            "coveragePercent": 4.0389
-          },
-          {
-            "hex": "#976034",
-            "coveragePercent": 3.676
-          },
-          {
-            "hex": "#ecb477",
-            "coveragePercent": 3.4989
-          },
-          {
-            "hex": "#d3933f",
-            "coveragePercent": 2.8087
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#935a2c",
-            "coveragePercent": 21.4348
-          },
-          {
-            "hex": "#b87a3a",
-            "coveragePercent": 20.6219
-          },
-          {
-            "hex": "#f0b671",
-            "coveragePercent": 20.3157
-          },
-          {
-            "hex": "#dd9d46",
-            "coveragePercent": 19.775
-          },
-          {
-            "hex": "#674691",
-            "coveragePercent": 13.3118
-          },
-          {
-            "hex": "#8c64d0",
-            "coveragePercent": 4.5408
-          }
-        ],
-        "visibleSamples": 335834,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
-    "npc.japan.mage.attack.v5": {
-      "source": "assets/images/enemies/japan-mage-v5.png",
-      "frameMetadata": "ART_JAPAN.mage.attack",
-      "frameCount": 6,
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#3c2c44",
-            "coveragePercent": 11.0645
-          },
-          {
-            "hex": "#2b1c28",
-            "coveragePercent": 10.5572
-          },
-          {
-            "hex": "#533e5f",
-            "coveragePercent": 10.3455
-          },
-          {
-            "hex": "#71547d",
-            "coveragePercent": 7.7477
-          },
-          {
-            "hex": "#f5ddc8",
-            "coveragePercent": 7.0901
-          },
-          {
-            "hex": "#140a12",
-            "coveragePercent": 6.9485
-          },
-          {
-            "hex": "#f1c9a8",
-            "coveragePercent": 6.6118
-          },
-          {
-            "hex": "#fbf4ec",
-            "coveragePercent": 5.9741
-          },
-          {
-            "hex": "#cfa7a5",
-            "coveragePercent": 5.2315
-          },
-          {
-            "hex": "#aa8380",
-            "coveragePercent": 4.914
-          },
-          {
-            "hex": "#8f6ca9",
-            "coveragePercent": 4.5912
-          },
-          {
-            "hex": "#623a28",
-            "coveragePercent": 4.4409
-          },
-          {
-            "hex": "#ecb476",
-            "coveragePercent": 3.9306
-          },
-          {
-            "hex": "#976237",
-            "coveragePercent": 3.8899
-          },
-          {
-            "hex": "#b993d0",
-            "coveragePercent": 3.6901
-          },
-          {
-            "hex": "#d5943d",
-            "coveragePercent": 2.9723
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#9b602f",
-            "coveragePercent": 27.2337
-          },
-          {
-            "hex": "#efb569",
-            "coveragePercent": 27.0095
-          },
-          {
-            "hex": "#ce8e3f",
-            "coveragePercent": 25.8581
-          },
-          {
-            "hex": "#66468e",
-            "coveragePercent": 12.305
-          },
-          {
-            "hex": "#7e56b0",
-            "coveragePercent": 5.0005
-          },
-          {
-            "hex": "#976dde",
-            "coveragePercent": 2.5931
-          }
-        ],
-        "visibleSamples": 390160,
-        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.yomi.guard.walk": {
@@ -9298,6 +7768,915 @@
         ],
         "visibleSamples": 213800,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.japan.guard.walk.v5": {
+      "source": "assets/images/enemies/japan-guard-v5.png",
+      "frameMetadata": "ART_JAPAN.guard.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#201314",
+            "coveragePercent": 11.0683
+          },
+          {
+            "hex": "#352a2c",
+            "coveragePercent": 10.5824
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 9.9263
+          },
+          {
+            "hex": "#421311",
+            "coveragePercent": 8.2081
+          },
+          {
+            "hex": "#cc212b",
+            "coveragePercent": 7.5259
+          },
+          {
+            "hex": "#a0161f",
+            "coveragePercent": 7.1962
+          },
+          {
+            "hex": "#701115",
+            "coveragePercent": 7.1805
+          },
+          {
+            "hex": "#5e3625",
+            "coveragePercent": 7.1671
+          },
+          {
+            "hex": "#50464a",
+            "coveragePercent": 6.7683
+          },
+          {
+            "hex": "#8d512d",
+            "coveragePercent": 5.6936
+          },
+          {
+            "hex": "#c1733a",
+            "coveragePercent": 5.0605
+          },
+          {
+            "hex": "#e7a24e",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#79645e",
+            "coveragePercent": 3.5976
+          },
+          {
+            "hex": "#f2ca8a",
+            "coveragePercent": 2.6409
+          },
+          {
+            "hex": "#f4eada",
+            "coveragePercent": 1.8792
+          },
+          {
+            "hex": "#ad9187",
+            "coveragePercent": 1.6842
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ca202b",
+            "coveragePercent": 27.4937
+          },
+          {
+            "hex": "#99151e",
+            "coveragePercent": 24.4967
+          },
+          {
+            "hex": "#95562f",
+            "coveragePercent": 16.0093
+          },
+          {
+            "hex": "#c0723a",
+            "coveragePercent": 14.0695
+          },
+          {
+            "hex": "#e19849",
+            "coveragePercent": 11.1954
+          },
+          {
+            "hex": "#f4c369",
+            "coveragePercent": 6.7354
+          }
+        ],
+        "visibleSamples": 312146,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.japan.guard.attack.v5": {
+      "source": "assets/images/enemies/japan-guard-v5.png",
+      "frameMetadata": "ART_JAPAN.guard.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352725",
+            "coveragePercent": 11.1272
+          },
+          {
+            "hex": "#201112",
+            "coveragePercent": 10.0755
+          },
+          {
+            "hex": "#0c0607",
+            "coveragePercent": 9.3337
+          },
+          {
+            "hex": "#cd202c",
+            "coveragePercent": 7.7026
+          },
+          {
+            "hex": "#463c40",
+            "coveragePercent": 7.6617
+          },
+          {
+            "hex": "#6f1116",
+            "coveragePercent": 7.2936
+          },
+          {
+            "hex": "#a01620",
+            "coveragePercent": 7.2252
+          },
+          {
+            "hex": "#44100f",
+            "coveragePercent": 7.0241
+          },
+          {
+            "hex": "#673c26",
+            "coveragePercent": 6.8989
+          },
+          {
+            "hex": "#965b35",
+            "coveragePercent": 5.8064
+          },
+          {
+            "hex": "#685756",
+            "coveragePercent": 5.3223
+          },
+          {
+            "hex": "#c8793c",
+            "coveragePercent": 4.4924
+          },
+          {
+            "hex": "#e9a753",
+            "coveragePercent": 3.5472
+          },
+          {
+            "hex": "#eec78e",
+            "coveragePercent": 2.5754
+          },
+          {
+            "hex": "#a68574",
+            "coveragePercent": 2.3834
+          },
+          {
+            "hex": "#f0e5d3",
+            "coveragePercent": 1.5305
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b61825",
+            "coveragePercent": 20.6753
+          },
+          {
+            "hex": "#9b5c33",
+            "coveragePercent": 19.988
+          },
+          {
+            "hex": "#91151c",
+            "coveragePercent": 17.0154
+          },
+          {
+            "hex": "#ce8242",
+            "coveragePercent": 16.9969
+          },
+          {
+            "hex": "#d72630",
+            "coveragePercent": 14.764
+          },
+          {
+            "hex": "#f0b860",
+            "coveragePercent": 10.5602
+          }
+        ],
+        "visibleSamples": 325713,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.japan.archer.walk.v5": {
+      "source": "assets/images/enemies/japan-archer-v5.png",
+      "frameMetadata": "ART_JAPAN.archer.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#322116",
+            "coveragePercent": 15.7091
+          },
+          {
+            "hex": "#423324",
+            "coveragePercent": 14.8823
+          },
+          {
+            "hex": "#20130d",
+            "coveragePercent": 11.8225
+          },
+          {
+            "hex": "#5f4c35",
+            "coveragePercent": 10.2741
+          },
+          {
+            "hex": "#5d361e",
+            "coveragePercent": 7.316
+          },
+          {
+            "hex": "#0e0706",
+            "coveragePercent": 6.383
+          },
+          {
+            "hex": "#816444",
+            "coveragePercent": 6.1888
+          },
+          {
+            "hex": "#854e24",
+            "coveragePercent": 5.195
+          },
+          {
+            "hex": "#b17236",
+            "coveragePercent": 4.5441
+          },
+          {
+            "hex": "#eec397",
+            "coveragePercent": 3.0169
+          },
+          {
+            "hex": "#a7846b",
+            "coveragePercent": 2.837
+          },
+          {
+            "hex": "#c9a791",
+            "coveragePercent": 2.7776
+          },
+          {
+            "hex": "#ebd4bd",
+            "coveragePercent": 2.7724
+          },
+          {
+            "hex": "#dc9e4b",
+            "coveragePercent": 2.7299
+          },
+          {
+            "hex": "#f7f1e5",
+            "coveragePercent": 1.8351
+          },
+          {
+            "hex": "#86130a",
+            "coveragePercent": 1.7161
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c6f41",
+            "coveragePercent": 27.0658
+          },
+          {
+            "hex": "#8d5529",
+            "coveragePercent": 25.6829
+          },
+          {
+            "hex": "#c98d4a",
+            "coveragePercent": 19.153
+          },
+          {
+            "hex": "#eab260",
+            "coveragePercent": 11.1355
+          },
+          {
+            "hex": "#bd6c24",
+            "coveragePercent": 9.9612
+          },
+          {
+            "hex": "#9b1a0d",
+            "coveragePercent": 7.0016
+          }
+        ],
+        "visibleSamples": 253676,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.archer.attack.v5": {
+      "source": "assets/images/enemies/japan-archer-v5.png",
+      "frameMetadata": "ART_JAPAN.archer.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#392b1d",
+            "coveragePercent": 15.4264
+          },
+          {
+            "hex": "#271810",
+            "coveragePercent": 15.0677
+          },
+          {
+            "hex": "#503f2a",
+            "coveragePercent": 13.3315
+          },
+          {
+            "hex": "#6b573a",
+            "coveragePercent": 9.5334
+          },
+          {
+            "hex": "#100907",
+            "coveragePercent": 9.1244
+          },
+          {
+            "hex": "#73401d",
+            "coveragePercent": 5.4765
+          },
+          {
+            "hex": "#995e29",
+            "coveragePercent": 4.737
+          },
+          {
+            "hex": "#551f0d",
+            "coveragePercent": 4.5825
+          },
+          {
+            "hex": "#c2813d",
+            "coveragePercent": 4.1059
+          },
+          {
+            "hex": "#91704f",
+            "coveragePercent": 4.002
+          },
+          {
+            "hex": "#edd1b4",
+            "coveragePercent": 3.3905
+          },
+          {
+            "hex": "#e0b691",
+            "coveragePercent": 3.3693
+          },
+          {
+            "hex": "#b6947d",
+            "coveragePercent": 2.506
+          },
+          {
+            "hex": "#e7ab4e",
+            "coveragePercent": 2.453
+          },
+          {
+            "hex": "#f7eee1",
+            "coveragePercent": 1.9421
+          },
+          {
+            "hex": "#a51c0c",
+            "coveragePercent": 0.9517
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#996a3c",
+            "coveragePercent": 29.7764
+          },
+          {
+            "hex": "#c68640",
+            "coveragePercent": 26.8496
+          },
+          {
+            "hex": "#94531f",
+            "coveragePercent": 20.6649
+          },
+          {
+            "hex": "#e9b15c",
+            "coveragePercent": 16.2366
+          },
+          {
+            "hex": "#921b0b",
+            "coveragePercent": 4.6798
+          },
+          {
+            "hex": "#d22d14",
+            "coveragePercent": 1.7927
+          }
+        ],
+        "visibleSamples": 297164,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.shield.walk.v5": {
+      "source": "assets/images/enemies/japan-shield-v5.png",
+      "frameMetadata": "ART_JAPAN.shield.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f1815",
+            "coveragePercent": 10.5337
+          },
+          {
+            "hex": "#3c2b26",
+            "coveragePercent": 9.975
+          },
+          {
+            "hex": "#511614",
+            "coveragePercent": 9.2846
+          },
+          {
+            "hex": "#721b1b",
+            "coveragePercent": 8.8719
+          },
+          {
+            "hex": "#1e0c0b",
+            "coveragePercent": 8.7179
+          },
+          {
+            "hex": "#982121",
+            "coveragePercent": 8.5496
+          },
+          {
+            "hex": "#563e34",
+            "coveragePercent": 8.4413
+          },
+          {
+            "hex": "#c02829",
+            "coveragePercent": 6.7559
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 6.0527
+          },
+          {
+            "hex": "#79452f",
+            "coveragePercent": 5.8106
+          },
+          {
+            "hex": "#8f5e42",
+            "coveragePercent": 5.6252
+          },
+          {
+            "hex": "#bf6a3e",
+            "coveragePercent": 3.7946
+          },
+          {
+            "hex": "#d9955a",
+            "coveragePercent": 2.8111
+          },
+          {
+            "hex": "#e9bd88",
+            "coveragePercent": 1.9185
+          },
+          {
+            "hex": "#a07f6e",
+            "coveragePercent": 1.6308
+          },
+          {
+            "hex": "#f4e5cd",
+            "coveragePercent": 1.2265
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#941f20",
+            "coveragePercent": 30.653
+          },
+          {
+            "hex": "#bf2828",
+            "coveragePercent": 24.7163
+          },
+          {
+            "hex": "#915133",
+            "coveragePercent": 15.693
+          },
+          {
+            "hex": "#b0673f",
+            "coveragePercent": 13.5213
+          },
+          {
+            "hex": "#d0844e",
+            "coveragePercent": 9.8224
+          },
+          {
+            "hex": "#eaaf69",
+            "coveragePercent": 5.5939
+          }
+        ],
+        "visibleSamples": 269843,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.shield.attack.v5": {
+      "source": "assets/images/enemies/japan-shield-v5.png",
+      "frameMetadata": "ART_JAPAN.shield.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#741d1c",
+            "coveragePercent": 10.2887
+          },
+          {
+            "hex": "#2e1916",
+            "coveragePercent": 9.9581
+          },
+          {
+            "hex": "#521513",
+            "coveragePercent": 9.6252
+          },
+          {
+            "hex": "#3a2b26",
+            "coveragePercent": 9.2204
+          },
+          {
+            "hex": "#9b1f21",
+            "coveragePercent": 8.8588
+          },
+          {
+            "hex": "#1f0b0b",
+            "coveragePercent": 8.8034
+          },
+          {
+            "hex": "#543b31",
+            "coveragePercent": 8.1518
+          },
+          {
+            "hex": "#c42728",
+            "coveragePercent": 6.3992
+          },
+          {
+            "hex": "#724d3c",
+            "coveragePercent": 6.3602
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 6.0943
+          },
+          {
+            "hex": "#a25432",
+            "coveragePercent": 4.3993
+          },
+          {
+            "hex": "#cb7d4a",
+            "coveragePercent": 3.8959
+          },
+          {
+            "hex": "#956c53",
+            "coveragePercent": 3.0153
+          },
+          {
+            "hex": "#e7b378",
+            "coveragePercent": 2.5572
+          },
+          {
+            "hex": "#f2e1c7",
+            "coveragePercent": 1.3671
+          },
+          {
+            "hex": "#ad8f81",
+            "coveragePercent": 1.005
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f1f1f",
+            "coveragePercent": 25.8375
+          },
+          {
+            "hex": "#b22023",
+            "coveragePercent": 23.7076
+          },
+          {
+            "hex": "#975636",
+            "coveragePercent": 18.3219
+          },
+          {
+            "hex": "#c17848",
+            "coveragePercent": 13.823
+          },
+          {
+            "hex": "#ce3630",
+            "coveragePercent": 10.8883
+          },
+          {
+            "hex": "#e5a865",
+            "coveragePercent": 7.4217
+          }
+        ],
+        "visibleSamples": 267199,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.japan.mage.walk.v5": {
+      "source": "assets/images/enemies/japan-mage-v5.png",
+      "frameMetadata": "ART_JAPAN.mage.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3d2d45",
+            "coveragePercent": 12.189
+          },
+          {
+            "hex": "#2c1c28",
+            "coveragePercent": 11.6965
+          },
+          {
+            "hex": "#533f61",
+            "coveragePercent": 10.4631
+          },
+          {
+            "hex": "#140b12",
+            "coveragePercent": 7.6121
+          },
+          {
+            "hex": "#705380",
+            "coveragePercent": 7.0118
+          },
+          {
+            "hex": "#efc7a8",
+            "coveragePercent": 6.9415
+          },
+          {
+            "hex": "#f5dec7",
+            "coveragePercent": 6.8738
+          },
+          {
+            "hex": "#faf3ec",
+            "coveragePercent": 5.4738
+          },
+          {
+            "hex": "#613b29",
+            "coveragePercent": 4.7906
+          },
+          {
+            "hex": "#c69e9d",
+            "coveragePercent": 4.5139
+          },
+          {
+            "hex": "#c39dd2",
+            "coveragePercent": 4.2327
+          },
+          {
+            "hex": "#a17b78",
+            "coveragePercent": 4.1788
+          },
+          {
+            "hex": "#9572ae",
+            "coveragePercent": 4.0389
+          },
+          {
+            "hex": "#976034",
+            "coveragePercent": 3.676
+          },
+          {
+            "hex": "#ecb477",
+            "coveragePercent": 3.4989
+          },
+          {
+            "hex": "#d3933f",
+            "coveragePercent": 2.8087
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935a2c",
+            "coveragePercent": 21.4348
+          },
+          {
+            "hex": "#b87a3a",
+            "coveragePercent": 20.6219
+          },
+          {
+            "hex": "#f0b671",
+            "coveragePercent": 20.3157
+          },
+          {
+            "hex": "#dd9d46",
+            "coveragePercent": 19.775
+          },
+          {
+            "hex": "#674691",
+            "coveragePercent": 13.3118
+          },
+          {
+            "hex": "#8c64d0",
+            "coveragePercent": 4.5408
+          }
+        ],
+        "visibleSamples": 335834,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.japan.mage.attack.v5": {
+      "source": "assets/images/enemies/japan-mage-v5.png",
+      "frameMetadata": "ART_JAPAN.mage.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2c44",
+            "coveragePercent": 11.0645
+          },
+          {
+            "hex": "#2b1c28",
+            "coveragePercent": 10.5572
+          },
+          {
+            "hex": "#533e5f",
+            "coveragePercent": 10.3455
+          },
+          {
+            "hex": "#71547d",
+            "coveragePercent": 7.7477
+          },
+          {
+            "hex": "#f5ddc8",
+            "coveragePercent": 7.0901
+          },
+          {
+            "hex": "#140a12",
+            "coveragePercent": 6.9485
+          },
+          {
+            "hex": "#f1c9a8",
+            "coveragePercent": 6.6118
+          },
+          {
+            "hex": "#fbf4ec",
+            "coveragePercent": 5.9741
+          },
+          {
+            "hex": "#cfa7a5",
+            "coveragePercent": 5.2315
+          },
+          {
+            "hex": "#aa8380",
+            "coveragePercent": 4.914
+          },
+          {
+            "hex": "#8f6ca9",
+            "coveragePercent": 4.5912
+          },
+          {
+            "hex": "#623a28",
+            "coveragePercent": 4.4409
+          },
+          {
+            "hex": "#ecb476",
+            "coveragePercent": 3.9306
+          },
+          {
+            "hex": "#976237",
+            "coveragePercent": 3.8899
+          },
+          {
+            "hex": "#b993d0",
+            "coveragePercent": 3.6901
+          },
+          {
+            "hex": "#d5943d",
+            "coveragePercent": 2.9723
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b602f",
+            "coveragePercent": 27.2337
+          },
+          {
+            "hex": "#efb569",
+            "coveragePercent": 27.0095
+          },
+          {
+            "hex": "#ce8e3f",
+            "coveragePercent": 25.8581
+          },
+          {
+            "hex": "#66468e",
+            "coveragePercent": 12.305
+          },
+          {
+            "hex": "#7e56b0",
+            "coveragePercent": 5.0005
+          },
+          {
+            "hex": "#976dde",
+            "coveragePercent": 2.5931
+          }
+        ],
+        "visibleSamples": 390160,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.kitsune.fox.dead": {
+      "source": "assets/images/npcs/fia-fox-dead-v1.png",
+      "frameMetadata": "ART_KITSUNE.deadFox.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7e4b87",
+            "coveragePercent": 12.2296
+          },
+          {
+            "hex": "#704278",
+            "coveragePercent": 12.1014
+          },
+          {
+            "hex": "#8b5496",
+            "coveragePercent": 11.9554
+          },
+          {
+            "hex": "#603967",
+            "coveragePercent": 9.3187
+          },
+          {
+            "hex": "#9a5da8",
+            "coveragePercent": 7.6269
+          },
+          {
+            "hex": "#502d56",
+            "coveragePercent": 6.5997
+          },
+          {
+            "hex": "#ddbdd3",
+            "coveragePercent": 5.5379
+          },
+          {
+            "hex": "#cda9c6",
+            "coveragePercent": 5.1516
+          },
+          {
+            "hex": "#ebd0dc",
+            "coveragePercent": 5.0058
+          },
+          {
+            "hex": "#f8e4e7",
+            "coveragePercent": 4.9325
+          },
+          {
+            "hex": "#3f2243",
+            "coveragePercent": 4.8216
+          },
+          {
+            "hex": "#bb91b7",
+            "coveragePercent": 4.2187
+          },
+          {
+            "hex": "#2c152e",
+            "coveragePercent": 3.0431
+          },
+          {
+            "hex": "#a3789c",
+            "coveragePercent": 3.0047
+          },
+          {
+            "hex": "#ae70bb",
+            "coveragePercent": 2.8769
+          },
+          {
+            "hex": "#160915",
+            "coveragePercent": 1.5756
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#854c91",
+            "coveragePercent": 32.1418
+          },
+          {
+            "hex": "#7a4585",
+            "coveragePercent": 29.3464
+          },
+          {
+            "hex": "#90539e",
+            "coveragePercent": 24.4959
+          },
+          {
+            "hex": "#9c5bac",
+            "coveragePercent": 9.9279
+          },
+          {
+            "hex": "#a863b9",
+            "coveragePercent": 3.4508
+          },
+          {
+            "hex": "#8e4967",
+            "coveragePercent": 0.6372
+          }
+        ],
+        "visibleSamples": 479516,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "npc.dungeon.raisedSamurai.walk": {
@@ -17782,6 +17161,208 @@
         ],
         "visibleSamples": 183989,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.demonLordSoul": {
+      "source": "assets/images/items/first-demon-lord-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.demonLordSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a01bf6",
+            "coveragePercent": 13.132
+          },
+          {
+            "hex": "#39131b",
+            "coveragePercent": 10.9968
+          },
+          {
+            "hex": "#d82df2",
+            "coveragePercent": 10.0031
+          },
+          {
+            "hex": "#110305",
+            "coveragePercent": 9.3852
+          },
+          {
+            "hex": "#ed2206",
+            "coveragePercent": 8.0567
+          },
+          {
+            "hex": "#651919",
+            "coveragePercent": 7.6247
+          },
+          {
+            "hex": "#f55c0c",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#a31b0f",
+            "coveragePercent": 6.0118
+          },
+          {
+            "hex": "#770acd",
+            "coveragePercent": 5.9348
+          },
+          {
+            "hex": "#f85ff5",
+            "coveragePercent": 5.1075
+          },
+          {
+            "hex": "#ed468b",
+            "coveragePercent": 3.9112
+          },
+          {
+            "hex": "#f89e0f",
+            "coveragePercent": 3.5305
+          },
+          {
+            "hex": "#fce322",
+            "coveragePercent": 2.9698
+          },
+          {
+            "hex": "#793959",
+            "coveragePercent": 2.8083
+          },
+          {
+            "hex": "#fcebeb",
+            "coveragePercent": 2.7634
+          },
+          {
+            "hex": "#f6e487",
+            "coveragePercent": 1.6911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9517e7",
+            "coveragePercent": 30.953
+          },
+          {
+            "hex": "#e63ee7",
+            "coveragePercent": 24.0216
+          },
+          {
+            "hex": "#ef2909",
+            "coveragePercent": 15.1411
+          },
+          {
+            "hex": "#f57219",
+            "coveragePercent": 11.791
+          },
+          {
+            "hex": "#a11e17",
+            "coveragePercent": 10.6766
+          },
+          {
+            "hex": "#fcda2c",
+            "coveragePercent": 7.4168
+          }
+        ],
+        "visibleSamples": 632690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.demonLordHeart": {
+      "source": "assets/images/items/demon-lord-heart-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.demonLordHeart",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e1825",
+            "coveragePercent": 14.7993
+          },
+          {
+            "hex": "#100407",
+            "coveragePercent": 11.9756
+          },
+          {
+            "hex": "#643745",
+            "coveragePercent": 8.8984
+          },
+          {
+            "hex": "#901ff1",
+            "coveragePercent": 8.4895
+          },
+          {
+            "hex": "#eb250b",
+            "coveragePercent": 8.1437
+          },
+          {
+            "hex": "#bc36f6",
+            "coveragePercent": 6.8192
+          },
+          {
+            "hex": "#911c16",
+            "coveragePercent": 6.5663
+          },
+          {
+            "hex": "#ed51f5",
+            "coveragePercent": 6.2452
+          },
+          {
+            "hex": "#7114c3",
+            "coveragePercent": 5.2483
+          },
+          {
+            "hex": "#511088",
+            "coveragePercent": 5.0685
+          },
+          {
+            "hex": "#f56619",
+            "coveragePercent": 4.5371
+          },
+          {
+            "hex": "#b35562",
+            "coveragePercent": 4.5226
+          },
+          {
+            "hex": "#f78bf9",
+            "coveragePercent": 2.6509
+          },
+          {
+            "hex": "#fbf0e5",
+            "coveragePercent": 2.0883
+          },
+          {
+            "hex": "#fbc920",
+            "coveragePercent": 1.9954
+          },
+          {
+            "hex": "#f0b67e",
+            "coveragePercent": 1.9518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9924f0",
+            "coveragePercent": 24.9175
+          },
+          {
+            "hex": "#f03411",
+            "coveragePercent": 19.6125
+          },
+          {
+            "hex": "#e652f4",
+            "coveragePercent": 18.7879
+          },
+          {
+            "hex": "#a22b27",
+            "coveragePercent": 13.7357
+          },
+          {
+            "hex": "#6211aa",
+            "coveragePercent": 13.7083
+          },
+          {
+            "hex": "#f4a737",
+            "coveragePercent": 9.2381
+          }
+        ],
+        "visibleSamples": 654586,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "object.secretWall.angel": {
@@ -28634,109 +28215,6 @@
         "dominantCoveragePercent": 99.9999
       }
     },
-    "assets/images/backgrounds/white-serpent-cave-v1.png": {
-      "sha256": "e867cdd853d3161dfce896511a1d0c738f9dcb17f94ea11b2b6246543e2140eb",
-      "width": 2172,
-      "height": 724,
-      "runtimeKeys": [],
-      "usage": "design-reference",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#1e2420",
-            "coveragePercent": 13.1281
-          },
-          {
-            "hex": "#2a322d",
-            "coveragePercent": 12.4093
-          },
-          {
-            "hex": "#111512",
-            "coveragePercent": 12.3741
-          },
-          {
-            "hex": "#030404",
-            "coveragePercent": 11.5925
-          },
-          {
-            "hex": "#304242",
-            "coveragePercent": 11.0478
-          },
-          {
-            "hex": "#3e5654",
-            "coveragePercent": 8.944
-          },
-          {
-            "hex": "#4e6b68",
-            "coveragePercent": 6.5127
-          },
-          {
-            "hex": "#504528",
-            "coveragePercent": 5.0994
-          },
-          {
-            "hex": "#60847f",
-            "coveragePercent": 4.84
-          },
-          {
-            "hex": "#789a92",
-            "coveragePercent": 3.4462
-          },
-          {
-            "hex": "#7d6a3d",
-            "coveragePercent": 2.9645
-          },
-          {
-            "hex": "#8db4af",
-            "coveragePercent": 2.1117
-          },
-          {
-            "hex": "#b79a4d",
-            "coveragePercent": 1.523
-          },
-          {
-            "hex": "#d6cc8c",
-            "coveragePercent": 1.3698
-          },
-          {
-            "hex": "#abd3d6",
-            "coveragePercent": 1.357
-          },
-          {
-            "hex": "#ecf1e2",
-            "coveragePercent": 1.28
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#926d2f",
-            "coveragePercent": 29.5926
-          },
-          {
-            "hex": "#3d8e80",
-            "coveragePercent": 18.7468
-          },
-          {
-            "hex": "#af974c",
-            "coveragePercent": 18.0693
-          },
-          {
-            "hex": "#e3cb62",
-            "coveragePercent": 14.203
-          },
-          {
-            "hex": "#53b49e",
-            "coveragePercent": 10.5221
-          },
-          {
-            "hex": "#d3922b",
-            "coveragePercent": 8.8662
-          }
-        ],
-        "visibleSamples": 1572528,
-        "dominantCoveragePercent": 100.0001
-      }
-    },
     "assets/images/backgrounds/white-serpent-cave-v2.png": {
       "sha256": "967a068198848cbf231abc068249ff6aa795cfdcfd92c5b19152fa173dd5d129",
       "width": 1774,
@@ -29050,109 +28528,6 @@
         ],
         "visibleSamples": 1573538,
         "dominantCoveragePercent": 100.0
-      }
-    },
-    "assets/images/backgrounds/winged-serpent-roost-v1.png": {
-      "sha256": "410e2679e981fed09f3966542ae6ca11930f6ac098fbde26466fbdb5cbe30a78",
-      "width": 2172,
-      "height": 724,
-      "runtimeKeys": [],
-      "usage": "design-reference",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#f8e8db",
-            "coveragePercent": 11.5103
-          },
-          {
-            "hex": "#d6ccdc",
-            "coveragePercent": 10.3917
-          },
-          {
-            "hex": "#b4b4d3",
-            "coveragePercent": 8.1348
-          },
-          {
-            "hex": "#fdfaf1",
-            "coveragePercent": 7.6674
-          },
-          {
-            "hex": "#867980",
-            "coveragePercent": 7.2307
-          },
-          {
-            "hex": "#9a909e",
-            "coveragePercent": 7.1798
-          },
-          {
-            "hex": "#645a6e",
-            "coveragePercent": 6.055
-          },
-          {
-            "hex": "#2b222c",
-            "coveragePercent": 5.6598
-          },
-          {
-            "hex": "#423954",
-            "coveragePercent": 5.5067
-          },
-          {
-            "hex": "#c2ab9f",
-            "coveragePercent": 5.1357
-          },
-          {
-            "hex": "#0d090f",
-            "coveragePercent": 5.0976
-          },
-          {
-            "hex": "#8ba1d6",
-            "coveragePercent": 4.5696
-          },
-          {
-            "hex": "#926840",
-            "coveragePercent": 4.4208
-          },
-          {
-            "hex": "#644529",
-            "coveragePercent": 4.1028
-          },
-          {
-            "hex": "#f0d7b6",
-            "coveragePercent": 3.9539
-          },
-          {
-            "hex": "#be9362",
-            "coveragePercent": 3.3832
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#916131",
-            "coveragePercent": 33.7147
-          },
-          {
-            "hex": "#b28148",
-            "coveragePercent": 27.8887
-          },
-          {
-            "hex": "#dcac63",
-            "coveragePercent": 14.5522
-          },
-          {
-            "hex": "#583996",
-            "coveragePercent": 9.8075
-          },
-          {
-            "hex": "#719cdc",
-            "coveragePercent": 9.5655
-          },
-          {
-            "hex": "#9157c5",
-            "coveragePercent": 4.4712
-          }
-        ],
-        "visibleSamples": 1572528,
-        "dominantCoveragePercent": 99.9998
       }
     },
     "assets/images/backgrounds/winged-serpent-roost-v2.png": {
@@ -35665,8 +35040,8 @@
         "dominantCoveragePercent": 100.0001
       }
     },
-    "assets/images/enemies/hannah-combo-v1.png": {
-      "sha256": "f4227cbae5a633d939d16ff9b8d0ba530b724533c14be372ad213904e05a99ed",
+    "assets/images/enemies/hannah-combo-v2.png": {
+      "sha256": "b85fea813ef87154702c3b92047e2250c5b3bf156a6b2c88cab7e2c57ac91100",
       "width": 1536,
       "height": 1024,
       "runtimeKeys": [
@@ -35676,97 +35051,97 @@
       "palette": {
         "dominant": [
           {
-            "hex": "#3a2623",
-            "coveragePercent": 20.6658
+            "hex": "#2f1c1a",
+            "coveragePercent": 18.1271
           },
           {
-            "hex": "#493430",
-            "coveragePercent": 15.15
+            "hex": "#432d2a",
+            "coveragePercent": 17.5634
           },
           {
-            "hex": "#2a1a19",
-            "coveragePercent": 13.3058
+            "hex": "#5f403b",
+            "coveragePercent": 12.2179
           },
           {
-            "hex": "#61443e",
-            "coveragePercent": 10.88
+            "hex": "#845749",
+            "coveragePercent": 8.1897
           },
           {
-            "hex": "#602d24",
-            "coveragePercent": 7.5797
+            "hex": "#170c0c",
+            "coveragePercent": 8.015
           },
           {
-            "hex": "#180e0e",
-            "coveragePercent": 6.122
+            "hex": "#60281e",
+            "coveragePercent": 7.9368
           },
           {
-            "hex": "#863a2b",
-            "coveragePercent": 5.3979
+            "hex": "#8a3423",
+            "coveragePercent": 5.687
           },
           {
-            "hex": "#845746",
-            "coveragePercent": 4.985
+            "hex": "#b97350",
+            "coveragePercent": 4.3852
           },
           {
-            "hex": "#b9442c",
-            "coveragePercent": 3.4026
+            "hex": "#b5462e",
+            "coveragePercent": 4.1091
           },
           {
-            "hex": "#ad6e50",
-            "coveragePercent": 2.9609
+            "hex": "#f35c2b",
+            "coveragePercent": 3.4089
           },
           {
-            "hex": "#f15f2b",
-            "coveragePercent": 2.7845
+            "hex": "#e7a66d",
+            "coveragePercent": 2.3332
           },
           {
-            "hex": "#ecbe95",
-            "coveragePercent": 1.8865
+            "hex": "#e53915",
+            "coveragePercent": 2.1416
           },
           {
-            "hex": "#fa964c",
-            "coveragePercent": 1.6344
+            "hex": "#f2cba4",
+            "coveragePercent": 2.0154
           },
           {
-            "hex": "#c99374",
-            "coveragePercent": 1.5164
+            "hex": "#f8903b",
+            "coveragePercent": 1.8893
           },
           {
-            "hex": "#fadfc6",
-            "coveragePercent": 1.0589
+            "hex": "#fcecd8",
+            "coveragePercent": 1.2511
           },
           {
-            "hex": "#8d727b",
-            "coveragePercent": 0.6697
+            "hex": "#97768f",
+            "coveragePercent": 0.7294
           }
         ],
         "accents": [
           {
-            "hex": "#904331",
-            "coveragePercent": 33.1966
+            "hex": "#9c5b43",
+            "coveragePercent": 23.098
           },
           {
-            "hex": "#a96b4c",
-            "coveragePercent": 19.3997
+            "hex": "#943624",
+            "coveragePercent": 20.8991
           },
           {
-            "hex": "#bf452b",
-            "coveragePercent": 16.7658
+            "hex": "#d03e25",
+            "coveragePercent": 16.5136
           },
           {
-            "hex": "#f2602a",
-            "coveragePercent": 14.7551
+            "hex": "#f86327",
+            "coveragePercent": 16.4188
           },
           {
-            "hex": "#ee8c4e",
-            "coveragePercent": 10.5594
+            "hex": "#ca7c54",
+            "coveragePercent": 13.6999
           },
           {
-            "hex": "#f8b96d",
-            "coveragePercent": 5.3234
+            "hex": "#f7b15d",
+            "coveragePercent": 9.3707
           }
         ],
-        "visibleSamples": 737402,
+        "visibleSamples": 774016,
         "dominantCoveragePercent": 100.0001
       }
     },
@@ -35875,8 +35250,8 @@
         "dominantCoveragePercent": 99.9999
       }
     },
-    "assets/images/enemies/hannah-ritual-v1.png": {
-      "sha256": "e1beef93be110b50c884400948e10d17155809e1088d76ed3b9a580f51fae7d3",
+    "assets/images/enemies/hannah-ritual-v2.png": {
+      "sha256": "f8de55d1dd10d30114b0c6bc56acae6fa4df158f3776eb4cdd2a77b896bfbb71",
       "width": 1536,
       "height": 1024,
       "runtimeKeys": [
@@ -35886,102 +35261,102 @@
       "palette": {
         "dominant": [
           {
-            "hex": "#4d312e",
-            "coveragePercent": 18.1055
+            "hex": "#361f1d",
+            "coveragePercent": 19.2892
           },
           {
-            "hex": "#3a2525",
-            "coveragePercent": 15.7816
+            "hex": "#4a3230",
+            "coveragePercent": 16.5408
           },
           {
-            "hex": "#60423e",
-            "coveragePercent": 9.7804
+            "hex": "#672c20",
+            "coveragePercent": 11.6134
           },
           {
-            "hex": "#2b1918",
-            "coveragePercent": 9.6914
+            "hex": "#190d0d",
+            "coveragePercent": 9.8215
           },
           {
-            "hex": "#793325",
-            "coveragePercent": 8.3401
+            "hex": "#734b42",
+            "coveragePercent": 7.3801
           },
           {
-            "hex": "#885544",
-            "coveragePercent": 5.9334
+            "hex": "#973320",
+            "coveragePercent": 6.909
           },
           {
-            "hex": "#170d0d",
-            "coveragePercent": 5.6798
+            "hex": "#a95a3a",
+            "coveragePercent": 4.8034
           },
           {
-            "hex": "#b33f27",
-            "coveragePercent": 4.8959
+            "hex": "#f6581e",
+            "coveragePercent": 4.4392
           },
           {
-            "hex": "#ef5622",
-            "coveragePercent": 4.8228
+            "hex": "#d5381a",
+            "coveragePercent": 4.2631
           },
           {
-            "hex": "#b56f4c",
-            "coveragePercent": 3.725
+            "hex": "#bf7b5a",
+            "coveragePercent": 2.7658
           },
           {
-            "hex": "#5b297d",
-            "coveragePercent": 2.6725
+            "hex": "#8931c0",
+            "coveragePercent": 2.502
           },
           {
-            "hex": "#8b43b9",
-            "coveragePercent": 2.65
+            "hex": "#511a7b",
+            "coveragePercent": 2.2697
           },
           {
-            "hex": "#f9d5b8",
-            "coveragePercent": 2.4695
+            "hex": "#f5953f",
+            "coveragePercent": 1.9638
           },
           {
-            "hex": "#f69b4b",
-            "coveragePercent": 2.2
+            "hex": "#be5bef",
+            "coveragePercent": 1.9352
           },
           {
-            "hex": "#c06cec",
-            "coveragePercent": 1.8186
+            "hex": "#fadcd1",
+            "coveragePercent": 1.8646
           },
           {
-            "hex": "#d0987d",
-            "coveragePercent": 1.4334
+            "hex": "#f2bd87",
+            "coveragePercent": 1.6392
           }
         ],
         "accents": [
           {
-            "hex": "#973f2c",
-            "coveragePercent": 31.8354
+            "hex": "#9a3824",
+            "coveragePercent": 31.6147
           },
           {
-            "hex": "#e95323",
-            "coveragePercent": 21.6845
+            "hex": "#ec4b1c",
+            "coveragePercent": 23.8405
           },
           {
-            "hex": "#b06746",
-            "coveragePercent": 17.2182
+            "hex": "#b16441",
+            "coveragePercent": 17.9576
           },
           {
-            "hex": "#f19f55",
-            "coveragePercent": 10.5145
+            "hex": "#f19d4f",
+            "coveragePercent": 10.0658
           },
           {
-            "hex": "#7535a2",
-            "coveragePercent": 10.2372
+            "hex": "#7226a6",
+            "coveragePercent": 8.2646
           },
           {
-            "hex": "#af59e1",
-            "coveragePercent": 8.5101
+            "hex": "#b04be7",
+            "coveragePercent": 8.2567
           }
         ],
-        "visibleSamples": 748490,
-        "dominantCoveragePercent": 99.9999
+        "visibleSamples": 782450,
+        "dominantCoveragePercent": 100.0
       }
     },
-    "assets/images/enemies/hannah-walk-v1.png": {
-      "sha256": "585665e0b6eb0075ef456a4bf4fc8b68d3566ff054bf6d4583c6b40637920cdc",
+    "assets/images/enemies/hannah-walk-v2.png": {
+      "sha256": "57c1564f76637397885dc346e93ddc32b2d618f76065d93f532f368b3d388835",
       "width": 1536,
       "height": 1024,
       "runtimeKeys": [
@@ -35991,98 +35366,98 @@
       "palette": {
         "dominant": [
           {
-            "hex": "#302221",
-            "coveragePercent": 24.0827
+            "hex": "#392526",
+            "coveragePercent": 14.5392
           },
           {
-            "hex": "#422f2d",
-            "coveragePercent": 20.3731
+            "hex": "#271413",
+            "coveragePercent": 11.5732
           },
           {
-            "hex": "#523e3b",
-            "coveragePercent": 12.5361
+            "hex": "#543636",
+            "coveragePercent": 11.25
           },
           {
-            "hex": "#1c1211",
-            "coveragePercent": 8.5477
+            "hex": "#f33220",
+            "coveragePercent": 9.2423
           },
           {
-            "hex": "#613128",
-            "coveragePercent": 7.6864
+            "hex": "#7f3837",
+            "coveragePercent": 9.2281
           },
           {
-            "hex": "#6d4a3f",
-            "coveragePercent": 5.6295
+            "hex": "#581f19",
+            "coveragePercent": 8.4529
           },
           {
-            "hex": "#8c3d2e",
-            "coveragePercent": 5.3351
+            "hex": "#0d0505",
+            "coveragePercent": 6.7033
           },
           {
-            "hex": "#bc4c35",
-            "coveragePercent": 3.8846
+            "hex": "#ba2e24",
+            "coveragePercent": 6.4094
           },
           {
-            "hex": "#926047",
-            "coveragePercent": 3.1191
+            "hex": "#88231a",
+            "coveragePercent": 6.0184
           },
           {
-            "hex": "#eb5f2f",
-            "coveragePercent": 2.0784
+            "hex": "#79564b",
+            "coveragePercent": 4.2069
           },
           {
-            "hex": "#b6805d",
-            "coveragePercent": 1.9988
+            "hex": "#b0724a",
+            "coveragePercent": 3.3229
           },
           {
-            "hex": "#f78949",
-            "coveragePercent": 1.4383
+            "hex": "#f6642e",
+            "coveragePercent": 3.0439
           },
           {
-            "hex": "#e8ab79",
-            "coveragePercent": 1.346
+            "hex": "#ea9955",
+            "coveragePercent": 2.6297
           },
           {
-            "hex": "#f6cda9",
-            "coveragePercent": 0.9638
+            "hex": "#f2c289",
+            "coveragePercent": 1.4512
           },
           {
-            "hex": "#786074",
-            "coveragePercent": 0.7075
+            "hex": "#fbe8d8",
+            "coveragePercent": 1.3228
           },
           {
-            "hex": "#fcf1dc",
-            "coveragePercent": 0.2729
+            "hex": "#9355c3",
+            "coveragePercent": 0.6059
           }
         ],
         "accents": [
           {
-            "hex": "#904432",
-            "coveragePercent": 35.0862
+            "hex": "#f03622",
+            "coveragePercent": 35.1378
           },
           {
-            "hex": "#bd4c34",
-            "coveragePercent": 22.1958
+            "hex": "#a2261d",
+            "coveragePercent": 23.887
           },
           {
-            "hex": "#ab714f",
-            "coveragePercent": 15.2521
+            "hex": "#96473c",
+            "coveragePercent": 20.5714
           },
           {
-            "hex": "#eb5e2e",
-            "coveragePercent": 11.8516
+            "hex": "#da7b40",
+            "coveragePercent": 12.4103
           },
           {
-            "hex": "#f68446",
-            "coveragePercent": 8.8714
+            "hex": "#f3ae61",
+            "coveragePercent": 6.3262
           },
           {
-            "hex": "#f0aa6c",
-            "coveragePercent": 6.7429
+            "hex": "#8b4cbe",
+            "coveragePercent": 1.6672
           }
         ],
-        "visibleSamples": 699021,
-        "dominantCoveragePercent": 100.0
+        "visibleSamples": 734160,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/enemies/heaven-attack-v4.png": {
@@ -36398,111 +35773,6 @@
         ],
         "visibleSamples": 550840,
         "dominantCoveragePercent": 99.9998
-      }
-    },
-    "assets/images/enemies/japan-attack-v4.png": {
-      "sha256": "f6dc9c950017a670619fde9b8e6b4c2a61173cd691536b39790f85738090835a",
-      "width": 1536,
-      "height": 1024,
-      "runtimeKeys": [
-        "japanAttack"
-      ],
-      "usage": "runtime",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#302323",
-            "coveragePercent": 17.7667
-          },
-          {
-            "hex": "#1b0e0e",
-            "coveragePercent": 14.5649
-          },
-          {
-            "hex": "#463839",
-            "coveragePercent": 13.6918
-          },
-          {
-            "hex": "#681e11",
-            "coveragePercent": 8.4371
-          },
-          {
-            "hex": "#834c25",
-            "coveragePercent": 6.4968
-          },
-          {
-            "hex": "#c02419",
-            "coveragePercent": 6.2768
-          },
-          {
-            "hex": "#f6d4b0",
-            "coveragePercent": 5.6861
-          },
-          {
-            "hex": "#f5f2ec",
-            "coveragePercent": 4.7252
-          },
-          {
-            "hex": "#eead4b",
-            "coveragePercent": 4.6647
-          },
-          {
-            "hex": "#ca7628",
-            "coveragePercent": 4.5869
-          },
-          {
-            "hex": "#947360",
-            "coveragePercent": 2.7398
-          },
-          {
-            "hex": "#4a4574",
-            "coveragePercent": 2.7324
-          },
-          {
-            "hex": "#bfa8b0",
-            "coveragePercent": 2.6552
-          },
-          {
-            "hex": "#7177b8",
-            "coveragePercent": 1.9275
-          },
-          {
-            "hex": "#3597f0",
-            "coveragePercent": 1.7266
-          },
-          {
-            "hex": "#75c7f8",
-            "coveragePercent": 1.3216
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#af6a2b",
-            "coveragePercent": 23.6716
-          },
-          {
-            "hex": "#eca947",
-            "coveragePercent": 23.0405
-          },
-          {
-            "hex": "#972615",
-            "coveragePercent": 20.297
-          },
-          {
-            "hex": "#cf281c",
-            "coveragePercent": 16.6727
-          },
-          {
-            "hex": "#4aa7f2",
-            "coveragePercent": 10.8135
-          },
-          {
-            "hex": "#4b55ab",
-            "coveragePercent": 5.5047
-          }
-        ],
-        "visibleSamples": 746072,
-        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/enemies/japan-guard-v5.png": {
@@ -36923,111 +36193,6 @@
         ],
         "visibleSamples": 537991,
         "dominantCoveragePercent": 99.9999
-      }
-    },
-    "assets/images/enemies/japan-walk-v4.png": {
-      "sha256": "5cafde9a409893cc0b3ae3fc368b9e0ead9935293745283f9aee075d888456d3",
-      "width": 1536,
-      "height": 1024,
-      "runtimeKeys": [
-        "japanWalk"
-      ],
-      "usage": "runtime",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#2a2124",
-            "coveragePercent": 17.1081
-          },
-          {
-            "hex": "#160c0d",
-            "coveragePercent": 15.9551
-          },
-          {
-            "hex": "#3c3541",
-            "coveragePercent": 9.8258
-          },
-          {
-            "hex": "#583927",
-            "coveragePercent": 8.651
-          },
-          {
-            "hex": "#47180f",
-            "coveragePercent": 6.9539
-          },
-          {
-            "hex": "#f7d9b5",
-            "coveragePercent": 5.9819
-          },
-          {
-            "hex": "#f9f2e9",
-            "coveragePercent": 5.0923
-          },
-          {
-            "hex": "#915529",
-            "coveragePercent": 4.8838
-          },
-          {
-            "hex": "#831e12",
-            "coveragePercent": 4.8094
-          },
-          {
-            "hex": "#d57f29",
-            "coveragePercent": 4.0566
-          },
-          {
-            "hex": "#c22a18",
-            "coveragePercent": 3.8935
-          },
-          {
-            "hex": "#f1b753",
-            "coveragePercent": 3.5722
-          },
-          {
-            "hex": "#5e5367",
-            "coveragePercent": 2.821
-          },
-          {
-            "hex": "#caacaa",
-            "coveragePercent": 2.43
-          },
-          {
-            "hex": "#a98062",
-            "coveragePercent": 2.1027
-          },
-          {
-            "hex": "#8277ac",
-            "coveragePercent": 1.863
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#a15e2a",
-            "coveragePercent": 23.2516
-          },
-          {
-            "hex": "#d98831",
-            "coveragePercent": 22.1157
-          },
-          {
-            "hex": "#962515",
-            "coveragePercent": 19.9105
-          },
-          {
-            "hex": "#f3bc58",
-            "coveragePercent": 16.1721
-          },
-          {
-            "hex": "#ca2a18",
-            "coveragePercent": 15.5254
-          },
-          {
-            "hex": "#5952a6",
-            "coveragePercent": 3.0248
-          }
-        ],
-        "visibleSamples": 693075,
-        "dominantCoveragePercent": 100.0003
       }
     },
     "assets/images/enemies/lava-serpent-v1.png": {
@@ -40598,6 +39763,216 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/items/demon-lord-heart-v1.png": {
+      "sha256": "f88da8430f730bffb8b3e0b48deb8235b211d9260cd8c1ee302d16ed05e52085",
+      "width": 1230,
+      "height": 1278,
+      "runtimeKeys": [
+        "demonLordHeartArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e1825",
+            "coveragePercent": 14.7993
+          },
+          {
+            "hex": "#100407",
+            "coveragePercent": 11.9756
+          },
+          {
+            "hex": "#643745",
+            "coveragePercent": 8.8984
+          },
+          {
+            "hex": "#901ff1",
+            "coveragePercent": 8.4895
+          },
+          {
+            "hex": "#eb250b",
+            "coveragePercent": 8.1437
+          },
+          {
+            "hex": "#bc36f6",
+            "coveragePercent": 6.8192
+          },
+          {
+            "hex": "#911c16",
+            "coveragePercent": 6.5663
+          },
+          {
+            "hex": "#ed51f5",
+            "coveragePercent": 6.2452
+          },
+          {
+            "hex": "#7114c3",
+            "coveragePercent": 5.2483
+          },
+          {
+            "hex": "#511088",
+            "coveragePercent": 5.0685
+          },
+          {
+            "hex": "#f56619",
+            "coveragePercent": 4.5371
+          },
+          {
+            "hex": "#b35562",
+            "coveragePercent": 4.5226
+          },
+          {
+            "hex": "#f78bf9",
+            "coveragePercent": 2.6509
+          },
+          {
+            "hex": "#fbf0e5",
+            "coveragePercent": 2.0883
+          },
+          {
+            "hex": "#fbc920",
+            "coveragePercent": 1.9954
+          },
+          {
+            "hex": "#f0b67e",
+            "coveragePercent": 1.9518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9924f0",
+            "coveragePercent": 24.9175
+          },
+          {
+            "hex": "#f03411",
+            "coveragePercent": 19.6125
+          },
+          {
+            "hex": "#e652f4",
+            "coveragePercent": 18.7879
+          },
+          {
+            "hex": "#a22b27",
+            "coveragePercent": 13.7357
+          },
+          {
+            "hex": "#6211aa",
+            "coveragePercent": 13.7083
+          },
+          {
+            "hex": "#f4a737",
+            "coveragePercent": 9.2381
+          }
+        ],
+        "visibleSamples": 654586,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/items/first-demon-lord-soul-v1.png": {
+      "sha256": "38ed0187df43201068bbac5cc6b764a323c1f0a58e3a47a4838e10931a85b620",
+      "width": 1122,
+      "height": 1402,
+      "runtimeKeys": [
+        "demonLordSoulArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a01bf6",
+            "coveragePercent": 13.132
+          },
+          {
+            "hex": "#39131b",
+            "coveragePercent": 10.9968
+          },
+          {
+            "hex": "#d82df2",
+            "coveragePercent": 10.0031
+          },
+          {
+            "hex": "#110305",
+            "coveragePercent": 9.3852
+          },
+          {
+            "hex": "#ed2206",
+            "coveragePercent": 8.0567
+          },
+          {
+            "hex": "#651919",
+            "coveragePercent": 7.6247
+          },
+          {
+            "hex": "#f55c0c",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#a31b0f",
+            "coveragePercent": 6.0118
+          },
+          {
+            "hex": "#770acd",
+            "coveragePercent": 5.9348
+          },
+          {
+            "hex": "#f85ff5",
+            "coveragePercent": 5.1075
+          },
+          {
+            "hex": "#ed468b",
+            "coveragePercent": 3.9112
+          },
+          {
+            "hex": "#f89e0f",
+            "coveragePercent": 3.5305
+          },
+          {
+            "hex": "#fce322",
+            "coveragePercent": 2.9698
+          },
+          {
+            "hex": "#793959",
+            "coveragePercent": 2.8083
+          },
+          {
+            "hex": "#fcebeb",
+            "coveragePercent": 2.7634
+          },
+          {
+            "hex": "#f6e487",
+            "coveragePercent": 1.6911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9517e7",
+            "coveragePercent": 30.953
+          },
+          {
+            "hex": "#e63ee7",
+            "coveragePercent": 24.0216
+          },
+          {
+            "hex": "#ef2909",
+            "coveragePercent": 15.1411
+          },
+          {
+            "hex": "#f57219",
+            "coveragePercent": 11.791
+          },
+          {
+            "hex": "#a11e17",
+            "coveragePercent": 10.6766
+          },
+          {
+            "hex": "#fcda2c",
+            "coveragePercent": 7.4168
+          }
+        ],
+        "visibleSamples": 632690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/items/serpent-relics-v1.png": {
       "sha256": "bb2bc863cdfcb870fa87f4c78a815111ea0707d2753eb93ce8435e75ab9728a6",
       "width": 2172,
@@ -42379,6 +41754,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/npcs/fia-fox-dead-v1.png": {
+      "sha256": "59f07db269bbac7fd296be6deb0ce8e52464290c6e85d9555d78214a7941d0ac",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "fiaFoxDead"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7e4b87",
+            "coveragePercent": 12.2296
+          },
+          {
+            "hex": "#704278",
+            "coveragePercent": 12.1014
+          },
+          {
+            "hex": "#8b5496",
+            "coveragePercent": 11.9554
+          },
+          {
+            "hex": "#603967",
+            "coveragePercent": 9.3187
+          },
+          {
+            "hex": "#9a5da8",
+            "coveragePercent": 7.6269
+          },
+          {
+            "hex": "#502d56",
+            "coveragePercent": 6.5997
+          },
+          {
+            "hex": "#ddbdd3",
+            "coveragePercent": 5.5379
+          },
+          {
+            "hex": "#cda9c6",
+            "coveragePercent": 5.1516
+          },
+          {
+            "hex": "#ebd0dc",
+            "coveragePercent": 5.0058
+          },
+          {
+            "hex": "#f8e4e7",
+            "coveragePercent": 4.9325
+          },
+          {
+            "hex": "#3f2243",
+            "coveragePercent": 4.8216
+          },
+          {
+            "hex": "#bb91b7",
+            "coveragePercent": 4.2187
+          },
+          {
+            "hex": "#2c152e",
+            "coveragePercent": 3.0431
+          },
+          {
+            "hex": "#a3789c",
+            "coveragePercent": 3.0047
+          },
+          {
+            "hex": "#ae70bb",
+            "coveragePercent": 2.8769
+          },
+          {
+            "hex": "#160915",
+            "coveragePercent": 1.5756
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#854c91",
+            "coveragePercent": 32.1418
+          },
+          {
+            "hex": "#7a4585",
+            "coveragePercent": 29.3464
+          },
+          {
+            "hex": "#90539e",
+            "coveragePercent": 24.4959
+          },
+          {
+            "hex": "#9c5bac",
+            "coveragePercent": 9.9279
+          },
+          {
+            "hex": "#a863b9",
+            "coveragePercent": 3.4508
+          },
+          {
+            "hex": "#8e4967",
+            "coveragePercent": 0.6372
+          }
+        ],
+        "visibleSamples": 479516,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/npcs/fia-fox-v1.png": {
       "sha256": "c328f43bd52284a415de8d694c1adc000901df193e514ecf3944d00f9f6c6b65",
       "width": 1536,
@@ -42589,6 +42069,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/npcs/haru-elder-v1.png": {
+      "sha256": "dbb46382c498470fdb5c9e39fdb4fe983131b483c79a7089ac4046884c1f6c97",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "haruElder"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c4651",
+            "coveragePercent": 11.1986
+          },
+          {
+            "hex": "#fde3c6",
+            "coveragePercent": 9.2094
+          },
+          {
+            "hex": "#a46a45",
+            "coveragePercent": 7.9935
+          },
+          {
+            "hex": "#3b353d",
+            "coveragePercent": 7.7608
+          },
+          {
+            "hex": "#262229",
+            "coveragePercent": 7.5132
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 6.9162
+          },
+          {
+            "hex": "#875335",
+            "coveragePercent": 6.7254
+          },
+          {
+            "hex": "#b9845c",
+            "coveragePercent": 6.2364
+          },
+          {
+            "hex": "#d7a276",
+            "coveragePercent": 6.021
+          },
+          {
+            "hex": "#663e28",
+            "coveragePercent": 5.8747
+          },
+          {
+            "hex": "#f6d0aa",
+            "coveragePercent": 4.8643
+          },
+          {
+            "hex": "#e9bb90",
+            "coveragePercent": 4.5862
+          },
+          {
+            "hex": "#1d1313",
+            "coveragePercent": 4.5265
+          },
+          {
+            "hex": "#492817",
+            "coveragePercent": 3.804
+          },
+          {
+            "hex": "#da9053",
+            "coveragePercent": 3.5596
+          },
+          {
+            "hex": "#695754",
+            "coveragePercent": 3.2102
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5736",
+            "coveragePercent": 23.1809
+          },
+          {
+            "hex": "#a66942",
+            "coveragePercent": 21.818
+          },
+          {
+            "hex": "#b47d55",
+            "coveragePercent": 20.0596
+          },
+          {
+            "hex": "#cf8c57",
+            "coveragePercent": 17.5158
+          },
+          {
+            "hex": "#df9f66",
+            "coveragePercent": 11.9446
+          },
+          {
+            "hex": "#eeb277",
+            "coveragePercent": 5.4812
+          }
+        ],
+        "visibleSamples": 782711,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/npcs/natsu-v1.png": {
       "sha256": "87536d53f74830c41cb6fcda8e3a75a9912c5893971897d4293e738b24027c44",
       "width": 1024,
@@ -42797,109 +42382,6 @@
         ],
         "visibleSamples": 820201,
         "dominantCoveragePercent": 100.0002
-      }
-    },
-    "assets/images/npcs/zen-priestess-v1.png": {
-      "sha256": "5c617a0094dd06627042d2b918804883ceebb4cb725b64865e64c16e5c2033e1",
-      "width": 1774,
-      "height": 887,
-      "runtimeKeys": [],
-      "usage": "design-reference",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#c15a26",
-            "coveragePercent": 11.9254
-          },
-          {
-            "hex": "#df7d3e",
-            "coveragePercent": 9.5528
-          },
-          {
-            "hex": "#9e4118",
-            "coveragePercent": 9.414
-          },
-          {
-            "hex": "#eba461",
-            "coveragePercent": 9.0544
-          },
-          {
-            "hex": "#751e0f",
-            "coveragePercent": 7.7237
-          },
-          {
-            "hex": "#e9c299",
-            "coveragePercent": 7.3433
-          },
-          {
-            "hex": "#f1d8bf",
-            "coveragePercent": 6.6402
-          },
-          {
-            "hex": "#faeddf",
-            "coveragePercent": 6.4003
-          },
-          {
-            "hex": "#490d08",
-            "coveragePercent": 5.7657
-          },
-          {
-            "hex": "#ca292e",
-            "coveragePercent": 5.2581
-          },
-          {
-            "hex": "#180807",
-            "coveragePercent": 5.1822
-          },
-          {
-            "hex": "#a31c20",
-            "coveragePercent": 5.0228
-          },
-          {
-            "hex": "#432f35",
-            "coveragePercent": 2.9522
-          },
-          {
-            "hex": "#a87a5d",
-            "coveragePercent": 2.8086
-          },
-          {
-            "hex": "#c7a289",
-            "coveragePercent": 2.6835
-          },
-          {
-            "hex": "#7a5342",
-            "coveragePercent": 2.2728
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#aa4b1f",
-            "coveragePercent": 22.1022
-          },
-          {
-            "hex": "#cc6730",
-            "coveragePercent": 20.791
-          },
-          {
-            "hex": "#e48a49",
-            "coveragePercent": 16.7325
-          },
-          {
-            "hex": "#932617",
-            "coveragePercent": 15.2325
-          },
-          {
-            "hex": "#edad6b",
-            "coveragePercent": 12.9577
-          },
-          {
-            "hex": "#c5272c",
-            "coveragePercent": 12.1841
-          }
-        ],
-        "visibleSamples": 386224,
-        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/npcs/zen-priestess-v2.png": {
@@ -43952,109 +43434,6 @@
         "dominantCoveragePercent": 100.0
       }
     },
-    "assets/images/ui/backpack-leather-v1.png": {
-      "sha256": "eca92014920d3411ff927b4df6ba3986fe1eb951936fdae07deca72b679f6fb6",
-      "width": 1254,
-      "height": 1254,
-      "runtimeKeys": [],
-      "usage": "design-reference",
-      "palette": {
-        "dominant": [
-          {
-            "hex": "#321c13",
-            "coveragePercent": 31.9382
-          },
-          {
-            "hex": "#2a150d",
-            "coveragePercent": 14.8152
-          },
-          {
-            "hex": "#3d2518",
-            "coveragePercent": 13.7158
-          },
-          {
-            "hex": "#572b1a",
-            "coveragePercent": 8.2025
-          },
-          {
-            "hex": "#6b3620",
-            "coveragePercent": 5.6909
-          },
-          {
-            "hex": "#482112",
-            "coveragePercent": 4.9286
-          },
-          {
-            "hex": "#7b4129",
-            "coveragePercent": 4.4068
-          },
-          {
-            "hex": "#1b0a05",
-            "coveragePercent": 3.7776
-          },
-          {
-            "hex": "#8e4d2f",
-            "coveragePercent": 3.5749
-          },
-          {
-            "hex": "#a15d3a",
-            "coveragePercent": 2.6876
-          },
-          {
-            "hex": "#070201",
-            "coveragePercent": 2.4654
-          },
-          {
-            "hex": "#b57146",
-            "coveragePercent": 1.7474
-          },
-          {
-            "hex": "#c88859",
-            "coveragePercent": 1.0329
-          },
-          {
-            "hex": "#dda56e",
-            "coveragePercent": 0.5696
-          },
-          {
-            "hex": "#f0cb8e",
-            "coveragePercent": 0.3104
-          },
-          {
-            "hex": "#f8ebc7",
-            "coveragePercent": 0.1361
-          }
-        ],
-        "accents": [
-          {
-            "hex": "#894629",
-            "coveragePercent": 32.7383
-          },
-          {
-            "hex": "#965636",
-            "coveragePercent": 26.2672
-          },
-          {
-            "hex": "#ab653d",
-            "coveragePercent": 18.7855
-          },
-          {
-            "hex": "#bd794c",
-            "coveragePercent": 12.662
-          },
-          {
-            "hex": "#d3935d",
-            "coveragePercent": 6.8653
-          },
-          {
-            "hex": "#efba71",
-            "coveragePercent": 2.6817
-          }
-        ],
-        "visibleSamples": 1365928,
-        "dominantCoveragePercent": 99.9999
-      }
-    },
     "assets/images/ui/coin-v1.png": {
       "sha256": "455278d3675354d4e2d8be116c68726e42ac7ced93ee158e282fad3e2039d5c4",
       "width": 1254,
@@ -45103,6 +44482,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/ui/haru-binding-pillar-v1.png": {
+      "sha256": "37e0c00bf95af0141e7d01221779164e6948014d291485973961b6c36e421afa",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "haruBindingPillar"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#32201b",
+            "coveragePercent": 18.0588
+          },
+          {
+            "hex": "#46302b",
+            "coveragePercent": 17.0314
+          },
+          {
+            "hex": "#5f4138",
+            "coveragePercent": 13.9709
+          },
+          {
+            "hex": "#20110e",
+            "coveragePercent": 11.7181
+          },
+          {
+            "hex": "#080302",
+            "coveragePercent": 7.5938
+          },
+          {
+            "hex": "#7e5649",
+            "coveragePercent": 6.9655
+          },
+          {
+            "hex": "#60230f",
+            "coveragePercent": 5.4469
+          },
+          {
+            "hex": "#9d3313",
+            "coveragePercent": 3.8123
+          },
+          {
+            "hex": "#ec3806",
+            "coveragePercent": 3.6858
+          },
+          {
+            "hex": "#a87864",
+            "coveragePercent": 2.5025
+          },
+          {
+            "hex": "#f09343",
+            "coveragePercent": 2.161
+          },
+          {
+            "hex": "#f8790f",
+            "coveragePercent": 2.1524
+          },
+          {
+            "hex": "#c46030",
+            "coveragePercent": 2.087
+          },
+          {
+            "hex": "#efbf77",
+            "coveragePercent": 1.287
+          },
+          {
+            "hex": "#fdd225",
+            "coveragePercent": 1.0605
+          },
+          {
+            "hex": "#f9edbc",
+            "coveragePercent": 0.4662
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ec3d07",
+            "coveragePercent": 22.9005
+          },
+          {
+            "hex": "#a05a3d",
+            "coveragePercent": 21.5974
+          },
+          {
+            "hex": "#ed7d27",
+            "coveragePercent": 19.3309
+          },
+          {
+            "hex": "#9e3011",
+            "coveragePercent": 19.2632
+          },
+          {
+            "hex": "#f4b75e",
+            "coveragePercent": 10.3998
+          },
+          {
+            "hex": "#fdc51d",
+            "coveragePercent": 6.5082
+          }
+        ],
+        "visibleSamples": 583955,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/ui/katana-inventory-v1.png": {
       "sha256": "3def1700b7a0334e715ee3229dbf8b9beea31cefb38d4f1fed01ecd67d84fb5c",
       "width": 1024,
@@ -45626,6 +45110,109 @@
         ],
         "visibleSamples": 526484,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/ui/paw-cursor-v1.png": {
+      "sha256": "0c0b4c021b2a71ee76bde5647922a974aa3df5638501b1359942b53430e7b7d7",
+      "width": 32,
+      "height": 32,
+      "runtimeKeys": [],
+      "usage": "design-reference",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9d077",
+            "coveragePercent": 14.54
+          },
+          {
+            "hex": "#fae39c",
+            "coveragePercent": 13.2414
+          },
+          {
+            "hex": "#fbf3c0",
+            "coveragePercent": 13.2345
+          },
+          {
+            "hex": "#3c1804",
+            "coveragePercent": 9.9306
+          },
+          {
+            "hex": "#230900",
+            "coveragePercent": 7.423
+          },
+          {
+            "hex": "#734718",
+            "coveragePercent": 6.8956
+          },
+          {
+            "hex": "#582e0d",
+            "coveragePercent": 6.0089
+          },
+          {
+            "hex": "#fbf9e8",
+            "coveragePercent": 5.4444
+          },
+          {
+            "hex": "#c6892f",
+            "coveragePercent": 3.9183
+          },
+          {
+            "hex": "#a0661e",
+            "coveragePercent": 3.9157
+          },
+          {
+            "hex": "#e9ad46",
+            "coveragePercent": 3.4788
+          },
+          {
+            "hex": "#d7c999",
+            "coveragePercent": 3.0497
+          },
+          {
+            "hex": "#845e29",
+            "coveragePercent": 2.6136
+          },
+          {
+            "hex": "#c8a963",
+            "coveragePercent": 2.3956
+          },
+          {
+            "hex": "#9c7c55",
+            "coveragePercent": 2.3887
+          },
+          {
+            "hex": "#ae9676",
+            "coveragePercent": 1.521
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fad27a",
+            "coveragePercent": 41.7762
+          },
+          {
+            "hex": "#8c581b",
+            "coveragePercent": 16.3491
+          },
+          {
+            "hex": "#ecb24b",
+            "coveragePercent": 13.7336
+          },
+          {
+            "hex": "#c5882e",
+            "coveragePercent": 12.4401
+          },
+          {
+            "hex": "#9e7032",
+            "coveragePercent": 9.1479
+          },
+          {
+            "hex": "#c6a75e",
+            "coveragePercent": 6.5531
+          }
+        ],
+        "visibleSamples": 495,
+        "dominantCoveragePercent": 99.9998
       }
     },
     "assets/images/ui/phone-case-v1.png": {
@@ -47071,1756 +46658,1757 @@
       {
         "value": "#000",
         "lines": [
-          14,
-          63,
-          203,
-          224,
-          227
+          18,
+          67,
+          207,
+          228,
+          231
         ],
         "dynamic": false
       },
       {
         "value": "#0004",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0005",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0009",
         "lines": [
-          96,
-          205,
-          308
+          100,
+          209,
+          312
         ],
         "dynamic": false
       },
       {
         "value": "#000a",
         "lines": [
-          39,
-          118
+          43,
+          122
         ],
         "dynamic": false
       },
       {
         "value": "#050f1680",
         "lines": [
-          141
+          145
         ],
         "dynamic": false
       },
       {
         "value": "#060c1699",
         "lines": [
-          143
+          147
         ],
         "dynamic": false
       },
       {
         "value": "#061015a8",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#061019df",
         "lines": [
-          117
+          121
         ],
         "dynamic": false
       },
       {
         "value": "#06111b",
         "lines": [
-          57
+          61
         ],
         "dynamic": false
       },
       {
         "value": "#07101ba6",
         "lines": [
-          130
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#071118b8",
         "lines": [
-          250
+          254
         ],
         "dynamic": false
       },
       {
         "value": "#07121c",
         "lines": [
-          146
+          150
         ],
         "dynamic": false
       },
       {
         "value": "#07131d",
         "lines": [
-          54
+          58
         ],
         "dynamic": false
       },
       {
         "value": "#07131d55",
         "lines": [
-          56
+          60
         ],
         "dynamic": false
       },
       {
         "value": "#080f15",
         "lines": [
-          235
+          239
         ],
         "dynamic": false
       },
       {
         "value": "#091318",
         "lines": [
-          21
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#091318dc",
         "lines": [
-          279
+          283
         ],
         "dynamic": false
       },
       {
         "value": "#091318dd",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#091318eb",
         "lines": [
-          68
+          72
         ],
         "dynamic": false
       },
       {
         "value": "#0b131bcb",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0b151dcc",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0b1921d9",
         "lines": [
-          69
+          73
         ],
         "dynamic": false
       },
       {
         "value": "#0b1921ed",
         "lines": [
-          82
+          86
         ],
         "dynamic": false
       },
       {
         "value": "#0b1921f0",
         "lines": [
-          69
+          73
         ],
         "dynamic": false
       },
       {
         "value": "#0c18222b",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0c182244",
         "lines": [
-          68
+          72
         ],
         "dynamic": false
       },
       {
         "value": "#0c192281",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0c192299",
         "lines": [
-          68
+          72
         ],
         "dynamic": false
       },
       {
         "value": "#0c1b20",
         "lines": [
-          15
+          19
         ],
         "dynamic": false
       },
       {
         "value": "#0c1b25",
         "lines": [
-          150,
-          210,
-          302
+          154,
+          214,
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#0e171c",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#0e202ce8",
         "lines": [
-          147,
-          299
+          151,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#0f2029",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#100c1be8",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#101a25",
         "lines": [
-          135,
-          214,
-          299
+          139,
+          218,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#101b20",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#101b28e8",
         "lines": [
-          130
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#101d29",
         "lines": [
-          141,
-          216
+          145,
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#101e25",
         "lines": [
-          287
+          291
         ],
         "dynamic": false
       },
       {
         "value": "#101e25f7",
         "lines": [
-          280
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#102027a0",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#102028ee",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#10242f",
         "lines": [
-          60,
-          81
+          64,
+          85
         ],
         "dynamic": false
       },
       {
         "value": "#10242ff7",
         "lines": [
-          96
+          100
         ],
         "dynamic": false
       },
       {
         "value": "#102639d9",
         "lines": [
-          54
+          58
         ],
         "dynamic": false
       },
       {
         "value": "#11181e",
         "lines": [
-          231
+          235
         ],
         "dynamic": false
       },
       {
         "value": "#111d26",
         "lines": [
-          14,
-          18
+          18,
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#11232b",
         "lines": [
-          119
+          123
         ],
         "dynamic": false
       },
       {
         "value": "#11232bf7",
         "lines": [
-          118
+          122
         ],
         "dynamic": false
       },
       {
         "value": "#112a3cde",
         "lines": [
-          56
+          60
         ],
         "dynamic": false
       },
       {
         "value": "#122128ab",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#12242c",
         "lines": [
-          24
+          28
         ],
         "dynamic": false
       },
       {
         "value": "#132228f5",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#13272ded",
         "lines": [
-          32,
-          42
+          36,
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#13272df7",
         "lines": [
-          39
+          43
         ],
         "dynamic": false
       },
       {
         "value": "#132c3df2",
         "lines": [
-          55
+          59
         ],
         "dynamic": false
       },
       {
         "value": "#140d25eb",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#14242bee",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#14242dea",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#142730",
         "lines": [
-          284
+          288
         ],
         "dynamic": false
       },
       {
         "value": "#142934c9",
         "lines": [
-          252
+          256
         ],
         "dynamic": false
       },
       {
         "value": "#142a32",
         "lines": [
-          78
+          82
         ],
         "dynamic": false
       },
       {
         "value": "#152b34e8",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#17100de8",
         "lines": [
-          134
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#17242a",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#172938",
         "lines": [
-          247
+          251
         ],
         "dynamic": false
       },
       {
         "value": "#1a2d32",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#1b3540",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#20272c",
         "lines": [
-          231
+          235
         ],
         "dynamic": false
       },
       {
         "value": "#221626f2",
         "lines": [
-          308
+          312
         ],
         "dynamic": false
       },
       {
         "value": "#241b19",
         "lines": [
-          259,
-          268
+          263,
+          272
         ],
         "dynamic": false
       },
       {
         "value": "#24323c",
         "lines": [
-          213,
-          247
+          217,
+          251
         ],
         "dynamic": false
       },
       {
         "value": "#243e48",
         "lines": [
-          95,
-          124
+          99,
+          128
         ],
         "dynamic": false
       },
       {
         "value": "#27323a",
         "lines": [
-          240
+          244
         ],
         "dynamic": false
       },
       {
         "value": "#284354",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#293832",
         "lines": [
-          287
+          291
         ],
         "dynamic": false
       },
       {
         "value": "#2a514c",
         "lines": [
-          272
+          276
         ],
         "dynamic": false
       },
       {
         "value": "#2d3e3a",
         "lines": [
-          271
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#302219",
         "lines": [
-          265
+          269
         ],
         "dynamic": false
       },
       {
         "value": "#30414c",
         "lines": [
-          141
+          145
         ],
         "dynamic": false
       },
       {
         "value": "#30434a",
         "lines": [
-          101
+          105
         ],
         "dynamic": false
       },
       {
         "value": "#30464b",
         "lines": [
-          79
+          83
         ],
         "dynamic": false
       },
       {
         "value": "#314046",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#344744",
         "lines": [
-          43
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#354858",
         "lines": [
-          135,
-          214,
-          299
+          139,
+          218,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#3a4b49",
         "lines": [
-          41
+          45
         ],
         "dynamic": false
       },
       {
         "value": "#3b5960",
         "lines": [
-          125
+          129
         ],
         "dynamic": false
       },
       {
         "value": "#3c2820",
         "lines": [
-          266
+          270
         ],
         "dynamic": false
       },
       {
         "value": "#4a3829",
         "lines": [
-          270
+          274
         ],
         "dynamic": false
       },
       {
         "value": "#4b4935",
         "lines": [
-          271
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#513b29",
         "lines": [
-          139
+          143
         ],
         "dynamic": false
       },
       {
         "value": "#56402a",
         "lines": [
-          264
+          268
         ],
         "dynamic": false
       },
       {
         "value": "#58472e",
         "lines": [
-          267
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#64767959",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#6a4c2f",
         "lines": [
-          138
+          142
         ],
         "dynamic": false
       },
       {
         "value": "#778188",
         "lines": [
-          213,
-          247
+          217,
+          251
         ],
         "dynamic": false
       },
       {
         "value": "#8150b0",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#831e24",
         "lines": [
-          242
+          246
         ],
         "dynamic": false
       },
       {
         "value": "#84928e",
         "lines": [
-          284
+          288
         ],
         "dynamic": false
       },
       {
         "value": "#869894",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#8d9da8",
         "lines": [
-          135,
-          214
+          139,
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#a5262b",
         "lines": [
-          243
+          247
         ],
         "dynamic": false
       },
       {
         "value": "#a6c9c5",
         "lines": [
-          109,
-          110,
-          111
+          113,
+          114,
+          115
         ],
         "dynamic": false
       },
       {
         "value": "#a8b4b4",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#a99060",
         "lines": [
-          141
+          145
         ],
         "dynamic": false
       },
       {
         "value": "#aaa99b",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#adbab4",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#b59155",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#ba9c67",
         "lines": [
-          210
+          214
         ],
         "dynamic": false
       },
       {
         "value": "#bac2c6",
         "lines": [
-          213,
-          247
+          217,
+          251
         ],
         "dynamic": false
       },
       {
         "value": "#bac8c4",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#bdad843c",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#bdccc5",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#be965523",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#bf6b61",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#bfd3c8",
         "lines": [
-          22
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#c1a16b",
         "lines": [
-          231,
-          235
+          235,
+          239
         ],
         "dynamic": false
       },
       {
         "value": "#c5b4868c",
         "lines": [
-          130
+          134
         ],
         "dynamic": false
       },
       {
         "value": "#c5cbbf",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#c6ab7480",
         "lines": [
-          150,
-          302
+          154,
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#c9a7ec80",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#c9b27b",
         "lines": [
-          118
+          122
         ],
         "dynamic": false
       },
       {
         "value": "#c9b27b66",
         "lines": [
-          119
+          123
         ],
         "dynamic": false
       },
       {
         "value": "#ccb279",
         "lines": [
-          145
+          149
         ],
         "dynamic": false
       },
       {
         "value": "#ced6d0",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#cfb67c",
         "lines": [
-          252
+          256
         ],
         "dynamic": false
       },
       {
         "value": "#d2ba81",
         "lines": [
-          205
+          209
         ],
         "dynamic": false
       },
       {
         "value": "#d3a8f4",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#d3b2f4",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#d3d6c9",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d4aa71a6",
         "lines": [
-          134
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#d4bb8a",
         "lines": [
-          240
+          244
         ],
         "dynamic": false
       },
       {
         "value": "#d58370",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d58a6e",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d5bc87",
         "lines": [
-          124
+          128
         ],
         "dynamic": false
       },
       {
         "value": "#d5c59f",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d5edf4",
         "lines": [
-          226
+          230
         ],
         "dynamic": false
       },
       {
         "value": "#d6bf8e",
         "lines": [
-          151
+          155
         ],
         "dynamic": false
       },
       {
         "value": "#d7bd88",
         "lines": [
-          14,
-          74
+          18,
+          78
         ],
         "dynamic": false
       },
       {
         "value": "#d7bd8870",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d7c693",
         "lines": [
-          21
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#d7ded7",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd80",
         "lines": [
-          223
+          227
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd84",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7855",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b",
         "lines": [
-          14,
-          15,
-          81,
-          96,
-          247,
-          280
+          18,
+          19,
+          85,
+          100,
+          251,
+          284
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b25",
         "lines": [
-          15
+          19
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b35",
         "lines": [
-          15
+          19
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b38",
         "lines": [
-          69,
-          82
+          73,
+          86
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b44",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b55",
         "lines": [
-          14,
-          60
+          18,
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b66",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b70",
         "lines": [
-          99
+          103
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b75",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b78",
         "lines": [
-          24
+          28
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b80",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b85",
         "lines": [
-          78,
-          101
+          82,
+          105
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b88",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7ba8",
         "lines": [
-          32,
-          39,
-          42
+          36,
+          43,
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#ddc387",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#dec897",
         "lines": [
-          23
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#dfc18c",
         "lines": [
-          147,
-          299
+          151,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#dfc78045",
         "lines": [
-          148
+          152
         ],
         "dynamic": false
       },
       {
         "value": "#e0cda3",
         "lines": [
-          267
+          271
         ],
         "dynamic": false
       },
       {
         "value": "#e0ddcf",
         "lines": [
-          282
+          286
         ],
         "dynamic": false
       },
       {
         "value": "#e0e8df",
         "lines": [
-          76,
-          82
+          80,
+          86
         ],
         "dynamic": false
       },
       {
         "value": "#e2c68e",
         "lines": [
-          55
+          59
         ],
         "dynamic": false
       },
       {
         "value": "#e2c7928a",
         "lines": [
-          54
+          58
         ],
         "dynamic": false
       },
       {
         "value": "#e2cfab",
         "lines": [
-          121
+          125
         ],
         "dynamic": false
       },
       {
         "value": "#e3cb9180",
         "lines": [
-          56
+          60
         ],
         "dynamic": false
       },
       {
         "value": "#e3d7b12a",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#e3e8dc",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#e4d8bb",
         "lines": [
-          149
+          153
         ],
         "dynamic": false
       },
       {
         "value": "#e6c78088",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#e6ccff",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#e7c27e44",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
       {
         "value": "#e8cb8c",
         "lines": [
-          25
+          29
         ],
         "dynamic": false
       },
       {
         "value": "#ead2a0",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#ebe7d8",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#eda88c",
         "lines": [
-          71
+          75
         ],
         "dynamic": false
       },
       {
         "value": "#edcf94",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#eed9ac",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#eee1c0",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#f0d9b7",
         "lines": [
-          140
+          144
         ],
         "dynamic": false
       },
       {
         "value": "#f0e8dc",
         "lines": [
-          233
+          237
         ],
         "dynamic": false
       },
       {
         "value": "#f1d493",
         "lines": [
-          287
+          291
         ],
         "dynamic": false
       },
       {
         "value": "#f1d49b",
         "lines": [
-          73
+          77
         ],
         "dynamic": false
       },
       {
         "value": "#f1d9b3",
         "lines": [
-          131
+          135
         ],
         "dynamic": false
       },
       {
         "value": "#f1ddb4",
         "lines": [
-          70
+          74
         ],
         "dynamic": false
       },
       {
         "value": "#f1deb0",
         "lines": [
-          30
+          34
         ],
         "dynamic": false
       },
       {
         "value": "#f1dfb7",
         "lines": [
-          304
+          308
         ],
         "dynamic": false
       },
       {
         "value": "#f2e3ff",
         "lines": [
-          63
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#f3e7d1",
         "lines": [
-          128
+          132
         ],
         "dynamic": false
       },
       {
         "value": "#f3eddd",
         "lines": [
-          96
+          100
         ],
         "dynamic": false
       },
       {
         "value": "#f3eee0",
         "lines": [
-          284
+          288
         ],
         "dynamic": false
       },
       {
         "value": "#f4d895",
         "lines": [
-          253
+          257
         ],
         "dynamic": false
       },
       {
         "value": "#f4deb1",
         "lines": [
-          78,
-          84
+          82,
+          88
         ],
         "dynamic": false
       },
       {
         "value": "#f4e3b8",
         "lines": [
-          24
+          28
         ],
         "dynamic": false
       },
       {
         "value": "#f4e3bf",
         "lines": [
-          40,
-          42
+          44,
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#f4e5bd",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#f4f1e5",
         "lines": [
-          75
+          79
         ],
         "dynamic": false
       },
       {
         "value": "#f4f2e8",
         "lines": [
-          57
+          61
         ],
         "dynamic": false
       },
       {
         "value": "#f5edda",
         "lines": [
-          118,
-          208
+          122,
+          212
         ],
         "dynamic": false
       },
       {
         "value": "#f7d78e",
         "lines": [
-          34
+          38
         ],
         "dynamic": false
       },
       {
         "value": "#f9d989",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#ffb4a6",
         "lines": [
-          236
+          240
         ],
         "dynamic": false
       },
       {
         "value": "#ffc4b7",
         "lines": [
-          237
+          241
         ],
         "dynamic": false
       },
       {
         "value": "#ffd487",
         "lines": [
-          308
+          312
         ],
         "dynamic": false
       },
       {
         "value": "#ffdda0",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a3",
         "lines": [
-          226
+          230
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a4",
         "lines": [
-          203,
-          209,
-          217,
-          218,
-          247
+          207,
+          213,
+          221,
+          222,
+          251
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          227
+          231
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2aa",
         "lines": [
-          234
+          238
         ],
         "dynamic": false
       },
       {
         "value": "#ffe3a0",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#ffe3a2",
         "lines": [
-          80,
-          97
+          84,
+          101
         ],
         "dynamic": false
       },
       {
         "value": "#ffe3af",
         "lines": [
-          132
+          136
         ],
         "dynamic": false
       },
       {
         "value": "#ffe4a2",
         "lines": [
-          291,
-          296
+          295,
+          300
         ],
         "dynamic": false
       },
       {
         "value": "#ffe4ac",
         "lines": [
-          18
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          138,
-          216
+          142,
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#ffe7aa",
         "lines": [
-          288
+          292
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b5",
         "lines": [
-          211
+          215
         ],
         "dynamic": false
       },
       {
         "value": "#ffebbd",
         "lines": [
-          127
+          131
         ],
         "dynamic": false
       },
       {
         "value": "#ffebbf",
         "lines": [
-          144,
-          299
+          148,
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          138
+          142
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ad",
         "lines": [
-          123
+          127
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          241
+          245
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c8",
         "lines": [
-          60,
-          81,
-          98,
-          100,
-          101,
-          120
+          64,
+          85,
+          102,
+          104,
+          105,
+          124
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          60
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cf",
         "lines": [
-          136,
-          216
+          140,
+          220,
+          318
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cf80",
         "lines": [
-          135
+          139
         ],
         "dynamic": false
       },
       {
         "value": "#fff0d1",
         "lines": [
-          232,
-          240
+          236,
+          244
         ],
         "dynamic": false
       },
       {
         "value": "#fff1cf",
         "lines": [
-          308
+          312
         ],
         "dynamic": false
       },
       {
         "value": "#fff1d3",
         "lines": [
-          32
+          36
         ],
         "dynamic": false
       },
       {
         "value": "#fff2cf",
         "lines": [
-          55,
-          122,
-          225
+          59,
+          126,
+          229
         ],
         "dynamic": false
       },
       {
         "value": "#fff4d7",
         "lines": [
-          305,
-          306
+          309,
+          310
         ],
         "dynamic": false
       },
       {
         "value": "#fff4da",
         "lines": [
-          271
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#fff5d8",
         "lines": [
-          41
+          45
         ],
         "dynamic": false
       },
       {
         "value": "#fff5e1",
         "lines": [
-          235
+          239
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff25",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff30",
         "lines": [
-          14
+          18
         ],
         "dynamic": false
       }
@@ -48876,6 +48464,7 @@
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
     "assets/js/asset-cache.js": [],
+    "assets/js/background-framing.js": [],
     "assets/js/background-motion.js": [
       {
         "value": "#fff",
@@ -49163,6 +48752,7 @@
       }
     ],
     "assets/js/compass.js": [],
+    "assets/js/cursor.js": [],
     "assets/js/dawnblade.js": [],
     "assets/js/dev-abilities.js": [],
     "assets/js/dev-boss.js": [],
@@ -49224,7 +48814,7 @@
       {
         "value": "#d9bd80",
         "lines": [
-          37
+          35
         ],
         "dynamic": false
       },
@@ -49285,28 +48875,28 @@
       {
         "value": "#08121900",
         "lines": [
-          301
+          302
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          301
+          302
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          301
+          302
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          520
+          521
         ],
         "dynamic": false
       },
@@ -49341,14 +48931,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          509
+          510
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          509
+          510
         ],
         "dynamic": false
       },
@@ -49495,14 +49085,14 @@
       {
         "value": "#addbb5",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          252
+          253
         ],
         "dynamic": false
       },
@@ -49523,7 +49113,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
@@ -49537,14 +49127,14 @@
       {
         "value": "#d58cf3",
         "lines": [
-          219
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          260
+          261
         ],
         "dynamic": false
       },
@@ -49558,14 +49148,14 @@
       {
         "value": "#d9e8ce",
         "lines": [
-          538
+          539
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          168
+          169
         ],
         "dynamic": false
       },
@@ -49608,7 +49198,7 @@
         "value": "#e4c78a",
         "lines": [
           23,
-          168
+          169
         ],
         "dynamic": false
       },
@@ -49622,49 +49212,49 @@
       {
         "value": "#e8d89b",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          538
+          539
         ],
         "dynamic": false
       },
       {
         "value": "#ecd3a0",
         "lines": [
-          216
+          217
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          538
+          539
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          249
+          250
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          217
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          260
+          261
         ],
         "dynamic": false
       },
@@ -49679,7 +49269,7 @@
         "value": "#f3d494",
         "lines": [
           25,
-          253
+          254
         ],
         "dynamic": false
       },
@@ -49700,14 +49290,14 @@
       {
         "value": "#ffcf83",
         "lines": [
-          538
+          539
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          219
+          220
         ],
         "dynamic": false
       },
@@ -49737,788 +49327,788 @@
       {
         "value": "#070e18",
         "lines": [
-          478
+          482
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          503
+          507
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          451
+          455
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          502
+          506
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          463
+          467
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
         "lines": [
-          124,
-          133
+          128,
+          137
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c",
         "lines": [
-          102,
-          114
+          106,
+          118
         ],
         "dynamic": false
       },
       {
         "value": "#0e202c00",
         "lines": [
-          114
+          118
         ],
         "dynamic": false
       },
       {
         "value": "#100e20ed",
         "lines": [
-          330
+          334
         ],
         "dynamic": false
       },
       {
         "value": "#102236",
         "lines": [
-          701
+          705
         ],
         "dynamic": false
       },
       {
         "value": "#10283fee",
         "lines": [
-          476,
-          482
+          480,
+          486
         ],
         "dynamic": false
       },
       {
         "value": "#11252d30",
         "lines": [
-          171
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#112b3fee",
         "lines": [
-          433
+          437
         ],
         "dynamic": false
       },
       {
         "value": "#122739df",
         "lines": [
-          501
+          505
         ],
         "dynamic": false
       },
       {
         "value": "#132b42d9",
         "lines": [
-          742
+          746
         ],
         "dynamic": false
       },
       {
         "value": "#140c2028",
         "lines": [
-          171
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#142b3f",
         "lines": [
-          844
+          848
         ],
         "dynamic": false
       },
       {
         "value": "#160f16",
         "lines": [
-          204
+          208
         ],
         "dynamic": false
       },
       {
         "value": "#163847dd",
         "lines": [
-          671
+          675
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          685
+          689
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          772
+          776
         ],
         "dynamic": false
       },
       {
         "value": "#172b42e8",
         "lines": [
-          454
+          458
         ],
         "dynamic": false
       },
       {
         "value": "#182025",
         "lines": [
-          558
+          562
         ],
         "dynamic": false
       },
       {
         "value": "#183246e8",
         "lines": [
-          368
+          372
         ],
         "dynamic": false
       },
       {
         "value": "#193549b8",
         "lines": [
-          353
+          357
         ],
         "dynamic": false
       },
       {
         "value": "#234559cc",
         "lines": [
-          660
+          664
         ],
         "dynamic": false
       },
       {
         "value": "#24314820",
         "lines": [
-          171
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#251339",
         "lines": [
-          832
+          836
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          705
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#26374d",
         "lines": [
-          445
+          449
         ],
         "dynamic": false
       },
       {
         "value": "#326e8fa3",
         "lines": [
-          647
+          651
         ],
         "dynamic": false
       },
       {
         "value": "#455764ad",
         "lines": [
-          265
+          269
         ],
         "dynamic": false
       },
       {
         "value": "#526673d9",
         "lines": [
-          264
+          268
         ],
         "dynamic": false
       },
       {
         "value": "#72b4c9af",
         "lines": [
-          647
+          651
         ],
         "dynamic": false
       },
       {
         "value": "#83749f",
         "lines": [
-          187
+          191
         ],
         "dynamic": false
       },
       {
         "value": "#8b764eaa",
         "lines": [
-          531
+          535
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          543
+          547
         ],
         "dynamic": false
       },
       {
         "value": "#a5787d",
         "lines": [
-          187
+          191
         ],
         "dynamic": false
       },
       {
         "value": "#a893d0",
         "lines": [
-          198
+          202
         ],
         "dynamic": false
       },
       {
         "value": "#a8e8ff",
         "lines": [
-          651
+          655
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          693
+          697
         ],
         "dynamic": false
       },
       {
         "value": "#aab6b1b8",
         "lines": [
-          269
+          273
         ],
         "dynamic": false
       },
       {
         "value": "#ab83d955",
         "lines": [
-          693
+          697
         ],
         "dynamic": false
       },
       {
         "value": "#abb78d66",
         "lines": [
-          277
+          281
         ],
         "dynamic": false
       },
       {
         "value": "#b5a777",
         "lines": [
-          541
+          545
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          832
+          836
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          793
+          797
         ],
         "dynamic": false
       },
       {
         "value": "#c393ff",
         "lines": [
-          443
+          447
         ],
         "dynamic": false
       },
       {
         "value": "#c39ae7",
         "lines": [
-          492
+          496
         ],
         "dynamic": false
       },
       {
         "value": "#c596ffad",
         "lines": [
-          693
+          697
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          661
+          665
         ],
         "dynamic": false
       },
       {
         "value": "#c9d0cb62",
         "lines": [
-          263
+          267
         ],
         "dynamic": false
       },
       {
         "value": "#cda6ef",
         "lines": [
-          334
+          338
         ],
         "dynamic": false
       },
       {
         "value": "#d0af77",
         "lines": [
-          828
+          832
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          666
+          670
         ],
         "dynamic": false
       },
       {
         "value": "#d199aa55",
         "lines": [
-          277
+          281
         ],
         "dynamic": false
       },
       {
         "value": "#d1c9acaf",
         "lines": [
-          569
+          573
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          745
+          749
         ],
         "dynamic": false
       },
       {
         "value": "#d8c998bb",
         "lines": [
-          269
+          273
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          464
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#d9a9ff",
         "lines": [
-          832
+          836
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          830
+          834
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          541
+          545
         ],
         "dynamic": false
       },
       {
         "value": "#ddba72",
         "lines": [
-          464
+          468
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          686
+          690
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          813
+          817
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          653
+          657
         ],
         "dynamic": false
       },
       {
         "value": "#e5a184",
         "lines": [
-          198
+          202
         ],
         "dynamic": false
       },
       {
         "value": "#e6b0fa22",
         "lines": [
-          497
+          501
         ],
         "dynamic": false
       },
       {
         "value": "#e6c6ff",
         "lines": [
-          335
+          339
         ],
         "dynamic": false
       },
       {
         "value": "#e7616355",
         "lines": [
-          812
+          816
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          812
+          816
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          793
+          797
         ],
         "dynamic": false
       },
       {
         "value": "#ef8b65",
         "lines": [
-          198
+          202
         ],
         "dynamic": false
       },
       {
         "value": "#f2e3b9",
         "lines": [
-          829
+          833
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          812
+          816
         ],
         "dynamic": false
       },
       {
         "value": "#f3d8ac",
         "lines": [
-          497,
-          680
+          501,
+          684
         ],
         "dynamic": false
       },
       {
         "value": "#f3dbaf",
         "lines": [
-          358
+          362
         ],
         "dynamic": false
       },
       {
         "value": "#f5df9f",
         "lines": [
-          353
+          357
         ],
         "dynamic": false
       },
       {
         "value": "#f6a47580",
         "lines": [
-          541
+          545
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          701
+          705
         ],
         "dynamic": false
       },
       {
         "value": "#ff7850",
         "lines": [
-          273
+          277
         ],
         "dynamic": false
       },
       {
         "value": "#ff9c6238",
         "lines": [
-          705
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#ffac69",
         "lines": [
-          273
+          277
         ],
         "dynamic": false
       },
       {
         "value": "#ffb385",
         "lines": [
-          443
+          447
         ],
         "dynamic": false
       },
       {
         "value": "#ffb889",
         "lines": [
-          705
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#ffcc89",
         "lines": [
-          479
+          483
         ],
         "dynamic": false
       },
       {
         "value": "#ffd5a2",
         "lines": [
-          813
+          817
         ],
         "dynamic": false
       },
       {
         "value": "#ffe098",
         "lines": [
-          443
+          447
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a2",
         "lines": [
-          492
+          496
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a229",
         "lines": [
-          735
+          739
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          541,
-          735
+          545,
+          739
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          742
+          746
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          647
+          651
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          653
+          657
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          693
+          697
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          670
+          674
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8b98c",
         "lines": [
-          277
+          281
         ],
         "dynamic": false
       },
       {
         "value": "#fff0b3",
         "lines": [
-          437,
-          666
+          441,
+          670
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ba",
         "lines": [
-          369
+          373
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bc",
         "lines": [
-          434
+          438
         ],
         "dynamic": false
       },
       {
         "value": "#fff0bd",
         "lines": [
-          477,
-          482,
-          483,
+          481,
           486,
-          705
+          487,
+          490,
+          709
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c8",
         "lines": [
-          335
+          339
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cc",
         "lines": [
-          125,
-          134
+          129,
+          138
         ],
         "dynamic": false
       },
       {
         "value": "#fff0ce",
         "lines": [
-          696
+          700
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          833
+          837
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          671
+          675
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          660
+          664
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          448
+          452
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff00",
         "lines": [
-          96
+          100
         ],
         "dynamic": false
       },
       {
         "value": "#ffffffff",
         "lines": [
-          96
+          100
         ],
         "dynamic": false
       }
@@ -50528,42 +50118,42 @@
       {
         "value": "#110e1c",
         "lines": [
-          10
+          16
         ],
         "dynamic": false
       },
       {
         "value": "#12101cf0",
         "lines": [
-          62
+          76
         ],
         "dynamic": false
       },
       {
         "value": "#15101d",
         "lines": [
-          64
+          78
         ],
         "dynamic": false
       },
       {
         "value": "#8e42c7",
         "lines": [
-          33
+          39
         ],
         "dynamic": false
       },
       {
         "value": "#bd9b72",
         "lines": [
-          64
+          78
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cf",
         "lines": [
-          62
+          76
         ],
         "dynamic": false
       }
@@ -50585,7 +50175,7 @@
       {
         "value": "#101524ed",
         "lines": [
-          45,
+          44,
           83
         ],
         "dynamic": false
@@ -50593,7 +50183,7 @@
       {
         "value": "#161120",
         "lines": [
-          32
+          31
         ],
         "dynamic": false
       },
@@ -50621,7 +50211,7 @@
       {
         "value": "#fff0cc",
         "lines": [
-          45,
+          44,
           83
         ],
         "dynamic": false

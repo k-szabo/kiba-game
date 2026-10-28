@@ -17,7 +17,7 @@ const KitsuneQuest=(()=>{
  // Call only after validating a deliberate travel destination, never for death,
  // menu presentation, save loading or enterRealm's internal side-map bootstrap.
  function leaveFor(destination){
-  if(!prison()||destination===shadowPrison||!hunterDefeated()||!owns('fiaSeen')||rescued()||missed())return false;
+  if(!prison()||destination===shadowPrison||!owns('prisonOpen')||rescued()||missed())return false;
   flags[3].push('fiaMissed');return true;
  }
  function reset(){departure=null;rescueScene=false;}
@@ -32,7 +32,7 @@ const KitsuneQuest=(()=>{
  }
  function context(){
   if(Prologue.active)return null;
-  if(level===shadowRealm&&defeated[3]&&pointNear(level.denEntrance,110,85))return {type:'fiaDenEnter',text:I18n.t('fia.den.enter')};
+  if(level===shadowRealm&&sideLocationUnlocked('shadowDen',flags,defeated)&&pointNear(level.denEntrance,110,85))return {type:'fiaDenEnter',text:I18n.t('fia.den.enter')};
   if(prison()&&!rescued()&&!missed()&&pointNear(level.fia,95,85))return {type:'fiaRescue',locked:!hunterDefeated(),text:I18n.t(hunterDefeated()?'fia.free':'fia.locked')};
   if(!den())return null;
   if(pointNear(level.returnPoint,100,85))return {type:'fiaDenReturn',text:I18n.t('zen.prison.return')};

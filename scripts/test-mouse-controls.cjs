@@ -18,6 +18,8 @@ function fixture(){
  // The generic gameplay harness deliberately has no DOM selector engine. Keep
  // this focused row lookup in this test, without exporting game internals.
  rows.querySelector=selector=>rows.children.flatMap(row=>row.children).find(node=>node.dataset.action===selector.match(/data-action="([^"]+)"/)?.[1]);
+ const world=h.sandbox.document.getElementById('world'),pauseButton=h.sandbox.document.getElementById('pauseButton');
+ h.sandbox.document.getElementById('game').contains=node=>node===world||node===pauseButton||node===rows||rows.children.some(row=>row===node||row.children.includes(node));
  h.sandbox.document.activeElement=null;
  h.run("enemies=[];boss.dead=true;state='play';keys.clear();pressed.clear();");
  const eventTypes={handleMouseDown:'mousedown',handleMouseUp:'mouseup',handleMouseCancel:'pointercancel',handleMouseClick:'click',handleMouseContextMenu:'contextmenu'};
@@ -108,9 +110,10 @@ for(const [action,state] of [['pause','pause'],['map','map'],['inventory','inven
  const h=fixture();h.bind('attack',2);const press=h.mouse('handleMouseDown',{button:2});
  assert(press.prevented,'Assigned gameplay inputs prevent native mouse behavior');
  assert(h.mouse('handleMouseContextMenu',{button:2}).prevented,'Assigned right click on the game suppresses its context menu');
- assert(!h.mouse('handleMouseContextMenu',{button:2,target:'pauseButton'}).prevented,'UI retains its native context menu outside capture');
+ assert(h.mouse('handleMouseContextMenu',{button:2,target:'pauseButton'}).prevented,'Game UI suppresses the browser context menu without starting gameplay');
  h.mouse('handleMouseUp',{button:2});h.run("Bindings.reset();Bindings.setPrimary('heavyAttack','h');");
- assert(!h.mouse('handleMouseContextMenu',{button:2}).prevented,'Unassigned mouse input does not suppress browser behavior');
+ assert(h.mouse('handleMouseContextMenu',{button:2}).prevented,'The game canvas suppresses its context menu even when right click is unassigned');
+ assert(!h.mouse('handleMouseContextMenu',{button:2,target:'outsideGame'}).prevented,'The surrounding page retains its native context menu');
 }
 
 // Touch/pen, unrelated UI and non-playing states never become mouse gameplay.

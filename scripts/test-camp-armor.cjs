@@ -5,14 +5,14 @@ const close=(a,b,label)=>assert(Math.abs(a-b)<1e-10,label+': '+a+' != '+b);
  const h=harness(),r=h.run;
  for(let rank=0;rank<=5;rank++){
   r('campServices.armorRank='+rank+';player.hp=5;player.inv=0;dash=0;damage(2,1,true);');
-  close(r('player.hp'),5-2*100/(100+rank*20),'Rank '+rank+' actual incoming hit');
+  close(r('player.hp'),5-2*300/(300+rank*20),'Rank '+rank+' actual incoming hit');
   assert.equal(r('momoStats().armor'),rank*20);
  }
  // Guard's one point is absorbed first, and armor mitigates the remainder.
  r("weaponStyle='swordShield';campServices.ownedWeapons=['swordShield'];campServices.armorRank=5;initPlayer(level.rests[0]);player.hp=5;player.inv=0;player.face=1;player.onGround=true;player.guardCooldown=0;damage(3,-1,true);");
- close(r('player.hp'),4,'Frontal shield then armor');assert(r('player.guardCooldown>0'));
- r('player.hp=5;player.inv=0;player.guardCooldown=0;damage(3,1,true);');close(r('player.hp'),3.5,'Rear hit bypasses directional shield only');
- r('player.hp=5;player.inv=0;player.guardCooldown=0;damage(3,-1,false);');close(r('player.hp'),3.5,'Environmental damage skips shield but uses armor');
+ close(r('player.hp'),3.5,'Frontal shield then armor');assert(r('player.guardCooldown>0'));
+ r('player.hp=5;player.inv=0;player.guardCooldown=0;damage(3,1,true);');close(r('player.hp'),2.75,'Rear hit bypasses directional shield only');
+ r('player.hp=5;player.inv=0;player.guardCooldown=0;damage(3,-1,false);');close(r('player.hp'),2.75,'Environmental damage skips shield but uses armor');
  r('player.hp=5;player.inv=0;damage(3,-1,false,true);');close(r('player.hp'),2,'Explicit execution damage bypasses armor');
  r('player.hp=.4;updateHUD();');assert(h.elements.get('health').innerHTML.includes('clip-path'),'Fractional health remains visible');assert(!h.elements.get('health').innerHTML.includes('NaN'));
  r('player.hp=.4;player.inv=1;damage(2,1,true);');close(r('player.hp'),.4,'Invulnerability still precedes armor');
@@ -31,7 +31,7 @@ for(const protectedBy of ['none','invulnerability','dash']){
 {
  const h=harness({prologue:true}),r=h.run;
  r('campServices.armorRank=5;player.x=3110;Prologue.update(1/120);Prologue.update(3);player.hp=5;player.inv=0;');
- assert.equal(r('Prologue.phase'),'battle');r('Prologue.hurt(2);');close(r('player.hp'),4,'Normal dream attack uses shared mitigation');
+ assert.equal(r('Prologue.phase'),'battle');r('Prologue.hurt(2);');close(r('player.hp'),3.5,'Normal dream attack uses player mitigation');
  r('player.inv=0;Prologue.hurt(player.hp,true);');assert.equal(r('Prologue.phase'),'death','Mandatory dream defeat remains unavoidable');assert.equal(r('player.hp'),0);
 }
 console.log('PASS: all player armor ranks, shield ordering, fractional health, immunity, lethal falls and actual low-HP execution/dream defeat paths.');

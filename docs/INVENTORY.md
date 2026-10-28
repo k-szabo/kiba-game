@@ -93,7 +93,7 @@ A `triuneSerpentTalisman` új, fegyvertől független felszereléshelyet kap. Fe
 
 ## A karakter aktuális harci értékei
 
-A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális HP-ját, a felszerelt fegyver normál és erős sebzését, valamint a páncélt és a százalékos sebzéscsökkentést. A számok a tényleges `playerAttackDamage`, `momoStats` és `Armor.reduction` függvényekből származnak; a táskában kijelölt, de nem felszerelt fegyver nem módosítja őket. A talizmán fel-/levétele, a kovácsfejlesztés és a gyógyítás után újrarendereléskor frissülnek. A Tábormester lelke a közös `ART_INVENTORY.items` katalógus része, teljes sziluettel és DPR-követő megjelenítéssel.
+A karakterkártya külön, kontrasztos panelen mutatja Momo aktuális/maximális HP-ját, a felszerelt fegyver normál és erős sebzését, valamint a páncélt és a százalékos sebzéscsökkentést. A számok a tényleges `playerAttackDamage`, `momoStats` és `Armor.playerReduction` függvényekből származnak; a táskában kijelölt, de nem felszerelt fegyver nem módosítja őket. A játékos görbéje `Armor.playerK=300`, az ellenfeleké külön marad. A talizmán fel-/levétele, a kovácsfejlesztés és a gyógyítás után újrarendereléskor frissülnek. A Tábormester lelke a közös `ART_INVENTORY.items` katalógus része, teljes sziluettel és DPR-követő megjelenítéssel.
 
 ## A Szekta Bukása tárgyai
 
@@ -102,3 +102,9 @@ A `highPriestessSoul` egyszeri lélektárgy és a halmozható `sectSeal` a köz�
 ## Fia megbízásának tárgyai
 
 A `priestessTalisman` védett questtárgy: leadáskor a történeti jelző megmarad, a `fiaTalismanCompleted` feltétel elfogyasztja a birtoklási nézetből. A `roastChicken` halmozható4HP-s gyógyító tárgy (`chickenCount`), inventoryból és a közös gyorshasználattal fogyasztható. A `kitsuneSoul` külön, egyszeri lélektárgy. Mindhárom az `ART_INVENTORY.items` katalógus és a natív `fia-items-v1.png` kontrasztos, DPR-követő rajzolását használja. A megszerzett passzív pajzs aktuális értéke és leírása a karakterkártyán olvasható.
+
+## Hannah lélek- és szívjutalma
+
+A `demonLordSoul` és `demonLordHeart` az árnyékvilág külön megszerzési jelzőiből épül fel; mindkettőhöz érvényes Hannah-győzelem szükséges. Az előbbi Akashnál 800 érméért eladható, az utóbbi védett történeti tárgy. A szív Fia közelében egyszer átadható; a `demonLordHeartGiven` közös `consumedBy` feltétellel rejti el a hordozott példányt, a megszerzés történetét megtartva.
+
+A `first-demon-lord-soul-v1.png` és `demon-lord-heart-v1.png` külön, eredeti alfás inventorygrafika. Az `ART_INVENTORY.items` teljes képet lefedő bejegyzései ugyanazt a DPR-, kontraszt- és kijelölési kezelést használják, mint más tárgyak. Korábbi kompatibilis Hannah-győzelem után a hiányzó tárgyjelzők pótlása nem ismétli az XP- vagy pontjutalmat. A [zikkurat fejlesztői referenciája](ZIGGURAT.md) írja le a pontos életciklust és mentési feltételeket.

@@ -14,7 +14,7 @@ for(const id of ['samuraiCamp','forgeInterior','herbalHut','mysticTent']){run("C
 
 // Scenery must cover the camera while remaining a distant, native-density layer.
 // Tall world coordinates and jumps must not reveal an edge or enlarge a tent.
-run("CampQuest.enter('samuraiCamp');window.campPaint=[];ctx.drawImage=(image,...rect)=>campPaint.push(rect);");
+run("CampQuest.enter('samuraiCamp');reducedMotion.matches=true;window.campPaint=[];ctx.drawImage=(image,...rect)=>campPaint.push(rect);");
 const geometry=run('JSON.stringify(platforms)');
 for(const width of [1280,1432,2560,3840])for(const x of [0,1500,4400-width])for(const y of [-300,500,1250]){
  run('viewW='+width+';camera='+Math.max(0,x)+';cameraY='+y+';campPaint=[];CampArt.backdrop();');

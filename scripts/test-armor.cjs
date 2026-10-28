@@ -30,4 +30,13 @@ for(const rating of [Number.MAX_SAFE_INTEGER,Number.MAX_VALUE]){
  assert(armor.damage(1,rating)>0,'Extreme finite armor cannot round ordinary damage to zero');
 }
 assert.equal(armor.damage(Number.MAX_VALUE,0),Number.MAX_VALUE);
-console.log('PASS: shared K=100 armor formula, documented examples, fractions, malformed inputs, diminishing returns and stable extremes.');
+assert.equal(armor.playerK,300);
+for(const [rating,reduction] of [[0,0],[20,1/16],[100,.25],[120,2/7],[145,29/89],[300,.5]]){
+ close(armor.playerReduction(rating),reduction,'Player protection at '+rating+' armor');
+ close(armor.playerDamage(12,rating),12*(1-reduction),'Player mitigated damage at '+rating+' armor');
+}
+for(const invalid of [undefined,null,NaN,Infinity,-Infinity,-1,'100',{},[],true]){assert.equal(armor.playerReduction(invalid),0);assert.equal(armor.playerDamage(5,invalid),5);}
+for(const invalid of [undefined,null,NaN,Infinity,-Infinity,-1,0,'5',{},[],true])assert.equal(armor.playerDamage(invalid,100),0);
+assert(armor.playerReduction(145)<1/3,'All current permanent player armor remains below one-third reduction');
+close(armor.reduction(400),.8,'Demon Slayer protection retains its original curve');
+console.log('PASS: independent K=100 enemy and K=300 player armor curves, fractions, malformed inputs, diminishing returns and stable extremes.');

@@ -10,7 +10,7 @@ function rgba(file){
   out[y*stride+x]=(raw[y*(stride+1)+x+1]+[0,a,b,(a+b)>>1,pa<=pb&&pa<=pc?a:pb<=pc?b:c][type])&255;
  }return {w,height,out};
 }
-for(const [name,definition,count]of [['fia',art.fia,4],['fox',art.fox,4],['hunter',art.hunter,8],['ninja',art.residents?.shadowNinja,1],['thief',art.residents?.shadowThief,1]]){
+for(const [name,definition,count]of [['fia',art.fia,4],['fox',art.fox,4],['deadFox',art.deadFox,1],['hunter',art.hunter,8],['ninja',art.residents?.shadowNinja,1],['thief',art.residents?.shadowThief,1]]){
  assert(definition,name+' registered');const px=rgba(path.join(__dirname,'..',manifest[definition.image]));assert.equal(definition.frames.length,count);const body=definition.frames[0].bodyHeight;
  for(const frame of definition.frames){
   assert.equal(frame.bodyHeight,body,'Pose changes never resize the actor body');assert(frame.x>=0&&frame.y>=0&&frame.x+frame.w<=px.w&&frame.y+frame.h<=px.height);

@@ -137,7 +137,7 @@ for key in ('momoNaginataNormal', 'momoNaginataHeavy', 'momoShieldNormal', 'momo
     pc['momo']['variants'][key] = {'paletteGroup': group('pc.momo.' + key, manifest[key], atlas['frames'][key], 'ART_FRAMES.' + key)}
 portrait = atlas['inventory']['momo']
 pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
-npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
+npcs = {'haru': {'name': 'Haru', 'role': 'father', 'paletteGroup': group('npc.haru', manifest['haruElder'], {'x': 0, 'y': 0, 'w': 1024, 'h': 1536}, 'HannahArt.haru')}}
 for name in ('daichi', 'natsu', 'sora', 'akash', 'smith', 'herbalist', 'enchanter', 'mayor'):
     definition = atlas['camp'][name]
     npcs[name] = {'name': name.capitalize(), 'role': 'merchant' if name == 'akash' else 'camp-survivor',
@@ -192,15 +192,17 @@ for faction, actions in atlas['frames']['animations'].items():
             key = faction + action.capitalize()
             identifier = f'npc.{faction}.{role}.{action}'
             variants[action] = {'paletteGroup': group(identifier, manifest[key], roles[role], f'ART_FRAMES.animations.{faction}.{action}.{role}')}
-        if faction == 'japan':
-            # Keep the v4 atlas as a historical reference; the shared renderer
-            # uses the new per-role sheets in every Japanese soldier location.
-            definition = atlas['japan'][role]
-            for action in ('walk', 'attack'):
-                identifier = f'npc.japan.{role}.{action}.v5'
-                variants['legacy' + action.capitalize()] = variants[action]
-                variants[action] = {'paletteGroup': group(identifier, manifest[definition['image']], definition[action], f'ART_JAPAN.{role}.{action}')}
         npcs[f'{faction}.{role}'] = {'faction': faction, 'role': role, 'variants': variants}
+
+
+for role in ('guard', 'archer', 'shield', 'mage'):
+    definition = atlas['japan'][role]
+    variants = {action: {'paletteGroup': group(f'npc.japan.{role}.{action}.v5', manifest[definition['image']], definition[action], f'ART_JAPAN.{role}.{action}')} for action in ('walk', 'attack')}
+    npcs[f'japan.{role}'] = {'faction': 'japan', 'role': role, 'variants': variants}
+
+dead_fox = atlas['kitsune'].get('deadFox')
+if dead_fox:
+    npcs['kitsune.fox']['deadPaletteGroup'] = group('npc.kitsune.fox.dead', manifest[dead_fox['image']], dead_fox['frames'], 'ART_KITSUNE.deadFox.frames')
 
 raised = atlas['japan']['raised']
 npcs['dungeon.raisedSamurai'] = {'role': 'summoned-guard', 'faction': 'necromancer', 'variants': {

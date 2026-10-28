@@ -23,6 +23,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
 | `assets/js/inventory.js` | Hátizsák, tárgyleírások és Momo felszerelési nézete. |
 | `assets/js/compass.js` | A birtokolt iránytű olvasható HUD-nézete; megnevezett fő cél, nyolc irány és közelség. |
+| `assets/js/cursor.js` | Állapotfüggő kurzorrejtés játék közben, mancskurzor a kezelőfelületen, játékbeli helyi menü tiltása pointer lock nélkül. |
 | `assets/js/merchant.js` | Akash kiszabadítása, bolt, érmék, fogyasztható étel és helyi minimap; [működés](MERCHANT.md). |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
@@ -54,6 +55,8 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
 | `assets/js/fia-quest.js`, `fia-conflict.js`, `fia-combat.js`, `fia-art.js` | Fia második megbízása, visszaállítható provokáció, tartós ellenségesség és passzív pajzs; [spoileres referencia](FIA-JOURNEY.md). |
+| `assets/js/ziggurat-maps.js`, `hannah-rules.js`, `hannah-combat.js`, `hannah-encounter.js`, `dawnblade.js`, `hannah-art.js` | Háromrészes zikkurat, Hannah harca, Haru kiszabadítása, Hajnalkard és tartós jutalmak; [spoileres referencia](ZIGGURAT.md). |
+| `assets/js/background-framing.js` | Az érintett festett belső terek és panorámák nézethez igazított, képarányt tartó méretezése; az animációt továbbra is a `background-motion.js` kezeli. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés, kompatibilis kiadások közötti megőrzés; [szabályok](SAVE-COMPATIBILITY.md). |
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
@@ -72,7 +75,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 
 Az `npm test` részeként a `scripts/check-portability.mjs` a követett és az új, nem ignorált szöveges projektfájlokat is átnézi személyes, abszolút helyi elérési utak után. Windows-meghajtókra, UNC-megosztásokra, felhasználói és munkamappákra, illetve konkrét `file://` címekre hibát jelez; a relatív hivatkozások, környezeti változók, helykitöltős példák és webcímek megmaradhatnak. A bináris képeket nem szövegként kezeli. A kiinduló audit nem talált törlendő gépfüggő útvonalat; a vizsgált PNG-k szöveges/EXIF metaadatot sem tartalmaztak. Az ellenőrzés Git nélküli forrásarchívumból is futtatható.
 
-A szintlimit, a tulajdonságkorlát és az XP-görbe közös forrása a `levels.js` fájl `PROGRESSION_RULES` táblája (30 szint, tulajdonságonként 12 fejlesztés, `60 + (szint − 1) × 35` XP a következő szinthez). Ezt használja a fejlődés, a mentésvalidátor és a dev-szintállító. A teljes pontkeret továbbra is `szint − 1 + bossbónusz`; a 30. szinthez 15 950 XP kell. A plafon után a részleges XP nulla, a teljes megszerzett XP megmarad a biztonságos egész számtartományban.
+A szintlimit, a tulajdonságkorlát és az XP-görbe közös forrása a `levels.js` fájl `PROGRESSION_RULES` táblája (30 szint; HP és sebzés csak a megszerzett pontkeretig, szellemlépés 7 és Kiba-pajzs 12 fokozatig; `60 + (szint − 1) × 35` XP a következő szinthez). Ezt használja a fejlődés, a mentésvalidátor és a dev-szintállító. A teljes pontkeret továbbra is `szint − 1 + bossbónusz`; a 30. szinthez 15 950 XP kell. A plafon után a részleges XP nulla, a teljes megszerzett XP megmarad a biztonságos egész számtartományban.
 
 A `combat.js` `ENEMY_TIERS` táblája a normál ellenfelek világonként rögzített HP-, sebzés- és XP-szorzóit kezeli; nem Momo szintjét követi. A HP-szorzók 1 / 1,35 / 1,7 / 2,05 (felfelé kerekítve), a sebzés 1 / 1 / 2 / 2, az XP-szorzók 1 / 1,4 / 1,8 / 2,2 (egészre kerekítve). Az idézett szolgák és a külön boss-/miniboss-mechanikák saját szabályai megmaradnak. A `test-level-cap.cjs` a tényleges XP-küszöböket, költést, halált/folytatást, illetve a normál ellenfelek HP-ját, érintését, közelharci sebzését, lövedékadatait és egyszeri XP-jét ellenőrzi. A mentéstesztek az összes 1–30-as szintet és bossbónusz-kombinációt, valamint titkosított oda-vissza mentést is lefednek.
 
@@ -84,7 +87,11 @@ A gyorsutazási katalógus virtuális `travelOnly` útvonalat is tartalmazhat, a
 
 A főbossok jutalmait a `levels.js` megosztott `BOSS_REWARDS` táblája határozza meg. A `bossRewardClaimed` jelző adja az egyszeri XP- és pontcsomag jogcímét; a lélektárgy birtoklása külön jelző. A `normalizeProgression(data, flags)` hívásokból nem hagyható el a világállapot, különben a bossokból nyert statpontkeret elveszne. A `test-boss-rewards.cjs` a győzelmet, ismételt hívást, végső angyalfázist és a folytatást, a `test-boss-reward-saves.cjs` a pontkeretet és a hibás mentéseket, a `test-save-release.cjs` a titkosított jutalommentést ellenőrzi. A teljes pontköltségvetés `szint − 1 + megszerzett bossbónusz`; a szint- és statlimitek ettől nem változnak.
 
-A Yomi-boss legyőzése és a szellemlépés megszerzése független progresszió. A Hajnalkardot a `defeated[1]` jelzi; a dash-t normál játékban az oltárinterakció adja, tesztmódban a `DevAbilities`. A mentésvalidátor elfogadja a Yomi utáni állapotot és a következő pályát dash nélkül is, de a korábbi bossok legyőzését és a kötelező küldetésjelzőket továbbra is ellenőrzi. Ezt a `test-v06.cjs` bossgyőzelem, halál, folytatás, torii, visszautazás és későbbi oltárhasználat útvonalon ellenőrzi; a `test-save-release.cjs` valódi WebCryptóval, szimulált IndexedDB mellett teszteli a titkosított oda-vissza mentést.
+A Yomi-boss legyőzése és a szellemlépés megszerzése független progresszió. A Yomi utáni fegyverbónuszt a `defeated[1]` jelzi; ez nem a később, Harutól kapott `dawnblade` ultimate. A dash-t normál játékban az oltárinterakció adja, tesztmódban a `DevAbilities`. A mentésvalidátor elfogadja a Yomi utáni állapotot és a következő pályát dash nélkül is, de a korábbi bossok legyőzését és a kötelező küldetésjelzőket továbbra is ellenőrzi. Ezt a `test-v06.cjs` bossgyőzelem, halál, folytatás, torii, visszautazás és későbbi oltárhasználat útvonalon ellenőrzi; a `test-save-release.cjs` valódi WebCryptóval, szimulált IndexedDB mellett teszteli a titkosított oda-vissza mentést.
+
+Momo páncélja az `Armor.playerDamage` / `Armor.playerReduction` párost használja, `playerK=300` értékkel; a Démonölő és más NPC-k `K=100` görbéje külön marad. A kovács és az inventory százaléka ugyanabból a játékosképletből származzon. Részletek: [ARMOR.md](ARMOR.md).
+
+Hannah integrációjánál a `test-hannah-combat.cjs` a valódi támadási ablakokat, az azokból képzett előjelzéseket, a visszatérő rohamot, a 80%-os visszhangot és az arénahatárt is ellenőrzi. A `test-hannah-polish.cjs` valódi HP-küszöbből indítja a kiszabadítást: Haru 1,8 másodpercig kötve marad, a jelenet 3,6 másodperces, és a Hajnalkard csak az ébredési párbeszéd után indulhat. A teszt a késleltetett befejezést, a véges ultimate-rajzkoordinátákat, Fia történeti és élő jelenlétének különválasztását, az egyszeri szívátadást és a felső szentély pontos régi checkpointjának migrációját is vizsgálja. A VM-ellenőrzés nem helyettesíti a látvány, a valódi input és az IndexedDB-újratöltés böngészős bizonyítékát.
 
 A workflow Node.js 24-et használ. A repository gyökeréből az ellenőrzések külső npm-csomagok nélkül futtathatók:
 
@@ -255,3 +262,5 @@ A `test-arena-combat.cjs` és `test-arena-challenge.cjs` célzott tesztek a harc
 ## Zikkurat és Hajnalkard
 
 A három új árnyékvilági oldalhelyszín, Hannah állapotgépe, a történeti ultimate és az ellenőrzések részletei a [zikkurat technikai referenciában](ZIGGURAT.md) találhatók. A kompatibilitási korszak változatlan; az új mérföldkövek és pihenők hozzáadott, opcionális haladást jelentenek.
+
+A szellemlépés régi 8–12. fokozatát a szigorú mentésvalidáció után a 7. fokozatra normalizáljuk, az összes felszabaduló pont visszakerül a keretbe. Az XP és a kiosztott plusz szabad pontok összege továbbra is pontosan ellenőrzött. Nagy HP-nál a HUD tömör, lokalizált számlálót használ, hogy a menügombok elérhetők maradjanak.

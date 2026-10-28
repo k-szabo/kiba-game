@@ -6,6 +6,7 @@ const HannahRules=(()=>{
   phase1:Object.freeze({maxHp:1200,gates:Object.freeze([gate('transform',.1)])}),
   phase2:Object.freeze({maxHp:1600,gates:Object.freeze([gate('drain60',.6),gate('drain40',.4),gate('rescue',.1)])}),
   drain:Object.freeze({duration:8,interruptMultiplier:6,interruptMinimum:12,haruMaxHp:50,haruPerSecond:4}),
+  combat:Object.freeze({echoDamageMultiplier:.8,followUpMargin:.12,echoMargin:.15,returnTravel:.42,phase1Pattern:Object.freeze(['combo','jump','dashReturn','summon','crossCombo','riftBurst']),phase2Pattern:Object.freeze(['combo','jump','dashReturn','crossCombo','riftBurst'])}),
   ultimate:Object.freeze({damageMultiplier:8,cooldown:60,recoil:10,recoilFloor:1})
  });
  const progress=Object.freeze({awakening:'dawnblade',defeated:'hannahDefeated',fiaRescue:'hannahFiaRescue'});

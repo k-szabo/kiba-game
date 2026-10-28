@@ -16,16 +16,16 @@ ROOT = Path(__file__).resolve().parents[1]
 HELPERS = runpy.run_path(str(ROOT / 'scripts/register-shadow-art.py'))
 components, polygon = HELPERS['components'], HELPERS['polygon']
 SPECS = {
-    'walk': ('hannahWalk', 'enemies/hannah-walk-v1.png', 390,
+    'walk': ('hannahWalk', 'enemies/hannah-walk-v2.png', 390,
              [(315, 493), (823, 493), (1311, 493),
               (338, 998), (817, 998), (1305, 998)]),
-    'combo': ('hannahCombo', 'enemies/hannah-combo-v1.png', 390,
+    'combo': ('hannahCombo', 'enemies/hannah-combo-v2.png', 390,
               [(260, 510), (767, 510), (1241, 510),
                (297, 988), (879, 990), (1333, 990)]),
     'jump': ('hannahJump', 'enemies/hannah-jump-v1.png', 390,
              [(205, 497), (753, 481), (1282, 459),
               (173, 938), (696, 990), (1291, 998)]),
-    'ritual': ('hannahRitual', 'enemies/hannah-ritual-v1.png', 390,
+    'ritual': ('hannahRitual', 'enemies/hannah-ritual-v2.png', 390,
                [(292, 507), (766, 507), (1280, 511),
                 (246, 991), (760, 988), (1270, 967)]),
     'dawnblade': ('momoDawnblade', 'momo-dawnblade-v1.png', 340,
@@ -85,10 +85,6 @@ def register(name, spec):
         assigned[owner].append(group)
     frames = []
     for index, owned in enumerate(assigned):
-        # The generated top-middle ritual pose contains a third hand. It is
-        # deliberately absent from runtime metadata; the other five keep order.
-        if name == 'ritual' and index == 1:
-            continue
         outlines, bounds = [], []
         for group in owned:
             rows = rows_for(group)
@@ -111,14 +107,18 @@ def register(name, spec):
         frames.append(dict(x=x0, y=y0, w=x1-x0, h=y1-y0,
                            anchorX=ax, anchorY=ay, bodyHeight=body,
                            sourceFrame=index, visibleBounds=ink, outlines=outlines))
+    # QA-HANNAH-ART-001 r1: only sources 2 and 5 have unambiguous anatomy.
+    # Hold each alternate step for three existing 10 FPS ticks.
+    if name == 'walk':
+        frames = [frames[index] for index in [2, 2, 2, 5, 5, 5]]
     return dict(image=image_key, facing=1, frames=frames)
 
 
 def build_atlas():
     atlas = {name: register(name, spec) for name, spec in SPECS.items()}
-    assert [frame['sourceFrame'] for frame in atlas['ritual']['frames']] == [0, 2, 3, 4, 5]
-    assert all(len(spec['frames']) == (5 if name == 'ritual' else 6)
-               for name, spec in atlas.items())
+    assert [frame['sourceFrame'] for frame in atlas['walk']['frames']] == [2, 2, 2, 5, 5, 5]
+    assert [frame['sourceFrame'] for frame in atlas['ritual']['frames']] == list(range(6))
+    assert all(len(spec['frames']) == 6 for spec in atlas.values())
     return atlas
 
 
@@ -139,7 +139,7 @@ def main():
         assert target.read_text(encoding='utf-8') == result, 'Hannah atlas registration is stale'
     else:
         target.write_text(result, encoding='utf-8', newline='\n')
-    print('PASS: 29 isolated alpha-preserving poses, full weapons/local effects, explicit boot anchors and stable body scales; unsafe ritual pose excluded.')
+    print('PASS: 30 isolated alpha-preserving poses, full weapons/local effects, explicit boot anchors and stable body scales.')
 
 
 if __name__ == '__main__':

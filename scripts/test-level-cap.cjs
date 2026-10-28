@@ -25,16 +25,16 @@ for(const bad of ['NaN','Infinity','-1','0','.5','Number.MAX_SAFE_INTEGER+1']){r
 r('abilities[1]=true;initPlayer(checkpoint);state="play";showTraining();');
 for(const [stat,count] of [['vitality',12],['strength',12],['spirit',5]]){
  for(let i=0;i<count;i++)assert(r(`spendPoint('${stat}')`));
- if(count===12)assert(!r(`spendPoint('${stat}')`));
+
 }
 assert.equal(h.snap().progression.points,0);assert.equal(h.snap().player.maxHp,17);assert.equal(h.snap().stats.damage,8);
 assert(!r("spendPoint('spirit')"));validate(JSON.parse(r('JSON.stringify(saved)')));
 const allocated=r('JSON.stringify(progression)');
 r('closeTraining();revive();mainMenu();startGame(true);');assert.equal(r('JSON.stringify(progression)'),allocated);
 assert.equal(h.snap().player.maxHp,17);
-// Spirit also accepts 12 legitimate upgrades; large lifetime XP is never truncated by normalization.
+// Legacy spirit ranks beyond the effective cap refund their points; lifetime XP is preserved.
 r('progression=normalizeProgression({level:30,totalXp:15000000,stats:{spirit:12}},flags);');
-assert.equal(h.snap().progression.totalXp,15000000);assert.equal(h.snap().progression.stats.spirit,12);assert.equal(h.snap().progression.points,17);
+assert.equal(h.snap().progression.totalXp,15000000);assert.equal(h.snap().progression.stats.spirit,7);assert.equal(h.snap().progression.points,22);
 r('progression.totalXp=Number.MAX_SAFE_INTEGER-2;awardXP(9);');assert.equal(h.snap().progression.totalXp,Number.MAX_SAFE_INTEGER);validate(JSON.parse(r('JSON.stringify(saved)')));
 r('awardXP(1);');assert.equal(h.snap().progression.totalXp,Number.MAX_SAFE_INTEGER);
 // Realm difficulty is fixed at spawn, independent of Momo's level, and XP is awarded once.
@@ -57,4 +57,4 @@ assert.equal(r('returning.maxHp'),4);assert.equal(r('returning.xpValue'),20);
 // Summons retain their original damage/8 XP, including in a late-world test fight.
 r("enterRealm(3);progression=freshProgression();var minion=createEnemy({id:'summon',x:level.start.x,y:level.start.y,kind:'guard',patrol:50,summoned:true});minion.hp=0;killEnemy(minion);");
 assert.equal(r('minion.maxHp'),4);assert.equal(r('minion.damageValue'),1);assert.equal(h.snap().progression.totalXp,8);
-console.log('PASS: ordinary XP reaches all 30 thresholds, cap/bulk/overflow awards, complete 29-point training, stat12, death/reload retention and fixed realm enemy health/damage/XP including unchanged summons.');
+console.log('PASS: ordinary XP reaches all 30 thresholds, cap/bulk/overflow awards, complete 29-point training, uncapped health/damage and seven-rank dash, death/reload retention and fixed realm enemy health/damage/XP including unchanged summons.');

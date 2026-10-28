@@ -23,6 +23,8 @@ Az érmék a kereskedés pénzneme. A zsákmány automatikusan bekerül a pénzt
 
 A hús vásárláskor nem hat. Elfogyasztáskor egyszer sorsol: ⅔ eséllyel +2 HP, ⅓ eséllyel −1 HP; az eredmény 1 és a maximális HP között marad. A darab akkor is elfogy, ha a korlát miatt a HP nem változik. Szünetben, dialógusban, boltban, más menüben és a prológusban a gyorshasználat tiltott. Az inventory külön fogyasztógombja csak a kiválasztott húsra hat, a háttérben a játék fagyasztva marad. Az utolsó darab után a kijelölés és a fókusz érvényes tárgyra lép.
 
+A hús utáni HP-visszajelzés a közös `CampHealth.number` formázóját használja az aktuális és a maximális értékre is. A páncél miatt keletkezett tört HP szám marad a játékmenetben; a kijelzés nem írja vissza a kerekített szöveget a karakterállapotba.
+
 A minimap az aktuális helyszín közeli párkányait, a már ismert szentélyeket és Momo helyét rajzolja. A titkos területek felfedezésig rejtve maradnak; nincs boss-, tárgy- vagy fogolyjelölő. A nagy térkép és a gyorsutazás vásárlás nélkül is elérhető. A minimap DPR-érzékeny, a játék szünetében nem frissül, a főmenüben és az álomban rejtett.
 
 ## Állapot, UI és bővítés
@@ -41,7 +43,9 @@ Grafikai forrás: hat önálló, jóváhagyott RGBA PNG az `assets/images/npcs/`
 
 ## Iránytű-kijelzés
 
-A `compass.js` tiszta HUD-nézet a `nextObjective()` pontjára és jóváhagyott, meglévő célnevére. Momo középvonalához és talppontjához viszonyít, nyolc irányt különböztet meg. 90 világpixel vízszintes és85 függőleges távolságon belül pipa és közelségi szöveg jelenik meg. A jelzés irányt mutat; nem útvonalkereső és nem fed fel titkos mellékcélokat. A tábor és a csarnok `compass:false` célja üresjárati jelzést ad. A megvásárolt és devben adott tárgy ugyanazt a nézetet kapcsolja be.
+A `compass.js` a `nextObjective()` közös célját jeleníti meg; a `Compass.objective(localObjective())` a tartós fő történeti mérföldkövekhez igazítja a helyi javaslatot. A dungeon, az aréna és az aktív mellékhelyszínek saját azonnali útmutatója megmarad. Egy már befejezett birodalomba visszatérve a főút a következő szükséges helyszínt követi, Hannah után pedig az egyelőre elért történeti végpontot jelzi. Másik helyszín koordinátájához nem rajzol hamis helyi iránynyilat: a cél neve és külön távoli jelzés jelenik meg.
+
+Helyi cél esetén Momo középvonalához és talppontjához viszonyít, nyolc irányt különböztet meg. 90 világpixel vízszintes és 85 függőleges távolságon belül pipa és közelségi szöveg jelenik meg. A jelzés irányt mutat; nem útvonalkereső és nem fed fel titkos mellékcélokat. Az irány nélküli `compass:false` cél üresjárati vagy történeti végpontjelzést ad. A megvásárolt és devben adott tárgy ugyanazt a nézetet kapcsolja be.
 
 A `journeyHUD` függőleges elrendezése a feladatot és a birtokolt iránytűt egymás alá teszi, elkerülve a korábbi rögzített pozíciók átfedését. A kijelző a támogatott, legalább 1280×720-as asztali nézetben ellenőrizendő, a telegráfok szabadon hagyásával. Nincs forgó/pulzáló animáció; pause alatt a kijelzés változatlan, nyelvváltás a szöveget frissíti. A festett iránytű eredeti képét használja, új bitmap vagy képátalakítás nincs.
 
@@ -67,6 +71,8 @@ A bolt eladásgombja az inventoryt nyitja meg. Eladás csak a kiszabadított Aka
 | Kis útitérkép | 360 | 140 |
 | Telefontok | 1500 | 50 |
 | Esküszegő / Yomi-őrző / szeráf / őrült pap lelke | — | 200 / 300 / 500 / 600 |
+| Az első démon lord lelke | — | 800 |
+| Démon lord szíve | — | Nem eladható; Fiának átadható |
 | Kígyópikkelyek / Három birodalom talizmánja | — | Nem eladható |
 | Daisy / Démonölő számszeríja | — | 120 / 300 |
 

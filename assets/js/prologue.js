@@ -50,12 +50,12 @@ const Prologue=(()=>{
     tone(48,1.5,'sawtooth',.025);
   }
   function hurt(amount,unavoidable=false,bypassArmor=false){
-    if(DevImmortality.active)return;
-    if(phase!=='battle'||!unavoidable&&player.inv>0)return;
-    const received=unavoidable||bypassArmor?amount:Armor.damage(amount,momoStats().armor);
+    if(DevImmortality.active)return false;
+    if(phase!=='battle'||!unavoidable&&player.inv>0)return false;
+    const received=unavoidable||bypassArmor?amount:Armor.playerDamage(amount,momoStats().armor);
     const before=player.hp;player.hp=Math.max(0,player.hp-received);DevDamage.record('incoming',player,before,player.hp);player.inv=1.15;shake=reducedMotion.matches?0:.15;
     burst(player.x+21,player.y+30,'#d6a4f5',18);tone(80,.25,'sawtooth',.03);
-    if(!player.hp)lose();else hud();
+    if(!player.hp)lose();else hud();return true;
   }
   function hit(amount,box){
     if(phase!=='battle'||boss.inv>0||box&&!overlap(box,boss)||!Number.isFinite(amount)||amount<=0)return false;

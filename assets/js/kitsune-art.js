@@ -28,9 +28,8 @@ const KitsuneArt=(()=>{
  function backdrop(){
   const a=art()?.den;if(!a)return;
   const images=a.panels.map(key=>Visuals.images[key]);if(images.some(image=>!image?.complete||!image.naturalWidth))return;
-  const overlap=a.overlap??.06,sourceWidth=a.w*(images.length-overlap*(images.length-1)),s=level.width/sourceWidth,step=a.w*s*(1-overlap),top=level.start.y-a.groundY*s-cameraY;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#161120';ctx.fillRect(0,0,viewW,H);
-  images.forEach((image,index)=>BackgroundMotion.draw(panelSource(image,index>0),index*step-camera,top,a.w*s,a.h*s));ctx.restore();
+  BackgroundFraming.panels(images,(image,index)=>panelSource(image,index>0),{overlap:(a.overlap??.06)*a.w/a.h});ctx.restore();
  }
  function depthsBackdrop(){
   const a=art()?.depths,image=Visuals.images[a?.image],alpha=clamp((cameraY-1300)/400,0,1);
@@ -47,7 +46,7 @@ const KitsuneArt=(()=>{
  function scenery(){
   if(Prologue.active||state==='menu')return;
   const a=art();
-  if(level===shadowRealm&&defeated[3])Visuals.campPathMarker(level.denEntrance,I18n.t('fia.den.name'));
+  if(level===shadowRealm&&sideLocationUnlocked('shadowDen',flags,defeated))Visuals.campPathMarker(level.denEntrance,I18n.t('fia.den.name'));
   if(KitsuneQuest.den()){
    for(const npc of level.npcs){
     if(!campNPCVisible(npc)||!visiblePoint(npc,210))continue;
@@ -64,7 +63,8 @@ const KitsuneArt=(()=>{
    else stamp(a?.fox,1+Math.floor((t-.85)*7)%3,departing.x,departing.y,53);
    ctx.restore();return;
   }
-  if(KitsuneQuest.missed()||KitsuneQuest.rescued()&&!KitsuneQuest.rescueScene)return;
+  if(KitsuneQuest.missed()){stamp(a?.deadFox,0,level.fia.x,level.fia.y,53);return;}
+  if(KitsuneQuest.rescued()&&!KitsuneQuest.rescueScene)return;
   stamp(a?.fia,0,level.fia.x,level.fia.y,136);
   if(!KitsuneQuest.rescued()){
    const cage=ART_FRAMES.props.cage,image=Visuals.images.props;

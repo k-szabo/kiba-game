@@ -1,7 +1,7 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
 // Shared progression rules also load before the standalone save validator.
-const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>60+(n-1)*35});
+const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,xpForLevel:n=>60+(n-1)*35});
 const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
@@ -9,7 +9,7 @@ const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  dungeonSeal:{price:50,stack:true},sectSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},highPriestessSoul:{price:400,realm:0},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
- seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},arenaSerpentScale:{price:80,realm:3},
+ seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},demonLordSoul:{price:800,realm:3},arenaSerpentScale:{price:80,realm:3},
  daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
 }).map(([id,product])=>[id,Object.freeze(product)])));
 // Earned reward flags, rather than held items or replayable encounters, own
@@ -411,7 +411,7 @@ Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonHunter',name:'fia.hun
 zone(shadowPrison,'zen.prison.name',0,0,5400,1900);
 zone(shadowPrison,'fia.prison.rest',0,1900,5400,820);
 shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued','guardian:prisonHunter','fiaSeen','fiaRescued','fiaMissed');
-// This refuge opens after the priest; Fia's absence never blocks its entrance.
+// This refuge requires both the priest's defeat and Fia's rescue.
 shadowRealm.denEntrance={x:11000,y:1200};
 const shadowDen=makeLevel('shadowDen',2800,1080,{x:260,y:820});
 shadowDen.name='fia.den.name';shadowDen.enemyRealm=3;
@@ -531,7 +531,7 @@ const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const {zigguratApproach,zigguratInterior,zigguratSummit}=createZigguratMaps({makeLevel,ledge,rest,foe,zone});
 shadowRealm.zigguratEntrance={x:10680,y:1200};
-shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','discovered:hannahCourt','guardian:Hannah');
+shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','demonLordSoul','demonLordHeart','demonLordHeartGiven','discovered:hannahCourt','guardian:Hannah');
 const SIDE_LOCATIONS=Object.freeze({
  zigguratApproach:Object.freeze({map:zigguratApproach,realm:3,requiredFlags:Object.freeze([])}),
  zigguratInterior:Object.freeze({map:zigguratInterior,realm:3,requiredFlags:Object.freeze([])}),
@@ -545,7 +545,7 @@ const SIDE_LOCATIONS=Object.freeze({
  shadowArena:Object.freeze({map:shadowArena,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaQuestAccepted'])}),
  fiaChambers:Object.freeze({map:fiaChambers,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaChampion'])}),
  shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
- shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze([])}),
+ shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze(['fiaRescued'])}),
  forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),
  samuraiCamp:Object.freeze({map:samuraiCamp,realm:0,requiredFlags:Object.freeze(['campQuestAccepted'])}),
  forgeInterior:Object.freeze({map:forgeInterior,realm:0,requiredFlags:Object.freeze(['smithRescued'])}),

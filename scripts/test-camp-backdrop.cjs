@@ -15,6 +15,8 @@ const original=h.sandbox.document.createElement;
 h.sandbox.document.createElement=name=>{const el=original(name);if(name==='canvas')surfaces.push(el);return el;};
 ctx.drawImage=(...args)=>draws.push(args);
 r("DevTools.open();DevSession.begin();DevTeleport.teleport({realm:'forestCamp',rest:'forestCamp'});DevTools.close();camera=500.5;cameraY=300.25;Visuals.campBackdrop();");
+// Probe creation is deliberately budgeted across draws; warm the three sources.
+r('for(let i=0;i<8;i++)Visuals.campBackdrop()');draws.length=0;r('Visuals.campBackdrop()');
 const native=surfaces.filter(s=>s.width===art.panelSize&&s.height===art.panelSize),cachedCount=surfaces.length;
 assert.equal(native.length,2,'Only two native overlap masks are cached');
 assert(surfaces.every(s=>native.includes(s)||s.width<=512),'Animation sampling does not replace native overlap resolution');

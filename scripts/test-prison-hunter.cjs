@@ -54,10 +54,10 @@ for(const state of ['pause','dialog','inventory','developer','map']){
  r('persist();DevSession.end();');assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('window.__saveSnapshots.length'),writes,'Dev Hunter replay leaves the normal save untouched');
 }
 // The second refuge belongs to realm3 and returns to a canonical main shrine,
-// without granting or requiring any optional rescue state.
+// with the rescued-only entrance prerequisite.
 {
  const h=setup(),r=h.run;assert(!r("CampQuest.enter('shadowDen')"),'The priest gates the new refuge');
- r('defeated[3]=true;');assert(r("CampQuest.enter('shadowDen')"));assert.equal(r('realm'),3);assert.equal(r('checkpoint.id'),'shadowDenCamp');assert.doesNotThrow(()=>validate(r('saved')));
+ r('defeated[3]=true;');assert(!r("CampQuest.enter('shadowDen')"));r("flags[3].push('guardian:prisonHunter','fiaSeen','fiaRescued');");assert(r("CampQuest.enter('shadowDen')"));assert.equal(r('realm'),3);assert.equal(r('checkpoint.id'),'shadowDenCamp');assert.doesNotThrow(()=>validate(r('saved')));
  r('initPlayer(level.returnPoint);');assert(r('CampQuest.leave()'));assert.equal(r('level.id'),'shadowRealm');assert.equal(r('checkpoint.id'),'cathedral');assert.equal(r('player.x+player.w/2'),r('shadowDen.returnDestination.x'));
  assert.deepEqual(JSON.parse(r('JSON.stringify(checkpoint)')),JSON.parse(r("JSON.stringify(levels[3].rests.find(rest=>rest.id==='cathedral'))")),'Returned checkpoint is the exact canonical cathedral rest');assert.doesNotThrow(()=>validate(r('saved')));
 }

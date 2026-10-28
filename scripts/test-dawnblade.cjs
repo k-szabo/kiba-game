@@ -67,7 +67,7 @@ for(const hp of [1,5,10,10.5,17]){
   r('finalHannah.inv=0;HannahCombat.hit(finalHannah,{...finalHannah},100000);');assert.equal(r('finalHannah.mode'),'combat');
  }
  r('finalHannah.inv=0;HannahCombat.hit(finalHannah,{...finalHannah},100000);');assert.equal(r('state'),'dialog');h.dismiss();
- assert.equal(r('finalHannah.mode'),'finisher');assert(r('Dawnblade.owned()'));assert(r('Dawnblade.ready()'));
+ frames(h,3.7);h.dismiss();assert.equal(r('finalHannah.mode'),'finisher');assert(r('Dawnblade.owned()'));assert(r('Dawnblade.ready()'));
  r('HannahCombat.hit(finalHannah,{...finalHannah},100000);');assert(!r('finalHannah.dead'),'Normal damage cannot skip the required ultimate');
  ultimate(h);frames(h,.6);assert(r('finalHannah.dead'));assert(r("flags[3].includes('hannahDefeated')&&flags[3].includes('guardian:Hannah')"));
  assert.equal(r("flags[3].filter(id=>id==='dawnblade').length"),1,'Awakening remains a single permanent flag');

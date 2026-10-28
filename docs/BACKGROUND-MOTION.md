@@ -6,6 +6,18 @@ Az új részletek kézzel kijelölt területei befelé halványulnak. Yomi lámp
 
 `BackgroundMotion.draw(image, ...drawImageArgs)` a háttérrajzoló helyeken használatos, szereplőkön és terepsprite-okon nem. Ugyanazokat a kivágási és célkoordinátákat követi, így a vágott, tükrözött és áttetsző panel is illeszkedik. A panelgyorsítótár `BackgroundMotion.alias(surface, source)` hívása őrzi meg a forráskép azonosságát és a már meglévő peremhalványítást.
 
+## Képkivágás és természetes lépték
+
+A `background-framing.js` külön kezeli az érintett hátterek méretezését. A `BackgroundFraming.cover` a natív képarányt megtartva a teljes nézetet lefedi; a vízszintes kameramozgás csak a kilógó képrészt járja be, nem nagyítja a képet a pálya teljes szélességére. Az egypaneles dungeonhátterek függőleges illesztése külön aránnyal szabályozható.
+
+A kovács, herbalista és bűvölő belső tere a `ground` / `floor` paraméterrel a forrásfestmény talajpontját az aktuális világbeli padlóhoz rögzíti. Az építészet egyenletesen skálázódik; ha alatta külön fedés kell, csak a forrás padlórésze folytatódik a képernyő aljáig, ugyanazzal a vízszintes vetítéssel. A klippelt kiegészítés nem rajzolja újra vagy nyújtja meg a falakat, és a közös A/B animációt használja. Így a karakterek a festett talajon állnak, nem a háttér bútorain lebegnek.
+
+A `BackgroundFraming.panels` az Árnyékzug és az első dungeon előudvarának teljes panelcsoportját közös magassággal és átfedéssel illeszti. A normált kamerahelyzet a teljes panoráma szabad tartományát járja be. A meglévő áttetsző peremeket a hívó által adott forrásvászon és az alias őrzi meg, így az A/B animáció ugyanarra a maszkolt képre kerül. Új panelnél ellenőrizni kell a képarányt, az átfedési mértékegységet, mindkét szélső kameraállást és az alsó képszél fedését.
+
+Az aréna szándékos kivétel: saját panorámavetítése legfeljebb a kamera vízszintes mozgásának 18%-át és függőleges mozgásának 8%-át követi; csökkentett mozgás mellett áll. Csak a szükséges fedési méretet használja, a korábbi plusz magasság nélkül. Fia lakosztályának bútorai pedig a világ részei: a saját vetítésük egy az egyben követi a világkamerát, stabil talajregisztrációval. Ezeket a helyszíneket nem szabad általános normált panorámára vagy képernyőhöz kötött coverre cserélni; támadás, ugrás, szünet és csökkentett mozgás közben is meg kell tartani a meglévő stabilitási invariánsokat.
+
+A zikkurat saját rajzolója ugyancsak a natív képarány és a nézet lefedéséből számol; a korábbi, extra magasság miatti nagyítás megszűnt. A felső és viharos csarnok festménye továbbra is a jelenet padlóemeléséhez igazodik. A képkivágás változása nem módosítja a platformokat, útvonalakat vagy az animáció önálló óráját. A többi helyszín megtartja a saját, már kialakított illesztését.
+
 A közös `update()` egyszer, aktív játékképkockánként lépteti az önálló órát, még a prológus külön frissítése előtt. Szünet, dialógus, térkép, inventory, fejlesztés, dev panel és túl kicsi nézet közben nem telik. A jelenet inicializálása törli a múló fázist; a csökkentett mozgás beállítás mindig az eredeti, statikus festményt mutatja. A rajzolás nem módosítja az órát vagy a játékmenetet.
 
 A fő birodalmak, a szentély- és barlanghátterek, az erdei menedék, a szolgáltatások, a börtön, az Árnyékzug/arénája/lakosztálya és mindkét dungeon ugyanazt a réteget használja. A képek hiánya vagy egy nem olvasható Canvas esetén az eredeti festmény marad a visszaesési megoldás. A maszkok memóriában, megtartott gyorsítótár-bejegyzésenként készülnek; sem a mentés, sem a tartós képcache nem tartalmazza őket.

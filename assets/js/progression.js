@@ -18,7 +18,7 @@ function normalizeProgression(data,worldFlags=[]) {
   if(!data||typeof data!=='object')return out;
   out.level=integer(data.level,1,LEVEL_LIMIT);
   let budget=out.level-1+bossBonusPoints(worldFlags);
-  for(const key of Object.keys(out.stats)){out.stats[key]=key==='shield'&&!worldFlags[3]?.includes('kibaShield')?0:integer(data.stats?.[key],0,Math.min(STAT_LIMIT,budget));budget-=out.stats[key];}
+  for(const key of Object.keys(out.stats)){out.stats[key]=key==='shield'&&!worldFlags[3]?.includes('kibaShield')?0:integer(data.stats?.[key],0,Math.min(PROGRESSION_RULES.statLimitFor(key),budget));budget-=out.stats[key];}
   out.points=budget;
   out.xp=out.level===LEVEL_LIMIT?0:integer(data.xp,0,xpForLevel(out.level)-1);
   out.totalXp=integer(data.totalXp,0,Number.MAX_SAFE_INTEGER);
@@ -68,12 +68,12 @@ function refreshTraining() {
   if(owned)$('shieldValue').textContent=I18n.format('ability.kibaShield.training.value',[FiaConflict.number(shield.capacity),FiaConflict.number(shield.recharge)]);
   for(const key of ['vitality','strength','spirit','shield']){
     const locked=key==='spirit'&&!abilities[1]||key==='shield'&&!owned;
-    $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=STAT_LIMIT;
-    $('train-'+key).textContent=I18n.t(locked?I18n.t("text.ability.required"):progression.stats[key]>=STAT_LIMIT?I18n.t("text.maximum"):I18n.t("text.1.point"));
+    $('train-'+key).disabled=locked||progression.points<=0||progression.stats[key]>=PROGRESSION_RULES.statLimitFor(key);
+    $('train-'+key).textContent=I18n.t(locked?I18n.t("text.ability.required"):progression.stats[key]>=PROGRESSION_RULES.statLimitFor(key)?I18n.t("text.maximum"):I18n.t("text.1.point"));
   }
 }
 function spendPoint(key) {
-  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||key==='spirit'&&!abilities[1]||key==='shield'&&!FiaConflict.owned()||progression.points<=0||progression.stats[key]>=STAT_LIMIT)return false;
+  if(state!=='training'||!trainingRest()||!Object.hasOwn(progression.stats,key)||key==='spirit'&&!abilities[1]||key==='shield'&&!FiaConflict.owned()||progression.points<=0||progression.stats[key]>=PROGRESSION_RULES.statLimitFor(key))return false;
   progression.stats[key]++;progression.points--;
   const oldMax=player.maxHp;player.maxHp=momoStats().maxHp;player.hp=Math.min(player.maxHp,player.hp+player.maxHp-oldMax);
   FiaConflict.clampProfile();
