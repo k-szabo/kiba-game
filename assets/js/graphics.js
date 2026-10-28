@@ -23,7 +23,7 @@ const Visuals = (() => {
   }
   let completed = 0;
   const failures = [];
-  const entries = Object.entries(ART_MANIFEST);
+  const entries = Object.entries(ART_MANIFEST).filter(([key])=>!key.endsWith('MotionPhaseB'));
   function progress() {
     const button = document.getElementById('startButton');
     if (button) button.innerHTML = I18n.t(completed === entries.length

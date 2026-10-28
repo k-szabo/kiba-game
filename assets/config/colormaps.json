@@ -23489,6 +23489,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/japan-motion-b-v1.png": {
+      "sha256": "db153dfafd3ac5618b1939e9eed7fb7451a557f96f6c770eec417cbe4824f25a",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "japanMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1c1b15",
+            "coveragePercent": 15.6319
+          },
+          {
+            "hex": "#090704",
+            "coveragePercent": 14.1077
+          },
+          {
+            "hex": "#26333c",
+            "coveragePercent": 12.622
+          },
+          {
+            "hex": "#394c5d",
+            "coveragePercent": 10.246
+          },
+          {
+            "hex": "#37301c",
+            "coveragePercent": 7.7103
+          },
+          {
+            "hex": "#566780",
+            "coveragePercent": 6.9827
+          },
+          {
+            "hex": "#6c84ab",
+            "coveragePercent": 6.9345
+          },
+          {
+            "hex": "#5d4c33",
+            "coveragePercent": 5.0911
+          },
+          {
+            "hex": "#9091a7",
+            "coveragePercent": 4.8973
+          },
+          {
+            "hex": "#65130d",
+            "coveragePercent": 3.4453
+          },
+          {
+            "hex": "#b7968c",
+            "coveragePercent": 2.9709
+          },
+          {
+            "hex": "#e9b176",
+            "coveragePercent": 2.9351
+          },
+          {
+            "hex": "#8a6e48",
+            "coveragePercent": 2.7906
+          },
+          {
+            "hex": "#c18f48",
+            "coveragePercent": 1.4626
+          },
+          {
+            "hex": "#aa3015",
+            "coveragePercent": 1.3772
+          },
+          {
+            "hex": "#f8dc98",
+            "coveragePercent": 0.7949
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ebb26d",
+            "coveragePercent": 29.9399
+          },
+          {
+            "hex": "#a27b3c",
+            "coveragePercent": 23.739
+          },
+          {
+            "hex": "#5e83b6",
+            "coveragePercent": 14.9827
+          },
+          {
+            "hex": "#942212",
+            "coveragePercent": 14.0243
+          },
+          {
+            "hex": "#45668f",
+            "coveragePercent": 10.9222
+          },
+          {
+            "hex": "#ca481b",
+            "coveragePercent": 6.3918
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/japan-v3.png": {
       "sha256": "3b304b3f1881271b3ac3c39933a30293b2d22994fc6bc1f4e9a490848ce85b60",
       "width": 1774,
@@ -26213,6 +26318,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/yomi-motion-b-v1.png": {
+      "sha256": "2ab5eacad4812e809e01990d4e1e7427a20e890ca94b019ea119524b31b2b168",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "yomiMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060302",
+            "coveragePercent": 12.7651
+          },
+          {
+            "hex": "#180f0d",
+            "coveragePercent": 12.3461
+          },
+          {
+            "hex": "#2a1c19",
+            "coveragePercent": 11.4347
+          },
+          {
+            "hex": "#403746",
+            "coveragePercent": 11.1562
+          },
+          {
+            "hex": "#52455a",
+            "coveragePercent": 9.4706
+          },
+          {
+            "hex": "#332a31",
+            "coveragePercent": 8.2308
+          },
+          {
+            "hex": "#6e556a",
+            "coveragePercent": 8.0833
+          },
+          {
+            "hex": "#856783",
+            "coveragePercent": 4.9683
+          },
+          {
+            "hex": "#502c22",
+            "coveragePercent": 4.8181
+          },
+          {
+            "hex": "#6e403d",
+            "coveragePercent": 4.531
+          },
+          {
+            "hex": "#a3626b",
+            "coveragePercent": 3.5323
+          },
+          {
+            "hex": "#a04a42",
+            "coveragePercent": 2.6265
+          },
+          {
+            "hex": "#a97f99",
+            "coveragePercent": 2.0645
+          },
+          {
+            "hex": "#e67c6c",
+            "coveragePercent": 1.7544
+          },
+          {
+            "hex": "#ea5940",
+            "coveragePercent": 1.6113
+          },
+          {
+            "hex": "#d9adbb",
+            "coveragePercent": 0.6068
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91463f",
+            "coveragePercent": 31.1871
+          },
+          {
+            "hex": "#b85e5c",
+            "coveragePercent": 20.5706
+          },
+          {
+            "hex": "#f35a3d",
+            "coveragePercent": 15.3551
+          },
+          {
+            "hex": "#e97263",
+            "coveragePercent": 14.5971
+          },
+          {
+            "hex": "#be493b",
+            "coveragePercent": 12.2997
+          },
+          {
+            "hex": "#fb986f",
+            "coveragePercent": 5.9904
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/backgrounds/yomi-v3.png": {

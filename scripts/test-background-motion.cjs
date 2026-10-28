@@ -9,8 +9,17 @@ for(const fps of [30,60,120]){
  }
  r('resolutionBlocked=true');const clock=r('BackgroundMotion.clock');h.tick(120);assert.equal(r('BackgroundMotion.clock'),clock);r('resolutionBlocked=false;initPlayer(checkpoint)');assert.equal(r('BackgroundMotion.clock'),0,'Scene initialization resets the transient phase');
  const before=r('JSON.stringify([player,flags,progression,BackgroundMotion.clock])');r('draw();draw()');assert.equal(r('JSON.stringify([player,flags,progression,BackgroundMotion.clock])'),before,'Drawing is gameplay/clock-pure');
- const expected=Array.from(r("Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)).map(([key])=>key)"));assert.deepEqual(Array.from(r('Object.keys(BackgroundMotion.profiles)')),expected);
+ const expected=Array.from(r("Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>key)"));assert.deepEqual(Array.from(r('Object.keys(BackgroundMotion.profiles)')),expected);
  assert.deepEqual(Array.from(r('Object.keys(BackgroundMotion.profiles).filter(key=>BackgroundMotion.profiles[key].foliage)')),['japanBackdrop'],'Only the audited canopy profile permits displacement');
+}
+{
+ const h=harness(),r=h.run;
+ r("state='play';BackgroundMotion.reset();BackgroundMotion.update(119.99)");
+ const before=r('(1-Math.cos(BackgroundMotion.clock/4.9*Math.PI*2))/2');
+ r('BackgroundMotion.update(.02)');
+ const after=r('(1-Math.cos(BackgroundMotion.clock/4.9*Math.PI*2))/2');
+ assert(r('BackgroundMotion.clock')>120,'The authored clock passes 120 seconds without wrapping');
+ assert(Math.abs(after-before)<.02,'Japan bush paint blend is continuous across the old 120-second boundary');
 }
 // A real pixel-mask fixture exercises cropped/native painting and alpha state,
 // while browser evidence establishes how original paintings look in motion.

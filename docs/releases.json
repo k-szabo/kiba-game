@@ -1158,6 +1158,22 @@
           "en": "After the Mad Priest’s defeat, a new three-part ziggurat leads to Hannah and Haru’s trail. Dawnblade’s power can awaken during the story. Compatible saves are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.54_086f91b4",
+      "code": "086f91b4",
+      "baseVersion": "0.9.54",
+      "slug": "painted-japan-yomi-motion",
+      "summary": {
+        "hu": "Élőbb tájak Japánban és Yomiban",
+        "en": "Living scenery in Japan and Yomi"
+      },
+      "fixes": [
+        {
+          "hu": "Japán és Yomi festett hátterein a lomb, a felhők, a lángok, a láva és a füst finoman változik. Szünetben megállnak, csökkentett mozgás mellett az eredeti kép látható.",
+          "en": "Painted foliage, clouds, flames, lava and smoke subtly change in Japan and Yomi. The motion pauses with the game, while reduced motion shows the original artwork."
+        }
+      ]
     }
   ]
 }
