@@ -14,15 +14,16 @@ These are the default keys. Open **How to Play** from the main or pause menu to 
 | --- | --- |
 | A / D or ← / → | Move |
 | Space, W, or ↑ | Jump; release and press again for double jump after unlocking it |
-| J or Z | Normal attack |
-| H | Heavy attack; takes longer to wind up and deals more damage |
-| K or Shift | Spirit dash after unlocking it |
+| Left mouse button or Z | Normal attack |
+| Right mouse button | Heavy attack; takes longer to wind up and deals more damage |
+| Shift | Spirit dash after unlocking it |
+| F | Dawnblade once Haru has awakened its power |
 | E | Interact, rest, open gates, and collect items |
 | U | Spend an upgrade point at a shrine |
 | M | Map and fast travel |
 | S + Space | Drop through a ledge |
 | I | Open inventory and pause the game |
-| O | Use food |
+| Q | Use healing item |
 | Esc | Pause |
 
 The mobile interface and touch controls have been removed. The minimum supported viewport is 1280×720; play with a keyboard and mouse.

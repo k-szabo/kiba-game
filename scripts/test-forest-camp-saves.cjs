@@ -5,6 +5,7 @@ const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext(`JSON.stringify(${expression})`,context)),copy=value=>structuredClone(value);
 const rewards=read('BOSS_REWARDS'),campRest=read('forestCamp.rests[0]'),realmCount=read('levels.length');

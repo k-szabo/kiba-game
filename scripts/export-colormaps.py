@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -176,6 +176,11 @@ for name in ('captain', 'necromancer', 'council'):
 for name in ('templeGuard', 'woundedAngel', 'highPriestess'):
     definition = atlas['cultDungeon'][name]
     npcs['cultDungeon.' + name] = {'role': 'dungeon-boss', 'faction': 'heaven' if name == 'woundedAngel' else 'shadowCult', 'paletteGroup': group('npc.cultDungeon.' + name, manifest[definition['image']], definition['frames'], 'ART_CULT_DUNGEON.' + name + '.frames')}
+for name in ('walk', 'combo', 'jump', 'ritual'):
+    definition = atlas['hannah'][name]
+    npcs['hannah.' + name] = {'role': 'demon-lord', 'faction': 'shadowCult', 'paletteGroup': group('npc.hannah.' + name, manifest[definition['image']], definition['frames'], 'ART_HANNAH.' + name + '.frames')}
+definition = atlas['hannah']['dawnblade']
+pc['dawnblade'] = {'paletteGroup': group('pc.momo.dawnblade', manifest[definition['image']], definition['frames'], 'ART_HANNAH.dawnblade.frames')}
 for name in ('ninja', 'thief'):
     definition = atlas['fia'][name]
     npcs['shadowDen.hostile.' + name] = {'role': 'hostile-resident', 'faction': 'shadowDen', 'paletteGroup': group('npc.shadowDen.hostile.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA.' + name + '.frames')}
@@ -336,7 +341,7 @@ result = {'schemaVersion': 1,
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 65, 'Missing current character entry'
+assert len(npcs) == 69, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'

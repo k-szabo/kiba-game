@@ -4,7 +4,7 @@ const Bindings=(()=>{
   const storageKey='momo-keybindings-v1',revision=KEY_BINDINGS.revision||1;
   const legacyDefaults=KEY_BINDINGS.legacyDefaults||KEY_BINDINGS,legacyRevision=legacyDefaults.revision||1;
   const actions=Object.keys(KEY_BINDINGS.original);
-  const addedActions=['inventory','heavyAttack','useMeat'];
+  const addedActions=['inventory','heavyAttack','useMeat','ultimate'];
   const profiles=['original',...Object.keys(KEY_BINDINGS.profiles)];
   let profile='original',modified={};
   const normalize=value=>value==='Spacebar'||value==='Space'?' ':String(value||'').toLowerCase();
@@ -40,7 +40,7 @@ const Bindings=(()=>{
       for(const action of missing){
         const preferred=baseFrom(catalog,which,action);
         if(!preferred.some(key=>used.has(key))){for(const key of preferred)used.add(key);continue;}
-        const alternatives={inventory:['o','p','b'],heavyAttack:['l'],useMeat:['p','b','n']}[action];
+        const alternatives={inventory:['o','p','b'],heavyAttack:['l'],useMeat:['p','b','n'],ultimate:['g','r','v']}[action];
         const candidates=[...preferred,...alternatives,...'abcdefghijklmnopqrstuvwxyz0123456789',...Array.from({length:12},(_,i)=>'f'+(i+1))];
         const available=candidates.find(key=>!used.has(key));
         if(available){overrides[action]=[available];used.add(available);}
@@ -65,7 +65,7 @@ const Bindings=(()=>{
   try{
     const stored=JSON.parse(localStorage.getItem(storageKey)||'null');
     if(stored){
-      const catalog=stored.revision===revision?KEY_BINDINGS:stored.revision==null||stored.revision===legacyRevision?legacyDefaults:null;
+      const catalog=stored.revision===revision||stored.revision===2?KEY_BINDINGS:stored.revision==null||stored.revision===legacyRevision?legacyDefaults:null;
       const changes=catalog&&prepareChanges(stored.profile,stored.modified,catalog,false,stored.revision!==revision);
       if(changes){profile=stored.profile;modified=changes;if(stored.revision!==revision||JSON.stringify(changes)!==JSON.stringify(stored.modified))save();}
     }
@@ -97,7 +97,7 @@ const Bindings=(()=>{
       const schemas=addedActions.reduce((list,action)=>[...list,...list.map(missing=>[...missing,action])],[[]]);
       const catalogs=KEY_BINDINGS.legacyDefaults?[KEY_BINDINGS,legacyDefaults]:[KEY_BINDINGS];
       const catalog=catalogs.find(candidate=>schemas.some(missing=>JSON.stringify(data.original)===JSON.stringify(Object.fromEntries(Object.entries(candidate.original).filter(([action])=>!missing.includes(action))))));
-      if(!catalog||data.revision!=null&&data.revision!==(catalog===KEY_BINDINGS?revision:legacyRevision))return false;
+      if(!catalog||data.revision!=null&&data.revision!==(catalog===KEY_BINDINGS?revision:legacyRevision)&&!(catalog===KEY_BINDINGS&&data.revision===2))return false;
       const changes=prepareChanges(data.selection,data.modified,catalog,true,data.revision!==revision);if(!changes)return false;
       profile=data.selection;modified=changes;save();return true;
     }catch{return false;}

@@ -10,7 +10,7 @@ function fixture(stored){
  return {run,read,writes,export:()=>copy(run('Bindings.exportData()'))};
 }
 function unique(f){const all=copy(f.run('Bindings.actions.flatMap(action=>Bindings.read(action))'));assert.equal(new Set(all).size,all.length,'Each physical input has one owner');assert(f.run('Bindings.actions.every(action=>Bindings.read(action).length>0)'));}
-assert.equal(config.version,1,'Export protocol remains compatible');assert.equal(config.revision,2);
+assert.equal(config.version,1,'Export protocol remains compatible');assert.equal(config.revision,3);
 for(const profile of ['original','uk','fr']){
  const f=fixture();f.run('Bindings.choose('+JSON.stringify(profile)+')');
  assert.deepEqual(f.read('attack'),profile==='fr'?['mouse0','w']:['mouse0','z']);
@@ -18,7 +18,7 @@ for(const profile of ['original','uk','fr']){
  assert.deepEqual(f.read('moveLeft'),profile==='fr'?['q','arrowleft']:['a','arrowleft']);
  assert.deepEqual(f.read('jump'),profile==='fr'?[' ','z','arrowup']:[' ','w','arrowup']);
  for(const [action,old]of [['attack','j'],['heavyAttack','h'],['dash','k'],['useMeat','o']])assert(!f.read(action).includes(old),'Removed old alias '+old);
- unique(f);assert.equal(f.export().revision,2);
+ unique(f);assert.equal(f.export().revision,3);
  f.run("Bindings.setPrimary('attack','mouse2')");assert.deepEqual(f.read('heavyAttack'),['mouse0'],'Occupied mouse buttons exchange');unique(f);
  const data=f.export(),restored=fixture();assert(restored.run('Bindings.importData('+JSON.stringify(data)+')'));assert.deepEqual(restored.export(),data);unique(restored);
  const reloaded=fixture(JSON.parse(f.writes.get(key)));assert.deepEqual(reloaded.export(),data,'Current custom inputs survive browser reload');
@@ -27,7 +27,7 @@ for(const profile of ['original','uk','fr']){
 // Untouched old profiles adopt the new defaults; custom old profiles preserve
 // the whole effective mapping so implicit defaults cannot steal explicit keys.
 for(const modified of [{},{original:{}}]){
- const f=fixture({profile:'original',modified});assert.deepEqual(f.read('attack'),['mouse0','z']);assert.deepEqual(f.read('useMeat'),['q']);assert.equal(JSON.parse(f.writes.get(key)).revision,2);
+ const f=fixture({profile:'original',modified});assert.deepEqual(f.read('attack'),['mouse0','z']);assert.deepEqual(f.read('useMeat'),['q']);assert.equal(JSON.parse(f.writes.get(key)).revision,3);
 }
 {
  const f=fixture({profile:'original',modified:{original:{attack:['q']}}});
@@ -54,7 +54,9 @@ const oldFile={version:1,original:copy(config.legacyDefaults.original),profiles:
  assert.deepEqual(f.read('attack'),['j'],'Import reproduces a selected legacy profile even without overrides');assert.deepEqual(f.read('useMeat'),['o']);unique(f);
  const before=f.export();
  for(const transform of [data=>{data.original.attack=['x'];},data=>{data.modified.original={attack:['mouse2']};},data=>{data.modified.original={attack:['mouse9']};},data=>{data.revision=99;},data=>{data.selection='unknown';}]){
-  const bad=copy({version:1,revision:2,original:config.original,selection:'original',modified:{}});transform(bad);assert(!f.run('Bindings.importData('+JSON.stringify(bad)+')'));assert.deepEqual(f.export(),before,'Invalid imports are atomic');
+  const bad=copy({version:1,revision:config.revision,original:config.original,selection:'original',modified:{}});transform(bad);assert(!f.run('Bindings.importData('+JSON.stringify(bad)+')'));assert.deepEqual(f.export(),before,'Invalid imports are atomic');
  }
 }
 console.log('PASS: approved mouse/Shift/Q defaults and AZERTY physical equivalents; unique inputs, swaps, resets, legacy/custom storage preservation, old/current JSON imports, reload and atomic rejection.');
+
+{const original=copy(config.original);delete original.ultimate;const old={version:1,revision:2,original,profiles:copy(config.profiles),selection:"original",modified:{original:{attack:["f"]}}};const f=fixture({revision:2,profile:"original",modified:old.modified});assert.deepEqual(f.read("attack"),["f"]);assert.notDeepEqual(f.read("ultimate"),["f"]);unique(f);const imported=fixture();assert(imported.run("Bindings.importData("+JSON.stringify(old)+")"));assert.deepEqual(imported.read("attack"),["f"]);unique(imported);}

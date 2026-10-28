@@ -47,6 +47,9 @@
           "paletteGroup": "pc.momo.inventory"
         }
       }
+    },
+    "dawnblade": {
+      "paletteGroup": "pc.momo.dawnblade"
     }
   },
   "npcs": {
@@ -238,6 +241,26 @@
       "role": "dungeon-boss",
       "faction": "shadowCult",
       "paletteGroup": "npc.cultDungeon.highPriestess"
+    },
+    "hannah.walk": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.walk"
+    },
+    "hannah.combo": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.combo"
+    },
+    "hannah.jump": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.jump"
+    },
+    "hannah.ritual": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.ritual"
     },
     "shadowDen.hostile.ninja": {
       "role": "hostile-resident",
@@ -5427,6 +5450,420 @@
         ],
         "visibleSamples": 610024,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.hannah.walk": {
+      "source": "assets/images/enemies/hannah-walk-v1.png",
+      "frameMetadata": "ART_HANNAH.walk.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#302221",
+            "coveragePercent": 24.0827
+          },
+          {
+            "hex": "#422f2d",
+            "coveragePercent": 20.3731
+          },
+          {
+            "hex": "#523e3b",
+            "coveragePercent": 12.5361
+          },
+          {
+            "hex": "#1c1211",
+            "coveragePercent": 8.5477
+          },
+          {
+            "hex": "#613128",
+            "coveragePercent": 7.6864
+          },
+          {
+            "hex": "#6d4a3f",
+            "coveragePercent": 5.6295
+          },
+          {
+            "hex": "#8c3d2e",
+            "coveragePercent": 5.3351
+          },
+          {
+            "hex": "#bc4c35",
+            "coveragePercent": 3.8846
+          },
+          {
+            "hex": "#926047",
+            "coveragePercent": 3.1191
+          },
+          {
+            "hex": "#eb5f2f",
+            "coveragePercent": 2.0784
+          },
+          {
+            "hex": "#b6805d",
+            "coveragePercent": 1.9988
+          },
+          {
+            "hex": "#f78949",
+            "coveragePercent": 1.4383
+          },
+          {
+            "hex": "#e8ab79",
+            "coveragePercent": 1.346
+          },
+          {
+            "hex": "#f6cda9",
+            "coveragePercent": 0.9638
+          },
+          {
+            "hex": "#786074",
+            "coveragePercent": 0.7075
+          },
+          {
+            "hex": "#fcf1dc",
+            "coveragePercent": 0.2729
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904432",
+            "coveragePercent": 35.0862
+          },
+          {
+            "hex": "#bd4c34",
+            "coveragePercent": 22.1958
+          },
+          {
+            "hex": "#ab714f",
+            "coveragePercent": 15.2521
+          },
+          {
+            "hex": "#eb5e2e",
+            "coveragePercent": 11.8516
+          },
+          {
+            "hex": "#f68446",
+            "coveragePercent": 8.8714
+          },
+          {
+            "hex": "#f0aa6c",
+            "coveragePercent": 6.7429
+          }
+        ],
+        "visibleSamples": 699021,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.hannah.combo": {
+      "source": "assets/images/enemies/hannah-combo-v1.png",
+      "frameMetadata": "ART_HANNAH.combo.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 20.6658
+          },
+          {
+            "hex": "#493430",
+            "coveragePercent": 15.15
+          },
+          {
+            "hex": "#2a1a19",
+            "coveragePercent": 13.3058
+          },
+          {
+            "hex": "#61443e",
+            "coveragePercent": 10.88
+          },
+          {
+            "hex": "#602d24",
+            "coveragePercent": 7.5797
+          },
+          {
+            "hex": "#180e0e",
+            "coveragePercent": 6.122
+          },
+          {
+            "hex": "#863a2b",
+            "coveragePercent": 5.3979
+          },
+          {
+            "hex": "#845746",
+            "coveragePercent": 4.985
+          },
+          {
+            "hex": "#b9442c",
+            "coveragePercent": 3.4026
+          },
+          {
+            "hex": "#ad6e50",
+            "coveragePercent": 2.9609
+          },
+          {
+            "hex": "#f15f2b",
+            "coveragePercent": 2.7845
+          },
+          {
+            "hex": "#ecbe95",
+            "coveragePercent": 1.8865
+          },
+          {
+            "hex": "#fa964c",
+            "coveragePercent": 1.6344
+          },
+          {
+            "hex": "#c99374",
+            "coveragePercent": 1.5164
+          },
+          {
+            "hex": "#fadfc6",
+            "coveragePercent": 1.0589
+          },
+          {
+            "hex": "#8d727b",
+            "coveragePercent": 0.6697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904331",
+            "coveragePercent": 33.1966
+          },
+          {
+            "hex": "#a96b4c",
+            "coveragePercent": 19.3997
+          },
+          {
+            "hex": "#bf452b",
+            "coveragePercent": 16.7658
+          },
+          {
+            "hex": "#f2602a",
+            "coveragePercent": 14.7551
+          },
+          {
+            "hex": "#ee8c4e",
+            "coveragePercent": 10.5594
+          },
+          {
+            "hex": "#f8b96d",
+            "coveragePercent": 5.3234
+          }
+        ],
+        "visibleSamples": 737402,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.hannah.jump": {
+      "source": "assets/images/enemies/hannah-jump-v1.png",
+      "frameMetadata": "ART_HANNAH.jump.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 19.5995
+          },
+          {
+            "hex": "#493431",
+            "coveragePercent": 17.4602
+          },
+          {
+            "hex": "#291917",
+            "coveragePercent": 12.5727
+          },
+          {
+            "hex": "#612e24",
+            "coveragePercent": 9.3516
+          },
+          {
+            "hex": "#62453e",
+            "coveragePercent": 9.3298
+          },
+          {
+            "hex": "#883928",
+            "coveragePercent": 5.8787
+          },
+          {
+            "hex": "#895640",
+            "coveragePercent": 4.5564
+          },
+          {
+            "hex": "#140b0a",
+            "coveragePercent": 4.4824
+          },
+          {
+            "hex": "#b7432a",
+            "coveragePercent": 4.2851
+          },
+          {
+            "hex": "#ef551d",
+            "coveragePercent": 2.7952
+          },
+          {
+            "hex": "#b4714c",
+            "coveragePercent": 2.5758
+          },
+          {
+            "hex": "#dd9f72",
+            "coveragePercent": 1.5932
+          },
+          {
+            "hex": "#f98c37",
+            "coveragePercent": 1.5799
+          },
+          {
+            "hex": "#f2c29b",
+            "coveragePercent": 1.4665
+          },
+          {
+            "hex": "#fbe0cb",
+            "coveragePercent": 1.4662
+          },
+          {
+            "hex": "#8a7179",
+            "coveragePercent": 1.0067
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d422e",
+            "coveragePercent": 31.7592
+          },
+          {
+            "hex": "#b5422a",
+            "coveragePercent": 21.4936
+          },
+          {
+            "hex": "#ae6b48",
+            "coveragePercent": 17.0457
+          },
+          {
+            "hex": "#eb501c",
+            "coveragePercent": 13.3036
+          },
+          {
+            "hex": "#f97d2e",
+            "coveragePercent": 8.8035
+          },
+          {
+            "hex": "#eea960",
+            "coveragePercent": 7.5944
+          }
+        ],
+        "visibleSamples": 650971,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.hannah.ritual": {
+      "source": "assets/images/enemies/hannah-ritual-v1.png",
+      "frameMetadata": "ART_HANNAH.ritual.frames",
+      "frameCount": 5,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#462d2a",
+            "coveragePercent": 21.758
+          },
+          {
+            "hex": "#321f1e",
+            "coveragePercent": 16.8071
+          },
+          {
+            "hex": "#583e39",
+            "coveragePercent": 12.0519
+          },
+          {
+            "hex": "#1b0f0f",
+            "coveragePercent": 8.8705
+          },
+          {
+            "hex": "#743225",
+            "coveragePercent": 8.8633
+          },
+          {
+            "hex": "#7d5243",
+            "coveragePercent": 6.7513
+          },
+          {
+            "hex": "#a73d27",
+            "coveragePercent": 5.3783
+          },
+          {
+            "hex": "#e6491f",
+            "coveragePercent": 4.277
+          },
+          {
+            "hex": "#ac6645",
+            "coveragePercent": 4.1839
+          },
+          {
+            "hex": "#f6742b",
+            "coveragePercent": 2.4975
+          },
+          {
+            "hex": "#c58865",
+            "coveragePercent": 1.9401
+          },
+          {
+            "hex": "#fbdcc6",
+            "coveragePercent": 1.6377
+          },
+          {
+            "hex": "#f7a553",
+            "coveragePercent": 1.4522
+          },
+          {
+            "hex": "#f3c290",
+            "coveragePercent": 1.4331
+          },
+          {
+            "hex": "#9e52c9",
+            "coveragePercent": 1.1348
+          },
+          {
+            "hex": "#612d85",
+            "coveragePercent": 0.9633
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#983f2b",
+            "coveragePercent": 36.6312
+          },
+          {
+            "hex": "#ea5321",
+            "coveragePercent": 24.8636
+          },
+          {
+            "hex": "#b16745",
+            "coveragePercent": 19.9186
+          },
+          {
+            "hex": "#f1a055",
+            "coveragePercent": 12.4995
+          },
+          {
+            "hex": "#a352d2",
+            "coveragePercent": 3.3021
+          },
+          {
+            "hex": "#71349a",
+            "coveragePercent": 2.7851
+          }
+        ],
+        "visibleSamples": 337451,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "pc.momo.dawnblade": {
+      "source": "assets/images/momo-dawnblade-v1.png",
+      "frameMetadata": "ART_HANNAH.dawnblade.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [],
+        "accents": [],
+        "visibleSamples": 0
       }
     },
     "npc.shadowDen.hostile.ninja": {
@@ -26198,6 +26635,426 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/ziggurat-approach-v1.png": {
+      "sha256": "c97ef54d1bb9d7d89c973f68ba7c966cedecaaa3de083e8b71e95aac59e40e64",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratApproach"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b030a",
+            "coveragePercent": 18.2029
+          },
+          {
+            "hex": "#1c0c31",
+            "coveragePercent": 15.2774
+          },
+          {
+            "hex": "#2b1259",
+            "coveragePercent": 10.5544
+          },
+          {
+            "hex": "#41101c",
+            "coveragePercent": 8.5686
+          },
+          {
+            "hex": "#5a254c",
+            "coveragePercent": 7.6573
+          },
+          {
+            "hex": "#472085",
+            "coveragePercent": 6.9429
+          },
+          {
+            "hex": "#f26748",
+            "coveragePercent": 4.9205
+          },
+          {
+            "hex": "#632fb2",
+            "coveragePercent": 4.6735
+          },
+          {
+            "hex": "#a43a4b",
+            "coveragePercent": 4.3541
+          },
+          {
+            "hex": "#851e1d",
+            "coveragePercent": 3.9061
+          },
+          {
+            "hex": "#e8411e",
+            "coveragePercent": 3.6353
+          },
+          {
+            "hex": "#863fe1",
+            "coveragePercent": 3.3458
+          },
+          {
+            "hex": "#a04c8f",
+            "coveragePercent": 3.0076
+          },
+          {
+            "hex": "#faa545",
+            "coveragePercent": 2.5421
+          },
+          {
+            "hex": "#bd6bed",
+            "coveragePercent": 1.6768
+          },
+          {
+            "hex": "#f9d196",
+            "coveragePercent": 0.7349
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f77f43",
+            "coveragePercent": 24.6066
+          },
+          {
+            "hex": "#bf3121",
+            "coveragePercent": 17.123
+          },
+          {
+            "hex": "#4a1f97",
+            "coveragePercent": 16.8991
+          },
+          {
+            "hex": "#7438bf",
+            "coveragePercent": 16.1623
+          },
+          {
+            "hex": "#a73f61",
+            "coveragePercent": 15.8449
+          },
+          {
+            "hex": "#a553e9",
+            "coveragePercent": 9.3642
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/ziggurat-interior-v1.png": {
+      "sha256": "f93a2dc221f666bb171bd005f3995c0e6cd1196a4bfc46ee38bf26110a8952b9",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratInterior"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#050204",
+            "coveragePercent": 27.5446
+          },
+          {
+            "hex": "#1a0e1f",
+            "coveragePercent": 13.1452
+          },
+          {
+            "hex": "#1b0508",
+            "coveragePercent": 9.7953
+          },
+          {
+            "hex": "#390e12",
+            "coveragePercent": 8.8744
+          },
+          {
+            "hex": "#371b40",
+            "coveragePercent": 7.1276
+          },
+          {
+            "hex": "#5d1617",
+            "coveragePercent": 6.8553
+          },
+          {
+            "hex": "#7f2723",
+            "coveragePercent": 5.0687
+          },
+          {
+            "hex": "#4d2079",
+            "coveragePercent": 4.3997
+          },
+          {
+            "hex": "#b1331c",
+            "coveragePercent": 3.6478
+          },
+          {
+            "hex": "#ec4715",
+            "coveragePercent": 3.6114
+          },
+          {
+            "hex": "#f57d27",
+            "coveragePercent": 2.4767
+          },
+          {
+            "hex": "#7327c4",
+            "coveragePercent": 2.2955
+          },
+          {
+            "hex": "#bf4cee",
+            "coveragePercent": 1.6901
+          },
+          {
+            "hex": "#9e4d70",
+            "coveragePercent": 1.6804
+          },
+          {
+            "hex": "#fbcc48",
+            "coveragePercent": 1.1287
+          },
+          {
+            "hex": "#f1bbe4",
+            "coveragePercent": 0.6584
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e2e21",
+            "coveragePercent": 31.2927
+          },
+          {
+            "hex": "#ea511d",
+            "coveragePercent": 28.5031
+          },
+          {
+            "hex": "#5b2099",
+            "coveragePercent": 13.8596
+          },
+          {
+            "hex": "#f9b037",
+            "coveragePercent": 10.42
+          },
+          {
+            "hex": "#892fd8",
+            "coveragePercent": 9.6047
+          },
+          {
+            "hex": "#d156ec",
+            "coveragePercent": 6.3199
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/ziggurat-storm-v1.png": {
+      "sha256": "f46d9122b53372612422e6a0a7448205a892f0c9df72ce39c85d75d1201556f9",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratStorm"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090208",
+            "coveragePercent": 21.4154
+          },
+          {
+            "hex": "#1b0a2c",
+            "coveragePercent": 13.5463
+          },
+          {
+            "hex": "#320d60",
+            "coveragePercent": 8.3904
+          },
+          {
+            "hex": "#38080e",
+            "coveragePercent": 7.7256
+          },
+          {
+            "hex": "#441a39",
+            "coveragePercent": 7.3237
+          },
+          {
+            "hex": "#521893",
+            "coveragePercent": 6.7154
+          },
+          {
+            "hex": "#6b295d",
+            "coveragePercent": 6.5989
+          },
+          {
+            "hex": "#771416",
+            "coveragePercent": 5.2872
+          },
+          {
+            "hex": "#8f3a88",
+            "coveragePercent": 5.0716
+          },
+          {
+            "hex": "#7b27ca",
+            "coveragePercent": 4.0917
+          },
+          {
+            "hex": "#bd261f",
+            "coveragePercent": 3.6267
+          },
+          {
+            "hex": "#f35526",
+            "coveragePercent": 3.2632
+          },
+          {
+            "hex": "#d84e72",
+            "coveragePercent": 2.4552
+          },
+          {
+            "hex": "#c04fe7",
+            "coveragePercent": 2.2469
+          },
+          {
+            "hex": "#fab05e",
+            "coveragePercent": 1.3575
+          },
+          {
+            "hex": "#f0c7de",
+            "coveragePercent": 0.8844
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#5d1ca0",
+            "coveragePercent": 30.0812
+          },
+          {
+            "hex": "#a1367d",
+            "coveragePercent": 17.982
+          },
+          {
+            "hex": "#a01f1e",
+            "coveragePercent": 15.6949
+          },
+          {
+            "hex": "#ea4527",
+            "coveragePercent": 14.5431
+          },
+          {
+            "hex": "#a73de1",
+            "coveragePercent": 13.6141
+          },
+          {
+            "hex": "#f78e5a",
+            "coveragePercent": 8.0846
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/ziggurat-throne-v1.png": {
+      "sha256": "bd621c57211765a03d2d83a5a674acfd155911f27a3547bf952fa38143610249",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratThrone"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080206",
+            "coveragePercent": 26.4322
+          },
+          {
+            "hex": "#1a0c1d",
+            "coveragePercent": 17.3512
+          },
+          {
+            "hex": "#351735",
+            "coveragePercent": 9.9249
+          },
+          {
+            "hex": "#340a0e",
+            "coveragePercent": 8.9799
+          },
+          {
+            "hex": "#5c1417",
+            "coveragePercent": 7.3985
+          },
+          {
+            "hex": "#88211d",
+            "coveragePercent": 5.5595
+          },
+          {
+            "hex": "#592a4c",
+            "coveragePercent": 4.8423
+          },
+          {
+            "hex": "#ba2e1d",
+            "coveragePercent": 4.2354
+          },
+          {
+            "hex": "#f04513",
+            "coveragePercent": 4.0135
+          },
+          {
+            "hex": "#f37a32",
+            "coveragePercent": 2.4705
+          },
+          {
+            "hex": "#934f71",
+            "coveragePercent": 2.4356
+          },
+          {
+            "hex": "#541f84",
+            "coveragePercent": 2.1995
+          },
+          {
+            "hex": "#8732c7",
+            "coveragePercent": 1.379
+          },
+          {
+            "hex": "#fac760",
+            "coveragePercent": 1.2134
+          },
+          {
+            "hex": "#d16bd6",
+            "coveragePercent": 1.0802
+          },
+          {
+            "hex": "#f5d8d6",
+            "coveragePercent": 0.4845
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e2822",
+            "coveragePercent": 36.366
+          },
+          {
+            "hex": "#e63e13",
+            "coveragePercent": 23.959
+          },
+          {
+            "hex": "#ef7132",
+            "coveragePercent": 15.2038
+          },
+          {
+            "hex": "#6f2aa0",
+            "coveragePercent": 12.2966
+          },
+          {
+            "hex": "#fbc357",
+            "coveragePercent": 6.226
+          },
+          {
+            "hex": "#c04cdc",
+            "coveragePercent": 5.9486
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/council-gate-closed-v1.png": {
       "sha256": "e32cf36f69c16ed9c64397fdb3a1a3e3bf9558edbdc5ffe49774201a4f2a9b48",
       "width": 1254,
@@ -29871,6 +30728,426 @@
         ],
         "visibleSamples": 491804,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/hannah-combo-v1.png": {
+      "sha256": "f4227cbae5a633d939d16ff9b8d0ba530b724533c14be372ad213904e05a99ed",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahCombo"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 20.6658
+          },
+          {
+            "hex": "#493430",
+            "coveragePercent": 15.15
+          },
+          {
+            "hex": "#2a1a19",
+            "coveragePercent": 13.3058
+          },
+          {
+            "hex": "#61443e",
+            "coveragePercent": 10.88
+          },
+          {
+            "hex": "#602d24",
+            "coveragePercent": 7.5797
+          },
+          {
+            "hex": "#180e0e",
+            "coveragePercent": 6.122
+          },
+          {
+            "hex": "#863a2b",
+            "coveragePercent": 5.3979
+          },
+          {
+            "hex": "#845746",
+            "coveragePercent": 4.985
+          },
+          {
+            "hex": "#b9442c",
+            "coveragePercent": 3.4026
+          },
+          {
+            "hex": "#ad6e50",
+            "coveragePercent": 2.9609
+          },
+          {
+            "hex": "#f15f2b",
+            "coveragePercent": 2.7845
+          },
+          {
+            "hex": "#ecbe95",
+            "coveragePercent": 1.8865
+          },
+          {
+            "hex": "#fa964c",
+            "coveragePercent": 1.6344
+          },
+          {
+            "hex": "#c99374",
+            "coveragePercent": 1.5164
+          },
+          {
+            "hex": "#fadfc6",
+            "coveragePercent": 1.0589
+          },
+          {
+            "hex": "#8d727b",
+            "coveragePercent": 0.6697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904331",
+            "coveragePercent": 33.1966
+          },
+          {
+            "hex": "#a96b4c",
+            "coveragePercent": 19.3997
+          },
+          {
+            "hex": "#bf452b",
+            "coveragePercent": 16.7658
+          },
+          {
+            "hex": "#f2602a",
+            "coveragePercent": 14.7551
+          },
+          {
+            "hex": "#ee8c4e",
+            "coveragePercent": 10.5594
+          },
+          {
+            "hex": "#f8b96d",
+            "coveragePercent": 5.3234
+          }
+        ],
+        "visibleSamples": 737402,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/hannah-jump-v1.png": {
+      "sha256": "8eb72ea87cd779f82df9928e8f8a1742a84d348b72e2563d0ea78888b5b54941",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahJump"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 19.5995
+          },
+          {
+            "hex": "#493431",
+            "coveragePercent": 17.4602
+          },
+          {
+            "hex": "#291917",
+            "coveragePercent": 12.5727
+          },
+          {
+            "hex": "#612e24",
+            "coveragePercent": 9.3516
+          },
+          {
+            "hex": "#62453e",
+            "coveragePercent": 9.3298
+          },
+          {
+            "hex": "#883928",
+            "coveragePercent": 5.8787
+          },
+          {
+            "hex": "#895640",
+            "coveragePercent": 4.5564
+          },
+          {
+            "hex": "#140b0a",
+            "coveragePercent": 4.4824
+          },
+          {
+            "hex": "#b7432a",
+            "coveragePercent": 4.2851
+          },
+          {
+            "hex": "#ef551d",
+            "coveragePercent": 2.7952
+          },
+          {
+            "hex": "#b4714c",
+            "coveragePercent": 2.5758
+          },
+          {
+            "hex": "#dd9f72",
+            "coveragePercent": 1.5932
+          },
+          {
+            "hex": "#f98c37",
+            "coveragePercent": 1.5799
+          },
+          {
+            "hex": "#f2c29b",
+            "coveragePercent": 1.4665
+          },
+          {
+            "hex": "#fbe0cb",
+            "coveragePercent": 1.4662
+          },
+          {
+            "hex": "#8a7179",
+            "coveragePercent": 1.0067
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d422e",
+            "coveragePercent": 31.7592
+          },
+          {
+            "hex": "#b5422a",
+            "coveragePercent": 21.4936
+          },
+          {
+            "hex": "#ae6b48",
+            "coveragePercent": 17.0457
+          },
+          {
+            "hex": "#eb501c",
+            "coveragePercent": 13.3036
+          },
+          {
+            "hex": "#f97d2e",
+            "coveragePercent": 8.8035
+          },
+          {
+            "hex": "#eea960",
+            "coveragePercent": 7.5944
+          }
+        ],
+        "visibleSamples": 650971,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/hannah-ritual-v1.png": {
+      "sha256": "e1beef93be110b50c884400948e10d17155809e1088d76ed3b9a580f51fae7d3",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahRitual"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4d312e",
+            "coveragePercent": 18.1055
+          },
+          {
+            "hex": "#3a2525",
+            "coveragePercent": 15.7816
+          },
+          {
+            "hex": "#60423e",
+            "coveragePercent": 9.7804
+          },
+          {
+            "hex": "#2b1918",
+            "coveragePercent": 9.6914
+          },
+          {
+            "hex": "#793325",
+            "coveragePercent": 8.3401
+          },
+          {
+            "hex": "#885544",
+            "coveragePercent": 5.9334
+          },
+          {
+            "hex": "#170d0d",
+            "coveragePercent": 5.6798
+          },
+          {
+            "hex": "#b33f27",
+            "coveragePercent": 4.8959
+          },
+          {
+            "hex": "#ef5622",
+            "coveragePercent": 4.8228
+          },
+          {
+            "hex": "#b56f4c",
+            "coveragePercent": 3.725
+          },
+          {
+            "hex": "#5b297d",
+            "coveragePercent": 2.6725
+          },
+          {
+            "hex": "#8b43b9",
+            "coveragePercent": 2.65
+          },
+          {
+            "hex": "#f9d5b8",
+            "coveragePercent": 2.4695
+          },
+          {
+            "hex": "#f69b4b",
+            "coveragePercent": 2.2
+          },
+          {
+            "hex": "#c06cec",
+            "coveragePercent": 1.8186
+          },
+          {
+            "hex": "#d0987d",
+            "coveragePercent": 1.4334
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#973f2c",
+            "coveragePercent": 31.8354
+          },
+          {
+            "hex": "#e95323",
+            "coveragePercent": 21.6845
+          },
+          {
+            "hex": "#b06746",
+            "coveragePercent": 17.2182
+          },
+          {
+            "hex": "#f19f55",
+            "coveragePercent": 10.5145
+          },
+          {
+            "hex": "#7535a2",
+            "coveragePercent": 10.2372
+          },
+          {
+            "hex": "#af59e1",
+            "coveragePercent": 8.5101
+          }
+        ],
+        "visibleSamples": 748490,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/hannah-walk-v1.png": {
+      "sha256": "585665e0b6eb0075ef456a4bf4fc8b68d3566ff054bf6d4583c6b40637920cdc",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahWalk"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#302221",
+            "coveragePercent": 24.0827
+          },
+          {
+            "hex": "#422f2d",
+            "coveragePercent": 20.3731
+          },
+          {
+            "hex": "#523e3b",
+            "coveragePercent": 12.5361
+          },
+          {
+            "hex": "#1c1211",
+            "coveragePercent": 8.5477
+          },
+          {
+            "hex": "#613128",
+            "coveragePercent": 7.6864
+          },
+          {
+            "hex": "#6d4a3f",
+            "coveragePercent": 5.6295
+          },
+          {
+            "hex": "#8c3d2e",
+            "coveragePercent": 5.3351
+          },
+          {
+            "hex": "#bc4c35",
+            "coveragePercent": 3.8846
+          },
+          {
+            "hex": "#926047",
+            "coveragePercent": 3.1191
+          },
+          {
+            "hex": "#eb5f2f",
+            "coveragePercent": 2.0784
+          },
+          {
+            "hex": "#b6805d",
+            "coveragePercent": 1.9988
+          },
+          {
+            "hex": "#f78949",
+            "coveragePercent": 1.4383
+          },
+          {
+            "hex": "#e8ab79",
+            "coveragePercent": 1.346
+          },
+          {
+            "hex": "#f6cda9",
+            "coveragePercent": 0.9638
+          },
+          {
+            "hex": "#786074",
+            "coveragePercent": 0.7075
+          },
+          {
+            "hex": "#fcf1dc",
+            "coveragePercent": 0.2729
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904432",
+            "coveragePercent": 35.0862
+          },
+          {
+            "hex": "#bd4c34",
+            "coveragePercent": 22.1958
+          },
+          {
+            "hex": "#ab714f",
+            "coveragePercent": 15.2521
+          },
+          {
+            "hex": "#eb5e2e",
+            "coveragePercent": 11.8516
+          },
+          {
+            "hex": "#f68446",
+            "coveragePercent": 8.8714
+          },
+          {
+            "hex": "#f0aa6c",
+            "coveragePercent": 6.7429
+          }
+        ],
+        "visibleSamples": 699021,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/enemies/heaven-attack-v4.png": {
@@ -34804,6 +36081,111 @@
         ],
         "visibleSamples": 511920,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/momo-dawnblade-v1.png": {
+      "sha256": "38625a25414e7d297050a81c3be24b6bc6dec98f195232347e27ab676ecbfa49",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoDawnblade"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fca72b",
+            "coveragePercent": 20.7197
+          },
+          {
+            "hex": "#f88713",
+            "coveragePercent": 12.6929
+          },
+          {
+            "hex": "#fdf5d5",
+            "coveragePercent": 10.9145
+          },
+          {
+            "hex": "#0e0605",
+            "coveragePercent": 7.726
+          },
+          {
+            "hex": "#fdd845",
+            "coveragePercent": 6.9752
+          },
+          {
+            "hex": "#fef271",
+            "coveragePercent": 6.5437
+          },
+          {
+            "hex": "#333549",
+            "coveragePercent": 5.2331
+          },
+          {
+            "hex": "#f8141a",
+            "coveragePercent": 5.1407
+          },
+          {
+            "hex": "#fdf4aa",
+            "coveragePercent": 4.8351
+          },
+          {
+            "hex": "#211f2a",
+            "coveragePercent": 3.9177
+          },
+          {
+            "hex": "#4a1b0b",
+            "coveragePercent": 3.4684
+          },
+          {
+            "hex": "#7a471f",
+            "coveragePercent": 2.6622
+          },
+          {
+            "hex": "#fdfcee",
+            "coveragePercent": 2.635
+          },
+          {
+            "hex": "#f5c590",
+            "coveragePercent": 2.5582
+          },
+          {
+            "hex": "#b96c20",
+            "coveragePercent": 2.5289
+          },
+          {
+            "hex": "#bd090d",
+            "coveragePercent": 1.4486
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba62b",
+            "coveragePercent": 36.3275
+          },
+          {
+            "hex": "#f78613",
+            "coveragePercent": 22.9847
+          },
+          {
+            "hex": "#fded70",
+            "coveragePercent": 12.578
+          },
+          {
+            "hex": "#fdd745",
+            "coveragePercent": 11.7528
+          },
+          {
+            "hex": "#f01118",
+            "coveragePercent": 10.7869
+          },
+          {
+            "hex": "#a45318",
+            "coveragePercent": 5.57
+          }
+        ],
+        "visibleSamples": 635774,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/momo-heavy-v1.png": {
@@ -42746,91 +44128,92 @@
       {
         "value": "#b087dd",
         "lines": [
-          540
+          543
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          400
+          401
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          362,
-          396
+          363,
+          397
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          192
+          193
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          524
+          527
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          273
+          274
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          386
+          387
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          331,
-          382
+          332,
+          383
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          192
+          193
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          539
+          542
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          524
+          527
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          391
+          392
         ],
         "dynamic": false
       }
     ],
     "assets/js/compass.js": [],
+    "assets/js/dawnblade.js": [],
     "assets/js/dev-abilities.js": [],
     "assets/js/dev-boss.js": [],
     "assets/js/dev-cache.js": [],
@@ -42952,35 +44335,35 @@
       {
         "value": "#08121900",
         "lines": [
-          300
+          301
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          300
+          301
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          300
+          301
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          513
+          515
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43008,14 +44391,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          502
+          504
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          502
+          504
         ],
         "dynamic": false
       },
@@ -43071,7 +44454,7 @@
       {
         "value": "#465959",
         "lines": [
-          370
+          371
         ],
         "dynamic": false
       },
@@ -43092,7 +44475,7 @@
       {
         "value": "#60706a",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43106,7 +44489,7 @@
       {
         "value": "#718679",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43141,7 +44524,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43155,14 +44538,14 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          370
+          371
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          304
+          305
         ],
         "dynamic": false
       },
@@ -43190,7 +44573,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          304
+          305
         ],
         "dynamic": false
       },
@@ -43211,21 +44594,21 @@
       {
         "value": "#d8e3c9",
         "lines": [
-          259
+          260
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          531
+          533
         ],
         "dynamic": false
       },
@@ -43246,14 +44629,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43289,14 +44672,14 @@
       {
         "value": "#e8d89b",
         "lines": [
-          304
+          305
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          531
+          533
         ],
         "dynamic": false
       },
@@ -43310,7 +44693,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          531
+          533
         ],
         "dynamic": false
       },
@@ -43331,14 +44714,14 @@
       {
         "value": "#f0df9c",
         "lines": [
-          259
+          260
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          370
+          371
         ],
         "dynamic": false
       },
@@ -43353,7 +44736,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          369
+          370
         ],
         "dynamic": false
       },
@@ -43367,7 +44750,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          531
+          533
         ],
         "dynamic": false
       },
@@ -43381,7 +44764,7 @@
       {
         "value": "#fff",
         "lines": [
-          370
+          371
         ],
         "dynamic": false
       }
@@ -44190,6 +45573,54 @@
         "dynamic": false
       }
     ],
+    "assets/js/hannah-art-data.js": [],
+    "assets/js/hannah-art.js": [
+      {
+        "value": "#110e1c",
+        "lines": [
+          10
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#12101cf0",
+        "lines": [
+          62
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#15101d",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8e42c7",
+        "lines": [
+          33
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bd9b72",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cf",
+        "lines": [
+          62
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/hannah-combat.js": [],
+    "assets/js/hannah-encounter.js": [],
+    "assets/js/hannah-rules.js": [],
     "assets/js/i18n.js": [],
     "assets/js/inventory.js": [],
     "assets/js/keybindings.js": [],
@@ -44374,204 +45805,204 @@
       {
         "value": "#010106",
         "lines": [
-          173,
-          175
+          174,
+          176
         ],
         "dynamic": false
       },
       {
         "value": "#02050ed9",
         "lines": [
-          239
+          240
         ],
         "dynamic": false
       },
       {
         "value": "#03040b",
         "lines": [
-          236
+          237
         ],
         "dynamic": false
       },
       {
         "value": "#070b16",
         "lines": [
-          232
+          233
         ],
         "dynamic": false
       },
       {
         "value": "#08040e",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#08051277",
         "lines": [
-          239
+          240
         ],
         "dynamic": false
       },
       {
         "value": "#09131933",
         "lines": [
-          213
+          214
         ],
         "dynamic": false
       },
       {
         "value": "#09131955",
         "lines": [
-          215
+          216
         ],
         "dynamic": false
       },
       {
         "value": "#0b101c",
         "lines": [
-          242
+          243
         ],
         "dynamic": false
       },
       {
         "value": "#100d2044",
         "lines": [
-          239
+          240
         ],
         "dynamic": false
       },
       {
         "value": "#132a32ed",
         "lines": [
-          228
+          229
         ],
         "dynamic": false
       },
       {
         "value": "#25103400",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#35214600",
         "lines": [
-          168
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#58357b99",
         "lines": [
-          173
+          174
         ],
         "dynamic": false
       },
       {
         "value": "#58367888",
         "lines": [
-          177
+          178
         ],
         "dynamic": false
       },
       {
         "value": "#ac7ddd55",
         "lines": [
-          177
+          178
         ],
         "dynamic": false
       },
       {
         "value": "#b999d6",
         "lines": [
-          168
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#bd91df",
         "lines": [
-          48
+          49
         ],
         "dynamic": false
       },
       {
         "value": "#c598ff",
         "lines": [
-          70
+          71
         ],
         "dynamic": false
       },
       {
         "value": "#d4b3fc",
         "lines": [
-          76
+          77
         ],
         "dynamic": false
       },
       {
         "value": "#d6a4f5",
         "lines": [
-          56
+          57
         ],
         "dynamic": false
       },
       {
         "value": "#d9b3f8",
         "lines": [
-          63
+          64
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b",
         "lines": [
-          230
+          231
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b99",
         "lines": [
-          229
+          230
         ],
         "dynamic": false
       },
       {
         "value": "#e6a176",
         "lines": [
-          262
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#e6c1ff",
         "lines": [
-          208
+          209
         ],
         "dynamic": false
       },
       {
         "value": "#efddff",
         "lines": [
-          232
+          233
         ],
         "dynamic": false
       },
       {
         "value": "#f2e6cc",
         "lines": [
-          232
+          233
         ],
         "dynamic": false
       },
       {
         "value": "rgba(0,0,0,${shade})",
         "lines": [
-          218
+          219
         ],
         "dynamic": true
       }
@@ -44769,6 +46200,7 @@
     "assets/js/slayer-dialog.js": [],
     "assets/js/weapon-equipment.js": [],
     "assets/js/weapon-selection.js": [],
-    "assets/js/weapons.js": []
+    "assets/js/weapons.js": [],
+    "assets/js/ziggurat-maps.js": []
   }
 }

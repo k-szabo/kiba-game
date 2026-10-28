@@ -251,3 +251,7 @@ A pikkelyek régi megszerzési jelzőit a fúzió nem törli. A tartós eredmén
 Az aréna és a győzelem után nyíló lakosztály az Árnyékvilág két `SIDE_LOCATIONS` oldalhelyszíne. Az `ArenaChallenge` az átmeneti próbát és az egyszeri jutalmakat, az `ArenaCombat` a négy harci profilt, az `ArenaArt` a rajzolást kezeli. A mentés csak a küldetés-, jutalom- és teljesítésjelzőket tárolja; félbehagyott kihívás az első menettől próbálható újra, a korábbi jutalmak duplikálása nélkül. A `level.arenaEncounters` katalógus a dev bossválasztó forrása is.
 
 A `test-arena-combat.cjs` és `test-arena-challenge.cjs` célzott tesztek a harci előjelzést, két testőr közös HP-ját, túlélési időket, szünetet, jutalomláncot, normál/dev feloldást, mentésvalidációt és az új helyszínek mozgásinputját fedik le. A grafika és tényleges böngészős tárolás külön ellenőrzendő; a [technikai arénareferencia](SHADOW-DEN-ARENA.md) a történeti meglepetéseket is részletezi.
+
+## Zikkurat és Hajnalkard
+
+A három új árnyékvilági oldalhelyszín, Hannah állapotgépe, a történeti ultimate és az ellenőrzések részletei a [zikkurat technikai referenciában](ZIGGURAT.md) találhatók. A kompatibilitási korszak változatlan; az új mérföldkövek és pihenők hozzáadott, opcionális haladást jelentenek.

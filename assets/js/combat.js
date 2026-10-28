@@ -85,6 +85,7 @@ function releaseEnemyAttack(e) {
 function updateEnemies(dt) {
   for(const e of enemies){
     if(e.dead)continue;
+    if(HannahCombat.updateSupport(e,dt))continue;
     if(CampMaster.updateSupport(e,dt))continue;
     if(Serpents.is(e)){Serpents.update(e,dt);continue;}
     if(e.miniboss){updateMiniboss(e,dt);continue;}
@@ -206,11 +207,11 @@ function checkBossHealth(){
   if(realm===2&&boss.stage===2&&boss.secretEligible&&!boss.secretTriggered){transformAngel(3);return;}
   guardianDefeated();
 }
-function hitBoss(amount){
+function hitBoss(amount,kind=attackKind){
   if(Prologue.active)return Prologue.hit(amount);
   if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform'||realm===1&&boss.yomiStage==='shelter')return false;
   const before=boss.hp,stage=boss.stage,position={x:boss.x,y:boss.y,w:boss.w};
-  boss.hp-=amount;boss.inv=.3;ShadowRealm.interrupt();burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
+  boss.hp-=amount;boss.inv=.3;ShadowRealm.interrupt(kind);burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
   // The secret angel phase refills HP; report the depleted previous life bar.
   DevDamage.record('outgoing',position,before,realm===2&&stage===2&&boss.stage===3?0:boss.hp);return true;
 }
@@ -474,6 +475,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(HannahCombat.is(spec))return HannahCombat.create(spec);
   if(FiaCombat.is(spec))return FiaCombat.create(spec);
   if(DungeonCombat.is(spec)){const e=DungeonCombat.create(spec);e.dungeonId=level.dungeon?.id;e.runId=DungeonRun.runId(e.dungeonId);return e;}
   if(ArenaCombat.is(spec))return ArenaCombat.create(spec);
@@ -490,6 +492,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(HannahCombat.is(e)){HannahCombat.reset(e);return;}
   if(FiaCombat.is(e)){FiaCombat.reset(e);return;}
   if(DungeonCombat.is(e)){DungeonCombat.reset(e);return;}
   if(ArenaCombat.is(e)){ArenaCombat.reset(e);return;}
@@ -509,7 +512,7 @@ function discoverSecrets(){
     flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+I18n.t(area.name));
   }
 }
-function defeatMiniboss(e){if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
+function defeatMiniboss(e){if(HannahCombat.is(e)){HannahCombat.defeat(e);return;}if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
   if(DungeonCombat.is(e)){DungeonCombat.defeat(e);return;}
   if(ArenaCombat.is(e)){ArenaCombat.defeat(e);return;}
   if(PrisonHunter.is(e)){PrisonHunter.defeat(e);return;}
@@ -541,7 +544,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(HannahCombat.is(e)){HannahCombat.update(e,dt);return;}if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

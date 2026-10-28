@@ -37,3 +37,7 @@ A pályaadat a `levels.js`, a külön harc/interakció a `shadow-realm.js` rész
 A nyitott külső börtönkapu immár külön belső pályára is vezet, új börtönnaggyal és Zen megmentésével. A külső őr, kulcs és zár megmarad; a részletes működés és a mentési előfeltételek a [Zen és a börtön mélye](ZEN-PRISON.md) dokumentumban találhatók.
 
 A börtön alsó szárnya Fia opcionális megmentéséhez és a kultista vadászhoz vezet; a pap után külön Árnyékzug nyílik meg. A tartós kihagyási szabályok és az útvonal a [Kitsune-referenciában](KITSUNE.md) találhatók.
+
+## Folytatás a zikkuratban
+
+Az őrült pap legyőzése után a katedrális keleti útjáról külön, háromrészes zikkurat nyílik. Nem feltétele a börtön vagy Fia küldetéseinek teljesítése. A technikai részleteket és a történeti fordulatokat a [ZIGGURAT.md](ZIGGURAT.md) tartalmazza.

@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
-const ctx=vm.createContext({I18n:{t:key=>key}});for(const name of ['levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
+const ctx=vm.createContext({I18n:{t:key=>key}});for(const name of ['ziggurat-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
 const read=source=>JSON.parse(vm.runInContext('JSON.stringify('+source+')',ctx)),copy=value=>structuredClone(value),scales=[[0,'whiteSerpentScale'],[1,'serpentScale'],[2,'wingedSerpentScale']],result='triuneSerpentTalisman';
 function fixture(){return {version:2,layout:2,release,weaponStyle:'katana',weaponChoicePending:false,equippedTalisman:null,realm:0,location:null,prologueComplete:true,
  abilities:[true,true],defeated:[true,true,true,false],flags:[['forestBell','villageBell','campQuestAccepted','mayorExecuted','guardian:campMaster','enchanterRescued','guardian:whiteSerpent','whiteSerpentScale'],['soulUpper','soulLower','serpentScale'],['dawnSeal','guardian:wingedSerpent','wingedSerpentScale'],[]],

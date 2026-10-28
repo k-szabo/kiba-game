@@ -50,6 +50,7 @@ A **Kiba Birodalmak** böngészőben játszható, 2D metroidvania: kardharc, pla
 | Bal egérgomb vagy Z | Normál támadás |
 | Jobb egérgomb | Erős támadás |
 | Shift | Szellemlépés* |
+| F | Hajnalkard* |
 | E | Interakció, gyógyulás, kapuk és tárgyak használata |
 | U | Fejlesztés a pihenőszentélynél |
 | M | Térkép és gyorsutazás |

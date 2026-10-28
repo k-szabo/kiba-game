@@ -1142,6 +1142,22 @@
           "en": "Compatible updates preserve progress; saves reset only when a change makes them incompatible."
         }
       ]
+    },
+    {
+      "version": "0.9.53_b6ff54da",
+      "code": "b6ff54da",
+      "baseVersion": "0.9.53",
+      "slug": "hannah-ziggurat-dawnblade",
+      "summary": {
+        "hu": "A zikkurat vihara",
+        "en": "Storm over the Ziggurat"
+      },
+      "fixes": [
+        {
+          "hu": "Az őrült pap legyőzése után új, háromrészes zikkurat vezet Hannah-hoz és Haru nyomához. A történet során felébredhet a Hajnalkard ereje. A kompatibilis mentések megmaradnak.",
+          "en": "After the Mad Priest’s defeat, a new three-part ziggurat leads to Hannah and Haru’s trail. Dawnblade’s power can awaken during the story. Compatible saves are preserved."
+        }
+      ]
     }
   ]
 }

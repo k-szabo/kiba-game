@@ -160,3 +160,7 @@ A `cultDungeon1`, `cultDungeon2`, `cultDungeon3` külön teleportcélok, saját 
 ## Fia új megbízása és titkos harca – spoileres fejlesztői rész
 
 Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengeance` replayt kínál. Ez nem írja a halál-, aréna- vagy küldetésjelzőket, és nem ad jutalmat. A `priestessTalisman`, `roastChicken` és `kitsuneSoul` a tárgyadóban elérhető; a Kiba-pajzs a képességadóban külön passzív elem, nem változtatja a dupla ugrás/dash indexeit. A dev-kísérlet megszakítása és vége megőrzi a normál mentést. Részletek és validálás: [FIA-JOURNEY.md](FIA-JOURNEY.md).
+
+## Zikkurat
+
+A teleport három további célpontot kínál: a zikkurat előtere, belseje és Hannah trónterme. A képességadó Hajnalkardot is adhat; a bossválasztó a trónteremben Hannah teljes, első fázistól induló próbáját állítja vissza. A visszajátszás nem ad jutalmat vagy történeti mérföldkövet, és a normál mentést sem módosítja.

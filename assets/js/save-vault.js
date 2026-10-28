@@ -38,6 +38,10 @@ const SaveVault=(()=>{
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
+  const hannah=data.flags[3],hasHannah=id=>hannah.includes(id);
+  if(['dawnblade','hannahDefeated','hannahFiaRescue','guardian:Hannah','discovered:hannahCourt'].some(id=>hasHannah(id)&&!data.defeated[3]))throw Error('Invalid ziggurat progress');
+  if(hasHannah('hannahDefeated')&&(!hasHannah('dawnblade')||!hasHannah('guardian:Hannah'))||hasHannah('guardian:Hannah')&&!hasHannah('hannahDefeated'))throw Error('Invalid Hannah victory');
+  if(hasHannah('hannahFiaRescue')&&(!hasHannah('hannahDefeated')||!['fiaRescued','arenaChampion','fiaTalismanCompleted'].every(hasHannah)))throw Error('Invalid Hannah rescue');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
   if(hasCampFlag('daisyPlaced')&&(!data.defeated[0]||!data.flags[1].includes('daisyPlush')||!data.flags[1].includes('guardian:doomSlayer')||data.soldItems.includes('daisyPlush')))throw Error('Invalid Daisy placement');
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');

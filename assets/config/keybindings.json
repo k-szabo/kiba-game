@@ -52,6 +52,9 @@
     ],
     "useMeat": [
       "q"
+    ],
+    "ultimate": [
+      "f"
     ]
   },
   "profiles": {
@@ -82,7 +85,7 @@
     }
   },
   "modified": {},
-  "revision": 2,
+  "revision": 3,
   "legacyDefaults": {
     "revision": 1,
     "original": {

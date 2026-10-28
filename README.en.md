@@ -37,7 +37,7 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 - **Yomi boss fight:** The demon summons minions at health thresholds and begins two lava stages, including a fight against a Lava Serpent.
 - **Hungarian and English:** Choose a language with the flag picker. The game remembers your choice in the browser.
 - **Custom controls:** Choose UK or French keyboard presets, remap individual actions, and export or import bindings as JSON.
-- **Local saves:** Progress is encrypted and tied to the current browser profile. Use Continue from the main menu to resume. During alpha and beta, a new game version resets progress while preserving language and control preferences.
+- **Local saves:** Progress is encrypted and tied to the current browser profile. Use Continue from the main menu to resume. Compatible updates preserve progress; saves reset only when a change makes them incompatible. Language and control preferences are preserved.
 
 - The game now includes a rescuable merchant, collectible coins, a purchasable compass and minimap, and roast meat usable from the inventory or a remappable shortcut.
 
@@ -47,13 +47,15 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 | --- | --- |
 | A / D or ← / → | Move |
 | Space, W, or ↑ | Jump; release and press again for double jump* |
-| J or Z | Sword attack |
-| K or Shift | Spirit dash* |
+| Left mouse button or Z | Normal attack |
+| Right mouse button | Heavy attack |
+| Shift | Spirit dash* |
+| F | Dawnblade* |
 | E | Interact, heal, open gates, and collect items |
 | U | Upgrade at a shrine |
 | M | Map and fast travel |
 | S + Space | Drop through a ledge |
-| O | Use food |
+| Q | Use healing item |
 | Esc | Pause |
 | I | Open inventory and pause the game |
 

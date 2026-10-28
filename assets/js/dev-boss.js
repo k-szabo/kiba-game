@@ -2,7 +2,7 @@
 'use strict';
 const DevBoss=(()=>{
  let encounter='main';
- const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||!!level.dungeon);
+ const available=()=>DevSession.active&&!!player&&(Prologue.active||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||!!level.dungeon||level===zigguratSummit);
  const encounters=()=>[...([shadowDen,fiaChambers].includes(level)?[{id:'fiaVengeance',name:'fia.name'}]:[]),...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
   ...(Prologue.active?[]:(level.arenaEncounters||level.enemies).filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
  function fields(){
@@ -26,7 +26,7 @@ const DevBoss=(()=>{
  }
  function reviveMiniboss(id){
   const specs=level.arenaEncounters||level.enemies,index=specs.findIndex(spec=>spec.id===id&&spec.miniboss);if(index<0)return false;
-  const spec=specs[index];if(CampMaster.is(spec)&&level!==samuraiCamp)return false;
+  const spec=specs[index];if(HannahCombat.is(spec))return HannahEncounter.replay();if(CampMaster.is(spec)&&level!==samuraiCamp)return false;
   const replay=CampMaster.is(spec)?CampMaster.create(spec):createEnemy(spec,index),a=replay.arena;
   const floor=platforms.find(p=>!p.broken&&Math.abs(p.y-a.y)<2&&p.x<=a.x+70&&p.x+p.w>=a.x+70);
   if(!floor)return false;
