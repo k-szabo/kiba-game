@@ -1043,7 +1043,9 @@
       "ability.dawnblade.ready": "Kész",
       "ability.dawnblade.cooldown": "{0} mp",
       "help.dawnblade": "{0}: Hajnalkard használata, miután Haru felébresztette az erejét.",
-      "binding.action.ultimate": "Hajnalkard"
+      "binding.action.ultimate": "Hajnalkard",
+      "menu.changelog.0953.title": "A zikkurat vihara",
+      "menu.changelog.0953.0": "Az őrült pap legyőzése után új, háromrészes zikkurat vezet Hannah-hoz és Haru nyomához. A történet során felébredhet a Hajnalkard ereje. A kompatibilis mentések megmaradnak."
     }
   },
   "en": {
@@ -2090,7 +2092,9 @@
       "ability.dawnblade.ready": "Ready",
       "ability.dawnblade.cooldown": "{0}s",
       "help.dawnblade": "{0}: unleash Dawnblade once Haru has awakened its power.",
-      "binding.action.ultimate": "Dawnblade"
+      "binding.action.ultimate": "Dawnblade",
+      "menu.changelog.0953.title": "Storm over the Ziggurat",
+      "menu.changelog.0953.0": "After the Mad Priest’s defeat, a new three-part ziggurat leads to Hannah and Haru’s trail. Dawnblade’s power can awaken during the story. Compatible saves are preserved."
     }
   }
 }
