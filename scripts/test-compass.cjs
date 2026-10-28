@@ -17,16 +17,16 @@ assert(r(`Compass.reading(${point(89,84)}).near`));assert(!r(`Compass.reading(${
 r('abilities[0]=true;updateHUD();');assert.equal(r('nextObjective().name'),r("level.objects.find(o=>o.id==='forestBell').name"));
 r("flags[0].push('forestBell');updateHUD();");assert.equal(r('nextObjective().name'),r("level.objects.find(o=>o.id==='villageBell').name"));
 r("flags[0].push('villageBell');updateHUD();");assert.equal(r('nextObjective().name'),r('realms[0].boss'));
-r('defeated[0]=true;updateHUD();');assert.equal(r('nextObjective().name'),r('realms[1].name'));
+r('defeated[0]=true;updateHUD();');assert.equal(r('nextObjective().name'),r('yomi.objects.find(o=>o.type===\'rescue\').name'));assert.equal(r('nextObjective().point'),r('japan.exit'));
 for(const flag of ['discovered:angelRuin','discovered:cultCave'])r(`flags[0].push('${flag}');`);
 assert(!/glória|szarv|halo|horn/i.test(r('nextObjective().name')),'Secrets must not become compass targets');
-r('enterForestCamp();updateHUD();');assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('compass.idle')"));assert(node('compassTarget').hidden);
+r('enterForestCamp();updateHUD();');assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('compass.otherLocation')"));assert(!node('compassTarget').hidden,'Camp displays the global story target without inventing a bearing');
 r('leaveForestCamp();enterRealm(1);updateHUD();');assert.equal(r('nextObjective().name'),r('level.objects[0].name'));
 r("flags[1].push('soulUpper');updateHUD();");assert.equal(r('nextObjective().name'),r('level.objects[1].name'));
 r("flags[1].push('soulLower');updateHUD();");assert.equal(r('nextObjective().name'),r('level.ability.name'));
 r('abilities[1]=true;updateHUD();');assert.equal(r('nextObjective().name'),r('realms[1].boss'));
-r('defeated[1]=true;updateHUD();');assert.equal(r('nextObjective().name'),r('realms[2].name'));
-r("flags[1].push('councilGateOpen');enterCouncilHall();updateHUD();");assert.equal(node('compassArrow').textContent,'—');assert(node('compassTarget').hidden);r('leaveCouncilHall();enterRealm(2);');
+r('defeated[1]=true;updateHUD();');assert.equal(r('nextObjective().name'),r('realms[2].boss'));assert.equal(r('nextObjective().point'),r('yomi.exit'));
+r("flags[1].push('councilGateOpen');enterCouncilHall();updateHUD();");assert.equal(node('compassArrow').textContent,'—');assert(!node('compassTarget').hidden);assert(r('nextObjective().remote'));r('leaveCouncilHall();enterRealm(2);');
 for(const y of [6300,4960,3750,2340,1470,850]){
  h.place(1000,y);r('updateHUD();');assert.equal(typeof r('nextObjective().name'),'string');assert(r('nextObjective().name.length>0'));assert(!node('compassTarget').hidden);
 }
@@ -36,4 +36,15 @@ r('mainMenu();');assert(node('compass').hidden);
 r('state="play";Prologue.start();');assert(node('compass').hidden,'Even a dev-granted compass stays hidden in the dream');
 r('Prologue.wake();');h.dismiss();r("flags[1]=['compass'];updateHUD();");assert(!node('compass').hidden);
 const before=r('JSON.stringify({coins,meatCount,flags,progression,abilities,defeated,player,saved})');r('for(let i=0;i<100;i++)Compass.update();');assert.equal(r('JSON.stringify({coins,meatCount,flags,progression,abilities,defeated,player,saved})'),before,'Compass rendering cannot change gameplay or saves');
+// Completed realms do not restart their old main-story endpoints on backtracking.
+r("flags[2].push('shadowEntered');defeated=[true,true,true,true];enterRealm(0);updateHUD();");
+assert.equal(r('nextObjective().name'),'ziggurat.hannah');assert.equal(r('nextObjective().point'),r('japan.exit'));
+r('enterRealm(3);updateHUD();');assert.equal(r('nextObjective().point'),r('shadowRealm.zigguratEntrance'));assert.equal(r('nextObjective().text'),'ziggurat.objective.approach');
+for(const realm of [0,1,2,3]){
+ r(`flags[3].push(HannahRules.progress.defeated);enterRealm(${realm});updateHUD();`);
+ assert.equal(r('nextObjective().text'),'story.journeyEnd');assert(node('compassTarget').hidden);assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('story.journeyEnd')"));
+}
+r("enterForestCamp();updateHUD();");assert.equal(r('nextObjective().text'),'story.journeyEnd');
+const local={point:{x:20,y:30},name:'Optional encounter',text:'Optional encounter'};
+h.sandbox.optionalObjective=local;r('level=shadowPrison');assert.equal(r('Compass.objective(optionalObjective)'),local,'Active prison objectives survive main-story completion');
 console.log('PASS: owned compass display, eight centered bearings/near cue, named objective transitions, hidden secrets, side-area idle, dream/menu hiding and paused/pure rendering.');

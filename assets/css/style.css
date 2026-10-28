@@ -1,4 +1,8 @@
 @font-face{font-family:'Kiba UI';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/noto-sans-400-v1.ttf') format('truetype')}
+/* UI cursors remain visible over the entire game, including outside a modal. */
+#game[data-game-cursor="paw"],#game[data-game-cursor="paw"] *,#resolutionNotice,#resolutionNotice *{cursor:url('../images/ui/paw-cursor-v1.png') 16 12,auto!important}
+#game[data-game-cursor="hidden"],#game[data-game-cursor="hidden"] *{cursor:none!important}
+#game[data-game-cursor="hidden"] :is(button,a[href],summary,input,select,textarea),#game[data-game-cursor="hidden"] :is(button,a[href],summary,input,select,textarea) *{cursor:url('../images/ui/paw-cursor-v1.png') 16 12,auto!important}
 @font-face{font-family:'Kiba UI';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/noto-sans-500-v1.ttf') format('truetype')}
 @font-face{font-family:'Kiba UI';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/noto-sans-600-v1.ttf') format('truetype')}
 @font-face{font-family:'Kiba UI';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/noto-sans-700-v1.ttf') format('truetype')}

@@ -33,7 +33,7 @@ function createZigguratMaps({makeLevel,ledge,rest,foe,zone}){
  for(let i=0;i<7;i++)ledge(zigguratInterior,'ziggurat-interior-descent-'+(i+1),i%2?1920:1650,1790+i*90,360);
  ledge(zigguratInterior,'ziggurat-interior-depths',1450,2420,1150,'ground',300);
  rest(zigguratInterior,'zigguratInteriorEntrance',320,1700,'ziggurat.rest.interior');
- rest(zigguratInterior,'zigguratInteriorUpper',1500,440,'ziggurat.rest.upper');
+ rest(zigguratInterior,'zigguratInteriorUpper',820,440,'ziggurat.rest.upper');
  rest(zigguratInterior,'zigguratInteriorDepths',2350,2420,'ziggurat.rest.depths');
  zigguratInterior.returnPoint={x:120,y:1700};
  zigguratInterior.returnDestination={location:'zigguratApproach',x:4920,y:1000};

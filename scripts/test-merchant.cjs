@@ -45,5 +45,11 @@ try{
  r("state='pause';mapLines=[];Merchant.drawMinimap();");assert.equal(r('mapLines.length'),0,'Paused minimap must not redraw');
  r("state='menu';Merchant.drawMinimap();");assert(h.elements.get('minimap').hidden);r('mapContext.lineTo=originalLine;');
  r('state="play";coins=Number.MAX_SAFE_INTEGER;');assert.equal(r('Merchant.award(5)'),0);
+ // Armor leaves fractional HP. Food feedback must use the same localized,
+ // bounded precision as the health display instead of floating-point tails.
+ r('player.hp=1.3333333333333333;player.maxHp=5;meatCount=1;Math.random=()=>0;');
+ assert(r('Merchant.eat()'));
+ assert.equal(h.elements.get('toast').textContent,r("I18n.format('message.arg0.of.arg1.health',[CampHealth.number(player.hp),CampHealth.number(player.maxHp)])"));
+ assert(!/333333/.test(h.elements.get('toast').textContent));
 }finally{Math.random=originalRandom;}
 console.log('PASS: coin kill/respawn rules, rescue captors, camp-only paused shop, atomic permanent/stack purchases, food RNG/use binding/nonlethal bounds, persistence and invalid saves.');

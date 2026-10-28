@@ -137,7 +137,7 @@ for key in ('momoNaginataNormal', 'momoNaginataHeavy', 'momoShieldNormal', 'momo
     pc['momo']['variants'][key] = {'paletteGroup': group('pc.momo.' + key, manifest[key], atlas['frames'][key], 'ART_FRAMES.' + key)}
 portrait = atlas['inventory']['momo']
 pc['momo']['variants']['inventory'] = {'paletteGroup': group('pc.momo.inventory', manifest[portrait['image']], portrait, 'ART_INVENTORY.momo')}
-npcs = {'haru': {'name': 'Haru', 'paletteRef': 'pc.momo', 'note': 'The father shares Momo\'s base sprite; scene-specific rendering colors are listed under codeColors.'}}
+npcs = {'haru': {'name': 'Haru', 'role': 'father', 'paletteGroup': group('npc.haru', manifest['haruElder'], {'x': 0, 'y': 0, 'w': 1024, 'h': 1536}, 'HannahArt.haru')}}
 for name in ('daichi', 'natsu', 'sora', 'akash', 'smith', 'herbalist', 'enchanter', 'mayor'):
     definition = atlas['camp'][name]
     npcs[name] = {'name': name.capitalize(), 'role': 'merchant' if name == 'akash' else 'camp-survivor',

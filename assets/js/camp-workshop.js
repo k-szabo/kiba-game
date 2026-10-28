@@ -33,7 +33,7 @@ const CampWorkshop=(()=>{
     const title=document.createElement('h3');title.textContent=I18n.t(label)+' · '+I18n.format('service.rank',[rank]);row.append(title);
     button(row,price===null?I18n.format('service.rank',[rank]):I18n.format('merchant.buy',[price]),{type},price===null||coins<price);content.append(row);
    }
-   const protection=document.createElement('p');protection.textContent=I18n.format('service.armor',[momoStats().armor,Math.round(Armor.reduction(momoStats().armor)*100)]);content.append(protection);
+   const protection=document.createElement('p');protection.textContent=I18n.format('service.armor',[momoStats().armor,Math.round(Armor.playerReduction(momoStats().armor)*100)]);content.append(protection);
    for(const id of WeaponStyles.ids){
     const row=document.createElement('section');row.className='camp-service-row';const title=document.createElement('h3');title.textContent=I18n.t('weapon.'+id+'.item');row.append(title);
     if(campServices.ownedWeapons.includes(id)){

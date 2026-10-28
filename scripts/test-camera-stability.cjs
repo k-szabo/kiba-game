@@ -8,10 +8,10 @@ function capture(){commands=[];const before=world();r('draw()');assert.equal(wor
 r('DevTools.open();DevSession.begin();state="play";');
 const ids=Array.from(r('Object.keys(SIDE_LOCATIONS)'));
 for(const target of [0,1,2,3,...ids]){
- r(typeof target==='number'?'enterRealm('+target+')':'CampQuest.enter('+JSON.stringify(target)+')');r("state='play';shake=0;time=3.123;reducedMotion.matches=false;");capture();const steady=capture();r('shake=.2');assert.equal(capture(),steady,'Foreground and native background stay aligned under shake: '+target);r('reducedMotion.matches=true;shake=0');const reduced=capture();r('shake=.4');assert.equal(capture(),reduced,'Reduced motion: '+target);
+ r(typeof target==='number'?'enterRealm('+target+')':'CampQuest.enter('+JSON.stringify(target)+')');r("state='play';shake=0;time=3.123;reducedMotion.matches=false;");for(let warm=0;warm<10;warm++)capture();const steady=capture();r('shake=.2');assert.equal(capture(),steady,'Foreground and native background stay aligned under shake: '+target);r('reducedMotion.matches=true;shake=0');const reduced=capture();r('shake=.4');assert.equal(capture(),reduced,'Reduced motion: '+target);
 }
 for(const id of ['shadowDen','cultDungeon1'])for(const fps of [30,60,120])for(const kind of ['attack','heavyAttack']){
- r('CampQuest.enter('+JSON.stringify(id)+');state="play";initPlayer(level.start);enemies=[];boss.dead=true;reducedMotion.matches=false;');h.press({action:kind});let impact=false;
+ r('CampQuest.enter('+JSON.stringify(id)+');state="play";initPlayer(level.start);enemies=[];boss.dead=true;reducedMotion.matches=false;');for(let warm=0;warm<10;warm++)capture();h.press({action:kind});let impact=false;
  for(let n=0;n<fps*2;n++){r('update('+1/fps+')');if(r('attackHit&&shake>0')){impact=true;const active=capture();r('shake=0');assert.equal(capture(),active,'Real attack cannot shift world rendering');break;}}
  h.release({action:kind});assert(impact,'Actual bound '+kind+' reaches its impact at '+fps+' FPS in '+id);
  const camera=r('JSON.stringify([camera,cameraY])');r("state='pause'");const before=world();h.tick(60);assert.equal(world(),before);assert.equal(r('JSON.stringify([camera,cameraY])'),camera);

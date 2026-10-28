@@ -42,6 +42,8 @@ const SaveVault=(()=>{
   if(['dawnblade','hannahDefeated','hannahFiaRescue','guardian:Hannah','discovered:hannahCourt'].some(id=>hasHannah(id)&&!data.defeated[3]))throw Error('Invalid ziggurat progress');
   if(hasHannah('hannahDefeated')&&(!hasHannah('dawnblade')||!hasHannah('guardian:Hannah'))||hasHannah('guardian:Hannah')&&!hasHannah('hannahDefeated'))throw Error('Invalid Hannah victory');
   if(hasHannah('hannahFiaRescue')&&(!hasHannah('hannahDefeated')||!['fiaRescued','arenaChampion','fiaTalismanCompleted'].every(hasHannah)))throw Error('Invalid Hannah rescue');
+  if(['demonLordSoul','demonLordHeart','demonLordHeartGiven'].some(hasHannah)&&!hasHannah('hannahDefeated'))throw Error('Invalid demon lord reward');
+  if(hasHannah('demonLordHeartGiven')&&(!hasHannah('demonLordHeart')||!hasHannah('fiaRescued')))throw Error('Invalid demon lord gift');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
   if(hasCampFlag('daisyPlaced')&&(!data.defeated[0]||!data.flags[1].includes('daisyPlush')||!data.flags[1].includes('guardian:doomSlayer')||data.soldItems.includes('daisyPlush')))throw Error('Invalid Daisy placement');
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
@@ -116,8 +118,11 @@ const SaveVault=(()=>{
   }
   const checkpointMap=data.location!=null?SIDE_LOCATIONS[data.location].map:levels[data.realm];
   const checkpoint=[...checkpointMap.rests,...(checkpointMap.checkpoints||[])].find(r=>r.id===data.checkpoint?.id);
-  if(!checkpoint||data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
-  return JSON.parse(JSON.stringify(data));
+  const relocatedUpper=data.location==='zigguratInterior'&&data.checkpoint?.id==='zigguratInteriorUpper'&&data.checkpoint.x===1500&&data.checkpoint.y===440;
+  if(!checkpoint||!relocatedUpper&&(data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y)||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
+  const normalized=JSON.parse(JSON.stringify(data));
+  if(relocatedUpper)normalized.checkpoint={...normalized.checkpoint,x:checkpoint.x,y:checkpoint.y};
+  return normalized;
  }
  const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});
  const complete=tx=>new Promise((resolve,reject)=>{tx.oncomplete=resolve;tx.onabort=tx.onerror=()=>reject(tx.error||Error('Storage aborted'));});

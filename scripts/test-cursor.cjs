@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const canvas={},inside={},outside={},game={dataset:{},contains:node=>node===inside||node===canvas};
+const context=vm.createContext({state:'menu',resolutionBlocked:false,canvas,$:()=>game});
+vm.runInContext(fs.readFileSync('assets/js/cursor.js','utf8')+'\nglobalThis.cursor=Cursor;',context);
+const update=state=>{context.state=state;context.cursor.update();return game.dataset.gameCursor;};
+assert.equal(update('play'),'hidden');
+for(const state of ['menu','pause','dialog','inventory','shop','training','map','help','developer','slayerSpell','dungeonMenu','weaponSelection','won'])assert.equal(update(state),'paw',state+' keeps the pointer visible over the whole game');
+context.resolutionBlocked=true;assert.equal(update('play'),'paw','Blocked viewport must retain a visible pointer');
+let prevented=0;
+for(const target of [canvas,inside])assert.equal(context.cursor.contextMenu({target,preventDefault(){prevented++;}}),true);
+assert.equal(prevented,2);
+assert.equal(context.cursor.contextMenu({target:outside,preventDefault(){throw Error('Outside context menu was intercepted');}}),false);
+const css=fs.readFileSync('assets/css/style.css','utf8');
+assert(css.includes('#game[data-game-cursor="paw"] *'),'Dialog cursor covers the game behind the modal');
+assert(css.includes('paw-cursor-v1.png')&&css.includes('16 12,auto'),'Native cursor has a stable hotspot and visible fallback');
+console.log('PASS: play-only hidden cursor, whole-game modal cursor, viewport safety, interactive HUD CSS and game-scoped context-menu suppression.');

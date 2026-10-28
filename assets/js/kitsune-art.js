@@ -28,9 +28,8 @@ const KitsuneArt=(()=>{
  function backdrop(){
   const a=art()?.den;if(!a)return;
   const images=a.panels.map(key=>Visuals.images[key]);if(images.some(image=>!image?.complete||!image.naturalWidth))return;
-  const overlap=a.overlap??.06,sourceWidth=a.w*(images.length-overlap*(images.length-1)),s=level.width/sourceWidth,step=a.w*s*(1-overlap),top=level.start.y-a.groundY*s-cameraY;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#161120';ctx.fillRect(0,0,viewW,H);
-  images.forEach((image,index)=>BackgroundMotion.draw(panelSource(image,index>0),index*step-camera,top,a.w*s,a.h*s));ctx.restore();
+  BackgroundFraming.panels(images,(image,index)=>panelSource(image,index>0),{overlap:(a.overlap??.06)*a.w/a.h});ctx.restore();
  }
  function depthsBackdrop(){
   const a=art()?.depths,image=Visuals.images[a?.image],alpha=clamp((cameraY-1300)/400,0,1);

@@ -1049,7 +1049,20 @@
       "menu.changelog.0954.title": "Élőbb tájak Japánban és Yomiban",
       "menu.changelog.0954.0": "Japán és Yomi festett hátterein a lomb, a felhők, a lángok, a láva és a füst finoman változik. Szünetben megállnak, csökkentett mozgás mellett az eredeti kép látható.",
       "menu.changelog.0955.title": "Élő tájak a birodalmakban",
-      "menu.changelog.0955.0": "A fő pályák, rejtett arénák, táborok, belső terek és dungeonök festett hátterein finoman változnak a környezet részletei. A mozgás szünetben megáll, csökkentett mozgás mellett az eredeti festmények láthatók."
+      "menu.changelog.0955.0": "A fő pályák, rejtett arénák, táborok, belső terek és dungeonök festett hátterein finoman változnak a környezet részletei. A mozgás szünetben megáll, csökkentett mozgás mellett az eredeti festmények láthatók.",
+      "item.demonLordSoul": "Az első démon lord lelke",
+      "inventory.description.demonLordSoul": "Hannah kaszájának árnyéka kering a lélekben. A fekete lángok között még narancsszínű Kiba izzik.",
+      "item.demonLordHeart": "Démon lord szíve",
+      "inventory.description.demonLordHeart": "A legyőzött démon lord sötét Kibától lüktető szíve. Fiának adhatod.",
+      "fia.heart.give": "E · A démon lord szívének átadása Fiának",
+      "fia.heart.thanks": "Egy démon lord szíve… nekem? Kezdesz elkényeztetni, kis szamuráj. Ezt megtartom — és a mosolyodat is szívesen látnám gyakrabban.",
+      "story.journeyEnd": "Egyelőre elérted az út végét.",
+      "compass.otherLocation": "Másik helyszínen",
+      "menu.changelog.0955polish.title": "Hannah és a birodalmak javításai",
+      "menu.changelog.0955polish.0": "Hannah visszatérő dash-e és árnyékvisszhangjai is sebeznek; új kombinációkat és területi támadásokat használ, arénájából pedig harc közben nem lehet kisétálni.",
+      "menu.changelog.0955polish.1": "A zárójelenet és a Hajnalkard támadása láthatóan lejátszódik. Haru idősebb külsőt, Hannah pedig új lélek- és szívjutalmat kapott.",
+      "menu.changelog.0955polish.2": "A hátterek természetesebb léptékben jelennek meg, a felső zikkuratszentély külön elérhető, az iránytű pedig a fő történet haladását követi.",
+      "menu.changelog.0955polish.3": "Játék közben rejtett kurzor, a menükben mancsmutató segít. A gyógyulás számai rendezettek, Momo páncélvédelme fokozatosabban erősödik."
     }
   },
   "en": {
@@ -2102,7 +2115,20 @@
       "menu.changelog.0954.title": "Living scenery in Japan and Yomi",
       "menu.changelog.0954.0": "Painted foliage, clouds, flames, lava and smoke subtly change in Japan and Yomi. The motion pauses with the game, while reduced motion shows the original artwork.",
       "menu.changelog.0955.title": "Living scenery across the realms",
-      "menu.changelog.0955.0": "Subtle environmental motion now brings painted backgrounds to life across the main realms, hidden arenas, camps, interiors and dungeons. Motion pauses with the game; reduced motion displays the original paintings."
+      "menu.changelog.0955.0": "Subtle environmental motion now brings painted backgrounds to life across the main realms, hidden arenas, camps, interiors and dungeons. Motion pauses with the game; reduced motion displays the original paintings.",
+      "item.demonLordSoul": "Soul of the First Demon Lord",
+      "inventory.description.demonLordSoul": "The shadow of Hannah’s scythe circles within this soul. Orange Kiba still glows among its black flames.",
+      "item.demonLordHeart": "Demon Lord’s Heart",
+      "inventory.description.demonLordHeart": "The fallen demon lord’s heart pulses with dark Kiba. You can give it to Fia.",
+      "fia.heart.give": "E · Give the Demon Lord’s Heart to Fia",
+      "fia.heart.thanks": "A demon lord’s heart… for me? You’re beginning to spoil me, little samurai. I’ll keep this — and I wouldn’t mind seeing your smile more often, either.",
+      "story.journeyEnd": "You have reached the end of the journey—for now.",
+      "compass.otherLocation": "In another location",
+      "menu.changelog.0955polish.title": "Hannah and realm fixes",
+      "menu.changelog.0955polish.0": "Hannah’s return dash and shadow echoes now deal damage; she uses new combos and area attacks, and her arena keeps the fight contained.",
+      "menu.changelog.0955polish.1": "The ending scene and Dawnblade strike now visibly play out. Haru has an older appearance, and Hannah grants new soul and heart rewards.",
+      "menu.changelog.0955polish.2": "Backgrounds appear at a more natural scale, the upper ziggurat shrine is separately accessible, and the compass follows main-story progress.",
+      "menu.changelog.0955polish.3": "The cursor hides during gameplay and becomes a paw in menus. Healing numbers are formatted clearly, and Momo’s armor protection grows more gradually."
     }
   }
 }

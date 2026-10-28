@@ -9,7 +9,7 @@ const Dawnblade=(()=>{
  function resetJourney(){cast=null;cooldown=0;}
  function awaken(){cooldown=0;cast=null;}
  function activate(){
-  if(state!=='play'||!player||!ready()||cooldown>0||cast||player.stun>0||attack>0||dash>0)return false;
+  if(state!=='play'||!player||!ready()||HannahEncounter.cinematic()||cooldown>0||cast||player.stun>0||attack>0||dash>0)return false;
   const target=HannahEncounter.finisherTarget();
   cast={victim:player,map:level,face:player.face,elapsed:0,impact:false,target,token:target?.encounterToken};
   cooldown=HannahRules.tuning.ultimate.cooldown;

@@ -9,7 +9,7 @@ const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  dungeonSeal:{price:50,stack:true},sectSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},highPriestessSoul:{price:400,realm:0},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
- seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},arenaSerpentScale:{price:80,realm:3},
+ seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},demonLordSoul:{price:800,realm:3},arenaSerpentScale:{price:80,realm:3},
  daisyPlush:{price:120,realm:1},slayerCrossbow:{price:300,realm:1}
 }).map(([id,product])=>[id,Object.freeze(product)])));
 // Earned reward flags, rather than held items or replayable encounters, own
@@ -531,7 +531,7 @@ const COUNCIL_TRAVEL=Object.freeze({id:'councilHallEntrance',x:yomi.councilGate.
 levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear','dungeonChestClaimed','dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward','councilSoul');
 const {zigguratApproach,zigguratInterior,zigguratSummit}=createZigguratMaps({makeLevel,ledge,rest,foe,zone});
 shadowRealm.zigguratEntrance={x:10680,y:1200};
-shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','discovered:hannahCourt','guardian:Hannah');
+shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','demonLordSoul','demonLordHeart','demonLordHeartGiven','discovered:hannahCourt','guardian:Hannah');
 const SIDE_LOCATIONS=Object.freeze({
  zigguratApproach:Object.freeze({map:zigguratApproach,realm:3,requiredFlags:Object.freeze([])}),
  zigguratInterior:Object.freeze({map:zigguratInterior,realm:3,requiredFlags:Object.freeze([])}),

@@ -1,7 +1,7 @@
 /* Transient final encounter. HannahEncounter owns scenes and permanent flags. */
 'use strict';
 const HannahCombat=(()=>{
- const moves=Object.freeze(['combo','jump','dashReturn','summon']),owners=new Map();let serial=0;
+ const owners=new Map();let serial=0;
  const is=e=>e?.miniboss==='hannah';
  const source=e=>'hannah:'+e.id+':'+e.encounterToken;
  const current=e=>is(e)&&!e.dead&&e.encounterLevel===level&&owners.get(e.encounterToken)===e&&enemies.includes(e);
@@ -42,37 +42,48 @@ const HannahCombat=(()=>{
   return e;
  }
  function bounds(e){return {left:e.arena.x+25,right:Math.max(e.arena.x+25,e.arena.x+e.arena.w-e.w-25)};}
+ function enforceBounds(owner=null){
+  const e=owner||enemies.find(candidate=>live(candidate));if(!e||!live(e)||!['combat','drain','transform','finisher'].includes(e.mode))return false;
+  const left=e.arena.x+8,right=Math.max(left,e.arena.x+e.arena.w-player.w-8),before=player.x;
+  player.x=clamp(player.x,left,right);
+  if(player.x!==before&&(player.x===left&&player.vx<0||player.x===right&&player.vx>0))player.vx=0;
+  return player.x!==before;
+ }
  function inside(e){const a=e.arena,feet=player.y+player.h;return player.x+player.w>a.x-70&&player.x<a.x+a.w+70&&feet>=a.y-520&&feet<=a.y+35;}
  function blade(body,face,width=205,height=155){return {x:face>0?body.x+body.w*.4:body.x-width,y:body.y+body.h-height,w:width+body.w*.6,h:height};}
  function union(a,b){const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y);return {x,y,w:Math.max(a.x+a.w,b.x+b.w)-x,h:Math.max(a.y+a.h,b.y+b.h)-y};}
  function snapshot(e){
   const b=bounds(e),from=e.x,target=player.x+player.w/2;
   const to=e.move==='jump'?clamp(target-e.w/2,Math.max(b.left,from-390),Math.min(b.right,from+390)):e.move==='dashReturn'?clamp(from+e.attackFace*440,b.left,b.right):from;
-  return Object.freeze({move:e.move,face:e.attackFace,fromX:from,toX:to,y:e.baseY,w:e.w,h:e.h,
-   duration:e.move==='combo'?1.03:e.move==='jump'?1.02:e.move==='dashReturn'?1.18:.28,
+  const returnStart=.44+momoStats().invulnerability+HannahRules.tuning.combat.followUpMargin;
+  const zones=e.move==='riftBurst'?[-230,0,230].map((offset,index)=>Object.freeze({x:clamp(target+offset-70,e.arena.x+10,e.arena.x+e.arena.w-150),y:e.arena.y-160,w:140,h:160,start:.12+index*.4,end:.38+index*.4})):[];
+  return Object.freeze({move:e.move,face:e.attackFace,fromX:from,toX:to,y:e.baseY,w:e.w,h:e.h,returnStart,zones:Object.freeze(zones),
+   duration:e.move==='combo'?1.03:e.move==='crossCombo'?1.13:e.move==='riftBurst'?1.22:e.move==='jump'?1.02:e.move==='dashReturn'?returnStart+HannahRules.tuning.combat.returnTravel:.28,
    damage:e.move==='jump'?4:3,height:220});
  }
  function position(s,t){
   let x=s.fromX,y=s.y;
   if(s.move==='jump'){const p=clamp(t/s.duration,0,1);x=s.fromX+(s.toX-s.fromX)*p;y-=Math.sin(p*Math.PI)*s.height;}
   if(s.move==='dashReturn'){
-   const p=t<.44?clamp(t/.44,0,1):t<.7?1:1-clamp((t-.7)/.48,0,1);x=s.fromX+(s.toX-s.fromX)*p;
+   const p=t<.44?clamp(t/.44,0,1):t<s.returnStart?1:1-clamp((t-s.returnStart)/HannahRules.tuning.combat.returnTravel,0,1);x=s.fromX+(s.toX-s.fromX)*p;
   }
   return {x,y,w:s.w,h:s.h};
  }
+ function attackWindows(s){return s.move==='combo'?[[0,.2,s.face,205],[.35,.55,-s.face,180],[.74,1,s.face,245]]:s.move==='crossCombo'?[[0,.16,s.face,230],[.28,.46,-s.face,225],[.58,.76,s.face,265],[.9,1.1,-s.face,260]]:s.move==='jump'?[[.76,s.duration,s.face,0]]:s.move==='dashReturn'?[[0,.44,s.face,140],[s.returnStart,s.duration,-s.face,140]]:s.move==='riftBurst'?s.zones.map(zone=>[zone.start,zone.end,s.face,0]):[];}
  function warnings(s){
   if(s.move==='jump')return [{x:s.toX+s.w/2-155,y:s.y+s.h-125,w:310,h:125}];
-  if(s.move==='dashReturn')return [union(blade(position(s,0),s.face,140,125),blade(position(s,.44),s.face,140,125))];
+  if(s.move==='dashReturn')return attackWindows(s).map(([start,end,face,width])=>union(blade(position(s,start),face,width,125),blade(position(s,end),face,width,125)));
   if(s.move==='summon')return [];
-  return [blade(position(s,0),s.face),blade(position(s,0),-s.face,180)];
+  if(s.move==='riftBurst')return s.zones.map(({x,y,w,h})=>({x,y,w,h}));
+  const sides=new Map();for(const [,,face,width] of attackWindows(s)){const box=blade(position(s,0),face,width);sides.set(face,sides.has(face)?union(sides.get(face),box):box);}return [...sides.values()];
  }
  function tell(e){
-  const pattern=e.stage===1?moves:moves.filter(move=>move!=='summon');e.move=pattern[e.cycles++%pattern.length];
+  const pattern=e.stage===1?HannahRules.tuning.combat.phase1Pattern:HannahRules.tuning.combat.phase2Pattern;e.move=pattern[e.cycles++%pattern.length];
   const dx=player.x+player.w/2-e.x-e.w/2;if(Math.abs(dx)>18)e.face=Math.sign(dx);e.attackFace=e.face;
   e.targetX=player.x+player.w/2;e.targetY=player.y+player.h/2;e.moveSnapshot=snapshot(e);e.attackBoxes=warnings(e.moveSnapshot);e.attackBox=e.attackBoxes[0]||null;
   const tellTime=e.move==='jump'?1:e.move==='summon'?1.15:e.move==='dashReturn'?.95:.8;
   e.summons=e.move==='summon'?[e.arena.x+130,e.arena.x+e.arena.w-175].map((x,index)=>({x,y:e.arena.y,kind:index?'shield':'guard',warning:tellTime,warningDuration:tellTime})):[];
-  e.poseIndex=e.move==='summon'?5:2;phase(e,'windup',tellTime);sync(e);
+  e.poseIndex=['summon','riftBurst'].includes(e.move)?5:2;phase(e,'windup',tellTime);sync(e);
  }
  function summon(e){
   if(e.stage!==1)return;
@@ -86,18 +97,21 @@ const HannahCombat=(()=>{
  function release(e){
   phase(e,'strike',e.moveSnapshot.duration);e.poseIndex=3;e.strikeHits=[];e.attackBoxes=[];e.attackBox=null;
   if(e.move==='summon')summon(e);
-  else if(e.stage===2)e.echoQueue.push({snapshot:e.moveSnapshot,delay:.85,elapsed:0,started:false,hits:[],parts:[],attackBoxes:warnings(e.moveSnapshot)});
+  else if(e.stage===2)e.echoQueue.push({snapshot:e.moveSnapshot,delay:e.moveSnapshot.duration+momoStats().invulnerability+HannahRules.tuning.combat.echoMargin,elapsed:0,started:false,hits:[],parts:[],attackBoxes:warnings(e.moveSnapshot),hazards:[]});
  }
- function strike(e,s,previous,elapsed,hits){
-  const windows=s.move==='combo'?[[0,.2,s.face,205],[.35,.55,-s.face,180],[.74,1,s.face,245]]:s.move==='jump'?[[.76,s.duration,s.face,0]]:s.move==='dashReturn'?[[0,.44,s.face,140],[.7,1.18,-s.face,140]]:[];
+ function hazards(s,elapsed){return s.move==='riftBurst'?s.zones.filter(zone=>elapsed<=zone.end).map(zone=>({...zone,kind:'hannahRift',active:elapsed>=zone.start,progress:clamp((elapsed-zone.start)/(zone.end-zone.start),0,1)})):[];}
+ function strike(e,s,previous,elapsed,hits,multiplier=1){
+  const windows=attackWindows(s);
   for(let n=0;n<windows.length;n++){
    const [start,end,face,width]=windows[n];if(hits[n]||elapsed<start||previous>end)continue;
    let box;
    if(s.move==='jump')box={x:s.toX+s.w/2-155,y:s.y+s.h-125,w:310,h:125};
+   else if(s.move==='riftBurst')box=s.zones[n];
    else if(s.move==='dashReturn')box=union(blade(position(s,clamp(previous,start,end)),face,width,125),blade(position(s,clamp(elapsed,start,end)),face,width,125));
    else box=blade(position(s,0),face,width);
    if(!overlap(player,box))continue;
-   hits[n]=true;const victim=player;damage(s.damage,face,true);
+   const victim=player,accepted=damage(s.damage*multiplier,face,true);
+   if(accepted)hits[n]=true;
    if(player!==victim||!live(e)||e.mode!=='combat')return false;
   }
   return true;
@@ -107,8 +121,8 @@ const HannahCombat=(()=>{
    const before=echo.delay;echo.delay-=dt;
    if(echo.delay>0)continue;
    const step=before>0?Math.max(0,-echo.delay):dt,previous=echo.elapsed;echo.started=true;echo.elapsed=Math.min(echo.snapshot.duration,echo.elapsed+step);
-   echo.attackBoxes=[];const p=position(echo.snapshot,echo.elapsed);echo.parts=[{...p,face:echo.snapshot.face,poseIndex:3}];
-   if(!strike(e,echo.snapshot,previous,echo.elapsed,echo.hits))return false;
+   echo.attackBoxes=[];echo.hazards=hazards(echo.snapshot,echo.elapsed);const p=position(echo.snapshot,echo.elapsed),face=echo.snapshot.move==='dashReturn'&&echo.elapsed>=echo.snapshot.returnStart?-echo.snapshot.face:echo.snapshot.face;echo.parts=[{...p,face,poseIndex:3}];
+   if(!strike(e,echo.snapshot,previous,echo.elapsed,echo.hits,HannahRules.tuning.combat.echoDamageMultiplier))return false;
   }
   e.echoQueue=e.echoQueue.filter(echo=>echo.delay>0||echo.elapsed<echo.snapshot.duration);return true;
  }
@@ -147,6 +161,7 @@ const HannahCombat=(()=>{
  }
  function update(e,dt){
   if(state!=='play'||!current(e)||!validStep(dt)||e.failurePending)return;
+  enforceBounds(e);
   if(e.mode==='transform'||e.mode==='finisher')return;
   if(!inside(e)){if(e.active)fail(e);return;}
   if(!e.active){if(player.y+player.h<e.arena.y-200)return;e.active=true;}
@@ -163,8 +178,9 @@ const HannahCombat=(()=>{
   else if(e.phase==='strike'){
    const previous=e.attackElapsed;e.attackElapsed=Math.min(e.attackDuration,e.attackElapsed+dt);e.attackTime=Math.max(0,e.clock);
    const old=e.x,p=position(e.moveSnapshot,e.attackElapsed);e.x=p.x;e.y=p.y;e.walkSpeed=(e.x-old)/dt;
+   e.face=e.move==='dashReturn'&&e.attackElapsed>=e.moveSnapshot.returnStart?-e.attackFace:e.attackFace;e.hazards=hazards(e.moveSnapshot,e.attackElapsed);
    if(!strike(e,e.moveSnapshot,previous,e.attackElapsed,e.strikeHits))return;
-   if(e.clock<=0){e.y=e.baseY;e.attackBoxes=[];e.attackBox=null;phase(e,'recover',e.stage===2?.6:.85);e.poseIndex=4;}
+   if(e.clock<=0){e.y=e.baseY;e.attackBoxes=[];e.attackBox=null;e.hazards=[];phase(e,'recover',e.stage===2?.42:.65);e.poseIndex=4;}
   }else if(e.phase==='recover'&&e.clock<=0){phase(e,'wait',e.stage===2?.25:.4);e.poseIndex=0;}
   sync(e);
  }
@@ -211,5 +227,5 @@ const HannahCombat=(()=>{
   if(overlap(player,support)&&support.contactCd<=0){support.contactCd=1.1;damage(2,dx>0?1:-1,true);}
   return true;
  }
- return Object.freeze({is,create,reset,update,hit,defeat,source,clear,finishWithUltimate,current,observe,beginPhase2,awaitFinisher,updateSupport,parts:e=>e.parts||[]});
+ return Object.freeze({is,create,reset,update,hit,defeat,source,clear,finishWithUltimate,current,observe,beginPhase2,awaitFinisher,updateSupport,enforceBounds,parts:e=>e.parts||[]});
 })();

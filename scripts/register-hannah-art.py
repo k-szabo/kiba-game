@@ -111,6 +111,9 @@ def register(name, spec):
         frames.append(dict(x=x0, y=y0, w=x1-x0, h=y1-y0,
                            anchorX=ax, anchorY=ay, bodyHeight=body,
                            sourceFrame=index, visibleBounds=ink, outlines=outlines))
+    # Only poses with an unambiguous two-arm grip are safe for the runtime.
+    if name == 'walk':
+        frames = [frames[index] for index in [0, 2, 4, 5, 2, 4]]
     return dict(image=image_key, facing=1, frames=frames)
 
 
