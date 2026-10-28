@@ -34,3 +34,28 @@ for(const fps of [30,60,120]){
  for(const seconds of [2,4,6]){calls=[];r('Visuals.images.fiaChambersBackdrop.naturalWidth=64;Visuals.images.fiaChambersBackdrop.naturalHeight=64;BackgroundMotion.reset();BackgroundMotion.update('+seconds+');BackgroundMotion.draw(Visuals.images.fiaChambersBackdrop,10,20,300,200)');assert(calls.length>1);for(const call of calls)assert.deepEqual(call.args.slice(-4),[10,20,300,200],'Interior base and all effects remain at their exact source-registered positions');}
 }
 console.log('PASS: background-only profiles, one active clock at30/60/120FPS, pause/modal/viewport freezes, scene reset, pure rendering, source crop registration, alpha restoration, cached panel identity and reduced-motion static fallback.');
+
+// Controlled asynchronous loads exercise the three-way heaven transition and
+// ensure the composed scene is drawn once with its inherited opacity.
+{
+ const fs=require('node:fs'),vm=require('node:vm'),source=fs.readFileSync(require('node:path').join(__dirname,'../assets/js/background-motion.js'),'utf8');
+ const names=['heavenBackdrop','heavenDarkBackdrop','heavenEclipseBackdrop','shadowBackdrop'];
+ const manifest={},images={},requests=[],calls=[];
+ for(const [i,name] of names.entries()){manifest[name]='assets/images/backgrounds/a'+i+'.png';images[name]={naturalWidth:16,naturalHeight:16};}
+ for(const key of ['heavenMotionPhaseB','heavenDarkMotionPhaseB','heavenEclipseMotionPhaseB','shadowMotionPhaseB'])manifest[key]='assets/images/backgrounds/'+key+'.png';
+ const makeCanvas=()=>({width:0,height:0,getContext(){return {globalAlpha:1,drawImage(){},clearRect(){},getImageData(x,y,w,h){return {data:new Uint8ClampedArray(w*h*4)};},putImageData(){}};}});
+ const ctx={globalAlpha:.5,drawImage:(...args)=>calls.push(args),save(){},restore(){},beginPath(){},rect(){},clip(){}};
+ const context=vm.createContext({ART_MANIFEST:manifest,Visuals:{images},Image:class{constructor(){this.naturalWidth=16;this.naturalHeight=16;}},AssetCache:{load(image,url,done){requests.push({image,url,done});}},document:{createElement:makeCanvas},ctx,reducedMotion:{matches:false},state:'play',resolutionBlocked:false});
+ vm.runInContext(source+'\nglobalThis.motion=BackgroundMotion;',context);
+ const motion=context.motion,draw=name=>motion.draw(images[name],0,0,16,16);
+ motion.beginFrame();names.slice(0,3).forEach(draw);
+ assert.equal(requests.length,1,'Only one image load is in flight');
+ requests[0].done(true);assert.equal(requests.length,2);requests[1].done(true);assert.equal(requests.length,3);requests[2].done(true);
+ for(let frame=0;frame<5;frame++){motion.beginFrame();calls.length=0;names.slice(0,3).forEach(draw);assert.equal(calls.length,3,'Each translucent phase is drawn once');assert.equal(ctx.globalAlpha,.5);}
+ assert.equal(requests.length,3,'Three concurrent heaven phases do not reload');
+ motion.beginFrame();draw(names[3]);assert.equal(requests.length,4,'Older unpinned phase is evicted to make room');
+ motion.reset();requests[3].done(true);
+ motion.beginFrame();draw(names[3]);assert.equal(requests.length,5,'Reset invalidates a delayed load');
+ requests[4].image.naturalWidth=15;requests[4].done(true);
+ motion.beginFrame();draw(names[3]);assert.equal(requests.length,5,'A wrong-sized phase is rejected without a retry loop');
+}

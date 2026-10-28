@@ -21,9 +21,34 @@ const BackgroundMotion=(()=>{
    ['flame-right',1.17,[[.87,.615],[.91,.615],[.91,.659],[.87,.659]]],
    ['lava',2.8,[[.431,.845],[.543,.845],[.615,.91],[.69,.948],[.66,1],[.49,1],[.42,.94]]],
    ['smoke',10.5,[[.36,.405],[.44,.397],[.49,.453],[.46,.501],[.37,.493]]]
-  ]}
+  ]},
+  heavenBackdrop:{asset:'heavenMotionPhaseB',regions:[['cloud',14,[[.29,.02],[.52,.02],[.53,.12],[.40,.14],[.29,.10]],25]]},
+  heavenDarkBackdrop:{asset:'heavenDarkMotionPhaseB',regions:[['cloud',14,[[.29,.02],[.52,.02],[.53,.12],[.40,.14],[.29,.10]],25]]},
+  heavenEclipseBackdrop:{asset:'heavenEclipseMotionPhaseB',regions:[['cloud',14,[[.29,.02],[.47,.02],[.48,.10],[.40,.13],[.29,.10]],25]]},
+  shadowBackdrop:{asset:'shadowMotionPhaseB',regions:[['mist',13,[[.35,.62],[.62,.62],[.67,.69],[.38,.70]],25],['sky',18,[[.25,.03],[.46,.03],[.48,.13],[.30,.13]],30]]},
+  shadowCultBackdrop:{asset:'shadowCultMotionPhaseB',regions:[['mist',14,[[.37,.72],[.62,.72],[.66,.79],[.40,.79]],25]]}
  };
- const authoredLoads=new Map(),authoredLayers=new WeakMap();
+ const authoredLoads=new Map(),queue=new Map();let pending=null,frame=0,reserved=0;
+ const budget=64*1024*1024;
+ function beginFrame(){frame++;}
+ function discard(key){const entry=authoredLoads.get(key);if(!entry)return;authoredLoads.delete(key);reserved-=entry.bytes;if(entry===pending){entry.stale=true;reserved+=entry.imageBytes;}else if(entry.image)entry.image.src='';entry.canvas=null;entry.patches=null;}
+ function pump(){
+  if(pending)return;
+  for(const [key,item] of queue){
+   queue.delete(key);if(item.frame<frame-1)continue;
+   const {image,profile}=item,w=image.naturalWidth,h=image.naturalHeight,imageBytes=w*h*4,bytes=imageBytes*3;
+   const area=profile.regions.reduce((sum,[,,vertices])=>{const xs=vertices.map(p=>p[0]),ys=vertices.map(p=>p[1]);return sum+(Math.ceil(Math.max(...xs)*w)-Math.floor(Math.min(...xs)*w))*(Math.ceil(Math.max(...ys)*h)-Math.floor(Math.min(...ys)*h));},0);
+   if(!w||!h||area>w*h||bytes>budget)continue;
+   while(authoredLoads.size>=3||reserved+bytes>budget){const victim=[...authoredLoads].find(([,value])=>value.frame!==frame);if(!victim)break;discard(victim[0]);}
+   if(authoredLoads.size>=3||reserved+bytes>budget){queue.set(key,item);return;}
+   const entry={image:new Image(),bytes,imageBytes,frame:item.frame,status:'loading',canvas:null,patches:null};authoredLoads.set(key,entry);reserved+=bytes;pending=entry;
+   AssetCache.load(entry.image,ART_MANIFEST[profile.asset],ok=>{
+    pending=null;
+    if(entry.stale||authoredLoads.get(key)!==entry){entry.image.src='';reserved-=entry.imageBytes;entry.image=null;pump();return;}
+    entry.status=ok&&entry.image.naturalWidth===w&&entry.image.naturalHeight===h?'ready':'failed';pump();
+   });return;
+  }
+ }
  function inside(x,y,points){let found=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const a=points[i],b=points[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])found=!found;}return found;}
  function distance(x,y,points){let nearest=Infinity;for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy||1)));nearest=Math.min(nearest,Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy));}return nearest;}
  function ease(value){const t=Math.max(0,Math.min(1,value));return t*t*(3-2*t);}
@@ -50,26 +75,17 @@ const BackgroundMotion=(()=>{
  function paintAuthored(image,key,args,alpha){
   const profile=authored[key];if(!profile||image!==Visuals.images[key])return false;
   let load=authoredLoads.get(key);
-  if(!load){load={status:'loading',image:new Image()};authoredLoads.set(key,load);AssetCache.load(load.image,ART_MANIFEST[profile.asset],ok=>{
-   const valid=(width,height)=>Number.isSafeInteger(width)&&width>0&&Number.isSafeInteger(height)&&height>0;
-   load.status=ok&&valid(image.naturalWidth,image.naturalHeight)&&valid(load.image.naturalWidth,load.image.naturalHeight)&&load.image.naturalWidth===image.naturalWidth&&load.image.naturalHeight===image.naturalHeight?'ready':'failed';
-  });return false;}
+  if(!load){queue.set(key,{image,profile,frame});pump();return false;}
+  load.frame=frame;authoredLoads.delete(key);authoredLoads.set(key,load);
   if(load.status!=='ready')return false;
-  let patches=authoredLayers.get(image);
-  if(!patches){try{patches=makeAuthoredLayers(image,load.image,profile);authoredLayers.set(image,patches);}catch{load.status='failed';return false;}}
-  const w=image.naturalWidth,h=image.naturalHeight,[sx,sy,sw,sh,dx,dy,dw,dh]=args.length===8?args:[0,0,w,h,...args];
-  ctx.drawImage(image,...args);
-  ctx.save();ctx.beginPath();ctx.rect(dx,dy,dw,dh);ctx.clip();
-  for(const patch of patches){
-   const left=Math.max(sx,patch.x),top=Math.max(sy,patch.y),right=Math.min(sx+sw,patch.x+patch.width),bottom=Math.min(sy+sh,patch.y+patch.height);
-   if(right<=left||bottom<=top)continue;
-   ctx.globalAlpha=alpha*(1-Math.cos(clock/patch.period*Math.PI*2))/2;
-   ctx.drawImage(patch.canvas,left-patch.x,top-patch.y,right-left,bottom-top,dx+(left-sx)/sw*dw,dy+(top-sy)/sh*dh,(right-left)/sw*dw,(bottom-top)/sh*dh);
-  }
-  ctx.restore();return true;
+  try{
+   if(!load.patches){load.patches=makeAuthoredLayers(image,load.image,profile);load.canvas=document.createElement('canvas');load.canvas.width=image.naturalWidth;load.canvas.height=image.naturalHeight;}
+   if(load.renderClock!==clock){const paint=load.canvas.getContext('2d');paint.globalAlpha=1;paint.clearRect(0,0,load.canvas.width,load.canvas.height);paint.drawImage(image,0,0);for(const patch of load.patches){paint.globalAlpha=(1-Math.cos(clock/patch.period*Math.PI*2))/2;paint.drawImage(patch.canvas,patch.x,patch.y);}paint.globalAlpha=1;load.renderClock=clock;}
+   ctx.drawImage(load.canvas,...args);return true;
+  }catch{load.status='failed';return false;}
  }
  function update(dt){if(state==='play'&&!resolutionBlocked&&Number.isFinite(dt)&&dt>0)clock+=dt;}
- function reset(){clock=0;}
+ function reset(){clock=0;queue.clear();if(pending){for(const [key,entry] of authoredLoads)if(entry===pending){discard(key);break;}}}
  function keyFor(image){
   if(!image||typeof image!=='object')return null;
   if(keys.has(image))return keys.get(image);
@@ -130,5 +146,5 @@ const BackgroundMotion=(()=>{
   if(data.foliage){ctx.globalAlpha=alpha*.36;ctx.drawImage(data.foliage,...sample,dx+phase(.5)*1.5*dw/sourceWidth,dy,dw,dh);}
   ctx.restore();
  }
- return Object.freeze({draw,alias,update,reset,profiles,phase,get clock(){return clock;}});
+ return Object.freeze({draw,alias,update,reset,beginFrame,profiles,phase,get clock(){return clock;}});
 })();
