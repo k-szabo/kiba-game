@@ -2,9 +2,49 @@
 'use strict';
 const BackgroundMotion=(()=>{
  let clock=0;
- const keys=new WeakMap(),layers=new WeakMap();
+ const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  campHDLeft:{"asset":"campHDLeftMotionPhaseB","regions":[["detail-0",7,[[0.01,0.01],[0.25,0.01],[0.25,0.14],[0.01,0.14]],5]]},
+  campHDCenter:{"asset":"campHDCenterMotionPhaseB","regions":[["detail-0",14,[[0.48,0.535],[0.55,0.535],[0.55,0.64],[0.48,0.64]],5]]},
+  campHDRight:{"asset":"campHDRightMotionPhaseB","regions":[["detail-0",14,[[0.02,0.005],[0.18,0.005],[0.18,0.1],[0.02,0.1]],5]]},
+  campBackdrop:{"asset":"campBackdropMotionPhaseB","regions":[["detail-0",14,[[0.025,0.005],[0.26,0.005],[0.26,0.08],[0.025,0.08]],5]]},
+  samuraiCampHDWest:{"asset":"samuraiCampHDWestMotionPhaseB","regions":[["detail-0",14,[[0.4,0.23],[0.425,0.23],[0.425,0.27],[0.4,0.27]],5]]},
+  samuraiCampHDCenter:{"asset":"samuraiCampHDCenterMotionPhaseB","regions":[["detail-0",14,[[0.12,0.49],[0.145,0.49],[0.145,0.54],[0.12,0.54]],5]]},
+  samuraiCampHDEast:{"asset":"samuraiCampHDEastMotionPhaseB","regions":[["detail-0",14,[[0.055,0.49],[0.08,0.49],[0.08,0.535],[0.055,0.535]],5]]},
+  samuraiCampBackdrop:{"asset":"samuraiCampBackdropMotionPhaseB","regions":[["detail-0",14,[[0.2,0.41],[0.22,0.41],[0.22,0.455],[0.2,0.455]],5]]},
+  zenPrisonWest:{"asset":"zenPrisonWestMotionPhaseB","regions":[["detail-0",14,[[0.49,0.005],[0.6,0.005],[0.6,0.1],[0.49,0.1]],5]]},
+  zenPrisonCenter:{"asset":"zenPrisonCenterMotionPhaseB","regions":[["detail-0",14,[[0.52,0.005],[0.63,0.005],[0.63,0.1],[0.52,0.1]],5]]},
+  zenPrisonEast:{"asset":"zenPrisonEastMotionPhaseB","regions":[["detail-0",14,[[0.43,0.03],[0.51,0.03],[0.51,0.12],[0.43,0.12]],5]]},
+  fiaPrisonDepths:{"asset":"fiaPrisonDepthsMotionPhaseB","regions":[["detail-0",14,[[0.36,0.79],[0.45,0.79],[0.45,0.84],[0.36,0.84]],5]]},
+  fiaDenWest:{"asset":"fiaDenWestMotionPhaseB","regions":[["detail-0",14,[[0.55,0.005],[0.63,0.005],[0.63,0.09],[0.55,0.09]],5]]},
+  fiaDenEast:{"asset":"fiaDenEastMotionPhaseB","regions":[["detail-0",14,[[0.23,0.44],[0.28,0.44],[0.28,0.53],[0.23,0.53]],5]]},
+  arenaWest:{"asset":"arenaWestMotionPhaseB","regions":[["detail-0",14,[[0.72,0.02],[0.78,0.02],[0.78,0.1],[0.72,0.1]],5]]},
+  arenaCenter:{"asset":"arenaCenterMotionPhaseB","regions":[["detail-0",14,[[0.5,0.02],[0.58,0.02],[0.58,0.08],[0.5,0.08]],5]]},
+  arenaEast:{"asset":"arenaEastMotionPhaseB","regions":[["detail-0",14,[[0.48,0.01],[0.59,0.01],[0.59,0.1],[0.48,0.1]],5]]},
+  fiaChambersBackdrop:{"asset":"fiaChambersBackdropMotionPhaseB","regions":[["detail-0",14,[[0.48,0.3],[0.55,0.3],[0.55,0.4],[0.48,0.4]],5]]},
+  dungeonCourtyardWest:{asset:'dungeonWestMotionPhaseB',regions:[['smoke',15,[[.40,.015],[.58,.015],[.58,.12],[.40,.12]],18]]},
+  dungeonCourtyardCenter:{asset:'dungeonCenterMotionPhaseB',regions:[['smoke',15,[[.31,.02],[.48,.02],[.48,.15],[.31,.15]],18]]},
+  dungeonCourtyardEast:{asset:'dungeonEastMotionPhaseB',regions:[['smoke',15,[[.05,.01],[.22,.01],[.22,.08],[.05,.08]],18]]},
+  dungeonCrypt:{asset:'dungeonCryptMotionPhaseB',regions:[['fire',1.6,[[.19,.16],[.207,.16],[.207,.20],[.19,.20]],4]]},
+  dungeonThrones:{asset:'dungeonThronesMotionPhaseB',regions:[['cloud',14,[[.42,.02],[.47,.02],[.47,.12],[.42,.12]],10]]},
+  cultDungeonForecourt:{asset:'sectForecourtMotionPhaseB',regions:[['cloud',15,[[.32,.02],[.45,.02],[.45,.14],[.32,.14]],18]]},
+  cultDungeonHall:{asset:'sectHallMotionPhaseB',regions:[['cloud',15,[[.17,.24],[.22,.24],[.22,.30],[.17,.30]],8]]},
+  cultDungeonSanctum:{asset:'sectSanctumMotionPhaseB',regions:[['cloud',15,[[.49,.03],[.54,.03],[.54,.10],[.49,.10]],8]]},
+  forgeBackdrop:{asset:'forgeMotionPhaseB',regions:[['fire',1.6,[[.339,.475],[.379,.475],[.379,.53],[.339,.53]],5]]},
+  herbalBackdrop:{asset:'herbalMotionPhaseB',regions:[['leaves',7,[[.635,.36],[.69,.36],[.69,.44],[.635,.44]],9]]},
+  mysticBackdrop:{asset:'mysticMotionPhaseB',regions:[['smoke',9,[[.83,.45],[.865,.45],[.865,.515],[.83,.515]],7]]},
+  councilHall:{asset:'councilMotionPhaseB',regions:[['fire-left',1.6,[[.276,.50],[.297,.50],[.297,.555],[.276,.555]],5],['fire-right',1.8,[[.727,.50],[.753,.50],[.753,.555],[.727,.555]],5]]},
+  momoRoom:{asset:'momoRoomMotionPhaseB',regions:[['smoke',13,[[.84,.24],[.89,.24],[.89,.32],[.84,.32]],9]]},
+  zigguratApproach:{asset:'zigguratApproachMotionPhaseB',regions:[['cloud',15,[[.32,.02],[.43,.02],[.43,.13],[.32,.13]],20]]},
+  zigguratInterior:{asset:'zigguratInteriorMotionPhaseB',regions:[['lava',5,[[.537,.635],[.55,.635],[.55,.665],[.537,.665]],3]]},
+  zigguratThrone:{asset:'zigguratThroneMotionPhaseB',regions:[['fire-left',1.6,[[.260,.525],[.275,.525],[.275,.555],[.260,.555]],3],['fire-right',1.8,[[.728,.525],[.743,.525],[.743,.555],[.728,.555]],3]]},
+  zigguratStorm:{asset:'zigguratStormMotionPhaseB',regions:[['cloud',15,[[.32,.02],[.43,.02],[.43,.14],[.32,.14]],20]]},
+  angelRuinBackdrop:{asset:'angelRuinMotionPhaseB',regions:[['cloud',15,[[.36,.03],[.57,.03],[.57,.17],[.36,.17]],24]]},
+  cultCaveBackdrop:{asset:'cultCaveMotionPhaseB',regions:[['flame',1.5,[[.605,.268],[.63,.268],[.63,.31],[.605,.31]],4],['flame-right',1.7,[[.925,.61],[.952,.61],[.952,.671],[.925,.671]],4]]},
+  whiteSerpentBackdrop:{asset:'whiteSerpentMotionPhaseB',regions:[['water',7,[[.30,.795],[.67,.795],[.67,.84],[.30,.84]],12]]},
+  wingedSerpentBackdrop:{asset:'wingedSerpentMotionPhaseB',regions:[['cloud',15,[[.28,.025],[.52,.025],[.52,.17],[.28,.17]],22]]},
+  slayerArena:{asset:'slayerMotionPhaseB',regions:[['smoke',13,[[.48,.45],[.54,.45],[.54,.60],[.48,.60]],20]]},
   japanBackdrop:{asset:'japanMotionPhaseB',regions:[
    ['maple',4.6,[[0,0],[.085,0],[.085,.14],[0,.16]]],
    ['maple-right',4.6,[[.153,0],[.435,0],[.435,.168],[.335,.205],[.215,.13],[.153,.10]]],
@@ -73,14 +113,20 @@ const BackgroundMotion=(()=>{
   return result;
  }
  function paintAuthored(image,key,args,alpha){
-  const profile=authored[key];if(!profile||image!==Visuals.images[key])return false;
+  const alias=aliases.get(image),source=alias?.source||image,profile=authored[key];
+  if(!profile||source!==Visuals.images[key]||alias&&(image.width!==source.naturalWidth||image.height!==source.naturalHeight))return false;
   let load=authoredLoads.get(key);
-  if(!load){queue.set(key,{image,profile,frame});pump();return false;}
+  if(!load){queue.set(key,{image:source,profile,frame});pump();return false;}
   load.frame=frame;authoredLoads.delete(key);authoredLoads.set(key,load);
   if(load.status!=='ready')return false;
   try{
-   if(!load.patches){load.patches=makeAuthoredLayers(image,load.image,profile);load.canvas=document.createElement('canvas');load.canvas.width=image.naturalWidth;load.canvas.height=image.naturalHeight;}
-   if(load.renderClock!==clock){const paint=load.canvas.getContext('2d');paint.globalAlpha=1;paint.clearRect(0,0,load.canvas.width,load.canvas.height);paint.drawImage(image,0,0);for(const patch of load.patches){paint.globalAlpha=(1-Math.cos(clock/patch.period*Math.PI*2))/2;paint.drawImage(patch.canvas,patch.x,patch.y);}paint.globalAlpha=1;load.renderClock=clock;}
+   if(!load.patches){load.patches=makeAuthoredLayers(source,load.image,profile);load.canvas=document.createElement('canvas');load.canvas.width=source.naturalWidth;load.canvas.height=source.naturalHeight;}
+   if(load.renderClock!==clock||load.renderImage!==image){
+    const paint=load.canvas.getContext('2d');paint.globalAlpha=1;paint.globalCompositeOperation='source-over';paint.clearRect(0,0,load.canvas.width,load.canvas.height);paint.drawImage(source,0,0);
+    for(const patch of load.patches){paint.globalAlpha=(1-Math.cos(clock/patch.period*Math.PI*2))/2;paint.drawImage(patch.canvas,patch.x,patch.y);}paint.globalAlpha=1;
+    if(alias?.fade>0){const fade=paint.createLinearGradient(0,0,load.canvas.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(alias.fade,'#fff');fade.addColorStop(1,'#fff');paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,load.canvas.width,load.canvas.height);paint.globalCompositeOperation='source-over';}
+    load.renderClock=clock;load.renderImage=image;
+   }
    ctx.drawImage(load.canvas,...args);return true;
   }catch{load.status='failed';return false;}
  }
@@ -91,7 +137,7 @@ const BackgroundMotion=(()=>{
   if(keys.has(image))return keys.get(image);
   const key=Object.keys(profiles).find(key=>Visuals.images[key]===image)||null;keys.set(image,key);return key;
  }
- function alias(surface,source){keys.set(surface,keyFor(source));return surface;}
+ function alias(surface,source,mask){keys.set(surface,keyFor(source));if(mask&&Number.isFinite(mask.fade)&&mask.fade>=0&&mask.fade<=1)aliases.set(surface,{source,fade:mask.fade});return surface;}
  // Four neighbouring phases interpolate smoothly, with no frame-sized image swap.
  function phase(offset=0){const n=(clock/2+offset)%4,index=Math.floor(n),t=n-index,s=t*t*(3-2*t),values=[0,1,0,-1];return values[index]*(1-s)+values[(index+1)%4]*s;}
  function prepare(image,profile){

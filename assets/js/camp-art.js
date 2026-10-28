@@ -18,7 +18,7 @@ const CampArt=(()=>{
   gradient.addColorStop(0,index===0?'#fff':'#fff0');gradient.addColorStop(edge,'#fff');
   // Only the incoming panel fades: two translucent edges would darken the overlap.
   gradient.addColorStop(1,'#fff');
-  paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);BackgroundMotion.alias(canvas,image);panelCache.set(panel.image,canvas);return canvas;
+  paint.fillStyle=gradient;paint.fillRect(0,0,canvas.width,canvas.height);BackgroundMotion.alias(canvas,image,{fade:index===0?0:edge});panelCache.set(panel.image,canvas);return canvas;
  }
  function backdrop(){
   if(level===samuraiCamp){

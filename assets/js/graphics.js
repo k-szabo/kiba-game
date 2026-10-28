@@ -95,7 +95,7 @@ const Visuals = (() => {
     const fade=paint.createLinearGradient(0,0,art.panelSize,0);
     fade.addColorStop(0,'#ffffff00');fade.addColorStop(overlap/panel.w,'#ffffffff');fade.addColorStop(1,'#ffffffff');
     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,art.panelSize,art.panelSize);paint.globalCompositeOperation='source-over';
-    BackgroundMotion.alias(surface,image);campPanels.set(image,surface);return surface;
+    BackgroundMotion.alias(surface,image,{fade:overlap/panel.w});campPanels.set(image,surface);return surface;
   }
   function campBackdrop(){
     const art=ART_CAMP.backdrop,s=forestCamp.width/art.w,top=forestCamp.start.y-art.groundY*s;
@@ -520,7 +520,8 @@ const Visuals = (() => {
       ctx.save();
       if(area.id==='angelRuin'){
         if(usable('japanClouds'))for(const [x,y,width,height,flip] of [[2700,-500,610,260,1],[3040,-330,510,220,-1],[2800,-145,550,235,1]]){
-          ctx.save();ctx.globalAlpha*=.82;ctx.translate(x,y);ctx.scale(flip,1);
+          const drift=reducedMotion.matches?0:Math.sin(BackgroundMotion.clock*.18)*3;
+          ctx.save();ctx.globalAlpha*=.82;ctx.translate(x+drift,y);ctx.scale(flip,1);
           ctx.drawImage(images.japanClouds,-width/2,-height/2,width,height);ctx.restore();
         }
         const altarY=area.arena.y;

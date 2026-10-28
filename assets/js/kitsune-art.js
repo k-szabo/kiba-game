@@ -23,7 +23,7 @@ const KitsuneArt=(()=>{
   if(!incoming)return image;if(masks.has(image))return masks.get(image);
   const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;
   const paint=surface.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';
-  const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.035,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);return surface;
+  const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.035,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image,{fade:.035});masks.set(image,surface);return surface;
  }
  function backdrop(){
   const a=art()?.den;if(!a)return;

@@ -31,7 +31,8 @@ for(const expression of ['paintedUndead.windup=.4','paintedUndead.windup=0;paint
 for(const key of art.backdrops){const png=fs.readFileSync(path.join(__dirname,'..',manifest[key]));r('Visuals.images['+JSON.stringify(key)+']={complete:true,naturalWidth:'+png.readUInt32BE(16)+',naturalHeight:'+png.readUInt32BE(20)+'};');}
 for(const width of [1280,1432,2560,3840])for(const camera of [0,2000,Math.max(0,4600-width)]){
  r('viewW='+width+';camera='+camera+';cameraY=800');calls=[];const before=r('JSON.stringify([enemies,player,projectiles,flags,platforms,levelTime])');r('PrisonArt.backdrop()');assert.equal(r('JSON.stringify([enemies,player,projectiles,flags,platforms,levelTime])'),before);
- calls=calls.filter(call=>call.args.length===4);assert.equal(calls.length,art.backdrops.length);const first=calls[0].args,last=calls.at(-1).args;assert(first[0]<=1e-6&&last[0]+last[2]>=width-1e-6);assert(calls.every(c=>c.args[1]<=0&&c.args[1]+c.args[3]>=720));
+ calls=calls.filter(call=>call.args.length===4);assert(calls.length>0&&calls.length<=art.backdrops.length);const first=calls[0].args,last=calls.at(-1).args;assert(first[0]<=1e-6&&last[0]+last[2]>=width-1e-6);assert(calls.every(c=>c.args[0]<width&&c.args[0]+c.args[2]>0&&c.args[1]<=0&&c.args[1]+c.args[3]>=720),'Only intersecting panels cover the viewport');
+ if(width===3840)assert.equal(calls.length,3,'Ultrawide view retains every visible panel');
 }
 // A deep ground collider must tile native brick pixels, never stretch a strip.
 const terrain=art.terrain,stone=pixels(path.join(__dirname,'..',manifest[terrain.image]));

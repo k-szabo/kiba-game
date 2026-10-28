@@ -19,7 +19,7 @@ const PrisonArt=(()=>{
   return {zen:{name:'zen.name',image:a.zen.image,rect:portrait(a.zen)},prisonWarden:{name:'zen.warden.name',image:a.warden.image,rect:portrait(a.warden)}};
  }
  const masks=new Map();
- function backdrop(){
+ function backdrop(animate=true){
   const a=art(),panels=a?.backdrops;if(!panels?.length)return;
   const images=panels.map(key=>Visuals.images[key]);if(images.some(image=>!image?.complete||!image.naturalWidth))return;
   const heights=images.map(image=>image.naturalHeight),base=Math.max(...heights),widths=images.map(image=>image.naturalWidth/base),overlap=.07;
@@ -27,15 +27,19 @@ const PrisonArt=(()=>{
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.fillStyle='#161323';ctx.fillRect(0,0,viewW,H);
   let x=-scroll;
   for(let i=0;i<images.length;i++){
+   const width=widths[i]*height;
+   if(x+width<=0||x>=viewW){x+=(widths[i]-overlap)*height;continue;}
    const image=images[i];let source=image;
    if(i){
     if(!masks.has(image)){
      const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;const paint=surface.getContext('2d');paint.drawImage(image,0,0);
      const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(Math.min(.035,overlap/widths[i]),'#fff');fade.addColorStop(1,'#fff');
-     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image);masks.set(image,surface);
+     paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image,{fade:Math.min(.035,overlap/widths[i])});masks.set(image,surface);
     }source=masks.get(image);
    }
-   BackgroundMotion.draw(source,x,(H-height)*.35,widths[i]*height,height);x+=(widths[i]-overlap)*height;
+   if(animate)BackgroundMotion.draw(source,x,(H-height)*.35,width,height);
+   else ctx.drawImage(source,x,(H-height)*.35,width,height);
+   x+=(widths[i]-overlap)*height;
   }ctx.restore();
  }
  function terrain(platform){
