@@ -285,7 +285,7 @@ function update(dt){if(resolutionBlocked){keys.clear();pressed.clear();return;}i
  camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=keyedInstruction(I18n.t(context.text));const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t(region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):'');updateHUD();
  if(sound){musicClock-=dt;if(musicClock<=0){const notes=[220,261.63,293.66,329.63,392];tone(notes[Math.floor(time*.3)%5]*(realm===2?2:1),1.8,'sine',.02);musicClock=1.6;}}pressed.clear();}
-function draw(){ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'||DevTools.menuBackground){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
+function draw(){BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'||DevTools.menuBackground){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
  if(level===councilHall){
   ctx.save();ctx.translate(-camera,-cameraY);drawKibaCurrent();DungeonArt.scenery();Visuals.councilGate({...level.returnPoint,w:250,h:250},true);
   drawParticles();drawLevelUp();drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
@@ -303,7 +303,12 @@ function drawLevelUp(){if(LevelUpEffect.remaining>0)Visuals.levelUp(player.x+pla
 function drawParticles(){for(const p of particles){if(FiaArt.particle(p))continue;if(p.kind==='dashWisp'){ctx.globalAlpha=1;Visuals.dashTrail(p.x,p.y,p.face,1-p.life/p.maxLife);continue;}ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);}ctx.globalAlpha=1;}
 function visiblePoint(p,margin=280){return p.x>camera-margin&&p.x<camera+viewW+margin&&p.y>cameraY-margin&&p.y<cameraY+H+margin;}
 function drawKibaCurrent(){const weak=realm===0&&player.y>1150;ctx.save();ctx.lineWidth=realm===1?2:1.5;ctx.strokeStyle=realm===1?'#c872b8':realm===2?'#e8d89b':'#addbb5';for(let i=0;i<(weak?7:22);i++){const x=camera+noise(i*14.7+realm)*viewW+Math.sin(time*.7+i)*18,y=cameraY+noise(i*29.3+realm*17)*H;ctx.globalAlpha=(weak?.14:.24)+Math.sin(time*2+i)*.08;ctx.beginPath();ctx.moveTo(x,y);if(realm===1){ctx.lineTo(x+8,y-9);ctx.lineTo(x+2,y-18);}else{ctx.quadraticCurveTo(x+8+Math.sin(time+i)*5,y-12,x+6,y-26);}ctx.stroke();}ctx.restore();}
-function background(r){if(HannahArt.backdrop())return;if(DungeonArt.backdrop()||ArenaArt.backdrop())return;if(KitsuneQuest.den())KitsuneArt.backdrop();else if(PrisonQuest.active()){PrisonArt.backdrop();KitsuneArt.depthsBackdrop();}else if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
+function background(r){if(HannahArt.backdrop())return;if(DungeonArt.backdrop()||ArenaArt.backdrop())return;if(KitsuneQuest.den())KitsuneArt.backdrop();else if(PrisonQuest.active()){
+ const depths=Visuals.images.fiaPrisonDepths,opaqueDepths=cameraY>=1700&&depths?.complete&&depths.naturalWidth>0;
+ // Keep the underlay below the hunter painting, but do not pin its animation
+ // cache once the opaque foreground owns the scene. It may not cover the floor.
+ PrisonArt.backdrop(!opaqueDepths);KitsuneArt.depthsBackdrop();
+}else if(CampQuest.isSide())CampArt.backdrop();else if(level===forestCamp)Visuals.campBackdrop();else if(level===councilHall)Visuals.councilBackdrop();else Visuals.backdrop(r);}
 
 function drawLandscape(r,items){if(!level.service)Visuals.terrain(r,items);}
 

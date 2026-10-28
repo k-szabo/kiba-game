@@ -21704,6 +21704,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/angel-ruins-motion-b-v1.png": {
+      "sha256": "bec069630904cf5931e340e10615374bb33be183e65cec6e2a80ebd1ad97fc2a",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "angelRuinMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e3727",
+            "coveragePercent": 10.2735
+          },
+          {
+            "hex": "#564934",
+            "coveragePercent": 9.8153
+          },
+          {
+            "hex": "#695c4d",
+            "coveragePercent": 8.4906
+          },
+          {
+            "hex": "#292418",
+            "coveragePercent": 8.3985
+          },
+          {
+            "hex": "#66727f",
+            "coveragePercent": 7.9465
+          },
+          {
+            "hex": "#fae5c7",
+            "coveragePercent": 7.1158
+          },
+          {
+            "hex": "#e5d0bf",
+            "coveragePercent": 6.7778
+          },
+          {
+            "hex": "#c5c0c4",
+            "coveragePercent": 6.708
+          },
+          {
+            "hex": "#818997",
+            "coveragePercent": 5.7646
+          },
+          {
+            "hex": "#847667",
+            "coveragePercent": 5.6629
+          },
+          {
+            "hex": "#120f09",
+            "coveragePercent": 5.1168
+          },
+          {
+            "hex": "#a0a9ba",
+            "coveragePercent": 4.9484
+          },
+          {
+            "hex": "#a19586",
+            "coveragePercent": 4.187
+          },
+          {
+            "hex": "#917240",
+            "coveragePercent": 3.6837
+          },
+          {
+            "hex": "#cbb59a",
+            "coveragePercent": 3.2222
+          },
+          {
+            "hex": "#c0a05c",
+            "coveragePercent": 1.8883
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a6a37",
+            "coveragePercent": 33.3618
+          },
+          {
+            "hex": "#9c7b49",
+            "coveragePercent": 25.1083
+          },
+          {
+            "hex": "#b59255",
+            "coveragePercent": 16.1701
+          },
+          {
+            "hex": "#cfad54",
+            "coveragePercent": 11.1765
+          },
+          {
+            "hex": "#ae8b2c",
+            "coveragePercent": 8.9443
+          },
+          {
+            "hex": "#e6c76d",
+            "coveragePercent": 5.2391
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/angel-ruins-v6.png": {
       "sha256": "e3f47562fc10740dbe0483d0de9d060d7f062d32b0ccb37dd366d99d99df519d",
       "width": 1536,
@@ -22229,6 +22334,216 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/council-motion-b-v1.png": {
+      "sha256": "7b6d6d42dd3ee1210a77eb6cd93bfe039cc2c314dfac955d4404b0aa965d7933",
+      "width": 1852,
+      "height": 849,
+      "runtimeKeys": [
+        "councilMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130c0e",
+            "coveragePercent": 17.0668
+          },
+          {
+            "hex": "#1b1215",
+            "coveragePercent": 15.879
+          },
+          {
+            "hex": "#2a1716",
+            "coveragePercent": 13.0142
+          },
+          {
+            "hex": "#362020",
+            "coveragePercent": 11.0079
+          },
+          {
+            "hex": "#251a1f",
+            "coveragePercent": 8.9836
+          },
+          {
+            "hex": "#442c2d",
+            "coveragePercent": 7.1803
+          },
+          {
+            "hex": "#5a302a",
+            "coveragePercent": 5.8105
+          },
+          {
+            "hex": "#49211d",
+            "coveragePercent": 5.545
+          },
+          {
+            "hex": "#0a0506",
+            "coveragePercent": 5.2668
+          },
+          {
+            "hex": "#6f392b",
+            "coveragePercent": 3.5525
+          },
+          {
+            "hex": "#894935",
+            "coveragePercent": 2.4492
+          },
+          {
+            "hex": "#644341",
+            "coveragePercent": 2.0959
+          },
+          {
+            "hex": "#b35939",
+            "coveragePercent": 0.8417
+          },
+          {
+            "hex": "#8e6053",
+            "coveragePercent": 0.7531
+          },
+          {
+            "hex": "#de7f4c",
+            "coveragePercent": 0.4697
+          },
+          {
+            "hex": "#f6c78d",
+            "coveragePercent": 0.0836
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#89412d",
+            "coveragePercent": 30.4974
+          },
+          {
+            "hex": "#8d5640",
+            "coveragePercent": 22.8439
+          },
+          {
+            "hex": "#a14c32",
+            "coveragePercent": 18.1227
+          },
+          {
+            "hex": "#b86240",
+            "coveragePercent": 15.7977
+          },
+          {
+            "hex": "#e07744",
+            "coveragePercent": 9.1918
+          },
+          {
+            "hex": "#f0a363",
+            "coveragePercent": 3.5466
+          }
+        ],
+        "visibleSamples": 1572348,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/cult-cave-motion-b-v1.png": {
+      "sha256": "eea85ab3f787af044dea676a9d3e7540f20de86e1e48fd7eccf9d10ad9363e32",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultCaveMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#150d0b",
+            "coveragePercent": 20.1646
+          },
+          {
+            "hex": "#1e191b",
+            "coveragePercent": 15.4352
+          },
+          {
+            "hex": "#050202",
+            "coveragePercent": 14.5269
+          },
+          {
+            "hex": "#2e252a",
+            "coveragePercent": 14.4305
+          },
+          {
+            "hex": "#3e3441",
+            "coveragePercent": 9.1553
+          },
+          {
+            "hex": "#351810",
+            "coveragePercent": 6.1352
+          },
+          {
+            "hex": "#524760",
+            "coveragePercent": 4.7618
+          },
+          {
+            "hex": "#502c20",
+            "coveragePercent": 4.6875
+          },
+          {
+            "hex": "#62433b",
+            "coveragePercent": 3.0771
+          },
+          {
+            "hex": "#6f6087",
+            "coveragePercent": 2.4506
+          },
+          {
+            "hex": "#8e6452",
+            "coveragePercent": 1.2156
+          },
+          {
+            "hex": "#9585b4",
+            "coveragePercent": 1.1675
+          },
+          {
+            "hex": "#8a4724",
+            "coveragePercent": 1.1303
+          },
+          {
+            "hex": "#cd7742",
+            "coveragePercent": 0.7989
+          },
+          {
+            "hex": "#edaf74",
+            "coveragePercent": 0.5039
+          },
+          {
+            "hex": "#ddcfd4",
+            "coveragePercent": 0.3593
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904a27",
+            "coveragePercent": 28.8378
+          },
+          {
+            "hex": "#9f6645",
+            "coveragePercent": 24.7061
+          },
+          {
+            "hex": "#d78851",
+            "coveragePercent": 17.0522
+          },
+          {
+            "hex": "#ce652c",
+            "coveragePercent": 13.247
+          },
+          {
+            "hex": "#f4b06c",
+            "coveragePercent": 11.0663
+          },
+          {
+            "hex": "#635097",
+            "coveragePercent": 5.0907
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/cult-cave-v6.png": {
       "sha256": "84a50ff27787da435df0178c4ba501503c4b93868902d516f37b155fba121d45",
       "width": 1536,
@@ -22332,6 +22647,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/fia-chambers-motion-b-v1.png": {
+      "sha256": "33d6b1f644c5a5306f782b126bbedb52f5be40f847e4dd14ed83290b403e900b",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaChambersBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e1b23",
+            "coveragePercent": 19.4456
+          },
+          {
+            "hex": "#201014",
+            "coveragePercent": 14.6744
+          },
+          {
+            "hex": "#3c2439",
+            "coveragePercent": 12.7929
+          },
+          {
+            "hex": "#0b0507",
+            "coveragePercent": 10.781
+          },
+          {
+            "hex": "#51241e",
+            "coveragePercent": 8.3227
+          },
+          {
+            "hex": "#5a2e4d",
+            "coveragePercent": 7.5581
+          },
+          {
+            "hex": "#783828",
+            "coveragePercent": 6.2553
+          },
+          {
+            "hex": "#854160",
+            "coveragePercent": 3.7252
+          },
+          {
+            "hex": "#a75133",
+            "coveragePercent": 3.6575
+          },
+          {
+            "hex": "#df7844",
+            "coveragePercent": 2.6645
+          },
+          {
+            "hex": "#b9606d",
+            "coveragePercent": 2.5046
+          },
+          {
+            "hex": "#3e2966",
+            "coveragePercent": 1.8284
+          },
+          {
+            "hex": "#744db0",
+            "coveragePercent": 1.7602
+          },
+          {
+            "hex": "#5a3a86",
+            "coveragePercent": 1.6794
+          },
+          {
+            "hex": "#f6a768",
+            "coveragePercent": 1.2213
+          },
+          {
+            "hex": "#935fc6",
+            "coveragePercent": 1.1288
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95452c",
+            "coveragePercent": 26.4802
+          },
+          {
+            "hex": "#c86645",
+            "coveragePercent": 20.586
+          },
+          {
+            "hex": "#9d4765",
+            "coveragePercent": 14.9558
+          },
+          {
+            "hex": "#f09056",
+            "coveragePercent": 14.4338
+          },
+          {
+            "hex": "#8356bd",
+            "coveragePercent": 13.9163
+          },
+          {
+            "hex": "#603e93",
+            "coveragePercent": 9.6279
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/fia-chambers-v1.png": {
@@ -22439,6 +22859,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/fia-den-east-motion-b-v1.png": {
+      "sha256": "f2e35a997f4c90efba9c1a7e3e1a4a0b5801dbf8d1f1eb6622048de4a7e6129b",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaDenEastMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130e11",
+            "coveragePercent": 12.9124
+          },
+          {
+            "hex": "#22191f",
+            "coveragePercent": 12.7169
+          },
+          {
+            "hex": "#2f2231",
+            "coveragePercent": 11.3549
+          },
+          {
+            "hex": "#050304",
+            "coveragePercent": 11.2407
+          },
+          {
+            "hex": "#382a4a",
+            "coveragePercent": 9.5967
+          },
+          {
+            "hex": "#48355f",
+            "coveragePercent": 8.5948
+          },
+          {
+            "hex": "#574179",
+            "coveragePercent": 7.3491
+          },
+          {
+            "hex": "#684e93",
+            "coveragePercent": 6.5219
+          },
+          {
+            "hex": "#4d302f",
+            "coveragePercent": 5.1087
+          },
+          {
+            "hex": "#7e5eaa",
+            "coveragePercent": 4.6742
+          },
+          {
+            "hex": "#724544",
+            "coveragePercent": 3.4046
+          },
+          {
+            "hex": "#976fc0",
+            "coveragePercent": 2.1803
+          },
+          {
+            "hex": "#865c6d",
+            "coveragePercent": 2.1052
+          },
+          {
+            "hex": "#bb5f41",
+            "coveragePercent": 1.0259
+          },
+          {
+            "hex": "#bb827d",
+            "coveragePercent": 0.9293
+          },
+          {
+            "hex": "#efb697",
+            "coveragePercent": 0.2844
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#60478c",
+            "coveragePercent": 43.1906
+          },
+          {
+            "hex": "#7355a0",
+            "coveragePercent": 29.6061
+          },
+          {
+            "hex": "#914b3f",
+            "coveragePercent": 9.6109
+          },
+          {
+            "hex": "#8a61b3",
+            "coveragePercent": 8.1468
+          },
+          {
+            "hex": "#bd6149",
+            "coveragePercent": 6.4119
+          },
+          {
+            "hex": "#e88e61",
+            "coveragePercent": 3.0337
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/fia-den-east-v1.png": {
       "sha256": "50ea27e98af930e8abc4ab61e15df0e3e3ce3a7cd7505fa901d53f21fcd752ca",
       "width": 1536,
@@ -22542,6 +23067,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/fia-den-west-motion-b-v1.png": {
+      "sha256": "efa76bfb1f43f9b5079b9c421b5737daff7f815c1feab6e9ac0402f6ce2ac0bf",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaDenWestMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#181116",
+            "coveragePercent": 15.2184
+          },
+          {
+            "hex": "#060406",
+            "coveragePercent": 14.6701
+          },
+          {
+            "hex": "#271e28",
+            "coveragePercent": 14.3185
+          },
+          {
+            "hex": "#413357",
+            "coveragePercent": 10.2955
+          },
+          {
+            "hex": "#332841",
+            "coveragePercent": 9.645
+          },
+          {
+            "hex": "#503f70",
+            "coveragePercent": 9.2048
+          },
+          {
+            "hex": "#634d89",
+            "coveragePercent": 7.0739
+          },
+          {
+            "hex": "#765b9f",
+            "coveragePercent": 4.2747
+          },
+          {
+            "hex": "#462e2c",
+            "coveragePercent": 4.2057
+          },
+          {
+            "hex": "#634241",
+            "coveragePercent": 2.8504
+          },
+          {
+            "hex": "#8a6ab3",
+            "coveragePercent": 2.8238
+          },
+          {
+            "hex": "#735767",
+            "coveragePercent": 2.1234
+          },
+          {
+            "hex": "#a27dc5",
+            "coveragePercent": 1.2858
+          },
+          {
+            "hex": "#97757d",
+            "coveragePercent": 1.0265
+          },
+          {
+            "hex": "#a96040",
+            "coveragePercent": 0.6269
+          },
+          {
+            "hex": "#e09a6f",
+            "coveragePercent": 0.3565
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#6c5298",
+            "coveragePercent": 40.0043
+          },
+          {
+            "hex": "#5d4887",
+            "coveragePercent": 39.6194
+          },
+          {
+            "hex": "#904f38",
+            "coveragePercent": 8.7358
+          },
+          {
+            "hex": "#b36c4a",
+            "coveragePercent": 5.8404
+          },
+          {
+            "hex": "#eba065",
+            "coveragePercent": 3.0805
+          },
+          {
+            "hex": "#e2713b",
+            "coveragePercent": 2.7197
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/fia-den-west-v1.png": {
@@ -22649,6 +23279,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/fia-prison-depths-motion-b-v1.png": {
+      "sha256": "cb3e1329541ded799213cf779f76a9f36ffba57699be72f08b64d93f39d6ffbd",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "fiaPrisonDepthsMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#14131c",
+            "coveragePercent": 28.1075
+          },
+          {
+            "hex": "#1c1a28",
+            "coveragePercent": 19.4933
+          },
+          {
+            "hex": "#0e0c11",
+            "coveragePercent": 13.8799
+          },
+          {
+            "hex": "#282333",
+            "coveragePercent": 11.6516
+          },
+          {
+            "hex": "#050406",
+            "coveragePercent": 6.1455
+          },
+          {
+            "hex": "#2a1e1d",
+            "coveragePercent": 5.8083
+          },
+          {
+            "hex": "#3f2d2a",
+            "coveragePercent": 4.3626
+          },
+          {
+            "hex": "#3b3243",
+            "coveragePercent": 3.9963
+          },
+          {
+            "hex": "#5c3c30",
+            "coveragePercent": 1.9515
+          },
+          {
+            "hex": "#59494b",
+            "coveragePercent": 1.5701
+          },
+          {
+            "hex": "#83533a",
+            "coveragePercent": 0.9995
+          },
+          {
+            "hex": "#402d68",
+            "coveragePercent": 0.7093
+          },
+          {
+            "hex": "#b57348",
+            "coveragePercent": 0.5154
+          },
+          {
+            "hex": "#826660",
+            "coveragePercent": 0.4534
+          },
+          {
+            "hex": "#e6a162",
+            "coveragePercent": 0.2782
+          },
+          {
+            "hex": "#fbeaba",
+            "coveragePercent": 0.0778
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5638",
+            "coveragePercent": 38.6563
+          },
+          {
+            "hex": "#ae6c43",
+            "coveragePercent": 27.5146
+          },
+          {
+            "hex": "#d5884e",
+            "coveragePercent": 17.8553
+          },
+          {
+            "hex": "#f3b16a",
+            "coveragePercent": 10.1345
+          },
+          {
+            "hex": "#57388c",
+            "coveragePercent": 4.2476
+          },
+          {
+            "hex": "#744dac",
+            "coveragePercent": 1.5917
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/fia-prison-depths-v1.png": {
       "sha256": "897f9f2f2eb3b07f6601ff20730e21a3e1e008f290213e9c634237227925bd28",
       "width": 1536,
@@ -22752,6 +23487,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/forest-camp-hd-center-motion-b-v1.png": {
+      "sha256": "8fe79121597c89dc7be761d46ab5705a05eca6f856a174d9f849caeb849e0cfe",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDCenterMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0806",
+            "coveragePercent": 21.9279
+          },
+          {
+            "hex": "#35220e",
+            "coveragePercent": 14.3796
+          },
+          {
+            "hex": "#111e29",
+            "coveragePercent": 11.3198
+          },
+          {
+            "hex": "#16314f",
+            "coveragePercent": 7.0249
+          },
+          {
+            "hex": "#4d483b",
+            "coveragePercent": 6.4827
+          },
+          {
+            "hex": "#1d4780",
+            "coveragePercent": 6.4282
+          },
+          {
+            "hex": "#6b2c0c",
+            "coveragePercent": 6.2895
+          },
+          {
+            "hex": "#315fa8",
+            "coveragePercent": 5.4012
+          },
+          {
+            "hex": "#9c5819",
+            "coveragePercent": 4.5851
+          },
+          {
+            "hex": "#db6e0c",
+            "coveragePercent": 3.426
+          },
+          {
+            "hex": "#d30d0b",
+            "coveragePercent": 3.3537
+          },
+          {
+            "hex": "#2f79e0",
+            "coveragePercent": 2.9067
+          },
+          {
+            "hex": "#ec9540",
+            "coveragePercent": 2.8293
+          },
+          {
+            "hex": "#f3ad0d",
+            "coveragePercent": 2.0493
+          },
+          {
+            "hex": "#f8ca63",
+            "coveragePercent": 1.1702
+          },
+          {
+            "hex": "#f8efc5",
+            "coveragePercent": 0.4258
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#25549a",
+            "coveragePercent": 25.1014
+          },
+          {
+            "hex": "#d97612",
+            "coveragePercent": 17.3965
+          },
+          {
+            "hex": "#f6ae39",
+            "coveragePercent": 16.171
+          },
+          {
+            "hex": "#994b14",
+            "coveragePercent": 15.8247
+          },
+          {
+            "hex": "#3075d7",
+            "coveragePercent": 13.3131
+          },
+          {
+            "hex": "#d00c0a",
+            "coveragePercent": 12.1933
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/forest-camp-hd-center-v1.png": {
@@ -22859,6 +23699,111 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/forest-camp-hd-left-motion-b-v1.png": {
+      "sha256": "886ea275ab9a9d093338991be5bc6144a0fd0dc451635cf7f189e2895747a59a",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDLeftMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070504",
+            "coveragePercent": 23.903
+          },
+          {
+            "hex": "#25160b",
+            "coveragePercent": 14.4833
+          },
+          {
+            "hex": "#1c252f",
+            "coveragePercent": 11.8537
+          },
+          {
+            "hex": "#473114",
+            "coveragePercent": 9.4748
+          },
+          {
+            "hex": "#2a4155",
+            "coveragePercent": 6.3093
+          },
+          {
+            "hex": "#ee1709",
+            "coveragePercent": 5.5674
+          },
+          {
+            "hex": "#8f4e13",
+            "coveragePercent": 4.5831
+          },
+          {
+            "hex": "#575949",
+            "coveragePercent": 3.6866
+          },
+          {
+            "hex": "#dd7210",
+            "coveragePercent": 3.6446
+          },
+          {
+            "hex": "#b10909",
+            "coveragePercent": 3.4721
+          },
+          {
+            "hex": "#6e0f08",
+            "coveragePercent": 3.4679
+          },
+          {
+            "hex": "#f2ab55",
+            "coveragePercent": 2.6353
+          },
+          {
+            "hex": "#f1b511",
+            "coveragePercent": 2.2032
+          },
+          {
+            "hex": "#a87754",
+            "coveragePercent": 2.1901
+          },
+          {
+            "hex": "#37609d",
+            "coveragePercent": 2.0063
+          },
+          {
+            "hex": "#ebd9b5",
+            "coveragePercent": 0.5192
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#eb1809",
+            "coveragePercent": 25.5726
+          },
+          {
+            "hex": "#a55c1c",
+            "coveragePercent": 20.8781
+          },
+          {
+            "hex": "#eb930f",
+            "coveragePercent": 17.6259
+          },
+          {
+            "hex": "#a40b09",
+            "coveragePercent": 16.0977
+          },
+          {
+            "hex": "#edaa52",
+            "coveragePercent": 13.417
+          },
+          {
+            "hex": "#2d5ea2",
+            "coveragePercent": 6.4087
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/forest-camp-hd-left-v1.png": {
       "sha256": "3309c5739f624c93507134c93af10e36eff11f07972202d88e0becdc654aff8a",
       "width": 1254,
@@ -22962,6 +23907,111 @@
         ],
         "visibleSamples": 1572516,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/forest-camp-hd-right-motion-b-v1.png": {
+      "sha256": "ac816e05fe3c4927b79970ee9c67e011583513ff582bff712c2f39c70b7187ea",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campHDRightMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0704",
+            "coveragePercent": 24.0214
+          },
+          {
+            "hex": "#331f0c",
+            "coveragePercent": 13.3629
+          },
+          {
+            "hex": "#182126",
+            "coveragePercent": 10.6106
+          },
+          {
+            "hex": "#17324c",
+            "coveragePercent": 8.7276
+          },
+          {
+            "hex": "#5e370f",
+            "coveragePercent": 6.1779
+          },
+          {
+            "hex": "#1f4e84",
+            "coveragePercent": 6.0308
+          },
+          {
+            "hex": "#4a4b3e",
+            "coveragePercent": 5.6892
+          },
+          {
+            "hex": "#9a5a1e",
+            "coveragePercent": 4.2804
+          },
+          {
+            "hex": "#3179d4",
+            "coveragePercent": 3.9898
+          },
+          {
+            "hex": "#ee9d4c",
+            "coveragePercent": 3.7673
+          },
+          {
+            "hex": "#db7311",
+            "coveragePercent": 3.4108
+          },
+          {
+            "hex": "#910e0d",
+            "coveragePercent": 2.8001
+          },
+          {
+            "hex": "#db0f0c",
+            "coveragePercent": 2.2734
+          },
+          {
+            "hex": "#4f6a99",
+            "coveragePercent": 2.1387
+          },
+          {
+            "hex": "#f3be12",
+            "coveragePercent": 2.0479
+          },
+          {
+            "hex": "#eedeae",
+            "coveragePercent": 0.6714
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#275b9b",
+            "coveragePercent": 20.2029
+          },
+          {
+            "hex": "#f6b23b",
+            "coveragePercent": 17.9042
+          },
+          {
+            "hex": "#dc7b1b",
+            "coveragePercent": 17.5105
+          },
+          {
+            "hex": "#9d5318",
+            "coveragePercent": 16.7053
+          },
+          {
+            "hex": "#c10b0e",
+            "coveragePercent": 15.0853
+          },
+          {
+            "hex": "#367eda",
+            "coveragePercent": 12.5918
+          }
+        ],
+        "visibleSamples": 1572516,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "assets/images/backgrounds/forest-camp-hd-right-v1.png": {
@@ -23069,6 +24119,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/forest-camp-motion-b-v1.png": {
+      "sha256": "499a8e24139c520d2513e478f9b6a0638450dc5fa5d3ce61b530e74e32ef9417",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "campBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090706",
+            "coveragePercent": 21.283
+          },
+          {
+            "hex": "#1b242c",
+            "coveragePercent": 13.139
+          },
+          {
+            "hex": "#27180c",
+            "coveragePercent": 12.625
+          },
+          {
+            "hex": "#492913",
+            "coveragePercent": 9.2456
+          },
+          {
+            "hex": "#203a56",
+            "coveragePercent": 6.2496
+          },
+          {
+            "hex": "#48483f",
+            "coveragePercent": 5.7898
+          },
+          {
+            "hex": "#375785",
+            "coveragePercent": 4.9939
+          },
+          {
+            "hex": "#75491f",
+            "coveragePercent": 4.6385
+          },
+          {
+            "hex": "#87150f",
+            "coveragePercent": 3.9056
+          },
+          {
+            "hex": "#f0ab48",
+            "coveragePercent": 3.3276
+          },
+          {
+            "hex": "#a95d17",
+            "coveragePercent": 3.3083
+          },
+          {
+            "hex": "#e08419",
+            "coveragePercent": 3.1394
+          },
+          {
+            "hex": "#4979c1",
+            "coveragePercent": 2.783
+          },
+          {
+            "hex": "#d7200f",
+            "coveragePercent": 2.7234
+          },
+          {
+            "hex": "#ab7a4d",
+            "coveragePercent": 2.1668
+          },
+          {
+            "hex": "#ead39e",
+            "coveragePercent": 0.6815
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b81910",
+            "coveragePercent": 20.8638
+          },
+          {
+            "hex": "#9b5920",
+            "coveragePercent": 20.8248
+          },
+          {
+            "hex": "#d87b1f",
+            "coveragePercent": 19.2596
+          },
+          {
+            "hex": "#efac49",
+            "coveragePercent": 16.8153
+          },
+          {
+            "hex": "#325b95",
+            "coveragePercent": 13.5088
+          },
+          {
+            "hex": "#477cca",
+            "coveragePercent": 8.7277
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/forest-camp-v1.png": {
       "sha256": "def7af9e7a8ae30143f58560f55261fe31f57ae3f731eb267a471ec62d926724",
       "width": 2172,
@@ -23172,6 +24327,216 @@
         ],
         "visibleSamples": 1572528,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/forge-motion-b-v1.png": {
+      "sha256": "66e55a7155cc04064410d3c78d582c7c90c3761e3d04f172bcc0c0fb182a8ea5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "forgeMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c2416",
+            "coveragePercent": 16.7326
+          },
+          {
+            "hex": "#2f140b",
+            "coveragePercent": 15.6576
+          },
+          {
+            "hex": "#613b33",
+            "coveragePercent": 13.0523
+          },
+          {
+            "hex": "#0f0604",
+            "coveragePercent": 12.3887
+          },
+          {
+            "hex": "#8b4b2f",
+            "coveragePercent": 9.6201
+          },
+          {
+            "hex": "#74300e",
+            "coveragePercent": 8.3176
+          },
+          {
+            "hex": "#b66436",
+            "coveragePercent": 5.2888
+          },
+          {
+            "hex": "#20263f",
+            "coveragePercent": 4.4782
+          },
+          {
+            "hex": "#a8450d",
+            "coveragePercent": 3.5673
+          },
+          {
+            "hex": "#e36b18",
+            "coveragePercent": 3.3318
+          },
+          {
+            "hex": "#f59d2f",
+            "coveragePercent": 2.9601
+          },
+          {
+            "hex": "#f5bd6e",
+            "coveragePercent": 1.3854
+          },
+          {
+            "hex": "#0f488e",
+            "coveragePercent": 1.2105
+          },
+          {
+            "hex": "#887ca0",
+            "coveragePercent": 0.9541
+          },
+          {
+            "hex": "#0a73e9",
+            "coveragePercent": 0.6362
+          },
+          {
+            "hex": "#ede2cb",
+            "coveragePercent": 0.4185
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#924721",
+            "coveragePercent": 43.934
+          },
+          {
+            "hex": "#bc5f2a",
+            "coveragePercent": 25.9107
+          },
+          {
+            "hex": "#ee801e",
+            "coveragePercent": 15.8699
+          },
+          {
+            "hex": "#f7b653",
+            "coveragePercent": 8.5395
+          },
+          {
+            "hex": "#0c51a3",
+            "coveragePercent": 3.3585
+          },
+          {
+            "hex": "#1c7bef",
+            "coveragePercent": 2.3875
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/heaven-dark-motion-b-v1.png": {
+      "sha256": "31310dbc5adccebf3ab68f445720b5df221ef0c020de9fb7166dd143a02d8e0f",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "heavenDarkMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#322e5c",
+            "coveragePercent": 14.3061
+          },
+          {
+            "hex": "#413878",
+            "coveragePercent": 12.3049
+          },
+          {
+            "hex": "#55458f",
+            "coveragePercent": 11.407
+          },
+          {
+            "hex": "#242243",
+            "coveragePercent": 10.854
+          },
+          {
+            "hex": "#1c1727",
+            "coveragePercent": 9.4874
+          },
+          {
+            "hex": "#6850a6",
+            "coveragePercent": 7.7405
+          },
+          {
+            "hex": "#4e4263",
+            "coveragePercent": 6.4782
+          },
+          {
+            "hex": "#0d080d",
+            "coveragePercent": 6.2112
+          },
+          {
+            "hex": "#7c5abf",
+            "coveragePercent": 5.5948
+          },
+          {
+            "hex": "#482e30",
+            "coveragePercent": 4.5494
+          },
+          {
+            "hex": "#9568da",
+            "coveragePercent": 3.4488
+          },
+          {
+            "hex": "#7c5c69",
+            "coveragePercent": 2.6752
+          },
+          {
+            "hex": "#9a81a1",
+            "coveragePercent": 1.8407
+          },
+          {
+            "hex": "#b880f0",
+            "coveragePercent": 1.5092
+          },
+          {
+            "hex": "#dcbed9",
+            "coveragePercent": 0.9277
+          },
+          {
+            "hex": "#c88e74",
+            "coveragePercent": 0.6651
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4f418d",
+            "coveragePercent": 37.5639
+          },
+          {
+            "hex": "#654da7",
+            "coveragePercent": 29.6623
+          },
+          {
+            "hex": "#805cc5",
+            "coveragePercent": 20.6226
+          },
+          {
+            "hex": "#a36fe7",
+            "coveragePercent": 10.2239
+          },
+          {
+            "hex": "#99573d",
+            "coveragePercent": 1.2023
+          },
+          {
+            "hex": "#d89060",
+            "coveragePercent": 0.7251
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "assets/images/backgrounds/heaven-dark-v1.png": {
@@ -23279,6 +24644,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/backgrounds/heaven-eclipse-motion-b-v1.png": {
+      "sha256": "dcb9a72de084423fdb31572d6ed5951ef52ed972d772656bd71417a363e3fba4",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "heavenEclipseMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#58313b",
+            "coveragePercent": 11.8928
+          },
+          {
+            "hex": "#3f232c",
+            "coveragePercent": 11.3878
+          },
+          {
+            "hex": "#281314",
+            "coveragePercent": 9.7047
+          },
+          {
+            "hex": "#74424b",
+            "coveragePercent": 9.3999
+          },
+          {
+            "hex": "#752120",
+            "coveragePercent": 7.6724
+          },
+          {
+            "hex": "#96373a",
+            "coveragePercent": 7.6344
+          },
+          {
+            "hex": "#4c1310",
+            "coveragePercent": 6.7864
+          },
+          {
+            "hex": "#110605",
+            "coveragePercent": 6.2846
+          },
+          {
+            "hex": "#bc504e",
+            "coveragePercent": 6.0275
+          },
+          {
+            "hex": "#ef6c59",
+            "coveragePercent": 5.6632
+          },
+          {
+            "hex": "#ed473d",
+            "coveragePercent": 4.4888
+          },
+          {
+            "hex": "#995d64",
+            "coveragePercent": 3.8558
+          },
+          {
+            "hex": "#c32925",
+            "coveragePercent": 3.4365
+          },
+          {
+            "hex": "#f68f6d",
+            "coveragePercent": 3.3496
+          },
+          {
+            "hex": "#f8b88c",
+            "coveragePercent": 1.6758
+          },
+          {
+            "hex": "#fce8c6",
+            "coveragePercent": 0.74
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#943e43",
+            "coveragePercent": 22.5336
+          },
+          {
+            "hex": "#f06957",
+            "coveragePercent": 19.7096
+          },
+          {
+            "hex": "#bb5352",
+            "coveragePercent": 18.1823
+          },
+          {
+            "hex": "#9d2522",
+            "coveragePercent": 14.9422
+          },
+          {
+            "hex": "#e23b34",
+            "coveragePercent": 14.6024
+          },
+          {
+            "hex": "#f99971",
+            "coveragePercent": 10.0299
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/heaven-eclipse-v1.png": {
       "sha256": "ef8ae967016e0bfac695d4a0654052acfc56d934e5825c80ea06d5be5c9ad29e",
       "width": 1024,
@@ -23384,6 +24854,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/heaven-motion-b-v1.png": {
+      "sha256": "a3309d3fba935bb8efbeb24eea28a0f51541600b842a20ad1bf3195f9e041ae0",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "heavenMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bcbcc3",
+            "coveragePercent": 16.2711
+          },
+          {
+            "hex": "#dccdc4",
+            "coveragePercent": 14.6072
+          },
+          {
+            "hex": "#f7e1c2",
+            "coveragePercent": 9.7883
+          },
+          {
+            "hex": "#fcf1d3",
+            "coveragePercent": 9.3303
+          },
+          {
+            "hex": "#aa9e97",
+            "coveragePercent": 7.1771
+          },
+          {
+            "hex": "#8d8581",
+            "coveragePercent": 6.6801
+          },
+          {
+            "hex": "#776d62",
+            "coveragePercent": 5.4462
+          },
+          {
+            "hex": "#5a5240",
+            "coveragePercent": 4.3583
+          },
+          {
+            "hex": "#f1d4a5",
+            "coveragePercent": 4.2338
+          },
+          {
+            "hex": "#433b26",
+            "coveragePercent": 3.9693
+          },
+          {
+            "hex": "#b38c59",
+            "coveragePercent": 3.7398
+          },
+          {
+            "hex": "#d5b387",
+            "coveragePercent": 3.6129
+          },
+          {
+            "hex": "#85a5bf",
+            "coveragePercent": 3.3719
+          },
+          {
+            "hex": "#8d6631",
+            "coveragePercent": 2.8089
+          },
+          {
+            "hex": "#fcfae8",
+            "coveragePercent": 2.4424
+          },
+          {
+            "hex": "#221c10",
+            "coveragePercent": 2.1624
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c7647",
+            "coveragePercent": 27.2999
+          },
+          {
+            "hex": "#c19557",
+            "coveragePercent": 23.1466
+          },
+          {
+            "hex": "#8e6128",
+            "coveragePercent": 19.345
+          },
+          {
+            "hex": "#e8bd6e",
+            "coveragePercent": 15.456
+          },
+          {
+            "hex": "#bc852e",
+            "coveragePercent": 9.5511
+          },
+          {
+            "hex": "#6497bf",
+            "coveragePercent": 5.2015
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/heaven-v3.png": {
       "sha256": "a04caa7d303772ada01b8527f8beb3597597d186c2eb7e3d7a4df569fab18f29",
       "width": 1024,
@@ -23486,6 +25061,216 @@
           }
         ],
         "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/herbal-motion-b-v1.png": {
+      "sha256": "757ddcdcfad685efe5f4e8801b052cdff0eed0a068a3b19bd6ee1ced463c8e1b",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "herbalMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e1d0b",
+            "coveragePercent": 16.0945
+          },
+          {
+            "hex": "#612e0e",
+            "coveragePercent": 14.2043
+          },
+          {
+            "hex": "#1b0c05",
+            "coveragePercent": 14.0793
+          },
+          {
+            "hex": "#88441b",
+            "coveragePercent": 11.4547
+          },
+          {
+            "hex": "#452d31",
+            "coveragePercent": 10.1147
+          },
+          {
+            "hex": "#693e30",
+            "coveragePercent": 9.1681
+          },
+          {
+            "hex": "#b25c1e",
+            "coveragePercent": 6.8187
+          },
+          {
+            "hex": "#e18923",
+            "coveragePercent": 4.3013
+          },
+          {
+            "hex": "#112d49",
+            "coveragePercent": 3.4855
+          },
+          {
+            "hex": "#13477b",
+            "coveragePercent": 2.8198
+          },
+          {
+            "hex": "#eeaf5e",
+            "coveragePercent": 2.58
+          },
+          {
+            "hex": "#9b704d",
+            "coveragePercent": 2.4123
+          },
+          {
+            "hex": "#0967ce",
+            "coveragePercent": 1.1643
+          },
+          {
+            "hex": "#7969a3",
+            "coveragePercent": 0.8022
+          },
+          {
+            "hex": "#efd5b7",
+            "coveragePercent": 0.3878
+          },
+          {
+            "hex": "#096604",
+            "coveragePercent": 0.1123
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#954c20",
+            "coveragePercent": 51.7044
+          },
+          {
+            "hex": "#cc7523",
+            "coveragePercent": 24.7836
+          },
+          {
+            "hex": "#eea94f",
+            "coveragePercent": 14.0245
+          },
+          {
+            "hex": "#1a4f95",
+            "coveragePercent": 5.3735
+          },
+          {
+            "hex": "#136dd6",
+            "coveragePercent": 4.0027
+          },
+          {
+            "hex": "#19a50b",
+            "coveragePercent": 0.1112
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/japan-motion-b-v1.png": {
+      "sha256": "db153dfafd3ac5618b1939e9eed7fb7451a557f96f6c770eec417cbe4824f25a",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "japanMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1c1b15",
+            "coveragePercent": 15.6319
+          },
+          {
+            "hex": "#090704",
+            "coveragePercent": 14.1077
+          },
+          {
+            "hex": "#26333c",
+            "coveragePercent": 12.622
+          },
+          {
+            "hex": "#394c5d",
+            "coveragePercent": 10.246
+          },
+          {
+            "hex": "#37301c",
+            "coveragePercent": 7.7103
+          },
+          {
+            "hex": "#566780",
+            "coveragePercent": 6.9827
+          },
+          {
+            "hex": "#6c84ab",
+            "coveragePercent": 6.9345
+          },
+          {
+            "hex": "#5d4c33",
+            "coveragePercent": 5.0911
+          },
+          {
+            "hex": "#9091a7",
+            "coveragePercent": 4.8973
+          },
+          {
+            "hex": "#65130d",
+            "coveragePercent": 3.4453
+          },
+          {
+            "hex": "#b7968c",
+            "coveragePercent": 2.9709
+          },
+          {
+            "hex": "#e9b176",
+            "coveragePercent": 2.9351
+          },
+          {
+            "hex": "#8a6e48",
+            "coveragePercent": 2.7906
+          },
+          {
+            "hex": "#c18f48",
+            "coveragePercent": 1.4626
+          },
+          {
+            "hex": "#aa3015",
+            "coveragePercent": 1.3772
+          },
+          {
+            "hex": "#f8dc98",
+            "coveragePercent": 0.7949
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ebb26d",
+            "coveragePercent": 29.9399
+          },
+          {
+            "hex": "#a27b3c",
+            "coveragePercent": 23.739
+          },
+          {
+            "hex": "#5e83b6",
+            "coveragePercent": 14.9827
+          },
+          {
+            "hex": "#942212",
+            "coveragePercent": 14.0243
+          },
+          {
+            "hex": "#45668f",
+            "coveragePercent": 10.9222
+          },
+          {
+            "hex": "#ca481b",
+            "coveragePercent": 6.3918
+          }
+        ],
+        "visibleSamples": 1573538,
         "dominantCoveragePercent": 100.0001
       }
     },
@@ -23594,6 +25379,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/momo-room-motion-b-v1.png": {
+      "sha256": "7614b00ca8b8a2a9fbeb69f314059533fdebb014743c60014c74682b3cda2f90",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "momoRoomMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4f3b2d",
+            "coveragePercent": 12.551
+          },
+          {
+            "hex": "#3e2d23",
+            "coveragePercent": 11.6882
+          },
+          {
+            "hex": "#674832",
+            "coveragePercent": 10.9248
+          },
+          {
+            "hex": "#20130e",
+            "coveragePercent": 10.3731
+          },
+          {
+            "hex": "#321f14",
+            "coveragePercent": 10.02
+          },
+          {
+            "hex": "#8c5a35",
+            "coveragePercent": 5.3207
+          },
+          {
+            "hex": "#512d17",
+            "coveragePercent": 5.0508
+          },
+          {
+            "hex": "#0d0a09",
+            "coveragePercent": 4.2492
+          },
+          {
+            "hex": "#977059",
+            "coveragePercent": 4.216
+          },
+          {
+            "hex": "#202023",
+            "coveragePercent": 4.1812
+          },
+          {
+            "hex": "#fabe75",
+            "coveragePercent": 4.1175
+          },
+          {
+            "hex": "#b37647",
+            "coveragePercent": 3.8877
+          },
+          {
+            "hex": "#745b4f",
+            "coveragePercent": 3.7761
+          },
+          {
+            "hex": "#ce8c59",
+            "coveragePercent": 3.6303
+          },
+          {
+            "hex": "#eaa464",
+            "coveragePercent": 3.4607
+          },
+          {
+            "hex": "#f5c891",
+            "coveragePercent": 2.5527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fbc178",
+            "coveragePercent": 21.8443
+          },
+          {
+            "hex": "#ab7248",
+            "coveragePercent": 20.8713
+          },
+          {
+            "hex": "#eba463",
+            "coveragePercent": 17.8808
+          },
+          {
+            "hex": "#cc8952",
+            "coveragePercent": 17.1448
+          },
+          {
+            "hex": "#8e5f3d",
+            "coveragePercent": 16.3016
+          },
+          {
+            "hex": "#925122",
+            "coveragePercent": 5.9573
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/momo-room-v1.png": {
       "sha256": "7c25b43e27ddc1279b52145a586b5bbb95646cc3319609e42c0730628d3a8496",
       "width": 1672,
@@ -23697,6 +25587,111 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/mystic-motion-b-v1.png": {
+      "sha256": "da7db6996d1aca0662894f7fc0d433094d463f6de0f70aef8198d3ef416ee1af",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "mysticMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4f2428",
+            "coveragePercent": 15.1379
+          },
+          {
+            "hex": "#100609",
+            "coveragePercent": 12.6679
+          },
+          {
+            "hex": "#371611",
+            "coveragePercent": 12.2887
+          },
+          {
+            "hex": "#753432",
+            "coveragePercent": 10.8361
+          },
+          {
+            "hex": "#22142f",
+            "coveragePercent": 10.1534
+          },
+          {
+            "hex": "#a14a23",
+            "coveragePercent": 9.3537
+          },
+          {
+            "hex": "#6b2b10",
+            "coveragePercent": 7.8627
+          },
+          {
+            "hex": "#cf6927",
+            "coveragePercent": 6.9828
+          },
+          {
+            "hex": "#442650",
+            "coveragePercent": 4.5085
+          },
+          {
+            "hex": "#f49b35",
+            "coveragePercent": 3.9971
+          },
+          {
+            "hex": "#093c6d",
+            "coveragePercent": 1.9059
+          },
+          {
+            "hex": "#7b4e6f",
+            "coveragePercent": 1.8746
+          },
+          {
+            "hex": "#0e6bcc",
+            "coveragePercent": 0.7599
+          },
+          {
+            "hex": "#7c89cf",
+            "coveragePercent": 0.6378
+          },
+          {
+            "hex": "#bb609c",
+            "coveragePercent": 0.6072
+          },
+          {
+            "hex": "#f4d7af",
+            "coveragePercent": 0.4259
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#964124",
+            "coveragePercent": 42.5171
+          },
+          {
+            "hex": "#c86427",
+            "coveragePercent": 31.6905
+          },
+          {
+            "hex": "#f39935",
+            "coveragePercent": 17.3565
+          },
+          {
+            "hex": "#0c509d",
+            "coveragePercent": 3.5775
+          },
+          {
+            "hex": "#a33d99",
+            "coveragePercent": 2.5694
+          },
+          {
+            "hex": "#3782e5",
+            "coveragePercent": 2.2891
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/prison-terrain-v1.png": {
@@ -23804,6 +25799,111 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/samurai-camp-hd-center-motion-b-v1.png": {
+      "sha256": "5b32c3ee8a1cb7bc64c4f1e5394592f8e564a902e3c2b469126ed7e0b3b3f137",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDCenterMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090606",
+            "coveragePercent": 20.2684
+          },
+          {
+            "hex": "#331b10",
+            "coveragePercent": 13.331
+          },
+          {
+            "hex": "#111a2a",
+            "coveragePercent": 10.7772
+          },
+          {
+            "hex": "#6d1a12",
+            "coveragePercent": 8.9364
+          },
+          {
+            "hex": "#3e3d3d",
+            "coveragePercent": 6.1682
+          },
+          {
+            "hex": "#ac1814",
+            "coveragePercent": 5.9756
+          },
+          {
+            "hex": "#0b2853",
+            "coveragePercent": 5.5086
+          },
+          {
+            "hex": "#7f4427",
+            "coveragePercent": 5.4904
+          },
+          {
+            "hex": "#b16235",
+            "coveragePercent": 4.0351
+          },
+          {
+            "hex": "#053a92",
+            "coveragePercent": 3.9223
+          },
+          {
+            "hex": "#e97a1e",
+            "coveragePercent": 3.8796
+          },
+          {
+            "hex": "#dc2f09",
+            "coveragePercent": 3.7633
+          },
+          {
+            "hex": "#054cc2",
+            "coveragePercent": 3.2536
+          },
+          {
+            "hex": "#f9af32",
+            "coveragePercent": 2.4392
+          },
+          {
+            "hex": "#1265e7",
+            "coveragePercent": 1.9787
+          },
+          {
+            "hex": "#9d9ea4",
+            "coveragePercent": 0.2723
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9d1a14",
+            "coveragePercent": 23.0278
+          },
+          {
+            "hex": "#a7592e",
+            "coveragePercent": 18.4186
+          },
+          {
+            "hex": "#f09329",
+            "coveragePercent": 17.6204
+          },
+          {
+            "hex": "#d92f0a",
+            "coveragePercent": 15.3427
+          },
+          {
+            "hex": "#043ea1",
+            "coveragePercent": 14.0122
+          },
+          {
+            "hex": "#0c5bda",
+            "coveragePercent": 11.5783
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/samurai-camp-hd-center-v1.png": {
       "sha256": "b19adb1ca9ad1eed4b1f04aab1a33d684516cebab1f4e9ebc7a19947533b3253",
       "width": 1536,
@@ -23907,6 +26007,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/samurai-camp-hd-east-motion-b-v1.png": {
+      "sha256": "0e6f8ccb25d01ae4600e929f94d1edac74174390dee5ff5529b5e5d26aaf7df3",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDEastMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080505",
+            "coveragePercent": 19.0897
+          },
+          {
+            "hex": "#29130d",
+            "coveragePercent": 12.6538
+          },
+          {
+            "hex": "#0c1927",
+            "coveragePercent": 8.5484
+          },
+          {
+            "hex": "#521c0d",
+            "coveragePercent": 8.1549
+          },
+          {
+            "hex": "#7e100c",
+            "coveragePercent": 6.5484
+          },
+          {
+            "hex": "#7a3b23",
+            "coveragePercent": 6.5482
+          },
+          {
+            "hex": "#393433",
+            "coveragePercent": 6.0919
+          },
+          {
+            "hex": "#0646b3",
+            "coveragePercent": 5.6763
+          },
+          {
+            "hex": "#a8562a",
+            "coveragePercent": 5.3695
+          },
+          {
+            "hex": "#ae1609",
+            "coveragePercent": 5.2956
+          },
+          {
+            "hex": "#0a284d",
+            "coveragePercent": 4.4586
+          },
+          {
+            "hex": "#e1701c",
+            "coveragePercent": 3.292
+          },
+          {
+            "hex": "#09387f",
+            "coveragePercent": 3.2656
+          },
+          {
+            "hex": "#df3003",
+            "coveragePercent": 2.5687
+          },
+          {
+            "hex": "#f8a42b",
+            "coveragePercent": 2.3602
+          },
+          {
+            "hex": "#efe8ca",
+            "coveragePercent": 0.0782
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#0643aa",
+            "coveragePercent": 22.7472
+          },
+          {
+            "hex": "#9e4e28",
+            "coveragePercent": 21.3929
+          },
+          {
+            "hex": "#95160c",
+            "coveragePercent": 21.2257
+          },
+          {
+            "hex": "#cc1d05",
+            "coveragePercent": 12.9916
+          },
+          {
+            "hex": "#db6619",
+            "coveragePercent": 12.8222
+          },
+          {
+            "hex": "#f79f2a",
+            "coveragePercent": 8.8204
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/backgrounds/samurai-camp-hd-east-v1.png": {
@@ -24014,6 +26219,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/backgrounds/samurai-camp-hd-west-motion-b-v1.png": {
+      "sha256": "e3114d9df0662efc5b7d4edfd231fe3d8dac633e4f21f92fe63604fa74ac010d",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiCampHDWestMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0606",
+            "coveragePercent": 20.8412
+          },
+          {
+            "hex": "#371a11",
+            "coveragePercent": 13.9189
+          },
+          {
+            "hex": "#0e1727",
+            "coveragePercent": 10.5157
+          },
+          {
+            "hex": "#182c46",
+            "coveragePercent": 8.2455
+          },
+          {
+            "hex": "#731c10",
+            "coveragePercent": 7.3611
+          },
+          {
+            "hex": "#5b392f",
+            "coveragePercent": 6.6457
+          },
+          {
+            "hex": "#a81e12",
+            "coveragePercent": 5.0555
+          },
+          {
+            "hex": "#985633",
+            "coveragePercent": 4.9677
+          },
+          {
+            "hex": "#0546b4",
+            "coveragePercent": 4.096
+          },
+          {
+            "hex": "#0d3577",
+            "coveragePercent": 3.9605
+          },
+          {
+            "hex": "#e2220d",
+            "coveragePercent": 3.4616
+          },
+          {
+            "hex": "#e26908",
+            "coveragePercent": 2.7786
+          },
+          {
+            "hex": "#dd7e39",
+            "coveragePercent": 2.7659
+          },
+          {
+            "hex": "#0b64e4",
+            "coveragePercent": 2.6559
+          },
+          {
+            "hex": "#f9b331",
+            "coveragePercent": 2.4615
+          },
+          {
+            "hex": "#f9f1d9",
+            "coveragePercent": 0.2688
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9f1c12",
+            "coveragePercent": 21.8931
+          },
+          {
+            "hex": "#f0972c",
+            "coveragePercent": 18.3137
+          },
+          {
+            "hex": "#a4592d",
+            "coveragePercent": 17.9024
+          },
+          {
+            "hex": "#e2320b",
+            "coveragePercent": 15.8705
+          },
+          {
+            "hex": "#0541a6",
+            "coveragePercent": 15.2691
+          },
+          {
+            "hex": "#0960df",
+            "coveragePercent": 10.7513
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/samurai-camp-hd-west-v1.png": {
       "sha256": "af45b2f0d2f0304114106c57be4e1a02657c22b49144e3136aaf25df2513a3b9",
       "width": 1536,
@@ -24117,6 +26427,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/samurai-camp-motion-b-v1.png": {
+      "sha256": "e38f52fc1efbb7e21998dcb001d3fbf775c52cec50e3e97d5eacc874e8cb7561",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "samuraiCampBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0506",
+            "coveragePercent": 18.5439
+          },
+          {
+            "hex": "#111823",
+            "coveragePercent": 11.2664
+          },
+          {
+            "hex": "#34150e",
+            "coveragePercent": 11.1967
+          },
+          {
+            "hex": "#611d13",
+            "coveragePercent": 10.1544
+          },
+          {
+            "hex": "#382f35",
+            "coveragePercent": 6.9238
+          },
+          {
+            "hex": "#704135",
+            "coveragePercent": 6.3527
+          },
+          {
+            "hex": "#0a254e",
+            "coveragePercent": 6.1768
+          },
+          {
+            "hex": "#992313",
+            "coveragePercent": 6.148
+          },
+          {
+            "hex": "#0f3c7e",
+            "coveragePercent": 4.6494
+          },
+          {
+            "hex": "#a55f3a",
+            "coveragePercent": 4.2455
+          },
+          {
+            "hex": "#d63b0a",
+            "coveragePercent": 3.4246
+          },
+          {
+            "hex": "#e17923",
+            "coveragePercent": 3.2979
+          },
+          {
+            "hex": "#0d52bd",
+            "coveragePercent": 3.098
+          },
+          {
+            "hex": "#f6a73b",
+            "coveragePercent": 2.5941
+          },
+          {
+            "hex": "#186de8",
+            "coveragePercent": 1.7504
+          },
+          {
+            "hex": "#faeec4",
+            "coveragePercent": 0.1775
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b2313",
+            "coveragePercent": 23.748
+          },
+          {
+            "hex": "#a25b35",
+            "coveragePercent": 19.056
+          },
+          {
+            "hex": "#ed9533",
+            "coveragePercent": 17.9153
+          },
+          {
+            "hex": "#db460a",
+            "coveragePercent": 14.2424
+          },
+          {
+            "hex": "#1160d6",
+            "coveragePercent": 13.8204
+          },
+          {
+            "hex": "#0c4597",
+            "coveragePercent": 11.2179
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/samurai-camp-terrain-v1.png": {
@@ -24644,6 +27059,426 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/sect-forecourt-motion-b-v1.png": {
+      "sha256": "f667f3d21322c70d48d8a36bdba8ac81bbf632d9f00f9b3eca4366cde2da1b09",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "sectForecourtMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070404",
+            "coveragePercent": 15.7423
+          },
+          {
+            "hex": "#1b1516",
+            "coveragePercent": 14.9082
+          },
+          {
+            "hex": "#2e292e",
+            "coveragePercent": 13.6519
+          },
+          {
+            "hex": "#3b3f4b",
+            "coveragePercent": 12.771
+          },
+          {
+            "hex": "#4f5363",
+            "coveragePercent": 9.2416
+          },
+          {
+            "hex": "#3b0e0b",
+            "coveragePercent": 6.1017
+          },
+          {
+            "hex": "#646779",
+            "coveragePercent": 5.8895
+          },
+          {
+            "hex": "#56312d",
+            "coveragePercent": 5.6142
+          },
+          {
+            "hex": "#7b4d43",
+            "coveragePercent": 3.483
+          },
+          {
+            "hex": "#7a7f96",
+            "coveragePercent": 3.0245
+          },
+          {
+            "hex": "#9f8277",
+            "coveragePercent": 2.448
+          },
+          {
+            "hex": "#741712",
+            "coveragePercent": 2.3218
+          },
+          {
+            "hex": "#9d9cb3",
+            "coveragePercent": 1.5166
+          },
+          {
+            "hex": "#dcaf86",
+            "coveragePercent": 1.3995
+          },
+          {
+            "hex": "#be673d",
+            "coveragePercent": 0.9922
+          },
+          {
+            "hex": "#f7ead3",
+            "coveragePercent": 0.894
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#93503e",
+            "coveragePercent": 36.3451
+          },
+          {
+            "hex": "#942216",
+            "coveragePercent": 21.0029
+          },
+          {
+            "hex": "#c47043",
+            "coveragePercent": 19.9508
+          },
+          {
+            "hex": "#e8a065",
+            "coveragePercent": 11.0036
+          },
+          {
+            "hex": "#6c4394",
+            "coveragePercent": 7.4636
+          },
+          {
+            "hex": "#b75bb8",
+            "coveragePercent": 4.234
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/sect-hall-motion-b-v1.png": {
+      "sha256": "c3c174b8de5badb569bfd75f57ef7aac90b994ca9d458d8bfaed175a8e4d3a09",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "sectHallMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#180e10",
+            "coveragePercent": 25.1285
+          },
+          {
+            "hex": "#060203",
+            "coveragePercent": 18.9235
+          },
+          {
+            "hex": "#2a212a",
+            "coveragePercent": 11.353
+          },
+          {
+            "hex": "#331612",
+            "coveragePercent": 10.2348
+          },
+          {
+            "hex": "#413542",
+            "coveragePercent": 8.0055
+          },
+          {
+            "hex": "#50261c",
+            "coveragePercent": 6.2276
+          },
+          {
+            "hex": "#534867",
+            "coveragePercent": 3.6053
+          },
+          {
+            "hex": "#773620",
+            "coveragePercent": 3.2873
+          },
+          {
+            "hex": "#616691",
+            "coveragePercent": 3.2564
+          },
+          {
+            "hex": "#754a47",
+            "coveragePercent": 2.4717
+          },
+          {
+            "hex": "#7783b2",
+            "coveragePercent": 2.2366
+          },
+          {
+            "hex": "#a85b39",
+            "coveragePercent": 2.1435
+          },
+          {
+            "hex": "#dc7a37",
+            "coveragePercent": 1.2254
+          },
+          {
+            "hex": "#9da8d8",
+            "coveragePercent": 0.8558
+          },
+          {
+            "hex": "#efb16d",
+            "coveragePercent": 0.6105
+          },
+          {
+            "hex": "#e9e9eb",
+            "coveragePercent": 0.4347
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#94472b",
+            "coveragePercent": 36.3473
+          },
+          {
+            "hex": "#c66a37",
+            "coveragePercent": 25.386
+          },
+          {
+            "hex": "#f0a253",
+            "coveragePercent": 12.196
+          },
+          {
+            "hex": "#5b4b90",
+            "coveragePercent": 11.5291
+          },
+          {
+            "hex": "#5876ad",
+            "coveragePercent": 10.3747
+          },
+          {
+            "hex": "#9e57c6",
+            "coveragePercent": 4.1669
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/sect-sanctum-motion-b-v1.png": {
+      "sha256": "a93624cec33055885df0d53c7db81222b58e1a73ba38a8fb427f2202ccb38264",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "sectSanctumMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#24161b",
+            "coveragePercent": 21.2686
+          },
+          {
+            "hex": "#150b0d",
+            "coveragePercent": 18.1909
+          },
+          {
+            "hex": "#050303",
+            "coveragePercent": 15.3985
+          },
+          {
+            "hex": "#352837",
+            "coveragePercent": 10.1
+          },
+          {
+            "hex": "#471a19",
+            "coveragePercent": 7.4629
+          },
+          {
+            "hex": "#493b5a",
+            "coveragePercent": 6.1588
+          },
+          {
+            "hex": "#5d3230",
+            "coveragePercent": 4.999
+          },
+          {
+            "hex": "#545782",
+            "coveragePercent": 4.181
+          },
+          {
+            "hex": "#854b46",
+            "coveragePercent": 2.6852
+          },
+          {
+            "hex": "#842423",
+            "coveragePercent": 2.3924
+          },
+          {
+            "hex": "#855296",
+            "coveragePercent": 1.7107
+          },
+          {
+            "hex": "#7a86b7",
+            "coveragePercent": 1.5719
+          },
+          {
+            "hex": "#c36640",
+            "coveragePercent": 1.3934
+          },
+          {
+            "hex": "#a9b2de",
+            "coveragePercent": 1.13
+          },
+          {
+            "hex": "#e8a474",
+            "coveragePercent": 0.7267
+          },
+          {
+            "hex": "#e3e3ec",
+            "coveragePercent": 0.63
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#90352e",
+            "coveragePercent": 29.5023
+          },
+          {
+            "hex": "#b65e3f",
+            "coveragePercent": 20.0704
+          },
+          {
+            "hex": "#4b6393",
+            "coveragePercent": 18.3414
+          },
+          {
+            "hex": "#76428f",
+            "coveragePercent": 15.6587
+          },
+          {
+            "hex": "#e9965a",
+            "coveragePercent": 9.6631
+          },
+          {
+            "hex": "#a75ac3",
+            "coveragePercent": 6.764
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/shadow-arena-center-motion-b-v1.png": {
+      "sha256": "f3077b9930d0ca101f9138f932847c96bea5ac927e0ea9c50d4f008aa84f5440",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaCenterMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#140d12",
+            "coveragePercent": 19.4039
+          },
+          {
+            "hex": "#1f1627",
+            "coveragePercent": 12.7586
+          },
+          {
+            "hex": "#060304",
+            "coveragePercent": 10.0936
+          },
+          {
+            "hex": "#36213e",
+            "coveragePercent": 9.5015
+          },
+          {
+            "hex": "#391815",
+            "coveragePercent": 9.3948
+          },
+          {
+            "hex": "#5d2920",
+            "coveragePercent": 7.5968
+          },
+          {
+            "hex": "#42295f",
+            "coveragePercent": 5.7278
+          },
+          {
+            "hex": "#6c374c",
+            "coveragePercent": 5.1915
+          },
+          {
+            "hex": "#8e3d22",
+            "coveragePercent": 4.6203
+          },
+          {
+            "hex": "#5b3782",
+            "coveragePercent": 3.8621
+          },
+          {
+            "hex": "#7747a3",
+            "coveragePercent": 3.1933
+          },
+          {
+            "hex": "#ae5745",
+            "coveragePercent": 2.9656
+          },
+          {
+            "hex": "#dd6425",
+            "coveragePercent": 2.2101
+          },
+          {
+            "hex": "#f19a4e",
+            "coveragePercent": 1.5935
+          },
+          {
+            "hex": "#9b5ecc",
+            "coveragePercent": 1.5891
+          },
+          {
+            "hex": "#fcf2c6",
+            "coveragePercent": 0.2973
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#96422e",
+            "coveragePercent": 31.1023
+          },
+          {
+            "hex": "#633b8f",
+            "coveragePercent": 19.585
+          },
+          {
+            "hex": "#cd5f31",
+            "coveragePercent": 19.4584
+          },
+          {
+            "hex": "#814bad",
+            "coveragePercent": 13.0228
+          },
+          {
+            "hex": "#f29748",
+            "coveragePercent": 10.6377
+          },
+          {
+            "hex": "#9e5fd3",
+            "coveragePercent": 6.1938
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/backgrounds/shadow-arena-center-v1.png": {
       "sha256": "41f64b5f84e237b4514f25995d99d42bdc13bc47e913398b57f5c1b75274eb2b",
       "width": 1536,
@@ -24747,6 +27582,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/shadow-arena-east-motion-b-v1.png": {
+      "sha256": "ca813c86c9bacc649105219e49dd041d7ef2c6ae29269c7bf1a6d4b6215bb928",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaEastMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a101a",
+            "coveragePercent": 19.371
+          },
+          {
+            "hex": "#0a0508",
+            "coveragePercent": 16.8743
+          },
+          {
+            "hex": "#2e1c38",
+            "coveragePercent": 11.8563
+          },
+          {
+            "hex": "#3a1a1b",
+            "coveragePercent": 10.6195
+          },
+          {
+            "hex": "#45264f",
+            "coveragePercent": 8.5628
+          },
+          {
+            "hex": "#602b25",
+            "coveragePercent": 7.3425
+          },
+          {
+            "hex": "#502b70",
+            "coveragePercent": 4.8747
+          },
+          {
+            "hex": "#953d23",
+            "coveragePercent": 4.0888
+          },
+          {
+            "hex": "#7b3957",
+            "coveragePercent": 3.7887
+          },
+          {
+            "hex": "#693797",
+            "coveragePercent": 3.0352
+          },
+          {
+            "hex": "#b7574f",
+            "coveragePercent": 2.3856
+          },
+          {
+            "hex": "#8243be",
+            "coveragePercent": 2.1474
+          },
+          {
+            "hex": "#df5a1c",
+            "coveragePercent": 2.1228
+          },
+          {
+            "hex": "#f1954c",
+            "coveragePercent": 1.5868
+          },
+          {
+            "hex": "#a858e4",
+            "coveragePercent": 0.9673
+          },
+          {
+            "hex": "#fcf1d3",
+            "coveragePercent": 0.3764
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#68359a",
+            "coveragePercent": 23.4011
+          },
+          {
+            "hex": "#983d24",
+            "coveragePercent": 22.677
+          },
+          {
+            "hex": "#da5c24",
+            "coveragePercent": 16.1121
+          },
+          {
+            "hex": "#a1475a",
+            "coveragePercent": 15.3712
+          },
+          {
+            "hex": "#944bd2",
+            "coveragePercent": 13.1644
+          },
+          {
+            "hex": "#f1964d",
+            "coveragePercent": 9.2741
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/shadow-arena-east-v1.png": {
@@ -24854,6 +27794,111 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/shadow-arena-west-motion-b-v1.png": {
+      "sha256": "a2ed714606640a04ff41ec521a6af8053263dc7a2bf80ce1ba9c812de8bd670c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "arenaWestMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#100a10",
+            "coveragePercent": 17.3499
+          },
+          {
+            "hex": "#1d1321",
+            "coveragePercent": 16.214
+          },
+          {
+            "hex": "#2c1c3c",
+            "coveragePercent": 9.8177
+          },
+          {
+            "hex": "#030203",
+            "coveragePercent": 9.7542
+          },
+          {
+            "hex": "#402751",
+            "coveragePercent": 8.4208
+          },
+          {
+            "hex": "#3f1d1f",
+            "coveragePercent": 8.0791
+          },
+          {
+            "hex": "#632c26",
+            "coveragePercent": 5.8283
+          },
+          {
+            "hex": "#6d3a56",
+            "coveragePercent": 4.5373
+          },
+          {
+            "hex": "#4d2c75",
+            "coveragePercent": 4.5245
+          },
+          {
+            "hex": "#974126",
+            "coveragePercent": 4.0088
+          },
+          {
+            "hex": "#693c9b",
+            "coveragePercent": 3.3319
+          },
+          {
+            "hex": "#dc6426",
+            "coveragePercent": 2.5455
+          },
+          {
+            "hex": "#ac575e",
+            "coveragePercent": 2.3139
+          },
+          {
+            "hex": "#f19e59",
+            "coveragePercent": 1.4977
+          },
+          {
+            "hex": "#9253c5",
+            "coveragePercent": 1.4862
+          },
+          {
+            "hex": "#fbeec7",
+            "coveragePercent": 0.2902
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#994126",
+            "coveragePercent": 23.8324
+          },
+          {
+            "hex": "#603695",
+            "coveragePercent": 23.2402
+          },
+          {
+            "hex": "#db6429",
+            "coveragePercent": 17.1992
+          },
+          {
+            "hex": "#a44e5d",
+            "coveragePercent": 15.2177
+          },
+          {
+            "hex": "#8c4dc1",
+            "coveragePercent": 11.2784
+          },
+          {
+            "hex": "#f19e57",
+            "coveragePercent": 9.2322
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/shadow-arena-west-v1.png": {
       "sha256": "7eca5707b7257ff7d5f21516ea46e7f5446bd0a9ae24a9eafe138b163bd11d91",
       "width": 1536,
@@ -24959,6 +28004,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/backgrounds/shadow-cult-motion-b-v1.png": {
+      "sha256": "2b03076545c003722bb36b76382b20ffa1fcd93bc8bb55306b86daee40ff463d",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "shadowCultMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#030205",
+            "coveragePercent": 15.3914
+          },
+          {
+            "hex": "#0e0819",
+            "coveragePercent": 14.4965
+          },
+          {
+            "hex": "#191130",
+            "coveragePercent": 14.1017
+          },
+          {
+            "hex": "#27194b",
+            "coveragePercent": 11.9036
+          },
+          {
+            "hex": "#382467",
+            "coveragePercent": 9.8725
+          },
+          {
+            "hex": "#4b2f85",
+            "coveragePercent": 7.9502
+          },
+          {
+            "hex": "#603da2",
+            "coveragePercent": 6.6489
+          },
+          {
+            "hex": "#7549c2",
+            "coveragePercent": 5.2865
+          },
+          {
+            "hex": "#8d57e0",
+            "coveragePercent": 4.1448
+          },
+          {
+            "hex": "#aa6ef2",
+            "coveragePercent": 3.3084
+          },
+          {
+            "hex": "#441823",
+            "coveragePercent": 2.4605
+          },
+          {
+            "hex": "#cb8df5",
+            "coveragePercent": 1.4587
+          },
+          {
+            "hex": "#804141",
+            "coveragePercent": 1.1562
+          },
+          {
+            "hex": "#a067a2",
+            "coveragePercent": 0.8508
+          },
+          {
+            "hex": "#e08552",
+            "coveragePercent": 0.5541
+          },
+          {
+            "hex": "#edc2ef",
+            "coveragePercent": 0.4153
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4e3090",
+            "coveragePercent": 29.0833
+          },
+          {
+            "hex": "#6941af",
+            "coveragePercent": 26.685
+          },
+          {
+            "hex": "#8451d4",
+            "coveragePercent": 22.6022
+          },
+          {
+            "hex": "#ab6cf2",
+            "coveragePercent": 17.7791
+          },
+          {
+            "hex": "#a34c3a",
+            "coveragePercent": 2.2838
+          },
+          {
+            "hex": "#e88d57",
+            "coveragePercent": 1.5666
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/shadow-cult-realm-v1.png": {
       "sha256": "9174455f081e908f0d0dcd4f59d990fb3af8e79e8d66146409dcdc3fd1dc8822",
       "width": 1672,
@@ -25062,6 +28212,111 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/shadow-motion-b-v1.png": {
+      "sha256": "ebde33a32a030885b7f33edc66c3630481940546b471cd4fa2f5d03942e25a58",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "shadowMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0b17",
+            "coveragePercent": 11.6259
+          },
+          {
+            "hex": "#141323",
+            "coveragePercent": 10.3806
+          },
+          {
+            "hex": "#24233b",
+            "coveragePercent": 9.9651
+          },
+          {
+            "hex": "#1c1b2f",
+            "coveragePercent": 9.4588
+          },
+          {
+            "hex": "#2d2b47",
+            "coveragePercent": 9.4522
+          },
+          {
+            "hex": "#363453",
+            "coveragePercent": 9.0233
+          },
+          {
+            "hex": "#403d61",
+            "coveragePercent": 8.2291
+          },
+          {
+            "hex": "#4b476f",
+            "coveragePercent": 7.3851
+          },
+          {
+            "hex": "#07060e",
+            "coveragePercent": 7.2387
+          },
+          {
+            "hex": "#57507e",
+            "coveragePercent": 4.9279
+          },
+          {
+            "hex": "#020103",
+            "coveragePercent": 4.5095
+          },
+          {
+            "hex": "#625b8a",
+            "coveragePercent": 3.1559
+          },
+          {
+            "hex": "#6d6498",
+            "coveragePercent": 2.6189
+          },
+          {
+            "hex": "#7b70a6",
+            "coveragePercent": 1.2359
+          },
+          {
+            "hex": "#897db5",
+            "coveragePercent": 0.6552
+          },
+          {
+            "hex": "#9a8ec6",
+            "coveragePercent": 0.1379
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#554483",
+            "coveragePercent": 40.797
+          },
+          {
+            "hex": "#5b498a",
+            "coveragePercent": 29.3406
+          },
+          {
+            "hex": "#604c92",
+            "coveragePercent": 15.3226
+          },
+          {
+            "hex": "#67539a",
+            "coveragePercent": 9.9383
+          },
+          {
+            "hex": "#4b4084",
+            "coveragePercent": 4.222
+          },
+          {
+            "hex": "#505297",
+            "coveragePercent": 0.3795
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/backgrounds/shadow-world-v1.png": {
@@ -25274,6 +28529,111 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/slayer-motion-b-v1.png": {
+      "sha256": "79932bcb355dae32233ba5c4de6f3be8429ccd59cd0531788bd7b47063161351",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "slayerMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#453247",
+            "coveragePercent": 12.3462
+          },
+          {
+            "hex": "#342637",
+            "coveragePercent": 10.8051
+          },
+          {
+            "hex": "#573e59",
+            "coveragePercent": 10.4937
+          },
+          {
+            "hex": "#291b23",
+            "coveragePercent": 10.4052
+          },
+          {
+            "hex": "#1b0e0f",
+            "coveragePercent": 10.0739
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 8.8454
+          },
+          {
+            "hex": "#6a4a6c",
+            "coveragePercent": 8.1278
+          },
+          {
+            "hex": "#82567e",
+            "coveragePercent": 7.6156
+          },
+          {
+            "hex": "#986390",
+            "coveragePercent": 6.9241
+          },
+          {
+            "hex": "#bf5e75",
+            "coveragePercent": 3.1272
+          },
+          {
+            "hex": "#b471a1",
+            "coveragePercent": 3.0548
+          },
+          {
+            "hex": "#58231e",
+            "coveragePercent": 2.4819
+          },
+          {
+            "hex": "#923e3e",
+            "coveragePercent": 2.0917
+          },
+          {
+            "hex": "#f47362",
+            "coveragePercent": 2.0676
+          },
+          {
+            "hex": "#e0503e",
+            "coveragePercent": 1.2568
+          },
+          {
+            "hex": "#f5c39c",
+            "coveragePercent": 0.2829
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c46280",
+            "coveragePercent": 28.3623
+          },
+          {
+            "hex": "#f26a61",
+            "coveragePercent": 20.8162
+          },
+          {
+            "hex": "#a24f65",
+            "coveragePercent": 18.8559
+          },
+          {
+            "hex": "#993a35",
+            "coveragePercent": 14.4572
+          },
+          {
+            "hex": "#e04f3e",
+            "coveragePercent": 12.2014
+          },
+          {
+            "hex": "#fb9d67",
+            "coveragePercent": 5.307
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/white-serpent-cave-v1.png": {
       "sha256": "e867cdd853d3161dfce896511a1d0c738f9dcb17f94ea11b2b6246543e2140eb",
       "width": 2172,
@@ -25482,6 +28842,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/white-serpent-motion-b-v1.png": {
+      "sha256": "0685040dac3aeef166f5b609ba569b2bbdc7fb6db6221901e21c4a361eaf6bc3",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "whiteSerpentMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d2723",
+            "coveragePercent": 14.1988
+          },
+          {
+            "hex": "#030505",
+            "coveragePercent": 14.0778
+          },
+          {
+            "hex": "#22373a",
+            "coveragePercent": 11.4795
+          },
+          {
+            "hex": "#0e1715",
+            "coveragePercent": 11.4151
+          },
+          {
+            "hex": "#2d4c51",
+            "coveragePercent": 10.6032
+          },
+          {
+            "hex": "#3a6469",
+            "coveragePercent": 8.5089
+          },
+          {
+            "hex": "#4b7e82",
+            "coveragePercent": 5.9809
+          },
+          {
+            "hex": "#47442a",
+            "coveragePercent": 5.4751
+          },
+          {
+            "hex": "#5e9ea0",
+            "coveragePercent": 3.7309
+          },
+          {
+            "hex": "#746a43",
+            "coveragePercent": 3.4206
+          },
+          {
+            "hex": "#82bbc0",
+            "coveragePercent": 2.5666
+          },
+          {
+            "hex": "#92987d",
+            "coveragePercent": 2.05
+          },
+          {
+            "hex": "#ecf5ec",
+            "coveragePercent": 1.7801
+          },
+          {
+            "hex": "#abdee7",
+            "coveragePercent": 1.7636
+          },
+          {
+            "hex": "#d3cf9d",
+            "coveragePercent": 1.7192
+          },
+          {
+            "hex": "#bfa34d",
+            "coveragePercent": 1.2298
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#3b8386",
+            "coveragePercent": 34.7019
+          },
+          {
+            "hex": "#45a49d",
+            "coveragePercent": 19.9302
+          },
+          {
+            "hex": "#937434",
+            "coveragePercent": 15.9484
+          },
+          {
+            "hex": "#b99c48",
+            "coveragePercent": 12.0168
+          },
+          {
+            "hex": "#5ec4c0",
+            "coveragePercent": 9.4336
+          },
+          {
+            "hex": "#e3cb61",
+            "coveragePercent": 7.9692
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/winged-serpent-motion-b-v1.png": {
+      "sha256": "89de27851ca74874e082ebf44ad7e6417bed9a599c4b8c35a19eccc8515bcd89",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "wingedSerpentMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9e5dc",
+            "coveragePercent": 11.9705
+          },
+          {
+            "hex": "#fdf8f0",
+            "coveragePercent": 11.364
+          },
+          {
+            "hex": "#dacde4",
+            "coveragePercent": 10.8153
+          },
+          {
+            "hex": "#bcb8e1",
+            "coveragePercent": 9.0171
+          },
+          {
+            "hex": "#9ba4de",
+            "coveragePercent": 6.5513
+          },
+          {
+            "hex": "#f3d7bc",
+            "coveragePercent": 5.7454
+          },
+          {
+            "hex": "#8c839b",
+            "coveragePercent": 5.3746
+          },
+          {
+            "hex": "#140d14",
+            "coveragePercent": 5.148
+          },
+          {
+            "hex": "#c0a99e",
+            "coveragePercent": 4.9997
+          },
+          {
+            "hex": "#675c79",
+            "coveragePercent": 4.9482
+          },
+          {
+            "hex": "#6e94e2",
+            "coveragePercent": 4.5063
+          },
+          {
+            "hex": "#3c3156",
+            "coveragePercent": 4.4174
+          },
+          {
+            "hex": "#487add",
+            "coveragePercent": 4.36
+          },
+          {
+            "hex": "#ac8766",
+            "coveragePercent": 3.8661
+          },
+          {
+            "hex": "#855e3c",
+            "coveragePercent": 3.743
+          },
+          {
+            "hex": "#523520",
+            "coveragePercent": 3.1731
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#578be2",
+            "coveragePercent": 25.3945
+          },
+          {
+            "hex": "#4075da",
+            "coveragePercent": 21.0753
+          },
+          {
+            "hex": "#7694e4",
+            "coveragePercent": 18.6754
+          },
+          {
+            "hex": "#996636",
+            "coveragePercent": 17.3756
+          },
+          {
+            "hex": "#ce9f5b",
+            "coveragePercent": 8.9492
+          },
+          {
+            "hex": "#5f34a3",
+            "coveragePercent": 8.53
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/winged-serpent-roost-v1.png": {
       "sha256": "410e2679e981fed09f3966542ae6ca11930f6ac098fbde26466fbdb5cbe30a78",
       "width": 2172,
@@ -25688,6 +29258,426 @@
         ],
         "visibleSamples": 1573538,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/yomi-courtyard-center-motion-b-v1.png": {
+      "sha256": "653f56420afe783ef50f2c26033eec3e05457bba18aa59a3ae6438ef8cde8a25",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCenterMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d1c1b",
+            "coveragePercent": 13.6563
+          },
+          {
+            "hex": "#292726",
+            "coveragePercent": 12.7762
+          },
+          {
+            "hex": "#353436",
+            "coveragePercent": 11.9182
+          },
+          {
+            "hex": "#151413",
+            "coveragePercent": 11.7036
+          },
+          {
+            "hex": "#454345",
+            "coveragePercent": 10.496
+          },
+          {
+            "hex": "#0d0c0b",
+            "coveragePercent": 7.8103
+          },
+          {
+            "hex": "#594f4e",
+            "coveragePercent": 7.0946
+          },
+          {
+            "hex": "#040302",
+            "coveragePercent": 6.5282
+          },
+          {
+            "hex": "#70605c",
+            "coveragePercent": 4.1554
+          },
+          {
+            "hex": "#513627",
+            "coveragePercent": 3.3794
+          },
+          {
+            "hex": "#916d5d",
+            "coveragePercent": 2.8745
+          },
+          {
+            "hex": "#b78367",
+            "coveragePercent": 2.1152
+          },
+          {
+            "hex": "#7f4d36",
+            "coveragePercent": 1.9933
+          },
+          {
+            "hex": "#de9b6f",
+            "coveragePercent": 1.8797
+          },
+          {
+            "hex": "#fac284",
+            "coveragePercent": 0.8544
+          },
+          {
+            "hex": "#cd6637",
+            "coveragePercent": 0.7646
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dc986d",
+            "coveragePercent": 25.6244
+          },
+          {
+            "hex": "#91543a",
+            "coveragePercent": 22.2572
+          },
+          {
+            "hex": "#b77b5b",
+            "coveragePercent": 19.8083
+          },
+          {
+            "hex": "#f6b67a",
+            "coveragePercent": 16.6118
+          },
+          {
+            "hex": "#bb5e37",
+            "coveragePercent": 9.4261
+          },
+          {
+            "hex": "#ee7938",
+            "coveragePercent": 6.2723
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/yomi-courtyard-east-motion-b-v1.png": {
+      "sha256": "ba1b0088c92e13f92a3683ddfcb9b77f80e8fc1385a878c288a0e102b0762b05",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonEastMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#151314",
+            "coveragePercent": 16.4116
+          },
+          {
+            "hex": "#1b1c1f",
+            "coveragePercent": 14.0253
+          },
+          {
+            "hex": "#040303",
+            "coveragePercent": 13.8727
+          },
+          {
+            "hex": "#25272c",
+            "coveragePercent": 13.4701
+          },
+          {
+            "hex": "#0d0b0c",
+            "coveragePercent": 11.5893
+          },
+          {
+            "hex": "#35353b",
+            "coveragePercent": 7.7996
+          },
+          {
+            "hex": "#45464f",
+            "coveragePercent": 6.0757
+          },
+          {
+            "hex": "#352119",
+            "coveragePercent": 5.5794
+          },
+          {
+            "hex": "#513326",
+            "coveragePercent": 3.6491
+          },
+          {
+            "hex": "#625558",
+            "coveragePercent": 2.3408
+          },
+          {
+            "hex": "#74432c",
+            "coveragePercent": 1.9225
+          },
+          {
+            "hex": "#985a3d",
+            "coveragePercent": 1.3186
+          },
+          {
+            "hex": "#c57140",
+            "coveragePercent": 0.8654
+          },
+          {
+            "hex": "#897573",
+            "coveragePercent": 0.558
+          },
+          {
+            "hex": "#e89754",
+            "coveragePercent": 0.4215
+          },
+          {
+            "hex": "#f3dca5",
+            "coveragePercent": 0.1003
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965b42",
+            "coveragePercent": 24.3996
+          },
+          {
+            "hex": "#8f4925",
+            "coveragePercent": 22.8444
+          },
+          {
+            "hex": "#ba622e",
+            "coveragePercent": 16.1958
+          },
+          {
+            "hex": "#be7652",
+            "coveragePercent": 15.8899
+          },
+          {
+            "hex": "#e3833d",
+            "coveragePercent": 13.7066
+          },
+          {
+            "hex": "#f2ae63",
+            "coveragePercent": 6.9637
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/yomi-courtyard-west-motion-b-v1.png": {
+      "sha256": "da4be365fee5e11b6c1f6d3039c4feff52cfffec88440b2266b9215e03d9ebf5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonWestMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#131211",
+            "coveragePercent": 16.4734
+          },
+          {
+            "hex": "#202021",
+            "coveragePercent": 16.0944
+          },
+          {
+            "hex": "#343439",
+            "coveragePercent": 12.8259
+          },
+          {
+            "hex": "#46474f",
+            "coveragePercent": 11.2595
+          },
+          {
+            "hex": "#030302",
+            "coveragePercent": 10.5008
+          },
+          {
+            "hex": "#59565e",
+            "coveragePercent": 7.0407
+          },
+          {
+            "hex": "#4c3d3c",
+            "coveragePercent": 5.5051
+          },
+          {
+            "hex": "#402819",
+            "coveragePercent": 4.2143
+          },
+          {
+            "hex": "#694a43",
+            "coveragePercent": 3.8757
+          },
+          {
+            "hex": "#85635c",
+            "coveragePercent": 3.102
+          },
+          {
+            "hex": "#69676e",
+            "coveragePercent": 2.8891
+          },
+          {
+            "hex": "#a87665",
+            "coveragePercent": 1.7564
+          },
+          {
+            "hex": "#8d4e32",
+            "coveragePercent": 1.7239
+          },
+          {
+            "hex": "#c16a41",
+            "coveragePercent": 1.2503
+          },
+          {
+            "hex": "#e99057",
+            "coveragePercent": 1.2356
+          },
+          {
+            "hex": "#fbd586",
+            "coveragePercent": 0.2528
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5239",
+            "coveragePercent": 29.2448
+          },
+          {
+            "hex": "#b57055",
+            "coveragePercent": 20.287
+          },
+          {
+            "hex": "#b35f38",
+            "coveragePercent": 16.3632
+          },
+          {
+            "hex": "#ec955c",
+            "coveragePercent": 14.8186
+          },
+          {
+            "hex": "#df7a43",
+            "coveragePercent": 14.7414
+          },
+          {
+            "hex": "#fbc26f",
+            "coveragePercent": 4.545
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/yomi-crypt-motion-b-v1.png": {
+      "sha256": "b1e4954d2463697633f11f160f82d28eae944b418687c142561bc000155a6a75",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCryptMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#191012",
+            "coveragePercent": 22.2033
+          },
+          {
+            "hex": "#291b1e",
+            "coveragePercent": 18.6684
+          },
+          {
+            "hex": "#080405",
+            "coveragePercent": 14.8459
+          },
+          {
+            "hex": "#3a2639",
+            "coveragePercent": 9.8729
+          },
+          {
+            "hex": "#432216",
+            "coveragePercent": 8.445
+          },
+          {
+            "hex": "#61301b",
+            "coveragePercent": 5.5421
+          },
+          {
+            "hex": "#633f3d",
+            "coveragePercent": 4.4671
+          },
+          {
+            "hex": "#8e4622",
+            "coveragePercent": 3.4885
+          },
+          {
+            "hex": "#512e66",
+            "coveragePercent": 3.3293
+          },
+          {
+            "hex": "#9c634f",
+            "coveragePercent": 2.1793
+          },
+          {
+            "hex": "#7a4991",
+            "coveragePercent": 1.6997
+          },
+          {
+            "hex": "#cb6220",
+            "coveragePercent": 1.6979
+          },
+          {
+            "hex": "#e18c48",
+            "coveragePercent": 1.5946
+          },
+          {
+            "hex": "#b478c4",
+            "coveragePercent": 0.7873
+          },
+          {
+            "hex": "#f2ba73",
+            "coveragePercent": 0.7141
+          },
+          {
+            "hex": "#f3d5e3",
+            "coveragePercent": 0.4645
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#944a25",
+            "coveragePercent": 37.716
+          },
+          {
+            "hex": "#b36c47",
+            "coveragePercent": 17.8613
+          },
+          {
+            "hex": "#eea257",
+            "coveragePercent": 14.6436
+          },
+          {
+            "hex": "#d96b20",
+            "coveragePercent": 14.6026
+          },
+          {
+            "hex": "#6f3492",
+            "coveragePercent": 10.4982
+          },
+          {
+            "hex": "#a558ca",
+            "coveragePercent": 4.6782
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/yomi-fall-courtyard-center-v1.png": {
@@ -26215,6 +30205,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/yomi-motion-b-v1.png": {
+      "sha256": "2ab5eacad4812e809e01990d4e1e7427a20e890ca94b019ea119524b31b2b168",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "yomiMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060302",
+            "coveragePercent": 12.7651
+          },
+          {
+            "hex": "#180f0d",
+            "coveragePercent": 12.3461
+          },
+          {
+            "hex": "#2a1c19",
+            "coveragePercent": 11.4347
+          },
+          {
+            "hex": "#403746",
+            "coveragePercent": 11.1562
+          },
+          {
+            "hex": "#52455a",
+            "coveragePercent": 9.4706
+          },
+          {
+            "hex": "#332a31",
+            "coveragePercent": 8.2308
+          },
+          {
+            "hex": "#6e556a",
+            "coveragePercent": 8.0833
+          },
+          {
+            "hex": "#856783",
+            "coveragePercent": 4.9683
+          },
+          {
+            "hex": "#502c22",
+            "coveragePercent": 4.8181
+          },
+          {
+            "hex": "#6e403d",
+            "coveragePercent": 4.531
+          },
+          {
+            "hex": "#a3626b",
+            "coveragePercent": 3.5323
+          },
+          {
+            "hex": "#a04a42",
+            "coveragePercent": 2.6265
+          },
+          {
+            "hex": "#a97f99",
+            "coveragePercent": 2.0645
+          },
+          {
+            "hex": "#e67c6c",
+            "coveragePercent": 1.7544
+          },
+          {
+            "hex": "#ea5940",
+            "coveragePercent": 1.6113
+          },
+          {
+            "hex": "#d9adbb",
+            "coveragePercent": 0.6068
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91463f",
+            "coveragePercent": 31.1871
+          },
+          {
+            "hex": "#b85e5c",
+            "coveragePercent": 20.5706
+          },
+          {
+            "hex": "#f35a3d",
+            "coveragePercent": 15.3551
+          },
+          {
+            "hex": "#e97263",
+            "coveragePercent": 14.5971
+          },
+          {
+            "hex": "#be493b",
+            "coveragePercent": 12.2997
+          },
+          {
+            "hex": "#fb986f",
+            "coveragePercent": 5.9904
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/yomi-thrones-motion-b-v1.png": {
+      "sha256": "7b87cbbe06bf56595ae19bd0384c67e3cbe21a99585d8148395b509f247673ee",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonThronesMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d1113",
+            "coveragePercent": 20.3763
+          },
+          {
+            "hex": "#080406",
+            "coveragePercent": 16.8819
+          },
+          {
+            "hex": "#311f25",
+            "coveragePercent": 15.7674
+          },
+          {
+            "hex": "#4b271d",
+            "coveragePercent": 9.3121
+          },
+          {
+            "hex": "#452f42",
+            "coveragePercent": 8.8724
+          },
+          {
+            "hex": "#693423",
+            "coveragePercent": 6.6781
+          },
+          {
+            "hex": "#8f4526",
+            "coveragePercent": 4.063
+          },
+          {
+            "hex": "#67454f",
+            "coveragePercent": 3.898
+          },
+          {
+            "hex": "#54327e",
+            "coveragePercent": 3.2005
+          },
+          {
+            "hex": "#b36537",
+            "coveragePercent": 2.863
+          },
+          {
+            "hex": "#7b4c96",
+            "coveragePercent": 2.3542
+          },
+          {
+            "hex": "#e2883e",
+            "coveragePercent": 1.796
+          },
+          {
+            "hex": "#8f4fcf",
+            "coveragePercent": 1.4221
+          },
+          {
+            "hex": "#c47dda",
+            "coveragePercent": 1.1248
+          },
+          {
+            "hex": "#f0b670",
+            "coveragePercent": 0.8268
+          },
+          {
+            "hex": "#f6d1eb",
+            "coveragePercent": 0.5636
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#934628",
+            "coveragePercent": 32.3198
+          },
+          {
+            "hex": "#c06b35",
+            "coveragePercent": 21.5104
+          },
+          {
+            "hex": "#5b3594",
+            "coveragePercent": 15.4173
+          },
+          {
+            "hex": "#ed9e4f",
+            "coveragePercent": 12.6981
+          },
+          {
+            "hex": "#8446bc",
+            "coveragePercent": 11.3605
+          },
+          {
+            "hex": "#b564e5",
+            "coveragePercent": 6.6939
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/yomi-v3.png": {
       "sha256": "93a5f7401e408553d8b2f1b55e50d580115a0e3052da5541bc8b1bef21441752",
       "width": 1024,
@@ -26318,6 +30518,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/zen-prison-center-motion-b-v1.png": {
+      "sha256": "1dad20e7ad6e434dbe197e5468853bc363508143e2f156101d0db4fadf6cb798",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonCenterMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#15151b",
+            "coveragePercent": 25.3851
+          },
+          {
+            "hex": "#21232f",
+            "coveragePercent": 19.6639
+          },
+          {
+            "hex": "#070506",
+            "coveragePercent": 16.2255
+          },
+          {
+            "hex": "#391d13",
+            "coveragePercent": 6.3978
+          },
+          {
+            "hex": "#3e2e2c",
+            "coveragePercent": 6.2759
+          },
+          {
+            "hex": "#603221",
+            "coveragePercent": 5.7286
+          },
+          {
+            "hex": "#272e55",
+            "coveragePercent": 4.8973
+          },
+          {
+            "hex": "#844325",
+            "coveragePercent": 3.6541
+          },
+          {
+            "hex": "#343a7c",
+            "coveragePercent": 3.3852
+          },
+          {
+            "hex": "#ae5c28",
+            "coveragePercent": 2.3795
+          },
+          {
+            "hex": "#4848a9",
+            "coveragePercent": 2.2492
+          },
+          {
+            "hex": "#e77415",
+            "coveragePercent": 1.2852
+          },
+          {
+            "hex": "#6443e4",
+            "coveragePercent": 1.1346
+          },
+          {
+            "hex": "#eaab50",
+            "coveragePercent": 0.7099
+          },
+          {
+            "hex": "#b05deb",
+            "coveragePercent": 0.4224
+          },
+          {
+            "hex": "#fae5c9",
+            "coveragePercent": 0.2057
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#984b24",
+            "coveragePercent": 32.3744
+          },
+          {
+            "hex": "#3c4197",
+            "coveragePercent": 25.2061
+          },
+          {
+            "hex": "#d76c1c",
+            "coveragePercent": 17.1044
+          },
+          {
+            "hex": "#5646d1",
+            "coveragePercent": 13.2347
+          },
+          {
+            "hex": "#eeab48",
+            "coveragePercent": 6.681
+          },
+          {
+            "hex": "#9a4ff3",
+            "coveragePercent": 5.3994
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/zen-prison-center-v1.png": {
@@ -26425,6 +30730,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/zen-prison-east-motion-b-v1.png": {
+      "sha256": "6b033bbb50e1572df79f4a2137f5304b1abaf10a36b1e8aad60ebfff1135bc33",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonEastMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#20212e",
+            "coveragePercent": 18.7268
+          },
+          {
+            "hex": "#151319",
+            "coveragePercent": 14.2332
+          },
+          {
+            "hex": "#050304",
+            "coveragePercent": 13.5862
+          },
+          {
+            "hex": "#282c4c",
+            "coveragePercent": 12.9014
+          },
+          {
+            "hex": "#2e3770",
+            "coveragePercent": 8.8314
+          },
+          {
+            "hex": "#523127",
+            "coveragePercent": 6.5633
+          },
+          {
+            "hex": "#381e15",
+            "coveragePercent": 6.1733
+          },
+          {
+            "hex": "#39449b",
+            "coveragePercent": 4.4666
+          },
+          {
+            "hex": "#7c3f20",
+            "coveragePercent": 4.2557
+          },
+          {
+            "hex": "#ac5926",
+            "coveragePercent": 2.7066
+          },
+          {
+            "hex": "#494ad2",
+            "coveragePercent": 2.0967
+          },
+          {
+            "hex": "#e5791c",
+            "coveragePercent": 1.7316
+          },
+          {
+            "hex": "#6a4b5d",
+            "coveragePercent": 1.5254
+          },
+          {
+            "hex": "#f1af4d",
+            "coveragePercent": 1.2149
+          },
+          {
+            "hex": "#8157f4",
+            "coveragePercent": 0.7431
+          },
+          {
+            "hex": "#f7e2d3",
+            "coveragePercent": 0.244
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#354092",
+            "coveragePercent": 29.1209
+          },
+          {
+            "hex": "#994c22",
+            "coveragePercent": 23.9779
+          },
+          {
+            "hex": "#434ac1",
+            "coveragePercent": 16.4053
+          },
+          {
+            "hex": "#d9711f",
+            "coveragePercent": 14.7595
+          },
+          {
+            "hex": "#f4ae47",
+            "coveragePercent": 8.1553
+          },
+          {
+            "hex": "#6f51f1",
+            "coveragePercent": 7.5811
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
     "assets/images/backgrounds/zen-prison-east-v1.png": {
       "sha256": "bb1c2d606c897e8010490f2b01b0a79ad9919179442eac69f35167014b1bf12f",
       "width": 1536,
@@ -26528,6 +30938,111 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/zen-prison-west-motion-b-v1.png": {
+      "sha256": "3eb91704d64885d4438da6397ce5c9331c0ef6aa1e1d9799351f906b29f10513",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "zenPrisonWestMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1b1d28",
+            "coveragePercent": 18.2487
+          },
+          {
+            "hex": "#27293e",
+            "coveragePercent": 14.4625
+          },
+          {
+            "hex": "#121014",
+            "coveragePercent": 13.7828
+          },
+          {
+            "hex": "#2d325a",
+            "coveragePercent": 10.1823
+          },
+          {
+            "hex": "#040304",
+            "coveragePercent": 9.4597
+          },
+          {
+            "hex": "#39211d",
+            "coveragePercent": 7.1334
+          },
+          {
+            "hex": "#353c77",
+            "coveragePercent": 6.3162
+          },
+          {
+            "hex": "#57322b",
+            "coveragePercent": 6.1447
+          },
+          {
+            "hex": "#81432b",
+            "coveragePercent": 3.6475
+          },
+          {
+            "hex": "#454796",
+            "coveragePercent": 3.3986
+          },
+          {
+            "hex": "#b05c2d",
+            "coveragePercent": 2.2267
+          },
+          {
+            "hex": "#5352c3",
+            "coveragePercent": 1.8257
+          },
+          {
+            "hex": "#e77f25",
+            "coveragePercent": 1.3512
+          },
+          {
+            "hex": "#7e52ef",
+            "coveragePercent": 0.8104
+          },
+          {
+            "hex": "#edb060",
+            "coveragePercent": 0.801
+          },
+          {
+            "hex": "#f9e7d5",
+            "coveragePercent": 0.2087
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#3c4290",
+            "coveragePercent": 31.2086
+          },
+          {
+            "hex": "#984c28",
+            "coveragePercent": 24.3065
+          },
+          {
+            "hex": "#5051bd",
+            "coveragePercent": 16.1497
+          },
+          {
+            "hex": "#d77226",
+            "coveragePercent": 14.7549
+          },
+          {
+            "hex": "#7951ee",
+            "coveragePercent": 6.8773
+          },
+          {
+            "hex": "#f2af51",
+            "coveragePercent": 6.7029
+          }
+        ],
+        "visibleSamples": 1572864,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/zen-prison-west-v1.png": {
@@ -26635,6 +31150,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/ziggurat-approach-motion-b-v1.png": {
+      "sha256": "62ba42b37e4dc5ba1e85550261b851962e55308850e25b12bb18ff892e163cff",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratApproachMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b030b",
+            "coveragePercent": 18.4959
+          },
+          {
+            "hex": "#1f0d34",
+            "coveragePercent": 15.4509
+          },
+          {
+            "hex": "#2b1161",
+            "coveragePercent": 9.3709
+          },
+          {
+            "hex": "#54234c",
+            "coveragePercent": 9.177
+          },
+          {
+            "hex": "#410e16",
+            "coveragePercent": 7.2881
+          },
+          {
+            "hex": "#4a208f",
+            "coveragePercent": 6.6021
+          },
+          {
+            "hex": "#99374c",
+            "coveragePercent": 4.6788
+          },
+          {
+            "hex": "#f77337",
+            "coveragePercent": 4.4237
+          },
+          {
+            "hex": "#814397",
+            "coveragePercent": 4.3029
+          },
+          {
+            "hex": "#e43f20",
+            "coveragePercent": 3.9256
+          },
+          {
+            "hex": "#6b2acf",
+            "coveragePercent": 3.7465
+          },
+          {
+            "hex": "#861d1a",
+            "coveragePercent": 3.6933
+          },
+          {
+            "hex": "#a251e6",
+            "coveragePercent": 3.0424
+          },
+          {
+            "hex": "#d45771",
+            "coveragePercent": 2.9982
+          },
+          {
+            "hex": "#fab657",
+            "coveragePercent": 2.1517
+          },
+          {
+            "hex": "#e5a8e3",
+            "coveragePercent": 0.6518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#55249f",
+            "coveragePercent": 24.7558
+          },
+          {
+            "hex": "#ee522d",
+            "coveragePercent": 18.881
+          },
+          {
+            "hex": "#9145dd",
+            "coveragePercent": 16.7426
+          },
+          {
+            "hex": "#9e2d30",
+            "coveragePercent": 15.5588
+          },
+          {
+            "hex": "#b34978",
+            "coveragePercent": 12.4105
+          },
+          {
+            "hex": "#f99c4c",
+            "coveragePercent": 11.6513
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/backgrounds/ziggurat-approach-v1.png": {
       "sha256": "c97ef54d1bb9d7d89c973f68ba7c966cedecaaa3de083e8b71e95aac59e40e64",
       "width": 1672,
@@ -26738,6 +31358,111 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/ziggurat-interior-motion-b-v1.png": {
+      "sha256": "3575c7b8835fb00dde1b50de68c5bb7e2d82ff2a7be38f01d9995da9c3362f27",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratInteriorMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#050104",
+            "coveragePercent": 26.0401
+          },
+          {
+            "hex": "#1b0e1f",
+            "coveragePercent": 13.9513
+          },
+          {
+            "hex": "#1c0407",
+            "coveragePercent": 10.6975
+          },
+          {
+            "hex": "#3b0d10",
+            "coveragePercent": 9.014
+          },
+          {
+            "hex": "#391a42",
+            "coveragePercent": 6.9364
+          },
+          {
+            "hex": "#5f1514",
+            "coveragePercent": 6.6696
+          },
+          {
+            "hex": "#802720",
+            "coveragePercent": 5.0523
+          },
+          {
+            "hex": "#4c1c81",
+            "coveragePercent": 4.0741
+          },
+          {
+            "hex": "#ee4914",
+            "coveragePercent": 3.9404
+          },
+          {
+            "hex": "#b2341a",
+            "coveragePercent": 3.8608
+          },
+          {
+            "hex": "#f57d28",
+            "coveragePercent": 2.5097
+          },
+          {
+            "hex": "#7725d2",
+            "coveragePercent": 2.3489
+          },
+          {
+            "hex": "#99466e",
+            "coveragePercent": 1.7104
+          },
+          {
+            "hex": "#cb4fef",
+            "coveragePercent": 1.5322
+          },
+          {
+            "hex": "#fbcc41",
+            "coveragePercent": 1.1245
+          },
+          {
+            "hex": "#f5c1e5",
+            "coveragePercent": 0.5377
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9f2e20",
+            "coveragePercent": 31.6448
+          },
+          {
+            "hex": "#ec521c",
+            "coveragePercent": 28.7515
+          },
+          {
+            "hex": "#581d9b",
+            "coveragePercent": 13.8946
+          },
+          {
+            "hex": "#fab034",
+            "coveragePercent": 9.9988
+          },
+          {
+            "hex": "#862bdf",
+            "coveragePercent": 9.5579
+          },
+          {
+            "hex": "#d755ea",
+            "coveragePercent": 6.1524
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/ziggurat-interior-v1.png": {
@@ -26845,6 +31570,111 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/ziggurat-storm-motion-b-v1.png": {
+      "sha256": "755e1ad0bdf8c76a1dff769875ec6e3b5a472d5953282c343ab695a26ec444cb",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratStormMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0b0208",
+            "coveragePercent": 21.9819
+          },
+          {
+            "hex": "#1e0b2b",
+            "coveragePercent": 14.386
+          },
+          {
+            "hex": "#532047",
+            "coveragePercent": 7.9568
+          },
+          {
+            "hex": "#43090f",
+            "coveragePercent": 7.9437
+          },
+          {
+            "hex": "#2c095a",
+            "coveragePercent": 7.8831
+          },
+          {
+            "hex": "#823178",
+            "coveragePercent": 6.9743
+          },
+          {
+            "hex": "#481386",
+            "coveragePercent": 6.8685
+          },
+          {
+            "hex": "#86191a",
+            "coveragePercent": 5.2914
+          },
+          {
+            "hex": "#641cb4",
+            "coveragePercent": 4.7298
+          },
+          {
+            "hex": "#d32a1a",
+            "coveragePercent": 3.5024
+          },
+          {
+            "hex": "#8f2dde",
+            "coveragePercent": 3.1176
+          },
+          {
+            "hex": "#f35f32",
+            "coveragePercent": 2.9712
+          },
+          {
+            "hex": "#c54982",
+            "coveragePercent": 2.9411
+          },
+          {
+            "hex": "#d05beb",
+            "coveragePercent": 1.5489
+          },
+          {
+            "hex": "#f9b263",
+            "coveragePercent": 1.1739
+          },
+          {
+            "hex": "#f3d4e0",
+            "coveragePercent": 0.7295
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#52159a",
+            "coveragePercent": 23.8837
+          },
+          {
+            "hex": "#862cab",
+            "coveragePercent": 23.1054
+          },
+          {
+            "hex": "#9e2432",
+            "coveragePercent": 19.7274
+          },
+          {
+            "hex": "#e73c1d",
+            "coveragePercent": 13.1743
+          },
+          {
+            "hex": "#f17a5b",
+            "coveragePercent": 10.7409
+          },
+          {
+            "hex": "#b742e9",
+            "coveragePercent": 9.3683
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/ziggurat-storm-v1.png": {
       "sha256": "f46d9122b53372612422e6a0a7448205a892f0c9df72ce39c85d75d1201556f9",
       "width": 1672,
@@ -26948,6 +31778,111 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/ziggurat-throne-motion-b-v1.png": {
+      "sha256": "0008046fae3beb24a5299423281802dc8578ee8250781d4c4e8a47d769043816",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "zigguratThroneMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060205",
+            "coveragePercent": 22.3197
+          },
+          {
+            "hex": "#1a0813",
+            "coveragePercent": 18.2414
+          },
+          {
+            "hex": "#29112b",
+            "coveragePercent": 12.4836
+          },
+          {
+            "hex": "#470c0d",
+            "coveragePercent": 8.9609
+          },
+          {
+            "hex": "#801a14",
+            "coveragePercent": 6.4932
+          },
+          {
+            "hex": "#551f30",
+            "coveragePercent": 5.9213
+          },
+          {
+            "hex": "#b72d1a",
+            "coveragePercent": 4.9787
+          },
+          {
+            "hex": "#f14811",
+            "coveragePercent": 4.6682
+          },
+          {
+            "hex": "#41185d",
+            "coveragePercent": 4.0669
+          },
+          {
+            "hex": "#763a5c",
+            "coveragePercent": 3.1382
+          },
+          {
+            "hex": "#f88223",
+            "coveragePercent": 2.4766
+          },
+          {
+            "hex": "#6b24ab",
+            "coveragePercent": 1.9671
+          },
+          {
+            "hex": "#b45f7e",
+            "coveragePercent": 1.4352
+          },
+          {
+            "hex": "#fbcb59",
+            "coveragePercent": 1.1732
+          },
+          {
+            "hex": "#bc4ae2",
+            "coveragePercent": 1.0864
+          },
+          {
+            "hex": "#eebdd9",
+            "coveragePercent": 0.5893
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9d271e",
+            "coveragePercent": 34.8172
+          },
+          {
+            "hex": "#e43c12",
+            "coveragePercent": 23.6526
+          },
+          {
+            "hex": "#f47123",
+            "coveragePercent": 17.0813
+          },
+          {
+            "hex": "#6d26a0",
+            "coveragePercent": 11.7673
+          },
+          {
+            "hex": "#fbc14e",
+            "coveragePercent": 6.6595
+          },
+          {
+            "hex": "#bf49d8",
+            "coveragePercent": 6.0222
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/backgrounds/ziggurat-throne-v1.png": {
@@ -43941,7 +48876,22 @@
     "assets/js/armor.js": [],
     "assets/js/art-data.js": [],
     "assets/js/asset-cache.js": [],
-    "assets/js/background-motion.js": [],
+    "assets/js/background-motion.js": [
+      {
+        "value": "#fff",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/boss-vfx.js": [
       {
         "value": "#091521",
@@ -44356,14 +49306,14 @@
       {
         "value": "#08141166",
         "lines": [
-          515
+          520
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44391,14 +49341,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          504
+          509
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          504
+          509
         ],
         "dynamic": false
       },
@@ -44454,7 +49404,7 @@
       {
         "value": "#465959",
         "lines": [
-          371
+          376
         ],
         "dynamic": false
       },
@@ -44475,7 +49425,7 @@
       {
         "value": "#60706a",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44489,7 +49439,7 @@
       {
         "value": "#718679",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44524,7 +49474,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44538,7 +49488,7 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          371
+          376
         ],
         "dynamic": false
       },
@@ -44601,14 +49551,14 @@
       {
         "value": "#d98877",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          533
+          538
         ],
         "dynamic": false
       },
@@ -44629,14 +49579,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44679,7 +49629,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          533
+          538
         ],
         "dynamic": false
       },
@@ -44693,7 +49643,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          533
+          538
         ],
         "dynamic": false
       },
@@ -44721,7 +49671,7 @@
       {
         "value": "#f0dfb1",
         "lines": [
-          371
+          376
         ],
         "dynamic": false
       },
@@ -44736,7 +49686,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          370
+          375
         ],
         "dynamic": false
       },
@@ -44750,7 +49700,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          533
+          538
         ],
         "dynamic": false
       },
@@ -44764,7 +49714,7 @@
       {
         "value": "#fff",
         "lines": [
-          371
+          376
         ],
         "dynamic": false
       }
@@ -44852,7 +49802,7 @@
       {
         "value": "#102236",
         "lines": [
-          700
+          701
         ],
         "dynamic": false
       },
@@ -44888,7 +49838,7 @@
       {
         "value": "#132b42d9",
         "lines": [
-          741
+          742
         ],
         "dynamic": false
       },
@@ -44902,7 +49852,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          843
+          844
         ],
         "dynamic": false
       },
@@ -44916,21 +49866,21 @@
       {
         "value": "#163847dd",
         "lines": [
-          670
+          671
         ],
         "dynamic": false
       },
       {
         "value": "#170f27",
         "lines": [
-          684
+          685
         ],
         "dynamic": false
       },
       {
         "value": "#171020c7",
         "lines": [
-          771
+          772
         ],
         "dynamic": false
       },
@@ -44944,7 +49894,7 @@
       {
         "value": "#182025",
         "lines": [
-          557
+          558
         ],
         "dynamic": false
       },
@@ -44965,7 +49915,7 @@
       {
         "value": "#234559cc",
         "lines": [
-          659
+          660
         ],
         "dynamic": false
       },
@@ -44979,14 +49929,14 @@
       {
         "value": "#251339",
         "lines": [
-          831
+          832
         ],
         "dynamic": false
       },
       {
         "value": "#253c5899",
         "lines": [
-          704
+          705
         ],
         "dynamic": false
       },
@@ -45000,7 +49950,7 @@
       {
         "value": "#326e8fa3",
         "lines": [
-          646
+          647
         ],
         "dynamic": false
       },
@@ -45021,7 +49971,7 @@
       {
         "value": "#72b4c9af",
         "lines": [
-          646
+          647
         ],
         "dynamic": false
       },
@@ -45035,14 +49985,14 @@
       {
         "value": "#8b764eaa",
         "lines": [
-          530
+          531
         ],
         "dynamic": false
       },
       {
         "value": "#9b626b88",
         "lines": [
-          542
+          543
         ],
         "dynamic": false
       },
@@ -45063,14 +50013,14 @@
       {
         "value": "#a8e8ff",
         "lines": [
-          650
+          651
         ],
         "dynamic": false
       },
       {
         "value": "#aa77dd00",
         "lines": [
-          692
+          693
         ],
         "dynamic": false
       },
@@ -45084,7 +50034,7 @@
       {
         "value": "#ab83d955",
         "lines": [
-          692
+          693
         ],
         "dynamic": false
       },
@@ -45098,21 +50048,21 @@
       {
         "value": "#b5a777",
         "lines": [
-          540
+          541
         ],
         "dynamic": false
       },
       {
         "value": "#b683ff",
         "lines": [
-          831
+          832
         ],
         "dynamic": false
       },
       {
         "value": "#c293dd",
         "lines": [
-          792
+          793
         ],
         "dynamic": false
       },
@@ -45133,14 +50083,14 @@
       {
         "value": "#c596ffad",
         "lines": [
-          692
+          693
         ],
         "dynamic": false
       },
       {
         "value": "#c7f2ffbb",
         "lines": [
-          660
+          661
         ],
         "dynamic": false
       },
@@ -45161,14 +50111,14 @@
       {
         "value": "#d0af77",
         "lines": [
-          827
+          828
         ],
         "dynamic": false
       },
       {
         "value": "#d0f5ffcc",
         "lines": [
-          665
+          666
         ],
         "dynamic": false
       },
@@ -45182,14 +50132,14 @@
       {
         "value": "#d1c9acaf",
         "lines": [
-          568
+          569
         ],
         "dynamic": false
       },
       {
         "value": "#d8bd827d",
         "lines": [
-          744
+          745
         ],
         "dynamic": false
       },
@@ -45210,21 +50160,21 @@
       {
         "value": "#d9a9ff",
         "lines": [
-          831
+          832
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          829
+          830
         ],
         "dynamic": false
       },
       {
         "value": "#dd744a00",
         "lines": [
-          540
+          541
         ],
         "dynamic": false
       },
@@ -45238,21 +50188,21 @@
       {
         "value": "#e0b9ff",
         "lines": [
-          685
+          686
         ],
         "dynamic": false
       },
       {
         "value": "#e1778800",
         "lines": [
-          812
+          813
         ],
         "dynamic": false
       },
       {
         "value": "#e4f7ffbc",
         "lines": [
-          652
+          653
         ],
         "dynamic": false
       },
@@ -45280,21 +50230,21 @@
       {
         "value": "#e7616355",
         "lines": [
-          811
+          812
         ],
         "dynamic": false
       },
       {
         "value": "#ed896700",
         "lines": [
-          811
+          812
         ],
         "dynamic": false
       },
       {
         "value": "#edcd88",
         "lines": [
-          792
+          793
         ],
         "dynamic": false
       },
@@ -45308,14 +50258,14 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          828
+          829
         ],
         "dynamic": false
       },
       {
         "value": "#f3be9b11",
         "lines": [
-          811
+          812
         ],
         "dynamic": false
       },
@@ -45323,7 +50273,7 @@
         "value": "#f3d8ac",
         "lines": [
           497,
-          679
+          680
         ],
         "dynamic": false
       },
@@ -45344,14 +50294,14 @@
       {
         "value": "#f6a47580",
         "lines": [
-          540
+          541
         ],
         "dynamic": false
       },
       {
         "value": "#f7c0a4",
         "lines": [
-          700
+          701
         ],
         "dynamic": false
       },
@@ -45365,7 +50315,7 @@
       {
         "value": "#ff9c6238",
         "lines": [
-          704
+          705
         ],
         "dynamic": false
       },
@@ -45386,7 +50336,7 @@
       {
         "value": "#ffb889",
         "lines": [
-          704
+          705
         ],
         "dynamic": false
       },
@@ -45400,7 +50350,7 @@
       {
         "value": "#ffd5a2",
         "lines": [
-          812
+          813
         ],
         "dynamic": false
       },
@@ -45421,50 +50371,50 @@
       {
         "value": "#ffe0a229",
         "lines": [
-          734
+          735
         ],
         "dynamic": false
       },
       {
         "value": "#ffe2a0",
         "lines": [
-          540,
-          734
+          541,
+          735
         ],
         "dynamic": false
       },
       {
         "value": "#ffe5a2",
         "lines": [
-          741
+          742
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a300",
         "lines": [
-          646
+          647
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a79c",
         "lines": [
-          652
+          653
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6adbb",
         "lines": [
-          692
+          693
         ],
         "dynamic": false
       },
       {
         "value": "#ffe8a6",
         "lines": [
-          669
+          670
         ],
         "dynamic": false
       },
@@ -45479,7 +50429,7 @@
         "value": "#fff0b3",
         "lines": [
           437,
-          665
+          666
         ],
         "dynamic": false
       },
@@ -45504,7 +50454,7 @@
           482,
           483,
           486,
-          704
+          705
         ],
         "dynamic": false
       },
@@ -45526,28 +50476,28 @@
       {
         "value": "#fff0ce",
         "lines": [
-          695
+          696
         ],
         "dynamic": false
       },
       {
         "value": "#fff3e3",
         "lines": [
-          832
+          833
         ],
         "dynamic": false
       },
       {
         "value": "#fff4c9",
         "lines": [
-          670
+          671
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c6",
         "lines": [
-          659
+          660
         ],
         "dynamic": false
       },
@@ -45720,21 +50670,21 @@
       {
         "value": "#070d17",
         "lines": [
-          82
+          86
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          77
+          81
         ],
         "dynamic": false
       },
       {
         "value": "#101725ed",
         "lines": [
-          82
+          86
         ],
         "dynamic": false
       },
@@ -45748,35 +50698,35 @@
       {
         "value": "#cea5ef",
         "lines": [
-          82
+          86
         ],
         "dynamic": false
       },
       {
         "value": "#d99583",
         "lines": [
-          77
+          81
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          34
+          36
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          34
+          36
         ],
         "dynamic": false
       },
       {
         "value": "#fff0c4",
         "lines": [
-          82
+          86
         ],
         "dynamic": false
       }

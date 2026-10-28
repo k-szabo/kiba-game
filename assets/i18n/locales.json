@@ -1045,7 +1045,11 @@
       "help.dawnblade": "{0}: Hajnalkard használata, miután Haru felébresztette az erejét.",
       "binding.action.ultimate": "Hajnalkard",
       "menu.changelog.0953.title": "A zikkurat vihara",
-      "menu.changelog.0953.0": "Az őrült pap legyőzése után új, háromrészes zikkurat vezet Hannah-hoz és Haru nyomához. A történet során felébredhet a Hajnalkard ereje. A kompatibilis mentések megmaradnak."
+      "menu.changelog.0953.0": "Az őrült pap legyőzése után új, háromrészes zikkurat vezet Hannah-hoz és Haru nyomához. A történet során felébredhet a Hajnalkard ereje. A kompatibilis mentések megmaradnak.",
+      "menu.changelog.0954.title": "Élőbb tájak Japánban és Yomiban",
+      "menu.changelog.0954.0": "Japán és Yomi festett hátterein a lomb, a felhők, a lángok, a láva és a füst finoman változik. Szünetben megállnak, csökkentett mozgás mellett az eredeti kép látható.",
+      "menu.changelog.0955.title": "Élő tájak a birodalmakban",
+      "menu.changelog.0955.0": "A fő pályák, rejtett arénák, táborok, belső terek és dungeonök festett hátterein finoman változnak a környezet részletei. A mozgás szünetben megáll, csökkentett mozgás mellett az eredeti festmények láthatók."
     }
   },
   "en": {
@@ -2094,7 +2098,11 @@
       "help.dawnblade": "{0}: unleash Dawnblade once Haru has awakened its power.",
       "binding.action.ultimate": "Dawnblade",
       "menu.changelog.0953.title": "Storm over the Ziggurat",
-      "menu.changelog.0953.0": "After the Mad Priest’s defeat, a new three-part ziggurat leads to Hannah and Haru’s trail. Dawnblade’s power can awaken during the story. Compatible saves are preserved."
+      "menu.changelog.0953.0": "After the Mad Priest’s defeat, a new three-part ziggurat leads to Hannah and Haru’s trail. Dawnblade’s power can awaken during the story. Compatible saves are preserved.",
+      "menu.changelog.0954.title": "Living scenery in Japan and Yomi",
+      "menu.changelog.0954.0": "Painted foliage, clouds, flames, lava and smoke subtly change in Japan and Yomi. The motion pauses with the game, while reduced motion shows the original artwork.",
+      "menu.changelog.0955.title": "Living scenery across the realms",
+      "menu.changelog.0955.0": "Subtle environmental motion now brings painted backgrounds to life across the main realms, hidden arenas, camps, interiors and dungeons. Motion pauses with the game; reduced motion displays the original paintings."
     }
   }
 }
