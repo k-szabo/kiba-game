@@ -4,7 +4,7 @@ function setup({rescued=true,accepted=true}={}){
  const h=harness(),r=h.run;
  r("Prologue.stop();abilities=[true,true];defeated=[true,true,true,true];flags=[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal','shadowEntered'],['guardian:cultJailer','prisonOpen','guardian:prisonHunter','fiaSeen','shadowAltar']];visitedRests=levels.map(map=>[map.rests[0].id]);progression=freshProgression();enterRealm(3);state='play';");
  if(rescued)r("flags[3].push('fiaRescued');");else r("flags[3].push('fiaMissed');");
- assert(r("CampQuest.enter('shadowDen')"));
+ if(rescued)assert(r("CampQuest.enter('shadowDen')"));else assert(!r("CampQuest.enter('shadowDen')"));
  if(accepted){assert(rescued);r("initPlayer(level.npcs.find(n=>n.id==='fia'));interact();");h.dismiss();}
  return h;
 }
@@ -18,7 +18,7 @@ function throughGuards(h){start(h);timer(h,45);for(let round=2;round<=4;round++)
 {
  const h=setup({rescued:false,accepted:false}),r=h.run;
  assert(!r("CampQuest.enter('shadowArena')"),'Missing rescue locks arena');assert(!r("CampQuest.enter('fiaChambers')"));
- r('initPlayer(level.arenaEntrance);');assert.notEqual(r('getContext()?.type'),'arenaEnter');assert(!r('ArenaChallenge.talkFia()'));assert(!has(r,'arenaQuestAccepted'));
+ r('initPlayer(level.denEntrance);');assert.notEqual(r('getContext()?.type'),'fiaDenEnter');assert(!r('ArenaChallenge.talkFia()'));assert(!has(r,'arenaQuestAccepted'));
 }
 {
  const h=setup({accepted:false}),r=h.run;assert(!r("CampQuest.enter('shadowArena')"));

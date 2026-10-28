@@ -1218,6 +1218,34 @@
           "en": "Subtle environmental motion now brings painted backgrounds to life across the main realms, hidden arenas, camps, interiors and dungeons. Motion pauses with the game; reduced motion displays the original paintings."
         }
       ]
+    },
+    {
+      "version": "0.9.56_e40a77c8",
+      "code": "e40a77c8",
+      "baseVersion": "0.9.56",
+      "slug": "training-fia-routes-anatomy-cleanup",
+      "summary": {
+        "hu": "Fejlesztések és rejtett utak javítása",
+        "en": "Training and hidden-route fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az életerő és a fegyversebzés a rendelkezésre álló fejlesztéspontokból felső fokozathatár nélkül növelhető. A szellemlépés a legrövidebb újratöltés elérésekor nem fejleszthető tovább; a korábbi, ezen túli fokozatok pontjai visszajárnak.",
+          "en": "Health and weapon damage can be upgraded without a rank cap while training points remain. Spirit Dash stops accepting upgrades at its shortest cooldown; points spent on ranks beyond that limit are refunded."
+        },
+        {
+          "hu": "Az Árnyékzug Fia megmentéséhez kötött. Ha kiszabadítása nélkül elhagyod a börtönt, a cellájában már csak egy halott rókát találsz.",
+          "en": "The Shadow Den requires Fia’s rescue. If you leave the prison without freeing her, only a dead fox remains in her cell."
+        },
+        {
+          "hu": "A szárnyas kígyó arénájának belsejében a saját háttere marad látható. Hannah képkockáin javult a kéztartás és a kasza fogása.",
+          "en": "The winged serpent’s own background remains visible inside its arena. Hannah’s frames have corrected hand anatomy and scythe grips."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

@@ -1,7 +1,7 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
 // Shared progression rules also load before the standalone save validator.
-const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,xpForLevel:n=>60+(n-1)*35});
+const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,xpForLevel:n=>60+(n-1)*35});
 const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
@@ -411,7 +411,7 @@ Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonHunter',name:'fia.hun
 zone(shadowPrison,'zen.prison.name',0,0,5400,1900);
 zone(shadowPrison,'fia.prison.rest',0,1900,5400,820);
 shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued','guardian:prisonHunter','fiaSeen','fiaRescued','fiaMissed');
-// This refuge opens after the priest; Fia's absence never blocks its entrance.
+// This refuge requires both the priest's defeat and Fia's rescue.
 shadowRealm.denEntrance={x:11000,y:1200};
 const shadowDen=makeLevel('shadowDen',2800,1080,{x:260,y:820});
 shadowDen.name='fia.den.name';shadowDen.enemyRealm=3;
@@ -545,7 +545,7 @@ const SIDE_LOCATIONS=Object.freeze({
  shadowArena:Object.freeze({map:shadowArena,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaQuestAccepted'])}),
  fiaChambers:Object.freeze({map:fiaChambers,realm:3,requiredFlags:Object.freeze(['fiaRescued','arenaChampion'])}),
  shadowPrison:Object.freeze({map:shadowPrison,realm:3,requiresRealmBoss:false,requiredFlags:Object.freeze(['prisonOpen'])}),
- shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze([])}),
+ shadowDen:Object.freeze({map:shadowDen,realm:3,requiredFlags:Object.freeze(['fiaRescued'])}),
  forestCamp:Object.freeze({map:forestCamp,realm:0,requiredFlags:Object.freeze([])}),
  samuraiCamp:Object.freeze({map:samuraiCamp,realm:0,requiredFlags:Object.freeze(['campQuestAccepted'])}),
  forgeInterior:Object.freeze({map:forgeInterior,realm:0,requiredFlags:Object.freeze(['smithRescued'])}),

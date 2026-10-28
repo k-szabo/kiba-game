@@ -49,7 +49,7 @@ A dev-teleport mindhárom pályát és pihenőit ismeri. A képességadó listá
 
 ## Grafikai regisztráció és ellenőrzés
 
-`python scripts/register-hannah-art.py` generálja a képkockák kivágását, kontúrját és talppontját, a forrásképek alfájának módosítása nélkül. A `--check` ellenőrzi az eredményt. A fegyver vagy szárny kiterjedése nem változtatja a testméretet. A rituális lap hibás második forráspóza nincs regisztrálva és nem jelenik meg; az eredeti kép megmarad. A járási ciklus a tiszta, kétkaros fogású forráspózokat használja, nulla alapú sorrendben `[0,2,4,5,2,4]`; ez tudatos képkockaválogatás, nem a hibás forrásrajzok átfestése.
+`python scripts/register-hannah-art.py` generálja a képkockák kivágását, kontúrját és talppontját, a forrásképek alfájának módosítása nélkül. A `--check` ellenőrzi az eredményt. A fegyver vagy szárny kiterjedése nem változtatja a testméretet. A javított v2 kombó- és rituális lap mind a hat póza használható. A v2 járási lap tiszta, kétkaros fogású forráspózait használjuk, nulla alapú sorrendben `[2,2,2,5,5,5]`: két váltott lépés, egyenként három 10 FPS képkockán át tartva. A többi járási forráspóz nem része az animációnak; nem állítjuk, hogy a teljes lap anatómiailag hibátlan. A natív alfa és a talppontok megmaradnak. A javítások eredete: [anatómiai javítás](art-prompts/hannah-anatomy-repair.md).
 
 Haru külön idősebb shiba-grafikát használ a mennyországban, a zikkuratban és a párbeszédportrén. Az oszlop, a lélek és a szív önálló grafika; az inventory a közös kontrasztos, DPR-követő katalógust használja. A Hajnalkard képkockái a valódi játékoskoordinátákból rajzolódnak; betöltetlen animáció esetén Momo alaprajzolása marad. A grafikai eredet és jóváhagyási határok: [Hannah-javítások](art-prompts/bugs-hannah-realm.md).
 

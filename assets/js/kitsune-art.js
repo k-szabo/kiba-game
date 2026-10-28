@@ -46,7 +46,7 @@ const KitsuneArt=(()=>{
  function scenery(){
   if(Prologue.active||state==='menu')return;
   const a=art();
-  if(level===shadowRealm&&defeated[3])Visuals.campPathMarker(level.denEntrance,I18n.t('fia.den.name'));
+  if(level===shadowRealm&&sideLocationUnlocked('shadowDen',flags,defeated))Visuals.campPathMarker(level.denEntrance,I18n.t('fia.den.name'));
   if(KitsuneQuest.den()){
    for(const npc of level.npcs){
     if(!campNPCVisible(npc)||!visiblePoint(npc,210))continue;
@@ -63,7 +63,8 @@ const KitsuneArt=(()=>{
    else stamp(a?.fox,1+Math.floor((t-.85)*7)%3,departing.x,departing.y,53);
    ctx.restore();return;
   }
-  if(KitsuneQuest.missed()||KitsuneQuest.rescued()&&!KitsuneQuest.rescueScene)return;
+  if(KitsuneQuest.missed()){stamp(a?.deadFox,0,level.fia.x,level.fia.y,53);return;}
+  if(KitsuneQuest.rescued()&&!KitsuneQuest.rescueScene)return;
   stamp(a?.fia,0,level.fia.x,level.fia.y,136);
   if(!KitsuneQuest.rescued()){
    const cage=ART_FRAMES.props.cage,image=Visuals.images.props;

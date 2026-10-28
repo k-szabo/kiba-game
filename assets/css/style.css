@@ -313,3 +313,6 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 
 /* The memory-scroll actions are primary dialog choices, readable at the desktop minimum. */
 #dungeonMenu .travel-grid button{font-size:16px;line-height:1.5;min-height:48px;padding:10px 14px;overflow-wrap:anywhere}
+
+/* Large point-budget health totals must leave the desktop HUD controls reachable. */
+#health .health-count{font-family:'Kiba UI',sans-serif;letter-spacing:0;font-size:20px;margin-left:8px;color:#fff0cf}

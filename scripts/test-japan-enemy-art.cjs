@@ -45,7 +45,7 @@ for(const location of ['japan','samuraiCamp','yomiDungeon2']){
    if(action==='attack')r(index<3?'artEnemy.windup='+(1-(index+.1)/3)+';':index<5?'artEnemy.attackTime=.5;artEnemy.attackElapsed='+((index-3+.1)/2)+';':'artEnemy.recovery=.2;');
    const before=snap();calls=[];transforms=[];r('Visuals.actor(artEnemy,realms[realm]);');assert.equal(snap(),before,'Rendering never changes combat/progression');
    const definition=atlas[role],frame=definition[action][index],image=r('Visuals.images['+JSON.stringify(definition.image)+']'),bodyCalls=calls.filter(c=>c.image===image);
-   assert.equal(bodyCalls.length,1,location+' '+role+' '+action+index+' uses the shared new atlas exactly once');assert(!calls.some(c=>c.image===r('Visuals.images.japanWalk')||c.image===r('Visuals.images.japanAttack')),'Legacy chibi sheets are not used for Japanese actors');
+   assert.equal(bodyCalls.length,1,location+' '+role+' '+action+index+' uses the shared new atlas exactly once');assert(!r('Object.hasOwn(ART_MANIFEST,"japanWalk")||Object.hasOwn(ART_MANIFEST,"japanAttack")'),'Retired chibi sheets are absent from the shipped manifest');
    assert.deepEqual(bodyCalls[0].args.slice(0,4),[frame.x,frame.y,frame.w,frame.h]);assert(transforms.some(([x,y])=>x===-frame.anchorX&&y===-frame.anchorY),'Full native silhouette uses registered foot anchor');
   }
  }

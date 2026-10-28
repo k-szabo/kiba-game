@@ -18,7 +18,7 @@ function fixture(mask=0,{level=1,spent=false,xp=0}={}){
  let bonus=0;for(const [realm,reward] of rewards.entries())if(mask&(1<<realm)){flags[realm].push(reward.claim,reward.id);bonus+=reward.points;}
  let totalXp=xp;for(let n=1;n<level;n++)totalXp+=rules.xpForLevel(n);
  let budget=level-1+bonus;const stats={vitality:0,strength:0,spirit:0};
- if(spent)for(const key of Object.keys(stats)){stats[key]=Math.min(rules.statLimit,budget);budget-=stats[key];}
+ if(spent)for(const key of Object.keys(stats)){stats[key]=Math.min(rules.statLimitFor(key),budget);budget-=stats[key];}
  return {weaponStyle:'katana',coins:0,meatCount:0,teaCount:0,quickHeal:'roastMeat',soldItems:[],version:2,layout:2,release,realm:2,prologueComplete:true,shards:0,won:false,abilities:[true,true],defeated:Array(realmCount).fill(true),flags,visitedRests:Array.from({length:realmCount},()=>['start']),checkpoint:copy(start),progression:{level,xp,totalXp,points:budget,stats}};
 }
 for(let mask=0;mask<=allRewards;mask++)for(let level=1;level<=rules.levelLimit;level++)for(const spent of [false,true]){
@@ -60,7 +60,7 @@ for(const flags of [null,{},[[],[]],[null,[],[]],[[],{},[]],[[],[],['not-a-real-
 }
 for(const mutate of [
  data=>{data.progression.points=18;},
- data=>{data.progression.stats={vitality:13,strength:0,spirit:0};data.progression.points=capBudget-13;},
+ data=>{data.progression.stats={vitality:0,strength:0,spirit:13};data.progression.points=capBudget-13;},
  data=>{data.progression.level=31;},
  data=>{data.progression.xp++;},
  data=>{data.progression.points=.5;},
@@ -73,4 +73,4 @@ for(const totalXp of [capped.progression.totalXp+600,Number.MAX_SAFE_INTEGER]){
 for(const key of ['level','xp','totalXp','points'])for(const value of [-1,.5,Number.MAX_SAFE_INTEGER+1,Infinity,'1',null]){
  const invalid=copy(capped);invalid.progression[key]=value;assert.throws(()=>validate(invalid),undefined,`${key} rejects ${String(value)}`);
 }
-console.log('PASS: level 1–30 XP boundaries, safe integers, cap XP overflow, 12-point stats, exact boss reward budgets, spent/unspent allocations, soul/ledger agreement and release rejection.');
+console.log('PASS: level 1–30 XP boundaries, safe integers, cap XP overflow, point-budget health/damage and fixed ability caps, exact boss reward budgets, spent/unspent allocations, soul/ledger agreement and release rejection.');

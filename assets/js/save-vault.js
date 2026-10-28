@@ -13,14 +13,14 @@ const SaveVault=(()=>{
  function validProgress(p,worldFlags){
   const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+bossBonusPoints(levels.map(map=>map.progressFlags));
   if(!p||!integer(p.level,1,levelLimit)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,Number.MAX_SAFE_INTEGER))return false;
-  if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,statLimit)))return false;
+  if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,k==='spirit'?statLimit:maxPoints)))return false;
   const shield=Object.hasOwn(p.stats,'shield')?p.stats.shield:0;
   if(!integer(shield,0,statLimit)||shield>0&&!worldFlags[3]?.includes('kibaShield'))return false;
   if(p.points+shield+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
   let xp=p.totalXp,level=1;while(level<levelLimit&&xp>=xpForLevel(level)){xp-=xpForLevel(level);level++;}
   return level===p.level&&p.xp===(level===levelLimit?0:xp);
  }
- function validate(data){
+ function validate(data,{legacyDen=false}={}){
   if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield'].includes(data.weaponStyle))throw Error('Invalid weapon style');
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
@@ -49,8 +49,9 @@ const SaveVault=(()=>{
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
   if(['smithRescued','herbalistRescued','enchanterRescued'].some(id=>hasCampFlag(id)&&!hasCampFlag('guardian:campMaster'))||hasCampFlag('herbalistQuestAccepted')&&!hasCampFlag('herbalistRescued'))throw Error('Invalid camp rescue');
   if(hasCampFlag('campMasterSoul')&&!hasCampFlag('guardian:campMaster')||hasCampFlag('campQuestCompleted')&&!['smithRescued','herbalistRescued','enchanterRescued'].every(hasCampFlag)||hasCampFlag('herbalistQuestTurnedIn')&&!hasCampFlag('herbalistQuestAccepted')||hasCampFlag('serpentRitualKnown')&&!hasCampFlag('enchanterRescued'))throw Error('Invalid camp quest completion');
+  const sideAllowed=id=>sideLocationUnlocked(id,data.flags,data.defeated)||legacyDen&&id==='shadowDen'&&data.defeated[3]&&!data.flags[3].includes('fiaRescued');
   for(const [id,spec] of Object.entries(SIDE_LOCATIONS)){
-   if(spec.map.rests.some(rest=>data.visitedRests[spec.realm].includes(rest.id))&&!sideLocationUnlocked(id,data.flags,data.defeated))throw Error('Invalid camp progress');
+   if(spec.map.rests.some(rest=>data.visitedRests[spec.realm].includes(rest.id))&&!sideAllowed(id))throw Error('Invalid camp progress');
   }
   // Older synthetic/current-format fixtures may omit this field. Runtime
   // loading supplies fresh(equipped); explicit malformed service state fails.
@@ -66,7 +67,7 @@ const SaveVault=(()=>{
   if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.teaCount>0||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
   if(data.soldItems.some(id=>!rescued||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
   if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
-  if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideLocationUnlocked(data.location,data.flags,data.defeated)))throw Error('Invalid camp location');
+  if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideAllowed(data.location)))throw Error('Invalid camp location');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
   if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
@@ -99,7 +100,7 @@ const SaveVault=(()=>{
    if((key||open)&&!jailer||key&&open)throw Error('Invalid prison progress');
    if(shadow.includes('guardian:prisonWarden')&&!open||shadow.includes('zenRescued')&&!shadow.includes('guardian:prisonWarden'))throw Error('Invalid priestess rescue');
    const hunter=shadow.includes('guardian:prisonHunter'),seen=shadow.includes('fiaSeen'),rescuedFia=shadow.includes('fiaRescued'),missedFia=shadow.includes('fiaMissed');
-   if(hunter&&!open||seen&&!hunter||(rescuedFia||missedFia)&&!seen||rescuedFia&&missedFia)throw Error('Invalid kitsune rescue');
+   if(hunter&&!open||seen&&!hunter||rescuedFia&&!seen||missedFia&&(!open||!data.visitedRests[3].some(id=>shadowPrison.rests.some(rest=>rest.id===id)))||rescuedFia&&missedFia)throw Error('Invalid kitsune rescue');
    const accepted=shadow.includes('arenaQuestAccepted'),captain=shadow.includes('arenaRewardCaptain'),serpent=shadow.includes('arenaRewardSerpent'),guards=shadow.includes('arenaRewardGuards'),champion=shadow.includes('arenaChampion');
    if(accepted&&(!rescuedFia||!data.defeated[shadowIndex])||captain&&!accepted||serpent&&!captain||guards&&!serpent||champion&&!guards||shadow.includes('arenaSerpentScale')!==serpent)throw Error('Invalid arena progress');
    const heard=shadow.includes('fiaChambersHeard'),talismanAccepted=shadow.includes('fiaTalismanAccepted'),talisman=shadow.includes('priestessTalisman'),completed=shadow.includes('fiaTalismanCompleted'),slain=shadow.includes('fiaSlain');
@@ -121,6 +122,13 @@ const SaveVault=(()=>{
   const relocatedUpper=data.location==='zigguratInterior'&&data.checkpoint?.id==='zigguratInteriorUpper'&&data.checkpoint.x===1500&&data.checkpoint.y===440;
   if(!checkpoint||!relocatedUpper&&(data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y)||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
   const normalized=JSON.parse(JSON.stringify(data));
+  const excess=Math.max(0,normalized.progression.stats.spirit-PROGRESSION_RULES.statLimitFor('spirit'));
+  normalized.progression.stats.spirit-=excess;normalized.progression.points+=excess;
+  if(legacyDen&&!data.flags[3].includes('fiaRescued')){
+   const denRests=new Set(shadowDen.rests.map(rest=>rest.id));normalized.visitedRests[3]=normalized.visitedRests[3].filter(id=>!denRests.has(id));
+   if(data.location==='shadowDen'){const rest=levels[3].rests.find(rest=>rest.id==='cathedral');delete normalized.location;normalized.checkpoint={id:rest.id,x:rest.x,y:rest.y};if(!normalized.visitedRests[3].includes(rest.id))normalized.visitedRests[3].push(rest.id);}
+   return validate(normalized);
+  }
   if(relocatedUpper)normalized.checkpoint={...normalized.checkpoint,x:checkpoint.x,y:checkpoint.y};
   return normalized;
  }
@@ -143,7 +151,8 @@ const SaveVault=(()=>{
   const salt=bytes(entry.salt,16),iv=bytes(entry.iv,12),ciphertext=bytes(entry.data);if(ciphertext.length>18000)throw Error('Save too large');
   const key=await keyFor(profile,salt),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv,additionalData:aad(profile,entry.revision),tagLength:128},key,ciphertext);
   const data=JSON.parse(decode.decode(plain));if(data.release!==profile.release)throw Error('Mismatched save release');
-  return validate({...data,release:GAME_RELEASE.version});
+  const order=compareRelease(profile.release,'0.9.55_ab315218');
+  return validate({...data,release:GAME_RELEASE.version},{legacyDen:profile.release!==GAME_RELEASE.version&&order!==null&&order<=0});
  }
  async function writeOne(snapshot){
   const {profile}=await records();requireCurrent(profile);

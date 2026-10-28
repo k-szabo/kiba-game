@@ -74,7 +74,7 @@ async function main(){
  both.progression={level:30,totalXp:15950,xp:0,points:39,stats:{vitality:0,strength:0,spirit:0}};
  await cultClient.vault.write(both);assert.deepEqual(plain(await client(cultEnv).vault.ready),both,'All ten boss bonuses and39 unspent points survive authenticated same-release reload');
  const spent=copy(both);spent.progression.stats={vitality:12,strength:12,spirit:12};spent.progression.points=3;
- await cultClient.vault.write(spent);assert.deepEqual(plain(await client(cultEnv).vault.ready),spent,'Allocated points retain the same full shared budget');
+ await cultClient.vault.write(spent);assert.deepEqual(plain(await client(cultEnv).vault.ready),{...spent,progression:{...spent.progression,points:8,stats:{...spent.progression.stats,spirit:7}}},'Allocated points retain the full shared budget after the legacy dash refund');
  for(const count of [38,40,Number.MAX_SAFE_INTEGER]){const bad=copy(both);bad.progression.points=count;assert.throws(()=>cultClient.vault.write(bad),/Invalid save schema/,'The larger legitimate ceiling must not accept inflated or missing points');}
  const fake=copy(both);fake.flags[0].push('sectUnknownReward');assert.throws(()=>cultClient.vault.write(fake),/Invalid/);
  const env=storageEnvironment();env.local.set('language','en');env.local.set('bindings','custom');env.local.set('other-app','keep');
@@ -189,7 +189,7 @@ async function main(){
   // Total XP may continue accumulating at cap without a new level or point.
   if(level===rules.levelLimit)totalXp+=12345;
   let points=level-1+bonusPoints;const stats={vitality:0,strength:0,spirit:0};
-  if(spent)for(const stat of Object.keys(stats)){stats[stat]=Math.min(rules.statLimit,points);points-=stats[stat];}
+  if(spent)for(const stat of Object.keys(stats)){stats[stat]=Math.min(rules.statLimitFor(stat),points);points-=stats[stat];}
   high.progression={level,xp,totalXp,points,stats};
   if(level===rules.levelLimit-1)assert(xp>500);
   else assert(totalXp>capThreshold);

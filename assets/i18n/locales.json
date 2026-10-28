@@ -1062,7 +1062,12 @@
       "menu.changelog.0955polish.0": "Hannah visszatérő dash-e és árnyékvisszhangjai is sebeznek; új kombinációkat és területi támadásokat használ, arénájából pedig harc közben nem lehet kisétálni.",
       "menu.changelog.0955polish.1": "A zárójelenet és a Hajnalkard támadása láthatóan lejátszódik. Haru idősebb külsőt, Hannah pedig új lélek- és szívjutalmat kapott.",
       "menu.changelog.0955polish.2": "A hátterek természetesebb léptékben jelennek meg, a felső zikkuratszentély külön elérhető, az iránytű pedig a fő történet haladását követi.",
-      "menu.changelog.0955polish.3": "Játék közben rejtett kurzor, a menükben mancsmutató segít. A gyógyulás számai rendezettek, Momo páncélvédelme fokozatosabban erősödik."
+      "menu.changelog.0955polish.3": "Játék közben rejtett kurzor, a menükben mancsmutató segít. A gyógyulás számai rendezettek, Momo páncélvédelme fokozatosabban erősödik.",
+      "menu.changelog.0956.title": "Fejlesztések és rejtett utak javítása",
+      "menu.changelog.0956.0": "Az életerő és a fegyversebzés a rendelkezésre álló fejlesztéspontokból felső fokozathatár nélkül növelhető. A szellemlépés a legrövidebb újratöltés elérésekor nem fejleszthető tovább; a korábbi, ezen túli fokozatok pontjai visszajárnak.",
+      "menu.changelog.0956.1": "Az Árnyékzug Fia megmentéséhez kötött. Ha kiszabadítása nélkül elhagyod a börtönt, a cellájában már csak egy halott rókát találsz.",
+      "menu.changelog.0956.2": "A szárnyas kígyó arénájának belsejében a saját háttere marad látható. Hannah képkockáin javult a kéztartás és a kasza fogása.",
+      "menu.changelog.0956.3": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -2128,7 +2133,12 @@
       "menu.changelog.0955polish.0": "Hannah’s return dash and shadow echoes now deal damage; she uses new combos and area attacks, and her arena keeps the fight contained.",
       "menu.changelog.0955polish.1": "The ending scene and Dawnblade strike now visibly play out. Haru has an older appearance, and Hannah grants new soul and heart rewards.",
       "menu.changelog.0955polish.2": "Backgrounds appear at a more natural scale, the upper ziggurat shrine is separately accessible, and the compass follows main-story progress.",
-      "menu.changelog.0955polish.3": "The cursor hides during gameplay and becomes a paw in menus. Healing numbers are formatted clearly, and Momo’s armor protection grows more gradually."
+      "menu.changelog.0955polish.3": "The cursor hides during gameplay and becomes a paw in menus. Healing numbers are formatted clearly, and Momo’s armor protection grows more gradually.",
+      "menu.changelog.0956.title": "Training and hidden-route fixes",
+      "menu.changelog.0956.0": "Health and weapon damage can be upgraded without a rank cap while training points remain. Spirit Dash stops accepting upgrades at its shortest cooldown; points spent on ranks beyond that limit are refunded.",
+      "menu.changelog.0956.1": "The Shadow Den requires Fia’s rescue. If you leave the prison without freeing her, only a dead fox remains in her cell.",
+      "menu.changelog.0956.2": "The winged serpent’s own background remains visible inside its arena. Hannah’s frames have corrected hand anatomy and scythe grips.",
+      "menu.changelog.0956.3": "Internal maintenance and technical improvements."
     }
   }
 }

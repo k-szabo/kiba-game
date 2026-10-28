@@ -8,7 +8,7 @@ A külső börtönőr, az elhasználódó kulcs és Zen belső börtönnagya meg
 
 A `shadowPrisonDepths` pihenő a vadász arénájától keletre, aktiválási területén kívül áll. A `prisonHunter` után, nyugaton található Fia cellája. A vadász legyőzése előtt nem nyitható.
 
-A `shadowDen` az Őrült pap legyőzése után, a katedrális keleti végéről nyílik. A főbirodalmak száma nem változik: a tábor az Árnyékvilág állapotát és pihenőkatalógusát használja. A ninja és a tolvaj Fia sorsától függetlenül jelen van; Fia csak megmentés után jelenik meg. Egy pihenő és HU/EN beszélgetések érhetők el. Megmentett Fia fölött a felvehető arénaküldetést `!` jelzi. A felvétel után az Árnyékzug külön arénabejárata nyílik meg; az ötödik menet ellenfelét a feladat csak jelenlegi bajnokként említi. A teljesítés külön lakosztályt old fel.
+A `shadowDen` az Őrült pap legyőzése és Fia megmentése után, a katedrális keleti végéről nyílik. A közös feloldási feltételt a bejáratjelzés, az interakció és a gyorsutazás is ellenőrzi. A főbirodalmak száma nem változik: a tábor az Árnyékvilág állapotát és pihenőkatalógusát használja. A ninja és a tolvaj a megnyitott tábor lakói; a mentés nélküli kihagyás nem nyitja meg a tábort. Egy pihenő és HU/EN beszélgetések érhetők el. Megmentett Fia fölött a felvehető arénaküldetést `!` jelzi. A felvétel után az Árnyékzug külön arénabejárata nyílik meg; az ötödik menet ellenfelét a feladat csak jelenlegi bajnokként említi. A teljesítés külön lakosztályt old fel.
 
 ## Tartós állapot
 
@@ -19,11 +19,11 @@ Minden jelző az Árnyékvilág `flags[3]` listájába kerül:
 | `guardian:prisonHunter` | A vadász egyszeri legyőzése. |
 | `fiaSeen` | Momo a vadász legyőzése után elérte a cella környékét. |
 | `fiaRescued` | Fia kiszabadítása; végleges az adott utazáson. |
-| `fiaMissed` | Momo a cella elérése után, megmentés nélkül elhagyta a börtönt. |
+| `fiaMissed` | Momo az első látogatáskor, megmentés nélkül elhagyta a börtönt. |
 
-A megmentett és kihagyott állapot kizárja egymást. Mindkettőhöz szükséges a cella elérése, a vadász legyőzése és a külső kapu megnyitása. A mentésvalidátor ezeket külön ellenőrzi.
+A megmentett és kihagyott állapot kizárja egymást. A megmentéshez szükséges a cella elérése és a vadász legyőzése. A kihagyáshoz elég a megnyitott börtön első szándékos elhagyása, akkor is, ha a celláig még nem jutottunk el. A kihagyott cellában statikus halott róka marad, interakció nélkül. A mentésvalidátor ezeket külön ellenőrzi.
 
-A kihagyást csak érvényes, szándékos helyszínváltás váltja ki: kijárat, más helyszínre gyorsutazás, vagy az elkülönített dev teszt teleportja. Halál, pihenés, menü, újratöltés, sikertelen utazás és börtönön belüli utazás nem zárja le Fia történetét. A vadász győzelme önmagában sem elég. Fia sorsa nem blokkolja Haru nyomát vagy a főbosst.
+A kihagyást csak érvényes, szándékos helyszínváltás váltja ki: kijárat, más helyszínre gyorsutazás, vagy az elkülönített dev teszt teleportja. Halál, pihenés, menü, újratöltés, sikertelen utazás és börtönön belüli utazás nem zárja le Fia történetét. A dev-teleport feloldások nélküli bejárása nem ír kihagyási jelzőt: ehhez a történetben is megnyitott börtön szükséges. Fia sorsa nem blokkolja Haru nyomát vagy a főbosst.
 
 Kiszabadításkor a végleges jelző a párbeszéd előtt mentődik. Bezárás után Fia rövid jelenetben lila rókává változik és távozik. A jelenet csak aktív játékban telik, szünetben/párbeszédben áll; csökkentett mozgásnál visszafogott. Újratöltéskor a megmentés megmarad, a jelenet nem ismétlődik.
 
@@ -40,3 +40,5 @@ A `kitsune-quest.js` a megmentés, kihagyás és kiszabadítási jelenet állapo
 A tábori folytatás célzott regressziói a `test-arena-combat.cjs` és `test-arena-challenge.cjs` fájlokban vannak. Fia kihagyása továbbra sem blokkolja az Árnyékvilág fő történeti útvonalát; az aréna és a lakosztály opcionális marad.
 
 Fia második, templomemlékhez kötött megbízása és az opcionális provokáció tartós következményei a **spoileres** [Fia-referenciában](FIA-JOURNEY.md) szerepelnek.
+
+A 0.9.55_ab315218-ig készült kompatibilis mentések korábban feloldás nélkül is tartózkodhattak az Árnyékzugban. A hitelesített betöltés ezeket a régi, egyébként érvényes mentéseket a katedrális pihenőjéhez vezeti át, és törli a jogosulatlan tábori pihenőfelfedezést. Nem talál ki megmentést vagy jutalmat; az új mentések ilyen állapotban továbbra is érvénytelenek.

@@ -1,0 +1,53 @@
+{
+  "purpose": "Retired bitmap inventory; historical prompt documents remain provenance records, not runtime references.",
+  "retired": [
+    {
+      "file": "assets/images/backgrounds/white-serpent-cave-v1.png",
+      "replacement": "assets/images/backgrounds/white-serpent-cave-v2.png",
+      "bytes": 3458812
+    },
+    {
+      "file": "assets/images/backgrounds/winged-serpent-roost-v1.png",
+      "replacement": "assets/images/backgrounds/winged-serpent-roost-v2.png",
+      "bytes": 3405482
+    },
+    {
+      "file": "assets/images/npcs/zen-priestess-v1.png",
+      "replacement": "assets/images/npcs/zen-priestess-v2.png",
+      "bytes": 1080231
+    },
+    {
+      "file": "assets/images/ui/backpack-leather-v1.png",
+      "replacement": "assets/images/ui/samurai-travel-bag-v1.png",
+      "bytes": 3181916
+    },
+    {
+      "file": "assets/images/enemies/japan-walk-v4.png",
+      "replacement": "ART_JAPAN",
+      "bytes": 2976753
+    },
+    {
+      "file": "assets/images/enemies/japan-attack-v4.png",
+      "replacement": "ART_JAPAN",
+      "bytes": 3057522
+    },
+    {
+      "file": "assets/images/enemies/hannah-walk-v1.png",
+      "replacement": "assets/images/enemies/hannah-walk-v2.png",
+      "bytes": 2839916
+    },
+    {
+      "file": "assets/images/enemies/hannah-combo-v1.png",
+      "replacement": "assets/images/enemies/hannah-combo-v2.png",
+      "bytes": 2933696
+    },
+    {
+      "file": "assets/images/enemies/hannah-ritual-v1.png",
+      "replacement": "assets/images/enemies/hannah-ritual-v2.png",
+      "bytes": 3049273
+    }
+  ],
+  "retained": [
+    "Active v3/v4 assets, native source atlases needed by registrars, and the documented shadow-prologue design reference remain."
+  ]
+}

@@ -320,7 +320,6 @@ function drawObjects(r){Visuals.objects(r);}
 
 function drawHazards(r){Visuals.hazards(r);}
 
-function drawBat(e,r){Visuals.actor(e,r);}
 
 function realmUnlocked(n){return Number.isInteger(n)&&n>=0&&n<levels.length&&(n===0||defeated[n-1])&&(n!==3||flags[2].includes('shadowEntered'));}
 function travelSide(rest,n){return Object.entries(SIDE_LOCATIONS).find(([,spec])=>spec.realm===n&&spec.map.rests.some(point=>point.id===rest?.id));}

@@ -80,7 +80,11 @@ const Visuals = (() => {
       const feet=entity.y+entity.h,cx=entity.x+entity.w/2;
       if(cx<area.x||cx>area.x+area.w||feet<top||entity.y>area.y+area.h)continue;
       const edge=Math.min(cx-area.x,area.x+area.w-cx,feet-top,area.y+area.h-entity.y);
-      return {area,alpha:clamp(edge/(SerpentArt.hasBackdrop(area)?220:75),0,1)};
+      if(SerpentArt.hasBackdrop(area)){
+        const arena=area.arena,left=(cx-area.x)/Math.max(1,arena.x-area.x),right=(area.x+area.w-cx)/Math.max(1,area.x+area.w-arena.x-arena.w);
+        return {area,alpha:clamp(Math.min(left,right,(feet-top)/220,(area.y+area.h-entity.y)/220),0,1)};
+      }
+      return {area,alpha:clamp(edge/75,0,1)};
     }
     return null;
   }

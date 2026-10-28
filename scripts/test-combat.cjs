@@ -95,10 +95,10 @@ run("defeated[2]=false;enterRealm(2);state='play';bossStarted=true;boss.cycles=0
 run("boss.stage=2;boss.cycles=0;chooseBossMove();startBossAttack();updateBoss(.05);");assert(run("projectiles.some(p=>p.kind==='shadowBolt'&&p.source==='boss')"));
 
 // Atlas frames remain valid; each role has six movement and six attack pictures.
-const art=run('({manifest:ART_MANIFEST,frames:ART_FRAMES})');
+const art=run('({manifest:ART_MANIFEST,frames:ART_FRAMES,japan:ART_JAPAN})');
 for(const faction of ['japan','yomi','heaven'])for(const action of ['walk','attack'])for(const kind of ['guard','archer','shield','mage']){
-  const rows=art.frames.animations[faction][action][kind];assert.equal(rows.length,6);
-  const png=fs.readFileSync(path.join(__dirname,'..',art.manifest[faction+action[0].toUpperCase()+action.slice(1)]));const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
+  const rows=faction==='japan'?art.japan[kind][action]:art.frames.animations[faction][action][kind];assert.equal(rows.length,6);
+  const png=fs.readFileSync(path.join(__dirname,'..',art.manifest[faction==='japan'?art.japan[kind].image:faction+action[0].toUpperCase()+action.slice(1)]));const width=png.readUInt32BE(16),height=png.readUInt32BE(20);
   for(const f of rows){assert(f.x>=0&&f.y>=0&&f.w>0&&f.h>0&&f.x+f.w<=width&&f.y+f.h<=height);}
 }
 for(let realm=0;realm<3;realm++){run(`enterRealm(${realm});state='play';bossStarted=true;chooseBossMove();draw();startBossAttack();updateBoss(.1);draw();`);}

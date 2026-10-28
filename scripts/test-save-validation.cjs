@@ -9,4 +9,4 @@ vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8').replace('return Object.freeze({ready,','globalThis.__validateSave=validate;return Object.freeze({ready,');
 if(!source.includes('globalThis.__validateSave=validate'))throw Error('Validator test seam failed');
 vm.runInContext(source,context);
-module.exports=data=>{context.snapshot=JSON.parse(JSON.stringify(data));return vm.runInContext('__validateSave(snapshot)',context);};
+module.exports=(data,options={})=>{context.snapshot=JSON.parse(JSON.stringify(data));context.validationOptions=options;return vm.runInContext('__validateSave(snapshot,validationOptions)',context);};

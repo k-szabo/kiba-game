@@ -1,5 +1,16 @@
 'use strict';
 const assert=require('node:assert/strict'),harness=require('./test-harness.cjs'),validate=require('./test-save-validation.cjs');
+// QA-HANNAH-ART-001 r1: keep rejected anatomy out of the active walk cycle.
+{
+ const h=harness(),r=h.run;
+ assert.deepEqual(JSON.parse(r('JSON.stringify(ART_HANNAH.walk.frames.map(f=>f.sourceFrame))')),[2,2,2,5,5,5]);
+ assert.deepEqual(JSON.parse(r('JSON.stringify(ART_HANNAH.ritual.frames.map(f=>f.sourceFrame))')),[0,1,2,3,4,5]);
+ assert(r("ART_HANNAH.walk.image==='hannahWalk'&&ART_MANIFEST.hannahWalk.endsWith('hannah-walk-v2.png')"));
+ const samples=[];h.sandbox.document.getElementById('world').getContext('2d').drawImage=(image,...args)=>samples.push(args.slice(0,4));
+ r("globalThis.__actor={miniboss:'hannah',dead:false,mode:'combat',phase:'wait',walkSpeed:115,x:0,y:0,w:120,h:228,face:1,inv:0,stage:1,echoQueue:[],hazards:[],summons:[]};");
+ for(let tick=0;tick<6;tick++)r(`__actor.animTime=${tick*.1+.01};HannahArt.actor(__actor)`);
+ assert.deepEqual(samples,JSON.parse(r('JSON.stringify(ART_HANNAH.walk.frames.map(f=>[f.x,f.y,f.w,f.h]))')),'Walk holds each approved step for three 10 FPS ticks');
+}
 function setup(fia=true){const h=harness();h.run(`Prologue.stop();realm=3;level=zigguratSummit;platforms=level.platforms.map(p=>({...p}));flags=levels.map(()=>[]);defeated=[true,true,true,true];boss={dead:true};enemies=[];projectiles=[];particles=[];state='play';initPlayer({x:1450,y:1400});enemies=createEnemies();var hannah=enemies.find(HannahCombat.is);HannahCombat.update(hannah,.001);hannah.stage=2;hannah.maxHp=1600;hannah.gateIndex=2;hannah.hp=161;hannah.mode='combat';${fia?"flags[3].push('fiaRescued','arenaChampion','fiaTalismanCompleted')":''}`);return h;}
 for(const fia of [true,false]){
  const h=setup(fia),r=h.run;r("HannahCombat.hit(hannah,hannah.parts[0],1e9)");assert.equal(r('state'),'dialog');assert.equal(r('HannahEncounter.visual().haruFreed'),false,'Real rescue gate keeps Haru chained during intro');h.dismiss();assert.equal(r('HannahEncounter.visual().rescueTime'),0);

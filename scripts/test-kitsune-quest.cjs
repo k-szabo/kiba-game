@@ -11,10 +11,10 @@ const has=(r,id)=>r('flags[3].includes('+JSON.stringify(id)+')');
 function see(h){h.run('initPlayer(level.fia);KitsuneQuest.update(1/60);');assert(has(h.run,'fiaSeen'));}
 function exit(h){h.run('initPlayer(level.returnPoint);interact();');assert.equal(h.run('level.id'),'shadowRealm');}
 {
- const h=setup({hunter:false}),r=h.run;r('initPlayer(level.fia);KitsuneQuest.update(1/60);');assert(!has(r,'fiaSeen'));assert.equal(r('getContext().locked'),true);r('interact()');assert(!has(r,'fiaRescued'));exit(h);assert(!has(r,'fiaMissed'));
+ const h=setup({hunter:false}),r=h.run;r('initPlayer(level.fia);KitsuneQuest.update(1/60);');assert(!has(r,'fiaSeen'));assert.equal(r('getContext().locked'),true);r('interact()');assert(!has(r,'fiaRescued'));exit(h);assert(has(r,'fiaMissed'));
 }
 {
- const h=setup(),r=h.run;exit(h);assert(!has(r,'fiaMissed'),'Hunter victory alone does not forfeit Fia');
+ const h=setup(),r=h.run;exit(h);assert(has(r,'fiaMissed'),'First deliberate prison departure forfeits Fia even before reaching her cell');
 }
 {
  const h=setup(),r=h.run;see(h);
@@ -44,7 +44,7 @@ function exit(h){h.run('initPlayer(level.returnPoint);interact();');assert.equal
  r("initPlayer(level.npcs.find(n=>n.id==='fia'));interact();");assert.equal(r('state'),'dialog');h.dismiss();r('initPlayer(level.returnPoint);interact();');assert.equal(r('level.id'),'shadowRealm');assert.equal(r('player.y+player.h'),1200);
 }
 {
- const h=setup(),r=h.run;assert(!r("CampQuest.enter('shadowDen')"),'Normal hub access requires the Mad Priest victory');see(h);exit(h);r("defeated[3]=true;CampQuest.enter('shadowDen');");assert.equal(r('level.id'),'shadowDen');assert(!r("campNPCVisible(level.npcs.find(n=>n.id==='fia'))"));assert(r('level.npcs.filter(campNPCVisible).length>=2'),'Residents remain after missed rescue');assert.doesNotThrow(()=>validate(r('saved')));
+ const h=setup(),r=h.run;assert(!r("CampQuest.enter('shadowDen')"),'Normal hub access requires the Mad Priest victory');see(h);exit(h);r("defeated[3]=true;");assert(!r("CampQuest.enter('shadowDen')"),'Missed rescue keeps the den locked');assert.equal(r('level.id'),'shadowRealm');assert.doesNotThrow(()=>validate(r('saved')));
 }
 {
  const h=setup(),r=h.run;see(h);r('persist();');const original=JSON.parse(JSON.stringify(r('saved')));

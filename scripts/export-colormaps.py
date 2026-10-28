@@ -192,15 +192,17 @@ for faction, actions in atlas['frames']['animations'].items():
             key = faction + action.capitalize()
             identifier = f'npc.{faction}.{role}.{action}'
             variants[action] = {'paletteGroup': group(identifier, manifest[key], roles[role], f'ART_FRAMES.animations.{faction}.{action}.{role}')}
-        if faction == 'japan':
-            # Keep the v4 atlas as a historical reference; the shared renderer
-            # uses the new per-role sheets in every Japanese soldier location.
-            definition = atlas['japan'][role]
-            for action in ('walk', 'attack'):
-                identifier = f'npc.japan.{role}.{action}.v5'
-                variants['legacy' + action.capitalize()] = variants[action]
-                variants[action] = {'paletteGroup': group(identifier, manifest[definition['image']], definition[action], f'ART_JAPAN.{role}.{action}')}
         npcs[f'{faction}.{role}'] = {'faction': faction, 'role': role, 'variants': variants}
+
+
+for role in ('guard', 'archer', 'shield', 'mage'):
+    definition = atlas['japan'][role]
+    variants = {action: {'paletteGroup': group(f'npc.japan.{role}.{action}.v5', manifest[definition['image']], definition[action], f'ART_JAPAN.{role}.{action}')} for action in ('walk', 'attack')}
+    npcs[f'japan.{role}'] = {'faction': 'japan', 'role': role, 'variants': variants}
+
+dead_fox = atlas['kitsune'].get('deadFox')
+if dead_fox:
+    npcs['kitsune.fox']['deadPaletteGroup'] = group('npc.kitsune.fox.dead', manifest[dead_fox['image']], dead_fox['frames'], 'ART_KITSUNE.deadFox.frames')
 
 raised = atlas['japan']['raised']
 npcs['dungeon.raisedSamurai'] = {'role': 'summoned-guard', 'faction': 'necromancer', 'variants': {
