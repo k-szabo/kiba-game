@@ -89,7 +89,7 @@ function seedProgress(h){
  const baseline=saveState(h);begin(h);assert.equal(h.run('level.id'),'japan');assert.equal(h.run('Prologue.active'),false);
  assert.equal(h.snap().progression.level,1);assert.equal(h.snap().progression.totalXp,0);
  assert.equal(h.run('teaCount'),0,'A no-save developer run discards any previous tea stack');
- assert.equal(h.run('quickHeal'),'roastMeat','A no-save developer run restores the default quick healing item');
+ assert.equal(h.run('quickHeal'),null,'A no-save developer run restores an empty quick healing selection');
  h.run('DevTools.close();awardXP(120);persist();startGame(false);persist()');
  assertSaveUnchanged(h,baseline,'A no-save test must not create a Continue save or vault record');
  h.run('mainMenu()');assertSaveUnchanged(h,baseline,'Discarding a first-time test leaves no save');

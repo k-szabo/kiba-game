@@ -516,6 +516,50 @@
           "en": "The cursor hides during gameplay and becomes a paw in menus. Healing numbers are formatted clearly, and Momo’s armor protection grows more gradually."
         }
       ]
+    },
+    {
+      "version": "0.9.58_ad2970f7",
+      "code": "ad2970f7",
+      "baseVersion": "0.9.58",
+      "slug": "duel-readiness-quick-heal-yomi-thresholds",
+      "summary": {
+        "hu": "Párbaj és kalandjavítások",
+        "en": "Duel and adventure fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A párbajablak gombjai egységes méretet kaptak; külön jelzés mutatja a játékosok csatlakozását és készenlétét.",
+          "en": "Duel window buttons now have consistent dimensions; separate indicators show player connections and readiness."
+        },
+        {
+          "hu": "Az öreg kultista barlangjának fala csak a hozzá vezető alsó megközelítésből törhető át.",
+          "en": "The elder cultist’s cave wall can only be broken from its lower approach."
+        },
+        {
+          "hu": "A gyógyító gyorshasználat üresen indul, és az első megszerzett gyógyító tárgyat automatikusan kiválasztja.",
+          "en": "Healing quick use starts empty and automatically selects the first healing item acquired."
+        },
+        {
+          "hu": "Yomi őrzője nagy sebzés után sem hagyja ki az átlépett idézési küszöböket.",
+          "en": "Yomi’s guardian no longer skips crossed summoning thresholds after taking heavy damage."
+        }
+      ]
+    },
+    {
+      "version": "0.9.58_ff870c2e",
+      "code": "ff870c2e",
+      "baseVersion": "0.9.58",
+      "slug": "roast-meat-healing-delta",
+      "summary": {
+        "hu": "A sült hús gyógyulási üzenetének javítása",
+        "en": "Fix roast meat healing feedback"
+      },
+      "fixes": [
+        {
+          "hu": "A sült hús üzenete a ténylegesen visszatöltött HP-t mutatja az aktuális összéleterő helyett.",
+          "en": "Roast meat feedback now shows the HP actually restored instead of your total current health."
+        }
+      ]
     }
   ],
   "releases": [
@@ -1260,6 +1304,34 @@
         {
           "hu": "Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el.",
           "en": "Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match."
+        }
+      ]
+    },
+    {
+      "version": "0.9.58_7eabbd35",
+      "code": "7eabbd35",
+      "baseVersion": "0.9.58",
+      "slug": "interiors-heart-nameplates-dev-log",
+      "summary": {
+        "hu": "Belső terek és történeti jutalmak javítása",
+        "en": "Interior and story reward fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A kovácsműhely, az erdei kunyhó és a misztikus sátor berendezése a tereppel együtt mozog.",
+          "en": "Furnishings in the forge, forest hut and mystic tent now stay aligned with the terrain."
+        },
+        {
+          "hu": "A démon lord szívjutalma csak a megfelelő történeti befejezésnél jár.",
+          "en": "The Demon Lord’s Heart is awarded only for the appropriate story ending."
+        },
+        {
+          "hu": "Haru neve a feje fölé került, Fia pedig a trónteremben is névjelzést kapott.",
+          "en": "Haru’s name now appears above his head, and Fia also has a nameplate in the throne hall."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
         }
       ]
     }

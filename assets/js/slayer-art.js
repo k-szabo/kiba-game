@@ -94,7 +94,7 @@ const SlayerArt=(()=>{
   ctx.font='bold 12px "Kiba UI", "Kiba Story", sans-serif';
   const steam=e.phase==='cast'?Math.round(progress*100)+'%':e.sawReady?'100%':'0%';
   ctx.fillText(I18n.format('slayer.armor',[e.armor]),hudX,top+37);ctx.fillText(I18n.format('slayer.steam',[steam]),hudX,top+53);
-  ctx.fillStyle='#06101b';ctx.fillRect(hudX-width/2+12,top+64,width-24,9);ctx.fillStyle='#dd9b69';ctx.fillRect(hudX-width/2+12,top+64,(width-24)*clamp(e.hp/e.maxHp,0,1),9);ctx.restore();
+  ctx.fillStyle='#06101b';ctx.fillRect(hudX-width/2+12,top+64,width-24,9);ctx.fillStyle='#dd9b69';ctx.fillRect(hudX-width/2+12,top+64,(width-24)*clamp(e.hp/e.maxHp,0,1),9);DevBossHealth.bar(e,hudX,top+64,width-24);ctx.restore();
  }
  return Object.freeze({backdrop,objects,scenery,actor,pose});
 })();

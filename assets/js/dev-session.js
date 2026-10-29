@@ -17,8 +17,8 @@ const DevSession=(()=>{
    const old=normalSave;
    abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);
    flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);
-   weaponStyle=old?.weaponStyle??'katana';shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;chickenCount=old?.chickenCount??0;soldItems=old?[...old.soldItems]:[];quickHeal=old?.quickHeal??'roastMeat';progression=normalizeProgression(old?.progression,flags);
-   campServices=clone(old?.campServices)||CampServiceRules.fresh(weaponStyle);dungeonState=DungeonRules.copy(old?.dungeon)||DungeonRules.fresh();equippedTalisman=old?.equippedTalisman??null;
+   weaponStyle=old?.weaponStyle??'katana';shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;chickenCount=old?.chickenCount??0;soldItems=old?[...old.soldItems]:[];quickHeal=old?.quickHeal??null;progression=normalizeProgression(old?.progression,flags);
+   campServices=clone(old?.campServices)||CampServiceRules.fresh(weaponStyle);dungeonState=DungeonRules.copy(old?.dungeon)||DungeonRules.fresh();equippedTalisman=old?.equippedTalisman??null;Merchant.selectAvailable();
    Prologue.stop();enterRealm(0);
   }else if(Prologue.active){Prologue.stop();enterRealm(0);}
   $('menu').hidden=true;$('pause').hidden=true;showHUD(true);DevTools.setReturnState('play');

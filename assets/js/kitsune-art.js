@@ -80,7 +80,7 @@ const KitsuneArt=(()=>{
   ctx.save();ctx.globalAlpha=enemy.inv>0||enemy.stun>0?.7:1;stamp(definition,index,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,enemy.face);ctx.restore();
   const headroom=definition?.frames?.length?Math.max(...definition.frames.map(frame=>(frame.anchorY-(frame.visibleBounds?.[1]??frame.y))*enemy.h/frame.bodyHeight)):enemy.h;
   const x=enemy.x+enemy.w/2,top=enemy.y+enemy.h-headroom-61,text=I18n.t('fia.hunter.name');ctx.save();ctx.font='600 16px "Kiba UI", sans-serif';ctx.textAlign='center';const w=Math.max(220,ctx.measureText(text).width+24);
-  ctx.fillStyle='#101524ed';ctx.fillRect(x-w/2,top,w,49);ctx.fillStyle='#fff0cc';ctx.fillText(text,x,top+19);ctx.fillStyle='#070d17';ctx.fillRect(x-w/2+8,top+30,w-16,9);ctx.fillStyle='#d4a06b';ctx.fillRect(x-w/2+8,top+30,(w-16)*clamp(enemy.hp/enemy.maxHp,0,1),9);ctx.restore();
+  ctx.fillStyle='#101524ed';ctx.fillRect(x-w/2,top,w,49);ctx.fillStyle='#fff0cc';ctx.fillText(text,x,top+19);ctx.fillStyle='#070d17';ctx.fillRect(x-w/2+8,top+30,w-16,9);ctx.fillStyle='#d4a06b';ctx.fillRect(x-w/2+8,top+30,(w-16)*clamp(enemy.hp/enemy.maxHp,0,1),9);DevBossHealth.bar(enemy,x,top+30,w-16);ctx.restore();
   if(enemy.phase==='windup'){
    if(enemy.attackBox)BossCues.box(enemy.attackBox,BossCues.color);
    else BossVFX.marker(enemy.targetX,enemy.targetY+player.h/2,105,BossCues.color);

@@ -58,7 +58,7 @@ Példa egy ötpontos tervre:
 
 A parancsok a [fejlesztői útmutatóban](DEVELOPMENT.md) vannak. A meglévő ellenőrzések közül a változáshoz illőket futtassák; kiadás előtt teljes npm test kell. A test-save-validation.cjs és test-only-bootstrap.cjs segédfájlok.
 
-Új funkció egyszerű verziót kap; kisebb hibajavításnál a [kiadási szabályok](RELEASES.md) szerinti rögzített metaadatból generált nyolckarakteres utótagot használjuk. A korábbi kódrekordok hozzáfűzési sorrendjét őrizzék meg: a mentésvédelem ebből állapítja meg az azonos alapverziójú javítások időrendjét.
+Minden új funkció és hibajavítás a [kiadási szabályok](RELEASES.md) szerinti jóváhagyott HU/EN metaadatból generált nyolckarakteres utótagot kap. A korábbi kódrekordok hozzáfűzési sorrendjét őrizzék meg: a mentésvédelem ebből állapítja meg az azonos alapverziójú javítások időrendjét.
 
 A mockolt Canvas/SaveVault VM-teszt nem bizonyítja a látványt vagy a valódi IndexedDB/titkosítás működését. Ezekhez friss tesztprofillal végzett böngészős ellenőrzés kell, személyes mentések használata nélkül.
 

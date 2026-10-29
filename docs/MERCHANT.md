@@ -23,7 +23,7 @@ Az érmék a kereskedés pénzneme. A zsákmány automatikusan bekerül a pénzt
 
 A hús vásárláskor nem hat. Elfogyasztáskor egyszer sorsol: ⅔ eséllyel +2 HP, ⅓ eséllyel −1 HP; az eredmény 1 és a maximális HP között marad. A darab akkor is elfogy, ha a korlát miatt a HP nem változik. Szünetben, dialógusban, boltban, más menüben és a prológusban a gyorshasználat tiltott. Az inventory külön fogyasztógombja csak a kiválasztott húsra hat, a háttérben a játék fagyasztva marad. Az utolsó darab után a kijelölés és a fókusz érvényes tárgyra lép.
 
-A hús utáni HP-visszajelzés a közös `CampHealth.number` formázóját használja az aktuális és a maximális értékre is. A páncél miatt keletkezett tört HP szám marad a játékmenetben; a kijelzés nem írja vissza a kerekített szöveget a karakterállapotba.
+A hús gyógyulási üzenete a korlátozás utáni tényleges HP-növekedést (`player.hp - before`) mutatja, nem az új összéleterőt. A maximum közelében ezért +2 HP-nál kisebb értéket is jelezhet. A közös `CampHealth.number` rövid, lokalizált formátumot ad; a páncél miatt keletkezett tört HP megmarad a játékmenetben, a kijelzés nem kerekíti vissza a karakterállapotot. A sebző és változatlan életerős eredmény korábbi üzenete megmarad. Regresszió: `scripts/test-meat-heal-feedback.cjs`.
 
 A minimap az aktuális helyszín közeli párkányait, a már ismert szentélyeket és Momo helyét rajzolja. A titkos területek felfedezésig rejtve maradnak; nincs boss-, tárgy- vagy fogolyjelölő. A nagy térkép és a gyorsutazás vásárlás nélkül is elérhető. A minimap DPR-érzékeny, a játék szünetében nem frissül, a főmenüben és az álomban rejtett.
 
@@ -85,3 +85,9 @@ Az egyedi tárgyak eredeti megszerzési jelzője megmarad, a birtoklást a mente
 A `test-merchant-sales.cjs` a tranzakciókat, megerősítést, védett tárgyakat, visszavásárlást és ismételt eladás kizárását ellenőrzi; a titkosított mentési köröket a `test-save-release.cjs` végzi.
 
 A kultista templom dungeonjének `sectSeal` pecsétje 50, a `highPriestessSoul` lelke 400 érméért adható el. A pecsét halmozható közös dungeon-készlet; a lélek egyszeri, japán világhoz tartozó tulajdonjelző. Eladásuk nem engedi az egyszeri boss-pont vagy lélekjutalom újratermelését.
+
+## Üres gyógyító gyorshasználat
+
+A `quickHeal` kezdőértéke `null`; üres készlethez nem tartozik látszólag kijelölt hús. A `Merchant.selectAvailable()` megtartja a ténylegesen birtokolt kijelölést, egyébként az első elérhető gyógyító tárgyat választja, vagy üres készletnél `null`-t ad. Az első megszerzett gyógyító tárgy automatikusan kijelölődik, a játékos későbbi választása megmarad, amíg az adott készlet el nem fogy. A közös mentési pillanatkép is normalizál, így a főzetkészítéshez hasonló készletváltozások ugyanazt a szabályt használják.
+
+A mentésvalidátor az explicit `null`-t fogadja el az üres választáshoz; a hiányzó mezőt és az ismeretlen azonosítókat továbbra is elutasítja. A régi, ismert tárgyazonosítókat tartalmazó mentések érvényesek maradnak: folytatáskor a készlethez igazodik a kijelölés, haladásvesztés nélkül. Az inventory üres készletnél elrejti a gyorshasználati tárgysort. Regresszió: `scripts/test-quick-heal-empty.cjs`, valamint a titkosított üres kijelölés oda-vissza tesztje a `test-save-release.cjs` fájlban.

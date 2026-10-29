@@ -8,6 +8,12 @@ const HannahArt=(()=>{
   ctx.drawImage(image,0,0,image.naturalWidth,image.naturalHeight,-image.naturalWidth*s/2,-height,image.naturalWidth*s,height);ctx.restore();return true;
  }
  function haru(x,feet,height=125,face=1){return prop('haruElder',x,feet,height,face);}
+ function nameplate(x,feet,height,key){
+  ctx.save();ctx.font='600 16px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  const label=I18n.t(key),width=ctx.measureText(label).width+24,bottom=feet-height-16;
+  ctx.fillStyle='#12101cf0';ctx.fillRect(x-width/2,bottom-28,width,28);
+  ctx.fillStyle='#fff0cf';ctx.fillText(label,x,bottom-14);ctx.restore();
+ }
  function backdrop(){
   if(!HannahEncounter.active())return false;
   const v=HannahEncounter.visual(),key=level.ziggurat==='approach'?'zigguratApproach':level.ziggurat==='interior'?'zigguratInterior':'zigguratThrone';
@@ -71,9 +77,8 @@ const HannahArt=(()=>{
   const x=2280+(1800-2280)*release,feet=floor-135*(1-release);
   prop('haruBindingPillar',2280,floor,350);
   if(e?.active)for(const edge of [e.arena.x,e.arena.x+e.arena.w])prop('haruBindingPillar',edge,floor,240);
-  haru(x,feet,125,-1);
-  ctx.save();ctx.font='600 16px "Kiba UI", sans-serif';ctx.textAlign='center';const label=I18n.t('HARU'),w=ctx.measureText(label).width+20;
-  ctx.fillStyle='#12101cf0';ctx.fillRect(x-w/2,feet-135,w,28);ctx.fillStyle='#fff0cf';ctx.fillText(label,x,feet-115);
+  if(haru(x,feet,125,-1))nameplate(x,feet,125,'HARU');
+  ctx.save();
   if(!v.haruFreed){
    for(const side of [-1,1]){ctx.beginPath();ctx.moveTo(x+side*32,feet-55);ctx.lineTo(x+side*65,feet-110);ctx.lineWidth=7;ctx.strokeStyle='#15101d';ctx.stroke();ctx.lineWidth=3;ctx.strokeStyle='#bd9b72';ctx.setLineDash([6,3]);ctx.stroke();ctx.setLineDash([]);}
   }
@@ -81,6 +86,8 @@ const HannahArt=(()=>{
   if(v.fiaPresent&&(v.rescueTime!==null||v.haruFreed)){
    const t=v.rescueTime;
    stamp(ART_KITSUNE.fia,t!==null&&t>.6&&t<1.8?2:0,1550,floor,150,1);
+   const image=Visuals.images[ART_KITSUNE.fia.image];
+   if(image?.complete&&image.naturalWidth)nameplate(1550,floor,150,'fia.name');
    if(t!==null&&t<.8)FiaArt.effect('teleport',Math.min(3,Math.floor(t*5)),1550,floor-75,190,210,.8);
    if(t!==null&&t>=.8&&t<1.8){const p=(t-.8);FiaArt.effect('foxfire',1,1580+700*p,floor-80-105*p,135,135,.9);}
   }else if(v.rescueTime!==null&&v.rescueTime>=.8&&v.rescueTime<1.8){
@@ -95,5 +102,5 @@ const HannahArt=(()=>{
   return true;
  }
  function dialogueActors(){const d=ART_HANNAH.ritual,f=d.frames[0];return {hannah:{name:'ziggurat.hannah',image:d.image,rect:{x:f.x,y:f.y,w:f.w,h:f.h}},haru:{name:'HARU',image:'haruElder',rect:{x:160,y:0,w:800,h:1050}}};}
- return Object.freeze({backdrop,actor,scenery,player:drawUltimatePlayer,dialogueActors,haru});
+ return Object.freeze({backdrop,actor,scenery,player:drawUltimatePlayer,dialogueActors,haru,nameplate});
 })();

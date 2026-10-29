@@ -346,8 +346,10 @@ async function main(){
   const boundary=copy(campShop);boundary.coins=amount;boundary.meatCount=amount;boundary.teaCount=amount;
   await shopClient.vault.write(boundary);assert.deepEqual(plain(await client(shopEnv).vault.ready),boundary,'There is no smaller arbitrary currency or stack cap');
  }
+ const emptyQuick=copy(campShop);emptyQuick.meatCount=emptyQuick.teaCount=0;emptyQuick.quickHeal=null;
+ await shopClient.vault.write(emptyQuick);assert.deepEqual(plain(await client(shopEnv).vault.ready),emptyQuick,'An explicit empty healing selection survives encrypted reload');
  const untouched=shopEnv.records.get('save'),revision=shopEnv.records.get('profile').revision;
- for(const value of ['',null,undefined,false,0,[],{},'compass','Tea']){
+ for(const value of ['',undefined,false,0,[],{},'compass','Tea']){
   const invalid=copy(campShop);invalid.quickHeal=value;
   assert.throws(()=>shopClient.vault.write(invalid),/Invalid quick healing item/,'Only the two known quick healing IDs may be saved');
  }

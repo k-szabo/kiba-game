@@ -64,7 +64,7 @@ const Inventory=(()=>{
   $('useInventoryItem').textContent=I18n.t(enhancement?'dungeon.enhancement.apply':isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
   $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
-  $('inventoryQuickHeal').textContent=I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
+  $('inventoryQuickHeal').hidden=quickHeal===null;$('inventoryQuickHeal').textContent=quickHeal===null?'':I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
   pendingSale=null;$('inventorySaleConfirm').hidden=true;
   const price=Merchant.salePrice(id);
   $('sellInventoryItem').hidden=!id||weapon||!price;
@@ -75,6 +75,7 @@ const Inventory=(()=>{
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}
  function render(){
+  Merchant.selectAvailable();
   renderId++;
   const saleFocused=['sellInventoryItem','confirmInventorySale','cancelInventorySale'].includes(document.activeElement?.id);
   const items=contents(),active=document.activeElement?.dataset?.inventoryItem,useFocused=document.activeElement?.id==='useInventoryItem',assignFocused=document.activeElement?.id==='assignQuickHeal';

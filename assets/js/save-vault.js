@@ -20,7 +20,7 @@ const SaveVault=(()=>{
   let xp=p.totalXp,level=1;while(level<levelLimit&&xp>=xpForLevel(level)){xp-=xpForLevel(level);level++;}
   return level===p.level&&p.xp===(level===levelLimit?0:xp);
  }
- function validate(data,{legacyDen=false}={}){
+ function validate(data,{legacyDen=false,legacyHeart=false}={}){
   if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield'].includes(data.weaponStyle))throw Error('Invalid weapon style');
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
@@ -28,7 +28,7 @@ const SaveVault=(()=>{
   if(data.location!=null&&(typeof data.location!=='string'||!Object.hasOwn(SIDE_LOCATIONS,data.location)))throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
   const chickenCount=Object.hasOwn(data,'chickenCount')?data.chickenCount:0;if(!integer(chickenCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid chicken inventory');
-  if(!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
+  if(data.quickHeal!==null&&!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
   const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
   if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
   for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');
@@ -43,6 +43,7 @@ const SaveVault=(()=>{
   if(hasHannah('hannahDefeated')&&(!hasHannah('dawnblade')||!hasHannah('guardian:Hannah'))||hasHannah('guardian:Hannah')&&!hasHannah('hannahDefeated'))throw Error('Invalid Hannah victory');
   if(hasHannah('hannahFiaRescue')&&(!hasHannah('hannahDefeated')||!['fiaRescued','arenaChampion','fiaTalismanCompleted'].every(hasHannah)))throw Error('Invalid Hannah rescue');
   if(['demonLordSoul','demonLordHeart','demonLordHeartGiven'].some(hasHannah)&&!hasHannah('hannahDefeated'))throw Error('Invalid demon lord reward');
+  if(!legacyHeart&&hasHannah('demonLordHeart')&&!hasHannah('hannahFiaRescue'))throw Error('Invalid demon lord heart');
   if(hasHannah('demonLordHeartGiven')&&(!hasHannah('demonLordHeart')||!hasHannah('fiaRescued')))throw Error('Invalid demon lord gift');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
   if(hasCampFlag('daisyPlaced')&&(!data.defeated[0]||!data.flags[1].includes('daisyPlush')||!data.flags[1].includes('guardian:doomSlayer')||data.soldItems.includes('daisyPlush')))throw Error('Invalid Daisy placement');
@@ -124,13 +125,17 @@ const SaveVault=(()=>{
   const normalized=JSON.parse(JSON.stringify(data));
   const excess=Math.max(0,normalized.progression.stats.spirit-PROGRESSION_RULES.statLimitFor('spirit'));
   normalized.progression.stats.spirit-=excess;normalized.progression.points+=excess;
+  // Only authenticated older releases can enter this repair. Their unconditional
+  // reward bug created no Fia ending; never invent that history to keep an item.
+  const repairHeart=legacyHeart&&!hasHannah('hannahFiaRescue')&&hasHannah('demonLordHeart');
+  if(repairHeart)normalized.flags[3]=normalized.flags[3].filter(id=>!['demonLordHeart','demonLordHeartGiven'].includes(id));
   if(legacyDen&&!data.flags[3].includes('fiaRescued')){
    const denRests=new Set(shadowDen.rests.map(rest=>rest.id));normalized.visitedRests[3]=normalized.visitedRests[3].filter(id=>!denRests.has(id));
    if(data.location==='shadowDen'){const rest=levels[3].rests.find(rest=>rest.id==='cathedral');delete normalized.location;normalized.checkpoint={id:rest.id,x:rest.x,y:rest.y};if(!normalized.visitedRests[3].includes(rest.id))normalized.visitedRests[3].push(rest.id);}
    return validate(normalized);
   }
   if(relocatedUpper)normalized.checkpoint={...normalized.checkpoint,x:checkpoint.x,y:checkpoint.y};
-  return normalized;
+  return repairHeart?validate(normalized):normalized;
  }
  const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});
  const complete=tx=>new Promise((resolve,reject)=>{tx.oncomplete=resolve;tx.onabort=tx.onerror=()=>reject(tx.error||Error('Storage aborted'));});
@@ -152,7 +157,16 @@ const SaveVault=(()=>{
   const key=await keyFor(profile,salt),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv,additionalData:aad(profile,entry.revision),tagLength:128},key,ciphertext);
   const data=JSON.parse(decode.decode(plain));if(data.release!==profile.release)throw Error('Mismatched save release');
   const order=compareRelease(profile.release,'0.9.55_ab315218');
-  return validate({...data,release:GAME_RELEASE.version},{legacyDen:profile.release!==GAME_RELEASE.version&&order!==null&&order<=0});
+  const heartOrder=compareRelease(profile.release,'0.9.57_b9f518f8');
+  return validate({...data,release:GAME_RELEASE.version},{legacyDen:profile.release!==GAME_RELEASE.version&&order!==null&&order<=0,legacyHeart:profile.release!==GAME_RELEASE.version&&registeredHistoricalRelease(profile.release)&&heartOrder!==null&&heartOrder<=0});
+ }
+ function registeredHistoricalRelease(value){
+  const release=/^((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))(?:_([a-z0-9]{8}))?$/.exec(value);
+  if(!release)return false;
+  if(release[2])return (GAME_RELEASE.bugfixHistory?.[release[1]]||[]).includes(release[2]);
+  // A plain version has no code registry. Only the explicitly configured
+  // compatibility anchor can establish its historical identity.
+  return value===GAME_RELEASE.saveCompatibility;
  }
  async function writeOne(snapshot){
   const {profile}=await records();requireCurrent(profile);

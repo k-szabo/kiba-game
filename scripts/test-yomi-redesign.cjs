@@ -28,7 +28,7 @@ huge();assert.equal(run('boss.yomiStage'),'race');huge();dismiss();assert(snap()
 assert.equal(run('enemies.filter(e=>e.serpent).length'),0,'Boss victory removes a surviving snake without loot');assert(!snap().flags[1].includes('serpentScale'));
 
 // Burst damage cannot skip the invulnerable half-health interlude or the race.
-fresh();huge();assert.equal(run('boss.hp'),24);assert.equal(run('boss.yomiStage'),'shelter');assert.equal(run('boss.summons.length'),4);
+fresh();huge();assert.equal(run('boss.hp'),24);assert.equal(run('boss.yomiStage'),'shelter');assert.equal(run('boss.summons.length'),8,'Raw lethal damage crosses all four summon thresholds before the mandatory HP clamp');
 assert.equal(run('boss.shelterTriggered'),true);assert.equal(run('hitBoss(100000)'),false);assert.equal(run('boss.hp'),24);
 run('boss.hp=-1000;checkBossHealth();');assert.equal(run('boss.hp'),24);assert(!snap().defeated[1]);
 run('boss.serpent.hp=17;updateYomiWave(2);boss.waveClock=9.1;updateYomiWave(0);');

@@ -25,6 +25,14 @@ A teszt alatt a közös `persist()` nem módosítja sem a normál folytatáshoz 
 
 ## Eszközök
 
+### Élő napló
+
+Az **Élő napló** tesztmódban kapcsolható be. Bezárása után a játék tovább fut; az ablak nem állítja meg a harcot. A panel az elfogadott játékosműveleteket, az ellenfelek támadás-előkészítését és támadását, a tényleges HP-veszteséget, a legyőzést és a helyszínváltást mutatja. A támadások belső azonosítói technikai jelölések. A közvetlen és lövedékes találatok forrását a kibocsátáskor készített pillanatfelvétel őrzi; az ismeretlen eredetű veszteséghez nem talál ki támadót.
+
+A panel legfeljebb 300, korlátozott hosszúságú skaláradatokat tartalmazó bejegyzést őriz memóriában. Az időbélyeg a napló bekapcsolása vagy ürítése óta eltelt, monoton idő (`HH:mm:ss.mmm`), a felület legfeljebb másodpercenként nyolcszor frissül. Automatikus követés nélkül az olvasó görgetési helye megmarad. Az ürítés a bejegyzéseket törli; az elrejtés kikapcsolja a naplózást. A teszt befejezése minden naplóállapotot eldob, az új tesztben a napló kikapcsolva indul. A napló nem ír mentést vagy böngészőtárolót, nem tart meg élő szereplőobjektumokat a bejegyzésekben, és nem küldi az eseményeket ARIA élő régióba.
+
+A `DevLog.scope(actor, fn, moveOverride)` változatlan eredménnyel futtatja a harci vezérlőt; `finally` ágban állítja helyre a korábbi forrást, követi a fázisváltásokat és hozzárendeli a közvetlenül létrehozott lövedékek forrását is. A `stampProjectile` és `projectile` ugyanennek a forrásnak a későbbi találatát követi. Az `observe` a fő és automatikus támadási fázist, valamint a független küklopszrészeket külön követi; az `ability` a prológus privát támadási állapotainak explicit eseményhorgát adja. A modul nem módosít szereplőt, lövedéket, támadási időzítést vagy játékmeneti állapotot. A megjelenítést a `frame()` hívás végzi; a napló tartalma `textContent` használatával kerül a DOM-ba.
+
 | Eszköz | Működés |
 | --- | --- |
 | Boss újraélesztése | Az aktuális birodalom őrzőjének harcát tiszta állapotban újraindítja, teljes HP-val, az aréna megközelítési oldalára helyezett Momóval. A láva, veszélyek, idézések, küszöbök, boss-lövedékek és fázisok törlődnek. Az álom őrzőjének tesztje újrakezdi az álmot; az üres tanácsosi csarnokban nincs boss. |

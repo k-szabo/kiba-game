@@ -23,7 +23,11 @@ const HannahEncounter=(()=>{
  function clear(){HannahCombat.clear();transformation=null;scene=null;rescue=null;ending=null;lift=0;Dawnblade.resetPlayer();}
  function reconcileRewards(){
   if(!completed())return false;let changed=false;
-  for(const flag of ['demonLordSoul','demonLordHeart'])if(!flags[3].includes(flag)){flags[3].push(flag);changed=true;}
+  const rewards=['demonLordSoul'];
+  // The recorded ending, not Fia's current availability, owns this reward.
+  // A later death must not erase a heart earned through her actual rescue.
+  if(flags[3].includes(HannahRules.progress.fiaRescue))rewards.push('demonLordHeart');
+  for(const flag of rewards)if(!flags[3].includes(flag)){flags[3].push(flag);changed=true;}
   return changed;
  }
  function giftPoint(){

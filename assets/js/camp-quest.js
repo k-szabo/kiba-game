@@ -12,7 +12,10 @@ const CampQuest=(()=>{
   story('camp.dialogue.label','item.daisyPlush','camp.daisy.story');return true;
  }
  const eligible=id=>DevSession.active||sideLocationUnlocked(id,flags,defeated);
- function locationId(){return Object.keys(SIDE_LOCATIONS).find(id=>SIDE_LOCATIONS[id].map===level)||null;}
+ function locationId(){
+  const id=level?.id;
+  return typeof id==='string'&&Object.hasOwn(SIDE_LOCATIONS,id)&&SIDE_LOCATIONS[id].map===level?id:null;
+ }
  const isSide=()=>!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;

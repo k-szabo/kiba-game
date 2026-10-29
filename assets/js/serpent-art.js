@@ -45,7 +45,7 @@ const SerpentArt=(()=>{
   if(img?.complete&&img.naturalWidth){ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.globalAlpha*=e.inv>0?.85:1;ctx.translate(x,feet);ctx.scale(e.face*art.facing,1);ctx.drawImage(img,r.x,r.y,r.w,r.h,(r.x-r.anchorX)*s,(r.y-r.anchorY)*s,r.w*s,r.h*s);ctx.restore();}
   const white=e.serpentType==='white',color=white?'#c4f2ec':'#e0b9ff',label=I18n.t(e.name);
   ctx.save();ctx.font='600 15px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';const width=Math.max(220,ctx.measureText(label).width+28),top=feet-height-64;
-  ctx.fillStyle='#10283fee';ctx.fillRect(x-width/2,top,width,50);ctx.fillStyle='#fff0bd';ctx.fillText(label,x,top+20);ctx.fillStyle='#070e18';ctx.fillRect(x-width/2+8,top+31,width-16,9);ctx.fillStyle=color;ctx.fillRect(x-width/2+8,top+31,(width-16)*Math.max(0,e.hp/e.maxHp),9);
+  ctx.fillStyle='#10283fee';ctx.fillRect(x-width/2,top,width,50);ctx.fillStyle='#fff0bd';ctx.fillText(label,x,top+20);ctx.fillStyle='#070e18';ctx.fillRect(x-width/2+8,top+31,width-16,9);ctx.fillStyle=color;ctx.fillRect(x-width/2+8,top+31,(width-16)*Math.max(0,e.hp/e.maxHp),9);DevBossHealth.bar(e,x,top+31,width-16);
   if(e.phase==='windup'){
    const text=I18n.t('serpent.move.'+e.move),w=ctx.measureText(text).width+22;ctx.fillStyle='#10283fee';ctx.fillRect(x-w/2,feet+9,w,28);ctx.fillStyle='#fff0bd';ctx.fillText(text,x,feet+29);
    if(e.attackBox)outline(e.attackBox,BossCues.color);
