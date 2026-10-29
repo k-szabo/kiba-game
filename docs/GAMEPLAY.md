@@ -2,6 +2,12 @@
 
 [English gameplay guide](GAMEPLAY.en.md)
 
+## Párbaj Birodalmakon Át
+
+Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el. A szobagazda a **Szoba létrehozása**, a másik játékos a megkapott **Szobakód** megadása után a **Csatlakozás** gombot használja. Mindketten válasszatok fegyvert, majd kattintsatok a **Készen állok** gombra.
+
+A párbaj nem módosítja az utazásod mentését. A kódot csak azzal oszd meg, akivel játszani szeretnél. A visszavágóhoz mindkét fél kérése szükséges. A játék a beállított mozgás-, ugrás-, dash- és támadásgombokat használja. Egyes hálózatokon közvetítőszerver szükséges; ha nem sikerül kapcsolódni, ellenőrizzétek a szobakódot és a hálózatot.
+
 Böngészős 2D metroidvania Momo eredeti animációival. A kis shiba szamuráj négy eltérő felépítésű világon át keresi édesapját, Harut. A Kiba az összes világot átszövő energia: tápláló, gyenge, torzult vagy különösen erős áramlatait a felső kijelző és a környezeti fények mutatják.
 
 ## Indítás és frissítés

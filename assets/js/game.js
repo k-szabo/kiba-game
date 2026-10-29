@@ -46,7 +46,7 @@ function resize(){
 addEventListener('resize',resize);resize();
 SaveVault.ready.then(data=>{storageReady=true;saved=data;$('continueButton').hidden=!data;if(SaveVault.notice)toast(I18n.t(SaveVault.notice));if(DevTools.isOpen)DevTools.refresh();});
 function captureProgress(){return {version:2,layout:2,release:GAME_RELEASE.version,weaponStyle,weaponChoicePending,equippedTalisman,realm,location:DungeonRun.saveLocation(),dungeon:DungeonRules.copy(dungeonState),prologueComplete:!Prologue.active,abilities:[...abilities],defeated:[...defeated],flags:flags.map(f=>[...f]),visitedRests:visitedRests.map(f=>[...f]),shards,coins,meatCount,teaCount,chickenCount,quickHeal,campServices:JSON.parse(JSON.stringify(campServices)),soldItems:[...soldItems],progression:JSON.parse(JSON.stringify(progression)),checkpoint:checkpoint?{...checkpoint}:null,won:state==='won'};}
-function persist(){if(DevSession.active)return;saved=FiaConflict.pendingSave()||captureProgress();$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
+function persist(){if(DevSession.active||typeof DuelMode!=='undefined'&&DuelMode.active)return;saved=FiaConflict.pendingSave()||captureProgress();$('continueButton').hidden=false;try{SaveVault.write(saved).catch(saveFailed);}catch{saveFailed();}}
 function saveFailed(){if(!saveWarning){saveWarning=true;toast(I18n.t("text.saving.failed.check.your.browser.storage"));}}
 function toast(msg){$('toast').textContent=I18n.t(msg);$('toast').classList.add('visible');toastTimer=5;}
 function tone(freq,duration=.15,type='sine',volume=.05){if(!sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
@@ -276,7 +276,7 @@ function updatePlayerTimers(dt){
  player.guardCooldown=Math.max(0,(player.guardCooldown||0)-dt);attack=Math.max(0,attack-dt);attackCooldown=Math.max(0,attackCooldown-dt);dash=Math.max(0,dash-dt);dashCooldown=Math.max(0,dashCooldown-dt);
  jumpBuffer=Math.max(0,jumpBuffer-dt);coyote=Math.max(0,coyote-dt);dropTimer=Math.max(0,dropTimer-dt);player.inv=Math.max(0,player.inv-dt);player.stun=Math.max(0,(player.stun||0)-dt);shake=Math.max(0,shake-dt);
 }
-function update(dt){if(resolutionBlocked){keys.clear();pressed.clear();return;}if(state==='play'&&weaponChoicePending&&!DevSession.active){WeaponSelection.open();return;}toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}DevDamage.update(dt);LevelUpEffect.update(dt);BackgroundMotion.update(dt);time+=dt;player.animationTime+=dt;updatePlayerTimers(dt);if(state!=='play'){pressed.clear();return;}if(Prologue.active){Prologue.update(dt);pressed.clear();return;}HannahEncounter.update(dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}const stepPlayer=player;movePlayer(dt);HannahCombat.enforceBounds();if(player!==stepPlayer||state!=='play'){pressed.clear();return;}Merchant.update(dt);KitsuneQuest.update(dt);ArenaChallenge.update(dt);DungeonRun.update(dt);dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);if(player!==stepPlayer||state!=='play'){pressed.clear();return;}
+function update(dt){if(typeof DuelMode!=='undefined'&&DuelMode.active){DuelMode.update(dt,resolutionBlocked);return;}if(resolutionBlocked){keys.clear();pressed.clear();return;}if(state==='play'&&weaponChoicePending&&!DevSession.active){WeaponSelection.open();return;}toastTimer-=dt;if(toastTimer<=0)$('toast').classList.remove('visible');if(state!=='play'){if(state==='menu'||state==='help'&&helpOrigin==='menu')time+=dt;return;}DevDamage.update(dt);LevelUpEffect.update(dt);BackgroundMotion.update(dt);time+=dt;player.animationTime+=dt;updatePlayerTimers(dt);if(state!=='play'){pressed.clear();return;}if(Prologue.active){Prologue.update(dt);pressed.clear();return;}HannahEncounter.update(dt);movingPlatforms(dt);input(dt);if(state!=='play'){pressed.clear();return;}const stepPlayer=player;movePlayer(dt);HannahCombat.enforceBounds();if(player!==stepPlayer||state!=='play'){pressed.clear();return;}Merchant.update(dt);KitsuneQuest.update(dt);ArenaChallenge.update(dt);DungeonRun.update(dt);dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}discoverSecrets();advanceSwordAttack(dt);if(state!=='play'){pressed.clear();return;}updateEnemies(dt);if(player!==stepPlayer||state!=='play'){pressed.clear();return;}
  const slayerVictory=enemies.find(e=>DoomSlayer.is(e)&&e.victoryPending);if(slayerVictory){slayerVictory.victoryPending=false;story('text.a.gift.from.a.hidden.path','slayer.name','slayer.victory');pressed.clear();return;}
  for(const h of level.hazards)if(overlap(player,h))damage(1,player.vx>=0?-1:1);
  const a=level.arena;if(!boss.dead&&player.x+player.w>(a.triggerX??a.x)&&player.x<a.x+a.w&&Math.abs(player.y+player.h-a.y)<160){bossStarted=true;if(!visits.has('boss')){visits.add('boss');checkpoint={...level.rests.find(r=>r.id===a.restId)};if(!visitedRests[realm].includes(checkpoint.id))visitedRests[realm].push(checkpoint.id);persist();toast(realm===3?I18n.t('shadow.bell.warning'):realm===0?I18n.t("text.raised.sword.dodge.the.guardian.is.vulnerable.after.the"):realm===1?I18n.t("text.watch.for.cracks.in.the.ground.when.lava.rises"):I18n.t("text.gold.signals.light.arrows.violet.signals.shadow.magic.keep"));}}
@@ -286,7 +286,7 @@ function update(dt){if(resolutionBlocked){keys.clear();pressed.clear();return;}i
  if(!HannahEncounter.cinematic()){camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,level.top??0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);}
  context=getContext();$('prompt').hidden=!context;if(context)$('prompt').textContent=keyedInstruction(I18n.t(context.text));const region=(level.secrets||[]).find(z=>overlap(player,z))||level.zones.find(z=>overlap(player,z));$('areaLabel').textContent=I18n.t(region?.name||realms[realm].name)+(realm===1?' · '+Math.max(0,Math.round((player.y+69-450)/10))+I18n.t("text.m.deep"):realm===2?' · '+Math.max(0,Math.round((6300-player.y-69)/10))+I18n.t("text.m.high"):'');updateHUD();
  if(sound){musicClock-=dt;if(musicClock<=0){const notes=[220,261.63,293.66,329.63,392];tone(notes[Math.floor(time*.3)%5]*(realm===2?2:1),1.8,'sine',.02);musicClock=1.6;}}pressed.clear();}
-function draw(){Cursor.update();BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'||DevTools.menuBackground){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
+function draw(){Cursor.update();if(typeof DuelMode!=='undefined'&&DuelMode.draw())return;BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);if(Prologue.active){Prologue.draw();ctx.restore();return;}const r=realms[realm];background(r);if(state==='menu'||state==='help'&&helpOrigin==='menu'||DevTools.menuBackground){ctx.save();ctx.translate(-500,-400);drawLandscape(r,levels[0].platforms);ctx.restore();drawTorii(Math.min(viewW*.8,1180),600,r);drawMenuMomo(Math.min(viewW*.68,880),616,Math.min(180,Math.max(100,viewW*.28)));ctx.restore();return;}
  if(level===councilHall){
   ctx.save();ctx.translate(-camera,-cameraY);drawKibaCurrent();DungeonArt.scenery();Visuals.councilGate({...level.returnPoint,w:250,h:250},true);
   drawParticles();drawLevelUp();drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
@@ -377,7 +377,7 @@ function showMap(){if(state!=='play'||Prologue.active||HannahEncounter.blocked()
  const label=document.createElement('p');label.className='travel-label';label.textContent=I18n.t((inCamp?I18n.t('camp.name'):realms[realm].name)+I18n.t("text.light.paths.to.discovered.shrines"));if(!DevSession.active&&!ShadowRealm.travelAllowed(realm,realm))label.textContent=I18n.t('shadow.travel.locked');$('mapContent').append(label);$('mapContent').append(travelGrid(realm));const otherRealms=levels.map((_,n)=>n).filter(n=>n!==realm&&realmRests(n).some(rest=>travelDestination(rest,n)));if(otherRealms.length){const section=document.createElement('section');section.className='realm-travel';const heading=document.createElement('h3');heading.textContent=I18n.t('travel.worlds.title');section.append(heading);for(const n of otherRealms){const name=document.createElement('h4');name.textContent=I18n.t(realms[n].name);section.append(name,travelGrid(n));}$('mapContent').append(section);}$('map').hidden=false;$('closeMap').focus();}
 function closeMap(){$('map').hidden=true;state='play';pressed.clear();}
 function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden=false;$('resumeButton').focus();}else if(state==='pause'){state='play';$('pause').hidden=true;pressed.clear();}}
-function mainMenu(){HannahEncounter.clear();Dawnblade.resetPlayer();FiaConflict.abort();DungeonRun.cancel();SerpentArt.resetBackdrop();CampWorkshop.cancel();WeaponSelection.cancel();Dialogue.cancel();LevelUpEffect.clear();Merchant.resetTea();SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','campService','dungeonMenu','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
+function mainMenu(){if(typeof DuelMode!=='undefined'&&DuelMode.active){DuelMode.leave();return;}HannahEncounter.clear();Dawnblade.resetPlayer();FiaConflict.abort();DungeonRun.cancel();SerpentArt.resetBackdrop();CampWorkshop.cancel();WeaponSelection.cancel();Dialogue.cancel();LevelUpEffect.clear();Merchant.resetTea();SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','campService','dungeonMenu','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
 $('startButton').onclick=()=>startGame(false);WeaponSelection.init();CampWorkshop.init();$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
 $('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
@@ -449,17 +449,19 @@ function handleMouseDown(e){
  }
  // Native menu controls keep their ordinary click behaviour. Only the game
  // canvas supplies held mouse input, through the same action dispatcher.
+ if(typeof DuelMode!=='undefined'&&DuelMode.active){if(e.target===canvas&&key&&DuelMode.input(key,true,e.target))e.preventDefault();return;}
  if(state!=='play'||e.target!==canvas||!key||!Bindings.uses(key))return;
  handleKeyDown({key,code:'',repeat:false,target:canvas,preventDefault:()=>e.preventDefault()});
 }
 function handleMouseUp(e){
  const key=Bindings.mouseKey(e.button);if(!key)return;
+ if(typeof DuelMode!=='undefined'&&DuelMode.active&&DuelMode.input(key,false,e.target))e.preventDefault();
  // Release an already held mouse button even if a touch/pen gesture happened
  // between its press and release. Device provenance only gates new actions.
  if(keys.has(key)||isMouseInput(e)&&e.target===canvas&&Bindings.uses(key))e.preventDefault();
  keys.delete(key);
 }
-function handleMouseCancel(){for(const key of Object.values(KEY_BINDINGS.mouseButtons)){keys.delete(key);pressed.delete(key);}}
+function handleMouseCancel(){for(const key of Object.values(KEY_BINDINGS.mouseButtons)){keys.delete(key);pressed.delete(key);if(typeof DuelMode!=='undefined'&&DuelMode.active)DuelMode.input(key,false,null);}}
 function mouseCaptureGesture(e){return suppressedMouseClick&&e.button===suppressedMouseClick.button&&e.timeStamp-suppressedMouseClick.timeStamp>=0&&e.timeStamp-suppressedMouseClick.timeStamp<1000;}
 function handleMouseClick(e){if(isMouseInput(e)&&mouseCaptureGesture(e)){e.preventDefault();e.stopPropagation();suppressedMouseClick=null;}}
 function handleMouseContextMenu(e){
@@ -469,6 +471,7 @@ function handleMouseContextMenu(e){
 function handleKeyDown(e){
  if(resolutionBlocked||state==='developer')return;
  const k=keyName(e);
+ if(typeof DuelMode!=='undefined'&&DuelMode.active){if(DuelMode.input(k,true,e.target))e.preventDefault();return;}
  if(state==='dungeonMenu'){DungeonRun.keydown(e);return;}if(state==='dialog'){Dialogue.keydown(e);return;}
  if(state==='slayerSpell'){const target=e.target||document.activeElement,editing=target===$('slayerSpellInput')||target?.matches?.('input,textarea,[contenteditable="true"]');if(!e.repeat&&(k==='escape'||!editing&&Bindings.read('pause').includes(k))){e.preventDefault();SlayerDialog.close();}return;}
  if(state==='shop'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k))){e.preventDefault();Merchant.close();}return;}
@@ -486,7 +489,7 @@ function handleKeyDown(e){
  if(Bindings.read('inventory').includes(k)){if(state==='play'){e.preventDefault();Inventory.open();}return;}
  if(state==='play'){keys.add(k);pressed.add(k);}
 }
-function handleKeyUp(e){keys.delete(keyName(e));}
+function handleKeyUp(e){const k=keyName(e);keys.delete(k);if(typeof DuelMode!=='undefined'&&DuelMode.active)DuelMode.input(k,false,e.target);}
 addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);addEventListener('blur',()=>{keys.clear();pressed.clear();if(state==='play')pause();});
 // Pointer Events report only the first press and last release of a mouse chord.
 // Record device provenance here; native mouse events dispatch every button.
@@ -495,14 +498,14 @@ addEventListener('mousedown',handleMouseDown,true);addEventListener('mouseup',ha
 addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
 AssetCache.load(sheet,'assets/images/momo.png',ok=>{if(ok){loadingReady=true;if(DevTools.isOpen)DevTools.refresh();}else toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));});
 AssetCache.load(menuSheet,'assets/images/momo-menu-idle-v2.png');
-function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();Merchant.drawMinimap();requestAnimationFrame(frame);}requestAnimationFrame(frame);
-Inventory.init();Merchant.init();SlayerDialog.init();
+function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();if(typeof DuelMode==='undefined'||!DuelMode.active)Merchant.drawMinimap();requestAnimationFrame(frame);}requestAnimationFrame(frame);
+Inventory.init();Merchant.init();SlayerDialog.init();if(typeof DuelMode!=='undefined')DuelMode.init();
 BugReport.init(()=>Prologue.active?'dream':level===councilHall?'council':CampQuest.locationId()||['japan','yomi','heaven','shadow'][realm]);
 I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
 I18n.onChange(()=>Dialogue.render());
 I18n.applyDOM();
 DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevWeapons.init();DevImmortality.init();DevDamage.init();DevCache.init();DevTools.init();
-I18n.onChange(()=>{if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
+I18n.onChange(()=>{if(typeof DuelMode!=='undefined'&&DuelMode.active)return;if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
 renderBindingHints();
 for(const select of document.querySelectorAll('.language-picker select'))select.addEventListener('change',e=>I18n.setLocale(e.target.value));
 

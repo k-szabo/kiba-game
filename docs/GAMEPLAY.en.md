@@ -2,6 +2,12 @@
 
 [Magyar játékmeneti útmutató](GAMEPLAY.md)
 
+## Duel Across Realms
+
+Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match. The host chooses **Create room**; the other player enters the **Room code** and chooses **Join**. Both players choose their weapon and press **Ready**.
+
+Duels do not change your journey save. Share the code only with the person you want to play with. A rematch requires both players to request it. Your configured movement, jump, dash and attack bindings apply. Some networks require a relay server; if connecting fails, check the room code and network.
+
 Kiba Realms is a browser-playable 2D metroidvania starring Momo, a shiba samurai searching for his father, Haru. Kiba is the energy flowing through all four realms. Its strength and nature change from place to place, and the game shows its current state in the upper HUD and through environmental effects.
 
 The game starts with a silent dream prologue. After Momo wakes, follow the story from Japan into Yomi, then climb into Takamagahara. Each realm has its own route, enemies, guardian, and optional secrets.

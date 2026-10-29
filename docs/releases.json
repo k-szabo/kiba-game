@@ -1246,6 +1246,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.57_b9f518f8",
+      "code": "b9f518f8",
+      "baseVersion": "0.9.57",
+      "slug": "duel-across-realms",
+      "summary": {
+        "hu": "Párbaj Birodalmakon Át",
+        "en": "Duel Across Realms"
+      },
+      "fixes": [
+        {
+          "hu": "Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el.",
+          "en": "Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match."
+        }
+      ]
     }
   ]
 }

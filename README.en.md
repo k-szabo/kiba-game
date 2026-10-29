@@ -28,6 +28,8 @@ Momo, a small shiba samurai, sets out to rescue his beloved father, Haru. He tra
 
 ## Gameplay
 
+- **Duel Across Realms:** Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match.
+
 - **Playable prologue:** Momo walks alone through a silent shadow world. A colossal, smoke-shrouded entity called Shadow waits by a black hole.
 - **Sword and spirit dash:** Animated sword strikes, evasive movement, and enemies with distinct attack patterns. Guardians telegraph their dangerous attacks.
 - **New abilities open new paths:** Double jump, spirit dash, and the Dawnblade become available during the adventure.

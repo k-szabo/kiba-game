@@ -9,4 +9,14 @@ vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8').replace('return Object.freeze({ready,','globalThis.__validateSave=validate;return Object.freeze({ready,');
 if(!source.includes('globalThis.__validateSave=validate'))throw Error('Validator test seam failed');
 vm.runInContext(source,context);
-module.exports=(data,options={})=>{context.snapshot=JSON.parse(JSON.stringify(data));context.validationOptions=options;return vm.runInContext('__validateSave(snapshot,validationOptions)',context);};
+module.exports=(data,options={})=>{
+ context.snapshot=JSON.parse(JSON.stringify(data));context.validationOptions=options;
+ try{return vm.runInContext('__validateSave(snapshot,validationOptions)',context);}
+ catch(error){
+  if(error.message==='Invalid save location'){
+   const detail=vm.runInContext(`(()=>{const map=snapshot.location!=null?SIDE_LOCATIONS[snapshot.location]?.map:levels[snapshot.realm],point=snapshot.checkpoint,rest=[...(map?.rests||[]),...(map?.checkpoints||[])].find(r=>r.id===point?.id),position=p=>p?{id:p.id,x:p.x,y:p.y}:null;return {realm:snapshot.realm,location:snapshot.location??null,actual:position(point),expected:position(rest),visited:snapshot.visitedRests?.[snapshot.realm]};})()`,context);
+   error.message+='\nSynthetic fixture checkpoint: '+JSON.stringify(detail);
+  }
+  throw error;
+ }
+};
