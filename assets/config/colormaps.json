@@ -46662,7 +46662,8 @@
           67,
           207,
           228,
-          231
+          231,
+          352
         ],
         "dynamic": false
       },
@@ -46694,6 +46695,13 @@
         "lines": [
           43,
           122
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#000b",
+        "lines": [
+          345
         ],
         "dynamic": false
       },
@@ -46813,6 +46821,13 @@
         "value": "#0b151dcc",
         "lines": [
           18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1722f5",
+        "lines": [
+          345
         ],
         "dynamic": false
       },
@@ -47214,6 +47229,13 @@
         "dynamic": false
       },
       {
+        "value": "#24333b",
+        "lines": [
+          347
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#243e48",
         "lines": [
           99,
@@ -47374,6 +47396,13 @@
         "value": "#6a4c2f",
         "lines": [
           142
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#6b6c6880",
+        "lines": [
+          350
         ],
         "dynamic": false
       },
@@ -47559,6 +47588,14 @@
         "dynamic": false
       },
       {
+        "value": "#c2a36b",
+        "lines": [
+          345,
+          347
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#c5b4868c",
         "lines": [
           134
@@ -47569,6 +47606,13 @@
         "value": "#c5cbbf",
         "lines": [
           18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c5e8cc",
+        "lines": [
+          350
         ],
         "dynamic": false
       },
@@ -47598,6 +47642,13 @@
         "value": "#c9b27b66",
         "lines": [
           123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9d5e2",
+        "lines": [
+          350
         ],
         "dynamic": false
       },
@@ -47901,6 +47952,13 @@
         "dynamic": false
       },
       {
+        "value": "#e0bd76",
+        "lines": [
+          348
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#e0cda3",
         "lines": [
           271
@@ -48038,6 +48096,13 @@
         "value": "#eee1c0",
         "lines": [
           18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#efe0bf",
+        "lines": [
+          349
         ],
         "dynamic": false
       },
@@ -48213,6 +48278,13 @@
         "dynamic": false
       },
       {
+        "value": "#ffc9b9",
+        "lines": [
+          350
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#ffd487",
         "lines": [
           312
@@ -48223,6 +48295,13 @@
         "value": "#ffdda0",
         "lines": [
           64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe09e",
+        "lines": [
+          350
         ],
         "dynamic": false
       },
@@ -48291,7 +48370,8 @@
         "value": "#ffe4a2",
         "lines": [
           295,
-          300
+          300,
+          351
         ],
         "dynamic": false
       },
@@ -48349,7 +48429,8 @@
       {
         "value": "#fff",
         "lines": [
-          142
+          142,
+          352
         ],
         "dynamic": false
       },
@@ -48394,7 +48475,12 @@
           318,
           323,
           324,
-          329
+          329,
+          345,
+          346,
+          347,
+          348,
+          350
         ],
         "dynamic": false
       },
@@ -48734,86 +48820,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          543
+          544
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          401
+          402
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          363,
-          397
+          364,
+          398
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          193
+          194
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          527
+          528
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          274
+          275
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          332,
-          383
+          333,
+          384
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          193
+          194
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          542
+          543
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          527
+          528
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          392
+          393
         ],
         "dynamic": false
       }
@@ -48822,27 +48908,51 @@
     "assets/js/cursor.js": [],
     "assets/js/dawnblade.js": [],
     "assets/js/dev-abilities.js": [],
+    "assets/js/dev-boss-health.js": [
+      {
+        "value": "#080e19",
+        "lines": [
+          13,
+          15
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#855638",
+        "lines": [
+          14
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff8e9",
+        "lines": [
+          15
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/dev-boss.js": [],
     "assets/js/dev-cache.js": [],
     "assets/js/dev-damage.js": [
       {
         "value": "#070b16",
         "lines": [
-          27
+          28
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          32
+          33
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          32
+          33
         ],
         "dynamic": false
       }
@@ -48850,6 +48960,7 @@
     "assets/js/dev-immortality.js": [],
     "assets/js/dev-items.js": [],
     "assets/js/dev-level.js": [],
+    "assets/js/dev-log.js": [],
     "assets/js/dev-session.js": [],
     "assets/js/dev-teleport.js": [],
     "assets/js/dev-tools.js": [],
@@ -50224,42 +50335,42 @@
       {
         "value": "#110e1c",
         "lines": [
-          16
+          22
         ],
         "dynamic": false
       },
       {
         "value": "#12101cf0",
         "lines": [
-          76
+          14
         ],
         "dynamic": false
       },
       {
         "value": "#15101d",
         "lines": [
-          78
+          83
         ],
         "dynamic": false
       },
       {
         "value": "#8e42c7",
         "lines": [
-          39
+          45
         ],
         "dynamic": false
       },
       {
         "value": "#bd9b72",
         "lines": [
-          78
+          83
         ],
         "dynamic": false
       },
       {
         "value": "#fff0cf",
         "lines": [
-          76
+          15
         ],
         "dynamic": false
       }
@@ -50452,120 +50563,120 @@
       {
         "value": "#010106",
         "lines": [
-          174,
-          176
+          175,
+          177
         ],
         "dynamic": false
       },
       {
         "value": "#02050ed9",
         "lines": [
-          240
+          241
         ],
         "dynamic": false
       },
       {
         "value": "#03040b",
         "lines": [
-          237
+          238
         ],
         "dynamic": false
       },
       {
         "value": "#070b16",
         "lines": [
-          233
+          234
         ],
         "dynamic": false
       },
       {
         "value": "#08040e",
         "lines": [
-          174
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#08051277",
         "lines": [
-          240
+          241
         ],
         "dynamic": false
       },
       {
         "value": "#09131933",
         "lines": [
-          214
+          215
         ],
         "dynamic": false
       },
       {
         "value": "#09131955",
         "lines": [
-          216
+          217
         ],
         "dynamic": false
       },
       {
         "value": "#0b101c",
         "lines": [
-          243
+          244
         ],
         "dynamic": false
       },
       {
         "value": "#100d2044",
         "lines": [
-          240
+          241
         ],
         "dynamic": false
       },
       {
         "value": "#132a32ed",
         "lines": [
-          229
+          230
         ],
         "dynamic": false
       },
       {
         "value": "#25103400",
         "lines": [
-          174
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#35214600",
         "lines": [
-          169
+          170
         ],
         "dynamic": false
       },
       {
         "value": "#58357b99",
         "lines": [
-          174
+          175
         ],
         "dynamic": false
       },
       {
         "value": "#58367888",
         "lines": [
-          178
+          179
         ],
         "dynamic": false
       },
       {
         "value": "#ac7ddd55",
         "lines": [
-          178
+          179
         ],
         "dynamic": false
       },
       {
         "value": "#b999d6",
         "lines": [
-          169
+          170
         ],
         "dynamic": false
       },
@@ -50579,14 +50690,14 @@
       {
         "value": "#c598ff",
         "lines": [
-          71
+          72
         ],
         "dynamic": false
       },
       {
         "value": "#d4b3fc",
         "lines": [
-          77
+          78
         ],
         "dynamic": false
       },
@@ -50607,49 +50718,49 @@
       {
         "value": "#d9ba7b",
         "lines": [
-          231
+          232
         ],
         "dynamic": false
       },
       {
         "value": "#d9ba7b99",
         "lines": [
-          230
+          231
         ],
         "dynamic": false
       },
       {
         "value": "#e6a176",
         "lines": [
-          263
+          264
         ],
         "dynamic": false
       },
       {
         "value": "#e6c1ff",
         "lines": [
-          209
+          210
         ],
         "dynamic": false
       },
       {
         "value": "#efddff",
         "lines": [
-          233
+          234
         ],
         "dynamic": false
       },
       {
         "value": "#f2e6cc",
         "lines": [
-          233
+          234
         ],
         "dynamic": false
       },
       {
         "value": "rgba(0,0,0,${shade})",
         "lines": [
-          219
+          220
         ],
         "dynamic": true
       }

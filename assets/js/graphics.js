@@ -491,7 +491,7 @@ const Visuals = (() => {
     ctx.fillStyle='#10283fee';ctx.fillRect(x-width/2,feet-height-46,width,42);
     ctx.fillStyle='#fff0bd';ctx.fillText(label,x,feet-height-26);
     ctx.fillStyle='#070e18';ctx.fillRect(x-width/2+8,feet-height-17,width-16,7);
-    ctx.fillStyle='#ffcc89';ctx.fillRect(x-width/2+8,feet-height-17,(width-16)*Math.max(0,e.hp/e.maxHp),7);
+    ctx.fillStyle='#ffcc89';ctx.fillRect(x-width/2+8,feet-height-17,(width-16)*Math.max(0,e.hp/e.maxHp),7);DevBossHealth.bar(e,x,feet-height-17,width-16);
     if(e.phase==='windup'){
       const tell=I18n.t('yomi.serpent.'+e.move),tellWidth=ctx.measureText(tell).width+20;
       ctx.fillStyle='#10283fee';ctx.fillRect(x-tellWidth/2,feet+11,tellWidth,23);ctx.fillStyle='#fff0bd';ctx.fillText(tell,x,feet+27);
@@ -514,7 +514,7 @@ const Visuals = (() => {
     }
     if(e.active){
       ctx.fillStyle='#122739df';ctx.fillRect(x-98,feet-height-79,196,e.phase==='windup'?57:53);
-      ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);
+      ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle=color;ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);DevBossHealth.bar(e,x,feet-height-34,180);
       ctx.font='bold 11px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
       if(e.phase==='windup'){
         const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};

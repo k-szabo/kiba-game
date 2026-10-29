@@ -63,18 +63,19 @@ const Prologue=(()=>{
     const before=boss.hp;boss.hp=Math.max(1,boss.hp-Math.min(amount,playerAttackDamage()));DevDamage.record('outgoing',boss,before,boss.hp);boss.inv=.28;boss.flash=.2;
     burst(Math.min(boss.x+50,player.x+130),player.y+28,'#d9b3f8',14);tone(145,.1,'triangle',.02);return true;
   }
+  function bolt(p){DevLog.stampProjectile(p);bolts.push(p);}
   function hazard(kind,x,y,w,h,warning,life,amount){hazards.push({kind,x,y,w,h,warning,life,amount,active:false});}
   function releaseCast(kind){
     if(kind!=='devour')castVisual={kind,elapsed:0,duration:SHADOW_ATTACK_TIMING.spellRelease};
     if(kind==='bolts'){
       const x=SHADOW_X-150,y=FLOOR-300,a=Math.atan2(player.y+30-y,player.x+21-x);
-      for(const offset of [-.22,0,.22])bolts.push({x,y,vx:Math.cos(a+offset)*420,vy:Math.sin(a+offset)*420,life:5,radius:17,damage:5,color:'#c598ff',kind:'shadowBolt'});
+      for(const offset of [-.22,0,.22])bolt({x,y,vx:Math.cos(a+offset)*420,vy:Math.sin(a+offset)*420,life:5,radius:17,damage:5,color:'#c598ff',kind:'shadowBolt'});
     }else if(kind==='rifts'){
       for(const d of [-2,-1,0,1,2])hazard('rift',clamp(player.x+d*155,ARENA_LEFT+20,ARENA_RIGHT-100),FLOOR-230,85,230,.8+Math.abs(d)*.12,1.1,8);
     }else if(kind==='storm'){
       for(let i=0;i<7;i++)hazard('storm',ARENA_LEFT+60+i*170,160,70,FLOOR-160,.65+i*.1,.65,7);
     }else if(kind==='wave'){
-      bolts.push({x:ARENA_RIGHT-30,y:FLOOR-38,vx:-520,vy:0,life:4,radius:34,damage:6,color:'#d4b3fc',kind:'wave'});
+      bolt({x:ARENA_RIGHT-30,y:FLOOR-38,vx:-520,vy:0,life:4,radius:34,damage:6,color:'#d4b3fc',kind:'wave'});
     }else if(kind==='devour'){
       // The black hole engulfs the whole arena, including airborne Momo and invulnerability frames.
       hurt(player.hp+100,true);return;
@@ -84,16 +85,16 @@ const Prologue=(()=>{
   function combat(dt){
     battleTime+=dt;
     if(battleTime>=28&&cast?.kind!=='devour'&&!hazards.some(h=>h.kind==='sweep'&&h.life>0)){
-      cast={kind:'devour',stage:'windup',remaining:SHADOW_ATTACK_TIMING.devourWindup,duration:SHADOW_ATTACK_TIMING.devourWindup};auto=null;
+      DevLog.ability(boss,'windup','devour');cast={kind:'devour',stage:'windup',remaining:SHADOW_ATTACK_TIMING.devourWindup,duration:SHADOW_ATTACK_TIMING.devourWindup};auto=null;
       hazard('devour',ARENA_LEFT,0,ARENA_RIGHT-ARENA_LEFT,FLOOR,SHADOW_ATTACK_TIMING.devourWindup,.5,100);
     }
     if(cast?.kind!=='devour'){
       if(!auto)auto={stage:'wait',remaining:.8};
       auto.remaining-=dt;
       if(auto.remaining<=0){
-        if(auto.stage==='wait')auto={stage:'windup',remaining:SHADOW_ATTACK_TIMING.meleeWindup,duration:SHADOW_ATTACK_TIMING.meleeWindup,targetX:player.x+21};
+        if(auto.stage==='wait'){DevLog.ability(boss,'windup','sweep');auto={stage:'windup',remaining:SHADOW_ATTACK_TIMING.meleeWindup,duration:SHADOW_ATTACK_TIMING.meleeWindup,targetX:player.x+21};}
         else if(auto.stage==='windup'){
-          hazard('sweep',auto.targetX-210,FLOOR-135,420,135,0,SHADOW_ATTACK_TIMING.meleeStrike,4);auto={stage:'recover',remaining:SHADOW_ATTACK_TIMING.meleeRecovery,duration:SHADOW_ATTACK_TIMING.meleeRecovery,targetX:auto.targetX};
+          DevLog.ability(boss,'strike','sweep');hazard('sweep',auto.targetX-210,FLOOR-135,420,135,0,SHADOW_ATTACK_TIMING.meleeStrike,4);auto={stage:'recover',remaining:SHADOW_ATTACK_TIMING.meleeRecovery,duration:SHADOW_ATTACK_TIMING.meleeRecovery,targetX:auto.targetX};
           tone(60,.3,'sawtooth',.025);
         }else auto={stage:'wait',remaining:.6};
       }
@@ -102,19 +103,19 @@ const Prologue=(()=>{
     cast.remaining-=dt;
     if(cast.remaining<=0){
       if(cast.stage==='wait'){
-        const kind=['bolts','rifts','storm','wave'][castIndex++%4];cast={kind,stage:'windup',remaining:SHADOW_ATTACK_TIMING.spellWindup,duration:SHADOW_ATTACK_TIMING.spellWindup};
-      }else if(cast.stage==='windup'){const kind=cast.kind;releaseCast(kind);if(phase!=='battle')return;cast={stage:'wait',remaining:1.7};}
+        const kind=['bolts','rifts','storm','wave'][castIndex++%4];DevLog.ability(boss,'windup',kind);cast={kind,stage:'windup',remaining:SHADOW_ATTACK_TIMING.spellWindup,duration:SHADOW_ATTACK_TIMING.spellWindup};
+      }else if(cast.stage==='windup'){const kind=cast.kind;DevLog.ability(boss,'strike',kind);DevLog.scope(boss,()=>releaseCast(kind),kind);if(phase!=='battle')return;cast={stage:'wait',remaining:1.7};}
     }
     for(const h of hazards){
       if(h.warning>0){h.warning-=dt;if(h.warning<=0){h.active=true;shake=reducedMotion.matches?0:.08;}}
       else{h.active=true;h.life-=dt;}
-      if(h.active&&h.life>0&&overlap(player,h))hurt(h.amount);
+      if(h.active&&h.life>0&&overlap(player,h))DevLog.scope(boss,()=>hurt(h.amount),h.kind);
       if(phase!=='battle')return;
     }
     hazards=hazards.filter(h=>h.life>0);
     for(const p of bolts){
       p.life-=dt;const x=p.x,y=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;
-      if(overlap(player,{x:Math.min(x,p.x)-p.radius,y:Math.min(y,p.y)-p.radius,w:Math.abs(p.x-x)+p.radius*2,h:Math.abs(p.y-y)+p.radius*2})){hurt(p.damage);p.life=0;}
+      if(overlap(player,{x:Math.min(x,p.x)-p.radius,y:Math.min(y,p.y)-p.radius,w:Math.abs(p.x-x)+p.radius*2,h:Math.abs(p.y-y)+p.radius*2})){DevLog.projectile(p,()=>hurt(p.damage));p.life=0;}
       if(phase!=='battle')return;
     }
     bolts=bolts.filter(p=>p.life>0);

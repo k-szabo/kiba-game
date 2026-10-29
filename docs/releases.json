@@ -1262,6 +1262,34 @@
           "en": "Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match."
         }
       ]
+    },
+    {
+      "version": "0.9.58_7eabbd35",
+      "code": "7eabbd35",
+      "baseVersion": "0.9.58",
+      "slug": "interiors-heart-nameplates-dev-log",
+      "summary": {
+        "hu": "Belső terek és történeti jutalmak javítása",
+        "en": "Interior and story reward fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A kovácsműhely, az erdei kunyhó és a misztikus sátor berendezése a tereppel együtt mozog.",
+          "en": "Furnishings in the forge, forest hut and mystic tent now stay aligned with the terrain."
+        },
+        {
+          "hu": "A démon lord szívjutalma csak a megfelelő történeti befejezésnél jár.",
+          "en": "The Demon Lord’s Heart is awarded only for the appropriate story ending."
+        },
+        {
+          "hu": "Haru neve a feje fölé került, Fia pedig a trónteremben is névjelzést kapott.",
+          "en": "Haru’s name now appears above his head, and Fia also has a nameplate in the throne hall."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

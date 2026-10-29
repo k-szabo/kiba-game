@@ -23,3 +23,9 @@ Régebbi böngészőlap nem írhat az újabb kiadás profiljába. Ismeretlen vag
 ## Ellenőrzés
 
 `node scripts/test-save-compatibility.cjs` valódi WebCryptóval és szimulált IndexedDB-tranzakciókkal ellenőrzi a kompatibilis átállást, párhuzamos lapokat, félbemaradt kriptográfiai műveletet, korrupciót és az explicit resetet. A `test-save-release.cjs` a korábbi resetpolitika és az általános validálás regresszióit is megtartja. A tényleges böngészős IndexedDB-átállást friss, szintetikus profilon külön ellenőrizni kell.
+
+## Hannah szívjutalmának javítása
+
+A `0.9.58_7eabbd35` kiadás a tényleges, történetileg rögzített `hannahFiaRescue` befejezéshez köti a `demonLordHeart` jutalmat. Fia későbbi halála nem vonja vissza a korábban jogosan megszerzett szívet. A hitelesített, kompatibilis, legfeljebb `0.9.57_b9f518f8` forráskiadású mentésekből a migráció csak a korábban tévesen kiosztott `demonLordHeart` és `demonLordHeartGiven` jelzőt távolítja el, ha a tényleges Fia-befejezés hiányzik. A forráskiadást a regiszter sorrendje ellenőrzi; ismeretlen vagy újabb kiadás nem kap kivételt.
+
+A teljes validáció a szűk történeti kivétellel is lefut, majd a javított állapot ismét szigorúan ellenőrződik. Nem keletkeznek Fia-küldetésjelzők, a lélek, XP, fejlesztéspontok és minden más haladás megmarad; a mentéskompatibilitási korszak nem változik. Az új kiadás saját írója már csak a szigorú jutalomszabálynak megfelelő rekordot fogadja el. Regresszió: `scripts/test-hannah-heart.cjs` és a valódi WebCrypto-fordulókat futtató `scripts/test-hannah-saves.cjs`.

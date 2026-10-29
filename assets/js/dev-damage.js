@@ -10,6 +10,7 @@ const DevDamage=(()=>{
   enabled=!enabled;clear();return true;
  }
  function record(kind,target,before,after){
+  DevLog.damage(kind,target,before,after);
   if(!active()||!Number.isFinite(before)||!Number.isFinite(after)||before<=0)return;
   const amount=Math.min(before,Math.max(0,before-Math.max(0,after)));
   if(!amount||!Number.isFinite(target?.x)||!Number.isFinite(target?.y))return;

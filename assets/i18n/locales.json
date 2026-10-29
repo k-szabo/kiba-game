@@ -1095,7 +1095,25 @@
       "duel.next": "Következő menet: {0} mp",
       "duel.rules": "Két megnyert menet szükséges a győzelemhez.",
       "menu.changelog.0957.title": "Párbaj Birodalmakon Át",
-      "menu.changelog.0957.0": "Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el."
+      "menu.changelog.0957.0": "Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el.",
+      "dev.log.title": "Élő napló",
+      "dev.log.clear": "Ürítés",
+      "dev.log.follow": "Automatikus követés",
+      "dev.log.hide": "Napló elrejtése",
+      "dev.log.empty": "Üres a napló.",
+      "dev.log.info": "Időbélyeges harci események, csak tesztmódban. Legfeljebb 300 bejegyzést őriz meg.",
+      "dev.log.action": "{0} · Művelet: {1}",
+      "dev.log.preparing": "{0} · Előkészítés: {1}",
+      "dev.log.attack": "{0} · Támadás: {1}",
+      "dev.log.damage": "{0} → {1} · {2} sebzés · HP: {3}/{4}",
+      "dev.log.received": "{0} · {1} sebzés · HP: {2}/{3}",
+      "dev.log.defeated": "{0} · Legyőzve",
+      "dev.log.location": "Helyszín: {0}",
+      "menu.changelog.0958.title": "Belső terek és történeti jutalmak javítása",
+      "menu.changelog.0958.0": "A kovácsműhely, az erdei kunyhó és a misztikus sátor berendezése a tereppel együtt mozog.",
+      "menu.changelog.0958.1": "A démon lord szívjutalma csak a megfelelő történeti befejezésnél jár.",
+      "menu.changelog.0958.2": "Haru neve a feje fölé került, Fia pedig a trónteremben is névjelzést kapott.",
+      "menu.changelog.0958.3": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -2194,7 +2212,25 @@
       "duel.next": "Next round in: {0}s",
       "duel.rules": "Win two rounds to claim victory.",
       "menu.changelog.0957.title": "Duel Across Realms",
-      "menu.changelog.0957.0": "Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match."
+      "menu.changelog.0957.0": "Start a two-player duel from the main menu, with a shared room code, weapon choices and a random arena adapted from the existing realms. Win two rounds to claim the match.",
+      "dev.log.title": "Live log",
+      "dev.log.clear": "Clear",
+      "dev.log.follow": "Auto-follow",
+      "dev.log.hide": "Hide log",
+      "dev.log.empty": "The log is empty.",
+      "dev.log.info": "Timestamped combat events, collected only in test mode. Retains up to 300 entries.",
+      "dev.log.action": "{0} · Action: {1}",
+      "dev.log.preparing": "{0} · Preparing: {1}",
+      "dev.log.attack": "{0} · Attack: {1}",
+      "dev.log.damage": "{0} → {1} · {2} damage · HP: {3}/{4}",
+      "dev.log.received": "{0} · {1} damage · HP: {2}/{3}",
+      "dev.log.defeated": "{0} · Defeated",
+      "dev.log.location": "Location: {0}",
+      "menu.changelog.0958.title": "Interior and story reward fixes",
+      "menu.changelog.0958.0": "Furnishings in the forge, forest hut and mystic tent now stay aligned with the terrain.",
+      "menu.changelog.0958.1": "The Demon Lord’s Heart is awarded only for the appropriate story ending.",
+      "menu.changelog.0958.2": "Haru’s name now appears above his head, and Fia also has a nameplate in the throne hall.",
+      "menu.changelog.0958.3": "Internal maintenance and technical improvements."
     }
   }
 }

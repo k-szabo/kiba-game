@@ -83,13 +83,14 @@ function releaseEnemyAttack(e) {
   }
 }
 function updateEnemies(dt) {
-  for(const e of enemies){
-    if(e.dead)continue;
-    if(HannahCombat.updateSupport(e,dt))continue;
-    if(CampMaster.updateSupport(e,dt))continue;
-    if(Serpents.is(e)){Serpents.update(e,dt);continue;}
-    if(e.miniboss){updateMiniboss(e,dt);continue;}
-    if(DungeonRun.updateEnemy(e,dt))continue;
+  for(const e of enemies){if(!e.dead)DevLog.scope(e,()=>updateEnemy(e,dt));}
+}
+function updateEnemy(e,dt){
+    if(HannahCombat.updateSupport(e,dt))return;
+    if(CampMaster.updateSupport(e,dt))return;
+    if(Serpents.is(e)){Serpents.update(e,dt);return;}
+    if(e.miniboss){updateMiniboss(e,dt);return;}
+    if(DungeonRun.updateEnemy(e,dt))return;
     // An original-fight summon follows Momo across this arena, rather than
     // forgetting the target at its spawn-local patrol/detection boundary.
     const a=level.arena,yomiMinion=e.summoned&&realm===1&&level===levels[1]&&bossStarted&&!boss.dead&&e.encounterId===boss.encounterId;
@@ -140,7 +141,7 @@ function updateEnemies(dt) {
       if(e.kind==='shield')toast(I18n.t("text.shield.bearer.strike.from.above.or.behind.three.blocked"));
       if(e.kind==='mage')toast(I18n.t("text.mage.a.gathering.glow.signals.an.attack.move.before"));
     }
-  }
+
 }
 
 /* Phase-aware bosses. All transitions and summons belong to one encounter. */
@@ -210,10 +211,10 @@ function checkBossHealth(){
 function hitBoss(amount,kind=attackKind){
   if(Prologue.active)return Prologue.hit(amount);
   if(!bossStarted||boss.dead||boss.inv>0||boss.phase==='transform'||realm===1&&boss.yomiStage==='shelter')return false;
-  const before=boss.hp,stage=boss.stage,position={x:boss.x,y:boss.y,w:boss.w};
+  const before=boss.hp,stage=boss.stage,position={x:boss.x,y:boss.y,w:boss.w,maxHp:boss.max,logName:bossName()};
   boss.hp-=amount;boss.inv=.3;ShadowRealm.interrupt(kind);burst(boss.x+40,boss.y+30,realms[realm].gold,20);checkBossHealth();
   // The secret angel phase refills HP; report the depleted previous life bar.
-  DevDamage.record('outgoing',position,before,realm===2&&stage===2&&boss.stage===3?0:boss.hp);return true;
+  position.logPhaseReset=realm===2&&stage===2&&boss.stage===3;DevDamage.record('outgoing',position,before,position.logPhaseReset?0:boss.hp);return true;
 }
 function bossMoves(){
   if(realm===0)return ['cleave','dash','doubleCut','jumpCut'];

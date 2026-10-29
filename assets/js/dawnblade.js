@@ -12,7 +12,7 @@ const Dawnblade=(()=>{
   if(state!=='play'||!player||!ready()||HannahEncounter.cinematic()||cooldown>0||cast||player.stun>0||attack>0||dash>0)return false;
   const target=HannahEncounter.finisherTarget();
   cast={victim:player,map:level,face:player.face,elapsed:0,impact:false,target,token:target?.encounterToken};
-  cooldown=HannahRules.tuning.ultimate.cooldown;
+  DevLog.action('ultimate');cooldown=HannahRules.tuning.ultimate.cooldown;
   attack=0;attackElapsed=0;attackHit=true;attackCooldown=Math.max(attackCooldown,1.1);
   player.vx=0;jumpBuffer=0;return true;
  }

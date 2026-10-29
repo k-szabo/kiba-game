@@ -340,3 +340,13 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 #duelLiveStatus{position:absolute;top:135px;left:50%;transform:translateX(-50%);background:#10212be8;padding:8px 20px;font-size:20px;max-width:80%;text-align:center}
 #duelLiveStatus:empty{display:none}
 #duelButton{min-height:48px;font-size:18px}
+
+/* Session-only diagnostics are nonmodal and never become an ARIA live feed. */
+.dev-live-log{position:absolute;right:18px;bottom:18px;z-index:27;width:min(520px,calc(100% - 36px));max-height:min(44vh,420px);display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:2px solid #c2a36b;border-radius:8px;background:#0b1722f5;color:#fff0cf;box-shadow:0 4px 22px #000b;font:16px/1.5 var(--font-ui);text-align:left;pointer-events:auto;overflow:hidden}
+.dev-live-log[hidden]{display:none}.dev-live-log-header{display:grid;gap:8px}.dev-live-log h2{font:700 21px/1.35 var(--font-ui);margin:0;color:#fff0cf;letter-spacing:0}
+.dev-live-log-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}.dev-live-log-controls button{min-height:44px;min-width:64px;padding:8px 12px;font:600 15px/1.4 var(--font-ui);letter-spacing:0;border:1px solid #c2a36b;border-radius:5px;background:#24333b;color:#fff0cf;text-align:center;justify-content:center}
+.dev-live-log-controls label{display:flex;align-items:center;gap:8px;min-height:44px;font:600 15px/1.4 var(--font-ui);color:#fff0cf;cursor:pointer}.dev-live-log-controls input{width:20px;height:20px;accent-color:#e0bd76;flex:none}
+.dev-live-log-info,.dev-live-log-empty{margin:0;font-size:14px;line-height:1.5;color:#efe0bf}.dev-live-log-entries{margin:0;padding:0 5px 0 0;list-style:none;overflow:auto;min-height:52px;max-height:240px;overscroll-behavior:contain;scroll-behavior:auto;overflow-wrap:anywhere;scrollbar-gutter:stable}
+.dev-live-log-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;padding:7px 0;border-top:1px solid #6b6c6880;font-size:15px;line-height:1.5;color:#fff0cf}.dev-live-log-time{font-size:13px;font-variant-numeric:tabular-nums;color:#c9d5e2}.dev-live-log-damage,.dev-live-log-received{color:#ffc9b9}.dev-live-log-preparing,.dev-live-log-attack{color:#ffe09e}.dev-live-log-defeated{color:#c5e8cc}
+.dev-live-log button:focus-visible,.dev-live-log input:focus-visible,.dev-live-log-entries:focus-visible{outline:3px solid #ffe4a2;outline-offset:3px}
+#bossHud>div:has(#devBossHealth:not([hidden])){position:relative;min-height:22px}#devBossHealth{position:absolute;inset:0;display:grid;place-items:center;font:700 14px/1.3 var(--font-ui);color:#fff;text-shadow:0 1px 2px #000,1px 0 2px #000,-1px 0 2px #000;pointer-events:none}#devBossHealth[hidden]{display:none}

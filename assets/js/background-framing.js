@@ -26,5 +26,16 @@ const BackgroundFraming=(()=>{
   images.forEach((image,index)=>{BackgroundMotion.draw(source(image,index),x,(H-height)*.35,widths[index]*height,height);x+=(widths[index]-overlap)*height;});
   return true;
  }
- return Object.freeze({cover,panels});
+ function interior(image,{ground,floor=level.start.y}={}){
+  if(!image?.complete||!image.naturalWidth||!image.naturalHeight||!Number.isFinite(ground)||ground<=0||ground>=image.naturalHeight||!Number.isFinite(floor))return false;
+  // Furniture is foreground geometry: fit the complete room once in world
+  // space, then use exactly the same camera translation as its floor and NPCs.
+  // Jumping, attack shake and camera travel must never change this scale.
+  const worldWidth=Math.max(level.width,viewW),worldHeight=Math.max(level.height,H),
+   scale=Math.max(worldWidth/image.naturalWidth,floor/ground,(worldHeight-floor)/(image.naturalHeight-ground)),
+   width=image.naturalWidth*scale,height=image.naturalHeight*scale;
+  BackgroundMotion.draw(image,(worldWidth-width)/2-camera,floor-ground*scale-cameraY,width,height);
+  return true;
+ }
+ return Object.freeze({cover,panels,interior});
 })();
