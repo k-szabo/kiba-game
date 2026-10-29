@@ -544,6 +544,22 @@
           "en": "Yomi’s guardian no longer skips crossed summoning thresholds after taking heavy damage."
         }
       ]
+    },
+    {
+      "version": "0.9.58_ff870c2e",
+      "code": "ff870c2e",
+      "baseVersion": "0.9.58",
+      "slug": "roast-meat-healing-delta",
+      "summary": {
+        "hu": "A sült hús gyógyulási üzenetének javítása",
+        "en": "Fix roast meat healing feedback"
+      },
+      "fixes": [
+        {
+          "hu": "A sült hús üzenete a ténylegesen visszatöltött HP-t mutatja az aktuális összéleterő helyett.",
+          "en": "Roast meat feedback now shows the HP actually restored instead of your total current health."
+        }
+      ]
     }
   ],
   "releases": [

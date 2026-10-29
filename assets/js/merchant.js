@@ -67,7 +67,7 @@ const Merchant=(()=>{
   const delta=Math.random()<2/3?2:-1,before=player.hp;
   meatCount--;selectAvailable();player.hp=Math.max(Math.min(before,1),Math.min(player.maxHp,player.hp+delta));
   persist();updateHUD();
-  toast(player.hp>before?I18n.format('message.arg0.of.arg1.health',[CampHealth.number(player.hp),CampHealth.number(player.maxHp)]):I18n.t(player.hp<before?'merchant.health.down':'merchant.health.same'));
+  toast(player.hp>before?I18n.format('merchant.health.up',[CampHealth.number(player.hp-before)]):I18n.t(player.hp<before?'merchant.health.down':'merchant.health.same'));
   if(fromInventory)Inventory.render();return true;
  }
  function canDrink(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&teaCount>0&&teaPulses===0;}

@@ -23,7 +23,7 @@ Az érmék a kereskedés pénzneme. A zsákmány automatikusan bekerül a pénzt
 
 A hús vásárláskor nem hat. Elfogyasztáskor egyszer sorsol: ⅔ eséllyel +2 HP, ⅓ eséllyel −1 HP; az eredmény 1 és a maximális HP között marad. A darab akkor is elfogy, ha a korlát miatt a HP nem változik. Szünetben, dialógusban, boltban, más menüben és a prológusban a gyorshasználat tiltott. Az inventory külön fogyasztógombja csak a kiválasztott húsra hat, a háttérben a játék fagyasztva marad. Az utolsó darab után a kijelölés és a fókusz érvényes tárgyra lép.
 
-A hús utáni HP-visszajelzés a közös `CampHealth.number` formázóját használja az aktuális és a maximális értékre is. A páncél miatt keletkezett tört HP szám marad a játékmenetben; a kijelzés nem írja vissza a kerekített szöveget a karakterállapotba.
+A hús gyógyulási üzenete a korlátozás utáni tényleges HP-növekedést (`player.hp - before`) mutatja, nem az új összéleterőt. A maximum közelében ezért +2 HP-nál kisebb értéket is jelezhet. A közös `CampHealth.number` rövid, lokalizált formátumot ad; a páncél miatt keletkezett tört HP megmarad a játékmenetben, a kijelzés nem kerekíti vissza a karakterállapotot. A sebző és változatlan életerős eredmény korábbi üzenete megmarad. Regresszió: `scripts/test-meat-heal-feedback.cjs`.
 
 A minimap az aktuális helyszín közeli párkányait, a már ismert szentélyeket és Momo helyét rajzolja. A titkos területek felfedezésig rejtve maradnak; nincs boss-, tárgy- vagy fogolyjelölő. A nagy térkép és a gyorsutazás vásárlás nélkül is elérhető. A minimap DPR-érzékeny, a játék szünetében nem frissül, a főmenüben és az álomban rejtett.
 
