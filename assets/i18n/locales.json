@@ -1123,7 +1123,10 @@
       "menu.changelog.0958.ad2970f7.2": "A gyógyító gyorshasználat üresen indul, és az első megszerzett gyógyító tárgyat automatikusan kiválasztja.",
       "menu.changelog.0958.ad2970f7.3": "Yomi őrzője nagy sebzés után sem hagyja ki az átlépett idézési küszöböket.",
       "menu.changelog.0958.ff870c2e.title": "A sült hús gyógyulási üzenetének javítása",
-      "menu.changelog.0958.ff870c2e.0": "A sült hús üzenete a ténylegesen visszatöltött HP-t mutatja az aktuális összéleterő helyett."
+      "menu.changelog.0958.ff870c2e.0": "A sült hús üzenete a ténylegesen visszatöltött HP-t mutatja az aktuális összéleterő helyett.",
+      "help.pointerLock": "A játéktérre kattintva az egér a játékhoz rögzül. Az Esc feloldja a rögzítést; a kaland szünetel, a párbaj tovább fut. A menükben az egér szabadon használható.",
+      "menu.changelog.0958.d571f283.title": "Egérrögzítés játék közben",
+      "menu.changelog.0958.d571f283.0": "A játéktérre kattintva az egér nem csúszik ki az ablakból. A menük megnyitása feloldja a rögzítést, az Esc pedig a kalandot is szünetelteti."
     }
   },
   "en": {
@@ -2250,7 +2253,10 @@
       "menu.changelog.0958.ad2970f7.2": "Healing quick use starts empty and automatically selects the first healing item acquired.",
       "menu.changelog.0958.ad2970f7.3": "Yomi’s guardian no longer skips crossed summoning thresholds after taking heavy damage.",
       "menu.changelog.0958.ff870c2e.title": "Fix roast meat healing feedback",
-      "menu.changelog.0958.ff870c2e.0": "Roast meat feedback now shows the HP actually restored instead of your total current health."
+      "menu.changelog.0958.ff870c2e.0": "Roast meat feedback now shows the HP actually restored instead of your total current health.",
+      "help.pointerLock": "Click the play area to lock the mouse to the game. Esc releases the lock; the adventure pauses, while a duel keeps running. The mouse is free in menus.",
+      "menu.changelog.0958.d571f283.title": "Mouse lock during gameplay",
+      "menu.changelog.0958.d571f283.0": "Clicking the play area locks the mouse so it cannot drift outside the window. Opening menus releases the lock, and Esc also pauses the adventure."
     }
   }
 }
