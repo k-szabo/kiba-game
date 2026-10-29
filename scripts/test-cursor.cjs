@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const canvas={},inside={},outside={},game={dataset:{},contains:node=>node===inside||node===canvas};
-const context=vm.createContext({state:'menu',resolutionBlocked:false,canvas,$:()=>game});
+const context=vm.createContext({state:'menu',resolutionBlocked:false,canvas,document:{},$:()=>game});
 vm.runInContext(fs.readFileSync('assets/js/cursor.js','utf8')+'\nglobalThis.cursor=Cursor;',context);
 const update=state=>{context.state=state;context.cursor.update();return game.dataset.gameCursor;};
 assert.equal(update('play'),'hidden');

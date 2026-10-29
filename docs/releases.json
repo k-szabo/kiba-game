@@ -560,6 +560,22 @@
           "en": "Roast meat feedback now shows the HP actually restored instead of your total current health."
         }
       ]
+    },
+    {
+      "version": "0.9.58_d571f283",
+      "code": "d571f283",
+      "baseVersion": "0.9.58",
+      "slug": "gameplay-pointer-lock",
+      "summary": {
+        "hu": "Egérrögzítés játék közben",
+        "en": "Mouse lock during gameplay"
+      },
+      "fixes": [
+        {
+          "hu": "A játéktérre kattintva az egér nem csúszik ki az ablakból. A menük megnyitása feloldja a rögzítést, az Esc pedig a kalandot is szünetelteti.",
+          "en": "Clicking the play area locks the mouse so it cannot drift outside the window. Opening menus releases the lock, and Esc also pauses the adventure."
+        }
+      ]
     }
   ],
   "releases": [

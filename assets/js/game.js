@@ -42,6 +42,7 @@ function resize(){
  $('game').inert=resolutionBlocked;notice.hidden=!resolutionBlocked;
  if(resolutionBlocked&&!wasBlocked)notice.focus();
  if(!resolutionBlocked&&wasBlocked){if(state==='pause')$('resumeButton').focus();else if(resolutionFocus?.isConnected)resolutionFocus.focus();resolutionFocus=null;}
+ Cursor.update();
 }
 addEventListener('resize',resize);resize();
 SaveVault.ready.then(data=>{storageReady=true;saved=data;$('continueButton').hidden=!data;if(SaveVault.notice)toast(I18n.t(SaveVault.notice));if(DevTools.isOpen)DevTools.refresh();});
@@ -404,6 +405,7 @@ function renderHelp(){
  const labels={helpEyebrow:'help.eyebrow',helpTitle:'help.title',helpMoveTitle:'help.move.title',helpMoveBody:'help.move.body',helpFightTitle:'help.fight.title',helpFightBody:'help.fight.body',helpJourneyTitle:'help.journey.title',helpJourneyBody:'help.journey.body',helpBindingsTitle:'help.bindings.title',helpBindingsBody:'help.bindings.body',bindingProfileLabel:'help.bindings.profile',resetBindings:'help.bindings.reset',exportBindings:'help.bindings.export',importBindings:'help.bindings.import',closeHelp:'help.close',pauseHelpButton:'help.pause.button'};
  for(const [id,key] of Object.entries(labels))$(id).textContent=I18n.t(key);$('helpJourneyBody').textContent+=' '+I18n.format('help.inventory.body',[bindingKeyLabel(Bindings.read('inventory')[0])]);
  $('helpFightBody').textContent+=' '+I18n.format('help.attack.body',[bindingKeyLabel(Bindings.read('attack')[0]),bindingKeyLabel(Bindings.read('heavyAttack')[0])]);
+ $('helpFightBody').textContent+=' '+I18n.t('help.pointerLock');
  if(Dawnblade.owned())$('helpFightBody').textContent+=' '+I18n.format('help.dawnblade',[bindingKeyLabel(Bindings.read('ultimate')[0])]);
  $('helpJourneyBody').textContent+=' '+I18n.format('help.merchant.body',[bindingKeyLabel(Bindings.read('useMeat')[0])]);
  const select=$('bindingProfile');select.replaceChildren();
@@ -449,6 +451,7 @@ function handleMouseDown(e){
  }
  // Native menu controls keep their ordinary click behaviour. Only the game
  // canvas supplies held mouse input, through the same action dispatcher.
+ Cursor.request(e);
  if(typeof DuelMode!=='undefined'&&DuelMode.active){if(e.target===canvas&&key&&DuelMode.input(key,true,e.target))e.preventDefault();return;}
  if(state!=='play'||e.target!==canvas||!key||!Bindings.uses(key))return;
  handleKeyDown({key,code:'',repeat:false,target:canvas,preventDefault:()=>e.preventDefault()});
@@ -490,11 +493,12 @@ function handleKeyDown(e){
  if(state==='play'){keys.add(k);pressed.add(k);if(Bindings.read('moveLeft').includes(k))DevLog.action('moveLeft');if(Bindings.read('moveRight').includes(k))DevLog.action('moveRight');}
 }
 function handleKeyUp(e){const k=keyName(e);keys.delete(k);if(typeof DuelMode!=='undefined'&&DuelMode.active)DuelMode.input(k,false,e.target);}
-addEventListener('keydown',handleKeyDown);addEventListener('keyup',handleKeyUp);addEventListener('blur',()=>{keys.clear();pressed.clear();if(state==='play')pause();});
+Cursor.init();
+addEventListener('keydown',e=>{handleKeyDown(e);Cursor.update();});addEventListener('keyup',handleKeyUp);
 // Pointer Events report only the first press and last release of a mouse chord.
 // Record device provenance here; native mouse events dispatch every button.
 addEventListener('pointerdown',recordMousePointerSource,true);
-addEventListener('mousedown',handleMouseDown,true);addEventListener('mouseup',handleMouseUp);addEventListener('pointercancel',handleMouseCancel);
+addEventListener('mousedown',e=>{handleMouseDown(e);Cursor.update();},true);addEventListener('mouseup',handleMouseUp);addEventListener('pointercancel',handleMouseCancel);
 addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
 AssetCache.load(sheet,'assets/images/momo.png',ok=>{if(ok){loadingReady=true;if(DevTools.isOpen)DevTools.refresh();}else toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));});
 AssetCache.load(menuSheet,'assets/images/momo-menu-idle-v2.png');

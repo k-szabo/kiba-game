@@ -101,6 +101,10 @@ const DuelMode=(()=>{
   if(!active)return;clearInput();blocked=resolutionBlocked||document.hidden||!document.hasFocus();
   if(connected&&sim){if(role()==='host')sendState();else send({type:'input',match,round,seq:++seq,input:DuelRules.input(),blocked});}
  }
+ function releasePointer(focus=false){
+  held.clear();pulses.clear();keys.clear();pressed.clear();
+  if(focus&&active&&sim)node('duelMatchLeave').focus();
+ }
  function update(dt,small=false){
   if(!active)return;
   const nextBlocked=small||document.hidden||!document.hasFocus();if(blocked!==nextBlocked){clearInput();blocked=nextBlocked;}
@@ -180,5 +184,5 @@ const DuelMode=(()=>{
   sheet.addEventListener('load',()=>{node('duelButton').disabled=false;});
   document.addEventListener('visibilitychange',focusChanged);addEventListener('blur',focusChanged);addEventListener('focus',focusChanged);addEventListener('pagehide',()=>{if(active)session?.close();});
  }
- return Object.freeze({init,open,leave,update,draw,input,focusChanged,get active(){return active;}});
+ return Object.freeze({init,open,leave,update,draw,input,focusChanged,releasePointer,get pointerPlayable(){return active&&connected&&!!sim&&sim.winner===null&&!finished&&!blocked;},get active(){return active;}});
 })();
