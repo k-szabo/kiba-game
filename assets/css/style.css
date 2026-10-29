@@ -316,3 +316,27 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 
 /* Large point-budget health totals must leave the desktop HUD controls reachable. */
 #health .health-count{font-family:'Kiba UI',sans-serif;letter-spacing:0;font-size:20px;margin-left:8px;color:#fff0cf}
+
+/* Reuses the existing dark/gold panels; all duel controls stay desktop-sized. */
+.duel-panel{max-width:760px;max-height:calc(100vh - 48px);overflow:auto;padding:28px 36px;font-size:17px;line-height:1.55}
+.duel-panel h2{font-size:34px;line-height:1.2;margin:0 0 18px}
+.duel-panel label{display:block;margin-top:15px;font-weight:700;color:#fff0cf}
+.duel-panel select,.duel-panel input{display:block;width:100%;min-height:48px;font-size:19px;padding:10px 14px;background:#172b35;color:#fff0cf;border:1px solid #bd9a59}
+#duelCode{font-family:var(--font-ui);letter-spacing:.15em;text-transform:uppercase}
+.duel-actions{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+.duel-actions button,.duel-panel>button{flex:1;min-height:48px;font-size:17px;padding:10px 16px}
+#duelStatus{min-height:2em;color:#ffe7b4}
+#duelHUD{position:absolute;inset:0;z-index:24;pointer-events:none;color:#fff0cf}
+.duel-match-header{display:flex;align-items:center;gap:20px;margin:20px;background:#10212bed;border:1px solid #b79a60;padding:16px;font-size:17px}
+.duel-health{flex:1;min-width:0;display:grid;grid-template-columns:1fr auto;gap:6px 12px}
+.duel-health strong{grid-column:1/-1;overflow-wrap:anywhere}
+.duel-health progress{width:100%;height:18px;accent-color:#c28471;align-self:center}
+#duelScore{max-width:250px;text-align:center}
+#duelMatchLeave,.duel-result button{pointer-events:auto;min-height:48px;font-size:17px;padding:10px 16px}
+.duel-result{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);padding:20px 36px;border:1px solid #ddbd80;background:#10212bf5;text-align:center;pointer-events:auto;min-width:330px}
+.duel-result h2{font-size:32px;margin:0 0 12px}
+.duel-match-footer{position:absolute;bottom:14px;left:20px;right:20px;background:#10212be8;padding:8px 14px;font-size:15px;line-height:1.5;text-align:center}
+.duel-match-footer p{margin:3px 0}
+#duelLiveStatus{position:absolute;top:135px;left:50%;transform:translateX(-50%);background:#10212be8;padding:8px 20px;font-size:20px;max-width:80%;text-align:center}
+#duelLiveStatus:empty{display:none}
+#duelButton{min-height:48px;font-size:18px}

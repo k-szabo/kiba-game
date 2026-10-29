@@ -8,3 +8,4 @@
 *.md text eol=lf
 *.json text eol=lf
 *.png binary
+assets/vendor/peerjs-LICENSE text eol=lf

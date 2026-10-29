@@ -240,6 +240,17 @@ const Visuals = (() => {
     ctx.drawImage(images.terrain, sourceX, rect.y, sourceWidth, rect.h, sourceX,rect.y,sourceWidth,rect.h);
     ctx.restore();
   }
+  // Duel geometry has its own arena coordinates and must not read journey globals.
+  function duelTerrain(items,realmId){
+    const row=ART_FRAMES.terrain[realmId===3?1:realmId];
+    for(const p of items){
+      const height=p.h>=60?130:realmId===2?90:70,cap=Math.min(65,p.w*.22);
+      tile(row[0],p.x,p.y,cap,height);
+      ctx.save();ctx.beginPath();ctx.rect(p.x+cap-1,p.y-90,p.w-cap*2+2,height+180);ctx.clip();
+      for(let x=p.x+cap-1;x<p.x+p.w-cap;x+=128)tile(row[1],x,p.y,130,height);
+      ctx.restore();tile(row[2],p.x+p.w-cap,p.y,cap,height);
+    }
+  }
   function terrain(r, items) {
     for (const p of items) {
       const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
@@ -589,8 +600,8 @@ const Visuals = (() => {
     const fade=.85*Math.min(1,progress/.12,(1-progress)/.25);
     paint(index,fade*(1-mix));if(index+1<frames.length)paint(index+1,fade*mix);
   }
-  function momoSlash(x,feet,height,elapsed,face,kind='normal'){
-    const loadout=ART_LOADOUTS[weaponStyle];
+  function momoSlash(x,feet,height,elapsed,face,kind='normal',style=weaponStyle){
+    const loadout=ART_LOADOUTS[style];
     if(loadout){
       const clip=loadout[kind],duration=SWORD_ATTACKS[kind].duration;
       const marks=kind==='heavy'?[0,.1,.25,.38,.5,.72,.9]:[0,.05,.11,.16,.24,.34,.42];
@@ -618,9 +629,9 @@ const Visuals = (() => {
     ctx.drawImage(images[prop.image],-prop.gripX,-prop.gripY);
     ctx.restore();
   }
-  function momoCarry(x,feet,height,face){
-    const art=ART_LOADOUTS[weaponStyle];if(!art)return;
-    if(weaponStyle==='naginata'){
+  function momoCarry(x,feet,height,face,style=weaponStyle){
+    const art=ART_LOADOUTS[style];if(!art)return;
+    if(style==='naginata'){
       weaponStamp(art,{bodyHeight:96,anchorX:0,anchorY:0,gripX:-12,gripY:-45,weaponAngle:-1.2},x,feet,height,face);
     }else if(usable('inventoryStarterWeapons')){
       // Source-space ellipse excludes the separate sword beside the shield.
@@ -849,5 +860,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
+  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,duelTerrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
 })();

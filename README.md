@@ -29,6 +29,8 @@ A **Kiba Birodalmak** böngészőben játszható, 2D metroidvania: kardharc, pla
 
 ## Játékmenet
 
+- **Párbaj Birodalmakon Át:** Kóddal megosztható kétszemélyes párbaj indítható a főmenüből, választható fegyverekkel és a meglévő világokból kialakított véletlen arénával. A mérkőzést két megnyert menet dönti el.
+
 - **Játszható prológus:** egy néma árnyvilágban Momo egyedül keresi a továbbvezető utat. A fekete lyuknál egy hatalmas, füstbe burkolózó entitás, Árnyék vár rá.
 - **Kard és szellemlépés:** animált kardcsapások, kitérés és eltérő támadási mintájú ellenfelek. Az őrzők előre jelzik a veszélyes támadásokat.
 - **Új képességek, új utak:** a kettős ugrás, a szellemlépés és a hajnalkard a kaland során válik elérhetővé.
