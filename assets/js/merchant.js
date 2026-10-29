@@ -15,12 +15,12 @@ const Merchant=(()=>{
  const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
  const consumed=id=>{const by=ART_INVENTORY.items[id]?.consumedBy;return !!by&&flags[by.realm].includes(by.id);};
  const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
- function selectAvailable(){if(!stock(quickHeal)){const other=healingItems.find(id=>stock(id)>0);if(other)quickHeal=other;}}
+ function selectAvailable(){if(!healingItems.includes(quickHeal)||!stock(quickHeal))quickHeal=healingItems.find(id=>stock(id)>0)??null;return quickHeal;}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
   quickHeal=id;persist();Inventory.render();return true;
  }
- function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();return quickHeal==='roastChicken'?FiaQuest.eat():quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
+ function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();if(quickHeal===null)return false;return quickHeal==='roastChicken'?FiaQuest.eat():quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
  function addStock(id){
   if(dungeonItem(id))return DungeonRun.addItem(id);
   if(![...healingItems,'forestHerb'].includes(id)||!Number.isSafeInteger(stock(id))||stock(id)<0||stock(id)>=Number.MAX_SAFE_INTEGER)return false;

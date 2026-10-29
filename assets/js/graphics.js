@@ -54,8 +54,9 @@ const Visuals = (() => {
     ctx.translate(x, feet + bob);
     ctx.scale(face * (1 + stretch), 1 - stretch * .5);
     ctx.scale(s,s);ctx.translate(-rect.anchorX,-rect.anchorY);sourceClip(rect);
-    ctx.drawImage(image, rect.x, rect.y, rect.w, rect.h,
-      rect.x,rect.y,rect.w,rect.h);
+    if(typeof DuelAppearance!=='undefined'&&/^momo(Slash|Heavy|NaginataNormal|NaginataHeavy|ShieldNormal|ShieldHeavy)$/.test(key))
+      DuelAppearance.paint(ctx,image,rect.x,rect.y,rect.w,rect.h,rect.x,rect.y,rect.w,rect.h,{top:rect.anchorY-(rect.bodyHeight||rect.h),bottom:rect.anchorY-(rect.bodyHeight||rect.h)*.4});
+    else ctx.drawImage(image,rect.x,rect.y,rect.w,rect.h,rect.x,rect.y,rect.w,rect.h);
     ctx.restore();
   }
   function shadow(x, y, width, alpha = .3) {

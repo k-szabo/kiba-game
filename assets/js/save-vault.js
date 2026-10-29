@@ -28,7 +28,7 @@ const SaveVault=(()=>{
   if(data.location!=null&&(typeof data.location!=='string'||!Object.hasOwn(SIDE_LOCATIONS,data.location)))throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
   const chickenCount=Object.hasOwn(data,'chickenCount')?data.chickenCount:0;if(!integer(chickenCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid chicken inventory');
-  if(!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
+  if(data.quickHeal!==null&&!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
   const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
   if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
   for(const [key,length] of [['abilities',2],['defeated',levels.length]])if(!Array.isArray(data[key])||data[key].length!==length||data[key].some(v=>typeof v!=='boolean'))throw Error('Invalid abilities');

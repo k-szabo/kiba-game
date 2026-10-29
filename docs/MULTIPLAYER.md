@@ -76,3 +76,9 @@ Minden új menet megvárja a vendég aktuális menethez tartozó elérhetőségi
 `npm run test:duel` futtatja a három célzott tesztet: fizika/harc több képkockasebességen, hálózati életciklus/protokoll, valamint készenlét/pontozás/menetváltás/visszavágó/lejárt bemenet. A `QA-DUEL-001` regresszió a készenlét után háttérbe tett vendég indulási versenyhelyzetét is lefedi.
 
 A 0.9.57 kiadáshoz két friss Edge-folyamat valódi nyilvános PeerServer Cloud és WebRTC kapcsolatával ellenőriztük a kódos csatlakozást, vendégmozgást, normál/erős támadást, egyéni kiosztást, menetváltást, visszavágót és megszakítást. HU/EN felületet, 1280×720 és 1920×1080 nézetet, valamint asztali zoomot használtunk. A háttérbe tett vendég indulását kontrollált böngészős láthatósággal, a kis nézetet tényleges ablakátméretezéssel vizsgáltuk. A szintetikus történeti mentés titkosított rekordja és futásbeli állapota változatlan maradt, valódi IndexedDB-újratöltés után is. Ez két helyi böngésző kapcsolata; különböző internetes hálózatok NAT-viselkedését nem bizonyítja.
+
+## Játékosjelzés és fejpántok
+
+A lobby a verzióellenőrzött PeerSession hello/ack után két Momo-ikonnal jelzi a kapcsolatot, a készenlétet külön szöveg és pipa mutatja. Új kapcsolatnál, hibánál, bontáskor és fegyverváltáskor a vonatkozó készenléti állapot törlődik. A gombok közös 280×48 CSS-pixeles méretet és megjelenést használnak, a panel a minimum asztali nézetben is görgethető.
+
+A házigazda 0. játékosa piros, a vendég 1. játékosa kék fejpántot visel; a színkiosztás mindkét gépen azonos, és az ikonokhoz, HUD-nevekhez és harci pózokhoz is tartozik. A `duel-appearance.js` a meglévő képkockák fejterületének vörös fejpántját rendereléskor színezi, a forrásképek és a harci geometria változatlanok. A szőr, a nyelv, a páncél és az alfa megmarad; a színváltozatok cache-e legfeljebb 48 kivágást és 6 megapixelt őriz. A normál kalandban nincs színcsere. Regresszió: `test-duel-lobby-ui.cjs`, `test-duel-appearance.cjs`.

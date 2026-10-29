@@ -197,11 +197,12 @@ function transformAngel(stage){
 function checkBossHealth(){
   if(boss.dead)return;
   if(realm===1&&level===levels[1]&&bossStarted&&!defeated[1]){
-    // This also protects scripted/oversized damage paths that call health checks.
-    if(!boss.shelterTriggered&&boss.hp<=boss.max*.5){boss.hp=boss.max*.5;queueYomiThresholds();startYomiLavaWave('shelter');return;}
     if(boss.yomiStage==='shelter'){boss.hp=Math.max(boss.max*.5,boss.hp);return;}
-    if(!boss.raceTriggered&&boss.hp<=boss.max*.1){boss.hp=boss.max*.1;queueYomiThresholds();startYomiLavaWave('race');return;}
+    // Accepted burst damage may cross several summon milestones. Capture them
+    // before mandatory lava phases clamp HP upward and hide the crossed values.
     queueYomiThresholds();
+    if(!boss.shelterTriggered&&boss.hp<=boss.max*.5){boss.hp=boss.max*.5;startYomiLavaWave('shelter');return;}
+    if(!boss.raceTriggered&&boss.hp<=boss.max*.1){boss.hp=boss.max*.1;startYomiLavaWave('race');return;}
   }
   if(realm===2&&boss.stage===1&&boss.hp<=boss.max*.5){transformAngel(2);return;}
   if(boss.hp>0)return;

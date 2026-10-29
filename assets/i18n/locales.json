@@ -1113,7 +1113,15 @@
       "menu.changelog.0958.0": "A kovácsműhely, az erdei kunyhó és a misztikus sátor berendezése a tereppel együtt mozog.",
       "menu.changelog.0958.1": "A démon lord szívjutalma csak a megfelelő történeti befejezésnél jár.",
       "menu.changelog.0958.2": "Haru neve a feje fölé került, Fia pedig a trónteremben is névjelzést kapott.",
-      "menu.changelog.0958.3": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0958.3": "Belső karbantartás és technikai fejlesztések.",
+      "duel.connected": "Csatlakozott",
+      "duel.notReady": "Még nem áll készen",
+      "duel.readyStatus": "Készen áll",
+      "menu.changelog.0958.ad2970f7.title": "Párbaj és kalandjavítások",
+      "menu.changelog.0958.ad2970f7.0": "A párbajablak gombjai egységes méretet kaptak; külön jelzés mutatja a játékosok csatlakozását és készenlétét.",
+      "menu.changelog.0958.ad2970f7.1": "Az öreg kultista barlangjának fala csak a hozzá vezető alsó megközelítésből törhető át.",
+      "menu.changelog.0958.ad2970f7.2": "A gyógyító gyorshasználat üresen indul, és az első megszerzett gyógyító tárgyat automatikusan kiválasztja.",
+      "menu.changelog.0958.ad2970f7.3": "Yomi őrzője nagy sebzés után sem hagyja ki az átlépett idézési küszöböket."
     }
   },
   "en": {
@@ -2230,7 +2238,15 @@
       "menu.changelog.0958.0": "Furnishings in the forge, forest hut and mystic tent now stay aligned with the terrain.",
       "menu.changelog.0958.1": "The Demon Lord’s Heart is awarded only for the appropriate story ending.",
       "menu.changelog.0958.2": "Haru’s name now appears above his head, and Fia also has a nameplate in the throne hall.",
-      "menu.changelog.0958.3": "Internal maintenance and technical improvements."
+      "menu.changelog.0958.3": "Internal maintenance and technical improvements.",
+      "duel.connected": "Connected",
+      "duel.notReady": "Not ready",
+      "duel.readyStatus": "Ready",
+      "menu.changelog.0958.ad2970f7.title": "Duel and adventure fixes",
+      "menu.changelog.0958.ad2970f7.0": "Duel window buttons now have consistent dimensions; separate indicators show player connections and readiness.",
+      "menu.changelog.0958.ad2970f7.1": "The elder cultist’s cave wall can only be broken from its lower approach.",
+      "menu.changelog.0958.ad2970f7.2": "Healing quick use starts empty and automatically selects the first healing item acquired.",
+      "menu.changelog.0958.ad2970f7.3": "Yomi’s guardian no longer skips crossed summoning thresholds after taking heavy damage."
     }
   }
 }

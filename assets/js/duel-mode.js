@@ -24,27 +24,27 @@ const DuelMode=(()=>{
  function error(detail){connected=false;clearInput();const old=session;session=null;epoch++;old?.close();ready=[false,false];setStatus('duel.error.'+(Object.hasOwn({invalid:1,full:1,version:1,unsupported:1},detail)?detail:'connection'));}
  function open(){
   if(state!=='menu'||resolutionBlocked||DevSession.active||!loadingReady)return false;
-  active=true;epoch++;sim=null;session=null;connected=false;statusKey='duel.waiting';loadouts=['katana','katana'];ready=[false,false];finished=false;match=0;scores=[0,0];round=1;clearInput();
+  active=true;epoch++;sim=null;session=null;local=0;connected=false;statusKey='duel.waiting';loadouts=['katana','katana'];ready=[false,false];finished=false;match=0;scores=[0,0];round=1;clearInput();
   state='duel';node('menu').hidden=true;showHUD(false);node('duelPanel').hidden=false;node('duelHUD').hidden=true;node('duelWeapon').value='katana';node('duelCode').value='';render();node('duelCreate').focus();return true;
  }
  function leave(){
-  if(!active)return false;active=false;epoch++;const old=session;session=null;old?.close();sim=null;connected=false;clearInput();
+  if(!active)return false;active=false;epoch++;const old=session;session=null;old?.close();sim=null;connected=false;ready=[false,false];clearInput();
   node('duelPanel').hidden=true;node('duelHUD').hidden=true;node('duelResult').hidden=true;mainMenu();node('duelButton').focus();return true;
  }
  async function connect(host){
   if(!active||session)return false;
   const code=node('duelCode').value.trim().toUpperCase();
   if(!host&&!PeerSession.validCode(code)){setStatus('duel.error.invalid');return false;}
-  const token=++epoch;setStatus('duel.connecting');node('duelCreate').disabled=true;node('duelJoin').disabled=true;
+  const token=++epoch;local=host?0:1;ready=[false,false];connected=false;setStatus('duel.connecting');node('duelCreate').disabled=true;node('duelJoin').disabled=true;
   try{
    const Peer=await loadPeer();if(!active||token!==epoch)return false;
    session=PeerSession.create({Peer,version:GAME_RELEASE.version,onState:(next,detail)=>{
     if(!active||token!==epoch)return;
     if(next==='connected'){
-     connected=true;local=host?0:1;lastRemote=now();loadouts[local]=selected();node('duelCode').value=session.code;setStatus('duel.waiting');sendLoadout();
+     connected=true;ready=[false,false];lastRemote=now();loadouts[local]=selected();node('duelCode').value=session.code;setStatus('duel.waiting');sendLoadout();
     }else if(next==='waiting'){node('duelCode').value=session?.code||'';setStatus('duel.waiting');}
     else if(next==='error')error(detail);
-    else if(next==='closed'){connected=false;clearInput();setStatus('duel.disconnected');}
+    else if(next==='closed'){connected=false;ready=[false,false];clearInput();setStatus('duel.disconnected');}
    },onMessage:data=>{if(active&&token===epoch)receive(data);}});
    if(host)session.host();else session.join(code);render();return true;
   }catch{if(active&&token===epoch){session?.close();session=null;error('connection');}return false;}
@@ -129,6 +129,7 @@ const DuelMode=(()=>{
   node('duelStatus').textContent=tr(statusKey);node('duelCode').readOnly=!!session;node('duelCreate').disabled=!!session;node('duelJoin').disabled=!!session;
   node('duelWeapon').disabled=ready[local]||!!sim;node('duelReady').disabled=!connected||ready[local]||!!sim;
   node('duelReady').setAttribute('aria-pressed',String(ready[local]));
+  renderParticipants();
   if(!sim)return;
   node('duelScore').textContent=tr('duel.score',[round,scores[local],scores[1-local]]);
   for(let i=0;i<2;i++){const p=sim.players[i],label=node('duelFighter'+i),health=node('duelHealth'+i);label.textContent=tr(i===local?'duel.you':'duel.opponent')+' · '+tr('weapon.'+p.weapon+'.name');health.max=p.maxHp;health.value=p.hp;health.setAttribute('aria-label',label.textContent+' '+CampHealth.number(p.hp)+' / '+p.maxHp);node('duelHP'+i).textContent=CampHealth.number(p.hp)+' / '+p.maxHp;}
@@ -139,6 +140,20 @@ const DuelMode=(()=>{
   node('duelLiveStatus').textContent=!connected?tr(statusKey):(blocked||remoteBlocked)?tr('binding.action.pause'):'';
   node('duelInputHints').textContent=['moveLeft','moveRight','jump','dash','attack','heavyAttack'].map(action=>bindingKeyLabel(Bindings.read(action)[0])+' · '+tr('binding.action.'+action)).join('   |   ');
  }
+ function renderParticipants(){
+  // PeerSession emits connected only after the versioned hello/ack exchange.
+  // A generated room code, signaling socket or stale ready bit is insufficient.
+  const waiting=statusKey==='duel.connecting'?'duel.connecting':statusKey==='duel.disconnected'||statusKey.startsWith('duel.error.')?'duel.disconnected':'duel.waiting';
+  const attribute=(element,key,value)=>{if(element.getAttribute?.(key)!==value)element.setAttribute(key,value);},text=(element,value)=>{if(element.textContent!==value)element.textContent=value;};
+  attribute(node('duelParticipants'),'aria-live','polite');
+  for(const [suffix,index,label]of [['Local',local,'duel.you'],['Remote',1-local,'duel.opponent']]){
+   const row=node('duelParticipant'+suffix),icon=node('duelParticipant'+suffix+'Icon'),status=node('duelParticipant'+suffix+'Ready');
+   DuelAppearance.icon(icon,index);attribute(row,'data-team',String(index));attribute(row,'data-connected',String(connected));attribute(row,'data-ready',String(connected&&ready[index]));if(icon.hidden!==!connected)icon.hidden=!connected;
+   text(node('duelParticipant'+suffix+'Name'),tr(label));
+   text(node('duelParticipant'+suffix+'Connection'),tr(connected?'duel.connected':waiting));
+   if(status.hidden!==!connected)status.hidden=!connected;text(status,connected&&ready[index]?'✓ '+tr('duel.readyStatus'):tr('duel.notReady'));
+  }
+ }
  function draw(){
   if(!active)return false;
   const arena=sim?DuelRules.arenas[sim.arena]:DuelRules.arenas[0],image=Visuals.images[['japanBackdrop','yomiBackdrop','heavenBackdrop','shadowBackdrop'][arena.realm]];
@@ -146,15 +161,15 @@ const DuelMode=(()=>{
   if(image?.complete&&image.naturalWidth){const cover=Math.max(viewW/image.naturalWidth,H/image.naturalHeight);ctx.drawImage(image,(viewW-image.naturalWidth*cover)/2,(H-image.naturalHeight*cover)/2,image.naturalWidth*cover,image.naturalHeight*cover);}
   ctx.fillStyle='#08121938';ctx.fillRect(0,0,viewW,H);
   if(sim){ctx.translate((viewW-1280)/2,0);Visuals.duelTerrain(arena.platforms,arena.realm);
-   for(let i=0;i<2;i++){
+   for(let i=0;i<2;i++)DuelAppearance.scope(i,()=>{
     const p=sim.players[i],x=p.x+p.w/2,feet=p.y+p.h;
     ctx.save();ctx.globalAlpha=p.hp<=0?.4:p.inv>0?.8:1;
     if(p.dashTime>0&&!reducedMotion.matches)Visuals.dashTrail(x-p.face*20,feet-35,p.face,1-p.dashTime/.16);
     if(p.attack)Visuals.momoSlash(x,feet,96,p.attack.elapsed/WeaponStyles.profile(p.weapon).tempo,p.attack.face,p.attack.kind,p.weapon);
     else{const row=!p.onGround?4:Math.abs(p.vx)>35?(p.face>0?1:2):0,frame=row===4?(p.vy< -260?1:p.vy<100?2:3):Math.floor(p.animationTime*(row===0?5:12))%(row===0?6:8);if(p.weapon==='naginata')Visuals.momoCarry(x,feet,96,p.face,p.weapon);drawMomo(x,feet,96,row,reducedMotion.matches?0:frame,p.face);if(p.weapon==='swordShield')Visuals.momoCarry(x,feet,96,p.face,p.weapon);}
-    ctx.restore();ctx.fillStyle=i===local?'#9ae6dd':'#ffd383';ctx.strokeStyle='#10212b';ctx.lineWidth=4;ctx.font='700 16px "Kiba UI",sans-serif';ctx.textAlign='center';const title=tr(i===local?'duel.you':'duel.opponent');ctx.strokeText(title,x,p.y-38);ctx.fillText(title,x,p.y-38);
+    ctx.restore();ctx.fillStyle=i===0?'#ffaaa0':'#a9ceff';ctx.strokeStyle='#10212b';ctx.lineWidth=4;ctx.font='700 16px "Kiba UI",sans-serif';ctx.textAlign='center';const title=tr(i===local?'duel.you':'duel.opponent');ctx.strokeText(title,x,p.y-38);ctx.fillText(title,x,p.y-38);
     if(p.attack&&p.attack.elapsed<p.attack.impact){const box=WeaponStyles.hitbox(p.weapon,p,p.attack.face);ctx.save();ctx.strokeStyle='#ffd383';ctx.lineWidth=2;ctx.setLineDash([7,5]);ctx.strokeRect(box.x,box.y,box.w,box.h);ctx.restore();}
-   }
+   });
   }ctx.restore();return true;
  }
  function init(){

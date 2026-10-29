@@ -46985,6 +46985,13 @@
         "dynamic": false
       },
       {
+        "value": "#10212b",
+        "lines": [
+          328
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#10212be8",
         "lines": [
           338,
@@ -47236,6 +47243,13 @@
         "dynamic": false
       },
       {
+        "value": "#243c45",
+        "lines": [
+          327
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#243e48",
         "lines": [
           99,
@@ -47326,6 +47340,13 @@
           139,
           218,
           303
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#36545e",
+        "lines": [
+          327
         ],
         "dynamic": false
       },
@@ -47451,6 +47472,13 @@
         "dynamic": false
       },
       {
+        "value": "#91a8ad",
+        "lines": [
+          328
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#a5262b",
         "lines": [
           247
@@ -47477,6 +47505,13 @@
         "value": "#a99060",
         "lines": [
           145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a9ceff",
+        "lines": [
+          354
         ],
         "dynamic": false
       },
@@ -47531,9 +47566,17 @@
         "dynamic": false
       },
       {
+        "value": "#badba8",
+        "lines": [
+          328
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#bd9a59",
         "lines": [
-          324
+          324,
+          327
         ],
         "dynamic": false
       },
@@ -47787,6 +47830,13 @@
         "dynamic": false
       },
       {
+        "value": "#d7efc8",
+        "lines": [
+          328
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#d8bd80",
         "lines": [
           227
@@ -47977,6 +48027,13 @@
         "lines": [
           80,
           86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e1c489",
+        "lines": [
+          327
         ],
         "dynamic": false
       },
@@ -48257,9 +48314,23 @@
         "dynamic": false
       },
       {
+        "value": "#f7edd6",
+        "lines": [
+          328
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#f9d989",
         "lines": [
           64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffaaa0",
+        "lines": [
+          354
         ],
         "dynamic": false
       },
@@ -48371,6 +48442,7 @@
         "lines": [
           295,
           300,
+          327,
           351
         ],
         "dynamic": false
@@ -48475,6 +48547,7 @@
           318,
           323,
           324,
+          327,
           329,
           345,
           346,
@@ -48820,22 +48893,22 @@
       {
         "value": "#b087dd",
         "lines": [
-          544
+          545
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          402
+          403
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          364,
-          398
+          365,
+          399
         ],
         "dynamic": false
       },
@@ -48849,29 +48922,29 @@
       {
         "value": "#cf8aff",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          275
+          276
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          388
+          389
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          333,
-          384
+          334,
+          385
         ],
         "dynamic": false
       },
@@ -48885,21 +48958,21 @@
       {
         "value": "#ffe6a2",
         "lines": [
-          543
+          544
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          528
+          529
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          393
+          394
         ],
         "dynamic": false
       }
@@ -48981,40 +49054,47 @@
         "dynamic": false
       }
     ],
+    "assets/js/duel-appearance.js": [],
     "assets/js/duel-mode.js": [
       {
         "value": "#08121938",
         "lines": [
-          147
+          162
         ],
         "dynamic": false
       },
       {
         "value": "#101b20",
         "lines": [
-          145
+          160
         ],
         "dynamic": false
       },
       {
         "value": "#10212b",
         "lines": [
-          155
+          170
         ],
         "dynamic": false
       },
       {
-        "value": "#9ae6dd",
+        "value": "#a9ceff",
         "lines": [
-          155
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffaaa0",
+        "lines": [
+          170
         ],
         "dynamic": false
       },
       {
         "value": "#ffd383",
         "lines": [
-          155,
-          156
+          171
         ],
         "dynamic": false
       }
@@ -49530,750 +49610,54 @@
       {
         "value": "#050c1200",
         "lines": [
-          65
+          66
         ],
         "dynamic": false
       },
       {
         "value": "#050c12bb",
         "lines": [
-          65
+          66
         ],
         "dynamic": false
       },
       {
         "value": "#070e18",
         "lines": [
-          493
+          494
         ],
         "dynamic": false
       },
       {
         "value": "#07111c",
         "lines": [
-          518
+          519
         ],
         "dynamic": false
       },
       {
         "value": "#080512",
         "lines": [
-          466
+          467
         ],
         "dynamic": false
       },
       {
         "value": "#08121cdd",
         "lines": [
-          517
+          518
         ],
         "dynamic": false
       },
       {
         "value": "#0a172bcc",
         "lines": [
-          478
+          479
         ],
         "dynamic": false
       },
       {
         "value": "#0d1b29ed",
-        "lines": [
-          128,
-          137
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#0e202c",
-        "lines": [
-          106,
-          118
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#0e202c00",
-        "lines": [
-          118
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#100e20ed",
-        "lines": [
-          345
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#102236",
-        "lines": [
-          716
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#10283fee",
-        "lines": [
-          491,
-          497
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#11252d30",
-        "lines": [
-          175
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#112b3fee",
-        "lines": [
-          448
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#122739df",
-        "lines": [
-          516
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#132b42d9",
-        "lines": [
-          757
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#140c2028",
-        "lines": [
-          175
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#142b3f",
-        "lines": [
-          859
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#160f16",
-        "lines": [
-          208
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#163847dd",
-        "lines": [
-          686
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#170f27",
-        "lines": [
-          700
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#171020c7",
-        "lines": [
-          787
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#172b42e8",
-        "lines": [
-          469
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#182025",
-        "lines": [
-          573
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#183246e8",
-        "lines": [
-          383
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#193549b8",
-        "lines": [
-          368
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#234559cc",
-        "lines": [
-          675
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#24314820",
-        "lines": [
-          175
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#251339",
-        "lines": [
-          847
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#253c5899",
-        "lines": [
-          720
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#26374d",
-        "lines": [
-          460
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#326e8fa3",
-        "lines": [
-          662
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#455764ad",
-        "lines": [
-          280
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#526673d9",
-        "lines": [
-          279
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#72b4c9af",
-        "lines": [
-          662
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#83749f",
-        "lines": [
-          191
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#8b764eaa",
-        "lines": [
-          546
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#9b626b88",
-        "lines": [
-          558
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a5787d",
-        "lines": [
-          191
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a893d0",
-        "lines": [
-          202
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#a8e8ff",
-        "lines": [
-          666
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#aa77dd00",
-        "lines": [
-          708
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#aab6b1b8",
-        "lines": [
-          284
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ab83d955",
-        "lines": [
-          708
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#abb78d66",
-        "lines": [
-          292
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#b5a777",
-        "lines": [
-          556
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#b683ff",
-        "lines": [
-          847
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c293dd",
-        "lines": [
-          808
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c393ff",
-        "lines": [
-          458
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c39ae7",
-        "lines": [
-          507
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c596ffad",
-        "lines": [
-          708
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c7f2ffbb",
-        "lines": [
-          676
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#c9d0cb62",
-        "lines": [
-          278
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#cda6ef",
-        "lines": [
-          349
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d0af77",
-        "lines": [
-          843
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d0f5ffcc",
-        "lines": [
-          681
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d199aa55",
-        "lines": [
-          292
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d1c9acaf",
-        "lines": [
-          584
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d8bd827d",
-        "lines": [
-          760
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d8c998bb",
-        "lines": [
-          284
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d99583",
-        "lines": [
-          479
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d9a9ff",
-        "lines": [
-          847
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#d9dfd4",
-        "lines": [
-          845
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#dd744a00",
-        "lines": [
-          556
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ddba72",
-        "lines": [
-          479
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e0b9ff",
-        "lines": [
-          701
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e1778800",
-        "lines": [
-          828
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e4f7ffbc",
-        "lines": [
-          668
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e5a184",
-        "lines": [
-          202
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e6b0fa22",
-        "lines": [
-          512
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e6c6ff",
-        "lines": [
-          350
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#e7616355",
-        "lines": [
-          827
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ed896700",
-        "lines": [
-          827
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#edcd88",
-        "lines": [
-          808
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ef8b65",
-        "lines": [
-          202
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f2e3b9",
-        "lines": [
-          844
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3be9b11",
-        "lines": [
-          827
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3d8ac",
-        "lines": [
-          512,
-          695
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f3dbaf",
-        "lines": [
-          373
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f5df9f",
-        "lines": [
-          368
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f6a47580",
-        "lines": [
-          556
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#f7c0a4",
-        "lines": [
-          716
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ff7850",
-        "lines": [
-          288
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ff9c6238",
-        "lines": [
-          720
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffac69",
-        "lines": [
-          288
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffb385",
-        "lines": [
-          458
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffb889",
-        "lines": [
-          720
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffcc89",
-        "lines": [
-          494
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffd5a2",
-        "lines": [
-          828
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe098",
-        "lines": [
-          458
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe0a2",
-        "lines": [
-          507
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe0a229",
-        "lines": [
-          750
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe2a0",
-        "lines": [
-          556,
-          750
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe5a2",
-        "lines": [
-          757
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6a300",
-        "lines": [
-          662
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6a79c",
-        "lines": [
-          668
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe6adbb",
-        "lines": [
-          708
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe8a6",
-        "lines": [
-          685
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#ffe8b98c",
-        "lines": [
-          292
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0b3",
-        "lines": [
-          452,
-          681
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0ba",
-        "lines": [
-          384
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0bc",
-        "lines": [
-          449
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0bd",
-        "lines": [
-          492,
-          497,
-          498,
-          501,
-          720
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0c8",
-        "lines": [
-          350
-        ],
-        "dynamic": false
-      },
-      {
-        "value": "#fff0cc",
         "lines": [
           129,
           138
@@ -50281,51 +49665,747 @@
         "dynamic": false
       },
       {
-        "value": "#fff0ce",
+        "value": "#0e202c",
         "lines": [
-          711
+          107,
+          119
         ],
         "dynamic": false
       },
       {
-        "value": "#fff3e3",
+        "value": "#0e202c00",
+        "lines": [
+          119
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100e20ed",
+        "lines": [
+          346
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102236",
+        "lines": [
+          717
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10283fee",
+        "lines": [
+          492,
+          498
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11252d30",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#112b3fee",
+        "lines": [
+          449
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#122739df",
+        "lines": [
+          517
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132b42d9",
+        "lines": [
+          758
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#140c2028",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142b3f",
+        "lines": [
+          860
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#160f16",
+        "lines": [
+          209
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#163847dd",
+        "lines": [
+          687
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#170f27",
+        "lines": [
+          701
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#171020c7",
+        "lines": [
+          788
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#172b42e8",
+        "lines": [
+          470
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#182025",
+        "lines": [
+          574
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#183246e8",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#193549b8",
+        "lines": [
+          369
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#234559cc",
+        "lines": [
+          676
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#24314820",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#251339",
         "lines": [
           848
         ],
         "dynamic": false
       },
       {
-        "value": "#fff4c9",
+        "value": "#253c5899",
+        "lines": [
+          721
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#26374d",
+        "lines": [
+          461
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#326e8fa3",
+        "lines": [
+          663
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#455764ad",
+        "lines": [
+          281
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#526673d9",
+        "lines": [
+          280
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#72b4c9af",
+        "lines": [
+          663
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#83749f",
+        "lines": [
+          192
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8b764eaa",
+        "lines": [
+          547
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9b626b88",
+        "lines": [
+          559
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a5787d",
+        "lines": [
+          192
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a893d0",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a8e8ff",
+        "lines": [
+          667
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aa77dd00",
+        "lines": [
+          709
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aab6b1b8",
+        "lines": [
+          285
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ab83d955",
+        "lines": [
+          709
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#abb78d66",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b5a777",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b683ff",
+        "lines": [
+          848
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c293dd",
+        "lines": [
+          809
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c393ff",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c39ae7",
+        "lines": [
+          508
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c596ffad",
+        "lines": [
+          709
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c7f2ffbb",
+        "lines": [
+          677
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9d0cb62",
+        "lines": [
+          279
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cda6ef",
+        "lines": [
+          350
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0af77",
+        "lines": [
+          844
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0f5ffcc",
+        "lines": [
+          682
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d199aa55",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d1c9acaf",
+        "lines": [
+          585
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd827d",
+        "lines": [
+          761
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8c998bb",
+        "lines": [
+          285
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          480
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9a9ff",
+        "lines": [
+          848
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9dfd4",
+        "lines": [
+          846
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd744a00",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddba72",
+        "lines": [
+          480
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          702
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e1778800",
+        "lines": [
+          829
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4f7ffbc",
+        "lines": [
+          669
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e5a184",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6b0fa22",
+        "lines": [
+          513
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c6ff",
+        "lines": [
+          351
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e7616355",
+        "lines": [
+          828
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ed896700",
+        "lines": [
+          828
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#edcd88",
+        "lines": [
+          809
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ef8b65",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f2e3b9",
+        "lines": [
+          845
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3be9b11",
+        "lines": [
+          828
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3d8ac",
+        "lines": [
+          513,
+          696
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3dbaf",
+        "lines": [
+          374
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5df9f",
+        "lines": [
+          369
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f6a47580",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f7c0a4",
+        "lines": [
+          717
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff7850",
+        "lines": [
+          289
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff9c6238",
+        "lines": [
+          721
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffac69",
+        "lines": [
+          289
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb385",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb889",
+        "lines": [
+          721
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcc89",
+        "lines": [
+          495
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd5a2",
+        "lines": [
+          829
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe098",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a2",
+        "lines": [
+          508
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a229",
+        "lines": [
+          751
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          557,
+          751
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe5a2",
+        "lines": [
+          758
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a300",
+        "lines": [
+          663
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a79c",
+        "lines": [
+          669
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6adbb",
+        "lines": [
+          709
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8a6",
         "lines": [
           686
         ],
         "dynamic": false
       },
       {
+        "value": "#ffe8b98c",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0b3",
+        "lines": [
+          453,
+          682
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ba",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bc",
+        "lines": [
+          450
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bd",
+        "lines": [
+          493,
+          498,
+          499,
+          502,
+          721
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c8",
+        "lines": [
+          351
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          130,
+          139
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ce",
+        "lines": [
+          712
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff3e3",
+        "lines": [
+          849
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4c9",
+        "lines": [
+          687
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#fff5c6",
         "lines": [
-          675
+          676
         ],
         "dynamic": false
       },
       {
         "value": "#fffbe6",
         "lines": [
-          463
+          464
         ],
         "dynamic": false
       },
       {
         "value": "#ffffff00",
         "lines": [
-          100
+          101
         ],
         "dynamic": false
       },
       {
         "value": "#ffffffff",
         "lines": [
-          100
+          101
         ],
         "dynamic": false
       }

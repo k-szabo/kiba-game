@@ -56,7 +56,7 @@ for(const field of ['weaponRank','armorRank'])rejects(save=>{save.flags[0]=save.
 rejects(save=>{save.flags[0]=save.flags[0].filter(id=>id!=='smithRescued');save.campServices.ownedWeapons.push('naginata');},'Extra weapon ownership requires the smith');
 for(const field of ['herbs','potions'])rejects(save=>{save.flags[0]=save.flags[0].filter(id=>id!=='herbalistQuestAccepted');save.campServices[field]=1;},field+' requires the accepted herbalist quest');
 rejects(save=>{save.flags[0]=save.flags[0].filter(id=>id!=='herbalistQuestAccepted');save.quickHeal='healingBrew';},'Brew quick-use cannot precede its quest');
-for(const item of ['unknown','potion','constructor',null,1])rejects(save=>{save.quickHeal=item;},'Unknown quick-heal IDs are rejected');
+for(const item of ['unknown','potion','constructor',1])rejects(save=>{save.quickHeal=item;},'Unknown quick-heal IDs are rejected');
 for(const invalid of [null,false,[],1,'camp',{}])rejects(save=>{save.campServices=invalid;},'Malformed service object rejected');
 rejects(save=>{save.campServices.extra=1;},'Unexpected service fields rejected');
 rejects(save=>{delete save.campServices.herbs;},'Incomplete service object rejected');

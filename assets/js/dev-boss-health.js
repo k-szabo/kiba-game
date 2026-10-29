@@ -19,7 +19,7 @@ const DevBossHealth=(()=>{
   label.hidden=true;if(!DevSession.active||$('bossHud').hidden)return;
   let target;
   if(Prologue.active)target=boss;
-  else if(HannahEncounter.active()||FiaConflict.current()||DungeonRun.active()||ArenaChallenge.active()||level===samuraiCamp)
+  else if(HannahEncounter.active()||FiaConflict.enemy||DungeonRun.active()||ArenaChallenge.active()||level===samuraiCamp)
    target=enemies.find(e=>!e.dead&&e.active&&(HannahCombat.is(e)||FiaCombat.is(e)||DungeonCombat.is(e)||ArenaCombat.is(e)||CampMaster.is(e)));
   else if(bossStarted)target=boss;
   const text=value(target);label.textContent=text;label.hidden=!text;

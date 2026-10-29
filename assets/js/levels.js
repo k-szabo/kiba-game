@@ -91,7 +91,11 @@ japan.gates.push(
  {id:'cultPassageWest',kind:'secretRock',x:800,y:1740,w:65,h:1360,secretArea:'cultCave'},
  {id:'cultPassageFoundation',kind:'secretRock',x:800,y:2820,w:1685,h:280,secretArea:'cultCave'},
  {id:'cultEastWall',kind:'secretRock',x:3620,y:1100,w:35,h:820,secretArea:'cultCave'},
- {id:'cultEntrance',kind:'fragile',x:4450,y:1000,w:55,h:japan.height-1000,secretArea:'cultCave'}
+ // The weak section is reached from the lower mouth, beyond even a long
+ // polearm or Dawnblade's vertical reach from the village road. The solid
+ // cap touches it, so lowering the weak section never opens a jump-over gap.
+ {id:'cultEntranceUpper',kind:'secretRock',x:4450,y:1000,w:55,h:190,secretArea:'cultCave'},
+ {id:'cultEntrance',kind:'fragile',x:4450,y:1190,w:55,h:japan.height-1190,secretArea:'cultCave'}
 );
 japan.arena={x:8770,y:1000,w:1550,restId:'temple'};japan.boss={x:9570,y:1000};japan.exit={x:10000,y:1000};
 [[930,1000],[1900,950],[2820,950],[3600,1000],[4140,1000],[4750,1000],[5450,920],[6200,920],[6930,960],[7550,960],[8390,1000]].forEach(([x,y],i)=>foe(japan,'road-'+i,x,y,i%4===2?'archer':'guard',null,Math.min(65,i===8?40:65)));

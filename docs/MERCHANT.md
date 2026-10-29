@@ -85,3 +85,9 @@ Az egyedi tárgyak eredeti megszerzési jelzője megmarad, a birtoklást a mente
 A `test-merchant-sales.cjs` a tranzakciókat, megerősítést, védett tárgyakat, visszavásárlást és ismételt eladás kizárását ellenőrzi; a titkosított mentési köröket a `test-save-release.cjs` végzi.
 
 A kultista templom dungeonjének `sectSeal` pecsétje 50, a `highPriestessSoul` lelke 400 érméért adható el. A pecsét halmozható közös dungeon-készlet; a lélek egyszeri, japán világhoz tartozó tulajdonjelző. Eladásuk nem engedi az egyszeri boss-pont vagy lélekjutalom újratermelését.
+
+## Üres gyógyító gyorshasználat
+
+A `quickHeal` kezdőértéke `null`; üres készlethez nem tartozik látszólag kijelölt hús. A `Merchant.selectAvailable()` megtartja a ténylegesen birtokolt kijelölést, egyébként az első elérhető gyógyító tárgyat választja, vagy üres készletnél `null`-t ad. Az első megszerzett gyógyító tárgy automatikusan kijelölődik, a játékos későbbi választása megmarad, amíg az adott készlet el nem fogy. A közös mentési pillanatkép is normalizál, így a főzetkészítéshez hasonló készletváltozások ugyanazt a szabályt használják.
+
+A mentésvalidátor az explicit `null`-t fogadja el az üres választáshoz; a hiányzó mezőt és az ismeretlen azonosítókat továbbra is elutasítja. A régi, ismert tárgyazonosítókat tartalmazó mentések érvényesek maradnak: folytatáskor a készlethez igazodik a kijelölés, haladásvesztés nélkül. Az inventory üres készletnél elrejti a gyorshasználati tárgysort. Regresszió: `scripts/test-quick-heal-empty.cjs`, valamint a titkosított üres kijelölés oda-vissza tesztje a `test-save-release.cjs` fájlban.
