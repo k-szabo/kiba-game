@@ -40,30 +40,50 @@ const HannahArt=(()=>{
   if(Math.abs(e.walkSpeed)>1&&!reducedMotion.matches)return {definition:ART_HANNAH.walk,index:Math.floor(e.animTime*10)%6};
   return {definition:ART_HANNAH.ritual,index:0};
  }
+ function darkKiba(e){
+  const x=e.x+e.w/2,feet=e.y+e.h+5,alpha=reducedMotion.matches?.6:.72;
+  // Flank the visible silhouette: a single centre column is hidden by the
+  // painted wings and only leaves a patch at the feet.
+  BossVFX.stamp('shadowColumn',x,feet,e.w*2.2,e.h*1.22,{alpha:.35});
+  for(const side of [-1,1])BossVFX.stamp('shadowColumn',x+side*e.w*1.35,feet,e.w*1.7,e.h*1.6,{face:side,alpha});
+ }
  function actor(e){
   if(!HannahCombat.is(e))return false;if(e.dead)return true;
+  if(e.stage===2)darkKiba(e);
   const p=pose(e);ctx.save();if(e.stage===2)ctx.filter='drop-shadow(0px 0px 7px #8e42c7)';
   stamp(p.definition,p.index,e.x+e.w/2,e.y+e.h,e.h,e.face,e.inv>0?.82:1);ctx.restore();
-  for(const echo of e.echoQueue){
-   if(!echo.started){for(const box of echo.attackBoxes)BossCues.box(box,BossCues.color);continue;}
-   for(const part of echo.parts){ctx.save();ctx.filter='hue-rotate(250deg) saturate(.8)';stamp(ART_HANNAH.combo,Math.min(5,Math.floor(echo.elapsed/echo.snapshot.duration*6)),part.x+part.w/2,part.y+part.h,e.h,part.face||echo.snapshot.face,.4);ctx.restore();}
-  }
-  for(const hazard of [...(e.hazards||[]),...e.echoQueue.flatMap(echo=>echo.hazards||[])]){
-   if(hazard.active)BossVFX.impact(hazard.x+hazard.w/2,hazard.y+hazard.h,hazard.w*1.2,hazard.h*1.1);
-   else BossCues.box(hazard,BossCues.color);
-  }
-  if(e.phase==='windup')for(const box of e.attackBoxes)BossCues.box(box,BossCues.color);
-  for(const point of e.summons)BossCues.box({x:point.x-48,y:point.y-16,w:96,h:16},BossCues.color);
   if(e.phase==='strike'&&e.move!=='summon'){
    const frame=Math.min(1,e.attackElapsed/Math.max(.001,e.attackDuration));
    BossVFX.slash(e.stage===2?'slashShadow':'slashFire',e.x+e.w/2+e.attackFace*110,e.y+e.h*.5,300,200,e.attackFace,frame);
   }
+  return true;
+ }
+ // World-space attacks remain visible even when Hannah's body is culled.
+ function effects(e){
+  if(!HannahCombat.is(e)||e.dead)return false;
+  for(const echo of e.echoQueue||[]){
+   if(!echo.started){for(const box of echo.attackBoxes)BossCues.box(box,BossCues.color);continue;}
+   const art=echo.snapshot.move==='jump'?ART_HANNAH.jump:ART_HANNAH.combo;
+   for(const part of echo.parts){ctx.save();ctx.filter='hue-rotate(250deg) saturate(.8)';stamp(art,Math.min(5,Math.floor(echo.elapsed/echo.snapshot.duration*6)),part.x+part.w/2,part.y+part.h,e.h,part.face||echo.snapshot.face,.4);ctx.restore();}
+  }
+  for(const hazard of [...(e.hazards||[]),...(e.echoQueue||[]).flatMap(echo=>echo.hazards||[])]){
+   if(hazard.active)BossVFX.impact(hazard.x+hazard.w/2,hazard.y+hazard.h,hazard.w*1.2,hazard.h*1.1);
+   else BossCues.box(hazard,BossCues.color);
+  }
+  if(e.phase==='windup')for(const box of e.attackBoxes||[])BossCues.box(box,BossCues.color);
+  for(const point of e.summons||[])BossCues.box({x:point.x-48,y:point.y-16,w:96,h:16},BossCues.color);
   if(e.mode==='drain'){
    const x=e.x+e.w/2,y=e.y+65,dx=2280-x,dy=1400-HannahEncounter.visual().lift-160-y;
    ctx.save();ctx.translate(x,y);ctx.rotate(Math.atan2(dy,dx));FiaArt.effect('drain',2,Math.hypot(dx,dy)/2,0,Math.hypot(dx,dy),75,.85);ctx.restore();
    BossCues.box({x:e.x-12,y:e.y-12,w:e.w+24,h:e.h+24},BossCues.color);
   }
   return true;
+ }
+ function rescueLightning(x,feet,height){
+  const image=Visuals.images.slayerLightning;if(!image?.complete||!image.naturalWidth)return;
+  const art=ART_SLAYER.lightning,s=height/art.bodyHeight;
+  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  ctx.drawImage(image,art.x,art.y,art.w,art.h,x+(art.x-art.anchorX)*s,feet+(art.y-art.anchorY)*s,art.w*s,art.h*s);ctx.restore();
  }
  function scenery(){
   if(Prologue.active||state==='menu')return;
@@ -91,7 +111,7 @@ const HannahArt=(()=>{
    if(t!==null&&t<.8)FiaArt.effect('teleport',Math.min(3,Math.floor(t*5)),1550,floor-75,190,210,.8);
    if(t!==null&&t>=.8&&t<1.8){const p=(t-.8);FiaArt.effect('foxfire',1,1580+700*p,floor-80-105*p,135,135,.9);}
   }else if(v.rescueTime!==null&&v.rescueTime>=.8&&v.rescueTime<1.8){
-   BossVFX.impact(2280,floor-140,150,330);
+   rescueLightning(2280,floor-175,760);
   }
  }
  function drawUltimatePlayer(){
@@ -102,5 +122,5 @@ const HannahArt=(()=>{
   return true;
  }
  function dialogueActors(){const d=ART_HANNAH.ritual,f=d.frames[0];return {hannah:{name:'ziggurat.hannah',image:d.image,rect:{x:f.x,y:f.y,w:f.w,h:f.h}},haru:{name:'HARU',image:'haruElder',rect:{x:160,y:0,w:800,h:1050}}};}
- return Object.freeze({backdrop,actor,scenery,player:drawUltimatePlayer,dialogueActors,haru,nameplate});
+ return Object.freeze({backdrop,actor,effects,scenery,player:drawUltimatePlayer,dialogueActors,haru,nameplate});
 })();

@@ -74,7 +74,7 @@ for(const [cycle,move] of [[0,'combo'],[1,'jump'],[2,'dashReturn'],[3,'summon']]
  }
 }
 {
- const h=setup(),r=h.run;phase2(h);r('hannah.cycles=3;hannah.clock=0;');advance(h,.01);assert.equal(r('hannah.move'),'crossCombo');advance(h,.82);
+ const h=setup(),r=h.run;phase2(h);r('hannah.cycles=2;hannah.clock=0;');advance(h,.01);assert.equal(r('hannah.move'),'dashReturn');advance(h,.97);
  assert.equal(r('hannah.echoQueue.length'),1);assert(r('Object.isFrozen(hannah.echoQueue[0].snapshot)'));
  const captured=r('JSON.stringify(hannah.echoQueue[0].snapshot)');r('player.x=hannah.x+450;');advance(h,.15);assert.equal(r('JSON.stringify(hannah.echoQueue[0].snapshot)'),captured);
  assert.equal(r('enemies.filter(e=>e.hannahOwner).length'),0);
@@ -115,7 +115,7 @@ for(const fps of [30,60,120])for(const spirit of [0,12]){
 // Echoes preserve captured targets and use 80% damage after ordinary protection.
 for(const fps of [30,60,120]){
  const h=setup(),r=h.run;phase2(h,fps);
- r('hannah.cycles=0;hannah.clock=0;player.x=hannah.x-100;player.y=hannah.arena.y-player.h;player.hp=player.maxHp=100;player.inv=0;');advance(h,1/fps,fps);
+ r('hannah.cycles=2;hannah.clock=0;player.x=hannah.x-100;player.y=hannah.arena.y-player.h;player.hp=player.maxHp=100;player.inv=0;');advance(h,1/fps,fps);
  advance(h,r('hannah.windupDuration')+.03,fps);assert.equal(r('hannah.echoQueue.length'),1);
  const echoDelay=r('hannah.echoQueue[0].delay');assert(echoDelay>r('hannah.moveSnapshot.duration')+1.2);
  advance(h,1.05,fps);assert.equal(r('player.hp'),97);

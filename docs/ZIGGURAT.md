@@ -15,7 +15,7 @@ A negyedik birodalom folytatása három `SIDE_LOCATIONS` helyszín: `zigguratApp
 
 Hannah első élete 1200, második élete 1600 HP. Az első 10%-os küszöbnél teljes életre töltődik. A második élet 60%, 40%, majd 10% küszöbét sorban kezeli; a túl nagy találat fölös sebzése nem ugorhat át történeti eseményt. A gyógyulás nem aktivál újra már elfogyasztott küszöböt.
 
-Az első fázis kaszakombókat, ugrócsapást, oda-vissza rohamot, négycsapásos váltott kombót és három lépcsőben feltörő területi mágiát használ; idézéssel legfeljebb négy élő, jutalmat nem adó kultista/démon segédet tart fenn. A második fázisban nincs új idézés; az eredeti célzást őrző késleltetett visszhang a forráscsapás sebzésének 80%-ával ismétli a támadást.
+Az első fázis kaszakombókat, ugrócsapást, oda-vissza rohamot, négycsapásos váltott kombót és három lépcsőben feltörő területi mágiát használ; idézéssel legfeljebb négy élő, jutalmat nem adó kultista/démon segédet tart fenn. A második fázisban nincs új idézés; csak az ugrócsapás és az oda-vissza dash hozhat létre késleltetett árnyékvisszhangot. Az eredeti célzást őrző visszhang a forráscsapás sebzésének 80%-ával ismétel; a normál és váltott kombó, valamint a földkitörés nem kap másolatot. A közös jogosultsági szűrő a már sorba állított, nem engedélyezett mozdulatokat is eltávolítja.
 
 A támadási ablakok közös táblájából készül a tényleges találat és az előjelzés; a jelzés a későbbi, hosszabb kombócsapásokat és a visszatérő roham teljes söprését is lefedi. A visszaút és a visszhang kivárja a játékos érvényes sérthetetlenségi idejét; az elutasított kontaktus nem fogyasztja el a találatot, a teljesen elnyelt, de elfogadott pajzstalálat igen. Aktív harcban az aréna határai a játékos mozgása után is érvényesülnek, a kifelé mutató sebesség megszűnik.
 
@@ -54,3 +54,9 @@ A dev-teleport mindhárom pályát és pihenőit ismeri. A képességadó listá
 Haru külön idősebb shiba-grafikát használ a mennyországban, a zikkuratban és a párbeszédportrén. Az oszlop, a lélek és a szív önálló grafika; az inventory a közös kontrasztos, DPR-követő katalógust használja. A Hajnalkard képkockái a valódi játékoskoordinátákból rajzolódnak; betöltetlen animáció esetén Momo alaprajzolása marad. A grafikai eredet és jóváhagyási határok: [Hannah-javítások](art-prompts/bugs-hannah-realm.md).
 
 `npm run test:hannah` futtatja a fázis-, útvonal-, ultimate-, életciklus- és mentésteszteket, többek között 30/60/120 FPS mellett. A böngészős megjelenítés és IndexedDB-újratöltés ettől külön ellenőrzés.
+
+## Harci jelzések rajzolása
+
+A `HannahArt.actor` csak a testet, a hozzá kötött kardívet és a második fázis folyamatos, festett sötét Kiba-rétegét rajzolja. A két tükrözött oldalsó foszlány a szárnyak külső peremén is megjelenik, a középső réteg pedig a test mögött marad; a forrásképet nem színezzük át. A `HannahArt.effects` külön világkoordinátás körben fut: a távoli boss képernyőn kívüli alakjának kivágása nem rejtheti el a játékos mellett sebző földkitörések előjelzését vagy becsapódását. Az effektkör az ellenféltestek után fut, hogy a jelzések láthatók maradjanak.
+
+A villámos kiszabadítás a meglévő `ART_SLAYER.lightning` teljes, felülről lefelé érkező festett villámát illeszti az oszlophoz. A Fia-ág megőrzi a rókatüzet. Mindkét ág az emelt padló eltolását követi; a rajzolás nem lépteti a történeti vagy harci órákat. Regressziók: `test-hannah-echo-scope.cjs`, `test-hannah-vfx-visibility.cjs`.

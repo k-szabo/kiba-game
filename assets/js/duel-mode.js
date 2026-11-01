@@ -92,8 +92,14 @@ const DuelMode=(()=>{
  }
  function input(key,down,target){
   if(!active)return false;
-  if(down&&sim&&!target?.closest?.('input,select')&&Bindings.read('pause').includes(key)){node('duelMatchLeave').focus();return true;}
-  if(!sim||finished||down&&target?.closest?.('button,input,select,a,summary'))return false;
+  const editing=target?.isContentEditable||target?.closest?.('input,select,textarea,[contenteditable=""],[contenteditable="true"]');
+  if(down&&sim&&!editing&&Bindings.read('pause').includes(key)){node('duelMatchLeave').focus();return true;}
+  const control=target?.closest?.('button,input,select,textarea,a,summary');
+  // Escape leaves keyboard focus on this accessible HUD control. Gameplay
+  // keys still work there; the dispatcher prevents native Space activation.
+  // Its mouse click and all other controls retain their ordinary behaviour.
+  const leaveKey=control===node('duelMatchLeave')&&!/^mouse[0-4]$/.test(key);
+  if(!sim||finished||sim.winner!==null||down&&(editing||control&&!leaveKey))return false;
   const used=['moveLeft','moveRight','jump','dash','attack','heavyAttack'].some(action=>Bindings.read(action).includes(key));if(!used)return false;
   if(down&&!held.has(key))pulses.add(key);if(down)held.add(key);else held.delete(key);return true;
  }
