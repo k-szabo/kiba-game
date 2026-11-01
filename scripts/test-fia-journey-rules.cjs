@@ -7,7 +7,7 @@ const initial=r.fresh();same(initial,{dragon:{run:0,clear:false},dragonScales:0,
 // Legacy omitted records are defaulted by the caller, never arbitrary invalid records.
 assert(r.validate(r.fresh(),ready,defeated));assert.equal(r.copy(undefined),null);assert.equal(r.copy(null),null);
 const independent=r.fresh();independent.dragon.run=10;assert.equal(initial.dragon.run,0);const copied=r.copy(initial);copied.dragon.run=2;assert.equal(initial.dragon.run,0);
-for(const bad of [{},[],null,{...plain(initial),extra:0},{...plain(initial),dragon:{run:0,clear:false,extra:0}},{...plain(initial),dragon:{run:-1,clear:false}},{...plain(initial),dragon:{run:.1,clear:false}},{...plain(initial),dragon:{run:Infinity,clear:false}},{...plain(initial),dragon:{run:Number.MAX_SAFE_INTEGER+1,clear:false}},{...plain(initial),dragon:{run:0,clear:0}},{...plain(initial),dragonScales:-1},{...plain(initial),dragonScales:.5},{...plain(initial),voidInfection:10}]){
+for(const bad of [{},[],null,{...plain(initial),extra:0},{...plain(initial),dragon:{run:0,clear:false,extra:0}},{...plain(initial),dragon:{run:-1,clear:false}},{...plain(initial),dragon:{run:.1,clear:false}},{...plain(initial),dragon:{run:Infinity,clear:false}},{...plain(initial),dragon:{run:Number.MAX_SAFE_INTEGER+1,clear:false}},{...plain(initial),dragon:{run:0,clear:0}},{...plain(initial),dragonScales:-1},{...plain(initial),dragonScales:.5},{...plain(initial),voidInfection:9}]){
  assert.equal(r.validate(bad),false);assert.equal(r.copy(bad),null);assert.equal(r.begin(bad,ready,defeated).reason,'invalidProgress');
 }
 assert(!r.validate(initial,{}));assert(!r.validate(initial,flags('x','x'),defeated));assert(!r.validate(initial,[[],{},[],[]],defeated));assert(!r.validate(initial,[],[1]));

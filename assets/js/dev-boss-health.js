@@ -19,6 +19,7 @@ const DevBossHealth=(()=>{
   label.hidden=true;if(!CombatDisplay.get('bossHealth')||typeof DuelMode!=='undefined'&&DuelMode.active||$('bossHud').hidden)return;
   let target;
   if(Prologue.active)target=boss;
+  else if(VoidEncounter.active())target=VoidEncounter.actor;
   else if(DragonRaid.active())target=DragonRaid.health();
   else if(HannahEncounter.active()||FiaConflict.enemy||DungeonRun.active()||ArenaChallenge.active()||level===samuraiCamp)
    target=enemies.find(e=>!e.dead&&e.active&&(HannahCombat.is(e)||FiaCombat.is(e)||DungeonCombat.is(e)||ArenaCombat.is(e)||CampMaster.is(e)));

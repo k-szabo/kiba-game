@@ -5,6 +5,7 @@ const context={GAME_RELEASE,TextEncoder,TextDecoder,location:{origin:'http://loc
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.js'),'utf8'),context);

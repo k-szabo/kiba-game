@@ -38,7 +38,7 @@ const CampArt=(()=>{
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';BackgroundFraming.interior(img,{ground:a.ground});ctx.restore();
  }
  function terrain(platform){
-  if(level!==samuraiCamp)return false;
+  if(level!==samuraiCamp&&level!==shadowUnderworld)return false;
   const art=ART_CAMP_TERRAIN,image=Visuals.images[art.image];if(!image?.complete||!image.naturalWidth)return false;
   const p=platform,ground=p.kind==='ground',rect=ground?art.middle:art.roof,s=ground?.9:.55,width=rect.w*s;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.beginPath();ctx.rect(p.x,p.y-55,p.w,ground?p.h+55:125);ctx.clip();

@@ -1430,6 +1430,22 @@
           "en": "Fia’s new request leads to a three-stage ancient drake raid beneath the ziggurat. The encounter is replayable; scales drop on every victory, while the quest item requires an active request."
         }
       ]
+    },
+    {
+      "version": "0.9.61_01a95ac7",
+      "code": "01a95ac7",
+      "baseVersion": "0.9.61",
+      "slug": "fia-shard-of-void",
+      "summary": {
+        "hu": "Az üresség szilánkja",
+        "en": "Shard of the Void"
+      },
+      "fixes": [
+        {
+          "hu": "Fia következő megbízása az Árnyékzug alvilágába és egy tiltott hasadékhoz vezet. Új szolgáltatások, megőrült őrök és döntéssel záruló küldetés várja Momót.",
+          "en": "Fia’s next request leads into the Shadow Den’s underworld and a forbidden tear. New services, maddened guards and a quest ending in a choice await Momo."
+        }
+      ]
     }
   ]
 }

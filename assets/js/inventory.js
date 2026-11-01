@@ -36,6 +36,7 @@ const Inventory=(()=>{
     ['binding.action.attack',number(playerAttackDamage('normal'))],['binding.action.heavyAttack',number(playerAttackDamage('heavy'))]],
    list=$('inventoryStats');
   if(FiaConflict.owned())rows.push(['ability.kibaShield',number(FiaConflict.shield)+' / '+number(FiaConflict.profile().capacity)]);
+  if(fiaJourney.voidInfection>0)rows.push([I18n.format('fia.void.infection',[fiaJourney.voidInfection]),'']);
   list.replaceChildren();
   for(const [key,value] of rows){
    const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');

@@ -30,7 +30,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return ['dragonRaidFirstClear','fiaDragonCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return ['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -538,8 +538,13 @@ const {zigguratApproach,zigguratInterior,zigguratSummit}=createZigguratMaps({mak
 shadowRealm.zigguratEntrance={x:10680,y:1200};
 shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','demonLordSoul','demonLordHeart','demonLordHeartGiven','discovered:hannahCourt','guardian:Hannah');
 const dragonCatacombs=createDragonRaidMap({makeLevel,ledge,rest,zone});
+const {fiaRitual,shadowUnderworld,voidForbidden}=createFiaVoidMaps({makeLevel,ledge,rest,zone});
+fiaChambers.ritualEntrance={x:1450,y:820};shadowDen.underworldEntrance={x:1800,y:820};
 zigguratInterior.dragonRaidEntrance={x:1250,y:1700};
 const SIDE_LOCATIONS=Object.freeze({
+ fiaRitual:Object.freeze({map:fiaRitual,realm:3,requiredFlags:Object.freeze(['fiaDragonCompleted'])}),
+ shadowUnderworld:Object.freeze({map:shadowUnderworld,realm:3,requiredFlags:Object.freeze(['fiaVoidAccepted'])}),
+ voidForbidden:Object.freeze({map:voidForbidden,realm:3,requiredFlags:Object.freeze(['fiaVoidAccepted'])}),
  dragonCatacombs:Object.freeze({map:dragonCatacombs,realm:3,requiredFlags:Object.freeze(['hannahDefeated'])}),
  zigguratApproach:Object.freeze({map:zigguratApproach,realm:3,requiredFlags:Object.freeze([])}),
  zigguratInterior:Object.freeze({map:zigguratInterior,realm:3,requiredFlags:Object.freeze([])}),

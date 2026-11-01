@@ -13,10 +13,10 @@ const FiaConflict=(()=>{
   if(node.textContent!==label)node.textContent=label;node.title=description();
  }
  const slain=()=>flags[3].includes('fiaSlain');
- const location=()=>level===shadowDen?'shadowDen':level===fiaChambers?'fiaChambers':null;
+ const location=()=>level===shadowDen?'shadowDen':level===fiaChambers?'fiaChambers':level===fiaRitual?'fiaRitual':null;
  const blocked=()=>!!encounter;
  const current=e=>!!encounter&&encounter.enemy===e&&encounter.map===level&&enemies.includes(e)&&!e.dead;
- const arena=map=>({x:map===shadowDen?240:20,y:820,w:map===shadowDen?2440:1560});
+ const arena=map=>({x:map===shadowDen?240:20,y:820,w:map===shadowDen?2440:map.width-40});
  function friendly(){
   if(Prologue.active||!location()||blocked()||slain())return null;
   const npc=level.npcs.find(n=>n.id==='fia');return npc&&campNPCVisible(npc)?npc:null;
@@ -40,6 +40,13 @@ const FiaConflict=(()=>{
  }
  function provoke(hit,{replay=false}={}){
   const npc=replay&&DevSession.active&&location()?level.npcs.find(n=>n.id==='fia'):friendly();if(state!=='play'||!npc||!hit||!overlap(hit,{x:npc.x-30,y:npc.y-npc.height+12,w:60,h:npc.height-12}))return false;
+  return start(npc,replay);
+ }
+ function refuse(){
+  if(state!=='play'||level!==fiaRitual||!FiaVoidJourney.nearFia()||!flags[3].includes('rawVoidCrystal')||flags[3].includes('fiaVoidCompleted'))return false;
+  const npc=friendly();return !!npc&&start(npc,false);
+ }
+ function start(npc,replay){
   const baseline=captureProgress();baseline.fiaRecovery={location:location(),x:player.x+player.w/2,feet:player.y+player.h,hp:player.hp,face:player.face,tea:Merchant.teaSnapshot()};
   const trial={id:++serial,map:level,baseline,replay,enemy:null};encounter=trial;persist();
   const spawn=()=>{
@@ -76,6 +83,7 @@ const FiaConflict=(()=>{
   }
  }
  function npcVisible(npc){
+  if(npc?.id==='fia'&&level===fiaChambers&&flags[3].includes('fiaDragonCompleted'))return false;
   if(!location())return true;
   if(npc?.id==='fia')return !blocked()&&!slain();
   return !slain();
@@ -102,6 +110,6 @@ const FiaConflict=(()=>{
   if(e&&!e.dead){$('bossName').textContent=I18n.t('fia.name');$('bossHealth').style.width=clamp(e.hp/e.maxHp*100,0,100)+'%';}
   return true;
  }
- return Object.freeze({blocked,current,friendly,pendingSave,restoreAnchor,clear,abort,provoke,replay,onDefeated,populateHostiles,npcVisible,retaliator,resetPlayer,update,absorb,hud,statusHUD,profile,clampProfile,number,description,owned,slain,
+ return Object.freeze({blocked,current,friendly,pendingSave,restoreAnchor,clear,abort,provoke,refuse,replay,onDefeated,populateHostiles,npcVisible,retaliator,resetPlayer,update,absorb,hud,statusHUD,profile,clampProfile,number,description,owned,slain,
   get shieldFlash(){return shieldFlash;},get shieldBreak(){return shieldBreak;},get shield(){return shield;},get recharge(){return recharge;},get enemy(){return encounter?.enemy||null;}});
 })();

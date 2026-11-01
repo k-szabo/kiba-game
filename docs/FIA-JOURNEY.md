@@ -5,9 +5,9 @@
 A folytatás a `FEATURE-fia-quests-3-4-5` ágon készül, kötelező sorrendben:
 3. sárkányrajtaütés, 4. void-hasadék, 5. rituálé. A harmadik megbízáshoz
 a második leadása és Hannah legyőzése szükséges. A szív védett tárgy marad.
-A harmadik megbízás és a háromszakaszos rajtaütés már játszható; a negyedik
-és ötödik folytatás beépítése folyamatban van. A harmadik leadás utáni
-rituálészoba a következő beépítési lépés része.
+A harmadik megbízás és a háromszakaszos rajtaütés, illetve a negyedik
+megbízás rituálészobája, alvilága és hasadékharca már játszható. Az ötödik
+folytatás beépítése folyamatban van.
 
 A `fia-journey-rules.js` tiszta, másolásos tranzakciói kezelik a sárkánymenet
 sorszámát, lezárását, a pikkelykészletet és a megbízás mérföldköveit.
@@ -48,6 +48,46 @@ ellenőrzik 30/60/120 FPS mellett. A teljes szárnyút fizikai route-tesztje
 szintén ezt a három képkockasebességet használja.
 
 Spoileres fejlesztői referencia. Kártyák: [Fia quest #2](https://trello.com/c/bOTc8aP0), [Fia legyen megtámadható](https://trello.com/c/oDJB4Y0y).
+
+## Negyedik megbízás: a void-hasadék
+
+A harmadik leadása után Fia a lakosztály mögötti rituálészobába költözik.
+Ott nyílik meg a negyedik megbízás, majd az Árnyékzugból az alvilági lejáró.
+A három emelet felső kereskedője zsákmányt vesz, a középső szakács húst,
+teát és csirkecombot ad 10/25/40 érméért, az alsó kovács pedig a közös
+fegyver- és páncélrangokat használja. A szolgáltatástörténet külön jelzői
+teszik menthetővé a készletet és fejlesztéseket Ren/Akash megmentési
+jelzőinek megváltoztatása nélkül. Compass/minimap/telefontok továbbra is
+csak Akashhoz tartozik. Fia halála letiltja az új szolgáltatásokat.
+
+A tiltott negyed három hasadékőre külön natív grafikát és járás/támadás
+pózokat használ. A hadnagy 1000 HP-ról indul; az első, 70%-ot átlépő
+találat 700 HP-n áll meg. Az elnyelés kitakarítja a korábbi támadásokat;
+a démon új generációval, 1000/2000 HP-val jelenik meg. A démon kizárólag
+a saját támadásából ténylegesen elvesztett Momo-HP-t gyógyítja vissza.
+Pajzs, páncél, dash/immunitás vagy halál utáni új játékospéldány nem ad
+fiktív gyógyulást. A lövedék egyszer használható tulajdonosi tokenje az
+eredeti kísérletet és generációt rögzíti. Teljes visszagyógyulás külön
+sikertelen állapot, halál/újrapróbálás tiszta hadnagyharcot indít.
+
+Győzelemkor együtt rögzül a kristály és a tartós 10%-os fertőzés; a rés
+eltűnik. Leadáskor a kristály birtoklási nézete elfogy, története megmarad;
+egyszer 1000 XP, +1 pont és három csirkecomb jár. Elutasítás a meglévő Fia-
+harcot indítja, nem teljesíti a megbízást. A mentett visszaállítási horgony
+a rituálészobát is szigorúan validálja; vereségkor megmarad a kristály és
+a fertőzés, és a döntés újra meghozható.
+
+Modulok: `fia-void-maps.js`, `fia-void-journey.js`, `void-encounter-rules.js`,
+`void-encounter.js`, `fia-void-art.js`. A natív PNG-ket a regisztráló nem
+módosítja: komponensből származó körvonalak választják el a szomszédos
+atlaszpózokat. A hátterek apró, maszkolt animációkat használnak.
+
+Ellenőrzés: `node --run test:fia-void`; 30/60/120 FPS-es harci tesztek,
+valódi küldetés-/szolgáltatás-/döntésírókból származó mentésvalidáció,
+elutasítás utáni visszaállítás. Friss Edge-profilban HU/EN, 1280×720 és
+1920×1080 helyszínképek, natív E-bejárat, vásárlás, döntés, titkosított
+mentés és újratöltés ellenőrizve, konzol- és assethibák nélkül. Ez nem
+teljes manuális harci végigjátszás vagy független QA-elfogadás.
 
 ## Második küldetés
 

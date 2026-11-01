@@ -5,6 +5,9 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  fiaRitualBackdrop:{asset:'fiaRitualBackdropMotionPhaseB',regions:[['flame-ritual',11,[[.085,.48],[.115,.48],[.115,.55],[.085,.55]],4]]},
+  shadowUnderworldBackdrop:{asset:'shadowUnderworldBackdropMotionPhaseB',regions:[['flame-forge',11,[[.37,.695],[.49,.695],[.49,.755],[.37,.755]],5]]},
+  voidForbiddenBackdrop:{asset:'voidForbiddenBackdropMotionPhaseB',regions:[['void-mist',16,[[.38,.015],[.62,.015],[.62,.12],[.38,.12]],8]]},
   dragonRaidHall:{asset:'dragonRaidHallMotionPhaseB',sourceSize:[2132,738],regions:[['brazier',14,[[.025,.66],[.145,.66],[.145,.84],[.025,.84]],5]]},
   campHDLeft:{"asset":"campHDLeftMotionPhaseB","regions":[["detail-0",7,[[0.01,0.01],[0.25,0.01],[0.25,0.14],[0.01,0.14]],5]]},
   campHDCenter:{"asset":"campHDCenterMotionPhaseB","regions":[["detail-0",14,[[0.48,0.535],[0.55,0.535],[0.55,0.64],[0.48,0.64]],5]]},
