@@ -151,7 +151,7 @@ const HannahEncounter=(()=>{
  }
  const visual=()=>{
   const rescuedByFia=!!(rescue?.e.rescuedByFia||enemy()?.rescuedByFia||flags[3].includes(HannahRules.progress.fiaRescue));
-  return {lift,storm:!enemy()&&completed()||!!transformation||enemy()?.stage===2,transform:transformation?.elapsed/2.5||0,haruFreed:!enemy()&&completed()||!!enemy()?.haruRescued||!!rescue&&rescue.elapsed>=1.8,rescueTime:rescue?.elapsed??null,rescuedByFia,fiaPresent:rescuedByFia&&!flags[3].includes('fiaSlain')};
+  return {lift,storm:!enemy()&&completed()||!!transformation||enemy()?.stage===2,transform:transformation?.elapsed/2.5||0,haruFreed:!enemy()&&completed()||!!enemy()?.haruRescued||!!rescue&&rescue.elapsed>=1.8,rescueTime:rescue?.elapsed??null,rescuedByFia,fiaPresent:rescuedByFia&&!flags[3].includes('fiaSlain')&&!flags[3].includes('fiaDragonCompleted')};
  };
  return Object.freeze({active,summit,enemy,blocked,locked,cinematic,finisherTarget,finisherReady,clear,resetAttempt,respawn,replay,onFailure,onGate,onDefeated,update,objective,context,interact,hud,visual,reconcileRewards});
 })();

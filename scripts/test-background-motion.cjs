@@ -87,7 +87,7 @@ for(const fps of [30,60,120]){
  const authored=vm.runInNewContext(source.slice(source.indexOf(' const authored={'),source.indexOf(' const authoredLoads'))+';authored');
  const keys=Object.keys(manifest).filter(k=>manifest[k].includes('/backgrounds/')&&!/Terrain$/.test(k)&&!k.endsWith('MotionPhaseB'));
  assert.deepEqual(Object.keys(authored).sort(),keys.sort(),'Every background, including hidden arenas and fallback panoramas, has a painted phase');
- for(const key of keys){const profile=authored[key],a=fs.readFileSync(path.join(__dirname,'..',manifest[key])),b=fs.readFileSync(path.join(__dirname,'..',manifest[profile.asset]));assert.equal(a.readUInt32BE(16),b.readUInt32BE(16),key+' native width');assert.equal(a.readUInt32BE(20),b.readUInt32BE(20),key+' native height');assert(profile.regions.length>0);}
+ for(const key of keys){const profile=authored[key],a=fs.readFileSync(path.join(__dirname,'..',manifest[key])),b=fs.readFileSync(path.join(__dirname,'..',manifest[profile.asset]));assert.equal(profile.sourceSize?.[0]??a.readUInt32BE(16),b.readUInt32BE(16),key+' registered native width');assert.equal(profile.sourceSize?.[1]??a.readUInt32BE(20),b.readUInt32BE(20),key+' registered native height');if(profile.sourceSize){assert(Math.abs(a.readUInt32BE(16)-b.readUInt32BE(16))<=1);assert(Math.abs(a.readUInt32BE(20)-b.readUInt32BE(20))<=1);}assert(profile.regions.length>0);}
 }
 // QA-BGM-008: fully opaque hunter foreground releases the prison animation
 // pins while the original underlay still covers the bottom of the viewport.
@@ -96,7 +96,7 @@ for(const fps of [30,60,120]){
  const images=Object.fromEntries(['zenPrisonWest','zenPrisonCenter','zenPrisonEast','fiaPrisonDepths'].map(key=>[key,{complete:true,naturalWidth:1536,naturalHeight:1024}]));
  const ctx={save(){},restore(){},fillRect(){},drawImage:(image,...args)=>calls.push({image,args})};
  const brush={drawImage(){},createLinearGradient:()=>({addColorStop(){}}),fillRect(){}};
- const sandbox={ART_PRISON:{backdrops:Object.keys(images).slice(0,3)},ART_KITSUNE:{depths:{image:'fiaPrisonDepths',w:1536,h:1024,groundY:790}},Visuals:{images},ctx,document:{createElement:()=>({getContext:()=>brush})},BackgroundMotion:{alias(){},draw:image=>painted.push(image)},H:720,viewW:1280,camera:0,cameraY:1900,level:{width:5400,hunterArena:{y:2360}},clamp:(n,a,b)=>Math.max(a,Math.min(b,n)),HannahArt:{backdrop:()=>false},DungeonArt:{backdrop:()=>false},ArenaArt:{backdrop:()=>false},KitsuneQuest:{den:()=>false},PrisonQuest:{active:()=>true}};
+ const sandbox={ART_PRISON:{backdrops:Object.keys(images).slice(0,3)},ART_KITSUNE:{depths:{image:'fiaPrisonDepths',w:1536,h:1024,groundY:790}},Visuals:{images},ctx,document:{createElement:()=>({getContext:()=>brush})},BackgroundMotion:{alias(){},draw:image=>painted.push(image)},H:720,viewW:1280,camera:0,cameraY:1900,level:{width:5400,hunterArena:{y:2360}},clamp:(n,a,b)=>Math.max(a,Math.min(b,n)),DragonRaidArt:{backdrop:()=>false},HannahArt:{backdrop:()=>false},DungeonArt:{backdrop:()=>false},ArenaArt:{backdrop:()=>false},KitsuneQuest:{den:()=>false},PrisonQuest:{active:()=>true}};
  const context=vm.createContext(sandbox),game=fs.readFileSync('assets/js/game.js','utf8');
  vm.runInContext(fs.readFileSync('assets/js/prison-art.js','utf8')+'\n'+fs.readFileSync('assets/js/kitsune-art.js','utf8')+'\n'+game.slice(game.indexOf('function background(r)'),game.indexOf('function drawLandscape')),context);
  vm.runInContext('background({})',context);
@@ -106,4 +106,14 @@ for(const fps of [30,60,120]){
  painted.length=0;sandbox.cameraY=1500;vm.runInContext('background({})',context);assert(painted.length>1,'Partial transition retains animated prison panels');
  painted.length=0;sandbox.cameraY=2000;images.fiaPrisonDepths.naturalWidth=0;vm.runInContext('background({})',context);assert(painted.length>0,'Missing hunter image retains prison animation');
 }
-console.log('PASS: complete authored coverage, native sizes, clocks, pauses, crop/alpha/alias behavior, bounded asynchronous cache, heaven phases and prison/hunter layering.');
+// A generated phase with an explicitly registered one-pixel size difference
+// is projected onto the base grid before regional cropping/feathering.
+{
+ const fs=require('node:fs'),vm=require('node:vm'),source=fs.readFileSync('assets/js/background-motion.js','utf8'),calls=[];
+ const base={naturalWidth:4,naturalHeight:4},alternate={naturalWidth:5,naturalHeight:4},profile={sourceSize:[5,4],regions:[['flame',2,[[0,0],[1,0],[1,1],[0,1]],1]]};
+ const paint={drawImage:(...args)=>calls.push(args),getImageData:()=>({data:new Uint8ClampedArray(64)}),putImageData(){}};
+ const scope={base,alternate,profile,document:{createElement:()=>({getContext:()=>paint})}};
+ vm.runInNewContext(source.slice(source.indexOf(' function inside('),source.indexOf(' function paintAuthored('))+';makeAuthoredLayers(base,alternate,profile);',scope);
+ assert.deepEqual(calls[0],[alternate,0,0,5,4,-0,-0,4,4],'Alternate phase maps exactly to the base-painting coordinates');
+}
+console.log('PASS: complete authored coverage, registered native projection, clocks, pauses, crop/alpha/alias behavior, bounded asynchronous cache, heaven phases and prison/hunter layering.');

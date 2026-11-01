@@ -14,7 +14,7 @@ const Merchant=(()=>{
  const rescued=()=>flags[1].includes('akashRescued');
  const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
  const consumed=id=>{const by=ART_INVENTORY.items[id]?.consumedBy;return !!by&&flags[by.realm].includes(by.id);};
- const stock=id=>dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
+ const stock=id=>id==='dragonScale'?FiaJourneyRules.quantity(fiaJourney):dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
  function selectAvailable(){if(!healingItems.includes(quickHeal)||!stock(quickHeal))quickHeal=healingItems.find(id=>stock(id)>0)??null;return quickHeal;}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
@@ -22,6 +22,7 @@ const Merchant=(()=>{
  }
  function useQuick(){if(state!=='play'||Prologue.active||!player||player.hp<=0)return false;selectAvailable();if(quickHeal===null)return false;return quickHeal==='roastChicken'?FiaQuest.eat():quickHeal==='healingBrew'?useBrew():quickHeal==='tea'?drink():eat();}
  function addStock(id){
+  if(id==='dragonScale'){if(!DevSession.active||fiaJourney.dragonScales===Number.MAX_SAFE_INTEGER)return false;fiaJourney={...fiaJourney,dragonScales:fiaJourney.dragonScales+1};return true;}
   if(dungeonItem(id))return DungeonRun.addItem(id);
   if(![...healingItems,'forestHerb'].includes(id)||!Number.isSafeInteger(stock(id))||stock(id)<0||stock(id)>=Number.MAX_SAFE_INTEGER)return false;
   if(id==='roastMeat')meatCount++;else if(id==='tea')teaCount++;else if(id==='forestHerb')campServices.herbs++;else if(id==='healingBrew')campServices.potions++;else if(id==='roastChicken')chickenCount++;else return false;

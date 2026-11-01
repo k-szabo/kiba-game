@@ -6,6 +6,7 @@ const FiaQuest=(()=>{
  const near=()=>available()&&level===fiaChambers&&pointNear(level.npcs[0],95,85);
  function talk(){
   if(state!=='play'||!near())return false;
+  if(DragonRaid.talk())return true;
   const map=level;
   if(!has('fiaChambersHeard')){
    flags[3].push('fiaChambersHeard');persist();updateHUD();
@@ -31,6 +32,7 @@ const FiaQuest=(()=>{
  }
  function questMarker(id){
   if(id!=='fia'||!available()||level!==fiaChambers)return null;
+  if(has('fiaTalismanCompleted'))return DragonRaid.questMarker();
   return !has('fiaTalismanAccepted')?'!':has('priestessTalisman')&&!has('fiaTalismanCompleted')?'?':null;
  }
  function objective(){

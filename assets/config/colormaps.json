@@ -263,6 +263,26 @@
       "faction": "shadowCult",
       "paletteGroup": "npc.hannah.ritual"
     },
+    "dragon.idle": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.idle"
+    },
+    "dragon.breath": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.breath"
+    },
+    "dragon.flight": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.flight"
+    },
+    "dragon.front": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.front"
+    },
     "shadowDen.hostile.ninja": {
       "role": "hostile-resident",
       "faction": "shadowDen",
@@ -805,6 +825,14 @@
     "swordRigid": {
       "kind": "rigid-weapon-prop",
       "asset": "assets/images/ui/sword-rigid-v1.png"
+    },
+    "inventoryItem.dragonEyes": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dragonEyes"
+    },
+    "inventoryItem.dragonScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dragonScale"
     },
     "inventoryItem.campMasterSoul": {
       "kind": "inventory-icon",
@@ -5940,6 +5968,410 @@
         ],
         "visibleSamples": 490123,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.idle": {
+      "source": "assets/images/enemies/ancient-drake-idle-v1.png",
+      "frameMetadata": "ART_DRAGON.idle.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#654c4d",
+            "coveragePercent": 10.1274
+          },
+          {
+            "hex": "#775b5d",
+            "coveragePercent": 9.9358
+          },
+          {
+            "hex": "#25161a",
+            "coveragePercent": 9.4532
+          },
+          {
+            "hex": "#513c45",
+            "coveragePercent": 8.5045
+          },
+          {
+            "hex": "#8a6c6b",
+            "coveragePercent": 8.4411
+          },
+          {
+            "hex": "#3d2b34",
+            "coveragePercent": 7.9266
+          },
+          {
+            "hex": "#060204",
+            "coveragePercent": 7.5939
+          },
+          {
+            "hex": "#372420",
+            "coveragePercent": 7.3339
+          },
+          {
+            "hex": "#9e7e79",
+            "coveragePercent": 6.8767
+          },
+          {
+            "hex": "#160b0c",
+            "coveragePercent": 6.4846
+          },
+          {
+            "hex": "#b29087",
+            "coveragePercent": 5.496
+          },
+          {
+            "hex": "#54392d",
+            "coveragePercent": 4.5324
+          },
+          {
+            "hex": "#c3a398",
+            "coveragePercent": 3.2171
+          },
+          {
+            "hex": "#d0b7ae",
+            "coveragePercent": 2.0612
+          },
+          {
+            "hex": "#e3cfc4",
+            "coveragePercent": 1.4048
+          },
+          {
+            "hex": "#f4eae1",
+            "coveragePercent": 0.6107
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e41",
+            "coveragePercent": 46.6053
+          },
+          {
+            "hex": "#9d704d",
+            "coveragePercent": 22.8737
+          },
+          {
+            "hex": "#724089",
+            "coveragePercent": 11.5312
+          },
+          {
+            "hex": "#ba875d",
+            "coveragePercent": 11.2546
+          },
+          {
+            "hex": "#8c56a9",
+            "coveragePercent": 4.0263
+          },
+          {
+            "hex": "#dfa96b",
+            "coveragePercent": 3.7089
+          }
+        ],
+        "visibleSamples": 914371,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.dragon.breath": {
+      "source": "assets/images/enemies/ancient-drake-breath-v1.png",
+      "frameMetadata": "ART_DRAGON.breath.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5d4144",
+            "coveragePercent": 12.7706
+          },
+          {
+            "hex": "#745456",
+            "coveragePercent": 12.5306
+          },
+          {
+            "hex": "#442e35",
+            "coveragePercent": 11.0256
+          },
+          {
+            "hex": "#2f1c1e",
+            "coveragePercent": 10.6709
+          },
+          {
+            "hex": "#8d6968",
+            "coveragePercent": 10.3389
+          },
+          {
+            "hex": "#080303",
+            "coveragePercent": 9.7938
+          },
+          {
+            "hex": "#1f0e0d",
+            "coveragePercent": 8.9313
+          },
+          {
+            "hex": "#a8817a",
+            "coveragePercent": 7.8906
+          },
+          {
+            "hex": "#bf9a8f",
+            "coveragePercent": 5.5525
+          },
+          {
+            "hex": "#4f2917",
+            "coveragePercent": 3.6482
+          },
+          {
+            "hex": "#d4b9af",
+            "coveragePercent": 2.9684
+          },
+          {
+            "hex": "#f0e0d4",
+            "coveragePercent": 1.4071
+          },
+          {
+            "hex": "#833515",
+            "coveragePercent": 0.9785
+          },
+          {
+            "hex": "#c45119",
+            "coveragePercent": 0.639
+          },
+          {
+            "hex": "#ed8b26",
+            "coveragePercent": 0.5135
+          },
+          {
+            "hex": "#f8cc53",
+            "coveragePercent": 0.3405
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5d49",
+            "coveragePercent": 34.3932
+          },
+          {
+            "hex": "#9b2f0c",
+            "coveragePercent": 16.077
+          },
+          {
+            "hex": "#d25615",
+            "coveragePercent": 14.3897
+          },
+          {
+            "hex": "#c38656",
+            "coveragePercent": 14.0849
+          },
+          {
+            "hex": "#f5941f",
+            "coveragePercent": 11.6346
+          },
+          {
+            "hex": "#f8ce56",
+            "coveragePercent": 9.4206
+          }
+        ],
+        "visibleSamples": 967305,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.flight": {
+      "source": "assets/images/enemies/ancient-drake-flight-v1.png",
+      "frameMetadata": "ART_DRAGON.flight.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7a6163",
+            "coveragePercent": 8.7957
+          },
+          {
+            "hex": "#1f1316",
+            "coveragePercent": 8.6286
+          },
+          {
+            "hex": "#8a7074",
+            "coveragePercent": 8.5734
+          },
+          {
+            "hex": "#2f2024",
+            "coveragePercent": 8.2504
+          },
+          {
+            "hex": "#543f49",
+            "coveragePercent": 8.1612
+          },
+          {
+            "hex": "#3c2b31",
+            "coveragePercent": 7.8374
+          },
+          {
+            "hex": "#4a3738",
+            "coveragePercent": 7.6271
+          },
+          {
+            "hex": "#664f4c",
+            "coveragePercent": 7.5387
+          },
+          {
+            "hex": "#0c0507",
+            "coveragePercent": 7.2974
+          },
+          {
+            "hex": "#9a8082",
+            "coveragePercent": 6.6392
+          },
+          {
+            "hex": "#685063",
+            "coveragePercent": 6.3939
+          },
+          {
+            "hex": "#ac918f",
+            "coveragePercent": 5.9977
+          },
+          {
+            "hex": "#bca29f",
+            "coveragePercent": 3.8484
+          },
+          {
+            "hex": "#cbb5b0",
+            "coveragePercent": 2.5252
+          },
+          {
+            "hex": "#dbcac4",
+            "coveragePercent": 1.3108
+          },
+          {
+            "hex": "#f0e5de",
+            "coveragePercent": 0.5749
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#876144",
+            "coveragePercent": 40.0907
+          },
+          {
+            "hex": "#684387",
+            "coveragePercent": 25.366
+          },
+          {
+            "hex": "#99714f",
+            "coveragePercent": 18.3407
+          },
+          {
+            "hex": "#7b4f9a",
+            "coveragePercent": 10.2318
+          },
+          {
+            "hex": "#b48a5f",
+            "coveragePercent": 3.9275
+          },
+          {
+            "hex": "#8e5db0",
+            "coveragePercent": 2.0433
+          }
+        ],
+        "visibleSamples": 555031,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.front": {
+      "source": "assets/images/enemies/ancient-drake-front-v1.png",
+      "frameMetadata": "ART_DRAGON.front.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#423034",
+            "coveragePercent": 11.7161
+          },
+          {
+            "hex": "#534046",
+            "coveragePercent": 11.275
+          },
+          {
+            "hex": "#322124",
+            "coveragePercent": 11.1771
+          },
+          {
+            "hex": "#6a5251",
+            "coveragePercent": 9.8758
+          },
+          {
+            "hex": "#211314",
+            "coveragePercent": 9.3545
+          },
+          {
+            "hex": "#0e0608",
+            "coveragePercent": 8.6908
+          },
+          {
+            "hex": "#816560",
+            "coveragePercent": 7.3157
+          },
+          {
+            "hex": "#997a74",
+            "coveragePercent": 5.7379
+          },
+          {
+            "hex": "#a58986",
+            "coveragePercent": 5.7277
+          },
+          {
+            "hex": "#886e78",
+            "coveragePercent": 5.0458
+          },
+          {
+            "hex": "#6f546b",
+            "coveragePercent": 3.6792
+          },
+          {
+            "hex": "#b59b94",
+            "coveragePercent": 3.4666
+          },
+          {
+            "hex": "#5c4034",
+            "coveragePercent": 3.091
+          },
+          {
+            "hex": "#c5afa8",
+            "coveragePercent": 2.0774
+          },
+          {
+            "hex": "#d9c6bc",
+            "coveragePercent": 1.1742
+          },
+          {
+            "hex": "#ede0d6",
+            "coveragePercent": 0.5951
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#875e43",
+            "coveragePercent": 45.9826
+          },
+          {
+            "hex": "#976e4d",
+            "coveragePercent": 28.224
+          },
+          {
+            "hex": "#ac8058",
+            "coveragePercent": 13.6269
+          },
+          {
+            "hex": "#6d4389",
+            "coveragePercent": 6.4182
+          },
+          {
+            "hex": "#ca9c6a",
+            "coveragePercent": 4.0083
+          },
+          {
+            "hex": "#925aae",
+            "coveragePercent": 1.7401
+          }
+        ],
+        "visibleSamples": 837650,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "pc.momo.dawnblade": {
@@ -13625,6 +14057,208 @@
           }
         ],
         "visibleSamples": 195155,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.dragonEyes": {
+      "source": "assets/images/ui/ancient-drake-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.dragonEyes",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#090409",
+            "coveragePercent": 23.1567
+          },
+          {
+            "hex": "#241224",
+            "coveragePercent": 18.4701
+          },
+          {
+            "hex": "#442d33",
+            "coveragePercent": 11.3651
+          },
+          {
+            "hex": "#664f50",
+            "coveragePercent": 6.7822
+          },
+          {
+            "hex": "#450c63",
+            "coveragePercent": 5.5478
+          },
+          {
+            "hex": "#907471",
+            "coveragePercent": 4.6962
+          },
+          {
+            "hex": "#faf1f1",
+            "coveragePercent": 4.5174
+          },
+          {
+            "hex": "#912347",
+            "coveragePercent": 3.9597
+          },
+          {
+            "hex": "#c39f95",
+            "coveragePercent": 3.566
+          },
+          {
+            "hex": "#eacfbd",
+            "coveragePercent": 3.5185
+          },
+          {
+            "hex": "#7f1dae",
+            "coveragePercent": 3.2559
+          },
+          {
+            "hex": "#db5132",
+            "coveragePercent": 2.6675
+          },
+          {
+            "hex": "#f99b2b",
+            "coveragePercent": 2.4588
+          },
+          {
+            "hex": "#ca5fe3",
+            "coveragePercent": 2.1163
+          },
+          {
+            "hex": "#d65579",
+            "coveragePercent": 2.0963
+          },
+          {
+            "hex": "#fcdb58",
+            "coveragePercent": 1.8256
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a43246",
+            "coveragePercent": 23.845
+          },
+          {
+            "hex": "#7018a2",
+            "coveragePercent": 19.1044
+          },
+          {
+            "hex": "#ef7527",
+            "coveragePercent": 15.768
+          },
+          {
+            "hex": "#da636e",
+            "coveragePercent": 14.6599
+          },
+          {
+            "hex": "#fbcf4b",
+            "coveragePercent": 14.51
+          },
+          {
+            "hex": "#c049dc",
+            "coveragePercent": 12.1127
+          }
+        ],
+        "visibleSamples": 362994,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.dragonScale": {
+      "source": "assets/images/ui/ancient-drake-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.dragonScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#57444e",
+            "coveragePercent": 11.0257
+          },
+          {
+            "hex": "#725d62",
+            "coveragePercent": 10.4171
+          },
+          {
+            "hex": "#8c777a",
+            "coveragePercent": 9.9588
+          },
+          {
+            "hex": "#413039",
+            "coveragePercent": 9.5236
+          },
+          {
+            "hex": "#2d1f28",
+            "coveragePercent": 8.4619
+          },
+          {
+            "hex": "#a79397",
+            "coveragePercent": 8.0882
+          },
+          {
+            "hex": "#1a0c1f",
+            "coveragePercent": 7.8394
+          },
+          {
+            "hex": "#080308",
+            "coveragePercent": 6.965
+          },
+          {
+            "hex": "#cbb6ae",
+            "coveragePercent": 6.7369
+          },
+          {
+            "hex": "#faf6f0",
+            "coveragePercent": 6.2631
+          },
+          {
+            "hex": "#ebd8c5",
+            "coveragePercent": 5.9283
+          },
+          {
+            "hex": "#370c56",
+            "coveragePercent": 2.7878
+          },
+          {
+            "hex": "#c9a07a",
+            "coveragePercent": 2.6579
+          },
+          {
+            "hex": "#60198e",
+            "coveragePercent": 1.691
+          },
+          {
+            "hex": "#9532cb",
+            "coveragePercent": 0.9858
+          },
+          {
+            "hex": "#d17eee",
+            "coveragePercent": 0.6694
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#631995",
+            "coveragePercent": 28.85
+          },
+          {
+            "hex": "#8c2fc1",
+            "coveragePercent": 19.8301
+          },
+          {
+            "hex": "#905f3c",
+            "coveragePercent": 16.0348
+          },
+          {
+            "hex": "#b48052",
+            "coveragePercent": 13.2845
+          },
+          {
+            "hex": "#c35aec",
+            "coveragePercent": 12.7462
+          },
+          {
+            "hex": "#daa76d",
+            "coveragePercent": 9.2544
+          }
+        ],
+        "visibleSamples": 353101,
         "dominantCoveragePercent": 99.9999
       }
     },
@@ -22228,6 +22862,216 @@
         ],
         "visibleSamples": 1572864,
         "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/dragon-raid-hall-motion-b-v1.png": {
+      "sha256": "7c52d7bd28eb240c177242edf7ddce152bc9a060632e7fbc15a9e8b5a892e29a",
+      "width": 2132,
+      "height": 738,
+      "runtimeKeys": [
+        "dragonRaidHallMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#170f17",
+            "coveragePercent": 17.9689
+          },
+          {
+            "hex": "#231b29",
+            "coveragePercent": 16.9564
+          },
+          {
+            "hex": "#070306",
+            "coveragePercent": 12.9376
+          },
+          {
+            "hex": "#34273b",
+            "coveragePercent": 11.5263
+          },
+          {
+            "hex": "#401d1e",
+            "coveragePercent": 7.8494
+          },
+          {
+            "hex": "#5a3235",
+            "coveragePercent": 7.4746
+          },
+          {
+            "hex": "#44335f",
+            "coveragePercent": 6.0175
+          },
+          {
+            "hex": "#843f2f",
+            "coveragePercent": 3.9051
+          },
+          {
+            "hex": "#5b3e8d",
+            "coveragePercent": 3.3878
+          },
+          {
+            "hex": "#784d5e",
+            "coveragePercent": 3.0141
+          },
+          {
+            "hex": "#ac5a45",
+            "coveragePercent": 2.8061
+          },
+          {
+            "hex": "#8350b7",
+            "coveragePercent": 2.4226
+          },
+          {
+            "hex": "#e36c32",
+            "coveragePercent": 1.5065
+          },
+          {
+            "hex": "#bd72dc",
+            "coveragePercent": 1.0406
+          },
+          {
+            "hex": "#e59f65",
+            "coveragePercent": 0.8407
+          },
+          {
+            "hex": "#f5d8ca",
+            "coveragePercent": 0.3457
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#984938",
+            "coveragePercent": 33.5404
+          },
+          {
+            "hex": "#5a3b94",
+            "coveragePercent": 19.6822
+          },
+          {
+            "hex": "#d3673b",
+            "coveragePercent": 19.0527
+          },
+          {
+            "hex": "#7f4abb",
+            "coveragePercent": 15.0078
+          },
+          {
+            "hex": "#b464e0",
+            "coveragePercent": 6.6885
+          },
+          {
+            "hex": "#f2a557",
+            "coveragePercent": 6.0284
+          }
+        ],
+        "visibleSamples": 1573416,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/dragon-raid-hall-v1.png": {
+      "sha256": "109c81c9acb0cbfd8ca14c1b89c28fdd038a95efe381f64117bc516d2743666b",
+      "width": 2131,
+      "height": 738,
+      "runtimeKeys": [
+        "dragonRaidHall"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#150f18",
+            "coveragePercent": 17.4572
+          },
+          {
+            "hex": "#211927",
+            "coveragePercent": 15.9015
+          },
+          {
+            "hex": "#060306",
+            "coveragePercent": 13.4267
+          },
+          {
+            "hex": "#312538",
+            "coveragePercent": 12.8051
+          },
+          {
+            "hex": "#5a3236",
+            "coveragePercent": 7.4883
+          },
+          {
+            "hex": "#411d1e",
+            "coveragePercent": 6.7921
+          },
+          {
+            "hex": "#3f3059",
+            "coveragePercent": 5.8231
+          },
+          {
+            "hex": "#823f32",
+            "coveragePercent": 4.21
+          },
+          {
+            "hex": "#563c7f",
+            "coveragePercent": 3.8356
+          },
+          {
+            "hex": "#b2573c",
+            "coveragePercent": 2.7985
+          },
+          {
+            "hex": "#7449ae",
+            "coveragePercent": 2.5473
+          },
+          {
+            "hex": "#845363",
+            "coveragePercent": 2.5331
+          },
+          {
+            "hex": "#e6783c",
+            "coveragePercent": 1.7886
+          },
+          {
+            "hex": "#a865d1",
+            "coveragePercent": 1.4878
+          },
+          {
+            "hex": "#f1bc6f",
+            "coveragePercent": 0.6246
+          },
+          {
+            "hex": "#e8aee7",
+            "coveragePercent": 0.4806
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#613e9c",
+            "coveragePercent": 26.1231
+          },
+          {
+            "hex": "#924534",
+            "coveragePercent": 25.1776
+          },
+          {
+            "hex": "#b65c43",
+            "coveragePercent": 17.9572
+          },
+          {
+            "hex": "#9e5ad3",
+            "coveragePercent": 13.7444
+          },
+          {
+            "hex": "#e77337",
+            "coveragePercent": 12.1544
+          },
+          {
+            "hex": "#f4b25b",
+            "coveragePercent": 4.8433
+          }
+        ],
+        "visibleSamples": 1572678,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/fia-chambers-motion-b-v1.png": {
@@ -33465,6 +34309,426 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/enemies/ancient-drake-breath-v1.png": {
+      "sha256": "d0f63c7807b2b0f056ecb849bf2a92699a2bbd2fd4ebef39f7debcd6832a1734",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "dragonBreath"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5d4144",
+            "coveragePercent": 12.7706
+          },
+          {
+            "hex": "#745456",
+            "coveragePercent": 12.5306
+          },
+          {
+            "hex": "#442e35",
+            "coveragePercent": 11.0256
+          },
+          {
+            "hex": "#2f1c1e",
+            "coveragePercent": 10.6709
+          },
+          {
+            "hex": "#8d6968",
+            "coveragePercent": 10.3389
+          },
+          {
+            "hex": "#080303",
+            "coveragePercent": 9.7938
+          },
+          {
+            "hex": "#1f0e0d",
+            "coveragePercent": 8.9313
+          },
+          {
+            "hex": "#a8817a",
+            "coveragePercent": 7.8906
+          },
+          {
+            "hex": "#bf9a8f",
+            "coveragePercent": 5.5525
+          },
+          {
+            "hex": "#4f2917",
+            "coveragePercent": 3.6482
+          },
+          {
+            "hex": "#d4b9af",
+            "coveragePercent": 2.9684
+          },
+          {
+            "hex": "#f0e0d4",
+            "coveragePercent": 1.4071
+          },
+          {
+            "hex": "#833515",
+            "coveragePercent": 0.9785
+          },
+          {
+            "hex": "#c45119",
+            "coveragePercent": 0.639
+          },
+          {
+            "hex": "#ed8b26",
+            "coveragePercent": 0.5135
+          },
+          {
+            "hex": "#f8cc53",
+            "coveragePercent": 0.3405
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5d49",
+            "coveragePercent": 34.3932
+          },
+          {
+            "hex": "#9b2f0c",
+            "coveragePercent": 16.077
+          },
+          {
+            "hex": "#d25615",
+            "coveragePercent": 14.3897
+          },
+          {
+            "hex": "#c38656",
+            "coveragePercent": 14.0849
+          },
+          {
+            "hex": "#f5941f",
+            "coveragePercent": 11.6346
+          },
+          {
+            "hex": "#f8ce56",
+            "coveragePercent": 9.4206
+          }
+        ],
+        "visibleSamples": 967305,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/ancient-drake-flight-v1.png": {
+      "sha256": "a6938baf4fd6240da2bcabe008e7e9ed1666dc691510007dc923947ed0c70e34",
+      "width": 1983,
+      "height": 793,
+      "runtimeKeys": [
+        "dragonFlight"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7a6163",
+            "coveragePercent": 8.7957
+          },
+          {
+            "hex": "#1f1316",
+            "coveragePercent": 8.6286
+          },
+          {
+            "hex": "#8a7074",
+            "coveragePercent": 8.5734
+          },
+          {
+            "hex": "#2f2024",
+            "coveragePercent": 8.2504
+          },
+          {
+            "hex": "#543f49",
+            "coveragePercent": 8.1612
+          },
+          {
+            "hex": "#3c2b31",
+            "coveragePercent": 7.8374
+          },
+          {
+            "hex": "#4a3738",
+            "coveragePercent": 7.6271
+          },
+          {
+            "hex": "#664f4c",
+            "coveragePercent": 7.5387
+          },
+          {
+            "hex": "#0c0507",
+            "coveragePercent": 7.2974
+          },
+          {
+            "hex": "#9a8082",
+            "coveragePercent": 6.6392
+          },
+          {
+            "hex": "#685063",
+            "coveragePercent": 6.3939
+          },
+          {
+            "hex": "#ac918f",
+            "coveragePercent": 5.9977
+          },
+          {
+            "hex": "#bca29f",
+            "coveragePercent": 3.8484
+          },
+          {
+            "hex": "#cbb5b0",
+            "coveragePercent": 2.5252
+          },
+          {
+            "hex": "#dbcac4",
+            "coveragePercent": 1.3108
+          },
+          {
+            "hex": "#f0e5de",
+            "coveragePercent": 0.5749
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#876144",
+            "coveragePercent": 40.0907
+          },
+          {
+            "hex": "#684387",
+            "coveragePercent": 25.366
+          },
+          {
+            "hex": "#99714f",
+            "coveragePercent": 18.3407
+          },
+          {
+            "hex": "#7b4f9a",
+            "coveragePercent": 10.2318
+          },
+          {
+            "hex": "#b48a5f",
+            "coveragePercent": 3.9275
+          },
+          {
+            "hex": "#8e5db0",
+            "coveragePercent": 2.0433
+          }
+        ],
+        "visibleSamples": 555031,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/ancient-drake-front-v1.png": {
+      "sha256": "228d2ce1b089a0d3ec44bcdd1263ebc0ed4a34cece41091f157ebab2d2e37966",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dragonFront"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#423034",
+            "coveragePercent": 11.7161
+          },
+          {
+            "hex": "#534046",
+            "coveragePercent": 11.275
+          },
+          {
+            "hex": "#322124",
+            "coveragePercent": 11.1771
+          },
+          {
+            "hex": "#6a5251",
+            "coveragePercent": 9.8758
+          },
+          {
+            "hex": "#211314",
+            "coveragePercent": 9.3545
+          },
+          {
+            "hex": "#0e0608",
+            "coveragePercent": 8.6908
+          },
+          {
+            "hex": "#816560",
+            "coveragePercent": 7.3157
+          },
+          {
+            "hex": "#997a74",
+            "coveragePercent": 5.7379
+          },
+          {
+            "hex": "#a58986",
+            "coveragePercent": 5.7277
+          },
+          {
+            "hex": "#886e78",
+            "coveragePercent": 5.0458
+          },
+          {
+            "hex": "#6f546b",
+            "coveragePercent": 3.6792
+          },
+          {
+            "hex": "#b59b94",
+            "coveragePercent": 3.4666
+          },
+          {
+            "hex": "#5c4034",
+            "coveragePercent": 3.091
+          },
+          {
+            "hex": "#c5afa8",
+            "coveragePercent": 2.0774
+          },
+          {
+            "hex": "#d9c6bc",
+            "coveragePercent": 1.1742
+          },
+          {
+            "hex": "#ede0d6",
+            "coveragePercent": 0.5951
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#875e43",
+            "coveragePercent": 45.9826
+          },
+          {
+            "hex": "#976e4d",
+            "coveragePercent": 28.224
+          },
+          {
+            "hex": "#ac8058",
+            "coveragePercent": 13.6269
+          },
+          {
+            "hex": "#6d4389",
+            "coveragePercent": 6.4182
+          },
+          {
+            "hex": "#ca9c6a",
+            "coveragePercent": 4.0083
+          },
+          {
+            "hex": "#925aae",
+            "coveragePercent": 1.7401
+          }
+        ],
+        "visibleSamples": 837650,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/ancient-drake-idle-v1.png": {
+      "sha256": "104c6f5b85c88340d1a408d6ba431811a2c9c4c3305a00a4f3bc90ae13209e66",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "dragonIdle"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#654c4d",
+            "coveragePercent": 10.1274
+          },
+          {
+            "hex": "#775b5d",
+            "coveragePercent": 9.9358
+          },
+          {
+            "hex": "#25161a",
+            "coveragePercent": 9.4532
+          },
+          {
+            "hex": "#513c45",
+            "coveragePercent": 8.5045
+          },
+          {
+            "hex": "#8a6c6b",
+            "coveragePercent": 8.4411
+          },
+          {
+            "hex": "#3d2b34",
+            "coveragePercent": 7.9266
+          },
+          {
+            "hex": "#060204",
+            "coveragePercent": 7.5939
+          },
+          {
+            "hex": "#372420",
+            "coveragePercent": 7.3339
+          },
+          {
+            "hex": "#9e7e79",
+            "coveragePercent": 6.8767
+          },
+          {
+            "hex": "#160b0c",
+            "coveragePercent": 6.4846
+          },
+          {
+            "hex": "#b29087",
+            "coveragePercent": 5.496
+          },
+          {
+            "hex": "#54392d",
+            "coveragePercent": 4.5324
+          },
+          {
+            "hex": "#c3a398",
+            "coveragePercent": 3.2171
+          },
+          {
+            "hex": "#d0b7ae",
+            "coveragePercent": 2.0612
+          },
+          {
+            "hex": "#e3cfc4",
+            "coveragePercent": 1.4048
+          },
+          {
+            "hex": "#f4eae1",
+            "coveragePercent": 0.6107
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e41",
+            "coveragePercent": 46.6053
+          },
+          {
+            "hex": "#9d704d",
+            "coveragePercent": 22.8737
+          },
+          {
+            "hex": "#724089",
+            "coveragePercent": 11.5312
+          },
+          {
+            "hex": "#ba875d",
+            "coveragePercent": 11.2546
+          },
+          {
+            "hex": "#8c56a9",
+            "coveragePercent": 4.0263
+          },
+          {
+            "hex": "#dfa96b",
+            "coveragePercent": 3.7089
+          }
+        ],
+        "visibleSamples": 914371,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/angel-dark-v5.png": {
       "sha256": "e034f1c6e153aca440ef100ff573ee55df7cfc3c45cc5dac5a65686ede6c5cec",
       "width": 1536,
@@ -43329,6 +44593,111 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/ui/ancient-drake-items-v1.png": {
+      "sha256": "93b4bc952c0eb5a4c8a3b9c0685e321fd264039097ce4d25ce8ce236cafdcfde",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "dragonItems"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a040b",
+            "coveragePercent": 17.2684
+          },
+          {
+            "hex": "#271923",
+            "coveragePercent": 14.6275
+          },
+          {
+            "hex": "#49343b",
+            "coveragePercent": 12.4889
+          },
+          {
+            "hex": "#665258",
+            "coveragePercent": 8.9822
+          },
+          {
+            "hex": "#867072",
+            "coveragePercent": 7.4859
+          },
+          {
+            "hex": "#a78e8d",
+            "coveragePercent": 6.5678
+          },
+          {
+            "hex": "#cdb1a5",
+            "coveragePercent": 5.6338
+          },
+          {
+            "hex": "#faf5f1",
+            "coveragePercent": 5.1763
+          },
+          {
+            "hex": "#ebd7c4",
+            "coveragePercent": 4.7366
+          },
+          {
+            "hex": "#300a46",
+            "coveragePercent": 4.4894
+          },
+          {
+            "hex": "#57137a",
+            "coveragePercent": 3.0774
+          },
+          {
+            "hex": "#a52f48",
+            "coveragePercent": 2.4046
+          },
+          {
+            "hex": "#e86c3d",
+            "coveragePercent": 2.2269
+          },
+          {
+            "hex": "#8c25bb",
+            "coveragePercent": 1.9791
+          },
+          {
+            "hex": "#fbc943",
+            "coveragePercent": 1.448
+          },
+          {
+            "hex": "#cf68e3",
+            "coveragePercent": 1.4073
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a33946",
+            "coveragePercent": 23.5106
+          },
+          {
+            "hex": "#6f1aa1",
+            "coveragePercent": 23.3045
+          },
+          {
+            "hex": "#d77169",
+            "coveragePercent": 14.3487
+          },
+          {
+            "hex": "#bc49dc",
+            "coveragePercent": 13.8978
+          },
+          {
+            "hex": "#ef7427",
+            "coveragePercent": 12.7803
+          },
+          {
+            "hex": "#fbce4c",
+            "coveragePercent": 12.1581
+          }
+        ],
+        "visibleSamples": 716095,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/ui/arena-serpent-scale-v1.png": {
       "sha256": "d68c2d6708dbdc4fc5cfc4e14ce45b745c19ab65dd7b72155b851b399a104388",
       "width": 1254,
@@ -48720,14 +50089,14 @@
       {
         "value": "#fff",
         "lines": [
-          127
+          132
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          127
+          132
         ],
         "dynamic": false
       }
@@ -49080,6 +50449,39 @@
         "dynamic": false
       }
     ],
+    "assets/js/dragon-raid-art.js": [
+      {
+        "value": "#15121c",
+        "lines": [
+          7
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#17121c",
+        "lines": [
+          52
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bca084",
+        "lines": [
+          53
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dragon-raid-rules.js": [],
+    "assets/js/dragon-raid.js": [
+      {
+        "value": "#ad81d9",
+        "lines": [
+          142
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/duel-appearance.js": [],
     "assets/js/duel-mode.js": [
       {
@@ -49193,441 +50595,442 @@
         "dynamic": false
       }
     ],
+    "assets/js/fia-journey-rules.js": [],
     "assets/js/fia-quest.js": [],
     "assets/js/game.js": [
       {
         "value": "#08121900",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          305
+          306
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          531
+          532
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#100d1b",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#171322",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#182c37",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#1c3837",
         "lines": [
-          520
+          521
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          520
+          521
         ],
         "dynamic": false
       },
       {
         "value": "#253c37",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#29203c",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#2b2536",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#322136",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#344358",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#352534",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#415d60",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#465959",
         "lines": [
-          379
+          380
         ],
         "dynamic": false
       },
       {
         "value": "#544360",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#606a62",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#60706a",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#69505e",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#718679",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#867294",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#8b5c77",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#8f9696",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#94b6a4",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#9da68e",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#a4ac8d",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#a6c9c5",
         "lines": [
-          379
+          380
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          309
+          310
         ],
         "dynamic": false
       },
       {
         "value": "#b4a99b",
         "lines": [
-          254
+          255
         ],
         "dynamic": false
       },
       {
         "value": "#b788dd",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#b88ee9",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#c872b8",
         "lines": [
-          309
+          310
         ],
         "dynamic": false
       },
       {
         "value": "#c96957",
         "lines": [
-          23
+          24
         ],
         "dynamic": false
       },
       {
         "value": "#d58cf3",
         "lines": [
-          221
+          222
         ],
         "dynamic": false
       },
       {
         "value": "#d8e3c9",
         "lines": [
-          262
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#d98877",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          549
+          550
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          170
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#dea58d",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#dfba76",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#e3cfa3",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#e4c4ec",
         "lines": [
-          26
+          27
         ],
         "dynamic": false
       },
       {
         "value": "#e4c78a",
         "lines": [
-          23,
-          170
+          24,
+          171
         ],
         "dynamic": false
       },
       {
         "value": "#e5e0c8",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#e8d89b",
         "lines": [
-          309
+          310
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          549
+          550
         ],
         "dynamic": false
       },
       {
         "value": "#ecd3a0",
         "lines": [
-          218
+          219
         ],
         "dynamic": false
       },
       {
         "value": "#ecedce",
         "lines": [
-          549
+          550
         ],
         "dynamic": false
       },
       {
         "value": "#eee0ad",
         "lines": [
-          251
+          252
         ],
         "dynamic": false
       },
       {
         "value": "#f0dab1",
         "lines": [
-          219
+          220
         ],
         "dynamic": false
       },
       {
         "value": "#f0df9c",
         "lines": [
-          262
+          263
         ],
         "dynamic": false
       },
       {
         "value": "#f0dfb1",
         "lines": [
-          379
+          380
         ],
         "dynamic": false
       },
       {
         "value": "#f3d494",
         "lines": [
-          25,
-          255
+          26,
+          256
         ],
         "dynamic": false
       },
       {
         "value": "#f4cf8a",
         "lines": [
-          378
+          379
         ],
         "dynamic": false
       },
       {
         "value": "#f6d796",
         "lines": [
-          25
+          26
         ],
         "dynamic": false
       },
       {
         "value": "#ffcf83",
         "lines": [
-          549
+          550
         ],
         "dynamic": false
       },
       {
         "value": "#ffe29a",
         "lines": [
-          221
+          222
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          379
+          380
         ],
         "dynamic": false
       }
@@ -50560,35 +51963,35 @@
       {
         "value": "#101d29",
         "lines": [
-          143
+          144
         ],
         "dynamic": false
       },
       {
         "value": "#8ad8df",
         "lines": [
-          148
+          149
         ],
         "dynamic": false
       },
       {
         "value": "#d8c7a2",
         "lines": [
-          146
+          147
         ],
         "dynamic": false
       },
       {
         "value": "#ffcb74",
         "lines": [
-          150
+          151
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          150
+          151
         ],
         "dynamic": false
       }
@@ -51076,6 +52479,7 @@
       }
     ],
     "assets/js/slayer-dialog.js": [],
+    "assets/js/void-encounter-rules.js": [],
     "assets/js/weapon-equipment.js": [],
     "assets/js/weapon-selection.js": [],
     "assets/js/weapons.js": [],

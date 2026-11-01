@@ -55,6 +55,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/i18n.js`, `assets/i18n/locales.json` | Futás közbeni nyelvváltás és az összes nyelv fordításai. |
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
 | `assets/js/fia-quest.js`, `fia-conflict.js`, `fia-combat.js`, `fia-art.js` | Fia második megbízása, visszaállítható provokáció, tartós ellenségesség és passzív pajzs; [spoileres referencia](FIA-JOURNEY.md). |
+| `assets/js/fia-journey-rules.js`, `dragon-raid-rules.js`, `dragon-raid.js`, `dragon-raid-art.js` | Fia harmadik megbízása, háromszakaszos őssárkányrajtaütés, ismételhető és egyszeri jutalmak, natív rajzolás; [referencia](FIA-JOURNEY.md). |
 | `assets/js/ziggurat-maps.js`, `hannah-rules.js`, `hannah-combat.js`, `hannah-encounter.js`, `dawnblade.js`, `hannah-art.js` | Háromrészes zikkurat, Hannah harca, Haru kiszabadítása, Hajnalkard és tartós jutalmak; [spoileres referencia](ZIGGURAT.md). |
 | `assets/js/background-framing.js` | Az érintett festett belső terek és panorámák nézethez igazított, képarányt tartó méretezése; az animációt továbbra is a `background-motion.js` kezeli. |
 | `assets/js/duel-rules.js`, `peer-session.js`, `duel-mode.js` | Mentéstől független párbajszimuláció, újrahasználható WebRTC-kapcsolat és két megnyert menetes mérkőzés; [hálózati referencia](MULTIPLAYER.md). |

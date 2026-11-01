@@ -5,8 +5,9 @@
 A folytatás a `FEATURE-fia-quests-3-4-5` ágon készül, kötelező sorrendben:
 3. sárkányrajtaütés, 4. void-hasadék, 5. rituálé. A harmadik megbízáshoz
 a második leadása és Hannah legyőzése szükséges. A szív védett tárgy marad.
-Az új helyszínek és harcok beépítése folyamatban van; az alábbi szabálymodul
-önmagában még nem jelent játszható új küldetést.
+A harmadik megbízás és a háromszakaszos rajtaütés már játszható; a negyedik
+és ötödik folytatás beépítése folyamatban van. A harmadik leadás utáni
+rituálészoba a következő beépítési lépés része.
 
 A `fia-journey-rules.js` tiszta, másolásos tranzakciói kezelik a sárkánymenet
 sorszámát, lezárását, a pikkelykészletet és a megbízás mérföldköveit.
@@ -21,7 +22,30 @@ jelent; a kifejezetten hibás rekordot elutasítjuk. A dungeonök korábbi, pont
 sémája változatlan. A mentés és a dev-teszt külön mély másolatot tart,
 a jutalompontok a közös, szigorúan ellenőrzött pontkerethez tartoznak.
 `test-fia-journey-rules.cjs` és `test-fia-journey-state.cjs` ellenőrzi ezeket;
-ezek nem helyettesítik az új helyszínek későbbi böngészős ellenőrzését.
+ezek nem helyettesítik a böngészős ellenőrzést.
+
+### Sárkányrajtaütés és ellenőrzése
+
+A zikkurat belsejében az új bejárat X=1250, Y=1700 helyen különül el a
+visszaúttól és a pihenőtől. A menet a szárnyakon elérhető négy lánccal indul,
+a háton három daganat és két árnyék következik, végül a szemből látható fej
+támad. A tűz és árnyék mellett külön, előre rögzített célterületű fejcsapás és
+harapás szerepel. A fizikai támadás csak közelről indul; távolról a boss
+területi mágiát választ. A fej rajzolása és találati teste ugyanazt a pozíciót
+használja. A négy tartóoszlop összesen 180 aktív másodpercet ad a záróharchoz.
+
+A menet közbeni halál vagy újratöltés az első szakaszt állítja vissza; a
+korábbi jutalmak és küldetéstörténet megmaradnak. Tesztmódban mindhárom
+szakasz külön, jutalom nélkül újrajátszható. A natív mentés és Continue
+folyamatát Edge-ben újratöltéssel ellenőriztük; 1280×720 és 1920×1080 méretben
+készültek képek. Ez nem teljes, kézzel végigjátszott harci bizonyíték.
+
+A három javítás független QA-ellenőrzésen megfelelt:
+`QA-FIA3-ENTRY-001 r1`, `QA-FIA3-OBJECTIVE-002 r1`,
+`QA-FIA3-MOVESET-003 r1`. A regressziók a tényleges E-interakciót,
+a feladat/iránytű egyezését, valamint a fej és a célterület kapcsolatát
+ellenőrzik 30/60/120 FPS mellett. A teljes szárnyút fizikai route-tesztje
+szintén ezt a három képkockasebességet használja.
 
 Spoileres fejlesztői referencia. Kártyák: [Fia quest #2](https://trello.com/c/bOTc8aP0), [Fia legyen megtámadható](https://trello.com/c/oDJB4Y0y).
 

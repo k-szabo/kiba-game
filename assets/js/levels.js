@@ -537,7 +537,10 @@ levels[1].progressFlags.push('dungeonRunStarted','dungeonStage1Clear','dungeonSt
 const {zigguratApproach,zigguratInterior,zigguratSummit}=createZigguratMaps({makeLevel,ledge,rest,foe,zone});
 shadowRealm.zigguratEntrance={x:10680,y:1200};
 shadowRealm.progressFlags.push('dawnblade','hannahDefeated','hannahFiaRescue','demonLordSoul','demonLordHeart','demonLordHeartGiven','discovered:hannahCourt','guardian:Hannah');
+const dragonCatacombs=createDragonRaidMap({makeLevel,ledge,rest,zone});
+zigguratInterior.dragonRaidEntrance={x:1250,y:1700};
 const SIDE_LOCATIONS=Object.freeze({
+ dragonCatacombs:Object.freeze({map:dragonCatacombs,realm:3,requiredFlags:Object.freeze(['hannahDefeated'])}),
  zigguratApproach:Object.freeze({map:zigguratApproach,realm:3,requiredFlags:Object.freeze([])}),
  zigguratInterior:Object.freeze({map:zigguratInterior,realm:3,requiredFlags:Object.freeze([])}),
  zigguratSummit:Object.freeze({map:zigguratSummit,realm:3,requiredFlags:Object.freeze([])}),

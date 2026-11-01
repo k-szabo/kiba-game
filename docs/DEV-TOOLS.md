@@ -1,5 +1,9 @@
 # Fejlesztői eszközpanel
 
+A sárkányrajtaütés helyszínén a bossválasztó mindhárom harci szakaszt külön
+újrajátszható tesztként kínálja. A szakaszváltás törli a korábbi támadásokat,
+nem ír normál mentést, és nem ad XP-t, pikkelyt vagy küldetésjutalmat.
+
 A képek Cache API tárolója a panel checkboxával tesztmód nélkül is kikapcsolható. A `cacheDisable` böngészőpreferencia és a kiadásonkénti takarítás részletei: [képgyorsítótár](ASSET-CACHE.md). A már betöltött képek ellenőrzéséhez újratöltés szükséges.
 
 A panel jelszó és külön konfiguráció nélkül elérhető, helyi futtatásban és GitHub Pagesen is. A külön eszközök elkülönített tesztmódban használhatók.
