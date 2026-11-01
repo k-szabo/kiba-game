@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
 const h=harness(),r=h.run,node=h.sandbox.document.getElementById('devBossHealth');
-r("bossStarted=true;$('bossHud').hidden=false;DevBossHealth.hud()");assert(node.hidden,'Normal play has no numeric boss diagnostics');
+r("bossStarted=true;$('bossHud').hidden=false;DevBossHealth.hud()");assert(node.hidden,'Numeric boss HP is off by default in normal play');
 r('DevTools.open();DevSession.begin();DevTools.close();enterRealm(0);bossStarted=true;boss.hp=12.25;updateHUD();DevBossHealth.hud()');
 assert(!node.hidden);assert.equal(node.textContent,r('DevBossHealth.value(boss)'));assert(node.textContent.includes('12,25'));
 r('boss.dead=true;DevBossHealth.hud()');assert(node.hidden,'Defeated boss has no diagnostic value');

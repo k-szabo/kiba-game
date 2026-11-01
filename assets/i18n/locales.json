@@ -1132,7 +1132,14 @@
       "menu.changelog.0958.a8ee4aae.1": "A normál ellenfelek a közeli, magasabban álló Momo miatt sem ragadnak tétlen állapotba.",
       "menu.changelog.0958.a8ee4aae.2": "Hannah második fázisában az árnyékvisszhangok csak dash és ugrótámadások alatt támadnak, sötét Kiba pedig végig körülveszi.",
       "menu.changelog.0958.a8ee4aae.3": "Hannah földkitöréseinek előjelzése és becsapódása a teljes arénában látható.",
-      "menu.changelog.0958.a8ee4aae.4": "Haru villámos kiszabadítását felülről érkező villámcsapás jelzi."
+      "menu.changelog.0958.a8ee4aae.4": "Haru villámos kiszabadítását felülről érkező villámcsapás jelzi.",
+      "combat.title": "Harci kijelzések",
+      "combat.incoming": "Momo kapott sebzése",
+      "combat.outgoing": "Ellenfelek kapott sebzése",
+      "combat.bossHealth": "Bossok életereje számokkal",
+      "menu.support": "Támogasd Momót",
+      "menu.changelog.0959.6fe22d89.title": "Személyre szabható harci kijelzések",
+      "menu.changelog.0959.6fe22d89.0": "A súgóban külön bekapcsolhatók Momo és az ellenfelek sebzésszámai, valamint a bossok számszerű életereje. A fejlesztői tesztmód saját kapcsolókat használ. A fő- és szünetmenüből Ko-fi linken támogathatod Momót."
     }
   },
   "en": {
@@ -2268,7 +2275,14 @@
       "menu.changelog.0958.a8ee4aae.1": "Regular enemies no longer become stuck idle when Momo is nearby on a higher platform.",
       "menu.changelog.0958.a8ee4aae.2": "In Hannah’s second phase, shadow echoes attack only during dashes and jumping attacks, while dark Kiba surrounds her throughout.",
       "menu.changelog.0958.a8ee4aae.3": "Hannah’s ground eruptions show their warnings and impacts throughout the arena.",
-      "menu.changelog.0958.a8ee4aae.4": "Haru’s lightning rescue is marked by a bolt descending from above."
+      "menu.changelog.0958.a8ee4aae.4": "Haru’s lightning rescue is marked by a bolt descending from above.",
+      "combat.title": "Combat display",
+      "combat.incoming": "Damage taken by Momo",
+      "combat.outgoing": "Damage taken by enemies",
+      "combat.bossHealth": "Numeric boss health",
+      "menu.support": "Support Momo",
+      "menu.changelog.0959.6fe22d89.title": "Customizable combat display",
+      "menu.changelog.0959.6fe22d89.0": "Enable damage numbers for Momo and enemies, and numeric boss health independently in the help panel. Developer test mode uses its own toggles. Support Momo through the Ko-fi link in the main and pause menus."
     }
   }
 }

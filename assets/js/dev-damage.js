@@ -1,17 +1,18 @@
-/* Session-only combat diagnostics; values reflect health actually removed. */
+/* Optional combat numbers; values reflect health actually removed. */
 'use strict';
 const DevDamage=(()=>{
  const LIMIT=48,LIFETIME=.9;
- let enabled=false,initialized=false,entries=[];
- const active=()=>DevSession.active&&enabled;
+ let initialized=false,entries=[];
+ const active=()=>!(typeof DuelMode!=='undefined'&&DuelMode.active)&&(CombatDisplay.get('incoming')||CombatDisplay.get('outgoing'));
  function clear(){entries=[];}
  function toggle(){
   if(!DevSession.active||state!=='developer'||!DevTools.isOpen)return false;
-  enabled=!enabled;clear();return true;
+  const enabled=!(CombatDisplay.get('incoming')||CombatDisplay.get('outgoing'));
+  CombatDisplay.set('incoming',enabled);CombatDisplay.set('outgoing',enabled);clear();return true;
  }
  function record(kind,target,before,after){
   DevLog.damage(kind,target,before,after);
-  if(!active()||!Number.isFinite(before)||!Number.isFinite(after)||before<=0)return;
+  if(!active()||!CombatDisplay.get(kind==='incoming'?'incoming':'outgoing')||!Number.isFinite(before)||!Number.isFinite(after)||before<=0)return;
   const amount=Math.min(before,Math.max(0,before-Math.max(0,after)));
   if(!amount||!Number.isFinite(target?.x)||!Number.isFinite(target?.y))return;
   if(entries.length>=LIMIT)entries.shift();
@@ -27,7 +28,7 @@ const DevDamage=(()=>{
   if(!active()||!entries.length)return;
   ctx.save();ctx.font='800 24px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.lineJoin='round';ctx.lineWidth=5;ctx.strokeStyle='#070b16';
   for(const entry of entries){
-   const value=String(Math.round(entry.amount*100)/100),text=(entry.kind==='incoming'?'−':'')+value;
+   const value=new Intl.NumberFormat(I18n.locale,{maximumFractionDigits:2}).format(entry.amount),text=(entry.kind==='incoming'?'−':'')+value;
    const y=entry.y-(reducedMotion.matches?0:(LIFETIME-entry.life)*30);
    ctx.globalAlpha=reducedMotion.matches?1:Math.min(1,entry.life/.2);
    ctx.fillStyle=entry.kind==='incoming'?'#dd9480':'#ffe9aa';ctx.strokeText(text,entry.x,y);ctx.fillText(text,entry.x,y);
@@ -36,8 +37,7 @@ const DevDamage=(()=>{
  }
  function init(){
   if(initialized)return;initialized=true;
-  DevTools.register({id:'damage-numbers',labelKey:'dev.damage',available:()=>DevSession.active,toggled:active,run:toggle});
-  DevSession.onEnd(()=>{enabled=false;clear();});
+  CombatDisplay.onChange(clear);DevSession.onEnd(clear);
  }
  return Object.freeze({init,toggle,record,update,draw,clear,get active(){return active();},get samples(){return entries.map(entry=>({...entry}));}});
 })();

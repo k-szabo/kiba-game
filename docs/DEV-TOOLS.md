@@ -41,7 +41,7 @@ A `DevLog.scope(actor, fn, moveOverride)` változatlan eredménnyel futtatja a h
 | Tárgy hozzáadása | Az `ART_INVENTORY.items` katalógus összes regisztrált tárgyát listázza, a meglévő nevekkel. Már birtokolt vagy felhasznált tárgy nem duplikálható. A felszerelt alapfegyver nem külön hátizsáktárgy. |
 | Képesség megszerzése | A szél áldása (dupla ugrás) vagy a szellemlépés kiválasztható és a tesztkarakternek adható. A HUD azonnal frissül, a dash fejlesztése elérhetővé válik a szentélynél. Már megszerzett képesség nem duplikálható. |
 | Halhatatlanság | Ki/be kapcsolható védelem a normál harcban, a halálos lávában és az álomban is. Lezuhanásnál biztonságos pontra kerül Momo. Külön jelzés látható a próba közben; a teszt végén kikapcsol. A normál játék halál- és lezuhanásszabályai változatlanok. |
-| Sebzésszámok | Alapból kikapcsolt harci mérőeszköz; a tényleges HP-veszteséget mutatja. Blokkolás és sérthetetlenség nem kap fiktív találatot, az overkill és a boss-fázishatárok korlátozzák az értéket. Szünetben az effektek is megállnak; csökkentett mozgásnál helyben jelennek meg. |
+| Momo / ellenfelek kapott sebzése | Két külön, alapból kikapcsolt kapcsoló a tesztmenethez; a tényleges HP-veszteséget mutatja. Blokkolás és sérthetetlenség nem kap fiktív találatot, az overkill és a boss-fázishatárok korlátozzák az értéket. Szünetben az effektek is megállnak; csökkentett mozgásnál helyben jelennek meg. |
 
 A tesztmódban hozzáadott csontkulcs a boss legyőzése nélkül is nyitja a tanácsosi kaput, és használatkor elfogy. Az így megnyitott kapu újra használható. Ez csak a memóriában futó tesztre érvényes; normál játékban a boss- és kulcsszabályok változatlanok.
 
@@ -172,3 +172,5 @@ Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengean
 ## Zikkurat
 
 A teleport három további célpontot kínál: a zikkurat előtere, belseje és Hannah trónterme. A képességadó Hajnalkardot is adhat; a bossválasztó a trónteremben Hannah teljes, első fázistól induló próbáját állítja vissza. A visszajátszás nem ad jutalmat vagy történeti mérföldkövet, és a normál mentést sem módosítja.
+
+A harci kijelzések közös beállításkezelője a `combat-display.js`. Normál játékban a három külön kapcsoló a súgóban érhető el, `momo-combat-display` kulcson tárolódik, a kalandmentéstől függetlenül. Tesztmódban saját, memóriában élő értékek használatosak (sebzésszámok: ki; számszerű boss-HP: be); a dev-panel mindhármat külön kapcsolja. A teszt befejezése visszaállítja a normál preferenciákat. Párbajban ezek a kalandhoz tartozó kijelzések nem jelennek meg.

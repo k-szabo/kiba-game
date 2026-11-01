@@ -47258,6 +47258,13 @@
         "dynamic": false
       },
       {
+        "value": "#263c40",
+        "lines": [
+          357
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#27323a",
         "lines": [
           244
@@ -47354,6 +47361,13 @@
         "value": "#3a4b49",
         "lines": [
           45
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3b5052",
+        "lines": [
+          357
         ],
         "dynamic": false
       },
@@ -47865,7 +47879,8 @@
           85,
           100,
           251,
-          284
+          284,
+          357
         ],
         "dynamic": false
       },
@@ -47953,6 +47968,13 @@
         "value": "#d9ba7b88",
         "lines": [
           64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b99",
+        "lines": [
+          357
         ],
         "dynamic": false
       },
@@ -48323,7 +48345,8 @@
       {
         "value": "#f9d989",
         "lines": [
-          64
+          64,
+          357
         ],
         "dynamic": false
       },
@@ -48379,7 +48402,8 @@
       {
         "value": "#ffe0a2",
         "lines": [
-          64
+          64,
+          357
         ],
         "dynamic": false
       },
@@ -48582,7 +48606,8 @@
       {
         "value": "#fff1d3",
         "lines": [
-          36
+          36,
+          357
         ],
         "dynamic": false
       },
@@ -48889,6 +48914,7 @@
     "assets/js/camp-quest.js": [],
     "assets/js/camp-services.js": [],
     "assets/js/camp-workshop.js": [],
+    "assets/js/combat-display.js": [],
     "assets/js/combat.js": [
       {
         "value": "#b087dd",
@@ -49011,21 +49037,21 @@
       {
         "value": "#070b16",
         "lines": [
-          28
+          29
         ],
         "dynamic": false
       },
       {
         "value": "#dd9480",
         "lines": [
-          33
+          34
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          33
+          34
         ],
         "dynamic": false
       }
@@ -49193,7 +49219,7 @@
       {
         "value": "#08141166",
         "lines": [
-          530
+          531
         ],
         "dynamic": false
       },
@@ -49228,14 +49254,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          519
+          520
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          519
+          520
         ],
         "dynamic": false
       },
@@ -49445,7 +49471,7 @@
       {
         "value": "#d9e8ce",
         "lines": [
-          548
+          549
         ],
         "dynamic": false
       },
@@ -49516,7 +49542,7 @@
       {
         "value": "#ec9153",
         "lines": [
-          548
+          549
         ],
         "dynamic": false
       },
@@ -49530,7 +49556,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          548
+          549
         ],
         "dynamic": false
       },
@@ -49587,7 +49613,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          548
+          549
         ],
         "dynamic": false
       },
