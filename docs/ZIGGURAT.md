@@ -57,6 +57,8 @@ Haru külön idősebb shiba-grafikát használ a mennyországban, a zikkuratban 
 
 ## Harci jelzések rajzolása
 
-A `HannahArt.actor` csak a testet, a hozzá kötött kardívet és a második fázis folyamatos, festett sötét Kiba-rétegét rajzolja. A két tükrözött oldalsó foszlány a szárnyak külső peremén is megjelenik, a középső réteg pedig a test mögött marad; a forrásképet nem színezzük át. A `HannahArt.effects` külön világkoordinátás körben fut: a távoli boss képernyőn kívüli alakjának kivágása nem rejtheti el a játékos mellett sebző földkitörések előjelzését vagy becsapódását. Az effektkör az ellenféltestek után fut, hogy a jelzések láthatók maradjanak.
+A `HannahArt.actor` csak a testet, a hozzá kötött kardívet és a második fázis folyamatos, festett sötét Kiba-rétegét rajzolja. Az aura az aktuális animációs póz körvonalát követi; az eredeti forrásképet nem módosítjuk. A `HannahArt.effects` külön világkoordinátás körben fut: a távoli boss képernyőn kívüli alakjának kivágása nem rejtheti el a játékos mellett sebző földkitörések előjelzését vagy becsapódását. Az effektkör az ellenféltestek után fut, hogy a jelzések láthatók maradjanak.
 
 A villámos kiszabadítás a meglévő `ART_SLAYER.lightning` teljes, felülről lefelé érkező festett villámát illeszti az oszlophoz. A Fia-ág megőrzi a rókatüzet. Mindkét ág az emelt padló eltolását követi; a rajzolás nem lépteti a történeti vagy harci órákat. Regressziók: `test-hannah-echo-scope.cjs`, `test-hannah-vfx-visibility.cjs`.
+
+Hannah második fázisának aurája az aktuális póz kivágását és körvonalát követi. A legfeljebb 32 elemes gyorsítótár áttetsző Canvas-maszkot őriz képkockánként; a sötét-lila ragyogás csak a világba rajzoláskor kerül rá, a sprite körvonalvágásán kívül. Az eredeti test külön, változatlanul rajzolódik. Az aura nem léptet órát, és nem használ külön oszlopsprite-okat.

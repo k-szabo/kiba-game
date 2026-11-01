@@ -608,6 +608,22 @@
           "en": "Haru’s lightning rescue is marked by a bolt descending from above."
         }
       ]
+    },
+    {
+      "version": "0.9.59_51e0d08d",
+      "code": "51e0d08d",
+      "baseVersion": "0.9.59",
+      "slug": "hannah-model-bound-aura",
+      "summary": {
+        "hu": "Hannah modellhez kötött aurája",
+        "en": "Hannah’s model-bound aura"
+      },
+      "fixes": [
+        {
+          "hu": "Hannah második fázisának sötét Kibája a mindenkori alakját követi, és az egész fázis alatt látható.",
+          "en": "Dark Kiba follows Hannah’s current silhouette and remains visible throughout her second phase."
+        }
+      ]
     }
   ],
   "releases": [
@@ -1380,6 +1396,22 @@
         {
           "hu": "Belső karbantartás és technikai fejlesztések.",
           "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    },
+    {
+      "version": "0.9.59_6fe22d89",
+      "code": "6fe22d89",
+      "baseVersion": "0.9.59",
+      "slug": "combat-display-and-support",
+      "summary": {
+        "hu": "Személyre szabható harci kijelzések",
+        "en": "Customizable combat display"
+      },
+      "fixes": [
+        {
+          "hu": "A súgóban külön bekapcsolhatók Momo és az ellenfelek sebzésszámai, valamint a bossok számszerű életereje. A fejlesztői tesztmód saját kapcsolókat használ. A fő- és szünetmenüből Ko-fi linken támogathatod Momót.",
+          "en": "Enable damage numbers for Momo and enemies, and numeric boss health independently in the help panel. Developer test mode uses its own toggles. Support Momo through the Ko-fi link in the main and pause menus."
         }
       ]
     }

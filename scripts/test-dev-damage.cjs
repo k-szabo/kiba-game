@@ -73,4 +73,4 @@ run("DevDamage.record('outgoing',{x:0,y:0},5,3);enterRealm(1);");assert.deepEqua
 run('DevTools.open();');assert(run('DevDamage.toggle()'));run('DevTools.close();');assert(!run('DevDamage.active'));
 run('DevTools.open();DevDamage.toggle();DevTools.close();mainMenu();');assert(!run('DevDamage.active'));assert.deepEqual(amounts(),[]);
 assert(!run("Object.hasOwn(window,'DevDamage')"),'No global developer API');
-console.log('PASS: session-only actual HP loss, blocked hits, overkill, phase thresholds/refills, serpent/Shadow, lethal paths, pause, bounded lifetime, reduced motion and cleanup.');
+console.log('PASS: actual HP loss, blocked hits, overkill, phase thresholds/refills, serpent/Shadow, lethal paths, pause, bounded lifetime, reduced motion and test-session cleanup.');
