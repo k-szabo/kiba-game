@@ -1139,7 +1139,9 @@
       "combat.bossHealth": "Bossok életereje számokkal",
       "menu.support": "Támogasd Momót",
       "menu.changelog.0959.6fe22d89.title": "Személyre szabható harci kijelzések",
-      "menu.changelog.0959.6fe22d89.0": "A súgóban külön bekapcsolhatók Momo és az ellenfelek sebzésszámai, valamint a bossok számszerű életereje. A fejlesztői tesztmód saját kapcsolókat használ. A fő- és szünetmenüből Ko-fi linken támogathatod Momót."
+      "menu.changelog.0959.6fe22d89.0": "A súgóban külön bekapcsolhatók Momo és az ellenfelek sebzésszámai, valamint a bossok számszerű életereje. A fejlesztői tesztmód saját kapcsolókat használ. A fő- és szünetmenüből Ko-fi linken támogathatod Momót.",
+      "menu.changelog.0959.51e0d08d.title": "Hannah modellhez kötött aurája",
+      "menu.changelog.0959.51e0d08d.0": "Hannah második fázisának sötét Kibája a mindenkori alakját követi, és az egész fázis alatt látható."
     }
   },
   "en": {
@@ -2282,7 +2284,9 @@
       "combat.bossHealth": "Numeric boss health",
       "menu.support": "Support Momo",
       "menu.changelog.0959.6fe22d89.title": "Customizable combat display",
-      "menu.changelog.0959.6fe22d89.0": "Enable damage numbers for Momo and enemies, and numeric boss health independently in the help panel. Developer test mode uses its own toggles. Support Momo through the Ko-fi link in the main and pause menus."
+      "menu.changelog.0959.6fe22d89.0": "Enable damage numbers for Momo and enemies, and numeric boss health independently in the help panel. Developer test mode uses its own toggles. Support Momo through the Ko-fi link in the main and pause menus.",
+      "menu.changelog.0959.51e0d08d.title": "Hannah’s model-bound aura",
+      "menu.changelog.0959.51e0d08d.0": "Dark Kiba follows Hannah’s current silhouette and remains visible throughout her second phase."
     }
   }
 }

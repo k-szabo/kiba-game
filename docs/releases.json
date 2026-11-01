@@ -608,6 +608,22 @@
           "en": "Haru’s lightning rescue is marked by a bolt descending from above."
         }
       ]
+    },
+    {
+      "version": "0.9.59_51e0d08d",
+      "code": "51e0d08d",
+      "baseVersion": "0.9.59",
+      "slug": "hannah-model-bound-aura",
+      "summary": {
+        "hu": "Hannah modellhez kötött aurája",
+        "en": "Hannah’s model-bound aura"
+      },
+      "fixes": [
+        {
+          "hu": "Hannah második fázisának sötét Kibája a mindenkori alakját követi, és az egész fázis alatt látható.",
+          "en": "Dark Kiba follows Hannah’s current silhouette and remains visible throughout her second phase."
+        }
+      ]
     }
   ],
   "releases": [

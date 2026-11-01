@@ -40,17 +40,29 @@ const HannahArt=(()=>{
   if(Math.abs(e.walkSpeed)>1&&!reducedMotion.matches)return {definition:ART_HANNAH.walk,index:Math.floor(e.animTime*10)%6};
   return {definition:ART_HANNAH.ritual,index:0};
  }
- function darkKiba(e){
-  const x=e.x+e.w/2,feet=e.y+e.h+5,alpha=reducedMotion.matches?.6:.72;
-  // Flank the visible silhouette: a single centre column is hidden by the
-  // painted wings and only leaves a patch at the feet.
-  BossVFX.stamp('shadowColumn',x,feet,e.w*2.2,e.h*1.22,{alpha:.35});
-  for(const side of [-1,1])BossVFX.stamp('shadowColumn',x+side*e.w*1.35,feet,e.w*1.7,e.h*1.6,{face:side,alpha});
+ const auraMasks=new Map(),AURA_PADDING=64;
+ function darkKiba(e,p){
+  const frame=p.definition.frames[p.index]||p.definition.frames[0],image=Visuals.images[frame.image||p.definition.image];
+  if(!image?.complete||!image.naturalWidth)return;
+  let mask=auraMasks.get(frame);
+  if(!mask){
+   mask=document.createElement('canvas');mask.width=frame.w+AURA_PADDING*2;mask.height=frame.h+AURA_PADDING*2;
+   const paint=mask.getContext('2d');paint.save();paint.translate(AURA_PADDING-frame.x,AURA_PADDING-frame.y);
+   if(frame.outlines){paint.beginPath();for(const outline of frame.outlines){outline.forEach(([x,y],i)=>paint[i?'lineTo':'moveTo'](x,y));paint.closePath();}paint.clip();}
+   paint.drawImage(image,frame.x,frame.y,frame.w,frame.h,frame.x,frame.y,frame.w,frame.h);paint.restore();
+   paint.globalCompositeOperation='source-in';paint.fillStyle='#45215f';paint.fillRect(0,0,mask.width,mask.height);
+   if(auraMasks.size>=32)auraMasks.delete(auraMasks.keys().next().value);auraMasks.set(frame,mask);
+  }
+  const scale=e.h/frame.bodyHeight;
+  ctx.save();ctx.globalAlpha*=e.inv>0?.66:.8;ctx.translate(e.x+e.w/2,e.y+e.h);ctx.scale(e.face*(p.definition.facing||1),1);
+  // Filter the already masked pose outside its outline clip, then paint the
+  // original body separately so its face, weapon and colors remain intact.
+  ctx.filter='blur(4px) drop-shadow(0px 0px 10px #15091f) drop-shadow(0px 0px 14px #7939b2)';
+  ctx.drawImage(mask,(frame.x-frame.anchorX-AURA_PADDING)*scale,(frame.y-frame.anchorY-AURA_PADDING)*scale,mask.width*scale,mask.height*scale);ctx.restore();
  }
  function actor(e){
   if(!HannahCombat.is(e))return false;if(e.dead)return true;
-  if(e.stage===2)darkKiba(e);
-  const p=pose(e);ctx.save();if(e.stage===2)ctx.filter='drop-shadow(0px 0px 7px #8e42c7)';
+  const p=pose(e);if(e.stage===2)darkKiba(e,p);ctx.save();
   stamp(p.definition,p.index,e.x+e.w/2,e.y+e.h,e.h,e.face,e.inv>0?.82:1);ctx.restore();
   if(e.phase==='strike'&&e.move!=='summon'){
    const frame=Math.min(1,e.attackElapsed/Math.max(.001,e.attackDuration));

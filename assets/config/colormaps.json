@@ -50453,23 +50453,37 @@
         "dynamic": false
       },
       {
-        "value": "#15101d",
+        "value": "#15091f",
         "lines": [
-          103
+          60
         ],
         "dynamic": false
       },
       {
-        "value": "#8e42c7",
+        "value": "#15101d",
+        "lines": [
+          115
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#45215f",
         "lines": [
           53
         ],
         "dynamic": false
       },
       {
+        "value": "#7939b2",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#bd9b72",
         "lines": [
-          103
+          115
         ],
         "dynamic": false
       },

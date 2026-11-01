@@ -17,27 +17,40 @@ function fixture(){
  h.calls.length=0;r("hannah.phase='strike';hannah.attackBoxes=[];hannah.hazards=[{x:2450,y:1140,w:140,h:260,active:true}];draw()");
  assert(h.calls.some(call=>call.image===r('Visuals.images.fxImpact')),'Offscreen Hannah still paints the ground eruption at its actual damaging location');
 }
-// Phase-two darkness is independent of the current move, and stays behind her.
+// Stage-two aura follows the selected, masked pose; no detached pillars.
 {
- const h=fixture(),r=h.run;r("hannah.stage=2;hannah.echoQueue=[];hannah.hazards=[];hannah.summons=[];");
+ const h=fixture(),r=h.run,ctx=h.sandbox.document.getElementById('world').getContext('2d'),surfaces=[];
+ const create=h.sandbox.document.createElement;
+ h.sandbox.document.createElement=tag=>{if(tag!=='canvas')return create(tag);const operations=[];const paint=new Proxy({},{get:(o,key)=>o[key]||((...args)=>operations.push({key,args}))});const canvas={width:0,height:0,getContext:()=>paint,operations};surfaces.push(canvas);return canvas;};
+ const stack=[];ctx.filter='none';ctx.globalAlpha=1;ctx.save=()=>stack.push({filter:ctx.filter,globalAlpha:ctx.globalAlpha});ctx.restore=()=>Object.assign(ctx,stack.pop());
+ ctx.drawImage=(image,...args)=>h.calls.push({image,args,filter:ctx.filter});
+ r("hannah.stage=2;hannah.echoQueue=[];hannah.hazards=[];hannah.summons=[];");
  const dark=r('Visuals.images.fxDarkMagic');
- const placements=[];h.sandbox.document.getElementById('world').getContext('2d').translate=(x,y)=>placements.push({x,y});
- for(const reduced of [false,true])for(const mode of ['combat','drain','finisher'])for(const phase of ['wait','windup','strike','recover']){
-  h.calls.length=0;placements.length=0;r(`reducedMotion.matches=${reduced};hannah.mode='${mode}';hannah.phase='${phase}';hannah.move='jump';hannah.attackElapsed=.2;hannah.attackDuration=.8;hannah.attackFace=1;HannahArt.actor(hannah)`);
-  const aura=h.calls.findIndex(call=>call.image===dark&&call.args[0]===512&&call.args[1]===59);
-  const body=h.calls.findIndex(call=>call.image!==dark);
-  assert(aura>=0&&body>aura,'Dark Kiba is painted behind every live phase-two pose');
-  const plumes=h.calls.filter(call=>call.image===dark&&call.args[0]===512&&call.args[1]===59);
-  assert.equal(plumes.length,3,'Centre and two flanks surround the silhouette');
-  assert(body>h.calls.findLastIndex(call=>call.image===dark&&call.args[0]===512&&call.args[1]===59),'Every plume stays behind the face, weapon and wings');
-  const bounds=r('({x:hannah.x,y:hannah.y,w:hannah.w,h:hannah.h})');
-  assert(placements.slice(0,3).some(p=>p.x<bounds.x)&&placements.slice(0,3).some(p=>p.x>bounds.x+bounds.w),'Side plumes extend beyond the body instead of disappearing behind it');
-  for(const plume of plumes.slice(1)){
-   const top=bounds.y+bounds.h+5+plume.args[5],bottom=top+plume.args[7];
-   assert(top<bounds.y&&bottom>=bounds.y+bounds.h,'Side plume covers upper and lower body height');
-  }
+ for(const reduced of [false,true])for(const face of [-1,1])for(const sample of [
+  {mode:'combat',phase:'wait',move:'combo',walkSpeed:0},
+  {mode:'combat',phase:'wait',move:'combo',walkSpeed:40},
+  {mode:'combat',phase:'windup',move:'jump'},
+  {mode:'combat',phase:'strike',move:'jump'},
+  {mode:'combat',phase:'recover',move:'combo'},
+  {mode:'combat',phase:'windup',move:'summon'},
+  {mode:'transform',phase:'wait',move:'combo'},
+  {mode:'drain',phase:'wait',move:'combo'},
+  {mode:'finisher',phase:'wait',move:'combo'}]){
+  h.calls.length=0;r('Object.assign(hannah,'+JSON.stringify(sample)+');hannah.face='+face+';reducedMotion.matches='+reduced+';hannah.attackElapsed=.2;hannah.attackDuration=.8;hannah.attackFace=1');
+  const before=r('JSON.stringify([hannah,player,time,levelTime])');r('HannahArt.actor(hannah)');
+  const aura=h.calls[0],body=h.calls[1];assert(surfaces.includes(aura.image),'The aura is the current pose mask, not a separate smoke sprite');
+  assert(aura.filter.includes('blur(')&&aura.filter.includes('drop-shadow('),'Halo is applied on the world canvas after masking');
+  assert.equal(body.filter,'none','Original body colors render without the aura filter');assert(!h.calls.some(call=>call.image===dark),'No detached shadow columns remain');
+  const maskDraw=aura.image.operations.find(op=>op.key==='drawImage');assert.equal(maskDraw.args[0],body.image,'Mask uses the same current pose image');assert.deepEqual(maskDraw.args.slice(1,5),body.args.slice(0,4),'Mask and body use the same frame crop');
+  assert(aura.image.operations.some(op=>op.key==='clip'),'The existing outline mask prevents adjacent atlas cells leaking');
+  assert(aura.image.width>body.args[2]&&aura.image.height>body.args[3],'Padding reserves space around the pose silhouette');
+  assert.equal(r('JSON.stringify([hannah,player,time,levelTime])'),before,'Aura rendering never advances the encounter');
  }
- h.calls.length=0;r("hannah.stage=1;HannahArt.actor(hannah)");assert(!h.calls.some(call=>call.image===dark),'Phase one keeps its original appearance');
+ const count=surfaces.length;r('HannahArt.actor(hannah);HannahArt.actor(hannah)');assert.equal(surfaces.length,count,'Repeated poses reuse their mask');
+ r("hannah.stage=2;hannah.mode='combat';hannah.phase='wait';hannah.walkSpeed=0;var firstAuraPose=ART_HANNAH.ritual.frames[0];");
+ for(let i=0;i<40;i++)r('ART_HANNAH.ritual.frames[0]={...firstAuraPose};HannahArt.actor(hannah)');
+ const afterMany=surfaces.length;r('ART_HANNAH.ritual.frames[0]=firstAuraPose;HannahArt.actor(hannah)');assert.equal(surfaces.length,afterMany+1,'Old masks are evicted instead of accumulating indefinitely');
+ h.calls.length=0;r('hannah.stage=1;HannahArt.actor(hannah)');assert(!h.calls.some(call=>surfaces.includes(call.image)),'Phase one has no new aura');
 }
 // Lightning uses the existing painted bolt and stable pillar anchor, not fire.
 for(const lifted of [false,true])for(const fia of [false,true]){
