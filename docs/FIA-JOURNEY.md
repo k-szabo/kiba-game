@@ -1,5 +1,28 @@
 # Fia második megbízása és titkos harca
 
+## A 3–5. küldetés fejlesztési sorrendje
+
+A folytatás a `FEATURE-fia-quests-3-4-5` ágon készül, kötelező sorrendben:
+3. sárkányrajtaütés, 4. void-hasadék, 5. rituálé. A harmadik megbízáshoz
+a második leadása és Hannah legyőzése szükséges. A szív védett tárgy marad.
+Az új helyszínek és harcok beépítése folyamatban van; az alábbi szabálymodul
+önmagában még nem jelent játszható új küldetést.
+
+A `fia-journey-rules.js` tiszta, másolásos tranzakciói kezelik a sárkánymenet
+sorszámát, lezárását, a pikkelykészletet és a megbízás mérföldköveit.
+Minden győzelem 900 XP-t és egy pikkelyt ad; az első további egy
+fejlesztéspontot. Az aktív küldetéshez egy új győzelemből szerezhetők meg
+a szemek; leadásuk egyszer 800 XP és egy fejlesztéspont. A megszerzési
+jelző megmarad, a leadási jelző a birtoklási nézetből fogyasztja el a tárgyat.
+A menetazonosító megakadályozza a korábbi menetből érkező jutalomeseményt.
+
+A külön `fiaJourney` mentési rekord hiánya a régi mentésben üres kezdetet
+jelent; a kifejezetten hibás rekordot elutasítjuk. A dungeonök korábbi, pontos
+sémája változatlan. A mentés és a dev-teszt külön mély másolatot tart,
+a jutalompontok a közös, szigorúan ellenőrzött pontkerethez tartoznak.
+`test-fia-journey-rules.cjs` és `test-fia-journey-state.cjs` ellenőrzi ezeket;
+ezek nem helyettesítik az új helyszínek későbbi böngészős ellenőrzését.
+
 Spoileres fejlesztői referencia. Kártyák: [Fia quest #2](https://trello.com/c/bOTc8aP0), [Fia legyen megtámadható](https://trello.com/c/oDJB4Y0y).
 
 ## Második küldetés

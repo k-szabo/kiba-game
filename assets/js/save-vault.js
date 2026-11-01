@@ -69,6 +69,7 @@ const SaveVault=(()=>{
   if(data.soldItems.some(id=>!rescued||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
   if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
   if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideAllowed(data.location)))throw Error('Invalid camp location');
+  if(!FiaJourneyRules.validate(Object.hasOwn(data,'fiaJourney')?data.fiaJourney:FiaJourneyRules.fresh(),data.flags,data.defeated))throw Error('Invalid Fia journey');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
   if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
