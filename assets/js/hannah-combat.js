@@ -7,6 +7,7 @@ const HannahCombat=(()=>{
  const current=e=>is(e)&&!e.dead&&e.encounterLevel===level&&owners.get(e.encounterToken)===e&&enemies.includes(e);
  const live=e=>state==='play'&&current(e)&&e.active;
  const validStep=dt=>Number.isFinite(dt)&&dt>0;
+ const canEcho=(e,s)=>e.stage===2&&(s?.move==='jump'||s?.move==='dashReturn');
  function notify(method,e,value){if(typeof HannahEncounter!=='undefined'&&typeof HannahEncounter[method]==='function')HannahEncounter[method](e,value);}
  function phase(e,next,duration){e.phase=next;e.clock=duration;e.phaseDuration=duration;e.windup=next==='windup'?duration:0;e.windupDuration=duration;e.attackTime=next==='strike'?duration:0;e.attackDuration=duration;e.attackElapsed=0;e.hitDone=false;}
  function sync(e){e.parts=[{x:e.x,y:e.y,w:e.w,h:e.h,face:e.face,poseIndex:e.poseIndex,index:0}];}
@@ -97,7 +98,7 @@ const HannahCombat=(()=>{
  function release(e){
   phase(e,'strike',e.moveSnapshot.duration);e.poseIndex=3;e.strikeHits=[];e.attackBoxes=[];e.attackBox=null;
   if(e.move==='summon')summon(e);
-  else if(e.stage===2)e.echoQueue.push({snapshot:e.moveSnapshot,delay:e.moveSnapshot.duration+momoStats().invulnerability+HannahRules.tuning.combat.echoMargin,elapsed:0,started:false,hits:[],parts:[],attackBoxes:warnings(e.moveSnapshot),hazards:[]});
+  else if(canEcho(e,e.moveSnapshot))e.echoQueue.push({snapshot:e.moveSnapshot,delay:e.moveSnapshot.duration+momoStats().invulnerability+HannahRules.tuning.combat.echoMargin,elapsed:0,started:false,hits:[],parts:[],attackBoxes:warnings(e.moveSnapshot),hazards:[]});
  }
  function hazards(s,elapsed){return s.move==='riftBurst'?s.zones.filter(zone=>elapsed<=zone.end).map(zone=>({...zone,kind:'hannahRift',active:elapsed>=zone.start,progress:clamp((elapsed-zone.start)/(zone.end-zone.start),0,1)})):[];}
  function strike(e,s,previous,elapsed,hits,multiplier=1){
@@ -117,6 +118,7 @@ const HannahCombat=(()=>{
   return true;
  }
  function tickEchoes(e,dt){
+  e.echoQueue=e.echoQueue.filter(echo=>canEcho(e,echo.snapshot));
   for(const echo of e.echoQueue){
    const before=echo.delay;echo.delay-=dt;
    if(echo.delay>0)continue;

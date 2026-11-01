@@ -576,6 +576,38 @@
           "en": "Clicking the play area locks the mouse so it cannot drift outside the window. Opening menus releases the lock, and Esc also pauses the adventure."
         }
       ]
+    },
+    {
+      "version": "0.9.58_a8ee4aae",
+      "code": "a8ee4aae",
+      "baseVersion": "0.9.58",
+      "slug": "duel-platform-hannah-fixes",
+      "summary": {
+        "hu": "Párbaj, ellenfélviselkedés és Hannah javításai",
+        "en": "Duel, enemy behaviour and Hannah fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Párbajban az egérrögzítés Esc billentyűvel történő feloldása után is működik a billentyűzetes mozgás.",
+          "en": "Keyboard movement still works after releasing mouse lock with Esc during a duel."
+        },
+        {
+          "hu": "A normál ellenfelek a közeli, magasabban álló Momo miatt sem ragadnak tétlen állapotba.",
+          "en": "Regular enemies no longer become stuck idle when Momo is nearby on a higher platform."
+        },
+        {
+          "hu": "Hannah második fázisában az árnyékvisszhangok csak dash és ugrótámadások alatt támadnak, sötét Kiba pedig végig körülveszi.",
+          "en": "In Hannah’s second phase, shadow echoes attack only during dashes and jumping attacks, while dark Kiba surrounds her throughout."
+        },
+        {
+          "hu": "Hannah földkitöréseinek előjelzése és becsapódása a teljes arénában látható.",
+          "en": "Hannah’s ground eruptions show their warnings and impacts throughout the arena."
+        },
+        {
+          "hu": "Haru villámos kiszabadítását felülről érkező villámcsapás jelzi.",
+          "en": "Haru’s lightning rescue is marked by a bolt descending from above."
+        }
+      ]
     }
   ],
   "releases": [

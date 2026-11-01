@@ -60,6 +60,7 @@ function moveEnemy(e,velocity,dt,patrolling=false) {
     if(patrolling){e.patrolFace=atLeft?1:-1;e.face=e.patrolFace;e.turnCooldown=.8;e.edgePause=.24;}
   }else{e.x=next;e.walkSpeed=velocity;e.animTime+=dt*Math.min(1.5,Math.abs(velocity)/45);}
 }
+function enemyMeleeBox(e){return {x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};}
 function releaseEnemyAttack(e) {
   const shotsBefore=projectiles.length;
   const palette=e.factionOverride==='yomi'?realms[1]:realms[realm];
@@ -73,7 +74,7 @@ function releaseEnemyAttack(e) {
     const angle=Math.atan2(e.targetY-(e.y+20),e.targetX-(e.x+e.w/2)),count=realm===0?1:2;
     for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*.22;shoot(e.x+e.w/2,e.y+20,Math.cos(a)*180,Math.sin(a)*180,palette.accent,4.5,realm===3?'shadowBolt':'magic');}e.cd=3.3;
   }else{
-    const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
+    const hit=enemyMeleeBox(e);
     if(overlap(player,hit))damage(e.damageValue||1,e.face,true);e.cd=e.kind==='shield'?2.5:1.8;
   }
   for(let i=shotsBefore;i<projectiles.length;i++){
@@ -106,11 +107,16 @@ function updateEnemy(e,dt){
     e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
     const dx=player.x+player.w/2-e.x-e.w/2,dy=player.y+player.h*.5-e.y-e.h*.5,role=enemyRole(e);
     const near=(!!e.denResidentRole||arenaAggro||Math.abs(dx)<(role==='mage'?610:510))&&Math.abs(dy)<180;
+    const ranged=role==='mage'||role==='archer',hit=enemyMeleeBox(e);
+    // Ground melee enemies cannot climb to an overhead target. Keep their
+    // patrol alive instead of clamping chase at an edge or swinging into air.
+    // Ranged roles retain their aimed attacks across nearby elevations.
+    const pursue=near&&(ranged||player.y<hit.y+hit.h&&player.y+player.h>hit.y);
     if(e.stun<=0){
       if(e.windup>0){e.windup-=dt;if(e.windup<=0)releaseEnemyAttack(e);}
       else if(e.recovery<=0&&e.attackTime<=0){
         const range=role==='mage'?580:role==='archer'?490:125;
-        if(near&&Math.abs(dx)<range&&e.cd<=0){
+        if(pursue&&Math.abs(dx)<range&&e.cd<=0){
           turnEnemy(e,Math.abs(dx)>18?Math.sign(dx):e.face);
           // Attack toward the facing side only. A delayed turn cannot attack through its own back.
           if(Math.abs(dx)<18||Math.sign(dx)===e.face){
@@ -118,9 +124,9 @@ function updateEnemy(e,dt){
             e.windup=e.windupDuration;e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;
           }
         }else{
-          const ranged=role==='mage'||role==='archer';let direction=e.patrolFace,speed=role==='mage'?14:role==='archer'?28:e.kind==='shield'?36:42;
+          let direction=e.patrolFace,speed=role==='mage'?14:role==='archer'?28:e.kind==='shield'?36:42;
           // Stay still inside the preferred range; do not jitter around the player's center.
-          if(near){
+          if(pursue){
             turnEnemy(e,Math.abs(dx)>35?Math.sign(dx):e.face);
             if(ranged&&Math.abs(dx)>150&&Math.abs(dx)<range-40)speed=0;
             else if(ranged&&Math.abs(dx)<110){direction=-Math.sign(dx||e.face);speed=32;}
@@ -129,8 +135,8 @@ function updateEnemy(e,dt){
             // A target outside the walkable patrol span is watched from the edge, without flipping.
             if(e.x<=e.patrolLeft+1&&direction<0||e.x>=e.patrolRight-1&&direction>0)speed=0;
           }
-          if(speed&&!near&&e.turnCooldown<=0)e.face=direction;
-          moveEnemy(e,direction*speed,dt,!near);
+          if(speed&&!pursue&&e.turnCooldown<=0)e.face=direction;
+          moveEnemy(e,direction*speed,dt,!pursue);
         }
       }
     }

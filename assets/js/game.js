@@ -296,7 +296,9 @@ function draw(){Cursor.update();if(typeof DuelMode!=='undefined'&&DuelMode.draw(
   ctx.save();ctx.translate(-camera,-cameraY);Visuals.campScenery();CampArt.scenery();drawShrine(level.rests[0].x,level.rests[0].y,r,false);Visuals.campPathMarker(level.returnPoint,I18n.t(realms[0].short));drawParticles();drawLevelUp();drawPlayer();DevDamage.draw();ctx.restore();ctx.restore();return;
  }
  ctx.save();ctx.translate(-camera,-cameraY);if(!CampQuest.isSide())Visuals.secretScenery(r);PrisonArt.scenery();KitsuneArt.scenery();ArenaArt.scenery();DungeonArt.scenery();CampArt.scenery();HannahArt.scenery();if(level===levels[0])Prologue.village();drawWinds(r);drawLandscape(r,platforms);CampHerbs.draw();drawKibaCurrent();for(const rest of level.rests)if(visiblePoint(rest)&&!(realm===3&&rest.id==='altar'))drawShrine(rest.x,rest.y,r,false);if(level.ability&&visiblePoint(level.ability))drawShrine(level.ability.x,level.ability.y,r,true);if(level.exit&&visiblePoint(level.exit))drawTorii(level.exit.x,level.exit.y,r);drawGates(r);if(level===levels[0]&&defeated[0])Visuals.campPathMarker(level.campEntrance,I18n.t('camp.name'));drawObjects(r);drawHazards(r);drawLevelUp();Visuals.bossEffects(r);
- for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
+ for(const e of enemies)if(!e.dead&&visiblePoint({x:e.x,y:e.y},190))drawEnemy(e,r);
+ for(const e of enemies)if(!e.dead)HannahArt.effects(e);
+ if(visiblePoint({x:boss.x,y:boss.y},200)){if(!boss.dead)drawBoss(r);else drawSpirit(boss.x+45,boss.y+60,r.gold);}
  if(realm===2&&boss.dead&&visiblePoint(level.father)){HannahArt.haru(level.father.x,level.father.y+4,110,1);HannahArt.nameplate(level.father.x,level.father.y+4,110,'HARU');}
  for(const p of projectiles)if(!SerpentArt.projectile(p))Visuals.projectile(p);
  drawParticles();
