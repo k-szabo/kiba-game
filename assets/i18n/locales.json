@@ -1285,7 +1285,9 @@
       "leaderboard.noScore": "Előbb teljesíts legalább egy emeletet.",
       "leaderboard.info": "Közösségi ranglista, játékosok által beküldött eredményekkel. Több teljesített emelet a jobb; egyezésnél a rövidebb idő dönt. Böngészőadat-törlés vagy másik eszköz új játékosazonosítót jelent.",
       "menu.changelog.0967.75122992.title": "Közös toronyranglista",
-      "menu.changelog.0967.75122992.0": "A végtelen torony eredményei választott névvel beküldhetők az online ranglistára. A helyi rekord és a kalandmentés megmarad."
+      "menu.changelog.0967.75122992.0": "A végtelen torony eredményei választott névvel beküldhetők az online ranglistára. A helyi rekord és a kalandmentés megmarad.",
+      "menu.changelog.0967.6a799f0d.title": "Gyógyfőzet és toronyharc javításai",
+      "menu.changelog.0967.6a799f0d.0": "A gyógyfőzet üzenete mutatja a ténylegesen visszatöltött HP-t. A toronyban is működik a bossok számszerű életerő-kijelzése, a távoli ellenfelek pedig azonnal üldözni kezdik Momót."
     }
   },
   "en": {
@@ -2574,7 +2576,9 @@
       "leaderboard.noScore": "Clear at least one floor first.",
       "leaderboard.info": "A community leaderboard with player-submitted scores. More cleared floors rank higher; ties favour shorter times. Clearing browser data or switching devices creates a new player identity.",
       "menu.changelog.0967.75122992.title": "Shared tower leaderboard",
-      "menu.changelog.0967.75122992.0": "Submit Endless Tower scores to the online leaderboard under a chosen name. Your local best and journey save are preserved."
+      "menu.changelog.0967.75122992.0": "Submit Endless Tower scores to the online leaderboard under a chosen name. Your local best and journey save are preserved.",
+      "menu.changelog.0967.6a799f0d.title": "Healing brew and tower combat fixes",
+      "menu.changelog.0967.6a799f0d.0": "Healing brew feedback shows the HP actually restored. Numeric boss health also works in the tower, and distant enemies begin pursuing Momo immediately."
     }
   }
 }
