@@ -14,13 +14,15 @@ const destinations=Array.from(r('levels.flatMap((_,n)=>realmRests(n).filter(rest
 for(const origin of Array.from(r('levels.map((_,n)=>n)'))){
  assert(r(`DevTeleport.teleport({realm:'${origin}',rest:'start'})`));
  r('DevTools.close();showMap();');
- assert.equal(grids().flatMap(g=>g.children).length,destinations.length,'All outside destinations are listed; internal dungeon shrines stay scoped to their dungeon');
- assert(grids().flatMap(g=>g.children).every(b=>!b.disabled),'No shrine is locked in a dev run');
+ assert.equal(r('levels.flatMap((_,n)=>TravelAtlas.areas(n).flatMap(area=>area.rests)).length'),destinations.length,'All outside destinations are grouped; internal dungeon shrines stay scoped to their dungeon');
+ assert(r('levels.every((_,n)=>TravelAtlas.areas(n).every(area=>area.rests.every(rest=>travelDestination(rest,n))))'),'No shrine is locked in a dev run');
  for(const target of destinations){
   // Open the actual map after every arrival and execute its current button.
   if(r('state')!=='map')r('showMap();');
+  const area=r('TravelAtlas.areas('+target.realm+').find(area=>area.rests.some(rest=>rest.id==='+JSON.stringify(target.id)+'))');
+  assert(r('TravelAtlas.select('+target.realm+','+JSON.stringify(area.id)+')'));
   const name=r(`I18n.t(realmRests(${target.realm}).find(rest=>rest.id===${JSON.stringify(target.id)}).name)`);
-  const button=grids().flatMap(g=>g.children).find(b=>b.textContent===(target.dungeonEntrance?'':'⛩ ')+name||b.textContent.endsWith(' · '+name));
+  const button=grids().flatMap(g=>g.children).find(b=>b.textContent===name);
   assert(button&&!button.disabled,`Missing usable ${target.realm}/${target.id}`);
   assert(button.onclick(),`Advertised destination rejected: ${target.realm}/${target.id}`);
   assert.equal(r('realm'),target.realm);
@@ -46,7 +48,7 @@ for(const floor of Array.from(r('DUNGEON_FLOORS'))){
 }
 assert(r('DevTeleport.teleport({realm:"yomiDungeon1",rest:"yomiDungeon1Shrine"})'));r('DevTools.close();');
 for(const floor of Array.from(r('DUNGEON_FLOORS'))){
- r('showMap();');const name=r('I18n.t('+JSON.stringify(floor.rests[0].name)+')'),button=grids().flatMap(g=>g.children).find(b=>b.textContent.endsWith(' · '+name));assert(button&&!button.disabled);assert(button.onclick());assert.equal(r('level.id'),floor.id);assert.equal(h.snap().checkpoint.id,floor.rests[0].id);
+ r('showMap();TravelAtlas.select(1,'+JSON.stringify(floor.id)+')');const name=r('I18n.t('+JSON.stringify(floor.rests[0].name)+')'),button=grids().flatMap(g=>g.children).find(b=>b.textContent===name);assert(button&&!button.disabled);assert(button.onclick());assert.equal(r('level.id'),floor.id);assert.equal(h.snap().checkpoint.id,floor.rests[0].id);
  assert.equal(permanent(),progress);assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('window.__saveSnapshots.length'),writes);
 }
 r('DevTools.open();');
@@ -71,5 +73,5 @@ assert(!r("fastTravel({id:'start'},1)"));assert(!r("fastTravel({id:'altar'},3)")
 r('defeated=[true,true,true,false];flags[2].push("shadowEntered");visitedRests[3]=["start","altar"];');
 assert(!r("fastTravel({id:'altar'},3)"),'Normal Shadow Altar lock remains active');
 r('flags[3].push("shadowAltar");');assert(r("fastTravel({id:'altar'},3)"));
-r('showMap();');assert(grids()[0].children.some(b=>b.disabled),'Normal undiscovered shrines stay disabled');
+r('showMap();');assert(!r('TravelAtlas.areas(3).flatMap(area=>area.rests).some(rest=>!visitedRests[3].includes(rest.id)&&!rest.travelOnly)'),'Normal undiscovered shrines stay hidden in the atlas');
 console.log(`PASS: ${destinations.length} dev shrine destinations from every realm, real map callbacks, grounded canonical arrival, no granted progression/writes, invalid/dream guards and normal unlock restoration.`);

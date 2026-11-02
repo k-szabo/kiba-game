@@ -4,7 +4,8 @@ const fs=require('node:fs'),path=require('node:path');
 {
  const h=harness(),r=h.run,png=fs.readFileSync(path.join(__dirname,'..',r('ART_MANIFEST.dragonFront')));
  assert.equal(png.readUInt32BE(16),1536,'Frontal atlas retains its registered width');assert.equal(png.readUInt32BE(20),1024,'Frontal atlas retains its registered height');assert.equal(png[25],6,'Native source alpha is preserved');
- for(const [i,f]of Array.from(r('ART_DRAGON.front.frames')).entries())assert.deepEqual([f.x,f.y,f.w,f.h,f.anchorX,f.anchorY,f.bodyHeight],[i%2*768,Math.floor(i/2)*512,768,512,i%2*768+384,Math.floor(i/2)*512+475,400],'Frontal pose '+i+' keeps the existing gameplay registration');
+ // #190 repairs visible paw registration per pose; collision/body scale stays fixed.
+ for(const [i,f]of Array.from(r('ART_DRAGON.front.frames')).entries())assert.deepEqual([f.x,f.y,f.w,f.h,f.anchorX,f.anchorY,f.bodyHeight],[i%2*768,Math.floor(i/2)*512,768,[477,481,453,456][i],i%2*768+384,[476,480,964,967][i],400],'Frontal pose '+i+' uses its measured paw baseline without changing body scale');
 }
 function entry(){const h=harness();h.run("Prologue.stop();defeated=[true,true,true,true];flags[3]=['hannahDefeated','fiaTalismanCompleted','fiaRescued','arenaChampion'];CampQuest.enter('zigguratInterior',{save:false});enemies=[];state='play';");return h;}
 {

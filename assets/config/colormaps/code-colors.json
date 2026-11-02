@@ -1,0 +1,4782 @@
+{
+  "codeColors": {
+    "assets/css/style.css": [
+      {
+        "value": "#000",
+        "lines": [
+          18,
+          67,
+          218,
+          239,
+          242,
+          363
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0004",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0005",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0006",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0009",
+        "lines": [
+          100,
+          120,
+          220,
+          323
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#000a",
+        "lines": [
+          43,
+          133
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#000b",
+        "lines": [
+          356
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#050f1680",
+        "lines": [
+          156
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#060c1699",
+        "lines": [
+          158
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#061015a8",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#061019df",
+        "lines": [
+          132
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#06111b",
+        "lines": [
+          61
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#07101ba6",
+        "lines": [
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#071118b8",
+        "lines": [
+          265
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#07121c",
+        "lines": [
+          161
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#07131d",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#07131d55",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#080f15",
+        "lines": [
+          250
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#091318",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#091318dc",
+        "lines": [
+          294
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#091318dd",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#091318eb",
+        "lines": [
+          72
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b131bcb",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b151dcc",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1722f5",
+        "lines": [
+          356
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1921d9",
+        "lines": [
+          73
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1921ed",
+        "lines": [
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1921f0",
+        "lines": [
+          73
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c18222b",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c182244",
+        "lines": [
+          72
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c192281",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c192299",
+        "lines": [
+          72
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c1b20",
+        "lines": [
+          19
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0c1b25",
+        "lines": [
+          165,
+          225,
+          317
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e171c",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e202ce8",
+        "lines": [
+          162,
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0f2029",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100c1be8",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101a25",
+        "lines": [
+          150,
+          229,
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101b20",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101b28e8",
+        "lines": [
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101d29",
+        "lines": [
+          156,
+          231
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101e25",
+        "lines": [
+          302
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101e25f7",
+        "lines": [
+          295
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102027a0",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102028ee",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10212b",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10212be8",
+        "lines": [
+          349,
+          351
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10212bed",
+        "lines": [
+          341
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10212bf5",
+        "lines": [
+          347
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10242f",
+        "lines": [
+          64,
+          85
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10242ff7",
+        "lines": [
+          100
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102639d9",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11181e",
+        "lines": [
+          246
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#111d26",
+        "lines": [
+          18,
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11232b",
+        "lines": [
+          134
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11232bf7",
+        "lines": [
+          133
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#112a3cde",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#122128ab",
+        "lines": [
+          18,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#12242c",
+        "lines": [
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132228f5",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#13272ded",
+        "lines": [
+          36,
+          46
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#13272df7",
+        "lines": [
+          43
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132c3df2",
+        "lines": [
+          59
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#140d25eb",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#14242bee",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#14242dea",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142730",
+        "lines": [
+          299
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142934c9",
+        "lines": [
+          267
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142a32",
+        "lines": [
+          82
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#152b34e8",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#17100de8",
+        "lines": [
+          149
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#17242a",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#172938",
+        "lines": [
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#172b35",
+        "lines": [
+          335
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#1a2d32",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#1b3540",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#20272c",
+        "lines": [
+          246
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#221626f2",
+        "lines": [
+          323
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#241b19",
+        "lines": [
+          274,
+          283
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#24323c",
+        "lines": [
+          228,
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#24333b",
+        "lines": [
+          358
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#243c45",
+        "lines": [
+          338
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#243e48",
+        "lines": [
+          99,
+          139
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#263c40",
+        "lines": [
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#27323a",
+        "lines": [
+          255
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#284354",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#292218",
+        "lines": [
+          120,
+          122,
+          123,
+          124,
+          125,
+          126
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#293832",
+        "lines": [
+          302
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#2a514c",
+        "lines": [
+          287
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#2b2115",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#2d3e3a",
+        "lines": [
+          286
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#302219",
+        "lines": [
+          280
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#30414c",
+        "lines": [
+          156
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#30434a",
+        "lines": [
+          105
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#30464b",
+        "lines": [
+          83
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#314046",
+        "lines": [
+          18,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#344744",
+        "lines": [
+          47
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#354858",
+        "lines": [
+          150,
+          229,
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#36545e",
+        "lines": [
+          338
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#382914",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#392e22",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3a4b49",
+        "lines": [
+          45
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3b2f1b",
+        "lines": [
+          123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3b5052",
+        "lines": [
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3b5960",
+        "lines": [
+          140
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#3c2820",
+        "lines": [
+          281
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#463723",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#473e30",
+        "lines": [
+          121
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#4a3829",
+        "lines": [
+          285
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#4b4935",
+        "lines": [
+          286
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#513b29",
+        "lines": [
+          154
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#51432d",
+        "lines": [
+          126,
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#56402a",
+        "lines": [
+          279
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#58452a",
+        "lines": [
+          125,
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#58472e",
+        "lines": [
+          282
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#5c2c8a",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#5f4322",
+        "lines": [
+          127,
+          371
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#64767959",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#6a4c2f",
+        "lines": [
+          153
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#6b6c6880",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#6c5937",
+        "lines": [
+          120
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#776241",
+        "lines": [
+          123,
+          124
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#778188",
+        "lines": [
+          228,
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#795422",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8150b0",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#831e24",
+        "lines": [
+          257
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#84928e",
+        "lines": [
+          299
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#869894",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8b744a",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8d9da8",
+        "lines": [
+          150,
+          229
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#917c53",
+        "lines": [
+          125,
+          126,
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#91a8ad",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a5262b",
+        "lines": [
+          258
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a6c9c5",
+        "lines": [
+          113,
+          114,
+          115
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a8b4b4",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a99060",
+        "lines": [
+          156
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a9ceff",
+        "lines": [
+          365
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aaa99b",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#adbab4",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b59155",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b79a60",
+        "lines": [
+          341
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ba9c67",
+        "lines": [
+          225
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bac2c6",
+        "lines": [
+          228,
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bac8c4",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#badba8",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bd9a59",
+        "lines": [
+          335,
+          338
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bdad843c",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bdccc5",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#be965523",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bf6b61",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bfd3c8",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c1a16b",
+        "lines": [
+          246,
+          250
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c28471",
+        "lines": [
+          344
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c2a36b",
+        "lines": [
+          356,
+          358
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c48e3b",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c5b4868c",
+        "lines": [
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c5cbbf",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c5e8cc",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c6ab7480",
+        "lines": [
+          165,
+          317
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9a7ec80",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9b27b",
+        "lines": [
+          133
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9b27b66",
+        "lines": [
+          134
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9d5e2",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ccb279",
+        "lines": [
+          160
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ced6d0",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cfb67c",
+        "lines": [
+          267
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d2ba81",
+        "lines": [
+          220
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3a8f4",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3b2f4",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3bc85",
+        "lines": [
+          123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3d6c9",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4aa71a6",
+        "lines": [
+          149
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4bb8a",
+        "lines": [
+          255
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d58370",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d58a6e",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d5bc87",
+        "lines": [
+          139
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d5c59f",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d5edf4",
+        "lines": [
+          241
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d6bf8e",
+        "lines": [
+          166
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d7bd88",
+        "lines": [
+          18,
+          78
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d7bd8870",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d7c693",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d7ded7",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d7efc8",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd80",
+        "lines": [
+          238
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd84",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7855",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b",
+        "lines": [
+          18,
+          19,
+          85,
+          100,
+          262,
+          295,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b25",
+        "lines": [
+          19
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b35",
+        "lines": [
+          19
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b38",
+        "lines": [
+          73,
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b44",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b55",
+        "lines": [
+          18,
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b66",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b70",
+        "lines": [
+          103
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b75",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b78",
+        "lines": [
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b80",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b85",
+        "lines": [
+          82,
+          105
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b88",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b99",
+        "lines": [
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7ba8",
+        "lines": [
+          36,
+          43,
+          46
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dac593",
+        "lines": [
+          124
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddbd80",
+        "lines": [
+          347
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddc387",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dec897",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dfc18c",
+        "lines": [
+          162,
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dfc78045",
+        "lines": [
+          163
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dfc992",
+        "lines": [
+          125,
+          126
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0bd76",
+        "lines": [
+          359
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0cda3",
+        "lines": [
+          282
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0ddcf",
+        "lines": [
+          297
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0e8df",
+        "lines": [
+          80,
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e1c489",
+        "lines": [
+          338
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e2c68e",
+        "lines": [
+          59
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e2c7928a",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e2cfab",
+        "lines": [
+          136
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e3cb9180",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e3d7b12a",
+        "lines": [
+          18,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e3e8dc",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4d8bb",
+        "lines": [
+          164
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e5d3a8",
+        "lines": [
+          123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c78088",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6ccff",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e7c27e44",
+        "lines": [
+          268
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e8cb8c",
+        "lines": [
+          29
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ead2a0",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eadab4",
+        "lines": [
+          124
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ebe7d8",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eda88c",
+        "lines": [
+          75
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#edcf94",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eed9ac",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eee0be",
+        "lines": [
+          120
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eee1c0",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#efe0bf",
+        "lines": [
+          360
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0d9b7",
+        "lines": [
+          155
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0e8dc",
+        "lines": [
+          248
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1d493",
+        "lines": [
+          302
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1d49b",
+        "lines": [
+          77
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1d9b3",
+        "lines": [
+          146
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1ddb4",
+        "lines": [
+          74
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1deb0",
+        "lines": [
+          34
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f1dfb7",
+        "lines": [
+          319
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f2e3ff",
+        "lines": [
+          67
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3e7d1",
+        "lines": [
+          143
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3eddd",
+        "lines": [
+          100
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3eee0",
+        "lines": [
+          299
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4d895",
+        "lines": [
+          268
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4deb1",
+        "lines": [
+          82,
+          88
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4e3b8",
+        "lines": [
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4e3bf",
+        "lines": [
+          44,
+          46
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4e5bd",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4f1e5",
+        "lines": [
+          79
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4f2e8",
+        "lines": [
+          61
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5edda",
+        "lines": [
+          133,
+          223
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f7d78e",
+        "lines": [
+          38
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f7edd6",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f8eccce8",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f8efda",
+        "lines": [
+          125,
+          126
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f9d989",
+        "lines": [
+          64,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffaaa0",
+        "lines": [
+          365
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb4a6",
+        "lines": [
+          251
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffc4b7",
+        "lines": [
+          252
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffc9b9",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd487",
+        "lines": [
+          323
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffdda0",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe09e",
+        "lines": [
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a2",
+        "lines": [
+          64,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a3",
+        "lines": [
+          241
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe1a4",
+        "lines": [
+          218,
+          224,
+          232,
+          233,
+          262
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          242
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2aa",
+        "lines": [
+          249
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe3a0",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe3a2",
+        "lines": [
+          84,
+          101
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe3af",
+        "lines": [
+          147
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe4a2",
+        "lines": [
+          306,
+          311,
+          338,
+          362
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe4ac",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe5a2",
+        "lines": [
+          153,
+          231
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe7aa",
+        "lines": [
+          303
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe7b4",
+        "lines": [
+          339
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8b5",
+        "lines": [
+          226
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffebbd",
+        "lines": [
+          142
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffebbf",
+        "lines": [
+          159,
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          153,
+          363
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ad",
+        "lines": [
+          138
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0b3",
+        "lines": [
+          256
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c8",
+        "lines": [
+          64,
+          85,
+          102,
+          104,
+          105,
+          135
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cd",
+        "lines": [
+          127
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ce",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cf",
+        "lines": [
+          151,
+          231,
+          329,
+          334,
+          335,
+          338,
+          340,
+          356,
+          357,
+          358,
+          359,
+          361
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cf80",
+        "lines": [
+          150
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0d1",
+        "lines": [
+          247,
+          255
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff1cf",
+        "lines": [
+          323
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff1d3",
+        "lines": [
+          36,
+          368
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff2b8",
+        "lines": [
+          125
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff2cf",
+        "lines": [
+          59,
+          137,
+          240
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4d7",
+        "lines": [
+          320,
+          321
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4da",
+        "lines": [
+          286
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5d8",
+        "lines": [
+          45
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5e1",
+        "lines": [
+          250
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffff25",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffff30",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/arena-art.js": [
+      {
+        "value": "#100e1a",
+        "lines": [
+          30,
+          39
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101524ed",
+        "lines": [
+          42
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          17
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          17
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          42
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/arena-challenge.js": [],
+    "assets/js/arena-combat.js": [
+      {
+        "value": "#ba88e9",
+        "lines": [
+          85
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/armor.js": [],
+    "assets/js/art-data.js": [],
+    "assets/js/asset-cache.js": [],
+    "assets/js/background-framing.js": [],
+    "assets/js/background-motion.js": [
+      {
+        "value": "#fff",
+        "lines": [
+          135
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          135
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/boss-vfx.js": [
+      {
+        "value": "#091521",
+        "lines": [
+          177
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102236d9",
+        "lines": [
+          124
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#13091fd9",
+        "lines": [
+          164
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#170c2500",
+        "lines": [
+          164
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#49152200",
+        "lines": [
+          138
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#4e24607c",
+        "lines": [
+          164
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#631916aa",
+        "lines": [
+          138
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a93b2680",
+        "lines": [
+          138
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dda8f3",
+        "lines": [
+          123
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#efb07c",
+        "lines": [
+          152
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          173
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/bug-report.js": [],
+    "assets/js/camp-art.js": [
+      {
+        "value": "#0a1828f2",
+        "lines": [
+          56
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0d1b29ed",
+        "lines": [
+          52
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e202c",
+        "lines": [
+          37
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#151e27",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a9e5eb",
+        "lines": [
+          56
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c0f6ff",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5cb83",
+        "lines": [
+          84
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5cb831c",
+        "lines": [
+          84
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          56,
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          18,
+          20
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          18
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          52
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/camp-health.js": [],
+    "assets/js/camp-herbs.js": [],
+    "assets/js/camp-master.js": [
+      {
+        "value": "#f5cb83",
+        "lines": [
+          120
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/camp-quest.js": [],
+    "assets/js/camp-services.js": [],
+    "assets/js/camp-workshop.js": [],
+    "assets/js/combat-display.js": [],
+    "assets/js/combat.js": [
+      {
+        "value": "#b087dd",
+        "lines": [
+          552
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b490ef",
+        "lines": [
+          410
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bb87f8",
+        "lines": [
+          372,
+          406
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c89aff",
+        "lines": [
+          201
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cf8aff",
+        "lines": [
+          536
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#df8568",
+        "lines": [
+          283
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff9b51",
+        "lines": [
+          396
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffae60",
+        "lines": [
+          341,
+          392
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe1a1",
+        "lines": [
+          201
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a2",
+        "lines": [
+          551
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe9aa",
+        "lines": [
+          536
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0a5",
+        "lines": [
+          401
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/compass.js": [],
+    "assets/js/cursor.js": [],
+    "assets/js/dawnblade.js": [],
+    "assets/js/dev-abilities.js": [],
+    "assets/js/dev-boss-health.js": [
+      {
+        "value": "#080e19",
+        "lines": [
+          13,
+          15
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#855638",
+        "lines": [
+          14
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff8e9",
+        "lines": [
+          15
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dev-boss.js": [],
+    "assets/js/dev-cache.js": [],
+    "assets/js/dev-damage.js": [
+      {
+        "value": "#070b16",
+        "lines": [
+          29
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd9480",
+        "lines": [
+          34
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe9aa",
+        "lines": [
+          34
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dev-immortality.js": [],
+    "assets/js/dev-items.js": [],
+    "assets/js/dev-level.js": [],
+    "assets/js/dev-log.js": [],
+    "assets/js/dev-session.js": [],
+    "assets/js/dev-teleport.js": [],
+    "assets/js/dev-tools.js": [],
+    "assets/js/dev-weapons.js": [],
+    "assets/js/doom-slayer.js": [
+      {
+        "value": "#c3d9f1",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0a35f",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dragon-raid-art.js": [
+      {
+        "value": "#100d1bed",
+        "lines": [
+          75
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#15121c",
+        "lines": [
+          7
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#160f20",
+        "lines": [
+          56
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#17121c",
+        "lines": [
+          79
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#221a2e",
+        "lines": [
+          75
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bca084",
+        "lines": [
+          80
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          75
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          75
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dragon-raid-rules.js": [],
+    "assets/js/dragon-raid.js": [
+      {
+        "value": "#ad81d9",
+        "lines": [
+          150
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/duel-appearance.js": [],
+    "assets/js/duel-mode.js": [
+      {
+        "value": "#08121938",
+        "lines": [
+          172
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101b20",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10212b",
+        "lines": [
+          180
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a9ceff",
+        "lines": [
+          180
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffaaa0",
+        "lines": [
+          180
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd383",
+        "lines": [
+          181
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/duel-rules.js": [],
+    "assets/js/dungeon-art.js": [
+      {
+        "value": "#15121c",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9bd80",
+        "lines": [
+          35
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          21
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          21
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dungeon-combat.js": [
+      {
+        "value": "#bd82dc",
+        "lines": [
+          102
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffdb8c",
+        "lines": [
+          126
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/dungeon-rules.js": [],
+    "assets/js/dungeon-run.js": [],
+    "assets/js/fia-art.js": [],
+    "assets/js/fia-combat.js": [
+      {
+        "value": "#cf9bf3",
+        "lines": [
+          51
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/fia-conflict.js": [
+      {
+        "value": "#d8b9ef",
+        "lines": [
+          106
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/fia-journey-rules.js": [],
+    "assets/js/fia-quest.js": [],
+    "assets/js/fia-ritual-art.js": [
+      {
+        "value": "#100d1bed",
+        "lines": [
+          12
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100d1bf5",
+        "lines": [
+          33
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a2",
+        "lines": [
+          33
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          12,
+          33
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/fia-ritual-rules.js": [],
+    "assets/js/fia-ritual.js": [],
+    "assets/js/fia-void-art.js": [
+      {
+        "value": "#100d1b",
+        "lines": [
+          16
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100d1bed",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/fia-void-journey.js": [],
+    "assets/js/fia-void-maps.js": [],
+    "assets/js/foxfire.js": [],
+    "assets/js/game.js": [
+      {
+        "value": "#08121900",
+        "lines": [
+          310
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08121945",
+        "lines": [
+          310
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08121988",
+        "lines": [
+          310
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08141166",
+        "lines": [
+          538
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b1920",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100d1b",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#171322",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#182c37",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#1c3837",
+        "lines": [
+          527
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#231d30",
+        "lines": [
+          527
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#253c37",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#29203c",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#2b2536",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#322136",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#344358",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#352534",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#415d60",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#465959",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#544360",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#606a62",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#60706a",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#69505e",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#718679",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#867294",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8b5c77",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8f9696",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#94b6a4",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9da68e",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a4ac8d",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a6c9c5",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#addbb5",
+        "lines": [
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b4a99b",
+        "lines": [
+          259
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b788dd",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b88ee9",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c872b8",
+        "lines": [
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c96957",
+        "lines": [
+          24
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d58cf3",
+        "lines": [
+          222
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8e3c9",
+        "lines": [
+          267
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d98877",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9e8ce",
+        "lines": [
+          556
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd9480",
+        "lines": [
+          171
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dea58d",
+        "lines": [
+          25
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dfba76",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dfc68844",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e3cfa3",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4c4ec",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4c78a",
+        "lines": [
+          24,
+          171
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e5e0c8",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e8d89b",
+        "lines": [
+          314
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ec9153",
+        "lines": [
+          556
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ecd3a0",
+        "lines": [
+          219
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ecedce",
+        "lines": [
+          556
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#eee0ad",
+        "lines": [
+          256
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0dab1",
+        "lines": [
+          220
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0df9c",
+        "lines": [
+          267
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f0dfb1",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3d494",
+        "lines": [
+          26,
+          260
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f4cf8a",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f6d796",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcf83",
+        "lines": [
+          556
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe29a",
+        "lines": [
+          222
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/graphics.js": [
+      {
+        "value": "#050c1200",
+        "lines": [
+          66
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#050c12bb",
+        "lines": [
+          66
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#070e18",
+        "lines": [
+          494
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#07111c",
+        "lines": [
+          519
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#080512",
+        "lines": [
+          467
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08121cdd",
+        "lines": [
+          518
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0a172bcc",
+        "lines": [
+          479
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0d1b29ed",
+        "lines": [
+          129,
+          138
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e202c",
+        "lines": [
+          107,
+          119
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e202c00",
+        "lines": [
+          119
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100e20ed",
+        "lines": [
+          346
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#102236",
+        "lines": [
+          722
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10283fee",
+        "lines": [
+          492,
+          498
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#11252d30",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#112b3fee",
+        "lines": [
+          449
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#122739df",
+        "lines": [
+          517
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132b42d9",
+        "lines": [
+          763
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#140c2028",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#142b3f",
+        "lines": [
+          865
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#160f16",
+        "lines": [
+          209
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#163847dd",
+        "lines": [
+          692
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#170f27",
+        "lines": [
+          706
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#171020c7",
+        "lines": [
+          793
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#172b42e8",
+        "lines": [
+          470
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#182025",
+        "lines": [
+          574
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#183246e8",
+        "lines": [
+          384
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#193549b8",
+        "lines": [
+          369
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#234559cc",
+        "lines": [
+          681
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#24314820",
+        "lines": [
+          176
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#251339",
+        "lines": [
+          853
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#253c5899",
+        "lines": [
+          726
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#26374d",
+        "lines": [
+          461
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#326e8fa3",
+        "lines": [
+          668
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#455764ad",
+        "lines": [
+          281
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#526673d9",
+        "lines": [
+          280
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#72b4c9af",
+        "lines": [
+          668
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#83749f",
+        "lines": [
+          192
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8b764eaa",
+        "lines": [
+          547
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9b626b88",
+        "lines": [
+          559
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a5787d",
+        "lines": [
+          192
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a893d0",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a8e8ff",
+        "lines": [
+          672
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aa77dd00",
+        "lines": [
+          714
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#aab6b1b8",
+        "lines": [
+          285
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ab83d955",
+        "lines": [
+          714
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#abb78d66",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b5a777",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b683ff",
+        "lines": [
+          853
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c293dd",
+        "lines": [
+          814
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c393ff",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c39ae7",
+        "lines": [
+          508
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c596ffad",
+        "lines": [
+          714
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c7f2ffbb",
+        "lines": [
+          682
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9d0cb62",
+        "lines": [
+          279
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cda6ef",
+        "lines": [
+          350
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0af77",
+        "lines": [
+          849
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d0f5ffcc",
+        "lines": [
+          687
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d199aa55",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d1c9acaf",
+        "lines": [
+          585
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8bd827d",
+        "lines": [
+          766
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8c998bb",
+        "lines": [
+          285
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          480
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9a9ff",
+        "lines": [
+          853
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9dfd4",
+        "lines": [
+          851
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd744a00",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddba72",
+        "lines": [
+          480
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          707
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e1778800",
+        "lines": [
+          834
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e4f7ffbc",
+        "lines": [
+          674
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e5a184",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6b0fa22",
+        "lines": [
+          513
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c6ff",
+        "lines": [
+          351
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e7616355",
+        "lines": [
+          833
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ed896700",
+        "lines": [
+          833
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#edcd88",
+        "lines": [
+          814
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ef8b65",
+        "lines": [
+          203
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f2e3b9",
+        "lines": [
+          850
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3be9b11",
+        "lines": [
+          833
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3d8ac",
+        "lines": [
+          513,
+          701
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f3dbaf",
+        "lines": [
+          374
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f5df9f",
+        "lines": [
+          369
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f6a47580",
+        "lines": [
+          557
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f7c0a4",
+        "lines": [
+          722
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff7850",
+        "lines": [
+          289
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ff9c6238",
+        "lines": [
+          726
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffac69",
+        "lines": [
+          289
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb385",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb889",
+        "lines": [
+          726
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcc89",
+        "lines": [
+          495
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffd5a2",
+        "lines": [
+          834
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe098",
+        "lines": [
+          459
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a2",
+        "lines": [
+          508
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a229",
+        "lines": [
+          756
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe2a0",
+        "lines": [
+          557,
+          756
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe5a2",
+        "lines": [
+          763
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a300",
+        "lines": [
+          668
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a79c",
+        "lines": [
+          674
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6adbb",
+        "lines": [
+          714
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8a6",
+        "lines": [
+          691
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe8b98c",
+        "lines": [
+          293
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0b3",
+        "lines": [
+          453,
+          687
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ba",
+        "lines": [
+          385
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bc",
+        "lines": [
+          450
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bd",
+        "lines": [
+          493,
+          498,
+          499,
+          502,
+          726
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c8",
+        "lines": [
+          351
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          130,
+          139
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ce",
+        "lines": [
+          717
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff3e3",
+        "lines": [
+          854
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff4c9",
+        "lines": [
+          692
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5c6",
+        "lines": [
+          681
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fffbe6",
+        "lines": [
+          464
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffff00",
+        "lines": [
+          101
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffffffff",
+        "lines": [
+          101
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/hannah-art-data.js": [],
+    "assets/js/hannah-art.js": [
+      {
+        "value": "#110e1c",
+        "lines": [
+          22
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#12101cf0",
+        "lines": [
+          14
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#15091f",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#15101d",
+        "lines": [
+          115
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#45215f",
+        "lines": [
+          53
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#7939b2",
+        "lines": [
+          60
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bd9b72",
+        "lines": [
+          115
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cf",
+        "lines": [
+          15
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/hannah-combat.js": [],
+    "assets/js/hannah-encounter.js": [],
+    "assets/js/hannah-rules.js": [],
+    "assets/js/i18n.js": [],
+    "assets/js/inventory.js": [],
+    "assets/js/keybindings.js": [],
+    "assets/js/kitsune-art.js": [
+      {
+        "value": "#070d17",
+        "lines": [
+          83
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101524ed",
+        "lines": [
+          44,
+          83
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#161120",
+        "lines": [
+          31
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4a06b",
+        "lines": [
+          83
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          26
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          44,
+          83
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/kitsune-quest.js": [],
+    "assets/js/levels.js": [],
+    "assets/js/merchant.js": [
+      {
+        "value": "#101d29",
+        "lines": [
+          147
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8ad8df",
+        "lines": [
+          152
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8c7a2",
+        "lines": [
+          150
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffcb74",
+        "lines": [
+          154
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          154
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/peer-session.js": [],
+    "assets/js/prison-art.js": [
+      {
+        "value": "#070d17",
+        "lines": [
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0a172bcc",
+        "lines": [
+          81
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#101725ed",
+        "lines": [
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#161323",
+        "lines": [
+          27
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#cea5ef",
+        "lines": [
+          86
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          81
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0c4",
+        "lines": [
+          86
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/prison-hunter.js": [
+      {
+        "value": "#d5bb89",
+        "lines": [
+          53
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/prison-quest.js": [],
+    "assets/js/prison-warden.js": [
+      {
+        "value": "#bd92e8",
+        "lines": [
+          59
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/progression.js": [],
+    "assets/js/prologue.js": [
+      {
+        "value": "#010106",
+        "lines": [
+          175,
+          177
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#02050ed9",
+        "lines": [
+          241
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#03040b",
+        "lines": [
+          238
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#070b16",
+        "lines": [
+          234
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08040e",
+        "lines": [
+          175
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#08051277",
+        "lines": [
+          241
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#09131933",
+        "lines": [
+          215
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#09131955",
+        "lines": [
+          217
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0b101c",
+        "lines": [
+          244
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#100d2044",
+        "lines": [
+          241
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#132a32ed",
+        "lines": [
+          230
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#25103400",
+        "lines": [
+          175
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#35214600",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#58357b99",
+        "lines": [
+          175
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#58367888",
+        "lines": [
+          179
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ac7ddd55",
+        "lines": [
+          179
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b999d6",
+        "lines": [
+          170
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bd91df",
+        "lines": [
+          49
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c598ff",
+        "lines": [
+          72
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4b3fc",
+        "lines": [
+          78
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d6a4f5",
+        "lines": [
+          57
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9b3f8",
+        "lines": [
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b",
+        "lines": [
+          232
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d9ba7b99",
+        "lines": [
+          231
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6a176",
+        "lines": [
+          264
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e6c1ff",
+        "lines": [
+          210
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#efddff",
+        "lines": [
+          234
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#f2e6cc",
+        "lines": [
+          234
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "rgba(0,0,0,${shade})",
+        "lines": [
+          220
+        ],
+        "dynamic": true
+      }
+    ],
+    "assets/js/save-vault.js": [],
+    "assets/js/serpent-art.js": [
+      {
+        "value": "#070e18",
+        "lines": [
+          48
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#10283fee",
+        "lines": [
+          48,
+          50
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c4f2ec",
+        "lines": [
+          46
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          46
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0bd",
+        "lines": [
+          48,
+          50
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/serpent-relics.js": [],
+    "assets/js/serpents.js": [
+      {
+        "value": "#b8e8ee",
+        "lines": [
+          11,
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e0b9ff",
+        "lines": [
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffa465",
+        "lines": [
+          9
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbd69",
+        "lines": [
+          145
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe6a2",
+        "lines": [
+          13
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/shadow-animation.js": [],
+    "assets/js/shadow-realm.js": [
+      {
+        "value": "#be96eb",
+        "lines": [
+          63
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/slayer-art.js": [
+      {
+        "value": "#06101b",
+        "lines": [
+          97
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#090e16ed",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#0e1927ee",
+        "lines": [
+          92
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#9badd7",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#a3e9ff",
+        "lines": [
+          41,
+          80
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d3bd8a",
+        "lines": [
+          92
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dd9b69",
+        "lines": [
+          97
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffb07a",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbc69",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffbd79",
+        "lines": [
+          80
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffdd91",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a225",
+        "lines": [
+          77
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe1ad",
+        "lines": [
+          77
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0ca",
+        "lines": [
+          93
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/slayer-dialog.js": [],
+    "assets/js/travel-atlas.js": [],
+    "assets/js/void-encounter-rules.js": [],
+    "assets/js/void-encounter.js": [
+      {
+        "value": "#bba4f1",
+        "lines": [
+          42
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/weapon-equipment.js": [],
+    "assets/js/weapon-selection.js": [],
+    "assets/js/weapons.js": [],
+    "assets/js/ziggurat-maps.js": []
+  }
+}

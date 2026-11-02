@@ -5,11 +5,11 @@ const permanent=()=>JSON.stringify({flags:snap().flags,abilities:snap().abilitie
 run("Prologue.stop();abilities=[true,true];defeated=[true,true,false,false];flags=[['forestBell','villageBell','cultEntrance','discovered:angelRuin','discovered:cultCave','guardian:oldAngel','angelHalo','guardian:oldCultist','demonHorn'],['soulUpper','soulLower','councilKeyEarned','councilGateOpen'],['dawnSeal'],[]];progression=freshProgression();enterRealm(2);state='play';awardXP(160);progression.stats.strength=1;progression.points--;shards=17;visitedRests=levels.map((l,n)=>n<3?l.rests.map(r=>r.id):[]);enemies.filter(e=>!e.miniboss).forEach(e=>e.dead=true);persist();");
 const before=permanent();validate(run('saved'));
 run('showMap();');
-const realmSection=elements.get('mapContent').children.find(el=>el.className==='realm-travel');
-assert(realmSection,'Completed realms are absent from the map');
-const groups=realmSection.children.filter(el=>el.className==='travel-grid');assert.equal(groups.length,2);
+assert.equal(Array.from(run('TravelAtlas.knownRealms()')).length,3,'Known realms are absent from the atlas');
+assert(run('TravelAtlas.select(0,"japan")'),'Japan can be selected from the overview');
+const targets=elements.get('mapContent').children[0].children.find(el=>el.className==='atlas-layout').children.find(el=>el.className==='atlas-targets');
 const river=run("japan.rests.find(r=>r.id==='river')");
-const japanButton=groups[0].children.find(button=>button.textContent.includes(river.name));assert(japanButton&&!japanButton.disabled);
+const japanButton=targets.children.find(el=>el.className==='travel-grid').children.find(button=>button.textContent.includes(run('I18n.t('+JSON.stringify(river.name)+')')));assert(japanButton&&!japanButton.disabled);
 japanButton.onclick();assert.equal(snap().realm,0);assert.equal(snap().checkpoint.id,'river');
 assert.equal(snap().player.y+snap().player.h,river.y);assert.equal(permanent(),before);
 assert(run('boss.dead&&enemies.filter(e=>!e.miniboss).every(e=>!e.dead&&e.hp===e.maxHp)'));
@@ -17,8 +17,8 @@ assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].include
 assert(run("gatePass(level.gates.find(g=>g.id==='cultEntrance'))"));validate(run('saved'));
 
 // Returning to the already-visited unfinished realm must remain possible.
-run('showMap();');const back=elements.get('mapContent').children.find(el=>el.className==='realm-travel');
-assert.equal(back.children.filter(el=>el.className==='travel-grid').length,2);
+run('showMap();');assert.equal(Array.from(run('TravelAtlas.knownRealms()')).length,3);
+assert(run('TravelAtlas.select(2,"heaven")'));
 assert(run("fastTravel(heaven.rests.find(r=>r.id==='third'),2)"));assert.equal(snap().realm,2);assert(!snap().boss.dead);
 assert.equal(snap().checkpoint.id,'third');assert.equal(permanent(),before);validate(run('saved'));
 run('mainMenu();startGame(true);');assert.equal(snap().realm,2);assert.equal(snap().checkpoint.id,'third');assert.equal(permanent(),before);

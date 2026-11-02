@@ -32,14 +32,31 @@ const DragonRaidArt=(()=>{
  }
  function flight(){
   const image=Visuals.images.dragonFlight;if(!image?.complete||!image.naturalWidth)return;
-  const wing=[[890,280],[1110,295],[1320,425],[1300,740],[1020,790],[420,790],[550,590],[710,445]];
-  const path=()=>{wing.forEach(([x,y],i)=>ctx[i?'lineTo':'moveTo'](x,y));ctx.closePath();};
   ctx.save();ctx.translate(4050,460);ctx.scale(DRAGON_RAID_ART_SCALE.flightWidth/image.naturalWidth,DRAGON_RAID_ART_SCALE.flightWidth/image.naturalWidth);
-  ctx.save();ctx.beginPath();ctx.rect(0,0,image.naturalWidth,image.naturalHeight);path();ctx.clip('evenodd');ctx.drawImage(image,0,0);ctx.restore();
-  // The torso/back registration stays fixed for collision. Only painted wing
-  // pixels move; the source wing is cut out first to prevent a duplicate limb.
-  ctx.save();ctx.translate(1110,295);ctx.rotate(reducedMotion.matches?0:Math.sin(levelTime*1.8)*.018);ctx.translate(-1110,-295);
-  ctx.beginPath();path();ctx.clip();ctx.drawImage(image,0,0);ctx.restore();ctx.restore();
+  // One uncut native silhouette. A minute whole-body roll about the back
+  // suggests laboured flight without severing pixels across legs and wings.
+  ctx.translate(1050,235);ctx.rotate(reducedMotion.matches?0:Math.sin(levelTime*1.8)*.008);ctx.translate(-1050,-235);
+  ctx.drawImage(image,0,0);ctx.restore();
+ }
+ function pillarState(index){
+  const t=DragonRaidRules.tuning,elapsed=DragonRaid.current?.elapsed||0,age=elapsed-index*t.pillarInterval;
+  return {damage:clamp(age/t.pillarInterval,0,1),fall:DragonRaid.current?.failed&&index===t.pillars-1?DragonRaid.collapseProgress:clamp((age-t.pillarInterval)/.8,0,1),broken:age>=t.pillarInterval};
+ }
+ function pillar(index,x){
+  const image=Visuals.images.haruBindingPillar;if(!image?.complete||!image.naturalWidth)return;
+  const p=pillarState(index),width=360,s=width/image.naturalWidth,base=1517,feet=1300;
+  ctx.save();ctx.translate(x,feet);
+  if(p.broken&&p.fall>=1){
+   // Reuse the native stone base as rubble, rather than making the column vanish.
+   ctx.drawImage(image,80,1350,864,167,-width*.6,-24,width*1.2,28);BossVFX.fissure(0,0,160,.7);ctx.restore();return;
+  }
+  if(p.broken){ctx.globalAlpha*=1-p.fall*.6;ctx.rotate((index%2?1:-1)*p.fall*Math.PI*.48);}
+  ctx.drawImage(image,0,0,image.naturalWidth,image.naturalHeight,-width/2,-base*s,width,image.naturalHeight*s);
+  if(p.damage>0){
+   ctx.lineWidth=3;ctx.strokeStyle='#160f20';ctx.beginPath();
+   for(let i=0;i<Math.floor(p.damage*5);i++){const y=-80-i*65;ctx.moveTo(-width*.12,y-24);ctx.lineTo(width*.08,y);ctx.lineTo(-width*.04,y+18);ctx.lineTo(width*.14,y+35);}ctx.stroke();
+  }
+  ctx.restore();
  }
  function scenery(){
   if(!Prologue.active&&level===zigguratInterior&&flags[3].includes('hannahDefeated')){const p=level.dragonRaidEntrance;BossVFX.portal(p.x,p.y,150,.8);}
@@ -47,8 +64,7 @@ const DragonRaidArt=(()=>{
   const attempt=DragonRaid.current,phase=attempt?.phase||1,w=DragonRaid.warning,hit=DragonRaid.impact;
   ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   if(phase===3){
-   const destroyed=DragonRaidRules.tuning.pillars-(attempt?.pillars??DragonRaidRules.tuning.pillars);
-   for(const [i,x]of [8700,9200,11300,11800].entries())if(i>=destroyed)whole('haruBindingPillar',x-433,0,866);else BossVFX.fissure(x,1300,180,.8);
+   for(const [i,x]of [8700,9200,11300,11800].entries())pillar(i,x);
   }
   if(phase===1&&!(attempt===null&&fiaJourney.dragon.clear))whole((w?.kind==='fire'&&w.remaining<.65||hit?.kind==='fire')?'dragonBreath':'dragonIdle',450,100,DRAGON_RAID_ART_SCALE.idleWidth);
   else if(phase===2)flight();
@@ -79,5 +95,5 @@ const DragonRaidArt=(()=>{
   if(hit){const b=hit.box,physical=hit.kind==='headSlam'||hit.kind==='bite';BossVFX.stamp(physical||hit.kind==='fire'?'impact':'shadowColumn',b.x+b.w/2,b.y+b.h,b.w,b.h,{alpha:Math.min(1,hit.remaining*4)});}
   ctx.restore();
  }
- return Object.freeze({backdrop,scenery,frontPose});
+ return Object.freeze({backdrop,scenery,frontPose,pillarState});
 })();

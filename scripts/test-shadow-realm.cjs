@@ -60,8 +60,8 @@ for(const fps of [30,60,120]){
  assert(!r("flags[3].includes('shadowAltar')"));
  assert(!r("fastTravel(levels[0].rests[0],0)"));
  r('showMap();');
- assert(!h.elements.get('mapContent').children[0].innerHTML.includes('shadow.name térképe'),'The SVG accessible label must not concatenate an untranslated key');
- assert(h.elements.get('mapContent').children[0].innerHTML.includes('aria-label="'+r("I18n.t('shadow.name')")+'"'));
+ assert(!h.elements.get('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML.includes('shadow.name térképe'),'The SVG accessible label must not concatenate an untranslated key');
+ assert(h.elements.get('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML.includes('aria-label="'+r("I18n.t('shadow.name')")+'"'));
  assert(r("travelGrid(0).children.every(button=>button.disabled)"));r('closeMap();');
  r('initPlayer(level.altar);interact();');assert(r("flags[3].includes('shadowAltar')"));
  assert.equal(r('state'),'dialog');h.dismiss();

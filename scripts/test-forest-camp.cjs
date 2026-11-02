@@ -112,14 +112,13 @@ function frames(h,seconds,fps=120){h.run(`for(let f=0;f<${Math.ceil(seconds*fps)
  assert.equal(ledger(h),before);
  r('showMap();');
  const content=h.elements.get('mapContent');
- const grids=content.children.filter(el=>el.className==='travel-grid');
- assert(grids.some(g=>g.children.some(button=>button.textContent.includes(r('forestCamp.rests[0].name'))&&!button.disabled)),'Discovered camp is absent from travel controls');
- const campSvg=content.children.find(el=>el.className==='world-map').innerHTML;
+ assert(r('TravelAtlas.areas(0).some(area=>area.id==="forestCamp"&&area.rests.some(rest=>rest.id===forestCamp.rests[0].id))'),'Discovered camp is absent from travel controls');
+ const campSvg=content.children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML;
  assert.equal((campSvg.match(/<circle /g)||[]).length,2,'Camp map must contain its own shrine and Momo');
  assert.equal(campSvg.includes('◆'),false,'Camp map shows a phantom boss');
  assert(campSvg.includes(`aria-label="${r("I18n.t('camp.name')")}"`),'Camp map must announce its own localized name');
  assert.equal(r('fastTravel(japan.rests[0],0)'),true);r('showMap();');
- const svg=h.elements.get('mapContent').children.find(el=>el.className==='world-map').innerHTML;
+ const svg=h.elements.get('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML;
  // Camp coordinates must not be rendered as if they were a Japan shrine.
  const expectedPhysical=r('japan.rests.length+japan.objects.filter(o=>objectVisible(o)&&(!o.secretArea||secretKnown(o.secretArea)&&relicUnlocked(o))).length+1');
  assert.equal((svg.match(/<circle /g)||[]).length,expectedPhysical);

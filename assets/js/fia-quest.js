@@ -31,8 +31,9 @@ const FiaQuest=(()=>{
   flags[3].push('priestessTalisman');return true;
  }
  function questMarker(id){
-  if(id!=='fia'||!available()||level!==fiaChambers)return null;
+  if(id!=='fia'||!available())return null;
   if(has('fiaTalismanCompleted'))return DragonRaid.questMarker();
+  if(level!==fiaChambers)return null;
   return !has('fiaTalismanAccepted')?'!':has('priestessTalisman')&&!has('fiaTalismanCompleted')?'?':null;
  }
  function objective(){

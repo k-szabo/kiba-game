@@ -15,14 +15,14 @@ function createFiaVoidMaps({makeLevel,ledge,rest,zone}){
  shadowUnderworld.returnPoint={x:100,y:636};shadowUnderworld.returnDestination={location:'shadowDen',x:1800,y:820};
  shadowUnderworld.npcs=[{id:'underworldTrader',service:'trader',x:700,y:636,height:128,name:'fia.void.trader'},{id:'underworldCook',service:'cook',x:1050,y:1337,height:128,name:'fia.void.cook'},{id:'underworldSmith',service:'smith',x:650,y:2021,height:132,name:'fia.void.smith'}];
  shadowUnderworld.residents=[{id:'shadowNinja',x:1180,y:636,height:126,name:'fia.ninja.name',dialogue:'fia.ninja.dialogue'},{id:'shadowThief',x:420,y:2021,height:118,name:'fia.thief.name',dialogue:'fia.thief.dialogue'}];
+ shadowUnderworld.guards=[{id:'void-entry-guard-0',x:1260,y:2021,height:180,name:'arena.boss.guards'},{id:'void-entry-guard-1',x:1410,y:2021,height:180,name:'arena.boss.guards'}];
  shadowUnderworld.forbiddenEntrance={x:1460,y:2021};zone(shadowUnderworld,shadowUnderworld.name,0,0,1600,2400);
  const voidForbidden=room('voidForbidden',3400,1250,{x:170,y:940},'fia.void.forbidden');
  ledge(voidForbidden,'void-floor',0,940,3400,'ground',310);rest(voidForbidden,'voidThreshold',330,940,'fia.void.forbidden');
  voidForbidden.returnPoint={x:100,y:940};voidForbidden.returnDestination={location:'shadowUnderworld',x:1460,y:2021};
  voidForbidden.voidArena={x:1450,y:940,w:1850};voidForbidden.rift={x:2700,y:940};
  voidForbidden.keepers=[{x:800,y:940,role:'blade'},{x:1120,y:940,role:'bow'},{x:1450,y:940,role:'mage'}];
- voidForbidden.enemies.push(...voidForbidden.keepers.map((p,i)=>({id:'rift-keeper-'+i,x:p.x,y:p.y,kind:p.role==='bow'?'archer':p.role==='mage'?'mage':'guard',patrol:250,voidKeeperRole:p.role,name:'fia.void.'+p.role})),
-  ...[500,620].map((x,i)=>({id:'void-entry-guard-'+i,miniboss:'arenaCyclops',singleGuard:true,x,y:940,arena:{x:360,y:940,w:700},noReward:true})));
+ voidForbidden.enemies.push(...voidForbidden.keepers.map((p,i)=>({id:'rift-keeper-'+i,x:p.x,y:p.y,kind:p.role==='bow'?'archer':p.role==='mage'?'mage':'guard',patrol:250,voidKeeperRole:p.role,name:'fia.void.'+p.role})));
  zone(voidForbidden,voidForbidden.name,0,0,3400,1250);
  return {fiaRitual,shadowUnderworld,voidForbidden};
 }

@@ -1,0 +1,7926 @@
+{
+  "npcs": {
+    "prison.undead": {
+      "role": "undead",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.prison.undead"
+    },
+    "prison.warden": {
+      "role": "miniboss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.prison.warden"
+    },
+    "kitsune.hunter": {
+      "role": "miniboss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.kitsune.hunter"
+    },
+    "dungeon.necromancer": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dungeon.necromancer"
+    },
+    "dungeon.council": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dungeon.council"
+    },
+    "cultDungeon.templeGuard": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.cultDungeon.templeGuard"
+    },
+    "cultDungeon.highPriestess": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.cultDungeon.highPriestess"
+    },
+    "hannah.walk": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.walk"
+    },
+    "hannah.combo": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.combo"
+    },
+    "hannah.jump": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.jump"
+    },
+    "hannah.ritual": {
+      "role": "demon-lord",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.hannah.ritual"
+    },
+    "fiaVoid.blade": {
+      "role": "rift-enemy",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.blade"
+    },
+    "fiaVoid.bow": {
+      "role": "rift-enemy",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.bow"
+    },
+    "fiaVoid.mage": {
+      "role": "rift-enemy",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.mage"
+    },
+    "fiaVoid.lieutenant": {
+      "role": "rift-enemy",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.lieutenant"
+    },
+    "fiaVoid.demon": {
+      "role": "rift-enemy",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.demon"
+    },
+    "fiaVoid.trader": {
+      "role": "service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.trader"
+    },
+    "fiaVoid.cook": {
+      "role": "service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.cook"
+    },
+    "fiaVoid.smith": {
+      "role": "service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.smith"
+    },
+    "fiaVoid.trader.corrupted": {
+      "role": "hostile-service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.trader.corrupted"
+    },
+    "fiaVoid.cook.corrupted": {
+      "role": "hostile-service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.cook.corrupted"
+    },
+    "fiaVoid.smith.corrupted": {
+      "role": "hostile-service",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.fiaVoid.smith.corrupted"
+    },
+    "dragon.stagger": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.stagger"
+    },
+    "dragon.idle": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.idle"
+    },
+    "dragon.breath": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.breath"
+    },
+    "dragon.flight": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.flight"
+    },
+    "dragon.front": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.front"
+    },
+    "dungeon.raisedSamurai": {
+      "role": "summoned-guard",
+      "faction": "necromancer",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.dungeon.raisedSamurai.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.dungeon.raisedSamurai.attack"
+        }
+      }
+    },
+    "oldCultist": {
+      "role": "miniboss",
+      "paletteGroup": "npc.oldCultist"
+    },
+    "shadow": {
+      "name": {
+        "hu": "Árnyék",
+        "en": "Shadow"
+      },
+      "role": "prologue-boss",
+      "variants": {
+        "idle": {
+          "paletteGroup": "npc.shadow.idle"
+        },
+        "melee": {
+          "paletteGroup": "npc.shadow.melee"
+        },
+        "cast": {
+          "paletteGroup": "npc.shadow.cast"
+        },
+        "devour": {
+          "paletteGroup": "npc.shadow.devour"
+        }
+      }
+    },
+    "shadowCult.guard": {
+      "faction": "shadowCult",
+      "role": "guard",
+      "paletteGroup": "npc.shadowCult.guard"
+    },
+    "shadowCult.archer": {
+      "faction": "shadowCult",
+      "role": "archer",
+      "paletteGroup": "npc.shadowCult.archer"
+    },
+    "shadowCult.mage": {
+      "faction": "shadowCult",
+      "role": "mage",
+      "paletteGroup": "npc.shadowCult.mage"
+    },
+    "shadowCult.shield": {
+      "faction": "shadowCult",
+      "role": "shield",
+      "paletteGroup": "npc.shadowCult.shield"
+    },
+    "shadowCult.madPriest": {
+      "faction": "shadowCult",
+      "role": "boss",
+      "paletteGroup": "npc.shadowCult.madPriest"
+    },
+    "shadowCult.cultJailer": {
+      "faction": "shadowCult",
+      "role": "miniboss",
+      "paletteGroup": "npc.shadowCult.cultJailer"
+    },
+    "shadowCult.madOrganist": {
+      "faction": "shadowCult",
+      "role": "miniboss",
+      "paletteGroup": "npc.shadowCult.madOrganist"
+    }
+  },
+  "paletteGroups": {
+    "npc.prison.undead": {
+      "source": "assets/images/enemies/prison-undead-v1.png",
+      "frameMetadata": "ART_PRISON.undead.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#573e36",
+            "coveragePercent": 7.6792
+          },
+          {
+            "hex": "#412c26",
+            "coveragePercent": 7.499
+          },
+          {
+            "hex": "#302c3f",
+            "coveragePercent": 7.4887
+          },
+          {
+            "hex": "#403d57",
+            "coveragePercent": 7.4072
+          },
+          {
+            "hex": "#6c5044",
+            "coveragePercent": 7.0134
+          },
+          {
+            "hex": "#9d7965",
+            "coveragePercent": 6.8241
+          },
+          {
+            "hex": "#856352",
+            "coveragePercent": 6.5817
+          },
+          {
+            "hex": "#160e11",
+            "coveragePercent": 6.4693
+          },
+          {
+            "hex": "#b6937c",
+            "coveragePercent": 6.4651
+          },
+          {
+            "hex": "#201c2a",
+            "coveragePercent": 6.3287
+          },
+          {
+            "hex": "#514e6c",
+            "coveragePercent": 6.2345
+          },
+          {
+            "hex": "#2c1b15",
+            "coveragePercent": 6.1456
+          },
+          {
+            "hex": "#070405",
+            "coveragePercent": 6.024
+          },
+          {
+            "hex": "#cfaf98",
+            "coveragePercent": 5.2068
+          },
+          {
+            "hex": "#e5cbb8",
+            "coveragePercent": 3.5173
+          },
+          {
+            "hex": "#69637f",
+            "coveragePercent": 3.1154
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#895e43",
+            "coveragePercent": 53.0745
+          },
+          {
+            "hex": "#9e714e",
+            "coveragePercent": 32.53
+          },
+          {
+            "hex": "#ba8b5c",
+            "coveragePercent": 11.683
+          },
+          {
+            "hex": "#923c92",
+            "coveragePercent": 1.2554
+          },
+          {
+            "hex": "#65118a",
+            "coveragePercent": 0.9864
+          },
+          {
+            "hex": "#b857ce",
+            "coveragePercent": 0.4709
+          }
+        ],
+        "visibleSamples": 238074,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.prison.warden": {
+      "source": "assets/images/enemies/prison-warden-v1.png",
+      "frameMetadata": "ART_PRISON.warden.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#261715",
+            "coveragePercent": 12.7619
+          },
+          {
+            "hex": "#4a211f",
+            "coveragePercent": 11.4786
+          },
+          {
+            "hex": "#322624",
+            "coveragePercent": 11.0031
+          },
+          {
+            "hex": "#68252b",
+            "coveragePercent": 9.6494
+          },
+          {
+            "hex": "#89303a",
+            "coveragePercent": 9.2416
+          },
+          {
+            "hex": "#423636",
+            "coveragePercent": 9.0562
+          },
+          {
+            "hex": "#120b0a",
+            "coveragePercent": 6.9619
+          },
+          {
+            "hex": "#5b4439",
+            "coveragePercent": 6.5752
+          },
+          {
+            "hex": "#a63e49",
+            "coveragePercent": 5.8543
+          },
+          {
+            "hex": "#735a49",
+            "coveragePercent": 5.5637
+          },
+          {
+            "hex": "#514855",
+            "coveragePercent": 4.4883
+          },
+          {
+            "hex": "#927055",
+            "coveragePercent": 3.8033
+          },
+          {
+            "hex": "#b88e65",
+            "coveragePercent": 1.9076
+          },
+          {
+            "hex": "#deb988",
+            "coveragePercent": 0.9233
+          },
+          {
+            "hex": "#8853a6",
+            "coveragePercent": 0.4618
+          },
+          {
+            "hex": "#e0bee7",
+            "coveragePercent": 0.2697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d303b",
+            "coveragePercent": 44.0417
+          },
+          {
+            "hex": "#a63d49",
+            "coveragePercent": 34.2772
+          },
+          {
+            "hex": "#996942",
+            "coveragePercent": 13.4365
+          },
+          {
+            "hex": "#ce9b5f",
+            "coveragePercent": 6.208
+          },
+          {
+            "hex": "#703b96",
+            "coveragePercent": 1.3038
+          },
+          {
+            "hex": "#9b5dc4",
+            "coveragePercent": 0.7329
+          }
+        ],
+        "visibleSamples": 389114,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.kitsune.hunter": {
+      "source": "assets/images/enemies/prison-hunter-v1.png",
+      "frameMetadata": "ART_KITSUNE.hunter.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#493022",
+            "coveragePercent": 12.5812
+          },
+          {
+            "hex": "#5d4131",
+            "coveragePercent": 10.8805
+          },
+          {
+            "hex": "#251007",
+            "coveragePercent": 10.43
+          },
+          {
+            "hex": "#2d1c13",
+            "coveragePercent": 9.3409
+          },
+          {
+            "hex": "#6b4d3b",
+            "coveragePercent": 8.882
+          },
+          {
+            "hex": "#4f3a2f",
+            "coveragePercent": 8.7966
+          },
+          {
+            "hex": "#382a22",
+            "coveragePercent": 7.3677
+          },
+          {
+            "hex": "#7d5b44",
+            "coveragePercent": 6.2202
+          },
+          {
+            "hex": "#402415",
+            "coveragePercent": 5.66
+          },
+          {
+            "hex": "#431c08",
+            "coveragePercent": 5.3187
+          },
+          {
+            "hex": "#110603",
+            "coveragePercent": 4.402
+          },
+          {
+            "hex": "#613014",
+            "coveragePercent": 3.5661
+          },
+          {
+            "hex": "#9a6a4b",
+            "coveragePercent": 2.9228
+          },
+          {
+            "hex": "#8a4822",
+            "coveragePercent": 2.0141
+          },
+          {
+            "hex": "#ce8966",
+            "coveragePercent": 0.948
+          },
+          {
+            "hex": "#e8b8a4",
+            "coveragePercent": 0.6693
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e43",
+            "coveragePercent": 43.4299
+          },
+          {
+            "hex": "#a16d4d",
+            "coveragePercent": 16.1615
+          },
+          {
+            "hex": "#8a461f",
+            "coveragePercent": 15.2417
+          },
+          {
+            "hex": "#a2582a",
+            "coveragePercent": 11.3683
+          },
+          {
+            "hex": "#df8e62",
+            "coveragePercent": 6.9662
+          },
+          {
+            "hex": "#c3703d",
+            "coveragePercent": 6.8323
+          }
+        ],
+        "visibleSamples": 375698,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.dungeon.necromancer": {
+      "source": "assets/images/enemies/yomi-fall-necromancer-v1.png",
+      "frameMetadata": "ART_DUNGEON.necromancer.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5b4b50",
+            "coveragePercent": 14.24
+          },
+          {
+            "hex": "#46383c",
+            "coveragePercent": 12.7417
+          },
+          {
+            "hex": "#705f65",
+            "coveragePercent": 11.6818
+          },
+          {
+            "hex": "#887277",
+            "coveragePercent": 10.0981
+          },
+          {
+            "hex": "#33272b",
+            "coveragePercent": 9.0818
+          },
+          {
+            "hex": "#231514",
+            "coveragePercent": 7.1807
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 6.171
+          },
+          {
+            "hex": "#a38991",
+            "coveragePercent": 6.1236
+          },
+          {
+            "hex": "#ccaa8f",
+            "coveragePercent": 3.9133
+          },
+          {
+            "hex": "#8a674e",
+            "coveragePercent": 3.482
+          },
+          {
+            "hex": "#b58d66",
+            "coveragePercent": 3.3921
+          },
+          {
+            "hex": "#4b250c",
+            "coveragePercent": 3.2496
+          },
+          {
+            "hex": "#dfc3b1",
+            "coveragePercent": 3.1232
+          },
+          {
+            "hex": "#6f4522",
+            "coveragePercent": 2.8194
+          },
+          {
+            "hex": "#f2e3d9",
+            "coveragePercent": 1.6845
+          },
+          {
+            "hex": "#a66d29",
+            "coveragePercent": 1.0171
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c623e",
+            "coveragePercent": 25.3689
+          },
+          {
+            "hex": "#a77a4f",
+            "coveragePercent": 20.3911
+          },
+          {
+            "hex": "#c69558",
+            "coveragePercent": 19.471
+          },
+          {
+            "hex": "#8f5415",
+            "coveragePercent": 13.6886
+          },
+          {
+            "hex": "#e4b76c",
+            "coveragePercent": 10.5582
+          },
+          {
+            "hex": "#b37729",
+            "coveragePercent": 10.5223
+          }
+        ],
+        "visibleSamples": 612575,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.dungeon.council": {
+      "source": "assets/images/enemies/yomi-fall-council-v1.png",
+      "frameMetadata": "ART_DUNGEON.council.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1b17",
+            "coveragePercent": 11.3326
+          },
+          {
+            "hex": "#5c4845",
+            "coveragePercent": 11.0293
+          },
+          {
+            "hex": "#43322f",
+            "coveragePercent": 10.7919
+          },
+          {
+            "hex": "#755c56",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#8c7168",
+            "coveragePercent": 8.4962
+          },
+          {
+            "hex": "#110806",
+            "coveragePercent": 7.9648
+          },
+          {
+            "hex": "#6d3c2c",
+            "coveragePercent": 7.7515
+          },
+          {
+            "hex": "#52271c",
+            "coveragePercent": 6.3637
+          },
+          {
+            "hex": "#914f3a",
+            "coveragePercent": 6.1275
+          },
+          {
+            "hex": "#a58978",
+            "coveragePercent": 6.0025
+          },
+          {
+            "hex": "#c4a186",
+            "coveragePercent": 4.3162
+          },
+          {
+            "hex": "#bd654d",
+            "coveragePercent": 3.7647
+          },
+          {
+            "hex": "#d8baa3",
+            "coveragePercent": 3.1218
+          },
+          {
+            "hex": "#e9d6cb",
+            "coveragePercent": 1.4585
+          },
+          {
+            "hex": "#75498f",
+            "coveragePercent": 1.2236
+          },
+          {
+            "hex": "#ab7bc9",
+            "coveragePercent": 0.8591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914336",
+            "coveragePercent": 34.0597
+          },
+          {
+            "hex": "#986d46",
+            "coveragePercent": 23.6838
+          },
+          {
+            "hex": "#bc5849",
+            "coveragePercent": 22.6481
+          },
+          {
+            "hex": "#d09263",
+            "coveragePercent": 12.8519
+          },
+          {
+            "hex": "#754493",
+            "coveragePercent": 4.1667
+          },
+          {
+            "hex": "#975ebb",
+            "coveragePercent": 2.5898
+          }
+        ],
+        "visibleSamples": 722448,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.cultDungeon.templeGuard": {
+      "source": "assets/images/enemies/sect-fall-guard-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.templeGuard.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0a",
+            "coveragePercent": 14.4222
+          },
+          {
+            "hex": "#2f1e17",
+            "coveragePercent": 13.04
+          },
+          {
+            "hex": "#0b0503",
+            "coveragePercent": 10.4037
+          },
+          {
+            "hex": "#422f26",
+            "coveragePercent": 10.0811
+          },
+          {
+            "hex": "#481710",
+            "coveragePercent": 9.7055
+          },
+          {
+            "hex": "#642519",
+            "coveragePercent": 8.4611
+          },
+          {
+            "hex": "#803123",
+            "coveragePercent": 7.496
+          },
+          {
+            "hex": "#594234",
+            "coveragePercent": 6.7255
+          },
+          {
+            "hex": "#9d382d",
+            "coveragePercent": 5.6106
+          },
+          {
+            "hex": "#775640",
+            "coveragePercent": 4.1721
+          },
+          {
+            "hex": "#a85b38",
+            "coveragePercent": 2.7542
+          },
+          {
+            "hex": "#90715c",
+            "coveragePercent": 2.2153
+          },
+          {
+            "hex": "#c2804e",
+            "coveragePercent": 1.5152
+          },
+          {
+            "hex": "#b79176",
+            "coveragePercent": 1.35
+          },
+          {
+            "hex": "#d7b08a",
+            "coveragePercent": 1.2871
+          },
+          {
+            "hex": "#e9d0b4",
+            "coveragePercent": 0.7604
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a2e24",
+            "coveragePercent": 28.2686
+          },
+          {
+            "hex": "#9d382e",
+            "coveragePercent": 26.9797
+          },
+          {
+            "hex": "#915b34",
+            "coveragePercent": 18.0413
+          },
+          {
+            "hex": "#b5784a",
+            "coveragePercent": 11.7163
+          },
+          {
+            "hex": "#b74c39",
+            "coveragePercent": 10.0513
+          },
+          {
+            "hex": "#d8a062",
+            "coveragePercent": 4.9427
+          }
+        ],
+        "visibleSamples": 507617,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.cultDungeon.highPriestess": {
+      "source": "assets/images/enemies/sect-fall-priestess-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.highPriestess.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#220e12",
+            "coveragePercent": 10.4649
+          },
+          {
+            "hex": "#391f28",
+            "coveragePercent": 9.5142
+          },
+          {
+            "hex": "#53303b",
+            "coveragePercent": 8.8323
+          },
+          {
+            "hex": "#5d1b18",
+            "coveragePercent": 8.4675
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.949
+          },
+          {
+            "hex": "#3f0f10",
+            "coveragePercent": 7.8234
+          },
+          {
+            "hex": "#7f2321",
+            "coveragePercent": 7.783
+          },
+          {
+            "hex": "#a9272c",
+            "coveragePercent": 6.6743
+          },
+          {
+            "hex": "#714449",
+            "coveragePercent": 6.093
+          },
+          {
+            "hex": "#ce3a39",
+            "coveragePercent": 5.0176
+          },
+          {
+            "hex": "#bf7953",
+            "coveragePercent": 4.0793
+          },
+          {
+            "hex": "#986155",
+            "coveragePercent": 4.0012
+          },
+          {
+            "hex": "#d39673",
+            "coveragePercent": 3.8744
+          },
+          {
+            "hex": "#975126",
+            "coveragePercent": 3.2419
+          },
+          {
+            "hex": "#e6b89b",
+            "coveragePercent": 3.1144
+          },
+          {
+            "hex": "#f5dac6",
+            "coveragePercent": 3.0697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912324",
+            "coveragePercent": 24.0302
+          },
+          {
+            "hex": "#b62c30",
+            "coveragePercent": 22.1816
+          },
+          {
+            "hex": "#975438",
+            "coveragePercent": 17.9611
+          },
+          {
+            "hex": "#bc7651",
+            "coveragePercent": 15.0825
+          },
+          {
+            "hex": "#d53f3d",
+            "coveragePercent": 12.1824
+          },
+          {
+            "hex": "#de9e67",
+            "coveragePercent": 8.5622
+          }
+        ],
+        "visibleSamples": 610024,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.hannah.walk": {
+      "source": "assets/images/enemies/hannah-walk-v2.png",
+      "frameMetadata": "ART_HANNAH.walk.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#382526",
+            "coveragePercent": 14.4258
+          },
+          {
+            "hex": "#281413",
+            "coveragePercent": 11.8771
+          },
+          {
+            "hex": "#59231f",
+            "coveragePercent": 10.7081
+          },
+          {
+            "hex": "#543939",
+            "coveragePercent": 9.8668
+          },
+          {
+            "hex": "#7e3938",
+            "coveragePercent": 9.8233
+          },
+          {
+            "hex": "#f43122",
+            "coveragePercent": 8.8836
+          },
+          {
+            "hex": "#0c0505",
+            "coveragePercent": 6.2877
+          },
+          {
+            "hex": "#bb2d25",
+            "coveragePercent": 5.9701
+          },
+          {
+            "hex": "#87231a",
+            "coveragePercent": 5.6271
+          },
+          {
+            "hex": "#7f564c",
+            "coveragePercent": 4.4945
+          },
+          {
+            "hex": "#b07046",
+            "coveragePercent": 3.5079
+          },
+          {
+            "hex": "#f55e31",
+            "coveragePercent": 2.6339
+          },
+          {
+            "hex": "#e59657",
+            "coveragePercent": 2.5777
+          },
+          {
+            "hex": "#f0be8d",
+            "coveragePercent": 1.2891
+          },
+          {
+            "hex": "#fae7de",
+            "coveragePercent": 1.2126
+          },
+          {
+            "hex": "#9557c6",
+            "coveragePercent": 0.8146
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f03624",
+            "coveragePercent": 35.1962
+          },
+          {
+            "hex": "#93443b",
+            "coveragePercent": 22.0819
+          },
+          {
+            "hex": "#a4261e",
+            "coveragePercent": 21.993
+          },
+          {
+            "hex": "#c67541",
+            "coveragePercent": 11.0391
+          },
+          {
+            "hex": "#efa15b",
+            "coveragePercent": 7.4714
+          },
+          {
+            "hex": "#8d4ec1",
+            "coveragePercent": 2.2184
+          }
+        ],
+        "visibleSamples": 704508,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.hannah.combo": {
+      "source": "assets/images/enemies/hannah-combo-v2.png",
+      "frameMetadata": "ART_HANNAH.combo.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f1c1a",
+            "coveragePercent": 18.1271
+          },
+          {
+            "hex": "#432d2a",
+            "coveragePercent": 17.5634
+          },
+          {
+            "hex": "#5f403b",
+            "coveragePercent": 12.2179
+          },
+          {
+            "hex": "#845749",
+            "coveragePercent": 8.1897
+          },
+          {
+            "hex": "#170c0c",
+            "coveragePercent": 8.015
+          },
+          {
+            "hex": "#60281e",
+            "coveragePercent": 7.9368
+          },
+          {
+            "hex": "#8a3423",
+            "coveragePercent": 5.687
+          },
+          {
+            "hex": "#b97350",
+            "coveragePercent": 4.3852
+          },
+          {
+            "hex": "#b5462e",
+            "coveragePercent": 4.1091
+          },
+          {
+            "hex": "#f35c2b",
+            "coveragePercent": 3.4089
+          },
+          {
+            "hex": "#e7a66d",
+            "coveragePercent": 2.3332
+          },
+          {
+            "hex": "#e53915",
+            "coveragePercent": 2.1416
+          },
+          {
+            "hex": "#f2cba4",
+            "coveragePercent": 2.0154
+          },
+          {
+            "hex": "#f8903b",
+            "coveragePercent": 1.8893
+          },
+          {
+            "hex": "#fcecd8",
+            "coveragePercent": 1.2511
+          },
+          {
+            "hex": "#97768f",
+            "coveragePercent": 0.7294
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c5b43",
+            "coveragePercent": 23.098
+          },
+          {
+            "hex": "#943624",
+            "coveragePercent": 20.8991
+          },
+          {
+            "hex": "#d03e25",
+            "coveragePercent": 16.5136
+          },
+          {
+            "hex": "#f86327",
+            "coveragePercent": 16.4188
+          },
+          {
+            "hex": "#ca7c54",
+            "coveragePercent": 13.6999
+          },
+          {
+            "hex": "#f7b15d",
+            "coveragePercent": 9.3707
+          }
+        ],
+        "visibleSamples": 774016,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.hannah.jump": {
+      "source": "assets/images/enemies/hannah-jump-v1.png",
+      "frameMetadata": "ART_HANNAH.jump.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 19.5995
+          },
+          {
+            "hex": "#493431",
+            "coveragePercent": 17.4602
+          },
+          {
+            "hex": "#291917",
+            "coveragePercent": 12.5727
+          },
+          {
+            "hex": "#612e24",
+            "coveragePercent": 9.3516
+          },
+          {
+            "hex": "#62453e",
+            "coveragePercent": 9.3298
+          },
+          {
+            "hex": "#883928",
+            "coveragePercent": 5.8787
+          },
+          {
+            "hex": "#895640",
+            "coveragePercent": 4.5564
+          },
+          {
+            "hex": "#140b0a",
+            "coveragePercent": 4.4824
+          },
+          {
+            "hex": "#b7432a",
+            "coveragePercent": 4.2851
+          },
+          {
+            "hex": "#ef551d",
+            "coveragePercent": 2.7952
+          },
+          {
+            "hex": "#b4714c",
+            "coveragePercent": 2.5758
+          },
+          {
+            "hex": "#dd9f72",
+            "coveragePercent": 1.5932
+          },
+          {
+            "hex": "#f98c37",
+            "coveragePercent": 1.5799
+          },
+          {
+            "hex": "#f2c29b",
+            "coveragePercent": 1.4665
+          },
+          {
+            "hex": "#fbe0cb",
+            "coveragePercent": 1.4662
+          },
+          {
+            "hex": "#8a7179",
+            "coveragePercent": 1.0067
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d422e",
+            "coveragePercent": 31.7592
+          },
+          {
+            "hex": "#b5422a",
+            "coveragePercent": 21.4936
+          },
+          {
+            "hex": "#ae6b48",
+            "coveragePercent": 17.0457
+          },
+          {
+            "hex": "#eb501c",
+            "coveragePercent": 13.3036
+          },
+          {
+            "hex": "#f97d2e",
+            "coveragePercent": 8.8035
+          },
+          {
+            "hex": "#eea960",
+            "coveragePercent": 7.5944
+          }
+        ],
+        "visibleSamples": 650971,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.hannah.ritual": {
+      "source": "assets/images/enemies/hannah-ritual-v2.png",
+      "frameMetadata": "ART_HANNAH.ritual.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4a312d",
+            "coveragePercent": 16.904
+          },
+          {
+            "hex": "#3b221f",
+            "coveragePercent": 14.2999
+          },
+          {
+            "hex": "#281715",
+            "coveragePercent": 10.55
+          },
+          {
+            "hex": "#6e2b1e",
+            "coveragePercent": 10.3755
+          },
+          {
+            "hex": "#69453b",
+            "coveragePercent": 7.8963
+          },
+          {
+            "hex": "#a43721",
+            "coveragePercent": 7.37
+          },
+          {
+            "hex": "#ea451a",
+            "coveragePercent": 6.6309
+          },
+          {
+            "hex": "#130909",
+            "coveragePercent": 6.0058
+          },
+          {
+            "hex": "#905a45",
+            "coveragePercent": 5.1628
+          },
+          {
+            "hex": "#c07048",
+            "coveragePercent": 4.3847
+          },
+          {
+            "hex": "#f77e2d",
+            "coveragePercent": 2.8803
+          },
+          {
+            "hex": "#edb072",
+            "coveragePercent": 2.2518
+          },
+          {
+            "hex": "#fbddc6",
+            "coveragePercent": 2.2058
+          },
+          {
+            "hex": "#8934b7",
+            "coveragePercent": 1.1107
+          },
+          {
+            "hex": "#b850eb",
+            "coveragePercent": 1.0929
+          },
+          {
+            "hex": "#501975",
+            "coveragePercent": 0.8786
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a3823",
+            "coveragePercent": 33.0311
+          },
+          {
+            "hex": "#ec4c1c",
+            "coveragePercent": 26.4138
+          },
+          {
+            "hex": "#b16440",
+            "coveragePercent": 21.0948
+          },
+          {
+            "hex": "#f19e4f",
+            "coveragePercent": 11.4115
+          },
+          {
+            "hex": "#b14ae6",
+            "coveragePercent": 4.3479
+          },
+          {
+            "hex": "#792ba6",
+            "coveragePercent": 3.7011
+          }
+        ],
+        "visibleSamples": 490123,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.fiaVoid.blade": {
+      "source": "assets/images/enemies/void-keepers-v1.png",
+      "frameMetadata": "ART_FIA_VOID.blade.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352228",
+            "coveragePercent": 14.7372
+          },
+          {
+            "hex": "#452f3a",
+            "coveragePercent": 13.7998
+          },
+          {
+            "hex": "#60443f",
+            "coveragePercent": 8.6155
+          },
+          {
+            "hex": "#775a58",
+            "coveragePercent": 8.4284
+          },
+          {
+            "hex": "#26151a",
+            "coveragePercent": 8.1382
+          },
+          {
+            "hex": "#572d62",
+            "coveragePercent": 8.054
+          },
+          {
+            "hex": "#723c85",
+            "coveragePercent": 6.5752
+          },
+          {
+            "hex": "#914ab1",
+            "coveragePercent": 5.0091
+          },
+          {
+            "hex": "#14080c",
+            "coveragePercent": 4.4084
+          },
+          {
+            "hex": "#916688",
+            "coveragePercent": 3.8997
+          },
+          {
+            "hex": "#a67b55",
+            "coveragePercent": 3.7748
+          },
+          {
+            "hex": "#b56fc8",
+            "coveragePercent": 3.3169
+          },
+          {
+            "hex": "#f3e3ea",
+            "coveragePercent": 3.2335
+          },
+          {
+            "hex": "#b5899b",
+            "coveragePercent": 2.9898
+          },
+          {
+            "hex": "#d9b5c5",
+            "coveragePercent": 2.9088
+          },
+          {
+            "hex": "#d7ae78",
+            "coveragePercent": 2.1107
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#75398e",
+            "coveragePercent": 27.634
+          },
+          {
+            "hex": "#8d46ad",
+            "coveragePercent": 26.8472
+          },
+          {
+            "hex": "#a95cc8",
+            "coveragePercent": 17.4636
+          },
+          {
+            "hex": "#91603b",
+            "coveragePercent": 12.3598
+          },
+          {
+            "hex": "#b4854f",
+            "coveragePercent": 9.9357
+          },
+          {
+            "hex": "#ddb266",
+            "coveragePercent": 5.7596
+          }
+        ],
+        "visibleSamples": 204450,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.fiaVoid.bow": {
+      "source": "assets/images/enemies/void-keepers-v1.png",
+      "frameMetadata": "ART_FIA_VOID.bow.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#493135",
+            "coveragePercent": 11.1565
+          },
+          {
+            "hex": "#371e20",
+            "coveragePercent": 10.5372
+          },
+          {
+            "hex": "#644a51",
+            "coveragePercent": 9.6617
+          },
+          {
+            "hex": "#7f616a",
+            "coveragePercent": 8.6645
+          },
+          {
+            "hex": "#98788e",
+            "coveragePercent": 7.1411
+          },
+          {
+            "hex": "#693679",
+            "coveragePercent": 7.004
+          },
+          {
+            "hex": "#1d0c0f",
+            "coveragePercent": 6.3536
+          },
+          {
+            "hex": "#4f2459",
+            "coveragePercent": 5.8388
+          },
+          {
+            "hex": "#86479c",
+            "coveragePercent": 5.5086
+          },
+          {
+            "hex": "#a95fc0",
+            "coveragePercent": 4.7488
+          },
+          {
+            "hex": "#be98b5",
+            "coveragePercent": 4.5645
+          },
+          {
+            "hex": "#f5e7f1",
+            "coveragePercent": 4.2948
+          },
+          {
+            "hex": "#72482b",
+            "coveragePercent": 4.2315
+          },
+          {
+            "hex": "#ddc1d1",
+            "coveragePercent": 3.8652
+          },
+          {
+            "hex": "#a5794c",
+            "coveragePercent": 3.7004
+          },
+          {
+            "hex": "#d5ab70",
+            "coveragePercent": 2.7289
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#75398b",
+            "coveragePercent": 25.8693
+          },
+          {
+            "hex": "#8e48a7",
+            "coveragePercent": 21.3689
+          },
+          {
+            "hex": "#aa5bc6",
+            "coveragePercent": 19.6128
+          },
+          {
+            "hex": "#916138",
+            "coveragePercent": 15.015
+          },
+          {
+            "hex": "#b7894c",
+            "coveragePercent": 11.2478
+          },
+          {
+            "hex": "#dfb661",
+            "coveragePercent": 6.8861
+          }
+        ],
+        "visibleSamples": 212233,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.fiaVoid.mage": {
+      "source": "assets/images/enemies/void-keepers-v1.png",
+      "frameMetadata": "ART_FIA_VOID.mage.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#442e32",
+            "coveragePercent": 14.3344
+          },
+          {
+            "hex": "#301c21",
+            "coveragePercent": 11.7245
+          },
+          {
+            "hex": "#5d4344",
+            "coveragePercent": 10.3104
+          },
+          {
+            "hex": "#73595f",
+            "coveragePercent": 7.7689
+          },
+          {
+            "hex": "#643375",
+            "coveragePercent": 7.5044
+          },
+          {
+            "hex": "#4b2656",
+            "coveragePercent": 6.3542
+          },
+          {
+            "hex": "#7d4792",
+            "coveragePercent": 6.25
+          },
+          {
+            "hex": "#190b0f",
+            "coveragePercent": 6.0978
+          },
+          {
+            "hex": "#9b5aaf",
+            "coveragePercent": 5.503
+          },
+          {
+            "hex": "#a07874",
+            "coveragePercent": 4.484
+          },
+          {
+            "hex": "#f5e7ed",
+            "coveragePercent": 3.7185
+          },
+          {
+            "hex": "#ba76ca",
+            "coveragePercent": 3.6744
+          },
+          {
+            "hex": "#e1c4c8",
+            "coveragePercent": 3.5453
+          },
+          {
+            "hex": "#966735",
+            "coveragePercent": 3.2745
+          },
+          {
+            "hex": "#c59e9e",
+            "coveragePercent": 3.1808
+          },
+          {
+            "hex": "#d8ac55",
+            "coveragePercent": 2.275
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#74388c",
+            "coveragePercent": 28.8838
+          },
+          {
+            "hex": "#904aab",
+            "coveragePercent": 21.7465
+          },
+          {
+            "hex": "#af5ecb",
+            "coveragePercent": 14.9222
+          },
+          {
+            "hex": "#946235",
+            "coveragePercent": 14.7601
+          },
+          {
+            "hex": "#bc8b49",
+            "coveragePercent": 12.2094
+          },
+          {
+            "hex": "#e7bd59",
+            "coveragePercent": 7.478
+          }
+        ],
+        "visibleSamples": 245543,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.fiaVoid.lieutenant": {
+      "source": "assets/images/enemies/void-lieutenant-v1.png",
+      "frameMetadata": "ART_FIA_VOID.lieutenant.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#472b3a",
+            "coveragePercent": 14.0769
+          },
+          {
+            "hex": "#321c21",
+            "coveragePercent": 13.542
+          },
+          {
+            "hex": "#5a3a54",
+            "coveragePercent": 12.7545
+          },
+          {
+            "hex": "#14080a",
+            "coveragePercent": 11.3479
+          },
+          {
+            "hex": "#71476c",
+            "coveragePercent": 10.5035
+          },
+          {
+            "hex": "#856776",
+            "coveragePercent": 6.5052
+          },
+          {
+            "hex": "#944c8f",
+            "coveragePercent": 5.8044
+          },
+          {
+            "hex": "#794d31",
+            "coveragePercent": 4.4442
+          },
+          {
+            "hex": "#a8899a",
+            "coveragePercent": 4.0416
+          },
+          {
+            "hex": "#d3aacd",
+            "coveragePercent": 3.6187
+          },
+          {
+            "hex": "#efddec",
+            "coveragePercent": 3.3701
+          },
+          {
+            "hex": "#b666b1",
+            "coveragePercent": 3.039
+          },
+          {
+            "hex": "#b38153",
+            "coveragePercent": 3.0344
+          },
+          {
+            "hex": "#e1b782",
+            "coveragePercent": 2.2622
+          },
+          {
+            "hex": "#6522ce",
+            "coveragePercent": 0.8549
+          },
+          {
+            "hex": "#a15af1",
+            "coveragePercent": 0.8004
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914589",
+            "coveragePercent": 40.8216
+          },
+          {
+            "hex": "#b35fc1",
+            "coveragePercent": 18.1599
+          },
+          {
+            "hex": "#925c37",
+            "coveragePercent": 14.8637
+          },
+          {
+            "hex": "#ba854c",
+            "coveragePercent": 11.2914
+          },
+          {
+            "hex": "#6c28d4",
+            "coveragePercent": 8.1623
+          },
+          {
+            "hex": "#e4b764",
+            "coveragePercent": 6.701
+          }
+        ],
+        "visibleSamples": 657364,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.fiaVoid.demon": {
+      "source": "assets/images/enemies/void-demon-v1.png",
+      "frameMetadata": "ART_FIA_VOID.demon.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d1125",
+            "coveragePercent": 17.9648
+          },
+          {
+            "hex": "#302736",
+            "coveragePercent": 16.0455
+          },
+          {
+            "hex": "#0b050e",
+            "coveragePercent": 14.4166
+          },
+          {
+            "hex": "#443a4d",
+            "coveragePercent": 12.3096
+          },
+          {
+            "hex": "#5d4f64",
+            "coveragePercent": 7.7012
+          },
+          {
+            "hex": "#35144c",
+            "coveragePercent": 6.6691
+          },
+          {
+            "hex": "#542871",
+            "coveragePercent": 4.6421
+          },
+          {
+            "hex": "#765792",
+            "coveragePercent": 4.1823
+          },
+          {
+            "hex": "#9188ad",
+            "coveragePercent": 3.4891
+          },
+          {
+            "hex": "#827276",
+            "coveragePercent": 2.7096
+          },
+          {
+            "hex": "#bab5ce",
+            "coveragePercent": 2.0911
+          },
+          {
+            "hex": "#efedf6",
+            "coveragePercent": 2.0286
+          },
+          {
+            "hex": "#496387",
+            "coveragePercent": 1.98
+          },
+          {
+            "hex": "#7426a7",
+            "coveragePercent": 1.4728
+          },
+          {
+            "hex": "#a547d7",
+            "coveragePercent": 1.2906
+          },
+          {
+            "hex": "#d580ef",
+            "coveragePercent": 1.0072
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#764396",
+            "coveragePercent": 30.0186
+          },
+          {
+            "hex": "#963fc9",
+            "coveragePercent": 21.6466
+          },
+          {
+            "hex": "#5f1d95",
+            "coveragePercent": 20.9389
+          },
+          {
+            "hex": "#c960f0",
+            "coveragePercent": 13.4264
+          },
+          {
+            "hex": "#3f6590",
+            "coveragePercent": 8.9956
+          },
+          {
+            "hex": "#5e80ba",
+            "coveragePercent": 4.9739
+          }
+        ],
+        "visibleSamples": 465525,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.fiaVoid.trader": {
+      "source": "assets/images/npcs/shadow-underworld-services-v1.png",
+      "frameMetadata": "ART_FIA_VOID.trader.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060303",
+            "coveragePercent": 23.3455
+          },
+          {
+            "hex": "#1e171a",
+            "coveragePercent": 10.0688
+          },
+          {
+            "hex": "#565683",
+            "coveragePercent": 9.6899
+          },
+          {
+            "hex": "#434269",
+            "coveragePercent": 9.1333
+          },
+          {
+            "hex": "#2e2c45",
+            "coveragePercent": 8.992
+          },
+          {
+            "hex": "#452514",
+            "coveragePercent": 7.3843
+          },
+          {
+            "hex": "#945934",
+            "coveragePercent": 5.3923
+          },
+          {
+            "hex": "#733b1a",
+            "coveragePercent": 5.3832
+          },
+          {
+            "hex": "#604940",
+            "coveragePercent": 4.445
+          },
+          {
+            "hex": "#bb7b53",
+            "coveragePercent": 3.9498
+          },
+          {
+            "hex": "#836873",
+            "coveragePercent": 3.7414
+          },
+          {
+            "hex": "#e3a174",
+            "coveragePercent": 2.7005
+          },
+          {
+            "hex": "#f2ab32",
+            "coveragePercent": 1.9838
+          },
+          {
+            "hex": "#c3751d",
+            "coveragePercent": 1.762
+          },
+          {
+            "hex": "#fbd95d",
+            "coveragePercent": 1.3065
+          },
+          {
+            "hex": "#f3dbbe",
+            "coveragePercent": 0.7218
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945228",
+            "coveragePercent": 31.3805
+          },
+          {
+            "hex": "#b57347",
+            "coveragePercent": 24.6271
+          },
+          {
+            "hex": "#e19b68",
+            "coveragePercent": 15.2142
+          },
+          {
+            "hex": "#facd51",
+            "coveragePercent": 12.1013
+          },
+          {
+            "hex": "#e19223",
+            "coveragePercent": 11.6503
+          },
+          {
+            "hex": "#4f4c8b",
+            "coveragePercent": 5.0266
+          }
+        ],
+        "visibleSamples": 299831,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.fiaVoid.cook": {
+      "source": "assets/images/npcs/shadow-underworld-services-v1.png",
+      "frameMetadata": "ART_FIA_VOID.cook.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070302",
+            "coveragePercent": 14.1541
+          },
+          {
+            "hex": "#c64a33",
+            "coveragePercent": 9.3152
+          },
+          {
+            "hex": "#993726",
+            "coveragePercent": 8.9729
+          },
+          {
+            "hex": "#422017",
+            "coveragePercent": 7.683
+          },
+          {
+            "hex": "#6f2217",
+            "coveragePercent": 7.4452
+          },
+          {
+            "hex": "#26100b",
+            "coveragePercent": 7.162
+          },
+          {
+            "hex": "#7a584c",
+            "coveragePercent": 6.5915
+          },
+          {
+            "hex": "#ebb38b",
+            "coveragePercent": 6.2317
+          },
+          {
+            "hex": "#f6cba6",
+            "coveragePercent": 6.0581
+          },
+          {
+            "hex": "#583d33",
+            "coveragePercent": 5.8743
+          },
+          {
+            "hex": "#fce2c2",
+            "coveragePercent": 4.6662
+          },
+          {
+            "hex": "#d57143",
+            "coveragePercent": 4.1414
+          },
+          {
+            "hex": "#a07258",
+            "coveragePercent": 3.9593
+          },
+          {
+            "hex": "#c79776",
+            "coveragePercent": 3.8473
+          },
+          {
+            "hex": "#ee9465",
+            "coveragePercent": 2.9365
+          },
+          {
+            "hex": "#f2ab32",
+            "coveragePercent": 0.9614
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c94b34",
+            "coveragePercent": 30.6405
+          },
+          {
+            "hex": "#973425",
+            "coveragePercent": 28.7975
+          },
+          {
+            "hex": "#d57c52",
+            "coveragePercent": 14.1072
+          },
+          {
+            "hex": "#f5a672",
+            "coveragePercent": 12.1989
+          },
+          {
+            "hex": "#9c6341",
+            "coveragePercent": 10.7592
+          },
+          {
+            "hex": "#ea9b2a",
+            "coveragePercent": 3.4968
+          }
+        ],
+        "visibleSamples": 245204,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.fiaVoid.smith": {
+      "source": "assets/images/npcs/shadow-underworld-services-v1.png",
+      "frameMetadata": "ART_FIA_VOID.smith.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070303",
+            "coveragePercent": 17.0452
+          },
+          {
+            "hex": "#51413c",
+            "coveragePercent": 13.4444
+          },
+          {
+            "hex": "#392d2a",
+            "coveragePercent": 13.2943
+          },
+          {
+            "hex": "#221714",
+            "coveragePercent": 10.5864
+          },
+          {
+            "hex": "#68534c",
+            "coveragePercent": 9.9227
+          },
+          {
+            "hex": "#846457",
+            "coveragePercent": 4.9627
+          },
+          {
+            "hex": "#ea9661",
+            "coveragePercent": 4.2504
+          },
+          {
+            "hex": "#4f2113",
+            "coveragePercent": 4.103
+          },
+          {
+            "hex": "#fab27c",
+            "coveragePercent": 4.0922
+          },
+          {
+            "hex": "#743722",
+            "coveragePercent": 4.0246
+          },
+          {
+            "hex": "#98492d",
+            "coveragePercent": 3.7155
+          },
+          {
+            "hex": "#ce7b4b",
+            "coveragePercent": 3.4675
+          },
+          {
+            "hex": "#b4603a",
+            "coveragePercent": 3.3459
+          },
+          {
+            "hex": "#a4806e",
+            "coveragePercent": 2.0255
+          },
+          {
+            "hex": "#c3ab9f",
+            "coveragePercent": 0.9641
+          },
+          {
+            "hex": "#f1ddcb",
+            "coveragePercent": 0.7556
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f9ad76",
+            "coveragePercent": 22.283
+          },
+          {
+            "hex": "#e4905c",
+            "coveragePercent": 21.338
+          },
+          {
+            "hex": "#c67548",
+            "coveragePercent": 17.8694
+          },
+          {
+            "hex": "#b25935",
+            "coveragePercent": 14.3829
+          },
+          {
+            "hex": "#923d25",
+            "coveragePercent": 13.6235
+          },
+          {
+            "hex": "#935a3c",
+            "coveragePercent": 10.5033
+          }
+        ],
+        "visibleSamples": 228185,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.fiaVoid.trader.corrupted": {
+      "source": "assets/images/npcs/fia-underworld-corrupted-v1.png",
+      "frameMetadata": "ART_FIA_RITUAL.services.trader.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#545c8e",
+            "coveragePercent": 13.6622
+          },
+          {
+            "hex": "#0c0607",
+            "coveragePercent": 11.4776
+          },
+          {
+            "hex": "#241313",
+            "coveragePercent": 9.9371
+          },
+          {
+            "hex": "#3c426b",
+            "coveragePercent": 8.8683
+          },
+          {
+            "hex": "#28263b",
+            "coveragePercent": 8.3602
+          },
+          {
+            "hex": "#4c1f0f",
+            "coveragePercent": 7.1285
+          },
+          {
+            "hex": "#523c35",
+            "coveragePercent": 6.422
+          },
+          {
+            "hex": "#805945",
+            "coveragePercent": 6.2393
+          },
+          {
+            "hex": "#7e3415",
+            "coveragePercent": 5.8088
+          },
+          {
+            "hex": "#7f6c95",
+            "coveragePercent": 5.3016
+          },
+          {
+            "hex": "#b3744e",
+            "coveragePercent": 4.0682
+          },
+          {
+            "hex": "#b94719",
+            "coveragePercent": 3.7771
+          },
+          {
+            "hex": "#e29c73",
+            "coveragePercent": 3.013
+          },
+          {
+            "hex": "#f6cea0",
+            "coveragePercent": 2.3096
+          },
+          {
+            "hex": "#e37c1a",
+            "coveragePercent": 2.2898
+          },
+          {
+            "hex": "#f7bd40",
+            "coveragePercent": 1.3367
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#515793",
+            "coveragePercent": 26.8786
+          },
+          {
+            "hex": "#a96c48",
+            "coveragePercent": 20.53
+          },
+          {
+            "hex": "#933f1b",
+            "coveragePercent": 19.2564
+          },
+          {
+            "hex": "#ca4f18",
+            "coveragePercent": 12.2078
+          },
+          {
+            "hex": "#f0af69",
+            "coveragePercent": 11.8477
+          },
+          {
+            "hex": "#ea9124",
+            "coveragePercent": 9.2795
+          }
+        ],
+        "visibleSamples": 201454,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.fiaVoid.cook.corrupted": {
+      "source": "assets/images/npcs/fia-underworld-corrupted-v1.png",
+      "frameMetadata": "ART_FIA_RITUAL.services.cook.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#d33e30",
+            "coveragePercent": 11.4597
+          },
+          {
+            "hex": "#2e110c",
+            "coveragePercent": 11.0222
+          },
+          {
+            "hex": "#0f0604",
+            "coveragePercent": 9.4091
+          },
+          {
+            "hex": "#9a2b1f",
+            "coveragePercent": 8.2248
+          },
+          {
+            "hex": "#652012",
+            "coveragePercent": 8.0327
+          },
+          {
+            "hex": "#f7c8a8",
+            "coveragePercent": 7.1174
+          },
+          {
+            "hex": "#f0ae86",
+            "coveragePercent": 6.7644
+          },
+          {
+            "hex": "#3e2a25",
+            "coveragePercent": 6.3413
+          },
+          {
+            "hex": "#5f433a",
+            "coveragePercent": 5.8762
+          },
+          {
+            "hex": "#fbdec3",
+            "coveragePercent": 5.4656
+          },
+          {
+            "hex": "#7e5e57",
+            "coveragePercent": 5.2369
+          },
+          {
+            "hex": "#ac562e",
+            "coveragePercent": 3.9699
+          },
+          {
+            "hex": "#eb8658",
+            "coveragePercent": 3.5767
+          },
+          {
+            "hex": "#ae846d",
+            "coveragePercent": 3.5047
+          },
+          {
+            "hex": "#fcf1df",
+            "coveragePercent": 2.536
+          },
+          {
+            "hex": "#eb9e15",
+            "coveragePercent": 1.4624
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d23e30",
+            "coveragePercent": 34.3925
+          },
+          {
+            "hex": "#9b2b1e",
+            "coveragePercent": 23.8999
+          },
+          {
+            "hex": "#f8a675",
+            "coveragePercent": 13.3171
+          },
+          {
+            "hex": "#a05636",
+            "coveragePercent": 13.1827
+          },
+          {
+            "hex": "#d97b52",
+            "coveragePercent": 10.5679
+          },
+          {
+            "hex": "#e99a14",
+            "coveragePercent": 4.64
+          }
+        ],
+        "visibleSamples": 212464,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.fiaVoid.smith.corrupted": {
+      "source": "assets/images/npcs/fia-underworld-corrupted-v1.png",
+      "frameMetadata": "ART_FIA_RITUAL.services.smith.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#524440",
+            "coveragePercent": 15.1694
+          },
+          {
+            "hex": "#6c5953",
+            "coveragePercent": 14.2467
+          },
+          {
+            "hex": "#3a2e2b",
+            "coveragePercent": 12.7741
+          },
+          {
+            "hex": "#2a1713",
+            "coveragePercent": 10.9737
+          },
+          {
+            "hex": "#0f0707",
+            "coveragePercent": 9.1848
+          },
+          {
+            "hex": "#8d6d62",
+            "coveragePercent": 7.0455
+          },
+          {
+            "hex": "#fbb588",
+            "coveragePercent": 5.2265
+          },
+          {
+            "hex": "#f29666",
+            "coveragePercent": 5.0222
+          },
+          {
+            "hex": "#6d2414",
+            "coveragePercent": 4.9356
+          },
+          {
+            "hex": "#cf7247",
+            "coveragePercent": 3.5815
+          },
+          {
+            "hex": "#964f2a",
+            "coveragePercent": 3.403
+          },
+          {
+            "hex": "#bd3224",
+            "coveragePercent": 3.3947
+          },
+          {
+            "hex": "#b29388",
+            "coveragePercent": 2.1788
+          },
+          {
+            "hex": "#e5c5b3",
+            "coveragePercent": 1.5936
+          },
+          {
+            "hex": "#f5ece4",
+            "coveragePercent": 0.6879
+          },
+          {
+            "hex": "#df8316",
+            "coveragePercent": 0.582
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ee915f",
+            "coveragePercent": 21.2244
+          },
+          {
+            "hex": "#faac7c",
+            "coveragePercent": 21.1633
+          },
+          {
+            "hex": "#ce7340",
+            "coveragePercent": 16.0229
+          },
+          {
+            "hex": "#9d5a37",
+            "coveragePercent": 15.1895
+          },
+          {
+            "hex": "#972b1a",
+            "coveragePercent": 14.3077
+          },
+          {
+            "hex": "#ca3928",
+            "coveragePercent": 12.0923
+          }
+        ],
+        "visibleSamples": 214241,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.stagger": {
+      "source": "assets/images/enemies/ancient-drake-stagger-v1.png",
+      "frameMetadata": "ART_DRAGON.stagger.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#603e47",
+            "coveragePercent": 10.2246
+          },
+          {
+            "hex": "#7d5858",
+            "coveragePercent": 9.4429
+          },
+          {
+            "hex": "#2e1210",
+            "coveragePercent": 8.6409
+          },
+          {
+            "hex": "#120405",
+            "coveragePercent": 8.481
+          },
+          {
+            "hex": "#997272",
+            "coveragePercent": 8.4199
+          },
+          {
+            "hex": "#b98e86",
+            "coveragePercent": 8.1535
+          },
+          {
+            "hex": "#452634",
+            "coveragePercent": 7.6916
+          },
+          {
+            "hex": "#d5a99d",
+            "coveragePercent": 7.6854
+          },
+          {
+            "hex": "#e7c2ba",
+            "coveragePercent": 6.6578
+          },
+          {
+            "hex": "#c492bb",
+            "coveragePercent": 4.8185
+          },
+          {
+            "hex": "#522712",
+            "coveragePercent": 4.8112
+          },
+          {
+            "hex": "#a46ea5",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#78467e",
+            "coveragePercent": 3.2334
+          },
+          {
+            "hex": "#f7e9e0",
+            "coveragePercent": 3.0006
+          },
+          {
+            "hex": "#7d451f",
+            "coveragePercent": 2.9553
+          },
+          {
+            "hex": "#ae723e",
+            "coveragePercent": 1.9625
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935e41",
+            "coveragePercent": 23.9927
+          },
+          {
+            "hex": "#92521b",
+            "coveragePercent": 21.5888
+          },
+          {
+            "hex": "#b87c48",
+            "coveragePercent": 20.3308
+          },
+          {
+            "hex": "#7d3e8c",
+            "coveragePercent": 14.8947
+          },
+          {
+            "hex": "#9d59b1",
+            "coveragePercent": 9.6656
+          },
+          {
+            "hex": "#dca567",
+            "coveragePercent": 9.5274
+          }
+        ],
+        "visibleSamples": 797779,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.idle": {
+      "source": "assets/images/enemies/ancient-drake-idle-v1.png",
+      "frameMetadata": "ART_DRAGON.idle.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#654c4d",
+            "coveragePercent": 10.1274
+          },
+          {
+            "hex": "#775b5d",
+            "coveragePercent": 9.9358
+          },
+          {
+            "hex": "#25161a",
+            "coveragePercent": 9.4532
+          },
+          {
+            "hex": "#513c45",
+            "coveragePercent": 8.5045
+          },
+          {
+            "hex": "#8a6c6b",
+            "coveragePercent": 8.4411
+          },
+          {
+            "hex": "#3d2b34",
+            "coveragePercent": 7.9266
+          },
+          {
+            "hex": "#060204",
+            "coveragePercent": 7.5939
+          },
+          {
+            "hex": "#372420",
+            "coveragePercent": 7.3339
+          },
+          {
+            "hex": "#9e7e79",
+            "coveragePercent": 6.8767
+          },
+          {
+            "hex": "#160b0c",
+            "coveragePercent": 6.4846
+          },
+          {
+            "hex": "#b29087",
+            "coveragePercent": 5.496
+          },
+          {
+            "hex": "#54392d",
+            "coveragePercent": 4.5324
+          },
+          {
+            "hex": "#c3a398",
+            "coveragePercent": 3.2171
+          },
+          {
+            "hex": "#d0b7ae",
+            "coveragePercent": 2.0612
+          },
+          {
+            "hex": "#e3cfc4",
+            "coveragePercent": 1.4048
+          },
+          {
+            "hex": "#f4eae1",
+            "coveragePercent": 0.6107
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e41",
+            "coveragePercent": 46.6053
+          },
+          {
+            "hex": "#9d704d",
+            "coveragePercent": 22.8737
+          },
+          {
+            "hex": "#724089",
+            "coveragePercent": 11.5312
+          },
+          {
+            "hex": "#ba875d",
+            "coveragePercent": 11.2546
+          },
+          {
+            "hex": "#8c56a9",
+            "coveragePercent": 4.0263
+          },
+          {
+            "hex": "#dfa96b",
+            "coveragePercent": 3.7089
+          }
+        ],
+        "visibleSamples": 914371,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.dragon.breath": {
+      "source": "assets/images/enemies/ancient-drake-breath-v1.png",
+      "frameMetadata": "ART_DRAGON.breath.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5d4144",
+            "coveragePercent": 12.7706
+          },
+          {
+            "hex": "#745456",
+            "coveragePercent": 12.5306
+          },
+          {
+            "hex": "#442e35",
+            "coveragePercent": 11.0256
+          },
+          {
+            "hex": "#2f1c1e",
+            "coveragePercent": 10.6709
+          },
+          {
+            "hex": "#8d6968",
+            "coveragePercent": 10.3389
+          },
+          {
+            "hex": "#080303",
+            "coveragePercent": 9.7938
+          },
+          {
+            "hex": "#1f0e0d",
+            "coveragePercent": 8.9313
+          },
+          {
+            "hex": "#a8817a",
+            "coveragePercent": 7.8906
+          },
+          {
+            "hex": "#bf9a8f",
+            "coveragePercent": 5.5525
+          },
+          {
+            "hex": "#4f2917",
+            "coveragePercent": 3.6482
+          },
+          {
+            "hex": "#d4b9af",
+            "coveragePercent": 2.9684
+          },
+          {
+            "hex": "#f0e0d4",
+            "coveragePercent": 1.4071
+          },
+          {
+            "hex": "#833515",
+            "coveragePercent": 0.9785
+          },
+          {
+            "hex": "#c45119",
+            "coveragePercent": 0.639
+          },
+          {
+            "hex": "#ed8b26",
+            "coveragePercent": 0.5135
+          },
+          {
+            "hex": "#f8cc53",
+            "coveragePercent": 0.3405
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5d49",
+            "coveragePercent": 34.3932
+          },
+          {
+            "hex": "#9b2f0c",
+            "coveragePercent": 16.077
+          },
+          {
+            "hex": "#d25615",
+            "coveragePercent": 14.3897
+          },
+          {
+            "hex": "#c38656",
+            "coveragePercent": 14.0849
+          },
+          {
+            "hex": "#f5941f",
+            "coveragePercent": 11.6346
+          },
+          {
+            "hex": "#f8ce56",
+            "coveragePercent": 9.4206
+          }
+        ],
+        "visibleSamples": 967305,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.flight": {
+      "source": "assets/images/enemies/ancient-drake-flight-v1.png",
+      "frameMetadata": "ART_DRAGON.flight.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7a6163",
+            "coveragePercent": 8.7957
+          },
+          {
+            "hex": "#1f1316",
+            "coveragePercent": 8.6286
+          },
+          {
+            "hex": "#8a7074",
+            "coveragePercent": 8.5734
+          },
+          {
+            "hex": "#2f2024",
+            "coveragePercent": 8.2504
+          },
+          {
+            "hex": "#543f49",
+            "coveragePercent": 8.1612
+          },
+          {
+            "hex": "#3c2b31",
+            "coveragePercent": 7.8374
+          },
+          {
+            "hex": "#4a3738",
+            "coveragePercent": 7.6271
+          },
+          {
+            "hex": "#664f4c",
+            "coveragePercent": 7.5387
+          },
+          {
+            "hex": "#0c0507",
+            "coveragePercent": 7.2974
+          },
+          {
+            "hex": "#9a8082",
+            "coveragePercent": 6.6392
+          },
+          {
+            "hex": "#685063",
+            "coveragePercent": 6.3939
+          },
+          {
+            "hex": "#ac918f",
+            "coveragePercent": 5.9977
+          },
+          {
+            "hex": "#bca29f",
+            "coveragePercent": 3.8484
+          },
+          {
+            "hex": "#cbb5b0",
+            "coveragePercent": 2.5252
+          },
+          {
+            "hex": "#dbcac4",
+            "coveragePercent": 1.3108
+          },
+          {
+            "hex": "#f0e5de",
+            "coveragePercent": 0.5749
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#876144",
+            "coveragePercent": 40.0907
+          },
+          {
+            "hex": "#684387",
+            "coveragePercent": 25.366
+          },
+          {
+            "hex": "#99714f",
+            "coveragePercent": 18.3407
+          },
+          {
+            "hex": "#7b4f9a",
+            "coveragePercent": 10.2318
+          },
+          {
+            "hex": "#b48a5f",
+            "coveragePercent": 3.9275
+          },
+          {
+            "hex": "#8e5db0",
+            "coveragePercent": 2.0433
+          }
+        ],
+        "visibleSamples": 555031,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.front": {
+      "source": "assets/images/enemies/ancient-drake-front-v2.png",
+      "frameMetadata": "ART_DRAGON.front.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6b4c4e",
+            "coveragePercent": 10.1818
+          },
+          {
+            "hex": "#553b42",
+            "coveragePercent": 9.1094
+          },
+          {
+            "hex": "#836159",
+            "coveragePercent": 8.4147
+          },
+          {
+            "hex": "#b28a83",
+            "coveragePercent": 8.26
+          },
+          {
+            "hex": "#9a756f",
+            "coveragePercent": 8.0369
+          },
+          {
+            "hex": "#0f0505",
+            "coveragePercent": 7.9641
+          },
+          {
+            "hex": "#442b31",
+            "coveragePercent": 7.919
+          },
+          {
+            "hex": "#25110f",
+            "coveragePercent": 7.5953
+          },
+          {
+            "hex": "#c39e98",
+            "coveragePercent": 6.5588
+          },
+          {
+            "hex": "#311c22",
+            "coveragePercent": 6.1439
+          },
+          {
+            "hex": "#9f7791",
+            "coveragePercent": 4.2748
+          },
+          {
+            "hex": "#7e5877",
+            "coveragePercent": 3.6317
+          },
+          {
+            "hex": "#613c2a",
+            "coveragePercent": 3.6024
+          },
+          {
+            "hex": "#432417",
+            "coveragePercent": 3.5721
+          },
+          {
+            "hex": "#d6b8b0",
+            "coveragePercent": 3.2709
+          },
+          {
+            "hex": "#eedcd1",
+            "coveragePercent": 1.4641
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#89583c",
+            "coveragePercent": 38.9961
+          },
+          {
+            "hex": "#9a694b",
+            "coveragePercent": 29.2985
+          },
+          {
+            "hex": "#b27d58",
+            "coveragePercent": 16.8053
+          },
+          {
+            "hex": "#d09b6a",
+            "coveragePercent": 6.887
+          },
+          {
+            "hex": "#7b4484",
+            "coveragePercent": 6.6578
+          },
+          {
+            "hex": "#9554ab",
+            "coveragePercent": 1.3554
+          }
+        ],
+        "visibleSamples": 802294,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.dungeon.raisedSamurai.walk": {
+      "source": "assets/images/enemies/japan-raised-v5.png",
+      "frameMetadata": "ART_JAPAN.raised.walk",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4a342e",
+            "coveragePercent": 13.0812
+          },
+          {
+            "hex": "#30211e",
+            "coveragePercent": 12.1774
+          },
+          {
+            "hex": "#180a0b",
+            "coveragePercent": 11.3526
+          },
+          {
+            "hex": "#6e161b",
+            "coveragePercent": 11.1899
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 9.4551
+          },
+          {
+            "hex": "#481112",
+            "coveragePercent": 8.0916
+          },
+          {
+            "hex": "#5f4b47",
+            "coveragePercent": 7.3198
+          },
+          {
+            "hex": "#b6202b",
+            "coveragePercent": 6.7864
+          },
+          {
+            "hex": "#79452c",
+            "coveragePercent": 4.5155
+          },
+          {
+            "hex": "#856a60",
+            "coveragePercent": 3.9888
+          },
+          {
+            "hex": "#a46137",
+            "coveragePercent": 3.1079
+          },
+          {
+            "hex": "#c7834d",
+            "coveragePercent": 2.5571
+          },
+          {
+            "hex": "#ae9389",
+            "coveragePercent": 2.0767
+          },
+          {
+            "hex": "#dabfad",
+            "coveragePercent": 1.7292
+          },
+          {
+            "hex": "#e9b067",
+            "coveragePercent": 1.5984
+          },
+          {
+            "hex": "#f5ece4",
+            "coveragePercent": 0.9725
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f1720",
+            "coveragePercent": 34.516
+          },
+          {
+            "hex": "#b41f2a",
+            "coveragePercent": 30.7831
+          },
+          {
+            "hex": "#915330",
+            "coveragePercent": 11.963
+          },
+          {
+            "hex": "#b06c40",
+            "coveragePercent": 10.3728
+          },
+          {
+            "hex": "#d08b50",
+            "coveragePercent": 7.8662
+          },
+          {
+            "hex": "#eeb664",
+            "coveragePercent": 4.4989
+          }
+        ],
+        "visibleSamples": 249627,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.dungeon.raisedSamurai.attack": {
+      "source": "assets/images/enemies/japan-raised-v5.png",
+      "frameMetadata": "ART_JAPAN.raised.attack",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#46322c",
+            "coveragePercent": 11.54
+          },
+          {
+            "hex": "#6e171c",
+            "coveragePercent": 10.4368
+          },
+          {
+            "hex": "#31221f",
+            "coveragePercent": 10.2888
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 8.8537
+          },
+          {
+            "hex": "#574541",
+            "coveragePercent": 7.9497
+          },
+          {
+            "hex": "#231110",
+            "coveragePercent": 7.8949
+          },
+          {
+            "hex": "#4c1313",
+            "coveragePercent": 7.8645
+          },
+          {
+            "hex": "#b7212a",
+            "coveragePercent": 6.6519
+          },
+          {
+            "hex": "#0e0607",
+            "coveragePercent": 5.5223
+          },
+          {
+            "hex": "#78452c",
+            "coveragePercent": 5.3019
+          },
+          {
+            "hex": "#7a5f54",
+            "coveragePercent": 5.1557
+          },
+          {
+            "hex": "#ae683e",
+            "coveragePercent": 3.9552
+          },
+          {
+            "hex": "#a28476",
+            "coveragePercent": 2.6795
+          },
+          {
+            "hex": "#db9a59",
+            "coveragePercent": 2.5907
+          },
+          {
+            "hex": "#d7b79d",
+            "coveragePercent": 2.181
+          },
+          {
+            "hex": "#f1e5d9",
+            "coveragePercent": 1.1335
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901720",
+            "coveragePercent": 34.4805
+          },
+          {
+            "hex": "#b6212a",
+            "coveragePercent": 28.8013
+          },
+          {
+            "hex": "#905332",
+            "coveragePercent": 12.8239
+          },
+          {
+            "hex": "#b16b42",
+            "coveragePercent": 11.2755
+          },
+          {
+            "hex": "#d08a50",
+            "coveragePercent": 8.1985
+          },
+          {
+            "hex": "#edb466",
+            "coveragePercent": 4.4203
+          }
+        ],
+        "visibleSamples": 255263,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.oldCultist": {
+      "source": "assets/images/enemies/old-cultist-v6.png",
+      "frameMetadata": "ART_FRAMES.oldCultist",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#251211",
+            "coveragePercent": 13.6235
+          },
+          {
+            "hex": "#473638",
+            "coveragePercent": 11.9681
+          },
+          {
+            "hex": "#322425",
+            "coveragePercent": 11.394
+          },
+          {
+            "hex": "#0d0506",
+            "coveragePercent": 10.2748
+          },
+          {
+            "hex": "#471b17",
+            "coveragePercent": 9.0056
+          },
+          {
+            "hex": "#642a24",
+            "coveragePercent": 8.7188
+          },
+          {
+            "hex": "#644c4b",
+            "coveragePercent": 8.689
+          },
+          {
+            "hex": "#87332f",
+            "coveragePercent": 6.0448
+          },
+          {
+            "hex": "#9a5b41",
+            "coveragePercent": 4.3242
+          },
+          {
+            "hex": "#896b69",
+            "coveragePercent": 3.6217
+          },
+          {
+            "hex": "#c38962",
+            "coveragePercent": 2.9185
+          },
+          {
+            "hex": "#e8bc95",
+            "coveragePercent": 2.4359
+          },
+          {
+            "hex": "#9143dc",
+            "coveragePercent": 2.3867
+          },
+          {
+            "hex": "#f1e0e3",
+            "coveragePercent": 1.6355
+          },
+          {
+            "hex": "#b19794",
+            "coveragePercent": 1.6222
+          },
+          {
+            "hex": "#c97ef5",
+            "coveragePercent": 1.3369
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#903632",
+            "coveragePercent": 34.6145
+          },
+          {
+            "hex": "#a26445",
+            "coveragePercent": 26.8227
+          },
+          {
+            "hex": "#d59866",
+            "coveragePercent": 13.6561
+          },
+          {
+            "hex": "#9243e3",
+            "coveragePercent": 12.4461
+          },
+          {
+            "hex": "#ba6af3",
+            "coveragePercent": 8.2603
+          },
+          {
+            "hex": "#7431a0",
+            "coveragePercent": 4.2003
+          }
+        ],
+        "visibleSamples": 434796,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.shadowCult.guard": {
+      "source": "assets/images/enemies/shadow-guard-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0c",
+            "coveragePercent": 13.2397
+          },
+          {
+            "hex": "#090303",
+            "coveragePercent": 13.1013
+          },
+          {
+            "hex": "#342320",
+            "coveragePercent": 11.1761
+          },
+          {
+            "hex": "#4f3631",
+            "coveragePercent": 9.2132
+          },
+          {
+            "hex": "#3e0f0d",
+            "coveragePercent": 7.8897
+          },
+          {
+            "hex": "#591b17",
+            "coveragePercent": 7.092
+          },
+          {
+            "hex": "#7a1d1b",
+            "coveragePercent": 7.0031
+          },
+          {
+            "hex": "#7e4836",
+            "coveragePercent": 5.5016
+          },
+          {
+            "hex": "#9e2623",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#604d4c",
+            "coveragePercent": 4.6965
+          },
+          {
+            "hex": "#aa6b4f",
+            "coveragePercent": 3.4287
+          },
+          {
+            "hex": "#836762",
+            "coveragePercent": 3.326
+          },
+          {
+            "hex": "#c89170",
+            "coveragePercent": 3.0411
+          },
+          {
+            "hex": "#c33d33",
+            "coveragePercent": 2.434
+          },
+          {
+            "hex": "#e7bc96",
+            "coveragePercent": 2.2959
+          },
+          {
+            "hex": "#f5e4cd",
+            "coveragePercent": 1.2465
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c201e",
+            "coveragePercent": 27.133
+          },
+          {
+            "hex": "#a82a27",
+            "coveragePercent": 20.9483
+          },
+          {
+            "hex": "#91523c",
+            "coveragePercent": 19.2787
+          },
+          {
+            "hex": "#b57150",
+            "coveragePercent": 14.2181
+          },
+          {
+            "hex": "#c93e35",
+            "coveragePercent": 10.136
+          },
+          {
+            "hex": "#dc9c6b",
+            "coveragePercent": 8.2859
+          }
+        ],
+        "visibleSamples": 579599,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.shadowCult.archer": {
+      "source": "assets/images/enemies/shadow-archer-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f0f0f",
+            "coveragePercent": 16.0153
+          },
+          {
+            "hex": "#080404",
+            "coveragePercent": 14.8711
+          },
+          {
+            "hex": "#342424",
+            "coveragePercent": 11.0
+          },
+          {
+            "hex": "#473635",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#401111",
+            "coveragePercent": 8.629
+          },
+          {
+            "hex": "#631d1f",
+            "coveragePercent": 7.1929
+          },
+          {
+            "hex": "#8a2026",
+            "coveragePercent": 5.3111
+          },
+          {
+            "hex": "#584a4c",
+            "coveragePercent": 5.2552
+          },
+          {
+            "hex": "#744537",
+            "coveragePercent": 4.7246
+          },
+          {
+            "hex": "#7d6058",
+            "coveragePercent": 3.8444
+          },
+          {
+            "hex": "#b52f33",
+            "coveragePercent": 2.9141
+          },
+          {
+            "hex": "#aa7c66",
+            "coveragePercent": 2.8126
+          },
+          {
+            "hex": "#cd9878",
+            "coveragePercent": 2.3525
+          },
+          {
+            "hex": "#a95d48",
+            "coveragePercent": 2.3378
+          },
+          {
+            "hex": "#e6bd99",
+            "coveragePercent": 1.9297
+          },
+          {
+            "hex": "#f7e2c4",
+            "coveragePercent": 1.4137
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b2026",
+            "coveragePercent": 25.3667
+          },
+          {
+            "hex": "#a5272d",
+            "coveragePercent": 20.0194
+          },
+          {
+            "hex": "#91523f",
+            "coveragePercent": 19.9671
+          },
+          {
+            "hex": "#b46f52",
+            "coveragePercent": 14.5408
+          },
+          {
+            "hex": "#c33939",
+            "coveragePercent": 12.1306
+          },
+          {
+            "hex": "#d8966a",
+            "coveragePercent": 7.9753
+          }
+        ],
+        "visibleSamples": 542510,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.shadowCult.mage": {
+      "source": "assets/images/enemies/shadow-mage-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
+          },
+          {
+            "hex": "#100605",
+            "coveragePercent": 12.0161
+          },
+          {
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
+          },
+          {
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
+          },
+          {
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#624846",
+            "coveragePercent": 7.8941
+          },
+          {
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
+          },
+          {
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
+          },
+          {
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
+          },
+          {
+            "hex": "#826563",
+            "coveragePercent": 4.8411
+          },
+          {
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
+          },
+          {
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
+          },
+          {
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
+          },
+          {
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
+          },
+          {
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
+          },
+          {
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
+          },
+          {
+            "hex": "#935435",
+            "coveragePercent": 20.7743
+          },
+          {
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
+          },
+          {
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
+          },
+          {
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
+          },
+          {
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
+          }
+        ],
+        "visibleSamples": 594036,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowCult.shield": {
+      "source": "assets/images/enemies/shadow-shield-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#39241f",
+            "coveragePercent": 11.7538
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 11.2656
+          },
+          {
+            "hex": "#1e0c09",
+            "coveragePercent": 10.9648
+          },
+          {
+            "hex": "#513830",
+            "coveragePercent": 10.4103
+          },
+          {
+            "hex": "#340f0b",
+            "coveragePercent": 9.9166
+          },
+          {
+            "hex": "#531712",
+            "coveragePercent": 8.9506
+          },
+          {
+            "hex": "#6f201b",
+            "coveragePercent": 7.0406
+          },
+          {
+            "hex": "#7e4a30",
+            "coveragePercent": 5.8472
+          },
+          {
+            "hex": "#8e2422",
+            "coveragePercent": 4.6136
+          },
+          {
+            "hex": "#68524b",
+            "coveragePercent": 4.429
+          },
+          {
+            "hex": "#a46a47",
+            "coveragePercent": 4.2232
+          },
+          {
+            "hex": "#c7916b",
+            "coveragePercent": 3.2385
+          },
+          {
+            "hex": "#e2ba95",
+            "coveragePercent": 2.3568
+          },
+          {
+            "hex": "#b23731",
+            "coveragePercent": 1.8813
+          },
+          {
+            "hex": "#90776b",
+            "coveragePercent": 1.8115
+          },
+          {
+            "hex": "#f5e7d3",
+            "coveragePercent": 1.2967
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d2321",
+            "coveragePercent": 29.2405
+          },
+          {
+            "hex": "#8d5335",
+            "coveragePercent": 22.0129
+          },
+          {
+            "hex": "#a56a47",
+            "coveragePercent": 17.5932
+          },
+          {
+            "hex": "#b13530",
+            "coveragePercent": 12.8883
+          },
+          {
+            "hex": "#c18258",
+            "coveragePercent": 12.0088
+          },
+          {
+            "hex": "#dda46e",
+            "coveragePercent": 6.2563
+          }
+        ],
+        "visibleSamples": 627200,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.shadowCult.madPriest": {
+      "source": "assets/images/enemies/shadow-madPriest-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.madPriest",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#250c0b",
+            "coveragePercent": 13.0709
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 10.5912
+          },
+          {
+            "hex": "#4c2f2c",
+            "coveragePercent": 9.8455
+          },
+          {
+            "hex": "#49120e",
+            "coveragePercent": 9.8202
+          },
+          {
+            "hex": "#6e1d1a",
+            "coveragePercent": 9.0111
+          },
+          {
+            "hex": "#341f1f",
+            "coveragePercent": 8.6598
+          },
+          {
+            "hex": "#7b422d",
+            "coveragePercent": 6.3804
+          },
+          {
+            "hex": "#9d262a",
+            "coveragePercent": 6.0228
+          },
+          {
+            "hex": "#5e4644",
+            "coveragePercent": 5.6972
+          },
+          {
+            "hex": "#856154",
+            "coveragePercent": 4.0846
+          },
+          {
+            "hex": "#ae513c",
+            "coveragePercent": 3.9476
+          },
+          {
+            "hex": "#bb7b54",
+            "coveragePercent": 3.7619
+          },
+          {
+            "hex": "#daa171",
+            "coveragePercent": 3.0584
+          },
+          {
+            "hex": "#e9c297",
+            "coveragePercent": 3.0319
+          },
+          {
+            "hex": "#f5e3c3",
+            "coveragePercent": 1.5867
+          },
+          {
+            "hex": "#aa8e81",
+            "coveragePercent": 1.4297
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912224",
+            "coveragePercent": 27.6524
+          },
+          {
+            "hex": "#8f4f35",
+            "coveragePercent": 20.0683
+          },
+          {
+            "hex": "#ab6a47",
+            "coveragePercent": 16.3721
+          },
+          {
+            "hex": "#b73637",
+            "coveragePercent": 15.8058
+          },
+          {
+            "hex": "#c98658",
+            "coveragePercent": 12.4164
+          },
+          {
+            "hex": "#e6ad6f",
+            "coveragePercent": 7.6849
+          }
+        ],
+        "visibleSamples": 705690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowCult.cultJailer": {
+      "source": "assets/images/enemies/shadow-cultJailer-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.cultJailer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 18.3509
+          },
+          {
+            "hex": "#250f0c",
+            "coveragePercent": 16.152
+          },
+          {
+            "hex": "#39211a",
+            "coveragePercent": 10.5043
+          },
+          {
+            "hex": "#4e3229",
+            "coveragePercent": 8.8445
+          },
+          {
+            "hex": "#4b100d",
+            "coveragePercent": 7.4749
+          },
+          {
+            "hex": "#6d3e2c",
+            "coveragePercent": 5.8612
+          },
+          {
+            "hex": "#721516",
+            "coveragePercent": 5.8533
+          },
+          {
+            "hex": "#6a524b",
+            "coveragePercent": 4.2922
+          },
+          {
+            "hex": "#8c563e",
+            "coveragePercent": 4.1865
+          },
+          {
+            "hex": "#99705f",
+            "coveragePercent": 4.0602
+          },
+          {
+            "hex": "#9a1f20",
+            "coveragePercent": 3.5657
+          },
+          {
+            "hex": "#bd866b",
+            "coveragePercent": 3.427
+          },
+          {
+            "hex": "#d3a38b",
+            "coveragePercent": 2.785
+          },
+          {
+            "hex": "#e9c5ac",
+            "coveragePercent": 1.9234
+          },
+          {
+            "hex": "#be4e37",
+            "coveragePercent": 1.5215
+          },
+          {
+            "hex": "#f6eadc",
+            "coveragePercent": 1.1974
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901b1d",
+            "coveragePercent": 30.1241
+          },
+          {
+            "hex": "#8d5034",
+            "coveragePercent": 23.7857
+          },
+          {
+            "hex": "#a56647",
+            "coveragePercent": 18.1624
+          },
+          {
+            "hex": "#c57d56",
+            "coveragePercent": 11.4788
+          },
+          {
+            "hex": "#bb2e2d",
+            "coveragePercent": 11.425
+          },
+          {
+            "hex": "#e3a56c",
+            "coveragePercent": 5.0241
+          }
+        ],
+        "visibleSamples": 565561,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.shadowCult.madOrganist": {
+      "source": "assets/images/enemies/shadow-madOrganist-v1.png",
+      "frameMetadata": "ART_SHADOW.actors.madOrganist",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0303",
+            "coveragePercent": 15.0686
+          },
+          {
+            "hex": "#210d0b",
+            "coveragePercent": 14.9398
+          },
+          {
+            "hex": "#41130d",
+            "coveragePercent": 10.3887
+          },
+          {
+            "hex": "#35221f",
+            "coveragePercent": 8.1006
+          },
+          {
+            "hex": "#5e2d16",
+            "coveragePercent": 7.195
+          },
+          {
+            "hex": "#844621",
+            "coveragePercent": 6.3192
+          },
+          {
+            "hex": "#523832",
+            "coveragePercent": 6.2168
+          },
+          {
+            "hex": "#95151f",
+            "coveragePercent": 5.7561
+          },
+          {
+            "hex": "#ac6732",
+            "coveragePercent": 4.9036
+          },
+          {
+            "hex": "#6c0e15",
+            "coveragePercent": 4.4827
+          },
+          {
+            "hex": "#775549",
+            "coveragePercent": 3.5231
+          },
+          {
+            "hex": "#d6904e",
+            "coveragePercent": 3.3665
+          },
+          {
+            "hex": "#c2252f",
+            "coveragePercent": 3.2502
+          },
+          {
+            "hex": "#ebbc80",
+            "coveragePercent": 3.0117
+          },
+          {
+            "hex": "#a57f6c",
+            "coveragePercent": 1.8596
+          },
+          {
+            "hex": "#f7e6be",
+            "coveragePercent": 1.6176
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#955329",
+            "coveragePercent": 28.0627
+          },
+          {
+            "hex": "#bf7a40",
+            "coveragePercent": 19.823
+          },
+          {
+            "hex": "#8e141d",
+            "coveragePercent": 17.0907
+          },
+          {
+            "hex": "#ac1b26",
+            "coveragePercent": 14.4942
+          },
+          {
+            "hex": "#e7ad65",
+            "coveragePercent": 13.1378
+          },
+          {
+            "hex": "#cf2e36",
+            "coveragePercent": 7.3916
+          }
+        ],
+        "visibleSamples": 1019137,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.shadow.idle": {
+      "source": "assets/images/enemies/shadow-idle-v2.png",
+      "frameMetadata": "SHADOW_CLIPS.idle",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#35293f",
+            "coveragePercent": 13.7211
+          },
+          {
+            "hex": "#443450",
+            "coveragePercent": 12.6687
+          },
+          {
+            "hex": "#281e2f",
+            "coveragePercent": 12.3963
+          },
+          {
+            "hex": "#544064",
+            "coveragePercent": 10.6595
+          },
+          {
+            "hex": "#8a6da3",
+            "coveragePercent": 8.0359
+          },
+          {
+            "hex": "#18121c",
+            "coveragePercent": 7.797
+          },
+          {
+            "hex": "#644c7b",
+            "coveragePercent": 7.6637
+          },
+          {
+            "hex": "#79608d",
+            "coveragePercent": 7.5169
+          },
+          {
+            "hex": "#9c7fb0",
+            "coveragePercent": 5.9452
+          },
+          {
+            "hex": "#af93bf",
+            "coveragePercent": 3.6601
+          },
+          {
+            "hex": "#bfa2d0",
+            "coveragePercent": 2.5472
+          },
+          {
+            "hex": "#715e62",
+            "coveragePercent": 2.1851
+          },
+          {
+            "hex": "#a376ce",
+            "coveragePercent": 1.8769
+          },
+          {
+            "hex": "#7247a3",
+            "coveragePercent": 1.828
+          },
+          {
+            "hex": "#99827e",
+            "coveragePercent": 0.9872
+          },
+          {
+            "hex": "#d5b2e8",
+            "coveragePercent": 0.511
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#603c89",
+            "coveragePercent": 33.2674
+          },
+          {
+            "hex": "#704a9b",
+            "coveragePercent": 26.8185
+          },
+          {
+            "hex": "#8255b4",
+            "coveragePercent": 18.1055
+          },
+          {
+            "hex": "#9661cc",
+            "coveragePercent": 12.4591
+          },
+          {
+            "hex": "#af72e5",
+            "coveragePercent": 5.7975
+          },
+          {
+            "hex": "#7432b5",
+            "coveragePercent": 3.5519
+          }
+        ],
+        "visibleSamples": 973716,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.shadow.melee": {
+      "source": "assets/images/enemies/shadow-melee-v2.png",
+      "frameMetadata": "SHADOW_CLIPS.melee",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2a46",
+            "coveragePercent": 13.1197
+          },
+          {
+            "hex": "#2c1e34",
+            "coveragePercent": 12.6346
+          },
+          {
+            "hex": "#493161",
+            "coveragePercent": 10.4167
+          },
+          {
+            "hex": "#926cb3",
+            "coveragePercent": 9.3192
+          },
+          {
+            "hex": "#1d1221",
+            "coveragePercent": 8.2525
+          },
+          {
+            "hex": "#5f417d",
+            "coveragePercent": 8.2288
+          },
+          {
+            "hex": "#a984c6",
+            "coveragePercent": 7.1364
+          },
+          {
+            "hex": "#7c5e97",
+            "coveragePercent": 6.2521
+          },
+          {
+            "hex": "#5d474e",
+            "coveragePercent": 4.8709
+          },
+          {
+            "hex": "#0d070e",
+            "coveragePercent": 4.2821
+          },
+          {
+            "hex": "#c795e5",
+            "coveragePercent": 3.883
+          },
+          {
+            "hex": "#a562df",
+            "coveragePercent": 3.5769
+          },
+          {
+            "hex": "#773fb1",
+            "coveragePercent": 3.2431
+          },
+          {
+            "hex": "#816762",
+            "coveragePercent": 2.7197
+          },
+          {
+            "hex": "#b49580",
+            "coveragePercent": 1.0598
+          },
+          {
+            "hex": "#f0caf6",
+            "coveragePercent": 1.0045
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c56be",
+            "coveragePercent": 24.87
+          },
+          {
+            "hex": "#5f348d",
+            "coveragePercent": 21.8808
+          },
+          {
+            "hex": "#7544a7",
+            "coveragePercent": 20.9336
+          },
+          {
+            "hex": "#a160d9",
+            "coveragePercent": 19.8317
+          },
+          {
+            "hex": "#be74f2",
+            "coveragePercent": 12.2592
+          },
+          {
+            "hex": "#976950",
+            "coveragePercent": 0.2247
+          }
+        ],
+        "visibleSamples": 572574,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.shadow.cast": {
+      "source": "assets/images/enemies/shadow-cast-v2.png",
+      "frameMetadata": "SHADOW_CLIPS.cast",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352441",
+            "coveragePercent": 14.7128
+          },
+          {
+            "hex": "#231729",
+            "coveragePercent": 12.2461
+          },
+          {
+            "hex": "#483452",
+            "coveragePercent": 9.9698
+          },
+          {
+            "hex": "#0f0910",
+            "coveragePercent": 8.8628
+          },
+          {
+            "hex": "#9063b5",
+            "coveragePercent": 7.4472
+          },
+          {
+            "hex": "#614a62",
+            "coveragePercent": 7.1658
+          },
+          {
+            "hex": "#52277e",
+            "coveragePercent": 6.5615
+          },
+          {
+            "hex": "#74518f",
+            "coveragePercent": 6.1118
+          },
+          {
+            "hex": "#a87cca",
+            "coveragePercent": 5.6124
+          },
+          {
+            "hex": "#a352e5",
+            "coveragePercent": 5.0621
+          },
+          {
+            "hex": "#7532b6",
+            "coveragePercent": 4.0723
+          },
+          {
+            "hex": "#c39cda",
+            "coveragePercent": 3.5957
+          },
+          {
+            "hex": "#ca73f7",
+            "coveragePercent": 3.0695
+          },
+          {
+            "hex": "#8c6c65",
+            "coveragePercent": 2.529
+          },
+          {
+            "hex": "#ecbff5",
+            "coveragePercent": 1.9182
+          },
+          {
+            "hex": "#c19d88",
+            "coveragePercent": 1.0631
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945dc3",
+            "coveragePercent": 21.183
+          },
+          {
+            "hex": "#aa59e9",
+            "coveragePercent": 21.0459
+          },
+          {
+            "hex": "#5c2892",
+            "coveragePercent": 17.4562
+          },
+          {
+            "hex": "#75479b",
+            "coveragePercent": 16.1229
+          },
+          {
+            "hex": "#8035c7",
+            "coveragePercent": 13.2419
+          },
+          {
+            "hex": "#cb72f8",
+            "coveragePercent": 10.9502
+          }
+        ],
+        "visibleSamples": 545659,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.shadow.devour": {
+      "source": "assets/images/enemies/shadow-devour-v2.png",
+      "frameMetadata": "SHADOW_CLIPS.devour",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2941",
+            "coveragePercent": 15.9582
+          },
+          {
+            "hex": "#27182d",
+            "coveragePercent": 13.8768
+          },
+          {
+            "hex": "#4f3663",
+            "coveragePercent": 10.0181
+          },
+          {
+            "hex": "#895fab",
+            "coveragePercent": 9.1614
+          },
+          {
+            "hex": "#120914",
+            "coveragePercent": 8.6256
+          },
+          {
+            "hex": "#6f4f8a",
+            "coveragePercent": 7.9368
+          },
+          {
+            "hex": "#624b51",
+            "coveragePercent": 5.6302
+          },
+          {
+            "hex": "#5a2a89",
+            "coveragePercent": 5.3402
+          },
+          {
+            "hex": "#3b155f",
+            "coveragePercent": 5.1004
+          },
+          {
+            "hex": "#a47cbf",
+            "coveragePercent": 4.1034
+          },
+          {
+            "hex": "#9d53dc",
+            "coveragePercent": 3.29
+          },
+          {
+            "hex": "#7532b6",
+            "coveragePercent": 3.2279
+          },
+          {
+            "hex": "#896c69",
+            "coveragePercent": 3.105
+          },
+          {
+            "hex": "#be78ef",
+            "coveragePercent": 2.4954
+          },
+          {
+            "hex": "#bd9888",
+            "coveragePercent": 1.2998
+          },
+          {
+            "hex": "#e4b9e9",
+            "coveragePercent": 0.8307
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#6d4295",
+            "coveragePercent": 24.5293
+          },
+          {
+            "hex": "#8755b3",
+            "coveragePercent": 23.6912
+          },
+          {
+            "hex": "#9e59d9",
+            "coveragePercent": 16.3336
+          },
+          {
+            "hex": "#592191",
+            "coveragePercent": 15.659
+          },
+          {
+            "hex": "#bb6ff1",
+            "coveragePercent": 10.423
+          },
+          {
+            "hex": "#7a2ac5",
+            "coveragePercent": 9.3638
+          }
+        ],
+        "visibleSamples": 641481,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  },
+  "assets": {
+    "assets/images/enemies/ancient-drake-breath-v1.png": {
+      "sha256": "d0f63c7807b2b0f056ecb849bf2a92699a2bbd2fd4ebef39f7debcd6832a1734",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "dragonBreath"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5d4144",
+            "coveragePercent": 12.7706
+          },
+          {
+            "hex": "#745456",
+            "coveragePercent": 12.5306
+          },
+          {
+            "hex": "#442e35",
+            "coveragePercent": 11.0256
+          },
+          {
+            "hex": "#2f1c1e",
+            "coveragePercent": 10.6709
+          },
+          {
+            "hex": "#8d6968",
+            "coveragePercent": 10.3389
+          },
+          {
+            "hex": "#080303",
+            "coveragePercent": 9.7938
+          },
+          {
+            "hex": "#1f0e0d",
+            "coveragePercent": 8.9313
+          },
+          {
+            "hex": "#a8817a",
+            "coveragePercent": 7.8906
+          },
+          {
+            "hex": "#bf9a8f",
+            "coveragePercent": 5.5525
+          },
+          {
+            "hex": "#4f2917",
+            "coveragePercent": 3.6482
+          },
+          {
+            "hex": "#d4b9af",
+            "coveragePercent": 2.9684
+          },
+          {
+            "hex": "#f0e0d4",
+            "coveragePercent": 1.4071
+          },
+          {
+            "hex": "#833515",
+            "coveragePercent": 0.9785
+          },
+          {
+            "hex": "#c45119",
+            "coveragePercent": 0.639
+          },
+          {
+            "hex": "#ed8b26",
+            "coveragePercent": 0.5135
+          },
+          {
+            "hex": "#f8cc53",
+            "coveragePercent": 0.3405
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5d49",
+            "coveragePercent": 34.3932
+          },
+          {
+            "hex": "#9b2f0c",
+            "coveragePercent": 16.077
+          },
+          {
+            "hex": "#d25615",
+            "coveragePercent": 14.3897
+          },
+          {
+            "hex": "#c38656",
+            "coveragePercent": 14.0849
+          },
+          {
+            "hex": "#f5941f",
+            "coveragePercent": 11.6346
+          },
+          {
+            "hex": "#f8ce56",
+            "coveragePercent": 9.4206
+          }
+        ],
+        "visibleSamples": 967305,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/ancient-drake-flight-v1.png": {
+      "sha256": "a6938baf4fd6240da2bcabe008e7e9ed1666dc691510007dc923947ed0c70e34",
+      "width": 1983,
+      "height": 793,
+      "runtimeKeys": [
+        "dragonFlight"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7a6163",
+            "coveragePercent": 8.7957
+          },
+          {
+            "hex": "#1f1316",
+            "coveragePercent": 8.6286
+          },
+          {
+            "hex": "#8a7074",
+            "coveragePercent": 8.5734
+          },
+          {
+            "hex": "#2f2024",
+            "coveragePercent": 8.2504
+          },
+          {
+            "hex": "#543f49",
+            "coveragePercent": 8.1612
+          },
+          {
+            "hex": "#3c2b31",
+            "coveragePercent": 7.8374
+          },
+          {
+            "hex": "#4a3738",
+            "coveragePercent": 7.6271
+          },
+          {
+            "hex": "#664f4c",
+            "coveragePercent": 7.5387
+          },
+          {
+            "hex": "#0c0507",
+            "coveragePercent": 7.2974
+          },
+          {
+            "hex": "#9a8082",
+            "coveragePercent": 6.6392
+          },
+          {
+            "hex": "#685063",
+            "coveragePercent": 6.3939
+          },
+          {
+            "hex": "#ac918f",
+            "coveragePercent": 5.9977
+          },
+          {
+            "hex": "#bca29f",
+            "coveragePercent": 3.8484
+          },
+          {
+            "hex": "#cbb5b0",
+            "coveragePercent": 2.5252
+          },
+          {
+            "hex": "#dbcac4",
+            "coveragePercent": 1.3108
+          },
+          {
+            "hex": "#f0e5de",
+            "coveragePercent": 0.5749
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#876144",
+            "coveragePercent": 40.0907
+          },
+          {
+            "hex": "#684387",
+            "coveragePercent": 25.366
+          },
+          {
+            "hex": "#99714f",
+            "coveragePercent": 18.3407
+          },
+          {
+            "hex": "#7b4f9a",
+            "coveragePercent": 10.2318
+          },
+          {
+            "hex": "#b48a5f",
+            "coveragePercent": 3.9275
+          },
+          {
+            "hex": "#8e5db0",
+            "coveragePercent": 2.0433
+          }
+        ],
+        "visibleSamples": 555031,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/ancient-drake-front-v2.png": {
+      "sha256": "49e508efe426c5240ffa1ccaa3fa92f3e2a39bfdd747d096885fd56e5f322930",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dragonFront"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6b4c4e",
+            "coveragePercent": 10.1792
+          },
+          {
+            "hex": "#553b42",
+            "coveragePercent": 9.1017
+          },
+          {
+            "hex": "#836159",
+            "coveragePercent": 8.4186
+          },
+          {
+            "hex": "#b28a83",
+            "coveragePercent": 8.2665
+          },
+          {
+            "hex": "#9a756f",
+            "coveragePercent": 8.0387
+          },
+          {
+            "hex": "#0f0505",
+            "coveragePercent": 7.9595
+          },
+          {
+            "hex": "#442b31",
+            "coveragePercent": 7.9127
+          },
+          {
+            "hex": "#25110f",
+            "coveragePercent": 7.59
+          },
+          {
+            "hex": "#c39e98",
+            "coveragePercent": 6.5656
+          },
+          {
+            "hex": "#311c22",
+            "coveragePercent": 6.1388
+          },
+          {
+            "hex": "#9f7791",
+            "coveragePercent": 4.2769
+          },
+          {
+            "hex": "#7e5877",
+            "coveragePercent": 3.6289
+          },
+          {
+            "hex": "#613c2a",
+            "coveragePercent": 3.6047
+          },
+          {
+            "hex": "#432417",
+            "coveragePercent": 3.5735
+          },
+          {
+            "hex": "#d5b8b0",
+            "coveragePercent": 3.2788
+          },
+          {
+            "hex": "#eedcd1",
+            "coveragePercent": 1.466
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#89583c",
+            "coveragePercent": 38.975
+          },
+          {
+            "hex": "#9a694b",
+            "coveragePercent": 29.3332
+          },
+          {
+            "hex": "#b27d58",
+            "coveragePercent": 16.8148
+          },
+          {
+            "hex": "#d09b6a",
+            "coveragePercent": 6.8802
+          },
+          {
+            "hex": "#7b4484",
+            "coveragePercent": 6.6442
+          },
+          {
+            "hex": "#9554ab",
+            "coveragePercent": 1.3526
+          }
+        ],
+        "visibleSamples": 803194,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/ancient-drake-idle-v1.png": {
+      "sha256": "104c6f5b85c88340d1a408d6ba431811a2c9c4c3305a00a4f3bc90ae13209e66",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "dragonIdle"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#654c4d",
+            "coveragePercent": 10.1274
+          },
+          {
+            "hex": "#775b5d",
+            "coveragePercent": 9.9358
+          },
+          {
+            "hex": "#25161a",
+            "coveragePercent": 9.4532
+          },
+          {
+            "hex": "#513c45",
+            "coveragePercent": 8.5045
+          },
+          {
+            "hex": "#8a6c6b",
+            "coveragePercent": 8.4411
+          },
+          {
+            "hex": "#3d2b34",
+            "coveragePercent": 7.9266
+          },
+          {
+            "hex": "#060204",
+            "coveragePercent": 7.5939
+          },
+          {
+            "hex": "#372420",
+            "coveragePercent": 7.3339
+          },
+          {
+            "hex": "#9e7e79",
+            "coveragePercent": 6.8767
+          },
+          {
+            "hex": "#160b0c",
+            "coveragePercent": 6.4846
+          },
+          {
+            "hex": "#b29087",
+            "coveragePercent": 5.496
+          },
+          {
+            "hex": "#54392d",
+            "coveragePercent": 4.5324
+          },
+          {
+            "hex": "#c3a398",
+            "coveragePercent": 3.2171
+          },
+          {
+            "hex": "#d0b7ae",
+            "coveragePercent": 2.0612
+          },
+          {
+            "hex": "#e3cfc4",
+            "coveragePercent": 1.4048
+          },
+          {
+            "hex": "#f4eae1",
+            "coveragePercent": 0.6107
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e41",
+            "coveragePercent": 46.6053
+          },
+          {
+            "hex": "#9d704d",
+            "coveragePercent": 22.8737
+          },
+          {
+            "hex": "#724089",
+            "coveragePercent": 11.5312
+          },
+          {
+            "hex": "#ba875d",
+            "coveragePercent": 11.2546
+          },
+          {
+            "hex": "#8c56a9",
+            "coveragePercent": 4.0263
+          },
+          {
+            "hex": "#dfa96b",
+            "coveragePercent": 3.7089
+          }
+        ],
+        "visibleSamples": 914371,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/ancient-drake-stagger-v1.png": {
+      "sha256": "6fe52a447d0f1b63c213f06ecd8c9cb12a25dfa9b6bc5d1c0a2715a75f531b68",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dragonStagger"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#603e47",
+            "coveragePercent": 10.2246
+          },
+          {
+            "hex": "#7d5858",
+            "coveragePercent": 9.4429
+          },
+          {
+            "hex": "#2e1210",
+            "coveragePercent": 8.6409
+          },
+          {
+            "hex": "#120405",
+            "coveragePercent": 8.481
+          },
+          {
+            "hex": "#997272",
+            "coveragePercent": 8.4199
+          },
+          {
+            "hex": "#b98e86",
+            "coveragePercent": 8.1535
+          },
+          {
+            "hex": "#452634",
+            "coveragePercent": 7.6916
+          },
+          {
+            "hex": "#d5a99d",
+            "coveragePercent": 7.6854
+          },
+          {
+            "hex": "#e7c2ba",
+            "coveragePercent": 6.6578
+          },
+          {
+            "hex": "#c492bb",
+            "coveragePercent": 4.8185
+          },
+          {
+            "hex": "#522712",
+            "coveragePercent": 4.8112
+          },
+          {
+            "hex": "#a46ea5",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#78467e",
+            "coveragePercent": 3.2334
+          },
+          {
+            "hex": "#f7e9e0",
+            "coveragePercent": 3.0006
+          },
+          {
+            "hex": "#7d451f",
+            "coveragePercent": 2.9553
+          },
+          {
+            "hex": "#ae723e",
+            "coveragePercent": 1.9625
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935e41",
+            "coveragePercent": 23.9927
+          },
+          {
+            "hex": "#92521b",
+            "coveragePercent": 21.5888
+          },
+          {
+            "hex": "#b87c48",
+            "coveragePercent": 20.3308
+          },
+          {
+            "hex": "#7d3e8c",
+            "coveragePercent": 14.8947
+          },
+          {
+            "hex": "#9d59b1",
+            "coveragePercent": 9.6656
+          },
+          {
+            "hex": "#dca567",
+            "coveragePercent": 9.5274
+          }
+        ],
+        "visibleSamples": 797779,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/hannah-combo-v2.png": {
+      "sha256": "b85fea813ef87154702c3b92047e2250c5b3bf156a6b2c88cab7e2c57ac91100",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahCombo"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f1c1a",
+            "coveragePercent": 18.1271
+          },
+          {
+            "hex": "#432d2a",
+            "coveragePercent": 17.5634
+          },
+          {
+            "hex": "#5f403b",
+            "coveragePercent": 12.2179
+          },
+          {
+            "hex": "#845749",
+            "coveragePercent": 8.1897
+          },
+          {
+            "hex": "#170c0c",
+            "coveragePercent": 8.015
+          },
+          {
+            "hex": "#60281e",
+            "coveragePercent": 7.9368
+          },
+          {
+            "hex": "#8a3423",
+            "coveragePercent": 5.687
+          },
+          {
+            "hex": "#b97350",
+            "coveragePercent": 4.3852
+          },
+          {
+            "hex": "#b5462e",
+            "coveragePercent": 4.1091
+          },
+          {
+            "hex": "#f35c2b",
+            "coveragePercent": 3.4089
+          },
+          {
+            "hex": "#e7a66d",
+            "coveragePercent": 2.3332
+          },
+          {
+            "hex": "#e53915",
+            "coveragePercent": 2.1416
+          },
+          {
+            "hex": "#f2cba4",
+            "coveragePercent": 2.0154
+          },
+          {
+            "hex": "#f8903b",
+            "coveragePercent": 1.8893
+          },
+          {
+            "hex": "#fcecd8",
+            "coveragePercent": 1.2511
+          },
+          {
+            "hex": "#97768f",
+            "coveragePercent": 0.7294
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c5b43",
+            "coveragePercent": 23.098
+          },
+          {
+            "hex": "#943624",
+            "coveragePercent": 20.8991
+          },
+          {
+            "hex": "#d03e25",
+            "coveragePercent": 16.5136
+          },
+          {
+            "hex": "#f86327",
+            "coveragePercent": 16.4188
+          },
+          {
+            "hex": "#ca7c54",
+            "coveragePercent": 13.6999
+          },
+          {
+            "hex": "#f7b15d",
+            "coveragePercent": 9.3707
+          }
+        ],
+        "visibleSamples": 774016,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/hannah-jump-v1.png": {
+      "sha256": "8eb72ea87cd779f82df9928e8f8a1742a84d348b72e2563d0ea78888b5b54941",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahJump"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2623",
+            "coveragePercent": 19.5995
+          },
+          {
+            "hex": "#493431",
+            "coveragePercent": 17.4602
+          },
+          {
+            "hex": "#291917",
+            "coveragePercent": 12.5727
+          },
+          {
+            "hex": "#612e24",
+            "coveragePercent": 9.3516
+          },
+          {
+            "hex": "#62453e",
+            "coveragePercent": 9.3298
+          },
+          {
+            "hex": "#883928",
+            "coveragePercent": 5.8787
+          },
+          {
+            "hex": "#895640",
+            "coveragePercent": 4.5564
+          },
+          {
+            "hex": "#140b0a",
+            "coveragePercent": 4.4824
+          },
+          {
+            "hex": "#b7432a",
+            "coveragePercent": 4.2851
+          },
+          {
+            "hex": "#ef551d",
+            "coveragePercent": 2.7952
+          },
+          {
+            "hex": "#b4714c",
+            "coveragePercent": 2.5758
+          },
+          {
+            "hex": "#dd9f72",
+            "coveragePercent": 1.5932
+          },
+          {
+            "hex": "#f98c37",
+            "coveragePercent": 1.5799
+          },
+          {
+            "hex": "#f2c29b",
+            "coveragePercent": 1.4665
+          },
+          {
+            "hex": "#fbe0cb",
+            "coveragePercent": 1.4662
+          },
+          {
+            "hex": "#8a7179",
+            "coveragePercent": 1.0067
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d422e",
+            "coveragePercent": 31.7592
+          },
+          {
+            "hex": "#b5422a",
+            "coveragePercent": 21.4936
+          },
+          {
+            "hex": "#ae6b48",
+            "coveragePercent": 17.0457
+          },
+          {
+            "hex": "#eb501c",
+            "coveragePercent": 13.3036
+          },
+          {
+            "hex": "#f97d2e",
+            "coveragePercent": 8.8035
+          },
+          {
+            "hex": "#eea960",
+            "coveragePercent": 7.5944
+          }
+        ],
+        "visibleSamples": 650971,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/hannah-ritual-v2.png": {
+      "sha256": "f8de55d1dd10d30114b0c6bc56acae6fa4df158f3776eb4cdd2a77b896bfbb71",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahRitual"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#361f1d",
+            "coveragePercent": 19.2892
+          },
+          {
+            "hex": "#4a3230",
+            "coveragePercent": 16.5408
+          },
+          {
+            "hex": "#672c20",
+            "coveragePercent": 11.6134
+          },
+          {
+            "hex": "#190d0d",
+            "coveragePercent": 9.8215
+          },
+          {
+            "hex": "#734b42",
+            "coveragePercent": 7.3801
+          },
+          {
+            "hex": "#973320",
+            "coveragePercent": 6.909
+          },
+          {
+            "hex": "#a95a3a",
+            "coveragePercent": 4.8034
+          },
+          {
+            "hex": "#f6581e",
+            "coveragePercent": 4.4392
+          },
+          {
+            "hex": "#d5381a",
+            "coveragePercent": 4.2631
+          },
+          {
+            "hex": "#bf7b5a",
+            "coveragePercent": 2.7658
+          },
+          {
+            "hex": "#8931c0",
+            "coveragePercent": 2.502
+          },
+          {
+            "hex": "#511a7b",
+            "coveragePercent": 2.2697
+          },
+          {
+            "hex": "#f5953f",
+            "coveragePercent": 1.9638
+          },
+          {
+            "hex": "#be5bef",
+            "coveragePercent": 1.9352
+          },
+          {
+            "hex": "#fadcd1",
+            "coveragePercent": 1.8646
+          },
+          {
+            "hex": "#f2bd87",
+            "coveragePercent": 1.6392
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a3824",
+            "coveragePercent": 31.6147
+          },
+          {
+            "hex": "#ec4b1c",
+            "coveragePercent": 23.8405
+          },
+          {
+            "hex": "#b16441",
+            "coveragePercent": 17.9576
+          },
+          {
+            "hex": "#f19d4f",
+            "coveragePercent": 10.0658
+          },
+          {
+            "hex": "#7226a6",
+            "coveragePercent": 8.2646
+          },
+          {
+            "hex": "#b04be7",
+            "coveragePercent": 8.2567
+          }
+        ],
+        "visibleSamples": 782450,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/hannah-walk-v2.png": {
+      "sha256": "57c1564f76637397885dc346e93ddc32b2d618f76065d93f532f368b3d388835",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "hannahWalk"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#392526",
+            "coveragePercent": 14.5392
+          },
+          {
+            "hex": "#271413",
+            "coveragePercent": 11.5732
+          },
+          {
+            "hex": "#543636",
+            "coveragePercent": 11.25
+          },
+          {
+            "hex": "#f33220",
+            "coveragePercent": 9.2423
+          },
+          {
+            "hex": "#7f3837",
+            "coveragePercent": 9.2281
+          },
+          {
+            "hex": "#581f19",
+            "coveragePercent": 8.4529
+          },
+          {
+            "hex": "#0d0505",
+            "coveragePercent": 6.7033
+          },
+          {
+            "hex": "#ba2e24",
+            "coveragePercent": 6.4094
+          },
+          {
+            "hex": "#88231a",
+            "coveragePercent": 6.0184
+          },
+          {
+            "hex": "#79564b",
+            "coveragePercent": 4.2069
+          },
+          {
+            "hex": "#b0724a",
+            "coveragePercent": 3.3229
+          },
+          {
+            "hex": "#f6642e",
+            "coveragePercent": 3.0439
+          },
+          {
+            "hex": "#ea9955",
+            "coveragePercent": 2.6297
+          },
+          {
+            "hex": "#f2c289",
+            "coveragePercent": 1.4512
+          },
+          {
+            "hex": "#fbe8d8",
+            "coveragePercent": 1.3228
+          },
+          {
+            "hex": "#9355c3",
+            "coveragePercent": 0.6059
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f03622",
+            "coveragePercent": 35.1378
+          },
+          {
+            "hex": "#a2261d",
+            "coveragePercent": 23.887
+          },
+          {
+            "hex": "#96473c",
+            "coveragePercent": 20.5714
+          },
+          {
+            "hex": "#da7b40",
+            "coveragePercent": 12.4103
+          },
+          {
+            "hex": "#f3ae61",
+            "coveragePercent": 6.3262
+          },
+          {
+            "hex": "#8b4cbe",
+            "coveragePercent": 1.6672
+          }
+        ],
+        "visibleSamples": 734160,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/japan-raised-v5.png": {
+      "sha256": "de4a360444a721f37d03d91199c1f4ebe0276a4c6989b2d4377a5e2305e0fdb5",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "japanRaised"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#49342e",
+            "coveragePercent": 13.2909
+          },
+          {
+            "hex": "#30211e",
+            "coveragePercent": 12.5134
+          },
+          {
+            "hex": "#180a0b",
+            "coveragePercent": 11.532
+          },
+          {
+            "hex": "#6e171b",
+            "coveragePercent": 10.6321
+          },
+          {
+            "hex": "#911720",
+            "coveragePercent": 9.1497
+          },
+          {
+            "hex": "#4b1213",
+            "coveragePercent": 8.0255
+          },
+          {
+            "hex": "#5e4b46",
+            "coveragePercent": 7.1688
+          },
+          {
+            "hex": "#b7212b",
+            "coveragePercent": 6.6977
+          },
+          {
+            "hex": "#79462c",
+            "coveragePercent": 4.7232
+          },
+          {
+            "hex": "#83685c",
+            "coveragePercent": 4.3437
+          },
+          {
+            "hex": "#a76238",
+            "coveragePercent": 3.075
+          },
+          {
+            "hex": "#c8834e",
+            "coveragePercent": 2.5335
+          },
+          {
+            "hex": "#ac9086",
+            "coveragePercent": 2.0923
+          },
+          {
+            "hex": "#dac0ad",
+            "coveragePercent": 1.6626
+          },
+          {
+            "hex": "#e8af6a",
+            "coveragePercent": 1.6529
+          },
+          {
+            "hex": "#f5ece3",
+            "coveragePercent": 0.9068
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901720",
+            "coveragePercent": 35.3871
+          },
+          {
+            "hex": "#b5202a",
+            "coveragePercent": 28.934
+          },
+          {
+            "hex": "#905331",
+            "coveragePercent": 12.3238
+          },
+          {
+            "hex": "#b06b41",
+            "coveragePercent": 10.7552
+          },
+          {
+            "hex": "#d08a50",
+            "coveragePercent": 8.1581
+          },
+          {
+            "hex": "#eeb565",
+            "coveragePercent": 4.4419
+          }
+        ],
+        "visibleSamples": 504890,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/old-cultist-v6.png": {
+      "sha256": "0fe74ed7c0acdffd02d6c92f8fb9caf53c201a70d7d0b4442cfb7d71d6071002",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "oldCultist"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#251211",
+            "coveragePercent": 13.6235
+          },
+          {
+            "hex": "#473638",
+            "coveragePercent": 11.9681
+          },
+          {
+            "hex": "#322425",
+            "coveragePercent": 11.394
+          },
+          {
+            "hex": "#0d0506",
+            "coveragePercent": 10.2748
+          },
+          {
+            "hex": "#471b17",
+            "coveragePercent": 9.0056
+          },
+          {
+            "hex": "#642a24",
+            "coveragePercent": 8.7188
+          },
+          {
+            "hex": "#644c4b",
+            "coveragePercent": 8.689
+          },
+          {
+            "hex": "#87332f",
+            "coveragePercent": 6.0448
+          },
+          {
+            "hex": "#9a5b41",
+            "coveragePercent": 4.3242
+          },
+          {
+            "hex": "#896b69",
+            "coveragePercent": 3.6217
+          },
+          {
+            "hex": "#c38962",
+            "coveragePercent": 2.9185
+          },
+          {
+            "hex": "#e8bc95",
+            "coveragePercent": 2.4359
+          },
+          {
+            "hex": "#9143dc",
+            "coveragePercent": 2.3867
+          },
+          {
+            "hex": "#f1e0e3",
+            "coveragePercent": 1.6355
+          },
+          {
+            "hex": "#b19794",
+            "coveragePercent": 1.6222
+          },
+          {
+            "hex": "#c97ef5",
+            "coveragePercent": 1.3369
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#903632",
+            "coveragePercent": 34.6145
+          },
+          {
+            "hex": "#a26445",
+            "coveragePercent": 26.8227
+          },
+          {
+            "hex": "#d59866",
+            "coveragePercent": 13.6561
+          },
+          {
+            "hex": "#9243e3",
+            "coveragePercent": 12.4461
+          },
+          {
+            "hex": "#ba6af3",
+            "coveragePercent": 8.2603
+          },
+          {
+            "hex": "#7431a0",
+            "coveragePercent": 4.2003
+          }
+        ],
+        "visibleSamples": 434796,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/enemies/prison-hunter-v1.png": {
+      "sha256": "928fcbafe9d195a9cc3ef0bec90baaee041899c900d66b7b5f532f5198851690",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "prisonHunter"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#493022",
+            "coveragePercent": 12.5812
+          },
+          {
+            "hex": "#5d4131",
+            "coveragePercent": 10.8805
+          },
+          {
+            "hex": "#251007",
+            "coveragePercent": 10.43
+          },
+          {
+            "hex": "#2d1c13",
+            "coveragePercent": 9.3409
+          },
+          {
+            "hex": "#6b4d3b",
+            "coveragePercent": 8.882
+          },
+          {
+            "hex": "#4f3a2f",
+            "coveragePercent": 8.7966
+          },
+          {
+            "hex": "#382a22",
+            "coveragePercent": 7.3677
+          },
+          {
+            "hex": "#7d5b44",
+            "coveragePercent": 6.2202
+          },
+          {
+            "hex": "#402415",
+            "coveragePercent": 5.66
+          },
+          {
+            "hex": "#431c08",
+            "coveragePercent": 5.3187
+          },
+          {
+            "hex": "#110603",
+            "coveragePercent": 4.402
+          },
+          {
+            "hex": "#613014",
+            "coveragePercent": 3.5661
+          },
+          {
+            "hex": "#9a6a4b",
+            "coveragePercent": 2.9228
+          },
+          {
+            "hex": "#8a4822",
+            "coveragePercent": 2.0141
+          },
+          {
+            "hex": "#ce8966",
+            "coveragePercent": 0.948
+          },
+          {
+            "hex": "#e8b8a4",
+            "coveragePercent": 0.6693
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885e43",
+            "coveragePercent": 43.4299
+          },
+          {
+            "hex": "#a16d4d",
+            "coveragePercent": 16.1615
+          },
+          {
+            "hex": "#8a461f",
+            "coveragePercent": 15.2417
+          },
+          {
+            "hex": "#a2582a",
+            "coveragePercent": 11.3683
+          },
+          {
+            "hex": "#df8e62",
+            "coveragePercent": 6.9662
+          },
+          {
+            "hex": "#c3703d",
+            "coveragePercent": 6.8323
+          }
+        ],
+        "visibleSamples": 375698,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/prison-undead-v1.png": {
+      "sha256": "2827e274071dc13f44a84744599917878e6b12d7c62cb30799bddea067cc0299",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "prisonUndead"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#573e36",
+            "coveragePercent": 7.6792
+          },
+          {
+            "hex": "#412c26",
+            "coveragePercent": 7.499
+          },
+          {
+            "hex": "#302c3f",
+            "coveragePercent": 7.4887
+          },
+          {
+            "hex": "#403d57",
+            "coveragePercent": 7.4072
+          },
+          {
+            "hex": "#6c5044",
+            "coveragePercent": 7.0134
+          },
+          {
+            "hex": "#9d7965",
+            "coveragePercent": 6.8241
+          },
+          {
+            "hex": "#856352",
+            "coveragePercent": 6.5817
+          },
+          {
+            "hex": "#160e11",
+            "coveragePercent": 6.4693
+          },
+          {
+            "hex": "#b6937c",
+            "coveragePercent": 6.4651
+          },
+          {
+            "hex": "#201c2a",
+            "coveragePercent": 6.3287
+          },
+          {
+            "hex": "#514e6c",
+            "coveragePercent": 6.2345
+          },
+          {
+            "hex": "#2c1b15",
+            "coveragePercent": 6.1456
+          },
+          {
+            "hex": "#070405",
+            "coveragePercent": 6.024
+          },
+          {
+            "hex": "#cfaf98",
+            "coveragePercent": 5.2068
+          },
+          {
+            "hex": "#e5cbb8",
+            "coveragePercent": 3.5173
+          },
+          {
+            "hex": "#69637f",
+            "coveragePercent": 3.1154
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#895e43",
+            "coveragePercent": 53.0745
+          },
+          {
+            "hex": "#9e714e",
+            "coveragePercent": 32.53
+          },
+          {
+            "hex": "#ba8b5c",
+            "coveragePercent": 11.683
+          },
+          {
+            "hex": "#923c92",
+            "coveragePercent": 1.2554
+          },
+          {
+            "hex": "#65118a",
+            "coveragePercent": 0.9864
+          },
+          {
+            "hex": "#b857ce",
+            "coveragePercent": 0.4709
+          }
+        ],
+        "visibleSamples": 238074,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/prison-warden-v1.png": {
+      "sha256": "0e799b2c34926759692711f43bc7cc6de02f4c6017967a44a722c95fc7e633e5",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "prisonWarden"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#261715",
+            "coveragePercent": 12.7619
+          },
+          {
+            "hex": "#4a211f",
+            "coveragePercent": 11.4786
+          },
+          {
+            "hex": "#322624",
+            "coveragePercent": 11.0031
+          },
+          {
+            "hex": "#68252b",
+            "coveragePercent": 9.6494
+          },
+          {
+            "hex": "#89303a",
+            "coveragePercent": 9.2416
+          },
+          {
+            "hex": "#423636",
+            "coveragePercent": 9.0562
+          },
+          {
+            "hex": "#120b0a",
+            "coveragePercent": 6.9619
+          },
+          {
+            "hex": "#5b4439",
+            "coveragePercent": 6.5752
+          },
+          {
+            "hex": "#a63e49",
+            "coveragePercent": 5.8543
+          },
+          {
+            "hex": "#735a49",
+            "coveragePercent": 5.5637
+          },
+          {
+            "hex": "#514855",
+            "coveragePercent": 4.4883
+          },
+          {
+            "hex": "#927055",
+            "coveragePercent": 3.8033
+          },
+          {
+            "hex": "#b88e65",
+            "coveragePercent": 1.9076
+          },
+          {
+            "hex": "#deb988",
+            "coveragePercent": 0.9233
+          },
+          {
+            "hex": "#8853a6",
+            "coveragePercent": 0.4618
+          },
+          {
+            "hex": "#e0bee7",
+            "coveragePercent": 0.2697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d303b",
+            "coveragePercent": 44.0417
+          },
+          {
+            "hex": "#a63d49",
+            "coveragePercent": 34.2772
+          },
+          {
+            "hex": "#996942",
+            "coveragePercent": 13.4365
+          },
+          {
+            "hex": "#ce9b5f",
+            "coveragePercent": 6.208
+          },
+          {
+            "hex": "#703b96",
+            "coveragePercent": 1.3038
+          },
+          {
+            "hex": "#9b5dc4",
+            "coveragePercent": 0.7329
+          }
+        ],
+        "visibleSamples": 389114,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/sect-fall-guard-v1.png": {
+      "sha256": "420157253422f596d0ec582d4ea69537b609b740bbe231425b90f9089e3b7622",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultTempleGuard"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0a",
+            "coveragePercent": 14.4222
+          },
+          {
+            "hex": "#2f1e17",
+            "coveragePercent": 13.04
+          },
+          {
+            "hex": "#0b0503",
+            "coveragePercent": 10.4037
+          },
+          {
+            "hex": "#422f26",
+            "coveragePercent": 10.0811
+          },
+          {
+            "hex": "#481710",
+            "coveragePercent": 9.7055
+          },
+          {
+            "hex": "#642519",
+            "coveragePercent": 8.4611
+          },
+          {
+            "hex": "#803123",
+            "coveragePercent": 7.496
+          },
+          {
+            "hex": "#594234",
+            "coveragePercent": 6.7255
+          },
+          {
+            "hex": "#9d382d",
+            "coveragePercent": 5.6106
+          },
+          {
+            "hex": "#775640",
+            "coveragePercent": 4.1721
+          },
+          {
+            "hex": "#a85b38",
+            "coveragePercent": 2.7542
+          },
+          {
+            "hex": "#90715c",
+            "coveragePercent": 2.2153
+          },
+          {
+            "hex": "#c2804e",
+            "coveragePercent": 1.5152
+          },
+          {
+            "hex": "#b79176",
+            "coveragePercent": 1.35
+          },
+          {
+            "hex": "#d7b08a",
+            "coveragePercent": 1.2871
+          },
+          {
+            "hex": "#e9d0b4",
+            "coveragePercent": 0.7604
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a2e24",
+            "coveragePercent": 28.2686
+          },
+          {
+            "hex": "#9d382e",
+            "coveragePercent": 26.9797
+          },
+          {
+            "hex": "#915b34",
+            "coveragePercent": 18.0413
+          },
+          {
+            "hex": "#b5784a",
+            "coveragePercent": 11.7163
+          },
+          {
+            "hex": "#b74c39",
+            "coveragePercent": 10.0513
+          },
+          {
+            "hex": "#d8a062",
+            "coveragePercent": 4.9427
+          }
+        ],
+        "visibleSamples": 507617,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/sect-fall-priestess-v1.png": {
+      "sha256": "26120a7f8cd6f6e03600575561820add4bad9e90a6cb281fba913637c544071c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultHighPriestess"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#220e12",
+            "coveragePercent": 10.4649
+          },
+          {
+            "hex": "#391f28",
+            "coveragePercent": 9.5142
+          },
+          {
+            "hex": "#53303b",
+            "coveragePercent": 8.8323
+          },
+          {
+            "hex": "#5d1b18",
+            "coveragePercent": 8.4675
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.949
+          },
+          {
+            "hex": "#3f0f10",
+            "coveragePercent": 7.8234
+          },
+          {
+            "hex": "#7f2321",
+            "coveragePercent": 7.783
+          },
+          {
+            "hex": "#a9272c",
+            "coveragePercent": 6.6743
+          },
+          {
+            "hex": "#714449",
+            "coveragePercent": 6.093
+          },
+          {
+            "hex": "#ce3a39",
+            "coveragePercent": 5.0176
+          },
+          {
+            "hex": "#bf7953",
+            "coveragePercent": 4.0793
+          },
+          {
+            "hex": "#986155",
+            "coveragePercent": 4.0012
+          },
+          {
+            "hex": "#d39673",
+            "coveragePercent": 3.8744
+          },
+          {
+            "hex": "#975126",
+            "coveragePercent": 3.2419
+          },
+          {
+            "hex": "#e6b89b",
+            "coveragePercent": 3.1144
+          },
+          {
+            "hex": "#f5dac6",
+            "coveragePercent": 3.0697
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912324",
+            "coveragePercent": 24.0302
+          },
+          {
+            "hex": "#b62c30",
+            "coveragePercent": 22.1816
+          },
+          {
+            "hex": "#975438",
+            "coveragePercent": 17.9611
+          },
+          {
+            "hex": "#bc7651",
+            "coveragePercent": 15.0825
+          },
+          {
+            "hex": "#d53f3d",
+            "coveragePercent": 12.1824
+          },
+          {
+            "hex": "#de9e67",
+            "coveragePercent": 8.5622
+          }
+        ],
+        "visibleSamples": 610024,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/shadow-archer-v1.png": {
+      "sha256": "15fc48babb06118b83fcbe62ca435c5fef5ceacd3e3f44d32e95f7675cfd6ddb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowArcher"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f0f0f",
+            "coveragePercent": 16.0203
+          },
+          {
+            "hex": "#080404",
+            "coveragePercent": 14.8655
+          },
+          {
+            "hex": "#342424",
+            "coveragePercent": 11.0075
+          },
+          {
+            "hex": "#473635",
+            "coveragePercent": 9.4062
+          },
+          {
+            "hex": "#401111",
+            "coveragePercent": 8.6169
+          },
+          {
+            "hex": "#631d1f",
+            "coveragePercent": 7.1782
+          },
+          {
+            "hex": "#584b4c",
+            "coveragePercent": 5.3178
+          },
+          {
+            "hex": "#8a2026",
+            "coveragePercent": 5.2999
+          },
+          {
+            "hex": "#744537",
+            "coveragePercent": 4.7287
+          },
+          {
+            "hex": "#7d6158",
+            "coveragePercent": 3.7836
+          },
+          {
+            "hex": "#b52f32",
+            "coveragePercent": 2.8862
+          },
+          {
+            "hex": "#a97d66",
+            "coveragePercent": 2.8235
+          },
+          {
+            "hex": "#cd9878",
+            "coveragePercent": 2.3679
+          },
+          {
+            "hex": "#a95d48",
+            "coveragePercent": 2.3556
+          },
+          {
+            "hex": "#e6bd99",
+            "coveragePercent": 1.9299
+          },
+          {
+            "hex": "#f7e2c4",
+            "coveragePercent": 1.4122
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b2026",
+            "coveragePercent": 25.3432
+          },
+          {
+            "hex": "#a5272d",
+            "coveragePercent": 19.9984
+          },
+          {
+            "hex": "#91523f",
+            "coveragePercent": 19.9782
+          },
+          {
+            "hex": "#b46f52",
+            "coveragePercent": 14.5864
+          },
+          {
+            "hex": "#c33939",
+            "coveragePercent": 12.1179
+          },
+          {
+            "hex": "#d8966a",
+            "coveragePercent": 7.9759
+          }
+        ],
+        "visibleSamples": 543938,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-cast-v2.png": {
+      "sha256": "e2c9aa7b1f5ad9b78680b0d51b017928ac3819493ed4fe83c887a4926c1c3056",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowCast"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352441",
+            "coveragePercent": 14.7128
+          },
+          {
+            "hex": "#231729",
+            "coveragePercent": 12.2461
+          },
+          {
+            "hex": "#483452",
+            "coveragePercent": 9.9698
+          },
+          {
+            "hex": "#0f0910",
+            "coveragePercent": 8.8628
+          },
+          {
+            "hex": "#9063b5",
+            "coveragePercent": 7.4472
+          },
+          {
+            "hex": "#614a62",
+            "coveragePercent": 7.1658
+          },
+          {
+            "hex": "#52277e",
+            "coveragePercent": 6.5615
+          },
+          {
+            "hex": "#74518f",
+            "coveragePercent": 6.1118
+          },
+          {
+            "hex": "#a87cca",
+            "coveragePercent": 5.6124
+          },
+          {
+            "hex": "#a352e5",
+            "coveragePercent": 5.0621
+          },
+          {
+            "hex": "#7532b6",
+            "coveragePercent": 4.0723
+          },
+          {
+            "hex": "#c39cda",
+            "coveragePercent": 3.5957
+          },
+          {
+            "hex": "#ca73f7",
+            "coveragePercent": 3.0695
+          },
+          {
+            "hex": "#8c6c65",
+            "coveragePercent": 2.529
+          },
+          {
+            "hex": "#ecbff5",
+            "coveragePercent": 1.9182
+          },
+          {
+            "hex": "#c19d88",
+            "coveragePercent": 1.0631
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945dc3",
+            "coveragePercent": 21.183
+          },
+          {
+            "hex": "#aa59e9",
+            "coveragePercent": 21.0459
+          },
+          {
+            "hex": "#5c2892",
+            "coveragePercent": 17.4562
+          },
+          {
+            "hex": "#75479b",
+            "coveragePercent": 16.1229
+          },
+          {
+            "hex": "#8035c7",
+            "coveragePercent": 13.2419
+          },
+          {
+            "hex": "#cb72f8",
+            "coveragePercent": 10.9502
+          }
+        ],
+        "visibleSamples": 545659,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/shadow-cultJailer-v1.png": {
+      "sha256": "d654be4490d3578addb254c449b9bbf841210a8172fc627d046b55b39ac56e13",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowCultJailer"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 18.3509
+          },
+          {
+            "hex": "#250f0c",
+            "coveragePercent": 16.152
+          },
+          {
+            "hex": "#39211a",
+            "coveragePercent": 10.5043
+          },
+          {
+            "hex": "#4e3229",
+            "coveragePercent": 8.8445
+          },
+          {
+            "hex": "#4b100d",
+            "coveragePercent": 7.4749
+          },
+          {
+            "hex": "#6d3e2c",
+            "coveragePercent": 5.8612
+          },
+          {
+            "hex": "#721516",
+            "coveragePercent": 5.8533
+          },
+          {
+            "hex": "#6a524b",
+            "coveragePercent": 4.2922
+          },
+          {
+            "hex": "#8c563e",
+            "coveragePercent": 4.1865
+          },
+          {
+            "hex": "#99705f",
+            "coveragePercent": 4.0602
+          },
+          {
+            "hex": "#9a1f20",
+            "coveragePercent": 3.5657
+          },
+          {
+            "hex": "#bd866b",
+            "coveragePercent": 3.427
+          },
+          {
+            "hex": "#d3a38b",
+            "coveragePercent": 2.785
+          },
+          {
+            "hex": "#e9c5ac",
+            "coveragePercent": 1.9234
+          },
+          {
+            "hex": "#be4e37",
+            "coveragePercent": 1.5215
+          },
+          {
+            "hex": "#f6eadc",
+            "coveragePercent": 1.1974
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#901b1d",
+            "coveragePercent": 30.1241
+          },
+          {
+            "hex": "#8d5034",
+            "coveragePercent": 23.7857
+          },
+          {
+            "hex": "#a56647",
+            "coveragePercent": 18.1624
+          },
+          {
+            "hex": "#c57d56",
+            "coveragePercent": 11.4788
+          },
+          {
+            "hex": "#bb2e2d",
+            "coveragePercent": 11.425
+          },
+          {
+            "hex": "#e3a56c",
+            "coveragePercent": 5.0241
+          }
+        ],
+        "visibleSamples": 565561,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/shadow-devour-v2.png": {
+      "sha256": "ed8b1379e7f2655b2da8c103cdc6dcba00c43b0908f94fa5d2abb41a50224d51",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowDevour"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2941",
+            "coveragePercent": 15.9582
+          },
+          {
+            "hex": "#27182d",
+            "coveragePercent": 13.8768
+          },
+          {
+            "hex": "#4f3663",
+            "coveragePercent": 10.0181
+          },
+          {
+            "hex": "#895fab",
+            "coveragePercent": 9.1614
+          },
+          {
+            "hex": "#120914",
+            "coveragePercent": 8.6256
+          },
+          {
+            "hex": "#6f4f8a",
+            "coveragePercent": 7.9368
+          },
+          {
+            "hex": "#624b51",
+            "coveragePercent": 5.6302
+          },
+          {
+            "hex": "#5a2a89",
+            "coveragePercent": 5.3402
+          },
+          {
+            "hex": "#3b155f",
+            "coveragePercent": 5.1004
+          },
+          {
+            "hex": "#a47cbf",
+            "coveragePercent": 4.1034
+          },
+          {
+            "hex": "#9d53dc",
+            "coveragePercent": 3.29
+          },
+          {
+            "hex": "#7532b6",
+            "coveragePercent": 3.2279
+          },
+          {
+            "hex": "#896c69",
+            "coveragePercent": 3.105
+          },
+          {
+            "hex": "#be78ef",
+            "coveragePercent": 2.4954
+          },
+          {
+            "hex": "#bd9888",
+            "coveragePercent": 1.2998
+          },
+          {
+            "hex": "#e4b9e9",
+            "coveragePercent": 0.8307
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#6d4295",
+            "coveragePercent": 24.5293
+          },
+          {
+            "hex": "#8755b3",
+            "coveragePercent": 23.6912
+          },
+          {
+            "hex": "#9e59d9",
+            "coveragePercent": 16.3336
+          },
+          {
+            "hex": "#592191",
+            "coveragePercent": 15.659
+          },
+          {
+            "hex": "#bb6ff1",
+            "coveragePercent": 10.423
+          },
+          {
+            "hex": "#7a2ac5",
+            "coveragePercent": 9.3638
+          }
+        ],
+        "visibleSamples": 641481,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-guard-v1.png": {
+      "sha256": "ecc07777f6faf00e48c32227f6194877eb0b2c18969ad835c0f3843c5ffa3cfa",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowGuard"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#200e0c",
+            "coveragePercent": 13.2397
+          },
+          {
+            "hex": "#090303",
+            "coveragePercent": 13.1013
+          },
+          {
+            "hex": "#342320",
+            "coveragePercent": 11.1761
+          },
+          {
+            "hex": "#4f3631",
+            "coveragePercent": 9.2132
+          },
+          {
+            "hex": "#3e0f0d",
+            "coveragePercent": 7.8897
+          },
+          {
+            "hex": "#591b17",
+            "coveragePercent": 7.092
+          },
+          {
+            "hex": "#7a1d1b",
+            "coveragePercent": 7.0031
+          },
+          {
+            "hex": "#7e4836",
+            "coveragePercent": 5.5016
+          },
+          {
+            "hex": "#9e2623",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#604d4c",
+            "coveragePercent": 4.6965
+          },
+          {
+            "hex": "#aa6b4f",
+            "coveragePercent": 3.4287
+          },
+          {
+            "hex": "#836762",
+            "coveragePercent": 3.326
+          },
+          {
+            "hex": "#c89170",
+            "coveragePercent": 3.0411
+          },
+          {
+            "hex": "#c33d33",
+            "coveragePercent": 2.434
+          },
+          {
+            "hex": "#e7bc96",
+            "coveragePercent": 2.2959
+          },
+          {
+            "hex": "#f5e4cd",
+            "coveragePercent": 1.2465
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c201e",
+            "coveragePercent": 27.133
+          },
+          {
+            "hex": "#a82a27",
+            "coveragePercent": 20.9483
+          },
+          {
+            "hex": "#91523c",
+            "coveragePercent": 19.2787
+          },
+          {
+            "hex": "#b57150",
+            "coveragePercent": 14.2181
+          },
+          {
+            "hex": "#c93e35",
+            "coveragePercent": 10.136
+          },
+          {
+            "hex": "#dc9c6b",
+            "coveragePercent": 8.2859
+          }
+        ],
+        "visibleSamples": 579599,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/shadow-idle-v2.png": {
+      "sha256": "69dc7d04f20ef9e8f5cb751ca8546a33b47b40d0f2ff816e6ec7b6fc9ed4f9c4",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowIdle"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#35293f",
+            "coveragePercent": 13.7211
+          },
+          {
+            "hex": "#443450",
+            "coveragePercent": 12.6687
+          },
+          {
+            "hex": "#281e2f",
+            "coveragePercent": 12.3963
+          },
+          {
+            "hex": "#544064",
+            "coveragePercent": 10.6595
+          },
+          {
+            "hex": "#8a6da3",
+            "coveragePercent": 8.0359
+          },
+          {
+            "hex": "#18121c",
+            "coveragePercent": 7.797
+          },
+          {
+            "hex": "#644c7b",
+            "coveragePercent": 7.6637
+          },
+          {
+            "hex": "#79608d",
+            "coveragePercent": 7.5169
+          },
+          {
+            "hex": "#9c7fb0",
+            "coveragePercent": 5.9452
+          },
+          {
+            "hex": "#af93bf",
+            "coveragePercent": 3.6601
+          },
+          {
+            "hex": "#bfa2d0",
+            "coveragePercent": 2.5472
+          },
+          {
+            "hex": "#715e62",
+            "coveragePercent": 2.1851
+          },
+          {
+            "hex": "#a376ce",
+            "coveragePercent": 1.8769
+          },
+          {
+            "hex": "#7247a3",
+            "coveragePercent": 1.828
+          },
+          {
+            "hex": "#99827e",
+            "coveragePercent": 0.9872
+          },
+          {
+            "hex": "#d5b2e8",
+            "coveragePercent": 0.511
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#603c89",
+            "coveragePercent": 33.2674
+          },
+          {
+            "hex": "#704a9b",
+            "coveragePercent": 26.8185
+          },
+          {
+            "hex": "#8255b4",
+            "coveragePercent": 18.1055
+          },
+          {
+            "hex": "#9661cc",
+            "coveragePercent": 12.4591
+          },
+          {
+            "hex": "#af72e5",
+            "coveragePercent": 5.7975
+          },
+          {
+            "hex": "#7432b5",
+            "coveragePercent": 3.5519
+          }
+        ],
+        "visibleSamples": 973716,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/shadow-madOrganist-v1.png": {
+      "sha256": "3137add5baaf467c79c3891b6e29660ace158f641b039747fa4bee6e7ee4d781",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMadOrganist"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0303",
+            "coveragePercent": 15.0686
+          },
+          {
+            "hex": "#210d0b",
+            "coveragePercent": 14.9398
+          },
+          {
+            "hex": "#41130d",
+            "coveragePercent": 10.3887
+          },
+          {
+            "hex": "#35221f",
+            "coveragePercent": 8.1006
+          },
+          {
+            "hex": "#5e2d16",
+            "coveragePercent": 7.195
+          },
+          {
+            "hex": "#844621",
+            "coveragePercent": 6.3192
+          },
+          {
+            "hex": "#523832",
+            "coveragePercent": 6.2168
+          },
+          {
+            "hex": "#95151f",
+            "coveragePercent": 5.7561
+          },
+          {
+            "hex": "#ac6732",
+            "coveragePercent": 4.9036
+          },
+          {
+            "hex": "#6c0e15",
+            "coveragePercent": 4.4827
+          },
+          {
+            "hex": "#775549",
+            "coveragePercent": 3.5231
+          },
+          {
+            "hex": "#d6904e",
+            "coveragePercent": 3.3665
+          },
+          {
+            "hex": "#c2252f",
+            "coveragePercent": 3.2502
+          },
+          {
+            "hex": "#ebbc80",
+            "coveragePercent": 3.0117
+          },
+          {
+            "hex": "#a57f6c",
+            "coveragePercent": 1.8596
+          },
+          {
+            "hex": "#f7e6be",
+            "coveragePercent": 1.6176
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#955329",
+            "coveragePercent": 28.0627
+          },
+          {
+            "hex": "#bf7a40",
+            "coveragePercent": 19.823
+          },
+          {
+            "hex": "#8e141d",
+            "coveragePercent": 17.0907
+          },
+          {
+            "hex": "#ac1b26",
+            "coveragePercent": 14.4942
+          },
+          {
+            "hex": "#e7ad65",
+            "coveragePercent": 13.1378
+          },
+          {
+            "hex": "#cf2e36",
+            "coveragePercent": 7.3916
+          }
+        ],
+        "visibleSamples": 1019137,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/shadow-madPriest-v1.png": {
+      "sha256": "76702a6bd48719f99bd4244b4de5ffdd7a6078504ed061b890266b96a3448e53",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMadPriest"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#250c0b",
+            "coveragePercent": 13.0709
+          },
+          {
+            "hex": "#0b0404",
+            "coveragePercent": 10.5912
+          },
+          {
+            "hex": "#4c2f2c",
+            "coveragePercent": 9.8455
+          },
+          {
+            "hex": "#49120e",
+            "coveragePercent": 9.8202
+          },
+          {
+            "hex": "#6e1d1a",
+            "coveragePercent": 9.0111
+          },
+          {
+            "hex": "#341f1f",
+            "coveragePercent": 8.6598
+          },
+          {
+            "hex": "#7b422d",
+            "coveragePercent": 6.3804
+          },
+          {
+            "hex": "#9d262a",
+            "coveragePercent": 6.0228
+          },
+          {
+            "hex": "#5e4644",
+            "coveragePercent": 5.6972
+          },
+          {
+            "hex": "#856154",
+            "coveragePercent": 4.0846
+          },
+          {
+            "hex": "#ae513c",
+            "coveragePercent": 3.9476
+          },
+          {
+            "hex": "#bb7b54",
+            "coveragePercent": 3.7619
+          },
+          {
+            "hex": "#daa171",
+            "coveragePercent": 3.0584
+          },
+          {
+            "hex": "#e9c297",
+            "coveragePercent": 3.0319
+          },
+          {
+            "hex": "#f5e3c3",
+            "coveragePercent": 1.5867
+          },
+          {
+            "hex": "#aa8e81",
+            "coveragePercent": 1.4297
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#912224",
+            "coveragePercent": 27.6524
+          },
+          {
+            "hex": "#8f4f35",
+            "coveragePercent": 20.0683
+          },
+          {
+            "hex": "#ab6a47",
+            "coveragePercent": 16.3721
+          },
+          {
+            "hex": "#b73637",
+            "coveragePercent": 15.8058
+          },
+          {
+            "hex": "#c98658",
+            "coveragePercent": 12.4164
+          },
+          {
+            "hex": "#e6ad6f",
+            "coveragePercent": 7.6849
+          }
+        ],
+        "visibleSamples": 705690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-mage-v1.png": {
+      "sha256": "db4ee322042929ae1a3ad517df73df9addaca088023d7560afca7d457e89784c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMage"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e1815",
+            "coveragePercent": 14.3699
+          },
+          {
+            "hex": "#100605",
+            "coveragePercent": 12.0161
+          },
+          {
+            "hex": "#4a312e",
+            "coveragePercent": 11.3654
+          },
+          {
+            "hex": "#541d13",
+            "coveragePercent": 10.7002
+          },
+          {
+            "hex": "#7e241d",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#624846",
+            "coveragePercent": 7.8941
+          },
+          {
+            "hex": "#b42a2b",
+            "coveragePercent": 6.6365
+          },
+          {
+            "hex": "#8f5433",
+            "coveragePercent": 5.573
+          },
+          {
+            "hex": "#b87851",
+            "coveragePercent": 5.0188
+          },
+          {
+            "hex": "#826563",
+            "coveragePercent": 4.8411
+          },
+          {
+            "hex": "#da9f71",
+            "coveragePercent": 4.0306
+          },
+          {
+            "hex": "#edc59b",
+            "coveragePercent": 3.3629
+          },
+          {
+            "hex": "#a98c8b",
+            "coveragePercent": 1.8117
+          },
+          {
+            "hex": "#f6e2e3",
+            "coveragePercent": 1.4337
+          },
+          {
+            "hex": "#8334d2",
+            "coveragePercent": 1.1181
+          },
+          {
+            "hex": "#d17beb",
+            "coveragePercent": 0.7838
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a52526",
+            "coveragePercent": 41.4703
+          },
+          {
+            "hex": "#935435",
+            "coveragePercent": 20.7743
+          },
+          {
+            "hex": "#bb754e",
+            "coveragePercent": 18.6499
+          },
+          {
+            "hex": "#dfa26c",
+            "coveragePercent": 12.3643
+          },
+          {
+            "hex": "#7e31cb",
+            "coveragePercent": 4.187
+          },
+          {
+            "hex": "#c061e8",
+            "coveragePercent": 2.5542
+          }
+        ],
+        "visibleSamples": 594036,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-melee-v2.png": {
+      "sha256": "0d004b9402b8462f45931e3fb8c3623e4f3e2378d61f007ba544b89a928b7f76",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowMelee"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2a46",
+            "coveragePercent": 13.1197
+          },
+          {
+            "hex": "#2c1e34",
+            "coveragePercent": 12.6346
+          },
+          {
+            "hex": "#493161",
+            "coveragePercent": 10.4167
+          },
+          {
+            "hex": "#926cb3",
+            "coveragePercent": 9.3192
+          },
+          {
+            "hex": "#1d1221",
+            "coveragePercent": 8.2525
+          },
+          {
+            "hex": "#5f417d",
+            "coveragePercent": 8.2288
+          },
+          {
+            "hex": "#a984c6",
+            "coveragePercent": 7.1364
+          },
+          {
+            "hex": "#7c5e97",
+            "coveragePercent": 6.2521
+          },
+          {
+            "hex": "#5d474e",
+            "coveragePercent": 4.8709
+          },
+          {
+            "hex": "#0d070e",
+            "coveragePercent": 4.2821
+          },
+          {
+            "hex": "#c795e5",
+            "coveragePercent": 3.883
+          },
+          {
+            "hex": "#a562df",
+            "coveragePercent": 3.5769
+          },
+          {
+            "hex": "#773fb1",
+            "coveragePercent": 3.2431
+          },
+          {
+            "hex": "#816762",
+            "coveragePercent": 2.7197
+          },
+          {
+            "hex": "#b49580",
+            "coveragePercent": 1.0598
+          },
+          {
+            "hex": "#f0caf6",
+            "coveragePercent": 1.0045
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c56be",
+            "coveragePercent": 24.87
+          },
+          {
+            "hex": "#5f348d",
+            "coveragePercent": 21.8808
+          },
+          {
+            "hex": "#7544a7",
+            "coveragePercent": 20.9336
+          },
+          {
+            "hex": "#a160d9",
+            "coveragePercent": 19.8317
+          },
+          {
+            "hex": "#be74f2",
+            "coveragePercent": 12.2592
+          },
+          {
+            "hex": "#976950",
+            "coveragePercent": 0.2247
+          }
+        ],
+        "visibleSamples": 572574,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/shadow-shield-v1.png": {
+      "sha256": "04708f4925358fc41b328baaaa97a9b56ac5f512afa5c525bc768579946d5aaa",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowShield"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#39241f",
+            "coveragePercent": 11.7538
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 11.2656
+          },
+          {
+            "hex": "#1e0c09",
+            "coveragePercent": 10.9648
+          },
+          {
+            "hex": "#513830",
+            "coveragePercent": 10.4103
+          },
+          {
+            "hex": "#340f0b",
+            "coveragePercent": 9.9166
+          },
+          {
+            "hex": "#531712",
+            "coveragePercent": 8.9506
+          },
+          {
+            "hex": "#6f201b",
+            "coveragePercent": 7.0406
+          },
+          {
+            "hex": "#7e4a30",
+            "coveragePercent": 5.8472
+          },
+          {
+            "hex": "#8e2422",
+            "coveragePercent": 4.6136
+          },
+          {
+            "hex": "#68524b",
+            "coveragePercent": 4.429
+          },
+          {
+            "hex": "#a46a47",
+            "coveragePercent": 4.2232
+          },
+          {
+            "hex": "#c7916b",
+            "coveragePercent": 3.2385
+          },
+          {
+            "hex": "#e2ba95",
+            "coveragePercent": 2.3568
+          },
+          {
+            "hex": "#b23731",
+            "coveragePercent": 1.8813
+          },
+          {
+            "hex": "#90776b",
+            "coveragePercent": 1.8115
+          },
+          {
+            "hex": "#f5e7d3",
+            "coveragePercent": 1.2967
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d2321",
+            "coveragePercent": 29.2405
+          },
+          {
+            "hex": "#8d5335",
+            "coveragePercent": 22.0129
+          },
+          {
+            "hex": "#a56a47",
+            "coveragePercent": 17.5932
+          },
+          {
+            "hex": "#b13530",
+            "coveragePercent": 12.8883
+          },
+          {
+            "hex": "#c18258",
+            "coveragePercent": 12.0088
+          },
+          {
+            "hex": "#dda46e",
+            "coveragePercent": 6.2563
+          }
+        ],
+        "visibleSamples": 627200,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/void-demon-v1.png": {
+      "sha256": "2a355aac79920c86e6bc3fb9f4298d93bbc1b5061b7f79af1dba0177b47e78fa",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "voidDemon"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1d1125",
+            "coveragePercent": 17.9746
+          },
+          {
+            "hex": "#302736",
+            "coveragePercent": 16.0743
+          },
+          {
+            "hex": "#0b050e",
+            "coveragePercent": 14.4077
+          },
+          {
+            "hex": "#443a4d",
+            "coveragePercent": 12.3079
+          },
+          {
+            "hex": "#5d4f64",
+            "coveragePercent": 7.7402
+          },
+          {
+            "hex": "#35144c",
+            "coveragePercent": 6.6527
+          },
+          {
+            "hex": "#532871",
+            "coveragePercent": 4.6336
+          },
+          {
+            "hex": "#765793",
+            "coveragePercent": 4.0253
+          },
+          {
+            "hex": "#9188ae",
+            "coveragePercent": 3.5137
+          },
+          {
+            "hex": "#827276",
+            "coveragePercent": 2.7711
+          },
+          {
+            "hex": "#bab5ce",
+            "coveragePercent": 2.0665
+          },
+          {
+            "hex": "#496387",
+            "coveragePercent": 2.0307
+          },
+          {
+            "hex": "#efedf7",
+            "coveragePercent": 2.025
+          },
+          {
+            "hex": "#7425a5",
+            "coveragePercent": 1.4633
+          },
+          {
+            "hex": "#a446d7",
+            "coveragePercent": 1.3073
+          },
+          {
+            "hex": "#d580ef",
+            "coveragePercent": 1.0061
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#764396",
+            "coveragePercent": 30.0186
+          },
+          {
+            "hex": "#963fc9",
+            "coveragePercent": 21.6466
+          },
+          {
+            "hex": "#5f1d95",
+            "coveragePercent": 20.9389
+          },
+          {
+            "hex": "#c960f0",
+            "coveragePercent": 13.4264
+          },
+          {
+            "hex": "#3f6590",
+            "coveragePercent": 8.9956
+          },
+          {
+            "hex": "#5e80ba",
+            "coveragePercent": 4.9739
+          }
+        ],
+        "visibleSamples": 466789,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/void-keepers-v1.png": {
+      "sha256": "e78a8bbdea35eb4154fad6882710ac076987bb19ae8b4ec0f6b7c955744f6503",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "voidKeepers"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#422b29",
+            "coveragePercent": 11.5662
+          },
+          {
+            "hex": "#2d191f",
+            "coveragePercent": 10.8753
+          },
+          {
+            "hex": "#462c46",
+            "coveragePercent": 9.6438
+          },
+          {
+            "hex": "#5f4545",
+            "coveragePercent": 9.5737
+          },
+          {
+            "hex": "#785c62",
+            "coveragePercent": 8.3215
+          },
+          {
+            "hex": "#5f306d",
+            "coveragePercent": 7.8747
+          },
+          {
+            "hex": "#7b4291",
+            "coveragePercent": 6.8612
+          },
+          {
+            "hex": "#97728b",
+            "coveragePercent": 5.3058
+          },
+          {
+            "hex": "#a159bb",
+            "coveragePercent": 5.2861
+          },
+          {
+            "hex": "#170a0d",
+            "coveragePercent": 5.0302
+          },
+          {
+            "hex": "#bd8cb8",
+            "coveragePercent": 4.2393
+          },
+          {
+            "hex": "#f4e6ed",
+            "coveragePercent": 3.8328
+          },
+          {
+            "hex": "#dcbecb",
+            "coveragePercent": 3.344
+          },
+          {
+            "hex": "#b48759",
+            "coveragePercent": 3.1218
+          },
+          {
+            "hex": "#8c5f36",
+            "coveragePercent": 3.0062
+          },
+          {
+            "hex": "#ddb478",
+            "coveragePercent": 2.1174
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#75398d",
+            "coveragePercent": 28.0947
+          },
+          {
+            "hex": "#8f48ab",
+            "coveragePercent": 22.808
+          },
+          {
+            "hex": "#ac5dc9",
+            "coveragePercent": 16.9067
+          },
+          {
+            "hex": "#926138",
+            "coveragePercent": 14.1076
+          },
+          {
+            "hex": "#b8894b",
+            "coveragePercent": 11.3649
+          },
+          {
+            "hex": "#e3b95e",
+            "coveragePercent": 6.7181
+          }
+        ],
+        "visibleSamples": 663733,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/void-lieutenant-v1.png": {
+      "sha256": "71ce124c607721bdd1f736a2de26fe11fa059cd73fe7420fec79d8329cb5162f",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "voidLieutenant"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#472b3a",
+            "coveragePercent": 14.1621
+          },
+          {
+            "hex": "#321c21",
+            "coveragePercent": 13.4251
+          },
+          {
+            "hex": "#5a3a54",
+            "coveragePercent": 12.8126
+          },
+          {
+            "hex": "#14080a",
+            "coveragePercent": 11.3409
+          },
+          {
+            "hex": "#71476c",
+            "coveragePercent": 10.5035
+          },
+          {
+            "hex": "#856776",
+            "coveragePercent": 6.5033
+          },
+          {
+            "hex": "#944c8f",
+            "coveragePercent": 5.8073
+          },
+          {
+            "hex": "#7a4d31",
+            "coveragePercent": 4.4406
+          },
+          {
+            "hex": "#a8899a",
+            "coveragePercent": 4.039
+          },
+          {
+            "hex": "#d3aacd",
+            "coveragePercent": 3.6164
+          },
+          {
+            "hex": "#efddec",
+            "coveragePercent": 3.3752
+          },
+          {
+            "hex": "#b666b1",
+            "coveragePercent": 3.0317
+          },
+          {
+            "hex": "#b38154",
+            "coveragePercent": 3.0276
+          },
+          {
+            "hex": "#e1b783",
+            "coveragePercent": 2.2551
+          },
+          {
+            "hex": "#6522ce",
+            "coveragePercent": 0.8553
+          },
+          {
+            "hex": "#a15af1",
+            "coveragePercent": 0.8043
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914589",
+            "coveragePercent": 40.8059
+          },
+          {
+            "hex": "#b35fc1",
+            "coveragePercent": 18.1834
+          },
+          {
+            "hex": "#925c37",
+            "coveragePercent": 14.8555
+          },
+          {
+            "hex": "#ba854c",
+            "coveragePercent": 11.2851
+          },
+          {
+            "hex": "#6c28d4",
+            "coveragePercent": 8.1727
+          },
+          {
+            "hex": "#e4b764",
+            "coveragePercent": 6.6973
+          }
+        ],
+        "visibleSamples": 658606,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/yomi-fall-council-v1.png": {
+      "sha256": "8c9f296025db4c63556f653d182cb3bb436c0defab6a59a4f068b3cc9c5ec1f0",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonCouncil"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1b17",
+            "coveragePercent": 11.3326
+          },
+          {
+            "hex": "#5c4845",
+            "coveragePercent": 11.0293
+          },
+          {
+            "hex": "#43322f",
+            "coveragePercent": 10.7919
+          },
+          {
+            "hex": "#755c56",
+            "coveragePercent": 9.396
+          },
+          {
+            "hex": "#8c7168",
+            "coveragePercent": 8.4962
+          },
+          {
+            "hex": "#110806",
+            "coveragePercent": 7.9648
+          },
+          {
+            "hex": "#6d3c2c",
+            "coveragePercent": 7.7515
+          },
+          {
+            "hex": "#52271c",
+            "coveragePercent": 6.3637
+          },
+          {
+            "hex": "#914f3a",
+            "coveragePercent": 6.1275
+          },
+          {
+            "hex": "#a58978",
+            "coveragePercent": 6.0025
+          },
+          {
+            "hex": "#c4a186",
+            "coveragePercent": 4.3162
+          },
+          {
+            "hex": "#bd654d",
+            "coveragePercent": 3.7647
+          },
+          {
+            "hex": "#d8baa3",
+            "coveragePercent": 3.1218
+          },
+          {
+            "hex": "#e9d6cb",
+            "coveragePercent": 1.4585
+          },
+          {
+            "hex": "#75498f",
+            "coveragePercent": 1.2236
+          },
+          {
+            "hex": "#ab7bc9",
+            "coveragePercent": 0.8591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#914336",
+            "coveragePercent": 34.0597
+          },
+          {
+            "hex": "#986d46",
+            "coveragePercent": 23.6838
+          },
+          {
+            "hex": "#bc5849",
+            "coveragePercent": 22.6481
+          },
+          {
+            "hex": "#d09263",
+            "coveragePercent": 12.8519
+          },
+          {
+            "hex": "#754493",
+            "coveragePercent": 4.1667
+          },
+          {
+            "hex": "#975ebb",
+            "coveragePercent": 2.5898
+          }
+        ],
+        "visibleSamples": 722448,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/yomi-fall-necromancer-v1.png": {
+      "sha256": "1b58d0d1fb6befcd26cc01f3655f266d59575745305fe840fc24f5deb6eeaaa8",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dungeonNecromancer"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5b4b50",
+            "coveragePercent": 14.24
+          },
+          {
+            "hex": "#46383c",
+            "coveragePercent": 12.7417
+          },
+          {
+            "hex": "#705f65",
+            "coveragePercent": 11.6818
+          },
+          {
+            "hex": "#887277",
+            "coveragePercent": 10.0981
+          },
+          {
+            "hex": "#33272b",
+            "coveragePercent": 9.0818
+          },
+          {
+            "hex": "#231514",
+            "coveragePercent": 7.1807
+          },
+          {
+            "hex": "#0d0607",
+            "coveragePercent": 6.171
+          },
+          {
+            "hex": "#a38991",
+            "coveragePercent": 6.1236
+          },
+          {
+            "hex": "#ccaa8f",
+            "coveragePercent": 3.9133
+          },
+          {
+            "hex": "#8a674e",
+            "coveragePercent": 3.482
+          },
+          {
+            "hex": "#b58d66",
+            "coveragePercent": 3.3921
+          },
+          {
+            "hex": "#4b250c",
+            "coveragePercent": 3.2496
+          },
+          {
+            "hex": "#dfc3b1",
+            "coveragePercent": 3.1232
+          },
+          {
+            "hex": "#6f4522",
+            "coveragePercent": 2.8194
+          },
+          {
+            "hex": "#f2e3d9",
+            "coveragePercent": 1.6845
+          },
+          {
+            "hex": "#a66d29",
+            "coveragePercent": 1.0171
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c623e",
+            "coveragePercent": 25.3689
+          },
+          {
+            "hex": "#a77a4f",
+            "coveragePercent": 20.3911
+          },
+          {
+            "hex": "#c69558",
+            "coveragePercent": 19.471
+          },
+          {
+            "hex": "#8f5415",
+            "coveragePercent": 13.6886
+          },
+          {
+            "hex": "#e4b76c",
+            "coveragePercent": 10.5582
+          },
+          {
+            "hex": "#b37729",
+            "coveragePercent": 10.5223
+          }
+        ],
+        "visibleSamples": 612575,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/npcs/fia-underworld-corrupted-v1.png": {
+      "sha256": "2911470d4541f5cfd0d09948ab93a24551418fa79c44dc44b647a5eba6e5063c",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "fiaUnderworldCorrupted"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#120809",
+            "coveragePercent": 13.1338
+          },
+          {
+            "hex": "#351a14",
+            "coveragePercent": 13.0947
+          },
+          {
+            "hex": "#423434",
+            "coveragePercent": 10.908
+          },
+          {
+            "hex": "#64504a",
+            "coveragePercent": 9.2812
+          },
+          {
+            "hex": "#7b2d18",
+            "coveragePercent": 8.8196
+          },
+          {
+            "hex": "#c33e29",
+            "coveragePercent": 7.9215
+          },
+          {
+            "hex": "#886557",
+            "coveragePercent": 6.8261
+          },
+          {
+            "hex": "#5d6092",
+            "coveragePercent": 5.0931
+          },
+          {
+            "hex": "#f4b991",
+            "coveragePercent": 4.7796
+          },
+          {
+            "hex": "#f29c69",
+            "coveragePercent": 4.2331
+          },
+          {
+            "hex": "#3b426d",
+            "coveragePercent": 3.4779
+          },
+          {
+            "hex": "#cb7146",
+            "coveragePercent": 3.3547
+          },
+          {
+            "hex": "#f8d3b5",
+            "coveragePercent": 3.3179
+          },
+          {
+            "hex": "#af8a7e",
+            "coveragePercent": 2.5804
+          },
+          {
+            "hex": "#fbecd9",
+            "coveragePercent": 1.7332
+          },
+          {
+            "hex": "#e99116",
+            "coveragePercent": 1.4453
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#98351d",
+            "coveragePercent": 23.2722
+          },
+          {
+            "hex": "#f4a26f",
+            "coveragePercent": 21.3404
+          },
+          {
+            "hex": "#cf3e2d",
+            "coveragePercent": 21.0005
+          },
+          {
+            "hex": "#ad6945",
+            "coveragePercent": 16.5805
+          },
+          {
+            "hex": "#e58629",
+            "coveragePercent": 9.4976
+          },
+          {
+            "hex": "#515793",
+            "coveragePercent": 8.3088
+          }
+        ],
+        "visibleSamples": 629004,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/npcs/shadow-underworld-services-v1.png": {
+      "sha256": "88ebeecf85eea4284535220cc0fb0c23e381a5710ba874ef1f2b86570e37be6b",
+      "width": 2048,
+      "height": 768,
+      "runtimeKeys": [
+        "underworldServices"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070303",
+            "coveragePercent": 19.2773
+          },
+          {
+            "hex": "#251a19",
+            "coveragePercent": 11.3445
+          },
+          {
+            "hex": "#493832",
+            "coveragePercent": 9.2729
+          },
+          {
+            "hex": "#6c534b",
+            "coveragePercent": 8.2607
+          },
+          {
+            "hex": "#80351f",
+            "coveragePercent": 6.4017
+          },
+          {
+            "hex": "#4f2011",
+            "coveragePercent": 6.2224
+          },
+          {
+            "hex": "#55537f",
+            "coveragePercent": 5.5151
+          },
+          {
+            "hex": "#e29a6c",
+            "coveragePercent": 4.5996
+          },
+          {
+            "hex": "#363656",
+            "coveragePercent": 4.527
+          },
+          {
+            "hex": "#bf4632",
+            "coveragePercent": 4.2211
+          },
+          {
+            "hex": "#efba90",
+            "coveragePercent": 4.2
+          },
+          {
+            "hex": "#9b5d35",
+            "coveragePercent": 4.1185
+          },
+          {
+            "hex": "#ce7843",
+            "coveragePercent": 4.1094
+          },
+          {
+            "hex": "#9c7666",
+            "coveragePercent": 3.767
+          },
+          {
+            "hex": "#f9dcbc",
+            "coveragePercent": 2.8271
+          },
+          {
+            "hex": "#f6bb3d",
+            "coveragePercent": 1.3356
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#963a24",
+            "coveragePercent": 21.8855
+          },
+          {
+            "hex": "#d6854c",
+            "coveragePercent": 21.5926
+          },
+          {
+            "hex": "#f6af6a",
+            "coveragePercent": 19.0656
+          },
+          {
+            "hex": "#9f643d",
+            "coveragePercent": 18.9728
+          },
+          {
+            "hex": "#c95034",
+            "coveragePercent": 17.0053
+          },
+          {
+            "hex": "#4f4c8b",
+            "coveragePercent": 1.4782
+          }
+        ],
+        "visibleSamples": 773930,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  }
+}

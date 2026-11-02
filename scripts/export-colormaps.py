@@ -13,6 +13,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw
+from colormap_parts import partition, serialize
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'assets/config/colormaps.json'
@@ -22,7 +23,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,foxfire:ART_FOXFIRE,fiaSpirits:ART_FIA_SPIRITS,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -142,6 +143,8 @@ menu_frames = [{'x': i % 3 * 512, 'y': i // 3 * 512, 'w': 512, 'h': 512} for i i
 pc['momo']['variants']['menuIdle'] = {'paletteGroup': group('pc.momo.menuIdle', 'assets/images/momo-menu-idle-v2.png', menu_frames, 'game.js: drawMenuMomo')}
 pc['momo']['variants']['sword'] = {'paletteGroup': group('pc.momo.sword', manifest['momoSlash'], atlas['frames']['momoSlash'], 'ART_FRAMES.momoSlash')}
 pc['momo']['variants']['heavySword'] = {'paletteGroup': group('pc.momo.heavySword', manifest['momoHeavy'], atlas['frames']['momoHeavy'], 'ART_FRAMES.momoHeavy')}
+for kind, definition in atlas['foxfire'].items():
+    pc['momo']['variants']['foxfire.' + kind] = {'paletteGroup': group('pc.momo.foxfire.' + kind, manifest[definition['image']], definition['frames'], 'ART_FOXFIRE.' + kind)}
 for key in ('momoNaginataNormal', 'momoNaginataHeavy', 'momoShieldNormal', 'momoShieldHeavy'):
     pc['momo']['variants'][key] = {'paletteGroup': group('pc.momo.' + key, manifest[key], atlas['frames'][key], 'ART_FRAMES.' + key)}
 portrait = atlas['inventory']['momo']
@@ -193,6 +196,8 @@ for name, definition in atlas['fiaVoid'].items():
 for name in ('white', 'red', 'fia'):
     definition = atlas['fiaRitual'][name]
     npcs['fiaRitual.' + name] = {'role': 'ritual-boss' if name == 'fia' else 'attendant', 'faction': 'shadowDen', 'paletteGroup': group('npc.fiaRitual.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.' + name + '.frames')}
+for name, definition in atlas['fiaSpirits'].items():
+    npcs['fiaRitual.spirit.' + name] = {'role': 'summoned-spirit', 'faction': 'shadowDen', 'paletteGroup': group('npc.fiaRitual.spirit.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_SPIRITS.' + name + '.frames')}
 for name, definition in atlas['fiaRitual']['services'].items():
     npcs['fiaVoid.' + name + '.corrupted'] = {'role': 'hostile-service', 'faction': 'shadowCult', 'paletteGroup': group('npc.fiaVoid.' + name + '.corrupted', manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.services.' + name + '.frames')}
 for name in ('powers', 'chains'):
@@ -364,14 +369,30 @@ result = {'schemaVersion': 1,
           'realmColors': {name: {k: value for k, value in record.items() if k in ('sky', 'fog', 'gold', 'accent', 'floor')}
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
-serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 88, 'Missing current character entry'
+index, parts = partition(result)
+serialized = serialize(index)
+assert len(npcs) == 90, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'
+    directory = OUTPUT.with_suffix('')
+    assert {file.name for file in directory.glob('*.json')} == set(parts), 'Unexpected or missing colormap part.'
+    for name, content in parts.items():
+        assert (directory / name).read_text(encoding='utf-8') == content, f'Stale colormap part: {name}'
     print('PASS: exhaustive image inventory, character/atlas references, clipped sampling and deterministic colormaps are current.')
 else:
+    directory = OUTPUT.with_suffix('')
+    directory.mkdir(exist_ok=True)
+    # Remove only old generated parts named by our previous index. Never sweep
+    # unrelated files from this directory.
+    previous = json.loads(OUTPUT.read_text(encoding='utf-8')) if OUTPUT.exists() else {}
+    for part in previous.get('parts', []):
+        name = part['file'].removeprefix('colormaps/')
+        if '/' not in name and name.endswith('.json') and name not in parts:
+            (directory / name).unlink(missing_ok=True)
+    for name, content in parts.items():
+        (directory / name).write_text(content, encoding='utf-8', newline='\n')
     OUTPUT.write_text(serialized, encoding='utf-8', newline='\n')
     print(f'Exported {len(assets)} image assets, {len(npcs)} NPCs/forms, {len(groups)} atlas groups, {len(flags)} flags to {OUTPUT.relative_to(ROOT)}')

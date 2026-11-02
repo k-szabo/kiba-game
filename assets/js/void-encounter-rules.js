@@ -1,7 +1,7 @@
 /* Pure, transient void encounter rules. Controllers own actors and clocks. */
 'use strict';
 const VoidEncounterRules=(()=>{
- const tuning=Object.freeze({lieutenantMaxHp:1000,absorptionRatio:.7,demonMaxHp:2000,demonInitialHp:1000});
+ const tuning=Object.freeze({lieutenantMaxHp:1000,absorptionRatio:.7,demonMaxHp:2000,demonInitialHp:1000,lifeStealMultiplier:20});
  const fields=Object.freeze(['attempt','generation','phase','hp','maxHp','gateConsumed','won','failed']);
  const positiveInteger=value=>Number.isSafeInteger(value)&&value>0;
  const amount=value=>Number.isFinite(value)&&value>0&&value<=Number.MAX_SAFE_INTEGER;
@@ -51,7 +51,7 @@ const VoidEncounterRules=(()=>{
   if(!owns(state,owner))return fail(result,'staleOwner');
   if(!amount(actualHpLoss))return fail(result,'invalidAmount');
   if(state.phase!=='demon')return fail(result,'notLive');
-  result.healed=Math.min(state.maxHp-state.hp,actualHpLoss);result.state.hp=state.hp+result.healed;
+  result.healed=Math.min(state.maxHp-state.hp,actualHpLoss*tuning.lifeStealMultiplier);result.state.hp=state.hp+result.healed;
   if(result.state.hp===state.maxHp){result.state.phase='overwhelmed';result.state.failed=true;return success(result,'overwhelmed');}
   return success(result);
  }

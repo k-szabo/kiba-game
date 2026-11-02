@@ -35,7 +35,7 @@ place(1810,1790);press('u');tick();release('u');assert(!elements.get('spiritTrai
 run("abilities=[false,false];progression=normalizeProgression({level:4,stats:{spirit:1}});enterRealm(0);state='play';");place(330,1000);run("showTraining();");assert(elements.get('spiritTraining').hidden);assert(!run("spendPoint('spirit')"));assert.equal(snap().progression.stats.spirit,1);run('closeTraining();');
 
 // Optional relics are off the initial map and cannot be collected before their guardian dies.
-run("flags=levels.map(()=>[]);defeated=levels.map(()=>false);abilities=[true,false];enterRealm(0);state='play';showMap();var initialMap=$('mapContent').children[0].innerHTML;closeMap();");
+run("flags=levels.map(()=>[]);defeated=levels.map(()=>false);abilities=[true,false];enterRealm(0);state='play';showMap();var initialMap=$('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML;closeMap();");
 place(2800,530);run("var oldAngel=enemies.find(e=>e.id==='oldAngel');discoverSecrets();updateMiniboss(oldAngel,.1);player.face=1;attackCooldown=0;melee();advanceSwordAttack(.17);");assert(!run('oldAngel.active'));assert.equal(run('oldAngel.hp'),36);assert(!run("secretKnown('angelRuin')"),'Passing below the tower exposed its map');
 for(const id of ['angelHalo','demonHorn']){
   const o=run(`level.objects.find(o=>o.id==='${id}')`);place(o.x,o.y);assert(!run(`relicUnlocked(level.objects.find(o=>o.id==='${id}'))`));press('e');tick();release('e');assert(!snap().relics.includes(id));
@@ -48,7 +48,7 @@ for(const id of ['angelHalo','demonHorn']){
 }
 run("respawnEnemies();");assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].includes(minibossFlag(e.id)))'));assert(run('enemies.filter(e=>!e.miniboss).every(e=>!e.dead)'));
 run('persist();mainMenu();startGame(true);');assert.deepEqual(Array.from(snap().relics),['angelHalo','demonHorn']);assert(run('enemies.filter(e=>e.miniboss).every(e=>e.dead===flags[realm].includes(minibossFlag(e.id)))'));assert(run('relicRitualReady()'));
-run("showMap();var discoveredMap=$('mapContent').children[0].innerHTML;closeMap();");assert(run('discoveredMap.length>initialMap.length'));
+run("showMap();var discoveredMap=$('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML;closeMap();");assert(run('discoveredMap.length>initialMap.length'));
 
 // The inconspicuous stone seal is solid until an ordinary, timed sword hit breaks it.
 run("flags=levels.map(()=>[]);defeated[0]=false;enterRealm(0);state='play';enemies=[];");place(4550,1510);run("player.face=-1;var wall=level.gates.find(g=>g.id==='cultEntrance');");assert(!run('gatePass(wall)'));press({action:'attack'});tick(12);release({action:'attack'});assert(!run('gatePass(wall)'));tick(12);assert(run('gatePass(wall)'));assert(snap().flags[0].includes('cultEntrance'));

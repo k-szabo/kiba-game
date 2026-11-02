@@ -20,7 +20,7 @@ function createDragonRaidMap({makeLevel,ledge,rest,zone}){
  return map;
 }
 const DragonRaid=(()=>{
- let attempt=null,attackClock=0,warning=null,impact=null,serial=0,pattern=0,engaged=false,recovery=0,headX=10250,headY=0,hitCooldowns=new Map();
+ let attempt=null,attackClock=0,warning=null,impact=null,serial=0,pattern=0,engaged=false,recovery=0,collapseClock=0,headX=10250,headY=0,hitCooldowns=new Map();
  const active=()=>level?.dragonRaid===true&&!Prologue.active;
  const map=()=>SIDE_LOCATIONS.dragonCatacombs.map;
  const has=id=>flags[3].includes(id);
@@ -51,7 +51,7 @@ const DragonRaid=(()=>{
   if(!result.ok)return false;
   fiaJourney=result.state;flags=result.flags;progression.points+=result.rewards.points;awardXP(result.rewards.xp);persist();updateHUD();return true;
  }
- function clearAttempt(){attempt=null;warning=null;impact=null;attackClock=0;pattern=0;engaged=false;recovery=0;headX=10250;headY=0;hitCooldowns.clear();manifestationHP.clear();serial++;}
+ function clearAttempt(){attempt=null;warning=null;impact=null;attackClock=0;pattern=0;engaged=false;recovery=collapseClock=0;headX=10250;headY=0;hitCooldowns.clear();manifestationHP.clear();serial++;}
  function setup(){
   clearAttempt();if(!active()||fiaJourney.dragon.run===0||fiaJourney.dragon.clear)return;
   attempt=DragonRaidRules.fresh(fiaJourney.dragon.run);attackClock=2;
@@ -177,6 +177,7 @@ const DragonRaid=(()=>{
  }
  function update(dt){
   if(!active()){if(attempt)clearAttempt();return;}
+  if(attempt?.failed){if(state!=='play'||!Number.isFinite(dt)||dt<=0)return;collapseClock+=dt;if(collapseClock>=.8)revive();return;}
   if(!attempt&&!fiaJourney.dragon.clear){setup();if(!attempt&&DevSession.active){attempt=DragonRaidRules.fresh(1);attempt.test=true;}}
   if(!running()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   if(attempt.phase===1&&!engaged){if(player.x<500)return;engaged=true;}
@@ -184,7 +185,7 @@ const DragonRaid=(()=>{
   for(const [key,value]of hitCooldowns)hitCooldowns.set(key,Math.max(0,value-dt));
   const limits=attempt.phase===1?[engaged?500:0,3500]:attempt.phase===2?[4100,7750]:[8500,12100];
   player.x=clamp(player.x,limits[0],limits[1]-player.w);
-  if(attempt.failed){revive();return;}
+  if(attempt.failed){collapseClock=0;retireAttack();updateHUD();return;}
   if(attempt.phase===2&&pointNear(level.headPoint,90,100)){const before=attempt.phase;attempt=DragonRaidRules.reachHead(attempt);if(test)attempt.test=true;changePhase(before);}
   if(attempt.phase===3){
    if(attempt.stance!==old.stance)retireAttack();
@@ -231,5 +232,5 @@ const DragonRaid=(()=>{
   if(attempt.phase===2)return {hp:targets().reduce((sum,t)=>sum+t.hp,0),maxHp:3*DragonRaidRules.tuning.tumorHp+36};
   return {hp:attempt.hp,maxHp:DragonRaidRules.tuning.maxHp};
  }
- return Object.freeze({active,running,locked:()=>running()&&engaged,begin,resume,setup,menu,context,interact,respawn,hit,update,hud,health,objective,questRoute,questPoint,questMarker,talk,exitPoint,replay,clear:clearAttempt,targets,frontGeometry,cameraTargetY,get current(){return attempt;},get warning(){return warning;},get impact(){return impact;},get head(){return {x:headX,y:headY,box:headBox()};},get attackState(){return warning?'windup':impact?'strike':recovery>0?'recover':'wait';}});
+ return Object.freeze({active,running,locked:()=>active()&&!!attempt&&!attempt.won&&engaged,begin,resume,setup,menu,context,interact,respawn,hit,update,hud,health,objective,questRoute,questPoint,questMarker,talk,exitPoint,replay,clear:clearAttempt,targets,frontGeometry,cameraTargetY,get collapseProgress(){return clamp(collapseClock/.8,0,1);},get current(){return attempt;},get warning(){return warning;},get impact(){return impact;},get head(){return {x:headX,y:headY,box:headBox()};},get attackState(){return warning?'windup':impact?'strike':recovery>0?'recover':'wait';}});
 })();

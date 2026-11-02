@@ -1,0 +1,1592 @@
+{
+  "npcs": {
+    "haru": {
+      "name": "Haru",
+      "role": "father",
+      "paletteGroup": "npc.haru"
+    },
+    "daichi": {
+      "name": "Daichi",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.daichi"
+    },
+    "natsu": {
+      "name": "Natsu",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.natsu"
+    },
+    "sora": {
+      "name": "Sora",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.sora"
+    },
+    "akash": {
+      "name": "Akash",
+      "role": "merchant",
+      "paletteGroup": "npc.camp.akash"
+    },
+    "smith": {
+      "name": "Smith",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.smith"
+    },
+    "herbalist": {
+      "name": "Herbalist",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.herbalist"
+    },
+    "enchanter": {
+      "name": "Enchanter",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.enchanter"
+    },
+    "mayor": {
+      "name": "Mayor",
+      "role": "camp-survivor",
+      "paletteGroup": "npc.camp.mayor"
+    }
+  },
+  "paletteGroups": {
+    "npc.haru": {
+      "source": "assets/images/npcs/haru-elder-v1.png",
+      "frameMetadata": "HannahArt.haru",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c4651",
+            "coveragePercent": 11.1986
+          },
+          {
+            "hex": "#fde3c6",
+            "coveragePercent": 9.2094
+          },
+          {
+            "hex": "#a46a45",
+            "coveragePercent": 7.9935
+          },
+          {
+            "hex": "#3b353d",
+            "coveragePercent": 7.7608
+          },
+          {
+            "hex": "#262229",
+            "coveragePercent": 7.5132
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 6.9162
+          },
+          {
+            "hex": "#875335",
+            "coveragePercent": 6.7254
+          },
+          {
+            "hex": "#b9845c",
+            "coveragePercent": 6.2364
+          },
+          {
+            "hex": "#d7a276",
+            "coveragePercent": 6.021
+          },
+          {
+            "hex": "#663e28",
+            "coveragePercent": 5.8747
+          },
+          {
+            "hex": "#f6d0aa",
+            "coveragePercent": 4.8643
+          },
+          {
+            "hex": "#e9bb90",
+            "coveragePercent": 4.5862
+          },
+          {
+            "hex": "#1d1313",
+            "coveragePercent": 4.5265
+          },
+          {
+            "hex": "#492817",
+            "coveragePercent": 3.804
+          },
+          {
+            "hex": "#da9053",
+            "coveragePercent": 3.5596
+          },
+          {
+            "hex": "#695754",
+            "coveragePercent": 3.2102
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5736",
+            "coveragePercent": 23.1809
+          },
+          {
+            "hex": "#a66942",
+            "coveragePercent": 21.818
+          },
+          {
+            "hex": "#b47d55",
+            "coveragePercent": 20.0596
+          },
+          {
+            "hex": "#cf8c57",
+            "coveragePercent": 17.5158
+          },
+          {
+            "hex": "#df9f66",
+            "coveragePercent": 11.9446
+          },
+          {
+            "hex": "#eeb277",
+            "coveragePercent": 5.4812
+          }
+        ],
+        "visibleSamples": 782711,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.camp.daichi": {
+      "source": "assets/images/npcs/daichi-v1.png",
+      "frameMetadata": "ART_CAMP.daichi",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdead0",
+            "coveragePercent": 16.7146
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 13.408
+          },
+          {
+            "hex": "#af7450",
+            "coveragePercent": 9.2144
+          },
+          {
+            "hex": "#313656",
+            "coveragePercent": 8.1032
+          },
+          {
+            "hex": "#cb824e",
+            "coveragePercent": 7.2235
+          },
+          {
+            "hex": "#1b1f36",
+            "coveragePercent": 6.1874
+          },
+          {
+            "hex": "#bd8d6e",
+            "coveragePercent": 5.5728
+          },
+          {
+            "hex": "#975b38",
+            "coveragePercent": 5.2583
+          },
+          {
+            "hex": "#414668",
+            "coveragePercent": 5.2497
+          },
+          {
+            "hex": "#e6b691",
+            "coveragePercent": 5.1566
+          },
+          {
+            "hex": "#6f3f27",
+            "coveragePercent": 4.9193
+          },
+          {
+            "hex": "#f3cba6",
+            "coveragePercent": 4.3033
+          },
+          {
+            "hex": "#e1a16c",
+            "coveragePercent": 3.9555
+          },
+          {
+            "hex": "#422214",
+            "coveragePercent": 3.4963
+          },
+          {
+            "hex": "#786e73",
+            "coveragePercent": 0.8758
+          },
+          {
+            "hex": "#fcf8f1",
+            "coveragePercent": 0.3611
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b77d56",
+            "coveragePercent": 23.0421
+          },
+          {
+            "hex": "#a66943",
+            "coveragePercent": 22.1758
+          },
+          {
+            "hex": "#d2905e",
+            "coveragePercent": 17.1616
+          },
+          {
+            "hex": "#ca7b45",
+            "coveragePercent": 16.0863
+          },
+          {
+            "hex": "#90512f",
+            "coveragePercent": 12.0579
+          },
+          {
+            "hex": "#edac71",
+            "coveragePercent": 9.4763
+          }
+        ],
+        "visibleSamples": 841059,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.camp.natsu": {
+      "source": "assets/images/npcs/natsu-v1.png",
+      "frameMetadata": "ART_CAMP.natsu",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdecd0",
+            "coveragePercent": 16.9653
+          },
+          {
+            "hex": "#fa9540",
+            "coveragePercent": 11.9519
+          },
+          {
+            "hex": "#e25f41",
+            "coveragePercent": 7.6039
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.438
+          },
+          {
+            "hex": "#97351f",
+            "coveragePercent": 6.5273
+          },
+          {
+            "hex": "#f2bb94",
+            "coveragePercent": 6.1794
+          },
+          {
+            "hex": "#c44b2c",
+            "coveragePercent": 6.0108
+          },
+          {
+            "hex": "#454166",
+            "coveragePercent": 5.5753
+          },
+          {
+            "hex": "#282543",
+            "coveragePercent": 5.3882
+          },
+          {
+            "hex": "#fbab5d",
+            "coveragePercent": 5.131
+          },
+          {
+            "hex": "#fad4af",
+            "coveragePercent": 4.9613
+          },
+          {
+            "hex": "#331007",
+            "coveragePercent": 4.0519
+          },
+          {
+            "hex": "#672416",
+            "coveragePercent": 4.0388
+          },
+          {
+            "hex": "#e17024",
+            "coveragePercent": 3.9766
+          },
+          {
+            "hex": "#c08b6e",
+            "coveragePercent": 2.1288
+          },
+          {
+            "hex": "#70657e",
+            "coveragePercent": 2.0715
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fa9540",
+            "coveragePercent": 28.1442
+          },
+          {
+            "hex": "#e36a3b",
+            "coveragePercent": 21.6754
+          },
+          {
+            "hex": "#cc512e",
+            "coveragePercent": 19.146
+          },
+          {
+            "hex": "#9a3620",
+            "coveragePercent": 16.5353
+          },
+          {
+            "hex": "#f8ab62",
+            "coveragePercent": 14.4676
+          },
+          {
+            "hex": "#464e85",
+            "coveragePercent": 0.0314
+          }
+        ],
+        "visibleSamples": 772037,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.camp.sora": {
+      "source": "assets/images/npcs/sora-v1.png",
+      "frameMetadata": "ART_CAMP.sora",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf0d6",
+            "coveragePercent": 18.5986
+          },
+          {
+            "hex": "#fbbb67",
+            "coveragePercent": 12.0212
+          },
+          {
+            "hex": "#fcc779",
+            "coveragePercent": 11.5977
+          },
+          {
+            "hex": "#f3cca8",
+            "coveragePercent": 8.9714
+          },
+          {
+            "hex": "#f4a652",
+            "coveragePercent": 5.8526
+          },
+          {
+            "hex": "#280c04",
+            "coveragePercent": 5.5266
+          },
+          {
+            "hex": "#9d8e89",
+            "coveragePercent": 4.8831
+          },
+          {
+            "hex": "#c2ab98",
+            "coveragePercent": 4.6083
+          },
+          {
+            "hex": "#e28d40",
+            "coveragePercent": 4.5855
+          },
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 3.9688
+          },
+          {
+            "hex": "#9e5621",
+            "coveragePercent": 3.8381
+          },
+          {
+            "hex": "#c17130",
+            "coveragePercent": 3.7906
+          },
+          {
+            "hex": "#70676c",
+            "coveragePercent": 3.4049
+          },
+          {
+            "hex": "#7a3b13",
+            "coveragePercent": 3.1275
+          },
+          {
+            "hex": "#502009",
+            "coveragePercent": 3.0215
+          },
+          {
+            "hex": "#443f49",
+            "coveragePercent": 2.2038
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fcc574",
+            "coveragePercent": 40.1784
+          },
+          {
+            "hex": "#f9b45f",
+            "coveragePercent": 20.3456
+          },
+          {
+            "hex": "#ed9b4a",
+            "coveragePercent": 13.9922
+          },
+          {
+            "hex": "#d37f38",
+            "coveragePercent": 9.125
+          },
+          {
+            "hex": "#b16529",
+            "coveragePercent": 8.5707
+          },
+          {
+            "hex": "#924b1a",
+            "coveragePercent": 7.7881
+          }
+        ],
+        "visibleSamples": 820201,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.camp.akash": {
+      "source": "assets/images/npcs/akash-v1.png",
+      "frameMetadata": "ART_CAMP.akash",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070403",
+            "coveragePercent": 15.527
+          },
+          {
+            "hex": "#3c4464",
+            "coveragePercent": 9.9473
+          },
+          {
+            "hex": "#293350",
+            "coveragePercent": 8.5359
+          },
+          {
+            "hex": "#cf7838",
+            "coveragePercent": 6.8826
+          },
+          {
+            "hex": "#161b2c",
+            "coveragePercent": 6.3703
+          },
+          {
+            "hex": "#612f15",
+            "coveragePercent": 6.1065
+          },
+          {
+            "hex": "#8f603d",
+            "coveragePercent": 6.1013
+          },
+          {
+            "hex": "#893c15",
+            "coveragePercent": 5.6291
+          },
+          {
+            "hex": "#39180a",
+            "coveragePercent": 5.4096
+          },
+          {
+            "hex": "#f2631a",
+            "coveragePercent": 5.3212
+          },
+          {
+            "hex": "#ebae6b",
+            "coveragePercent": 5.2825
+          },
+          {
+            "hex": "#f8ca8a",
+            "coveragePercent": 5.0744
+          },
+          {
+            "hex": "#be4a15",
+            "coveragePercent": 4.5042
+          },
+          {
+            "hex": "#be8a5a",
+            "coveragePercent": 4.0456
+          },
+          {
+            "hex": "#f5953d",
+            "coveragePercent": 3.1973
+          },
+          {
+            "hex": "#fce2ab",
+            "coveragePercent": 2.0655
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e36b26",
+            "coveragePercent": 30.9797
+          },
+          {
+            "hex": "#d99251",
+            "coveragePercent": 18.8909
+          },
+          {
+            "hex": "#a13f12",
+            "coveragePercent": 17.4426
+          },
+          {
+            "hex": "#9e673b",
+            "coveragePercent": 16.8811
+          },
+          {
+            "hex": "#f3b970",
+            "coveragePercent": 15.5504
+          },
+          {
+            "hex": "#395286",
+            "coveragePercent": 0.2553
+          }
+        ],
+        "visibleSamples": 633080,
+        "dominantCoveragePercent": 100.0003
+      }
+    },
+    "npc.camp.smith": {
+      "source": "assets/images/npcs/camp-specialists-v1.png",
+      "frameMetadata": "ART_CAMP.smith",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0505",
+            "coveragePercent": 13.2536
+          },
+          {
+            "hex": "#a45c32",
+            "coveragePercent": 11.4401
+          },
+          {
+            "hex": "#7f4627",
+            "coveragePercent": 9.6015
+          },
+          {
+            "hex": "#fce2b8",
+            "coveragePercent": 8.6152
+          },
+          {
+            "hex": "#30150c",
+            "coveragePercent": 8.5615
+          },
+          {
+            "hex": "#5d2b13",
+            "coveragePercent": 7.8083
+          },
+          {
+            "hex": "#c27440",
+            "coveragePercent": 6.3732
+          },
+          {
+            "hex": "#3f2e26",
+            "coveragePercent": 5.5597
+          },
+          {
+            "hex": "#f19c4e",
+            "coveragePercent": 5.522
+          },
+          {
+            "hex": "#384759",
+            "coveragePercent": 4.9313
+          },
+          {
+            "hex": "#eabb8a",
+            "coveragePercent": 4.5023
+          },
+          {
+            "hex": "#132335",
+            "coveragePercent": 4.2848
+          },
+          {
+            "hex": "#897165",
+            "coveragePercent": 3.2955
+          },
+          {
+            "hex": "#e32218",
+            "coveragePercent": 2.5967
+          },
+          {
+            "hex": "#e36f26",
+            "coveragePercent": 2.2304
+          },
+          {
+            "hex": "#a20d09",
+            "coveragePercent": 1.4237
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95512b",
+            "coveragePercent": 32.3462
+          },
+          {
+            "hex": "#b86a38",
+            "coveragePercent": 29.6744
+          },
+          {
+            "hex": "#e98d41",
+            "coveragePercent": 17.1926
+          },
+          {
+            "hex": "#f7b36a",
+            "coveragePercent": 9.0001
+          },
+          {
+            "hex": "#e62919",
+            "coveragePercent": 7.521
+          },
+          {
+            "hex": "#aa0f0a",
+            "coveragePercent": 4.2657
+          }
+        ],
+        "visibleSamples": 166758,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.camp.herbalist": {
+      "source": "assets/images/npcs/camp-specialists-v1.png",
+      "frameMetadata": "ART_CAMP.herbalist",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#100803",
+            "coveragePercent": 12.6958
+          },
+          {
+            "hex": "#391e09",
+            "coveragePercent": 11.867
+          },
+          {
+            "hex": "#fcebc8",
+            "coveragePercent": 8.971
+          },
+          {
+            "hex": "#f6a842",
+            "coveragePercent": 8.5622
+          },
+          {
+            "hex": "#6a3c11",
+            "coveragePercent": 8.2206
+          },
+          {
+            "hex": "#f3b772",
+            "coveragePercent": 7.268
+          },
+          {
+            "hex": "#f8d1a0",
+            "coveragePercent": 6.9931
+          },
+          {
+            "hex": "#787142",
+            "coveragePercent": 6.8722
+          },
+          {
+            "hex": "#414123",
+            "coveragePercent": 6.1926
+          },
+          {
+            "hex": "#c28850",
+            "coveragePercent": 5.0368
+          },
+          {
+            "hex": "#dc7f1b",
+            "coveragePercent": 4.8235
+          },
+          {
+            "hex": "#9d582d",
+            "coveragePercent": 4.0472
+          },
+          {
+            "hex": "#a05f0a",
+            "coveragePercent": 3.791
+          },
+          {
+            "hex": "#e3200f",
+            "coveragePercent": 1.9548
+          },
+          {
+            "hex": "#8b0e06",
+            "coveragePercent": 1.4565
+          },
+          {
+            "hex": "#fbf5e4",
+            "coveragePercent": 1.2477
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f2a342",
+            "coveragePercent": 26.9265
+          },
+          {
+            "hex": "#f5b86e",
+            "coveragePercent": 18.9571
+          },
+          {
+            "hex": "#964d17",
+            "coveragePercent": 18.0346
+          },
+          {
+            "hex": "#ab7a40",
+            "coveragePercent": 15.874
+          },
+          {
+            "hex": "#d67a18",
+            "coveragePercent": 13.7857
+          },
+          {
+            "hex": "#d61b0d",
+            "coveragePercent": 6.422
+          }
+        ],
+        "visibleSamples": 125108,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.camp.enchanter": {
+      "source": "assets/images/npcs/camp-specialists-v1.png",
+      "frameMetadata": "ART_CAMP.enchanter",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0d0305",
+            "coveragePercent": 11.1348
+          },
+          {
+            "hex": "#301114",
+            "coveragePercent": 9.8653
+          },
+          {
+            "hex": "#fcedd2",
+            "coveragePercent": 9.1606
+          },
+          {
+            "hex": "#f9c899",
+            "coveragePercent": 8.7812
+          },
+          {
+            "hex": "#fbddb7",
+            "coveragePercent": 8.624
+          },
+          {
+            "hex": "#531c2f",
+            "coveragePercent": 8.0419
+          },
+          {
+            "hex": "#812b47",
+            "coveragePercent": 7.157
+          },
+          {
+            "hex": "#eba67b",
+            "coveragePercent": 6.7524
+          },
+          {
+            "hex": "#c97667",
+            "coveragePercent": 6.3433
+          },
+          {
+            "hex": "#ab4456",
+            "coveragePercent": 5.1177
+          },
+          {
+            "hex": "#794224",
+            "coveragePercent": 4.6082
+          },
+          {
+            "hex": "#542710",
+            "coveragePercent": 4.2254
+          },
+          {
+            "hex": "#ad6530",
+            "coveragePercent": 3.599
+          },
+          {
+            "hex": "#8b6050",
+            "coveragePercent": 2.7647
+          },
+          {
+            "hex": "#e79445",
+            "coveragePercent": 2.5023
+          },
+          {
+            "hex": "#af559f",
+            "coveragePercent": 1.3223
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95354d",
+            "coveragePercent": 24.2839
+          },
+          {
+            "hex": "#bd6058",
+            "coveragePercent": 21.2348
+          },
+          {
+            "hex": "#df8a58",
+            "coveragePercent": 18.3955
+          },
+          {
+            "hex": "#9b572a",
+            "coveragePercent": 16.6453
+          },
+          {
+            "hex": "#f4b275",
+            "coveragePercent": 15.3259
+          },
+          {
+            "hex": "#ab4f9b",
+            "coveragePercent": 4.1146
+          }
+        ],
+        "visibleSamples": 145718,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.camp.mayor": {
+      "source": "assets/images/npcs/camp-specialists-v1.png",
+      "frameMetadata": "ART_CAMP.mayor",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2e4a4b",
+            "coveragePercent": 14.055
+          },
+          {
+            "hex": "#654d3e",
+            "coveragePercent": 10.7613
+          },
+          {
+            "hex": "#fceedc",
+            "coveragePercent": 9.5526
+          },
+          {
+            "hex": "#080607",
+            "coveragePercent": 9.1177
+          },
+          {
+            "hex": "#153338",
+            "coveragePercent": 7.8792
+          },
+          {
+            "hex": "#8e6743",
+            "coveragePercent": 5.5829
+          },
+          {
+            "hex": "#ea8e45",
+            "coveragePercent": 5.474
+          },
+          {
+            "hex": "#f9d6af",
+            "coveragePercent": 5.4432
+          },
+          {
+            "hex": "#493327",
+            "coveragePercent": 5.2245
+          },
+          {
+            "hex": "#2d1a13",
+            "coveragePercent": 5.1606
+          },
+          {
+            "hex": "#082027",
+            "coveragePercent": 5.0501
+          },
+          {
+            "hex": "#b48653",
+            "coveragePercent": 4.6636
+          },
+          {
+            "hex": "#e4a664",
+            "coveragePercent": 4.0946
+          },
+          {
+            "hex": "#f1bd88",
+            "coveragePercent": 3.7667
+          },
+          {
+            "hex": "#c7682a",
+            "coveragePercent": 2.6034
+          },
+          {
+            "hex": "#883f14",
+            "coveragePercent": 1.5707
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#eb9148",
+            "coveragePercent": 24.3
+          },
+          {
+            "hex": "#966840",
+            "coveragePercent": 20.7275
+          },
+          {
+            "hex": "#efb36e",
+            "coveragePercent": 19.1813
+          },
+          {
+            "hex": "#be8a52",
+            "coveragePercent": 17.9719
+          },
+          {
+            "hex": "#ce6e2f",
+            "coveragePercent": 11.6407
+          },
+          {
+            "hex": "#9e4916",
+            "coveragePercent": 6.1785
+          }
+        ],
+        "visibleSamples": 128270,
+        "dominantCoveragePercent": 100.0001
+      }
+    }
+  },
+  "assets": {
+    "assets/images/npcs/akash-v1.png": {
+      "sha256": "5db998cf73a281a7013e9c4afe607cc10ea3d3a049ba61bcddbe1a3043ea0b63",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "akash"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070403",
+            "coveragePercent": 15.527
+          },
+          {
+            "hex": "#3c4464",
+            "coveragePercent": 9.9473
+          },
+          {
+            "hex": "#293350",
+            "coveragePercent": 8.5359
+          },
+          {
+            "hex": "#cf7838",
+            "coveragePercent": 6.8826
+          },
+          {
+            "hex": "#161b2c",
+            "coveragePercent": 6.3703
+          },
+          {
+            "hex": "#612f15",
+            "coveragePercent": 6.1065
+          },
+          {
+            "hex": "#8f603d",
+            "coveragePercent": 6.1013
+          },
+          {
+            "hex": "#893c15",
+            "coveragePercent": 5.6291
+          },
+          {
+            "hex": "#39180a",
+            "coveragePercent": 5.4096
+          },
+          {
+            "hex": "#f2631a",
+            "coveragePercent": 5.3212
+          },
+          {
+            "hex": "#ebae6b",
+            "coveragePercent": 5.2825
+          },
+          {
+            "hex": "#f8ca8a",
+            "coveragePercent": 5.0744
+          },
+          {
+            "hex": "#be4a15",
+            "coveragePercent": 4.5042
+          },
+          {
+            "hex": "#be8a5a",
+            "coveragePercent": 4.0456
+          },
+          {
+            "hex": "#f5953d",
+            "coveragePercent": 3.1973
+          },
+          {
+            "hex": "#fce2ab",
+            "coveragePercent": 2.0655
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e36b26",
+            "coveragePercent": 30.9797
+          },
+          {
+            "hex": "#d99251",
+            "coveragePercent": 18.8909
+          },
+          {
+            "hex": "#a13f12",
+            "coveragePercent": 17.4426
+          },
+          {
+            "hex": "#9e673b",
+            "coveragePercent": 16.8811
+          },
+          {
+            "hex": "#f3b970",
+            "coveragePercent": 15.5504
+          },
+          {
+            "hex": "#395286",
+            "coveragePercent": 0.2553
+          }
+        ],
+        "visibleSamples": 633080,
+        "dominantCoveragePercent": 100.0003
+      }
+    },
+    "assets/images/npcs/camp-specialists-v1.png": {
+      "sha256": "5c634587aa5e51ca0e34c0496b703e84aae1bdc43eec53001f4c5da04e2b24f7",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "campSpecialists"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0605",
+            "coveragePercent": 11.6734
+          },
+          {
+            "hex": "#522c1e",
+            "coveragePercent": 9.3755
+          },
+          {
+            "hex": "#32170f",
+            "coveragePercent": 9.2477
+          },
+          {
+            "hex": "#a35c38",
+            "coveragePercent": 8.1219
+          },
+          {
+            "hex": "#fad7ab",
+            "coveragePercent": 8.0512
+          },
+          {
+            "hex": "#fcecd2",
+            "coveragePercent": 7.8572
+          },
+          {
+            "hex": "#803f27",
+            "coveragePercent": 7.1151
+          },
+          {
+            "hex": "#f09e4b",
+            "coveragePercent": 6.1703
+          },
+          {
+            "hex": "#f0b680",
+            "coveragePercent": 5.9699
+          },
+          {
+            "hex": "#6e5947",
+            "coveragePercent": 5.7181
+          },
+          {
+            "hex": "#2f474d",
+            "coveragePercent": 5.1529
+          },
+          {
+            "hex": "#cf7730",
+            "coveragePercent": 4.9594
+          },
+          {
+            "hex": "#ba7c69",
+            "coveragePercent": 4.279
+          },
+          {
+            "hex": "#122931",
+            "coveragePercent": 4.0362
+          },
+          {
+            "hex": "#e02414",
+            "coveragePercent": 1.3682
+          },
+          {
+            "hex": "#8e1207",
+            "coveragePercent": 0.9039
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b06c37",
+            "coveragePercent": 24.3775
+          },
+          {
+            "hex": "#91482c",
+            "coveragePercent": 21.8593
+          },
+          {
+            "hex": "#e38d3f",
+            "coveragePercent": 21.2493
+          },
+          {
+            "hex": "#f3b068",
+            "coveragePercent": 19.8339
+          },
+          {
+            "hex": "#b85668",
+            "coveragePercent": 7.0466
+          },
+          {
+            "hex": "#d42011",
+            "coveragePercent": 5.6333
+          }
+        ],
+        "visibleSamples": 565854,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/npcs/daichi-v1.png": {
+      "sha256": "ccba46b91133c2905c2550ee3bad4ba1c42af1aca7fa254b2533fff2d490ab3e",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "campDaichi"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdead0",
+            "coveragePercent": 16.7146
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 13.408
+          },
+          {
+            "hex": "#af7450",
+            "coveragePercent": 9.2144
+          },
+          {
+            "hex": "#313656",
+            "coveragePercent": 8.1032
+          },
+          {
+            "hex": "#cb824e",
+            "coveragePercent": 7.2235
+          },
+          {
+            "hex": "#1b1f36",
+            "coveragePercent": 6.1874
+          },
+          {
+            "hex": "#bd8d6e",
+            "coveragePercent": 5.5728
+          },
+          {
+            "hex": "#975b38",
+            "coveragePercent": 5.2583
+          },
+          {
+            "hex": "#414668",
+            "coveragePercent": 5.2497
+          },
+          {
+            "hex": "#e6b691",
+            "coveragePercent": 5.1566
+          },
+          {
+            "hex": "#6f3f27",
+            "coveragePercent": 4.9193
+          },
+          {
+            "hex": "#f3cba6",
+            "coveragePercent": 4.3033
+          },
+          {
+            "hex": "#e1a16c",
+            "coveragePercent": 3.9555
+          },
+          {
+            "hex": "#422214",
+            "coveragePercent": 3.4963
+          },
+          {
+            "hex": "#786e73",
+            "coveragePercent": 0.8758
+          },
+          {
+            "hex": "#fcf8f1",
+            "coveragePercent": 0.3611
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b77d56",
+            "coveragePercent": 23.0421
+          },
+          {
+            "hex": "#a66943",
+            "coveragePercent": 22.1758
+          },
+          {
+            "hex": "#d2905e",
+            "coveragePercent": 17.1616
+          },
+          {
+            "hex": "#ca7b45",
+            "coveragePercent": 16.0863
+          },
+          {
+            "hex": "#90512f",
+            "coveragePercent": 12.0579
+          },
+          {
+            "hex": "#edac71",
+            "coveragePercent": 9.4763
+          }
+        ],
+        "visibleSamples": 841059,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/npcs/haru-elder-v1.png": {
+      "sha256": "dbb46382c498470fdb5c9e39fdb4fe983131b483c79a7089ac4046884c1f6c97",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "haruElder"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c4651",
+            "coveragePercent": 11.1986
+          },
+          {
+            "hex": "#fde3c6",
+            "coveragePercent": 9.2094
+          },
+          {
+            "hex": "#a46a45",
+            "coveragePercent": 7.9935
+          },
+          {
+            "hex": "#3b353d",
+            "coveragePercent": 7.7608
+          },
+          {
+            "hex": "#262229",
+            "coveragePercent": 7.5132
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 6.9162
+          },
+          {
+            "hex": "#875335",
+            "coveragePercent": 6.7254
+          },
+          {
+            "hex": "#b9845c",
+            "coveragePercent": 6.2364
+          },
+          {
+            "hex": "#d7a276",
+            "coveragePercent": 6.021
+          },
+          {
+            "hex": "#663e28",
+            "coveragePercent": 5.8747
+          },
+          {
+            "hex": "#f6d0aa",
+            "coveragePercent": 4.8643
+          },
+          {
+            "hex": "#e9bb90",
+            "coveragePercent": 4.5862
+          },
+          {
+            "hex": "#1d1313",
+            "coveragePercent": 4.5265
+          },
+          {
+            "hex": "#492817",
+            "coveragePercent": 3.804
+          },
+          {
+            "hex": "#da9053",
+            "coveragePercent": 3.5596
+          },
+          {
+            "hex": "#695754",
+            "coveragePercent": 3.2102
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5736",
+            "coveragePercent": 23.1809
+          },
+          {
+            "hex": "#a66942",
+            "coveragePercent": 21.818
+          },
+          {
+            "hex": "#b47d55",
+            "coveragePercent": 20.0596
+          },
+          {
+            "hex": "#cf8c57",
+            "coveragePercent": 17.5158
+          },
+          {
+            "hex": "#df9f66",
+            "coveragePercent": 11.9446
+          },
+          {
+            "hex": "#eeb277",
+            "coveragePercent": 5.4812
+          }
+        ],
+        "visibleSamples": 782711,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/npcs/natsu-v1.png": {
+      "sha256": "87536d53f74830c41cb6fcda8e3a75a9912c5893971897d4293e738b24027c44",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "campNatsu"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdecd0",
+            "coveragePercent": 16.9653
+          },
+          {
+            "hex": "#fa9540",
+            "coveragePercent": 11.9519
+          },
+          {
+            "hex": "#e25f41",
+            "coveragePercent": 7.6039
+          },
+          {
+            "hex": "#0d0507",
+            "coveragePercent": 7.438
+          },
+          {
+            "hex": "#97351f",
+            "coveragePercent": 6.5273
+          },
+          {
+            "hex": "#f2bb94",
+            "coveragePercent": 6.1794
+          },
+          {
+            "hex": "#c44b2c",
+            "coveragePercent": 6.0108
+          },
+          {
+            "hex": "#454166",
+            "coveragePercent": 5.5753
+          },
+          {
+            "hex": "#282543",
+            "coveragePercent": 5.3882
+          },
+          {
+            "hex": "#fbab5d",
+            "coveragePercent": 5.131
+          },
+          {
+            "hex": "#fad4af",
+            "coveragePercent": 4.9613
+          },
+          {
+            "hex": "#331007",
+            "coveragePercent": 4.0519
+          },
+          {
+            "hex": "#672416",
+            "coveragePercent": 4.0388
+          },
+          {
+            "hex": "#e17024",
+            "coveragePercent": 3.9766
+          },
+          {
+            "hex": "#c08b6e",
+            "coveragePercent": 2.1288
+          },
+          {
+            "hex": "#70657e",
+            "coveragePercent": 2.0715
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fa9540",
+            "coveragePercent": 28.1442
+          },
+          {
+            "hex": "#e36a3b",
+            "coveragePercent": 21.6754
+          },
+          {
+            "hex": "#cc512e",
+            "coveragePercent": 19.146
+          },
+          {
+            "hex": "#9a3620",
+            "coveragePercent": 16.5353
+          },
+          {
+            "hex": "#f8ab62",
+            "coveragePercent": 14.4676
+          },
+          {
+            "hex": "#464e85",
+            "coveragePercent": 0.0314
+          }
+        ],
+        "visibleSamples": 772037,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/npcs/sora-v1.png": {
+      "sha256": "87a4395c2c3481ad024e07e30067cc1c049a85d7ccaf3941da812c0502614ac6",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "campSora"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf0d6",
+            "coveragePercent": 18.5986
+          },
+          {
+            "hex": "#fbbb67",
+            "coveragePercent": 12.0212
+          },
+          {
+            "hex": "#fcc779",
+            "coveragePercent": 11.5977
+          },
+          {
+            "hex": "#f3cca8",
+            "coveragePercent": 8.9714
+          },
+          {
+            "hex": "#f4a652",
+            "coveragePercent": 5.8526
+          },
+          {
+            "hex": "#280c04",
+            "coveragePercent": 5.5266
+          },
+          {
+            "hex": "#9d8e89",
+            "coveragePercent": 4.8831
+          },
+          {
+            "hex": "#c2ab98",
+            "coveragePercent": 4.6083
+          },
+          {
+            "hex": "#e28d40",
+            "coveragePercent": 4.5855
+          },
+          {
+            "hex": "#0c0403",
+            "coveragePercent": 3.9688
+          },
+          {
+            "hex": "#9e5621",
+            "coveragePercent": 3.8381
+          },
+          {
+            "hex": "#c17130",
+            "coveragePercent": 3.7906
+          },
+          {
+            "hex": "#70676c",
+            "coveragePercent": 3.4049
+          },
+          {
+            "hex": "#7a3b13",
+            "coveragePercent": 3.1275
+          },
+          {
+            "hex": "#502009",
+            "coveragePercent": 3.0215
+          },
+          {
+            "hex": "#443f49",
+            "coveragePercent": 2.2038
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fcc574",
+            "coveragePercent": 40.1784
+          },
+          {
+            "hex": "#f9b45f",
+            "coveragePercent": 20.3456
+          },
+          {
+            "hex": "#ed9b4a",
+            "coveragePercent": 13.9922
+          },
+          {
+            "hex": "#d37f38",
+            "coveragePercent": 9.125
+          },
+          {
+            "hex": "#b16529",
+            "coveragePercent": 8.5707
+          },
+          {
+            "hex": "#924b1a",
+            "coveragePercent": 7.7881
+          }
+        ],
+        "visibleSamples": 820201,
+        "dominantCoveragePercent": 100.0002
+      }
+    }
+  }
+}

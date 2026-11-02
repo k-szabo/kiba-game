@@ -60,7 +60,7 @@ assert(!run("level.rests.some(r=>r.id==='shadow'||Math.abs(r.y-level.ability.y)<
 assert.equal(run('getContext().type'),'ability');
 press('e');tick();release('e');dismiss();assert(snap().abilities[1],'Removing the redundant shrine removed dash acquisition');
 assert.equal(run('trainingRest()'),undefined,'The removed rest still permits training');
-run('showMap();');assert.equal(elements.get('mapContent').children.find(el=>el.className==='travel-grid').children.length,5,'Map still offers the removed Yomi rest');run('closeMap();');
+run('showMap();');assert.equal(run('travelGrid(realm)').children.length,5,'Map still offers the removed Yomi rest');run('closeMap();');
 run('resetCamera();var shrineDraws=[],originalDrawShrine=drawShrine;drawShrine=(x,y,r,ability)=>shrineDraws.push({x,y,ability});draw();drawShrine=originalDrawShrine;');
 assert.equal(run('shrineDraws.length'),1,'The dash ledge renders an extra shrine');assert(run('shrineDraws[0].ability'));
 console.log('PASS: grounded spawns, continuous protection visibility, frozen pause/interaction poses, velocity-driven air poses, three story paragraphs, no platform overlaps, three intentional sky shrines and strict current-release checkpoint validation.');

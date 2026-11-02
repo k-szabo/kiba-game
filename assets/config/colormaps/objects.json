@@ -1,0 +1,651 @@
+{
+  "objects": {
+    "dungeonBackdrop.0.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-west-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.0.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-center-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.0.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-courtyard-east-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.1.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-crypt-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "dungeonBackdrop.2.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/yomi-fall-thrones-v1.png",
+      "registration": "ART_DUNGEON.backdrops"
+    },
+    "cultDungeonBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-forecourt-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
+    "cultDungeonBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-hall-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
+    "cultDungeonBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/sect-fall-sanctum-v1.png",
+      "registration": "ART_CULT_DUNGEON.backdrops"
+    },
+    "fiaVfx.teleport": {
+      "kind": "spell-vfx",
+      "paletteGroup": "object.fiaVfx.teleport"
+    },
+    "fiaVfx.foxfire": {
+      "kind": "spell-vfx",
+      "paletteGroup": "object.fiaVfx.foxfire"
+    },
+    "fiaVfx.drain": {
+      "kind": "spell-vfx",
+      "paletteGroup": "object.fiaVfx.drain"
+    },
+    "fiaVfx.charm": {
+      "kind": "spell-vfx",
+      "paletteGroup": "object.fiaVfx.charm"
+    },
+    "fiaVfx.shield": {
+      "kind": "spell-vfx",
+      "paletteGroup": "object.fiaVfx.shield"
+    },
+    "dungeonProp.scroll": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.scroll"
+    },
+    "dungeonProp.closedChest": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.closedChest"
+    },
+    "dungeonProp.openChest": {
+      "kind": "dungeon-prop",
+      "paletteGroup": "object.dungeonProp.openChest"
+    },
+    "arenaBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-west-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "arenaBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-center-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "arenaBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/shadow-arena-east-v1.png",
+      "registration": "ART_ARENA.arena"
+    },
+    "fiaChambersBackdrop": {
+      "kind": "background",
+      "asset": "assets/images/backgrounds/fia-chambers-v1.png",
+      "registration": "ART_ARENA.chambers"
+    },
+    "prisonBackdrop.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-west-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonBackdrop.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-center-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonBackdrop.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/zen-prison-east-v1.png",
+      "registration": "ART_PRISON.backdrops"
+    },
+    "prisonTerrain.left": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.left"
+    },
+    "prisonTerrain.middle": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.middle"
+    },
+    "prisonTerrain.right": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.right"
+    },
+    "prisonTerrain.platform": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.platform"
+    },
+    "prisonTerrain.body": {
+      "kind": "terrain",
+      "paletteGroup": "object.prisonTerrain.body"
+    },
+    "samuraiCampPanel.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-west-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDWest",
+        "x": 0,
+        "w": 1620,
+        "sourceGround": 780,
+        "ground": 1000
+      }
+    },
+    "samuraiCampPanel.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-center-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDCenter",
+        "x": 1390,
+        "w": 1620,
+        "sourceGround": 730,
+        "ground": 1080
+      }
+    },
+    "samuraiCampPanel.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/samurai-camp-hd-east-v1.png",
+      "worldRegistration": {
+        "image": "samuraiCampHDEast",
+        "x": 2780,
+        "w": 1620,
+        "sourceGround": 730,
+        "ground": 1000
+      }
+    },
+    "samuraiCampTerrain.left": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.left"
+    },
+    "samuraiCampTerrain.middle": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.middle"
+    },
+    "samuraiCampTerrain.right": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.right"
+    },
+    "samuraiCampTerrain.roof": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.roof"
+    },
+    "samuraiCampTerrain.body": {
+      "kind": "terrain",
+      "paletteGroup": "object.samuraiCampTerrain.body"
+    },
+    "campCedar": {
+      "kind": "scenery",
+      "paletteGroup": "object.campCedar"
+    },
+    "campPanel.0": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-left-v1.png",
+      "worldRegistration": {
+        "x": 0,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "campPanel.1": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-center-v1.png",
+      "worldRegistration": {
+        "x": 880,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "campPanel.2": {
+      "kind": "background-panel",
+      "asset": "assets/images/backgrounds/forest-camp-hd-right-v1.png",
+      "worldRegistration": {
+        "x": 1760,
+        "w": 1040,
+        "groundY": 820
+      }
+    },
+    "shadowAltar": {
+      "kind": "travel-altar",
+      "paletteGroup": "object.shadowAltar",
+      "registration": {
+        "x": 0,
+        "y": 0,
+        "w": 1536,
+        "h": 1024,
+        "anchorX": 768,
+        "anchorY": 1007,
+        "bodyHeight": 1000
+      }
+    },
+    "inventoryKatana": {
+      "kind": "equipment-art",
+      "paletteGroup": "object.inventoryKatana"
+    },
+    "inventorynaginata": {
+      "kind": "equipment-art",
+      "paletteGroup": "object.inventory.naginata"
+    },
+    "inventoryswordShield": {
+      "kind": "equipment-art",
+      "paletteGroup": "object.inventory.swordShield"
+    },
+    "naginataRigid": {
+      "kind": "rigid-weapon-prop",
+      "asset": "assets/images/ui/naginata-rigid-v1.png"
+    },
+    "swordRigid": {
+      "kind": "rigid-weapon-prop",
+      "asset": "assets/images/ui/sword-rigid-v1.png"
+    },
+    "inventoryItem.dragonEyes": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dragonEyes"
+    },
+    "inventoryItem.dragonScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dragonScale"
+    },
+    "inventoryItem.campMasterSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.campMasterSoul"
+    },
+    "inventoryItem.daisyPlush": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.daisyPlush"
+    },
+    "inventoryItem.slayerCrossbow": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.slayerCrossbow"
+    },
+    "inventoryItem.madPriestSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.madPriestSoul"
+    },
+    "inventoryItem.corruptedHymn": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.corruptedHymn"
+    },
+    "inventoryItem.prisonKey": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.prisonKey"
+    },
+    "inventoryItem.phoneCase": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.phoneCase"
+    },
+    "inventoryItem.compass": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.compass"
+    },
+    "inventoryItem.minimap": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.minimap"
+    },
+    "inventoryItem.tea": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.tea"
+    },
+    "inventoryItem.roastMeat": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.roastMeat"
+    },
+    "inventoryItem.oathbreakerSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.oathbreakerSoul"
+    },
+    "inventoryItem.yomiGuardianSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.yomiGuardianSoul"
+    },
+    "inventoryItem.seraphSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.seraphSoul"
+    },
+    "inventoryItem.angelHalo": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.angelHalo"
+    },
+    "inventoryItem.demonHorn": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.demonHorn"
+    },
+    "inventoryItem.councilKey": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.councilKey"
+    },
+    "inventoryItem.eclipseRelic": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.eclipseRelic"
+    },
+    "inventoryItem.serpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.serpentScale"
+    },
+    "inventoryItem.forestHerb": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.forestHerb"
+    },
+    "inventoryItem.healingBrew": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.healingBrew"
+    },
+    "inventoryItem.whiteSerpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.whiteSerpentScale"
+    },
+    "inventoryItem.wingedSerpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.wingedSerpentScale"
+    },
+    "inventoryItem.triuneSerpentTalisman": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.triuneSerpentTalisman"
+    },
+    "inventoryItem.arenaSerpentScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.arenaSerpentScale"
+    },
+    "inventoryItem.councilSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.councilSoul"
+    },
+    "inventoryItem.dungeonSeal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.dungeonSeal"
+    },
+    "inventoryItem.weaponEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.weaponEnhancement"
+    },
+    "inventoryItem.armorEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.armorEnhancement"
+    },
+    "inventoryItem.spiritEnhancement": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.spiritEnhancement"
+    },
+    "inventoryItem.highPriestessSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.highPriestessSoul"
+    },
+    "inventoryItem.priestessTalisman": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.priestessTalisman"
+    },
+    "inventoryItem.roastChicken": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.roastChicken"
+    },
+    "inventoryItem.kitsuneSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.kitsuneSoul"
+    },
+    "inventoryItem.sectSeal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.sectSeal"
+    },
+    "inventoryItem.demonLordSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.demonLordSoul"
+    },
+    "inventoryItem.demonLordHeart": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.demonLordHeart"
+    },
+    "inventoryItem.rawVoidCrystal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.rawVoidCrystal"
+    },
+    "inventoryItem.foxfireKatana": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.foxfireKatana"
+    },
+    "secretWall.angel": {
+      "kind": "scenery",
+      "paletteGroup": "object.secretWall.angel",
+      "registration": {
+        "w": 1024,
+        "h": 1536,
+        "anchorX": 512,
+        "anchorY": 1525,
+        "bodyHeight": 1515
+      }
+    },
+    "secretWall.cult": {
+      "kind": "scenery",
+      "paletteGroup": "object.secretWall.cult",
+      "registration": {
+        "w": 724,
+        "h": 2172,
+        "anchorX": 362,
+        "anchorY": 2158,
+        "bodyHeight": 2150,
+        "material": {
+          "x": 170,
+          "y": 700,
+          "w": 380,
+          "h": 380
+        }
+      }
+    },
+    "dashTrail": {
+      "kind": "movement-effect",
+      "paletteRef": "effect.shadowBolt",
+      "note": "Reuses the original painted shadowBolt palette with fading alpha; no recoloring."
+    },
+    "council.gateClosed": {
+      "kind": "gate",
+      "paletteGroup": "object.council.gateClosed",
+      "registration": {
+        "w": 1254,
+        "h": 1254,
+        "anchorX": 627,
+        "anchorY": 1238,
+        "bodyHeight": 1236,
+        "inkWidth": 1249
+      }
+    },
+    "council.gateOpen": {
+      "kind": "gate",
+      "paletteGroup": "object.council.gateOpen",
+      "registration": {
+        "w": 1254,
+        "h": 1254,
+        "anchorX": 627,
+        "anchorY": 1214,
+        "bodyHeight": 1180,
+        "inkWidth": 1220
+      }
+    },
+    "council.key": {
+      "kind": "quest-item",
+      "paletteGroup": "object.council.key",
+      "registration": {
+        "w": 1024,
+        "h": 1536,
+        "anchorX": 512,
+        "anchorY": 1527,
+        "bodyHeight": 1518
+      }
+    },
+    "council.hall": {
+      "kind": "side-area",
+      "paletteGroup": "object.council.hall",
+      "registration": {
+        "w": 1852,
+        "h": 849,
+        "floorY": 690,
+        "worldFloorY": 820
+      }
+    },
+    "bossFX.lava": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.lava",
+      "registration": {
+        "anchorX": 1086,
+        "anchorY": 75.32
+      }
+    },
+    "bossFX.impact": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.impact",
+      "registration": {
+        "anchorX": 577,
+        "anchorY": 895.36
+      }
+    },
+    "bossFX.fissure": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.fissure",
+      "registration": {
+        "anchorX": 1077,
+        "anchorY": 271.12
+      }
+    },
+    "bossFX.ember": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.ember",
+      "registration": {
+        "anchorX": 1443.2,
+        "anchorY": 332.5
+      }
+    },
+    "bossFX.slashGold": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.slashGold",
+      "registration": {
+        "anchorX": 408,
+        "anchorY": 153
+      }
+    },
+    "bossFX.slashFire": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.slashFire",
+      "registration": {
+        "anchorX": 423,
+        "anchorY": 210
+      }
+    },
+    "bossFX.slashShadow": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.slashShadow",
+      "registration": {
+        "anchorX": 431,
+        "anchorY": 229
+      }
+    },
+    "bossFX.shadowBolt": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.shadowBolt",
+      "registration": {
+        "anchorX": 368,
+        "anchorY": 227
+      }
+    },
+    "bossFX.shadowColumn": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.shadowColumn",
+      "registration": {
+        "anchorX": 258,
+        "anchorY": 816
+      }
+    },
+    "bossFX.portal": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.portal",
+      "registration": {
+        "anchorX": 246,
+        "anchorY": 414
+      }
+    },
+    "holyArrow": {
+      "kind": "spell-effect",
+      "asset": "assets/images/effects/holy-arrow-v1.png",
+      "registration": {
+        "w": 2006,
+        "h": 784,
+        "tipX": 1948,
+        "tipY": 382,
+        "start": 70,
+        "inkHeight": 415
+      }
+    },
+    "holyLance": {
+      "kind": "spell-effect",
+      "asset": "assets/images/effects/holy-lance-v1.png",
+      "registration": {
+        "w": 1024,
+        "h": 1536,
+        "tipX": 508,
+        "tipY": 1419,
+        "start": 45,
+        "inkWidth": 320
+      }
+    },
+    "torii": {
+      "paletteGroup": "object.torii"
+    },
+    "shrine": {
+      "paletteGroup": "object.shrine"
+    },
+    "bell": {
+      "paletteGroup": "object.bell"
+    },
+    "house": {
+      "paletteGroup": "object.house"
+    },
+    "cage": {
+      "paletteGroup": "object.cage"
+    },
+    "skyTorii": {
+      "paletteGroup": "object.skyTorii"
+    },
+    "skyShrine": {
+      "paletteGroup": "object.skyShrine"
+    },
+    "foliage": {
+      "paletteGroup": "object.foliage"
+    },
+    "angelHalo": {
+      "paletteGroup": "object.angelHalo"
+    },
+    "demonHorn": {
+      "paletteGroup": "object.demonHorn"
+    },
+    "terrain.japan.tile0": {
+      "paletteGroup": "terrain.japan.tile0"
+    },
+    "terrain.japan.tile1": {
+      "paletteGroup": "terrain.japan.tile1"
+    },
+    "terrain.japan.tile2": {
+      "paletteGroup": "terrain.japan.tile2"
+    },
+    "terrain.yomi.tile0": {
+      "paletteGroup": "terrain.yomi.tile0"
+    },
+    "terrain.yomi.tile1": {
+      "paletteGroup": "terrain.yomi.tile1"
+    },
+    "terrain.yomi.tile2": {
+      "paletteGroup": "terrain.yomi.tile2"
+    },
+    "terrain.heaven.tile0": {
+      "paletteGroup": "terrain.heaven.tile0"
+    },
+    "terrain.heaven.tile1": {
+      "paletteGroup": "terrain.heaven.tile1"
+    },
+    "terrain.heaven.tile2": {
+      "paletteGroup": "terrain.heaven.tile2"
+    }
+  }
+}

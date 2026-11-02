@@ -624,6 +624,82 @@
           "en": "Dark Kiba follows Hannah’s current silhouette and remains visible throughout her second phase."
         }
       ]
+    },
+    {
+      "version": "0.9.63_fb5ba452",
+      "code": "fb5ba452",
+      "baseVersion": "0.9.63",
+      "slug": "duel-platform-menu-colormap",
+      "summary": {
+        "hu": "Párbajplatformok és főmenü javítása",
+        "en": "Duel platform and main menu fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Párbajban is leugorhatsz a lebegő platformokról a lefelé mozgás és ugrás együttes használatával.",
+          "en": "You can now drop through floating platforms in duels by pressing down and jump together."
+        },
+        {
+          "hu": "A főmenü támogatásgombja a többi kiegészítő gomb mellett jelenik meg.",
+          "en": "The main menu support button now appears beside the other utility buttons."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
+    },
+    {
+      "version": "0.9.63_4f9a5322",
+      "code": "4f9a5322",
+      "baseVersion": "0.9.63",
+      "slug": "dragon-fia-world-relic-fixes",
+      "summary": {
+        "hu": "Sárkányraid és Fia küldetéseinek javításai",
+        "en": "Dragon raid and Fia quest fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A sárkány és a tartóoszlopok a talajhoz igazodnak; az oszlopok idővel megrepednek és egyenként összeomlanak. A repülő sárkány alakja egyben marad.",
+          "en": "The drake and supporting pillars align with the ground; pillars crack over time and collapse one by one. The flying drake’s silhouette stays intact."
+        },
+        {
+          "hu": "Az új árnyékzugi helyszínek járható talaja látható, a hátterek kevésbé nagyítottak, a kapu őrei pedig az alvilági bejáratnál állnak.",
+          "en": "The new Shadow Den locations show solid ground, backgrounds are less enlarged, and the gate guards stand at the underworld entrance."
+        },
+        {
+          "hu": "Fia új küldetéseit felkiáltójel és kérdőjel jelzi; a láncokból való kiszabadulást a Hajnalkard aktuális gombját mutató jelzés segíti.",
+          "en": "Fia’s new quests use exclamation and question marks; a cue showing Dawnblade’s current binding helps you break free of the chains."
+        },
+        {
+          "hu": "A void démon a ténylegesen okozott életerővesztés húszszorosát gyógyulja. A Rókaláng-katana egyedi animációt és frissíthető égési sebzést kapott.",
+          "en": "The Void Demon heals for twenty times the health it actually removes. The Foxfire Katana has unique animations and a refreshing burn effect."
+        }
+      ]
+    },
+    {
+      "version": "0.9.63_3042e400",
+      "code": "3042e400",
+      "baseVersion": "0.9.63",
+      "slug": "travel-atlas-final-fia-spirits",
+      "summary": {
+        "hu": "Áttekinthetőbb utazás és Fia végső próbája",
+        "en": "Clearer travel and Fia’s final trial"
+      },
+      "fixes": [
+        {
+          "hu": "A gyorsutazás rajzolt térképen, birodalmak és területek szerint rendezve mutatja az ismert célpontokat; a dungeonök és raidek külön jelölést kapnak.",
+          "en": "Fast travel presents known destinations on a painted map, grouped by realm and area, with distinct dungeon and raid markers."
+        },
+        {
+          "hu": "A szünetmenü támogatásgombja alaphelyzetben nem kap kiemelést.",
+          "en": "The pause menu’s support button is no longer highlighted by default."
+        },
+        {
+          "hu": "Fia végső rituálés harca sűrűbb támadássorokat és a két udvarhölgy szellemének idézését kapta; a rituálé lassabban emészti fel az életerejét.",
+          "en": "Fia’s final ritual fight features denser attack sequences and summons the two attendants’ spirits; the ritual consumes her health more slowly."
+        }
+      ]
     }
   ],
   "releases": [

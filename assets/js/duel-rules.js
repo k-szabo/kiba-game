@@ -4,24 +4,24 @@ const DuelRules=(()=>{
  const clone=value=>JSON.parse(JSON.stringify(value));
  const freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
  const arenas=freeze([
-  {id:0,realm:0,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:340,y:450,w:180,h:28},{x:760,y:450,w:180,h:28}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:1,realm:1,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:300,y:470,w:160,h:28},{x:820,y:470,w:160,h:28},{x:560,y:345,w:160,h:28}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:2,realm:2,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:320,y:465,w:200,h:28},{x:760,y:465,w:200,h:28},{x:560,y:320,w:160,h:28}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:3,realm:3,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:250,y:460,w:190,h:28},{x:840,y:460,w:190,h:28},{x:545,y:355,w:190,h:28}],spawns:[{x:240,y:551},{x:997,y:551}]}
+  {id:0,realm:0,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:340,y:450,w:180,h:28,drop:true},{x:760,y:450,w:180,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
+  {id:1,realm:1,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:300,y:470,w:160,h:28,drop:true},{x:820,y:470,w:160,h:28,drop:true},{x:560,y:345,w:160,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
+  {id:2,realm:2,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:320,y:465,w:200,h:28,drop:true},{x:760,y:465,w:200,h:28,drop:true},{x:560,y:320,w:160,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
+  {id:3,realm:3,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:250,y:460,w:190,h:28,drop:true},{x:840,y:460,w:190,h:28,drop:true},{x:545,y:355,w:190,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]}
  ]);
- const inputKeys=['move','jump','dash','attack','heavy'];
- const neutral=()=>({move:0,jump:false,dash:false,attack:false,heavy:false});
+ const inputKeys=['move','jump','drop','dash','attack','heavy'];
+ const neutral=()=>({move:0,jump:false,drop:false,dash:false,attack:false,heavy:false});
  const record=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
  const exact=(value,keys)=>record(value)&&Object.keys(value).length===keys.length&&keys.every(key=>Object.hasOwn(value,key));
  const finite=(value,min,max)=>typeof value==='number'&&Number.isFinite(value)&&value>=min&&value<=max;
  function validInput(value){return exact(value,inputKeys)&&[-1,0,1].includes(value.move)&&inputKeys.slice(1).every(key=>typeof value[key]==='boolean');}
- function input(value){return validInput(value)?{move:value.move,jump:value.jump,dash:value.dash,attack:value.attack,heavy:value.heavy}:neutral();}
+ function input(value){return validInput(value)?{move:value.move,jump:value.jump,drop:value.drop,dash:value.dash,attack:value.attack,heavy:value.heavy}:neutral();}
  const bases=freeze({normal:{duration:.42,impact:.16,cooldown:.34,damageScale:.75},heavy:{duration:.9,impact:.38,cooldown:.9,damageScale:1.75}});
  function create({arena=0,weapons=['katana','katana']}={}){
   if(!Number.isInteger(arena)||!arenas[arena]||!Array.isArray(weapons)||weapons.length!==2||!weapons.every(WeaponStyles.valid))throw new TypeError('Invalid duel configuration');
   return {tick:0,arena,winner:null,players:weapons.map((weapon,index)=>({
    ...arenas[arena].spawns[index],w:43,h:69,vx:0,vy:0,face:index?-1:1,weapon,hp:20+WeaponStyles.profile(weapon).health,maxHp:20+WeaponStyles.profile(weapon).health,
-   onGround:true,jumps:0,dashTime:0,dashCooldown:0,inv:0,guardCooldown:0,attackCooldown:0,animationTime:0,attack:null,held:neutral()
+   onGround:true,jumps:0,dropTimer:0,dashTime:0,dashCooldown:0,inv:0,guardCooldown:0,attackCooldown:0,animationTime:0,attack:null,held:neutral()
   }))};
  }
  const overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
@@ -31,10 +31,14 @@ const DuelRules=(()=>{
    if(p.hp<=0)return;
    const control=controls[index],edge=edges[index];
    p.animationTime+=dt;
-   for(const key of ['dashTime','dashCooldown','inv','guardCooldown','attackCooldown'])p[key]=Math.max(0,p[key]-dt);
+   for(const key of ['dropTimer','dashTime','dashCooldown','inv','guardCooldown','attackCooldown'])p[key]=Math.max(0,p[key]-dt);
    if(control.move&&!p.attack&&p.dashTime<=0)p.face=control.move;
    if(edge.dash&&p.dashTime<=0&&p.dashCooldown<=0&&!p.attack){p.dashTime=.16;p.dashCooldown=.8;}
-   if(edge.jump&&p.dashTime<=0&&p.jumps<2){p.vy=-620;p.onGround=false;p.jumps++;}
+   if(edge.jump&&p.dashTime<=0&&p.jumps<2){
+    const support=p.onGround&&arena.platforms.find(platform=>platform.drop&&p.x+p.w>platform.x&&p.x<platform.x+platform.w&&Math.abs(p.y+p.h-platform.y)<.01);
+    if(control.drop&&support){p.dropTimer=.22;p.y+=8;p.vy=100;p.onGround=false;p.jumps=1;}
+    else{p.vy=-620;p.onGround=false;p.jumps++;}
+   }
    if(!p.attack&&p.dashTime<=0&&p.attackCooldown<=0&&(edge.heavy||edge.attack)){
     const kind=edge.heavy?'heavy':'normal',profile=WeaponStyles.attack(p.weapon,bases[kind]);
     p.attack={kind,elapsed:0,duration:profile.duration,impact:profile.impact,face:p.face,hit:false};p.attackCooldown=profile.cooldown;
@@ -49,7 +53,7 @@ const DuelRules=(()=>{
    else{p.vx=control.move*250*(p.attack?.55:1);p.vy=Math.min(1100,p.vy+1800*dt);}
    p.x=Math.max(20,Math.min(arena.width-20-p.w,p.x+p.vx*dt));p.y+=p.vy*dt;p.onGround=false;
    if(p.vy>=0&&p.dashTime<=0){
-    const support=arena.platforms.filter(platform=>p.x+p.w>platform.x&&p.x<platform.x+platform.w&&oldFeet<=platform.y+.01&&p.y+p.h>=platform.y).sort((a,b)=>a.y-b.y)[0];
+    const support=arena.platforms.filter(platform=>!(platform.drop&&p.dropTimer>0)&&p.x+p.w>platform.x&&p.x<platform.x+platform.w&&oldFeet<=platform.y+.01&&p.y+p.h>=platform.y).sort((a,b)=>a.y-b.y)[0];
     if(support){p.y=support.y-p.h;p.vy=0;p.onGround=true;p.jumps=0;}
    }
    if(p.y>arena.fallY)p.hp=0;

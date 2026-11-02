@@ -257,7 +257,7 @@ const Visuals = (() => {
       const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
-      if((level.dungeon||[shadowPrison,shadowDen,shadowArena,fiaChambers].includes(level))&&PrisonArt.terrain(p))continue;
+      if((level.dungeon||[shadowPrison,shadowDen,shadowArena,fiaChambers,fiaRitual,voidForbidden].includes(level))&&PrisonArt.terrain(p))continue;
       if((level===samuraiCamp||level===shadowUnderworld)&&CampArt.terrain(p))continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
       const lift = 0;
@@ -602,6 +602,11 @@ const Visuals = (() => {
     paint(index,fade*(1-mix));if(index+1<frames.length)paint(index+1,fade*mix);
   }
   function momoSlash(x,feet,height,elapsed,face,kind='normal',style=weaponStyle){
+    if(style==='foxfireKatana'){
+      const clip=ART_FOXFIRE[kind],base=SWORD_ATTACKS[kind],progress=clamp(elapsed/base.duration,0,1),impact=base.impact/base.duration;
+      const index=progress<impact*.5?0:progress<impact?1:progress<Math.min(.9,impact+.25)?2:3;
+      frame(clip.image,clip.frames[index],x,feet,height,face);return;
+    }
     const loadout=ART_LOADOUTS[style];
     if(loadout){
       const clip=loadout[kind],duration=SWORD_ATTACKS[kind].duration;

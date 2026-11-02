@@ -1,0 +1,26 @@
+{
+  "tool": "built-in imagegen",
+  "approval": "User approved both concepts, eight spirit key poses and bilingual text in this conversation before production.",
+  "concepts": [
+    "exec-7b101b09-0e2e-4503-ba83-3ad03e01227a.png",
+    "exec-6618d52f-14c8-41f4-a0d6-d15ff95b3eec.png"
+  ],
+  "assets": [
+    {
+      "path": "assets/images/ui/travel-atlas-v1.png",
+      "output": "exec-4b631cdb-d5a8-4bfd-bec7-4458100568a0.png",
+      "prompt": "Production illustrated atlas background, approved parchment Japanese fantasy style. EXACT 2by2 grid FOUR equal rectangular map paintings no border between but each island fully containedwithinitsquarterwithgenerousparchmentmargin. Overall landscape2048x1536. TOPLEFT Japan green bamboo forest, pinkcherry, central windingvalleypath, smalltorii, refugesmalltents, samuraicamp, darksecludedcave, ruinedtemple. TOPRIGHT Yomi volcanic redblack rockyisland lavaflow, ancientcouncilpalace andcrypts. BOTTOMLEFT Heaven floatinggoldenwhitecloudisland, angelictempleterraces, small eastcliffserpentnest. BOTTOMRIGHT ShadowRealm purplegrey ruinedcathedralprison, distantstepziggurat and small concealedthiefrefuge. Cartographic overhead/isometric watercolor and sumiink painting on light warmagedpaper, detailed handpainted readabletopography, meaningfulseparatearchitecture, fantasygameart. Islands fullyisolated by empty parchment allaround, nottouchingpanelbounds. All4panels SAMEvisualweight, eachitsownmap, No connectingroutesbetweenworlds. NO LABELS NO letters NO titles NO iconsoverlay NO frames NO humans NO interface. Clear lowerdetailareas acrossislands for HTML travel markers later. Match approved atlas concept's paper/bamboo/ink aesthetic but thisfile containsonlymapart, interface rendered separately."
+    },
+    {
+      "path": "assets/images/effects/fia-attendant-spirits-v1.png",
+      "output": "exec-88ec67ac-9e04-48f5-88cd-4435d16195c7.png",
+      "prompt": "Repair ONLY sprite cell margin issue. Preserve exact8poses, castdirection, costumes, spiritsdesign, twoarms, colors, style, nativealpha. Output EXACT4columns2rows transparent sprite sheet. EVERY figure including ALLears hairtail flame chains MUST be SMALLER, fit centrally inside itsowncell with at least15%EMPTYTRANSPARENT margin onALL FOUR sides ofeverycell. No hair orears touchingtopedge, no glows touchingneighborcell, no shape crossinganycellboundary. Uniformcharacterbodyheight acrossframes, samefootline. Large transparentgutters. No numbers/text/background/lines. Referencefiguresaretoolargeandclippedtop, redraw zoomedout. Whole8imagesintact.",
+      "references": [
+        "exec-7b101b09-0e2e-4503-ba83-3ad03e01227a.png",
+        "assets/images/npcs/fia-ritual-attendants-v1.png"
+      ],
+      "initialPrompt": "Production sprite sheet based on APPROVED first reference concept, identity second reference. EXACT 4 columns by2rows uniform cells, wide 2048x1024. TRANSPARENT background alpha, no flat backdrop, no text/numbers/guides. Two adult kitsune spirit women. TOP row white/silver hair, ivory/gold kimono, lilac spectralglow. BOTTOM redhair, black/crimson/goldkimono, crimsonvioletglow. Only two foxears and ONEtail each; TWOarms and twohands only. Each character wholebody fits everycell with generous transparentmargin, consistent samebodyheight samefootbaseline samehairandclothes everyframe. Col1 apparition upright hands lowered, col2 hands raised aiming forward to RIGHT (white openhands, red gatheredfire), col3 extend onehand castingRIGHT otherhand nearwaist, col4 dissolve translucent spectral silhouette with brokenchains. Keep all8full silhouettes separated, no outside projectiles or groundbursts: those are separately game rendered. Spectral glow/chain wisps close tofigure containedcell. Detailed painted Japanese fantasy, exact reference costumes and colors, crispclearfaces. Not opaque solid humans: translucent fadinghems and spiritwisps. Allcastposes twohandsnoextraarms. Do not include Fia or player.",
+      "repairReference": "exec-4d4706ef-8dd8-41da-9d52-0304f1646329.png"
+    }
+  ]
+}

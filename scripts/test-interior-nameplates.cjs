@@ -35,23 +35,24 @@ for(const room of ['forgeInterior','herbalHut','mysticTent'])for(const width of 
 // Capture actual nametag geometry without pretending the mocked canvas proves
 // artwork quality. Root browser QA verifies typography and head silhouettes.
 {
- const rectangles=[],texts=[],actors=[];
+ const rectangles=[],texts=[],actors=[],markers=[];
  const ctx=new Proxy({globalAlpha:1,measureText:text=>({width:text.length*8}),fillRect:(...rect)=>rectangles.push(rect),fillText:(text,x,y)=>texts.push({text,x,y})},{get:(object,key)=>object[key]||(()=>{})});
  const sandbox={ctx,Prologue:{active:false},state:'play',level:{returnPoint:{},returnDestination:{}},levels:[],defeated:[],
   view:{lift:0,haruFreed:false,rescueTime:null,fiaPresent:false},
   Visuals:{images:{haruElder:{complete:true,naturalWidth:1100,naturalHeight:1050},fia:{complete:true,naturalWidth:1536,naturalHeight:1024}},campPathMarker(){}},
   ART_KITSUNE:{fia:{image:'fia'}},ArenaArt:{stamp:(definition,index,x,feet,height)=>actors.push({index,x,feet,height})},
-  I18n:{t:key=>({'HARU':'Haru','fia.name':'Fia'}[key]||key)},FiaArt:{effect(){}},BossVFX:{impact(){}},
+  I18n:{t:key=>({'HARU':'Haru','fia.name':'Fia'}[key]||key)},FiaArt:{effect(){}},BossVFX:{impact(){}},CampArt:{questMarker:(...args)=>markers.push(args)},
   clamp:(value,min,max)=>Math.max(min,Math.min(max,value))};
  sandbox.HannahEncounter={active:()=>true,summit:()=>true,blocked:()=>true,enemy:()=>null,visual:()=>sandbox.view};
  vm.createContext(sandbox);vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/hannah-art.js'),'utf8'),sandbox);
  const run=code=>vm.runInContext(code,sandbox);
  for(const lift of [0,320])for(const rescueTime of [null,0,1,2.5,3.5])for(const haruFreed of [false,true])for(const fiaPresent of [false,true]){
-  rectangles.length=texts.length=actors.length=0;Object.assign(sandbox.view,{lift,rescueTime,haruFreed,fiaPresent});const before=JSON.stringify(sandbox.view);run('HannahArt.scenery()');assert.equal(JSON.stringify(sandbox.view),before);
+  rectangles.length=texts.length=actors.length=markers.length=0;Object.assign(sandbox.view,{lift,rescueTime,haruFreed,fiaPresent});const before=JSON.stringify(sandbox.view);run('HannahArt.scenery()');assert.equal(JSON.stringify(sandbox.view),before);
   const release=rescueTime===null?(haruFreed?1:0):sandbox.clamp((rescueTime-1.8)/1.4,0,1),feet=1400-lift-135*(1-release);
   const haru=texts.find(t=>t.text==='Haru');assert(haru);const haruBox=rectangles.find(rect=>rect[1]+rect[3]===feet-125-16);
   assert(haruBox,'Haru label clears the complete elder image by 16 world pixels');assert.equal(haru.y,haruBox[1]+haruBox[3]/2);
   const visible=fiaPresent&&(rescueTime!==null||haruFreed);assert.equal(texts.some(t=>t.text==='Fia'),visible,'Tag follows the same presence rule as the Fia sprite');assert.equal(actors.length,visible?1:0);
+  assert.equal(markers.length,visible?1:0,'The summit Fia receives the shared quest marker with her model');if(visible)assert.equal(markers[0][0],'fia');
   if(visible){const fiaBox=rectangles.find(rect=>rect[1]+rect[3]===1400-lift-150-16);assert(fiaBox,'Fia label clears her full standing height during rescue and after victory');}
  }
  rectangles.length=texts.length=0;run('HannahArt.nameplate(500,824,110,"HARU")');assert.equal(rectangles[0][1]+rectangles[0][3],698,'Heaven variant uses its own rendered height and feet');
