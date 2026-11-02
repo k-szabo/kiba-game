@@ -1462,6 +1462,22 @@
           "en": "Fia’s questline continues with a new ritual and an obtainable foxfire weapon."
         }
       ]
+    },
+    {
+      "version": "0.9.63_33d7b168",
+      "code": "33d7b168",
+      "baseVersion": "0.9.63",
+      "slug": "dragon-foreleg-head-cycle",
+      "summary": {
+        "hu": "Az őssárkány új harci ciklusa",
+        "en": "The ancient drake’s new combat cycle"
+      },
+      "fixes": [
+        {
+          "hu": "Az őssárkány utolsó fázisában a két első láb lesebzése után rövid időre sebezhetővé válik a földre zuhanó fej.",
+          "en": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks."
+        }
+      ]
     }
   ]
 }

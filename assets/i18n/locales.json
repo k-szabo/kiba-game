@@ -1157,7 +1157,7 @@
       "inventory.description.dragonScale": "Súlyos, hamuszürke pikkely, ereiben megdermedt árnyék-Kibával. Keménysége páncélhoz is méltó.",
       "fia.dragon.objective.1": "Törd szét a szárnyakat rögzítő láncokat!",
       "fia.dragon.objective.2": "Tisztítsd meg a sárkány hátát, és juss el a fejéhez!",
-      "fia.dragon.objective.3": "Győzd le az őssárkányt, mielőtt beomlik a terem!",
+      "fia.dragon.objective.3": "Sebezd le mindkét első lábat, majd támadd a földre zuhant fejet!",
       "fia.dragon.objective.return": "Vidd el a sárkány szemeit Fiának.",
       "fia.dragon.pillars": "Tartóoszlopok: {0}/{1}",
       "fia.dragon.new": "Új rajtaütés",
@@ -1213,7 +1213,13 @@
       "fia.ritual.objective.escape": "Menekülj ki az Árnyékzugból.",
       "fia.ritual.consumed": "A rituálé felemészti.",
       "menu.changelog.0962.08e4907c.title": "Fia utolsó megbízása",
-      "menu.changelog.0962.08e4907c.0": "Fia küldetéslánca új szertartással és egy megszerezhető rókaláng-fegyverrel folytatódik."
+      "menu.changelog.0962.08e4907c.0": "Fia küldetéslánca új szertartással és egy megszerezhető rókaláng-fegyverrel folytatódik.",
+      "fia.dragon.foreleg.left": "Bal első láb",
+      "fia.dragon.foreleg.right": "Jobb első láb",
+      "fia.dragon.forelegs": "Első lábak: {0}/2",
+      "fia.dragon.headWindow": "A fej sebezhető: {0} mp",
+      "menu.changelog.0963.33d7b168.title": "Az őssárkány új harci ciklusa",
+      "menu.changelog.0963.33d7b168.0": "Az őssárkány utolsó fázisában a két első láb lesebzése után rövid időre sebezhetővé válik a földre zuhanó fej."
     }
   },
   "en": {
@@ -2374,7 +2380,7 @@
       "inventory.description.dragonScale": "A heavy, ash-grey scale with shadow Kiba frozen in its veins. Its hardness is worthy of armor.",
       "fia.dragon.objective.1": "Break the chains pinning the wings!",
       "fia.dragon.objective.2": "Clear the drake’s back and reach its head!",
-      "fia.dragon.objective.3": "Defeat the ancient drake before the chamber collapses!",
+      "fia.dragon.objective.3": "Weaken both forelegs, then attack the fallen head!",
       "fia.dragon.objective.return": "Bring the drake’s eyes to Fia.",
       "fia.dragon.pillars": "Supporting pillars: {0}/{1}",
       "fia.dragon.new": "New raid",
@@ -2430,7 +2436,13 @@
       "fia.ritual.objective.escape": "Escape the Shadow Den.",
       "fia.ritual.consumed": "The ritual consumes her.",
       "menu.changelog.0962.08e4907c.title": "Fia’s final request",
-      "menu.changelog.0962.08e4907c.0": "Fia’s questline continues with a new ritual and an obtainable foxfire weapon."
+      "menu.changelog.0962.08e4907c.0": "Fia’s questline continues with a new ritual and an obtainable foxfire weapon.",
+      "fia.dragon.foreleg.left": "Left foreleg",
+      "fia.dragon.foreleg.right": "Right foreleg",
+      "fia.dragon.forelegs": "Forelegs: {0}/2",
+      "fia.dragon.headWindow": "Head vulnerable: {0}s",
+      "menu.changelog.0963.33d7b168.title": "The ancient drake’s new combat cycle",
+      "menu.changelog.0963.33d7b168.0": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks."
     }
   }
 }

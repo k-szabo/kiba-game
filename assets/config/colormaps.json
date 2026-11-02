@@ -333,6 +333,11 @@
       "faction": "shadowCult",
       "paletteGroup": "npc.fiaVoid.smith.corrupted"
     },
+    "dragon.stagger": {
+      "role": "raid-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.dragon.stagger"
+    },
     "dragon.idle": {
       "role": "raid-boss",
       "faction": "shadowCult",
@@ -7661,6 +7666,107 @@
           }
         ],
         "visibleSamples": 718726,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.dragon.stagger": {
+      "source": "assets/images/enemies/ancient-drake-stagger-v1.png",
+      "frameMetadata": "ART_DRAGON.stagger.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#603e47",
+            "coveragePercent": 10.2246
+          },
+          {
+            "hex": "#7d5858",
+            "coveragePercent": 9.4429
+          },
+          {
+            "hex": "#2e1210",
+            "coveragePercent": 8.6409
+          },
+          {
+            "hex": "#120405",
+            "coveragePercent": 8.481
+          },
+          {
+            "hex": "#997272",
+            "coveragePercent": 8.4199
+          },
+          {
+            "hex": "#b98e86",
+            "coveragePercent": 8.1535
+          },
+          {
+            "hex": "#452634",
+            "coveragePercent": 7.6916
+          },
+          {
+            "hex": "#d5a99d",
+            "coveragePercent": 7.6854
+          },
+          {
+            "hex": "#e7c2ba",
+            "coveragePercent": 6.6578
+          },
+          {
+            "hex": "#c492bb",
+            "coveragePercent": 4.8185
+          },
+          {
+            "hex": "#522712",
+            "coveragePercent": 4.8112
+          },
+          {
+            "hex": "#a46ea5",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#78467e",
+            "coveragePercent": 3.2334
+          },
+          {
+            "hex": "#f7e9e0",
+            "coveragePercent": 3.0006
+          },
+          {
+            "hex": "#7d451f",
+            "coveragePercent": 2.9553
+          },
+          {
+            "hex": "#ae723e",
+            "coveragePercent": 1.9625
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935e41",
+            "coveragePercent": 23.9927
+          },
+          {
+            "hex": "#92521b",
+            "coveragePercent": 21.5888
+          },
+          {
+            "hex": "#b87c48",
+            "coveragePercent": 20.3308
+          },
+          {
+            "hex": "#7d3e8c",
+            "coveragePercent": 14.8947
+          },
+          {
+            "hex": "#9d59b1",
+            "coveragePercent": 9.6656
+          },
+          {
+            "hex": "#dca567",
+            "coveragePercent": 9.5274
+          }
+        ],
+        "visibleSamples": 797779,
         "dominantCoveragePercent": 100.0
       }
     },
@@ -37465,6 +37571,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/enemies/ancient-drake-stagger-v1.png": {
+      "sha256": "6fe52a447d0f1b63c213f06ecd8c9cb12a25dfa9b6bc5d1c0a2715a75f531b68",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "dragonStagger"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#603e47",
+            "coveragePercent": 10.2246
+          },
+          {
+            "hex": "#7d5858",
+            "coveragePercent": 9.4429
+          },
+          {
+            "hex": "#2e1210",
+            "coveragePercent": 8.6409
+          },
+          {
+            "hex": "#120405",
+            "coveragePercent": 8.481
+          },
+          {
+            "hex": "#997272",
+            "coveragePercent": 8.4199
+          },
+          {
+            "hex": "#b98e86",
+            "coveragePercent": 8.1535
+          },
+          {
+            "hex": "#452634",
+            "coveragePercent": 7.6916
+          },
+          {
+            "hex": "#d5a99d",
+            "coveragePercent": 7.6854
+          },
+          {
+            "hex": "#e7c2ba",
+            "coveragePercent": 6.6578
+          },
+          {
+            "hex": "#c492bb",
+            "coveragePercent": 4.8185
+          },
+          {
+            "hex": "#522712",
+            "coveragePercent": 4.8112
+          },
+          {
+            "hex": "#a46ea5",
+            "coveragePercent": 3.8209
+          },
+          {
+            "hex": "#78467e",
+            "coveragePercent": 3.2334
+          },
+          {
+            "hex": "#f7e9e0",
+            "coveragePercent": 3.0006
+          },
+          {
+            "hex": "#7d451f",
+            "coveragePercent": 2.9553
+          },
+          {
+            "hex": "#ae723e",
+            "coveragePercent": 1.9625
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#935e41",
+            "coveragePercent": 23.9927
+          },
+          {
+            "hex": "#92521b",
+            "coveragePercent": 21.5888
+          },
+          {
+            "hex": "#b87c48",
+            "coveragePercent": 20.3308
+          },
+          {
+            "hex": "#7d3e8c",
+            "coveragePercent": 14.8947
+          },
+          {
+            "hex": "#9d59b1",
+            "coveragePercent": 9.6656
+          },
+          {
+            "hex": "#dca567",
+            "coveragePercent": 9.5274
+          }
+        ],
+        "visibleSamples": 797779,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/enemies/angel-dark-v5.png": {
       "sha256": "e034f1c6e153aca440ef100ff573ee55df7cfc3c45cc5dac5a65686ede6c5cec",
       "width": 1536,
@@ -54132,6 +54343,13 @@
     ],
     "assets/js/dragon-raid-art.js": [
       {
+        "value": "#100d1bed",
+        "lines": [
+          59
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#15121c",
         "lines": [
           7
@@ -54141,14 +54359,35 @@
       {
         "value": "#17121c",
         "lines": [
-          52
+          63
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#221a2e",
+        "lines": [
+          59
         ],
         "dynamic": false
       },
       {
         "value": "#bca084",
         "lines": [
-          53
+          64
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d99583",
+        "lines": [
+          59
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0cc",
+        "lines": [
+          59
         ],
         "dynamic": false
       }
@@ -54158,7 +54397,7 @@
       {
         "value": "#ad81d9",
         "lines": [
-          142
+          150
         ],
         "dynamic": false
       }

@@ -36,12 +36,18 @@ for(const fps of [30,60,120])for(const near of [true,false]){
    if(p>=.5&&p<=.8){if(Math.abs(DragonRaid.head.x-hit.toX)>.001||Math.abs(DragonRaid.head.y-hit.toY)>.001)throw Error('Actor and strike projection differ');}
    if(player.hp<before)physicalHits++;
   }
-  const target=DragonRaid.targets()[0];if(Math.abs(target.x+230-DragonRaid.head.x)>.001||Math.abs(target.y-1060-DragonRaid.head.y)>.001)throw Error('Weakspot registration drift');
+  const geometry=DragonRaid.frontGeometry(),targets=DragonRaid.targets().filter(t=>t.type==='foreleg');
+  if(targets.length!==2)throw Error('Protected phase must expose two forelegs');
+  for(const target of targets){const body=geometry.forelegs[target.index];for(const key of ['x','y','w','h'])if(Math.abs(target[key]-body[key])>.001)throw Error('Foreleg registration drift');}
+  if(DragonRaid.targets().some(t=>t.type==='head'))throw Error('Standing head unexpectedly exposed');
  }
  `);
  const kinds=Array.from(r('[...observed]'));assert(kinds.includes('fire')&&kinds.includes('shadow'));
  if(near){assert(kinds.includes('bite')&&kinds.includes('headSlam'),'Both physical attacks at '+fps+' FPS');assert(r('physicalHits>0'),'Physical strikes deal real damage at '+fps+' FPS');}
  else assert(!kinds.some(k=>k==='bite'||k==='headSlam'),'No remote physical attack at '+fps+' FPS');
  r("var pausedRaid=JSON.stringify([DragonRaid.current,DragonRaid.head,DragonRaid.warning,DragonRaid.impact,DragonRaid.attackState]);state='pause';for(let i=0;i<120;i++)update(1/60)");assert.equal(r('JSON.stringify([DragonRaid.current,DragonRaid.head,DragonRaid.warning,DragonRaid.impact,DragonRaid.attackState])'),r('pausedRaid'));
+ r(`state='play';player.inv=999;for(let i=0;i<${fps}*5&&!DragonRaid.warning;i++)update(1/${fps});`);assert(r('DragonRaid.warning'),'A committed attack exists before staggering');
+ r('for(const t of DragonRaid.targets().filter(t=>t.type==="foreleg"))DragonRaid.hit(t,10000)');assert.equal(r('DragonRaid.warning'),null);assert.equal(r('DragonRaid.impact'),null,'Stagger retires the standing attack');
+ r(`for(let i=0;i<${fps}*2;i++)update(1/${fps})`);assert.equal(r('DragonRaid.current.stance'),'exposed');assert.equal(r('DragonRaid.warning'),null);assert.equal(r('DragonRaid.impact'),null,'The fallen head window does not start attacks');
 }
-console.log('PASS: QA-FIA3-ENTRY-001 r1 actual E/old-exit dispatch; OBJECTIVE-002 r1 active/returned/ended story; MOVESET-003 r1 near physical/far ranged, registered head/cue/weakspot and pause at 30/60/120 FPS.');
+console.log('PASS: QA-FIA3 entry/objectives, near physical/far ranged attacks, registered forelegs/head motion, pause and attack retirement during the exposed window at30/60/120FPS.');

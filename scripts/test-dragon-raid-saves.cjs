@@ -17,7 +17,7 @@ assert.doesNotThrow(()=>validate(r('captureProgress()')));
 for(let i=0;i<4;i++)r(`DragonRaid.hit(DragonRaid.targets().find(t=>t.type==='chain'&&t.index===${i}),10000)`);
 for(let i=0;i<3;i++)r(`DragonRaid.hit(DragonRaid.targets().find(t=>t.type==='tumor'&&t.index===${i}),10000)`);
 for(let i=0;i<2;i++)r(`DragonRaid.hit(DragonRaid.targets().find(t=>t.type==='manifestation'&&t.index===${i}),10000)`);
-r('initPlayer(level.headPoint);DragonRaid.update(.01);DragonRaid.hit(DragonRaid.targets()[0],10000);');
+r('initPlayer(level.headPoint);DragonRaid.update(.01);for(const target of DragonRaid.targets().filter(t=>t.type==="foreleg"))DragonRaid.hit(target,10000);player.inv=999;for(let i=0;i<80;i++)update(1/120);DragonRaid.hit(DragonRaid.targets().find(t=>t.type==="head"),10000);');
 assert.doesNotThrow(()=>validate(r('captureProgress()')));assert.equal(r("Inventory.quantity('dragonEyes')"),1);assert.equal(r("Inventory.quantity('dragonScale')"),1);
 r("CampQuest.enter('fiaChambers');initPlayer(level.npcs[0]);FiaQuest.talk();");h.dismiss();
 assert.doesNotThrow(()=>validate(r('saved')));assert.equal(r("Inventory.quantity('dragonEyes')"),0);assert(r("flags[3].includes('dragonEyes')&&flags[3].includes('fiaDragonCompleted')"));

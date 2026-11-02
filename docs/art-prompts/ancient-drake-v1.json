@@ -40,6 +40,14 @@
       "asset": "assets/images/backgrounds/dragon-raid-hall-motion-b-v1.png",
       "reference": "assets/images/backgrounds/dragon-raid-hall-v1.png",
       "request": "Preserve dimensions and architecture. Change only local brazier flame tips and a few wisps in normalized region x.025-.145,y.66-.84. No camera movement or global deformation."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-stagger-v1.png",
+      "reference": "assets/images/enemies/ancient-drake-front-v2.png",
+      "approval": "User explicitly approved the four-pose stagger storyboard before final production.",
+      "request": "Native-alpha1536x1024 painted atlas2x2, same giant grey-violet drake. Upright→bothforelegs buckle→chin onground betweenfoldedlegs→push-up recovery. Exactlyone viewer-righttail, twofrontlegs, twowings. Fixedbodysize and camera; no Momo, paper, labels, arrows, dizziness symbols, scenery or baked effects.",
+      "registration": "Four768x512 cells, source centerX384 and bodyHeight400 remainfixed. Nativealpha was preserved; perpose groundanchorsY482,484,962,962 register the authored feet/chin against worldfloor1300. No image pixels edited by registration.",
+      "scale": "World-space widths2700grounded,3750flight,1267.2frontalwingspan. Momo stays69units high. Sideways length and frontalwingspan are different measurements; no encounter-wide fit-to-viewport shrink."
     }
   ]
 }

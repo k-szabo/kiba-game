@@ -41,6 +41,7 @@ const ART_MANIFEST = {
  dragonBreath:'assets/images/enemies/ancient-drake-breath-v1.png',
  dragonFlight:'assets/images/enemies/ancient-drake-flight-v1.png',
  dragonFront:'assets/images/enemies/ancient-drake-front-v2.png',
+ dragonStagger:'assets/images/enemies/ancient-drake-stagger-v1.png',
  haruElder:'assets/images/npcs/haru-elder-v1.png',
  haruBindingPillar:'assets/images/ui/haru-binding-pillar-v1.png',
  demonLordSoulArt:'assets/images/items/first-demon-lord-soul-v1.png',
@@ -316,7 +317,10 @@ const ART_INVENTORY = {
     serpentScale:{name:'yomi.serpent.scale.name',realm:1,image:'serpentScale',x:125,y:40,w:1104,h:1184}
   }
 };
+// World units use Momo's 69-unit height; camera/viewport never rescales the encounter.
+const DRAGON_RAID_ART_SCALE=Object.freeze({momoHeight:69,idleWidth:2700,flightWidth:3750,front:1.65,frontFeet:1300,forelegX:Object.freeze([168,563])});
 const ART_DRAGON={
+ stagger:{image:'dragonStagger',frames:[0,1,2,3].map(index=>({x:index%2*768,y:Math.floor(index/2)*512,w:768,h:512,anchorX:index%2*768+384,anchorY:[482,484,962,962][index],bodyHeight:400}))},
  idle:{image:'dragonIdle',frames:[{x:0,y:0,w:1774,h:887,anchorX:887,anchorY:860,bodyHeight:800}]},
  breath:{image:'dragonBreath',frames:[{x:0,y:0,w:1774,h:887,anchorX:887,anchorY:860,bodyHeight:800}]},
  flight:{image:'dragonFlight',frames:[{x:0,y:0,w:1983,h:793,anchorX:1000,anchorY:300,bodyHeight:700}]},

@@ -117,6 +117,13 @@ const DragonRaid=(()=>{
   const hp=player.hp;
   initPlayer(attempt.phase===2?{x:4220,y:900}:{x:8750,y:1300});player.hp=Math.min(hp,player.maxHp);resetCamera();updateHUD();
  }
+ function frontGeometry(){
+  const scale=DRAGON_RAID_ART_SCALE.front,feet=DRAGON_RAID_ART_SCALE.frontFeet+headY;
+  return {x:headX,feet,scale,forelegs:DRAGON_RAID_ART_SCALE.forelegX.map((x,index)=>({x:headX+(x-384)*scale-85,y:feet-170,w:170,h:170,type:'foreleg',index,hp:attempt?.forelegs[index]??DragonRaidRules.tuning.forelegHp,maxHp:DragonRaidRules.tuning.forelegHp,name:index?'fia.dragon.foreleg.right':'fia.dragon.foreleg.left'}))};
+ }
+ function headBox(){return {x:headX-230,y:attempt?.stance==='exposed'?DRAGON_RAID_ART_SCALE.frontFeet-200:830+headY,w:460,h:attempt?.stance==='exposed'?200:240};}
+ const cameraTargetY=fallback=>active()&&attempt?.phase===3?clamp(DRAGON_RAID_ART_SCALE.frontFeet-H*.86,level.top??0,Math.max(0,level.height-H)):fallback;
+ function retireAttack(){warning=null;impact=null;projectiles=[];recovery=0;attackClock=1.5;headX=10250;headY=0;serial++;}
  function targets(){
   if(!running())return [];
   if(attempt.phase===1)return level.chains.map((p,i)=>({...p,x:p.x-32,y:p.y-90,w:64,h:90,type:'chain',index:i,hp:attempt.chains[i]}));
@@ -124,12 +131,13 @@ const DragonRaid=(()=>{
    ...level.tumors.map((p,i)=>({...p,x:p.x-55,y:p.y-105,w:110,h:105,type:'tumor',index:i,hp:attempt.tumors[i]})),
    ...level.manifestations.map((p,i)=>({...p,x:p.x-65,y:p.y-170,w:130,h:170,type:'manifestation',index:i,hp:attempt.manifestations[i]?0:manifestationHP.get(i)??18}))
   ];
-  return [{x:headX-230,y:1060+headY,w:460,h:240,type:'head',index:0,hp:attempt.hp}];
+  if(attempt.stance==='standing')return frontGeometry().forelegs;
+  return attempt.stance==='exposed'?[{...headBox(),type:'head',index:0,hp:attempt.hp,maxHp:DragonRaidRules.tuning.maxHp}]:[];
  }
  const manifestationHP=new Map();
  function hit(hitBox,amount){
   if(!running()||!Number.isFinite(amount)||amount<=0)return false;
-  const before=attempt.phase;let touched=false;
+  const before=attempt.phase,stance=attempt.stance;let touched=false;
   for(const target of targets()){
    if(target.hp<=0||!overlap(hitBox,target)||(hitCooldowns.get(target.type+target.index)||0)>0)continue;
    touched=true;hitCooldowns.set(target.type+target.index,.18);
@@ -137,11 +145,12 @@ const DragonRaid=(()=>{
     const hp=(manifestationHP.get(target.index)??18)-amount;manifestationHP.set(target.index,hp);
     if(hp<=0)attempt=DragonRaidRules.manifestationDefeated(attempt,target.index);
    }else attempt=DragonRaidRules.hit(attempt,target.type,target.index,amount);
-   const after=target.type==='manifestation'?Math.max(0,manifestationHP.get(target.index)??18):target.type==='chain'?attempt.chains[target.index]:target.type==='tumor'?attempt.tumors[target.index]:attempt.hp;
+   const after=target.type==='manifestation'?Math.max(0,manifestationHP.get(target.index)??18):target.type==='chain'?attempt.chains[target.index]:target.type==='tumor'?attempt.tumors[target.index]:target.type==='foreleg'?attempt.forelegs[target.index]:attempt.hp;
    DevDamage.record('outgoing',{...target,name:'fia.dragon.boss',hp:after,maxHp:target.hp},target.hp,after);
    burst(target.x+target.w/2,target.y+target.h/2,'#ad81d9',8);
   }
   changePhase(before);
+  if(stance==='standing'&&attempt.stance==='falling'){retireAttack();updateHUD();}
   if(attempt.won){
    warning=null;impact=null;projectiles=[];
    if(!attempt.test)apply(FiaJourneyRules.clear(fiaJourney,flags,defeated,attempt.run));
@@ -169,7 +178,7 @@ const DragonRaid=(()=>{
  function update(dt){
   if(!active()){if(attempt)clearAttempt();return;}
   if(!attempt&&!fiaJourney.dragon.clear){setup();if(!attempt&&DevSession.active){attempt=DragonRaidRules.fresh(1);attempt.test=true;}}
-  if(!running()||state!=='play')return;
+  if(!running()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   if(attempt.phase===1&&!engaged){if(player.x<500)return;engaged=true;}
   const old=attempt,test=old.test;attempt=DragonRaidRules.update(attempt,dt);if(test)attempt.test=true;
   for(const [key,value]of hitCooldowns)hitCooldowns.set(key,Math.max(0,value-dt));
@@ -177,6 +186,10 @@ const DragonRaid=(()=>{
   player.x=clamp(player.x,limits[0],limits[1]-player.w);
   if(attempt.failed){revive();return;}
   if(attempt.phase===2&&pointNear(level.headPoint,90,100)){const before=attempt.phase;attempt=DragonRaidRules.reachHead(attempt);if(test)attempt.test=true;changePhase(before);}
+  if(attempt.phase===3){
+   if(attempt.stance!==old.stance)retireAttack();
+   if(attempt.stance!=='standing')return;
+  }
   attackClock-=dt;recovery=Math.max(0,recovery-dt);
   if(!warning&&!impact&&recovery===0&&attackClock<=0){attackClock=attempt.phase===3?2.8:3.7;planAttack();}
   if(impact){
@@ -197,7 +210,7 @@ const DragonRaid=(()=>{
   if(!active())return false;
   $('bossHud').hidden=!running();if(!running())return true;
   $('bossName').textContent=I18n.t('fia.dragon.boss');
-  if(attempt.phase===3)$('bossName').textContent+=' · '+I18n.format('fia.dragon.pillars',[attempt.pillars,DragonRaidRules.tuning.pillars]);
+  if(attempt.phase===3)$('bossName').textContent+=' · '+(attempt.stance==='exposed'?I18n.format('fia.dragon.headWindow',[Math.ceil(attempt.stanceTime)]):I18n.format('fia.dragon.forelegs',[attempt.forelegs.filter(hp=>hp===0).length]));
   const summary=health(),ratio=summary.hp/summary.maxHp;
   $('bossHealth').style.width=clamp(ratio*100,0,100)+'%';return true;
  }
@@ -207,7 +220,8 @@ const DragonRaid=(()=>{
    return has('dragonEyes')?{point:questPoint()||fiaChambers.npcs[0],compass:false,text:'fia.dragon.objective.return'}:questRoute()?{point:level===zigguratInterior?level.dragonRaidEntrance:level.returnPoint,compass:false,text:'fia.dragon.location'}:null;
   }
   if(!running())return {point:exitPoint(),compass:false,text:'fia.dragon.return'};
-  return {point:attempt.phase===1?level.chains[attempt.chains.findIndex(hp=>hp>0)]:attempt.phase===2?level.headPoint:{x:10250,y:1300},compass:false,text:'fia.dragon.objective.'+attempt.phase};
+  const text='fia.dragon.objective.'+attempt.phase;
+  return {point:attempt.phase===1?level.chains[attempt.chains.findIndex(hp=>hp>0)]:attempt.phase===2?level.headPoint:{x:10250,y:1300},compass:false,text:attempt.phase===3?I18n.t(text)+' · '+I18n.format('fia.dragon.pillars',[attempt.pillars,DragonRaidRules.tuning.pillars]):text};
  }
  function exitPoint(){return attempt?.won?{x:8750,y:1300}:level.returnPoint;}
  function questRoute(){return questAvailable()&&has('fiaDragonAccepted')&&!has('fiaDragonCompleted')&&[zigguratInterior,zigguratSummit,fiaChambers].includes(level);}
@@ -217,5 +231,5 @@ const DragonRaid=(()=>{
   if(attempt.phase===2)return {hp:targets().reduce((sum,t)=>sum+t.hp,0),maxHp:3*DragonRaidRules.tuning.tumorHp+36};
   return {hp:attempt.hp,maxHp:DragonRaidRules.tuning.maxHp};
  }
- return Object.freeze({active,running,locked:()=>running()&&engaged,begin,resume,setup,menu,context,interact,respawn,hit,update,hud,health,objective,questRoute,questPoint,questMarker,talk,exitPoint,replay,clear:clearAttempt,targets,get current(){return attempt;},get warning(){return warning;},get impact(){return impact;},get head(){return {x:headX,y:headY};},get attackState(){return warning?'windup':impact?'strike':recovery>0?'recover':'wait';}});
+ return Object.freeze({active,running,locked:()=>running()&&engaged,begin,resume,setup,menu,context,interact,respawn,hit,update,hud,health,objective,questRoute,questPoint,questMarker,talk,exitPoint,replay,clear:clearAttempt,targets,frontGeometry,cameraTargetY,get current(){return attempt;},get warning(){return warning;},get impact(){return impact;},get head(){return {x:headX,y:headY,box:headBox()};},get attackState(){return warning?'windup':impact?'strike':recovery>0?'recover':'wait';}});
 })();

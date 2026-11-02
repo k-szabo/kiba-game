@@ -34,6 +34,25 @@ harapás szerepel. A fizikai támadás csak közelről indul; távolról a boss
 területi mágiát választ. A fej rajzolása és találati teste ugyanazt a pozíciót
 használja. A négy tartóoszlop összesen 180 aktív másodpercet ad a záróharchoz.
 
+A harmadik fázisban a fej alapból védett. A két első láb külön-külön
+12 HP-s; mindkettő lesebzése 0,65 másodperces összeesést indít, és törli
+az aktuális támadást. A földön fekvő fej hat aktív másodpercig sebezhető,
+négyszeres sebzéssel. Egy másodperces felállás után mindkét láb visszaáll,
+és újraindul a ciklus. A boss 1200 HP-ja nem töltődik vissza; a tűz,
+árnyék, fejcsapás és harapás az álló szakaszokban megmarad. Az oszlopok
+ideje az összeesés és sebezhetőség alatt is telik. Szünetben minden áll.
+
+A lábak rajza, célterülete és neve közös forrásregisztrációt használ.
+A mancsok és a sebezhető állkapocs a járható, Y=1300-as talajra érnek;
+a harmadik szakasz függőleges kamerakerete mindkettőt láthatóvá teszi.
+A `DRAGON_RAID_ART_SCALE` rögzíti a világméreteket Momo változatlan,
+69 egységes magasságához: az oldalsó kép 2700, a repülő kép 3750,
+a szemből látott szárnyfesztáv 1267,2 egység. Az oldalnézeti hossz és a
+szárnyfesztáv eltérő anatómiai méret; a nézetváltás nem zsugorítja a bosst
+a képernyőbe. A felállási atlasz sem méretezi kisebbre az összeesett testet.
+Külön ellenőrzés: `test-dragon-raid-art.cjs`, illetve natív Edge-ben mindhárom
+fázis és a teljes láb–fej ciklus HU/EN, 1280×720 és 1920×1080 nézetben.
+
 A menet közbeni halál vagy újratöltés az első szakaszt állítja vissza; a
 korábbi jutalmak és küldetéstörténet megmaradnak. Tesztmódban mindhárom
 szakasz külön, jutalom nélkül újrajátszható. A natív mentés és Continue
