@@ -7,6 +7,7 @@ const DevItems=(()=>{
   const id=values?.item;
   if(typeof id!=='string'||!Object.hasOwn(ART_INVENTORY.items,id))return false;
   const item=ART_INVENTORY.items[id];
+  if(id==='foxfireKatana'&&!campServices.ownedWeapons.includes(id))campServices.ownedWeapons.push(id);
   if(item.stack){if(!Merchant.addStock(id))return false;updateHUD();return true;}
   if(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))return 'dev.item.owned';
   if(soldItems.includes(id)&&flags[item.realm].includes(id)){soldItems=soldItems.filter(value=>value!==id);updateHUD();return true;}

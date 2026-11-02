@@ -83,6 +83,7 @@ const FiaConflict=(()=>{
   }
  }
  function npcVisible(npc){
+  if(npc?.id==='fia'&&FiaRitual.hideFia())return false;
   if(npc?.id==='fia'&&level===fiaChambers&&flags[3].includes('fiaDragonCompleted'))return false;
   if(!location())return true;
   if(npc?.id==='fia')return !blocked()&&!slain();

@@ -9,6 +9,7 @@ const DevWeapons=(()=>{
   if(!WeaponStyles.valid(id))return false;
   if(!WeaponEquipment.equip(id))return false;
   if(!campServices.ownedWeapons.includes(id))campServices.ownedWeapons.push(id);
+  if(id==='foxfireKatana'&&!flags[3].includes(id))flags[3].push(id);
   return true;
  }
  function fields(){
@@ -18,7 +19,7 @@ const DevWeapons=(()=>{
    observedStyle=weaponStyle;observedPlayer=player;selected=weaponStyle;
   }
   return [{id:'weapon',type:'select',labelKey:'weapon.training.title',value:selected,
-   options:WeaponStyles.ids.map(id=>({value:id,label:'weapon.'+id+'.item'})),
+   options:WeaponStyles.allIds.map(id=>({value:id,label:'weapon.'+id+'.item'})),
    change:value=>{if(WeaponStyles.valid(value))selected=value;}}];
  }
  function init(){DevTools.register({id:'weapon',labelKey:'dev.weapon.equip',available,fields,run:equip});}

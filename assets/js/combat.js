@@ -29,7 +29,7 @@ function respawnEnemies() {
   const slayer=enemies.find(DoomSlayer.is),retry=slayer&&!slayer.dead?{graveAwake:slayer.graveAwake,replay:slayer.replay}:null;
   DoomSlayer.clear();
   if(typeof CampHerbs!=='undefined')CampHerbs.reset();
-  enemies=createEnemies();FiaConflict.populateHostiles();projectiles=projectiles.filter(p=>p.source==='boss');
+  enemies=createEnemies();FiaConflict.populateHostiles();FiaRitual.populateHostiles();projectiles=projectiles.filter(p=>p.source==='boss');
   if(retry){const fresh=enemies.find(DoomSlayer.is);if(fresh){Object.assign(fresh,retry);DoomSlayer.reset(fresh);}}
   burst(player.x+20,player.y+30,realms[realm].gold,22);
 }
@@ -79,6 +79,7 @@ function releaseEnemyAttack(e) {
   }
   for(let i=shotsBefore;i<projectiles.length;i++){
     projectiles[i].damage=e.damageValue||1;
+    if(FiaRitual.corrupted(e))projectiles[i].ritualEffect='void';
     if(e.summoned)projectiles[i].source='minion';
     if(e.arenaMinion)projectiles[i].source='arena-minion';
   }

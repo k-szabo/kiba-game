@@ -22,7 +22,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -91,16 +91,25 @@ def image_array(source):
     return images[source]
 
 
-def frame_pixels(source, rect):
+def frame_pixels(source, rect, outline_union=False):
     arr = image_array(source)
     x, y, w, h = (rect[k] for k in ('x', 'y', 'w', 'h'))
     assert 0 <= x < x + w <= arr.shape[1] and 0 <= y < y + h <= arr.shape[0], (source, rect)
     sample = arr[y:y+h, x:x+w].copy()
-    # Match Canvas clipping in Visuals.frame, excluding neighboring atlas sprites.
-    for outline in rect.get('outlines', []):
+    # FiaVoidArt stamps detached components with one union path. Other legacy
+    # renderers retain their registered intersection convention.
+    outlines = rect.get('outlines', [])
+    if outline_union and outlines:
         mask = Image.new('L', (w, h))
-        ImageDraw.Draw(mask).polygon([(px-x, py-y) for px, py in outline], fill=255)
+        draw = ImageDraw.Draw(mask)
+        for outline in outlines:
+            draw.polygon([(px-x, py-y) for px, py in outline], fill=255)
         sample[:, :, 3] = np.minimum(sample[:, :, 3], np.asarray(mask))
+    else:
+        for outline in outlines:
+            mask = Image.new('L', (w, h))
+            ImageDraw.Draw(mask).polygon([(px-x, py-y) for px, py in outline], fill=255)
+            sample[:, :, 3] = np.minimum(sample[:, :, 3], np.asarray(mask))
     return sample.reshape(-1, 4)
 
 
@@ -111,7 +120,7 @@ def group(identifier, source, rects, metadata):
     if isinstance(rects, dict):
         rects = [rects]
     groups[identifier] = {'source': source, 'frameMetadata': metadata, 'frameCount': len(rects),
-                          'palette': colors(np.concatenate([frame_pixels(source, r) for r in rects]))}
+                          'palette': colors(np.concatenate([frame_pixels(source, r, metadata.startswith(('ART_FIA_VOID.', 'ART_FIA_RITUAL.'))) for r in rects]))}
     return identifier
 
 
@@ -181,6 +190,14 @@ for name in ('walk', 'combo', 'jump', 'ritual'):
     npcs['hannah.' + name] = {'role': 'demon-lord', 'faction': 'shadowCult', 'paletteGroup': group('npc.hannah.' + name, manifest[definition['image']], definition['frames'], 'ART_HANNAH.' + name + '.frames')}
 for name, definition in atlas['fiaVoid'].items():
     npcs['fiaVoid.' + name] = {'role': 'service' if name in ('trader', 'cook', 'smith') else 'rift-enemy', 'faction': 'shadowCult', 'paletteGroup': group('npc.fiaVoid.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_VOID.' + name + '.frames')}
+for name in ('white', 'red', 'fia'):
+    definition = atlas['fiaRitual'][name]
+    npcs['fiaRitual.' + name] = {'role': 'ritual-boss' if name == 'fia' else 'attendant', 'faction': 'shadowDen', 'paletteGroup': group('npc.fiaRitual.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.' + name + '.frames')}
+for name, definition in atlas['fiaRitual']['services'].items():
+    npcs['fiaVoid.' + name + '.corrupted'] = {'role': 'hostile-service', 'faction': 'shadowCult', 'paletteGroup': group('npc.fiaVoid.' + name + '.corrupted', manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.services.' + name + '.frames')}
+for name in ('powers', 'chains'):
+    definition = atlas['fiaRitual'][name]
+    group('effect.fiaRitual.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.' + name + '.frames')
 for name, definition in atlas['dragon'].items():
     npcs['dragon.' + name] = {'role': 'raid-boss', 'faction': 'shadowCult', 'paletteGroup': group('npc.dragon.' + name, manifest[definition['image']], definition['frames'], 'ART_DRAGON.' + name + '.frames')}
 
@@ -341,14 +358,14 @@ result = {'schemaVersion': 1,
                      'coverage': 'dominant percentages use all visible samples; accent percentages use only the saturated bright subset',
                      'notes': ['Palettes are representative, not an exhaustive list of every pixel color.',
                                'Fully transparent RGB and alpha below 32 are excluded, preserving no matte color.',
-                               'Atlas groups use the same source rectangles and intersection of clip outlines as the renderer.',
+                               'Atlas groups use registered source rectangles and clip outlines; ritual/void stamps unite disconnected outlines, matching their renderer.',
                                'Dynamic VFX colors are preserved as source expressions; lighting, opacity and filters can alter displayed colors.']},
           'pc': pc, 'npcs': npcs, 'objects': objects, 'paletteGroups': groups, 'assets': assets,
           'realmColors': {name: {k: value for k, value in record.items() if k in ('sky', 'fog', 'gold', 'accent', 'floor')}
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
 serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
-assert len(npcs) == 81, 'Missing current character entry'
+assert len(npcs) == 87, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'

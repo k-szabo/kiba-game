@@ -1446,6 +1446,22 @@
           "en": "Fia’s next request leads into the Shadow Den’s underworld and a forbidden tear. New services, maddened guards and a quest ending in a choice await Momo."
         }
       ]
+    },
+    {
+      "version": "0.9.62_08e4907c",
+      "code": "08e4907c",
+      "baseVersion": "0.9.62",
+      "slug": "fia-final-request",
+      "summary": {
+        "hu": "Fia utolsó megbízása",
+        "en": "Fia’s final request"
+      },
+      "fixes": [
+        {
+          "hu": "Fia küldetéslánca új szertartással és egy megszerezhető rókaláng-fegyverrel folytatódik.",
+          "en": "Fia’s questline continues with a new ritual and an obtainable foxfire weapon."
+        }
+      ]
     }
   ]
 }

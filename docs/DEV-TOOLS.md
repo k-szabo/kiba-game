@@ -180,6 +180,13 @@ Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengean
 
 ## Zikkurat
 
+A rituálészoba bossválasztója külön `fiaRitual` végső harcot is kínál.
+A replay a teljes első fázisból indul, nem áldoz fel udvarlányt és nem ad
+XP-t, pontot, lelket, pajzsot vagy ritka fegyvert. A normál `fiaVengeance`
+és a rituálé replayje egymást váltja, nem marad egyszerre két aktív boss.
+A `foxfireKatana` a tárgyadóban és a fegyverfelszerelésben külön elérhető;
+ez csak az elkülönített tesztkarakter tulajdonát bővíti.
+
 A teleport három további célpontot kínál: a zikkurat előtere, belseje és Hannah trónterme. A képességadó Hajnalkardot is adhat; a bossválasztó a trónteremben Hannah teljes, első fázistól induló próbáját állítja vissza. A visszajátszás nem ad jutalmat vagy történeti mérföldkövet, és a normál mentést sem módosítja.
 
 A harci kijelzések közös beállításkezelője a `combat-display.js`. Normál játékban a három külön kapcsoló a súgóban érhető el, `momo-combat-display` kulcson tárolódik, a kalandmentéstől függetlenül. Tesztmódban saját, memóriában élő értékek használatosak (sebzésszámok: ki; számszerű boss-HP: be); a dev-panel mindhármat külön kapcsolja. A teszt befejezése visszaállítja a normál preferenciákat. Párbajban ezek a kalandhoz tartozó kijelzések nem jelennek meg.

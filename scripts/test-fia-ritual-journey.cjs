@@ -1,0 +1,21 @@
+'use strict';
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs'),validate=require('./test-save-validation.cjs'),good=require('./test-fia-void-journey.cjs');
+const h=harness(),r=h.run;r('saved='+JSON.stringify(good)+';startGame(true);');h.dismiss();
+r('initPlayer(level.npcs[0]);interact();');h.dismiss();assert(r("flags[3].includes('fiaRitualAccepted')"));
+for(const colour of ['white','red']){const n=r('FiaRitual.attendants().find(n=>n.colour==='+JSON.stringify(colour)+')');assert(r('CampQuest.enter('+JSON.stringify(n.map.id)+')'));r('initPlayer(FiaRitual.attendants().find(n=>n.colour==='+JSON.stringify(colour)+'));interact();');h.dismiss();assert(r('flags[3].includes(FiaRitualRules.progress['+JSON.stringify(colour)+'])'));}
+r("CampQuest.enter('fiaRitual');initPlayer(level.npcs[0]);interact();");assert(r('FiaRitual.cinematic()'));assert(!r('fastTravel(level.rests[0])'));assert.doesNotThrow(()=>validate(r('saved')));
+r("state='pause';var sceneTime=FiaRitual.scene.elapsed;FiaRitual.update(10);");assert.equal(r('FiaRitual.scene.elapsed'),r('sceneTime'));r("state='play';for(let i=0;i<310;i++)update(1/60);");h.dismiss();assert(r('FiaRitual.breakReady()'));
+h.press({action:'ultimate'});h.tick(75);h.release({action:'ultimate'});h.dismiss();assert(r('FiaRitual.enemy?.ritual===true'));assert(!r('FiaRitual.cinematic()'));
+const before=r('captureProgress()');r('var foe=FiaRitual.enemy;foe.shieldRemaining=0;FiaCombat.hit(foe,foe,100000);');h.dismiss();assert(r('FiaRitual.enemy.ritualEmpowered'));assert.equal(r('FiaRitual.enemy.hp'),900);
+r('meatCount=0;coins=0;revive();');h.dismiss();assert.equal(r('meatCount'),before.meatCount);assert.equal(r('coins'),before.coins);assert.equal(r('FiaRitual.enemy.hp'),1800);assert(!r('FiaRitual.enemy.ritualEmpowered'));assert.doesNotThrow(()=>validate(r('saved')));
+r('var foe=FiaRitual.enemy;foe.shieldRemaining=0;FiaCombat.hit(foe,foe,100000);');h.dismiss();r('foe.inv=0;FiaCombat.hit(foe,foe,100000);');h.dismiss();
+assert(r("flags[3].includes('fiaRitualCompleted')&&flags[3].includes('foxfireKatana')"));assert.equal(r("Inventory.quantity('foxfireKatana')"),1);assert(r('FiaRitual.pendingEscape()'));assert(!r('fastTravel(level.rests[0])'));assert.equal(r('travelDestination(level.rests[0])'),null);assert.doesNotThrow(()=>validate(r('captureProgress()')));
+r('Inventory.open();');assert(r("CampWorkshop.equipOwned('foxfireKatana')"));assert.equal(r('weaponStyle'),'foxfireKatana');assert.equal(r("Inventory.quantity('foxfireKatana')"),0);r('Inventory.close();persist();');assert.doesNotThrow(()=>validate(r('saved')));
+for(const locale of ['hu','en']){r('I18n.locale='+JSON.stringify(locale)+';Inventory.open()');h.elements.get('inventoryWeapon').onclick();const text=h.elements.get('inventoryDetailText').textContent;assert(!/\d[.,]\d{3,}/.test(text),'Weapon copy must not expose binary floating-point tails');r('Inventory.close()');}
+const pending=JSON.parse(r('JSON.stringify(saved)'));r('startGame(true)');h.dismiss();assert(r('FiaRitual.pendingEscape()'));assert.equal(r('weaponStyle'),'foxfireKatana');
+r("CampQuest.enter('shadowUnderworld')");assert.equal(r('enemies.filter(e=>e.underworldHostileRole||e.denResidentRole).length'),5);assert.equal(r('FiaVoidJourney.provider()'),null);r("initPlayer(level.residents[0]);interact()");assert.equal(r('state'),'play','Corrupted residents no longer offer dialogue');r("CampQuest.enter('fiaRitual')");
+for(const id of ['fiaRitual','fiaChambers','shadowDen']){assert.equal(r('level.id'),id);r('initPlayer(level.returnPoint);interact();');}
+assert(r('level===levels[3]'));assert(!r('FiaRitual.pendingEscape()'));assert(r("flags[3].includes('fiaEscapeCompleted')"));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+const forged=JSON.parse(JSON.stringify(pending));forged.flags[3]=forged.flags[3].filter(x=>x!=='fiaAttendantsSacrificed');assert.throws(()=>validate(forged),/ritual/);
+console.log('PASS: native quest4→5, both attendants, paused sacrifice, remappable Dawnblade escape, full fight retry, once-only relic reward/equip, persistent fast-travel lock and real three-door escape.');
+module.exports={pending,escaped:JSON.parse(r('JSON.stringify(captureProgress())'))};

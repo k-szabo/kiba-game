@@ -41,7 +41,8 @@ const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 run('Inventory.close();DevTools.open();DevSession.begin();DevTools.close();Inventory.open();');
 for(const id of iconIds){
  run(`flags=[[],[],[],[]];meatCount=0;teaCount=0;chickenCount=0;dungeonState=DungeonRules.fresh();fiaJourney=FiaJourneyRules.fresh();campServices=CampServiceRules.fresh(weaponStyle);if(ART_INVENTORY.items[${JSON.stringify(id)}].stack)Merchant.addStock(${JSON.stringify(id)});flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
- assert.equal(elements.get('inventoryGrid').children.length,1);
+ if(id==='foxfireKatana')run('Inventory.close();DevTools.open();DevItems.add({item:"foxfireKatana"});DevTools.close();Inventory.open();');
+ assert.equal(elements.get('inventoryGrid').children.length,1,id+': one owned inventory item');
  const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
  assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);
  assert.equal(icon.className,'inventory-icon');assert.equal(icon.getContext('2d').globalAlpha,1,`${id}: stale drawing alpha is cleared`);

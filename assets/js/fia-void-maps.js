@@ -14,6 +14,7 @@ function createFiaVoidMaps({makeLevel,ledge,rest,zone}){
  rest(shadowUnderworld,'underworldForge',1100,2021,'fia.void.smith');
  shadowUnderworld.returnPoint={x:100,y:636};shadowUnderworld.returnDestination={location:'shadowDen',x:1800,y:820};
  shadowUnderworld.npcs=[{id:'underworldTrader',service:'trader',x:700,y:636,height:128,name:'fia.void.trader'},{id:'underworldCook',service:'cook',x:1050,y:1337,height:128,name:'fia.void.cook'},{id:'underworldSmith',service:'smith',x:650,y:2021,height:132,name:'fia.void.smith'}];
+ shadowUnderworld.residents=[{id:'shadowNinja',x:1180,y:636,height:126,name:'fia.ninja.name',dialogue:'fia.ninja.dialogue'},{id:'shadowThief',x:420,y:2021,height:118,name:'fia.thief.name',dialogue:'fia.thief.dialogue'}];
  shadowUnderworld.forbiddenEntrance={x:1460,y:2021};zone(shadowUnderworld,shadowUnderworld.name,0,0,1600,2400);
  const voidForbidden=room('voidForbidden',3400,1250,{x:170,y:940},'fia.void.forbidden');
  ledge(voidForbidden,'void-floor',0,940,3400,'ground',310);rest(voidForbidden,'voidThreshold',330,940,'fia.void.forbidden');

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "User approved quest5 color concept, both attendant motion rows, revised six-panel ritual storyboard, and twelve-pose corrupted underworld services sheet before production.",
+  "assets": [
+    {
+      "paths": [
+        "assets/images/npcs/fia-ritual-attendants-v1.png"
+      ],
+      "prompt": "Production native-alpha painted Japanese fantasy atlas from approved white and red kitsune attendants. Four poses per row: idle, walking, restrained, fading Kiba. Only fox ears and one tail. Exactly two arms and legs; complete footwear and hair with generous transparent margins. Non-graphic disappearance. Preserve approved costume and pose order."
+    },
+    {
+      "paths": [
+        "assets/images/ui/foxfire-katana-v1.png"
+      ],
+      "prompt": "One full Foxfire Katana inventory illustration from approved concept. Curved single katana blade, consistent handle, violet foxfire highlights; contrasting detailed painted material. Transparent background, complete tip and pommel, generous margins; no character, lettering or backdrop."
+    },
+    {
+      "paths": [
+        "assets/images/enemies/fia-ritual-v1.png"
+      ],
+      "prompt": "Four powered Fia poses from approved ritual storyboard in a two-by-two true-alpha atlas. Preserve existing black-violet battle outfit, fox ears only and one tail; idle, casting, relic absorption and recovery. Exactly two arms/hands; complete silhouette, hair and feet. Four relic powers remain separate VFX."
+    },
+    {
+      "paths": [
+        "assets/images/effects/fia-ritual-powers-v1.png",
+        "assets/images/effects/fia-ritual-chains-v1.png"
+      ],
+      "prompt": "Transparent painted effects atlas from approved six-panel ritual storyboard. Powers: hymn, infernal fire, drake sight and void; preparation and impact rows. Separate four-cell chain atlas: restraints, white Kiba fading, red Kiba fading, broken golden chains. No characters or baked scenery, soft native alpha and full effect margins."
+    },
+    {
+      "paths": [
+        "assets/images/npcs/fia-underworld-corrupted-v1.png"
+      ],
+      "prompt": "Three rows of four poses for the approved underworld trader, cook and smith, using approved twelve-pose motion sketch and original service character references. Idle, step, preparation, void cast. Same identities, painted materials and equipment. Faint purple veins/eyes. Trader lantern-backpack stays fixed; cook holds ladle in right hand with pan at belt; smith hammer at belt, tongs in right hand, free left hand casts. Two hands only. True alpha, no projectile, scenery, labels or grid.",
+      "refinementPrompt": "Preserve every character and pose. Reduce and evenly register actors inside cells with larger transparent gutters. Keep all feet, lantern, backpack, hammer, ladle and tongs complete. Remove large hand orbs and halos; retain subtle purple fingertips."
+    }
+  ],
+  "registration": "scripts/register-fia-ritual.py reads source alpha only. Disconnected fragments use union clipping; no PNG pixels are edited. Actor body heights and foot anchors remain fixed across poses; native-alpha outline crops separate overlapping nominal cells."
+}

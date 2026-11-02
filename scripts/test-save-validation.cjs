@@ -4,6 +4,7 @@ const GAME_RELEASE=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/con
 const context={GAME_RELEASE,TextEncoder,TextDecoder,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,I18n:{t:value=>locale[value]??value}};vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-rules.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);

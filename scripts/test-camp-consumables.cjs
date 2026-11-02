@@ -65,7 +65,7 @@ for(const before of [.1,.4,.999,1,1.4,2]){
 {
  const h=setup(),r=h.run;captureClicks(h);r("campServices.ownedWeapons=['katana','naginata','swordShield'];campServices.weaponRank=2;player.hp=2;Inventory.open();");
  assert(r("Inventory.contents().includes('weapon-naginata')"));assert(r("Inventory.contents().includes('weapon-swordShield')"));assert(!r("Inventory.contents().includes('weapon-katana')"));
- choose(h,'weapon-naginata');assert.equal(h.elements.get('inventoryDetailText').textContent,r("I18n.format('weapon.description',['normal','heavy'].map(kind=>momoStats().damage*WeaponStyles.attack('naginata',SWORD_ATTACKS[kind]).damageScale))"));
+ choose(h,'weapon-naginata');assert.equal(h.elements.get('inventoryDetailText').textContent,r("I18n.format('weapon.description',['normal','heavy'].map(kind=>Number((momoStats().damage*WeaponStyles.attack('naginata',SWORD_ATTACKS[kind]).damageScale).toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2})))"));
  assert.equal(h.elements.get('useInventoryItem').textContent,r("I18n.t('service.equip')"));assert(h.elements.get('sellInventoryItem').hidden,'Owned weapons cannot be sold through Akash');
  choose(h,'weapon-swordShield');h.elements.get('useInventoryItem').onclick();assert.equal(r('weaponStyle'),'swordShield');assert.equal(r('player.hp'),2,'Equipping extra capacity does not restore health');assert.equal(r('player.maxHp'),7);assert.equal(r('saved.weaponStyle'),'swordShield');
  assert(!r("Inventory.contents().includes('weapon-swordShield')"));assert(r("Inventory.contents().includes('weapon-katana')"));choose(h,'weapon-katana');h.elements.get('useInventoryItem').onclick();assert.equal(r('player.hp'),2);assert.equal(r('player.maxHp'),5);

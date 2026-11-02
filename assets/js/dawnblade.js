@@ -28,7 +28,8 @@ const Dawnblade=(()=>{
    // Recoil is the ability's cost, independent of armor and immunity frames.
    player.hp=HannahRules.recoil(player.hp);
    const target=current.target;
-   if(target&&target.encounterToken===current.token&&HannahCombat.current(target)&&target.mode==='finisher')HannahCombat.finishWithUltimate(target);
+   if(FiaRitual.breakReady())FiaRitual.breakChains();
+   else if(target&&target.encounterToken===current.token&&HannahCombat.current(target)&&target.mode==='finisher')HannahCombat.finishWithUltimate(target);
    else{
     const hit={x:current.face>0?player.x+player.w/2:player.x+player.w/2-440,y:player.y-100,w:440,h:player.h+160};
     resolveMeleeHit({amount:HannahRules.ultimateDamage(momoStats().damage),hit,kind:'heavy'});

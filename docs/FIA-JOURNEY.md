@@ -1,4 +1,4 @@
-# Fia második megbízása és titkos harca
+# Fia küldetéslánca és titkos harcai
 
 ## A 3–5. küldetés fejlesztési sorrendje
 
@@ -6,8 +6,8 @@ A folytatás a `FEATURE-fia-quests-3-4-5` ágon készül, kötelező sorrendben:
 3. sárkányrajtaütés, 4. void-hasadék, 5. rituálé. A harmadik megbízáshoz
 a második leadása és Hannah legyőzése szükséges. A szív védett tárgy marad.
 A harmadik megbízás és a háromszakaszos rajtaütés, illetve a negyedik
-megbízás rituálészobája, alvilága és hasadékharca már játszható. Az ötödik
-folytatás beépítése folyamatban van.
+megbízás rituálészobája, alvilága és hasadékharca, valamint az ötödik
+megbízás végső rituáléja és menekülése is játszható.
 
 A `fia-journey-rules.js` tiszta, másolásos tranzakciói kezelik a sárkánymenet
 sorszámát, lezárását, a pikkelykészletet és a megbízás mérföldköveit.
@@ -88,6 +88,50 @@ elutasítás utáni visszaállítás. Friss Edge-profilban HU/EN, 1280×720 és
 1920×1080 helyszínképek, natív E-bejárat, vásárlás, döntés, titkosított
 mentés és újratöltés ellenőrizve, konzol- és assethibák nélkül. Ez nem
 teljes manuális harci végigjátszás vagy független QA-elfogadás.
+
+## Ötödik megbízás: az utolsó ígéret
+
+A negyedik leadása és a négy relikvia történeti átadása után Fia a fehér
+és vörös udvarlány összehívását kéri. A fehér az Árnyékzugban, a vörös az
+alvilág középső szintjén vár. A rituálészobában mindkettőjük feláldozása
+tartós történeti esemény. A jelenet szünetben áll; Momo a ténylegesen
+kiosztott Hajnalkard-akcióval töri szét a saját láncait.
+
+A végső harc 1800 HP-val indul. Az első, 50%-ot átlépő találat 900 HP-n
+megáll, a korábbi támadások törlődnek, és Fia beolvasztja a négy relikviát.
+Ének-, pokoltűz-, sárkány- és void-támadások váltják egymást, előre rögzített
+célterületekkel. Ebben a fázisban nincs ciklikus Kiba-pajzsa; saját életereje
+lassan fogy, de a végső találatot Momónak kell bevinnie. Kevesebb HP mellett
+gyorsabbá válik. A rendes, korábban provokálható Fia-harc változatlan marad.
+
+Vereségkor a teljes harc az első fázistól indul újra az eltárolt készlettel
+és érmékkel. A feláldozott udvarlányok nem térnek vissza. A harc alatti
+mentés is ezt az előzményt őrzi; folytatáskor tiszta harc indul.
+Győzelemkor egyszer 1800 XP, +1 pont, a meglévő lélek/pajzs és egy
+Rókaláng-katana jár. Ez a 1800 XP a korábbi 1200 XP helyett jár.
+A katana külön birtokolt, felszerelhető jutalomfegyver: katana mozdulatok,
++20% sebzés. Nem kezdő- vagy párbajválasztás, és a kovács nem árulja.
+
+A relikviák eltűnnek, a lakók és az alvilági szolgáltatók ellenségessé
+válnak. Az utóbbiak négy natív pózt használnak: alapállás, lépés,
+előkészítés, void-varázslat. Gyorsutazás sem a célpontkatalógusból, sem
+a végrehajtó API-val nem lehetséges a menekülés alatt. A tiltás mentés és
+újratöltés után is megmarad, és kizárólag az Árnyékzug rendes kijáratán
+való távozás oldja fel.
+
+Modulok: `fia-ritual-rules.js` (tiszta történeti tranzakciók),
+`fia-ritual.js` (jelenet, harc, jutalom és menekülés), `fia-ritual-art.js`
+(állapotot nem módosító grafika). Ellenőrzés: `node --run test:fia-ritual`.
+A mentési epoch változatlan, régi, szív nélküli befejezéshez nem keletkezik
+visszamenőleges démonlord-szív.
+
+Friss, szintetikus mentésű Edge-profilban ellenőrizve: összehívás,
+szünetelő feláldozási jelenet, valódi F billentyűs kitörés, fázisváltás,
+teljes újrapróbálás, jutalom/felszerelés, titkosított újratöltés és három
+rendes E-kijáraton át történő menekülés. HU/EN képek készültek 1280×720
+és 1920×1080 méretben, a négy erő jelzéseiről/becsapódásairól és a natív
+pózokról is. Nem volt konzol- vagy assethiba. A harci fázisokat a teszt
+szintetikus találatokkal léptette, így ez nem teljes manuális végigjátszás.
 
 ## Második küldetés
 

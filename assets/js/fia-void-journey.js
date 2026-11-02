@@ -13,6 +13,7 @@ const FiaVoidJourney=(()=>{
  }
  function talk(){
   if(state!=='play'||!nearFia())return false;
+  if(FiaRitual.talk())return true;
   if(!has('fiaVoidAccepted')){if(!apply(FiaJourneyRules.acceptVoid(fiaJourney,flags,defeated)))return false;story('fia.void.quest','fia.name','fia.void.offer',null,{right:'fia',speaker:'fia'});return true;}
   if(has('rawVoidCrystal')&&!has('fiaVoidCompleted')){const origin=level;story('fia.void.quest','fia.name','fia.void.return',()=>{if(level===origin&&state==='play'&&nearFia())choice();},{right:'fia',speaker:'fia'});return true;}
   story('fia.void.quest','fia.name',has('fiaVoidCompleted')?'fia.void.thanks':'fia.void.offer',null,{right:'fia',speaker:'fia'});return true;
@@ -41,6 +42,8 @@ const FiaVoidJourney=(()=>{
   if(!active())return null;
   if(pointNear(level.returnPoint,95,85))return {type:'fiaVoidReturn',text:I18n.format('ziggurat.return',[I18n.t(SIDE_LOCATIONS[level.returnDestination.location].map.name)])};
   if(nearFia())return {type:'fiaVoidTalk',text:I18n.format('camp.talk',[I18n.t('fia.name')])};
+  const resident=level===shadowUnderworld&&available()?level.residents.find(n=>pointNear(n,95,85)):null;
+  if(resident)return {type:'fiaVoidResident',id:resident.id,text:I18n.format('camp.talk',[I18n.t(resident.name)])};
   const vendor=service();return vendor?{type:'fiaVoidService',service:vendor.service,text:I18n.format('camp.talk',[I18n.t(vendor.name)])}:null;
  }
  function interact(candidate){
@@ -48,6 +51,7 @@ const FiaVoidJourney=(()=>{
   if(actual.type==='fiaVoidEnter')return actual.id===candidate.id&&CampQuest.enter(actual.id);
   if(actual.type==='fiaVoidReturn')return CampQuest.leave();
   if(actual.type==='fiaVoidTalk')return talk();
+  if(actual.type==='fiaVoidResident'&&candidate.id===actual.id){const npc=level.residents.find(n=>n.id===actual.id);story('fia.den.name',npc.name,npc.dialogue,null,{right:npc.id,speaker:npc.id});return true;}
   if(actual.type==='fiaVoidService'&&candidate.service===actual.service){if(!meet(actual.service))return false;return actual.service==='smith'?CampWorkshop.open('forge'):Merchant.open();}
   return false;
  }

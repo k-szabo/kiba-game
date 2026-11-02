@@ -455,7 +455,7 @@ const ARENA_REWARDS=Object.freeze({
  arenaSerpent:Object.freeze({flag:'arenaRewardSerpent',xp:450,item:'arenaSerpentScale'}),
  arenaCyclops:Object.freeze({flag:'arenaRewardGuards',xp:600})
 });
-shadowRealm.progressFlags.push(...Object.values(FiaJourneyRules.progress));
+shadowRealm.progressFlags.push(...Object.values(FiaJourneyRules.progress),...Object.values(FiaRitualRules.progress));
 shadowRealm.progressFlags.push('fiaChambersHeard','fiaTalismanAccepted','priestessTalisman','fiaTalismanCompleted','fiaSlain','fiaRewardClaimed','kitsuneSoul','kibaShield');
 shadowRealm.progressFlags.push('arenaQuestAccepted','arenaRewardCaptain','arenaRewardSerpent','arenaRewardGuards','arenaSerpentScale','arenaChampion');
 

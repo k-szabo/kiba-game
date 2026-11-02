@@ -6,7 +6,7 @@ const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/r
 const registry=JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/releases.json'),'utf8'));
 const registeredHistory={};for(const {baseVersion,code} of [...registry.releases,...registry.bugfixes])(registeredHistory[baseVersion]??=[]).push(code);
 const definitions=vm.createContext({I18n:{t:key=>key}});
-for(const file of ['dungeon-rules','fia-journey-rules','fia-void-maps','dragon-raid','ziggurat-maps','levels'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js',file+'.js'),'utf8'),definitions);
+for(const file of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','ziggurat-maps','levels'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js',file+'.js'),'utf8'),definitions);
 const read=source=>copy(vm.runInContext(source,definitions));
 function baseline(){
  const data=cryptoHelpers.fixture();Object.assign(data,{realm:3,prologueComplete:true,abilities:[false,false],defeated:[true,true,true,true],flags:[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal','shadowEntered'],[]],visitedRests:[['start'],['start'],['start'],['start']],checkpoint:read('levels[3].rests[0]')});return data;
