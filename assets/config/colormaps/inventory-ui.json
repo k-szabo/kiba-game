@@ -6687,6 +6687,111 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/ui/travel-atlas-v1.png": {
+      "sha256": "38df46257a03dff5c621888a8887993ce2451b1d48404a2408d22a9d9a1d8254",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "travelAtlas"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#ebd1a9",
+            "coveragePercent": 16.827
+          },
+          {
+            "hex": "#e3c394",
+            "coveragePercent": 15.229
+          },
+          {
+            "hex": "#423632",
+            "coveragePercent": 9.1016
+          },
+          {
+            "hex": "#5c4f3f",
+            "coveragePercent": 7.2231
+          },
+          {
+            "hex": "#291f1e",
+            "coveragePercent": 5.6964
+          },
+          {
+            "hex": "#866f4c",
+            "coveragePercent": 5.4906
+          },
+          {
+            "hex": "#d3ad78",
+            "coveragePercent": 5.2161
+          },
+          {
+            "hex": "#ead9c6",
+            "coveragePercent": 5.0998
+          },
+          {
+            "hex": "#ad8d61",
+            "coveragePercent": 4.6454
+          },
+          {
+            "hex": "#655a62",
+            "coveragePercent": 4.4512
+          },
+          {
+            "hex": "#847b80",
+            "coveragePercent": 4.3848
+          },
+          {
+            "hex": "#aa9b9b",
+            "coveragePercent": 4.3628
+          },
+          {
+            "hex": "#c9b8b9",
+            "coveragePercent": 4.1697
+          },
+          {
+            "hex": "#faeed8",
+            "coveragePercent": 4.1042
+          },
+          {
+            "hex": "#843223",
+            "coveragePercent": 2.3617
+          },
+          {
+            "hex": "#d74823",
+            "coveragePercent": 1.6366
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#926c40",
+            "coveragePercent": 24.2871
+          },
+          {
+            "hex": "#b38e4d",
+            "coveragePercent": 21.9004
+          },
+          {
+            "hex": "#d8ae66",
+            "coveragePercent": 21.0409
+          },
+          {
+            "hex": "#953323",
+            "coveragePercent": 14.0235
+          },
+          {
+            "hex": "#ca371e",
+            "coveragePercent": 10.4674
+          },
+          {
+            "hex": "#ec5827",
+            "coveragePercent": 8.2807
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/ui/yomi-fall-items-v1.png": {
       "sha256": "0d807b953ce8acf111f5c64100e5d0ee2b7cc1bd73a628072f2dd856e137eaef",
       "width": 1536,

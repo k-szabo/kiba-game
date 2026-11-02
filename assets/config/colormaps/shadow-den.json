@@ -88,6 +88,16 @@
       "faction": "shadowDen",
       "paletteGroup": "npc.fiaRitual.fia"
     },
+    "fiaRitual.spirit.white": {
+      "role": "summoned-spirit",
+      "faction": "shadowDen",
+      "paletteGroup": "npc.fiaRitual.spirit.white"
+    },
+    "fiaRitual.spirit.red": {
+      "role": "summoned-spirit",
+      "faction": "shadowDen",
+      "paletteGroup": "npc.fiaRitual.spirit.red"
+    },
     "shadowDen.hostile.ninja": {
       "role": "hostile-resident",
       "faction": "shadowDen",
@@ -1631,6 +1641,208 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "npc.fiaRitual.spirit.white": {
+      "source": "assets/images/effects/fia-attendant-spirits-v1.png",
+      "frameMetadata": "ART_FIA_SPIRITS.white.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#b994f6",
+            "coveragePercent": 14.9818
+          },
+          {
+            "hex": "#e0c3f4",
+            "coveragePercent": 11.2366
+          },
+          {
+            "hex": "#fbf3f7",
+            "coveragePercent": 10.1405
+          },
+          {
+            "hex": "#caaaf5",
+            "coveragePercent": 9.8027
+          },
+          {
+            "hex": "#f2dbf7",
+            "coveragePercent": 9.3494
+          },
+          {
+            "hex": "#c5a2c7",
+            "coveragePercent": 8.0266
+          },
+          {
+            "hex": "#f4d9d6",
+            "coveragePercent": 7.7616
+          },
+          {
+            "hex": "#af84a5",
+            "coveragePercent": 5.5729
+          },
+          {
+            "hex": "#e9bfb8",
+            "coveragePercent": 5.4592
+          },
+          {
+            "hex": "#976480",
+            "coveragePercent": 4.4351
+          },
+          {
+            "hex": "#a67ce8",
+            "coveragePercent": 3.2624
+          },
+          {
+            "hex": "#713e57",
+            "coveragePercent": 2.8332
+          },
+          {
+            "hex": "#d59885",
+            "coveragePercent": 2.4041
+          },
+          {
+            "hex": "#4c1e21",
+            "coveragePercent": 2.0237
+          },
+          {
+            "hex": "#a85b38",
+            "coveragePercent": 1.4383
+          },
+          {
+            "hex": "#7540d6",
+            "coveragePercent": 1.272
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#aa7ff6",
+            "coveragePercent": 39.8553
+          },
+          {
+            "hex": "#7c48dd",
+            "coveragePercent": 18.3527
+          },
+          {
+            "hex": "#934630",
+            "coveragePercent": 13.095
+          },
+          {
+            "hex": "#b86c47",
+            "coveragePercent": 11.3998
+          },
+          {
+            "hex": "#7c4194",
+            "coveragePercent": 10.2452
+          },
+          {
+            "hex": "#e69d6a",
+            "coveragePercent": 7.052
+          }
+        ],
+        "visibleSamples": 299570,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.fiaRitual.spirit.red": {
+      "source": "assets/images/effects/fia-attendant-spirits-v1.png",
+      "frameMetadata": "ART_FIA_SPIRITS.red.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f57668",
+            "coveragePercent": 11.5583
+          },
+          {
+            "hex": "#f15c4d",
+            "coveragePercent": 11.5043
+          },
+          {
+            "hex": "#e04438",
+            "coveragePercent": 10.2709
+          },
+          {
+            "hex": "#f59484",
+            "coveragePercent": 8.0318
+          },
+          {
+            "hex": "#b83e30",
+            "coveragePercent": 7.0602
+          },
+          {
+            "hex": "#9e1f19",
+            "coveragePercent": 6.9316
+          },
+          {
+            "hex": "#c2201d",
+            "coveragePercent": 6.7755
+          },
+          {
+            "hex": "#f9b7a8",
+            "coveragePercent": 6.7708
+          },
+          {
+            "hex": "#7c120e",
+            "coveragePercent": 5.9556
+          },
+          {
+            "hex": "#fbd8cb",
+            "coveragePercent": 5.7668
+          },
+          {
+            "hex": "#fdf2eb",
+            "coveragePercent": 4.4499
+          },
+          {
+            "hex": "#55100b",
+            "coveragePercent": 4.2224
+          },
+          {
+            "hex": "#c06b54",
+            "coveragePercent": 3.0972
+          },
+          {
+            "hex": "#eb1d18",
+            "coveragePercent": 2.8975
+          },
+          {
+            "hex": "#7a3d2c",
+            "coveragePercent": 2.6262
+          },
+          {
+            "hex": "#2d0c08",
+            "coveragePercent": 2.0811
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f16a5b",
+            "coveragePercent": 21.5271
+          },
+          {
+            "hex": "#e74c3e",
+            "coveragePercent": 19.6148
+          },
+          {
+            "hex": "#9b1d17",
+            "coveragePercent": 16.7734
+          },
+          {
+            "hex": "#d3231e",
+            "coveragePercent": 14.3972
+          },
+          {
+            "hex": "#f68877",
+            "coveragePercent": 13.9822
+          },
+          {
+            "hex": "#b64435",
+            "coveragePercent": 13.7054
+          }
+        ],
+        "visibleSamples": 303484,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "npc.shadowDen.hostile.ninja": {
       "source": "assets/images/enemies/den-ninja-v1.png",
       "frameMetadata": "ART_FIA.ninja.frames",
@@ -1835,6 +2047,111 @@
     }
   },
   "assets": {
+    "assets/images/effects/fia-attendant-spirits-v1.png": {
+      "sha256": "c25c1b8b5dfbede316103d3f8a4aa4fb2ee768f489ff7005bf175dac3dad3c55",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "fiaAttendantSpirits"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bb98f4",
+            "coveragePercent": 12.2756
+          },
+          {
+            "hex": "#f9ebf3",
+            "coveragePercent": 11.6867
+          },
+          {
+            "hex": "#dfc1f4",
+            "coveragePercent": 8.6411
+          },
+          {
+            "hex": "#f16454",
+            "coveragePercent": 8.4552
+          },
+          {
+            "hex": "#f5d3cc",
+            "coveragePercent": 7.5958
+          },
+          {
+            "hex": "#d5493a",
+            "coveragePercent": 7.2376
+          },
+          {
+            "hex": "#f38777",
+            "coveragePercent": 6.7606
+          },
+          {
+            "hex": "#af2820",
+            "coveragePercent": 6.5864
+          },
+          {
+            "hex": "#c19cbe",
+            "coveragePercent": 5.5991
+          },
+          {
+            "hex": "#7e1711",
+            "coveragePercent": 5.349
+          },
+          {
+            "hex": "#f4b2a3",
+            "coveragePercent": 5.3332
+          },
+          {
+            "hex": "#a57389",
+            "coveragePercent": 3.8871
+          },
+          {
+            "hex": "#42110f",
+            "coveragePercent": 3.4129
+          },
+          {
+            "hex": "#df241e",
+            "coveragePercent": 3.2221
+          },
+          {
+            "hex": "#7b4650",
+            "coveragePercent": 2.9337
+          },
+          {
+            "hex": "#814ed9",
+            "coveragePercent": 1.0238
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e45747",
+            "coveragePercent": 27.8065
+          },
+          {
+            "hex": "#f57e6d",
+            "coveragePercent": 23.5942
+          },
+          {
+            "hex": "#cf2e26",
+            "coveragePercent": 21.6
+          },
+          {
+            "hex": "#9c261e",
+            "coveragePercent": 20.2353
+          },
+          {
+            "hex": "#a77bf5",
+            "coveragePercent": 4.4037
+          },
+          {
+            "hex": "#7941bd",
+            "coveragePercent": 2.3602
+          }
+        ],
+        "visibleSamples": 603054,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/arena-captain-v1.png": {
       "sha256": "ced596616eb405e6bac86dd496403be7d910505588f981fb69d789938d569444",
       "width": 1536,

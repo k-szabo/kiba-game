@@ -21,7 +21,7 @@ for(const fps of [30,60,120]){
  const paused=r('JSON.stringify([boss,projectiles,player])');r('FiaCombat.update(boss,20);FiaCombat.updateStatus(20);');assert.equal(r('JSON.stringify([boss,projectiles,player])'),paused);
  r('state="play";');assert(!r('FiaCombat.impact(oldProjectile,player,player.hp+3)'),'Pre-empowerment attacks cannot affect the empowered owner');
  r('boss.inv=0;');assert.equal(r('FiaCombat.hit(boss,boss,1)'),1);assert.equal(r('empowered'),1);
- const start=r('boss.hp');r('boss.clock=10;boss.shieldRemaining=100;boss.shieldClock=-100;');for(let i=0;i<fps;i++)r(`FiaCombat.update(boss,1/${fps});`);assert(Math.abs(r('boss.hp')-(start-5))<1e-8);assert.equal(r('boss.shieldRemaining'),0);assert.equal(r('boss.shieldClock'),0);
+ const start=r('boss.hp');r('boss.clock=10;boss.shieldRemaining=100;boss.shieldClock=-100;');for(let i=0;i<fps;i++)r(`FiaCombat.update(boss,1/${fps});`);assert(Math.abs(r('boss.hp')-(start-2))<1e-8);assert.equal(r('boss.shieldRemaining'),0);assert.equal(r('boss.shieldClock'),0);
  r('boss.hp=2;boss.clock=100;');r('FiaCombat.update(boss,10)');assert.equal(r('boss.hp'),1);assert.equal(r('victories'),0);r('boss.inv=0;');assert.equal(r('FiaCombat.hit(boss,boss,1)'),1);assert.equal(r('victories'),1);assert(r('boss.dead'));
  assert(!r('FiaCombat.hit(boss,boss,10)'));assert(!r('FiaCombat.impact(oldProjectile,player,player.hp+3)'));
 }

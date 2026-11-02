@@ -23,7 +23,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,foxfire:ART_FOXFIRE,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({manifest:ART_MANIFEST,frames:ART_FRAMES,foxfire:ART_FOXFIRE,fiaSpirits:ART_FIA_SPIRITS,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -196,6 +196,8 @@ for name, definition in atlas['fiaVoid'].items():
 for name in ('white', 'red', 'fia'):
     definition = atlas['fiaRitual'][name]
     npcs['fiaRitual.' + name] = {'role': 'ritual-boss' if name == 'fia' else 'attendant', 'faction': 'shadowDen', 'paletteGroup': group('npc.fiaRitual.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.' + name + '.frames')}
+for name, definition in atlas['fiaSpirits'].items():
+    npcs['fiaRitual.spirit.' + name] = {'role': 'summoned-spirit', 'faction': 'shadowDen', 'paletteGroup': group('npc.fiaRitual.spirit.' + name, manifest[definition['image']], definition['frames'], 'ART_FIA_SPIRITS.' + name + '.frames')}
 for name, definition in atlas['fiaRitual']['services'].items():
     npcs['fiaVoid.' + name + '.corrupted'] = {'role': 'hostile-service', 'faction': 'shadowCult', 'paletteGroup': group('npc.fiaVoid.' + name + '.corrupted', manifest[definition['image']], definition['frames'], 'ART_FIA_RITUAL.services.' + name + '.frames')}
 for name in ('powers', 'chains'):
@@ -369,7 +371,7 @@ result = {'schemaVersion': 1,
           'flags': flags, 'codeColors': code_colors}
 index, parts = partition(result)
 serialized = serialize(index)
-assert len(npcs) == 88, 'Missing current character entry'
+assert len(npcs) == 90, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'

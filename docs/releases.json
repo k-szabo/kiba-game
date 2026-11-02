@@ -676,6 +676,30 @@
           "en": "The Void Demon heals for twenty times the health it actually removes. The Foxfire Katana has unique animations and a refreshing burn effect."
         }
       ]
+    },
+    {
+      "version": "0.9.63_3042e400",
+      "code": "3042e400",
+      "baseVersion": "0.9.63",
+      "slug": "travel-atlas-final-fia-spirits",
+      "summary": {
+        "hu": "Áttekinthetőbb utazás és Fia végső próbája",
+        "en": "Clearer travel and Fia’s final trial"
+      },
+      "fixes": [
+        {
+          "hu": "A gyorsutazás rajzolt térképen, birodalmak és területek szerint rendezve mutatja az ismert célpontokat; a dungeonök és raidek külön jelölést kapnak.",
+          "en": "Fast travel presents known destinations on a painted map, grouped by realm and area, with distinct dungeon and raid markers."
+        },
+        {
+          "hu": "A szünetmenü támogatásgombja alaphelyzetben nem kap kiemelést.",
+          "en": "The pause menu’s support button is no longer highlighted by default."
+        },
+        {
+          "hu": "Fia végső rituálés harca sűrűbb támadássorokat és a két udvarhölgy szellemének idézését kapta; a rituálé lassabban emészti fel az életerejét.",
+          "en": "Fia’s final ritual fight features denser attack sequences and summons the two attendants’ spirits; the ritual consumes her health more slowly."
+        }
+      ]
     }
   ],
   "releases": [

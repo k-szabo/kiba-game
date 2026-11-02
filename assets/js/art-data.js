@@ -18,6 +18,8 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ travelAtlas:'assets/images/ui/travel-atlas-v1.png',
+ fiaAttendantSpirits:'assets/images/effects/fia-attendant-spirits-v1.png',
  momoFoxfireNormal:'assets/images/momo-foxfire-normal-v1.png',
  momoFoxfireHeavy:'assets/images/momo-foxfire-heavy-v1.png',
  fiaRitualAttendants:'assets/images/npcs/fia-ritual-attendants-v1.png',
@@ -448,3 +450,6 @@ const ART_FIA_RITUAL={"white":{"image":"fiaRitualAttendants","facing":1,"faction
 // END FIA RITUAL ATLAS
 ART_INVENTORY.items.foxfireKatana={name:"item.foxfireKatana",realm:3,image:"foxfireKatanaArt",x:0,y:0,w:1536,h:1024};
 ART_INVENTORY.foxfireKatana=ART_INVENTORY.items.foxfireKatana;
+
+// Approved spectral variants: fixed cell scale and foot registration; native alpha.
+const ART_FIA_SPIRITS={"white":{"image":"fiaAttendantSpirits","facing":1,"frames":[{"x":0,"y":0,"w":443,"h":443,"anchorX":255,"anchorY":403,"bodyHeight":315},{"x":443,"y":0,"w":444,"h":443,"anchorX":698,"anchorY":403,"bodyHeight":315},{"x":887,"y":0,"w":443,"h":443,"anchorX":1142,"anchorY":403,"bodyHeight":315},{"x":1330,"y":0,"w":444,"h":443,"anchorX":1585,"anchorY":403,"bodyHeight":315}]},"red":{"image":"fiaAttendantSpirits","facing":1,"frames":[{"x":0,"y":443,"w":443,"h":444,"anchorX":255,"anchorY":826,"bodyHeight":315},{"x":443,"y":443,"w":444,"h":444,"anchorX":698,"anchorY":826,"bodyHeight":315},{"x":887,"y":443,"w":443,"h":444,"anchorX":1142,"anchorY":826,"bodyHeight":315},{"x":1330,"y":443,"w":444,"h":444,"anchorX":1585,"anchorY":826,"bodyHeight":315}]}};

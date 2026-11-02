@@ -83,9 +83,9 @@ assert.equal(run('JSON.stringify(nextObjective())'),objective);
 // catches actual leaked lines/markers, including after discovery, rather than
 // merely asserting that metadata contains an 'unmapped' field.
 run("initPlayer(level.start);showMap();");
-const ordinaryMap=elements.get('mapContent').children[0].innerHTML;
+const ordinaryMap=elements.get('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML;
 run("closeMap();var slayerRoutePlatforms=platforms;platforms=platforms.filter(p=>p.secretArea!=='slayerGrave');showMap();");
-assert.equal(elements.get('mapContent').children[0].innerHTML,ordinaryMap,'The world map reveals annex geometry or markers');
+assert.equal(elements.get('mapContent').children.find(el=>el.className==='atlas-local-map').children.find(el=>el.className==='world-map').innerHTML,ordinaryMap,'The world map reveals annex geometry or markers');
 run('closeMap();platforms=slayerRoutePlatforms;');
 const minimapCalls=[];
 run("$('minimapCanvas');");

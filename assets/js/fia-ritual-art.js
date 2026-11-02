@@ -37,6 +37,17 @@ const FiaRitualArt=(()=>{
  function actor(e){
   if(e.ritual&&e.ritualEmpowered){
    if(e.dead)return true;const pose=e.phase==='windup'||e.phase==='strike'?1:e.phase==='recover'?0:0;
+   for(const spirit of e.spirits||[]){
+    const index={appear:0,windup:1,strike:2,fade:3}[spirit.phase]??0;
+    const opacity=spirit.phase==='appear'?clamp(spirit.phaseTime/.6,0,1):spirit.phase==='fade'?clamp(1-spirit.phaseTime/.8,0,1):1;
+    ctx.save();ctx.globalAlpha*=opacity*.88;
+    stamp(ART_FIA_SPIRITS[spirit.colour],index,spirit.x+spirit.w/2,spirit.y+spirit.h,spirit.h,spirit.face);ctx.restore();
+    if(spirit.phase==='windup'){
+     if(spirit.attackBox)BossCues.box(spirit.attackBox,BossCues.color);
+     else BossVFX.marker(spirit.x+spirit.w/2,spirit.y+spirit.h*.4,65,BossCues.color);
+    }
+    if(spirit.phase==='strike'&&spirit.attackBox){const b=spirit.attackBox;effect('powers',5,b.x+b.w/2,b.y+b.h/2,b.w,b.h,.9);}
+   }
    stamp(ART_FIA_RITUAL.fia,pose,e.x+e.w/2,e.y+e.h,e.h,e.face);
    const index=Math.max(0,kinds.indexOf(e.ritualEffect));effect('powers',index,e.x+e.w/2,e.y+e.h*.45,110,150,.28);
    if(e.phase==='windup'){for(const b of e.attackBoxes||[])BossCues.box(b,BossCues.color);if(!e.attackBoxes?.length&&!e.hazards?.length)BossVFX.marker(e.x+e.w/2,e.y+e.h*.4,90,BossCues.color);}

@@ -90,18 +90,18 @@
   "dataSchemaVersion": 1,
   "counts": {
     "pc": 2,
-    "npcs": 88,
+    "npcs": 90,
     "objects": 125,
-    "paletteGroups": 226,
-    "assets": 269,
-    "codeColors": 94
+    "paletteGroups": 228,
+    "assets": 271,
+    "codeColors": 95
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "5d7e396f4095b360748164032d690779eec84616b762fa889649886b54ca06c3",
+      "sha256": "07bc70cd9add74c0298d7fc75fc3e786716db62ce168f8ad55866057dea5f740",
       "counts": {
-        "codeColors": 94
+        "codeColors": 95
       }
     },
     {
@@ -131,10 +131,10 @@
     },
     {
       "file": "colormaps/inventory-ui.json",
-      "sha256": "26efde331afdb4652b226b99a8ca096f05567b051df23a17b285b6ec7f3ae4d4",
+      "sha256": "36cd8353d066cb3aeb2b5fd87258d6b4041e6d54a7c31ce4df95bb78144c1507",
       "counts": {
         "paletteGroups": 34,
-        "assets": 34
+        "assets": 35
       }
     },
     {
@@ -182,11 +182,11 @@
     },
     {
       "file": "colormaps/shadow-den.json",
-      "sha256": "66208534456435a45963b57d2fed23064bbfd74d1481a2e9b7634c3284eba164",
+      "sha256": "8a9931ecab16745d3f3d97a0a2d737ce99ed67991b7a79a4554da7d319b1e614",
       "counts": {
-        "npcs": 16,
-        "paletteGroups": 17,
-        "assets": 14
+        "npcs": 18,
+        "paletteGroups": 19,
+        "assets": 15
       }
     },
     {
