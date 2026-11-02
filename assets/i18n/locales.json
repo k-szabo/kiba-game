@@ -1262,7 +1262,12 @@
       "menu.changelog.0965.176f3376.title": "Zene a főmenüben",
       "menu.changelog.0965.176f3376.0": "A főmenü saját, ismétlődő zenét kapott, amely a hangkapcsolóval némítható, játékindításkor pedig elhallgat.",
       "menu.changelog.0966.dfa8ee31.title": "Bossok a végtelen toronyban",
-      "menu.changelog.0966.dfa8ee31.0": "A torony emeletein váltakozó, meglévő bossok jelennek meg kísérő ellenfelekkel. Életerejük, sebzésük és sebességük az emeletekkel nő; a 11. emelettől két, a 26.-tól három boss is harcol egyszerre. Az öt emeletenkénti checkpointok és a korábbi rekordok megmaradnak."
+      "menu.changelog.0966.dfa8ee31.0": "A torony emeletein váltakozó, meglévő bossok jelennek meg kísérő ellenfelekkel. Életerejük, sebzésük és sebességük az emeletekkel nő; a 11. emelettől két, a 26.-tól három boss is harcol egyszerre. Az öt emeletenkénti checkpointok és a korábbi rekordok megmaradnak.",
+      "loading.progress": "Grafikák betöltése: {0}/{1}",
+      "loading.failed": "Néhány grafika nem töltődött be. Ellenőrizd a kapcsolatot, majd próbáld újra.",
+      "loading.retry": "Újrapróbálás",
+      "menu.changelog.0966.83b33754.title": "Gyorsabb indulás, célzott képletöltés",
+      "menu.changelog.0966.83b33754.0": "A főmenü és az aktuális helyszín grafikái külön töltődnek be; a későbbi területek képei csak szükség esetén érkeznek. A változatlan képek frissítések között is újrahasználhatók."
     }
   },
   "en": {
@@ -2528,7 +2533,12 @@
       "menu.changelog.0965.176f3376.title": "Main menu music",
       "menu.changelog.0965.176f3376.0": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins.",
       "menu.changelog.0966.dfa8ee31.title": "Bosses in the Endless Tower",
-      "menu.changelog.0966.dfa8ee31.0": "Tower floors now feature rotating existing bosses with supporting enemies. Their health, damage and speed increase with each floor; two bosses fight together from floor 11, and three from floor 26. Checkpoints every five floors and previous records are preserved."
+      "menu.changelog.0966.dfa8ee31.0": "Tower floors now feature rotating existing bosses with supporting enemies. Their health, damage and speed increase with each floor; two bosses fight together from floor 11, and three from floor 26. Checkpoints every five floors and previous records are preserved.",
+      "loading.progress": "Loading artwork: {0}/{1}",
+      "loading.failed": "Some artwork could not be loaded. Check your connection, then try again.",
+      "loading.retry": "Retry",
+      "menu.changelog.0966.83b33754.title": "Faster startup, artwork on demand",
+      "menu.changelog.0966.83b33754.0": "The main menu and current location load their artwork separately; later areas are downloaded when needed. Unchanged images can be reused across updates."
     }
   }
 }

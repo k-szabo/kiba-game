@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const loads=[];let active=0,maximum=0;
+const manifest=Object.fromEntries(['japanBackdrop','terrain','props','a','b','c','d','e','f','g','h'].map(key=>[key,'assets/images/'+key+'.png']));
+const box=vm.createContext({Promise,Set,Map,WeakMap,Proxy,Image:class{complete=false;naturalWidth=0;},ART_MANIFEST:manifest,
+ document:{getElementById:()=>null},I18n:{t:x=>x,format:x=>x},AssetCache:{load(image,source,done){active++;maximum=Math.max(maximum,active);loads.push({image,source,finish(ok=true){active--;image.complete=true;image.naturalWidth=ok?100:0;done(ok);}});}}});
+vm.runInContext(fs.readFileSync('assets/js/graphics.js','utf8')+'\nthis.visuals=Visuals;',box);const v=box.visuals;
+assert.equal(loads.length,3,'Boot requests only the menu bundle');assert(v.blocked);assert.equal(v.peek('a'),undefined);assert.equal(loads.length,3,'Identity queries never trigger downloads');
+loads.slice().forEach(load=>load.finish());assert(!v.blocked);
+v.scope('world',['a','b','c','d','e']);assert.equal(loads.length,7);assert(v.blocked);assert.equal(maximum,4,'Network/decode concurrency is bounded');
+v.scope('different',['f']);assert(!v.peek('e'),'Queued abandoned-scene request is cancelled');
+loads[3].finish(false);assert.deepEqual(Array.from(v.failures),[],'Old scene failure cannot block current travel');loads[4].finish();loads[5].finish();loads[6].finish();assert(v.blocked);
+const f=loads.find(load=>load.source.endsWith('/f.png'));assert(f);f.finish(false);assert.equal(v.failures.length,1);v.retry();assert(v.blocked);loads.at(-1).finish();assert(!v.blocked);
+v.beginFrame();void v.images.b;v.endFrame();assert(!v.blocked);v.beginFrame();void v.images.e;v.endFrame();assert(v.blocked,'A new rendered dependency freezes the next gameplay step');loads.at(-1).finish();assert(!v.blocked);
+let redraws=0;v.onLoad(()=>redraws++);v.prefetch(['g']);loads.at(-1).finish();assert.equal(redraws,0,'Speculative completion cannot reset an active panel or sale confirmation');
+Object.assign(box,{state:'dialog',Prologue:{active:true},level:{id:'dream'},weaponStyle:'katana',enemies:[],Dialogue:{render(){redraws++;void v.images.h;}}});
+vm.runInContext(fs.readFileSync('assets/js/asset-loading.js','utf8')+'\nthis.loading=AssetLoading;',box);
+void v.images.h;box.loading.prepare();assert(v.blocked,'Portrait demand survives the next frame replacing the scene scope');assert.equal(redraws,1);box.loading.prepare();assert.equal(redraws,1,'An unchanged scene does not rebuild the panel every frame');loads.at(-1).finish();assert(!v.blocked);
+const h=require('./test-harness.cjs')();const r=h.run;r('var oldBlocked=Object.getOwnPropertyDescriptor(Visuals,"blocked");Object.defineProperty(Visuals,"blocked",{configurable:true,get:()=>true});');
+const before=r('JSON.stringify([player,attack,dash,dashCooldown,levelTime,time])');r('update(1)');assert.equal(r('JSON.stringify([player,attack,dash,dashCooldown,levelTime,time])'),before,'Loading freezes gameplay before timers/physics');
+r('var DuelMode={active:true,seen:null,update(dt,blocked){this.seen={dt,blocked};}};update(.01)');assert(r('DuelMode.seen.blocked'),'Duel retains its update and receives the existing network pause signal');
+r('Object.defineProperty(Visuals,"blocked",oldBlocked)');
+console.log('PASS: menu-only boot, bounded lazy requests, peek without download, abandoned queue/failure isolation, retry, render demands, frozen gameplay clocks and duel pause propagation.');

@@ -104,7 +104,7 @@ const DuelMode=(()=>{
   if(down&&!held.has(key))pulses.add(key);if(down)held.add(key);else held.delete(key);return true;
  }
  function focusChanged(){
-  if(!active)return;clearInput();blocked=resolutionBlocked||document.hidden||!document.hasFocus();
+  if(!active)return;clearInput();blocked=resolutionBlocked||(typeof Visuals!=='undefined'&&Visuals.blocked)||document.hidden||!document.hasFocus();
   if(connected&&sim){if(role()==='host')sendState();else send({type:'input',match,round,seq:++seq,input:DuelRules.input(),blocked});}
  }
  function releasePointer(focus=false){

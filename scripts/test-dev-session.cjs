@@ -34,8 +34,8 @@ function seedProgress(h){
   assert.equal(h.run('DevSession.active'),false);assert.equal(h.snap().state,'developer');
   assertSaveUnchanged(h,before,'Unready entry does not change saves');h.run(restore);
  }
- h.run("Visuals.failures.push('missing-test-art')");assert.equal(h.run('DevSession.ready'),false);
- assert.equal(h.run('DevSession.begin()'),false,'Failed artwork blocks test entry');h.run('Visuals.failures.length=0');
+ h.run("var failuresDescriptor=Object.getOwnPropertyDescriptor(Visuals,'failures');Object.defineProperty(Visuals,'failures',{configurable:true,get:()=>['missing-test-art']})");assert.equal(h.run('DevSession.ready'),false);
+ assert.equal(h.run('DevSession.begin()'),false,'Failed artwork blocks test entry');h.run("Object.defineProperty(Visuals,'failures',failuresDescriptor)");
  assert(h.run('DevSession.begin()'));const progress=permanent(h),player=h.run('JSON.stringify(player)');
  assert.equal(h.run('DevSession.begin()'),true,'Repeated entry is idempotent');
  assert.equal(permanent(h),progress);assert.equal(h.run('JSON.stringify(player)'),player);

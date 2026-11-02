@@ -48,7 +48,8 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/camp-herbs.js`, `camp-health.js`, `camp-art.js` | Gyógynövény-újratermés, tört HP-kijelzés és tábori képi réteg. |
 | `SWORD_ATTACKS` a `game.js` fájlban | Normál/erős csapás időzítése és sebzésszorzója; az aktív `attackKind` a kezdetkor rögzül. A renderelés és a találat ugyanazt a profilt követi. |
 | `assets/js/graphics.js` | Tájak, szereplők, animációk és vizuális effektek. |
-| `assets/js/asset-cache.js`, `dev-cache.js` | Kiadásonkénti [képgyorsítótár](ASSET-CACHE.md), hibabiztos képletöltés és fejlesztői kikapcsolás. |
+| `assets/js/asset-cache.js`, `dev-cache.js` | Kiadások között tartalomazonosság alapján újrahasználható [képgyorsítótár](ASSET-CACHE.md), integritásellenőrzés és fejlesztői kikapcsolás. |
+| `assets/js/asset-loading.js` | Helyszínenkénti [célzott képletöltés](ASSET-LOADING.md), renderelésből felismert függőségek, betöltési szünet és újrapróbálás. |
 | `assets/js/background-motion.js` | Forrásképhez rögzített [háttéranimáció](BACKGROUND-MOTION.md), saját aktív órával, szünettel és csökkentett mozgással. |
 | `assets/js/boss-vfx.js` | A festett boss-effektusok kivágásai, illesztése, láva, csapások, árnymágia és idézés. |
 | `assets/config/lava-serpent-art.json` | A 12 festett lávakígyópóz kivágása, kontúrja és illesztése; szinkronban az ART_SERPENT metaadattal. A [pokolboss harca](YOMI-BOSS.md). |

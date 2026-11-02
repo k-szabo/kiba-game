@@ -85,7 +85,7 @@ const BackgroundMotion=(()=>{
  function beginFrame(){frame++;}
  function discard(key){const entry=authoredLoads.get(key);if(!entry)return;authoredLoads.delete(key);reserved-=entry.bytes;if(entry===pending){entry.stale=true;reserved+=entry.imageBytes;}else if(entry.image)entry.image.src='';entry.canvas=null;entry.patches=null;}
  function pump(){
-  if(pending)return;
+  if(pending||typeof Visuals!=='undefined'&&Visuals.blocked)return;
   for(const [key,item] of queue){
    queue.delete(key);if(item.frame<frame-1)continue;
    const {image,profile}=item,w=image.naturalWidth,h=image.naturalHeight,sourceWidth=profile.sourceSize?.[0]??w,sourceHeight=profile.sourceSize?.[1]??h,imageBytes=sourceWidth*sourceHeight*4,bytes=imageBytes+w*h*8;
@@ -130,7 +130,7 @@ const BackgroundMotion=(()=>{
  }
  function paintAuthored(image,key,args,alpha){
   const alias=aliases.get(image),source=alias?.source||image,profile=authored[key];
-  if(!profile||source!==Visuals.images[key]||alias&&(image.width!==source.naturalWidth||image.height!==source.naturalHeight))return false;
+  if(!profile||source!==(Visuals.peek?Visuals.peek(key):Visuals.images[key])||alias&&(image.width!==source.naturalWidth||image.height!==source.naturalHeight))return false;
   let load=authoredLoads.get(key);
   if(!load){queue.set(key,{image:source,profile,frame});pump();return false;}
   load.frame=frame;authoredLoads.delete(key);authoredLoads.set(key,load);
@@ -151,7 +151,7 @@ const BackgroundMotion=(()=>{
  function keyFor(image){
   if(!image||typeof image!=='object')return null;
   if(keys.has(image))return keys.get(image);
-  const key=Object.keys(profiles).find(key=>Visuals.images[key]===image)||null;keys.set(image,key);return key;
+  const key=Object.keys(profiles).find(key=>(Visuals.peek?Visuals.peek(key):Visuals.images[key])===image)||null;keys.set(image,key);return key;
  }
  function alias(surface,source,mask){keys.set(surface,keyFor(source));if(mask&&Number.isFinite(mask.fade)&&mask.fade>=0&&mask.fade<=1)aliases.set(surface,{source,fade:mask.fade});return surface;}
  // Four neighbouring phases interpolate smoothly, with no frame-sized image swap.

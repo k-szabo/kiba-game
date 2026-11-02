@@ -5,7 +5,7 @@ const Cursor=(()=>{
  const locked=()=>document.pointerLockElement===canvas;
  const focused=()=>!document.hidden&&(typeof document.hasFocus!=='function'||document.hasFocus());
  const inDuel=()=>typeof DuelMode!=='undefined'&&DuelMode.active;
- const eligible=()=>!resolutionBlocked&&focused()&&(inDuel()?DuelMode.pointerPlayable:state==='play');
+ const eligible=()=>!(typeof Visuals!=='undefined'&&Visuals.blocked)&&!resolutionBlocked&&focused()&&(inDuel()?DuelMode.pointerPlayable:state==='play');
  const playing=()=>eligible()&&(!inDuel()||!duelFree);
  function clearInput(){keys.clear();pressed.clear();if(typeof DuelMode!=='undefined'&&DuelMode.active)DuelMode.releasePointer();}
  function release(){
