@@ -52,11 +52,21 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up configuration runtime
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
       - name: Prepare static site
         run: |
           mkdir -p _site
           cp index.html .nojekyll _site/
           cp -R assets _site/
+
+      - name: Write public leaderboard configuration
+        env:
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+        run: node scripts/write-leaderboard-config.mjs _site/assets/config/leaderboard-public.json
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

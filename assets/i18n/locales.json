@@ -1267,7 +1267,25 @@
       "loading.failed": "Néhány grafika nem töltődött be. Ellenőrizd a kapcsolatot, majd próbáld újra.",
       "loading.retry": "Újrapróbálás",
       "menu.changelog.0966.83b33754.title": "Gyorsabb indulás, célzott képletöltés",
-      "menu.changelog.0966.83b33754.0": "A főmenü és az aktuális helyszín grafikái külön töltődnek be; a későbbi területek képei csak szükség esetén érkeznek. A változatlan képek frissítések között is újrahasználhatók."
+      "menu.changelog.0966.83b33754.0": "A főmenü és az aktuális helyszín grafikái külön töltődnek be; a későbbi területek képei csak szükség esetén érkeznek. A változatlan képek frissítések között is újrahasználhatók.",
+      "leaderboard.title": "Toronyranglista",
+      "leaderboard.name": "Játékosnév",
+      "leaderboard.submit": "Eredmény beküldése",
+      "leaderboard.refresh": "Frissítés",
+      "leaderboard.rank": "Helyezés",
+      "leaderboard.player": "Játékos",
+      "leaderboard.floors": "Teljesített emeletek",
+      "leaderboard.time": "Idő",
+      "leaderboard.loading": "Betöltés…",
+      "leaderboard.empty": "Még nincs beküldött eredmény.",
+      "leaderboard.submitted": "Az eredményt beküldted.",
+      "leaderboard.unavailable": "A ranglista most nem érhető el. Próbáld újra később.",
+      "leaderboard.invalidName": "A név 3–20 betűt, számot, szóközt, aláhúzást vagy kötőjelet tartalmazhat.",
+      "leaderboard.rateLimited": "Túl sok beküldés. Várj egy percet.",
+      "leaderboard.noScore": "Előbb teljesíts legalább egy emeletet.",
+      "leaderboard.info": "Közösségi ranglista, játékosok által beküldött eredményekkel. Több teljesített emelet a jobb; egyezésnél a rövidebb idő dönt. Böngészőadat-törlés vagy másik eszköz új játékosazonosítót jelent.",
+      "menu.changelog.0967.75122992.title": "Közös toronyranglista",
+      "menu.changelog.0967.75122992.0": "A végtelen torony eredményei választott névvel beküldhetők az online ranglistára. A helyi rekord és a kalandmentés megmarad."
     }
   },
   "en": {
@@ -2538,7 +2556,25 @@
       "loading.failed": "Some artwork could not be loaded. Check your connection, then try again.",
       "loading.retry": "Retry",
       "menu.changelog.0966.83b33754.title": "Faster startup, artwork on demand",
-      "menu.changelog.0966.83b33754.0": "The main menu and current location load their artwork separately; later areas are downloaded when needed. Unchanged images can be reused across updates."
+      "menu.changelog.0966.83b33754.0": "The main menu and current location load their artwork separately; later areas are downloaded when needed. Unchanged images can be reused across updates.",
+      "leaderboard.title": "Tower leaderboard",
+      "leaderboard.name": "Display name",
+      "leaderboard.submit": "Submit score",
+      "leaderboard.refresh": "Refresh",
+      "leaderboard.rank": "Rank",
+      "leaderboard.player": "Player",
+      "leaderboard.floors": "Floors cleared",
+      "leaderboard.time": "Time",
+      "leaderboard.loading": "Loading…",
+      "leaderboard.empty": "No scores have been submitted yet.",
+      "leaderboard.submitted": "Score submitted.",
+      "leaderboard.unavailable": "The leaderboard is unavailable. Try again later.",
+      "leaderboard.invalidName": "Use 3–20 letters, numbers, spaces, underscores or hyphens for your name.",
+      "leaderboard.rateLimited": "Too many submissions. Wait a minute.",
+      "leaderboard.noScore": "Clear at least one floor first.",
+      "leaderboard.info": "A community leaderboard with player-submitted scores. More cleared floors rank higher; ties favour shorter times. Clearing browser data or switching devices creates a new player identity.",
+      "menu.changelog.0967.75122992.title": "Shared tower leaderboard",
+      "menu.changelog.0967.75122992.0": "Submit Endless Tower scores to the online leaderboard under a chosen name. Your local best and journey save are preserved."
     }
   }
 }

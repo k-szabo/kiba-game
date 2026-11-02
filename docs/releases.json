@@ -1618,6 +1618,22 @@
           "en": "Tower floors now feature rotating existing bosses with supporting enemies. Their health, damage and speed increase with each floor; two bosses fight together from floor 11, and three from floor 26. Checkpoints every five floors and previous records are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.67_75122992",
+      "code": "75122992",
+      "baseVersion": "0.9.67",
+      "slug": "tower-leaderboard",
+      "summary": {
+        "hu": "Közös toronyranglista",
+        "en": "Shared tower leaderboard"
+      },
+      "fixes": [
+        {
+          "hu": "A végtelen torony eredményei választott névvel beküldhetők az online ranglistára. A helyi rekord és a kalandmentés megmarad.",
+          "en": "Submit Endless Tower scores to the online leaderboard under a chosen name. Your local best and journey save are preserved."
+        }
+      ]
     }
   ]
 }

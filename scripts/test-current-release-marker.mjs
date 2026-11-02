@@ -51,7 +51,7 @@ assert(synchronizeReleaseMarker(panel(section('0.9.1')),'0.9.1',labels.hu).inclu
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-current-release-'));
 try{
  for(const dir of ['scripts','docs','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
- for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
+ for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/config/leaderboard.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
  const build=fs.readFileSync(path.join(root,'scripts/build-game.mjs'),'utf8');
  const modules=JSON.parse(build.match(/const files=(\[[^\]]+\]);/)[1].replaceAll("'",'"'));
  for(const name of modules)fs.writeFileSync(path.join(fixture,'assets/js',name+'.js'),'// build fixture\n');
