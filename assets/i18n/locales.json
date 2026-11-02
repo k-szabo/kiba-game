@@ -1219,7 +1219,11 @@
       "fia.dragon.forelegs": "Első lábak: {0}/2",
       "fia.dragon.headWindow": "A fej sebezhető: {0} mp",
       "menu.changelog.0963.33d7b168.title": "Az őssárkány új harci ciklusa",
-      "menu.changelog.0963.33d7b168.0": "Az őssárkány utolsó fázisában a két első láb lesebzése után rövid időre sebezhetővé válik a földre zuhanó fej."
+      "menu.changelog.0963.33d7b168.0": "Az őssárkány utolsó fázisában a két első láb lesebzése után rövid időre sebezhetővé válik a földre zuhanó fej.",
+      "menu.changelog.0963.fb5ba452.title": "Párbajplatformok és főmenü javítása",
+      "menu.changelog.0963.fb5ba452.0": "Párbajban is leugorhatsz a lebegő platformokról a lefelé mozgás és ugrás együttes használatával.",
+      "menu.changelog.0963.fb5ba452.1": "A főmenü támogatásgombja a többi kiegészítő gomb mellett jelenik meg.",
+      "menu.changelog.0963.fb5ba452.2": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -2442,7 +2446,11 @@
       "fia.dragon.forelegs": "Forelegs: {0}/2",
       "fia.dragon.headWindow": "Head vulnerable: {0}s",
       "menu.changelog.0963.33d7b168.title": "The ancient drake’s new combat cycle",
-      "menu.changelog.0963.33d7b168.0": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks."
+      "menu.changelog.0963.33d7b168.0": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks.",
+      "menu.changelog.0963.fb5ba452.title": "Duel platform and main menu fixes",
+      "menu.changelog.0963.fb5ba452.0": "You can now drop through floating platforms in duels by pressing down and jump together.",
+      "menu.changelog.0963.fb5ba452.1": "The main menu support button now appears beside the other utility buttons.",
+      "menu.changelog.0963.fb5ba452.2": "Internal maintenance and technical improvements."
     }
   }
 }

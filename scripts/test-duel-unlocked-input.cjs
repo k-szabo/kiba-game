@@ -5,7 +5,7 @@ async function host(){
  const h=setup();h.sandbox.duel.open();await h.node('duelCreate').onclick();
  h.callbacks[0].onState('connected');
  h.callbacks[0].onMessage({type:'loadout',weapon:'naginata',ready:true});h.node('duelReady').onclick();
- h.callbacks[0].onMessage({type:'input',match:1,round:1,seq:0,input:{move:0,jump:false,dash:false,attack:false,heavy:false},blocked:false});
+ h.callbacks[0].onMessage({type:'input',match:1,round:1,seq:0,input:{move:0,jump:false,drop:false,dash:false,attack:false,heavy:false},blocked:false});
  // Use the real game keyboard dispatcher, with the node that receives focus
  // after pointer unlock. A null target would miss this regression entirely.
  const source=fs.readFileSync('assets/js/game.js','utf8');

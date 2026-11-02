@@ -624,6 +624,30 @@
           "en": "Dark Kiba follows Hannah’s current silhouette and remains visible throughout her second phase."
         }
       ]
+    },
+    {
+      "version": "0.9.63_fb5ba452",
+      "code": "fb5ba452",
+      "baseVersion": "0.9.63",
+      "slug": "duel-platform-menu-colormap",
+      "summary": {
+        "hu": "Párbajplatformok és főmenü javítása",
+        "en": "Duel platform and main menu fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Párbajban is leugorhatsz a lebegő platformokról a lefelé mozgás és ugrás együttes használatával.",
+          "en": "You can now drop through floating platforms in duels by pressing down and jump together."
+        },
+        {
+          "hu": "A főmenü támogatásgombja a többi kiegészítő gomb mellett jelenik meg.",
+          "en": "The main menu support button now appears beside the other utility buttons."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

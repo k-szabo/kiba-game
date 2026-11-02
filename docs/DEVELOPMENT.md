@@ -69,7 +69,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/css/style.css`, `assets/fonts/` | A kezelőfelület megjelenése és a [helyben tárolt betűk](TYPOGRAPHY.md). |
 | `assets/images/` | Momo, a világok, az ellenfelek és a tárgyak képei. |
 | `assets/vendor/` | Rögzített PeerJS böngészős könyvtár és MIT-licenc, csak a párbaj kapcsolódásakor betöltve; nincs produkciós npm-telepítés. |
-| `assets/config/colormaps.json` | Karakterek, tárgyak és összes képfájl referencia-színpalettái, zászlók és kódbeli színek. |
+| `assets/config/colormaps.json`, `assets/config/colormaps/` | A színreferencia indexe és frakciónként/közös témánként bontott palettái. |
 | `scripts/export-colormaps.py` | A színreferencia reprodukálható frissítése a képekből és a rajzolási metaadatokból. |
 | `scripts/` | Strukturális és játékmeneti ellenőrzések. |
 | `.github/workflows/pages.yml` | Ellenőrzés minden pushon és pull requesten, Pages publikálás az alapértelmezett branchről. |
@@ -214,7 +214,9 @@ Képcsere után a kivágások és illesztési pontok is ellenőrzendők; lásd a
 
 ## Színpaletta-referencia
 
-Az [assets/config/colormaps.json](../assets/config/colormaps.json) az összes jelenlegi PNG-t, Momót, Harut, a három világ négy ellenféltípusát, a bossokat, a minibossokat és Árnyék négy animációját tartalmazza. A `pc`, `npcs` és `objects` bejegyzései az `assets` vagy `paletteGroups` palettáira mutatnak; a külön boss-formák külön bejegyzést kapnak. A `realmColors`, `flags` és `codeColors` őrzi a világok alapszíneit, az SVG-zászlókat és a rajzolókód/CSS színértékeit.
+Az [assets/config/colormaps.json](../assets/config/colormaps.json) kis, 2-es sémájú index: a módszertant, világszíneket, zászlókat és a részek relatív útvonalát, rekordszámát, SHA-256 lenyomatát tartalmazza. A [colormaps](../assets/config/colormaps/) könyvtárban a `japan`, `yomi`, `heaven`, `shadow-cult`, `shadow-den` és `neutral` fájlok adják a frakciók karaktereit és saját palettáit. A `player`, `environment`, `inventory-ui`, `effects`, `objects`, `shared` és `code-colors` a közös kategóriákat tárolja. A több frakció által használt atlaszok a `shared` részbe kerülnek.
+
+A részek `pc`, `npcs`, `objects`, `paletteGroups`, `assets` és `codeColors` szótárai a korábbi 1-es adatsémát és azonosítókat őrzik. Minden rekord pontosan egy részben szerepel; a hivatkozások globális azonosítók, így másik rész rekordjára is mutathatnak. Teljes referenciához az index összes `parts` fájlját olvasd be, majd szekciónként egyesítsd a szótárakat. Az exporter veszteségmentesen ellenőrzi a bontást. A játék ezeket a referenciafájlokat nem tölti be.
 
 A paletták legfeljebb 16 reprezentatív HEX-színt és 6 élénk kiemelőszínt adnak meg lefedettséggel. A mintavétel figyelembe veszi a PNG alfáját, a sprite-kivágásokat és a Canvas vágópoligonjait. Az átlátszó háttér RGB-értékei nem kerülnek a palettába. Ez grafikai referencia: a fények, szűrők és átlátszóságok miatt a képernyőn látott szín eltérhet. A fájl nem módosítja a játék megjelenését.
 
@@ -223,9 +225,10 @@ A paletták legfeljebb 16 reprezentatív HEX-színt és 6 élénk kiemelőszínt
 ```sh
 python scripts/export-colormaps.py
 python scripts/export-colormaps.py --check
+node scripts/check-colormaps.mjs
 ```
 
-Ha a Node.js nincs a PATH-ban, add meg a `--node /path/to/node` kapcsolóval. A PNG-k SHA-256 lenyomata és a `--check` segít észrevenni, ha képcsere után a színreferencia elavult.
+Ha a Node.js nincs a PATH-ban, add meg a `--node /path/to/node` kapcsolóval. A Python `--check` újramintavételezi a képeket, majd minden részt és az indexet összeveti. A gyors Node-ellenőrzés az npm tesztcsomag része: a hiányzó vagy duplikált rekordokat, törött hivatkozásokat, részek és PNG-k lenyomatát vizsgálja, új színmintavétel nélkül. Csak az előző generált index által felsorolt, már nem használt részek törlődnek; más fájlt az exporter nem takarít el.
 
 ## A szamuráj boss ugrótámadása
 
@@ -277,3 +280,5 @@ A `CampQuest.locationId()` a pálya kanonikus `id` mezőjével kérdez a `SIDE_L
 A normál ellenfelek közelharci üldözése a tényleges `enemyMeleeBox` függőleges elérését is figyeli. A közeli, de más szinten álló Momo nem fagyaszthatja az ellenfelet a járőrhatárra; a földi közelharcos ilyenkor járőrözik tovább. Az íjász és varázsló változatlanul céloz a közeli magas célpontra. Ez nem ad ugrást vagy új útvonalat az ellenfélnek, és nem változtat a járőrterületen vagy a támadási hitboxon. Regresszió: `test-enemy-platform-response.cjs`, az eredeti japán bambuszplatformmal és a négy birodalom normál szerepköreivel, 30/60/120 FPS mellett.
 
 A `combat-display.js` a normál és tesztmódbeli megjelenítési preferenciák közös forrása. A `DevDamage` a tényleges HP-veszteséget, a `DevBossHealth` a boss aktuális és maximális HP-ját rajzolja, mindkettő ezt a katalógust használja. A normál beállítások helyi preferenciák, nem részei a titkosított kalandmentésnek. A fő- és szünetmenü támogatási hivatkozása közvetlen, új fülön megnyíló Ko-fi link, külső script betöltése nélkül.
+
+A párbaj `DuelRules` állapotgépe az emelt platformokat külön `drop:true` jelöléssel kezeli, a talaj szilárd marad. A `DuelMode` a közös kiosztás `drop` és `jump` műveleteit továbbítja a szigorúan ellenőrzött hálózati bemenetben. A lefelé+ugrás kombináció 0,22 másodpercig figyelmen kívül hagyja a lebegő platformokat, és egy légi ugrást meghagy. Az időzítő csak a host szimulációjában él, nem része a vendég megjelenítési snapshotjának vagy a kalandmentésnek; régi és új kiadások a verzióegyeztetés miatt nem párosíthatók. A `test-duel-rules.cjs` és `test-duel-mode.cjs` minden arénában 30/60/120 FPS mellett, átállított és vendégoldali bemenettel is ellenőrzi az átengedést.

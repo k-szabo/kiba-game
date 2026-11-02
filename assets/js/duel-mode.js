@@ -88,7 +88,7 @@ const DuelMode=(()=>{
  function voteRematch(){if(!sim||!finished||!connected)return;rematch[local]=true;send({type:'rematch',match});if(role()==='host'&&rematch.every(Boolean))startMatch();render();}
  function controls(){
   const down=action=>Bindings.read(action).some(k=>held.has(k)||pulses.has(k));
-  return {move:Number(down('moveRight'))-Number(down('moveLeft')),jump:down('jump'),dash:down('dash'),attack:down('attack'),heavy:down('heavyAttack')};
+  return {move:Number(down('moveRight'))-Number(down('moveLeft')),jump:down('jump'),drop:down('drop'),dash:down('dash'),attack:down('attack'),heavy:down('heavyAttack')};
  }
  function input(key,down,target){
   if(!active)return false;
@@ -100,7 +100,7 @@ const DuelMode=(()=>{
   // Its mouse click and all other controls retain their ordinary behaviour.
   const leaveKey=control===node('duelMatchLeave')&&!/^mouse[0-4]$/.test(key);
   if(!sim||finished||sim.winner!==null||down&&(editing||control&&!leaveKey))return false;
-  const used=['moveLeft','moveRight','jump','dash','attack','heavyAttack'].some(action=>Bindings.read(action).includes(key));if(!used)return false;
+  const used=['moveLeft','moveRight','jump','drop','dash','attack','heavyAttack'].some(action=>Bindings.read(action).includes(key));if(!used)return false;
   if(down&&!held.has(key))pulses.add(key);if(down)held.add(key);else held.delete(key);return true;
  }
  function focusChanged(){
@@ -148,7 +148,7 @@ const DuelMode=(()=>{
   node('duelNext').textContent=finished?(rematch[1-local]?tr('duel.rematchWaiting'):''):tr('duel.next',[Math.ceil(countdown)]);
   node('duelRematch').hidden=!finished;node('duelRematch').disabled=rematch[local]||!connected;
   node('duelLiveStatus').textContent=!connected?tr(statusKey):(blocked||remoteBlocked)?tr('binding.action.pause'):'';
-  node('duelInputHints').textContent=['moveLeft','moveRight','jump','dash','attack','heavyAttack'].map(action=>bindingKeyLabel(Bindings.read(action)[0])+' · '+tr('binding.action.'+action)).join('   |   ');
+  node('duelInputHints').textContent=['moveLeft','moveRight','jump','drop','dash','attack','heavyAttack'].map(action=>bindingKeyLabel(Bindings.read(action)[0])+' · '+tr('binding.action.'+action)).join('   |   ');
  }
  function renderParticipants(){
   // PeerSession emits connected only after the versioned hello/ack exchange.

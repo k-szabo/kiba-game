@@ -164,7 +164,7 @@
 .bug-report-icon{width:20px;height:20px;flex:none}
 .bug-report-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .menu-utilities{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
-#menu .menu-utilities>#helpButton,#menu .menu-utilities>.bug-report-link{flex:1;white-space:nowrap}
+#menu .menu-utilities>.menu-secondary{flex:1 1 auto;white-space:nowrap}
 #pause .panel{max-height:90dvh;overflow-y:auto;padding:clamp(18px,4vw,42px);overscroll-behavior:contain}
 /* Keep secondary pause actions as readable as Resume and the report link. */
 #pause .panel p{font-size:16px;line-height:1.65}
@@ -354,5 +354,5 @@ h1,h2,h3{font-family:var(--font-story)}input,select,textarea{font-family:var(--f
 .duel-participant[data-team="0"]{border-left:4px solid #ffaaa0}.duel-participant[data-team="1"]{border-left:4px solid #a9ceff}#duelFighter0{color:#ffaaa0}#duelFighter1{color:#a9ceff}
 
 /* Optional combat readouts share the help panel's accessible controls. */
-.combat-settings fieldset{margin:0;padding:0;border:0;min-width:0}.combat-settings legend{font-size:17px;font-weight:700;color:#ffe0a2;margin-bottom:10px}.combat-settings label{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 4px;font-size:16px;line-height:1.45;color:#fff1d3;cursor:pointer}.combat-settings input{flex:none;width:22px;height:22px;accent-color:#d9ba7b}.combat-settings label:focus-within{outline:3px solid #f9d989;outline-offset:3px;border-radius:4px}.support-link{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 16px;color:#fff1d3;text-decoration:none;border:1px solid #d9ba7b99;border-radius:5px;background:#263c40;font-size:16px;font-weight:700}.support-link:hover{background:#3b5052}.support-link:focus-visible{outline:3px solid #f9d989;outline-offset:3px}#menu .menu-utilities>.support-link{flex:1 0 100%}#pause .support-link{width:100%}
+.combat-settings fieldset{margin:0;padding:0;border:0;min-width:0}.combat-settings legend{font-size:17px;font-weight:700;color:#ffe0a2;margin-bottom:10px}.combat-settings label{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 4px;font-size:16px;line-height:1.45;color:#fff1d3;cursor:pointer}.combat-settings input{flex:none;width:22px;height:22px;accent-color:#d9ba7b}.combat-settings label:focus-within{outline:3px solid #f9d989;outline-offset:3px;border-radius:4px}.support-link{display:flex;align-items:center;justify-content:center;min-height:48px;padding:10px 16px;color:#fff1d3;text-decoration:none;border:1px solid #d9ba7b99;border-radius:5px;background:#263c40;font-size:16px;font-weight:700}.support-link:hover{background:#3b5052}.support-link:focus-visible{outline:3px solid #f9d989;outline-offset:3px}#pause .support-link{width:100%}
 #dungeonMenuInfo{white-space:pre-line;}

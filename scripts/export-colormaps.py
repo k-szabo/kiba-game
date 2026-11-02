@@ -13,6 +13,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw
+from colormap_parts import partition, serialize
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'assets/config/colormaps.json'
@@ -364,14 +365,30 @@ result = {'schemaVersion': 1,
           'realmColors': {name: {k: value for k, value in record.items() if k in ('sky', 'fog', 'gold', 'accent', 'floor')}
                           for name, record in zip(('japan', 'yomi', 'heaven', 'shadowRealm'), atlas['realms'])},
           'flags': flags, 'codeColors': code_colors}
-serialized = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
+index, parts = partition(result)
+serialized = serialize(index)
 assert len(npcs) == 88, 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'
+    directory = OUTPUT.with_suffix('')
+    assert {file.name for file in directory.glob('*.json')} == set(parts), 'Unexpected or missing colormap part.'
+    for name, content in parts.items():
+        assert (directory / name).read_text(encoding='utf-8') == content, f'Stale colormap part: {name}'
     print('PASS: exhaustive image inventory, character/atlas references, clipped sampling and deterministic colormaps are current.')
 else:
+    directory = OUTPUT.with_suffix('')
+    directory.mkdir(exist_ok=True)
+    # Remove only old generated parts named by our previous index. Never sweep
+    # unrelated files from this directory.
+    previous = json.loads(OUTPUT.read_text(encoding='utf-8')) if OUTPUT.exists() else {}
+    for part in previous.get('parts', []):
+        name = part['file'].removeprefix('colormaps/')
+        if '/' not in name and name.endswith('.json') and name not in parts:
+            (directory / name).unlink(missing_ok=True)
+    for name, content in parts.items():
+        (directory / name).write_text(content, encoding='utf-8', newline='\n')
     OUTPUT.write_text(serialized, encoding='utf-8', newline='\n')
     print(f'Exported {len(assets)} image assets, {len(npcs)} NPCs/forms, {len(groups)} atlas groups, {len(flags)} flags to {OUTPUT.relative_to(ROOT)}')

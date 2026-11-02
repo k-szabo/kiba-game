@@ -1,0 +1,1907 @@
+{
+  "pc": {
+    "momo": {
+      "name": "Momo",
+      "variants": {
+        "base": {
+          "asset": "assets/images/momo.png"
+        },
+        "menuIdle": {
+          "paletteGroup": "pc.momo.menuIdle"
+        },
+        "sword": {
+          "paletteGroup": "pc.momo.sword"
+        },
+        "heavySword": {
+          "paletteGroup": "pc.momo.heavySword"
+        },
+        "momoNaginataNormal": {
+          "paletteGroup": "pc.momo.momoNaginataNormal"
+        },
+        "momoNaginataHeavy": {
+          "paletteGroup": "pc.momo.momoNaginataHeavy"
+        },
+        "momoShieldNormal": {
+          "paletteGroup": "pc.momo.momoShieldNormal"
+        },
+        "momoShieldHeavy": {
+          "paletteGroup": "pc.momo.momoShieldHeavy"
+        },
+        "inventory": {
+          "paletteGroup": "pc.momo.inventory"
+        }
+      }
+    },
+    "dawnblade": {
+      "paletteGroup": "pc.momo.dawnblade"
+    }
+  },
+  "paletteGroups": {
+    "pc.momo.menuIdle": {
+      "source": "assets/images/momo-menu-idle-v2.png",
+      "frameMetadata": "game.js: drawMenuMomo",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdefd4",
+            "coveragePercent": 20.6585
+          },
+          {
+            "hex": "#fca830",
+            "coveragePercent": 18.2912
+          },
+          {
+            "hex": "#070404",
+            "coveragePercent": 13.7836
+          },
+          {
+            "hex": "#28324d",
+            "coveragePercent": 11.3752
+          },
+          {
+            "hex": "#ed2019",
+            "coveragePercent": 6.5013
+          },
+          {
+            "hex": "#161c2f",
+            "coveragePercent": 6.2304
+          },
+          {
+            "hex": "#ec8212",
+            "coveragePercent": 5.1343
+          },
+          {
+            "hex": "#321a0f",
+            "coveragePercent": 3.434
+          },
+          {
+            "hex": "#f9d4ad",
+            "coveragePercent": 3.0333
+          },
+          {
+            "hex": "#f1bf92",
+            "coveragePercent": 2.4484
+          },
+          {
+            "hex": "#b5090a",
+            "coveragePercent": 1.9992
+          },
+          {
+            "hex": "#6c2b0b",
+            "coveragePercent": 1.8457
+          },
+          {
+            "hex": "#ac5d0e",
+            "coveragePercent": 1.7929
+          },
+          {
+            "hex": "#5c514c",
+            "coveragePercent": 1.4179
+          },
+          {
+            "hex": "#fabf5a",
+            "coveragePercent": 1.3083
+          },
+          {
+            "hex": "#a98768",
+            "coveragePercent": 0.7457
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fca831",
+            "coveragePercent": 51.5372
+          },
+          {
+            "hex": "#ed2019",
+            "coveragePercent": 18.1594
+          },
+          {
+            "hex": "#eb8112",
+            "coveragePercent": 14.5141
+          },
+          {
+            "hex": "#a65b13",
+            "coveragePercent": 5.8091
+          },
+          {
+            "hex": "#b20a0a",
+            "coveragePercent": 5.6856
+          },
+          {
+            "hex": "#f7be6a",
+            "coveragePercent": 4.2946
+          }
+        ],
+        "visibleSamples": 700654,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "pc.momo.sword": {
+      "source": "assets/images/momo-slash-v5.png",
+      "frameMetadata": "ART_FRAMES.momoSlash",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fba923",
+            "coveragePercent": 15.3705
+          },
+          {
+            "hex": "#fdedcd",
+            "coveragePercent": 15.0891
+          },
+          {
+            "hex": "#2f3342",
+            "coveragePercent": 11.0472
+          },
+          {
+            "hex": "#110706",
+            "coveragePercent": 10.6711
+          },
+          {
+            "hex": "#1e1e25",
+            "coveragePercent": 9.2162
+          },
+          {
+            "hex": "#cc1f18",
+            "coveragePercent": 6.9067
+          },
+          {
+            "hex": "#4b1f0c",
+            "coveragePercent": 5.0829
+          },
+          {
+            "hex": "#e07e0c",
+            "coveragePercent": 4.748
+          },
+          {
+            "hex": "#f7d298",
+            "coveragePercent": 4.0072
+          },
+          {
+            "hex": "#f2b960",
+            "coveragePercent": 3.8948
+          },
+          {
+            "hex": "#89541e",
+            "coveragePercent": 3.6352
+          },
+          {
+            "hex": "#8d130c",
+            "coveragePercent": 3.3136
+          },
+          {
+            "hex": "#f6f9fa",
+            "coveragePercent": 3.1898
+          },
+          {
+            "hex": "#948477",
+            "coveragePercent": 1.6136
+          },
+          {
+            "hex": "#85b7e9",
+            "coveragePercent": 1.2839
+          },
+          {
+            "hex": "#bfd8ee",
+            "coveragePercent": 0.9303
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba822",
+            "coveragePercent": 43.9745
+          },
+          {
+            "hex": "#cd1f18",
+            "coveragePercent": 18.1673
+          },
+          {
+            "hex": "#d27813",
+            "coveragePercent": 13.6244
+          },
+          {
+            "hex": "#f3bd67",
+            "coveragePercent": 11.7376
+          },
+          {
+            "hex": "#952a10",
+            "coveragePercent": 10.9889
+          },
+          {
+            "hex": "#75b2f0",
+            "coveragePercent": 1.5074
+          }
+        ],
+        "visibleSamples": 590651,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "pc.momo.heavySword": {
+      "source": "assets/images/momo-heavy-v1.png",
+      "frameMetadata": "ART_FRAMES.momoHeavy",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf1d3",
+            "coveragePercent": 14.0353
+          },
+          {
+            "hex": "#fbb028",
+            "coveragePercent": 13.7597
+          },
+          {
+            "hex": "#0d0605",
+            "coveragePercent": 12.5511
+          },
+          {
+            "hex": "#343a4e",
+            "coveragePercent": 9.0944
+          },
+          {
+            "hex": "#20212b",
+            "coveragePercent": 9.0819
+          },
+          {
+            "hex": "#f01217",
+            "coveragePercent": 7.113
+          },
+          {
+            "hex": "#ed8109",
+            "coveragePercent": 6.0881
+          },
+          {
+            "hex": "#f7f8f9",
+            "coveragePercent": 4.9088
+          },
+          {
+            "hex": "#f6c580",
+            "coveragePercent": 4.5952
+          },
+          {
+            "hex": "#541e0a",
+            "coveragePercent": 4.4183
+          },
+          {
+            "hex": "#a90408",
+            "coveragePercent": 3.7554
+          },
+          {
+            "hex": "#9a5818",
+            "coveragePercent": 3.3918
+          },
+          {
+            "hex": "#1485fb",
+            "coveragePercent": 2.4978
+          },
+          {
+            "hex": "#b4c9e3",
+            "coveragePercent": 1.928
+          },
+          {
+            "hex": "#697c9f",
+            "coveragePercent": 1.6286
+          },
+          {
+            "hex": "#57adf8",
+            "coveragePercent": 1.1527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f7a729",
+            "coveragePercent": 54.8247
+          },
+          {
+            "hex": "#ec1116",
+            "coveragePercent": 19.4637
+          },
+          {
+            "hex": "#a62f0b",
+            "coveragePercent": 14.7016
+          },
+          {
+            "hex": "#1586fb",
+            "coveragePercent": 6.2995
+          },
+          {
+            "hex": "#5ab1fa",
+            "coveragePercent": 2.6748
+          },
+          {
+            "hex": "#5374ad",
+            "coveragePercent": 2.0357
+          }
+        ],
+        "visibleSamples": 508807,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "pc.momo.momoNaginataNormal": {
+      "source": "assets/images/momo-naginata-normal-v1.png",
+      "frameMetadata": "ART_FRAMES.momoNaginataNormal",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2df",
+            "coveragePercent": 17.4572
+          },
+          {
+            "hex": "#fca934",
+            "coveragePercent": 11.2154
+          },
+          {
+            "hex": "#090506",
+            "coveragePercent": 10.2103
+          },
+          {
+            "hex": "#2b3757",
+            "coveragePercent": 8.7297
+          },
+          {
+            "hex": "#171e34",
+            "coveragePercent": 8.2173
+          },
+          {
+            "hex": "#f89019",
+            "coveragePercent": 6.3438
+          },
+          {
+            "hex": "#f9c28f",
+            "coveragePercent": 6.2431
+          },
+          {
+            "hex": "#fb1619",
+            "coveragePercent": 6.0411
+          },
+          {
+            "hex": "#e06b07",
+            "coveragePercent": 5.1163
+          },
+          {
+            "hex": "#fbdbb7",
+            "coveragePercent": 4.618
+          },
+          {
+            "hex": "#380f05",
+            "coveragePercent": 3.8021
+          },
+          {
+            "hex": "#68290b",
+            "coveragePercent": 3.6555
+          },
+          {
+            "hex": "#a0510f",
+            "coveragePercent": 2.7863
+          },
+          {
+            "hex": "#df030c",
+            "coveragePercent": 2.4852
+          },
+          {
+            "hex": "#ae0208",
+            "coveragePercent": 2.0369
+          },
+          {
+            "hex": "#a07e66",
+            "coveragePercent": 1.0418
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fca42c",
+            "coveragePercent": 37.7437
+          },
+          {
+            "hex": "#e8740b",
+            "coveragePercent": 19.3316
+          },
+          {
+            "hex": "#f81317",
+            "coveragePercent": 19.0709
+          },
+          {
+            "hex": "#a25212",
+            "coveragePercent": 8.9146
+          },
+          {
+            "hex": "#bb0209",
+            "coveragePercent": 8.4573
+          },
+          {
+            "hex": "#f6b76f",
+            "coveragePercent": 6.4819
+          }
+        ],
+        "visibleSamples": 628783,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "pc.momo.momoNaginataHeavy": {
+      "source": "assets/images/momo-naginata-heavy-v1.png",
+      "frameMetadata": "ART_FRAMES.momoNaginataHeavy",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2e0",
+            "coveragePercent": 17.0785
+          },
+          {
+            "hex": "#fca832",
+            "coveragePercent": 10.884
+          },
+          {
+            "hex": "#192136",
+            "coveragePercent": 10.4322
+          },
+          {
+            "hex": "#090607",
+            "coveragePercent": 9.9616
+          },
+          {
+            "hex": "#2d3957",
+            "coveragePercent": 7.7034
+          },
+          {
+            "hex": "#fac18e",
+            "coveragePercent": 6.5013
+          },
+          {
+            "hex": "#fa1418",
+            "coveragePercent": 6.3512
+          },
+          {
+            "hex": "#f78b15",
+            "coveragePercent": 5.5944
+          },
+          {
+            "hex": "#dc6a05",
+            "coveragePercent": 4.7308
+          },
+          {
+            "hex": "#fbdbb8",
+            "coveragePercent": 4.4894
+          },
+          {
+            "hex": "#370e04",
+            "coveragePercent": 4.0675
+          },
+          {
+            "hex": "#65280a",
+            "coveragePercent": 3.9393
+          },
+          {
+            "hex": "#9e500d",
+            "coveragePercent": 3.031
+          },
+          {
+            "hex": "#d9020a",
+            "coveragePercent": 2.6667
+          },
+          {
+            "hex": "#a60307",
+            "coveragePercent": 1.5397
+          },
+          {
+            "hex": "#a78065",
+            "coveragePercent": 1.0292
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba42c",
+            "coveragePercent": 34.8574
+          },
+          {
+            "hex": "#f81116",
+            "coveragePercent": 19.8265
+          },
+          {
+            "hex": "#e87409",
+            "coveragePercent": 19.312
+          },
+          {
+            "hex": "#a4530f",
+            "coveragePercent": 10.2589
+          },
+          {
+            "hex": "#bc0208",
+            "coveragePercent": 8.2858
+          },
+          {
+            "hex": "#f7b671",
+            "coveragePercent": 7.4594
+          }
+        ],
+        "visibleSamples": 644818,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "pc.momo.momoShieldNormal": {
+      "source": "assets/images/momo-shield-normal-v1.png",
+      "frameMetadata": "ART_FRAMES.momoShieldNormal",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdedd2",
+            "coveragePercent": 13.651
+          },
+          {
+            "hex": "#fba02d",
+            "coveragePercent": 13.1782
+          },
+          {
+            "hex": "#0e0504",
+            "coveragePercent": 11.1454
+          },
+          {
+            "hex": "#272e41",
+            "coveragePercent": 10.2625
+          },
+          {
+            "hex": "#ea780a",
+            "coveragePercent": 7.8795
+          },
+          {
+            "hex": "#181c28",
+            "coveragePercent": 7.0099
+          },
+          {
+            "hex": "#fa171c",
+            "coveragePercent": 6.3548
+          },
+          {
+            "hex": "#3e4153",
+            "coveragePercent": 5.7616
+          },
+          {
+            "hex": "#a65509",
+            "coveragePercent": 5.1786
+          },
+          {
+            "hex": "#57210a",
+            "coveragePercent": 4.9328
+          },
+          {
+            "hex": "#f8b46d",
+            "coveragePercent": 3.6377
+          },
+          {
+            "hex": "#fad09e",
+            "coveragePercent": 3.4533
+          },
+          {
+            "hex": "#dd040e",
+            "coveragePercent": 2.6148
+          },
+          {
+            "hex": "#af0309",
+            "coveragePercent": 2.4401
+          },
+          {
+            "hex": "#fcf7ea",
+            "coveragePercent": 1.5271
+          },
+          {
+            "hex": "#8b6b52",
+            "coveragePercent": 0.9726
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba02d",
+            "coveragePercent": 31.9746
+          },
+          {
+            "hex": "#ea780a",
+            "coveragePercent": 18.8433
+          },
+          {
+            "hex": "#f7141a",
+            "coveragePercent": 18.3281
+          },
+          {
+            "hex": "#a6560c",
+            "coveragePercent": 13.0477
+          },
+          {
+            "hex": "#f9b870",
+            "coveragePercent": 8.9084
+          },
+          {
+            "hex": "#bc030a",
+            "coveragePercent": 8.8979
+          }
+        ],
+        "visibleSamples": 765128,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "pc.momo.momoShieldHeavy": {
+      "source": "assets/images/momo-shield-heavy-v1.png",
+      "frameMetadata": "ART_FRAMES.momoShieldHeavy",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdefd7",
+            "coveragePercent": 14.0381
+          },
+          {
+            "hex": "#fba22a",
+            "coveragePercent": 13.4883
+          },
+          {
+            "hex": "#293045",
+            "coveragePercent": 10.4835
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 10.4548
+          },
+          {
+            "hex": "#ed7b08",
+            "coveragePercent": 7.3881
+          },
+          {
+            "hex": "#171d2d",
+            "coveragePercent": 7.3152
+          },
+          {
+            "hex": "#fb1820",
+            "coveragePercent": 6.678
+          },
+          {
+            "hex": "#424558",
+            "coveragePercent": 5.4958
+          },
+          {
+            "hex": "#af5c0a",
+            "coveragePercent": 4.8708
+          },
+          {
+            "hex": "#f6b673",
+            "coveragePercent": 3.8075
+          },
+          {
+            "hex": "#431507",
+            "coveragePercent": 3.6069
+          },
+          {
+            "hex": "#fad4a6",
+            "coveragePercent": 3.2405
+          },
+          {
+            "hex": "#773b11",
+            "coveragePercent": 2.9178
+          },
+          {
+            "hex": "#df040f",
+            "coveragePercent": 2.5914
+          },
+          {
+            "hex": "#ae0309",
+            "coveragePercent": 2.364
+          },
+          {
+            "hex": "#fcf9f1",
+            "coveragePercent": 1.2591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba229",
+            "coveragePercent": 32.0874
+          },
+          {
+            "hex": "#f8151d",
+            "coveragePercent": 19.1483
+          },
+          {
+            "hex": "#eb7a08",
+            "coveragePercent": 18.6248
+          },
+          {
+            "hex": "#a6560a",
+            "coveragePercent": 13.0049
+          },
+          {
+            "hex": "#bc030b",
+            "coveragePercent": 8.6295
+          },
+          {
+            "hex": "#f8b86e",
+            "coveragePercent": 8.5051
+          }
+        ],
+        "visibleSamples": 865126,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "pc.momo.inventory": {
+      "source": "assets/images/ui/momo-inventory-v1.png",
+      "frameMetadata": "ART_INVENTORY.momo",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2d8",
+            "coveragePercent": 20.9826
+          },
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 15.7597
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 14.7282
+          },
+          {
+            "hex": "#273154",
+            "coveragePercent": 13.1127
+          },
+          {
+            "hex": "#1c1f32",
+            "coveragePercent": 7.1935
+          },
+          {
+            "hex": "#f3211b",
+            "coveragePercent": 6.9277
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fad9b7",
+            "coveragePercent": 3.2276
+          },
+          {
+            "hex": "#f4c7a3",
+            "coveragePercent": 3.1286
+          },
+          {
+            "hex": "#c1080d",
+            "coveragePercent": 2.1421
+          },
+          {
+            "hex": "#ab590e",
+            "coveragePercent": 1.92
+          },
+          {
+            "hex": "#58220a",
+            "coveragePercent": 1.609
+          },
+          {
+            "hex": "#4a506e",
+            "coveragePercent": 1.4304
+          },
+          {
+            "hex": "#fac766",
+            "coveragePercent": 1.0553
+          },
+          {
+            "hex": "#fcfbf9",
+            "coveragePercent": 0.4665
+          },
+          {
+            "hex": "#9d836f",
+            "coveragePercent": 0.454
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 46.655
+          },
+          {
+            "hex": "#f2211a",
+            "coveragePercent": 20.5111
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 17.3335
+          },
+          {
+            "hex": "#c0080d",
+            "coveragePercent": 6.417
+          },
+          {
+            "hex": "#ab5a10",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fac767",
+            "coveragePercent": 3.2215
+          }
+        ],
+        "visibleSamples": 891827,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "pc.momo.dawnblade": {
+      "source": "assets/images/momo-dawnblade-v1.png",
+      "frameMetadata": "ART_HANNAH.dawnblade.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [],
+        "accents": [],
+        "visibleSamples": 0
+      }
+    }
+  },
+  "assets": {
+    "assets/images/momo-dawnblade-v1.png": {
+      "sha256": "38625a25414e7d297050a81c3be24b6bc6dec98f195232347e27ab676ecbfa49",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoDawnblade"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fca72b",
+            "coveragePercent": 20.7197
+          },
+          {
+            "hex": "#f88713",
+            "coveragePercent": 12.6929
+          },
+          {
+            "hex": "#fdf5d5",
+            "coveragePercent": 10.9145
+          },
+          {
+            "hex": "#0e0605",
+            "coveragePercent": 7.726
+          },
+          {
+            "hex": "#fdd845",
+            "coveragePercent": 6.9752
+          },
+          {
+            "hex": "#fef271",
+            "coveragePercent": 6.5437
+          },
+          {
+            "hex": "#333549",
+            "coveragePercent": 5.2331
+          },
+          {
+            "hex": "#f8141a",
+            "coveragePercent": 5.1407
+          },
+          {
+            "hex": "#fdf4aa",
+            "coveragePercent": 4.8351
+          },
+          {
+            "hex": "#211f2a",
+            "coveragePercent": 3.9177
+          },
+          {
+            "hex": "#4a1b0b",
+            "coveragePercent": 3.4684
+          },
+          {
+            "hex": "#7a471f",
+            "coveragePercent": 2.6622
+          },
+          {
+            "hex": "#fdfcee",
+            "coveragePercent": 2.635
+          },
+          {
+            "hex": "#f5c590",
+            "coveragePercent": 2.5582
+          },
+          {
+            "hex": "#b96c20",
+            "coveragePercent": 2.5289
+          },
+          {
+            "hex": "#bd090d",
+            "coveragePercent": 1.4486
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba62b",
+            "coveragePercent": 36.3275
+          },
+          {
+            "hex": "#f78613",
+            "coveragePercent": 22.9847
+          },
+          {
+            "hex": "#fded70",
+            "coveragePercent": 12.578
+          },
+          {
+            "hex": "#fdd745",
+            "coveragePercent": 11.7528
+          },
+          {
+            "hex": "#f01118",
+            "coveragePercent": 10.7869
+          },
+          {
+            "hex": "#a45318",
+            "coveragePercent": 5.57
+          }
+        ],
+        "visibleSamples": 635774,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/momo-heavy-v1.png": {
+      "sha256": "e4ee80fd15680efaa036ad740e5c822914b5b8c7b73fa1d10b16fa1ade32bdbb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoHeavy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf1d3",
+            "coveragePercent": 14.0353
+          },
+          {
+            "hex": "#fbb028",
+            "coveragePercent": 13.7597
+          },
+          {
+            "hex": "#0d0605",
+            "coveragePercent": 12.5511
+          },
+          {
+            "hex": "#343a4e",
+            "coveragePercent": 9.0944
+          },
+          {
+            "hex": "#20212b",
+            "coveragePercent": 9.0819
+          },
+          {
+            "hex": "#f01217",
+            "coveragePercent": 7.113
+          },
+          {
+            "hex": "#ed8109",
+            "coveragePercent": 6.0881
+          },
+          {
+            "hex": "#f7f8f9",
+            "coveragePercent": 4.9088
+          },
+          {
+            "hex": "#f6c580",
+            "coveragePercent": 4.5952
+          },
+          {
+            "hex": "#541e0a",
+            "coveragePercent": 4.4183
+          },
+          {
+            "hex": "#a90408",
+            "coveragePercent": 3.7554
+          },
+          {
+            "hex": "#9a5818",
+            "coveragePercent": 3.3918
+          },
+          {
+            "hex": "#1485fb",
+            "coveragePercent": 2.4978
+          },
+          {
+            "hex": "#b4c9e3",
+            "coveragePercent": 1.928
+          },
+          {
+            "hex": "#697c9f",
+            "coveragePercent": 1.6286
+          },
+          {
+            "hex": "#57adf8",
+            "coveragePercent": 1.1527
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f7a729",
+            "coveragePercent": 54.8247
+          },
+          {
+            "hex": "#ec1116",
+            "coveragePercent": 19.4637
+          },
+          {
+            "hex": "#a62f0b",
+            "coveragePercent": 14.7016
+          },
+          {
+            "hex": "#1586fb",
+            "coveragePercent": 6.2995
+          },
+          {
+            "hex": "#5ab1fa",
+            "coveragePercent": 2.6748
+          },
+          {
+            "hex": "#5374ad",
+            "coveragePercent": 2.0357
+          }
+        ],
+        "visibleSamples": 508807,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/momo-menu-idle-v2.png": {
+      "sha256": "51b6f50ea992e88cfcd7df5e4d8410e021877fd1bb864423a5c43dcfc073df45",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdefd4",
+            "coveragePercent": 20.6585
+          },
+          {
+            "hex": "#fca830",
+            "coveragePercent": 18.2912
+          },
+          {
+            "hex": "#070404",
+            "coveragePercent": 13.7836
+          },
+          {
+            "hex": "#28324d",
+            "coveragePercent": 11.3752
+          },
+          {
+            "hex": "#ed2019",
+            "coveragePercent": 6.5013
+          },
+          {
+            "hex": "#161c2f",
+            "coveragePercent": 6.2304
+          },
+          {
+            "hex": "#ec8212",
+            "coveragePercent": 5.1343
+          },
+          {
+            "hex": "#321a0f",
+            "coveragePercent": 3.434
+          },
+          {
+            "hex": "#f9d4ad",
+            "coveragePercent": 3.0333
+          },
+          {
+            "hex": "#f1bf92",
+            "coveragePercent": 2.4484
+          },
+          {
+            "hex": "#b5090a",
+            "coveragePercent": 1.9992
+          },
+          {
+            "hex": "#6c2b0b",
+            "coveragePercent": 1.8457
+          },
+          {
+            "hex": "#ac5d0e",
+            "coveragePercent": 1.7929
+          },
+          {
+            "hex": "#5c514c",
+            "coveragePercent": 1.4179
+          },
+          {
+            "hex": "#fabf5a",
+            "coveragePercent": 1.3083
+          },
+          {
+            "hex": "#a98768",
+            "coveragePercent": 0.7457
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fca831",
+            "coveragePercent": 51.5372
+          },
+          {
+            "hex": "#ed2019",
+            "coveragePercent": 18.1594
+          },
+          {
+            "hex": "#eb8112",
+            "coveragePercent": 14.5141
+          },
+          {
+            "hex": "#a65b13",
+            "coveragePercent": 5.8091
+          },
+          {
+            "hex": "#b20a0a",
+            "coveragePercent": 5.6856
+          },
+          {
+            "hex": "#f7be6a",
+            "coveragePercent": 4.2946
+          }
+        ],
+        "visibleSamples": 700654,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/momo-naginata-heavy-v1.png": {
+      "sha256": "783dfc8910167ff097857432778f8155765cf9ff985de7db5a9067fa6e1e66ce",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoNaginataHeavy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2e0",
+            "coveragePercent": 17.0785
+          },
+          {
+            "hex": "#fca832",
+            "coveragePercent": 10.884
+          },
+          {
+            "hex": "#192136",
+            "coveragePercent": 10.4322
+          },
+          {
+            "hex": "#090607",
+            "coveragePercent": 9.9616
+          },
+          {
+            "hex": "#2d3957",
+            "coveragePercent": 7.7034
+          },
+          {
+            "hex": "#fac18e",
+            "coveragePercent": 6.5013
+          },
+          {
+            "hex": "#fa1418",
+            "coveragePercent": 6.3512
+          },
+          {
+            "hex": "#f78b15",
+            "coveragePercent": 5.5944
+          },
+          {
+            "hex": "#dc6a05",
+            "coveragePercent": 4.7308
+          },
+          {
+            "hex": "#fbdbb8",
+            "coveragePercent": 4.4894
+          },
+          {
+            "hex": "#370e04",
+            "coveragePercent": 4.0675
+          },
+          {
+            "hex": "#65280a",
+            "coveragePercent": 3.9393
+          },
+          {
+            "hex": "#9e500d",
+            "coveragePercent": 3.031
+          },
+          {
+            "hex": "#d9020a",
+            "coveragePercent": 2.6667
+          },
+          {
+            "hex": "#a60307",
+            "coveragePercent": 1.5397
+          },
+          {
+            "hex": "#a78065",
+            "coveragePercent": 1.0292
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba42c",
+            "coveragePercent": 34.8574
+          },
+          {
+            "hex": "#f81116",
+            "coveragePercent": 19.8265
+          },
+          {
+            "hex": "#e87409",
+            "coveragePercent": 19.312
+          },
+          {
+            "hex": "#a4530f",
+            "coveragePercent": 10.2589
+          },
+          {
+            "hex": "#bc0208",
+            "coveragePercent": 8.2858
+          },
+          {
+            "hex": "#f7b671",
+            "coveragePercent": 7.4594
+          }
+        ],
+        "visibleSamples": 644818,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/momo-naginata-normal-v1.png": {
+      "sha256": "dfed56951ba78fca3c1a401297cec9f9eaadc4c38604bc8df88524f29df8f038",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoNaginataNormal"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2df",
+            "coveragePercent": 17.4572
+          },
+          {
+            "hex": "#fca934",
+            "coveragePercent": 11.2154
+          },
+          {
+            "hex": "#090506",
+            "coveragePercent": 10.2103
+          },
+          {
+            "hex": "#2b3757",
+            "coveragePercent": 8.7297
+          },
+          {
+            "hex": "#171e34",
+            "coveragePercent": 8.2173
+          },
+          {
+            "hex": "#f89019",
+            "coveragePercent": 6.3438
+          },
+          {
+            "hex": "#f9c28f",
+            "coveragePercent": 6.2431
+          },
+          {
+            "hex": "#fb1619",
+            "coveragePercent": 6.0411
+          },
+          {
+            "hex": "#e06b07",
+            "coveragePercent": 5.1163
+          },
+          {
+            "hex": "#fbdbb7",
+            "coveragePercent": 4.618
+          },
+          {
+            "hex": "#380f05",
+            "coveragePercent": 3.8021
+          },
+          {
+            "hex": "#68290b",
+            "coveragePercent": 3.6555
+          },
+          {
+            "hex": "#a0510f",
+            "coveragePercent": 2.7863
+          },
+          {
+            "hex": "#df030c",
+            "coveragePercent": 2.4852
+          },
+          {
+            "hex": "#ae0208",
+            "coveragePercent": 2.0369
+          },
+          {
+            "hex": "#a07e66",
+            "coveragePercent": 1.0418
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fca42c",
+            "coveragePercent": 37.7437
+          },
+          {
+            "hex": "#e8740b",
+            "coveragePercent": 19.3316
+          },
+          {
+            "hex": "#f81317",
+            "coveragePercent": 19.0709
+          },
+          {
+            "hex": "#a25212",
+            "coveragePercent": 8.9146
+          },
+          {
+            "hex": "#bb0209",
+            "coveragePercent": 8.4573
+          },
+          {
+            "hex": "#f6b76f",
+            "coveragePercent": 6.4819
+          }
+        ],
+        "visibleSamples": 628783,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/momo-shield-heavy-v1.png": {
+      "sha256": "daa1a01ac27df9e90e56e491067a28f3cd53710f18f720d587b2170ce3ccf2dd",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoShieldHeavy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdefd7",
+            "coveragePercent": 14.0381
+          },
+          {
+            "hex": "#fba22a",
+            "coveragePercent": 13.4883
+          },
+          {
+            "hex": "#293045",
+            "coveragePercent": 10.4835
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 10.4548
+          },
+          {
+            "hex": "#ed7b08",
+            "coveragePercent": 7.3881
+          },
+          {
+            "hex": "#171d2d",
+            "coveragePercent": 7.3152
+          },
+          {
+            "hex": "#fb1820",
+            "coveragePercent": 6.678
+          },
+          {
+            "hex": "#424558",
+            "coveragePercent": 5.4958
+          },
+          {
+            "hex": "#af5c0a",
+            "coveragePercent": 4.8708
+          },
+          {
+            "hex": "#f6b673",
+            "coveragePercent": 3.8075
+          },
+          {
+            "hex": "#431507",
+            "coveragePercent": 3.6069
+          },
+          {
+            "hex": "#fad4a6",
+            "coveragePercent": 3.2405
+          },
+          {
+            "hex": "#773b11",
+            "coveragePercent": 2.9178
+          },
+          {
+            "hex": "#df040f",
+            "coveragePercent": 2.5914
+          },
+          {
+            "hex": "#ae0309",
+            "coveragePercent": 2.364
+          },
+          {
+            "hex": "#fcf9f1",
+            "coveragePercent": 1.2591
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba229",
+            "coveragePercent": 32.0874
+          },
+          {
+            "hex": "#f8151d",
+            "coveragePercent": 19.1483
+          },
+          {
+            "hex": "#eb7a08",
+            "coveragePercent": 18.6248
+          },
+          {
+            "hex": "#a6560a",
+            "coveragePercent": 13.0049
+          },
+          {
+            "hex": "#bc030b",
+            "coveragePercent": 8.6295
+          },
+          {
+            "hex": "#f8b86e",
+            "coveragePercent": 8.5051
+          }
+        ],
+        "visibleSamples": 865126,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/momo-shield-normal-v1.png": {
+      "sha256": "e38ee616f822a9d185787333351d706a16e1eb33a368e7f67952650c4ab7bd22",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoShieldNormal"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdedd2",
+            "coveragePercent": 13.651
+          },
+          {
+            "hex": "#fba02d",
+            "coveragePercent": 13.1782
+          },
+          {
+            "hex": "#0e0504",
+            "coveragePercent": 11.1454
+          },
+          {
+            "hex": "#272e41",
+            "coveragePercent": 10.2625
+          },
+          {
+            "hex": "#ea780a",
+            "coveragePercent": 7.8795
+          },
+          {
+            "hex": "#181c28",
+            "coveragePercent": 7.0099
+          },
+          {
+            "hex": "#fa171c",
+            "coveragePercent": 6.3548
+          },
+          {
+            "hex": "#3e4153",
+            "coveragePercent": 5.7616
+          },
+          {
+            "hex": "#a65509",
+            "coveragePercent": 5.1786
+          },
+          {
+            "hex": "#57210a",
+            "coveragePercent": 4.9328
+          },
+          {
+            "hex": "#f8b46d",
+            "coveragePercent": 3.6377
+          },
+          {
+            "hex": "#fad09e",
+            "coveragePercent": 3.4533
+          },
+          {
+            "hex": "#dd040e",
+            "coveragePercent": 2.6148
+          },
+          {
+            "hex": "#af0309",
+            "coveragePercent": 2.4401
+          },
+          {
+            "hex": "#fcf7ea",
+            "coveragePercent": 1.5271
+          },
+          {
+            "hex": "#8b6b52",
+            "coveragePercent": 0.9726
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba02d",
+            "coveragePercent": 31.9746
+          },
+          {
+            "hex": "#ea780a",
+            "coveragePercent": 18.8433
+          },
+          {
+            "hex": "#f7141a",
+            "coveragePercent": 18.3281
+          },
+          {
+            "hex": "#a6560c",
+            "coveragePercent": 13.0477
+          },
+          {
+            "hex": "#f9b870",
+            "coveragePercent": 8.9084
+          },
+          {
+            "hex": "#bc030a",
+            "coveragePercent": 8.8979
+          }
+        ],
+        "visibleSamples": 765128,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/momo-slash-v5.png": {
+      "sha256": "eae812b87bb65bed3ccac0e4a38486bfa76f7482cb0827f5d0adcb5bd4d1b547",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "momoSlash"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fba923",
+            "coveragePercent": 15.3707
+          },
+          {
+            "hex": "#fdedcd",
+            "coveragePercent": 15.0892
+          },
+          {
+            "hex": "#2f3342",
+            "coveragePercent": 11.0474
+          },
+          {
+            "hex": "#110706",
+            "coveragePercent": 10.6712
+          },
+          {
+            "hex": "#1e1e25",
+            "coveragePercent": 9.2163
+          },
+          {
+            "hex": "#cc1f18",
+            "coveragePercent": 6.9068
+          },
+          {
+            "hex": "#4b1f0c",
+            "coveragePercent": 5.083
+          },
+          {
+            "hex": "#e07e0c",
+            "coveragePercent": 4.748
+          },
+          {
+            "hex": "#f7d298",
+            "coveragePercent": 4.0072
+          },
+          {
+            "hex": "#f2b960",
+            "coveragePercent": 3.8948
+          },
+          {
+            "hex": "#89541e",
+            "coveragePercent": 3.6352
+          },
+          {
+            "hex": "#8d130c",
+            "coveragePercent": 3.3137
+          },
+          {
+            "hex": "#f6f9fa",
+            "coveragePercent": 3.1898
+          },
+          {
+            "hex": "#948477",
+            "coveragePercent": 1.6132
+          },
+          {
+            "hex": "#85b7e9",
+            "coveragePercent": 1.2839
+          },
+          {
+            "hex": "#bfd8ee",
+            "coveragePercent": 0.9296
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fba822",
+            "coveragePercent": 43.9745
+          },
+          {
+            "hex": "#cd1f18",
+            "coveragePercent": 18.1673
+          },
+          {
+            "hex": "#d27813",
+            "coveragePercent": 13.6244
+          },
+          {
+            "hex": "#f3bd67",
+            "coveragePercent": 11.7376
+          },
+          {
+            "hex": "#952a10",
+            "coveragePercent": 10.9889
+          },
+          {
+            "hex": "#75b2f0",
+            "coveragePercent": 1.5074
+          }
+        ],
+        "visibleSamples": 590631,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/momo.png": {
+      "sha256": "662cb7c1ade03bd801be53fd459fef5ecce04b13ca20bb857a8614adf77fcb85",
+      "width": 1536,
+      "height": 2288,
+      "runtimeKeys": [],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9a433",
+            "coveragePercent": 20.3727
+          },
+          {
+            "hex": "#fdefce",
+            "coveragePercent": 14.8998
+          },
+          {
+            "hex": "#262e40",
+            "coveragePercent": 8.2333
+          },
+          {
+            "hex": "#0c080a",
+            "coveragePercent": 8.1014
+          },
+          {
+            "hex": "#181c25",
+            "coveragePercent": 7.4411
+          },
+          {
+            "hex": "#c9291f",
+            "coveragePercent": 6.4482
+          },
+          {
+            "hex": "#2c3a5b",
+            "coveragePercent": 5.7236
+          },
+          {
+            "hex": "#411e0f",
+            "coveragePercent": 4.4349
+          },
+          {
+            "hex": "#e3b783",
+            "coveragePercent": 3.7408
+          },
+          {
+            "hex": "#60482c",
+            "coveragePercent": 3.655
+          },
+          {
+            "hex": "#d48327",
+            "coveragePercent": 3.5213
+          },
+          {
+            "hex": "#fdfae7",
+            "coveragePercent": 2.9973
+          },
+          {
+            "hex": "#956123",
+            "coveragePercent": 2.8302
+          },
+          {
+            "hex": "#831a11",
+            "coveragePercent": 2.7191
+          },
+          {
+            "hex": "#efd1a6",
+            "coveragePercent": 2.6603
+          },
+          {
+            "hex": "#948369",
+            "coveragePercent": 2.2211
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f8a131",
+            "coveragePercent": 58.8156
+          },
+          {
+            "hex": "#cb2a1f",
+            "coveragePercent": 17.0063
+          },
+          {
+            "hex": "#b17328",
+            "coveragePercent": 11.8028
+          },
+          {
+            "hex": "#952615",
+            "coveragePercent": 6.2398
+          },
+          {
+            "hex": "#f3b966",
+            "coveragePercent": 6.0714
+          },
+          {
+            "hex": "#3d5586",
+            "coveragePercent": 0.0642
+          }
+        ],
+        "visibleSamples": 1140428,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/ui/momo-inventory-v1.png": {
+      "sha256": "dda114c421b5d2d401ffe2511f5f5dbdfda4e73bf1db68ba6932a04823347121",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "inventoryMomoPortrait"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdf2d8",
+            "coveragePercent": 20.9826
+          },
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 15.7597
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 14.7282
+          },
+          {
+            "hex": "#273154",
+            "coveragePercent": 13.1127
+          },
+          {
+            "hex": "#1c1f32",
+            "coveragePercent": 7.1935
+          },
+          {
+            "hex": "#f3211b",
+            "coveragePercent": 6.9277
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fad9b7",
+            "coveragePercent": 3.2276
+          },
+          {
+            "hex": "#f4c7a3",
+            "coveragePercent": 3.1286
+          },
+          {
+            "hex": "#c1080d",
+            "coveragePercent": 2.1421
+          },
+          {
+            "hex": "#ab590e",
+            "coveragePercent": 1.92
+          },
+          {
+            "hex": "#58220a",
+            "coveragePercent": 1.609
+          },
+          {
+            "hex": "#4a506e",
+            "coveragePercent": 1.4304
+          },
+          {
+            "hex": "#fac766",
+            "coveragePercent": 1.0553
+          },
+          {
+            "hex": "#fcfbf9",
+            "coveragePercent": 0.4665
+          },
+          {
+            "hex": "#9d836f",
+            "coveragePercent": 0.454
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fdac35",
+            "coveragePercent": 46.655
+          },
+          {
+            "hex": "#f2211a",
+            "coveragePercent": 20.5111
+          },
+          {
+            "hex": "#ef8712",
+            "coveragePercent": 17.3335
+          },
+          {
+            "hex": "#c0080d",
+            "coveragePercent": 6.417
+          },
+          {
+            "hex": "#ab5a10",
+            "coveragePercent": 5.862
+          },
+          {
+            "hex": "#fac767",
+            "coveragePercent": 3.2215
+          }
+        ],
+        "visibleSamples": 891827,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  }
+}

@@ -1,0 +1,2336 @@
+{
+  "npcs": {
+    "wingedSerpent": {
+      "role": "miniboss",
+      "faction": "heaven",
+      "paletteGroup": "npc.wingedSerpent"
+    },
+    "cultDungeon.woundedAngel": {
+      "role": "dungeon-boss",
+      "faction": "heaven",
+      "paletteGroup": "npc.cultDungeon.woundedAngel"
+    },
+    "heaven.guard": {
+      "faction": "heaven",
+      "role": "guard",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.heaven.guard.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.heaven.guard.attack"
+        }
+      }
+    },
+    "heaven.archer": {
+      "faction": "heaven",
+      "role": "archer",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.heaven.archer.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.heaven.archer.attack"
+        }
+      }
+    },
+    "heaven.shield": {
+      "faction": "heaven",
+      "role": "shield",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.heaven.shield.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.heaven.shield.attack"
+        }
+      }
+    },
+    "heaven.mage": {
+      "faction": "heaven",
+      "role": "mage",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.heaven.mage.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.heaven.mage.attack"
+        }
+      }
+    },
+    "angelLight": {
+      "role": "boss",
+      "paletteGroup": "npc.angelLight"
+    },
+    "angelDark": {
+      "role": "boss",
+      "paletteGroup": "npc.angelDark"
+    },
+    "angelEclipse": {
+      "role": "boss",
+      "paletteGroup": "npc.angelEclipse"
+    },
+    "oldAngel": {
+      "role": "miniboss",
+      "paletteGroup": "npc.oldAngel"
+    }
+  },
+  "paletteGroups": {
+    "npc.wingedSerpent": {
+      "source": "assets/images/enemies/winged-serpent-v1.png",
+      "frameMetadata": "ART_REALM_SERPENTS.winged.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2e4e",
+            "coveragePercent": 10.4723
+          },
+          {
+            "hex": "#2c1f38",
+            "coveragePercent": 8.7766
+          },
+          {
+            "hex": "#513f67",
+            "coveragePercent": 8.675
+          },
+          {
+            "hex": "#eacfbe",
+            "coveragePercent": 7.8347
+          },
+          {
+            "hex": "#f7e8d9",
+            "coveragePercent": 7.1488
+          },
+          {
+            "hex": "#211217",
+            "coveragePercent": 6.6623
+          },
+          {
+            "hex": "#4f2e20",
+            "coveragePercent": 6.1112
+          },
+          {
+            "hex": "#795d6c",
+            "coveragePercent": 5.8439
+          },
+          {
+            "hex": "#a18080",
+            "coveragePercent": 5.4805
+          },
+          {
+            "hex": "#e8c096",
+            "coveragePercent": 5.3668
+          },
+          {
+            "hex": "#cca07f",
+            "coveragePercent": 5.2108
+          },
+          {
+            "hex": "#634640",
+            "coveragePercent": 5.1738
+          },
+          {
+            "hex": "#aa6f40",
+            "coveragePercent": 4.7875
+          },
+          {
+            "hex": "#884e27",
+            "coveragePercent": 4.6007
+          },
+          {
+            "hex": "#c3a5aa",
+            "coveragePercent": 4.4916
+          },
+          {
+            "hex": "#d49551",
+            "coveragePercent": 3.3635
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91542b",
+            "coveragePercent": 28.5822
+          },
+          {
+            "hex": "#ae703f",
+            "coveragePercent": 26.883
+          },
+          {
+            "hex": "#cc8e51",
+            "coveragePercent": 23.398
+          },
+          {
+            "hex": "#e8b16b",
+            "coveragePercent": 16.4719
+          },
+          {
+            "hex": "#673687",
+            "coveragePercent": 2.978
+          },
+          {
+            "hex": "#804b99",
+            "coveragePercent": 1.6869
+          }
+        ],
+        "visibleSamples": 302213,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.cultDungeon.woundedAngel": {
+      "source": "assets/images/enemies/sect-fall-angel-v1.png",
+      "frameMetadata": "ART_CULT_DUNGEON.woundedAngel.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bf9a86",
+            "coveragePercent": 8.9119
+          },
+          {
+            "hex": "#d5b6a2",
+            "coveragePercent": 8.6226
+          },
+          {
+            "hex": "#40160d",
+            "coveragePercent": 8.4464
+          },
+          {
+            "hex": "#a47e6b",
+            "coveragePercent": 7.9327
+          },
+          {
+            "hex": "#774529",
+            "coveragePercent": 7.712
+          },
+          {
+            "hex": "#572d1c",
+            "coveragePercent": 7.2048
+          },
+          {
+            "hex": "#761e18",
+            "coveragePercent": 6.9167
+          },
+          {
+            "hex": "#ead4bd",
+            "coveragePercent": 6.8934
+          },
+          {
+            "hex": "#180805",
+            "coveragePercent": 6.8814
+          },
+          {
+            "hex": "#9e2c27",
+            "coveragePercent": 6.8807
+          },
+          {
+            "hex": "#85604f",
+            "coveragePercent": 5.7096
+          },
+          {
+            "hex": "#a46231",
+            "coveragePercent": 4.9447
+          },
+          {
+            "hex": "#c43c34",
+            "coveragePercent": 3.8964
+          },
+          {
+            "hex": "#f7efe3",
+            "coveragePercent": 3.7544
+          },
+          {
+            "hex": "#cc864f",
+            "coveragePercent": 3.4843
+          },
+          {
+            "hex": "#eebd76",
+            "coveragePercent": 1.8079
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965931",
+            "coveragePercent": 25.2242
+          },
+          {
+            "hex": "#8d2920",
+            "coveragePercent": 21.0873
+          },
+          {
+            "hex": "#ac2f2b",
+            "coveragePercent": 18.6234
+          },
+          {
+            "hex": "#bc7b4b",
+            "coveragePercent": 17.8505
+          },
+          {
+            "hex": "#cb4238",
+            "coveragePercent": 9.5612
+          },
+          {
+            "hex": "#e6ad65",
+            "coveragePercent": 7.6535
+          }
+        ],
+        "visibleSamples": 653126,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.heaven.guard.walk": {
+      "source": "assets/images/enemies/heaven-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.walk.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f7e4cb",
+            "coveragePercent": 10.4559
+          },
+          {
+            "hex": "#fdf9ed",
+            "coveragePercent": 9.4185
+          },
+          {
+            "hex": "#f8c96d",
+            "coveragePercent": 8.2923
+          },
+          {
+            "hex": "#edaa49",
+            "coveragePercent": 7.8024
+          },
+          {
+            "hex": "#be742c",
+            "coveragePercent": 7.7244
+          },
+          {
+            "hex": "#cbb9bf",
+            "coveragePercent": 7.4
+          },
+          {
+            "hex": "#8e5223",
+            "coveragePercent": 6.4006
+          },
+          {
+            "hex": "#fae193",
+            "coveragePercent": 5.9284
+          },
+          {
+            "hex": "#201518",
+            "coveragePercent": 5.8646
+          },
+          {
+            "hex": "#a597a7",
+            "coveragePercent": 5.4243
+          },
+          {
+            "hex": "#583623",
+            "coveragePercent": 5.3863
+          },
+          {
+            "hex": "#8f6e5a",
+            "coveragePercent": 4.9884
+          },
+          {
+            "hex": "#e89323",
+            "coveragePercent": 4.9026
+          },
+          {
+            "hex": "#c2956c",
+            "coveragePercent": 4.2313
+          },
+          {
+            "hex": "#243364",
+            "coveragePercent": 3.4845
+          },
+          {
+            "hex": "#4d5c8e",
+            "coveragePercent": 2.2955
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#eca644",
+            "coveragePercent": 27.0867
+          },
+          {
+            "hex": "#facf71",
+            "coveragePercent": 24.5453
+          },
+          {
+            "hex": "#ca8030",
+            "coveragePercent": 23.7252
+          },
+          {
+            "hex": "#9b5d29",
+            "coveragePercent": 20.9546
+          },
+          {
+            "hex": "#2d488e",
+            "coveragePercent": 2.6494
+          },
+          {
+            "hex": "#4a6bb1",
+            "coveragePercent": 1.0388
+          }
+        ],
+        "visibleSamples": 157761,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.heaven.guard.attack": {
+      "source": "assets/images/enemies/heaven-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.attack.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9ce71",
+            "coveragePercent": 10.9794
+          },
+          {
+            "hex": "#ecad4f",
+            "coveragePercent": 10.2684
+          },
+          {
+            "hex": "#f9e6ca",
+            "coveragePercent": 8.5201
+          },
+          {
+            "hex": "#fdf9ec",
+            "coveragePercent": 7.414
+          },
+          {
+            "hex": "#c97d2e",
+            "coveragePercent": 7.2459
+          },
+          {
+            "hex": "#22181e",
+            "coveragePercent": 6.6127
+          },
+          {
+            "hex": "#9a5924",
+            "coveragePercent": 6.4
+          },
+          {
+            "hex": "#5e351e",
+            "coveragePercent": 5.7529
+          },
+          {
+            "hex": "#d3b8b4",
+            "coveragePercent": 5.6738
+          },
+          {
+            "hex": "#f8dda4",
+            "coveragePercent": 5.6444
+          },
+          {
+            "hex": "#2c365f",
+            "coveragePercent": 5.2984
+          },
+          {
+            "hex": "#b9988f",
+            "coveragePercent": 5.1047
+          },
+          {
+            "hex": "#a87d5d",
+            "coveragePercent": 5.0443
+          },
+          {
+            "hex": "#f19f22",
+            "coveragePercent": 4.0472
+          },
+          {
+            "hex": "#73584f",
+            "coveragePercent": 3.3578
+          },
+          {
+            "hex": "#495c96",
+            "coveragePercent": 2.636
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f8cb6c",
+            "coveragePercent": 29.7076
+          },
+          {
+            "hex": "#eea83d",
+            "coveragePercent": 25.9121
+          },
+          {
+            "hex": "#c78039",
+            "coveragePercent": 22.1292
+          },
+          {
+            "hex": "#9c5c28",
+            "coveragePercent": 17.9994
+          },
+          {
+            "hex": "#32498e",
+            "coveragePercent": 2.2187
+          },
+          {
+            "hex": "#4863ad",
+            "coveragePercent": 2.0329
+          }
+        ],
+        "visibleSamples": 181321,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.heaven.archer.walk": {
+      "source": "assets/images/enemies/heaven-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.walk.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fbeccf",
+            "coveragePercent": 10.8729
+          },
+          {
+            "hex": "#f9dfb1",
+            "coveragePercent": 8.3493
+          },
+          {
+            "hex": "#7a2e19",
+            "coveragePercent": 8.2265
+          },
+          {
+            "hex": "#b07757",
+            "coveragePercent": 8.0038
+          },
+          {
+            "hex": "#fdf9ed",
+            "coveragePercent": 7.5819
+          },
+          {
+            "hex": "#96562e",
+            "coveragePercent": 7.5741
+          },
+          {
+            "hex": "#f0c58c",
+            "coveragePercent": 6.7898
+          },
+          {
+            "hex": "#d39462",
+            "coveragePercent": 6.1776
+          },
+          {
+            "hex": "#4f170e",
+            "coveragePercent": 5.3943
+          },
+          {
+            "hex": "#c69c8b",
+            "coveragePercent": 5.1442
+          },
+          {
+            "hex": "#bd7125",
+            "coveragePercent": 5.0857
+          },
+          {
+            "hex": "#debfb4",
+            "coveragePercent": 4.5044
+          },
+          {
+            "hex": "#ae2a31",
+            "coveragePercent": 4.4737
+          },
+          {
+            "hex": "#e69b30",
+            "coveragePercent": 4.4032
+          },
+          {
+            "hex": "#f1bd5b",
+            "coveragePercent": 3.7184
+          },
+          {
+            "hex": "#d5494b",
+            "coveragePercent": 3.7004
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a86532",
+            "coveragePercent": 23.6686
+          },
+          {
+            "hex": "#c68556",
+            "coveragePercent": 18.9463
+          },
+          {
+            "hex": "#943321",
+            "coveragePercent": 17.0936
+          },
+          {
+            "hex": "#eebb69",
+            "coveragePercent": 15.2288
+          },
+          {
+            "hex": "#e4982f",
+            "coveragePercent": 12.5595
+          },
+          {
+            "hex": "#cb3e45",
+            "coveragePercent": 12.5032
+          }
+        ],
+        "visibleSamples": 194192,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.heaven.archer.attack": {
+      "source": "assets/images/enemies/heaven-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.attack.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fae5c3",
+            "coveragePercent": 11.5736
+          },
+          {
+            "hex": "#fdf7e7",
+            "coveragePercent": 9.1616
+          },
+          {
+            "hex": "#f9d7a1",
+            "coveragePercent": 8.1591
+          },
+          {
+            "hex": "#b17557",
+            "coveragePercent": 7.6272
+          },
+          {
+            "hex": "#7a2d16",
+            "coveragePercent": 6.9874
+          },
+          {
+            "hex": "#f1bc7a",
+            "coveragePercent": 6.8248
+          },
+          {
+            "hex": "#db905b",
+            "coveragePercent": 5.9226
+          },
+          {
+            "hex": "#dfb8aa",
+            "coveragePercent": 5.7817
+          },
+          {
+            "hex": "#925231",
+            "coveragePercent": 5.3818
+          },
+          {
+            "hex": "#c89783",
+            "coveragePercent": 5.323
+          },
+          {
+            "hex": "#d74046",
+            "coveragePercent": 4.9707
+          },
+          {
+            "hex": "#f4b746",
+            "coveragePercent": 4.8381
+          },
+          {
+            "hex": "#b76320",
+            "coveragePercent": 4.7476
+          },
+          {
+            "hex": "#4e160e",
+            "coveragePercent": 4.6542
+          },
+          {
+            "hex": "#e28b23",
+            "coveragePercent": 4.3237
+          },
+          {
+            "hex": "#aa2325",
+            "coveragePercent": 3.723
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#af6836",
+            "coveragePercent": 20.8823
+          },
+          {
+            "hex": "#97341d",
+            "coveragePercent": 18.1879
+          },
+          {
+            "hex": "#f4bf68",
+            "coveragePercent": 18.1111
+          },
+          {
+            "hex": "#d48c5b",
+            "coveragePercent": 17.7213
+          },
+          {
+            "hex": "#e89628",
+            "coveragePercent": 12.6254
+          },
+          {
+            "hex": "#d43d42",
+            "coveragePercent": 12.472
+          }
+        ],
+        "visibleSamples": 207918,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.heaven.shield.walk": {
+      "source": "assets/images/enemies/heaven-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.walk.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f5dec2",
+            "coveragePercent": 10.0351
+          },
+          {
+            "hex": "#faf4ea",
+            "coveragePercent": 8.6958
+          },
+          {
+            "hex": "#20346a",
+            "coveragePercent": 7.2898
+          },
+          {
+            "hex": "#e2bd9b",
+            "coveragePercent": 6.6904
+          },
+          {
+            "hex": "#93705c",
+            "coveragePercent": 6.4563
+          },
+          {
+            "hex": "#cc822f",
+            "coveragePercent": 6.4053
+          },
+          {
+            "hex": "#ecaa45",
+            "coveragePercent": 6.2736
+          },
+          {
+            "hex": "#704930",
+            "coveragePercent": 6.2073
+          },
+          {
+            "hex": "#a26126",
+            "coveragePercent": 6.1025
+          },
+          {
+            "hex": "#17121d",
+            "coveragePercent": 6.1005
+          },
+          {
+            "hex": "#c29670",
+            "coveragePercent": 5.5598
+          },
+          {
+            "hex": "#c6b8c5",
+            "coveragePercent": 5.334
+          },
+          {
+            "hex": "#a495a4",
+            "coveragePercent": 5.0812
+          },
+          {
+            "hex": "#442b21",
+            "coveragePercent": 4.9816
+          },
+          {
+            "hex": "#415b9e",
+            "coveragePercent": 4.5924
+          },
+          {
+            "hex": "#f7d174",
+            "coveragePercent": 4.1944
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#bc7b38",
+            "coveragePercent": 25.0219
+          },
+          {
+            "hex": "#e49f40",
+            "coveragePercent": 22.3108
+          },
+          {
+            "hex": "#975d2c",
+            "coveragePercent": 21.8652
+          },
+          {
+            "hex": "#f4c769",
+            "coveragePercent": 16.2951
+          },
+          {
+            "hex": "#264692",
+            "coveragePercent": 9.5321
+          },
+          {
+            "hex": "#4565af",
+            "coveragePercent": 4.9749
+          }
+        ],
+        "visibleSamples": 207575,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.heaven.shield.attack": {
+      "source": "assets/images/enemies/heaven-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.attack.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f6dec2",
+            "coveragePercent": 9.3455
+          },
+          {
+            "hex": "#edc898",
+            "coveragePercent": 8.1283
+          },
+          {
+            "hex": "#fbf5ea",
+            "coveragePercent": 7.1052
+          },
+          {
+            "hex": "#b66c26",
+            "coveragePercent": 6.9242
+          },
+          {
+            "hex": "#7f4c2b",
+            "coveragePercent": 6.8047
+          },
+          {
+            "hex": "#936d57",
+            "coveragePercent": 6.6972
+          },
+          {
+            "hex": "#e1932e",
+            "coveragePercent": 6.6811
+          },
+          {
+            "hex": "#f3be57",
+            "coveragePercent": 6.6528
+          },
+          {
+            "hex": "#c8976c",
+            "coveragePercent": 6.6198
+          },
+          {
+            "hex": "#1c1319",
+            "coveragePercent": 6.3257
+          },
+          {
+            "hex": "#33437a",
+            "coveragePercent": 6.139
+          },
+          {
+            "hex": "#4f3023",
+            "coveragePercent": 5.5648
+          },
+          {
+            "hex": "#202950",
+            "coveragePercent": 5.3596
+          },
+          {
+            "hex": "#c1abb4",
+            "coveragePercent": 4.8008
+          },
+          {
+            "hex": "#4562ab",
+            "coveragePercent": 3.4625
+          },
+          {
+            "hex": "#9f8993",
+            "coveragePercent": 3.3888
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e5e2a",
+            "coveragePercent": 25.5349
+          },
+          {
+            "hex": "#f2bf5e",
+            "coveragePercent": 23.3413
+          },
+          {
+            "hex": "#df8e29",
+            "coveragePercent": 19.9342
+          },
+          {
+            "hex": "#be8550",
+            "coveragePercent": 16.4884
+          },
+          {
+            "hex": "#2e4892",
+            "coveragePercent": 9.3112
+          },
+          {
+            "hex": "#4769b7",
+            "coveragePercent": 5.3901
+          }
+        ],
+        "visibleSamples": 207347,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.heaven.mage.walk": {
+      "source": "assets/images/enemies/heaven-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.walk.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fcf4ea",
+            "coveragePercent": 12.3265
+          },
+          {
+            "hex": "#7e5e98",
+            "coveragePercent": 8.4864
+          },
+          {
+            "hex": "#e5cbec",
+            "coveragePercent": 8.1646
+          },
+          {
+            "hex": "#f3d9bc",
+            "coveragePercent": 8.0796
+          },
+          {
+            "hex": "#a07dad",
+            "coveragePercent": 6.8097
+          },
+          {
+            "hex": "#ccacca",
+            "coveragePercent": 6.7266
+          },
+          {
+            "hex": "#703f2d",
+            "coveragePercent": 6.2038
+          },
+          {
+            "hex": "#af816e",
+            "coveragePercent": 5.7555
+          },
+          {
+            "hex": "#5c3e6c",
+            "coveragePercent": 5.5807
+          },
+          {
+            "hex": "#cca291",
+            "coveragePercent": 5.3476
+          },
+          {
+            "hex": "#e09e43",
+            "coveragePercent": 5.2664
+          },
+          {
+            "hex": "#381c26",
+            "coveragePercent": 5.1818
+          },
+          {
+            "hex": "#ab6a2f",
+            "coveragePercent": 5.0349
+          },
+          {
+            "hex": "#f1c87d",
+            "coveragePercent": 4.9405
+          },
+          {
+            "hex": "#895f5b",
+            "coveragePercent": 4.8161
+          },
+          {
+            "hex": "#5e8ae8",
+            "coveragePercent": 1.279
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a5b30",
+            "coveragePercent": 25.8229
+          },
+          {
+            "hex": "#ecbd69",
+            "coveragePercent": 22.4182
+          },
+          {
+            "hex": "#bf844e",
+            "coveragePercent": 20.2049
+          },
+          {
+            "hex": "#6e4f9f",
+            "coveragePercent": 13.4727
+          },
+          {
+            "hex": "#e3962e",
+            "coveragePercent": 13.0337
+          },
+          {
+            "hex": "#5c8aeb",
+            "coveragePercent": 5.0476
+          }
+        ],
+        "visibleSamples": 192328,
+        "dominantCoveragePercent": 99.9997
+      }
+    },
+    "npc.heaven.mage.attack": {
+      "source": "assets/images/enemies/heaven-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.heaven.attack.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#faf4ef",
+            "coveragePercent": 11.761
+          },
+          {
+            "hex": "#f7dfc6",
+            "coveragePercent": 9.061
+          },
+          {
+            "hex": "#87629f",
+            "coveragePercent": 8.0144
+          },
+          {
+            "hex": "#d0adbb",
+            "coveragePercent": 7.2541
+          },
+          {
+            "hex": "#af8ca2",
+            "coveragePercent": 6.9446
+          },
+          {
+            "hex": "#e0c8e5",
+            "coveragePercent": 6.6095
+          },
+          {
+            "hex": "#6a4879",
+            "coveragePercent": 6.5194
+          },
+          {
+            "hex": "#a67468",
+            "coveragePercent": 6.4979
+          },
+          {
+            "hex": "#e1a861",
+            "coveragePercent": 5.9259
+          },
+          {
+            "hex": "#895038",
+            "coveragePercent": 5.8522
+          },
+          {
+            "hex": "#542f42",
+            "coveragePercent": 5.8504
+          },
+          {
+            "hex": "#f3cc8a",
+            "coveragePercent": 5.3902
+          },
+          {
+            "hex": "#8aa6ef",
+            "coveragePercent": 4.4937
+          },
+          {
+            "hex": "#321620",
+            "coveragePercent": 3.4042
+          },
+          {
+            "hex": "#d0822d",
+            "coveragePercent": 3.3126
+          },
+          {
+            "hex": "#5d87f3",
+            "coveragePercent": 3.1089
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f0c06a",
+            "coveragePercent": 20.3005
+          },
+          {
+            "hex": "#6994f6",
+            "coveragePercent": 19.7144
+          },
+          {
+            "hex": "#9b5a37",
+            "coveragePercent": 19.1113
+          },
+          {
+            "hex": "#734ba0",
+            "coveragePercent": 16.2363
+          },
+          {
+            "hex": "#c78a55",
+            "coveragePercent": 15.4966
+          },
+          {
+            "hex": "#e49228",
+            "coveragePercent": 9.1409
+          }
+        ],
+        "visibleSamples": 213800,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.angelLight": {
+      "source": "assets/images/enemies/angel-light-v5.png",
+      "frameMetadata": "ART_FRAMES.angelLight",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdfbee",
+            "coveragePercent": 13.1497
+          },
+          {
+            "hex": "#fae9ce",
+            "coveragePercent": 12.538
+          },
+          {
+            "hex": "#fad684",
+            "coveragePercent": 9.2387
+          },
+          {
+            "hex": "#e1c6b9",
+            "coveragePercent": 7.154
+          },
+          {
+            "hex": "#fce6a5",
+            "coveragePercent": 6.9143
+          },
+          {
+            "hex": "#f7c664",
+            "coveragePercent": 6.7519
+          },
+          {
+            "hex": "#ebaa49",
+            "coveragePercent": 6.3523
+          },
+          {
+            "hex": "#bf875b",
+            "coveragePercent": 5.8357
+          },
+          {
+            "hex": "#883a24",
+            "coveragePercent": 5.5432
+          },
+          {
+            "hex": "#d3a784",
+            "coveragePercent": 5.2996
+          },
+          {
+            "hex": "#af6624",
+            "coveragePercent": 4.5211
+          },
+          {
+            "hex": "#d5862f",
+            "coveragePercent": 4.4913
+          },
+          {
+            "hex": "#682115",
+            "coveragePercent": 4.394
+          },
+          {
+            "hex": "#976046",
+            "coveragePercent": 3.1781
+          },
+          {
+            "hex": "#381008",
+            "coveragePercent": 2.5015
+          },
+          {
+            "hex": "#c03d33",
+            "coveragePercent": 2.1364
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fad376",
+            "coveragePercent": 24.1403
+          },
+          {
+            "hex": "#edb153",
+            "coveragePercent": 21.5336
+          },
+          {
+            "hex": "#d08b45",
+            "coveragePercent": 20.1688
+          },
+          {
+            "hex": "#ae6a30",
+            "coveragePercent": 16.4594
+          },
+          {
+            "hex": "#923b25",
+            "coveragePercent": 13.3411
+          },
+          {
+            "hex": "#c74233",
+            "coveragePercent": 4.3569
+          }
+        ],
+        "visibleSamples": 763404,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.angelDark": {
+      "source": "assets/images/enemies/angel-dark-v5.png",
+      "frameMetadata": "ART_FRAMES.angelDark",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#301e37",
+            "coveragePercent": 13.4807
+          },
+          {
+            "hex": "#220e20",
+            "coveragePercent": 11.7787
+          },
+          {
+            "hex": "#452c52",
+            "coveragePercent": 11.6834
+          },
+          {
+            "hex": "#0b030e",
+            "coveragePercent": 8.6869
+          },
+          {
+            "hex": "#5e2e1f",
+            "coveragePercent": 5.9817
+          },
+          {
+            "hex": "#561784",
+            "coveragePercent": 5.9482
+          },
+          {
+            "hex": "#7c1cb2",
+            "coveragePercent": 5.3076
+          },
+          {
+            "hex": "#b77d60",
+            "coveragePercent": 5.2541
+          },
+          {
+            "hex": "#945934",
+            "coveragePercent": 4.9089
+          },
+          {
+            "hex": "#6b4566",
+            "coveragePercent": 4.5741
+          },
+          {
+            "hex": "#e0ac72",
+            "coveragePercent": 4.4196
+          },
+          {
+            "hex": "#f3d1a5",
+            "coveragePercent": 4.3986
+          },
+          {
+            "hex": "#300856",
+            "coveragePercent": 4.1419
+          },
+          {
+            "hex": "#faeadb",
+            "coveragePercent": 3.8208
+          },
+          {
+            "hex": "#ad26e5",
+            "coveragePercent": 3.6021
+          },
+          {
+            "hex": "#de72eb",
+            "coveragePercent": 2.0126
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#661999",
+            "coveragePercent": 28.5673
+          },
+          {
+            "hex": "#961fd1",
+            "coveragePercent": 19.2254
+          },
+          {
+            "hex": "#975835",
+            "coveragePercent": 17.428
+          },
+          {
+            "hex": "#c1844e",
+            "coveragePercent": 15.0623
+          },
+          {
+            "hex": "#d24df2",
+            "coveragePercent": 10.2256
+          },
+          {
+            "hex": "#eaba66",
+            "coveragePercent": 9.4915
+          }
+        ],
+        "visibleSamples": 715986,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.angelEclipse": {
+      "source": "assets/images/enemies/angel-eclipse-v5.png",
+      "frameMetadata": "ART_FRAMES.angelEclipse",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdfaf1",
+            "coveragePercent": 10.4027
+          },
+          {
+            "hex": "#fae8cc",
+            "coveragePercent": 9.6463
+          },
+          {
+            "hex": "#3d1950",
+            "coveragePercent": 8.1887
+          },
+          {
+            "hex": "#f3d1a7",
+            "coveragePercent": 8.1207
+          },
+          {
+            "hex": "#5f3267",
+            "coveragePercent": 7.8987
+          },
+          {
+            "hex": "#240c1b",
+            "coveragePercent": 6.4695
+          },
+          {
+            "hex": "#cca1ae",
+            "coveragePercent": 6.4493
+          },
+          {
+            "hex": "#a36336",
+            "coveragePercent": 6.0255
+          },
+          {
+            "hex": "#f2c36b",
+            "coveragePercent": 5.9759
+          },
+          {
+            "hex": "#6e1ca4",
+            "coveragePercent": 5.4183
+          },
+          {
+            "hex": "#c58c6b",
+            "coveragePercent": 5.0204
+          },
+          {
+            "hex": "#9a6588",
+            "coveragePercent": 4.7352
+          },
+          {
+            "hex": "#6c3620",
+            "coveragePercent": 4.7064
+          },
+          {
+            "hex": "#a623e1",
+            "coveragePercent": 4.6343
+          },
+          {
+            "hex": "#e49b31",
+            "coveragePercent": 4.0824
+          },
+          {
+            "hex": "#dd60eb",
+            "coveragePercent": 2.2257
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d58f42",
+            "coveragePercent": 20.3979
+          },
+          {
+            "hex": "#f4c465",
+            "coveragePercent": 19.1159
+          },
+          {
+            "hex": "#6d229b",
+            "coveragePercent": 19.0813
+          },
+          {
+            "hex": "#9f5b31",
+            "coveragePercent": 18.0607
+          },
+          {
+            "hex": "#9c21d9",
+            "coveragePercent": 14.193
+          },
+          {
+            "hex": "#d34ee5",
+            "coveragePercent": 9.1512
+          }
+        ],
+        "visibleSamples": 851709,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.oldAngel": {
+      "source": "assets/images/enemies/old-angel-v6.png",
+      "frameMetadata": "ART_FRAMES.oldAngel",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5a3a21",
+            "coveragePercent": 10.2348
+          },
+          {
+            "hex": "#6f513c",
+            "coveragePercent": 9.5296
+          },
+          {
+            "hex": "#8b6a51",
+            "coveragePercent": 9.46
+          },
+          {
+            "hex": "#3d2313",
+            "coveragePercent": 7.8755
+          },
+          {
+            "hex": "#f8d9a7",
+            "coveragePercent": 7.8275
+          },
+          {
+            "hex": "#fae9c6",
+            "coveragePercent": 7.8214
+          },
+          {
+            "hex": "#a58469",
+            "coveragePercent": 6.5312
+          },
+          {
+            "hex": "#f3c580",
+            "coveragePercent": 6.1927
+          },
+          {
+            "hex": "#cfa477",
+            "coveragePercent": 5.1058
+          },
+          {
+            "hex": "#be8338",
+            "coveragePercent": 4.9303
+          },
+          {
+            "hex": "#915a1e",
+            "coveragePercent": 4.8021
+          },
+          {
+            "hex": "#e8af4e",
+            "coveragePercent": 4.7896
+          },
+          {
+            "hex": "#1c0d07",
+            "coveragePercent": 4.7527
+          },
+          {
+            "hex": "#d9bea6",
+            "coveragePercent": 4.1203
+          },
+          {
+            "hex": "#b19c90",
+            "coveragePercent": 3.0617
+          },
+          {
+            "hex": "#fcf7e6",
+            "coveragePercent": 2.965
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936842",
+            "coveragePercent": 21.0759
+          },
+          {
+            "hex": "#e4ab4f",
+            "coveragePercent": 19.967
+          },
+          {
+            "hex": "#f4c374",
+            "coveragePercent": 18.8325
+          },
+          {
+            "hex": "#bc8954",
+            "coveragePercent": 15.2967
+          },
+          {
+            "hex": "#92591b",
+            "coveragePercent": 13.2117
+          },
+          {
+            "hex": "#bc7e2b",
+            "coveragePercent": 11.6162
+          }
+        ],
+        "visibleSamples": 447778,
+        "dominantCoveragePercent": 100.0002
+      }
+    }
+  },
+  "assets": {
+    "assets/images/enemies/angel-dark-v5.png": {
+      "sha256": "e034f1c6e153aca440ef100ff573ee55df7cfc3c45cc5dac5a65686ede6c5cec",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "angelDark"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#301e37",
+            "coveragePercent": 13.4807
+          },
+          {
+            "hex": "#220e20",
+            "coveragePercent": 11.7787
+          },
+          {
+            "hex": "#452c52",
+            "coveragePercent": 11.6834
+          },
+          {
+            "hex": "#0b030e",
+            "coveragePercent": 8.6869
+          },
+          {
+            "hex": "#5e2e1f",
+            "coveragePercent": 5.9817
+          },
+          {
+            "hex": "#561784",
+            "coveragePercent": 5.9482
+          },
+          {
+            "hex": "#7c1cb2",
+            "coveragePercent": 5.3076
+          },
+          {
+            "hex": "#b77d60",
+            "coveragePercent": 5.2541
+          },
+          {
+            "hex": "#945934",
+            "coveragePercent": 4.9089
+          },
+          {
+            "hex": "#6b4566",
+            "coveragePercent": 4.5741
+          },
+          {
+            "hex": "#e0ac72",
+            "coveragePercent": 4.4196
+          },
+          {
+            "hex": "#f3d1a5",
+            "coveragePercent": 4.3986
+          },
+          {
+            "hex": "#300856",
+            "coveragePercent": 4.1419
+          },
+          {
+            "hex": "#faeadb",
+            "coveragePercent": 3.8208
+          },
+          {
+            "hex": "#ad26e5",
+            "coveragePercent": 3.6021
+          },
+          {
+            "hex": "#de72eb",
+            "coveragePercent": 2.0126
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#661999",
+            "coveragePercent": 28.5673
+          },
+          {
+            "hex": "#961fd1",
+            "coveragePercent": 19.2254
+          },
+          {
+            "hex": "#975835",
+            "coveragePercent": 17.428
+          },
+          {
+            "hex": "#c1844e",
+            "coveragePercent": 15.0623
+          },
+          {
+            "hex": "#d24df2",
+            "coveragePercent": 10.2256
+          },
+          {
+            "hex": "#eaba66",
+            "coveragePercent": 9.4915
+          }
+        ],
+        "visibleSamples": 715986,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/angel-eclipse-v5.png": {
+      "sha256": "f642f67145c4497b11957544515cb362bab26b68af3b08020e66326eaa42945e",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "angelEclipse"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdfaf1",
+            "coveragePercent": 10.4027
+          },
+          {
+            "hex": "#fae8cc",
+            "coveragePercent": 9.6463
+          },
+          {
+            "hex": "#3d1950",
+            "coveragePercent": 8.1887
+          },
+          {
+            "hex": "#f3d1a7",
+            "coveragePercent": 8.1207
+          },
+          {
+            "hex": "#5f3267",
+            "coveragePercent": 7.8987
+          },
+          {
+            "hex": "#240c1b",
+            "coveragePercent": 6.4695
+          },
+          {
+            "hex": "#cca1ae",
+            "coveragePercent": 6.4493
+          },
+          {
+            "hex": "#a36336",
+            "coveragePercent": 6.0255
+          },
+          {
+            "hex": "#f2c36b",
+            "coveragePercent": 5.9759
+          },
+          {
+            "hex": "#6e1ca4",
+            "coveragePercent": 5.4183
+          },
+          {
+            "hex": "#c58c6b",
+            "coveragePercent": 5.0204
+          },
+          {
+            "hex": "#9a6588",
+            "coveragePercent": 4.7352
+          },
+          {
+            "hex": "#6c3620",
+            "coveragePercent": 4.7064
+          },
+          {
+            "hex": "#a623e1",
+            "coveragePercent": 4.6343
+          },
+          {
+            "hex": "#e49b31",
+            "coveragePercent": 4.0824
+          },
+          {
+            "hex": "#dd60eb",
+            "coveragePercent": 2.2257
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d58f42",
+            "coveragePercent": 20.3979
+          },
+          {
+            "hex": "#f4c465",
+            "coveragePercent": 19.1159
+          },
+          {
+            "hex": "#6d229b",
+            "coveragePercent": 19.0813
+          },
+          {
+            "hex": "#9f5b31",
+            "coveragePercent": 18.0607
+          },
+          {
+            "hex": "#9c21d9",
+            "coveragePercent": 14.193
+          },
+          {
+            "hex": "#d34ee5",
+            "coveragePercent": 9.1512
+          }
+        ],
+        "visibleSamples": 851709,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/angel-light-v5.png": {
+      "sha256": "74f7de42cdd178b96eef72a8b887b14c4279f4e79ec9d74e8a009bde4b6a5ba4",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "angelLight"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdfbee",
+            "coveragePercent": 13.1497
+          },
+          {
+            "hex": "#fae9ce",
+            "coveragePercent": 12.538
+          },
+          {
+            "hex": "#fad684",
+            "coveragePercent": 9.2387
+          },
+          {
+            "hex": "#e1c6b9",
+            "coveragePercent": 7.154
+          },
+          {
+            "hex": "#fce6a5",
+            "coveragePercent": 6.9143
+          },
+          {
+            "hex": "#f7c664",
+            "coveragePercent": 6.7519
+          },
+          {
+            "hex": "#ebaa49",
+            "coveragePercent": 6.3523
+          },
+          {
+            "hex": "#bf875b",
+            "coveragePercent": 5.8357
+          },
+          {
+            "hex": "#883a24",
+            "coveragePercent": 5.5432
+          },
+          {
+            "hex": "#d3a784",
+            "coveragePercent": 5.2996
+          },
+          {
+            "hex": "#af6624",
+            "coveragePercent": 4.5211
+          },
+          {
+            "hex": "#d5862f",
+            "coveragePercent": 4.4913
+          },
+          {
+            "hex": "#682115",
+            "coveragePercent": 4.394
+          },
+          {
+            "hex": "#976046",
+            "coveragePercent": 3.1781
+          },
+          {
+            "hex": "#381008",
+            "coveragePercent": 2.5015
+          },
+          {
+            "hex": "#c03d33",
+            "coveragePercent": 2.1364
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#fad376",
+            "coveragePercent": 24.1403
+          },
+          {
+            "hex": "#edb153",
+            "coveragePercent": 21.5336
+          },
+          {
+            "hex": "#d08b45",
+            "coveragePercent": 20.1688
+          },
+          {
+            "hex": "#ae6a30",
+            "coveragePercent": 16.4594
+          },
+          {
+            "hex": "#923b25",
+            "coveragePercent": 13.3411
+          },
+          {
+            "hex": "#c74233",
+            "coveragePercent": 4.3569
+          }
+        ],
+        "visibleSamples": 763404,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/heaven-attack-v4.png": {
+      "sha256": "12468fc0373f40451c1fa11acd67af241716e4c52f6b12875eb48f5c77a991f3",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "heavenAttack"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f8debc",
+            "coveragePercent": 11.3896
+          },
+          {
+            "hex": "#faf2e9",
+            "coveragePercent": 10.9419
+          },
+          {
+            "hex": "#723823",
+            "coveragePercent": 7.7239
+          },
+          {
+            "hex": "#edad4c",
+            "coveragePercent": 7.3855
+          },
+          {
+            "hex": "#be8f7a",
+            "coveragePercent": 6.9327
+          },
+          {
+            "hex": "#9c6a4e",
+            "coveragePercent": 6.8899
+          },
+          {
+            "hex": "#d7842d",
+            "coveragePercent": 6.5297
+          },
+          {
+            "hex": "#e3b796",
+            "coveragePercent": 6.2104
+          },
+          {
+            "hex": "#2c181b",
+            "coveragePercent": 5.7955
+          },
+          {
+            "hex": "#b25028",
+            "coveragePercent": 5.7458
+          },
+          {
+            "hex": "#f9d176",
+            "coveragePercent": 5.5491
+          },
+          {
+            "hex": "#c9afc4",
+            "coveragePercent": 5.1797
+          },
+          {
+            "hex": "#36345a",
+            "coveragePercent": 4.594
+          },
+          {
+            "hex": "#856692",
+            "coveragePercent": 4.5173
+          },
+          {
+            "hex": "#405095",
+            "coveragePercent": 2.5923
+          },
+          {
+            "hex": "#7699ef",
+            "coveragePercent": 2.0226
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f3c167",
+            "coveragePercent": 24.9514
+          },
+          {
+            "hex": "#c07848",
+            "coveragePercent": 22.9259
+          },
+          {
+            "hex": "#a04c27",
+            "coveragePercent": 22.6984
+          },
+          {
+            "hex": "#e79931",
+            "coveragePercent": 18.5092
+          },
+          {
+            "hex": "#4d4f9d",
+            "coveragePercent": 7.3473
+          },
+          {
+            "hex": "#6993f4",
+            "coveragePercent": 3.5678
+          }
+        ],
+        "visibleSamples": 810386,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/heaven-walk-v4.png": {
+      "sha256": "4a5a6962a2a12dd4f17bd5222a5115c114d4f6186733697d537dc9894f31f050",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "heavenWalk"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f8e2be",
+            "coveragePercent": 11.2415
+          },
+          {
+            "hex": "#fbf3ea",
+            "coveragePercent": 11.1882
+          },
+          {
+            "hex": "#c4722d",
+            "coveragePercent": 6.9814
+          },
+          {
+            "hex": "#eaa43f",
+            "coveragePercent": 6.9383
+          },
+          {
+            "hex": "#934726",
+            "coveragePercent": 6.9199
+          },
+          {
+            "hex": "#bf8e6c",
+            "coveragePercent": 6.8353
+          },
+          {
+            "hex": "#98674e",
+            "coveragePercent": 6.3876
+          },
+          {
+            "hex": "#dbb59b",
+            "coveragePercent": 6.2825
+          },
+          {
+            "hex": "#5f2e1f",
+            "coveragePercent": 6.2769
+          },
+          {
+            "hex": "#f6cd75",
+            "coveragePercent": 6.2562
+          },
+          {
+            "hex": "#d4bed5",
+            "coveragePercent": 5.3083
+          },
+          {
+            "hex": "#a892ae",
+            "coveragePercent": 4.9028
+          },
+          {
+            "hex": "#7b618c",
+            "coveragePercent": 4.4835
+          },
+          {
+            "hex": "#22151b",
+            "coveragePercent": 4.4697
+          },
+          {
+            "hex": "#303563",
+            "coveragePercent": 3.9141
+          },
+          {
+            "hex": "#3a59a7",
+            "coveragePercent": 1.6139
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#bc753e",
+            "coveragePercent": 28.3433
+          },
+          {
+            "hex": "#9a4c29",
+            "coveragePercent": 23.1807
+          },
+          {
+            "hex": "#e49e3f",
+            "coveragePercent": 22.3074
+          },
+          {
+            "hex": "#f4c66c",
+            "coveragePercent": 18.4256
+          },
+          {
+            "hex": "#324994",
+            "coveragePercent": 4.5735
+          },
+          {
+            "hex": "#6669bc",
+            "coveragePercent": 3.1695
+          }
+        ],
+        "visibleSamples": 751856,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/old-angel-v6.png": {
+      "sha256": "aa85ffd2c6aeff84b3317332fed83ba279c6e63fd13df3573afa6701c9afdc22",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "oldAngel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5a3a21",
+            "coveragePercent": 10.2348
+          },
+          {
+            "hex": "#6f513c",
+            "coveragePercent": 9.5296
+          },
+          {
+            "hex": "#8b6a51",
+            "coveragePercent": 9.46
+          },
+          {
+            "hex": "#3d2313",
+            "coveragePercent": 7.8755
+          },
+          {
+            "hex": "#f8d9a7",
+            "coveragePercent": 7.8275
+          },
+          {
+            "hex": "#fae9c6",
+            "coveragePercent": 7.8214
+          },
+          {
+            "hex": "#a58469",
+            "coveragePercent": 6.5312
+          },
+          {
+            "hex": "#f3c580",
+            "coveragePercent": 6.1927
+          },
+          {
+            "hex": "#cfa477",
+            "coveragePercent": 5.1058
+          },
+          {
+            "hex": "#be8338",
+            "coveragePercent": 4.9303
+          },
+          {
+            "hex": "#915a1e",
+            "coveragePercent": 4.8021
+          },
+          {
+            "hex": "#e8af4e",
+            "coveragePercent": 4.7896
+          },
+          {
+            "hex": "#1c0d07",
+            "coveragePercent": 4.7527
+          },
+          {
+            "hex": "#d9bea6",
+            "coveragePercent": 4.1203
+          },
+          {
+            "hex": "#b19c90",
+            "coveragePercent": 3.0617
+          },
+          {
+            "hex": "#fcf7e6",
+            "coveragePercent": 2.965
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936842",
+            "coveragePercent": 21.0759
+          },
+          {
+            "hex": "#e4ab4f",
+            "coveragePercent": 19.967
+          },
+          {
+            "hex": "#f4c374",
+            "coveragePercent": 18.8325
+          },
+          {
+            "hex": "#bc8954",
+            "coveragePercent": 15.2967
+          },
+          {
+            "hex": "#92591b",
+            "coveragePercent": 13.2117
+          },
+          {
+            "hex": "#bc7e2b",
+            "coveragePercent": 11.6162
+          }
+        ],
+        "visibleSamples": 447778,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/enemies/sect-fall-angel-v1.png": {
+      "sha256": "ddd406efe1c60eb04fdad8c6c3bc9f9f40ddc7c79843173c92428ccb35a32082",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultWoundedAngel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bf9a86",
+            "coveragePercent": 8.9119
+          },
+          {
+            "hex": "#d5b6a2",
+            "coveragePercent": 8.6226
+          },
+          {
+            "hex": "#40160d",
+            "coveragePercent": 8.4464
+          },
+          {
+            "hex": "#a47e6b",
+            "coveragePercent": 7.9327
+          },
+          {
+            "hex": "#774529",
+            "coveragePercent": 7.712
+          },
+          {
+            "hex": "#572d1c",
+            "coveragePercent": 7.2048
+          },
+          {
+            "hex": "#761e18",
+            "coveragePercent": 6.9167
+          },
+          {
+            "hex": "#ead4bd",
+            "coveragePercent": 6.8934
+          },
+          {
+            "hex": "#180805",
+            "coveragePercent": 6.8814
+          },
+          {
+            "hex": "#9e2c27",
+            "coveragePercent": 6.8807
+          },
+          {
+            "hex": "#85604f",
+            "coveragePercent": 5.7096
+          },
+          {
+            "hex": "#a46231",
+            "coveragePercent": 4.9447
+          },
+          {
+            "hex": "#c43c34",
+            "coveragePercent": 3.8964
+          },
+          {
+            "hex": "#f7efe3",
+            "coveragePercent": 3.7544
+          },
+          {
+            "hex": "#cc864f",
+            "coveragePercent": 3.4843
+          },
+          {
+            "hex": "#eebd76",
+            "coveragePercent": 1.8079
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965931",
+            "coveragePercent": 25.2242
+          },
+          {
+            "hex": "#8d2920",
+            "coveragePercent": 21.0873
+          },
+          {
+            "hex": "#ac2f2b",
+            "coveragePercent": 18.6234
+          },
+          {
+            "hex": "#bc7b4b",
+            "coveragePercent": 17.8505
+          },
+          {
+            "hex": "#cb4238",
+            "coveragePercent": 9.5612
+          },
+          {
+            "hex": "#e6ad65",
+            "coveragePercent": 7.6535
+          }
+        ],
+        "visibleSamples": 653126,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/winged-serpent-v1.png": {
+      "sha256": "1de9a4cb26fed0b3a6ec3bdfdbe55f779fbf4c996f6f2ff4a230fb6f79c6787e",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "wingedSerpent"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3c2e4e",
+            "coveragePercent": 10.4723
+          },
+          {
+            "hex": "#2c1f38",
+            "coveragePercent": 8.7766
+          },
+          {
+            "hex": "#513f67",
+            "coveragePercent": 8.675
+          },
+          {
+            "hex": "#eacfbe",
+            "coveragePercent": 7.8347
+          },
+          {
+            "hex": "#f7e8d9",
+            "coveragePercent": 7.1488
+          },
+          {
+            "hex": "#211217",
+            "coveragePercent": 6.6623
+          },
+          {
+            "hex": "#4f2e20",
+            "coveragePercent": 6.1112
+          },
+          {
+            "hex": "#795d6c",
+            "coveragePercent": 5.8439
+          },
+          {
+            "hex": "#a18080",
+            "coveragePercent": 5.4805
+          },
+          {
+            "hex": "#e8c096",
+            "coveragePercent": 5.3668
+          },
+          {
+            "hex": "#cca07f",
+            "coveragePercent": 5.2108
+          },
+          {
+            "hex": "#634640",
+            "coveragePercent": 5.1738
+          },
+          {
+            "hex": "#aa6f40",
+            "coveragePercent": 4.7875
+          },
+          {
+            "hex": "#884e27",
+            "coveragePercent": 4.6007
+          },
+          {
+            "hex": "#c3a5aa",
+            "coveragePercent": 4.4916
+          },
+          {
+            "hex": "#d49551",
+            "coveragePercent": 3.3635
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#91542b",
+            "coveragePercent": 28.5822
+          },
+          {
+            "hex": "#ae703f",
+            "coveragePercent": 26.883
+          },
+          {
+            "hex": "#cc8e51",
+            "coveragePercent": 23.398
+          },
+          {
+            "hex": "#e8b16b",
+            "coveragePercent": 16.4719
+          },
+          {
+            "hex": "#673687",
+            "coveragePercent": 2.978
+          },
+          {
+            "hex": "#804b99",
+            "coveragePercent": 1.6869
+          }
+        ],
+        "visibleSamples": 302213,
+        "dominantCoveragePercent": 100.0
+      }
+    }
+  }
+}

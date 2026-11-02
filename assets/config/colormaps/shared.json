@@ -1,0 +1,6640 @@
+{
+  "paletteGroups": {
+    "npc.kitsune.fox.dead": {
+      "source": "assets/images/npcs/fia-fox-dead-v1.png",
+      "frameMetadata": "ART_KITSUNE.deadFox.frames",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7e4b87",
+            "coveragePercent": 12.2296
+          },
+          {
+            "hex": "#704278",
+            "coveragePercent": 12.1014
+          },
+          {
+            "hex": "#8b5496",
+            "coveragePercent": 11.9554
+          },
+          {
+            "hex": "#603967",
+            "coveragePercent": 9.3187
+          },
+          {
+            "hex": "#9a5da8",
+            "coveragePercent": 7.6269
+          },
+          {
+            "hex": "#502d56",
+            "coveragePercent": 6.5997
+          },
+          {
+            "hex": "#ddbdd3",
+            "coveragePercent": 5.5379
+          },
+          {
+            "hex": "#cda9c6",
+            "coveragePercent": 5.1516
+          },
+          {
+            "hex": "#ebd0dc",
+            "coveragePercent": 5.0058
+          },
+          {
+            "hex": "#f8e4e7",
+            "coveragePercent": 4.9325
+          },
+          {
+            "hex": "#3f2243",
+            "coveragePercent": 4.8216
+          },
+          {
+            "hex": "#bb91b7",
+            "coveragePercent": 4.2187
+          },
+          {
+            "hex": "#2c152e",
+            "coveragePercent": 3.0431
+          },
+          {
+            "hex": "#a3789c",
+            "coveragePercent": 3.0047
+          },
+          {
+            "hex": "#ae70bb",
+            "coveragePercent": 2.8769
+          },
+          {
+            "hex": "#160915",
+            "coveragePercent": 1.5756
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#854c91",
+            "coveragePercent": 32.1418
+          },
+          {
+            "hex": "#7a4585",
+            "coveragePercent": 29.3464
+          },
+          {
+            "hex": "#90539e",
+            "coveragePercent": 24.4959
+          },
+          {
+            "hex": "#9c5bac",
+            "coveragePercent": 9.9279
+          },
+          {
+            "hex": "#a863b9",
+            "coveragePercent": 3.4508
+          },
+          {
+            "hex": "#8e4967",
+            "coveragePercent": 0.6372
+          }
+        ],
+        "visibleSamples": 479516,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.campCedar": {
+      "source": "assets/images/props/camp-cedar-v1.png",
+      "frameMetadata": "ART_CAMP.cedar",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060503",
+            "coveragePercent": 19.9795
+          },
+          {
+            "hex": "#18140b",
+            "coveragePercent": 19.8235
+          },
+          {
+            "hex": "#31250a",
+            "coveragePercent": 11.8478
+          },
+          {
+            "hex": "#2c2724",
+            "coveragePercent": 8.8106
+          },
+          {
+            "hex": "#132124",
+            "coveragePercent": 7.2163
+          },
+          {
+            "hex": "#56390b",
+            "coveragePercent": 5.9365
+          },
+          {
+            "hex": "#43392d",
+            "coveragePercent": 5.7931
+          },
+          {
+            "hex": "#273843",
+            "coveragePercent": 4.3364
+          },
+          {
+            "hex": "#85520d",
+            "coveragePercent": 3.4249
+          },
+          {
+            "hex": "#b47216",
+            "coveragePercent": 2.6079
+          },
+          {
+            "hex": "#e2951c",
+            "coveragePercent": 2.432
+          },
+          {
+            "hex": "#605d3f",
+            "coveragePercent": 2.1637
+          },
+          {
+            "hex": "#434f63",
+            "coveragePercent": 2.0244
+          },
+          {
+            "hex": "#f6c328",
+            "coveragePercent": 1.8928
+          },
+          {
+            "hex": "#f6d164",
+            "coveragePercent": 0.9821
+          },
+          {
+            "hex": "#637496",
+            "coveragePercent": 0.7284
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#93570f",
+            "coveragePercent": 26.1115
+          },
+          {
+            "hex": "#e3951e",
+            "coveragePercent": 22.2599
+          },
+          {
+            "hex": "#b97617",
+            "coveragePercent": 21.7394
+          },
+          {
+            "hex": "#f5c21e",
+            "coveragePercent": 14.5521
+          },
+          {
+            "hex": "#f7cd54",
+            "coveragePercent": 12.5811
+          },
+          {
+            "hex": "#49689c",
+            "coveragePercent": 2.7561
+          }
+        ],
+        "visibleSamples": 792275,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.shadowAltar": {
+      "source": "assets/images/props/shadow-altar-v1.png",
+      "frameMetadata": "ART_SHADOW_ALTAR",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1f1d",
+            "coveragePercent": 18.0342
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 17.223
+          },
+          {
+            "hex": "#1c0f0d",
+            "coveragePercent": 15.7808
+          },
+          {
+            "hex": "#42312f",
+            "coveragePercent": 15.2709
+          },
+          {
+            "hex": "#5b4540",
+            "coveragePercent": 8.723
+          },
+          {
+            "hex": "#805e53",
+            "coveragePercent": 4.5293
+          },
+          {
+            "hex": "#60190c",
+            "coveragePercent": 4.0498
+          },
+          {
+            "hex": "#7f4c21",
+            "coveragePercent": 3.2101
+          },
+          {
+            "hex": "#b97534",
+            "coveragePercent": 2.4511
+          },
+          {
+            "hex": "#e1a558",
+            "coveragePercent": 2.2023
+          },
+          {
+            "hex": "#b8181d",
+            "coveragePercent": 2.1159
+          },
+          {
+            "hex": "#a9806d",
+            "coveragePercent": 1.9837
+          },
+          {
+            "hex": "#f3d288",
+            "coveragePercent": 1.7201
+          },
+          {
+            "hex": "#571e6f",
+            "coveragePercent": 1.3251
+          },
+          {
+            "hex": "#f8ead0",
+            "coveragePercent": 0.9115
+          },
+          {
+            "hex": "#bc3fe8",
+            "coveragePercent": 0.4691
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965e30",
+            "coveragePercent": 30.4628
+          },
+          {
+            "hex": "#c78545",
+            "coveragePercent": 24.4772
+          },
+          {
+            "hex": "#af161b",
+            "coveragePercent": 21.61
+          },
+          {
+            "hex": "#efbe67",
+            "coveragePercent": 16.6221
+          },
+          {
+            "hex": "#7622a2",
+            "coveragePercent": 4.1303
+          },
+          {
+            "hex": "#cd42f4",
+            "coveragePercent": 2.6976
+          }
+        ],
+        "visibleSamples": 830285,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.campMasterSoul": {
+      "source": "assets/images/items/camp-master-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.campMasterSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#ed0e0a",
+            "coveragePercent": 12.5688
+          },
+          {
+            "hex": "#f83b1f",
+            "coveragePercent": 10.742
+          },
+          {
+            "hex": "#f49c52",
+            "coveragePercent": 8.7327
+          },
+          {
+            "hex": "#b20402",
+            "coveragePercent": 8.5962
+          },
+          {
+            "hex": "#f26c3a",
+            "coveragePercent": 8.4262
+          },
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 7.0133
+          },
+          {
+            "hex": "#fbcf68",
+            "coveragePercent": 6.9897
+          },
+          {
+            "hex": "#750b01",
+            "coveragePercent": 6.8213
+          },
+          {
+            "hex": "#fcf9ea",
+            "coveragePercent": 5.6738
+          },
+          {
+            "hex": "#fceca5",
+            "coveragePercent": 5.2545
+          },
+          {
+            "hex": "#400702",
+            "coveragePercent": 4.573
+          },
+          {
+            "hex": "#f59910",
+            "coveragePercent": 4.1836
+          },
+          {
+            "hex": "#b54f09",
+            "coveragePercent": 4.1099
+          },
+          {
+            "hex": "#493d3e",
+            "coveragePercent": 2.4323
+          },
+          {
+            "hex": "#856560",
+            "coveragePercent": 1.9829
+          },
+          {
+            "hex": "#c4a29e",
+            "coveragePercent": 1.8998
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ec110c",
+            "coveragePercent": 23.8001
+          },
+          {
+            "hex": "#f28d3a",
+            "coveragePercent": 21.4613
+          },
+          {
+            "hex": "#f84926",
+            "coveragePercent": 18.2613
+          },
+          {
+            "hex": "#fbc864",
+            "coveragePercent": 15.0294
+          },
+          {
+            "hex": "#a50702",
+            "coveragePercent": 14.3564
+          },
+          {
+            "hex": "#b6550f",
+            "coveragePercent": 7.0915
+          }
+        ],
+        "visibleSamples": 559530,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.daisyPlush": {
+      "source": "assets/images/items/slayer-daisy-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.daisyPlush",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f1607d",
+            "coveragePercent": 11.4487
+          },
+          {
+            "hex": "#f87792",
+            "coveragePercent": 10.5312
+          },
+          {
+            "hex": "#dc4c67",
+            "coveragePercent": 9.7848
+          },
+          {
+            "hex": "#c03951",
+            "coveragePercent": 7.6843
+          },
+          {
+            "hex": "#fa93a9",
+            "coveragePercent": 6.6293
+          },
+          {
+            "hex": "#9e273a",
+            "coveragePercent": 6.3442
+          },
+          {
+            "hex": "#77252f",
+            "coveragePercent": 5.9448
+          },
+          {
+            "hex": "#b06e67",
+            "coveragePercent": 5.7868
+          },
+          {
+            "hex": "#f7bdb4",
+            "coveragePercent": 5.7756
+          },
+          {
+            "hex": "#e8a597",
+            "coveragePercent": 5.3216
+          },
+          {
+            "hex": "#93524d",
+            "coveragePercent": 4.9828
+          },
+          {
+            "hex": "#cc8a80",
+            "coveragePercent": 4.945
+          },
+          {
+            "hex": "#5c121c",
+            "coveragePercent": 4.4144
+          },
+          {
+            "hex": "#340d11",
+            "coveragePercent": 3.8543
+          },
+          {
+            "hex": "#100304",
+            "coveragePercent": 3.6289
+          },
+          {
+            "hex": "#fbdbcb",
+            "coveragePercent": 2.9233
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f87892",
+            "coveragePercent": 25.5489
+          },
+          {
+            "hex": "#ed5d78",
+            "coveragePercent": 23.995
+          },
+          {
+            "hex": "#d44861",
+            "coveragePercent": 18.3402
+          },
+          {
+            "hex": "#b7344a",
+            "coveragePercent": 13.3531
+          },
+          {
+            "hex": "#932234",
+            "coveragePercent": 11.5136
+          },
+          {
+            "hex": "#99524d",
+            "coveragePercent": 7.2491
+          }
+        ],
+        "visibleSamples": 644831,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.slayerCrossbow": {
+      "source": "assets/images/items/slayer-crossbow-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.slayerCrossbow",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a100d",
+            "coveragePercent": 14.9004
+          },
+          {
+            "hex": "#070302",
+            "coveragePercent": 14.4425
+          },
+          {
+            "hex": "#301b12",
+            "coveragePercent": 12.8059
+          },
+          {
+            "hex": "#552710",
+            "coveragePercent": 8.0998
+          },
+          {
+            "hex": "#3c3027",
+            "coveragePercent": 8.0923
+          },
+          {
+            "hex": "#7d421b",
+            "coveragePercent": 6.6431
+          },
+          {
+            "hex": "#a85f26",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#55443d",
+            "coveragePercent": 5.2689
+          },
+          {
+            "hex": "#726057",
+            "coveragePercent": 4.5418
+          },
+          {
+            "hex": "#cb803a",
+            "coveragePercent": 3.8225
+          },
+          {
+            "hex": "#987f6f",
+            "coveragePercent": 3.5087
+          },
+          {
+            "hex": "#e8a656",
+            "coveragePercent": 2.9793
+          },
+          {
+            "hex": "#bca396",
+            "coveragePercent": 2.4874
+          },
+          {
+            "hex": "#e6d2bb",
+            "coveragePercent": 2.3038
+          },
+          {
+            "hex": "#f4c881",
+            "coveragePercent": 2.0832
+          },
+          {
+            "hex": "#f9f4e8",
+            "coveragePercent": 1.9476
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945622",
+            "coveragePercent": 24.2379
+          },
+          {
+            "hex": "#bc6a25",
+            "coveragePercent": 22.1701
+          },
+          {
+            "hex": "#db9247",
+            "coveragePercent": 19.2054
+          },
+          {
+            "hex": "#f4bd68",
+            "coveragePercent": 13.7448
+          },
+          {
+            "hex": "#a67349",
+            "coveragePercent": 13.0452
+          },
+          {
+            "hex": "#913717",
+            "coveragePercent": 7.5967
+          }
+        ],
+        "visibleSamples": 402375,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "object.inventoryItem.angelHalo": {
+      "source": "assets/images/relics-v5.png",
+      "frameMetadata": "ART_INVENTORY.items.angelHalo",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fceec3",
+            "coveragePercent": 18.9627
+          },
+          {
+            "hex": "#f9e4b4",
+            "coveragePercent": 15.2873
+          },
+          {
+            "hex": "#fbe199",
+            "coveragePercent": 7.3437
+          },
+          {
+            "hex": "#e1c8b2",
+            "coveragePercent": 6.913
+          },
+          {
+            "hex": "#d5953e",
+            "coveragePercent": 5.938
+          },
+          {
+            "hex": "#f9f0db",
+            "coveragePercent": 5.6968
+          },
+          {
+            "hex": "#f5cd78",
+            "coveragePercent": 5.3799
+          },
+          {
+            "hex": "#fdfcf5",
+            "coveragePercent": 4.9753
+          },
+          {
+            "hex": "#a66017",
+            "coveragePercent": 4.9093
+          },
+          {
+            "hex": "#eeb24e",
+            "coveragePercent": 4.3545
+          },
+          {
+            "hex": "#d7ab72",
+            "coveragePercent": 4.2051
+          },
+          {
+            "hex": "#c87c1e",
+            "coveragePercent": 4.1329
+          },
+          {
+            "hex": "#89460c",
+            "coveragePercent": 3.9042
+          },
+          {
+            "hex": "#b57b3b",
+            "coveragePercent": 3.8871
+          },
+          {
+            "hex": "#6a2f05",
+            "coveragePercent": 2.6569
+          },
+          {
+            "hex": "#461802",
+            "coveragePercent": 1.4532
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b56f21",
+            "coveragePercent": 20.7232
+          },
+          {
+            "hex": "#e7b058",
+            "coveragePercent": 19.9985
+          },
+          {
+            "hex": "#944f0f",
+            "coveragePercent": 15.5792
+          },
+          {
+            "hex": "#f8d178",
+            "coveragePercent": 15.2244
+          },
+          {
+            "hex": "#da922e",
+            "coveragePercent": 14.4869
+          },
+          {
+            "hex": "#c38b48",
+            "coveragePercent": 13.9878
+          }
+        ],
+        "visibleSamples": 264587,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.demonHorn": {
+      "source": "assets/images/relics-v5.png",
+      "frameMetadata": "ART_INVENTORY.items.demonHorn",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e0709",
+            "coveragePercent": 13.3512
+          },
+          {
+            "hex": "#150304",
+            "coveragePercent": 11.6083
+          },
+          {
+            "hex": "#de3e72",
+            "coveragePercent": 10.8356
+          },
+          {
+            "hex": "#70070c",
+            "coveragePercent": 8.1043
+          },
+          {
+            "hex": "#4d2133",
+            "coveragePercent": 7.5695
+          },
+          {
+            "hex": "#971e43",
+            "coveragePercent": 7.4387
+          },
+          {
+            "hex": "#ee1614",
+            "coveragePercent": 7.4382
+          },
+          {
+            "hex": "#ad4788",
+            "coveragePercent": 6.1984
+          },
+          {
+            "hex": "#b00809",
+            "coveragePercent": 5.6134
+          },
+          {
+            "hex": "#77320c",
+            "coveragePercent": 5.4847
+          },
+          {
+            "hex": "#683f5c",
+            "coveragePercent": 3.9794
+          },
+          {
+            "hex": "#a15922",
+            "coveragePercent": 3.4204
+          },
+          {
+            "hex": "#e07831",
+            "coveragePercent": 2.6595
+          },
+          {
+            "hex": "#edaf5c",
+            "coveragePercent": 2.4997
+          },
+          {
+            "hex": "#f5d693",
+            "coveragePercent": 2.2287
+          },
+          {
+            "hex": "#faf3d6",
+            "coveragePercent": 1.5703
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d03f7b",
+            "coveragePercent": 30.7977
+          },
+          {
+            "hex": "#eb1915",
+            "coveragePercent": 19.3452
+          },
+          {
+            "hex": "#9e224b",
+            "coveragePercent": 15.063
+          },
+          {
+            "hex": "#9f0b0b",
+            "coveragePercent": 14.6898
+          },
+          {
+            "hex": "#a05921",
+            "coveragePercent": 10.5822
+          },
+          {
+            "hex": "#edaa56",
+            "coveragePercent": 9.5221
+          }
+        ],
+        "visibleSamples": 189279,
+        "dominantCoveragePercent": 100.0003
+      }
+    },
+    "object.inventoryItem.councilKey": {
+      "source": "assets/images/council-key-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.councilKey",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#caac85",
+            "coveragePercent": 9.1246
+          },
+          {
+            "hex": "#2d170b",
+            "coveragePercent": 8.4172
+          },
+          {
+            "hex": "#1c0d05",
+            "coveragePercent": 7.6228
+          },
+          {
+            "hex": "#dbc29e",
+            "coveragePercent": 7.596
+          },
+          {
+            "hex": "#3e2311",
+            "coveragePercent": 7.5572
+          },
+          {
+            "hex": "#b8946c",
+            "coveragePercent": 7.3651
+          },
+          {
+            "hex": "#5f3d21",
+            "coveragePercent": 7.3524
+          },
+          {
+            "hex": "#4e2f18",
+            "coveragePercent": 7.1065
+          },
+          {
+            "hex": "#714c2b",
+            "coveragePercent": 6.7426
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 6.6023
+          },
+          {
+            "hex": "#a57f56",
+            "coveragePercent": 6.527
+          },
+          {
+            "hex": "#825b38",
+            "coveragePercent": 6.5012
+          },
+          {
+            "hex": "#946c46",
+            "coveragePercent": 6.0017
+          },
+          {
+            "hex": "#e9d7b9",
+            "coveragePercent": 3.7449
+          },
+          {
+            "hex": "#f6efdb",
+            "coveragePercent": 1.635
+          },
+          {
+            "hex": "#920905",
+            "coveragePercent": 0.1036
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936b44",
+            "coveragePercent": 29.6081
+          },
+          {
+            "hex": "#885c35",
+            "coveragePercent": 28.0484
+          },
+          {
+            "hex": "#a47b50",
+            "coveragePercent": 26.7569
+          },
+          {
+            "hex": "#b98e5b",
+            "coveragePercent": 12.3668
+          },
+          {
+            "hex": "#dab26b",
+            "coveragePercent": 2.7424
+          },
+          {
+            "hex": "#a10c06",
+            "coveragePercent": 0.4775
+          }
+        ],
+        "visibleSamples": 353195,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.forestHerb": {
+      "source": "assets/images/items/camp-herbs-brew-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.forestHerb",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#030501",
+            "coveragePercent": 29.2021
+          },
+          {
+            "hex": "#102704",
+            "coveragePercent": 11.2928
+          },
+          {
+            "hex": "#2b4607",
+            "coveragePercent": 11.0671
+          },
+          {
+            "hex": "#4b6510",
+            "coveragePercent": 10.1651
+          },
+          {
+            "hex": "#6e8512",
+            "coveragePercent": 7.2601
+          },
+          {
+            "hex": "#98a81e",
+            "coveragePercent": 5.4321
+          },
+          {
+            "hex": "#a6ae59",
+            "coveragePercent": 3.8183
+          },
+          {
+            "hex": "#78863f",
+            "coveragePercent": 3.3774
+          },
+          {
+            "hex": "#d2c87f",
+            "coveragePercent": 3.3161
+          },
+          {
+            "hex": "#eedeb0",
+            "coveragePercent": 3.2666
+          },
+          {
+            "hex": "#faf5e3",
+            "coveragePercent": 2.9945
+          },
+          {
+            "hex": "#d4d028",
+            "coveragePercent": 2.3529
+          },
+          {
+            "hex": "#40180a",
+            "coveragePercent": 2.1535
+          },
+          {
+            "hex": "#7a2610",
+            "coveragePercent": 1.842
+          },
+          {
+            "hex": "#c13d12",
+            "coveragePercent": 1.3596
+          },
+          {
+            "hex": "#ee7e1e",
+            "coveragePercent": 1.0996
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#758c1a",
+            "coveragePercent": 35.4099
+          },
+          {
+            "hex": "#9baa2d",
+            "coveragePercent": 29.2309
+          },
+          {
+            "hex": "#cbc55c",
+            "coveragePercent": 13.3546
+          },
+          {
+            "hex": "#d8ce1c",
+            "coveragePercent": 8.3216
+          },
+          {
+            "hex": "#a73010",
+            "coveragePercent": 7.7195
+          },
+          {
+            "hex": "#e76b1b",
+            "coveragePercent": 5.9635
+          }
+        ],
+        "visibleSamples": 379672,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "object.inventoryItem.healingBrew": {
+      "source": "assets/images/items/camp-herbs-brew-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.healingBrew",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#040502",
+            "coveragePercent": 22.5538
+          },
+          {
+            "hex": "#03260a",
+            "coveragePercent": 16.9522
+          },
+          {
+            "hex": "#054b0d",
+            "coveragePercent": 10.6818
+          },
+          {
+            "hex": "#10820b",
+            "coveragePercent": 6.7231
+          },
+          {
+            "hex": "#15503d",
+            "coveragePercent": 5.8927
+          },
+          {
+            "hex": "#4e1c09",
+            "coveragePercent": 5.5197
+          },
+          {
+            "hex": "#9a320e",
+            "coveragePercent": 4.2011
+          },
+          {
+            "hex": "#44ae07",
+            "coveragePercent": 4.067
+          },
+          {
+            "hex": "#fafaef",
+            "coveragePercent": 3.347
+          },
+          {
+            "hex": "#4c755b",
+            "coveragePercent": 3.1912
+          },
+          {
+            "hex": "#d66e23",
+            "coveragePercent": 3.1718
+          },
+          {
+            "hex": "#8fd10a",
+            "coveragePercent": 3.1509
+          },
+          {
+            "hex": "#f1c95c",
+            "coveragePercent": 3.0315
+          },
+          {
+            "hex": "#e0eb17",
+            "coveragePercent": 2.8888
+          },
+          {
+            "hex": "#efe5a8",
+            "coveragePercent": 2.7236
+          },
+          {
+            "hex": "#8cad92",
+            "coveragePercent": 1.9039
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#269c0b",
+            "coveragePercent": 27.2497
+          },
+          {
+            "hex": "#eede41",
+            "coveragePercent": 21.2452
+          },
+          {
+            "hex": "#8bcf0b",
+            "coveragePercent": 18.6825
+          },
+          {
+            "hex": "#a6350f",
+            "coveragePercent": 16.3928
+          },
+          {
+            "hex": "#d97b2a",
+            "coveragePercent": 12.5691
+          },
+          {
+            "hex": "#2fa392",
+            "coveragePercent": 3.8606
+          }
+        ],
+        "visibleSamples": 262567,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.whiteSerpentScale": {
+      "source": "assets/images/items/serpent-relics-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.whiteSerpentScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#e9d6be",
+            "coveragePercent": 14.0584
+          },
+          {
+            "hex": "#d6c0a5",
+            "coveragePercent": 12.342
+          },
+          {
+            "hex": "#f7ebd7",
+            "coveragePercent": 10.3091
+          },
+          {
+            "hex": "#070402",
+            "coveragePercent": 8.8892
+          },
+          {
+            "hex": "#fcfaf3",
+            "coveragePercent": 7.7081
+          },
+          {
+            "hex": "#bfaa88",
+            "coveragePercent": 7.6035
+          },
+          {
+            "hex": "#93551e",
+            "coveragePercent": 4.9641
+          },
+          {
+            "hex": "#c07d35",
+            "coveragePercent": 4.7878
+          },
+          {
+            "hex": "#88a38d",
+            "coveragePercent": 4.4989
+          },
+          {
+            "hex": "#a8c0ad",
+            "coveragePercent": 4.4607
+          },
+          {
+            "hex": "#72886c",
+            "coveragePercent": 4.0308
+          },
+          {
+            "hex": "#e7a951",
+            "coveragePercent": 3.6923
+          },
+          {
+            "hex": "#4a664e",
+            "coveragePercent": 3.402
+          },
+          {
+            "hex": "#f5ce7f",
+            "coveragePercent": 3.2906
+          },
+          {
+            "hex": "#293524",
+            "coveragePercent": 3.0526
+          },
+          {
+            "hex": "#65350f",
+            "coveragePercent": 2.9099
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92521b",
+            "coveragePercent": 24.0006
+          },
+          {
+            "hex": "#b2702d",
+            "coveragePercent": 22.4028
+          },
+          {
+            "hex": "#d08d40",
+            "coveragePercent": 21.2239
+          },
+          {
+            "hex": "#e8ad57",
+            "coveragePercent": 18.4666
+          },
+          {
+            "hex": "#f7cc72",
+            "coveragePercent": 13.7111
+          },
+          {
+            "hex": "#56997c",
+            "coveragePercent": 0.195
+          }
+        ],
+        "visibleSamples": 199986,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.wingedSerpentScale": {
+      "source": "assets/images/items/serpent-relics-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.wingedSerpentScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#070405",
+            "coveragePercent": 15.0103
+          },
+          {
+            "hex": "#2c2644",
+            "coveragePercent": 12.795
+          },
+          {
+            "hex": "#171528",
+            "coveragePercent": 10.8344
+          },
+          {
+            "hex": "#473967",
+            "coveragePercent": 7.9855
+          },
+          {
+            "hex": "#6e3a12",
+            "coveragePercent": 7.3294
+          },
+          {
+            "hex": "#f7e4ca",
+            "coveragePercent": 6.8888
+          },
+          {
+            "hex": "#985720",
+            "coveragePercent": 6.8578
+          },
+          {
+            "hex": "#bf7832",
+            "coveragePercent": 5.7338
+          },
+          {
+            "hex": "#e1c7ae",
+            "coveragePercent": 4.2063
+          },
+          {
+            "hex": "#e4a049",
+            "coveragePercent": 4.1687
+          },
+          {
+            "hex": "#faf0ee",
+            "coveragePercent": 4.0239
+          },
+          {
+            "hex": "#411f0a",
+            "coveragePercent": 3.9907
+          },
+          {
+            "hex": "#6e51a1",
+            "coveragePercent": 3.7956
+          },
+          {
+            "hex": "#f6ce77",
+            "coveragePercent": 2.6918
+          },
+          {
+            "hex": "#c1a085",
+            "coveragePercent": 1.9299
+          },
+          {
+            "hex": "#b185e3",
+            "coveragePercent": 1.7578
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#94521b",
+            "coveragePercent": 27.934
+          },
+          {
+            "hex": "#ba722e",
+            "coveragePercent": 24.832
+          },
+          {
+            "hex": "#de9946",
+            "coveragePercent": 19.2227
+          },
+          {
+            "hex": "#594299",
+            "coveragePercent": 11.4117
+          },
+          {
+            "hex": "#f5c669",
+            "coveragePercent": 11.3574
+          },
+          {
+            "hex": "#9261d3",
+            "coveragePercent": 5.2423
+          }
+        ],
+        "visibleSamples": 206080,
+        "dominantCoveragePercent": 99.9997
+      }
+    },
+    "object.inventoryItem.triuneSerpentTalisman": {
+      "source": "assets/images/items/serpent-relics-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.triuneSerpentTalisman",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080302",
+            "coveragePercent": 20.3219
+          },
+          {
+            "hex": "#431207",
+            "coveragePercent": 8.4644
+          },
+          {
+            "hex": "#201a20",
+            "coveragePercent": 7.7655
+          },
+          {
+            "hex": "#6e3711",
+            "coveragePercent": 7.5348
+          },
+          {
+            "hex": "#e9d2a9",
+            "coveragePercent": 6.3298
+          },
+          {
+            "hex": "#9f591f",
+            "coveragePercent": 6.1752
+          },
+          {
+            "hex": "#3f3845",
+            "coveragePercent": 5.3905
+          },
+          {
+            "hex": "#f9f0df",
+            "coveragePercent": 5.2798
+          },
+          {
+            "hex": "#c9843b",
+            "coveragePercent": 5.2796
+          },
+          {
+            "hex": "#ec2d10",
+            "coveragePercent": 4.9886
+          },
+          {
+            "hex": "#edb560",
+            "coveragePercent": 4.7966
+          },
+          {
+            "hex": "#b70f08",
+            "coveragePercent": 4.7652
+          },
+          {
+            "hex": "#7a0706",
+            "coveragePercent": 4.6056
+          },
+          {
+            "hex": "#a2a890",
+            "coveragePercent": 3.3711
+          },
+          {
+            "hex": "#6b6a62",
+            "coveragePercent": 3.2818
+          },
+          {
+            "hex": "#f87e16",
+            "coveragePercent": 1.6496
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b561d",
+            "coveragePercent": 23.1772
+          },
+          {
+            "hex": "#d38433",
+            "coveragePercent": 21.2345
+          },
+          {
+            "hex": "#e82b0f",
+            "coveragePercent": 20.6082
+          },
+          {
+            "hex": "#a40d08",
+            "coveragePercent": 18.2621
+          },
+          {
+            "hex": "#efb861",
+            "coveragePercent": 16.1324
+          },
+          {
+            "hex": "#6c49a7",
+            "coveragePercent": 0.5857
+          }
+        ],
+        "visibleSamples": 160537,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.demonLordSoul": {
+      "source": "assets/images/items/first-demon-lord-soul-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.demonLordSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a01bf6",
+            "coveragePercent": 13.132
+          },
+          {
+            "hex": "#39131b",
+            "coveragePercent": 10.9968
+          },
+          {
+            "hex": "#d82df2",
+            "coveragePercent": 10.0031
+          },
+          {
+            "hex": "#110305",
+            "coveragePercent": 9.3852
+          },
+          {
+            "hex": "#ed2206",
+            "coveragePercent": 8.0567
+          },
+          {
+            "hex": "#651919",
+            "coveragePercent": 7.6247
+          },
+          {
+            "hex": "#f55c0c",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#a31b0f",
+            "coveragePercent": 6.0118
+          },
+          {
+            "hex": "#770acd",
+            "coveragePercent": 5.9348
+          },
+          {
+            "hex": "#f85ff5",
+            "coveragePercent": 5.1075
+          },
+          {
+            "hex": "#ed468b",
+            "coveragePercent": 3.9112
+          },
+          {
+            "hex": "#f89e0f",
+            "coveragePercent": 3.5305
+          },
+          {
+            "hex": "#fce322",
+            "coveragePercent": 2.9698
+          },
+          {
+            "hex": "#793959",
+            "coveragePercent": 2.8083
+          },
+          {
+            "hex": "#fcebeb",
+            "coveragePercent": 2.7634
+          },
+          {
+            "hex": "#f6e487",
+            "coveragePercent": 1.6911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9517e7",
+            "coveragePercent": 30.953
+          },
+          {
+            "hex": "#e63ee7",
+            "coveragePercent": 24.0216
+          },
+          {
+            "hex": "#ef2909",
+            "coveragePercent": 15.1411
+          },
+          {
+            "hex": "#f57219",
+            "coveragePercent": 11.791
+          },
+          {
+            "hex": "#a11e17",
+            "coveragePercent": 10.6766
+          },
+          {
+            "hex": "#fcda2c",
+            "coveragePercent": 7.4168
+          }
+        ],
+        "visibleSamples": 632690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.demonLordHeart": {
+      "source": "assets/images/items/demon-lord-heart-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.demonLordHeart",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e1825",
+            "coveragePercent": 14.7993
+          },
+          {
+            "hex": "#100407",
+            "coveragePercent": 11.9756
+          },
+          {
+            "hex": "#643745",
+            "coveragePercent": 8.8984
+          },
+          {
+            "hex": "#901ff1",
+            "coveragePercent": 8.4895
+          },
+          {
+            "hex": "#eb250b",
+            "coveragePercent": 8.1437
+          },
+          {
+            "hex": "#bc36f6",
+            "coveragePercent": 6.8192
+          },
+          {
+            "hex": "#911c16",
+            "coveragePercent": 6.5663
+          },
+          {
+            "hex": "#ed51f5",
+            "coveragePercent": 6.2452
+          },
+          {
+            "hex": "#7114c3",
+            "coveragePercent": 5.2483
+          },
+          {
+            "hex": "#511088",
+            "coveragePercent": 5.0685
+          },
+          {
+            "hex": "#f56619",
+            "coveragePercent": 4.5371
+          },
+          {
+            "hex": "#b35562",
+            "coveragePercent": 4.5226
+          },
+          {
+            "hex": "#f78bf9",
+            "coveragePercent": 2.6509
+          },
+          {
+            "hex": "#fbf0e5",
+            "coveragePercent": 2.0883
+          },
+          {
+            "hex": "#fbc920",
+            "coveragePercent": 1.9954
+          },
+          {
+            "hex": "#f0b67e",
+            "coveragePercent": 1.9518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9924f0",
+            "coveragePercent": 24.9175
+          },
+          {
+            "hex": "#f03411",
+            "coveragePercent": 19.6125
+          },
+          {
+            "hex": "#e652f4",
+            "coveragePercent": 18.7879
+          },
+          {
+            "hex": "#a22b27",
+            "coveragePercent": 13.7357
+          },
+          {
+            "hex": "#6211aa",
+            "coveragePercent": 13.7083
+          },
+          {
+            "hex": "#f4a737",
+            "coveragePercent": 9.2381
+          }
+        ],
+        "visibleSamples": 654586,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.secretWall.angel": {
+      "source": "assets/images/angel-ruin-wall-v1.png",
+      "frameMetadata": "ART_SECRET_WALLS.angel",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3b3213",
+            "coveragePercent": 9.5736
+          },
+          {
+            "hex": "#7a6749",
+            "coveragePercent": 9.3279
+          },
+          {
+            "hex": "#917e62",
+            "coveragePercent": 9.0183
+          },
+          {
+            "hex": "#a9977d",
+            "coveragePercent": 8.8557
+          },
+          {
+            "hex": "#554215",
+            "coveragePercent": 8.7622
+          },
+          {
+            "hex": "#251e09",
+            "coveragePercent": 8.2147
+          },
+          {
+            "hex": "#5c5035",
+            "coveragePercent": 7.6356
+          },
+          {
+            "hex": "#775b19",
+            "coveragePercent": 6.5323
+          },
+          {
+            "hex": "#0d0b03",
+            "coveragePercent": 5.5777
+          },
+          {
+            "hex": "#c1b19b",
+            "coveragePercent": 5.5652
+          },
+          {
+            "hex": "#9c7a24",
+            "coveragePercent": 5.2145
+          },
+          {
+            "hex": "#ecd9ab",
+            "coveragePercent": 3.8481
+          },
+          {
+            "hex": "#b8934b",
+            "coveragePercent": 3.6333
+          },
+          {
+            "hex": "#faf3dc",
+            "coveragePercent": 3.2046
+          },
+          {
+            "hex": "#e1c16f",
+            "coveragePercent": 3.1058
+          },
+          {
+            "hex": "#d0b32a",
+            "coveragePercent": 1.9304
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92743f",
+            "coveragePercent": 26.1248
+          },
+          {
+            "hex": "#8e6618",
+            "coveragePercent": 19.3698
+          },
+          {
+            "hex": "#bb9751",
+            "coveragePercent": 18.4569
+          },
+          {
+            "hex": "#ad8b22",
+            "coveragePercent": 15.9036
+          },
+          {
+            "hex": "#e6c768",
+            "coveragePercent": 11.7533
+          },
+          {
+            "hex": "#d5ba2d",
+            "coveragePercent": 8.3915
+          }
+        ],
+        "visibleSamples": 610742,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.secretWall.cult": {
+      "source": "assets/images/cult-cave-wall-v1.png",
+      "frameMetadata": "ART_SECRET_WALLS.cult",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130f0e",
+            "coveragePercent": 21.5203
+          },
+          {
+            "hex": "#1e1919",
+            "coveragePercent": 21.1118
+          },
+          {
+            "hex": "#060403",
+            "coveragePercent": 16.842
+          },
+          {
+            "hex": "#272223",
+            "coveragePercent": 13.3556
+          },
+          {
+            "hex": "#2e2b2f",
+            "coveragePercent": 9.7992
+          },
+          {
+            "hex": "#3c383f",
+            "coveragePercent": 6.1152
+          },
+          {
+            "hex": "#4c4752",
+            "coveragePercent": 2.8996
+          },
+          {
+            "hex": "#433023",
+            "coveragePercent": 2.799
+          },
+          {
+            "hex": "#605b68",
+            "coveragePercent": 1.551
+          },
+          {
+            "hex": "#624837",
+            "coveragePercent": 1.4183
+          },
+          {
+            "hex": "#76717f",
+            "coveragePercent": 0.9173
+          },
+          {
+            "hex": "#8d664b",
+            "coveragePercent": 0.5501
+          },
+          {
+            "hex": "#8f8a99",
+            "coveragePercent": 0.5084
+          },
+          {
+            "hex": "#aaa6b9",
+            "coveragePercent": 0.278
+          },
+          {
+            "hex": "#ca9469",
+            "coveragePercent": 0.2075
+          },
+          {
+            "hex": "#d6d0d8",
+            "coveragePercent": 0.1267
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c5f41",
+            "coveragePercent": 23.8397
+          },
+          {
+            "hex": "#be8256",
+            "coveragePercent": 20.3669
+          },
+          {
+            "hex": "#a1704d",
+            "coveragePercent": 18.4947
+          },
+          {
+            "hex": "#885131",
+            "coveragePercent": 14.1536
+          },
+          {
+            "hex": "#de9f6b",
+            "coveragePercent": 11.7871
+          },
+          {
+            "hex": "#a5653b",
+            "coveragePercent": 11.3579
+          }
+        ],
+        "visibleSamples": 1116517,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.secretWall.cult.material": {
+      "source": "assets/images/cult-cave-wall-v1.png",
+      "frameMetadata": "ART_SECRET_WALLS.cult.material",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#312e33",
+            "coveragePercent": 16.1648
+          },
+          {
+            "hex": "#262226",
+            "coveragePercent": 15.1352
+          },
+          {
+            "hex": "#161312",
+            "coveragePercent": 13.7543
+          },
+          {
+            "hex": "#1d1a1c",
+            "coveragePercent": 12.2527
+          },
+          {
+            "hex": "#050302",
+            "coveragePercent": 11.2642
+          },
+          {
+            "hex": "#0f0b0a",
+            "coveragePercent": 10.6707
+          },
+          {
+            "hex": "#3d3b44",
+            "coveragePercent": 8.42
+          },
+          {
+            "hex": "#4d4a57",
+            "coveragePercent": 3.4973
+          },
+          {
+            "hex": "#271e15",
+            "coveragePercent": 3.2037
+          },
+          {
+            "hex": "#372c20",
+            "coveragePercent": 1.6037
+          },
+          {
+            "hex": "#605c6d",
+            "coveragePercent": 1.5474
+          },
+          {
+            "hex": "#4c3e31",
+            "coveragePercent": 0.9172
+          },
+          {
+            "hex": "#767388",
+            "coveragePercent": 0.7889
+          },
+          {
+            "hex": "#918ea7",
+            "coveragePercent": 0.4484
+          },
+          {
+            "hex": "#b0adc6",
+            "coveragePercent": 0.2333
+          },
+          {
+            "hex": "#d7d6e8",
+            "coveragePercent": 0.0983
+          }
+        ],
+        "accents": [],
+        "visibleSamples": 144400,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.council.gateClosed": {
+      "source": "assets/images/council-gate-closed-v1.png",
+      "frameMetadata": "ART_COUNCIL.gateClosed",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2b2124",
+            "coveragePercent": 19.076
+          },
+          {
+            "hex": "#211718",
+            "coveragePercent": 14.606
+          },
+          {
+            "hex": "#362b2f",
+            "coveragePercent": 14.5451
+          },
+          {
+            "hex": "#140c0d",
+            "coveragePercent": 11.1297
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 10.6548
+          },
+          {
+            "hex": "#45373a",
+            "coveragePercent": 9.2184
+          },
+          {
+            "hex": "#57474a",
+            "coveragePercent": 5.3533
+          },
+          {
+            "hex": "#502c1d",
+            "coveragePercent": 4.1579
+          },
+          {
+            "hex": "#73442c",
+            "coveragePercent": 2.98
+          },
+          {
+            "hex": "#716061",
+            "coveragePercent": 2.6391
+          },
+          {
+            "hex": "#9c6c4a",
+            "coveragePercent": 1.3766
+          },
+          {
+            "hex": "#a0541e",
+            "coveragePercent": 1.2492
+          },
+          {
+            "hex": "#9a847c",
+            "coveragePercent": 1.1406
+          },
+          {
+            "hex": "#d67c1e",
+            "coveragePercent": 0.8524
+          },
+          {
+            "hex": "#d99f57",
+            "coveragePercent": 0.6112
+          },
+          {
+            "hex": "#ccb6a0",
+            "coveragePercent": 0.4098
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#94603d",
+            "coveragePercent": 24.3185
+          },
+          {
+            "hex": "#91491d",
+            "coveragePercent": 24.2487
+          },
+          {
+            "hex": "#bd641b",
+            "coveragePercent": 17.966
+          },
+          {
+            "hex": "#ba7f4b",
+            "coveragePercent": 15.1074
+          },
+          {
+            "hex": "#e68c1d",
+            "coveragePercent": 10.5786
+          },
+          {
+            "hex": "#e6ad5a",
+            "coveragePercent": 7.7808
+          }
+        ],
+        "visibleSamples": 1281640,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.council.gateOpen": {
+      "source": "assets/images/council-gate-open-v1.png",
+      "frameMetadata": "ART_COUNCIL.gateOpen",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#040101",
+            "coveragePercent": 22.6259
+          },
+          {
+            "hex": "#190908",
+            "coveragePercent": 13.4393
+          },
+          {
+            "hex": "#3c2a2e",
+            "coveragePercent": 13.2258
+          },
+          {
+            "hex": "#4f3a3e",
+            "coveragePercent": 11.0333
+          },
+          {
+            "hex": "#2d1919",
+            "coveragePercent": 10.9724
+          },
+          {
+            "hex": "#614c56",
+            "coveragePercent": 5.3446
+          },
+          {
+            "hex": "#774837",
+            "coveragePercent": 4.6688
+          },
+          {
+            "hex": "#5e2c18",
+            "coveragePercent": 4.6442
+          },
+          {
+            "hex": "#7e6469",
+            "coveragePercent": 3.2803
+          },
+          {
+            "hex": "#aa6943",
+            "coveragePercent": 2.3926
+          },
+          {
+            "hex": "#9c4717",
+            "coveragePercent": 2.1491
+          },
+          {
+            "hex": "#d56c17",
+            "coveragePercent": 1.8806
+          },
+          {
+            "hex": "#aa8a84",
+            "coveragePercent": 1.4187
+          },
+          {
+            "hex": "#f59e14",
+            "coveragePercent": 1.2671
+          },
+          {
+            "hex": "#e4a759",
+            "coveragePercent": 1.0606
+          },
+          {
+            "hex": "#e3c8ab",
+            "coveragePercent": 0.5965
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965839",
+            "coveragePercent": 26.2446
+          },
+          {
+            "hex": "#954116",
+            "coveragePercent": 18.3429
+          },
+          {
+            "hex": "#ce6515",
+            "coveragePercent": 18.0812
+          },
+          {
+            "hex": "#f39714",
+            "coveragePercent": 14.9394
+          },
+          {
+            "hex": "#c17b47",
+            "coveragePercent": 14.4436
+          },
+          {
+            "hex": "#eeb65a",
+            "coveragePercent": 7.9482
+          }
+        ],
+        "visibleSamples": 1186627,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "object.council.key": {
+      "source": "assets/images/council-key-v1.png",
+      "frameMetadata": "ART_COUNCIL.key",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#caac85",
+            "coveragePercent": 9.1246
+          },
+          {
+            "hex": "#2d170b",
+            "coveragePercent": 8.4172
+          },
+          {
+            "hex": "#1c0d05",
+            "coveragePercent": 7.6228
+          },
+          {
+            "hex": "#dbc29e",
+            "coveragePercent": 7.596
+          },
+          {
+            "hex": "#3e2311",
+            "coveragePercent": 7.5572
+          },
+          {
+            "hex": "#b8946c",
+            "coveragePercent": 7.3651
+          },
+          {
+            "hex": "#5f3d21",
+            "coveragePercent": 7.3524
+          },
+          {
+            "hex": "#4e2f18",
+            "coveragePercent": 7.1065
+          },
+          {
+            "hex": "#714c2b",
+            "coveragePercent": 6.7426
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 6.6023
+          },
+          {
+            "hex": "#a57f56",
+            "coveragePercent": 6.527
+          },
+          {
+            "hex": "#825b38",
+            "coveragePercent": 6.5012
+          },
+          {
+            "hex": "#946c46",
+            "coveragePercent": 6.0017
+          },
+          {
+            "hex": "#e9d7b9",
+            "coveragePercent": 3.7449
+          },
+          {
+            "hex": "#f6efdb",
+            "coveragePercent": 1.635
+          },
+          {
+            "hex": "#920905",
+            "coveragePercent": 0.1036
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936b44",
+            "coveragePercent": 29.6081
+          },
+          {
+            "hex": "#885c35",
+            "coveragePercent": 28.0484
+          },
+          {
+            "hex": "#a47b50",
+            "coveragePercent": 26.7569
+          },
+          {
+            "hex": "#b98e5b",
+            "coveragePercent": 12.3668
+          },
+          {
+            "hex": "#dab26b",
+            "coveragePercent": 2.7424
+          },
+          {
+            "hex": "#a10c06",
+            "coveragePercent": 0.4775
+          }
+        ],
+        "visibleSamples": 353195,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.torii": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.torii",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f43e2b",
+            "coveragePercent": 12.456
+          },
+          {
+            "hex": "#7a190b",
+            "coveragePercent": 9.1639
+          },
+          {
+            "hex": "#373511",
+            "coveragePercent": 8.9866
+          },
+          {
+            "hex": "#190e03",
+            "coveragePercent": 8.6892
+          },
+          {
+            "hex": "#491105",
+            "coveragePercent": 8.6814
+          },
+          {
+            "hex": "#524631",
+            "coveragePercent": 7.5894
+          },
+          {
+            "hex": "#c02416",
+            "coveragePercent": 7.5218
+          },
+          {
+            "hex": "#884b19",
+            "coveragePercent": 6.3836
+          },
+          {
+            "hex": "#77684b",
+            "coveragePercent": 5.3694
+          },
+          {
+            "hex": "#b9782b",
+            "coveragePercent": 4.7289
+          },
+          {
+            "hex": "#e6a64e",
+            "coveragePercent": 4.4527
+          },
+          {
+            "hex": "#5b690a",
+            "coveragePercent": 4.1776
+          },
+          {
+            "hex": "#a39073",
+            "coveragePercent": 3.751
+          },
+          {
+            "hex": "#e5ca92",
+            "coveragePercent": 3.6083
+          },
+          {
+            "hex": "#f6edd1",
+            "coveragePercent": 2.3118
+          },
+          {
+            "hex": "#98a712",
+            "coveragePercent": 2.1283
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f6432f",
+            "coveragePercent": 25.2862
+          },
+          {
+            "hex": "#d3291a",
+            "coveragePercent": 17.6494
+          },
+          {
+            "hex": "#936a1e",
+            "coveragePercent": 17.4424
+          },
+          {
+            "hex": "#982011",
+            "coveragePercent": 16.8575
+          },
+          {
+            "hex": "#bd952e",
+            "coveragePercent": 12.8196
+          },
+          {
+            "hex": "#edb75e",
+            "coveragePercent": 9.9449
+          }
+        ],
+        "visibleSamples": 90522,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.shrine": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.shrine",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f2e0a",
+            "coveragePercent": 13.8128
+          },
+          {
+            "hex": "#131202",
+            "coveragePercent": 10.3031
+          },
+          {
+            "hex": "#435109",
+            "coveragePercent": 10.254
+          },
+          {
+            "hex": "#595131",
+            "coveragePercent": 9.9422
+          },
+          {
+            "hex": "#81724c",
+            "coveragePercent": 9.8493
+          },
+          {
+            "hex": "#a59068",
+            "coveragePercent": 9.0968
+          },
+          {
+            "hex": "#69790c",
+            "coveragePercent": 7.5986
+          },
+          {
+            "hex": "#632c04",
+            "coveragePercent": 5.0972
+          },
+          {
+            "hex": "#c8b391",
+            "coveragePercent": 4.8472
+          },
+          {
+            "hex": "#98a711",
+            "coveragePercent": 4.5343
+          },
+          {
+            "hex": "#a1470c",
+            "coveragePercent": 3.7655
+          },
+          {
+            "hex": "#f1e5cb",
+            "coveragePercent": 3.5686
+          },
+          {
+            "hex": "#ec7407",
+            "coveragePercent": 2.3765
+          },
+          {
+            "hex": "#dfcd17",
+            "coveragePercent": 2.1976
+          },
+          {
+            "hex": "#ec5c3a",
+            "coveragePercent": 1.4247
+          },
+          {
+            "hex": "#e7cf60",
+            "coveragePercent": 1.3316
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a08444",
+            "coveragePercent": 23.7927
+          },
+          {
+            "hex": "#7e920c",
+            "coveragePercent": 21.3164
+          },
+          {
+            "hex": "#9f430b",
+            "coveragePercent": 16.1394
+          },
+          {
+            "hex": "#ee6a17",
+            "coveragePercent": 15.4712
+          },
+          {
+            "hex": "#b1c010",
+            "coveragePercent": 12.1963
+          },
+          {
+            "hex": "#ebc941",
+            "coveragePercent": 11.0839
+          }
+        ],
+        "visibleSamples": 71447,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.bell": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.bell",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#251209",
+            "coveragePercent": 11.4529
+          },
+          {
+            "hex": "#4e1008",
+            "coveragePercent": 11.0952
+          },
+          {
+            "hex": "#393622",
+            "coveragePercent": 10.7411
+          },
+          {
+            "hex": "#7c1c13",
+            "coveragePercent": 9.6672
+          },
+          {
+            "hex": "#0e0502",
+            "coveragePercent": 9.2872
+          },
+          {
+            "hex": "#ef4331",
+            "coveragePercent": 8.5942
+          },
+          {
+            "hex": "#57543e",
+            "coveragePercent": 7.4514
+          },
+          {
+            "hex": "#b62b1d",
+            "coveragePercent": 5.7631
+          },
+          {
+            "hex": "#7d7355",
+            "coveragePercent": 5.5796
+          },
+          {
+            "hex": "#794720",
+            "coveragePercent": 4.5397
+          },
+          {
+            "hex": "#a79673",
+            "coveragePercent": 4.3647
+          },
+          {
+            "hex": "#ad6d2c",
+            "coveragePercent": 3.0344
+          },
+          {
+            "hex": "#e49050",
+            "coveragePercent": 3.0302
+          },
+          {
+            "hex": "#e4c285",
+            "coveragePercent": 2.9524
+          },
+          {
+            "hex": "#f1e4c4",
+            "coveragePercent": 1.6894
+          },
+          {
+            "hex": "#8e9c13",
+            "coveragePercent": 0.7573
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#942618",
+            "coveragePercent": 25.3517
+          },
+          {
+            "hex": "#f34a36",
+            "coveragePercent": 24.2941
+          },
+          {
+            "hex": "#cd3021",
+            "coveragePercent": 18.1876
+          },
+          {
+            "hex": "#9b6e2b",
+            "coveragePercent": 15.1858
+          },
+          {
+            "hex": "#d19048",
+            "coveragePercent": 10.7235
+          },
+          {
+            "hex": "#efbc6a",
+            "coveragePercent": 6.2573
+          }
+        ],
+        "visibleSamples": 102605,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.house": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.house",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130a05",
+            "coveragePercent": 13.9455
+          },
+          {
+            "hex": "#602b12",
+            "coveragePercent": 11.408
+          },
+          {
+            "hex": "#3a1607",
+            "coveragePercent": 10.0747
+          },
+          {
+            "hex": "#313319",
+            "coveragePercent": 9.0046
+          },
+          {
+            "hex": "#893e1b",
+            "coveragePercent": 8.9685
+          },
+          {
+            "hex": "#af652b",
+            "coveragePercent": 6.5875
+          },
+          {
+            "hex": "#494647",
+            "coveragePercent": 6.5411
+          },
+          {
+            "hex": "#71685e",
+            "coveragePercent": 5.4871
+          },
+          {
+            "hex": "#b39063",
+            "coveragePercent": 4.9004
+          },
+          {
+            "hex": "#647214",
+            "coveragePercent": 4.0616
+          },
+          {
+            "hex": "#e59725",
+            "coveragePercent": 3.8203
+          },
+          {
+            "hex": "#c3b6a9",
+            "coveragePercent": 3.7522
+          },
+          {
+            "hex": "#f7d561",
+            "coveragePercent": 3.0274
+          },
+          {
+            "hex": "#d6311c",
+            "coveragePercent": 2.9377
+          },
+          {
+            "hex": "#808698",
+            "coveragePercent": 2.8625
+          },
+          {
+            "hex": "#f0e5cc",
+            "coveragePercent": 2.6208
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#953f19",
+            "coveragePercent": 29.8449
+          },
+          {
+            "hex": "#957e34",
+            "coveragePercent": 17.9681
+          },
+          {
+            "hex": "#c56721",
+            "coveragePercent": 17.5312
+          },
+          {
+            "hex": "#e19b3b",
+            "coveragePercent": 16.5016
+          },
+          {
+            "hex": "#f7d85b",
+            "coveragePercent": 9.8241
+          },
+          {
+            "hex": "#dc2b20",
+            "coveragePercent": 8.3302
+          }
+        ],
+        "visibleSamples": 128391,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.cage": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.cage",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#110509",
+            "coveragePercent": 19.6066
+          },
+          {
+            "hex": "#331514",
+            "coveragePercent": 16.5627
+          },
+          {
+            "hex": "#5d2219",
+            "coveragePercent": 10.059
+          },
+          {
+            "hex": "#4f3c42",
+            "coveragePercent": 7.5298
+          },
+          {
+            "hex": "#893a24",
+            "coveragePercent": 7.445
+          },
+          {
+            "hex": "#330d3f",
+            "coveragePercent": 7.1648
+          },
+          {
+            "hex": "#745c63",
+            "coveragePercent": 5.6434
+          },
+          {
+            "hex": "#b65a35",
+            "coveragePercent": 5.3011
+          },
+          {
+            "hex": "#571574",
+            "coveragePercent": 4.1821
+          },
+          {
+            "hex": "#9b7d87",
+            "coveragePercent": 3.5315
+          },
+          {
+            "hex": "#d78858",
+            "coveragePercent": 2.7431
+          },
+          {
+            "hex": "#7f1eb6",
+            "coveragePercent": 2.2961
+          },
+          {
+            "hex": "#d3b1a2",
+            "coveragePercent": 2.2012
+          },
+          {
+            "hex": "#c035f2",
+            "coveragePercent": 2.128
+          },
+          {
+            "hex": "#ee76f9",
+            "coveragePercent": 1.9155
+          },
+          {
+            "hex": "#f7d8f0",
+            "coveragePercent": 1.6903
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#943d25",
+            "coveragePercent": 29.8924
+          },
+          {
+            "hex": "#b95f3b",
+            "coveragePercent": 23.8208
+          },
+          {
+            "hex": "#6e1d9c",
+            "coveragePercent": 15.5046
+          },
+          {
+            "hex": "#de8e5b",
+            "coveragePercent": 10.5778
+          },
+          {
+            "hex": "#a92be3",
+            "coveragePercent": 10.1393
+          },
+          {
+            "hex": "#e65dfa",
+            "coveragePercent": 10.0651
+          }
+        ],
+        "visibleSamples": 91051,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "object.skyTorii": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.skyTorii",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdfcf5",
+            "coveragePercent": 10.2838
+          },
+          {
+            "hex": "#fbf3d9",
+            "coveragePercent": 9.7497
+          },
+          {
+            "hex": "#f8e5b8",
+            "coveragePercent": 8.9289
+          },
+          {
+            "hex": "#edce9b",
+            "coveragePercent": 8.2131
+          },
+          {
+            "hex": "#cba675",
+            "coveragePercent": 7.434
+          },
+          {
+            "hex": "#ad844d",
+            "coveragePercent": 7.4231
+          },
+          {
+            "hex": "#8b5a21",
+            "coveragePercent": 7.4099
+          },
+          {
+            "hex": "#f3cb70",
+            "coveragePercent": 6.3874
+          },
+          {
+            "hex": "#db931b",
+            "coveragePercent": 6.3322
+          },
+          {
+            "hex": "#ecb33e",
+            "coveragePercent": 6.2053
+          },
+          {
+            "hex": "#b56b0f",
+            "coveragePercent": 5.9022
+          },
+          {
+            "hex": "#6d390b",
+            "coveragePercent": 5.8732
+          },
+          {
+            "hex": "#5d7589",
+            "coveragePercent": 2.9451
+          },
+          {
+            "hex": "#384a59",
+            "coveragePercent": 2.7715
+          },
+          {
+            "hex": "#2f2011",
+            "coveragePercent": 2.6727
+          },
+          {
+            "hex": "#91a8b9",
+            "coveragePercent": 1.4679
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dc951d",
+            "coveragePercent": 23.6438
+          },
+          {
+            "hex": "#f2c662",
+            "coveragePercent": 23.2274
+          },
+          {
+            "hex": "#9d580d",
+            "coveragePercent": 20.1048
+          },
+          {
+            "hex": "#cb9a55",
+            "coveragePercent": 15.9298
+          },
+          {
+            "hex": "#a07339",
+            "coveragePercent": 15.7511
+          },
+          {
+            "hex": "#476e94",
+            "coveragePercent": 1.3431
+          }
+        ],
+        "visibleSamples": 96406,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.skyShrine": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.skyShrine",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9f9f3",
+            "coveragePercent": 11.141
+          },
+          {
+            "hex": "#f4e7c9",
+            "coveragePercent": 8.5798
+          },
+          {
+            "hex": "#423c19",
+            "coveragePercent": 7.8671
+          },
+          {
+            "hex": "#755315",
+            "coveragePercent": 7.7637
+          },
+          {
+            "hex": "#8f867b",
+            "coveragePercent": 7.5485
+          },
+          {
+            "hex": "#937c42",
+            "coveragePercent": 7.3314
+          },
+          {
+            "hex": "#57585c",
+            "coveragePercent": 6.504
+          },
+          {
+            "hex": "#eed195",
+            "coveragePercent": 6.2953
+          },
+          {
+            "hex": "#1a1c0d",
+            "coveragePercent": 5.4884
+          },
+          {
+            "hex": "#dab162",
+            "coveragePercent": 5.3497
+          },
+          {
+            "hex": "#b3aa9f",
+            "coveragePercent": 5.198
+          },
+          {
+            "hex": "#6798e4",
+            "coveragePercent": 4.8918
+          },
+          {
+            "hex": "#b26e11",
+            "coveragePercent": 4.4832
+          },
+          {
+            "hex": "#e0a827",
+            "coveragePercent": 4.3531
+          },
+          {
+            "hex": "#9ecbf2",
+            "coveragePercent": 3.6277
+          },
+          {
+            "hex": "#3e68c1",
+            "coveragePercent": 3.5774
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#995f12",
+            "coveragePercent": 21.0525
+          },
+          {
+            "hex": "#a0843e",
+            "coveragePercent": 18.9431
+          },
+          {
+            "hex": "#e9c061",
+            "coveragePercent": 18.7462
+          },
+          {
+            "hex": "#da9c21",
+            "coveragePercent": 15.4391
+          },
+          {
+            "hex": "#63a3ef",
+            "coveragePercent": 13.5827
+          },
+          {
+            "hex": "#3e67c2",
+            "coveragePercent": 12.2364
+          }
+        ],
+        "visibleSamples": 65330,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.foliage": {
+      "source": "assets/images/props-v4.png",
+      "frameMetadata": "ART_FRAMES.props.foliage",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#315206",
+            "coveragePercent": 14.8984
+          },
+          {
+            "hex": "#213407",
+            "coveragePercent": 13.5038
+          },
+          {
+            "hex": "#496b07",
+            "coveragePercent": 11.9904
+          },
+          {
+            "hex": "#0e1202",
+            "coveragePercent": 8.5323
+          },
+          {
+            "hex": "#69870a",
+            "coveragePercent": 8.3159
+          },
+          {
+            "hex": "#8ca711",
+            "coveragePercent": 6.2319
+          },
+          {
+            "hex": "#565236",
+            "coveragePercent": 5.9989
+          },
+          {
+            "hex": "#897d5e",
+            "coveragePercent": 4.4663
+          },
+          {
+            "hex": "#b4cb22",
+            "coveragePercent": 4.3827
+          },
+          {
+            "hex": "#bf1a15",
+            "coveragePercent": 4.3145
+          },
+          {
+            "hex": "#7d2210",
+            "coveragePercent": 4.2283
+          },
+          {
+            "hex": "#f12e25",
+            "coveragePercent": 3.7402
+          },
+          {
+            "hex": "#baaa8f",
+            "coveragePercent": 3.1672
+          },
+          {
+            "hex": "#e5ddc7",
+            "coveragePercent": 2.2592
+          },
+          {
+            "hex": "#dbe957",
+            "coveragePercent": 2.1562
+          },
+          {
+            "hex": "#fa5e46",
+            "coveragePercent": 1.8137
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#71900d",
+            "coveragePercent": 30.9528
+          },
+          {
+            "hex": "#a2b91c",
+            "coveragePercent": 21.987
+          },
+          {
+            "hex": "#d81e19",
+            "coveragePercent": 14.2587
+          },
+          {
+            "hex": "#9c2013",
+            "coveragePercent": 11.5636
+          },
+          {
+            "hex": "#f94c39",
+            "coveragePercent": 11.3885
+          },
+          {
+            "hex": "#d4e249",
+            "coveragePercent": 9.8493
+          }
+        ],
+        "visibleSamples": 116047,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.angelHalo": {
+      "source": "assets/images/relics-v5.png",
+      "frameMetadata": "ART_FRAMES.relics.angelHalo",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fbecc4",
+            "coveragePercent": 18.3821
+          },
+          {
+            "hex": "#fae5ac",
+            "coveragePercent": 12.7666
+          },
+          {
+            "hex": "#392915",
+            "coveragePercent": 6.5152
+          },
+          {
+            "hex": "#534333",
+            "coveragePercent": 6.4785
+          },
+          {
+            "hex": "#e7b663",
+            "coveragePercent": 6.1524
+          },
+          {
+            "hex": "#ddc4ab",
+            "coveragePercent": 6.0076
+          },
+          {
+            "hex": "#b67222",
+            "coveragePercent": 5.706
+          },
+          {
+            "hex": "#f9d884",
+            "coveragePercent": 5.5978
+          },
+          {
+            "hex": "#fcf9ee",
+            "coveragePercent": 5.522
+          },
+          {
+            "hex": "#905213",
+            "coveragePercent": 4.828
+          },
+          {
+            "hex": "#745f4b",
+            "coveragePercent": 4.3923
+          },
+          {
+            "hex": "#1a1005",
+            "coveragePercent": 4.2318
+          },
+          {
+            "hex": "#df9b36",
+            "coveragePercent": 4.0633
+          },
+          {
+            "hex": "#c18b48",
+            "coveragePercent": 3.9721
+          },
+          {
+            "hex": "#663509",
+            "coveragePercent": 3.6518
+          },
+          {
+            "hex": "#9d8670",
+            "coveragePercent": 1.7324
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d0923e",
+            "coveragePercent": 21.7184
+          },
+          {
+            "hex": "#e7b157",
+            "coveragePercent": 20.2182
+          },
+          {
+            "hex": "#f8d376",
+            "coveragePercent": 15.9253
+          },
+          {
+            "hex": "#945111",
+            "coveragePercent": 15.5347
+          },
+          {
+            "hex": "#be741d",
+            "coveragePercent": 14.8646
+          },
+          {
+            "hex": "#a37239",
+            "coveragePercent": 11.7388
+          }
+        ],
+        "visibleSamples": 383513,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.demonHorn": {
+      "source": "assets/images/relics-v5.png",
+      "frameMetadata": "ART_FRAMES.relics.demonHorn",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#140605",
+            "coveragePercent": 16.0788
+          },
+          {
+            "hex": "#3a2222",
+            "coveragePercent": 12.3704
+          },
+          {
+            "hex": "#3c0909",
+            "coveragePercent": 10.7947
+          },
+          {
+            "hex": "#573942",
+            "coveragePercent": 9.8324
+          },
+          {
+            "hex": "#da4176",
+            "coveragePercent": 9.631
+          },
+          {
+            "hex": "#6f0910",
+            "coveragePercent": 6.6413
+          },
+          {
+            "hex": "#ee191a",
+            "coveragePercent": 5.9655
+          },
+          {
+            "hex": "#981f43",
+            "coveragePercent": 5.1847
+          },
+          {
+            "hex": "#743411",
+            "coveragePercent": 4.4819
+          },
+          {
+            "hex": "#b0080d",
+            "coveragePercent": 4.4133
+          },
+          {
+            "hex": "#8d5175",
+            "coveragePercent": 3.9907
+          },
+          {
+            "hex": "#a05d2a",
+            "coveragePercent": 2.7873
+          },
+          {
+            "hex": "#e4873f",
+            "coveragePercent": 2.2001
+          },
+          {
+            "hex": "#ba9195",
+            "coveragePercent": 2.169
+          },
+          {
+            "hex": "#f5c777",
+            "coveragePercent": 1.9415
+          },
+          {
+            "hex": "#f9ecca",
+            "coveragePercent": 1.5174
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d64279",
+            "coveragePercent": 29.3607
+          },
+          {
+            "hex": "#eb1a19",
+            "coveragePercent": 19.9848
+          },
+          {
+            "hex": "#9f0b0f",
+            "coveragePercent": 16.4129
+          },
+          {
+            "hex": "#9f264e",
+            "coveragePercent": 14.7517
+          },
+          {
+            "hex": "#9e5a26",
+            "coveragePercent": 10.6793
+          },
+          {
+            "hex": "#eda758",
+            "coveragePercent": 8.8106
+          }
+        ],
+        "visibleSamples": 292335,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "terrain.japan.tile0": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[0][0]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#32250f",
+            "coveragePercent": 11.9361
+          },
+          {
+            "hex": "#552e16",
+            "coveragePercent": 8.3744
+          },
+          {
+            "hex": "#493d31",
+            "coveragePercent": 8.348
+          },
+          {
+            "hex": "#405606",
+            "coveragePercent": 7.981
+          },
+          {
+            "hex": "#754a24",
+            "coveragePercent": 7.7914
+          },
+          {
+            "hex": "#f02915",
+            "coveragePercent": 7.6855
+          },
+          {
+            "hex": "#180f06",
+            "coveragePercent": 7.2151
+          },
+          {
+            "hex": "#647b0c",
+            "coveragePercent": 6.3
+          },
+          {
+            "hex": "#64584a",
+            "coveragePercent": 6.2865
+          },
+          {
+            "hex": "#9e6c39",
+            "coveragePercent": 5.1923
+          },
+          {
+            "hex": "#8ea916",
+            "coveragePercent": 5.1487
+          },
+          {
+            "hex": "#bed52a",
+            "coveragePercent": 4.0893
+          },
+          {
+            "hex": "#c01810",
+            "coveragePercent": 4.0783
+          },
+          {
+            "hex": "#b7956f",
+            "coveragePercent": 4.0233
+          },
+          {
+            "hex": "#877864",
+            "coveragePercent": 3.7718
+          },
+          {
+            "hex": "#d6bfa0",
+            "coveragePercent": 1.7784
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ef2715",
+            "coveragePercent": 25.1767
+          },
+          {
+            "hex": "#7d9b11",
+            "coveragePercent": 20.483
+          },
+          {
+            "hex": "#925e30",
+            "coveragePercent": 17.4633
+          },
+          {
+            "hex": "#b9d229",
+            "coveragePercent": 14.9418
+          },
+          {
+            "hex": "#b81810",
+            "coveragePercent": 11.1962
+          },
+          {
+            "hex": "#bb894d",
+            "coveragePercent": 10.739
+          }
+        ],
+        "visibleSamples": 84844,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "terrain.japan.tile1": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[0][1]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#536d08",
+            "coveragePercent": 11.3753
+          },
+          {
+            "hex": "#32240c",
+            "coveragePercent": 11.1276
+          },
+          {
+            "hex": "#374d05",
+            "coveragePercent": 10.2007
+          },
+          {
+            "hex": "#573114",
+            "coveragePercent": 8.9154
+          },
+          {
+            "hex": "#74910e",
+            "coveragePercent": 8.5191
+          },
+          {
+            "hex": "#7d4b22",
+            "coveragePercent": 7.1155
+          },
+          {
+            "hex": "#181004",
+            "coveragePercent": 6.5542
+          },
+          {
+            "hex": "#9ab717",
+            "coveragePercent": 6.5116
+          },
+          {
+            "hex": "#473d2d",
+            "coveragePercent": 5.4841
+          },
+          {
+            "hex": "#c9e030",
+            "coveragePercent": 4.646
+          },
+          {
+            "hex": "#a3703a",
+            "coveragePercent": 4.5765
+          },
+          {
+            "hex": "#655943",
+            "coveragePercent": 4.4696
+          },
+          {
+            "hex": "#bf9d71",
+            "coveragePercent": 3.7931
+          },
+          {
+            "hex": "#ed3014",
+            "coveragePercent": 2.5326
+          },
+          {
+            "hex": "#8b7c63",
+            "coveragePercent": 2.4128
+          },
+          {
+            "hex": "#d9c6a6",
+            "coveragePercent": 1.7659
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#71920d",
+            "coveragePercent": 26.2688
+          },
+          {
+            "hex": "#99b617",
+            "coveragePercent": 21.1144
+          },
+          {
+            "hex": "#925b2d",
+            "coveragePercent": 18.5316
+          },
+          {
+            "hex": "#c9e030",
+            "coveragePercent": 14.9597
+          },
+          {
+            "hex": "#ba884f",
+            "coveragePercent": 11.1136
+          },
+          {
+            "hex": "#ed3014",
+            "coveragePercent": 8.0119
+          }
+        ],
+        "visibleSamples": 79816,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "terrain.japan.tile2": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[0][2]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#33290f",
+            "coveragePercent": 13.9201
+          },
+          {
+            "hex": "#553117",
+            "coveragePercent": 9.975
+          },
+          {
+            "hex": "#4c4134",
+            "coveragePercent": 9.1403
+          },
+          {
+            "hex": "#4b6206",
+            "coveragePercent": 9.0643
+          },
+          {
+            "hex": "#784d24",
+            "coveragePercent": 8.341
+          },
+          {
+            "hex": "#190f06",
+            "coveragePercent": 7.5537
+          },
+          {
+            "hex": "#7f9a10",
+            "coveragePercent": 5.9803
+          },
+          {
+            "hex": "#6a5e4e",
+            "coveragePercent": 5.8578
+          },
+          {
+            "hex": "#e41412",
+            "coveragePercent": 5.1111
+          },
+          {
+            "hex": "#bcd128",
+            "coveragePercent": 4.9434
+          },
+          {
+            "hex": "#8b7d69",
+            "coveragePercent": 4.3058
+          },
+          {
+            "hex": "#a3703c",
+            "coveragePercent": 4.2971
+          },
+          {
+            "hex": "#f43818",
+            "coveragePercent": 3.9665
+          },
+          {
+            "hex": "#b39c7d",
+            "coveragePercent": 3.5055
+          },
+          {
+            "hex": "#b41f0f",
+            "coveragePercent": 2.5446
+          },
+          {
+            "hex": "#d6c4a2",
+            "coveragePercent": 1.4934
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f02815",
+            "coveragePercent": 23.7007
+          },
+          {
+            "hex": "#7d9b10",
+            "coveragePercent": 19.6939
+          },
+          {
+            "hex": "#925b2d",
+            "coveragePercent": 17.4408
+          },
+          {
+            "hex": "#bcd32a",
+            "coveragePercent": 15.9081
+          },
+          {
+            "hex": "#c21610",
+            "coveragePercent": 13.6792
+          },
+          {
+            "hex": "#b98849",
+            "coveragePercent": 9.5772
+          }
+        ],
+        "visibleSamples": 83411,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "terrain.yomi.tile0": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[1][0]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#433442",
+            "coveragePercent": 17.0052
+          },
+          {
+            "hex": "#2c202c",
+            "coveragePercent": 14.7599
+          },
+          {
+            "hex": "#5a4d59",
+            "coveragePercent": 12.3786
+          },
+          {
+            "hex": "#13090e",
+            "coveragePercent": 9.6075
+          },
+          {
+            "hex": "#726471",
+            "coveragePercent": 8.2009
+          },
+          {
+            "hex": "#532623",
+            "coveragePercent": 6.7149
+          },
+          {
+            "hex": "#8e798b",
+            "coveragePercent": 6.2193
+          },
+          {
+            "hex": "#391312",
+            "coveragePercent": 5.9117
+          },
+          {
+            "hex": "#713f35",
+            "coveragePercent": 4.4598
+          },
+          {
+            "hex": "#6b2d76",
+            "coveragePercent": 3.5397
+          },
+          {
+            "hex": "#aa9aa6",
+            "coveragePercent": 2.9485
+          },
+          {
+            "hex": "#9c5e4c",
+            "coveragePercent": 2.8275
+          },
+          {
+            "hex": "#e71c1b",
+            "coveragePercent": 1.6677
+          },
+          {
+            "hex": "#920f19",
+            "coveragePercent": 1.4421
+          },
+          {
+            "hex": "#dd8364",
+            "coveragePercent": 1.2221
+          },
+          {
+            "hex": "#dacecd",
+            "coveragePercent": 1.0946
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965744",
+            "coveragePercent": 30.7599
+          },
+          {
+            "hex": "#863d92",
+            "coveragePercent": 20.3523
+          },
+          {
+            "hex": "#9e141e",
+            "coveragePercent": 14.811
+          },
+          {
+            "hex": "#e91312",
+            "coveragePercent": 14.3969
+          },
+          {
+            "hex": "#d38863",
+            "coveragePercent": 10.986
+          },
+          {
+            "hex": "#e84b43",
+            "coveragePercent": 8.6939
+          }
+        ],
+        "visibleSamples": 81064,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "terrain.yomi.tile1": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[1][1]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#453847",
+            "coveragePercent": 16.5622
+          },
+          {
+            "hex": "#332634",
+            "coveragePercent": 14.2487
+          },
+          {
+            "hex": "#5b505d",
+            "coveragePercent": 12.8474
+          },
+          {
+            "hex": "#21141d",
+            "coveragePercent": 10.0357
+          },
+          {
+            "hex": "#736676",
+            "coveragePercent": 8.1398
+          },
+          {
+            "hex": "#0f060a",
+            "coveragePercent": 7.6603
+          },
+          {
+            "hex": "#8e7990",
+            "coveragePercent": 5.945
+          },
+          {
+            "hex": "#431b17",
+            "coveragePercent": 5.4512
+          },
+          {
+            "hex": "#663430",
+            "coveragePercent": 4.8323
+          },
+          {
+            "hex": "#6b2d7a",
+            "coveragePercent": 3.5098
+          },
+          {
+            "hex": "#a899a7",
+            "coveragePercent": 3.3535
+          },
+          {
+            "hex": "#92514f",
+            "coveragePercent": 2.813
+          },
+          {
+            "hex": "#d76d6a",
+            "coveragePercent": 1.4716
+          },
+          {
+            "hex": "#dccac8",
+            "coveragePercent": 1.2623
+          },
+          {
+            "hex": "#e42e2f",
+            "coveragePercent": 1.0776
+          },
+          {
+            "hex": "#93111b",
+            "coveragePercent": 0.7898
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d3939",
+            "coveragePercent": 22.281
+          },
+          {
+            "hex": "#ab5858",
+            "coveragePercent": 20.091
+          },
+          {
+            "hex": "#7a368c",
+            "coveragePercent": 19.5111
+          },
+          {
+            "hex": "#db2224",
+            "coveragePercent": 14.8166
+          },
+          {
+            "hex": "#eb695e",
+            "coveragePercent": 13.7765
+          },
+          {
+            "hex": "#9e50aa",
+            "coveragePercent": 9.5238
+          }
+        ],
+        "visibleSamples": 80530,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "terrain.yomi.tile2": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[1][2]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3f303e",
+            "coveragePercent": 18.1146
+          },
+          {
+            "hex": "#2c1a23",
+            "coveragePercent": 15.7544
+          },
+          {
+            "hex": "#544754",
+            "coveragePercent": 13.403
+          },
+          {
+            "hex": "#14080c",
+            "coveragePercent": 8.5982
+          },
+          {
+            "hex": "#6d606c",
+            "coveragePercent": 8.0666
+          },
+          {
+            "hex": "#51211e",
+            "coveragePercent": 7.4867
+          },
+          {
+            "hex": "#8b7589",
+            "coveragePercent": 6.6003
+          },
+          {
+            "hex": "#6f3c33",
+            "coveragePercent": 5.3916
+          },
+          {
+            "hex": "#6e2e7a",
+            "coveragePercent": 3.6663
+          },
+          {
+            "hex": "#995e4c",
+            "coveragePercent": 3.2147
+          },
+          {
+            "hex": "#a997a4",
+            "coveragePercent": 3.1687
+          },
+          {
+            "hex": "#8d0f19",
+            "coveragePercent": 1.7741
+          },
+          {
+            "hex": "#df1012",
+            "coveragePercent": 1.4831
+          },
+          {
+            "hex": "#de946e",
+            "coveragePercent": 1.1413
+          },
+          {
+            "hex": "#ddceca",
+            "coveragePercent": 1.1122
+          },
+          {
+            "hex": "#ed463b",
+            "coveragePercent": 1.0242
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#975543",
+            "coveragePercent": 30.8481
+          },
+          {
+            "hex": "#e9201d",
+            "coveragePercent": 18.9247
+          },
+          {
+            "hex": "#a00f18",
+            "coveragePercent": 15.5124
+          },
+          {
+            "hex": "#7b358a",
+            "coveragePercent": 13.8193
+          },
+          {
+            "hex": "#df7e5d",
+            "coveragePercent": 13.7221
+          },
+          {
+            "hex": "#9a50a3",
+            "coveragePercent": 7.1734
+          }
+        ],
+        "visibleSamples": 83160,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "terrain.heaven.tile0": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[2][0]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f8f5f1",
+            "coveragePercent": 15.7071
+          },
+          {
+            "hex": "#b9bdcd",
+            "coveragePercent": 15.3923
+          },
+          {
+            "hex": "#d6d5dc",
+            "coveragePercent": 11.8691
+          },
+          {
+            "hex": "#bd6e11",
+            "coveragePercent": 6.1739
+          },
+          {
+            "hex": "#b0a496",
+            "coveragePercent": 6.0869
+          },
+          {
+            "hex": "#e19921",
+            "coveragePercent": 5.9644
+          },
+          {
+            "hex": "#5d6a12",
+            "coveragePercent": 5.231
+          },
+          {
+            "hex": "#f5e3be",
+            "coveragePercent": 5.0394
+          },
+          {
+            "hex": "#887862",
+            "coveragePercent": 4.8949
+          },
+          {
+            "hex": "#8b470d",
+            "coveragePercent": 4.8694
+          },
+          {
+            "hex": "#f3c242",
+            "coveragePercent": 4.83
+          },
+          {
+            "hex": "#353809",
+            "coveragePercent": 4.725
+          },
+          {
+            "hex": "#f5d781",
+            "coveragePercent": 3.6936
+          },
+          {
+            "hex": "#8fa014",
+            "coveragePercent": 3.1717
+          },
+          {
+            "hex": "#137de7",
+            "coveragePercent": 1.269
+          },
+          {
+            "hex": "#58c3f5",
+            "coveragePercent": 1.0824
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dd9722",
+            "coveragePercent": 30.7953
+          },
+          {
+            "hex": "#a75c10",
+            "coveragePercent": 28.0158
+          },
+          {
+            "hex": "#f5cc58",
+            "coveragePercent": 19.8827
+          },
+          {
+            "hex": "#879917",
+            "coveragePercent": 13.6618
+          },
+          {
+            "hex": "#147be5",
+            "coveragePercent": 4.2018
+          },
+          {
+            "hex": "#52c1f5",
+            "coveragePercent": 3.4425
+          }
+        ],
+        "visibleSamples": 98703,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "terrain.heaven.tile1": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[2][1]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f6ecdc",
+            "coveragePercent": 10.516
+          },
+          {
+            "hex": "#fbf9f4",
+            "coveragePercent": 9.0334
+          },
+          {
+            "hex": "#b4bbd0",
+            "coveragePercent": 8.9701
+          },
+          {
+            "hex": "#e0941e",
+            "coveragePercent": 8.2217
+          },
+          {
+            "hex": "#d0d2dd",
+            "coveragePercent": 7.6096
+          },
+          {
+            "hex": "#626614",
+            "coveragePercent": 6.6219
+          },
+          {
+            "hex": "#b16411",
+            "coveragePercent": 6.5823
+          },
+          {
+            "hex": "#f0dcb7",
+            "coveragePercent": 6.5636
+          },
+          {
+            "hex": "#a59a88",
+            "coveragePercent": 6.4109
+          },
+          {
+            "hex": "#c5b8a8",
+            "coveragePercent": 6.353
+          },
+          {
+            "hex": "#f5be3d",
+            "coveragePercent": 6.0705
+          },
+          {
+            "hex": "#877859",
+            "coveragePercent": 5.3476
+          },
+          {
+            "hex": "#f6d675",
+            "coveragePercent": 5.0851
+          },
+          {
+            "hex": "#323809",
+            "coveragePercent": 4.4856
+          },
+          {
+            "hex": "#1170e7",
+            "coveragePercent": 1.2018
+          },
+          {
+            "hex": "#54bbf6",
+            "coveragePercent": 0.9269
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#efac2b",
+            "coveragePercent": 25.9157
+          },
+          {
+            "hex": "#cd801c",
+            "coveragePercent": 25.034
+          },
+          {
+            "hex": "#966a1b",
+            "coveragePercent": 21.3591
+          },
+          {
+            "hex": "#f6d064",
+            "coveragePercent": 20.7216
+          },
+          {
+            "hex": "#126fe5",
+            "coveragePercent": 3.9693
+          },
+          {
+            "hex": "#52baf6",
+            "coveragePercent": 3.0001
+          }
+        ],
+        "visibleSamples": 94575,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "terrain.heaven.tile2": {
+      "source": "assets/images/terrain-v4.png",
+      "frameMetadata": "ART_FRAMES.terrain[2][2]",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f9f5f0",
+            "coveragePercent": 15.5683
+          },
+          {
+            "hex": "#b9bfd3",
+            "coveragePercent": 15.0788
+          },
+          {
+            "hex": "#dad8de",
+            "coveragePercent": 11.7483
+          },
+          {
+            "hex": "#354008",
+            "coveragePercent": 6.4684
+          },
+          {
+            "hex": "#cb8a17",
+            "coveragePercent": 6.2375
+          },
+          {
+            "hex": "#6f820e",
+            "coveragePercent": 5.9345
+          },
+          {
+            "hex": "#bbb4ae",
+            "coveragePercent": 5.7777
+          },
+          {
+            "hex": "#ecaf2b",
+            "coveragePercent": 5.5972
+          },
+          {
+            "hex": "#ab5d0c",
+            "coveragePercent": 5.1766
+          },
+          {
+            "hex": "#f5ce5f",
+            "coveragePercent": 4.3997
+          },
+          {
+            "hex": "#f4dea9",
+            "coveragePercent": 4.385
+          },
+          {
+            "hex": "#a39783",
+            "coveragePercent": 4.3547
+          },
+          {
+            "hex": "#734413",
+            "coveragePercent": 3.5671
+          },
+          {
+            "hex": "#82745c",
+            "coveragePercent": 3.5118
+          },
+          {
+            "hex": "#117cec",
+            "coveragePercent": 1.2288
+          },
+          {
+            "hex": "#59c0f7",
+            "coveragePercent": 0.9655
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#df9a22",
+            "coveragePercent": 29.7284
+          },
+          {
+            "hex": "#aa5e0f",
+            "coveragePercent": 27.4696
+          },
+          {
+            "hex": "#f5cc59",
+            "coveragePercent": 20.5489
+          },
+          {
+            "hex": "#869717",
+            "coveragePercent": 14.8352
+          },
+          {
+            "hex": "#127bea",
+            "coveragePercent": 4.2476
+          },
+          {
+            "hex": "#55bff7",
+            "coveragePercent": 3.1703
+          }
+        ],
+        "visibleSamples": 102144,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  },
+  "assets": {
+    "assets/images/angel-ruin-wall-v1.png": {
+      "sha256": "8a2df01aabcc62e906e0b8c12c2e00854ba9e5524e93a6f008d7645505f5e4b4",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "angelRuinWall"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3b3213",
+            "coveragePercent": 9.5736
+          },
+          {
+            "hex": "#7a6749",
+            "coveragePercent": 9.3279
+          },
+          {
+            "hex": "#917e62",
+            "coveragePercent": 9.0183
+          },
+          {
+            "hex": "#a9977d",
+            "coveragePercent": 8.8557
+          },
+          {
+            "hex": "#554215",
+            "coveragePercent": 8.7622
+          },
+          {
+            "hex": "#251e09",
+            "coveragePercent": 8.2147
+          },
+          {
+            "hex": "#5c5035",
+            "coveragePercent": 7.6356
+          },
+          {
+            "hex": "#775b19",
+            "coveragePercent": 6.5323
+          },
+          {
+            "hex": "#0d0b03",
+            "coveragePercent": 5.5777
+          },
+          {
+            "hex": "#c1b19b",
+            "coveragePercent": 5.5652
+          },
+          {
+            "hex": "#9c7a24",
+            "coveragePercent": 5.2145
+          },
+          {
+            "hex": "#ecd9ab",
+            "coveragePercent": 3.8481
+          },
+          {
+            "hex": "#b8934b",
+            "coveragePercent": 3.6333
+          },
+          {
+            "hex": "#faf3dc",
+            "coveragePercent": 3.2046
+          },
+          {
+            "hex": "#e1c16f",
+            "coveragePercent": 3.1058
+          },
+          {
+            "hex": "#d0b32a",
+            "coveragePercent": 1.9304
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92743f",
+            "coveragePercent": 26.1248
+          },
+          {
+            "hex": "#8e6618",
+            "coveragePercent": 19.3698
+          },
+          {
+            "hex": "#bb9751",
+            "coveragePercent": 18.4569
+          },
+          {
+            "hex": "#ad8b22",
+            "coveragePercent": 15.9036
+          },
+          {
+            "hex": "#e6c768",
+            "coveragePercent": 11.7533
+          },
+          {
+            "hex": "#d5ba2d",
+            "coveragePercent": 8.3915
+          }
+        ],
+        "visibleSamples": 610742,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/council-gate-closed-v1.png": {
+      "sha256": "e32cf36f69c16ed9c64397fdb3a1a3e3bf9558edbdc5ffe49774201a4f2a9b48",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "councilGateClosed"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2b2124",
+            "coveragePercent": 19.076
+          },
+          {
+            "hex": "#211718",
+            "coveragePercent": 14.606
+          },
+          {
+            "hex": "#362b2f",
+            "coveragePercent": 14.5451
+          },
+          {
+            "hex": "#140c0d",
+            "coveragePercent": 11.1297
+          },
+          {
+            "hex": "#060303",
+            "coveragePercent": 10.6548
+          },
+          {
+            "hex": "#45373a",
+            "coveragePercent": 9.2184
+          },
+          {
+            "hex": "#57474a",
+            "coveragePercent": 5.3533
+          },
+          {
+            "hex": "#502c1d",
+            "coveragePercent": 4.1579
+          },
+          {
+            "hex": "#73442c",
+            "coveragePercent": 2.98
+          },
+          {
+            "hex": "#716061",
+            "coveragePercent": 2.6391
+          },
+          {
+            "hex": "#9c6c4a",
+            "coveragePercent": 1.3766
+          },
+          {
+            "hex": "#a0541e",
+            "coveragePercent": 1.2492
+          },
+          {
+            "hex": "#9a847c",
+            "coveragePercent": 1.1406
+          },
+          {
+            "hex": "#d67c1e",
+            "coveragePercent": 0.8524
+          },
+          {
+            "hex": "#d99f57",
+            "coveragePercent": 0.6112
+          },
+          {
+            "hex": "#ccb6a0",
+            "coveragePercent": 0.4098
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#94603d",
+            "coveragePercent": 24.3185
+          },
+          {
+            "hex": "#91491d",
+            "coveragePercent": 24.2487
+          },
+          {
+            "hex": "#bd641b",
+            "coveragePercent": 17.966
+          },
+          {
+            "hex": "#ba7f4b",
+            "coveragePercent": 15.1074
+          },
+          {
+            "hex": "#e68c1d",
+            "coveragePercent": 10.5786
+          },
+          {
+            "hex": "#e6ad5a",
+            "coveragePercent": 7.7808
+          }
+        ],
+        "visibleSamples": 1281640,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/council-gate-open-v1.png": {
+      "sha256": "12bf017c5cafce6e8c953f76e35f4e9a986f3af2e95c6efc03d9782fa5a42ea9",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "councilGateOpen"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#040101",
+            "coveragePercent": 22.6259
+          },
+          {
+            "hex": "#190908",
+            "coveragePercent": 13.4393
+          },
+          {
+            "hex": "#3c2a2e",
+            "coveragePercent": 13.2258
+          },
+          {
+            "hex": "#4f3a3e",
+            "coveragePercent": 11.0333
+          },
+          {
+            "hex": "#2d1919",
+            "coveragePercent": 10.9724
+          },
+          {
+            "hex": "#614c56",
+            "coveragePercent": 5.3446
+          },
+          {
+            "hex": "#774837",
+            "coveragePercent": 4.6688
+          },
+          {
+            "hex": "#5e2c18",
+            "coveragePercent": 4.6442
+          },
+          {
+            "hex": "#7e6469",
+            "coveragePercent": 3.2803
+          },
+          {
+            "hex": "#aa6943",
+            "coveragePercent": 2.3926
+          },
+          {
+            "hex": "#9c4717",
+            "coveragePercent": 2.1491
+          },
+          {
+            "hex": "#d56c17",
+            "coveragePercent": 1.8806
+          },
+          {
+            "hex": "#aa8a84",
+            "coveragePercent": 1.4187
+          },
+          {
+            "hex": "#f59e14",
+            "coveragePercent": 1.2671
+          },
+          {
+            "hex": "#e4a759",
+            "coveragePercent": 1.0606
+          },
+          {
+            "hex": "#e3c8ab",
+            "coveragePercent": 0.5965
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965839",
+            "coveragePercent": 26.2446
+          },
+          {
+            "hex": "#954116",
+            "coveragePercent": 18.3429
+          },
+          {
+            "hex": "#ce6515",
+            "coveragePercent": 18.0812
+          },
+          {
+            "hex": "#f39714",
+            "coveragePercent": 14.9394
+          },
+          {
+            "hex": "#c17b47",
+            "coveragePercent": 14.4436
+          },
+          {
+            "hex": "#eeb65a",
+            "coveragePercent": 7.9482
+          }
+        ],
+        "visibleSamples": 1186627,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/council-key-v1.png": {
+      "sha256": "75862dd9faee55ed0b777b3e57c54deea36a1e8e3c6a8195bfe880cf71db1368",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "councilKey"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#caac85",
+            "coveragePercent": 9.1246
+          },
+          {
+            "hex": "#2d170b",
+            "coveragePercent": 8.4172
+          },
+          {
+            "hex": "#1c0d05",
+            "coveragePercent": 7.6228
+          },
+          {
+            "hex": "#dbc29e",
+            "coveragePercent": 7.596
+          },
+          {
+            "hex": "#3e2311",
+            "coveragePercent": 7.5572
+          },
+          {
+            "hex": "#b8946c",
+            "coveragePercent": 7.3651
+          },
+          {
+            "hex": "#5f3d21",
+            "coveragePercent": 7.3524
+          },
+          {
+            "hex": "#4e2f18",
+            "coveragePercent": 7.1065
+          },
+          {
+            "hex": "#714c2b",
+            "coveragePercent": 6.7426
+          },
+          {
+            "hex": "#0a0302",
+            "coveragePercent": 6.6023
+          },
+          {
+            "hex": "#a57f56",
+            "coveragePercent": 6.527
+          },
+          {
+            "hex": "#825b38",
+            "coveragePercent": 6.5012
+          },
+          {
+            "hex": "#946c46",
+            "coveragePercent": 6.0017
+          },
+          {
+            "hex": "#e9d7b9",
+            "coveragePercent": 3.7449
+          },
+          {
+            "hex": "#f6efdb",
+            "coveragePercent": 1.635
+          },
+          {
+            "hex": "#920905",
+            "coveragePercent": 0.1036
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936b44",
+            "coveragePercent": 29.6081
+          },
+          {
+            "hex": "#885c35",
+            "coveragePercent": 28.0484
+          },
+          {
+            "hex": "#a47b50",
+            "coveragePercent": 26.7569
+          },
+          {
+            "hex": "#b98e5b",
+            "coveragePercent": 12.3668
+          },
+          {
+            "hex": "#dab26b",
+            "coveragePercent": 2.7424
+          },
+          {
+            "hex": "#a10c06",
+            "coveragePercent": 0.4775
+          }
+        ],
+        "visibleSamples": 353195,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/cult-cave-wall-v1.png": {
+      "sha256": "0ec8562f6d71d3a2080267b31af0d2c282dc77442953b03aafa1b233ddfd3ea7",
+      "width": 724,
+      "height": 2172,
+      "runtimeKeys": [
+        "cultCaveWall"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#130f0e",
+            "coveragePercent": 21.5203
+          },
+          {
+            "hex": "#1e1919",
+            "coveragePercent": 21.1118
+          },
+          {
+            "hex": "#060403",
+            "coveragePercent": 16.842
+          },
+          {
+            "hex": "#272223",
+            "coveragePercent": 13.3556
+          },
+          {
+            "hex": "#2e2b2f",
+            "coveragePercent": 9.7992
+          },
+          {
+            "hex": "#3c383f",
+            "coveragePercent": 6.1152
+          },
+          {
+            "hex": "#4c4752",
+            "coveragePercent": 2.8996
+          },
+          {
+            "hex": "#433023",
+            "coveragePercent": 2.799
+          },
+          {
+            "hex": "#605b68",
+            "coveragePercent": 1.551
+          },
+          {
+            "hex": "#624837",
+            "coveragePercent": 1.4183
+          },
+          {
+            "hex": "#76717f",
+            "coveragePercent": 0.9173
+          },
+          {
+            "hex": "#8d664b",
+            "coveragePercent": 0.5501
+          },
+          {
+            "hex": "#8f8a99",
+            "coveragePercent": 0.5084
+          },
+          {
+            "hex": "#aaa6b9",
+            "coveragePercent": 0.278
+          },
+          {
+            "hex": "#ca9469",
+            "coveragePercent": 0.2075
+          },
+          {
+            "hex": "#d6d0d8",
+            "coveragePercent": 0.1267
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c5f41",
+            "coveragePercent": 23.8397
+          },
+          {
+            "hex": "#be8256",
+            "coveragePercent": 20.3669
+          },
+          {
+            "hex": "#a1704d",
+            "coveragePercent": 18.4947
+          },
+          {
+            "hex": "#885131",
+            "coveragePercent": 14.1536
+          },
+          {
+            "hex": "#de9f6b",
+            "coveragePercent": 11.7871
+          },
+          {
+            "hex": "#a5653b",
+            "coveragePercent": 11.3579
+          }
+        ],
+        "visibleSamples": 1116517,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/cult-ruined-gate-v1.png": {
+      "sha256": "b41557278ac1d66e06f4a1cb04a515f74568333228b869e33e6bbc426897f9e5",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "cultRuinedGate"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341811",
+            "coveragePercent": 15.4952
+          },
+          {
+            "hex": "#080302",
+            "coveragePercent": 15.113
+          },
+          {
+            "hex": "#1f0d09",
+            "coveragePercent": 14.968
+          },
+          {
+            "hex": "#512517",
+            "coveragePercent": 10.76
+          },
+          {
+            "hex": "#3a2929",
+            "coveragePercent": 8.5027
+          },
+          {
+            "hex": "#533c39",
+            "coveragePercent": 8.0864
+          },
+          {
+            "hex": "#74301f",
+            "coveragePercent": 6.3779
+          },
+          {
+            "hex": "#754e3c",
+            "coveragePercent": 5.0788
+          },
+          {
+            "hex": "#9d4e2c",
+            "coveragePercent": 3.1985
+          },
+          {
+            "hex": "#9b6e57",
+            "coveragePercent": 2.983
+          },
+          {
+            "hex": "#645564",
+            "coveragePercent": 2.7989
+          },
+          {
+            "hex": "#cf7b46",
+            "coveragePercent": 1.9804
+          },
+          {
+            "hex": "#877790",
+            "coveragePercent": 1.6046
+          },
+          {
+            "hex": "#e2a776",
+            "coveragePercent": 1.4851
+          },
+          {
+            "hex": "#ab9fbb",
+            "coveragePercent": 0.9816
+          },
+          {
+            "hex": "#e8ddda",
+            "coveragePercent": 0.586
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#905133",
+            "coveragePercent": 32.1172
+          },
+          {
+            "hex": "#ad6640",
+            "coveragePercent": 23.7954
+          },
+          {
+            "hex": "#902f20",
+            "coveragePercent": 18.959
+          },
+          {
+            "hex": "#d37f4b",
+            "coveragePercent": 15.9046
+          },
+          {
+            "hex": "#f0a867",
+            "coveragePercent": 8.3852
+          },
+          {
+            "hex": "#784b8d",
+            "coveragePercent": 0.8385
+          }
+        ],
+        "visibleSamples": 958767,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/samurai-jump-v1.png": {
+      "sha256": "56912bb62573e5efee1c5be3ffec8100c78aefc4677bf043b69356a03c3eeefb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "samuraiJump"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0c0503",
+            "coveragePercent": 11.5644
+          },
+          {
+            "hex": "#3a2622",
+            "coveragePercent": 11.5505
+          },
+          {
+            "hex": "#2b0f0c",
+            "coveragePercent": 11.3992
+          },
+          {
+            "hex": "#620d0a",
+            "coveragePercent": 7.9243
+          },
+          {
+            "hex": "#5c3d36",
+            "coveragePercent": 7.635
+          },
+          {
+            "hex": "#da0a1a",
+            "coveragePercent": 7.1868
+          },
+          {
+            "hex": "#9f0710",
+            "coveragePercent": 7.0517
+          },
+          {
+            "hex": "#f49321",
+            "coveragePercent": 6.8855
+          },
+          {
+            "hex": "#f72729",
+            "coveragePercent": 6.1943
+          },
+          {
+            "hex": "#c86310",
+            "coveragePercent": 4.7272
+          },
+          {
+            "hex": "#fac040",
+            "coveragePercent": 4.4126
+          },
+          {
+            "hex": "#8c410d",
+            "coveragePercent": 4.3115
+          },
+          {
+            "hex": "#f8ebdd",
+            "coveragePercent": 3.2912
+          },
+          {
+            "hex": "#806057",
+            "coveragePercent": 2.532
+          },
+          {
+            "hex": "#fadc7d",
+            "coveragePercent": 1.9597
+          },
+          {
+            "hex": "#b89fa2",
+            "coveragePercent": 1.374
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f19021",
+            "coveragePercent": 21.22
+          },
+          {
+            "hex": "#f41f26",
+            "coveragePercent": 20.1
+          },
+          {
+            "hex": "#ac5614",
+            "coveragePercent": 16.1297
+          },
+          {
+            "hex": "#cb0917",
+            "coveragePercent": 15.7601
+          },
+          {
+            "hex": "#970b0f",
+            "coveragePercent": 14.3938
+          },
+          {
+            "hex": "#fac94f",
+            "coveragePercent": 12.3965
+          }
+        ],
+        "visibleSamples": 550135,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-prologue-v1.png": {
+      "sha256": "92cd11da7933fa60e5247aff4fd7eebc2514e57a00c1aa22780c763ca6d5cf51",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [],
+      "usage": "design-reference",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a161e",
+            "coveragePercent": 13.1744
+          },
+          {
+            "hex": "#100d12",
+            "coveragePercent": 10.7175
+          },
+          {
+            "hex": "#241d29",
+            "coveragePercent": 10.383
+          },
+          {
+            "hex": "#4a3d56",
+            "coveragePercent": 9.5833
+          },
+          {
+            "hex": "#2c2432",
+            "coveragePercent": 9.1093
+          },
+          {
+            "hex": "#3d3246",
+            "coveragePercent": 7.8902
+          },
+          {
+            "hex": "#342a3c",
+            "coveragePercent": 7.5339
+          },
+          {
+            "hex": "#5a4d65",
+            "coveragePercent": 6.4285
+          },
+          {
+            "hex": "#6b5c77",
+            "coveragePercent": 5.8147
+          },
+          {
+            "hex": "#887696",
+            "coveragePercent": 5.6825
+          },
+          {
+            "hex": "#796888",
+            "coveragePercent": 5.0242
+          },
+          {
+            "hex": "#9888a5",
+            "coveragePercent": 3.5456
+          },
+          {
+            "hex": "#5d457d",
+            "coveragePercent": 2.1001
+          },
+          {
+            "hex": "#070508",
+            "coveragePercent": 1.8254
+          },
+          {
+            "hex": "#7b5da3",
+            "coveragePercent": 1.1552
+          },
+          {
+            "hex": "#dbc4d6",
+            "coveragePercent": 0.0322
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#5f4288",
+            "coveragePercent": 41.4537
+          },
+          {
+            "hex": "#6d4d9a",
+            "coveragePercent": 32.9837
+          },
+          {
+            "hex": "#7d59af",
+            "coveragePercent": 17.8009
+          },
+          {
+            "hex": "#552090",
+            "coveragePercent": 3.1279
+          },
+          {
+            "hex": "#9663d0",
+            "coveragePercent": 2.6247
+          },
+          {
+            "hex": "#7532bd",
+            "coveragePercent": 2.0091
+          }
+        ],
+        "visibleSamples": 947293,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/items/camp-herbs-brew-v1.png": {
+      "sha256": "5be4943354c8b5170243991303c289e1bb6a190078b05ead388c17019641ea83",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "campSupplies"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#040501",
+            "coveragePercent": 26.7681
+          },
+          {
+            "hex": "#082708",
+            "coveragePercent": 13.4889
+          },
+          {
+            "hex": "#18470c",
+            "coveragePercent": 9.9874
+          },
+          {
+            "hex": "#47600f",
+            "coveragePercent": 7.8417
+          },
+          {
+            "hex": "#6e8819",
+            "coveragePercent": 6.6453
+          },
+          {
+            "hex": "#96b81a",
+            "coveragePercent": 4.6829
+          },
+          {
+            "hex": "#4c1c0a",
+            "coveragePercent": 3.9312
+          },
+          {
+            "hex": "#e9dda4",
+            "coveragePercent": 3.5412
+          },
+          {
+            "hex": "#d2c167",
+            "coveragePercent": 3.4783
+          },
+          {
+            "hex": "#f9f6e5",
+            "coveragePercent": 3.4398
+          },
+          {
+            "hex": "#198f09",
+            "coveragePercent": 3.3406
+          },
+          {
+            "hex": "#8a9b62",
+            "coveragePercent": 3.0438
+          },
+          {
+            "hex": "#9b300f",
+            "coveragePercent": 2.8935
+          },
+          {
+            "hex": "#20624d",
+            "coveragePercent": 2.4076
+          },
+          {
+            "hex": "#dc6e1f",
+            "coveragePercent": 2.2553
+          },
+          {
+            "hex": "#dfe21c",
+            "coveragePercent": 2.2543
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#749419",
+            "coveragePercent": 25.2098
+          },
+          {
+            "hex": "#9eb32c",
+            "coveragePercent": 21.6273
+          },
+          {
+            "hex": "#b74314",
+            "coveragePercent": 17.2692
+          },
+          {
+            "hex": "#e2c25b",
+            "coveragePercent": 13.5583
+          },
+          {
+            "hex": "#219c17",
+            "coveragePercent": 12.2676
+          },
+          {
+            "hex": "#dcde16",
+            "coveragePercent": 10.0678
+          }
+        ],
+        "visibleSamples": 642239,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/items/camp-master-soul-v1.png": {
+      "sha256": "d4b06e2655e290c97fa39d8c9b163c61f1d3ce40cadc76b178f985f7f5550d40",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "campMasterSoul"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#ed0e0a",
+            "coveragePercent": 12.5688
+          },
+          {
+            "hex": "#f83b1f",
+            "coveragePercent": 10.742
+          },
+          {
+            "hex": "#f49c52",
+            "coveragePercent": 8.7327
+          },
+          {
+            "hex": "#b20402",
+            "coveragePercent": 8.5962
+          },
+          {
+            "hex": "#f26c3a",
+            "coveragePercent": 8.4262
+          },
+          {
+            "hex": "#0f0504",
+            "coveragePercent": 7.0133
+          },
+          {
+            "hex": "#fbcf68",
+            "coveragePercent": 6.9897
+          },
+          {
+            "hex": "#750b01",
+            "coveragePercent": 6.8213
+          },
+          {
+            "hex": "#fcf9ea",
+            "coveragePercent": 5.6738
+          },
+          {
+            "hex": "#fceca5",
+            "coveragePercent": 5.2545
+          },
+          {
+            "hex": "#400702",
+            "coveragePercent": 4.573
+          },
+          {
+            "hex": "#f59910",
+            "coveragePercent": 4.1836
+          },
+          {
+            "hex": "#b54f09",
+            "coveragePercent": 4.1099
+          },
+          {
+            "hex": "#493d3e",
+            "coveragePercent": 2.4323
+          },
+          {
+            "hex": "#856560",
+            "coveragePercent": 1.9829
+          },
+          {
+            "hex": "#c4a29e",
+            "coveragePercent": 1.8998
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ec110c",
+            "coveragePercent": 23.8001
+          },
+          {
+            "hex": "#f28d3a",
+            "coveragePercent": 21.4613
+          },
+          {
+            "hex": "#f84926",
+            "coveragePercent": 18.2613
+          },
+          {
+            "hex": "#fbc864",
+            "coveragePercent": 15.0294
+          },
+          {
+            "hex": "#a50702",
+            "coveragePercent": 14.3564
+          },
+          {
+            "hex": "#b6550f",
+            "coveragePercent": 7.0915
+          }
+        ],
+        "visibleSamples": 559530,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/items/demon-lord-heart-v1.png": {
+      "sha256": "f88da8430f730bffb8b3e0b48deb8235b211d9260cd8c1ee302d16ed05e52085",
+      "width": 1230,
+      "height": 1278,
+      "runtimeKeys": [
+        "demonLordHeartArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3e1825",
+            "coveragePercent": 14.7993
+          },
+          {
+            "hex": "#100407",
+            "coveragePercent": 11.9756
+          },
+          {
+            "hex": "#643745",
+            "coveragePercent": 8.8984
+          },
+          {
+            "hex": "#901ff1",
+            "coveragePercent": 8.4895
+          },
+          {
+            "hex": "#eb250b",
+            "coveragePercent": 8.1437
+          },
+          {
+            "hex": "#bc36f6",
+            "coveragePercent": 6.8192
+          },
+          {
+            "hex": "#911c16",
+            "coveragePercent": 6.5663
+          },
+          {
+            "hex": "#ed51f5",
+            "coveragePercent": 6.2452
+          },
+          {
+            "hex": "#7114c3",
+            "coveragePercent": 5.2483
+          },
+          {
+            "hex": "#511088",
+            "coveragePercent": 5.0685
+          },
+          {
+            "hex": "#f56619",
+            "coveragePercent": 4.5371
+          },
+          {
+            "hex": "#b35562",
+            "coveragePercent": 4.5226
+          },
+          {
+            "hex": "#f78bf9",
+            "coveragePercent": 2.6509
+          },
+          {
+            "hex": "#fbf0e5",
+            "coveragePercent": 2.0883
+          },
+          {
+            "hex": "#fbc920",
+            "coveragePercent": 1.9954
+          },
+          {
+            "hex": "#f0b67e",
+            "coveragePercent": 1.9518
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9924f0",
+            "coveragePercent": 24.9175
+          },
+          {
+            "hex": "#f03411",
+            "coveragePercent": 19.6125
+          },
+          {
+            "hex": "#e652f4",
+            "coveragePercent": 18.7879
+          },
+          {
+            "hex": "#a22b27",
+            "coveragePercent": 13.7357
+          },
+          {
+            "hex": "#6211aa",
+            "coveragePercent": 13.7083
+          },
+          {
+            "hex": "#f4a737",
+            "coveragePercent": 9.2381
+          }
+        ],
+        "visibleSamples": 654586,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/items/first-demon-lord-soul-v1.png": {
+      "sha256": "38ed0187df43201068bbac5cc6b764a323c1f0a58e3a47a4838e10931a85b620",
+      "width": 1122,
+      "height": 1402,
+      "runtimeKeys": [
+        "demonLordSoulArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a01bf6",
+            "coveragePercent": 13.132
+          },
+          {
+            "hex": "#39131b",
+            "coveragePercent": 10.9968
+          },
+          {
+            "hex": "#d82df2",
+            "coveragePercent": 10.0031
+          },
+          {
+            "hex": "#110305",
+            "coveragePercent": 9.3852
+          },
+          {
+            "hex": "#ed2206",
+            "coveragePercent": 8.0567
+          },
+          {
+            "hex": "#651919",
+            "coveragePercent": 7.6247
+          },
+          {
+            "hex": "#f55c0c",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#a31b0f",
+            "coveragePercent": 6.0118
+          },
+          {
+            "hex": "#770acd",
+            "coveragePercent": 5.9348
+          },
+          {
+            "hex": "#f85ff5",
+            "coveragePercent": 5.1075
+          },
+          {
+            "hex": "#ed468b",
+            "coveragePercent": 3.9112
+          },
+          {
+            "hex": "#f89e0f",
+            "coveragePercent": 3.5305
+          },
+          {
+            "hex": "#fce322",
+            "coveragePercent": 2.9698
+          },
+          {
+            "hex": "#793959",
+            "coveragePercent": 2.8083
+          },
+          {
+            "hex": "#fcebeb",
+            "coveragePercent": 2.7634
+          },
+          {
+            "hex": "#f6e487",
+            "coveragePercent": 1.6911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9517e7",
+            "coveragePercent": 30.953
+          },
+          {
+            "hex": "#e63ee7",
+            "coveragePercent": 24.0216
+          },
+          {
+            "hex": "#ef2909",
+            "coveragePercent": 15.1411
+          },
+          {
+            "hex": "#f57219",
+            "coveragePercent": 11.791
+          },
+          {
+            "hex": "#a11e17",
+            "coveragePercent": 10.6766
+          },
+          {
+            "hex": "#fcda2c",
+            "coveragePercent": 7.4168
+          }
+        ],
+        "visibleSamples": 632690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/items/serpent-relics-v1.png": {
+      "sha256": "bb2bc863cdfcb870fa87f4c78a815111ea0707d2753eb93ce8435e75ab9728a6",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "serpentRelics"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080505",
+            "coveragePercent": 15.5391
+          },
+          {
+            "hex": "#efdbc0",
+            "coveragePercent": 10.9406
+          },
+          {
+            "hex": "#211f30",
+            "coveragePercent": 8.837
+          },
+          {
+            "hex": "#d2bea4",
+            "coveragePercent": 8.3148
+          },
+          {
+            "hex": "#fbf4e9",
+            "coveragePercent": 7.9459
+          },
+          {
+            "hex": "#403a56",
+            "coveragePercent": 6.7342
+          },
+          {
+            "hex": "#743e14",
+            "coveragePercent": 6.35
+          },
+          {
+            "hex": "#a25f24",
+            "coveragePercent": 6.2307
+          },
+          {
+            "hex": "#cf8a3e",
+            "coveragePercent": 5.6089
+          },
+          {
+            "hex": "#a0a594",
+            "coveragePercent": 5.2838
+          },
+          {
+            "hex": "#471a09",
+            "coveragePercent": 5.1448
+          },
+          {
+            "hex": "#efbc66",
+            "coveragePercent": 4.6238
+          },
+          {
+            "hex": "#6b6d7d",
+            "coveragePercent": 4.2411
+          },
+          {
+            "hex": "#8e0907",
+            "coveragePercent": 1.7172
+          },
+          {
+            "hex": "#da1c0b",
+            "coveragePercent": 1.6947
+          },
+          {
+            "hex": "#f65815",
+            "coveragePercent": 0.7934
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#99561d",
+            "coveragePercent": 30.1224
+          },
+          {
+            "hex": "#cc8236",
+            "coveragePercent": 28.0756
+          },
+          {
+            "hex": "#efb960",
+            "coveragePercent": 21.2463
+          },
+          {
+            "hex": "#c61a0b",
+            "coveragePercent": 14.0532
+          },
+          {
+            "hex": "#594399",
+            "coveragePercent": 4.4564
+          },
+          {
+            "hex": "#9261d2",
+            "coveragePercent": 2.0461
+          }
+        ],
+        "visibleSamples": 566603,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/items/slayer-crossbow-v1.png": {
+      "sha256": "974e0fc428c827288f80e632b23dc780d2674d43e21f200f55ee32e69c3aee43",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "slayerCrossbow"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1a100d",
+            "coveragePercent": 14.9004
+          },
+          {
+            "hex": "#070302",
+            "coveragePercent": 14.4425
+          },
+          {
+            "hex": "#301b12",
+            "coveragePercent": 12.8059
+          },
+          {
+            "hex": "#552710",
+            "coveragePercent": 8.0998
+          },
+          {
+            "hex": "#3c3027",
+            "coveragePercent": 8.0923
+          },
+          {
+            "hex": "#7d421b",
+            "coveragePercent": 6.6431
+          },
+          {
+            "hex": "#a85f26",
+            "coveragePercent": 6.073
+          },
+          {
+            "hex": "#55443d",
+            "coveragePercent": 5.2689
+          },
+          {
+            "hex": "#726057",
+            "coveragePercent": 4.5418
+          },
+          {
+            "hex": "#cb803a",
+            "coveragePercent": 3.8225
+          },
+          {
+            "hex": "#987f6f",
+            "coveragePercent": 3.5087
+          },
+          {
+            "hex": "#e8a656",
+            "coveragePercent": 2.9793
+          },
+          {
+            "hex": "#bca396",
+            "coveragePercent": 2.4874
+          },
+          {
+            "hex": "#e6d2bb",
+            "coveragePercent": 2.3038
+          },
+          {
+            "hex": "#f4c881",
+            "coveragePercent": 2.0832
+          },
+          {
+            "hex": "#f9f4e8",
+            "coveragePercent": 1.9476
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#945622",
+            "coveragePercent": 24.2379
+          },
+          {
+            "hex": "#bc6a25",
+            "coveragePercent": 22.1701
+          },
+          {
+            "hex": "#db9247",
+            "coveragePercent": 19.2054
+          },
+          {
+            "hex": "#f4bd68",
+            "coveragePercent": 13.7448
+          },
+          {
+            "hex": "#a67349",
+            "coveragePercent": 13.0452
+          },
+          {
+            "hex": "#913717",
+            "coveragePercent": 7.5967
+          }
+        ],
+        "visibleSamples": 402375,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/items/slayer-daisy-v1.png": {
+      "sha256": "5b5c03f20351a6aca2bd0c16142e514d05256764afd2cdf277e009ab01c59a59",
+      "width": 1377,
+      "height": 1142,
+      "runtimeKeys": [
+        "slayerDaisy"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#f1607d",
+            "coveragePercent": 11.4487
+          },
+          {
+            "hex": "#f87792",
+            "coveragePercent": 10.5312
+          },
+          {
+            "hex": "#dc4c67",
+            "coveragePercent": 9.7848
+          },
+          {
+            "hex": "#c03951",
+            "coveragePercent": 7.6843
+          },
+          {
+            "hex": "#fa93a9",
+            "coveragePercent": 6.6293
+          },
+          {
+            "hex": "#9e273a",
+            "coveragePercent": 6.3442
+          },
+          {
+            "hex": "#77252f",
+            "coveragePercent": 5.9448
+          },
+          {
+            "hex": "#b06e67",
+            "coveragePercent": 5.7868
+          },
+          {
+            "hex": "#f7bdb4",
+            "coveragePercent": 5.7756
+          },
+          {
+            "hex": "#e8a597",
+            "coveragePercent": 5.3216
+          },
+          {
+            "hex": "#93524d",
+            "coveragePercent": 4.9828
+          },
+          {
+            "hex": "#cc8a80",
+            "coveragePercent": 4.945
+          },
+          {
+            "hex": "#5c121c",
+            "coveragePercent": 4.4144
+          },
+          {
+            "hex": "#340d11",
+            "coveragePercent": 3.8543
+          },
+          {
+            "hex": "#100304",
+            "coveragePercent": 3.6289
+          },
+          {
+            "hex": "#fbdbcb",
+            "coveragePercent": 2.9233
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f87892",
+            "coveragePercent": 25.5489
+          },
+          {
+            "hex": "#ed5d78",
+            "coveragePercent": 23.995
+          },
+          {
+            "hex": "#d44861",
+            "coveragePercent": 18.3402
+          },
+          {
+            "hex": "#b7344a",
+            "coveragePercent": 13.3531
+          },
+          {
+            "hex": "#932234",
+            "coveragePercent": 11.5136
+          },
+          {
+            "hex": "#99524d",
+            "coveragePercent": 7.2491
+          }
+        ],
+        "visibleSamples": 644831,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/japan-clouds-v1.png": {
+      "sha256": "3c56ff9bba2aea0ff0dbcaa43352c7e3631e989d2b2955c169e18f768d697b1a",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "japanClouds"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7c899e",
+            "coveragePercent": 16.8694
+          },
+          {
+            "hex": "#8a93a5",
+            "coveragePercent": 11.027
+          },
+          {
+            "hex": "#acaeb8",
+            "coveragePercent": 10.7777
+          },
+          {
+            "hex": "#959bab",
+            "coveragePercent": 9.3289
+          },
+          {
+            "hex": "#a1a3af",
+            "coveragePercent": 9.2474
+          },
+          {
+            "hex": "#6d7d95",
+            "coveragePercent": 8.1486
+          },
+          {
+            "hex": "#60728c",
+            "coveragePercent": 5.1547
+          },
+          {
+            "hex": "#f8d7ab",
+            "coveragePercent": 4.7309
+          },
+          {
+            "hex": "#cfbbad",
+            "coveragePercent": 4.4485
+          },
+          {
+            "hex": "#bfb6b4",
+            "coveragePercent": 4.314
+          },
+          {
+            "hex": "#e6c4a2",
+            "coveragePercent": 4.162
+          },
+          {
+            "hex": "#b8bac5",
+            "coveragePercent": 3.7091
+          },
+          {
+            "hex": "#baaaa5",
+            "coveragePercent": 3.1742
+          },
+          {
+            "hex": "#dfcab8",
+            "coveragePercent": 2.2866
+          },
+          {
+            "hex": "#526782",
+            "coveragePercent": 1.3482
+          },
+          {
+            "hex": "#fceac2",
+            "coveragePercent": 1.2728
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f3c781",
+            "coveragePercent": 37.475
+          },
+          {
+            "hex": "#466380",
+            "coveragePercent": 12.5749
+          },
+          {
+            "hex": "#3e6491",
+            "coveragePercent": 12.525
+          },
+          {
+            "hex": "#e6af79",
+            "coveragePercent": 12.475
+          },
+          {
+            "hex": "#f8ce88",
+            "coveragePercent": 12.475
+          },
+          {
+            "hex": "#f7ca85",
+            "coveragePercent": 12.475
+          }
+        ],
+        "visibleSamples": 511920,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/npcs/fia-fox-dead-v1.png": {
+      "sha256": "59f07db269bbac7fd296be6deb0ce8e52464290c6e85d9555d78214a7941d0ac",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "fiaFoxDead"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7e4b87",
+            "coveragePercent": 12.2296
+          },
+          {
+            "hex": "#704278",
+            "coveragePercent": 12.1014
+          },
+          {
+            "hex": "#8b5496",
+            "coveragePercent": 11.9554
+          },
+          {
+            "hex": "#603967",
+            "coveragePercent": 9.3187
+          },
+          {
+            "hex": "#9a5da8",
+            "coveragePercent": 7.6269
+          },
+          {
+            "hex": "#502d56",
+            "coveragePercent": 6.5997
+          },
+          {
+            "hex": "#ddbdd3",
+            "coveragePercent": 5.5379
+          },
+          {
+            "hex": "#cda9c6",
+            "coveragePercent": 5.1516
+          },
+          {
+            "hex": "#ebd0dc",
+            "coveragePercent": 5.0058
+          },
+          {
+            "hex": "#f8e4e7",
+            "coveragePercent": 4.9325
+          },
+          {
+            "hex": "#3f2243",
+            "coveragePercent": 4.8216
+          },
+          {
+            "hex": "#bb91b7",
+            "coveragePercent": 4.2187
+          },
+          {
+            "hex": "#2c152e",
+            "coveragePercent": 3.0431
+          },
+          {
+            "hex": "#a3789c",
+            "coveragePercent": 3.0047
+          },
+          {
+            "hex": "#ae70bb",
+            "coveragePercent": 2.8769
+          },
+          {
+            "hex": "#160915",
+            "coveragePercent": 1.5756
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#854c91",
+            "coveragePercent": 32.1418
+          },
+          {
+            "hex": "#7a4585",
+            "coveragePercent": 29.3464
+          },
+          {
+            "hex": "#90539e",
+            "coveragePercent": 24.4959
+          },
+          {
+            "hex": "#9c5bac",
+            "coveragePercent": 9.9279
+          },
+          {
+            "hex": "#a863b9",
+            "coveragePercent": 3.4508
+          },
+          {
+            "hex": "#8e4967",
+            "coveragePercent": 0.6372
+          }
+        ],
+        "visibleSamples": 479516,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/props/camp-cedar-v1.png": {
+      "sha256": "db1689ded78fcb509d6a0f9b89d739dfca08148be8c1f25ce81812dba8e95a90",
+      "width": 1024,
+      "height": 1536,
+      "runtimeKeys": [
+        "campCedar"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060503",
+            "coveragePercent": 19.9795
+          },
+          {
+            "hex": "#18140b",
+            "coveragePercent": 19.8235
+          },
+          {
+            "hex": "#31250a",
+            "coveragePercent": 11.8478
+          },
+          {
+            "hex": "#2c2724",
+            "coveragePercent": 8.8106
+          },
+          {
+            "hex": "#132124",
+            "coveragePercent": 7.2163
+          },
+          {
+            "hex": "#56390b",
+            "coveragePercent": 5.9365
+          },
+          {
+            "hex": "#43392d",
+            "coveragePercent": 5.7931
+          },
+          {
+            "hex": "#273843",
+            "coveragePercent": 4.3364
+          },
+          {
+            "hex": "#85520d",
+            "coveragePercent": 3.4249
+          },
+          {
+            "hex": "#b47216",
+            "coveragePercent": 2.6079
+          },
+          {
+            "hex": "#e2951c",
+            "coveragePercent": 2.432
+          },
+          {
+            "hex": "#605d3f",
+            "coveragePercent": 2.1637
+          },
+          {
+            "hex": "#434f63",
+            "coveragePercent": 2.0244
+          },
+          {
+            "hex": "#f6c328",
+            "coveragePercent": 1.8928
+          },
+          {
+            "hex": "#f6d164",
+            "coveragePercent": 0.9821
+          },
+          {
+            "hex": "#637496",
+            "coveragePercent": 0.7284
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#93570f",
+            "coveragePercent": 26.1115
+          },
+          {
+            "hex": "#e3951e",
+            "coveragePercent": 22.2599
+          },
+          {
+            "hex": "#b97617",
+            "coveragePercent": 21.7394
+          },
+          {
+            "hex": "#f5c21e",
+            "coveragePercent": 14.5521
+          },
+          {
+            "hex": "#f7cd54",
+            "coveragePercent": 12.5811
+          },
+          {
+            "hex": "#49689c",
+            "coveragePercent": 2.7561
+          }
+        ],
+        "visibleSamples": 792275,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/shadow-altar-v1.png": {
+      "sha256": "a93cdb35e660af878608c51ca7105662d6f8527cc29b568476cbee3f99c36f9c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "shadowAltar"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d1f1d",
+            "coveragePercent": 18.0342
+          },
+          {
+            "hex": "#070303",
+            "coveragePercent": 17.223
+          },
+          {
+            "hex": "#1c0f0d",
+            "coveragePercent": 15.7808
+          },
+          {
+            "hex": "#42312f",
+            "coveragePercent": 15.2709
+          },
+          {
+            "hex": "#5b4540",
+            "coveragePercent": 8.723
+          },
+          {
+            "hex": "#805e53",
+            "coveragePercent": 4.5293
+          },
+          {
+            "hex": "#60190c",
+            "coveragePercent": 4.0498
+          },
+          {
+            "hex": "#7f4c21",
+            "coveragePercent": 3.2101
+          },
+          {
+            "hex": "#b97534",
+            "coveragePercent": 2.4511
+          },
+          {
+            "hex": "#e1a558",
+            "coveragePercent": 2.2023
+          },
+          {
+            "hex": "#b8181d",
+            "coveragePercent": 2.1159
+          },
+          {
+            "hex": "#a9806d",
+            "coveragePercent": 1.9837
+          },
+          {
+            "hex": "#f3d288",
+            "coveragePercent": 1.7201
+          },
+          {
+            "hex": "#571e6f",
+            "coveragePercent": 1.3251
+          },
+          {
+            "hex": "#f8ead0",
+            "coveragePercent": 0.9115
+          },
+          {
+            "hex": "#bc3fe8",
+            "coveragePercent": 0.4691
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#965e30",
+            "coveragePercent": 30.4628
+          },
+          {
+            "hex": "#c78545",
+            "coveragePercent": 24.4772
+          },
+          {
+            "hex": "#af161b",
+            "coveragePercent": 21.61
+          },
+          {
+            "hex": "#efbe67",
+            "coveragePercent": 16.6221
+          },
+          {
+            "hex": "#7622a2",
+            "coveragePercent": 4.1303
+          },
+          {
+            "hex": "#cd42f4",
+            "coveragePercent": 2.6976
+          }
+        ],
+        "visibleSamples": 830285,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/slayer-barrel-v1.png": {
+      "sha256": "b893a31ded9995c4c9cdf20f7b169f77b4aea48f48cdb623e5fa701c5217f9af",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "slayerBarrel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#311915",
+            "coveragePercent": 18.5117
+          },
+          {
+            "hex": "#1e0f0d",
+            "coveragePercent": 14.5597
+          },
+          {
+            "hex": "#422522",
+            "coveragePercent": 13.9717
+          },
+          {
+            "hex": "#632917",
+            "coveragePercent": 10.9709
+          },
+          {
+            "hex": "#060202",
+            "coveragePercent": 10.6235
+          },
+          {
+            "hex": "#83412a",
+            "coveragePercent": 8.6594
+          },
+          {
+            "hex": "#593638",
+            "coveragePercent": 7.0721
+          },
+          {
+            "hex": "#ac5e3a",
+            "coveragePercent": 4.2193
+          },
+          {
+            "hex": "#a7330d",
+            "coveragePercent": 2.5995
+          },
+          {
+            "hex": "#6d4565",
+            "coveragePercent": 2.2151
+          },
+          {
+            "hex": "#e9570c",
+            "coveragePercent": 2.209
+          },
+          {
+            "hex": "#e28945",
+            "coveragePercent": 1.7385
+          },
+          {
+            "hex": "#a37776",
+            "coveragePercent": 0.8821
+          },
+          {
+            "hex": "#e7bb8b",
+            "coveragePercent": 0.6838
+          },
+          {
+            "hex": "#f3e0dd",
+            "coveragePercent": 0.5809
+          },
+          {
+            "hex": "#a062bb",
+            "coveragePercent": 0.5028
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#913e21",
+            "coveragePercent": 44.0392
+          },
+          {
+            "hex": "#ae603c",
+            "coveragePercent": 25.5944
+          },
+          {
+            "hex": "#e1510c",
+            "coveragePercent": 16.4791
+          },
+          {
+            "hex": "#e9964b",
+            "coveragePercent": 10.3462
+          },
+          {
+            "hex": "#7b438f",
+            "coveragePercent": 2.3316
+          },
+          {
+            "hex": "#a95fc9",
+            "coveragePercent": 1.2095
+          }
+        ],
+        "visibleSamples": 867976,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/props/slayer-gravestone-v1.png": {
+      "sha256": "5e779b7f47ceb97edea2892d68c540bdd90135c62e3bf492868a2d244fc3d35d",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "slayerGravestone"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#1f191a",
+            "coveragePercent": 18.9278
+          },
+          {
+            "hex": "#2b2526",
+            "coveragePercent": 15.6639
+          },
+          {
+            "hex": "#383034",
+            "coveragePercent": 14.9636
+          },
+          {
+            "hex": "#120e0f",
+            "coveragePercent": 11.9119
+          },
+          {
+            "hex": "#4b3e41",
+            "coveragePercent": 9.5966
+          },
+          {
+            "hex": "#050303",
+            "coveragePercent": 7.8963
+          },
+          {
+            "hex": "#5d4f57",
+            "coveragePercent": 4.9782
+          },
+          {
+            "hex": "#76656c",
+            "coveragePercent": 3.257
+          },
+          {
+            "hex": "#503420",
+            "coveragePercent": 3.185
+          },
+          {
+            "hex": "#6e493a",
+            "coveragePercent": 2.8753
+          },
+          {
+            "hex": "#8e7b87",
+            "coveragePercent": 2.0281
+          },
+          {
+            "hex": "#94542e",
+            "coveragePercent": 1.3551
+          },
+          {
+            "hex": "#ab97a4",
+            "coveragePercent": 1.241
+          },
+          {
+            "hex": "#cab7c5",
+            "coveragePercent": 0.8963
+          },
+          {
+            "hex": "#bf7347",
+            "coveragePercent": 0.6645
+          },
+          {
+            "hex": "#ece3ea",
+            "coveragePercent": 0.5593
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c5740",
+            "coveragePercent": 27.2589
+          },
+          {
+            "hex": "#8c4820",
+            "coveragePercent": 21.2691
+          },
+          {
+            "hex": "#a85927",
+            "coveragePercent": 19.8111
+          },
+          {
+            "hex": "#a96b4d",
+            "coveragePercent": 15.5673
+          },
+          {
+            "hex": "#ca6f33",
+            "coveragePercent": 10.3289
+          },
+          {
+            "hex": "#e08f59",
+            "coveragePercent": 5.7647
+          }
+        ],
+        "visibleSamples": 564323,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props-v4.png": {
+      "sha256": "4adfb92fb1286d8a3e8853058255a3aa18c0c587e901be994491bd7c83e4327a",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "props"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#150f07",
+            "coveragePercent": 12.959
+          },
+          {
+            "hex": "#3b4c0f",
+            "coveragePercent": 10.9662
+          },
+          {
+            "hex": "#401a0f",
+            "coveragePercent": 9.8787
+          },
+          {
+            "hex": "#753014",
+            "coveragePercent": 9.0009
+          },
+          {
+            "hex": "#6b5f4b",
+            "coveragePercent": 7.5439
+          },
+          {
+            "hex": "#a58d6d",
+            "coveragePercent": 6.6967
+          },
+          {
+            "hex": "#e4c893",
+            "coveragePercent": 6.5388
+          },
+          {
+            "hex": "#f7f0df",
+            "coveragePercent": 6.3622
+          },
+          {
+            "hex": "#ac6724",
+            "coveragePercent": 5.9799
+          },
+          {
+            "hex": "#ddb036",
+            "coveragePercent": 5.5179
+          },
+          {
+            "hex": "#758d0e",
+            "coveragePercent": 4.7482
+          },
+          {
+            "hex": "#f1432d",
+            "coveragePercent": 4.2308
+          },
+          {
+            "hex": "#433354",
+            "coveragePercent": 3.6976
+          },
+          {
+            "hex": "#b52415",
+            "coveragePercent": 3.3716
+          },
+          {
+            "hex": "#7591c0",
+            "coveragePercent": 1.9121
+          },
+          {
+            "hex": "#c041e8",
+            "coveragePercent": 0.5957
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b8724",
+            "coveragePercent": 28.8428
+          },
+          {
+            "hex": "#9b3818",
+            "coveragePercent": 24.6262
+          },
+          {
+            "hex": "#e3b54c",
+            "coveragePercent": 23.1603
+          },
+          {
+            "hex": "#e94128",
+            "coveragePercent": 18.0529
+          },
+          {
+            "hex": "#a133cb",
+            "coveragePercent": 2.9184
+          },
+          {
+            "hex": "#5084d2",
+            "coveragePercent": 2.3995
+          }
+        ],
+        "visibleSamples": 761799,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/relics-v5.png": {
+      "sha256": "53d861ddf2dce8afd4470d76f76bbba04bb17c53d845a50fab213f3b930a8a42",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "relics"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fae8b9",
+            "coveragePercent": 17.5275
+          },
+          {
+            "hex": "#33150f",
+            "coveragePercent": 11.0454
+          },
+          {
+            "hex": "#4a332c",
+            "coveragePercent": 9.3936
+          },
+          {
+            "hex": "#120504",
+            "coveragePercent": 7.7503
+          },
+          {
+            "hex": "#6a4e4b",
+            "coveragePercent": 6.0113
+          },
+          {
+            "hex": "#ba772b",
+            "coveragePercent": 5.5751
+          },
+          {
+            "hex": "#dea14b",
+            "coveragePercent": 5.4818
+          },
+          {
+            "hex": "#68160c",
+            "coveragePercent": 5.2992
+          },
+          {
+            "hex": "#d43f75",
+            "coveragePercent": 4.9778
+          },
+          {
+            "hex": "#f6d07b",
+            "coveragePercent": 4.9729
+          },
+          {
+            "hex": "#8a4d15",
+            "coveragePercent": 4.9601
+          },
+          {
+            "hex": "#fcf7e8",
+            "coveragePercent": 4.2996
+          },
+          {
+            "hex": "#d8baa3",
+            "coveragePercent": 3.6193
+          },
+          {
+            "hex": "#9d1327",
+            "coveragePercent": 3.5348
+          },
+          {
+            "hex": "#e81617",
+            "coveragePercent": 3.1215
+          },
+          {
+            "hex": "#997775",
+            "coveragePercent": 2.43
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ce8c3a",
+            "coveragePercent": 21.9629
+          },
+          {
+            "hex": "#9c5b1e",
+            "coveragePercent": 19.6765
+          },
+          {
+            "hex": "#f1c368",
+            "coveragePercent": 18.1553
+          },
+          {
+            "hex": "#d04076",
+            "coveragePercent": 17.2841
+          },
+          {
+            "hex": "#9b1322",
+            "coveragePercent": 12.4449
+          },
+          {
+            "hex": "#e81718",
+            "coveragePercent": 10.4763
+          }
+        ],
+        "visibleSamples": 675848,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/terrain-v4.png": {
+      "sha256": "f7129ac3b92f0dcd29e26d4c6b2371c51a386c1fb6de68c42df47d783227ddff",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "terrain"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#241710",
+            "coveragePercent": 13.2992
+          },
+          {
+            "hex": "#403039",
+            "coveragePercent": 11.7722
+          },
+          {
+            "hex": "#66535e",
+            "coveragePercent": 10.1989
+          },
+          {
+            "hex": "#64341d",
+            "coveragePercent": 7.9547
+          },
+          {
+            "hex": "#b9bac5",
+            "coveragePercent": 7.7269
+          },
+          {
+            "hex": "#99857f",
+            "coveragePercent": 7.4102
+          },
+          {
+            "hex": "#465908",
+            "coveragePercent": 6.2462
+          },
+          {
+            "hex": "#e1d9d2",
+            "coveragePercent": 6.005
+          },
+          {
+            "hex": "#f9f5ef",
+            "coveragePercent": 5.751
+          },
+          {
+            "hex": "#a05f25",
+            "coveragePercent": 5.4684
+          },
+          {
+            "hex": "#758c11",
+            "coveragePercent": 4.241
+          },
+          {
+            "hex": "#e29724",
+            "coveragePercent": 4.1335
+          },
+          {
+            "hex": "#efcc6c",
+            "coveragePercent": 3.4103
+          },
+          {
+            "hex": "#e22116",
+            "coveragePercent": 3.2164
+          },
+          {
+            "hex": "#aec822",
+            "coveragePercent": 2.4621
+          },
+          {
+            "hex": "#2792ef",
+            "coveragePercent": 0.7039
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#975536",
+            "coveragePercent": 24.2894
+          },
+          {
+            "hex": "#85a015",
+            "coveragePercent": 20.1137
+          },
+          {
+            "hex": "#d38721",
+            "coveragePercent": 19.4253
+          },
+          {
+            "hex": "#e8ca4a",
+            "coveragePercent": 18.8008
+          },
+          {
+            "hex": "#e02015",
+            "coveragePercent": 13.9417
+          },
+          {
+            "hex": "#3195ed",
+            "coveragePercent": 3.4291
+          }
+        ],
+        "visibleSamples": 788206,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  }
+}

@@ -1,0 +1,2438 @@
+{
+  "npcs": {
+    "yomi.guard": {
+      "faction": "yomi",
+      "role": "guard",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.yomi.guard.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.yomi.guard.attack"
+        }
+      }
+    },
+    "yomi.archer": {
+      "faction": "yomi",
+      "role": "archer",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.yomi.archer.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.yomi.archer.attack"
+        }
+      }
+    },
+    "yomi.shield": {
+      "faction": "yomi",
+      "role": "shield",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.yomi.shield.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.yomi.shield.attack"
+        }
+      }
+    },
+    "yomi.mage": {
+      "faction": "yomi",
+      "role": "mage",
+      "variants": {
+        "walk": {
+          "paletteGroup": "npc.yomi.mage.walk"
+        },
+        "attack": {
+          "paletteGroup": "npc.yomi.mage.attack"
+        }
+      }
+    },
+    "demonLord": {
+      "role": "boss",
+      "faction": "yomi",
+      "paletteGroup": "npc.demonLord"
+    },
+    "doomSlayer": {
+      "role": "optional-boss",
+      "faction": "yomi",
+      "variants": {
+        "slayerMelee": {
+          "paletteGroup": "npc.doomSlayer.slayerMelee"
+        },
+        "slayerRanged": {
+          "paletteGroup": "npc.doomSlayer.slayerRanged"
+        }
+      }
+    },
+    "lavaSerpent": {
+      "role": "miniboss",
+      "faction": "yomi",
+      "variants": {
+        "idle": {
+          "paletteGroup": "npc.lavaSerpent.idle"
+        },
+        "windup": {
+          "paletteGroup": "npc.lavaSerpent.windup"
+        },
+        "strike": {
+          "paletteGroup": "npc.lavaSerpent.strike"
+        },
+        "recover": {
+          "paletteGroup": "npc.lavaSerpent.recover"
+        }
+      }
+    }
+  },
+  "paletteGroups": {
+    "npc.yomi.guard.walk": {
+      "source": "assets/images/enemies/yomi-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.walk.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#311613",
+            "coveragePercent": 10.9688
+          },
+          {
+            "hex": "#372725",
+            "coveragePercent": 10.8551
+          },
+          {
+            "hex": "#5d1c12",
+            "coveragePercent": 9.9366
+          },
+          {
+            "hex": "#c4291e",
+            "coveragePercent": 9.3907
+          },
+          {
+            "hex": "#ec402d",
+            "coveragePercent": 8.6529
+          },
+          {
+            "hex": "#941d15",
+            "coveragePercent": 7.8421
+          },
+          {
+            "hex": "#513731",
+            "coveragePercent": 7.4347
+          },
+          {
+            "hex": "#190d0d",
+            "coveragePercent": 6.8109
+          },
+          {
+            "hex": "#7e3d1d",
+            "coveragePercent": 5.9912
+          },
+          {
+            "hex": "#eec896",
+            "coveragePercent": 3.9708
+          },
+          {
+            "hex": "#af6325",
+            "coveragePercent": 3.645
+          },
+          {
+            "hex": "#775543",
+            "coveragePercent": 3.2329
+          },
+          {
+            "hex": "#f9e7c7",
+            "coveragePercent": 3.231
+          },
+          {
+            "hex": "#d3a47a",
+            "coveragePercent": 2.9532
+          },
+          {
+            "hex": "#e49531",
+            "coveragePercent": 2.7304
+          },
+          {
+            "hex": "#ab7e5d",
+            "coveragePercent": 2.3538
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c6291e",
+            "coveragePercent": 23.569
+          },
+          {
+            "hex": "#ec402d",
+            "coveragePercent": 23.0359
+          },
+          {
+            "hex": "#972117",
+            "coveragePercent": 22.4827
+          },
+          {
+            "hex": "#9c5727",
+            "coveragePercent": 14.4114
+          },
+          {
+            "hex": "#d38733",
+            "coveragePercent": 10.7481
+          },
+          {
+            "hex": "#e9b467",
+            "coveragePercent": 5.753
+          }
+        ],
+        "visibleSamples": 160838,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.yomi.guard.attack": {
+      "source": "assets/images/enemies/yomi-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.attack.guard",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341a18",
+            "coveragePercent": 11.5311
+          },
+          {
+            "hex": "#4b302d",
+            "coveragePercent": 9.8959
+          },
+          {
+            "hex": "#601b0e",
+            "coveragePercent": 9.4084
+          },
+          {
+            "hex": "#8e2010",
+            "coveragePercent": 9.02
+          },
+          {
+            "hex": "#e82919",
+            "coveragePercent": 8.1918
+          },
+          {
+            "hex": "#bd2016",
+            "coveragePercent": 7.3831
+          },
+          {
+            "hex": "#784a39",
+            "coveragePercent": 7.0382
+          },
+          {
+            "hex": "#1b0b0c",
+            "coveragePercent": 6.9073
+          },
+          {
+            "hex": "#f64128",
+            "coveragePercent": 6.4191
+          },
+          {
+            "hex": "#ad5922",
+            "coveragePercent": 4.6026
+          },
+          {
+            "hex": "#edb68a",
+            "coveragePercent": 4.2457
+          },
+          {
+            "hex": "#ed8719",
+            "coveragePercent": 3.6541
+          },
+          {
+            "hex": "#c68767",
+            "coveragePercent": 3.5817
+          },
+          {
+            "hex": "#f9ddb1",
+            "coveragePercent": 3.4622
+          },
+          {
+            "hex": "#fcf8e9",
+            "coveragePercent": 2.9517
+          },
+          {
+            "hex": "#fbd343",
+            "coveragePercent": 1.7072
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f23621",
+            "coveragePercent": 26.8355
+          },
+          {
+            "hex": "#962011",
+            "coveragePercent": 19.8728
+          },
+          {
+            "hex": "#c82217",
+            "coveragePercent": 18.7165
+          },
+          {
+            "hex": "#a3592d",
+            "coveragePercent": 14.4601
+          },
+          {
+            "hex": "#e98621",
+            "coveragePercent": 10.6911
+          },
+          {
+            "hex": "#f2bb63",
+            "coveragePercent": 9.4241
+          }
+        ],
+        "visibleSamples": 161897,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.yomi.archer.walk": {
+      "source": "assets/images/enemies/yomi-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.walk.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#362b36",
+            "coveragePercent": 19.6766
+          },
+          {
+            "hex": "#261d25",
+            "coveragePercent": 15.732
+          },
+          {
+            "hex": "#170e12",
+            "coveragePercent": 13.2868
+          },
+          {
+            "hex": "#453744",
+            "coveragePercent": 12.5623
+          },
+          {
+            "hex": "#692e1b",
+            "coveragePercent": 5.9874
+          },
+          {
+            "hex": "#461a12",
+            "coveragePercent": 5.8602
+          },
+          {
+            "hex": "#864e2c",
+            "coveragePercent": 4.0499
+          },
+          {
+            "hex": "#e33b25",
+            "coveragePercent": 2.9409
+          },
+          {
+            "hex": "#a32716",
+            "coveragePercent": 2.8142
+          },
+          {
+            "hex": "#f4dbb8",
+            "coveragePercent": 2.7399
+          },
+          {
+            "hex": "#b96923",
+            "coveragePercent": 2.7343
+          },
+          {
+            "hex": "#e6bf93",
+            "coveragePercent": 2.7117
+          },
+          {
+            "hex": "#fbf2df",
+            "coveragePercent": 2.4877
+          },
+          {
+            "hex": "#cf9e73",
+            "coveragePercent": 2.3075
+          },
+          {
+            "hex": "#e69732",
+            "coveragePercent": 2.0859
+          },
+          {
+            "hex": "#a67656",
+            "coveragePercent": 2.0225
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c5827",
+            "coveragePercent": 25.1806
+          },
+          {
+            "hex": "#9b2917",
+            "coveragePercent": 19.8751
+          },
+          {
+            "hex": "#e13b24",
+            "coveragePercent": 19.0829
+          },
+          {
+            "hex": "#dc8524",
+            "coveragePercent": 13.8006
+          },
+          {
+            "hex": "#bb7e4d",
+            "coveragePercent": 11.3412
+          },
+          {
+            "hex": "#e9b162",
+            "coveragePercent": 10.7197
+          }
+        ],
+        "visibleSamples": 197636,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.yomi.archer.attack": {
+      "source": "assets/images/enemies/yomi-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.attack.archer",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352731",
+            "coveragePercent": 19.9826
+          },
+          {
+            "hex": "#251a21",
+            "coveragePercent": 15.9777
+          },
+          {
+            "hex": "#4b343e",
+            "coveragePercent": 12.4657
+          },
+          {
+            "hex": "#52170f",
+            "coveragePercent": 8.1256
+          },
+          {
+            "hex": "#1a0c0f",
+            "coveragePercent": 7.6051
+          },
+          {
+            "hex": "#773520",
+            "coveragePercent": 6.7353
+          },
+          {
+            "hex": "#a64d1c",
+            "coveragePercent": 4.2009
+          },
+          {
+            "hex": "#8f150c",
+            "coveragePercent": 3.459
+          },
+          {
+            "hex": "#f33820",
+            "coveragePercent": 2.9674
+          },
+          {
+            "hex": "#dd915c",
+            "coveragePercent": 2.9311
+          },
+          {
+            "hex": "#cd1d12",
+            "coveragePercent": 2.753
+          },
+          {
+            "hex": "#edb888",
+            "coveragePercent": 2.6342
+          },
+          {
+            "hex": "#e0811c",
+            "coveragePercent": 2.6132
+          },
+          {
+            "hex": "#ab6647",
+            "coveragePercent": 2.5612
+          },
+          {
+            "hex": "#fcf7eb",
+            "coveragePercent": 2.5432
+          },
+          {
+            "hex": "#f8ddb8",
+            "coveragePercent": 2.4448
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a25228",
+            "coveragePercent": 23.869
+          },
+          {
+            "hex": "#962311",
+            "coveragePercent": 21.2957
+          },
+          {
+            "hex": "#d77c2b",
+            "coveragePercent": 18.0195
+          },
+          {
+            "hex": "#eaa465",
+            "coveragePercent": 13.1794
+          },
+          {
+            "hex": "#d41f12",
+            "coveragePercent": 12.0885
+          },
+          {
+            "hex": "#f33b21",
+            "coveragePercent": 11.5478
+          }
+        ],
+        "visibleSamples": 179405,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.yomi.shield.walk": {
+      "source": "assets/images/enemies/yomi-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.walk.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#46271b",
+            "coveragePercent": 13.1541
+          },
+          {
+            "hex": "#684732",
+            "coveragePercent": 12.0049
+          },
+          {
+            "hex": "#92694c",
+            "coveragePercent": 9.8116
+          },
+          {
+            "hex": "#1e0f10",
+            "coveragePercent": 8.6085
+          },
+          {
+            "hex": "#7c2710",
+            "coveragePercent": 6.4427
+          },
+          {
+            "hex": "#9a561e",
+            "coveragePercent": 5.7604
+          },
+          {
+            "hex": "#586eaa",
+            "coveragePercent": 5.3992
+          },
+          {
+            "hex": "#333c68",
+            "coveragePercent": 5.2839
+          },
+          {
+            "hex": "#d39e64",
+            "coveragePercent": 4.9282
+          },
+          {
+            "hex": "#debba1",
+            "coveragePercent": 4.8515
+          },
+          {
+            "hex": "#44548b",
+            "coveragePercent": 4.7939
+          },
+          {
+            "hex": "#f3e0d0",
+            "coveragePercent": 4.6923
+          },
+          {
+            "hex": "#252640",
+            "coveragePercent": 3.849
+          },
+          {
+            "hex": "#d48427",
+            "coveragePercent": 3.6853
+          },
+          {
+            "hex": "#a68985",
+            "coveragePercent": 3.5572
+          },
+          {
+            "hex": "#cd2b1b",
+            "coveragePercent": 3.1774
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#97663c",
+            "coveragePercent": 28.3345
+          },
+          {
+            "hex": "#a53115",
+            "coveragePercent": 21.6762
+          },
+          {
+            "hex": "#d9a25b",
+            "coveragePercent": 13.2407
+          },
+          {
+            "hex": "#556caa",
+            "coveragePercent": 13.1227
+          },
+          {
+            "hex": "#d37322",
+            "coveragePercent": 12.3857
+          },
+          {
+            "hex": "#42558f",
+            "coveragePercent": 11.2403
+          }
+        ],
+        "visibleSamples": 219211,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.yomi.shield.attack": {
+      "source": "assets/images/enemies/yomi-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.attack.shield",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#542919",
+            "coveragePercent": 13.4926
+          },
+          {
+            "hex": "#7c4c34",
+            "coveragePercent": 11.4491
+          },
+          {
+            "hex": "#ae6f47",
+            "coveragePercent": 8.1592
+          },
+          {
+            "hex": "#882c0e",
+            "coveragePercent": 7.7671
+          },
+          {
+            "hex": "#220f0f",
+            "coveragePercent": 7.5448
+          },
+          {
+            "hex": "#b65e19",
+            "coveragePercent": 5.6097
+          },
+          {
+            "hex": "#3e538e",
+            "coveragePercent": 5.5356
+          },
+          {
+            "hex": "#5470b5",
+            "coveragePercent": 5.1945
+          },
+          {
+            "hex": "#fbefe6",
+            "coveragePercent": 5.1006
+          },
+          {
+            "hex": "#e3a46b",
+            "coveragePercent": 4.9046
+          },
+          {
+            "hex": "#2e3964",
+            "coveragePercent": 4.8658
+          },
+          {
+            "hex": "#ebc4b1",
+            "coveragePercent": 4.8618
+          },
+          {
+            "hex": "#252338",
+            "coveragePercent": 4.4317
+          },
+          {
+            "hex": "#ef9f21",
+            "coveragePercent": 3.912
+          },
+          {
+            "hex": "#d82213",
+            "coveragePercent": 3.6578
+          },
+          {
+            "hex": "#ae878f",
+            "coveragePercent": 3.5133
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a66539",
+            "coveragePercent": 27.8601
+          },
+          {
+            "hex": "#4762a4",
+            "coveragePercent": 21.4585
+          },
+          {
+            "hex": "#953a14",
+            "coveragePercent": 18.8016
+          },
+          {
+            "hex": "#e2a260",
+            "coveragePercent": 12.1171
+          },
+          {
+            "hex": "#e7921c",
+            "coveragePercent": 10.624
+          },
+          {
+            "hex": "#d72414",
+            "coveragePercent": 9.1388
+          }
+        ],
+        "visibleSamples": 197755,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.yomi.mage.walk": {
+      "source": "assets/images/enemies/yomi-walk-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.walk.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#381c2a",
+            "coveragePercent": 14.7364
+          },
+          {
+            "hex": "#482a42",
+            "coveragePercent": 14.5878
+          },
+          {
+            "hex": "#1f0e19",
+            "coveragePercent": 9.7449
+          },
+          {
+            "hex": "#6b3129",
+            "coveragePercent": 8.4139
+          },
+          {
+            "hex": "#623b5b",
+            "coveragePercent": 8.1541
+          },
+          {
+            "hex": "#a275b6",
+            "coveragePercent": 7.8531
+          },
+          {
+            "hex": "#9b413f",
+            "coveragePercent": 6.5102
+          },
+          {
+            "hex": "#bd99cd",
+            "coveragePercent": 5.5142
+          },
+          {
+            "hex": "#f6eaf0",
+            "coveragePercent": 4.9247
+          },
+          {
+            "hex": "#85568f",
+            "coveragePercent": 4.8215
+          },
+          {
+            "hex": "#ddc2e3",
+            "coveragePercent": 4.654
+          },
+          {
+            "hex": "#b66d30",
+            "coveragePercent": 3.4775
+          },
+          {
+            "hex": "#db9b53",
+            "coveragePercent": 2.4633
+          },
+          {
+            "hex": "#f4d197",
+            "coveragePercent": 2.2076
+          },
+          {
+            "hex": "#923be5",
+            "coveragePercent": 1.3693
+          },
+          {
+            "hex": "#c66ef9",
+            "coveragePercent": 0.5675
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#904531",
+            "coveragePercent": 30.1366
+          },
+          {
+            "hex": "#c27b33",
+            "coveragePercent": 18.9795
+          },
+          {
+            "hex": "#b13d4b",
+            "coveragePercent": 15.4787
+          },
+          {
+            "hex": "#854c9b",
+            "coveragePercent": 12.5461
+          },
+          {
+            "hex": "#a14de5",
+            "coveragePercent": 12.3
+          },
+          {
+            "hex": "#e9b061",
+            "coveragePercent": 10.559
+          }
+        ],
+        "visibleSamples": 181896,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.yomi.mage.attack": {
+      "source": "assets/images/enemies/yomi-attack-v4.png",
+      "frameMetadata": "ART_FRAMES.animations.yomi.attack.mage",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#391c28",
+            "coveragePercent": 14.6004
+          },
+          {
+            "hex": "#4b2a3d",
+            "coveragePercent": 14.3706
+          },
+          {
+            "hex": "#693753",
+            "coveragePercent": 8.132
+          },
+          {
+            "hex": "#210f16",
+            "coveragePercent": 7.9663
+          },
+          {
+            "hex": "#69291f",
+            "coveragePercent": 6.8832
+          },
+          {
+            "hex": "#a868b7",
+            "coveragePercent": 6.7329
+          },
+          {
+            "hex": "#95402a",
+            "coveragePercent": 5.9521
+          },
+          {
+            "hex": "#9f3bed",
+            "coveragePercent": 5.9358
+          },
+          {
+            "hex": "#faecf3",
+            "coveragePercent": 4.9396
+          },
+          {
+            "hex": "#87498a",
+            "coveragePercent": 4.5451
+          },
+          {
+            "hex": "#c491ca",
+            "coveragePercent": 4.5158
+          },
+          {
+            "hex": "#e8b9e9",
+            "coveragePercent": 4.509
+          },
+          {
+            "hex": "#c15b39",
+            "coveragePercent": 4.2046
+          },
+          {
+            "hex": "#cc71fa",
+            "coveragePercent": 2.3931
+          },
+          {
+            "hex": "#edb888",
+            "coveragePercent": 2.2723
+          },
+          {
+            "hex": "#e49b29",
+            "coveragePercent": 2.0472
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#963b2f",
+            "coveragePercent": 23.9763
+          },
+          {
+            "hex": "#9e3aef",
+            "coveragePercent": 20.1654
+          },
+          {
+            "hex": "#954da9",
+            "coveragePercent": 19.3587
+          },
+          {
+            "hex": "#c3612f",
+            "coveragePercent": 16.6538
+          },
+          {
+            "hex": "#c469f1",
+            "coveragePercent": 10.6674
+          },
+          {
+            "hex": "#eaa849",
+            "coveragePercent": 9.1785
+          }
+        ],
+        "visibleSamples": 189281,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.demonLord": {
+      "source": "assets/images/enemies/bosses-v4.png",
+      "frameMetadata": "ART_FRAMES.bosses[1]",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#391716",
+            "coveragePercent": 11.97
+          },
+          {
+            "hex": "#502e2d",
+            "coveragePercent": 11.3432
+          },
+          {
+            "hex": "#ee210d",
+            "coveragePercent": 9.5654
+          },
+          {
+            "hex": "#1b0809",
+            "coveragePercent": 8.0653
+          },
+          {
+            "hex": "#744945",
+            "coveragePercent": 7.8978
+          },
+          {
+            "hex": "#67160e",
+            "coveragePercent": 7.3441
+          },
+          {
+            "hex": "#85331a",
+            "coveragePercent": 6.7744
+          },
+          {
+            "hex": "#b5531d",
+            "coveragePercent": 6.232
+          },
+          {
+            "hex": "#f34c12",
+            "coveragePercent": 5.9378
+          },
+          {
+            "hex": "#ae180f",
+            "coveragePercent": 5.7258
+          },
+          {
+            "hex": "#ee8015",
+            "coveragePercent": 5.4781
+          },
+          {
+            "hex": "#f8b324",
+            "coveragePercent": 4.454
+          },
+          {
+            "hex": "#fbdb4e",
+            "coveragePercent": 2.847
+          },
+          {
+            "hex": "#f8df93",
+            "coveragePercent": 2.5358
+          },
+          {
+            "hex": "#ce8756",
+            "coveragePercent": 1.953
+          },
+          {
+            "hex": "#fcf7e1",
+            "coveragePercent": 1.8764
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ed260e",
+            "coveragePercent": 26.4222
+          },
+          {
+            "hex": "#a44f26",
+            "coveragePercent": 17.2112
+          },
+          {
+            "hex": "#9f1e10",
+            "coveragePercent": 16.7794
+          },
+          {
+            "hex": "#ea6714",
+            "coveragePercent": 16.7069
+          },
+          {
+            "hex": "#f3a424",
+            "coveragePercent": 13.9218
+          },
+          {
+            "hex": "#fad757",
+            "coveragePercent": 8.9585
+          }
+        ],
+        "visibleSamples": 310462,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.doomSlayer.slayerMelee": {
+      "source": "assets/images/enemies/slayer-melee-v1.png",
+      "frameMetadata": "ART_SLAYER.frames",
+      "frameCount": 12,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4b382b",
+            "coveragePercent": 15.1583
+          },
+          {
+            "hex": "#3d291c",
+            "coveragePercent": 14.3741
+          },
+          {
+            "hex": "#2c1c13",
+            "coveragePercent": 12.2774
+          },
+          {
+            "hex": "#1b100a",
+            "coveragePercent": 10.4106
+          },
+          {
+            "hex": "#624d39",
+            "coveragePercent": 9.8968
+          },
+          {
+            "hex": "#643a20",
+            "coveragePercent": 7.3892
+          },
+          {
+            "hex": "#816843",
+            "coveragePercent": 5.9256
+          },
+          {
+            "hex": "#86502b",
+            "coveragePercent": 5.6696
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 5.2202
+          },
+          {
+            "hex": "#a86d38",
+            "coveragePercent": 4.2437
+          },
+          {
+            "hex": "#9e835c",
+            "coveragePercent": 3.1994
+          },
+          {
+            "hex": "#c8964d",
+            "coveragePercent": 2.7884
+          },
+          {
+            "hex": "#e7c16b",
+            "coveragePercent": 1.3202
+          },
+          {
+            "hex": "#bda895",
+            "coveragePercent": 1.1128
+          },
+          {
+            "hex": "#e8e0d0",
+            "coveragePercent": 0.8663
+          },
+          {
+            "hex": "#d33806",
+            "coveragePercent": 0.1473
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#917140",
+            "coveragePercent": 25.9464
+          },
+          {
+            "hex": "#8d502c",
+            "coveragePercent": 25.598
+          },
+          {
+            "hex": "#bc8f4c",
+            "coveragePercent": 20.95
+          },
+          {
+            "hex": "#ae6b36",
+            "coveragePercent": 17.2039
+          },
+          {
+            "hex": "#e3b95f",
+            "coveragePercent": 9.3593
+          },
+          {
+            "hex": "#cf3505",
+            "coveragePercent": 0.9426
+          }
+        ],
+        "visibleSamples": 214147,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.doomSlayer.slayerRanged": {
+      "source": "assets/images/enemies/slayer-ranged-v1.png",
+      "frameMetadata": "ART_SLAYER.frames",
+      "frameCount": 12,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#38271e",
+            "coveragePercent": 20.0685
+          },
+          {
+            "hex": "#261810",
+            "coveragePercent": 14.2176
+          },
+          {
+            "hex": "#46372d",
+            "coveragePercent": 11.0759
+          },
+          {
+            "hex": "#574538",
+            "coveragePercent": 9.5514
+          },
+          {
+            "hex": "#57301d",
+            "coveragePercent": 9.2247
+          },
+          {
+            "hex": "#100906",
+            "coveragePercent": 8.1281
+          },
+          {
+            "hex": "#6c5741",
+            "coveragePercent": 6.3907
+          },
+          {
+            "hex": "#7a4129",
+            "coveragePercent": 6.0678
+          },
+          {
+            "hex": "#826c51",
+            "coveragePercent": 4.3516
+          },
+          {
+            "hex": "#9b6134",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#96826c",
+            "coveragePercent": 2.3254
+          },
+          {
+            "hex": "#bf8c4d",
+            "coveragePercent": 2.1987
+          },
+          {
+            "hex": "#baa899",
+            "coveragePercent": 0.9782
+          },
+          {
+            "hex": "#e5b970",
+            "coveragePercent": 0.9596
+          },
+          {
+            "hex": "#e7dbcb",
+            "coveragePercent": 0.6643
+          },
+          {
+            "hex": "#db1a03",
+            "coveragePercent": 0.1562
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c492e",
+            "coveragePercent": 32.913
+          },
+          {
+            "hex": "#906d42",
+            "coveragePercent": 22.8908
+          },
+          {
+            "hex": "#be8c4d",
+            "coveragePercent": 17.8481
+          },
+          {
+            "hex": "#a96934",
+            "coveragePercent": 16.6207
+          },
+          {
+            "hex": "#e6b464",
+            "coveragePercent": 8.1422
+          },
+          {
+            "hex": "#da1a03",
+            "coveragePercent": 1.5852
+          }
+        ],
+        "visibleSamples": 498505,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.lavaSerpent.idle": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.idle",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#341312",
+            "coveragePercent": 14.3777
+          },
+          {
+            "hex": "#482625",
+            "coveragePercent": 11.945
+          },
+          {
+            "hex": "#540f0a",
+            "coveragePercent": 11.3206
+          },
+          {
+            "hex": "#7f0d06",
+            "coveragePercent": 9.3392
+          },
+          {
+            "hex": "#ae0b05",
+            "coveragePercent": 8.6541
+          },
+          {
+            "hex": "#633a36",
+            "coveragePercent": 7.2764
+          },
+          {
+            "hex": "#802a1a",
+            "coveragePercent": 6.4661
+          },
+          {
+            "hex": "#dc0c03",
+            "coveragePercent": 6.1631
+          },
+          {
+            "hex": "#1e0707",
+            "coveragePercent": 6.0735
+          },
+          {
+            "hex": "#be320f",
+            "coveragePercent": 4.8421
+          },
+          {
+            "hex": "#ee2f05",
+            "coveragePercent": 4.2628
+          },
+          {
+            "hex": "#ef5d0d",
+            "coveragePercent": 3.1079
+          },
+          {
+            "hex": "#a55537",
+            "coveragePercent": 2.1268
+          },
+          {
+            "hex": "#f79019",
+            "coveragePercent": 2.036
+          },
+          {
+            "hex": "#f8c537",
+            "coveragePercent": 1.2803
+          },
+          {
+            "hex": "#f7dd89",
+            "coveragePercent": 0.7286
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ca0e04",
+            "coveragePercent": 26.8298
+          },
+          {
+            "hex": "#961108",
+            "coveragePercent": 26.2499
+          },
+          {
+            "hex": "#e93207",
+            "coveragePercent": 18.5388
+          },
+          {
+            "hex": "#a13e23",
+            "coveragePercent": 13.9811
+          },
+          {
+            "hex": "#f27815",
+            "coveragePercent": 9.5302
+          },
+          {
+            "hex": "#f7c442",
+            "coveragePercent": 4.8702
+          }
+        ],
+        "visibleSamples": 260828,
+        "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.lavaSerpent.windup": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.windup",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331817",
+            "coveragePercent": 12.7657
+          },
+          {
+            "hex": "#4d2827",
+            "coveragePercent": 12.6071
+          },
+          {
+            "hex": "#4d0d09",
+            "coveragePercent": 9.9312
+          },
+          {
+            "hex": "#750e07",
+            "coveragePercent": 9.9223
+          },
+          {
+            "hex": "#210808",
+            "coveragePercent": 7.829
+          },
+          {
+            "hex": "#a30c06",
+            "coveragePercent": 7.7007
+          },
+          {
+            "hex": "#ce0904",
+            "coveragePercent": 7.4987
+          },
+          {
+            "hex": "#832b1b",
+            "coveragePercent": 6.0411
+          },
+          {
+            "hex": "#663d39",
+            "coveragePercent": 5.8739
+          },
+          {
+            "hex": "#eb2405",
+            "coveragePercent": 5.6087
+          },
+          {
+            "hex": "#ba3311",
+            "coveragePercent": 4.4587
+          },
+          {
+            "hex": "#f05a0c",
+            "coveragePercent": 3.9713
+          },
+          {
+            "hex": "#f8a018",
+            "coveragePercent": 2.0825
+          },
+          {
+            "hex": "#ac5d3a",
+            "coveragePercent": 1.7203
+          },
+          {
+            "hex": "#f4c850",
+            "coveragePercent": 1.2906
+          },
+          {
+            "hex": "#f6e4a6",
+            "coveragePercent": 0.698
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c10d05",
+            "coveragePercent": 24.9403
+          },
+          {
+            "hex": "#941308",
+            "coveragePercent": 24.8085
+          },
+          {
+            "hex": "#e82405",
+            "coveragePercent": 20.3746
+          },
+          {
+            "hex": "#a44124",
+            "coveragePercent": 12.7043
+          },
+          {
+            "hex": "#f06a10",
+            "coveragePercent": 11.0943
+          },
+          {
+            "hex": "#f6bf3b",
+            "coveragePercent": 6.0781
+          }
+        ],
+        "visibleSamples": 209123,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "npc.lavaSerpent.strike": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.strike",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#452424",
+            "coveragePercent": 13.3405
+          },
+          {
+            "hex": "#321211",
+            "coveragePercent": 12.7117
+          },
+          {
+            "hex": "#530c08",
+            "coveragePercent": 9.9476
+          },
+          {
+            "hex": "#b00c05",
+            "coveragePercent": 9.0694
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 8.8729
+          },
+          {
+            "hex": "#df0c04",
+            "coveragePercent": 7.1196
+          },
+          {
+            "hex": "#6c2419",
+            "coveragePercent": 7.0262
+          },
+          {
+            "hex": "#643c38",
+            "coveragePercent": 6.9002
+          },
+          {
+            "hex": "#1e0708",
+            "coveragePercent": 6.5119
+          },
+          {
+            "hex": "#e23407",
+            "coveragePercent": 5.6485
+          },
+          {
+            "hex": "#a03116",
+            "coveragePercent": 4.7717
+          },
+          {
+            "hex": "#f2640d",
+            "coveragePercent": 3.0483
+          },
+          {
+            "hex": "#f9a71c",
+            "coveragePercent": 1.7821
+          },
+          {
+            "hex": "#b3623b",
+            "coveragePercent": 1.5424
+          },
+          {
+            "hex": "#f1c15c",
+            "coveragePercent": 1.1664
+          },
+          {
+            "hex": "#f8e7a8",
+            "coveragePercent": 0.5407
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#981107",
+            "coveragePercent": 28.1394
+          },
+          {
+            "hex": "#ce0c04",
+            "coveragePercent": 27.6019
+          },
+          {
+            "hex": "#e93407",
+            "coveragePercent": 17.763
+          },
+          {
+            "hex": "#a14023",
+            "coveragePercent": 12.6666
+          },
+          {
+            "hex": "#f17914",
+            "coveragePercent": 8.6331
+          },
+          {
+            "hex": "#f4bf47",
+            "coveragePercent": 5.196
+          }
+        ],
+        "visibleSamples": 170571,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.lavaSerpent.recover": {
+      "source": "assets/images/enemies/lava-serpent-v1.png",
+      "frameMetadata": "ART_SERPENT.clips.recover",
+      "frameCount": 3,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331413",
+            "coveragePercent": 14.4142
+          },
+          {
+            "hex": "#482727",
+            "coveragePercent": 13.16
+          },
+          {
+            "hex": "#540e09",
+            "coveragePercent": 10.2172
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 8.9812
+          },
+          {
+            "hex": "#b10a05",
+            "coveragePercent": 8.617
+          },
+          {
+            "hex": "#dd0c04",
+            "coveragePercent": 7.5692
+          },
+          {
+            "hex": "#1d0708",
+            "coveragePercent": 6.5826
+          },
+          {
+            "hex": "#693e39",
+            "coveragePercent": 6.2539
+          },
+          {
+            "hex": "#752619",
+            "coveragePercent": 6.0002
+          },
+          {
+            "hex": "#e73407",
+            "coveragePercent": 5.3187
+          },
+          {
+            "hex": "#a92f13",
+            "coveragePercent": 5.1765
+          },
+          {
+            "hex": "#f3620c",
+            "coveragePercent": 2.797
+          },
+          {
+            "hex": "#f99b18",
+            "coveragePercent": 1.752
+          },
+          {
+            "hex": "#b3613d",
+            "coveragePercent": 1.5259
+          },
+          {
+            "hex": "#f9cd3d",
+            "coveragePercent": 1.0554
+          },
+          {
+            "hex": "#f7de93",
+            "coveragePercent": 0.579
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#cb0b05",
+            "coveragePercent": 27.7708
+          },
+          {
+            "hex": "#971108",
+            "coveragePercent": 27.0745
+          },
+          {
+            "hex": "#e82f06",
+            "coveragePercent": 18.2852
+          },
+          {
+            "hex": "#a03f25",
+            "coveragePercent": 12.6044
+          },
+          {
+            "hex": "#f27312",
+            "coveragePercent": 9.3028
+          },
+          {
+            "hex": "#f7c23c",
+            "coveragePercent": 4.9623
+          }
+        ],
+        "visibleSamples": 187071,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "reference.bosses.row0": {
+      "source": "assets/images/enemies/bosses-v4.png",
+      "frameMetadata": "ART_FRAMES.bosses[0]",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#311513",
+            "coveragePercent": 15.216
+          },
+          {
+            "hex": "#160708",
+            "coveragePercent": 14.6318
+          },
+          {
+            "hex": "#54110e",
+            "coveragePercent": 9.2346
+          },
+          {
+            "hex": "#7b1e13",
+            "coveragePercent": 8.8014
+          },
+          {
+            "hex": "#4e2d27",
+            "coveragePercent": 8.4763
+          },
+          {
+            "hex": "#dc1b17",
+            "coveragePercent": 6.7076
+          },
+          {
+            "hex": "#ab1314",
+            "coveragePercent": 5.4757
+          },
+          {
+            "hex": "#a94e1b",
+            "coveragePercent": 5.4702
+          },
+          {
+            "hex": "#dc7b21",
+            "coveragePercent": 4.8058
+          },
+          {
+            "hex": "#f3ab31",
+            "coveragePercent": 4.6934
+          },
+          {
+            "hex": "#eb4728",
+            "coveragePercent": 3.2962
+          },
+          {
+            "hex": "#f9d358",
+            "coveragePercent": 2.9713
+          },
+          {
+            "hex": "#774f45",
+            "coveragePercent": 2.8513
+          },
+          {
+            "hex": "#f6d5b3",
+            "coveragePercent": 2.8057
+          },
+          {
+            "hex": "#fcf7f2",
+            "coveragePercent": 2.6351
+          },
+          {
+            "hex": "#da8f72",
+            "coveragePercent": 1.9276
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e7862a",
+            "coveragePercent": 19.251
+          },
+          {
+            "hex": "#921b13",
+            "coveragePercent": 16.7977
+          },
+          {
+            "hex": "#c41616",
+            "coveragePercent": 16.5085
+          },
+          {
+            "hex": "#ac5420",
+            "coveragePercent": 16.4946
+          },
+          {
+            "hex": "#e92f1e",
+            "coveragePercent": 15.5203
+          },
+          {
+            "hex": "#f7c24d",
+            "coveragePercent": 15.4279
+          }
+        ],
+        "visibleSamples": 249438,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "reference.bosses.row2": {
+      "source": "assets/images/enemies/bosses-v4.png",
+      "frameMetadata": "ART_FRAMES.bosses[2]",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4a2559",
+            "coveragePercent": 10.1997
+          },
+          {
+            "hex": "#f7e3c4",
+            "coveragePercent": 8.9987
+          },
+          {
+            "hex": "#3f2032",
+            "coveragePercent": 8.8253
+          },
+          {
+            "hex": "#fcf5ec",
+            "coveragePercent": 8.7399
+          },
+          {
+            "hex": "#6a3c6f",
+            "coveragePercent": 7.1197
+          },
+          {
+            "hex": "#230e20",
+            "coveragePercent": 6.3258
+          },
+          {
+            "hex": "#7d4324",
+            "coveragePercent": 6.3137
+          },
+          {
+            "hex": "#f1cd91",
+            "coveragePercent": 6.2241
+          },
+          {
+            "hex": "#a26949",
+            "coveragePercent": 5.911
+          },
+          {
+            "hex": "#cc9875",
+            "coveragePercent": 5.428
+          },
+          {
+            "hex": "#d2a7c1",
+            "coveragePercent": 5.3739
+          },
+          {
+            "hex": "#f1be4d",
+            "coveragePercent": 4.2572
+          },
+          {
+            "hex": "#a16f95",
+            "coveragePercent": 4.2168
+          },
+          {
+            "hex": "#d0872c",
+            "coveragePercent": 4.1474
+          },
+          {
+            "hex": "#8028b4",
+            "coveragePercent": 4.1026
+          },
+          {
+            "hex": "#bd48e7",
+            "coveragePercent": 3.8162
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#d08e41",
+            "coveragePercent": 23.3085
+          },
+          {
+            "hex": "#9d5b30",
+            "coveragePercent": 22.8031
+          },
+          {
+            "hex": "#f2c461",
+            "coveragePercent": 19.5211
+          },
+          {
+            "hex": "#702997",
+            "coveragePercent": 13.3087
+          },
+          {
+            "hex": "#9933cc",
+            "coveragePercent": 12.3943
+          },
+          {
+            "hex": "#cb54eb",
+            "coveragePercent": 8.6644
+          }
+        ],
+        "visibleSamples": 309366,
+        "dominantCoveragePercent": 100.0
+      }
+    }
+  },
+  "assets": {
+    "assets/images/enemies/bosses-v4.png": {
+      "sha256": "ff6e195180ccc354832954133b57ca8182982674575d3e6a7c127019264212ee",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "bosses"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3f1816",
+            "coveragePercent": 11.998
+          },
+          {
+            "hex": "#1c0a0d",
+            "coveragePercent": 10.6373
+          },
+          {
+            "hex": "#492a3d",
+            "coveragePercent": 9.5587
+          },
+          {
+            "hex": "#712316",
+            "coveragePercent": 9.1664
+          },
+          {
+            "hex": "#ed2a12",
+            "coveragePercent": 6.9408
+          },
+          {
+            "hex": "#9e5227",
+            "coveragePercent": 6.5998
+          },
+          {
+            "hex": "#693d64",
+            "coveragePercent": 6.2572
+          },
+          {
+            "hex": "#e3771c",
+            "coveragePercent": 5.7917
+          },
+          {
+            "hex": "#f4b534",
+            "coveragePercent": 5.0957
+          },
+          {
+            "hex": "#fbf5eb",
+            "coveragePercent": 4.8621
+          },
+          {
+            "hex": "#f6deb8",
+            "coveragePercent": 4.8272
+          },
+          {
+            "hex": "#b01a12",
+            "coveragePercent": 4.7864
+          },
+          {
+            "hex": "#f2c975",
+            "coveragePercent": 4.2249
+          },
+          {
+            "hex": "#b57e67",
+            "coveragePercent": 4.0076
+          },
+          {
+            "hex": "#cd9db9",
+            "coveragePercent": 2.6971
+          },
+          {
+            "hex": "#a03ace",
+            "coveragePercent": 2.5491
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c361d",
+            "coveragePercent": 27.1672
+          },
+          {
+            "hex": "#db7f29",
+            "coveragePercent": 23.5825
+          },
+          {
+            "hex": "#e62912",
+            "coveragePercent": 22.3882
+          },
+          {
+            "hex": "#f4c350",
+            "coveragePercent": 17.6105
+          },
+          {
+            "hex": "#792ca1",
+            "coveragePercent": 4.9917
+          },
+          {
+            "hex": "#b846e2",
+            "coveragePercent": 4.2599
+          }
+        ],
+        "visibleSamples": 869151,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/lava-serpent-v1.png": {
+      "sha256": "55120d9f44d97168ef13af500f48d31706deb062e9b4cc2869b5baac8f023d0e",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "lavaSerpent"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#331413",
+            "coveragePercent": 14.4211
+          },
+          {
+            "hex": "#482726",
+            "coveragePercent": 12.9185
+          },
+          {
+            "hex": "#540e09",
+            "coveragePercent": 10.5813
+          },
+          {
+            "hex": "#800c06",
+            "coveragePercent": 9.027
+          },
+          {
+            "hex": "#b00a05",
+            "coveragePercent": 8.3188
+          },
+          {
+            "hex": "#de0d04",
+            "coveragePercent": 7.4534
+          },
+          {
+            "hex": "#1e0708",
+            "coveragePercent": 6.357
+          },
+          {
+            "hex": "#673d39",
+            "coveragePercent": 6.2065
+          },
+          {
+            "hex": "#75271a",
+            "coveragePercent": 6.1302
+          },
+          {
+            "hex": "#e73808",
+            "coveragePercent": 5.3358
+          },
+          {
+            "hex": "#aa2e12",
+            "coveragePercent": 5.1996
+          },
+          {
+            "hex": "#f36a0e",
+            "coveragePercent": 2.9315
+          },
+          {
+            "hex": "#ad5b38",
+            "coveragePercent": 1.8329
+          },
+          {
+            "hex": "#f9ac1b",
+            "coveragePercent": 1.7148
+          },
+          {
+            "hex": "#f2c458",
+            "coveragePercent": 1.0555
+          },
+          {
+            "hex": "#f8e6a4",
+            "coveragePercent": 0.5161
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#cc0d04",
+            "coveragePercent": 28.1904
+          },
+          {
+            "hex": "#971107",
+            "coveragePercent": 26.9487
+          },
+          {
+            "hex": "#e83407",
+            "coveragePercent": 17.6386
+          },
+          {
+            "hex": "#a13f23",
+            "coveragePercent": 13.2858
+          },
+          {
+            "hex": "#f17814",
+            "coveragePercent": 8.9287
+          },
+          {
+            "hex": "#f6c341",
+            "coveragePercent": 5.0078
+          }
+        ],
+        "visibleSamples": 762240,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/slayer-melee-v1.png": {
+      "sha256": "b5be3c8c5a93a694dc01480cb495d0efdbe7c19d0ba456c78a8086c32dd3f894",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "slayerMelee"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4b382b",
+            "coveragePercent": 15.1583
+          },
+          {
+            "hex": "#3d291c",
+            "coveragePercent": 14.3741
+          },
+          {
+            "hex": "#2c1c13",
+            "coveragePercent": 12.2774
+          },
+          {
+            "hex": "#1b100a",
+            "coveragePercent": 10.4106
+          },
+          {
+            "hex": "#624d39",
+            "coveragePercent": 9.8968
+          },
+          {
+            "hex": "#643a20",
+            "coveragePercent": 7.3892
+          },
+          {
+            "hex": "#816843",
+            "coveragePercent": 5.9256
+          },
+          {
+            "hex": "#86502b",
+            "coveragePercent": 5.6696
+          },
+          {
+            "hex": "#0a0504",
+            "coveragePercent": 5.2202
+          },
+          {
+            "hex": "#a86d38",
+            "coveragePercent": 4.2437
+          },
+          {
+            "hex": "#9e835c",
+            "coveragePercent": 3.1994
+          },
+          {
+            "hex": "#c8964d",
+            "coveragePercent": 2.7884
+          },
+          {
+            "hex": "#e7c16b",
+            "coveragePercent": 1.3202
+          },
+          {
+            "hex": "#bda895",
+            "coveragePercent": 1.1128
+          },
+          {
+            "hex": "#e8e0d0",
+            "coveragePercent": 0.8663
+          },
+          {
+            "hex": "#d33806",
+            "coveragePercent": 0.1473
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#917140",
+            "coveragePercent": 25.9464
+          },
+          {
+            "hex": "#8d502c",
+            "coveragePercent": 25.598
+          },
+          {
+            "hex": "#bc8f4c",
+            "coveragePercent": 20.95
+          },
+          {
+            "hex": "#ae6b36",
+            "coveragePercent": 17.2039
+          },
+          {
+            "hex": "#e3b95f",
+            "coveragePercent": 9.3593
+          },
+          {
+            "hex": "#cf3505",
+            "coveragePercent": 0.9426
+          }
+        ],
+        "visibleSamples": 214147,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/slayer-ranged-v1.png": {
+      "sha256": "4f5f8fb8f8b196b55ebad9acddbda6904ed4f034ebf66117fc15ad08078f16b6",
+      "width": 1448,
+      "height": 1086,
+      "runtimeKeys": [
+        "slayerRanged"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#38271e",
+            "coveragePercent": 20.0685
+          },
+          {
+            "hex": "#261810",
+            "coveragePercent": 14.2176
+          },
+          {
+            "hex": "#46372d",
+            "coveragePercent": 11.0759
+          },
+          {
+            "hex": "#574538",
+            "coveragePercent": 9.5514
+          },
+          {
+            "hex": "#57301d",
+            "coveragePercent": 9.2247
+          },
+          {
+            "hex": "#100906",
+            "coveragePercent": 8.1281
+          },
+          {
+            "hex": "#6c5741",
+            "coveragePercent": 6.3907
+          },
+          {
+            "hex": "#7a4129",
+            "coveragePercent": 6.0678
+          },
+          {
+            "hex": "#826c51",
+            "coveragePercent": 4.3516
+          },
+          {
+            "hex": "#9b6134",
+            "coveragePercent": 3.6412
+          },
+          {
+            "hex": "#96826c",
+            "coveragePercent": 2.3254
+          },
+          {
+            "hex": "#bf8c4d",
+            "coveragePercent": 2.1987
+          },
+          {
+            "hex": "#baa899",
+            "coveragePercent": 0.9782
+          },
+          {
+            "hex": "#e5b970",
+            "coveragePercent": 0.9596
+          },
+          {
+            "hex": "#e7dbcb",
+            "coveragePercent": 0.6643
+          },
+          {
+            "hex": "#db1a03",
+            "coveragePercent": 0.1562
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c492e",
+            "coveragePercent": 32.913
+          },
+          {
+            "hex": "#906d42",
+            "coveragePercent": 22.8908
+          },
+          {
+            "hex": "#be8c4d",
+            "coveragePercent": 17.8481
+          },
+          {
+            "hex": "#a96934",
+            "coveragePercent": 16.6207
+          },
+          {
+            "hex": "#e6b464",
+            "coveragePercent": 8.1422
+          },
+          {
+            "hex": "#da1a03",
+            "coveragePercent": 1.5852
+          }
+        ],
+        "visibleSamples": 498505,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/yomi-attack-v4.png": {
+      "sha256": "1a0aca6ef2f021557094cc5d9391e9a8b4c1af80c2bca5d32797663e591bd9f2",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "yomiAttack"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#32212b",
+            "coveragePercent": 13.7636
+          },
+          {
+            "hex": "#4d3342",
+            "coveragePercent": 11.5302
+          },
+          {
+            "hex": "#200f12",
+            "coveragePercent": 10.0749
+          },
+          {
+            "hex": "#562014",
+            "coveragePercent": 9.1394
+          },
+          {
+            "hex": "#834a35",
+            "coveragePercent": 7.5197
+          },
+          {
+            "hex": "#832811",
+            "coveragePercent": 6.696
+          },
+          {
+            "hex": "#b26c43",
+            "coveragePercent": 5.4321
+          },
+          {
+            "hex": "#b82b14",
+            "coveragePercent": 4.9988
+          },
+          {
+            "hex": "#ee331f",
+            "coveragePercent": 4.8483
+          },
+          {
+            "hex": "#f9e8ec",
+            "coveragePercent": 4.7762
+          },
+          {
+            "hex": "#e5a76e",
+            "coveragePercent": 3.9662
+          },
+          {
+            "hex": "#f0cbb0",
+            "coveragePercent": 3.9269
+          },
+          {
+            "hex": "#51599a",
+            "coveragePercent": 3.8925
+          },
+          {
+            "hex": "#b37cb8",
+            "coveragePercent": 3.8787
+          },
+          {
+            "hex": "#e78f1e",
+            "coveragePercent": 3.539
+          },
+          {
+            "hex": "#a645ed",
+            "coveragePercent": 2.0175
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#96341c",
+            "coveragePercent": 27.268
+          },
+          {
+            "hex": "#bb6c31",
+            "coveragePercent": 21.533
+          },
+          {
+            "hex": "#e22e1c",
+            "coveragePercent": 19.9541
+          },
+          {
+            "hex": "#eda94f",
+            "coveragePercent": 13.996
+          },
+          {
+            "hex": "#505ca1",
+            "coveragePercent": 8.8535
+          },
+          {
+            "hex": "#a84de0",
+            "coveragePercent": 8.3954
+          }
+        ],
+        "visibleSamples": 728335,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/yomi-walk-v4.png": {
+      "sha256": "6076bf4e4b31de7ce2906246d1f4ba15a8b5df8b8e5ed8ed582024894f1ac640",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "yomiWalk"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#42303c",
+            "coveragePercent": 14.444
+          },
+          {
+            "hex": "#2e1e25",
+            "coveragePercent": 13.4006
+          },
+          {
+            "hex": "#1c0e11",
+            "coveragePercent": 10.2847
+          },
+          {
+            "hex": "#5a2215",
+            "coveragePercent": 8.9259
+          },
+          {
+            "hex": "#714432",
+            "coveragePercent": 8.0655
+          },
+          {
+            "hex": "#9b3019",
+            "coveragePercent": 6.7563
+          },
+          {
+            "hex": "#996749",
+            "coveragePercent": 5.9964
+          },
+          {
+            "hex": "#de3727",
+            "coveragePercent": 4.6951
+          },
+          {
+            "hex": "#f4e4dd",
+            "coveragePercent": 4.5122
+          },
+          {
+            "hex": "#cf9c6d",
+            "coveragePercent": 3.874
+          },
+          {
+            "hex": "#4a3f69",
+            "coveragePercent": 3.6051
+          },
+          {
+            "hex": "#eec99a",
+            "coveragePercent": 3.5631
+          },
+          {
+            "hex": "#d48329",
+            "coveragePercent": 3.4739
+          },
+          {
+            "hex": "#9c6cb4",
+            "coveragePercent": 3.1108
+          },
+          {
+            "hex": "#57639f",
+            "coveragePercent": 2.7795
+          },
+          {
+            "hex": "#c4a4cb",
+            "coveragePercent": 2.5132
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a36434",
+            "coveragePercent": 27.931
+          },
+          {
+            "hex": "#992c1b",
+            "coveragePercent": 23.3247
+          },
+          {
+            "hex": "#de3827",
+            "coveragePercent": 18.2883
+          },
+          {
+            "hex": "#df9e4d",
+            "coveragePercent": 17.3205
+          },
+          {
+            "hex": "#515e9c",
+            "coveragePercent": 10.3956
+          },
+          {
+            "hex": "#9c4fd4",
+            "coveragePercent": 2.7399
+          }
+        ],
+        "visibleSamples": 759581,
+        "dominantCoveragePercent": 100.0003
+      }
+    }
+  }
+}
