@@ -1586,6 +1586,22 @@
           "en": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins."
         }
       ]
+    },
+    {
+      "version": "0.9.66_dfa8ee31",
+      "code": "dfa8ee31",
+      "baseVersion": "0.9.66",
+      "slug": "tower-boss-encounters",
+      "summary": {
+        "hu": "Bossok a végtelen toronyban",
+        "en": "Bosses in the Endless Tower"
+      },
+      "fixes": [
+        {
+          "hu": "A torony emeletein váltakozó, meglévő bossok jelennek meg kísérő ellenfelekkel. Életerejük, sebzésük és sebességük az emeletekkel nő; a 11. emelettől két, a 26.-tól három boss is harcol egyszerre. Az öt emeletenkénti checkpointok és a korábbi rekordok megmaradnak.",
+          "en": "Tower floors now feature rotating existing bosses with supporting enemies. Their health, damage and speed increase with each floor; two bosses fight together from floor 11, and three from floor 26. Checkpoints every five floors and previous records are preserved."
+        }
+      ]
     }
   ]
 }

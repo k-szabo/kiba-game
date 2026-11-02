@@ -12,10 +12,12 @@ const first=rules.floor(1,42);same(first,rules.floor(1,42));assert.notDeepEqual(
 assert.equal(first.enemyCount,3);assert.equal(rules.floor(4,42).enemyCount,4);assert.equal(rules.floor(20,42).enemyCount,8);assert.equal(rules.floor(500,42).enemyCount,8);
 for(const number of [1,2,3,4,5,6,7,10,20,100,1e6,Number.MAX_SAFE_INTEGER]){
  const spec=rules.floor(number,0xffffffff);same(spec,rules.floor(number,0xffffffff));assert(spec.enemies.length>=3&&spec.enemies.length<=8);
- assert.equal(spec.elite,number%5===0);assert.equal(spec.enemies.filter(e=>e.towerElite).length,spec.elite?1:0);
+ assert.equal(spec.elite,number%5===0);assert.equal(spec.enemies.filter(e=>e.towerElite).length,0);assert.equal(spec.enemies.filter(e=>e.towerBoss).length,rules.bossCount(number));
  assert.equal(new Set(spec.enemies.map(e=>e.id)).size,spec.enemies.length);
- for(const e of spec.enemies){assert(e.noReward&&e.towerEnemy);assert(!e.miniboss);assert(Number.isSafeInteger(e.maxHp)&&e.maxHp>0);assert(Number.isFinite(e.damageValue)&&e.damageValue>0);assert(e.x>=500&&e.x<rules.layout.width-80);assert.equal(e.y,rules.layout.groundY);assert(e.patrol>=400);assert.equal(e.factionOverride,spec.faction);}
+ for(const e of spec.enemies){assert(e.noReward&&e.towerEnemy);assert.equal(!!e.miniboss,!!e.towerBoss);if(e.towerBoss){assert(rules.bossPool.includes(e.miniboss));assert(e.towerSpeed>=1&&e.towerSpeed<=1.6);assert(e.towerDamageScale>0);}assert(Number.isSafeInteger(e.maxHp)&&e.maxHp>0);assert(Number.isFinite(e.damageValue)&&e.damageValue>0);assert(e.x>=500&&e.x<rules.layout.width-80);assert.equal(e.y,rules.layout.groundY);assert(e.patrol>=400);assert.equal(e.factionOverride,spec.faction);}
 }
+assert.equal(new Set(Array.from({length:7},(_,i)=>rules.floor(i+1,3).enemies[0].miniboss)).size,7);
+assert.equal(rules.floor(10,3).bossCount,1);assert.equal(rules.floor(11,3).bossCount,2);assert.equal(rules.floor(25,3).bossCount,2);assert.equal(rules.floor(26,3).bossCount,3);
 assert.notDeepEqual(plain(rules.floor(21,3)),plain(rules.floor(21+0x100000000,3)),'High integer words take part in deterministic floor identity');
 const regular=rules.floor(1,42).enemies[0],later=rules.floor(101,42).enemies.find(e=>e.kind===regular.kind)||rules.floor(101,42).enemies[0];assert(later.maxHp>regular.maxHp);assert(later.damageValue>regular.damageValue);
 let run=rules.fresh(0x12345678,'naginata'),kills=0,elapsed=0;
