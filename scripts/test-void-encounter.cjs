@@ -10,7 +10,7 @@ for(const fps of [30,60,120]){
  // A real warned projectile carries an attempt/generation owner into impact.
  r('initPlayer({x:1550,y:940});player.hp=player.maxHp=100;player.inv=0;');
  for(let i=0;i<fps*10&&r('projectiles.length')===0;i++)r(`VoidEncounter.update(1/${fps});`);
- assert(r('projectiles.length>0'));r('var projectile=projectiles[0],victim=player,priorHp=player.hp;damage(4,1,true);VoidEncounter.projectile(projectile,victim,priorHp);');assert.equal(r('VoidEncounter.snapshot.hp'),1004);
+ assert(r('projectiles.length>0'));r('var projectile=projectiles[0],victim=player,priorHp=player.hp;damage(4,1,true);VoidEncounter.projectile(projectile,victim,priorHp);');assert.equal(r('VoidEncounter.snapshot.hp'),1080);
  r('var savedHp=VoidEncounter.snapshot.hp;VoidEncounter.projectile(projectile,player,player.hp);');assert.equal(r('VoidEncounter.snapshot.hp'),r('savedHp'),'Invulnerable/zero-loss impacts cannot heal');
  r('var oldProjectile=projectile,oldVictim=player;revive();');assert.equal(r('VoidEncounter.snapshot.phase'),'lieutenant');r('var currentHp=VoidEncounter.snapshot.hp;VoidEncounter.projectile(oldProjectile,oldVictim,100);');assert.equal(r('VoidEncounter.snapshot.hp'),r('currentHp'));
  r('VoidEncounter.hit(VoidEncounter.actor,10000);VoidEncounter.update(2);VoidEncounter.hit(VoidEncounter.actor,10000);');assert(r("flags[3].includes('voidDemonDefeated')"));assert.equal(r('fiaJourney.voidInfection'),10);assert(!r('VoidEncounter.locked()'));assert.doesNotThrow(()=>validate(r('captureProgress()')));

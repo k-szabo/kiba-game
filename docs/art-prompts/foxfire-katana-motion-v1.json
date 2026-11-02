@@ -1,0 +1,26 @@
+{
+  "id": "foxfire-katana-motion-v1",
+  "tool": "built-in imagegen",
+  "approval": {
+    "storyboard": "exec-e6addb91-951e-4bb5-b899-f54bba3c4f0e.png",
+    "user": "Explicit approval of eight poses: four normal, four heavy. Timing and reach unchanged."
+  },
+  "assets": [
+    {
+      "file": "assets/images/momo-foxfire-normal-v1.png",
+      "source": "exec-6afca430-63d4-4a57-9653-f5e59c7c8864.png"
+    },
+    {
+      "file": "assets/images/momo-foxfire-heavy-v1.png",
+      "source": "exec-b05d1ef5-f6b6-4fb8-84a5-b450c28fc9fb.png"
+    }
+  ],
+  "prompt": "Four complete right-facing Momo shiba samurai sprites in a two by two native-alpha atlas. Match existing Momo identity and purple/gold Foxfire Katana. Normal: low guard, windup, rising diagonal cut with violet fox-shaped flame, low recovery. Heavy: front diagonal guard with both paws on one handle, overhead preparation, deep downward cut with fox crescent, grounded recovery. One continuous constant-length sword, two natural paws, full feet, ears, tail and blade within separate cells. No labels, grid, floor, shadows or background. Preserve navy/gold armor and red headband.",
+  "registration": "ART_FOXFIRE; original PNGs copied unchanged. Frame rectangles follow native-alpha separation, paw anchors measured from opaque warm-colored paw pixels. Constant bodyHeight370. No Python pixel edits.",
+  "mechanics": {
+    "baseDamagePerSecond": 1,
+    "durationSeconds": 3,
+    "stacking": "refresh duration only; preserve next tick",
+    "scope": "successful normal/heavy relic hits; original encounter protection/defeat handlers"
+  }
+}

@@ -92,16 +92,16 @@
     "pc": 2,
     "npcs": 88,
     "objects": 125,
-    "paletteGroups": 224,
-    "assets": 267,
-    "codeColors": 93
+    "paletteGroups": 226,
+    "assets": 269,
+    "codeColors": 94
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "02faf3de2795e8a33dd49420b712bca4a2c608b337036122d1e51da51498c04d",
+      "sha256": "5d7e396f4095b360748164032d690779eec84616b762fa889649886b54ca06c3",
       "counts": {
-        "codeColors": 93
+        "codeColors": 94
       }
     },
     {
@@ -164,16 +164,16 @@
     },
     {
       "file": "colormaps/player.json",
-      "sha256": "d86b0e69f2e5b7d9c79cc6f1087453c0442f23730b4d47ebe0b947ffbebb3a7b",
+      "sha256": "edc575606b279d4b55dc7635780d5bbd276f21e3c8e82345d3cde814304e9005",
       "counts": {
         "pc": 2,
-        "paletteGroups": 9,
-        "assets": 10
+        "paletteGroups": 11,
+        "assets": 12
       }
     },
     {
       "file": "colormaps/shadow-cult.json",
-      "sha256": "4c549780810ccabdccb58310dabea7c658321b24f64ef3b82d198ea983c13dbd",
+      "sha256": "3af59561139f86c8b6de72faea5cb020a574f07428b813cc97f6ee2aa11cf453",
       "counts": {
         "npcs": 37,
         "paletteGroups": 41,

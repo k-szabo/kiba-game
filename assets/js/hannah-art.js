@@ -119,7 +119,7 @@ const HannahArt=(()=>{
    const t=v.rescueTime;
    stamp(ART_KITSUNE.fia,t!==null&&t>.6&&t<1.8?2:0,1550,floor,150,1);
    const image=Visuals.images[ART_KITSUNE.fia.image];
-   if(image?.complete&&image.naturalWidth)nameplate(1550,floor,150,'fia.name');
+   if(image?.complete&&image.naturalWidth){nameplate(1550,floor,150,'fia.name');CampArt.questMarker('fia',{x:1550,y:floor},150);}
    if(t!==null&&t<.8)FiaArt.effect('teleport',Math.min(3,Math.floor(t*5)),1550,floor-75,190,210,.8);
    if(t!==null&&t>=.8&&t<1.8){const p=(t-.8);FiaArt.effect('foxfire',1,1580+700*p,floor-80-105*p,135,135,.9);}
   }else if(v.rescueTime!==null&&v.rescueTime>=.8&&v.rescueTime<1.8){

@@ -1206,7 +1206,7 @@
       "fia.ritual.victory": "Momo pengéje széthasítja az oltár utolsó fényét. A relikviák porrá omlanak, Fia rókalángja pedig egy katanába húzódik vissza.\n\nOdakint idegen Kiba fut végig az Árnyékzug lakóin. A vendéget váró arcok eltorzulnak. Momo nem időzhet a győzelme mellett — ki kell jutnia innen.",
       "item.foxfireKatana": "Rókaláng-katana",
       "weapon.foxfireKatana.item": "Rókaláng-katana",
-      "inventory.description.foxfireKatana": "Fia hátramaradt rókalángját őrző katana. A katana mozdulatait használja, 20%-kal nagyobb sebzéssel. Normál támadás: {0} sebzés. Erős támadás: {1} sebzés.",
+      "inventory.description.foxfireKatana": "Fia hátramaradt rókalángját őrző katana. Egyedi csapásai 20%-kal nagyobb sebzést okoznak, és 3 másodpercre lángra lobbantják az ellenfelet, másodpercenként 1 alap sebzéssel. Az újabb találat az égés idejét frissíti. Normál támadás: {0} sebzés. Erős támadás: {1} sebzés.",
       "fia.ritual.objective.call": "Hívd össze Fia két udvarlányát: {0}/2.",
       "fia.ritual.objective.return": "Térj vissza Fia rituálészobájába.",
       "fia.ritual.objective.fight": "Győzd le Fiát.",
@@ -1223,7 +1223,12 @@
       "menu.changelog.0963.fb5ba452.title": "Párbajplatformok és főmenü javítása",
       "menu.changelog.0963.fb5ba452.0": "Párbajban is leugorhatsz a lebegő platformokról a lefelé mozgás és ugrás együttes használatával.",
       "menu.changelog.0963.fb5ba452.1": "A főmenü támogatásgombja a többi kiegészítő gomb mellett jelenik meg.",
-      "menu.changelog.0963.fb5ba452.2": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0963.fb5ba452.2": "Belső karbantartás és technikai fejlesztések.",
+      "menu.changelog.0963.4f9a5322.title": "Sárkányraid és Fia küldetéseinek javításai",
+      "menu.changelog.0963.4f9a5322.0": "A sárkány és a tartóoszlopok a talajhoz igazodnak; az oszlopok idővel megrepednek és egyenként összeomlanak. A repülő sárkány alakja egyben marad.",
+      "menu.changelog.0963.4f9a5322.1": "Az új árnyékzugi helyszínek járható talaja látható, a hátterek kevésbé nagyítottak, a kapu őrei pedig az alvilági bejáratnál állnak.",
+      "menu.changelog.0963.4f9a5322.2": "Fia új küldetéseit felkiáltójel és kérdőjel jelzi; a láncokból való kiszabadulást a Hajnalkard aktuális gombját mutató jelzés segíti.",
+      "menu.changelog.0963.4f9a5322.3": "A void démon a ténylegesen okozott életerővesztés húszszorosát gyógyulja. A Rókaláng-katana egyedi animációt és frissíthető égési sebzést kapott."
     }
   },
   "en": {
@@ -2433,7 +2438,7 @@
       "fia.ritual.victory": "Momo’s blade cleaves the altar’s last light. The relics crumble to dust, and Fia’s foxfire retreats into a katana.\n\nOutside, alien Kiba spreads through the people of the Shadow Den. Faces that once welcomed a guest twist into something else. Momo cannot linger over his victory — he must get out.",
       "item.foxfireKatana": "Foxfire Katana",
       "weapon.foxfireKatana.item": "Foxfire Katana",
-      "inventory.description.foxfireKatana": "A katana holding Fia’s lingering foxfire. Uses katana moves with 20% greater damage. Normal attack: {0} damage. Heavy attack: {1} damage.",
+      "inventory.description.foxfireKatana": "A katana holding Fia’s lingering foxfire. Its unique strikes deal 20% greater damage and ignite enemies for 3 seconds, dealing 1 base damage per second. Further hits refresh the burn duration. Normal attack: {0} damage. Heavy attack: {1} damage.",
       "fia.ritual.objective.call": "Summon Fia’s two attendants: {0}/2.",
       "fia.ritual.objective.return": "Return to Fia’s ritual chamber.",
       "fia.ritual.objective.fight": "Defeat Fia.",
@@ -2450,7 +2455,12 @@
       "menu.changelog.0963.fb5ba452.title": "Duel platform and main menu fixes",
       "menu.changelog.0963.fb5ba452.0": "You can now drop through floating platforms in duels by pressing down and jump together.",
       "menu.changelog.0963.fb5ba452.1": "The main menu support button now appears beside the other utility buttons.",
-      "menu.changelog.0963.fb5ba452.2": "Internal maintenance and technical improvements."
+      "menu.changelog.0963.fb5ba452.2": "Internal maintenance and technical improvements.",
+      "menu.changelog.0963.4f9a5322.title": "Dragon raid and Fia quest fixes",
+      "menu.changelog.0963.4f9a5322.0": "The drake and supporting pillars align with the ground; pillars crack over time and collapse one by one. The flying drake’s silhouette stays intact.",
+      "menu.changelog.0963.4f9a5322.1": "The new Shadow Den locations show solid ground, backgrounds are less enlarged, and the gate guards stand at the underworld entrance.",
+      "menu.changelog.0963.4f9a5322.2": "Fia’s new quests use exclamation and question marks; a cue showing Dawnblade’s current binding helps you break free of the chains.",
+      "menu.changelog.0963.4f9a5322.3": "The Void Demon heals for twenty times the health it actually removes. The Foxfire Katana has unique animations and a refreshing burn effect."
     }
   }
 }

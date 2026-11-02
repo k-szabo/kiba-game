@@ -25,11 +25,12 @@ for(const bad of [undefined,null,0,-1,NaN,Infinity,Number.MAX_VALUE,Number.MAX_S
  const hit=rules.hit(demon,bad),heal=rules.heal(demon,bad,demonOwner);assert.equal(hit.ok,false);assert.equal(heal.ok,false);assert.equal(hit.reason,'invalidAmount');assert.equal(heal.reason,'invalidAmount');same(hit.state,demon);same(heal.state,demon);
 }
 // The caller supplies actual HP loss after armor/shield/invulnerability. Zero
-// restores nothing; a fractional remaining loss is healed exactly, not nominal damage.
+// restores nothing; only the fractional remaining loss receives the drain multiplier.
 const guarded=rules.heal(demon,0,demonOwner);assert.equal(guarded.healed,0);same(guarded.state,demon);
-const actual=rules.heal(demon,.25,demonOwner);assert(actual.ok);assert.equal(actual.healed,.25);assert.equal(actual.state.hp,1000.25);same(demon,transition.state);
-const wounded=rules.hit(demon,200).state,healed=rules.heal(wounded,150,demonOwner);assert.equal(healed.state.hp,950);assert.equal(healed.healed,150);assert.equal(healed.event,null);
-for(const gain of [1000,1001,Number.MAX_SAFE_INTEGER]){
+assert.equal(rules.tuning.lifeStealMultiplier,20);
+const actual=rules.heal(demon,.25,demonOwner);assert(actual.ok);assert.equal(actual.healed,5);assert.equal(actual.state.hp,1005);same(demon,transition.state);
+const wounded=rules.hit(demon,200).state,healed=rules.heal(wounded,3,demonOwner);assert.equal(healed.state.hp,860);assert.equal(healed.healed,60);assert.equal(healed.event,null);
+for(const gain of [50,50.05,1000,Number.MAX_SAFE_INTEGER]){
  const overwhelmed=rules.heal(demon,gain,demonOwner);assert(overwhelmed.ok);assert.equal(overwhelmed.healed,1000);assert.equal(overwhelmed.state.hp,2000);assert(overwhelmed.state.failed);assert.equal(overwhelmed.state.phase,'overwhelmed');assert.equal(overwhelmed.event,'overwhelmed');assert(rules.valid(overwhelmed.state));
  assert.equal(rules.hit(overwhelmed.state,1e6).ok,false);assert.equal(rules.heal(overwhelmed.state,1,demonOwner).ok,false);assert.equal(rules.emerge(overwhelmed.state).ok,false);
 }

@@ -91,7 +91,12 @@ const FiaRitual=(()=>{
  function hud(){if(!active()||!encounter)return false;const e=encounter.enemy;$('bossHud').hidden=e.dead;if(!e.dead){$('bossName').textContent=I18n.t('fia.name')+(e.ritualEmpowered?' · '+I18n.t('fia.ritual.consumed'):'');$('bossHealth').style.width=Math.max(0,e.hp/e.maxHp)*100+'%';}return true;}
  function replay(){if(!DevSession.active||state!=='developer'||!DevTools.isOpen||!active())return false;clear();state='play';initPlayer({x:620,y:820});const ok=begin(true);state='developer';DevTools.setReturnState('play');resetCamera();return ok;}
  function populateHostiles(){
-  if(level!==shadowUnderworld||!has('fiaRitualCompleted'))return;
+  if(level!==shadowUnderworld)return;
+  if(has('fiaSlain'))for(const npc of level.guards){
+   if(enemies.some(e=>e.id===npc.id))continue;
+   const e=ArenaCombat.create({id:npc.id,x:npc.x-50,y:npc.y,miniboss:'arenaCyclops',singleGuard:true,denRetaliation:true,noReward:true,arena:{x:1160,y:npc.y,w:440}});e.active=true;enemies.push(e);
+  }
+  if(!has('fiaRitualCompleted'))return;
   for(const npc of level.npcs){const id='void-service-'+npc.service;if(enemies.some(e=>e.id===id))continue;
    const e=createEnemy({id,x:npc.x,y:npc.y,kind:'mage',patrol:400,noReward:true,underworldHostileRole:npc.service,factionOverride:'shadowCult'});
    e.hp=e.maxHp=120;e.w=64;e.h=132;e.y=npc.y-e.h;e.baseY=e.y;e.damageValue=3;e.patrolLeft=20;e.patrolRight=level.width-80;e.origin=e.x;enemies.push(e);

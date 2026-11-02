@@ -2843,97 +2843,97 @@
         "dominant": [
           {
             "hex": "#6b4c4e",
-            "coveragePercent": 10.1792
+            "coveragePercent": 10.1818
           },
           {
             "hex": "#553b42",
-            "coveragePercent": 9.1017
+            "coveragePercent": 9.1094
           },
           {
             "hex": "#836159",
-            "coveragePercent": 8.4186
+            "coveragePercent": 8.4147
           },
           {
             "hex": "#b28a83",
-            "coveragePercent": 8.2665
+            "coveragePercent": 8.26
           },
           {
             "hex": "#9a756f",
-            "coveragePercent": 8.0387
+            "coveragePercent": 8.0369
           },
           {
             "hex": "#0f0505",
-            "coveragePercent": 7.9595
+            "coveragePercent": 7.9641
           },
           {
             "hex": "#442b31",
-            "coveragePercent": 7.9127
+            "coveragePercent": 7.919
           },
           {
             "hex": "#25110f",
-            "coveragePercent": 7.59
+            "coveragePercent": 7.5953
           },
           {
             "hex": "#c39e98",
-            "coveragePercent": 6.5656
+            "coveragePercent": 6.5588
           },
           {
             "hex": "#311c22",
-            "coveragePercent": 6.1388
+            "coveragePercent": 6.1439
           },
           {
             "hex": "#9f7791",
-            "coveragePercent": 4.2769
+            "coveragePercent": 4.2748
           },
           {
             "hex": "#7e5877",
-            "coveragePercent": 3.6289
+            "coveragePercent": 3.6317
           },
           {
             "hex": "#613c2a",
-            "coveragePercent": 3.6047
+            "coveragePercent": 3.6024
           },
           {
             "hex": "#432417",
-            "coveragePercent": 3.5735
+            "coveragePercent": 3.5721
           },
           {
-            "hex": "#d5b8b0",
-            "coveragePercent": 3.2788
+            "hex": "#d6b8b0",
+            "coveragePercent": 3.2709
           },
           {
             "hex": "#eedcd1",
-            "coveragePercent": 1.466
+            "coveragePercent": 1.4641
           }
         ],
         "accents": [
           {
             "hex": "#89583c",
-            "coveragePercent": 38.975
+            "coveragePercent": 38.9961
           },
           {
             "hex": "#9a694b",
-            "coveragePercent": 29.3332
+            "coveragePercent": 29.2985
           },
           {
             "hex": "#b27d58",
-            "coveragePercent": 16.8148
+            "coveragePercent": 16.8053
           },
           {
             "hex": "#d09b6a",
-            "coveragePercent": 6.8802
+            "coveragePercent": 6.887
           },
           {
             "hex": "#7b4484",
-            "coveragePercent": 6.6442
+            "coveragePercent": 6.6578
           },
           {
             "hex": "#9554ab",
-            "coveragePercent": 1.3526
+            "coveragePercent": 1.3554
           }
         ],
-        "visibleSamples": 803194,
-        "dominantCoveragePercent": 100.0001
+        "visibleSamples": 802294,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.dungeon.raisedSamurai.walk": {

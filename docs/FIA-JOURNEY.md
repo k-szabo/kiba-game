@@ -33,6 +33,13 @@ támad. A tűz és árnyék mellett külön, előre rögzített célterületű f
 harapás szerepel. A fizikai támadás csak közelről indul; távolról a boss
 területi mágiát választ. A fej rajzolása és találati teste ugyanazt a pozíciót
 használja. A négy tartóoszlop összesen 180 aktív másodpercet ad a záróharchoz.
+Az aktuális oszlop 45 másodperc alatt repedezik meg; a határidőnél eldől,
+és a festett kőalap törmelékként megmarad. A látható kő és a sárkány
+minden frontális pózának saját talppontja az Y=1300-as talajhoz illeszkedik.
+Az utolsó oszlop 0,8 aktív másodperces összeomlása után indul az újrapróbálás;
+a 180. másodperctől a harc már sikertelen, győzelem vagy kilépés nem válthatja ki.
+A repülő képet nem vágjuk fel szárny- és testdarabokra: egyben, a hát
+regisztrációja körül enyhén billen, így nem keletkezik metszés a lábakon.
 
 A harmadik fázisban a fej alapból védett. A két első láb külön-külön
 120 HP-s; mindkettő lesebzése 0,65 másodperces összeesést indít, és törli
@@ -83,7 +90,7 @@ A tiltott negyed három hasadékőre külön natív grafikát és járás/támad
 pózokat használ. A hadnagy 1000 HP-ról indul; az első, 70%-ot átlépő
 találat 700 HP-n áll meg. Az elnyelés kitakarítja a korábbi támadásokat;
 a démon új generációval, 1000/2000 HP-val jelenik meg. A démon kizárólag
-a saját támadásából ténylegesen elvesztett Momo-HP-t gyógyítja vissza.
+a saját támadásából ténylegesen elvesztett Momo-HP húszszorosát gyógyítja vissza.
 Pajzs, páncél, dash/immunitás vagy halál utáni új játékospéldány nem ad
 fiktív gyógyulást. A lövedék egyszer használható tulajdonosi tokenje az
 eredeti kísérletet és generációt rögzíti. Teljes visszagyógyulás külön
@@ -151,6 +158,34 @@ rendes E-kijáraton át történő menekülés. HU/EN képek készültek 1280×7
 és 1920×1080 méretben, a négy erő jelzéseiről/becsapódásairól és a natív
 pózokról is. Nem volt konzol- vagy assethiba. A harci fázisokat a teszt
 szintetikus találatokkal léptette, így ez nem teljes manuális végigjátszás.
+
+## Az új helyszínek és az ereklyefegyver javításai
+
+A rituálészoba és a tiltott negyed háttere a nézethez illesztett léptéket
+használ; a relikviák ugyanebből a háttér-regisztrációból kapják a helyüket.
+A tényleges járható platformokat a `FiaVoidArt.scenery` is kirajzolja:
+az alvilágban a három emeleti padlót, a másik két helyszínen a teljes talajt.
+Az útvonal és a mentett pihenőpontok helye változatlan. A két kapuőr az
+alvilág alsó emeletén, a tiltott negyed bejárata előtt áll, Fia halála után
+ugyanott válik külön, jutalom nélküli ellenséggé. Pihenés nem helyezi át őket.
+
+A tróntermi Fia ugyanazt a küldetésmarker-útvonalat használja, mint a
+lakosztályi. A rituálé kitörési állapotában külön, Momo feje fölötti jelzés
+mutatja a Hajnalkard aktuális kötését; nem kerül be új, hardkódolt billentyű.
+
+A `foxfire.js` átmeneti, célpéldányhoz és helyszínhez kötött égése csak a
+Rókaláng-katana ténylegesen sebző normál/erős találata után indul. Három
+aktív másodperc alatt háromszor 1 alap sebzést okoz. Új találat az időt
+frissíti, a következő sebzési időpontot nem tolja el, és nincs halmozás.
+A bossok saját találati/fázis- és vereségkezelői érvényesülnek; lezárt vagy
+újraindított találkozás, lecserélt játékos és eltávolított cél nem örökli.
+Az égés nem kerül mentésbe, párbajba vagy a Hajnalkard külön támadására.
+A katana négy normál és négy erős natív képkockáját az `ART_FOXFIRE`
+regisztrálja, változatlan támadási időzítéssel és hatótávval.
+
+Ellenőrzések: `test-fia-bugfixes.cjs`, `test-foxfire-burn.cjs` és a meglévő
+rituáléteszt átállított billentyűs kitörési jelzése. A képek és háttérlépték
+böngészős vizsgálata továbbra is külön szükséges a VM-ellenőrzéstől.
 
 ## Második küldetés
 

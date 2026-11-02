@@ -648,6 +648,34 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.63_4f9a5322",
+      "code": "4f9a5322",
+      "baseVersion": "0.9.63",
+      "slug": "dragon-fia-world-relic-fixes",
+      "summary": {
+        "hu": "Sárkányraid és Fia küldetéseinek javításai",
+        "en": "Dragon raid and Fia quest fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A sárkány és a tartóoszlopok a talajhoz igazodnak; az oszlopok idővel megrepednek és egyenként összeomlanak. A repülő sárkány alakja egyben marad.",
+          "en": "The drake and supporting pillars align with the ground; pillars crack over time and collapse one by one. The flying drake’s silhouette stays intact."
+        },
+        {
+          "hu": "Az új árnyékzugi helyszínek járható talaja látható, a hátterek kevésbé nagyítottak, a kapu őrei pedig az alvilági bejáratnál állnak.",
+          "en": "The new Shadow Den locations show solid ground, backgrounds are less enlarged, and the gate guards stand at the underworld entrance."
+        },
+        {
+          "hu": "Fia új küldetéseit felkiáltójel és kérdőjel jelzi; a láncokból való kiszabadulást a Hajnalkard aktuális gombját mutató jelzés segíti.",
+          "en": "Fia’s new quests use exclamation and question marks; a cue showing Dawnblade’s current binding helps you break free of the chains."
+        },
+        {
+          "hu": "A void démon a ténylegesen okozott életerővesztés húszszorosát gyógyulja. A Rókaláng-katana egyedi animációt és frissíthető égési sebzést kapott.",
+          "en": "The Void Demon heals for twenty times the health it actually removes. The Foxfire Katana has unique animations and a refreshing burn effect."
+        }
+      ]
     }
   ],
   "releases": [
