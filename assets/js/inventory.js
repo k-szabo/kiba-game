@@ -103,6 +103,7 @@ const Inventory=(()=>{
   else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
+  if(typeof TowerMode!=='undefined'&&TowerMode.active)return false;
   if(state!=='play'||!player)return false;
   returnFocus=document.activeElement;keys.clear();pressed.clear();state='inventory';$('inventory').hidden=false;render();$('closeInventory').focus();return true;
  }

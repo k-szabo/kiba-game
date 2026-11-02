@@ -2268,6 +2268,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/endless-tower-motion-b-v1.png": {
+      "sha256": "01956a612f27104409488a6753b8988b9e960fb58e193fd4a737241c58943c74",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "towerBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#0a0305",
+            "coveragePercent": 22.3666
+          },
+          {
+            "hex": "#181119",
+            "coveragePercent": 16.8503
+          },
+          {
+            "hex": "#31110c",
+            "coveragePercent": 15.143
+          },
+          {
+            "hex": "#582314",
+            "coveragePercent": 8.936
+          },
+          {
+            "hex": "#3d2d3a",
+            "coveragePercent": 6.7642
+          },
+          {
+            "hex": "#67464f",
+            "coveragePercent": 5.4607
+          },
+          {
+            "hex": "#894221",
+            "coveragePercent": 4.9707
+          },
+          {
+            "hex": "#a36559",
+            "coveragePercent": 3.7211
+          },
+          {
+            "hex": "#e78d51",
+            "coveragePercent": 3.0298
+          },
+          {
+            "hex": "#f8ba6b",
+            "coveragePercent": 2.5228
+          },
+          {
+            "hex": "#d45f2b",
+            "coveragePercent": 2.4563
+          },
+          {
+            "hex": "#232660",
+            "coveragePercent": 2.2933
+          },
+          {
+            "hex": "#48429b",
+            "coveragePercent": 2.0703
+          },
+          {
+            "hex": "#6d60d0",
+            "coveragePercent": 1.5799
+          },
+          {
+            "hex": "#9a97f1",
+            "coveragePercent": 0.9981
+          },
+          {
+            "hex": "#fce7a5",
+            "coveragePercent": 0.8367
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9a4c2d",
+            "coveragePercent": 32.8418
+          },
+          {
+            "hex": "#d87343",
+            "coveragePercent": 26.4974
+          },
+          {
+            "hex": "#f7b464",
+            "coveragePercent": 20.8866
+          },
+          {
+            "hex": "#3e3999",
+            "coveragePercent": 7.6053
+          },
+          {
+            "hex": "#5c53bd",
+            "coveragePercent": 7.0874
+          },
+          {
+            "hex": "#816ceb",
+            "coveragePercent": 5.0815
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/endless-tower-v1.png": {
+      "sha256": "282b8cb44e22e63b9f7d082cee7dcb6c72eeaf1041bdb77c7e029d4568acd9cf",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "towerBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#080305",
+            "coveragePercent": 20.7874
+          },
+          {
+            "hex": "#16111b",
+            "coveragePercent": 14.9563
+          },
+          {
+            "hex": "#280d0b",
+            "coveragePercent": 13.8154
+          },
+          {
+            "hex": "#451c13",
+            "coveragePercent": 10.172
+          },
+          {
+            "hex": "#34293f",
+            "coveragePercent": 7.6129
+          },
+          {
+            "hex": "#6a301c",
+            "coveragePercent": 6.1268
+          },
+          {
+            "hex": "#674651",
+            "coveragePercent": 5.5755
+          },
+          {
+            "hex": "#9b4b28",
+            "coveragePercent": 3.8187
+          },
+          {
+            "hex": "#a86a5f",
+            "coveragePercent": 3.1898
+          },
+          {
+            "hex": "#ea9454",
+            "coveragePercent": 2.9582
+          },
+          {
+            "hex": "#f9c171",
+            "coveragePercent": 2.4678
+          },
+          {
+            "hex": "#373581",
+            "coveragePercent": 2.268
+          },
+          {
+            "hex": "#dc672f",
+            "coveragePercent": 2.2491
+          },
+          {
+            "hex": "#645abb",
+            "coveragePercent": 1.9414
+          },
+          {
+            "hex": "#978feb",
+            "coveragePercent": 1.2271
+          },
+          {
+            "hex": "#fbedb3",
+            "coveragePercent": 0.8334
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b4b2d",
+            "coveragePercent": 33.2551
+          },
+          {
+            "hex": "#d87542",
+            "coveragePercent": 26.8068
+          },
+          {
+            "hex": "#f7b565",
+            "coveragePercent": 22.0202
+          },
+          {
+            "hex": "#3c3895",
+            "coveragePercent": 6.7799
+          },
+          {
+            "hex": "#5b54ba",
+            "coveragePercent": 6.6024
+          },
+          {
+            "hex": "#826ce9",
+            "coveragePercent": 4.5357
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/backgrounds/fia-chambers-motion-b-v1.png": {
       "sha256": "33d6b1f644c5a5306f782b126bbedb52f5be40f847e4dd14ed83290b403e900b",
       "width": 1536,

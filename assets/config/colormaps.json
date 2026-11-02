@@ -93,15 +93,15 @@
     "npcs": 90,
     "objects": 125,
     "paletteGroups": 228,
-    "assets": 271,
-    "codeColors": 95
+    "assets": 273,
+    "codeColors": 98
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "07bc70cd9add74c0298d7fc75fc3e786716db62ce168f8ad55866057dea5f740",
+      "sha256": "30bbf74b2f6f083d0237dd063077bc16bf07e80728bfcb82d401d6254984e1d6",
       "counts": {
-        "codeColors": 95
+        "codeColors": 98
       }
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "d30d6f9434e4826b2fb3d26a420c9bda484afd543be49c179e5faa3ff6da101e",
+      "sha256": "763ef16d61dbc638d02fab483025cff447b75df03a627d0c64da28c309832265",
       "counts": {
         "paletteGroups": 11,
-        "assets": 104
+        "assets": 106
       }
     },
     {

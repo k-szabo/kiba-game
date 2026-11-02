@@ -1,0 +1,16 @@
+{
+  "tool": "built-in imagegen",
+  "concept": "exec-551ac0ee-1598-4434-9c4c-c0d49a08b8bd.png",
+  "approval": "User explicitly approved the environment concept in this conversation before production.",
+  "asset": "assets/images/backgrounds/endless-tower-v1.png",
+  "output": "exec-a563b243-032d-4e6b-84c5-a4e501fc3b81.png",
+  "prompt": "Production background based on APPROVED right arena panel of reference. Render onlywide interior sideview scene, NO exterior panel. Highresolution2560x1440 detailed painted Japanese fantasy grand ancient pagodafloor. Heavy darktimberbeams, stonecolumns, mutedbronze/brassfittings, paper screens, hanging lanterns, central distant winding staircase BEHIND backwall rail decorativeonly. FOUR high spaced windows showing forestmist, volcanicredglow, goldenclouds, purple moonlitnight fromlefttoright. Readable calm foreground, fullwidth quiet unobstructed stonecombatfloor, no foreground columns blockingcombat, no perspective paths intruding. Flooring horizontalwalkedge at EXACT82% imageheight; belowedge richlypainted structuralstonefillingrestofimage. Low walkways at background depth, no unplayableforegroundledges. Quiet darkblue/indigo/bronze palette, warm lanternhighlights, controlledcontrast so enemiesclear. Layeredpaintedtexture and atmosphericdepth matchingreference. NO people, dogs, silhouettes, enemies, text, UI, numbers, labels, watermarks, collages. Compositioncompleteandcontinuous edge-to-edge. Preserveapprovedarchitecture. This singleimage is mainarena backdrop; gameplay platforms separatelydrawn.",
+  "motion": {
+    "sketch": "exec-76cdfcdf-d3f9-4510-8aa0-f0f56dca9aef.png",
+    "approval": "User explicitly approved the four-panel flame/window-mist storyboard before production.",
+    "asset": "assets/images/backgrounds/endless-tower-motion-b-v1.png",
+    "output": "exec-d44d685f-bece-422e-9336-2a27bf3e1020.png",
+    "reference": "assets/images/backgrounds/endless-tower-v1.png",
+    "prompt": "Precise image edit, final approved background animation B phase. EDIT TARGET reference wholeimage. KEEP EXACT same1672x941canvas, SAMEpixels/composition/colors/geometry forALL architecture, beams, stairs, pillars, windowframes, lantern metal frames, floor and decorativeobjects. No zoom crop camera move reposition or size change. Change ONLY painted flame tips inside the existinglanterns slightlycurling them toopposite side, and soft clouds/mist ONLY insidefourwindowopenings justslightly drifted andreshaped. Keepallwindowsceneryhorizons, mountains/sun/moon/buildings stationary. The desired resulting secondphase is a very subtle nearbytimeinstant ofthe ORIGINAL painting, not anewinterpretation. No overlayarrows, annotations, labels or effects beyondmovingpaintedflamemist. Detailedpaintedstyleidentical tooriginal. Absolutely NO structuralmovement. Exact1672x941PNG canvas required. No people ortext."
+  }
+}

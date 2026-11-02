@@ -53,6 +53,7 @@ const DevTools=(()=>{
   tools.set(tool.id,Object.freeze({...tool}));if(opened)refresh();
  }
  function open(){
+  if(typeof TowerMode!=='undefined'&&TowerMode.active)return false;
   if(!initialized||resolutionBlocked)return false;if(opened)return true;
   if(!['menu','play','pause','inventory','map','training','help','dialog','shop','slayerSpell','campService','dungeonMenu','won'].includes(state))return false;
   origin=state;returnFocus=document.activeElement;opened=true;session++;message='';state='developer';keys.clear();pressed.clear();

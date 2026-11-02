@@ -1554,6 +1554,22 @@
           "en": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks."
         }
       ]
+    },
+    {
+      "version": "0.9.64_efc29303",
+      "code": "efc29303",
+      "baseVersion": "0.9.64",
+      "slug": "endless-tower-challenge",
+      "summary": {
+        "hu": "Végtelen torony",
+        "en": "Endless Tower"
+      },
+      "fixes": [
+        {
+          "hu": "Új, különálló toronykihívás indulhat a főmenüből, egyre nehezedő emeletekkel, választható kezdő fegyverrel, öt emeletenkénti checkpointtal és mentett rekorddal. A kalandmentés változatlan marad.",
+          "en": "Start a new standalone tower challenge from the main menu, with increasingly difficult floors, a choice of starting weapon, checkpoints every five floors and a saved personal best. Your journey save is preserved."
+        }
+      ]
     }
   ]
 }

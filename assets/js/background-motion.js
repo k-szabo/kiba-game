@@ -5,6 +5,14 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  towerBackdrop:{asset:'towerBackdropMotionPhaseB',regions:[
+   ['window-forest',13,[[.075,.225],[.18,.225],[.18,.32],[.075,.32]],10],
+   ['window-fire',14,[[.24,.235],[.345,.235],[.345,.335],[.24,.335]],10],
+   ['window-sky',15,[[.64,.32],[.76,.32],[.76,.415],[.64,.415]],10],
+   ['window-night',16,[[.845,.32],[.96,.32],[.96,.415],[.845,.415]],10],
+   ['lantern-centre',2.4,[[.482,.105],[.51,.105],[.51,.17],[.482,.17]],4],
+   ['lantern-left',2.8,[[.297,.125],[.316,.125],[.316,.17],[.297,.17]],4]
+  ]},
   fiaRitualBackdrop:{asset:'fiaRitualBackdropMotionPhaseB',regions:[['flame-ritual',11,[[.085,.48],[.115,.48],[.115,.55],[.085,.55]],4]]},
   shadowUnderworldBackdrop:{asset:'shadowUnderworldBackdropMotionPhaseB',regions:[['flame-forge',11,[[.37,.695],[.49,.695],[.49,.755],[.37,.755]],5]]},
   voidForbiddenBackdrop:{asset:'voidForbiddenBackdropMotionPhaseB',regions:[['void-mist',16,[[.38,.015],[.62,.015],[.62,.12],[.38,.12]],8]]},
