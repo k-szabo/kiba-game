@@ -22,8 +22,15 @@
       "request": "Single complete panoramic transparent flying ancient drake facing right. Keep its back visible for traversal; wings sag below the body, limbs pulled up, broken chain stubs, same approved grey/violet anatomy and fine painted detail. No growths, characters or scenery baked in."
     },
     {
-      "asset": "assets/images/enemies/ancient-drake-front-v1.png",
-      "request": "Transparent two-by-two front-view sprite sheet: grounded idle, raised/turned head windup, low bite, raised open-mouth breath. Identical scale, feet registration and complete wing silhouettes; no external effects or scenery."
+      "asset": "assets/images/enemies/ancient-drake-front-v2.png",
+      "request": "Transparent two-by-two front-view sprite sheet: grounded idle, raised/turned head windup, low bite, raised open-mouth breath. Identical scale, feet registration and complete wing silhouettes; no external effects or scenery.",
+      "correction": {
+        "finding": "QA-DRAGON-TAIL-001",
+        "plan": "r2, independently approved",
+        "tool": "Built-in imagegen edit, native source alpha preserved",
+        "request": "In all four original frontal cells remove only the duplicate tail curl on the viewer-left. Retain exactly one tail curling behind the viewer-right haunch. Keep the original four poses, grey-violet identity, wing/chain/leg silhouettes, source dimensions1536x1024, grid768x512, head locations and feet anchors. No matte, scenery, effects, labels, anatomy or gameplay changes.",
+        "cache": "Versioned filename invalidates the old release-scoped image-cache key without changing the pending unpublished feature release."
+      }
     },
     {
       "asset": "assets/images/ui/ancient-drake-items-v1.png",

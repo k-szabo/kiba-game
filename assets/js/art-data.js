@@ -40,7 +40,7 @@ const ART_MANIFEST = {
  dragonIdle:'assets/images/enemies/ancient-drake-idle-v1.png',
  dragonBreath:'assets/images/enemies/ancient-drake-breath-v1.png',
  dragonFlight:'assets/images/enemies/ancient-drake-flight-v1.png',
- dragonFront:'assets/images/enemies/ancient-drake-front-v1.png',
+ dragonFront:'assets/images/enemies/ancient-drake-front-v2.png',
  haruElder:'assets/images/npcs/haru-elder-v1.png',
  haruBindingPillar:'assets/images/ui/haru-binding-pillar-v1.png',
  demonLordSoulArt:'assets/images/items/first-demon-lord-soul-v1.png',
