@@ -32,9 +32,10 @@ const HannahEncounter=(()=>{
  }
  function giftPoint(){
   if(!flags[3].includes('demonLordHeart')||flags[3].includes('demonLordHeartGiven')||!flags[3].includes('fiaRescued')||flags[3].includes('fiaSlain'))return null;
-  if(level===fiaChambers)return level.npcs.find(n=>n.id==='fia');
+  if(level===fiaRitual)return level.npcs.find(n=>n.id==='fia');
+  if(level===fiaChambers&&!flags[3].includes('fiaDragonCompleted'))return level.npcs.find(n=>n.id==='fia');
   if(level===shadowDen&&!flags[3].includes('arenaChampion'))return level.npcs.find(n=>n.id==='fia');
-  if(summit()&&completed()&&flags[3].includes(HannahRules.progress.fiaRescue))return {x:1550,y:1400-lift};
+  if(summit()&&completed()&&!flags[3].includes('fiaDragonCompleted')&&flags[3].includes(HannahRules.progress.fiaRescue))return {x:1550,y:1400-lift};
   return null;
  }
  function resetAttempt({replay=false}={}){
@@ -151,7 +152,7 @@ const HannahEncounter=(()=>{
  }
  const visual=()=>{
   const rescuedByFia=!!(rescue?.e.rescuedByFia||enemy()?.rescuedByFia||flags[3].includes(HannahRules.progress.fiaRescue));
-  return {lift,storm:!enemy()&&completed()||!!transformation||enemy()?.stage===2,transform:transformation?.elapsed/2.5||0,haruFreed:!enemy()&&completed()||!!enemy()?.haruRescued||!!rescue&&rescue.elapsed>=1.8,rescueTime:rescue?.elapsed??null,rescuedByFia,fiaPresent:rescuedByFia&&!flags[3].includes('fiaSlain')};
+  return {lift,storm:!enemy()&&completed()||!!transformation||enemy()?.stage===2,transform:transformation?.elapsed/2.5||0,haruFreed:!enemy()&&completed()||!!enemy()?.haruRescued||!!rescue&&rescue.elapsed>=1.8,rescueTime:rescue?.elapsed??null,rescuedByFia,fiaPresent:rescuedByFia&&!flags[3].includes('fiaSlain')&&!flags[3].includes('fiaDragonCompleted')};
  };
  return Object.freeze({active,summit,enemy,blocked,locked,cinematic,finisherTarget,finisherReady,clear,resetAttempt,respawn,replay,onFailure,onGate,onDefeated,update,objective,context,interact,hud,visual,reconcileRewards});
 })();

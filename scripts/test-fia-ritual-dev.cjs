@@ -1,0 +1,27 @@
+'use strict';
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs');
+const h=harness(),r=h.run,normal=r('JSON.stringify(saved)'),writes=r('__saveSnapshots.length'),normalStyle=r('weaponStyle'),normalWeapons=r('JSON.stringify(campServices.ownedWeapons)');
+const activeBosses=()=>r('enemies.filter(e=>FiaCombat.is(e)&&e.active&&!e.dead).length');
+const unchanged=()=>{assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('__saveSnapshots.length'),writes);};
+assert(!r("DevBoss.revive({encounter:'fiaRitual'})"));
+r('DevTools.open();');assert(!r("DevTeleport.teleport({realm:'fiaRitual',rest:'fiaRitualRest'})"));
+assert(r('DevSession.begin()'));const journey=r('JSON.stringify([flags,progression,fiaJourney,defeated,abilities])');
+assert(r("DevTeleport.teleport({realm:'fiaRitual',rest:'fiaRitualRest'})"));assert(r('level===fiaRitual'));assert(!r("flags[3].includes('fiaRitualAccepted')"));
+assert(r("DevBoss.revive({encounter:'fiaRitual'})"));assert.equal(activeBosses(),1);assert(r('FiaRitual.enemy?.ritual&&FiaRitual.enemy?.replay'));assert.equal(r('FiaRitual.enemy.maxHp'),1800);
+r('DevTools.close();var trial=FiaRitual.enemy;trial.shieldRemaining=0;trial.inv=0;');assert.equal(r('FiaCombat.hit(trial,trial,100000)'),900);assert.equal(r('trial.hp'),900);assert(r('trial.ritualEmpowered'));h.dismiss();
+r('trial.inv=0;');assert.equal(r('FiaCombat.hit(trial,trial,100000)'),900);h.dismiss();assert.equal(activeBosses(),0);assert.equal(r('FiaRitual.enemy'),null);
+assert.equal(r('JSON.stringify([flags,progression,fiaJourney,defeated,abilities])'),journey,'Reward-free replay cannot grant sacrifice, death, quest, ability, XP or rare-weapon history');unchanged();
+r('DevTools.open();');assert(r("DevBoss.revive({encounter:'fiaVengeance'})"));assert.equal(activeBosses(),1);assert(r('FiaConflict.enemy&&!FiaConflict.enemy.ritual'));r('var oldOrdinary=FiaConflict.enemy;');
+assert(r("DevBoss.revive({encounter:'fiaRitual'})"));assert.equal(activeBosses(),1);assert(r('oldOrdinary.dead&&!oldOrdinary.active'));assert.equal(r('FiaConflict.enemy'),null);assert(r('FiaRitual.enemy?.ritual'));r('var oldRitual=FiaRitual.enemy;');
+assert(r("DevBoss.revive({encounter:'fiaVengeance'})"));assert.equal(activeBosses(),1);assert(r('oldRitual.dead&&!oldRitual.active'));assert.equal(r('FiaRitual.enemy'),null);assert(r('FiaConflict.enemy&&!FiaConflict.enemy.ritual'));unchanged();
+// A paused replay can be left for the alternate prologue update path.
+assert(r("DevTeleport.teleport({realm:'dream',rest:'dream'})"));assert(r('Prologue.active'));assert.equal(activeBosses(),0);
+assert(r("DevItems.add({item:'foxfireKatana'})"));assert(r("campServices.ownedWeapons.includes('foxfireKatana')"));assert(r("flags[3].includes('foxfireKatana')"));
+assert.equal(r("DevItems.add({item:'foxfireKatana'})"),'dev.item.owned');assert.equal(r("campServices.ownedWeapons.filter(id=>id==='foxfireKatana').length"),1);
+assert(r("DevWeapons.equip({weapon:'foxfireKatana'})"));assert.equal(r('weaponStyle'),'foxfireKatana');assert.equal(r("WeaponStyles.baseStyle(weaponStyle)"),'katana');
+r('DevTools.close();attackCooldown=0;player.stun=0;');h.press({action:'attack'});h.tick();h.release({action:'attack'});assert(r('attack>0'),'The spawned relic attacks through the actual prologue input path');
+assert(!r("flags[3].some(id=>['fiaSlain','fiaRewardClaimed','fiaRitualAccepted','fiaAttendantsSacrificed','fiaRitualCompleted','fiaEscapeCompleted'].includes(id))"));r('persist()');unchanged();
+assert(r('DevSession.end()'));assert.equal(r('state'),'menu');unchanged();assert.equal(r('weaponStyle'),normalStyle);assert.equal(r('JSON.stringify(campServices.ownedWeapons)'),normalWeapons);
+r('startGame(true)');h.dismiss();assert.equal(r('weaponStyle'),normalStyle);assert.equal(r('JSON.stringify(campServices.ownedWeapons)'),normalWeapons);assert(!r("flags[3].includes('foxfireKatana')"));assert(!r('FiaRitual.pendingEscape()'));
+assert(!r("DevItems.add({item:'foxfireKatana'})"));assert(!r("DevWeapons.equip({weapon:'foxfireKatana'})"));
+console.log('PASS: quest-free dev teleport, rewardless full ritual replay/empowerment/victory, single-owner normal/ritual replay switching, rare-item spawn/equip/real prologue attack and normal-save/equipment restoration.');

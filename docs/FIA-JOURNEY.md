@@ -1,6 +1,156 @@
-# Fia második megbízása és titkos harca
+# Fia küldetéslánca és titkos harcai
+
+## A 3–5. küldetés fejlesztési sorrendje
+
+A folytatás a `FEATURE-fia-quests-3-4-5` ágon készül, kötelező sorrendben:
+3. sárkányrajtaütés, 4. void-hasadék, 5. rituálé. A harmadik megbízáshoz
+a második leadása és Hannah legyőzése szükséges. A szív védett tárgy marad.
+A harmadik megbízás és a háromszakaszos rajtaütés, illetve a negyedik
+megbízás rituálészobája, alvilága és hasadékharca, valamint az ötödik
+megbízás végső rituáléja és menekülése is játszható.
+
+A `fia-journey-rules.js` tiszta, másolásos tranzakciói kezelik a sárkánymenet
+sorszámát, lezárását, a pikkelykészletet és a megbízás mérföldköveit.
+Minden győzelem 900 XP-t és egy pikkelyt ad; az első további egy
+fejlesztéspontot. Az aktív küldetéshez egy új győzelemből szerezhetők meg
+a szemek; leadásuk egyszer 800 XP és egy fejlesztéspont. A megszerzési
+jelző megmarad, a leadási jelző a birtoklási nézetből fogyasztja el a tárgyat.
+A menetazonosító megakadályozza a korábbi menetből érkező jutalomeseményt.
+
+A külön `fiaJourney` mentési rekord hiánya a régi mentésben üres kezdetet
+jelent; a kifejezetten hibás rekordot elutasítjuk. A dungeonök korábbi, pontos
+sémája változatlan. A mentés és a dev-teszt külön mély másolatot tart,
+a jutalompontok a közös, szigorúan ellenőrzött pontkerethez tartoznak.
+`test-fia-journey-rules.cjs` és `test-fia-journey-state.cjs` ellenőrzi ezeket;
+ezek nem helyettesítik a böngészős ellenőrzést.
+
+### Sárkányrajtaütés és ellenőrzése
+
+A zikkurat belsejében az új bejárat X=1250, Y=1700 helyen különül el a
+visszaúttól és a pihenőtől. A menet a szárnyakon elérhető négy lánccal indul,
+a háton három daganat és két árnyék következik, végül a szemből látható fej
+támad. A tűz és árnyék mellett külön, előre rögzített célterületű fejcsapás és
+harapás szerepel. A fizikai támadás csak közelről indul; távolról a boss
+területi mágiát választ. A fej rajzolása és találati teste ugyanazt a pozíciót
+használja. A négy tartóoszlop összesen 180 aktív másodpercet ad a záróharchoz.
+
+A harmadik fázisban a fej alapból védett. A két első láb külön-külön
+120 HP-s; mindkettő lesebzése 0,65 másodperces összeesést indít, és törli
+az aktuális támadást. A földön fekvő fej hat aktív másodpercig sebezhető,
+négyszeres sebzéssel. Egy másodperces felállás után mindkét láb visszaáll,
+és újraindul a ciklus. A boss 1200 HP-ja nem töltődik vissza; a tűz,
+árnyék, fejcsapás és harapás az álló szakaszokban megmarad. Az oszlopok
+ideje az összeesés és sebezhetőség alatt is telik. Szünetben minden áll.
+
+A lábak rajza, célterülete és neve közös forrásregisztrációt használ.
+A mancsok és a sebezhető állkapocs a járható, Y=1300-as talajra érnek;
+a harmadik szakasz függőleges kamerakerete mindkettőt láthatóvá teszi.
+A `DRAGON_RAID_ART_SCALE` rögzíti a világméreteket Momo változatlan,
+69 egységes magasságához: az oldalsó kép 2700, a repülő kép 3750,
+a szemből látott szárnyfesztáv 1267,2 egység. Az oldalnézeti hossz és a
+szárnyfesztáv eltérő anatómiai méret; a nézetváltás nem zsugorítja a bosst
+a képernyőbe. A felállási atlasz sem méretezi kisebbre az összeesett testet.
+Külön ellenőrzés: `test-dragon-raid-art.cjs`, illetve natív Edge-ben mindhárom
+fázis és a teljes láb–fej ciklus HU/EN, 1280×720 és 1920×1080 nézetben.
+
+A menet közbeni halál vagy újratöltés az első szakaszt állítja vissza; a
+korábbi jutalmak és küldetéstörténet megmaradnak. Tesztmódban mindhárom
+szakasz külön, jutalom nélkül újrajátszható. A natív mentés és Continue
+folyamatát Edge-ben újratöltéssel ellenőriztük; 1280×720 és 1920×1080 méretben
+készültek képek. Ez nem teljes, kézzel végigjátszott harci bizonyíték.
+
+A három javítás független QA-ellenőrzésen megfelelt:
+`QA-FIA3-ENTRY-001 r1`, `QA-FIA3-OBJECTIVE-002 r1`,
+`QA-FIA3-MOVESET-003 r1`. A regressziók a tényleges E-interakciót,
+a feladat/iránytű egyezését, valamint a fej és a célterület kapcsolatát
+ellenőrzik 30/60/120 FPS mellett. A teljes szárnyút fizikai route-tesztje
+szintén ezt a három képkockasebességet használja.
 
 Spoileres fejlesztői referencia. Kártyák: [Fia quest #2](https://trello.com/c/bOTc8aP0), [Fia legyen megtámadható](https://trello.com/c/oDJB4Y0y).
+
+## Negyedik megbízás: a void-hasadék
+
+A harmadik leadása után Fia a lakosztály mögötti rituálészobába költözik.
+Ott nyílik meg a negyedik megbízás, majd az Árnyékzugból az alvilági lejáró.
+A három emelet felső kereskedője zsákmányt vesz, a középső szakács húst,
+teát és csirkecombot ad 10/25/40 érméért, az alsó kovács pedig a közös
+fegyver- és páncélrangokat használja. A szolgáltatástörténet külön jelzői
+teszik menthetővé a készletet és fejlesztéseket Ren/Akash megmentési
+jelzőinek megváltoztatása nélkül. Compass/minimap/telefontok továbbra is
+csak Akashhoz tartozik. Fia halála letiltja az új szolgáltatásokat.
+
+A tiltott negyed három hasadékőre külön natív grafikát és járás/támadás
+pózokat használ. A hadnagy 1000 HP-ról indul; az első, 70%-ot átlépő
+találat 700 HP-n áll meg. Az elnyelés kitakarítja a korábbi támadásokat;
+a démon új generációval, 1000/2000 HP-val jelenik meg. A démon kizárólag
+a saját támadásából ténylegesen elvesztett Momo-HP-t gyógyítja vissza.
+Pajzs, páncél, dash/immunitás vagy halál utáni új játékospéldány nem ad
+fiktív gyógyulást. A lövedék egyszer használható tulajdonosi tokenje az
+eredeti kísérletet és generációt rögzíti. Teljes visszagyógyulás külön
+sikertelen állapot, halál/újrapróbálás tiszta hadnagyharcot indít.
+
+Győzelemkor együtt rögzül a kristály és a tartós 10%-os fertőzés; a rés
+eltűnik. Leadáskor a kristály birtoklási nézete elfogy, története megmarad;
+egyszer 1000 XP, +1 pont és három csirkecomb jár. Elutasítás a meglévő Fia-
+harcot indítja, nem teljesíti a megbízást. A mentett visszaállítási horgony
+a rituálészobát is szigorúan validálja; vereségkor megmarad a kristály és
+a fertőzés, és a döntés újra meghozható.
+
+Modulok: `fia-void-maps.js`, `fia-void-journey.js`, `void-encounter-rules.js`,
+`void-encounter.js`, `fia-void-art.js`. A natív PNG-ket a regisztráló nem
+módosítja: komponensből származó körvonalak választják el a szomszédos
+atlaszpózokat. A hátterek apró, maszkolt animációkat használnak.
+
+Ellenőrzés: `node --run test:fia-void`; 30/60/120 FPS-es harci tesztek,
+valódi küldetés-/szolgáltatás-/döntésírókból származó mentésvalidáció,
+elutasítás utáni visszaállítás. Friss Edge-profilban HU/EN, 1280×720 és
+1920×1080 helyszínképek, natív E-bejárat, vásárlás, döntés, titkosított
+mentés és újratöltés ellenőrizve, konzol- és assethibák nélkül. Ez nem
+teljes manuális harci végigjátszás vagy független QA-elfogadás.
+
+## Ötödik megbízás: az utolsó ígéret
+
+A negyedik leadása és a négy relikvia történeti átadása után Fia a fehér
+és vörös udvarlány összehívását kéri. A fehér az Árnyékzugban, a vörös az
+alvilág középső szintjén vár. A rituálészobában mindkettőjük feláldozása
+tartós történeti esemény. A jelenet szünetben áll; Momo a ténylegesen
+kiosztott Hajnalkard-akcióval töri szét a saját láncait.
+
+A végső harc 1800 HP-val indul. Az első, 50%-ot átlépő találat 900 HP-n
+megáll, a korábbi támadások törlődnek, és Fia beolvasztja a négy relikviát.
+Ének-, pokoltűz-, sárkány- és void-támadások váltják egymást, előre rögzített
+célterületekkel. Ebben a fázisban nincs ciklikus Kiba-pajzsa; saját életereje
+lassan fogy, de a végső találatot Momónak kell bevinnie. Kevesebb HP mellett
+gyorsabbá válik. A rendes, korábban provokálható Fia-harc változatlan marad.
+
+Vereségkor a teljes harc az első fázistól indul újra az eltárolt készlettel
+és érmékkel. A feláldozott udvarlányok nem térnek vissza. A harc alatti
+mentés is ezt az előzményt őrzi; folytatáskor tiszta harc indul.
+Győzelemkor egyszer 1800 XP, +1 pont, a meglévő lélek/pajzs és egy
+Rókaláng-katana jár. Ez a 1800 XP a korábbi 1200 XP helyett jár.
+A katana külön birtokolt, felszerelhető jutalomfegyver: katana mozdulatok,
++20% sebzés. Nem kezdő- vagy párbajválasztás, és a kovács nem árulja.
+
+A relikviák eltűnnek, a lakók és az alvilági szolgáltatók ellenségessé
+válnak. Az utóbbiak négy natív pózt használnak: alapállás, lépés,
+előkészítés, void-varázslat. Gyorsutazás sem a célpontkatalógusból, sem
+a végrehajtó API-val nem lehetséges a menekülés alatt. A tiltás mentés és
+újratöltés után is megmarad, és kizárólag az Árnyékzug rendes kijáratán
+való távozás oldja fel.
+
+Modulok: `fia-ritual-rules.js` (tiszta történeti tranzakciók),
+`fia-ritual.js` (jelenet, harc, jutalom és menekülés), `fia-ritual-art.js`
+(állapotot nem módosító grafika). Ellenőrzés: `node --run test:fia-ritual`.
+A mentési epoch változatlan, régi, szív nélküli befejezéshez nem keletkezik
+visszamenőleges démonlord-szív.
+
+Friss, szintetikus mentésű Edge-profilban ellenőrizve: összehívás,
+szünetelő feláldozási jelenet, valódi F billentyűs kitörés, fázisváltás,
+teljes újrapróbálás, jutalom/felszerelés, titkosított újratöltés és három
+rendes E-kijáraton át történő menekülés. HU/EN képek készültek 1280×720
+és 1920×1080 méretben, a négy erő jelzéseiről/becsapódásairól és a natív
+pózokról is. Nem volt konzol- vagy assethiba. A harci fázisokat a teszt
+szintetikus találatokkal léptette, így ez nem teljes manuális végigjátszás.
 
 ## Második küldetés
 

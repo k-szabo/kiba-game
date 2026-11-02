@@ -1,0 +1,53 @@
+{
+  "tool": "Built-in image generation",
+  "purpose": "Fia quest 3, approved ancient grey drake raid",
+  "approval": "User approved the four-panel color concept and twelve-pose storyboard in this chat on 2026-11-01.",
+  "style": "Detailed painted Japanese dark fantasy; grey primal drake with crocodilian skull, atrophied torn membrane wings, iron shackles and restrained violet Kiba corruption.",
+  "prompts": [
+    {
+      "asset": "assets/images/backgrounds/dragon-raid-hall-v1.png",
+      "request": "Background only, no dragon or baked gameplay platforms. A vast underground black-stone Japanese demonic ziggurat vault with carved supports, receding galleries, iron chain anchors, orange braziers and restrained violet Kiba. Readable dark foreground, detailed painted architecture."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-idle-v1.png",
+      "request": "One complete high-resolution side-view grey ancient drake facing right, crouching in shackles, full tail/wings inside transparent canvas. Consistent anatomy, heavy crocodilian head, small forearms and two hind legs; no backdrop, floor, particles or baked effects."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-breath-v1.png",
+      "reference": "assets/images/enemies/ancient-drake-idle-v1.png",
+      "request": "Edit only the head/neck into a raised open-jaw breath pose; preserve body, feet, wings, tail, chains, scale, position and alpha. Amber light inside the mouth, no external fire."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-flight-v1.png",
+      "request": "Single complete panoramic transparent flying ancient drake facing right. Keep its back visible for traversal; wings sag below the body, limbs pulled up, broken chain stubs, same approved grey/violet anatomy and fine painted detail. No growths, characters or scenery baked in."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-front-v2.png",
+      "request": "Transparent two-by-two front-view sprite sheet: grounded idle, raised/turned head windup, low bite, raised open-mouth breath. Identical scale, feet registration and complete wing silhouettes; no external effects or scenery.",
+      "correction": {
+        "finding": "QA-DRAGON-TAIL-001",
+        "plan": "r2, independently approved",
+        "tool": "Built-in imagegen edit, native source alpha preserved",
+        "request": "In all four original frontal cells remove only the duplicate tail curl on the viewer-left. Retain exactly one tail curling behind the viewer-right haunch. Keep the original four poses, grey-violet identity, wing/chain/leg silhouettes, source dimensions1536x1024, grid768x512, head locations and feet anchors. No matte, scenery, effects, labels, anatomy or gameplay changes.",
+        "cache": "Versioned filename invalidates the old release-scoped image-cache key without changing the pending unpublished feature release."
+      }
+    },
+    {
+      "asset": "assets/images/ui/ancient-drake-items-v1.png",
+      "request": "Two transparent inventory cells: pair of non-gory amber-violet magical dragon eyes in grey scale settings; one heavy ash-grey scale with violet Kiba veins. Opaque high-contrast silhouettes, bright rim detail, readable at 64 pixels, no fog or low-opacity wash."
+    },
+    {
+      "asset": "assets/images/backgrounds/dragon-raid-hall-motion-b-v1.png",
+      "reference": "assets/images/backgrounds/dragon-raid-hall-v1.png",
+      "request": "Preserve dimensions and architecture. Change only local brazier flame tips and a few wisps in normalized region x.025-.145,y.66-.84. No camera movement or global deformation."
+    },
+    {
+      "asset": "assets/images/enemies/ancient-drake-stagger-v1.png",
+      "reference": "assets/images/enemies/ancient-drake-front-v2.png",
+      "approval": "User explicitly approved the four-pose stagger storyboard before final production.",
+      "request": "Native-alpha1536x1024 painted atlas2x2, same giant grey-violet drake. Upright→bothforelegs buckle→chin onground betweenfoldedlegs→push-up recovery. Exactlyone viewer-righttail, twofrontlegs, twowings. Fixedbodysize and camera; no Momo, paper, labels, arrows, dizziness symbols, scenery or baked effects.",
+      "registration": "Four768x512 cells, source centerX384 and bodyHeight400 remainfixed. Nativealpha was preserved; perpose groundanchorsY482,484,962,962 register the authored feet/chin against worldfloor1300. No image pixels edited by registration.",
+      "scale": "World-space widths2700grounded,3750flight,1267.2frontalwingspan. Momo stays69units high. Sideways length and frontalwingspan are different measurements; no encounter-wide fit-to-viewport shrink."
+    }
+  ]
+}

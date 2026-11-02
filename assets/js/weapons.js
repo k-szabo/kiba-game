@@ -1,13 +1,16 @@
 /* Starting loadouts: pure combat rules shared by selection, simulation and UI. */
 'use strict';
 const WeaponStyles=(()=>{
+ const ids=Object.freeze(['katana','naginata','swordShield']);
  const profiles=Object.freeze({
   katana:Object.freeze({tempo:.85,damage:1,reach:0,health:0,guardCooldown:0}),
   naginata:Object.freeze({tempo:1.3,damage:1.25,reach:55,health:0,guardCooldown:0}),
-  swordShield:Object.freeze({tempo:1,damage:1,reach:0,health:2,guardCooldown:2})
+  swordShield:Object.freeze({tempo:1,damage:1,reach:0,health:2,guardCooldown:2}),
+  foxfireKatana:Object.freeze({tempo:.85,damage:1.2,reach:0,health:0,guardCooldown:0})
  });
  const valid=id=>typeof id==='string'&&Object.hasOwn(profiles,id);
  function profile(id){if(!valid(id))throw new TypeError('Unknown weapon style');return profiles[id];}
+ function baseStyle(id){if(!valid(id))throw new TypeError('Unknown weapon style');return id==='foxfireKatana'?'katana':id;}
  function attack(id,base){
   const p=profile(id);
   return {duration:base.duration*p.tempo,impact:base.impact*p.tempo,cooldown:base.cooldown*p.tempo,damageScale:base.damageScale*p.damage};
@@ -24,5 +27,6 @@ const WeaponStyles=(()=>{
    grounded&&!attacking&&!dashing&&cooldown<=0&&Math.abs(face)===1&&direction===-face;
   return {damage:blocked?Math.max(0,amount-1):amount,cooldown:blocked?p.guardCooldown:cooldown,blocked};
  }
- return Object.freeze({ids:Object.freeze(Object.keys(profiles)),valid,profile,attack,hitbox,guard});
+ // Starter selection and duels intentionally retain the original three styles.
+ return Object.freeze({ids,allIds:Object.freeze(Object.keys(profiles)),baseStyle,valid,profile,attack,hitbox,guard});
 })();

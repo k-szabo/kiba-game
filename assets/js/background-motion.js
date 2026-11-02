@@ -5,6 +5,10 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  fiaRitualBackdrop:{asset:'fiaRitualBackdropMotionPhaseB',regions:[['flame-ritual',11,[[.085,.48],[.115,.48],[.115,.55],[.085,.55]],4]]},
+  shadowUnderworldBackdrop:{asset:'shadowUnderworldBackdropMotionPhaseB',regions:[['flame-forge',11,[[.37,.695],[.49,.695],[.49,.755],[.37,.755]],5]]},
+  voidForbiddenBackdrop:{asset:'voidForbiddenBackdropMotionPhaseB',regions:[['void-mist',16,[[.38,.015],[.62,.015],[.62,.12],[.38,.12]],8]]},
+  dragonRaidHall:{asset:'dragonRaidHallMotionPhaseB',sourceSize:[2132,738],regions:[['brazier',14,[[.025,.66],[.145,.66],[.145,.84],[.025,.84]],5]]},
   campHDLeft:{"asset":"campHDLeftMotionPhaseB","regions":[["detail-0",7,[[0.01,0.01],[0.25,0.01],[0.25,0.14],[0.01,0.14]],5]]},
   campHDCenter:{"asset":"campHDCenterMotionPhaseB","regions":[["detail-0",14,[[0.48,0.535],[0.55,0.535],[0.55,0.64],[0.48,0.64]],5]]},
   campHDRight:{"asset":"campHDRightMotionPhaseB","regions":[["detail-0",14,[[0.02,0.005],[0.18,0.005],[0.18,0.1],[0.02,0.1]],5]]},
@@ -76,7 +80,7 @@ const BackgroundMotion=(()=>{
   if(pending)return;
   for(const [key,item] of queue){
    queue.delete(key);if(item.frame<frame-1)continue;
-   const {image,profile}=item,w=image.naturalWidth,h=image.naturalHeight,imageBytes=w*h*4,bytes=imageBytes*3;
+   const {image,profile}=item,w=image.naturalWidth,h=image.naturalHeight,sourceWidth=profile.sourceSize?.[0]??w,sourceHeight=profile.sourceSize?.[1]??h,imageBytes=sourceWidth*sourceHeight*4,bytes=imageBytes+w*h*8;
    const area=profile.regions.reduce((sum,[,,vertices])=>{const xs=vertices.map(p=>p[0]),ys=vertices.map(p=>p[1]);return sum+(Math.ceil(Math.max(...xs)*w)-Math.floor(Math.min(...xs)*w))*(Math.ceil(Math.max(...ys)*h)-Math.floor(Math.min(...ys)*h));},0);
    if(!w||!h||area>w*h||bytes>budget)continue;
    while(authoredLoads.size>=3||reserved+bytes>budget){const victim=[...authoredLoads].find(([,value])=>value.frame!==frame);if(!victim)break;discard(victim[0]);}
@@ -85,7 +89,7 @@ const BackgroundMotion=(()=>{
    AssetCache.load(entry.image,ART_MANIFEST[profile.asset],ok=>{
     pending=null;
     if(entry.stale||authoredLoads.get(key)!==entry){entry.image.src='';reserved-=entry.imageBytes;entry.image=null;pump();return;}
-    entry.status=ok&&entry.image.naturalWidth===w&&entry.image.naturalHeight===h?'ready':'failed';pump();
+    entry.status=ok&&entry.image.naturalWidth===sourceWidth&&entry.image.naturalHeight===sourceHeight?'ready':'failed';pump();
    });return;
   }
  }
@@ -98,7 +102,11 @@ const BackgroundMotion=(()=>{
    const points=vertices.map(([x,y])=>[x*w,y*h]),xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
    const x=Math.max(0,Math.floor(Math.min(...xs))),y=Math.max(0,Math.floor(Math.min(...ys))),width=Math.min(w-x,Math.ceil(Math.max(...xs))-x),height=Math.min(h-y,Math.ceil(Math.max(...ys))-y);
    const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const paint=canvas.getContext('2d',{willReadFrequently:true});
-   paint.drawImage(alternate,-x,-y);const pixels=paint.getImageData(0,0,width,height);
+   // Explicit native-size registration avoids changing generated source PNGs.
+   // All crops and feather coordinates remain in the original painting's grid.
+   if(profile.sourceSize)paint.drawImage(alternate,0,0,alternate.naturalWidth,alternate.naturalHeight,-x,-y,w,h);
+   else paint.drawImage(alternate,-x,-y);
+   const pixels=paint.getImageData(0,0,width,height);
    const feather=requestedFeather||Math.min(18,Math.max(3,Math.min(width,height)*.22));
    const holes=id.startsWith('flame-')?[[[.15,.176],[.26,.176],[.26,.195],[.15,.195]]]:[];
    if(id==='flame-shrine')holes.push([[.15,.12],[.29,.12],[.29,.145],[.15,.145]]);

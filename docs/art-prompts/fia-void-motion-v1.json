@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "User approved revised female lieutenant concept and both quest4 motion storyboards; static environments and items approved separately.",
+  "assets": [
+    {
+      "paths": [
+        "assets/images/enemies/void-keepers-v1.png",
+        "assets/images/enemies/void-lieutenant-v1.png",
+        "assets/images/enemies/void-demon-v1.png"
+      ],
+      "prompt": "Production painted Japanese fantasy sprite sheets from approved motions. Keepers: katana, bow, one right-hand staff; six poses each idle/walking/windup/release/recovery. Female lieutenant: one katana, back banner, six poses including absorption. Demon: eight poses emergence/idle/walk/claw/rift/heal/overload. Exactly two arms/hands/legs. Preserve full silhouettes and native alpha; no scenery, labels, grid or floor.",
+      "refinementPrompt": "Preserve exact characters, equipment, anatomy, costumes, weapon sizes relative to body and pose sequence. Recompose into strict grid with generous blank transparent margins. Complete cut weapon tips; no duplicate limbs or weapons. Remove backdrop haze, keep opaque materials. No text or added poses.",
+      "registration": "scripts/register-fia-void.py reads connected alpha silhouettes and writes source-space outlines and foot anchors without editing source PNG pixels."
+    },
+    {
+      "paths": [
+        "assets/images/backgrounds/fia-ritual-motion-b-v1.png",
+        "assets/images/backgrounds/shadow-underworld-motion-b-v1.png",
+        "assets/images/backgrounds/void-forbidden-motion-b-v1.png"
+      ],
+      "prompt": "Create phase B of approved subtle painted environmental animation. Preserve exact painting, canvas resolution and camera. Architecture/furniture/ground remain fixed. Only change a small candle, forge fire, or distant violet mist region. No objects, grading, crop or zoom; used through a tiny source-registered mask."
+    }
+  ],
+  "checks": [
+    "Native PNG alpha is preserved; no visible outer-edge pixels at alpha>32.",
+    "35 sprites/8 character forms registered.",
+    "Real-browser 1280x720 and1920x1080 environment captures, full native pose contact sheet, HU/EN prompts.",
+    "Backgrounds use shared active/pause/reduced-motion clocks."
+  ]
+}

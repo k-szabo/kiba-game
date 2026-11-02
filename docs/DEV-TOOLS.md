@@ -1,5 +1,14 @@
 # Fejlesztői eszközpanel
 
+A sárkányrajtaütés helyszínén a bossválasztó mindhárom harci szakaszt külön
+újrajátszható tesztként kínálja. A szakaszváltás törli a korábbi támadásokat,
+nem ír normál mentést, és nem ad XP-t, pikkelyt vagy küldetésjutalmat.
+
+Fia rituálészobája, az alvilági piactér/kovács és a tiltott negyed a közös
+teleportkatalógus része. A tiltott negyed boss-újrajátszása a hadnaggyal
+indul; a 70%-os küszöb után a félig gyógyult void démon következik.
+A tesztharc nem ad kristályt, fertőzést vagy küldetésjutalmat.
+
 A képek Cache API tárolója a panel checkboxával tesztmód nélkül is kikapcsolható. A `cacheDisable` böngészőpreferencia és a kiadásonkénti takarítás részletei: [képgyorsítótár](ASSET-CACHE.md). A már betöltött képek ellenőrzéséhez újratöltés szükséges.
 
 A panel jelszó és külön konfiguráció nélkül elérhető, helyi futtatásban és GitHub Pagesen is. A külön eszközök elkülönített tesztmódban használhatók.
@@ -170,6 +179,13 @@ A `cultDungeon1`, `cultDungeon2`, `cultDungeon3` külön teleportcélok, saját 
 Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengeance` replayt kínál. Ez nem írja a halál-, aréna- vagy küldetésjelzőket, és nem ad jutalmat. A `priestessTalisman`, `roastChicken` és `kitsuneSoul` a tárgyadóban elérhető; a Kiba-pajzs a képességadóban külön passzív elem, nem változtatja a dupla ugrás/dash indexeit. A dev-kísérlet megszakítása és vége megőrzi a normál mentést. Részletek és validálás: [FIA-JOURNEY.md](FIA-JOURNEY.md).
 
 ## Zikkurat
+
+A rituálészoba bossválasztója külön `fiaRitual` végső harcot is kínál.
+A replay a teljes első fázisból indul, nem áldoz fel udvarlányt és nem ad
+XP-t, pontot, lelket, pajzsot vagy ritka fegyvert. A normál `fiaVengeance`
+és a rituálé replayje egymást váltja, nem marad egyszerre két aktív boss.
+A `foxfireKatana` a tárgyadóban és a fegyverfelszerelésben külön elérhető;
+ez csak az elkülönített tesztkarakter tulajdonát bővíti.
 
 A teleport három további célpontot kínál: a zikkurat előtere, belseje és Hannah trónterme. A képességadó Hajnalkardot is adhat; a bossválasztó a trónteremben Hannah teljes, első fázistól induló próbáját állítja vissza. A visszajátszás nem ad jutalmat vagy történeti mérföldkövet, és a normál mentést sem módosítja.
 

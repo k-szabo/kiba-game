@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "approval": "The user explicitly approved the quest 4 environment concept and revised character/item concept (including the female lieutenant). This record covers static environments, three service NPCs and the crystal only; enemies and animations require separate approved motion drafts.",
+  "references": [
+    "assets/images/backgrounds/fia-chambers-v1.png"
+  ],
+  "notes": [
+    "Original source pixels are preserved with no crop, resize, recoloring or matte removal.",
+    "Ritual altar has four empty places; relics are drawn dynamically from progression.",
+    "Forbidden Quarter has no painted portal or actors; the rift must be drawn dynamically and removable after victory.",
+    "Underworld is a tall single image with merchant, kitchen and forge tiers. Their floor positions are approximate normalized image y 0.265, 0.557 and 0.842.",
+    "Service sheet contains three static full-body poses. Transparent source alpha is preserved; validate crop bounds and grounding in the real browser.",
+    "No source modules, manifest, runtime or colormaps were changed by this production subtask."
+  ],
+  "assets": [
+    {
+      "key": "fiaRitual",
+      "path": "assets/images/backgrounds/fia-ritual-v1.png",
+      "size": [
+        1983,
+        793
+      ],
+      "mode": "RGB",
+      "prompt": "Use case: stylized-concept production environment. Create a finished BACKGROUND ONLY for Kiba Realms painted Japanese dark fantasy 2D side-view game, single wide landscape scene. Reference image1 TOP PANEL defines the approved ritual-chamber composition; reference image2 defines exact existing painted luxury/material style. A secret chamber beyond Fia's quarters, broad clear foreground of worn black-violet wooden/stone ritual floor, central carved black-stone altar with EXACTLY FOUR EMPTY recessed pedestal/slot places, no relics or objects resting in them because game draws them dynamically. Fox carvings and fox masks, purple silk drapery, warm orange lanterns and candles, old iron chains along supporting timber beams, dark indigo shadow, restrained violet Kiba glow. Rich crisp hand-painted architectural details, visual depth, premium illustrated Japanese fantasy, NOT photorealistic3D. Keep a broad unobstructed walkable foreground spanning full image, enough empty floor for a large boss fight. Altar/backwall stay background scenery, no floating gameplay platforms. No characters, no creatures, no eyeballs/heart/crystal/talisman or other relics, no UI, no writing, no watermarks, no panel borders. Full bleed single environment. Relatively dark midground for readable sprites and golden telegraphs."
+    },
+    {
+      "key": "shadowUnderworld",
+      "path": "assets/images/backgrounds/shadow-underworld-v1.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "prompt": "Finished production background ONLY for Kiba Realms, richly detailed hand-painted Japanese dark-fantasy 2D side-view game. Use reference1 bottom-left approved Underworld panel for architecture and reference2 for painted style. Single TALL PORTRAIT full-bleed underground settlement with EXACTLY THREE clearly separated service galleries stacked vertically, black rock cavern and dark timber Japanese balconies. TOP tier around y=22%: merchant market stall with shelves, folded cloth, crates, baskets and warm lanterns. MIDDLE tier around y=50%: cozy cookhouse kitchen, cooking pots, hanging ingredients, stove and orange hearth. BOTTOM tier around y=78%: smith forge, anvil, tools, warm glowing furnace. Distinct broad empty foreground terrace space at each level for service NPCs drawn later. Connect the spaces visually with recessed wood stairs and distant rope bridges, purple hanging lanterns, amber firelight, indigo textiles, fox masks, sophisticated environmental storytelling. Background architecture only: NO PEOPLE, no silhouettes, no animals, no text, no UI, no inventory objects, no magic portal. Do not bake floating gameplay platforms or clearly delineated foreground stepping platforms; collision floors are supplied by game. Perspective mostly side-on, level architecture clear, natural proportions, premium painted illustration with crisp material details, not realistic3D, not collage, no panel borders."
+    },
+    {
+      "key": "voidForbidden",
+      "path": "assets/images/backgrounds/void-forbidden-v1.png",
+      "size": [
+        1672,
+        940
+      ],
+      "mode": "RGB",
+      "prompt": "Use case production background. Kiba Realms finished single wide painted Japanese dark-fantasy environment. Reference1 bottom-right approved Forbidden Quarter panel defines composition/style; reference2 existing game background defines brushwork/material quality. An abandoned sealed Japanese shrine courtyard in a deep black-violet cavern, ruined dark timber torii and temple facades, ancient stone fox carvings, broken roof tiles, hanging purple lanterns, cold lilac atmosphere and a little amber firelight. A large central cracked EMPTY stone shrine backwall/recess, free of objects, where a separate animated void portal will be overlaid later; DO NOT paint a portal, magic tear, swirling cloud, glowing ring or crystal. Keep central portal recess plainly dark and still. Large open continuous foreground stone floor with scattered stones near extreme edges, enough legible room for a boss fight. Architecture recedes and does not obstruct combat; no foreground pillars covering the central floor. Rich crisp painted textures, atmospheric depth, natural architecture proportions, premium illustrated 2D style matching existing game, not photorealistic3D. NO PEOPLE OR CREATURES OR silhouettes, no guards, no cyclops, no NPCs, no text/UI/watermarks, no baked floating gameplay platforms. Full bleed, one scene, no panels."
+    },
+    {
+      "key": "underworldServices",
+      "path": "assets/images/npcs/shadow-underworld-services-v1.png",
+      "size": [
+        2048,
+        768
+      ],
+      "mode": "RGBA",
+      "prompt": "Production STATIC NPC sprite sheet for Kiba Realms painted Japanese fantasy game. Reference1 cells1,2,3 are approved characters. Make exactly THREE full-body characters across ONE HORIZONTAL ROW of three equal-width cells, centered one per cell, facing camera at slight three-quarter angle, feet aligned to same baseline. Generous transparent margin between silhouettes and all edges; full heads, shoes, props included. LEFT: mysterious older male human trader, lean, wrinkled tan face, indigo hood and layered long coat, purple sash, travel backpack of wrapped goods, small belt coin pouches and a little brass lantern; relaxed polite pose, both hands visible. CENTER: hearty friendly middle-aged woman human cook with black hair tied in bun, red-brown kimono, pale natural-cloth apron, cooking ladle held in one hand, small copper pan held clearly in the other, two hands only. RIGHT: broad-shouldered older male human smith, tied-back grey hair, stubble, dark indigo clothes and worn leather work apron, simple forge hammer in one hand and short tongs in other, two hands only. Rich crisp hand-painted shapes and warm controlled highlights, same Japanese painted game style, clear readable silhouettes, no glossy3D, no photorealism. Static standing poses, no animation. Truly TRANSPARENT background, no floors, no ground shadows, no scenery, no text, no grid lines, no panel labels, no watermark. Keep every character and prop separate, no overlap.",
+      "refinementPrompt": "Edit this exact three-character sprite sheet. KEEP all three characters, poses, costumes, faces, hands and every held prop unchanged. Remove ALL brown/amber studio backdrop haze, all atmospheric glows and any floor/contact shadow so the background and spaces between characters are fully transparent. Output exactly the existing three finished static sprites against true alpha transparency; character materials remain strongly opaque. No replacement background, no black or white matte, no additional effects, no extra objects or text. Keep full silhouettes and original generous separation with untouched feet and props. This is a production transparent cutout sheet.",
+      "sheetOrder": [
+        "trader",
+        "cook",
+        "smith"
+      ],
+      "cropsSuggested": [
+        [
+          0,
+          0,
+          750,
+          768
+        ],
+        [
+          750,
+          0,
+          650,
+          768
+        ],
+        [
+          1400,
+          0,
+          648,
+          768
+        ]
+      ]
+    },
+    {
+      "key": "rawVoidCrystal",
+      "path": "assets/images/ui/raw-void-crystal-v1.png",
+      "size": [
+        1218,
+        1292
+      ],
+      "mode": "RGBA",
+      "prompt": "Production INVENTORY ICON for Kiba Realms painted Japanese dark fantasy game. Use reference1 cell9 approved raw void crystal as design. One solitary angular RAW VOID CRYSTAL, asymmetrical tall black-violet quartz-like shard, several joined jagged facets but one unified chunky silhouette, deep purple glassy-black opaque core filled with indigo darkness, bright thin white-cyan fractures across selected facets, modest electric violet edge rim, restrained magical brightness. Complete full silhouette, excellent contrast against both dark inventory panels and light surfaces, bold solid opaque material and crisp readable shape at64px. Do not cover the object with transparent haze or make the whole item faint. Centered with generous15% transparent margin, no frame, no pedestal, no label, no text, no extra objects, no ground shadow or floating particles. Premium rich painted illustration matching Japanese fantasy game inventory, not flatvector, not photorealism. Actual TRANSPARENT BACKGROUND outside crystal."
+    }
+  ]
+}

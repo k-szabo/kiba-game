@@ -258,7 +258,7 @@ const Visuals = (() => {
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
       if((level.dungeon||[shadowPrison,shadowDen,shadowArena,fiaChambers].includes(level))&&PrisonArt.terrain(p))continue;
-      if(level===samuraiCamp&&CampArt.terrain(p))continue;
+      if((level===samuraiCamp||level===shadowUnderworld)&&CampArt.terrain(p))continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
       const lift = 0;
       shadow(p.x + p.w / 2, p.y + height * .75, Math.min(p.w / 2, 220), .18);

@@ -21,7 +21,7 @@ const SaveVault=(()=>{
   return level===p.level&&p.xp===(level===levelLimit?0:xp);
  }
  function validate(data,{legacyDen=false,legacyHeart=false}={}){
-  if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield'].includes(data.weaponStyle))throw Error('Invalid weapon style');
+  if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield','foxfireKatana'].includes(data.weaponStyle))throw Error('Invalid weapon style');
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
   if(!data||data.release!==GAME_RELEASE.version||data.version!==2||data.layout!==2||!integer(data.realm,0,levels.length-1)||!integer(data.shards,0,Number.MAX_SAFE_INTEGER)||typeof data.won!=='boolean')throw Error('Invalid save schema');
@@ -59,16 +59,22 @@ const SaveVault=(()=>{
   if(Object.hasOwn(data,'campServices')){
    const service=data.campServices;
    if(!CampServiceRules.validate(service,data.weaponStyle))throw Error('Invalid camp services');
-   if((service.weaponRank||service.armorRank||service.ownedWeapons.length>1)&&!hasCampFlag('smithRescued'))throw Error('Invalid smith progress');
+   if((service.weaponRank||service.armorRank||service.ownedWeapons.filter(id=>id!=='foxfireKatana').length>1)&&!hasCampFlag('smithRescued')&&!hasHannah('underworldSmithMet'))throw Error('Invalid smith progress');
+   if(service.ownedWeapons.includes('foxfireKatana')!==hasHannah('foxfireKatana'))throw Error('Invalid relic weapon ownership');
    if((service.herbs||service.potions)&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid herbalist progress');
    if((data.prologueComplete===false||data.weaponChoicePending===true)&&(service.ownedWeapons.length!==1||service.ownedWeapons[0]!=='katana'||service.weaponRank||service.armorRank||service.herbs||service.potions))throw Error('Invalid dream equipment');
   }
+  if((data.weaponStyle==='foxfireKatana'||hasHannah('foxfireKatana'))&&!Object.hasOwn(data,'campServices'))throw Error('Invalid relic weapon state');
   if(data.quickHeal==='healingBrew'&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid quick healing progress');
   const rescued=data.flags[1].includes('akashRescued');
-  if(rescued&&!data.defeated[0]||!rescued&&(data.meatCount>0||data.teaCount>0||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
-  if(data.soldItems.some(id=>!rescued||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
+  if(rescued&&!data.defeated[0]||!rescued&&(!hasHannah('underworldCookMet')&&(data.meatCount>0||data.teaCount>0)||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
+  if(data.soldItems.some(id=>!rescued&&!hasHannah('underworldTraderMet')||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');
   if(data.prologueComplete===false&&(data.coins||data.meatCount||data.teaCount||data.soldItems.length))throw Error('Invalid dream inventory');
   if(data.location!=null&&(data.realm!==SIDE_LOCATIONS[data.location].realm||data.prologueComplete!==true||!sideAllowed(data.location)))throw Error('Invalid camp location');
+  if(!FiaRitualRules.validate(data.flags))throw Error('Invalid Fia ritual history');
+  if(!FiaJourneyRules.validate(Object.hasOwn(data,'fiaJourney')?data.fiaJourney:FiaJourneyRules.fresh(),data.flags,data.defeated))throw Error('Invalid Fia journey');
+  if((data.location==='dragonCatacombs'||data.visitedRests[3].includes('dragonRaidEntrance'))&&!(data.fiaJourney?.dragon.run>0))throw Error('Invalid dragon raid entry');
+  if(['underworldTraderMet','underworldCookMet','underworldSmithMet'].some(id=>hasHannah(id)&&!data.visitedRests[3].some(rest=>shadowUnderworld.rests.some(r=>r.id===rest))))throw Error('Invalid underworld service history');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
   if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
@@ -114,7 +120,7 @@ const SaveVault=(()=>{
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');
   if(Object.hasOwn(data,'fiaRecovery')){
    const a=data.fiaRecovery,shadow=data.flags[3],keys=['location','x','feet','hp','face','tea'],map=SIDE_LOCATIONS[a?.location]?.map;
-   if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).length!==keys.length||!keys.every(key=>Object.hasOwn(a,key))||!['shadowDen','fiaChambers'].includes(a.location)||data.realm!==3||a.location!==data.location||!sideLocationUnlocked(a.location,data.flags,data.defeated)||!shadow.includes('fiaRescued')||shadow.includes('fiaSlain')||(a.location==='shadowDen')===shadow.includes('arenaChampion'))throw Error('Invalid Fia recovery');
+   if(!a||typeof a!=='object'||Array.isArray(a)||Object.keys(a).length!==keys.length||!keys.every(key=>Object.hasOwn(a,key))||!['shadowDen','fiaChambers','fiaRitual'].includes(a.location)||data.realm!==3||a.location!==data.location||!sideLocationUnlocked(a.location,data.flags,data.defeated)||!shadow.includes('fiaRescued')||shadow.includes('fiaSlain')||(a.location==='shadowDen'?shadow.includes('arenaChampion'):!shadow.includes('arenaChampion')))throw Error('Invalid Fia recovery');
    if(!Number.isFinite(a.x)||a.x<21.5||a.x>map.width-21.5||!Number.isFinite(a.feet)||a.feet<69||a.feet>map.height||!Number.isFinite(a.hp)||a.hp<=0||a.hp>5+data.progression.stats.vitality+(data.weaponStyle==='swordShield'?2:0)||![1,-1].includes(a.face))throw Error('Invalid Fia recovery anchor');
    const tea=a.tea;if(!tea||typeof tea!=='object'||Array.isArray(tea)||Object.keys(tea).length!==2||!Object.hasOwn(tea,'elapsed')||!Object.hasOwn(tea,'pulses')||!Number.isFinite(tea.elapsed)||tea.elapsed<0||tea.elapsed>=2||!integer(tea.pulses,0,3)||!tea.pulses&&tea.elapsed!==0)throw Error('Invalid Fia recovery tea');
   }

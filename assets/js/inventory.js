@@ -3,12 +3,13 @@
 const Inventory=(()=>{
  let initialized=false,returnFocus=null,selected=null,pendingSale=null,renderId=0;
  const catalogue=ART_INVENTORY.items,ids=Object.keys(catalogue),talisman=SerpentRelics.result;
+ const number=value=>Number(value.toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2});
  const isTalisman=id=>id===talisman||id==='equippedTalisman';
  const isEnhancement=id=>typeof DungeonRules!=='undefined'&&DungeonRules.enhancements.includes(id);
- const weaponStyleFor=id=>typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
+ const weaponStyleFor=id=>id==='foxfireKatana'?'foxfireKatana':typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
  const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
  const itemName=id=>id==='equippedTalisman'?I18n.t(catalogue[talisman].name):weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
- function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id===talisman&&equippedTalisman===talisman)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id==='foxfireKatana'&&weaponStyle==='foxfireKatana'||id===talisman&&equippedTalisman===talisman)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
  function contents(){return [...ids.filter(id=>quantity(id)>0),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
@@ -31,11 +32,12 @@ const Inventory=(()=>{
  // Stats use the same combat profiles as hit resolution, rather than the
  // currently highlighted backpack weapon or a cached equipment snapshot.
  function characterStats(){
-  const stats=momoStats(),number=value=>Number(value.toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2}),
+  const stats=momoStats(),
    rows=[['text.health',CampHealth.number(player.hp)+' / '+CampHealth.number(player.maxHp)],
     ['binding.action.attack',number(playerAttackDamage('normal'))],['binding.action.heavyAttack',number(playerAttackDamage('heavy'))]],
    list=$('inventoryStats');
   if(FiaConflict.owned())rows.push(['ability.kibaShield',number(FiaConflict.shield)+' / '+number(FiaConflict.profile().capacity)]);
+  if(fiaJourney.voidInfection>0)rows.push([I18n.format('fia.void.infection',[fiaJourney.voidInfection]),'']);
   list.replaceChildren();
   for(const [key,value] of rows){
    const row=document.createElement('div'),label=document.createElement('span'),amount=document.createElement('strong');
@@ -55,8 +57,8 @@ const Inventory=(()=>{
   const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id),enhancement=isEnhancement(id);
   $('inventoryDetailName').textContent=weapon?weaponName(style):id?itemName(id):I18n.t('inventory.empty.title');
   $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':id==='forestHerb'?'inventory.type.backpack':item?.category==='trinket'?'inventory.type.trinket':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':id?'inventory.type.quest':'inventory.type.backpack');
-  const damage=kind=>momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale;
-  $('inventoryDetailText').textContent=weapon?I18n.format('weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id==='equippedTalisman'?talisman:id):I18n.t('inventory.empty.body');
+  const damage=kind=>number(momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale);
+  $('inventoryDetailText').textContent=weapon?I18n.format(style==='foxfireKatana'?'inventory.description.foxfireKatana':'weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id==='equippedTalisman'?talisman:id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!item?.stack;
   $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
   $('useInventoryItem').hidden=!healing&&!enhancement&&!(weapon&&id!=='weapon')&&!isTalisman(id);

@@ -12,9 +12,9 @@ function createEnemies() {
 }
 function createEnemy(spec,i=0) {
     if(spec.miniboss)return createMiniboss(spec,i);
-    const h=spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.kind==='shield'?48:40;
+    const h=spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.voidKeeperRole?64:spec.kind==='shield'?48:40;
     const tier=ENEMY_TIERS[spec.summoned?0:(level.enemyRealm??Math.max(0,levels.indexOf(level)))];
-    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=Math.ceil(baseHp*tier.health);
+    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health);
     const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
     const left=Math.max(spec.x-spec.patrol,support?support.x+4:0),right=Math.min(spec.x+spec.patrol,support?support.x+support.w-w-4:level.width-w);
@@ -29,7 +29,7 @@ function respawnEnemies() {
   const slayer=enemies.find(DoomSlayer.is),retry=slayer&&!slayer.dead?{graveAwake:slayer.graveAwake,replay:slayer.replay}:null;
   DoomSlayer.clear();
   if(typeof CampHerbs!=='undefined')CampHerbs.reset();
-  enemies=createEnemies();FiaConflict.populateHostiles();projectiles=projectiles.filter(p=>p.source==='boss');
+  enemies=createEnemies();FiaConflict.populateHostiles();FiaRitual.populateHostiles();projectiles=projectiles.filter(p=>p.source==='boss');
   if(retry){const fresh=enemies.find(DoomSlayer.is);if(fresh){Object.assign(fresh,retry);DoomSlayer.reset(fresh);}}
   burst(player.x+20,player.y+30,realms[realm].gold,22);
 }
@@ -79,6 +79,7 @@ function releaseEnemyAttack(e) {
   }
   for(let i=shotsBefore;i<projectiles.length;i++){
     projectiles[i].damage=e.damageValue||1;
+    if(FiaRitual.corrupted(e))projectiles[i].ritualEffect='void';
     if(e.summoned)projectiles[i].source='minion';
     if(e.arenaMinion)projectiles[i].source='arena-minion';
   }

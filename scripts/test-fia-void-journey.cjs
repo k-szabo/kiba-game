@@ -1,0 +1,16 @@
+'use strict';
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs'),validate=require('./test-save-validation.cjs'),good=require('./test-dragon-raid-saves.cjs');
+const h=harness(),r=h.run;r('saved='+JSON.stringify(good)+';startGame(true);');h.dismiss();
+assert(r("CampQuest.enter('fiaChambers')"));r('initPlayer(level.ritualEntrance);interact();');assert(r('level===fiaRitual'));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+r('initPlayer(level.npcs[0]);interact();');h.dismiss();if(!r("flags[3].includes('fiaVoidAccepted')")){r('interact()');h.dismiss();}assert(r("flags[3].includes('fiaVoidAccepted')"));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+assert(r("CampQuest.enter('shadowDen')"));r('initPlayer(level.underworldEntrance);interact();');assert(r('level===shadowUnderworld'));
+for(const id of ['shadowNinja','shadowThief']){r('initPlayer(level.residents.find(n=>n.id==='+JSON.stringify(id)+'));interact()');assert.equal(r('state'),'dialog');assert(!r('enemies.some(e=>e.denResidentRole)'),'Residents remain friendly before Fia dies');h.dismiss();}
+r("flags[1]=flags[1].filter(id=>id!=='akashRescued');coins=1000;initPlayer(level.npcs.find(n=>n.service==='cook'));interact();");assert(r("state==='shop'"));assert(r("Merchant.purchase('roastChicken')"));assert(r("Merchant.purchase('roastMeat')"));assert(r("Merchant.purchase('tea')"));assert(!r("Merchant.purchase('compass')"));assert.equal(r('coins'),925);assert(!r("Merchant.canSell('demonLordSoul')"));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+r("Merchant.close();initPlayer(level.npcs.find(n=>n.service==='smith'));interact();");assert(r("state==='campService'"));assert(r("CampWorkshop.action({type:'forgeArmor'})"));assert(r("CampWorkshop.action({type:'buyWeapon',weapon:weaponStyle==='katana'?'naginata':'katana'})"));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+r("CampWorkshop.close();initPlayer(level.npcs.find(n=>n.service==='trader'));interact();Merchant.close();Inventory.open();");assert(r("Merchant.canSell('demonLordSoul')"));assert(!r("Merchant.canSell('demonLordHeart')"));assert(r("Merchant.sell('demonLordSoul')"));assert.doesNotThrow(()=>validate(r('captureProgress()')));r('Inventory.close();');
+const before=r('chickenCount');r("FiaVoidJourney.apply(FiaJourneyRules.defeatVoid(fiaJourney,flags,defeated));CampQuest.enter('fiaRitual');initPlayer(level.npcs[0]);interact();");h.dismiss();assert(r("state==='dungeonMenu'"));h.elements.get('dungeonContinue').onclick();h.dismiss();assert(r("flags[3].includes('fiaVoidCompleted')"));assert.equal(r('chickenCount'),before+3);assert.equal(r("Inventory.quantity('rawVoidCrystal')"),0);assert.doesNotThrow(()=>validate(r('captureProgress()')));
+assert(!r('FiaVoidJourney.give()'));assert(r("!FiaConflict.npcVisible({id:'fia'})||level===fiaRitual"));
+const saved=r('captureProgress()');for(const key of ['underworldCookMet','underworldTraderMet','underworldSmithMet']){const bad=JSON.parse(JSON.stringify(saved));bad.flags[3]=bad.flags[3].filter(x=>x!==key);assert.throws(()=>validate(bad));}
+console.log('PASS: native ritual/underworld transitions, cook-only catalogue/prices, shared smith ranks without rescue spoofing, protected relics, trader sales, crystal choice/consumption and strict native save writers.');
+
+module.exports=saved;

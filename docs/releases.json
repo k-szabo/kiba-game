@@ -1414,6 +1414,70 @@
           "en": "Enable damage numbers for Momo and enemies, and numeric boss health independently in the help panel. Developer test mode uses its own toggles. Support Momo through the Ko-fi link in the main and pause menus."
         }
       ]
+    },
+    {
+      "version": "0.9.60_7dff177a",
+      "code": "7dff177a",
+      "baseVersion": "0.9.60",
+      "slug": "fia-ancient-drake-raid",
+      "summary": {
+        "hu": "A láncok mögötti tekintet",
+        "en": "The Gaze Beyond the Chains"
+      },
+      "fixes": [
+        {
+          "hu": "Fia új megbízása a zikkurat alatti, háromszakaszos őssárkányrajtaütéshez vezet. A harc újrajátszható; pikkelyei minden győzelemkor, a küldetéstárgy csak a felvett megbízáshoz jár.",
+          "en": "Fia’s new request leads to a three-stage ancient drake raid beneath the ziggurat. The encounter is replayable; scales drop on every victory, while the quest item requires an active request."
+        }
+      ]
+    },
+    {
+      "version": "0.9.61_01a95ac7",
+      "code": "01a95ac7",
+      "baseVersion": "0.9.61",
+      "slug": "fia-shard-of-void",
+      "summary": {
+        "hu": "Az üresség szilánkja",
+        "en": "Shard of the Void"
+      },
+      "fixes": [
+        {
+          "hu": "Fia következő megbízása az Árnyékzug alvilágába és egy tiltott hasadékhoz vezet. Új szolgáltatások, megőrült őrök és döntéssel záruló küldetés várja Momót.",
+          "en": "Fia’s next request leads into the Shadow Den’s underworld and a forbidden tear. New services, maddened guards and a quest ending in a choice await Momo."
+        }
+      ]
+    },
+    {
+      "version": "0.9.62_08e4907c",
+      "code": "08e4907c",
+      "baseVersion": "0.9.62",
+      "slug": "fia-final-request",
+      "summary": {
+        "hu": "Fia utolsó megbízása",
+        "en": "Fia’s final request"
+      },
+      "fixes": [
+        {
+          "hu": "Fia küldetéslánca új szertartással és egy megszerezhető rókaláng-fegyverrel folytatódik.",
+          "en": "Fia’s questline continues with a new ritual and an obtainable foxfire weapon."
+        }
+      ]
+    },
+    {
+      "version": "0.9.63_33d7b168",
+      "code": "33d7b168",
+      "baseVersion": "0.9.63",
+      "slug": "dragon-foreleg-head-cycle",
+      "summary": {
+        "hu": "Az őssárkány új harci ciklusa",
+        "en": "The ancient drake’s new combat cycle"
+      },
+      "fixes": [
+        {
+          "hu": "Az őssárkány utolsó fázisában a két első láb lesebzése után rövid időre sebezhetővé válik a földre zuhanó fej.",
+          "en": "In the ancient drake’s final phase, weakening both forelegs briefly exposes its fallen head to attacks."
+        }
+      ]
     }
   ]
 }

@@ -6,12 +6,13 @@
 'use strict';
 const CampServiceRules=(()=>{
  const profile=Object.freeze({rankLimit:5,weaponStep:.5,armorStep:20,weaponBuy:100,weaponSell:50,herbsPerBrew:3,brewHeal:3});
- const styles=Object.freeze(['katana','naginata','swordShield']);
+ const starters=Object.freeze(['katana','naginata','swordShield']);
+ const styles=Object.freeze([...starters,'foxfireKatana']);
  const fields=Object.freeze(['ownedWeapons','weaponRank','armorRank','herbs','potions']);
  const integer=(value,min,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(value)&&value>=min&&value<=max;
  const validStyle=style=>typeof style==='string'&&styles.includes(style);
  function fresh(style){
-  if(!validStyle(style))throw new TypeError('Unknown camp weapon style');
+  if(!starters.includes(style))throw new TypeError('Unknown camp weapon style');
   return {ownedWeapons:[style],weaponRank:0,armorRank:0,herbs:0,potions:0};
  }
  function validate(data,equipped){
@@ -40,7 +41,8 @@ const CampServiceRules=(()=>{
   if(context.smithRescued!==true)return fail('smithUnavailable');
   if(action.type==='buyWeapon'||action.type==='sellWeapon'){
    const weapon=action.weapon;
-   if(!validStyle(weapon))return fail('invalidWeapon');
+   // Relics enter ownership only through their quest reward, never commerce.
+   if(!starters.includes(weapon))return fail('invalidWeapon');
    const owned=state.ownedWeapons.includes(weapon);
    if(action.type==='buyWeapon'){
     if(owned)return fail('alreadyOwned');

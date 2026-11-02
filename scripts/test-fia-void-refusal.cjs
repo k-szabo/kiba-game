@@ -1,0 +1,8 @@
+'use strict';
+const assert=require('node:assert/strict'),harness=require('./test-harness.cjs'),good=require('./test-dragon-raid-saves.cjs'),validate=require('./test-save-validation.cjs');
+const h=harness(),r=h.run;r('saved='+JSON.stringify(good)+';startGame(true);');h.dismiss();
+r("FiaVoidJourney.apply(FiaJourneyRules.acceptVoid(fiaJourney,flags,defeated));FiaVoidJourney.apply(FiaJourneyRules.defeatVoid(fiaJourney,flags,defeated));CampQuest.enter('fiaRitual');initPlayer(level.npcs[0]);interact();");h.dismiss();if(!r("state==='dungeonMenu'")){r('interact()');h.dismiss();}h.elements.get('dungeonNew').onclick();h.dismiss();assert(r('FiaConflict.blocked()'));assert.doesNotThrow(()=>validate(r('saved')));assert(r("saved.fiaRecovery.location==='fiaRitual'"));
+assert(r('FiaConflict.abort()'));h.dismiss();assert.equal(r("Inventory.quantity('rawVoidCrystal')"),1);assert.equal(r('fiaJourney.voidInfection'),10);assert(!r("flags[3].includes('fiaVoidCompleted')"));
+r('initPlayer(level.npcs[0]);FiaVoidJourney.talk();');h.dismiss();h.elements.get('dungeonNew').onclick();h.dismiss();r('var foe=FiaConflict.enemy;foe.hp=0;FiaCombat.defeat(foe);');h.dismiss();assert(r("flags[3].includes('fiaSlain')"));assert(!r("flags[3].includes('fiaVoidCompleted')"));assert.doesNotThrow(()=>validate(r('captureProgress()')));
+r("CampQuest.enter('shadowUnderworld');initPlayer(level.npcs[0]);");assert.equal(r('FiaVoidJourney.provider()'),null);assert(!r('Merchant.open()'));assert(!r("CampWorkshop.open('forge')"));
+console.log('PASS: explicit refusal starts the existing Fia encounter, canonical ritual recovery restores crystal/infection, victory blocks later quests/services and retains valid history.');
