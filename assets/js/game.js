@@ -523,7 +523,7 @@ Visuals.watchExternal('momoSheet',sheet,loadMomoSprites);Visuals.watchExternal('
 function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;AssetLoading.prepare();update(dt);MenuMusic.sync();Visuals.beginFrame();try{draw();}finally{Visuals.endFrame();}AssetLoading.render();if((typeof DuelMode==='undefined'||!DuelMode.active)&&(typeof TowerMode==='undefined'||!TowerMode.active))Merchant.drawMinimap();DevLog.frame();DevBossHealth.hud();requestAnimationFrame(frame);}requestAnimationFrame(frame);
 MenuMusic.init(()=>sound&&(state==='menu'||state==='help'&&helpOrigin==='menu')&&!TowerMode.active&&!(typeof DuelMode!=='undefined'&&DuelMode.active)&&!DevTools.isOpen);
 renderSound();
-Inventory.init();TowerMode.init();Merchant.init();SlayerDialog.init();if(typeof DuelMode!=='undefined')DuelMode.init();
+Inventory.init();TowerMode.init();TowerLeaderboard.init();Merchant.init();SlayerDialog.init();if(typeof DuelMode!=='undefined')DuelMode.init();
 BugReport.init(()=>TowerMode.active?'tower':Prologue.active?'dream':level===councilHall?'council':CampQuest.locationId()||['japan','yomi','heaven','shadow'][realm]);
 I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
 I18n.onChange(()=>Dialogue.render());

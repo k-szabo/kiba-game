@@ -64,6 +64,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/background-framing.js` | Az érintett festett belső terek és panorámák nézethez igazított, képarányt tartó méretezése; az animációt továbbra is a `background-motion.js` kezeli. |
 | `assets/js/duel-rules.js`, `peer-session.js`, `duel-mode.js` | Mentéstől független párbajszimuláció, újrahasználható WebRTC-kapcsolat és két megnyert menetes mérkőzés; [hálózati referencia](MULTIPLAYER.md). |
 | `assets/js/tower-rules.js`, `tower-store.js`, `tower-mode.js` | Külön [végtelen torony](ENDLESS-TOWER.md), determinisztikus nehezedés, öt emeletenkénti checkpoint és a kalandtól elkülönített helyi rekord. |
+| `assets/js/tower-leaderboard-api.js`, `tower-leaderboard.js`, `supabase/` | Opcionális [közösségi toronyranglista](ENDLESS-TOWER.md#közösségi-ranglista), anonim identitás, elkülönített SQL és Edge Function. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés, kompatibilis kiadások közötti megőrzés; [szabályok](SAVE-COMPATIBILITY.md). |
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |

@@ -5,6 +5,7 @@ const bindings=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8'));
 exports.before=`
 const GAME_RELEASE=${JSON.stringify(release)};
+const LEADERBOARD_CONFIG=${fs.readFileSync(path.join(__dirname,'../assets/config/leaderboard.json'),'utf8')};
 const TEST_LOCALE=${JSON.stringify(locale)};
 const KEY_BINDINGS=${JSON.stringify(bindings)};
 const I18n={t:value=>TEST_LOCALE[value]??value,format:(key,args)=>(TEST_LOCALE[key]??key).replace(/\\{(\\d+)\\}/g,(_,i)=>args[i]),applyDOM(){},onChange(){},setLocale(){},locale:'hu'};

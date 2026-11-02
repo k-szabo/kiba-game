@@ -12,3 +12,6 @@ Desktop.ini
 .env
 .env.*
 !.env.example
+
+# Deployment-generated browser configuration. Never committed.
+/assets/config/leaderboard-public.json

@@ -1,0 +1,4 @@
+[functions.tower-leaderboard]
+# GET is public. POST verifies the user token against Auth and the RPC derives
+# its owner from auth.uid(); publishable keys never count as user credentials.
+verify_jwt = false
