@@ -4,6 +4,8 @@ const TowerRules=(()=>{
  const profile=Object.freeze({baseHp:20,clearHeal:2,checkpointEvery:5,maxEnemies:8});
  const layout=Object.freeze({width:1800,height:1000,groundY:760,spawnX:180});
  const weapons=Object.freeze(['katana','naginata','swordShield']),factions=Object.freeze(['japan','yomi','heaven','shadowCult']);
+ const bossPool=Object.freeze(['arenaCaptain','dungeonCaptain','cultTempleGuard','arenaSerpent','woundedAngel','dungeonCouncil','arenaCyclops']);
+ const bossCount=number=>integer(number,1)?number>=26?3:number>=11?2:1:null;
  const runKeys=Object.freeze(['seed','weapon','floor','cleared','kills','elapsed','checkpoint']),checkpointKeys=Object.freeze(['seed','weapon','cleared','kills','elapsed']);
  const integer=(value,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(value)&&value>=min&&value<=max;
  const exact=(value,keys)=>!!value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length===keys.length&&keys.every(key=>Object.hasOwn(value,key));
@@ -29,7 +31,15 @@ const TowerRules=(()=>{
     maxHp:Math.min(Number.MAX_SAFE_INTEGER,Math.ceil(baseHp*healthScale*(towerElite?1.7:1))),
     damageValue:Math.min(Number.MAX_SAFE_INTEGER,Math.round(damageScale*(towerElite?1.25:1)*100)/100)};
   });
-  return {number,realm,faction:factions[realm],enemyCount:count,elite,healthScale,damageScale,enemies};
+  // Replace fixed slots: historical kill totals/checkpoints stay valid.
+  const bosses=bossCount(number),speedScale=1+Math.min(.6,(number-1)*.0125),towerDamageScale=.5+(number-1)*.0125;
+  const baseHealth={arenaCaptain:32,dungeonCaptain:36,cultTempleGuard:40,arenaSerpent:42,woundedAngel:38,dungeonCouncil:48,arenaCyclops:44};
+  for(let i=0;i<bosses;i++){
+   const miniboss=bossPool[((number-1)%bossPool.length+(seed%bossPool.length)+i*2)%bossPool.length];
+   Object.assign(enemies[i],{miniboss,towerBoss:true,towerElite:false,replay:true,x:520+i*430,towerSpeed:speedScale,towerDamageScale,
+    maxHp:Math.min(Number.MAX_SAFE_INTEGER,Math.ceil(baseHealth[miniboss]*(1+(number-1)*.1)))});
+  }
+  return {number,realm,faction:factions[realm],enemyCount:count,bossCount:bosses,elite,healthScale,damageScale,speedScale,enemies};
  }
  // This prefix sum remains constant-cost even for hostile, enormous records.
  function killsThrough(cleared){
@@ -75,5 +85,5 @@ const TowerRules=(()=>{
   if(!Number.isFinite(hp)||!Number.isFinite(maximum)||hp<0||maximum<=0||hp>maximum||!integer(cleared,1))return null;
   if(hp===0)return 0;return cleared%profile.checkpointEvery===0?maximum:Math.min(maximum,hp+profile.clearHeal);
  }
- return Object.freeze({profile,layout,weapons,validSeed,validWeapon,maxHp,enemyCount,floor,killsThrough,validCheckpoint,valid,fresh,copy,score,fromCheckpoint,resume,advance,heal});
+ return Object.freeze({profile,layout,weapons,validSeed,validWeapon,maxHp,enemyCount,bossPool,bossCount,floor,killsThrough,validCheckpoint,valid,fresh,copy,score,fromCheckpoint,resume,advance,heal});
 })();

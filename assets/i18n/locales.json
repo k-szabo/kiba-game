@@ -1260,7 +1260,9 @@
       "menu.changelog.0964.efc29303.title": "Végtelen torony",
       "menu.changelog.0964.efc29303.0": "Új, különálló toronykihívás indulhat a főmenüből, egyre nehezedő emeletekkel, választható kezdő fegyverrel, öt emeletenkénti checkpointtal és mentett rekorddal. A kalandmentés változatlan marad.",
       "menu.changelog.0965.176f3376.title": "Zene a főmenüben",
-      "menu.changelog.0965.176f3376.0": "A főmenü saját, ismétlődő zenét kapott, amely a hangkapcsolóval némítható, játékindításkor pedig elhallgat."
+      "menu.changelog.0965.176f3376.0": "A főmenü saját, ismétlődő zenét kapott, amely a hangkapcsolóval némítható, játékindításkor pedig elhallgat.",
+      "menu.changelog.0966.dfa8ee31.title": "Bossok a végtelen toronyban",
+      "menu.changelog.0966.dfa8ee31.0": "A torony emeletein váltakozó, meglévő bossok jelennek meg kísérő ellenfelekkel. Életerejük, sebzésük és sebességük az emeletekkel nő; a 11. emelettől két, a 26.-tól három boss is harcol egyszerre. Az öt emeletenkénti checkpointok és a korábbi rekordok megmaradnak."
     }
   },
   "en": {
@@ -2524,7 +2526,9 @@
       "menu.changelog.0964.efc29303.title": "Endless Tower",
       "menu.changelog.0964.efc29303.0": "Start a new standalone tower challenge from the main menu, with increasingly difficult floors, a choice of starting weapon, checkpoints every five floors and a saved personal best. Your journey save is preserved.",
       "menu.changelog.0965.176f3376.title": "Main menu music",
-      "menu.changelog.0965.176f3376.0": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins."
+      "menu.changelog.0965.176f3376.0": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins.",
+      "menu.changelog.0966.dfa8ee31.title": "Bosses in the Endless Tower",
+      "menu.changelog.0966.dfa8ee31.0": "Tower floors now feature rotating existing bosses with supporting enemies. Their health, damage and speed increase with each floor; two bosses fight together from floor 11, and three from floor 26. Checkpoints every five floors and previous records are preserved."
     }
   }
 }

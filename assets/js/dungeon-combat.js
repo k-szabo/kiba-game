@@ -11,8 +11,9 @@ const DungeonCombat=(()=>{
  });
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss);
  const profile=e=>profiles[e.miniboss];
+ const hurt=(e,amount,dir,blockable=false)=>damage(amount*(e.towerBoss?e.towerDamageScale:1),dir,blockable);
  const source=e=>'dungeon:'+e.id;
- const current=e=>is(e)&&realm===(profile(e).realm??1)&&level.dungeon?.id===(profile(e).dungeon||'yomiFall')&&level.dungeon.floor===profile(e).floor&&enemies.includes(e)&&!e.dead&&(e.runId==null||e.runId===DungeonRun.runId(profile(e).dungeon||'yomiFall'));
+ const current=e=>is(e)&&(e.towerBoss&&level.tower&&TowerMode.running||(realm===(profile(e).realm??1)&&level.dungeon?.id===(profile(e).dungeon||'yomiFall')&&level.dungeon.floor===profile(e).floor))&&enemies.includes(e)&&!e.dead&&(e.towerBoss||e.runId==null||e.runId===DungeonRun.runId(profile(e).dungeon||'yomiFall'));
  const rage=e=>e.miniboss==='woundedAngel'?1-clamp(e.hp/e.maxHp,0,1):0;
  function phase(e,next,duration){
   e.phase=next;e.clock=duration;e.phaseDuration=duration;e.windup=next==='windup'?duration:0;e.windupDuration=duration;
@@ -110,7 +111,7 @@ const DungeonCombat=(()=>{
    const paired=['councilSweep','guardCircle'].includes(e.move);
    if((paired?box.hitDone:e.hitDone)||(box.delay||0)>e.attackElapsed||!overlap(player,box))continue;
    if(paired)box.hitDone=true;else e.hitDone=true;
-   const victim=player;damage(e.move==='councilSweep'?3:e.moveDamage||2,box.face||e.attackFace,true);
+   const victim=player;hurt(e,e.move==='councilSweep'?3:e.moveDamage||2,box.face||e.attackFace,true);
    if(player!==victim||!current(e)||state!=='play')return false;
   }
   return true;
@@ -135,7 +136,7 @@ const DungeonCombat=(()=>{
   for(const h of e.hazards){
    h.warning=Math.max(0,h.warning-dt);h.life-=dt;h.active=h.warning<=0;
    if(h.active&&h.life>0&&!h.hitDone&&overlap(player,h)){
-    h.hitDone=true;const victim=player;damage(h.damage,player.x+player.w/2>h.x+h.w/2?1:-1);
+    h.hitDone=true;const victim=player;hurt(e,h.damage,player.x+player.w/2>h.x+h.w/2?1:-1);
     if(player!==victim||!current(e)||state!=='play')return false;
    }
   }
@@ -173,7 +174,7 @@ const DungeonCombat=(()=>{
  function defeat(e){
   if(!current(e)||!e.active||e.hp>0)return false;
   e.dead=true;e.active=false;clearEffects(e);e.y=e.baseY;e.phase='dead';e.poseIndex=4;e.windup=e.attackTime=e.walkSpeed=0;syncParts(e);
-  if(typeof DungeonRun!=='undefined'&&typeof DungeonRun.onBossDefeated==='function')DungeonRun.onBossDefeated(e);
+  if(!e.towerBoss&&typeof DungeonRun!=='undefined'&&typeof DungeonRun.onBossDefeated==='function')DungeonRun.onBossDefeated(e);
   return true;
  }
  return Object.freeze({profiles,is,create,reset,update,hit,defeat,parts:e=>e.parts||[],source});

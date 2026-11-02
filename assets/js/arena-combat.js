@@ -9,9 +9,10 @@ const ArenaCombat=(()=>{
  });
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss);
  const profile=e=>profiles[e.miniboss];
+ const hurt=(e,amount,dir,blockable=false)=>damage(amount*(e.towerBoss?e.towerDamageScale:1),dir,blockable);
  const source=e=>'arena:'+e.id;
  const underworldGuard=e=>level===shadowUnderworld&&e?.singleGuard&&e.miniboss==='arenaCyclops'&&e.denRetaliation&&FiaConflict.slain()&&level.guards.some(g=>g.id===e.id);
- const current=e=>is(e)&&realm===3&&(level.id==='shadowArena'||FiaConflict.retaliator(e)||underworldGuard(e))&&enemies.includes(e)&&!e.dead;
+ const current=e=>is(e)&&(e.towerBoss&&level.tower&&TowerMode.running||(realm===3&&(level.id==='shadowArena'||FiaConflict.retaliator(e)||underworldGuard(e))))&&enemies.includes(e)&&!e.dead;
  const protects=e=>is(e)&&e.miniboss==='arenaFia'&&e.phase!=='exhausted';
  function phase(e,next,duration){
   e.phase=next;e.clock=duration;e.phaseDuration=duration;e.windup=next==='windup'?duration:0;e.windupDuration=duration;
@@ -91,7 +92,7 @@ const ArenaCombat=(()=>{
   for(const hit of boxes){
    if(e.hitDone||!overlap(player,hit))continue;
    e.hitDone=true;
-   const victim=player;damage(2,e.attackFace,true);
+   const victim=player;hurt(e,2,e.attackFace,true);
    if(player!==victim||!current(e)||state!=='play')return false;
   }return true;
  }
@@ -110,7 +111,7 @@ const ArenaCombat=(()=>{
   for(const hazard of e.hazards){
    hazard.warning=Math.max(0,hazard.warning-dt);hazard.life-=dt;hazard.active=hazard.warning<=0;
    if(hazard.active&&hazard.life>0&&overlap(player,hazard)){
-    const victim=player;damage(hazard.damage,player.x+player.w/2>hazard.x+hazard.w/2?1:-1);
+    const victim=player;hurt(e,hazard.damage,player.x+player.w/2>hazard.x+hazard.w/2?1:-1);
     if(player!==victim||!current(e)||state!=='play')return false;
    }
   }e.hazards=e.hazards.filter(hazard=>hazard.life>0);
@@ -123,7 +124,7 @@ const ArenaCombat=(()=>{
  function updatePair(e,dt){
   for(const actor of e.parts){
    actor.clock-=dt;actor.animTime+=dt;actor.walkSpeed=0;
-   for(const h of actor.hazards){h.warning=Math.max(0,h.warning-dt);h.life-=dt;h.active=h.warning<=0;if(h.active&&h.life>0&&overlap(player,h)){const victim=player;damage(h.damage,player.x>h.x?1:-1);if(player!==victim||!current(e)||state!=='play')return;}}
+   for(const h of actor.hazards){h.warning=Math.max(0,h.warning-dt);h.life-=dt;h.active=h.warning<=0;if(h.active&&h.life>0&&overlap(player,h)){const victim=player;hurt(e,h.damage,player.x>h.x?1:-1);if(player!==victim||!current(e)||state!=='play')return;}}
    actor.hazards=actor.hazards.filter(h=>h.life>0);
    if(actor.phase==='wait'){
     const dx=player.x+player.w/2-actor.x-actor.w/2;if(Math.abs(dx)>18)actor.face=Math.sign(dx);
@@ -141,7 +142,7 @@ const ArenaCombat=(()=>{
     actor.windup=Math.max(0,actor.clock);if(actor.clock<=0){phase(actor,'strike',.4);actor.poseIndex=actor.move==='pairedStomp'?5:3;}
    }else if(actor.phase==='strike'){
     actor.attackElapsed+=dt;actor.attackTime=Math.max(0,actor.clock);
-    for(const hit of actor.attackBoxes)if(!actor.hitDone&&overlap(player,hit)){actor.hitDone=true;const victim=player;damage(2,actor.attackFace,true);if(player!==victim||!current(e)||state!=='play')return;}
+    for(const hit of actor.attackBoxes)if(!actor.hitDone&&overlap(player,hit)){actor.hitDone=true;const victim=player;hurt(e,2,actor.attackFace,true);if(player!==victim||!current(e)||state!=='play')return;}
     if(actor.clock<=0){actor.attackBoxes=[];phase(actor,'recover',.85+actor.index*.1);actor.poseIndex=4;}
    }else if(actor.phase==='recover'&&actor.clock<=0){phase(actor,'wait',.45+actor.index*.15);actor.poseIndex=0;}
   }
@@ -197,7 +198,7 @@ const ArenaCombat=(()=>{
   if(state!=='play'||!current(e)||!e.active||e.hp>0)return false;
   if(protects(e)){e.hp=1;return false;}
   e.dead=true;e.active=false;e.spared=e.miniboss==='arenaFia';clearEffects(e);clearSummons(e);e.windup=e.attackTime=e.walkSpeed=0;e.phase=e.spared?'spared':'dead';e.poseIndex=e.spared?7:4;syncParts(e);
-  if(typeof ArenaChallenge!=='undefined'&&typeof ArenaChallenge.onBossDefeated==='function')ArenaChallenge.onBossDefeated(e);
+  if(!e.towerBoss&&typeof ArenaChallenge!=='undefined'&&typeof ArenaChallenge.onBossDefeated==='function')ArenaChallenge.onBossDefeated(e);
   return true;
  }
  return Object.freeze({profiles,is,create,reset,update,defeat,protects,hit,parts:e=>e.parts||[],source});

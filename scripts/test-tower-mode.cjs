@@ -6,7 +6,7 @@ function setup(weapon='katana'){
  assert(r('TowerMode.open()'));h.elements.get('towerWeapon').value=weapon;assert(r('TowerMode.start()'));
  return {...h,save,writes};
 }
-function clear(h){h.run('enemies.forEach(e=>{e.hp=0;killEnemy(e);});update(1/120);');assert.equal(h.run('TowerMode.phase'),'clear');}
+function clear(h){h.run('enemies.forEach(e=>{e.active=true;e.hp=0;killEnemy(e);});update(1/120);');assert.equal(h.run('TowerMode.phase'),'clear');}
 for(const [weapon,hp]of [['katana',20],['naginata',20],['swordShield',22]]){
  const h=setup(weapon),r=h.run;assert.equal(r('player.maxHp'),hp);assert.equal(r('weaponStyle'),weapon);assert(r('abilities.every(Boolean)'));
  assert.equal(r('progression.level'),1);assert.equal(r('coins+meatCount+teaCount+chickenCount'),0);assert.equal(r('momoStats().armor'),0);
