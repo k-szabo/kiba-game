@@ -18,13 +18,14 @@ r('var guardedHp=DragonRaid.current.hp,guardedMouth=DragonRaid.head.box;DragonRa
 r('var foreleg=DragonRaid.targets().find(t=>t.type==="foreleg"&&t.index===0);initPlayer({x:foreleg.x-30,y:foreleg.y+foreleg.h});player.face=1;player.inv=999');
 h.press({action:'heavyAttack'});h.tick(50);h.release({action:'heavyAttack'});
 assert(r('DragonRaid.current.forelegs[0]<DragonRaidRules.tuning.forelegHp'),'A real melee strike damages the visible foreleg');assert.equal(r('DragonRaid.current.hp'),r('guardedHp'),'Foreleg damage is not boss damage');
+assert(r('DragonRaid.current.forelegs[0]>0'),'A single ordinary heavy strike does not destroy the120HPforeleg');
 h.tick(30);r('DragonRaid.hit(DragonRaid.targets().find(t=>t.type==="foreleg"&&t.index===0),100000)');
 assert.equal(r('DragonRaid.current.stance'),'standing','One foreleg alone cannot expose the head');assert(!r('DragonRaid.targets().some(t=>t.type==="head")'));
 r('DragonRaid.hit(DragonRaid.targets().find(t=>t.type==="foreleg"&&t.index===1),100000)');assert.equal(r('DragonRaid.current.stance'),'falling');
 h.tick(80);assert.equal(r('DragonRaid.current.stance'),'exposed');assert(r('DragonRaid.current.stanceTime<=6&&DragonRaid.current.stanceTime>5.9'));
 r('var frozenCycle=JSON.stringify([DragonRaid.current,DragonRaid.head]);state="pause"');h.tick(240);assert.equal(r('JSON.stringify([DragonRaid.current,DragonRaid.head])'),r('frozenCycle'),'Pause freezes the six-second exposure');r('state="play"');
 r('DragonRaid.hit(DragonRaid.targets().find(t=>t.type==="head"),1)');assert.equal(r('DragonRaid.current.hp'),r('guardedHp')-4,'The fallen head takes fourfold damage');
-h.tick(850);assert.equal(r('DragonRaid.current.stance'),'standing');assert.deepEqual(Array.from(r('DragonRaid.current.forelegs')),[12,12]);assert(!r('DragonRaid.targets().some(t=>t.type==="head")'),'Recovery closes the head window');
+h.tick(850);assert.equal(r('DragonRaid.current.stance'),'standing');assert.deepEqual(Array.from(r('DragonRaid.current.forelegs')),[120,120]);assert(!r('DragonRaid.targets().some(t=>t.type==="head")'),'Recovery closes the head window');
 assert.equal(r('progression.totalXp'),xp,'A stagger cycle gives no XP');assert.equal(r('fiaJourney.dragonScales'),0,'A stagger cycle gives no loot');
 r('for(const t of DragonRaid.targets().filter(t=>t.type==="foreleg"))DragonRaid.hit(t,100000)');h.tick(80);
 r('DragonRaid.hit(DragonRaid.targets().find(t=>t.type==="head"),100000)');

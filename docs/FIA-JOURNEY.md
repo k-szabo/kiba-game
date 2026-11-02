@@ -35,7 +35,7 @@ területi mágiát választ. A fej rajzolása és találati teste ugyanazt a poz
 használja. A négy tartóoszlop összesen 180 aktív másodpercet ad a záróharchoz.
 
 A harmadik fázisban a fej alapból védett. A két első láb külön-külön
-12 HP-s; mindkettő lesebzése 0,65 másodperces összeesést indít, és törli
+120 HP-s; mindkettő lesebzése 0,65 másodperces összeesést indít, és törli
 az aktuális támadást. A földön fekvő fej hat aktív másodpercig sebezhető,
 négyszeres sebzéssel. Egy másodperces felállás után mindkét láb visszaáll,
 és újraindul a ciklus. A boss 1200 HP-ja nem töltődik vissza; a tűz,

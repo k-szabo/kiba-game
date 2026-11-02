@@ -1,7 +1,7 @@
 /* Transient raid progression. This record is never a journey save. */
 'use strict';
 const DragonRaidRules=(()=>{
- const tuning=Object.freeze({chainHp:6,tumorHp:12,chains:4,tumors:3,manifestations:2,maxHp:1200,pillars:4,pillarInterval:45,forelegHp:12,fallDuration:.65,headWindow:6,riseDuration:1,headMultiplier:4});
+ const tuning=Object.freeze({chainHp:6,tumorHp:12,chains:4,tumors:3,manifestations:2,maxHp:1200,pillars:4,pillarInterval:45,forelegHp:120,fallDuration:.65,headWindow:6,riseDuration:1,headMultiplier:4});
  const positive=n=>Number.isFinite(n)&&n>0;
  function fresh(run){
   if(!Number.isSafeInteger(run)||run<1)return null;
