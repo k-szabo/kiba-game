@@ -18,6 +18,8 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ towerBackdrop:'assets/images/backgrounds/endless-tower-v1.png',
+ towerBackdropMotionPhaseB:'assets/images/backgrounds/endless-tower-motion-b-v1.png',
  travelAtlas:'assets/images/ui/travel-atlas-v1.png',
  fiaAttendantSpirits:'assets/images/effects/fia-attendant-spirits-v1.png',
  momoFoxfireNormal:'assets/images/momo-foxfire-normal-v1.png',

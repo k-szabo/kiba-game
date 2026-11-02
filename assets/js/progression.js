@@ -25,6 +25,7 @@ function normalizeProgression(data,worldFlags=[]) {
   return out;
 }
 function momoStats() {
+  if(typeof TowerMode!=='undefined'&&TowerMode.active)return TowerMode.stats();
   const forge=typeof campServices==='undefined'?null:campServices,boost=DungeonRules.bonus(dungeonState);
   return {maxHp:5+progression.stats.vitality+WeaponStyles.profile(weaponStyle).health,damage:(defeated[1]?3:2)+progression.stats.strength*.5+(forge?.weaponRank??0)*CampServiceRules.profile.weaponStep+boost.damage,armor:(forge?.armorRank??0)*CampServiceRules.profile.armorStep+SerpentRelics.armorBonus()+boost.armor,
     dashCooldown:Math.max(.38,.8-progression.stats.spirit*.06)*boost.dashMultiplier,invulnerability:1.25+progression.stats.spirit*.05};
@@ -51,6 +52,7 @@ function updateProgressHUD() {
 }
 function trainingRest() {return level.rests.find(r=>pointNear(r,100,85));}
 function showTraining() {
+  if(typeof TowerMode!=='undefined'&&TowerMode.active)return false;
   if(FiaConflict.blocked())return false;
   if(state!=='play'||Prologue.active)return;
   if(!trainingRest()){toast(I18n.t("text.train.at.a.resting.shrine.stand.beside.it.and"));return;}

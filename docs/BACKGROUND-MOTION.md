@@ -1,6 +1,6 @@
 # Festett hátterek helyi animációja
 
-A `background-motion.js` mind a 47 háttérfestmény natív méretű második fázisából készít maszkolt, finoman átúszó részleteket. A fő pályák mellett a rejtett arénák, táborok, belső terek és dungeonök is saját festett fázist kaptak. Az alternatív képek az `ART_MANIFEST` részei, de a `Visuals` induló képlistája kizárja őket: az első jelenetrajzoláskor az `AssetCache` tölti be őket. A sor egyszerre egy képet tölt, legfeljebb három fázist tart meg, és 64 MiB memóriafoglalási kerettel számol. Hiányzó vagy hibás B képnél a korábbi, kis forrásmaszkos tartalék rajzolás marad.
+A `background-motion.js` mind a 52 háttérfestmény natív méretű második fázisából készít maszkolt, finoman átúszó részleteket. A fő pályák mellett a rejtett arénák, táborok, belső terek és dungeonök is saját festett fázist kaptak. Az alternatív képek az `ART_MANIFEST` részei, de a `Visuals` induló képlistája kizárja őket: az első jelenetrajzoláskor az `AssetCache` tölti be őket. A sor egyszerre egy képet tölt, legfeljebb három fázist tart meg, és 64 MiB memóriafoglalási kerettel számol. Hiányzó vagy hibás B képnél a korábbi, kis forrásmaszkos tartalék rajzolás marad.
 
 Az új részletek kézzel kijelölt területei befelé halványulnak. Yomi lámpásának teteje és talapzata védett terület. A tartalék forrásmaszk legfeljebb 512 pixel széles; a sikeresen betöltött festett fázisok nem használják a régi fényerőpulzálást. Hiányzó vagy eltérő méretű B kép esetén a régi rajzolás marad. A forráskép vetítési és vágási koordinátái változatlanok.
 
@@ -26,12 +26,13 @@ A fő birodalmak, a szentély- és barlanghátterek, az erdei menedék, a szolg�
 
 ## Teljes festett A/B lefedettség
 
-Mind a 47 forrásképhez külön, natív méretű B fázis és kézzel kijelölt mozgásterület tartozik. A 46 elérhető kép mellett az egyelőre nem használt `samuraiCampBackdrop` tartalékkép is szerepel. Az épített környezet és a pályageometria változatlan. A teljes leltárt a fő birodalmak, a mennyország három bossfázisa, a prológus és ébredés, az öt rejtett arénakép, a zikkurat négy képe, a három szolgáltatói belső tér, a tanácsosi csarnok és az alábbi panelek alkotják:
+Mind a 52 forrásképhez külön, natív méretű B fázis és kézzel kijelölt mozgásterület tartozik. A 51 elérhető kép mellett az egyelőre nem használt `samuraiCampBackdrop` tartalékkép is szerepel. Az épített környezet és a pályageometria változatlan. A teljes leltárt a fő birodalmak, a mennyország három bossfázisa, a prológus és ébredés, az öt rejtett arénakép, a zikkurat négy képe, a három szolgáltatói belső tér, a tanácsosi csarnok és az alábbi panelek alkotják:
 
 | Helyszíncsoport | Háttérkulcsok |
 | --- | --- |
 | Erdei menedék és szolgáltatások | `campBackdrop`, `campHDLeft`, `campHDCenter`, `campHDRight`, `samuraiCampBackdrop`, `samuraiCampHDWest`, `samuraiCampHDCenter`, `samuraiCampHDEast` |
 | Börtön és Árnyékzug | `zenPrisonWest`, `zenPrisonCenter`, `zenPrisonEast`, `fiaPrisonDepths`, `fiaDenWest`, `fiaDenEast`, `arenaWest`, `arenaCenter`, `arenaEast`, `fiaChambersBackdrop` |
+| Torony és új Fia-helyszínek | `towerBackdrop`, `dragonRaidHall`, `fiaRitualBackdrop`, `shadowUnderworldBackdrop`, `voidForbiddenBackdrop` |
 | Dungeonök és egyéb terek | `cultDungeonForecourt`, `cultDungeonHall`, `cultDungeonSanctum`, `dungeonCourtyardWest`, `dungeonCourtyardCenter`, `dungeonCourtyardEast`, `dungeonCrypt`, `dungeonThrones` |
 
 A teljességet, a fájlok meglétét és az eredeti képpel azonos natív méretet a `test-background-motion.cjs` is ellenőrzi. Új háttér felvételekor a festett fázist és a mozgásterületet is ki kell dolgozni. Az összes helyszín megáll szünetben; csökkentett mozgásnál az eredeti festményt mutatja.
@@ -48,8 +49,10 @@ A több képből összeállított tábori, börtön-, dungeon- és arénahátter
 - Hannah: `zigguratApproach`, `zigguratInterior`, `zigguratThrone`, `zigguratStorm`; a mennyországi titkos fázis: `heavenEclipseBackdrop`.
 - Árnyék a prológusban: `shadowBackdrop`; az ébredés külön `momoRoom` képet használ.
 
-A leltár 47 külön háttérképet tartalmaz; ebből 46-nak van jelenleg elérhető háttérrajzolási útvonala. Az ellenőrzés a rejtett arénák áttűnésére és a panelek illesztésére is terjedjen ki.
+A leltár 52 külön háttérképet tartalmaz; ebből 51-nak van jelenleg elérhető háttérrajzolási útvonala. Az ellenőrzés a rejtett arénák áttűnésére és a panelek illesztésére is terjedjen ki.
 
-Ezen felül az öreg angyal romjainál a `japanClouds` külön előtéri felhőréteg: a közös aktív órával néhány képpontnyit sodródik, csökkentett mozgásnál az eredeti helyén áll. Ez nem teljes háttérkép. A prológus eljárással rajzolt köde és fekete lyuka külön effekt, nem része a 47 képes leltárnak.
+Ezen felül az öreg angyal romjainál a `japanClouds` külön előtéri felhőréteg: a közös aktív órával néhány képpontnyit sodródik, csökkentett mozgásnál az eredeti helyén áll. Ez nem teljes háttérkép. A prológus eljárással rajzolt köde és fekete lyuka külön effekt, nem része a 52 képes leltárnak.
 
 A börtön csak a képernyőt metsző paneleket küldi animálásra. Amint a vadász külön háttere teljesen fedővé válik, a börtön statikus festményként megmarad alatta: az alsó képszélen sincs rés, és a takart panelek nem foglalják el a vadász animációjának gyorsítótárát. Hiányzó vadászképnél az animált börtön marad.
+
+A végtelen torony a közös aktív órát és natív A/B réteget használja: csak a kijelölt lámpásbelsők és ablakok mögötti felhő/köd változik, az épület és a járható kőfelületek állnak. A torony saját rajzolója képkockánként egyszer kezdi a háttércache-kört; az órát továbbra is csak a közös játékciklus lépteti.
