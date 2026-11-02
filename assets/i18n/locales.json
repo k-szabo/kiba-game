@@ -1258,7 +1258,9 @@
       "tower.objective": "Győzd le az emelet összes ellenfelét.",
       "tower.storage": "A torony eredménye most csak ebben az ablakban marad meg.",
       "menu.changelog.0964.efc29303.title": "Végtelen torony",
-      "menu.changelog.0964.efc29303.0": "Új, különálló toronykihívás indulhat a főmenüből, egyre nehezedő emeletekkel, választható kezdő fegyverrel, öt emeletenkénti checkpointtal és mentett rekorddal. A kalandmentés változatlan marad."
+      "menu.changelog.0964.efc29303.0": "Új, különálló toronykihívás indulhat a főmenüből, egyre nehezedő emeletekkel, választható kezdő fegyverrel, öt emeletenkénti checkpointtal és mentett rekorddal. A kalandmentés változatlan marad.",
+      "menu.changelog.0965.176f3376.title": "Zene a főmenüben",
+      "menu.changelog.0965.176f3376.0": "A főmenü saját, ismétlődő zenét kapott, amely a hangkapcsolóval némítható, játékindításkor pedig elhallgat."
     }
   },
   "en": {
@@ -2520,7 +2522,9 @@
       "tower.objective": "Defeat every enemy on this floor.",
       "tower.storage": "Your tower progress can currently be kept only in this tab.",
       "menu.changelog.0964.efc29303.title": "Endless Tower",
-      "menu.changelog.0964.efc29303.0": "Start a new standalone tower challenge from the main menu, with increasingly difficult floors, a choice of starting weapon, checkpoints every five floors and a saved personal best. Your journey save is preserved."
+      "menu.changelog.0964.efc29303.0": "Start a new standalone tower challenge from the main menu, with increasingly difficult floors, a choice of starting weapon, checkpoints every five floors and a saved personal best. Your journey save is preserved.",
+      "menu.changelog.0965.176f3376.title": "Main menu music",
+      "menu.changelog.0965.176f3376.0": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins."
     }
   }
 }

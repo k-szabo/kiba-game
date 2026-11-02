@@ -1570,6 +1570,22 @@
           "en": "Start a new standalone tower challenge from the main menu, with increasingly difficult floors, a choice of starting weapon, checkpoints every five floors and a saved personal best. Your journey save is preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.65_176f3376",
+      "code": "176f3376",
+      "baseVersion": "0.9.65",
+      "slug": "main-menu-music",
+      "summary": {
+        "hu": "Zene a főmenüben",
+        "en": "Main menu music"
+      },
+      "fixes": [
+        {
+          "hu": "A főmenü saját, ismétlődő zenét kapott, amely a hangkapcsolóval némítható, játékindításkor pedig elhallgat.",
+          "en": "The main menu now has its own looping theme, controlled by the sound toggle, which stops when gameplay begins."
+        }
+      ]
     }
   ]
 }

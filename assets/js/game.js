@@ -391,7 +391,9 @@ function pause(){if(state==='play'){state='pause';keys.clear();$('pause').hidden
 function mainMenu(){if(typeof TowerMode!=='undefined'&&TowerMode.active){TowerMode.leave();return;}if(typeof DuelMode!=='undefined'&&DuelMode.active){DuelMode.leave();return;}HannahEncounter.clear();Dawnblade.resetPlayer();FiaRitual.clear();FiaConflict.abort();DungeonRun.cancel();SerpentArt.resetBackdrop();CampWorkshop.cancel();WeaponSelection.cancel();Dialogue.cancel();LevelUpEffect.clear();Merchant.resetTea();SlayerDialog.cancel();DoomSlayer.clear();if(DevSession.active){DevSession.end();return;}if(state==='developer')DevTools.close();if(state==='inventory')Inventory.close();if(state==='shop')Merchant.close();Prologue.stop();state='menu';realm=0;level=levels[0];camera=500;cameraY=400;for(const id of ['dialog','map','pause','training','help','inventory','shop','campService','dungeonMenu','prompt','bossHud'])$(id).hidden=true;$('menu').hidden=false;showHUD(false);keys.clear();$('continueButton').hidden=!saved;}
 $('startButton').onclick=()=>startGame(false);WeaponSelection.init();CampWorkshop.init();$('continueButton').onclick=()=>startGame(true);$('pauseButton').onclick=pause;$('resumeButton').onclick=pause;$('mainMenuButton').onclick=mainMenu;$('mapButton').onclick=showMap;$('closeMap').onclick=closeMap;
 $('helpButton').onclick=()=>showHelp('menu');$('pauseHelpButton').onclick=()=>showHelp('pause');$('closeHelp').onclick=closeHelp;
-$('soundButton').onclick=()=>{sound=!sound;$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if(sound){tone(440,.2);audio?.resume();}};
+function renderSound(){for(const id of ['soundButton','menuSoundButton']){$(id).textContent=I18n.t(sound?'text.sound.on':'text.sound.off');$(id).setAttribute('aria-pressed',String(sound));}}
+function toggleSound(){sound=!sound;renderSound();MenuMusic.sync(true);if(sound){tone(440,.2);audio?.resume()?.catch(()=>{});}}
+$('soundButton').onclick=toggleSound;$('menuSoundButton').onclick=toggleSound;
 let helpOrigin='menu',captureAction=null,suppressedMouseClick=null;
 function bindingKeyLabel(key){
  if(/^mouse[0-4]$/.test(key))return I18n.t('binding.key.'+key);
@@ -513,14 +515,16 @@ addEventListener('mousedown',e=>{handleMouseDown(e);Cursor.update();},true);addE
 addEventListener('click',handleMouseClick,true);addEventListener('contextmenu',handleMouseContextMenu,true);
 AssetCache.load(sheet,'assets/images/momo.png',ok=>{if(ok){loadingReady=true;if(DevTools.isOpen)DevTools.refresh();}else toast(I18n.t("text.momo.s.artwork.could.not.be.loaded.please.reload"));});
 AssetCache.load(menuSheet,'assets/images/momo-menu-idle-v2.png');
-function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);draw();if((typeof DuelMode==='undefined'||!DuelMode.active)&&(typeof TowerMode==='undefined'||!TowerMode.active))Merchant.drawMinimap();DevLog.frame();DevBossHealth.hud();requestAnimationFrame(frame);}requestAnimationFrame(frame);
+function frame(ms){const dt=Math.min((ms-last)/1000||0,.033);last=ms;update(dt);MenuMusic.sync();draw();if((typeof DuelMode==='undefined'||!DuelMode.active)&&(typeof TowerMode==='undefined'||!TowerMode.active))Merchant.drawMinimap();DevLog.frame();DevBossHealth.hud();requestAnimationFrame(frame);}requestAnimationFrame(frame);
+MenuMusic.init(()=>sound&&(state==='menu'||state==='help'&&helpOrigin==='menu')&&!TowerMode.active&&!(typeof DuelMode!=='undefined'&&DuelMode.active)&&!DevTools.isOpen);
+renderSound();
 Inventory.init();TowerMode.init();Merchant.init();SlayerDialog.init();if(typeof DuelMode!=='undefined')DuelMode.init();
 BugReport.init(()=>TowerMode.active?'tower':Prologue.active?'dream':level===councilHall?'council':CampQuest.locationId()||['japan','yomi','heaven','shadow'][realm]);
 I18n.onChange(()=>{$('resolutionMessage').textContent=I18n.t('display.minimum');});
 I18n.onChange(()=>Dialogue.render());
 I18n.applyDOM();
 DevSession.init();DevBoss.init();DevTeleport.init();DevLevel.init();DevItems.init();DevAbilities.init();DevWeapons.init();DevImmortality.init();CombatDisplay.init();DevDamage.init();DevLog.init();DevCache.init();DevTools.init();
-I18n.onChange(()=>{if(typeof DuelMode!=='undefined'&&DuelMode.active)return;if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();$('soundButton').textContent=I18n.t(sound?I18n.t("text.sound.on"):I18n.t("text.sound.off"));if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
+I18n.onChange(()=>{if(typeof DuelMode!=='undefined'&&DuelMode.active)return;if(player)updateHUD();if(state==='map')showMap();if(state==='training')refreshTraining();if(state==='inventory')Inventory.render();renderHelp();renderSound();if($('toast').textContent)$('toast').textContent=I18n.t($('toast').textContent);});
 renderBindingHints();
 for(const select of document.querySelectorAll('.language-picker select'))select.addEventListener('change',e=>I18n.setLocale(e.target.value));
 
