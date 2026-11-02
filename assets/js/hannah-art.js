@@ -17,7 +17,7 @@ const HannahArt=(()=>{
  function backdrop(){
   if(!HannahEncounter.active())return false;
   const v=HannahEncounter.visual(),key=level.ziggurat==='approach'?'zigguratApproach':level.ziggurat==='interior'?'zigguratInterior':'zigguratThrone';
-  const base=Visuals.images[key],storm=Visuals.images.zigguratStorm;
+  const base=Visuals.images[key],storm=level===zigguratSummit&&v.storm?Visuals.images.zigguratStorm:null;
   if(!base?.complete||!base.naturalWidth)return false;
   ctx.save();ctx.fillStyle='#110e1c';ctx.fillRect(0,0,viewW,H);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   function paint(image,alpha=1){

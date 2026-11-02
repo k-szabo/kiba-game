@@ -700,6 +700,22 @@
           "en": "Fia’s final ritual fight features denser attack sequences and summons the two attendants’ spirits; the ritual consumes her health more slowly."
         }
       ]
+    },
+    {
+      "version": "0.9.66_83b33754",
+      "code": "83b33754",
+      "baseVersion": "0.9.66",
+      "slug": "on-demand-artwork",
+      "summary": {
+        "hu": "Gyorsabb indulás, célzott képletöltés",
+        "en": "Faster startup, artwork on demand"
+      },
+      "fixes": [
+        {
+          "hu": "A főmenü és az aktuális helyszín grafikái külön töltődnek be; a későbbi területek képei csak szükség esetén érkeznek. A változatlan képek frissítések között is újrahasználhatók.",
+          "en": "The main menu and current location load their artwork separately; later areas are downloaded when needed. Unchanged images can be reused across updates."
+        }
+      ]
     }
   ],
   "releases": [

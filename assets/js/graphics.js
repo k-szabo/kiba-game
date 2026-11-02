@@ -1,7 +1,51 @@
 /* Illustrated game art. Images are original, alpha-preserving PNG assets. */
 'use strict';
 const Visuals = (() => {
-  const images = {};
+  const rawImages = {},records=new Map(),listeners=new Set();
+  let frameKeys=new Set(),uiKeys=new Set(),scopeKeys=new Set(),inFrame=false,scopeToken=null,running=0;
+  const queue=[],menuKeys=['japanBackdrop','terrain','props'];
+  const currentKeys=()=>new Set([...scopeKeys,...frameKeys,...uiKeys]);
+  const notify=key=>{if(key&&!currentKeys().has(key))return;for(const listener of listeners)listener();};
+  function pump(){
+    while(running<4&&queue.length){
+      const entry=queue.shift();if(entry.status!=='queued')continue;
+      entry.status='loading';running++;
+      AssetCache.load(entry.image,ART_MANIFEST[entry.key],ok=>{
+        entry.status=ok?'ready':'failed';running--;entry.resolve(ok);pump();notify(entry.key);
+      });
+    }
+  }
+  function request(key){
+    let entry=records.get(key);
+    if(!entry&&!Object.hasOwn(ART_MANIFEST,key))return null;
+    if(!entry){
+      entry={key,image:rawImages[key]||new Image(),status:'queued'};rawImages[key]=entry.image;
+      entry.promise=new Promise(resolve=>entry.resolve=resolve);records.set(key,entry);queue.push(entry);pump();
+    }
+    return entry;
+  }
+  function prefetch(keys){for(const key of keys)request(key);}
+  function requireImage(key){(inFrame?frameKeys:uiKeys).add(key);return request(key)?.image;}
+  const images=new Proxy(rawImages,{get:(target,key)=>typeof key==='string'&&Object.hasOwn(ART_MANIFEST,key)?requireImage(key):target[key],set:(target,key,value)=>{
+    target[key]=value;const entry=records.get(key);if(entry){entry.image=value;if(value?.complete&&value.naturalWidth)entry.status='ready';}return true;
+  }});
+  function scope(token,keys=[]){
+    const changed=scopeToken!==token;
+    if(changed){scopeToken=token;uiKeys.clear();frameKeys.clear();scopeKeys.clear();}
+    scopeKeys=new Set(keys.filter(key=>Object.hasOwn(ART_MANIFEST,key)||records.has(key)));
+    for(const key of scopeKeys)request(key);
+    // Leaving a scene abandons queued work; at most four in-flight requests finish.
+    const needed=currentKeys();for(let i=queue.length-1;i>=0;i--){const entry=queue[i];if(!needed.has(entry.key)){queue.splice(i,1);records.delete(entry.key);delete rawImages[entry.key];entry.status='cancelled';entry.resolve(false);}}
+    return changed;
+  }
+  function retry(){
+    for(const key of currentKeys()){const entry=records.get(key);if(entry?.status==='failed'){if(entry.retry)entry.retry();else{records.delete(key);delete rawImages[key];request(key);}}}
+    notify();
+  }
+  const pending=()=>[...currentKeys()].some(key=>{const e=records.get(key);return e&&e.status!=='ready';});
+  const failures=()=>[...currentKeys()].filter(key=>records.get(key)?.status==='failed');
+  const ready=Promise.all(menuKeys.map(key=>request(key).promise));
+  scope('menu',menuKeys);
   const heavenMix=[1,0,0];
   function backdropPhase(){return realm===2&&bossStarted&&boss&&!boss.dead?clamp(boss.stage,1,3):1;}
   function resetAtmosphere(){heavenMix.splice(0,3,1,0,0);SerpentArt.resetBackdrop();}
@@ -21,29 +65,6 @@ const Visuals = (() => {
       for(const p of paths)ctx.clip(p);
     }else for(const outline of rect.outlines){ctx.beginPath();outline.forEach(([x,y],i)=>{if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});ctx.closePath();ctx.clip();}
   }
-  let completed = 0;
-  const failures = [];
-  const entries = Object.entries(ART_MANIFEST).filter(([key])=>!key.endsWith('MotionPhaseB'));
-  function progress() {
-    const button = document.getElementById('startButton');
-    if (button) button.innerHTML = I18n.t(completed === entries.length
-      ? I18n.t("text.begin.the.journey")
-      : I18n.format("message.loading.artwork.arg0.arg1",[completed,entries.length]));
-  }
-  const ready = Promise.all(entries.map(([key, src]) => new Promise(resolve => {
-    const image = new Image();
-    images[key] = image;
-    let finished = false;
-    const finish = ok => {
-      if (finished) return;
-      finished = true;
-      completed++;
-      if (!ok) failures.push(key);
-      progress();
-      resolve(ok);
-    };
-    AssetCache.load(image,src,finish);
-  })));
   const usable = key => images[key]?.complete && images[key].naturalWidth > 0;
   const faction = () => ['japan', 'yomi', 'heaven', 'shadowCult'][realm];
   function frame(key, rect, x, feet, bodyHeight, face = 1, bob = 0, stretch = 0) {
@@ -866,5 +887,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,failures,get loaded(){return completed;},get total(){return entries.length;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,duelTerrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
+  return {ready,images,prefetch,watchExternal(key,image,retry){records.set(key,{image,retry,status:'loading'});},externalStart(key){const e=records.get(key);if(e)e.status='loading';},externalResult(key,ok){const e=records.get(key);if(e){e.status=ok?'ready':'failed';notify(key);}},peek:key=>rawImages[key],scope,retry,onLoad:fn=>{listeners.add(fn);return ()=>listeners.delete(fn);},beginFrame(){frameKeys=new Set();inFrame=true;},endFrame(){inFrame=false;},get blocked(){return pending();},get failures(){return failures();},get loaded(){return [...currentKeys()].filter(key=>records.get(key)?.status==='ready').length;},get total(){return currentKeys().size;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,duelTerrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
 })();
