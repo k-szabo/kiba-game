@@ -7,6 +7,21 @@ function setup(seed=7,cleared=0){
  assert(r('TowerMode.open()'));assert(r('TowerMode.resume()'));
  return {...h,save,flags,writes};
 }
+// Distant support enemies engage from spawn; ordinary journey patrols stay local.
+for(const fps of [30,60,120]){
+ const h=setup(7),r=h.run;r('var distant=enemies[enemies.length-1];player.inv=999;');
+ assert(r('distant.x-player.x>1000'));
+ const x=r('distant.x');r(`updateEnemy(distant,1/${fps})`);assert(r('distant.x')<x,'Tower support immediately pursues Momo');
+ r('distant.x=1600;distant.towerEnemy=false;distant.patrolFace=1;distant.face=1;distant.turnCooldown=0;');
+ r(`updateEnemy(distant,1/${fps})`);assert(r('distant.x')>1600,'Journey enemy retains distance detection');
+}
+// The actual tower drawing path honors numeric health, including simultaneous bosses.
+{
+ const h=setup(13,25),r=h.run;r("var labels=[];ctx.fillText=text=>labels.push(text);CombatDisplay.set('bossHealth',true);TowerMode.draw();");
+ assert(r('enemies.filter(e=>e.towerBoss).every(e=>labels.includes(DevBossHealth.value(e)))'));
+ r("labels=[];CombatDisplay.set('bossHealth',false);TowerMode.draw();");
+ assert(r('enemies.filter(e=>e.towerBoss).every(e=>!labels.includes(DevBossHealth.value(e)))'));
+}
 for(const seed of [1,2,3,4,5,6,7]){
  const h=setup(seed),r=h.run;r('var enemy=enemies[0];player.inv=999;');assert(r('enemy.towerBoss'));
  const seen=new Set();for(let n=0;n<30*120;n++){r('update(1/120)');const move=r('enemy.move');if(move)seen.add(move);}

@@ -716,6 +716,22 @@
           "en": "The main menu and current location load their artwork separately; later areas are downloaded when needed. Unchanged images can be reused across updates."
         }
       ]
+    },
+    {
+      "version": "0.9.67_6a799f0d",
+      "code": "6a799f0d",
+      "baseVersion": "0.9.67",
+      "slug": "healing-tower-combat",
+      "summary": {
+        "hu": "Gyógyfőzet és toronyharc javításai",
+        "en": "Healing brew and tower combat fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A gyógyfőzet üzenete mutatja a ténylegesen visszatöltött HP-t. A toronyban is működik a bossok számszerű életerő-kijelzése, a távoli ellenfelek pedig azonnal üldözni kezdik Momót.",
+          "en": "Healing brew feedback shows the HP actually restored. Numeric boss health also works in the tower, and distant enemies begin pursuing Momo immediately."
+        }
+      ]
     }
   ],
   "releases": [

@@ -130,6 +130,7 @@
 
 /* The backpack and equipment are two readable windows inside one paused dialog. */
 #inventory{z-index:25;display:flex;align-items:center;justify-content:center;padding:18px;background:#061019df;overflow:hidden}
+#game:has(#inventory:not([hidden])) #toast{z-index:26;bottom:24px;background:#102028;font-size:16px}
 .inventory-shell{width:min(1000px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:#11232bf7;border:1px solid #c9b27b;border-radius:14px;padding:0 22px 22px;color:#f5edda;box-shadow:0 22px 65px #000a;scrollbar-gutter:stable;line-height:1.6}
 .inventory-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:#11232b;border-bottom:1px solid #c9b27b66}
 .inventory-header h2{font:32px var(--font-story);margin:3px 0 0;line-height:1.25;color:#fff0c8}

@@ -107,7 +107,7 @@ function updateEnemy(e,dt){
     for(const key of ['stun','cd','contactCd','recovery','guardBreak','blockFlash','turnCooldown','edgePause'])e[key]=Math.max(0,e[key]-dt);
     e.attackTime=Math.max(0,e.attackTime-dt);if(e.attackTime>0)e.attackElapsed+=dt;e.walkSpeed=0;
     const dx=player.x+player.w/2-e.x-e.w/2,dy=player.y+player.h*.5-e.y-e.h*.5,role=enemyRole(e);
-    const near=(!!e.denResidentRole||arenaAggro||Math.abs(dx)<(role==='mage'?610:510))&&Math.abs(dy)<180;
+    const near=(!!e.denResidentRole||e.towerEnemy||arenaAggro||Math.abs(dx)<(role==='mage'?610:510))&&Math.abs(dy)<180;
     const ranged=role==='mage'||role==='archer',hit=enemyMeleeBox(e);
     // Ground melee enemies cannot climb to an overhead target. Keep their
     // patrol alive instead of clamping chase at an edge or swinging into air.

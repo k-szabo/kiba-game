@@ -81,8 +81,10 @@ const Merchant=(()=>{
  function canUseBrew(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&campServices.potions>0;}
  function useBrew(fromInventory=false){
   if(state!==(fromInventory?'inventory':'play')||!canUseBrew())return false;
+  const before=player.hp;
   campServices.potions--;player.hp=Math.min(player.maxHp,player.hp+CampServiceRules.profile.brewHeal);selectAvailable();
-  persist();updateHUD();if(fromInventory)Inventory.render();return true;
+  persist();updateHUD();if(fromInventory)Inventory.render();
+  toast(I18n.format('merchant.health.up',[CampHealth.number(player.hp-before)]));return true;
  }
  function resetTea(){teaElapsed=0;teaPulses=0;}
  function teaSnapshot(){return {elapsed:teaElapsed,pulses:teaPulses};}

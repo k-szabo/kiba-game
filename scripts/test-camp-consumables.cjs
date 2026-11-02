@@ -7,6 +7,12 @@ function choose(h,id){const node=h.elements.get('inventoryGrid').children.find(n
 // Harness DOM events are deliberately minimal; capture actual listener closures
 // for these focused inventory interactions rather than exposing production seams.
 function captureClicks(h){h.run("var makeCampInventoryElement=document.createElement;document.createElement=(...args)=>{const node=makeCampInventoryElement(...args);node.addEventListener=(event,handler)=>{if(event==='click')node.onclick=handler;};return node;};");}
+for(const language of ['hu','en'])for(const inventory of [false,true])for(const missing of [3,.6]){
+ const h=setup(),r=h.run;r(`I18n.setLocale('${language}');campServices.potions=1;player.hp=player.maxHp-${missing};quickHeal='healingBrew';${inventory?'Inventory.open();':''}`);
+ assert(r(inventory?'Merchant.useBrew(true)':'Merchant.useQuick()'));
+ assert.equal(h.elements.get('toast').textContent,r(`I18n.format('merchant.health.up',[CampHealth.number(${missing})])`));
+ assert.equal(r('player.hp'),r('player.maxHp'));assert.equal(r('campServices.potions'),0);
+}
 {
  const h=setup(),r=h.run;r('campServices.potions=2;player.hp=player.maxHp;');
  const before=r('__saveSnapshots.length');assert(!r('Merchant.canUseBrew()'));assert(!r('Merchant.useBrew()'));assert.equal(r('campServices.potions'),2);assert.equal(r('__saveSnapshots.length'),before,'Full health cannot waste a dose or write a save');
