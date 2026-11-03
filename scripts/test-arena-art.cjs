@@ -48,4 +48,14 @@ for(let index=0;index<4;index++){
 const frozen=r('JSON.stringify(ArenaChallenge.departure)');r('state="pause";ArenaChallenge.update(1);');assert.equal(r('JSON.stringify(ArenaChallenge.departure)'),frozen,'Departure animation freezes with gameplay');
 r('state="play";reducedMotion.matches=true;');const still=r('ArenaChallenge.departure.x');r('ArenaChallenge.update(.125);');assert.equal(r('ArenaChallenge.departure.x'),still);calls=[];r('ArenaArt.scenery();');assert(!calls.some(call=>call.image===walkImage),'Reduced motion uses the established stationary departure pose');
 assert(r('ART_INVENTORY.items.arenaSerpentScale.realm===3'));r('flags[3].push("arenaSerpentScale");');assert(r('Inventory.quantity("arenaSerpentScale")===1'));assert(r('ArenaArt.actors().fiaCombat.rect.w>0'));
+// Source culling must not erase a remote stomp's actual damage zone.
+{
+ const boxes=[];ctx.strokeRect=(...args)=>boxes.push(args);
+ r("CampQuest.enter('shadowArena');state='play';enemies=[ArenaCombat.create(level.arenaEncounters.find(e=>e.miniboss==='arenaCyclops'))];var offscreenCyclops=enemies[0];offscreenCyclops.active=true;offscreenCyclops.x=100;offscreenCyclops.parts.forEach(p=>{p.x=100;p.phase='wait';p.attackBoxes=[];});offscreenCyclops.hazards=[{x:2150,y:1590,w:150,h:110,active:false}];camera=1950;cameraY=1100;viewW=1280;");
+ assert(!r('visiblePoint({x:offscreenCyclops.x,y:offscreenCyclops.y},190)'));
+ const before=snapshot();r('draw()');assert.equal(snapshot(),before);
+ assert(boxes.some(box=>JSON.stringify(box)===JSON.stringify([2150,1590,150,110])),'Main renderer paints a distant cyclops warning beside the player');
+ calls=[];r('offscreenCyclops.hazards[0].active=true;draw()');
+ assert(calls.some(call=>call.image===r('Visuals.images.fxImpact')),'Main renderer paints the offscreen source stomp impact at its hazard');
+}
 console.log('PASS: native arena sprites/alpha and complete crop outlines, fixed actor scale, pure rendering, desktop scene coverage, shared terrain and inventory registration. Browser QA checks visible anatomy, cues and continuity.');

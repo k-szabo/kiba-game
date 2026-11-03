@@ -44,21 +44,25 @@ const HannahArt=(()=>{
  function darkKiba(e,p){
   const frame=p.definition.frames[p.index]||p.definition.frames[0],image=Visuals.images[frame.image||p.definition.image];
   if(!image?.complete||!image.naturalWidth)return;
-  let mask=auraMasks.get(frame);
-  if(!mask){
-   mask=document.createElement('canvas');mask.width=frame.w+AURA_PADDING*2;mask.height=frame.h+AURA_PADDING*2;
-   const paint=mask.getContext('2d');paint.save();paint.translate(AURA_PADDING-frame.x,AURA_PADDING-frame.y);
+  const scale=e.h/frame.bodyHeight;
+  let cached=auraMasks.get(frame);
+  if(!cached||cached.image!==image||cached.height!==e.h){
+   const mask=document.createElement('canvas');mask.width=Math.ceil(frame.w*scale)+AURA_PADDING*2;mask.height=Math.ceil(frame.h*scale)+AURA_PADDING*2;
+   const paint=mask.getContext('2d');paint.save();paint.translate(AURA_PADDING,AURA_PADDING);paint.scale(scale,scale);paint.translate(-frame.x,-frame.y);
    if(frame.outlines){paint.beginPath();for(const outline of frame.outlines){outline.forEach(([x,y],i)=>paint[i?'lineTo':'moveTo'](x,y));paint.closePath();}paint.clip();}
    paint.drawImage(image,frame.x,frame.y,frame.w,frame.h,frame.x,frame.y,frame.w,frame.h);paint.restore();
    paint.globalCompositeOperation='source-in';paint.fillStyle='#45215f';paint.fillRect(0,0,mask.width,mask.height);
-   if(auraMasks.size>=32)auraMasks.delete(auraMasks.keys().next().value);auraMasks.set(frame,mask);
+   // Bake the expensive blur/shadows once at the displayed body scale. Applying
+   // these filters on the world canvas forces a fresh filtered layer every frame.
+   const glow=document.createElement('canvas');glow.width=mask.width;glow.height=mask.height;
+   const halo=glow.getContext('2d');halo.filter='blur(4px) drop-shadow(0px 0px 10px #15091f) drop-shadow(0px 0px 14px #7939b2)';halo.drawImage(mask,0,0);
+   cached={image,height:e.h,glow};
+   if(auraMasks.size>=32)auraMasks.delete(auraMasks.keys().next().value);auraMasks.set(frame,cached);
   }
-  const scale=e.h/frame.bodyHeight;
   ctx.save();ctx.globalAlpha*=e.inv>0?.66:.8;ctx.translate(e.x+e.w/2,e.y+e.h);ctx.scale(e.face*(p.definition.facing||1),1);
-  // Filter the already masked pose outside its outline clip, then paint the
-  // original body separately so its face, weapon and colors remain intact.
-  ctx.filter='blur(4px) drop-shadow(0px 0px 10px #15091f) drop-shadow(0px 0px 14px #7939b2)';
-  ctx.drawImage(mask,(frame.x-frame.anchorX-AURA_PADDING)*scale,(frame.y-frame.anchorY-AURA_PADDING)*scale,mask.width*scale,mask.height*scale);ctx.restore();
+  // The cached glow already includes its halo; the world draw is an ordinary
+  // image blit. The original body is painted separately with unchanged colors.
+  ctx.drawImage(cached.glow,(frame.x-frame.anchorX)*scale-AURA_PADDING,(frame.y-frame.anchorY)*scale-AURA_PADDING);ctx.restore();
  }
  function actor(e){
   if(!HannahCombat.is(e))return false;if(e.dead)return true;

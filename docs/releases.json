@@ -732,6 +732,22 @@
           "en": "Healing brew feedback shows the HP actually restored. Numeric boss health also works in the tower, and distant enemies begin pursuing Momo immediately."
         }
       ]
+    },
+    {
+      "version": "0.9.67_76fadcc8",
+      "code": "76fadcc8",
+      "baseVersion": "0.9.67",
+      "slug": "loading-encounter-feedback",
+      "summary": {
+        "hu": "Folyamatosabb kaland és tisztább harci jelzések",
+        "en": "Smoother adventure and clearer combat cues"
+      },
+      "fixes": [
+        {
+          "hu": "A helyszínek grafikái belépéskor, a pálya képével kísért töltőképernyőn töltődnek be. A toronyfutam lezárása megerősítést kér. A boss-életcsíkok pirosak maradnak, a küklopsz dobbantása távolról is látszik, Hannah második fázisának megjelenítése gyorsabb. A sárkány első lábainak felirata helyes, a sült csirke pedig kiírja a tényleges gyógyulást.",
+          "en": "Location artwork loads on entry behind a loading screen showing the area. Ending a tower run asks for confirmation. Boss health bars stay red, cyclops stomps remain visible at a distance, and Hannah’s second phase renders faster. The drake’s foreleg labels are correct, and roast chicken feedback shows the health actually restored."
+        }
+      ]
     }
   ],
   "releases": [

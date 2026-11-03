@@ -1,7 +1,7 @@
 /* Independent tower runs borrow the combat engine, never the journey's save slot. */
 'use strict';
 const TowerMode=(()=>{
- let active=false,run=null,normalSave=null,floorElapsed=0,currentSpec=null,stage='lobby',initialized=false,warning=false;
+ let active=false,run=null,normalSave=null,floorElapsed=0,currentSpec=null,stage='lobby',initialized=false,warning=false,pendingExit=null;
  const node=id=>document.getElementById(id),clone=value=>value?JSON.parse(JSON.stringify(value)):null;
  const ready=()=>!resolutionBlocked&&storageReady&&loadingReady&&Visuals.loaded===Visuals.total&&!Visuals.failures.length;
  const formatTime=seconds=>{const value=Math.floor(seconds);return Math.floor(value/60)+':'+String(value%60).padStart(2,'0');};
@@ -55,9 +55,26 @@ const TowerMode=(()=>{
   if(!active||stage!=='fight')return false;record();player.hp=0;projectiles=[];particles=[];stage='result';state='tower';clearInput();showResult();return true;
  }
  function leave(){
-  if(!active)return false;if(stage==='fight')record();active=false;stage='lobby';run=null;currentSpec=null;
+  if(!active)return false;pendingExit=null;node('towerExitConfirm').hidden=true;if(stage==='fight')record();active=false;stage='lobby';run=null;currentSpec=null;
   saved=clone(normalSave);normalSave=null;projectiles=[];particles=[];node('towerPanel').hidden=true;node('towerResult').hidden=true;restoreMenuControls();clearInput();mainMenu();node('towerButton').focus();return true;
  }
+ function exitCopy(){
+  if(!pendingExit)return;const data=TowerStore.read(),point=score(),best=Math.max(data.best?.cleared||0,point?.cleared||0);
+  node('towerExitPrompt').textContent=I18n.format('tower.exit.confirm',[(data.checkpoint?.cleared||0)+1,best]);
+  node('towerConfirmExit').textContent=I18n.t('tower.end');node('towerCancelExit').textContent=I18n.t('merchant.sell.cancel');
+ }
+ function requestLeave(){
+  if(!active||pendingExit)return false;if(!run)return leave();
+  pendingExit={state,focus:document.activeElement,readyAt:Date.now()+400};state='towerConfirm';clearInput();exitCopy();
+  node('towerExitConfirm').hidden=false;node('towerConfirmExit').disabled=true;node('towerCancelExit').focus();
+  const request=pendingExit;if(typeof setTimeout==='function')setTimeout(()=>{if(pendingExit===request)node('towerConfirmExit').disabled=false;},400);
+  return true;
+ }
+ function cancelLeave(){
+  if(!pendingExit)return false;const request=pendingExit;pendingExit=null;node('towerExitConfirm').hidden=true;state=request.state;clearInput();
+  if(request.focus?.isConnected)request.focus.focus();else{canvas.tabIndex=-1;canvas.focus?.();}return true;
+ }
+ function confirmLeave(){if(!pendingExit||state!=='towerConfirm'||Date.now()<pendingExit.readyAt)return false;return leave();}
  function lobby(){if(!active||!['clear','result'].includes(stage))return false;stage='lobby';node('towerResult').hidden=true;node('towerPanel').hidden=false;node('towerHUD').hidden=true;showHUD(false);render();node('towerStart').focus();return true;}
  function stats(){const weapon=run?.weapon||'katana';return {maxHp:TowerRules.maxHp(weapon),damage:2,armor:0,dashCooldown:.8,invulnerability:1.25};}
  function hud(){
@@ -106,16 +123,23 @@ const TowerMode=(()=>{
  function draw(){
   if(!active)return false;BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);ctx.fillStyle='#161b26';ctx.fillRect(0,0,viewW,H);
   const image=Visuals.images.towerBackdrop;if(image?.complete&&image.naturalWidth){const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),top=run&&stage!=='lobby'?TowerRules.layout.groundY-cameraY-image.naturalHeight*s*.82:0;BackgroundMotion.draw(image,(viewW-image.naturalWidth*s)/2,top,image.naturalWidth*s,image.naturalHeight*s);}
-  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);for(const enemy of enemies)if(!enemy.dead){drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const p of projectiles)Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
+  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);for(const enemy of enemies)if(!enemy.dead){drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const enemy of enemies)if(!enemy.dead)ArenaArt.effects(enemy);for(const p of projectiles)Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
   ctx.restore();return true;
  }
  function init(){
   if(initialized)return;initialized=true;node('towerButton').textContent=I18n.t('tower.name');
-  for(const [id,fn]of Object.entries({towerButton:open,towerStart:start,towerContinue:resume,towerBack:leave,towerNext:enterFloor,towerRetry:resume,towerNew:lobby,towerExit:leave,towerEnd:leave}))node(id).onclick=fn;
+  for(const [id,fn]of Object.entries({towerButton:open,towerStart:start,towerContinue:resume,towerBack:requestLeave,towerNext:enterFloor,towerRetry:resume,towerNew:lobby,towerExit:requestLeave,towerEnd:requestLeave,towerConfirmExit:confirmLeave,towerCancelExit:cancelLeave}))node(id).onclick=fn;
   const select=node('towerWeapon');for(const id of TowerRules.weapons){const option=document.createElement('option');option.value=id;option.textContent=I18n.t('weapon.'+id+'.name');select.append(option);}select.value='katana';
-  I18n.onChange(()=>{node('towerButton').textContent=I18n.t('tower.name');for(const option of select.children)option.textContent=I18n.t('weapon.'+option.value+'.name');if(active){render();hud();}});
+  I18n.onChange(()=>{node('towerButton').textContent=I18n.t('tower.name');for(const option of select.children)option.textContent=I18n.t('weapon.'+option.value+'.name');if(active){render();hud();exitCopy();}});
   addEventListener('keydown',event=>{
-   if(!active||state!=='tower')return;if(event.key==='Escape'){event.preventDefault();leave();return;}
+   if(!active||resolutionBlocked||!pendingExit)return;
+    event.stopImmediatePropagation();
+    if(event.key==='Escape'){event.preventDefault();if(!event.repeat)cancelLeave();}
+    if(event.key==='Tab'){event.preventDefault();const controls=[node('towerCancelExit'),node('towerConfirmExit')].filter(el=>!el.disabled),index=controls.indexOf(document.activeElement);controls[(index+(event.shiftKey?-1:1)+controls.length)%controls.length].focus();}
+  },true);
+  addEventListener('keydown',event=>{
+   if(!active||resolutionBlocked)return;
+   if(state!=='tower')return;if(event.key==='Escape'){event.preventDefault();if(!event.repeat)requestLeave();return;}
    if(event.key==='Tab'){
     const panel=node(stage==='lobby'?'towerPanel':'towerResult'),items=[...panel.querySelectorAll('button,select')].filter(el=>!el.hidden&&!el.disabled);
     if(!items.length)return;event.preventDefault();const index=items.indexOf(document.activeElement);items[(index+(event.shiftKey?-1:1)+items.length)%items.length].focus();
@@ -123,5 +147,5 @@ const TowerMode=(()=>{
   });
   addEventListener('pagehide',()=>{if(active&&stage==='fight')record();});
  }
- return Object.freeze({open,start,resume,enterFloor,fail,leave,lobby,hud,update,draw,init,stats,render,get active(){return active;},get running(){return active&&!!run&&stage!=='lobby';},get phase(){return stage;},snapshot:()=>run?{...TowerRules.copy(run),floorElapsed}:null});
+ return Object.freeze({open,start,resume,enterFloor,fail,leave,requestLeave,cancelLeave,confirmLeave,lobby,hud,update,draw,init,stats,render,get active(){return active;},get running(){return active&&!!run&&stage!=='lobby';},get phase(){return stage;},snapshot:()=>run?{...TowerRules.copy(run),floorElapsed}:null});
 })();

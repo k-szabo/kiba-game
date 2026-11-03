@@ -19,6 +19,8 @@ A főmenüből indítható külön kihívás a meglévő mozgást, fegyvereket, 
 
 ## Ellenőrzések
 
+A futam kilépésgombjai és a szünetmenü főmenügombja megerősítést kérnek. Az ablak az aktuális checkpoint utáni emeletet és a rekordot mutatja; megnyitása megállítja a futam óráját és törli a lenyomott bemeneteket. A Mégse az előző állapotot állítja vissza. A fókusz alapból a megszakítás visszavonásán van, a végleges kilépés 400 ms-ig tiltott, így a harcból érkező ismételt kattintás nem zárja le véletlenül a futamot. A ranglista saját Escape-kezelése továbbra is csak a ranglistát zárja be.
+
 - `test-tower-rules.cjs`: determinisztikus emeletek, nehezedés, gyógyítás, checkpoint és hibás adatok.
 - `test-tower-store.cjs`: újratöltés, új futam, rekordmegőrzés, elavult lap, hibás/jövőbeli rekord és tárolási hibák; a kaland kulcsai változatlanok.
 - `test-tower-mode.cjs`: három felszerelés, közös mozgás/harc, kalandmentés-írás tiltása, halál/checkpoint, szünet és 30/60/120 FPS melletti dash/gravitáció.

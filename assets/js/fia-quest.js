@@ -43,7 +43,9 @@ const FiaQuest=(()=>{
  const canEat=()=>!Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&chickenCount>0;
  function eat(fromInventory=false){
   if(state!==(fromInventory?'inventory':'play')||!canEat())return false;
-  chickenCount--;player.hp=Math.min(player.maxHp,player.hp+4);Merchant.selectAvailable();persist();updateHUD();if(fromInventory)Inventory.render();return true;
+  const before=player.hp;
+  chickenCount--;player.hp=Math.min(player.maxHp,player.hp+4);Merchant.selectAvailable();persist();updateHUD();if(fromInventory)Inventory.render();
+  toast(I18n.format('merchant.health.up',[CampHealth.number(player.hp-before)]));return true;
  }
  return Object.freeze({available,slain,talk,onPriestessDefeated,questMarker,objective,canEat,eat});
 })();
