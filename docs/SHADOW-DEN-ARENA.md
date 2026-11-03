@@ -2,7 +2,7 @@
 
 Ez technikai, **spoileres dokumentum**: a bajnok kilétét és Haru új nyomát is ismerteti. A játék küldetésismertetője, publikus változásnaplója és játékosútmutatója az utolsó ellenfelet csak jelenlegi bajnokként nevezi meg.
 
-Kapcsolódó kártyák: [aréna](https://trello.com/c/BSvqa7Kr), [visszatérő boss](https://trello.com/c/1UyT7ovy), [Zen stílusjavítása](https://trello.com/c/GUeJPZ1K). A megmentési előzmény a [Kitsune-referenciában](KITSUNE.md) található.
+Kapcsolódó kártyák: [aréna](https://trello.com/c/BSvqa7Kr), [visszatérő boss](https://trello.com/c/1UyT7ovy), [Zen stílusjavítása](https://trello.com/c/GUeJPZ1K), [menetenkénti újrapróbálás](https://trello.com/c/11txVSmX). A megmentési előzmény a [Kitsune-referenciában](KITSUNE.md) található.
 
 ## Belépés és helyszínek
 
@@ -55,7 +55,7 @@ Az `arenaChampion` után Fia nem marad az Árnyékzug táborában: csak a lakosz
 | `assets/js/levels.js` | Helyszínek, pihenők, feloldási feltételek, találkozáskatalógus és `ARENA_REWARDS`. |
 | `assets/js/save-vault.js` | A tartós jelzőlánc és az oldalhelyszíni mentőpont érvényesítése. |
 
-Az `attempt` objektum (`round`, `status`, `clock`, `pending`, azonosító) és a távozási jelenet csak memóriában él. Halál, karakter-inicializálás, helyszínváltás, menü/folytatás vagy újratöltés nem állít vissza félbehagyott menetet: a következő kihívás az **első menettől** indul. A már megszerzett jutalmak megmaradnak, az új próba nem adja őket ismét.
+Az `attempt` objektum (`round`, `status`, `clock`, `pending`, azonosító) és a távozási jelenet csak memóriában él. Halálkor az aktuális menet azonnal újraindul teljes életerővel, friss ellenfelekkel és nullázott támadásokkal, idézésekkel és időzítőkkel. A már teljesített meneteket nem kell megismételni; a menetek közötti halál a következő menetet indítja. Az ötödik menet újrapróbálásakor a bevezető és a teljes pajzsciklus is újraindul. Karakter-inicializálás, helyszínváltás, menü/folytatás vagy újratöltés továbbra sem állít vissza félbehagyott menetet: ilyenkor a következő kihívás az **első menettől** indul. A már megszerzett jutalmak megmaradnak, az új próba nem adja őket ismét.
 
 Tartós jelzők a `flags[3]` listában:
 

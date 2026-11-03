@@ -1,4 +1,4 @@
-/* Five rounds are a transient attempt; only unlocks and once-only rewards persist. */
+/* Death retries the current round; only unlocks and once-only rewards persist across reloads. */
 'use strict';
 const ArenaChallenge=(()=>{
  let attempt=null,departure=null,serial=0;
@@ -58,10 +58,16 @@ const ArenaChallenge=(()=>{
   if(number===5){attempt.status='intro';story('arena.quest.name','arena.boss.fia','arena.fia.intro',spawn,{right:'fiaCombat',speaker:'fiaCombat'});}else spawn();
   return true;
  }
- function start(){
+ function start(number=1){
   if(state!=='play'||!active()||!DevSession.active&&(!owns('fiaRescued')||!owns('arenaQuestAccepted')||owns('arenaChampion')))return false;
   clean();initPlayer({x:740,y:level.arena.y});attempt={id:++serial,round:1,status:'fighting',clock:45,spawnClock:0,pending:[]};
-  beginRound(1);resetCamera();persist();updateHUD();return true;
+  beginRound(number);resetCamera();persist();updateHUD();return true;
+ }
+ function respawn(){
+  if(!running())return false;
+  // Capture before initPlayer resets the transient encounter. Completed rounds stay cleared.
+  const number=attempt.round+(attempt.status==='between'?1:0);
+  projectiles=[];start(number);keys.clear();pressed.clear();toast(I18n.t('arena.retry'));return true;
  }
  function finishRound(){if(!attempt)return;clean();attempt.pending=[];attempt.status='between';updateHUD();toast(I18n.t('arena.round.complete'));}
  function onBossDefeated(enemy){
@@ -140,6 +146,6 @@ const ArenaChallenge=(()=>{
   const text=I18n.format('arena.round',[round,title]);if($('bossName').textContent!==text)$('bossName').textContent=text;
   $('bossHealth').style.width=(round===1?attempt.clock/45:enemy?enemy.hp/enemy.maxHp:1)*100+'%';return true;
  }
- return Object.freeze({active,room,running,reset,cleanupSummons,update,confine,start,context,interact,objective,talkFia,questMarker,onBossDefeated,summon,hud,
+ return Object.freeze({active,room,running,reset,respawn,cleanupSummons,update,confine,start,context,interact,objective,talkFia,questMarker,onBossDefeated,summon,hud,
   get attempt(){return attempt;},get departure(){return departure;}});
 })();

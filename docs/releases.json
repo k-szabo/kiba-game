@@ -1666,6 +1666,22 @@
           "en": "Submit Endless Tower scores to the online leaderboard under a chosen name. Your local best and journey save are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.68_9feefa17",
+      "code": "9feefa17",
+      "baseVersion": "0.9.68",
+      "slug": "arena-round-retry",
+      "summary": {
+        "hu": "Arénamenetek újrapróbálása",
+        "en": "Retry arena rounds"
+      },
+      "fixes": [
+        {
+          "hu": "Az Árnyékzug arénájában halál után az aktuális menet indul újra; a korábbi meneteket nem kell megismételni. Az egyszeri jutalmak nem szerezhetők meg újra.",
+          "en": "After death in the Shadow Den Arena, restart the current round without repeating earlier rounds. One-time rewards cannot be earned again."
+        }
+      ]
     }
   ]
 }
