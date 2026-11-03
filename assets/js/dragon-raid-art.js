@@ -72,7 +72,7 @@ const DragonRaidArt=(()=>{
   if(!attempt||attempt.won)BossVFX.portal(DragonRaid.exitPoint().x,DragonRaid.exitPoint().y,90,.6);
   for(const target of DragonRaid.targets()){
    if(target.type==='foreleg'){
-    const x=target.x+target.w/2,y=target.y-25;ctx.save();ctx.font='600 15px "Kiba UI", sans-serif';ctx.textAlign='center';const label=I18n.t(target.name),width=Math.max(150,ctx.measureText(label).width+18);ctx.fillStyle='#100d1bed';ctx.fillRect(x-width/2,y-24,width,40);ctx.fillStyle='#fff0cc';ctx.fillText(label,x,y-6);ctx.fillStyle='#221a2e';ctx.fillRect(x-width/2+8,y+3,width-16,6);ctx.fillStyle='#d99583';ctx.fillRect(x-width/2+8,y+3,(width-16)*clamp(target.hp/target.maxHp,0,1),6);ctx.restore();continue;
+    const x=target.x+target.w/2,y=target.y-25;ctx.save();ctx.font='600 15px "Kiba UI", sans-serif';ctx.textAlign='center';const label=I18n.t(target.name),width=Math.max(150,ctx.measureText(label).width+18);ctx.fillStyle='#100d1bed';ctx.fillRect(x-width/2,y-24,width,40);ctx.fillStyle='#fff0cc';ctx.fillText(label,x,y-6);ctx.fillStyle='#221a2e';ctx.fillRect(x-width/2+8,y+3,width-16,6);ctx.fillStyle='#bf6b61';ctx.fillRect(x-width/2+8,y+3,(width-16)*clamp(target.hp/target.maxHp,0,1),6);ctx.restore();continue;
    }
    if(target.hp<=0)continue;
    if(target.type==='chain'){

@@ -21,7 +21,7 @@ function fixture(){
 {
  const h=fixture(),r=h.run,ctx=h.sandbox.document.getElementById('world').getContext('2d'),surfaces=[];
  const create=h.sandbox.document.createElement;
- h.sandbox.document.createElement=tag=>{if(tag!=='canvas')return create(tag);const operations=[];const paint=new Proxy({},{get:(o,key)=>o[key]||((...args)=>operations.push({key,args}))});const canvas={width:0,height:0,getContext:()=>paint,operations};surfaces.push(canvas);return canvas;};
+ h.sandbox.document.createElement=tag=>{if(tag!=='canvas')return create(tag);const operations=[];const paint=new Proxy({},{get:(o,key)=>o[key]||((...args)=>operations.push({key,args}))});const canvas={width:0,height:0,getContext:()=>paint,operations,paint};surfaces.push(canvas);return canvas;};
  const stack=[];ctx.filter='none';ctx.globalAlpha=1;ctx.save=()=>stack.push({filter:ctx.filter,globalAlpha:ctx.globalAlpha});ctx.restore=()=>Object.assign(ctx,stack.pop());
  ctx.drawImage=(image,...args)=>h.calls.push({image,args,filter:ctx.filter});
  r("hannah.stage=2;hannah.echoQueue=[];hannah.hazards=[];hannah.summons=[];");
@@ -39,17 +39,20 @@ function fixture(){
   h.calls.length=0;r('Object.assign(hannah,'+JSON.stringify(sample)+');hannah.face='+face+';reducedMotion.matches='+reduced+';hannah.attackElapsed=.2;hannah.attackDuration=.8;hannah.attackFace=1');
   const before=r('JSON.stringify([hannah,player,time,levelTime])');r('HannahArt.actor(hannah)');
   const aura=h.calls[0],body=h.calls[1];assert(surfaces.includes(aura.image),'The aura is the current pose mask, not a separate smoke sprite');
-  assert(aura.filter.includes('blur(')&&aura.filter.includes('drop-shadow('),'Halo is applied on the world canvas after masking');
+  assert.equal(aura.filter,'none','Repeated world frames use a cached glow, without filtering the world canvas');
   assert.equal(body.filter,'none','Original body colors render without the aura filter');assert(!h.calls.some(call=>call.image===dark),'No detached shadow columns remain');
-  const maskDraw=aura.image.operations.find(op=>op.key==='drawImage');assert.equal(maskDraw.args[0],body.image,'Mask uses the same current pose image');assert.deepEqual(maskDraw.args.slice(1,5),body.args.slice(0,4),'Mask and body use the same frame crop');
-  assert(aura.image.operations.some(op=>op.key==='clip'),'The existing outline mask prevents adjacent atlas cells leaking');
-  assert(aura.image.width>body.args[2]&&aura.image.height>body.args[3],'Padding reserves space around the pose silhouette');
+  assert(aura.image.paint.filter.includes('blur(')&&aura.image.paint.filter.includes('drop-shadow('),'The expensive halo is baked once into the cached surface');
+  const mask=aura.image.operations.find(op=>op.key==='drawImage').args[0],maskDraw=mask.operations.find(op=>op.key==='drawImage');assert.equal(maskDraw.args[0],body.image,'Mask uses the same current pose image');assert.deepEqual(maskDraw.args.slice(1,5),body.args.slice(0,4),'Mask and body use the same frame crop');
+  assert(mask.operations.some(op=>op.key==='clip'),'The existing outline mask prevents adjacent atlas cells leaking');
+  assert(aura.image.width>=body.args[6]+128&&aura.image.height>=body.args[7]+128,'World-scale padding reserves space around the full filtered silhouette');
   assert.equal(r('JSON.stringify([hannah,player,time,levelTime])'),before,'Aura rendering never advances the encounter');
  }
  const count=surfaces.length;r('HannahArt.actor(hannah);HannahArt.actor(hannah)');assert.equal(surfaces.length,count,'Repeated poses reuse their mask');
+ const beforeSize=surfaces.length;r('hannah.h+=10;HannahArt.actor(hannah)');assert.equal(surfaces.length,beforeSize+2,'A changed body scale rebuilds the filtered surface');
+ const beforeImage=surfaces.length;r("Visuals.images.hannahRitual={complete:true,naturalWidth:1536,naturalHeight:1024};HannahArt.actor(hannah)");assert.equal(surfaces.length,beforeImage+2,'A replaced source image invalidates the cached glow');
  r("hannah.stage=2;hannah.mode='combat';hannah.phase='wait';hannah.walkSpeed=0;var firstAuraPose=ART_HANNAH.ritual.frames[0];");
  for(let i=0;i<40;i++)r('ART_HANNAH.ritual.frames[0]={...firstAuraPose};HannahArt.actor(hannah)');
- const afterMany=surfaces.length;r('ART_HANNAH.ritual.frames[0]=firstAuraPose;HannahArt.actor(hannah)');assert.equal(surfaces.length,afterMany+1,'Old masks are evicted instead of accumulating indefinitely');
+ const afterMany=surfaces.length;r('ART_HANNAH.ritual.frames[0]=firstAuraPose;HannahArt.actor(hannah)');assert.equal(surfaces.length,afterMany+2,'Old masks are evicted instead of accumulating indefinitely');
  h.calls.length=0;r('hannah.stage=1;HannahArt.actor(hannah)');assert(!h.calls.some(call=>surfaces.includes(call.image)),'Phase one has no new aura');
 }
 // Lightning uses the existing painted bolt and stable pillar anchor, not fire.

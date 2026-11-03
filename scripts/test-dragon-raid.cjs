@@ -13,6 +13,9 @@ for(let i=0;i<2;i++)r(`DragonRaid.hit(DragonRaid.targets().find(t=>t.type==='man
 r('initPlayer(level.headPoint);DragonRaid.update(1/60)');assert.equal(r('DragonRaid.current.phase'),3);assert.equal(r('player.x+player.w/2'),8750);
 const xp=r('progression.totalXp');
 assert.equal(r('DragonRaid.targets().filter(t=>t.type==="foreleg").length'),2);
+const frontalLegs=Array.from(r('DragonRaid.targets().filter(t=>t.type==="foreleg").sort((a,b)=>a.x-b.x)'));
+assert.equal(frontalLegs[0].name,'fia.dragon.foreleg.right','The front-facing drake\'s right foreleg appears on the left side of the screen');
+assert.equal(frontalLegs[1].name,'fia.dragon.foreleg.left','The front-facing drake\'s left foreleg appears on the right side of the screen');
 r('var guardedHp=DragonRaid.current.hp,guardedMouth=DragonRaid.head.box;DragonRaid.hit({x:guardedMouth.x+guardedMouth.w*.4,y:guardedMouth.y+guardedMouth.h*.4,w:guardedMouth.w*.2,h:guardedMouth.h*.2},100000)');assert.equal(r('DragonRaid.current.hp'),r('guardedHp'),'The upright head is protected');
 // Exercise the ordinary bound heavy-attack path against a grounded foreleg.
 r('var foreleg=DragonRaid.targets().find(t=>t.type==="foreleg"&&t.index===0);initPlayer({x:foreleg.x-30,y:foreleg.y+foreleg.h});player.face=1;player.inv=999');

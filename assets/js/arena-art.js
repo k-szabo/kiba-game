@@ -68,11 +68,18 @@ const ArenaArt=(()=>{
    stamp(definition,index,part.x+part.w/2,part.y+part.h,minion?100:part.h,part.face);ctx.restore();
   }
   if(minion){if(enemy.windup>0)BossVFX.marker(enemy.x+enemy.w/2,enemy.y+enemy.h,70,BossCues.color);return true;}
+  return true;
+ }
+ // Attack locations are world-space: culling an offscreen source must never
+ // hide a warning or impact beside the player.
+ function effects(enemy){
+  if(!ArenaCombat.is(enemy)||enemy.dead)return false;
+  const parts=ArenaCombat.parts(enemy);
   for(const part of parts)if((part.phase??enemy.phase)==='windup'){
    const boxes=part.attackBoxes??enemy.attackBoxes,hazards=part.hazards??enemy.hazards,summons=part.summons??enemy.summons;
    for(const box of boxes)BossCues.box(box,BossCues.color);
    if(!boxes.length&&!hazards.length&&!summons.length)BossVFX.marker(part.targetX??enemy.targetX,part.targetY??enemy.targetY,95,BossCues.color);
-   for(const summon of summons)BossCues.box({x:summon.x-45,y:summon.y-15,w:90,h:15},BossCues.color);
+   for(const summon of summons||[])BossCues.box({x:summon.x-45,y:summon.y-15,w:90,h:15},BossCues.color);
   }
   for(const hazard of enemy.hazards){
    if(!hazard.active){BossCues.box(hazard,BossCues.color);BossVFX.marker(hazard.x+hazard.w/2,hazard.y+hazard.h,hazard.w,BossCues.color);}
@@ -85,5 +92,5 @@ const ArenaArt=(()=>{
   if(enemy.miniboss==='arenaFia'&&ArenaCombat.protects(enemy))BossVFX.portal(enemy.x+enemy.w/2,enemy.y+enemy.h*.9,130,.4);
   return true;
  }
- return Object.freeze({actors,backdrop,scenery,actor,stamp});
+ return Object.freeze({actors,backdrop,scenery,actor,effects,stamp});
 })();

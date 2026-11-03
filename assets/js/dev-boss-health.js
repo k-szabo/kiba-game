@@ -11,7 +11,7 @@ const DevBossHealth=(()=>{
   if(!CombatDisplay.get('bossHealth')||typeof DuelMode!=='undefined'&&DuelMode.active)return;const text=value(e);if(!text)return;
   ctx.save();ctx.globalAlpha=1;ctx.shadowBlur=0;ctx.font='700 13px "Kiba UI", sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillStyle='#080e19';ctx.fillRect(x-width/2,y-5,width,19);
-  ctx.fillStyle='#855638';ctx.fillRect(x-width/2+1,y-4,(width-2)*clamp(e.hp/(e.maxHp??e.max),0,1),17);
+  ctx.fillStyle='#bf6b61';ctx.fillRect(x-width/2+1,y-4,(width-2)*clamp(e.hp/(e.maxHp??e.max),0,1),17);
   ctx.lineWidth=3;ctx.strokeStyle='#080e19';ctx.strokeText(text,x,y+5);ctx.fillStyle='#fff8e9';ctx.fillText(text,x,y+5);ctx.restore();
  }
  function hud(){

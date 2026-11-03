@@ -3,6 +3,15 @@ const assert=require('node:assert/strict'),harness=require('./test-harness.cjs')
 const setup=require('./test-fia-fixture.cjs');
 function cult(h){const r=h.run;r('enterRealm(0);initPlayer(japan.cultPassage.ruinedGate);DungeonRun.menu();');h.elements.get('dungeonNew').onclick();h.dismiss();for(let i=0;i<3;i++){r('var priestess=enemies.find(DungeonCombat.is);priestess.active=true;priestess.hp=0;killEnemy(priestess);');h.dismiss();if(i<2)r('initPlayer(level.nextPoint);interact();');}}
 function talk(h){h.run('initPlayer(level.npcs[0]);interact();');h.dismiss();}
+for(const locale of ['hu','en'])for(const inventory of [false,true])for(const missing of [4,1,.6]){
+ const h=setup(),r=h.run;r(`I18n.setLocale('${locale}');chickenCount=1;quickHeal='roastChicken';player.hp=player.maxHp-${missing};${inventory?'Inventory.open();':''}`);
+ assert(r(inventory?'FiaQuest.eat(true)':'Merchant.useQuick()'));assert.equal(r('player.hp'),r('player.maxHp'));assert.equal(r('chickenCount'),0);
+ assert.equal(h.elements.get('toast').textContent,r(`I18n.format('merchant.health.up',[CampHealth.number(${missing})])`),'Chicken reports the restored amount in both quick use and inventory');
+ const message=h.elements.get('toast').textContent;assert(!r(inventory?'FiaQuest.eat(true)':'FiaQuest.eat()'));assert.equal(h.elements.get('toast').textContent,message,'Failed use cannot create healing feedback');
+}
+for(const blocked of ["player.hp=player.maxHp;","player.hp=0;","chickenCount=0;","state='pause';"]){
+ const h=setup(),r=h.run;r("chickenCount=2;player.hp=1;toast('unchanged');"+blocked);const before=r('JSON.stringify([player.hp,chickenCount])');assert(!r('FiaQuest.eat()'));assert.equal(r('JSON.stringify([player.hp,chickenCount])'),before);assert.equal(h.elements.get('toast').textContent,'unchanged');
+}
 {
  const h=setup(),r=h.run;cult(h);assert(!r('flags[3].includes("priestessTalisman")'),'Earlier clears cannot retroactively drop a quest item');
  r('DungeonRun.leave();CampQuest.enter("fiaChambers");');assert.equal(r('CampQuest.questMarker("fia")'),'!');talk(h);assert(r('flags[3].includes("fiaChambersHeard")'));assert(!r('flags[3].includes("fiaTalismanAccepted")'),'Haru clue comes before the second request');talk(h);assert(r('flags[3].includes("fiaTalismanAccepted")'));

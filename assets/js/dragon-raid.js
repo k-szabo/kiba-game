@@ -119,7 +119,7 @@ const DragonRaid=(()=>{
  }
  function frontGeometry(){
   const scale=DRAGON_RAID_ART_SCALE.front,feet=DRAGON_RAID_ART_SCALE.frontFeet+headY;
-  return {x:headX,feet,scale,forelegs:DRAGON_RAID_ART_SCALE.forelegX.map((x,index)=>({x:headX+(x-384)*scale-85,y:feet-170,w:170,h:170,type:'foreleg',index,hp:attempt?.forelegs[index]??DragonRaidRules.tuning.forelegHp,maxHp:DragonRaidRules.tuning.forelegHp,name:index?'fia.dragon.foreleg.right':'fia.dragon.foreleg.left'}))};
+  return {x:headX,feet,scale,forelegs:DRAGON_RAID_ART_SCALE.forelegX.map((x,index)=>({x:headX+(x-384)*scale-85,y:feet-170,w:170,h:170,type:'foreleg',index,hp:attempt?.forelegs[index]??DragonRaidRules.tuning.forelegHp,maxHp:DragonRaidRules.tuning.forelegHp,name:index?'fia.dragon.foreleg.left':'fia.dragon.foreleg.right'}))};
  }
  function headBox(){return {x:headX-230,y:attempt?.stance==='exposed'?DRAGON_RAID_ART_SCALE.frontFeet-200:830+headY,w:460,h:attempt?.stance==='exposed'?200:240};}
  const cameraTargetY=fallback=>active()&&attempt?.phase===3?clamp(DRAGON_RAID_ART_SCALE.frontFeet-H*.86,level.top??0,Math.max(0,level.height-H)):fallback;

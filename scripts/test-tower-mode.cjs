@@ -7,6 +7,17 @@ function setup(weapon='katana'){
  return {...h,save,writes};
 }
 function clear(h){h.run('enemies.forEach(e=>{e.active=true;e.hp=0;killEnemy(e);});update(1/120);');assert.equal(h.run('TowerMode.phase'),'clear');}
+for(const from of ['fight','clear','pause']){
+ const h=setup(),r=h.run;if(from==='clear')for(let n=1;n<=6;n++){clear(h);if(n<6)r('TowerMode.enterFloor()');}else if(from==='pause')r('pause()');
+ const origin=r('state'),checkpoint=r('TowerStore.read().checkpoint.cleared');
+ r('var exitClock=1000;Date.now=()=>exitClock;');h.elements.get(from==='clear'?'towerExit':'towerEnd').onclick();
+ assert.equal(r('state'),'towerConfirm');assert(!h.elements.get('towerExitConfirm').hidden);assert(h.elements.get('towerConfirmExit').disabled);
+ const frozen=r('JSON.stringify([player,enemies,TowerMode.snapshot()])');r('update(2)');assert.equal(r('JSON.stringify([player,enemies,TowerMode.snapshot()])'),frozen);
+ assert(!r('TowerMode.confirmLeave()'),'A repeated click cannot immediately confirm');assert(!r('TowerMode.requestLeave()'));
+ assert.equal(h.elements.get('towerExitPrompt').textContent,r(`I18n.format('tower.exit.confirm',[${checkpoint+1},TowerStore.read().best?.cleared||0])`));
+ assert(r('TowerMode.cancelLeave()'));assert.equal(r('state'),origin);assert(r('TowerMode.active'));assert.equal(r('JSON.stringify([player,enemies,TowerMode.snapshot()])'),frozen);
+ r('mainMenu()');assert.equal(r('state'),'towerConfirm','Pause main menu uses the same confirmation');r('exitClock+=500;');assert(r('TowerMode.confirmLeave()'));assert.equal(r('state'),'menu');assert(!r('TowerMode.active'));assert(h.elements.get('towerExitConfirm').hidden);assert.equal(r('JSON.stringify(saved)'),h.save);
+}
 for(const [weapon,hp]of [['katana',20],['naginata',20],['swordShield',22]]){
  const h=setup(weapon),r=h.run;assert.equal(r('player.maxHp'),hp);assert.equal(r('weaponStyle'),weapon);assert(r('abilities.every(Boolean)'));
  assert.equal(r('progression.level'),1);assert.equal(r('coins+meatCount+teaCount+chickenCount'),0);assert.equal(r('momoStats().armor'),0);
