@@ -1,0 +1,42 @@
+/* Stable encounter order with a relative 1–100 score that adapts to roster growth. */
+'use strict';
+const BOSS_CLASSIFICATION=Object.freeze([
+ {id:'main-0',name:'text.the.forest.oathbreaker',group:'main'},
+ {id:'angel',name:'text.the.mad.elder.angel',group:'optional'},
+ {id:'cultist',name:'text.the.ancient.cult.s.elder',group:'optional'},
+ {id:'campMaster',name:'camp.rescue.boss',group:'optional'},
+ {id:'main-1',name:'text.guardian.of.the.silent.river',group:'main'},
+ {id:'serpent',name:'yomi.serpent.name',group:'optional'},
+ {id:'dungeonCaptain',name:'dungeon.boss.captain',group:'optional'},
+ {id:'dungeonNecromancer',name:'dungeon.boss.necromancer',group:'optional'},
+ {id:'dungeonCouncil',name:'dungeon.boss.council',group:'optional'},
+ {id:'slayer',name:'slayer.name',group:'optional'},
+ {id:'main-2',name:'text.the.corrupted.seraph',group:'main'},
+ {id:'seraph',name:'text.angel.of.dawn.phase.i',group:'optional'},
+ {id:'eclipse',name:'text.lord.of.two.worlds.hidden.phase.iii',group:'optional'},
+ {id:'whiteSerpent',name:'serpent.white.name',group:'optional'},
+ {id:'wingedSerpent',name:'serpent.winged.name',group:'optional'},
+ {id:'madPriest',name:'shadow.boss.priest',group:'optional'},
+ {id:'organist',name:'shadow.boss.organist',group:'optional'},
+ {id:'jailer',name:'shadow.boss.jailer',group:'optional'},
+ {id:'prisonWarden',name:'zen.warden.name',group:'optional'},
+ {id:'prisonHunter',name:'fia.hunter.name',group:'optional'},
+ {id:'cultTempleGuard',name:'cultDungeon.boss.guard',group:'optional'},
+ {id:'woundedAngel',name:'cultDungeon.boss.angel',group:'optional'},
+ {id:'cultHighPriestess',name:'cultDungeon.boss.priestess',group:'optional'},
+ {id:'arenaCaptain',name:'arena.boss.captain',group:'optional'},
+ {id:'arenaSerpent',name:'arena.boss.serpent',group:'optional'},
+ {id:'arenaCyclops',name:'arena.boss.guards',group:'optional'},
+ {id:'arenaFia',name:'arena.boss.fia',group:'optional'},
+ {id:'dragonRaid',name:'fia.dragon.boss',group:'optional'},
+ {id:'voidLieutenant',name:'fia.void.lieutenant',group:'optional'},
+ {id:'voidDemon',name:'fia.void.demon',group:'optional'},
+ {id:'hannah',name:'fia.name',group:'main'},
+ {id:'fiaRitual',name:'fia.name',group:'optional'},
+ {id:'main-3',name:'shadow.boss.priest',group:'main'}
+].map((entry,index)=>Object.freeze({...entry,index})));
+const BossClassification=(()=>{
+ const byId=new Map(BOSS_CLASSIFICATION.map(entry=>[entry.id,entry]));
+ const rating=id=>{const entry=byId.get(id),last=BOSS_CLASSIFICATION.length-1;return entry?Math.round(10+90*entry.index/last):null;};
+ return Object.freeze({entries:BOSS_CLASSIFICATION,rating,find:id=>byId.get(id)||null});
+})();
