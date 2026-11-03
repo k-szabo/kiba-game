@@ -1,0 +1,2 @@
+You MUST format all tool calls using strict XML tags as specified in the system prompt. Never output raw JSON for tool calls.
+Always respond and explain your code in Hungarian.
