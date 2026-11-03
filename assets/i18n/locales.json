@@ -903,7 +903,7 @@
       "arena.shield": "Kiba-pajzs: {0} mp",
       "arena.exhausted": "Kimerült · Most támadj!",
       "arena.round.complete": "A menet teljesítve.",
-      "arena.retry": "A kihívás az első menettől újrakezdhető.",
+      "arena.retry": "A kihívás az aktuális menet elejétől folytatható.",
       "arena.objective.complete": "Teljesítsd az Árnyékzug öt arénamenetét.",
       "arena.objective.chambers": "Keresd fel Fiát a lakosztályában.",
       "arena.chambers.objective": "Beszélgess Fiával, vagy pihenj meg.",
@@ -1290,7 +1290,9 @@
       "menu.changelog.0967.6a799f0d.0": "A gyógyfőzet üzenete mutatja a ténylegesen visszatöltött HP-t. A toronyban is működik a bossok számszerű életerő-kijelzése, a távoli ellenfelek pedig azonnal üldözni kezdik Momót.",
       "tower.exit.confirm": "Biztosan megszakítod a jelenlegi futamot? Ezután a(z) {0}. emeletről folytathatod. Jelenlegi rekord: {1}. emelet.",
       "menu.changelog.0967.76fadcc8.title": "Folyamatosabb kaland és tisztább harci jelzések",
-      "menu.changelog.0967.76fadcc8.0": "A helyszínek grafikái belépéskor, a pálya képével kísért töltőképernyőn töltődnek be. A toronyfutam lezárása megerősítést kér. A boss-életcsíkok pirosak maradnak, a küklopsz dobbantása távolról is látszik, Hannah második fázisának megjelenítése gyorsabb. A sárkány első lábainak felirata helyes, a sült csirke pedig kiírja a tényleges gyógyulást."
+      "menu.changelog.0967.76fadcc8.0": "A helyszínek grafikái belépéskor, a pálya képével kísért töltőképernyőn töltődnek be. A toronyfutam lezárása megerősítést kér. A boss-életcsíkok pirosak maradnak, a küklopsz dobbantása távolról is látszik, Hannah második fázisának megjelenítése gyorsabb. A sárkány első lábainak felirata helyes, a sült csirke pedig kiírja a tényleges gyógyulást.",
+      "menu.changelog.0968.9feefa17.title": "Arénamenetek újrapróbálása",
+      "menu.changelog.0968.9feefa17.0": "Az Árnyékzug arénájában halál után az aktuális menet indul újra; a korábbi meneteket nem kell megismételni. Az egyszeri jutalmak nem szerezhetők meg újra."
     }
   },
   "en": {
@@ -2197,7 +2199,7 @@
       "arena.shield": "Kiba shield: {0}s",
       "arena.exhausted": "Exhausted · Strike now!",
       "arena.round.complete": "Round complete.",
-      "arena.retry": "Restart the challenge from the first round.",
+      "arena.retry": "Resume the challenge from the start of the current round.",
       "arena.objective.complete": "Complete the Shadow Den’s five arena rounds.",
       "arena.objective.chambers": "Visit Fia in her chambers.",
       "arena.chambers.objective": "Speak with Fia, or rest.",
@@ -2584,7 +2586,9 @@
       "menu.changelog.0967.6a799f0d.0": "Healing brew feedback shows the HP actually restored. Numeric boss health also works in the tower, and distant enemies begin pursuing Momo immediately.",
       "tower.exit.confirm": "Are you sure you want to end the current run? You can then continue from floor {0}. Current best: {1} floors.",
       "menu.changelog.0967.76fadcc8.title": "Smoother adventure and clearer combat cues",
-      "menu.changelog.0967.76fadcc8.0": "Location artwork loads on entry behind a loading screen showing the area. Ending a tower run asks for confirmation. Boss health bars stay red, cyclops stomps remain visible at a distance, and Hannah’s second phase renders faster. The drake’s foreleg labels are correct, and roast chicken feedback shows the health actually restored."
+      "menu.changelog.0967.76fadcc8.0": "Location artwork loads on entry behind a loading screen showing the area. Ending a tower run asks for confirmation. Boss health bars stay red, cyclops stomps remain visible at a distance, and Hannah’s second phase renders faster. The drake’s foreleg labels are correct, and roast chicken feedback shows the health actually restored.",
+      "menu.changelog.0968.9feefa17.title": "Retry arena rounds",
+      "menu.changelog.0968.9feefa17.0": "After death in the Shadow Den Arena, restart the current round without repeating earlier rounds. One-time rewards cannot be earned again."
     }
   }
 }

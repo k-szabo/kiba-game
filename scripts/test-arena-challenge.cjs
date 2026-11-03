@@ -44,7 +44,7 @@ for(const fps of [30,60,120]){
  const h=setup(),r=h.run;enterArena(h);throughGuards(h);
  for(const id of ['arenaRewardCaptain','arenaRewardSerpent','arenaSerpentScale','arenaRewardGuards'])assert(has(r,id));
  assert.equal(r('progression.totalXp'),1400);assert.doesNotThrow(()=>validate(r('saved')));
- const permanent=r('JSON.stringify([flags,progression])');r('revive();');assert.equal(r('ArenaChallenge.attempt'),null);assert.equal(r('enemies.length'),0);assert.equal(r('JSON.stringify([flags,progression])'),permanent,'Death resets attempt, preserving earned rewards');
+ const permanent=r('JSON.stringify([flags,progression])');r('revive();');assert.equal(r('ArenaChallenge.attempt.round'),5);h.dismiss();assert.equal(r('enemies.filter(ArenaCombat.is).length'),1);assert.equal(r('JSON.stringify([flags,progression])'),permanent,'Death between rounds advances to the next round, preserving rewards');
  throughGuards(h);assert.equal(r('progression.totalXp'),1400,'Retrying rewarded encounters never grants XP again');assert.equal(r("flags[3].filter(f=>f==='arenaSerpentScale').length"),1);
  next(h);assert.equal(r('ArenaChallenge.attempt.round'),5);r('var finalFia=enemies.find(e=>e.miniboss==="arenaFia");');assert(r('ArenaCombat.protects(finalFia)'));assert.equal(r('finalFia.hp'),1);
  r('player.x=finalFia.x-25;player.y=finalFia.y;player.face=1;');h.press({action:'heavyAttack'});r('input(1/120);pressed.clear();for(let i=0;i<80;i++){updatePlayerTimers(1/120);advanceSwordAttack(1/120);}');h.release({action:'heavyAttack'});assert(r('attackHit'));assert.equal(r('finalFia.hp'),1,'Normal sword pipeline cannot skip immunity');
@@ -74,6 +74,26 @@ for(const fps of [30,60,120]){
   if(encounter==='arenaFia')r('replay.phase="exhausted";replay.immuneRemaining=0;');r('replay.active=true;replay.hp=0;killEnemy(replay);');assert.equal(r('JSON.stringify([flags,coins,progression.totalXp])'),before,'Dev replay is reward-free: '+encounter);assert.equal(r('ArenaChallenge.attempt'),null);r('DevTools.open();');
  }
  assert(r("DevTeleport.teleport({realm:'fiaChambers',rest:'fiaChambersRest'})"));assert.equal(r('level.id'),'fiaChambers');r('DevSession.end();');assert.equal(r('JSON.stringify(saved)'),normal);assert.equal(r('window.__saveSnapshots.length'),writes,'Dev actions write no normal saves');
+}
+
+// Every real death restarts only the failed round, including a fresh final immunity cycle.
+for(let round=1;round<=5;round++){
+ const h=setup(),r=h.run;enterArena(h);start(h);
+ if(round>1){timer(h,45);for(let n=2;n<=round;n++){next(h);if(n<round)winBoss(h);}}
+ r('ArenaChallenge.update(1);player.hp=1;projectiles.push({source:"arena:old",x:0,y:0});');
+ if(round===5)r('enemies.find(e=>e.miniboss==="arenaFia").immuneRemaining=3;');
+ const permanent=r('JSON.stringify([flags,progression,coins])'),old=r('ArenaChallenge.attempt.id');
+ r('player.inv=0;damage(100000,0,false,true);');
+ assert.equal(r('ArenaChallenge.attempt.round'),round);assert.notEqual(r('ArenaChallenge.attempt.id'),old);
+ assert.equal(r('JSON.stringify([flags,progression,coins])'),permanent);assert.equal(r('player.hp'),r('player.maxHp'));
+ assert.equal(r('projectiles.length'),0);assert.equal(r('ArenaChallenge.attempt.pending.length'),0);
+ h.dismiss();assert.equal(r('state'),'play');
+ if(round===1){assert.equal(r('ArenaChallenge.attempt.clock'),45);assert.equal(r('enemies.length'),0);}
+ else{assert.equal(r('enemies.filter(e=>ArenaCombat.is(e)&&!e.dead).length'),1);assert(r('enemies.every(e=>!e.arenaMinion)'));assert(r('enemies.filter(ArenaCombat.is).every(e=>e.hp===e.maxHp)'));}
+ if(round===5){assert.equal(r('enemies.find(e=>e.miniboss==="arenaFia").immuneRemaining'),90);assert(!has(r,'arenaChampion'));}
+ r('player.inv=0;damage(100000,0,false,true);');h.dismiss();assert.equal(r('ArenaChallenge.attempt.round'),round,'Repeated deaths keep the same round');
+ if(round>1&&round<5){winBoss(h);const xp=r('progression.totalXp');r('ArenaChallenge.onBossDefeated(enemies[0]);');assert.equal(r('progression.totalXp'),xp,'No duplicate rewards on retry');}
+ assert.doesNotThrow(()=>validate(r('saved')));
 }
 
 // Newly registered rooms must use the same movement timers as the normal realms and dream.
