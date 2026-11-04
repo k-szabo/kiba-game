@@ -145,7 +145,7 @@ const BackgroundMotion=(()=>{
    if(load.renderClock!==clock||load.renderImage!==image){
     const paint=load.canvas.getContext('2d');paint.globalAlpha=1;paint.globalCompositeOperation='source-over';paint.clearRect(0,0,load.canvas.width,load.canvas.height);paint.drawImage(source,0,0);
     for(const patch of load.patches){paint.globalAlpha=(1-Math.cos(clock/patch.period*Math.PI*2))/2;paint.drawImage(patch.canvas,patch.x,patch.y);}paint.globalAlpha=1;
-    if(alias?.fade>0){const fade=paint.createLinearGradient(0,0,load.canvas.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(alias.fade,'#fff');fade.addColorStop(1,'#fff');paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,load.canvas.width,load.canvas.height);paint.globalCompositeOperation='source-over';}
+    if(alias?.mask)applyMask(paint,load.canvas.width,load.canvas.height,alias.mask);
     load.renderClock=clock;load.renderImage=image;
    }
    ctx.drawImage(load.canvas,...args);return true;
@@ -158,7 +158,26 @@ const BackgroundMotion=(()=>{
   if(keys.has(image))return keys.get(image);
   const key=Object.keys(profiles).find(key=>(Visuals.peek?Visuals.peek(key):Visuals.images[key])===image)||null;keys.set(image,key);return key;
  }
- function alias(surface,source,mask){keys.set(surface,keyFor(source));if(mask&&Number.isFinite(mask.fade)&&mask.fade>=0&&mask.fade<=1)aliases.set(surface,{source,fade:mask.fade});return surface;}
+ function applyMask(paint,width,height,mask){
+  for(const [start,end,x,y]of [[mask.left,mask.right,width,0],[mask.top,mask.bottom,0,height]]){
+   if(!start&&!end)continue;
+   const fade=paint.createLinearGradient(0,0,x,y);
+   fade.addColorStop(0,start?'#fff0':'#fff');if(start)fade.addColorStop(start,'#fff');
+   if(end)fade.addColorStop(1-end,'#fff');fade.addColorStop(1,end?'#fff0':'#fff');
+   paint.globalCompositeOperation='destination-in';paint.fillStyle=fade;paint.fillRect(0,0,width,height);
+  }
+  paint.globalCompositeOperation='source-over';
+ }
+ function alias(surface,source,mask){
+  keys.set(surface,keyFor(source));
+  if(mask){const edges={left:mask.left??mask.fade??0,right:mask.right??0,top:mask.top??0,bottom:mask.bottom??0};if(Object.values(edges).every(n=>Number.isFinite(n)&&n>=0&&n<=1)&&edges.left+edges.right<=1&&edges.top+edges.bottom<=1)aliases.set(surface,{source,mask:edges});}
+  return surface;
+ }
+ function masked(image,mask){
+  const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;
+  const paint=surface.getContext('2d');paint.drawImage(image,0,0);applyMask(paint,surface.width,surface.height,mask);
+  return alias(surface,image,mask);
+ }
  // Four neighbouring phases interpolate smoothly, with no frame-sized image swap.
  function phase(offset=0){const n=(clock/2+offset)%4,index=Math.floor(n),t=n-index,s=t*t*(3-2*t),values=[0,1,0,-1];return values[index]*(1-s)+values[(index+1)%4]*s;}
  function prepare(image,profile){
@@ -213,5 +232,5 @@ const BackgroundMotion=(()=>{
   if(data.foliage){ctx.globalAlpha=alpha*.36;ctx.drawImage(data.foliage,...sample,dx+phase(.5)*1.5*dw/sourceWidth,dy,dw,dh);}
   ctx.restore();
  }
- return Object.freeze({draw,alias,update,reset,beginFrame,profiles,phase,get clock(){return clock;}});
+ return Object.freeze({draw,alias,masked,update,reset,beginFrame,profiles,phase,get clock(){return clock;}});
 })();

@@ -1044,7 +1044,7 @@
       "islands.rest.path": "A szétszakadt ösvény",
       "islands.rest.watchtower": "A távoli őrtorony",
       "islands.hook": "Kapaszkodókampó",
-      "islands.hook.desc": "A nézési irányban lévő első kis normál ellenfelet Momo felé húzza. Ha nincs ilyen célpont, az előtte lévő legközelebbi, látható kapaszkodóponthoz húzza Momót. Hatótáv: 900 világpixel. Bossokra nem hat.",
+      "islands.hook.desc": "A nézési irányban lévő első kis normál ellenfelet Momo felé húzza. Ha nincs ilyen célpont, az előtte lévő legközelebbi, látható kapaszkodóponthoz húzza Momót. Hatótáv: 900 világpixel. Bossokra nem hat. Újratöltés: 2,5 másodperc.",
       "binding.action.grapple": "Kapaszkodókampó",
       "islands.enter": "E · Tovább a lebegő szigetekre",
       "islands.takeHook": "E · A kampó felvétele",
@@ -1350,7 +1350,9 @@
       "menu.changelog.0971.e96d3917.title": "Kampóval a felhők fölött",
       "menu.changelog.0971.e96d3917.0": "A lebegő szigetek új történeti útvonala sziámi árnyéknindzsákkal és egy megszerezhető kapaszkodókampóval folytatja Momo útját.",
       "menu.changelog.0972.ab740729.title": "A birodalmak bossai a toronyban",
-      "menu.changelog.0972.ab740729.0": "A végtelen torony bossválasztéka a kimaradó fő- és opcionális bossok toronyhoz igazított változataival bővült. A találkozások történeti események nélkül működnek; a korábbi checkpointok, rekordok és a kalandmentés megmaradnak."
+      "menu.changelog.0972.ab740729.0": "A végtelen torony bossválasztéka a kimaradó fő- és opcionális bossok toronyhoz igazított változataival bővült. A találkozások történeti események nélkül működnek; a korábbi checkpointok, rekordok és a kalandmentés megmaradnak.",
+      "menu.changelog.0972.cc8d0925.title": "Nindzsák és kapaszkodókampó javításai",
+      "menu.changelog.0972.cc8d0925.0": "A nindzsavezér nagyobb megjelenést kapott, a lebegő szigetek hátterei finomabban olvadnak össze. A kampó felvételekor útmutató jelenik meg; az útvonal visszafelé is bejárható. A behúzott ellenfelek nem ugranak vissza a régi helyükre, a kampó pedig 2,5 másodperc alatt tölt újra."
     }
   },
   "en": {
@@ -2398,7 +2400,7 @@
       "islands.rest.path": "The Broken Path",
       "islands.rest.watchtower": "The Distant Watchtower",
       "islands.hook": "Grappling Hook",
-      "islands.hook.desc": "Pulls the first small regular enemy in Momo’s facing direction toward him. If there is no such target, pulls Momo toward the nearest visible fixed anchor ahead. Range: 900 world pixels. Does not affect bosses.",
+      "islands.hook.desc": "Pulls the first small regular enemy in Momo’s facing direction toward him. If there is no such target, pulls Momo toward the nearest visible fixed anchor ahead. Range: 900 world pixels. Does not affect bosses. Cooldown: 2.5 seconds.",
       "binding.action.grapple": "Grappling Hook",
       "islands.enter": "E · Continue to the Floating Islands",
       "islands.takeHook": "E · Pick up the grappling hook",
@@ -2704,7 +2706,9 @@
       "menu.changelog.0971.e96d3917.title": "Grappling Above the Clouds",
       "menu.changelog.0971.e96d3917.0": "A new story route across the Floating Islands continues Momo’s journey with Siamese shadow ninjas and an obtainable grappling hook.",
       "menu.changelog.0972.ab740729.title": "Bosses of the realms in the tower",
-      "menu.changelog.0972.ab740729.0": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved."
+      "menu.changelog.0972.ab740729.0": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved.",
+      "menu.changelog.0972.cc8d0925.title": "Ninja and grappling hook fixes",
+      "menu.changelog.0972.cc8d0925.0": "The ninja leader appears larger, and the Floating Islands’ backgrounds blend more smoothly. Picking up the hook shows instructions, and the route can be travelled in both directions. Pulled enemies no longer snap back to their old positions, and the hook has a 2.5-second cooldown."
     }
   }
 }

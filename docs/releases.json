@@ -772,6 +772,22 @@
           "en": "Previous saves are incompatible with this release; start a new journey. Language and control preferences are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.72_cc8d0925",
+      "code": "cc8d0925",
+      "baseVersion": "0.9.72",
+      "slug": "floating-islands-grapple-fixes",
+      "summary": {
+        "hu": "Nindzsák és kapaszkodókampó javításai",
+        "en": "Ninja and grappling hook fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A nindzsavezér nagyobb megjelenést kapott, a lebegő szigetek hátterei finomabban olvadnak össze. A kampó felvételekor útmutató jelenik meg; az útvonal visszafelé is bejárható. A behúzott ellenfelek nem ugranak vissza a régi helyükre, a kampó pedig 2,5 másodperc alatt tölt újra.",
+          "en": "The ninja leader appears larger, and the Floating Islands’ backgrounds blend more smoothly. Picking up the hook shows instructions, and the route can be travelled in both directions. Pulled enemies no longer snap back to their old positions, and the hook has a 2.5-second cooldown."
+        }
+      ]
     }
   ],
   "releases": [

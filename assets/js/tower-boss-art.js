@@ -36,7 +36,7 @@ const TowerBossArt=(()=>{
   if(type==='dragonRaid'){stamp(e.stance==='exposed'?ART_DRAGON.stagger:ART_DRAGON.front,e.stance==='exposed'?2:p%4,e);return true;}
   if(type==='whiteSerpent'||type==='wingedSerpent'){stamp(ART_REALM_SERPENTS[e.serpentType],SerpentArt.pose(e),e,e.h*1.4);return true;}
   if(type==='serpent'){const clip=ART_SERPENT.clips[['windup','strike','recover'].includes(e.phase)?e.phase:'idle'],index=clip[reducedMotion.matches?0:Math.floor(e.animTime*7)%clip.length];stamp(ART_SERPENT,index,e);return true;}
-  if(ordinary[type]){stamp(ordinary[type],p,e);return true;}
+  if(ordinary[type]){stamp(ordinary[type],p,e,type==='shadowNinjaLeader'?IslandsArt.leaderHeight:e.h);return true;}
   if(type==='main-0'){stamp(frames(e.move==='jumpCut'?'samuraiJump':'samurai',e.move==='jumpCut'?ART_FRAMES.samuraiJump:ART_FRAMES.samurai),p%6,e);return true;}
   if(type==='main-1'){stamp(frames('bosses',ART_FRAMES.bosses[1]),p%6,e);return true;}
   if(['main-2','seraph','eclipse'].includes(type)){const key=type==='eclipse'?'angelEclipse':type==='seraph'?'angelLight':['','angelLight','angelDark','angelEclipse'][e.stage||1];stamp(frames(key,ART_FRAMES[key]),p%6,e);return true;}

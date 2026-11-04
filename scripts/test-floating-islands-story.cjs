@@ -8,7 +8,8 @@ assert.equal(r('CampQuest.leave()'),false);assert.equal(r('fastTravel(level.rest
 r('revive()');assert(!r('FloatingIslandsRules.abducted(flags)'));assert.equal(r('enemies.find(FloatingIslands.is).hp'),1800,'Death restarts the ambush');
 h.place(1000,2850);r('leader=enemies.find(FloatingIslands.is);FloatingIslands.updateEnemy(leader,.1);var xpBefore=progression.totalXp,pointsBefore=progression.points;leader.hp=leader.maxHp*.7;FloatingIslands.updateEnemy(leader,.1);');
 assert(r('FloatingIslandsRules.abducted(flags)'));assert(r('FloatingIslands.cinematic()'));r("state='pause';FloatingIslands.update(1);");assert.equal(r('FloatingIslands.departure().elapsed'),0);r("state='play';");h.tick(180);assert(!r('FloatingIslands.locked()'));assert.equal(r('FloatingIslands.follower()'),null);assert.equal(r('progression.totalXp'),r('xpBefore'));assert.equal(r('progression.points'),r('pointsBefore'),'Escape is not a rewarded boss kill');h.dismiss();
-h.place(1250,2850);assert.equal(r('getContext().type'),'islandsHook');r('interact()');assert(r('Grapple.owned()'));
+h.place(1250,2850);r("Bindings.setPrimary('grapple','g');");assert.equal(r('getContext().type'),'islandsHook');r('interact()');assert(r('Grapple.owned()'));
+assert.equal(h.elements.get('toast').textContent,r("I18n.format('help.grapple',[bindingKeyLabel(Bindings.read('grapple')[0])])"),'Hook pickup shows instructions using the current binding');
 assert.equal(r('getContext()?.type'),undefined,'Hook pickup cannot repeat');
 validate(r('captureProgress()'));
 for(const fps of [30,60,120]){

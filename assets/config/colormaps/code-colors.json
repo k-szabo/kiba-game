@@ -2339,14 +2339,16 @@
       {
         "value": "#fff",
         "lines": [
-          148
+          165,
+          166
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          148
+          165,
+          166
         ],
         "dynamic": false
       }
@@ -4283,57 +4285,57 @@
       {
         "value": "#33281f",
         "lines": [
-          57
+          62
         ],
         "dynamic": false
       },
       {
         "value": "#49392b",
         "lines": [
-          46
+          51
         ],
         "dynamic": false
       },
       {
         "value": "#8d7b5b",
         "lines": [
-          47
+          52
         ],
         "dynamic": false
       },
       {
         "value": "#c9b384",
         "lines": [
-          41,
-          62
+          46,
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#ccac65",
         "lines": [
-          47
+          52
         ],
         "dynamic": false
       },
       {
         "value": "#ddc69c",
         "lines": [
-          57
+          62
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a8",
         "lines": [
-          47
+          52
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c4",
         "lines": [
-          48
+          53
         ],
         "dynamic": false
       }

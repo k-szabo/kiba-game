@@ -7,6 +7,7 @@ function createFloatingIslandMaps({makeLevel,ledge,rest,foe,zone}){
  islands.forEach((p,i)=>{
   ledge(map,'floating-island-'+i,p.x,p.y,p.w,'ground',300);
   zone(map,'islands.name',p.x,0,p.w,map.height);
+  if(i<islands.length-1)map.grappleAnchors.push({id:'island-return-ring-'+i,x:p.x+p.w-64,y:p.y-96,w:32,h:32});
   if(i){
    // A 400px rise exceeds both jump apexes combined, including chained
    // horizontal dashes; the near-edge ring stays within the 900px hook range.
