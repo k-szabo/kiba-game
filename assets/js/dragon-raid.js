@@ -39,8 +39,14 @@ const DragonRaid=(()=>{
    story('fia.dragon.quest','fia.name','fia.dragon.offer',null,{right:'fia',speaker:'fia'});return true;
   }
   if(has('dragonEyes')){
-   if(!apply(FiaJourneyRules.handIn(fiaJourney,flags,defeated)))return false;
-   story('fia.dragon.quest','fia.name','fia.dragon.turnIn',null,{right:'fia',speaker:'fia'});return true;
+   if(!FiaJourneyRules.handIn(fiaJourney,flags,defeated).ok)return false;
+   const origin=level;
+   // The completion flag moves Fia to her ritual room. Commit it only after
+   // her final page, so the speaker and held eyes remain present while reading.
+   story('fia.dragon.quest','fia.name','fia.dragon.turnIn',()=>{
+    const current=questPoint();
+    if(state==='play'&&level===origin&&current&&pointNear(current,100,90))apply(FiaJourneyRules.handIn(fiaJourney,flags,defeated));
+   },{right:'fia',speaker:'fia'});return true;
   }
   story('fia.dragon.quest','fia.name','fia.dragon.offer',null,{right:'fia',speaker:'fia'});return true;
  }
