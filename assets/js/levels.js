@@ -3,6 +3,7 @@
 // Shared progression rules also load before the standalone save validator.
 const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,xpForLevel:n=>60+(n-1)*35});
 const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
+const ZEN_PURIFICATION_POINTS=2;
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
@@ -30,7 +31,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return ['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return (worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -414,7 +415,7 @@ foe(shadowPrison,'prisonHunter',3640,2360,'guard',null,360);
 Object.assign(shadowPrison.enemies.at(-1),{miniboss:'prisonHunter',name:'fia.hunter.name',secretArea:'prisonHunterCourt',factionOverride:'shadowCult'});
 zone(shadowPrison,'zen.prison.name',0,0,5400,1900);
 zone(shadowPrison,'fia.prison.rest',0,1900,5400,820);
-shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued','guardian:prisonHunter','fiaSeen','fiaRescued','fiaMissed');
+shadowRealm.progressFlags.push('guardian:prisonWarden','zenRescued','zenHymnPurified','guardian:prisonHunter','fiaSeen','fiaRescued','fiaMissed');
 // This refuge requires both the priest's defeat and Fia's rescue.
 shadowRealm.denEntrance={x:11000,y:1200};
 const shadowDen=makeLevel('shadowDen',2800,1080,{x:260,y:820});

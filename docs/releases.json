@@ -1798,6 +1798,22 @@
           "en": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved."
         }
       ]
+    },
+    {
+      "version": "0.9.73_e03f9a22",
+      "code": "e03f9a22",
+      "baseVersion": "0.9.73",
+      "slug": "zen-hymn-purification",
+      "summary": {
+        "hu": "Zen megtisztító imája",
+        "en": "Zen’s purifying prayer"
+      },
+      "fixes": [
+        {
+          "hu": "A megrontott szent éneket a megmentett Zen az erdei menedékben egyszeri fejlesztéspont-jutalomért megtisztíthatja.",
+          "en": "Once rescued, Zen can purify the corrupted hymn at the Forest Refuge for a one-time reward of training points."
+        }
+      ]
     }
   ]
 }

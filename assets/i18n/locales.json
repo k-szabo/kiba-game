@@ -628,7 +628,7 @@
       "item.corruptedHymn": "Megrontott szent ének",
       "item.prisonKey": "Börtönkulcs",
       "inventory.description.madPriestSoul": "A pap lelkében elnémíthatatlan harangszó kering. A torzult Kiba még mindig valaki más szívverését keresi.",
-      "inventory.description.corruptedHymn": "Egy valaha vigaszt hozó ének kottája. A hangjegyek közé idegen kéz írt választ, amelyet jobb nem elénekelni.",
+      "inventory.description.corruptedHymn": "Egy valaha vigaszt hozó ének kottája. A hangjegyek közé idegen kéz írt választ, amelyet jobb nem elénekelni. Zen az erdei menedékben megtisztíthatja.",
       "inventory.description.prisonKey": "A kultista börtönőr súlyos vaskulcsa. A néma börtön zárjába illik.",
       "shadow.story.entry": "Momo már érezte apja kezének melegét, amikor a fény hangtalanul meghasadt. A fekete örvény mindkettőjüket elnyelte.\n\nA túloldalon ugyanaz a hideg fogadta, amelyet az álmából ismert. Haru keze kicsúszott az övéből. Most azonban Momo nem ébredt fel.",
       "shadow.objective.search": "Találd meg Haru nyomát az árnyékvilágban.",
@@ -1352,7 +1352,12 @@
       "menu.changelog.0972.ab740729.title": "A birodalmak bossai a toronyban",
       "menu.changelog.0972.ab740729.0": "A végtelen torony bossválasztéka a kimaradó fő- és opcionális bossok toronyhoz igazított változataival bővült. A találkozások történeti események nélkül működnek; a korábbi checkpointok, rekordok és a kalandmentés megmaradnak.",
       "menu.changelog.0972.cc8d0925.title": "Nindzsák és kapaszkodókampó javításai",
-      "menu.changelog.0972.cc8d0925.0": "A nindzsavezér nagyobb megjelenést kapott, a lebegő szigetek hátterei finomabban olvadnak össze. A kampó felvételekor útmutató jelenik meg; az útvonal visszafelé is bejárható. A behúzott ellenfelek nem ugranak vissza a régi helyükre, a kampó pedig 2,5 másodperc alatt tölt újra."
+      "menu.changelog.0972.cc8d0925.0": "A nindzsavezér nagyobb megjelenést kapott, a lebegő szigetek hátterei finomabban olvadnak össze. A kampó felvételekor útmutató jelenik meg; az útvonal visszafelé is bejárható. A behúzott ellenfelek nem ugranak vissza a régi helyükre, a kampó pedig 2,5 másodperc alatt tölt újra.",
+      "zen.purify": "E · A szent ének megtisztítása",
+      "zen.purify.dialogue": "Momo, ezt a dallamot még alig hallani a sötétség alatt… de nem veszett el. Add ide, megtisztítom neked. Amíg mellettem vagy, hadd én őrizzem egy kicsit a fényedet.\n\nHa más megrontott szent ereklyét találsz, nyugodtan hozd el hozzám. A bennük rekedt Kibát is felszabadítom, hogy erőt adjon az utadon.",
+      "zen.purify.reward": "A szent ének megtisztult. +{0} fejlesztéspont.",
+      "menu.changelog.0973.e03f9a22.title": "Zen megtisztító imája",
+      "menu.changelog.0973.e03f9a22.0": "A megrontott szent éneket a megmentett Zen az erdei menedékben egyszeri fejlesztéspont-jutalomért megtisztíthatja."
     }
   },
   "en": {
@@ -1984,7 +1989,7 @@
       "item.corruptedHymn": "Corrupted Sacred Hymn",
       "item.prisonKey": "Prison Key",
       "inventory.description.madPriestSoul": "An unending bell toll circles within the priest's soul. The twisted Kiba still searches for another's heartbeat.",
-      "inventory.description.corruptedHymn": "The score of a hymn that once brought comfort. A foreign hand has written a response between the notes, best left unsung.",
+      "inventory.description.corruptedHymn": "The score of a hymn that once brought comfort. A foreign hand has written a response between the notes, best left unsung. Zen can purify it at the Forest Refuge.",
       "inventory.description.prisonKey": "The cultist jailer's heavy iron key. It fits the lock of the Silent Prison.",
       "shadow.story.entry": "Momo had already felt the warmth of his father's hand when the light split without a sound. The black vortex swallowed them both.\n\nThe same cold he remembered from his dream awaited him on the other side. Haru's hand slipped from his grasp. This time, Momo did not wake.",
       "shadow.objective.search": "Find Haru's trail in the Shadow Realm.",
@@ -2708,7 +2713,12 @@
       "menu.changelog.0972.ab740729.title": "Bosses of the realms in the tower",
       "menu.changelog.0972.ab740729.0": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved.",
       "menu.changelog.0972.cc8d0925.title": "Ninja and grappling hook fixes",
-      "menu.changelog.0972.cc8d0925.0": "The ninja leader appears larger, and the Floating Islands’ backgrounds blend more smoothly. Picking up the hook shows instructions, and the route can be travelled in both directions. Pulled enemies no longer snap back to their old positions, and the hook has a 2.5-second cooldown."
+      "menu.changelog.0972.cc8d0925.0": "The ninja leader appears larger, and the Floating Islands’ backgrounds blend more smoothly. Picking up the hook shows instructions, and the route can be travelled in both directions. Pulled enemies no longer snap back to their old positions, and the hook has a 2.5-second cooldown.",
+      "zen.purify": "E · Purify the sacred hymn",
+      "zen.purify.dialogue": "Momo, I can barely hear this melody beneath the darkness… but it is not lost. Let me purify it for you. While you are beside me, let me watch over your light for a little while.\n\nIf you find other corrupted sacred relics, bring them to me. I will free the Kiba trapped within them too, so it may strengthen you on your journey.",
+      "zen.purify.reward": "The sacred hymn has been purified. +{0} training points.",
+      "menu.changelog.0973.e03f9a22.title": "Zen’s purifying prayer",
+      "menu.changelog.0973.e03f9a22.0": "Once rescued, Zen can purify the corrupted hymn at the Forest Refuge for a one-time reward of training points."
     }
   }
 }

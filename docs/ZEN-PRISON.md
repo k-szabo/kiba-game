@@ -18,11 +18,11 @@ A PrisonWarden önálló, 150 HP-s miniboss. Állapotai wait → windup → stri
 
 Az első győzelem guardian:prisonWarden jelzőt, 180 XP-t és a közös miniboss-érmejutalmat adja. A jutalom és a jelző a narráció előtt rögzül; újrajátszás nem duplikálja. A kulcs a külső őrhöz tartozik, a belső őr nem ad új kulcsot.
 
-Zen cellája a börtönnagy legyőzése után külön interakcióval nyitható. A zenRescued jelző a párbeszéd előtt rögzül. Zen ezután eltűnik a cellából, és az erdei menedék szentélye mellett jelenik meg. Momo gyerekkori barátja, nyíltan szeretetteljes, belé szerelmes csaucsau papnő. A szentélyt gondozza és imádkozik; a későbbi saját küldetések ebben a verzióban még nincsenek megírva, ezért nincs megtévesztő küldetésjelölése.
+Zen cellája a börtönnagy legyőzése után külön interakcióval nyitható. A zenRescued jelző a párbeszéd előtt rögzül. Zen ezután eltűnik a cellából, és az erdei menedék szentélye mellett jelenik meg. Momo gyerekkori barátja, nyíltan szeretetteljes, belé szerelmes csaucsau papnő. A szentélyt gondozza és imádkozik; a birtokolt megrontott szent ének egyszeri megtisztítását kérdőjel jelzi.
 
 ## Mentés és tesztmód
 
-A két tartós jelző flags[3]-ban van. Az érvényes lánc: külső őr legyőzése → kapunyitás → belső őr legyőzése → Zen megmentése. Azonos kiadású újratöltés, halál, pihenés és utazás őrzi a haladást. A normál ellenfelek halálkor/pihenéskor visszatérnek, a legyőzött börtönnagy és a kiszabadított Zen nem áll vissza. A mentésvalidátor tiltja a hiányzó előfeltételt, a hamis pihenőkoordinátát, a hibás birodalmat és a korábbi kiadás mentését. Alfa/béta alatt az új kiadás továbbra is haladásresetet jelent, nyelv és gombkiosztás megtartásával.
+A két tartós jelző flags[3]-ban van. Az érvényes lánc: külső őr legyőzése → kapunyitás → belső őr legyőzése → Zen megmentése. Azonos kiadású újratöltés, halál, pihenés és utazás őrzi a haladást. A normál ellenfelek halálkor/pihenéskor visszatérnek, a legyőzött börtönnagy és a kiszabadított Zen nem áll vissza. A mentésvalidátor tiltja a hiányzó előfeltételt, a hamis pihenőkoordinátát és a hibás birodalmat. A kompatibilis kiadások megőrzik a haladást a stabil saveCompatibility korszakon belül.
 
 A fejlesztői teleport a közös oldalhelyszín-katalógusból automatikusan listázza a börtönt és mindkét érkezési pontot. Tesztmódban kulcs, külső őr és főbossgyőzelem nélkül kipróbálható. A Boss újraélesztése a belső őrt külön listázza; a replay jelző megakadályozza a jutalom és a történeti haladás megváltoztatását. A tesztmód nem ír normál mentést.
 
@@ -41,3 +41,9 @@ A VM-tesztek mellett friss böngészőprofillal kell ellenőrizni a grafikát, a
 A börtön saját, natív RGBA feketekő-/bronzszegélyes talajatlaszt használ. A járható felső elemek és az alsó falazat képaránya megmarad: a mély talajtest ismételt téglatextúrából áll, a lebegő párkány teljes sziluettje egyenletes léptékű. A source surfaceY pontosan az eredeti ütközési felületre kerül; más birodalmak továbbra is a korábbi anyagaikat használják. A talajatlasz eredete: [prompt és regisztráció](art-prompts/zen-prison-terrain-v1.json).
 
 Zen aktuális képlapja a `zen-priestess-v2.png`: Momo rajzos, festett világához igazított csaucsau papnő, négy változatlan rendeltetésű pózzal. A `ART_PRISON.zen` rögzített testméretet és képkockánként ellenőrzött talpillesztést használ; a megmentés, személyiség és játékmenet változatlan. A grafika eredete: [prompt](art-prompts/zen-priestess-v2.json).
+
+## Szent ének megtisztítása
+
+A megmentett Zen az erdei menedékben a ténylegesen birtokolt corruptedHymn tárgyat egyszer tisztíthatja meg. A PrisonQuest közeli interakciója újraellenőrzi a helyszínt és a birtoklást; a flags[3].zenHymnPurified előzmény az átadást a párbeszéd előtt rögzíti. A ZEN_PURIFICATION_POINTS közös konstans határozza meg a jutalmat és a szigorúan validált pontkeretet. Az inventory consumedBy adata elrejti a felhasznált tárgyat a megszerzési jelző törlése nélkül. Halál, újratöltés és ismételt beszélgetés nem ad új jutalmat.
+
+Ellenőrzések: test-zen-purification.cjs (tényleges input, egyszeri átadás, távolság, dialógusszünet, halál/folytatás); test-zen-purification-saves.cjs (előfeltételek és pontos pontkeret, régi mentések megőrzése).
