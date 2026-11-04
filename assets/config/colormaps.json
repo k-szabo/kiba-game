@@ -89,19 +89,19 @@
   },
   "dataSchemaVersion": 1,
   "counts": {
-    "pc": 2,
-    "npcs": 92,
-    "objects": 125,
-    "paletteGroups": 230,
-    "assets": 279,
-    "codeColors": 110
+    "pc": 3,
+    "npcs": 97,
+    "objects": 126,
+    "paletteGroups": 237,
+    "assets": 292,
+    "codeColors": 118
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "c90c571efb51936ced9c6701e36c56c161e188b6e2fd473728173ee12e805d2c",
+      "sha256": "2f5c0c39ebab517d6e8af5cc41881e4fbb3b711897affb3ce8339eb6ed6eb406",
       "counts": {
-        "codeColors": 110
+        "codeColors": 118
       }
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "e7c9c82395bc1d52d62d774fe4b00f8926013420adaa496c31d8075f1fba60c3",
+      "sha256": "d060b03f1d8d92f88079534537eddde45fb56da168eb39d3eb684b8953ba3529",
       "counts": {
         "paletteGroups": 11,
-        "assets": 110
+        "assets": 116
       }
     },
     {
@@ -131,10 +131,10 @@
     },
     {
       "file": "colormaps/inventory-ui.json",
-      "sha256": "36cd8353d066cb3aeb2b5fd87258d6b4041e6d54a7c31ce4df95bb78144c1507",
+      "sha256": "c1b880ab27454fde0a1c66ec3dca1c16c49cec4015a6e98b62b2241e34ed170a",
       "counts": {
-        "paletteGroups": 34,
-        "assets": 35
+        "paletteGroups": 35,
+        "assets": 36
       }
     },
     {
@@ -157,18 +157,18 @@
     },
     {
       "file": "colormaps/objects.json",
-      "sha256": "8ca6f0e00c3396cffd2f467d122b447b36bae9725cdd3821a80e08a522030025",
+      "sha256": "fe651b42c1b332647b4f274a0c8925bd96ab1c9f6c25f5a0d95ff5d0ef4ff573",
       "counts": {
-        "objects": 125
+        "objects": 126
       }
     },
     {
       "file": "colormaps/player.json",
-      "sha256": "edc575606b279d4b55dc7635780d5bbd276f21e3c8e82345d3cde814304e9005",
+      "sha256": "e3b13b44e726717cdd29e5b358d218b8637b4b30f8843b31e5a2a7041e21a8ed",
       "counts": {
-        "pc": 2,
-        "paletteGroups": 11,
-        "assets": 12
+        "pc": 3,
+        "paletteGroups": 12,
+        "assets": 13
       }
     },
     {
@@ -187,6 +187,15 @@
         "npcs": 18,
         "paletteGroups": 19,
         "assets": 15
+      }
+    },
+    {
+      "file": "colormaps/shadow-ninjas.json",
+      "sha256": "6683e0c2bbed33060d7fd0a8d37502a2dfd7848a764a1a15bd637b503f38c3c2",
+      "counts": {
+        "npcs": 5,
+        "paletteGroups": 5,
+        "assets": 5
       }
     },
     {

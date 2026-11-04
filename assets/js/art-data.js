@@ -18,6 +18,19 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ islandsArrivalBackdrop:'assets/images/backgrounds/floating-islands-arrival-v1.png',
+ islandsArrivalBackdropMotionPhaseB:'assets/images/backgrounds/floating-islands-arrival-motion-b-v1.png',
+ islandsRouteBackdrop:'assets/images/backgrounds/floating-islands-route-v1.png',
+ islandsRouteBackdropMotionPhaseB:'assets/images/backgrounds/floating-islands-route-motion-b-v1.png',
+ islandsWatchtowerBackdrop:'assets/images/backgrounds/floating-islands-watchtower-v1.png',
+ islandsWatchtowerBackdropMotionPhaseB:'assets/images/backgrounds/floating-islands-watchtower-motion-b-v1.png',
+ ninjaCrossbow:'assets/images/enemies/shadow-ninja-crossbow-v1.png',
+ ninjaShuriken:'assets/images/enemies/shadow-ninja-shuriken-v1.png',
+ ninjaNinjutsu:'assets/images/enemies/shadow-ninja-ninjutsu-v1.png',
+ ninjaAssassin:'assets/images/enemies/shadow-ninja-assassin-v1.png',
+ ninjaLeader:'assets/images/enemies/shadow-ninja-leader-v1.png',
+ momoHook:'assets/images/momo-hook-v1.png',
+ grapplingHook:'assets/images/ui/grappling-hook-v1.png',
  descentBackdrop:'assets/images/backgrounds/ziggurat-depths-v1.png',
  descentBackdropMotionPhaseB:'assets/images/backgrounds/ziggurat-depths-motion-b-v1.png',
  japanHeightsBackdrop:'assets/images/backgrounds/japan-heights-v1.png',

@@ -39,6 +39,8 @@ const SaveVault=(()=>{
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
   if(!ZigguratDescentRules.validate(data.flags,data.defeated))throw Error('Invalid ziggurat descent progress');
+  if(!FloatingIslandsRules.validate(data.flags))throw Error('Invalid floating island progress');
+  if(data.visitedRests[0].some(id=>['floatingIslandsPath','floatingIslandsWatchtower'].includes(id))&&!FloatingIslandsRules.hookOwned(data.flags))throw Error('Invalid island route checkpoint');
   const hannah=data.flags[3],hasHannah=id=>hannah.includes(id);
   if(['dawnblade','hannahDefeated','hannahFiaRescue','guardian:Hannah','discovered:hannahCourt'].some(id=>hasHannah(id)&&!data.defeated[3]))throw Error('Invalid ziggurat progress');
   if(hasHannah('hannahDefeated')&&(!hasHannah('dawnblade')||!hasHannah('guardian:Hannah'))||hasHannah('guardian:Hannah')&&!hasHannah('hannahDefeated'))throw Error('Invalid Hannah victory');

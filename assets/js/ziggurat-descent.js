@@ -19,7 +19,7 @@ const ZigguratDescent=(()=>{
   const x=clamp(player.x-78,support.x+4,support.x+support.w-46);
   companion.reset({x,y:support.y-70,face:player.face},platforms);
  }
- function showFollower(){return following()||accepted()&&completed()&&level===japanHeights;}
+ function showFollower(){return !FloatingIslandsRules.abducted(flags)&&(following()||accepted()&&completed()&&level===japanHeights);}
  function follower(){
   if(!showFollower())return null;
   if(completed())return {x:japanHeights.haruPoint.x-21,y:japanHeights.haruPoint.y-70,w:42,h:70,vx:0,vy:0,face:-1,onGround:true,animationTime:0};
@@ -44,7 +44,7 @@ const ZigguratDescent=(()=>{
   if(level===zigguratSummit&&pointNear({x:1800,y:1400},110,100)&&!accepted())return {type:'descentAccept',text:'descent.haruPrompt'};
   if(level===zigguratInterior&&accepted()&&pointNear(level.descentEntrance,95,80))return {type:'descentEnter',text:'descent.enter'};
   if(level===zigguratDepths&&pointNear(level.portalPoint,95,85))return {type:'descentPortal',text:rules.gateCleared(flags)?'descent.portal':'descent.locked',locked:!rules.gateCleared(flags)};
-  if(level===japanHeights&&pointNear(level.haruPoint,100,85))return {type:'descentHaru',text:'descent.haruPrompt'};
+  if(level===japanHeights&&!FloatingIslandsRules.abducted(flags)&&pointNear(level.haruPoint,100,85))return {type:'descentHaru',text:'descent.haruPrompt'};
   return null;
  }
  function interact(candidate){

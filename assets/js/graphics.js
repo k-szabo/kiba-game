@@ -856,6 +856,7 @@ const Visuals = (() => {
     }
   }
   function projectile(p) {
+    if(typeof ShadowNinjas!=='undefined'&&ShadowNinjas.projectile(p))return;
     if(FiaArt.projectile(p))return;
     if(BossVFX.projectile(p))return;
     if(p.slayer&&p.fire&&p.kind==='arrow'){

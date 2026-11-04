@@ -2339,14 +2339,14 @@
       {
         "value": "#fff",
         "lines": [
-          145
+          148
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          145
+          148
         ],
         "dynamic": false
       }
@@ -2538,86 +2538,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          554
+          559
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          410
+          413
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          372,
-          406
+          375,
+          409
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          201
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          538
+          543
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          283
+          286
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          396
+          399
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          341,
-          392
+          344,
+          395
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          201
+          204
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          553
+          558
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          538
+          543
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          401
+          404
         ],
         "dynamic": false
       }
@@ -2940,41 +2940,67 @@
     ],
     "assets/js/fia-void-journey.js": [],
     "assets/js/fia-void-maps.js": [],
+    "assets/js/floating-islands-maps.js": [],
+    "assets/js/floating-islands-rules.js": [],
+    "assets/js/floating-islands.js": [
+      {
+        "value": "#8c909b",
+        "lines": [
+          23,
+          38
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#95c485",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c6d8d8",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/foxfire.js": [],
     "assets/js/fullscreen.js": [],
     "assets/js/game.js": [
       {
         "value": "#08121900",
         "lines": [
-          312
+          313
         ],
         "dynamic": false
       },
       {
         "value": "#08121945",
         "lines": [
-          312
+          313
         ],
         "dynamic": false
       },
       {
         "value": "#08121988",
         "lines": [
-          312
+          313
         ],
         "dynamic": false
       },
       {
         "value": "#08141166",
         "lines": [
-          549
+          551
         ],
         "dynamic": false
       },
       {
         "value": "#0b1920",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3002,14 +3028,14 @@
       {
         "value": "#1c3837",
         "lines": [
-          538
+          540
         ],
         "dynamic": false
       },
       {
         "value": "#231d30",
         "lines": [
-          538
+          540
         ],
         "dynamic": false
       },
@@ -3065,7 +3091,7 @@
       {
         "value": "#465959",
         "lines": [
-          388
+          389
         ],
         "dynamic": false
       },
@@ -3086,7 +3112,7 @@
       {
         "value": "#60706a",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3100,7 +3126,7 @@
       {
         "value": "#718679",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3135,7 +3161,7 @@
       {
         "value": "#9da68e",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3149,14 +3175,14 @@
       {
         "value": "#a6c9c5",
         "lines": [
-          388
+          389
         ],
         "dynamic": false
       },
       {
         "value": "#addbb5",
         "lines": [
-          316
+          317
         ],
         "dynamic": false
       },
@@ -3184,7 +3210,7 @@
       {
         "value": "#c872b8",
         "lines": [
-          316
+          317
         ],
         "dynamic": false
       },
@@ -3212,14 +3238,14 @@
       {
         "value": "#d98877",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#d9e8ce",
         "lines": [
-          567
+          569
         ],
         "dynamic": false
       },
@@ -3240,14 +3266,14 @@
       {
         "value": "#dfba76",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
       {
         "value": "#dfc68844",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3283,14 +3309,14 @@
       {
         "value": "#e8d89b",
         "lines": [
-          316
+          317
         ],
         "dynamic": false
       },
       {
         "value": "#ec9153",
         "lines": [
-          567
+          569
         ],
         "dynamic": false
       },
@@ -3304,7 +3330,7 @@
       {
         "value": "#ecedce",
         "lines": [
-          567
+          569
         ],
         "dynamic": false
       },
@@ -3332,7 +3358,7 @@
       {
         "value": "#f0dfb1",
         "lines": [
-          388
+          389
         ],
         "dynamic": false
       },
@@ -3347,7 +3373,7 @@
       {
         "value": "#f4cf8a",
         "lines": [
-          387
+          388
         ],
         "dynamic": false
       },
@@ -3361,7 +3387,7 @@
       {
         "value": "#ffcf83",
         "lines": [
-          567
+          569
         ],
         "dynamic": false
       },
@@ -3375,7 +3401,7 @@
       {
         "value": "#fff",
         "lines": [
-          388
+          389
         ],
         "dynamic": false
       }
@@ -3513,7 +3539,7 @@
       {
         "value": "#142b3f",
         "lines": [
-          886
+          887
         ],
         "dynamic": false
       },
@@ -3590,7 +3616,7 @@
       {
         "value": "#251339",
         "lines": [
-          874
+          875
         ],
         "dynamic": false
       },
@@ -3716,7 +3742,7 @@
       {
         "value": "#b683ff",
         "lines": [
-          874
+          875
         ],
         "dynamic": false
       },
@@ -3781,7 +3807,7 @@
       {
         "value": "#d0af77",
         "lines": [
-          870
+          871
         ],
         "dynamic": false
       },
@@ -3830,14 +3856,14 @@
       {
         "value": "#d9a9ff",
         "lines": [
-          874
+          875
         ],
         "dynamic": false
       },
       {
         "value": "#d9dfd4",
         "lines": [
-          872
+          873
         ],
         "dynamic": false
       },
@@ -3928,7 +3954,7 @@
       {
         "value": "#f2e3b9",
         "lines": [
-          871
+          872
         ],
         "dynamic": false
       },
@@ -4146,7 +4172,7 @@
       {
         "value": "#fff3e3",
         "lines": [
-          875
+          876
         ],
         "dynamic": false
       },
@@ -4186,6 +4212,8 @@
         "dynamic": false
       }
     ],
+    "assets/js/grapple-rules.js": [],
+    "assets/js/grapple.js": [],
     "assets/js/hannah-art-data.js": [],
     "assets/js/hannah-art.js": [
       {
@@ -4251,6 +4279,65 @@
     "assets/js/haru-follower.js": [],
     "assets/js/i18n.js": [],
     "assets/js/inventory.js": [],
+    "assets/js/islands-art.js": [
+      {
+        "value": "#33281f",
+        "lines": [
+          47
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#49392b",
+        "lines": [
+          36
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#8d7b5b",
+        "lines": [
+          37
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c9b384",
+        "lines": [
+          31,
+          52
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ccac65",
+        "lines": [
+          37
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ddc69c",
+        "lines": [
+          47
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff0a8",
+        "lines": [
+          37
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff5c4",
+        "lines": [
+          38
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/keybindings.js": [],
     "assets/js/kitsune-art.js": [
       {
@@ -4710,6 +4797,39 @@
       }
     ],
     "assets/js/shadow-animation.js": [],
+    "assets/js/shadow-ninja-art-data.js": [],
+    "assets/js/shadow-ninjas.js": [
+      {
+        "value": "#24313b",
+        "lines": [
+          28,
+          30
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#baa1e3",
+        "lines": [
+          21
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c6d8d8",
+        "lines": [
+          20,
+          28
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d5c7a8",
+        "lines": [
+          19
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/shadow-realm.js": [
       {
         "value": "#be96eb",
@@ -4867,7 +4987,7 @@
       {
         "value": "#ba80e626",
         "lines": [
-          35
+          41
         ],
         "dynamic": false
       }

@@ -546,7 +546,11 @@ zigguratInterior.dragonRaidEntrance={x:1250,y:1700};
 // Keep the depth gate distinct from the lower shrine so the player can see
 // and enter the portal without interacting with the altar.
 zigguratInterior.descentEntrance={x:1840,y:2420};
+const floatingIslands=createFloatingIslandMaps({makeLevel,ledge,rest,foe,zone});
+japanHeights.islandsEntrance={x:3850,y:1100};
+japan.progressFlags.push(...Object.values(FloatingIslandsRules.progress));
 const SIDE_LOCATIONS=Object.freeze({
+ floatingIslands:Object.freeze({map:floatingIslands,realm:0,flagRealm:3,requiredFlags:Object.freeze(['zigguratReturnCompleted'])}),
  zigguratDepths:Object.freeze({map:zigguratDepths,realm:3,requiredFlags:Object.freeze(['zigguratDescentAccepted'])}),
  japanHeights:Object.freeze({map:japanHeights,realm:0,flagRealm:3,requiredFlags:Object.freeze(['japanHeightsReached'])}),
  fiaRitual:Object.freeze({map:fiaRitual,realm:3,requiredFlags:Object.freeze(['fiaDragonCompleted'])}),

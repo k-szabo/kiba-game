@@ -3433,6 +3433,107 @@
         "visibleSamples": 303668,
         "dominantCoveragePercent": 100.0002
       }
+    },
+    "object.inventoryItem.grapplingHook": {
+      "source": "assets/images/ui/grappling-hook-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.grapplingHook",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3b1f13",
+            "coveragePercent": 13.5438
+          },
+          {
+            "hex": "#050201",
+            "coveragePercent": 11.3881
+          },
+          {
+            "hex": "#502e26",
+            "coveragePercent": 10.4898
+          },
+          {
+            "hex": "#20110b",
+            "coveragePercent": 8.8919
+          },
+          {
+            "hex": "#64320f",
+            "coveragePercent": 8.8582
+          },
+          {
+            "hex": "#85471c",
+            "coveragePercent": 8.1572
+          },
+          {
+            "hex": "#a96127",
+            "coveragePercent": 7.3112
+          },
+          {
+            "hex": "#ca7d35",
+            "coveragePercent": 6.5531
+          },
+          {
+            "hex": "#62433f",
+            "coveragePercent": 5.6729
+          },
+          {
+            "hex": "#e89d49",
+            "coveragePercent": 4.9197
+          },
+          {
+            "hex": "#7e5e5a",
+            "coveragePercent": 4.0119
+          },
+          {
+            "hex": "#f8c16c",
+            "coveragePercent": 2.8884
+          },
+          {
+            "hex": "#9a7e7b",
+            "coveragePercent": 2.3981
+          },
+          {
+            "hex": "#f6dda9",
+            "coveragePercent": 1.858
+          },
+          {
+            "hex": "#c3a69c",
+            "coveragePercent": 1.7022
+          },
+          {
+            "hex": "#fbf7ea",
+            "coveragePercent": 1.3556
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f4d1b",
+            "coveragePercent": 23.5063
+          },
+          {
+            "hex": "#b26728",
+            "coveragePercent": 23.3563
+          },
+          {
+            "hex": "#d18439",
+            "coveragePercent": 21.9343
+          },
+          {
+            "hex": "#eca34e",
+            "coveragePercent": 15.2983
+          },
+          {
+            "hex": "#f9c570",
+            "coveragePercent": 8.6152
+          },
+          {
+            "hex": "#955942",
+            "coveragePercent": 7.2896
+          }
+        ],
+        "visibleSamples": 463643,
+        "dominantCoveragePercent": 100.0001
+      }
     }
   },
   "assets": {
@@ -4902,6 +5003,111 @@
         ],
         "visibleSamples": 303668,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/ui/grappling-hook-v1.png": {
+      "sha256": "67efd6cff9d4c2b21564ece6e74cfcb3926c6fd15156b0900870bb96ca468e82",
+      "width": 1254,
+      "height": 1254,
+      "runtimeKeys": [
+        "grapplingHook"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3b1f13",
+            "coveragePercent": 13.5438
+          },
+          {
+            "hex": "#050201",
+            "coveragePercent": 11.3881
+          },
+          {
+            "hex": "#502e26",
+            "coveragePercent": 10.4898
+          },
+          {
+            "hex": "#20110b",
+            "coveragePercent": 8.8919
+          },
+          {
+            "hex": "#64320f",
+            "coveragePercent": 8.8582
+          },
+          {
+            "hex": "#85471c",
+            "coveragePercent": 8.1572
+          },
+          {
+            "hex": "#a96127",
+            "coveragePercent": 7.3112
+          },
+          {
+            "hex": "#ca7d35",
+            "coveragePercent": 6.5531
+          },
+          {
+            "hex": "#62433f",
+            "coveragePercent": 5.6729
+          },
+          {
+            "hex": "#e89d49",
+            "coveragePercent": 4.9197
+          },
+          {
+            "hex": "#7e5e5a",
+            "coveragePercent": 4.0119
+          },
+          {
+            "hex": "#f8c16c",
+            "coveragePercent": 2.8884
+          },
+          {
+            "hex": "#9a7e7b",
+            "coveragePercent": 2.3981
+          },
+          {
+            "hex": "#f6dda9",
+            "coveragePercent": 1.858
+          },
+          {
+            "hex": "#c3a69c",
+            "coveragePercent": 1.7022
+          },
+          {
+            "hex": "#fbf7ea",
+            "coveragePercent": 1.3556
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f4d1b",
+            "coveragePercent": 23.5063
+          },
+          {
+            "hex": "#b26728",
+            "coveragePercent": 23.3563
+          },
+          {
+            "hex": "#d18439",
+            "coveragePercent": 21.9343
+          },
+          {
+            "hex": "#eca34e",
+            "coveragePercent": 15.2983
+          },
+          {
+            "hex": "#f9c570",
+            "coveragePercent": 8.6152
+          },
+          {
+            "hex": "#955942",
+            "coveragePercent": 7.2896
+          }
+        ],
+        "visibleSamples": 463643,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/ui/haru-binding-pillar-v1.png": {

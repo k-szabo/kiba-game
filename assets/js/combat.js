@@ -12,14 +12,15 @@ function createEnemies() {
 }
 function createEnemy(spec,i=0) {
     if(spec.miniboss)return createMiniboss(spec,i);
-    const h=spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54,w=spec.voidKeeperRole?64:spec.kind==='shield'?48:40;
+    const ninja=typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(spec);
+    const h=ninja?.h??(spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
     const tier=ENEMY_TIERS[spec.summoned?0:(level.enemyRealm??Math.max(0,levels.indexOf(level)))];
-    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health);
+    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
     const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
     const left=Math.max(spec.x-spec.patrol,support?support.x+4:0),right=Math.min(spec.x+spec.patrol,support?support.x+support.w-w-4:level.width-w);
-    return {...spec,x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
-      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:tier.damage,xpValue:Math.round(baseXP*tier.xp),
+    return {...spec,grappleable:spec.grappleable??(w<=64&&h<=96),x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
+      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:ninja?.damage??tier.damage,xpValue:ninja?.xp??Math.round(baseXP*tier.xp),
       stun:0,cd:1+i*.13,contactCd:0,windup:0,windupDuration:0,attackTime:0,attackDuration:.42,
       recovery:0,turnCooldown:0,edgePause:0,blocks:0,guardBreak:0,blockFlash:0,walkSpeed:0,
       animTime:i*.17,attackElapsed:0,dead:false};
@@ -62,6 +63,7 @@ function moveEnemy(e,velocity,dt,patrolling=false) {
 }
 function enemyMeleeBox(e){return {x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};}
 function releaseEnemyAttack(e) {
+  if(e.shadowNinjaRole&&typeof ShadowNinjas!=='undefined'&&ShadowNinjas.release(e))return;
   const shotsBefore=projectiles.length;
   const palette=e.factionOverride==='yomi'?realms[1]:realms[realm];
   const role=enemyRole(e);e.attackTime=e.attackDuration;e.attackElapsed=0;
@@ -88,6 +90,7 @@ function updateEnemies(dt) {
   for(const e of enemies){if(!e.dead)DevLog.scope(e,()=>updateEnemy(e,dt));}
 }
 function updateEnemy(e,dt){
+    if(typeof Grapple!=='undefined'&&Grapple.moveEnemy(e,dt))return;
     if(HannahCombat.updateSupport(e,dt))return;
     if(CampMaster.updateSupport(e,dt))return;
     if(Serpents.is(e)){Serpents.update(e,dt);return;}
@@ -121,7 +124,7 @@ function updateEnemy(e,dt){
           turnEnemy(e,Math.abs(dx)>18?Math.sign(dx):e.face);
           // Attack toward the facing side only. A delayed turn cannot attack through its own back.
           if(Math.abs(dx)<18||Math.sign(dx)===e.face){
-            e.windupDuration=role==='mage'?1:role==='archer'?.7:e.kind==='shield'?.8:.55;
+            e.windupDuration=(typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(e)?.windup)??(role==='mage'?1:role==='archer'?.7:e.kind==='shield'?.8:.55);
             e.windup=e.windupDuration;e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;
           }
         }else{
@@ -137,13 +140,13 @@ function updateEnemy(e,dt){
             if(e.x<=e.patrolLeft+1&&direction<0||e.x>=e.patrolRight-1&&direction>0)speed=0;
           }
           if(speed&&!pursue&&e.turnCooldown<=0)e.face=direction;
-          moveEnemy(e,direction*speed,dt,!pursue);
+          moveEnemy(e,direction*speed*(typeof ShadowNinjas==='undefined'?1:ShadowNinjas.profile(e)?.speed??1),dt,!pursue);
         }
       }
     }
     if(e.kind==='fly')e.y=e.baseY+Math.sin(time*2+e.origin)*18;
     if(overlap(player,e)&&e.contactCd<=0){damage(e.damageValue||1,dx>0?1:-1,true);e.contactCd=1.1;}
-    if(near&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
+    if(near&&!e.shadowNinjaRole&&Math.abs(dx)<270&&!visits.has('role:'+e.kind)){
       visits.add('role:'+e.kind);
       if(e.kind==='shield')toast(I18n.t("text.shield.bearer.strike.from.above.or.behind.three.blocked"));
       if(e.kind==='mage')toast(I18n.t("text.mage.a.gathering.glow.signals.an.attack.move.before"));
@@ -484,6 +487,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(FloatingIslands.is(spec))return FloatingIslands.create(spec);
   if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(spec))return GatekeeperCombat.create(spec);
   if(HannahCombat.is(spec))return HannahCombat.create(spec);
   if(FiaCombat.is(spec))return FiaCombat.create(spec);
@@ -502,6 +506,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(FloatingIslands.is(e)){FloatingIslands.reset(e);return;}
   if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.reset(e);return;}
   if(HannahCombat.is(e)){HannahCombat.reset(e);return;}
   if(FiaCombat.is(e)){FiaCombat.reset(e);return;}
@@ -523,7 +528,7 @@ function discoverSecrets(){
     flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+I18n.t(area.name));
   }
 }
-function defeatMiniboss(e){if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.defeat(e);return;}if(HannahCombat.is(e)){HannahCombat.defeat(e);return;}if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
+function defeatMiniboss(e){if(FloatingIslands.is(e)){FloatingIslands.defeat(e);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.defeat(e);return;}if(HannahCombat.is(e)){HannahCombat.defeat(e);return;}if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
   if(DungeonCombat.is(e)){DungeonCombat.defeat(e);return;}
   if(ArenaCombat.is(e)){ArenaCombat.defeat(e);return;}
   if(PrisonHunter.is(e)){PrisonHunter.defeat(e);return;}
@@ -555,7 +560,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.update(e,dt);return;}if(HannahCombat.is(e)){HannahCombat.update(e,dt);return;}if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(FloatingIslands.is(e)){FloatingIslands.updateEnemy(e,dt);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.update(e,dt);return;}if(HannahCombat.is(e)){HannahCombat.update(e,dt);return;}if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

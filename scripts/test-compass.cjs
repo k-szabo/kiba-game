@@ -45,8 +45,9 @@ assert.equal(r('nextObjective().text'),'descent.objective.haru','Hannah victory 
 r("flags[3].push(...Object.values(ZigguratDescentRules.progress));");
 for(const realm of [0,1,2,3]){
  r(`enterRealm(${realm});updateHUD();`);
- assert.equal(r('nextObjective().text'),'story.journeyEnd');assert(node('compassTarget').hidden);assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('story.journeyEnd')"));
+ assert.equal(r('nextObjective().text'),'islands.objective.protect');assert(!node('compassTarget').hidden);assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('compass.otherLocation')"));
 }
+r('flags[0].push(...Object.values(FloatingIslandsRules.progress));');
 r("enterForestCamp();updateHUD();");assert.equal(r('nextObjective().text'),'story.journeyEnd');
 const local={point:{x:20,y:30},name:'Optional encounter',text:'Optional encounter'};
 h.sandbox.optionalObjective=local;r('level=shadowPrison');assert.equal(r('Compass.objective(optionalObjective)'),local,'Active prison objectives survive main-story completion');

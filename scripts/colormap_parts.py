@@ -4,7 +4,7 @@ import json
 
 SECTIONS = ('pc', 'npcs', 'objects', 'paletteGroups', 'assets', 'codeColors')
 FACTIONS = {'japan': 'japan', 'yomi': 'yomi', 'heaven': 'heaven',
-            'shadowCult': 'shadow-cult', 'necromancer': 'shadow-cult', 'shadowDen': 'shadow-den'}
+            'shadowNinjas': 'shadow-ninjas', 'shadowCult': 'shadow-cult', 'necromancer': 'shadow-cult', 'shadowDen': 'shadow-den'}
 LEGACY_FACTIONS = {'samurai': 'japan', 'prison.zen': 'japan',
                    'angelLight': 'heaven', 'angelDark': 'heaven', 'angelEclipse': 'heaven',
                    'oldAngel': 'heaven', 'oldCultist': 'shadow-cult', 'shadow': 'shadow-cult'}
