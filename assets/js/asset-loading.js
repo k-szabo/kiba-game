@@ -12,6 +12,10 @@ const AssetLoading=(()=>{
  // Every painting, hidden sector, NPC and future combat pose owned by a map is
  // required at entry. Camera position and a boss's current phase never narrow it.
  const maps={
+  ninjaWatchtower:list('watchtowerBackdrop balloonSkyBackdrop balloonVehicle watchtowerJailerArt watchtowerSentinelArt westheruArt ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin prisonKey'),
+  balloonJourney:list('balloonSkyBackdrop balloonVehicle giantWaspArt skyDragonArt westheruArt'),
+  skyLanding:list('balloonSkyBackdrop stormIslandsBackdrop balloonVehicle westheruArt westheruSealArt'),
+  stormIslands:list('stormIslandsBackdrop balloonVehicle westheruArt ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin shadowGuard shadowArcher shadowMage'),
   floatingIslands:list('islandsArrivalBackdrop islandsRouteBackdrop islandsWatchtowerBackdrop ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin ninjaLeader momoHook grapplingHook haruFollow'),
   japan:list('japanBackdrop japanClouds japanGuard japanArcher japanShield japanMage samurai samuraiJump bosses oldAngel oldCultist angelRuinBackdrop cultCaveBackdrop angelRuinWall cultCaveWall cultRuinedGate whiteSerpent whiteSerpentBackdrop serpentRelics campSupplies oathbreakerSoul'),
   yomi:list('yomiBackdrop yomiWalk yomiAttack lavaSerpent serpentScale fxLava bosses councilGateClosed councilGateOpen councilKey akash slayerMelee slayerRanged slayerDaisy slayerLightning slayerArena slayerGravestone slayerBarrel slayerCrossbow yomiGuardianSoul'),
@@ -39,7 +43,7 @@ const AssetLoading=(()=>{
   shadowUnderworld:[...list('shadowUnderworldBackdrop campTerrain underworldServices fiaUnderworldCorrupted arenaCyclops'),...residents],
   voidForbidden:list('voidForbiddenBackdrop voidKeepers voidLieutenant voidDemon rawVoidCrystal')
  };
- const backgrounds={floatingIslands:"islandsArrivalBackdrop",zigguratDepths:'descentBackdrop',japanHeights:'japanHeightsBackdrop',japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
+ const backgrounds={ninjaWatchtower:'watchtowerBackdrop',balloonJourney:'balloonSkyBackdrop',skyLanding:'balloonSkyBackdrop',stormIslands:'stormIslandsBackdrop',floatingIslands:"islandsArrivalBackdrop",zigguratDepths:'descentBackdrop',japanHeights:'japanHeightsBackdrop',japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
  let shown=false,focus=null,initialized=false,refreshQueued=false,backdrop=null;
  function prepare(){
   const duel=typeof DuelMode!=='undefined'&&DuelMode.active,menu=!duel&&(state==='menu'||state==='help'&&helpOrigin==='menu'),tower=!menu&&typeof TowerMode!=='undefined'&&TowerMode.active;
@@ -51,7 +55,7 @@ const AssetLoading=(()=>{
   else{
    keys=[backdrop,...combat,...weapon(weaponStyle),...(maps[level?.id]||[])];
    // Tower rounds share a fixed pool; do not interrupt a new boss move or summon.
-   if(tower)keys.push('towerBackdrop','prisonTerrain',...japanActors,...shadowActors,...heavenActors,'yomiWalk','yomiAttack',...enemies.filter(e=>e.towerBoss).flatMap(e=>TowerBossArt.assets(e)));
+   if(tower)keys.push('towerBackdrop','prisonTerrain',...japanActors,...shadowActors,...heavenActors,'yomiWalk','yomiAttack',...enemies.filter(e=>e.towerBoss).flatMap(e=>TowerBossArt.assets(e)),...enemies.flatMap(e=>e.balloonWasp?['giantWaspArt']:e.shadowNinjaRole?[{crossbow:'ninjaCrossbow',shuriken:'ninjaShuriken',ninjutsu:'ninjaNinjutsu',assassin:'ninjaAssassin'}[e.shadowNinjaRole]]:[]));
    // Dungeon factions differ from their host realm. Summons and both sides of
    // the battle must be ready even when they enter from outside the camera.
    if(level?.dungeon)keys.push(...japanActors,...shadowActors,...heavenActors);

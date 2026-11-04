@@ -408,6 +408,10 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.foxfireKatana"
     },
+    "inventoryItem.watchtowerCellKey": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.watchtowerCellKey"
+    },
     "inventoryItem.grapplingHook": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.grapplingHook"

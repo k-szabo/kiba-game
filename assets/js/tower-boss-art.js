@@ -8,6 +8,7 @@ const TowerBossArt=(()=>{
   campMaster:['campMaster','campMasterJump'],prisonWarden:['prisonWarden'],prisonHunter:['prisonHunter'],
   serpent:['lavaSerpent','fxLava'],whiteSerpent:['whiteSerpent','holyArrow'],wingedSerpent:['wingedSerpent','holyArrow'],
   slayer:['slayerMelee','slayerRanged','slayerLightning','slayerBarrel'],shadowNinjaLeader:['ninjaLeader','grapplingHook'],voidGatekeeper:['voidGatekeeper'],
+  watchtowerJailer:['watchtowerJailerArt'],watchtowerSentinel:['watchtowerSentinelArt'],balloonDragon:['skyDragonArt'],westheruSeal:['westheruSealArt'],
   dungeonCaptain:['dungeonCaptain'],dungeonNecromancer:['dungeonNecromancer','japanRaised'],dungeonCouncil:['dungeonCouncil'],
   cultTempleGuard:['cultTempleGuard'],woundedAngel:['cultWoundedAngel','holyArrow','holyLance'],cultHighPriestess:['cultHighPriestess','shadowGuard','shadowMage'],
   arenaCaptain:['arenaCaptain'],arenaSerpent:['arenaSerpent'],arenaCyclops:['arenaCyclops'],
@@ -25,7 +26,8 @@ const TowerBossArt=(()=>{
   if(!TowerBossCombat.is(e))return false;const type=TowerBossCombat.id(e),p=pose(e);
   const ordinary={campMaster:ART_CAMP_MASTER,prisonWarden:ART_PRISON.warden,prisonHunter:ART_KITSUNE.hunter,shadowNinjaLeader:ART_SHADOW_NINJAS.leader,voidGatekeeper:ART_ZIGGURAT_DESCENT.gatekeeper,
    dungeonCaptain:ART_DUNGEON.captain,dungeonNecromancer:ART_DUNGEON.necromancer,dungeonCouncil:ART_DUNGEON.council,cultTempleGuard:ART_CULT_DUNGEON.templeGuard,woundedAngel:ART_CULT_DUNGEON.woundedAngel,cultHighPriestess:ART_CULT_DUNGEON.highPriestess,
-   arenaCaptain:ART_ARENA.captain,arenaSerpent:ART_ARENA.serpent,arenaFia:ART_ARENA.fia,fiaVengeance:ART_ARENA.fia,voidLieutenant:ART_FIA_VOID.lieutenant,voidDemon:ART_FIA_VOID.demon,fiaRitual:ART_FIA_RITUAL.fia};
+   arenaCaptain:ART_ARENA.captain,arenaSerpent:ART_ARENA.serpent,arenaFia:ART_ARENA.fia,fiaVengeance:ART_ARENA.fia,voidLieutenant:ART_FIA_VOID.lieutenant,voidDemon:ART_FIA_VOID.demon,fiaRitual:ART_FIA_RITUAL.fia,
+   watchtowerJailer:ART_WATCHTOWER.jailer,watchtowerSentinel:ART_WATCHTOWER.sentinel,balloonDragon:ART_WATCHTOWER.dragon,westheruSeal:ART_WATCHTOWER.seal};
   if(type==='prologueShadow'){
    const clip=SHADOW_CLIPS[e.phase==='wait'?'idle':e.move==='cleave'?'melee':'cast'],f=clip.frames[p%clip.frames.length],image=Visuals.images[clip.image];
    if(image?.naturalWidth){const height=e.h*1.2,s=height/f.h;ctx.drawImage(image,f.x,f.y,f.w,f.h,e.x+e.w/2-f.w*s/2,e.y+e.h-height,f.w*s,height);}return true;

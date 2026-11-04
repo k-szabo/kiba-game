@@ -18,6 +18,19 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ watchtowerBackdropMotionPhaseB:'assets/images/backgrounds/ninja-watchtower-motion-b-v1.png',
+ balloonSkyBackdropMotionPhaseB:'assets/images/backgrounds/balloon-skies-motion-b-v1.png',
+ stormIslandsBackdropMotionPhaseB:'assets/images/backgrounds/storm-islands-motion-b-v1.png',
+ watchtowerBackdrop:'assets/images/backgrounds/ninja-watchtower-v1.png',
+ balloonSkyBackdrop:'assets/images/backgrounds/balloon-skies-v1.png',
+ stormIslandsBackdrop:'assets/images/backgrounds/storm-islands-v1.png',
+ balloonVehicle:'assets/images/balloon-v1.png',
+ watchtowerJailerArt:'assets/images/enemies/watchtower-jailer-v1.png',
+ watchtowerSentinelArt:'assets/images/enemies/watchtower-sentinel-v1.png',
+ giantWaspArt:'assets/images/enemies/giant-wasp-v1.png',
+ westheruArt:'assets/images/npcs/westheru-v1.png',
+ westheruSealArt:'assets/images/enemies/westheru-seal-v1.png',
+ skyDragonArt:'assets/images/enemies/sky-dragon-v1.png',
  islandsArrivalBackdrop:'assets/images/backgrounds/floating-islands-arrival-v1.png',
  islandsArrivalBackdropMotionPhaseB:'assets/images/backgrounds/floating-islands-arrival-motion-b-v1.png',
  islandsRouteBackdrop:'assets/images/backgrounds/floating-islands-route-v1.png',
@@ -474,3 +487,5 @@ ART_INVENTORY.foxfireKatana=ART_INVENTORY.items.foxfireKatana;
 
 // Approved spectral variants: fixed cell scale and foot registration; native alpha.
 const ART_FIA_SPIRITS={"white":{"image":"fiaAttendantSpirits","facing":1,"frames":[{"x":0,"y":0,"w":443,"h":443,"anchorX":255,"anchorY":403,"bodyHeight":315},{"x":443,"y":0,"w":444,"h":443,"anchorX":698,"anchorY":403,"bodyHeight":315},{"x":887,"y":0,"w":443,"h":443,"anchorX":1142,"anchorY":403,"bodyHeight":315},{"x":1330,"y":0,"w":444,"h":443,"anchorX":1585,"anchorY":403,"bodyHeight":315}]},"red":{"image":"fiaAttendantSpirits","facing":1,"frames":[{"x":0,"y":443,"w":443,"h":444,"anchorX":255,"anchorY":826,"bodyHeight":315},{"x":443,"y":443,"w":444,"h":444,"anchorX":698,"anchorY":826,"bodyHeight":315},{"x":887,"y":443,"w":443,"h":444,"anchorX":1142,"anchorY":826,"bodyHeight":315},{"x":1330,"y":443,"w":444,"h":444,"anchorX":1585,"anchorY":826,"bodyHeight":315}]}};
+
+ART_INVENTORY.items.watchtowerCellKey={...ART_INVENTORY.items.prisonKey,name:'watchtower.key',realm:0,consumedBy:{realm:0,id:'westheruRescued'}};

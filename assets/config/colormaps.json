@@ -90,18 +90,18 @@
   "dataSchemaVersion": 1,
   "counts": {
     "pc": 3,
-    "npcs": 97,
-    "objects": 126,
-    "paletteGroups": 237,
-    "assets": 292,
-    "codeColors": 121
+    "npcs": 103,
+    "objects": 127,
+    "paletteGroups": 244,
+    "assets": 305,
+    "codeColors": 127
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "00caf4175ca6643d85cc1f11931d5cde7d1327daf39ff7a480e789e77f12e347",
+      "sha256": "128bf8b97784879020daa21fe26d6811f37ae98117e3575de70ee1827d1b8f73",
       "counts": {
-        "codeColors": 121
+        "codeColors": 127
       }
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "d060b03f1d8d92f88079534537eddde45fb56da168eb39d3eb684b8953ba3529",
+      "sha256": "65c003b069602747f255c0d9f0aeff96fef6b40ec55a1ad3b67ac767d885c0f9",
       "counts": {
         "paletteGroups": 11,
-        "assets": 116
+        "assets": 122
       }
     },
     {
@@ -131,19 +131,19 @@
     },
     {
       "file": "colormaps/inventory-ui.json",
-      "sha256": "c1b880ab27454fde0a1c66ec3dca1c16c49cec4015a6e98b62b2241e34ed170a",
+      "sha256": "d577b3a9fda83258f8aacea37987ef094de1f9932494c7e91d7656cb0056d259",
       "counts": {
-        "paletteGroups": 35,
+        "paletteGroups": 36,
         "assets": 36
       }
     },
     {
       "file": "colormaps/japan.json",
-      "sha256": "84fcd8868b9b928ddb76b6028203742f3da83b50837176f91fd3dae2c2b5d858",
+      "sha256": "80991e95b450fabd26c3be0b3a84c5fbb13869c6c9a6cd1ee1da4d8596feb893",
       "counts": {
-        "npcs": 10,
-        "paletteGroups": 15,
-        "assets": 11
+        "npcs": 14,
+        "paletteGroups": 19,
+        "assets": 15
       }
     },
     {
@@ -157,9 +157,9 @@
     },
     {
       "file": "colormaps/objects.json",
-      "sha256": "fe651b42c1b332647b4f274a0c8925bd96ab1c9f6c25f5a0d95ff5d0ef4ff573",
+      "sha256": "ca3d39a6821847dc00eb764666c1fb0840086c826e5dffb3b8c1d1c162a8eab6",
       "counts": {
-        "objects": 126
+        "objects": 127
       }
     },
     {
@@ -191,19 +191,19 @@
     },
     {
       "file": "colormaps/shadow-ninjas.json",
-      "sha256": "6683e0c2bbed33060d7fd0a8d37502a2dfd7848a764a1a15bd637b503f38c3c2",
+      "sha256": "7faf6784b64ba91d4e90d18671a97b9851c2462fe4a0066de490d56a4eb4e852",
       "counts": {
-        "npcs": 5,
-        "paletteGroups": 5,
-        "assets": 5
+        "npcs": 7,
+        "paletteGroups": 7,
+        "assets": 7
       }
     },
     {
       "file": "colormaps/shared.json",
-      "sha256": "25979f234ff00b3cbe5cd4521182e265ccc2e5519091760dc7f1810f89ded8cf",
+      "sha256": "9cb9c0fc547f9346e876835e76f710d415d102617abb3b4eb000c72e72542250",
       "counts": {
         "paletteGroups": 41,
-        "assets": 24
+        "assets": 25
       }
     },
     {

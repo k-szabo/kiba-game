@@ -1323,6 +1323,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/balloon-skies-motion-b-v1.png": {
+      "sha256": "99ea83435b79d1bc429b63f0652b5df2e5ba41fdbad828afca43371abf25b7d8",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "balloonSkyBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#bc8dd2",
+            "coveragePercent": 12.2485
+          },
+          {
+            "hex": "#f8acd0",
+            "coveragePercent": 11.5734
+          },
+          {
+            "hex": "#d89bda",
+            "coveragePercent": 11.5363
+          },
+          {
+            "hex": "#9f80c9",
+            "coveragePercent": 9.7695
+          },
+          {
+            "hex": "#524545",
+            "coveragePercent": 7.7405
+          },
+          {
+            "hex": "#ca8e8c",
+            "coveragePercent": 5.9973
+          },
+          {
+            "hex": "#f3ac9a",
+            "coveragePercent": 5.9855
+          },
+          {
+            "hex": "#a27679",
+            "coveragePercent": 5.5899
+          },
+          {
+            "hex": "#8174b7",
+            "coveragePercent": 5.2641
+          },
+          {
+            "hex": "#7d5d4c",
+            "coveragePercent": 4.8853
+          },
+          {
+            "hex": "#605d86",
+            "coveragePercent": 4.7681
+          },
+          {
+            "hex": "#f08eb7",
+            "coveragePercent": 4.7323
+          },
+          {
+            "hex": "#332a26",
+            "coveragePercent": 4.3999
+          },
+          {
+            "hex": "#fbcbb7",
+            "coveragePercent": 2.8106
+          },
+          {
+            "hex": "#c08742",
+            "coveragePercent": 1.6704
+          },
+          {
+            "hex": "#fbe3e5",
+            "coveragePercent": 1.0285
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95673c",
+            "coveragePercent": 33.1586
+          },
+          {
+            "hex": "#c58947",
+            "coveragePercent": 24.0317
+          },
+          {
+            "hex": "#ee78a9",
+            "coveragePercent": 16.2903
+          },
+          {
+            "hex": "#f2ab72",
+            "coveragePercent": 14.6265
+          },
+          {
+            "hex": "#c15988",
+            "coveragePercent": 7.7177
+          },
+          {
+            "hex": "#535793",
+            "coveragePercent": 4.1752
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/balloon-skies-v1.png": {
+      "sha256": "d105441d755ad5161c198ed7c04ab95c755f7f1ad293e3fc81f179643684f1d9",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "balloonSkyBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#be8ad1",
+            "coveragePercent": 12.4952
+          },
+          {
+            "hex": "#d998d8",
+            "coveragePercent": 11.9621
+          },
+          {
+            "hex": "#f8a9ce",
+            "coveragePercent": 11.5128
+          },
+          {
+            "hex": "#a27fc9",
+            "coveragePercent": 9.2807
+          },
+          {
+            "hex": "#514344",
+            "coveragePercent": 7.7499
+          },
+          {
+            "hex": "#c98b8a",
+            "coveragePercent": 5.922
+          },
+          {
+            "hex": "#f2a995",
+            "coveragePercent": 5.7584
+          },
+          {
+            "hex": "#a07277",
+            "coveragePercent": 5.5032
+          },
+          {
+            "hex": "#f28fb5",
+            "coveragePercent": 5.4379
+          },
+          {
+            "hex": "#332a27",
+            "coveragePercent": 5.073
+          },
+          {
+            "hex": "#7d5b4b",
+            "coveragePercent": 4.7711
+          },
+          {
+            "hex": "#8271b4",
+            "coveragePercent": 4.6105
+          },
+          {
+            "hex": "#615983",
+            "coveragePercent": 4.5943
+          },
+          {
+            "hex": "#fbc9ae",
+            "coveragePercent": 2.656
+          },
+          {
+            "hex": "#c08640",
+            "coveragePercent": 1.5231
+          },
+          {
+            "hex": "#fbddde",
+            "coveragePercent": 1.1499
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e975a5",
+            "coveragePercent": 23.7424
+          },
+          {
+            "hex": "#916438",
+            "coveragePercent": 22.1298
+          },
+          {
+            "hex": "#b57c46",
+            "coveragePercent": 18.0351
+          },
+          {
+            "hex": "#fab281",
+            "coveragePercent": 16.1263
+          },
+          {
+            "hex": "#dd9a50",
+            "coveragePercent": 12.633
+          },
+          {
+            "hex": "#914f86",
+            "coveragePercent": 7.3334
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/backgrounds/camp-forge-v1.png": {
       "sha256": "9069ba5afac7d55ed043cb7bbdb0be3ae2c0209974fdc51dacf6aa0c5ceb1db5",
       "width": 1536,
@@ -6573,6 +6783,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/ninja-watchtower-motion-b-v1.png": {
+      "sha256": "68ef8f0b347ae1ac35e8a05aabaed37f3a8dc010c52464988516e336720cfdde",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "watchtowerBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#593e3c",
+            "coveragePercent": 15.5794
+          },
+          {
+            "hex": "#3d3135",
+            "coveragePercent": 14.7607
+          },
+          {
+            "hex": "#774a3e",
+            "coveragePercent": 12.2028
+          },
+          {
+            "hex": "#985940",
+            "coveragePercent": 8.5399
+          },
+          {
+            "hex": "#262025",
+            "coveragePercent": 7.3058
+          },
+          {
+            "hex": "#624e60",
+            "coveragePercent": 6.7558
+          },
+          {
+            "hex": "#bf89d9",
+            "coveragePercent": 6.3916
+          },
+          {
+            "hex": "#ec9bd3",
+            "coveragePercent": 5.5188
+          },
+          {
+            "hex": "#c26c39",
+            "coveragePercent": 4.5018
+          },
+          {
+            "hex": "#423d60",
+            "coveragePercent": 4.3843
+          },
+          {
+            "hex": "#7a637d",
+            "coveragePercent": 3.6238
+          },
+          {
+            "hex": "#9378c8",
+            "coveragePercent": 3.1026
+          },
+          {
+            "hex": "#ed8e36",
+            "coveragePercent": 2.8504
+          },
+          {
+            "hex": "#b47f7d",
+            "coveragePercent": 1.9152
+          },
+          {
+            "hex": "#f8c5cf",
+            "coveragePercent": 1.4163
+          },
+          {
+            "hex": "#f5bf7d",
+            "coveragePercent": 1.1507
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92543c",
+            "coveragePercent": 45.8606
+          },
+          {
+            "hex": "#bc6a3d",
+            "coveragePercent": 27.802
+          },
+          {
+            "hex": "#e98834",
+            "coveragePercent": 15.8524
+          },
+          {
+            "hex": "#f6ba63",
+            "coveragePercent": 5.2714
+          },
+          {
+            "hex": "#836bc8",
+            "coveragePercent": 4.0631
+          },
+          {
+            "hex": "#e573b3",
+            "coveragePercent": 1.1506
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/ninja-watchtower-v1.png": {
+      "sha256": "d661a8f10a4763eeb2f18a10992a285cc8846f53463986d3039b0e44b94bf7cd",
+      "width": 1086,
+      "height": 1448,
+      "runtimeKeys": [
+        "watchtowerBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#573c3c",
+            "coveragePercent": 16.1252
+          },
+          {
+            "hex": "#3b3036",
+            "coveragePercent": 13.9645
+          },
+          {
+            "hex": "#764a40",
+            "coveragePercent": 12.1729
+          },
+          {
+            "hex": "#985941",
+            "coveragePercent": 8.1559
+          },
+          {
+            "hex": "#251f26",
+            "coveragePercent": 7.7616
+          },
+          {
+            "hex": "#bf88da",
+            "coveragePercent": 6.5303
+          },
+          {
+            "hex": "#5f4b5a",
+            "coveragePercent": 6.2118
+          },
+          {
+            "hex": "#ee9ed4",
+            "coveragePercent": 5.7558
+          },
+          {
+            "hex": "#c46e3c",
+            "coveragePercent": 4.5425
+          },
+          {
+            "hex": "#765f77",
+            "coveragePercent": 4.3671
+          },
+          {
+            "hex": "#433c66",
+            "coveragePercent": 4.0034
+          },
+          {
+            "hex": "#8d75c7",
+            "coveragePercent": 3.1278
+          },
+          {
+            "hex": "#ee953c",
+            "coveragePercent": 2.7053
+          },
+          {
+            "hex": "#b27e80",
+            "coveragePercent": 2.0071
+          },
+          {
+            "hex": "#f5c182",
+            "coveragePercent": 1.3441
+          },
+          {
+            "hex": "#f9d2d4",
+            "coveragePercent": 1.2245
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#92553d",
+            "coveragePercent": 42.6729
+          },
+          {
+            "hex": "#bb6a3f",
+            "coveragePercent": 26.3814
+          },
+          {
+            "hex": "#e78939",
+            "coveragePercent": 15.9931
+          },
+          {
+            "hex": "#976fce",
+            "coveragePercent": 7.2168
+          },
+          {
+            "hex": "#f7ba63",
+            "coveragePercent": 6.5025
+          },
+          {
+            "hex": "#564c8d",
+            "coveragePercent": 1.2333
+          }
+        ],
+        "visibleSamples": 1572528,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/backgrounds/prison-terrain-v1.png": {
       "sha256": "aad74b7136006e49904bba178723cd8d40df04a6ff521b5b782ff76cb930c6ff",
       "width": 1024,
@@ -9721,6 +10141,216 @@
         ],
         "visibleSamples": 1573538,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/storm-islands-motion-b-v1.png": {
+      "sha256": "0513e4454369e33895844faf62415fe5e8834eef118a42faf81fc866eb5f2b58",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "stormIslandsBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a28bdf",
+            "coveragePercent": 11.823
+          },
+          {
+            "hex": "#7a74c3",
+            "coveragePercent": 9.6724
+          },
+          {
+            "hex": "#3e3e3b",
+            "coveragePercent": 8.803
+          },
+          {
+            "hex": "#cb9fe7",
+            "coveragePercent": 8.2625
+          },
+          {
+            "hex": "#4d60a0",
+            "coveragePercent": 8.0763
+          },
+          {
+            "hex": "#464d6c",
+            "coveragePercent": 7.3709
+          },
+          {
+            "hex": "#88696e",
+            "coveragePercent": 7.2497
+          },
+          {
+            "hex": "#b78674",
+            "coveragePercent": 6.2744
+          },
+          {
+            "hex": "#eba891",
+            "coveragePercent": 5.7723
+          },
+          {
+            "hex": "#745a3c",
+            "coveragePercent": 5.7387
+          },
+          {
+            "hex": "#222322",
+            "coveragePercent": 5.0114
+          },
+          {
+            "hex": "#ef95c4",
+            "coveragePercent": 4.7822
+          },
+          {
+            "hex": "#c279bd",
+            "coveragePercent": 4.1636
+          },
+          {
+            "hex": "#f4c5dc",
+            "coveragePercent": 3.5593
+          },
+          {
+            "hex": "#4477d4",
+            "coveragePercent": 2.5747
+          },
+          {
+            "hex": "#60caf5",
+            "coveragePercent": 0.8655
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#425b9e",
+            "coveragePercent": 29.9439
+          },
+          {
+            "hex": "#5871c8",
+            "coveragePercent": 23.9975
+          },
+          {
+            "hex": "#8d6ccc",
+            "coveragePercent": 17.947
+          },
+          {
+            "hex": "#a0733d",
+            "coveragePercent": 12.0832
+          },
+          {
+            "hex": "#e88f88",
+            "coveragePercent": 10.1561
+          },
+          {
+            "hex": "#59b8f1",
+            "coveragePercent": 5.8723
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/storm-islands-v1.png": {
+      "sha256": "e469917d78ba7a52212c7b893bcb4c04febdd5821cd3d366e4e2631bcfb3710d",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "stormIslandsBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#b295e3",
+            "coveragePercent": 11.2171
+          },
+          {
+            "hex": "#282826",
+            "coveragePercent": 8.8715
+          },
+          {
+            "hex": "#86645b",
+            "coveragePercent": 7.839
+          },
+          {
+            "hex": "#e0a7e3",
+            "coveragePercent": 7.5387
+          },
+          {
+            "hex": "#6e6cb1",
+            "coveragePercent": 7.4036
+          },
+          {
+            "hex": "#b58173",
+            "coveragePercent": 7.035
+          },
+          {
+            "hex": "#3f435a",
+            "coveragePercent": 6.9864
+          },
+          {
+            "hex": "#efa78f",
+            "coveragePercent": 6.7631
+          },
+          {
+            "hex": "#5c4a34",
+            "coveragePercent": 6.5085
+          },
+          {
+            "hex": "#515a87",
+            "coveragePercent": 6.1312
+          },
+          {
+            "hex": "#a076c2",
+            "coveragePercent": 5.8487
+          },
+          {
+            "hex": "#e581b3",
+            "coveragePercent": 5.6545
+          },
+          {
+            "hex": "#7883d9",
+            "coveragePercent": 4.881
+          },
+          {
+            "hex": "#f7d0d8",
+            "coveragePercent": 3.2619
+          },
+          {
+            "hex": "#3461b2",
+            "coveragePercent": 3.0911
+          },
+          {
+            "hex": "#60c8f2",
+            "coveragePercent": 0.9689
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#415da3",
+            "coveragePercent": 30.6413
+          },
+          {
+            "hex": "#776dc8",
+            "coveragePercent": 24.2469
+          },
+          {
+            "hex": "#df70a7",
+            "coveragePercent": 13.8878
+          },
+          {
+            "hex": "#9f6d3e",
+            "coveragePercent": 12.7141
+          },
+          {
+            "hex": "#ea9f6f",
+            "coveragePercent": 10.5626
+          },
+          {
+            "hex": "#59abed",
+            "coveragePercent": 7.9473
+          }
+        ],
+        "visibleSamples": 1573538,
+        "dominantCoveragePercent": 100.0002
       }
     },
     "assets/images/backgrounds/void-forbidden-motion-b-v1.png": {

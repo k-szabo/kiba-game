@@ -12,6 +12,7 @@ const TowerBossCombat=(()=>{
   if(!entry)throw new TypeError('Unknown tower boss: '+type);
   const input={...spec,arena,replay:true,noReward:true};let e;
   if(TowerSpecialBosses.is(input))e=TowerSpecialBosses.create(input);
+  else if(WatchtowerBalloonCombat.is(input))e=WatchtowerBalloonCombat.create(input);
   else if(serpentTypes[type])e=Serpents.create({...input,serpentType:serpentTypes[type]});
   else if(legacy.has(type)){
    const shadow=type==='organist'||type==='jailer',h=type==='organist'?210:shadow?110:94,w=type==='organist'?250:shadow?82:68;
@@ -35,6 +36,7 @@ const TowerBossCombat=(()=>{
   const bodies=new Set(enemies),shots=new Set(projectiles);
   scope(e,()=>{
    if(TowerSpecialBosses.is(e))TowerSpecialBosses.update(e,dt*(e.towerSpeed||1));
+   else if(WatchtowerBalloonCombat.is(e))WatchtowerBalloonCombat.update(e,dt*(e.towerSpeed||1));
    else if(id(e)==='organist'||id(e)==='jailer')ShadowRealm.updateMini(e,dt*(e.towerSpeed||1));
    else updateMiniboss(e,dt*(e.towerSpeed||1));
   });
@@ -58,10 +60,11 @@ const TowerBossCombat=(()=>{
  function defeat(e){
   if(!is(e)||e.dead)return false;
   if(TowerSpecialBosses.is(e))TowerSpecialBosses.defeat(e);
+  else if(WatchtowerBalloonCombat.is(e))WatchtowerBalloonCombat.defeat(e);
   else if(!legacy.has(id(e)))defeatMiniboss(e);
   e.hp=0;e.dead=true;e.active=false;e.hazards=[];e.attackBoxes=[];e.echoes=[];e.spirits=[];
   for(const body of enemies)if(body.towerSummonOwner===e.id){body.dead=true;body.hp=0;}
-  projectiles=projectiles.filter(p=>p.towerOwner!==e.id);return true;
+  projectiles=projectiles.filter(p=>p.towerOwner!==e.id&&p.source!=='mini:'+e.id);return true;
  }
  function hit(e,box,amount,kind='normal'){
   if(!is(e)||e.dead||!e.active||e.inv>0)return false;

@@ -550,7 +550,14 @@ zigguratInterior.descentEntrance={x:1840,y:2420};
 const floatingIslands=createFloatingIslandMaps({makeLevel,ledge,rest,foe,zone});
 japanHeights.islandsEntrance={x:3850,y:1100};
 japan.progressFlags.push(...Object.values(FloatingIslandsRules.progress));
+const {ninjaWatchtower,balloonJourney,skyLanding,stormIslands}=createWatchtowerBalloonMaps({makeLevel,ledge,rest,foe,zone});
+floatingIslands.watchtowerEntrance={x:6800,y:1650};
+japan.progressFlags.push(...Object.values(WatchtowerBalloonRules.progress));
 const SIDE_LOCATIONS=Object.freeze({
+ ninjaWatchtower:Object.freeze({map:ninjaWatchtower,realm:0,requiredFlags:Object.freeze(['islandsTrailReached'])}),
+ balloonJourney:Object.freeze({map:balloonJourney,realm:0,requiredFlags:Object.freeze(['balloonJourneyStarted'])}),
+ skyLanding:Object.freeze({map:skyLanding,realm:0,requiredFlags:Object.freeze(['balloonDragonDefeated'])}),
+ stormIslands:Object.freeze({map:stormIslands,realm:0,requiredFlags:Object.freeze(['balloonVortexArrived'])}),
  floatingIslands:Object.freeze({map:floatingIslands,realm:0,flagRealm:3,requiredFlags:Object.freeze(['zigguratReturnCompleted'])}),
  zigguratDepths:Object.freeze({map:zigguratDepths,realm:3,requiredFlags:Object.freeze(['zigguratDescentAccepted'])}),
  japanHeights:Object.freeze({map:japanHeights,realm:0,flagRealm:3,requiredFlags:Object.freeze(['japanHeightsReached'])}),

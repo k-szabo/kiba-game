@@ -32,6 +32,10 @@
   { "id": "hannah", "name": "ziggurat.hannah", "group": "main" },
   { "id": "voidGatekeeper", "name": "descent.gatekeeper", "group": "main" },
   { "id": "shadowNinjaLeader", "name": "islands.ninjaLeader", "group": "main" },
+  { "id": "watchtowerJailer", "name": "watchtower.jailer", "group": "main" },
+  { "id": "watchtowerSentinel", "name": "watchtower.sentinel", "group": "main" },
+  { "id": "balloonDragon", "name": "balloon.dragon", "group": "main" },
+  { "id": "westheruSeal", "name": "balloon.westheru", "group": "main" },
   { "id": "prologueShadow", "name": "prologue.boss", "group": "optional" },
   { "id": "fiaVengeance", "name": "fia.name", "group": "optional" },
   { "id": "fiaRitual", "name": "fia.name", "group": "optional" }
