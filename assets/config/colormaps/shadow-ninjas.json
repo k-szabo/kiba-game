@@ -1,0 +1,1063 @@
+{
+  "npcs": {
+    "shadowNinjas.crossbow": {
+      "role": "crossbow",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.shadowNinjas.crossbow"
+    },
+    "shadowNinjas.shuriken": {
+      "role": "shuriken",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.shadowNinjas.shuriken"
+    },
+    "shadowNinjas.ninjutsu": {
+      "role": "ninjutsu",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.shadowNinjas.ninjutsu"
+    },
+    "shadowNinjas.assassin": {
+      "role": "assassin",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.shadowNinjas.assassin"
+    },
+    "shadowNinjas.leader": {
+      "role": "ambush-boss",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.shadowNinjas.leader"
+    }
+  },
+  "paletteGroups": {
+    "npc.shadowNinjas.crossbow": {
+      "source": "assets/images/enemies/shadow-ninja-crossbow-v1.png",
+      "frameMetadata": "ART_SHADOW_NINJAS.crossbow.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#362f34",
+            "coveragePercent": 10.7237
+          },
+          {
+            "hex": "#2c2428",
+            "coveragePercent": 10.2787
+          },
+          {
+            "hex": "#574d55",
+            "coveragePercent": 9.8229
+          },
+          {
+            "hex": "#473e43",
+            "coveragePercent": 9.3695
+          },
+          {
+            "hex": "#43312d",
+            "coveragePercent": 8.2127
+          },
+          {
+            "hex": "#563e36",
+            "coveragePercent": 7.5022
+          },
+          {
+            "hex": "#674d44",
+            "coveragePercent": 7.3764
+          },
+          {
+            "hex": "#6b6169",
+            "coveragePercent": 6.954
+          },
+          {
+            "hex": "#795c51",
+            "coveragePercent": 5.6547
+          },
+          {
+            "hex": "#917467",
+            "coveragePercent": 4.9953
+          },
+          {
+            "hex": "#201b1f",
+            "coveragePercent": 4.8967
+          },
+          {
+            "hex": "#a88b7c",
+            "coveragePercent": 3.9103
+          },
+          {
+            "hex": "#e1c7b0",
+            "coveragePercent": 3.4225
+          },
+          {
+            "hex": "#bea28e",
+            "coveragePercent": 3.2295
+          },
+          {
+            "hex": "#d6b79e",
+            "coveragePercent": 2.766
+          },
+          {
+            "hex": "#73898c",
+            "coveragePercent": 0.885
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#886042",
+            "coveragePercent": 44.2001
+          },
+          {
+            "hex": "#9b714f",
+            "coveragePercent": 31.8212
+          },
+          {
+            "hex": "#b68b60",
+            "coveragePercent": 12.9925
+          },
+          {
+            "hex": "#4578a4",
+            "coveragePercent": 3.7821
+          },
+          {
+            "hex": "#5c91be",
+            "coveragePercent": 3.6472
+          },
+          {
+            "hex": "#2e5e8e",
+            "coveragePercent": 3.5569
+          }
+        ],
+        "visibleSamples": 383179,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.shadowNinjas.shuriken": {
+      "source": "assets/images/enemies/shadow-ninja-shuriken-v1.png",
+      "frameMetadata": "ART_SHADOW_NINJAS.shuriken.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#30272a",
+            "coveragePercent": 13.2412
+          },
+          {
+            "hex": "#413232",
+            "coveragePercent": 10.6693
+          },
+          {
+            "hex": "#594b53",
+            "coveragePercent": 9.6089
+          },
+          {
+            "hex": "#5a423a",
+            "coveragePercent": 8.8663
+          },
+          {
+            "hex": "#6d4f45",
+            "coveragePercent": 8.0086
+          },
+          {
+            "hex": "#675a65",
+            "coveragePercent": 7.6537
+          },
+          {
+            "hex": "#1f181c",
+            "coveragePercent": 6.9031
+          },
+          {
+            "hex": "#463d44",
+            "coveragePercent": 6.5392
+          },
+          {
+            "hex": "#7f5e50",
+            "coveragePercent": 5.7377
+          },
+          {
+            "hex": "#99725d",
+            "coveragePercent": 4.4096
+          },
+          {
+            "hex": "#e7cab1",
+            "coveragePercent": 4.0327
+          },
+          {
+            "hex": "#aa8875",
+            "coveragePercent": 3.8095
+          },
+          {
+            "hex": "#bf9e88",
+            "coveragePercent": 3.4697
+          },
+          {
+            "hex": "#816f71",
+            "coveragePercent": 3.2823
+          },
+          {
+            "hex": "#d7b59a",
+            "coveragePercent": 2.737
+          },
+          {
+            "hex": "#749194",
+            "coveragePercent": 1.0311
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b5e49",
+            "coveragePercent": 50.1561
+          },
+          {
+            "hex": "#a77d57",
+            "coveragePercent": 29.376
+          },
+          {
+            "hex": "#cfa46c",
+            "coveragePercent": 9.9803
+          },
+          {
+            "hex": "#4381ab",
+            "coveragePercent": 4.5391
+          },
+          {
+            "hex": "#30678f",
+            "coveragePercent": 3.613
+          },
+          {
+            "hex": "#5c9cc0",
+            "coveragePercent": 2.3355
+          }
+        ],
+        "visibleSamples": 336563,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowNinjas.ninjutsu": {
+      "source": "assets/images/enemies/shadow-ninja-ninjutsu-v1.png",
+      "frameMetadata": "ART_SHADOW_NINJAS.ninjutsu.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352b31",
+            "coveragePercent": 13.489
+          },
+          {
+            "hex": "#3f353e",
+            "coveragePercent": 10.047
+          },
+          {
+            "hex": "#5e4d5b",
+            "coveragePercent": 9.8232
+          },
+          {
+            "hex": "#4e414c",
+            "coveragePercent": 8.614
+          },
+          {
+            "hex": "#292228",
+            "coveragePercent": 8.5802
+          },
+          {
+            "hex": "#6c4f46",
+            "coveragePercent": 8.5176
+          },
+          {
+            "hex": "#6e5d6a",
+            "coveragePercent": 8.2487
+          },
+          {
+            "hex": "#543d38",
+            "coveragePercent": 8.0453
+          },
+          {
+            "hex": "#857477",
+            "coveragePercent": 3.9684
+          },
+          {
+            "hex": "#f0d1b2",
+            "coveragePercent": 3.7876
+          },
+          {
+            "hex": "#896658",
+            "coveragePercent": 3.783
+          },
+          {
+            "hex": "#c6a28b",
+            "coveragePercent": 3.4253
+          },
+          {
+            "hex": "#a69089",
+            "coveragePercent": 2.8509
+          },
+          {
+            "hex": "#a7816d",
+            "coveragePercent": 2.6595
+          },
+          {
+            "hex": "#e1bb9d",
+            "coveragePercent": 2.6236
+          },
+          {
+            "hex": "#1d181e",
+            "coveragePercent": 1.5366
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9d6951",
+            "coveragePercent": 37.6698
+          },
+          {
+            "hex": "#895847",
+            "coveragePercent": 26.4258
+          },
+          {
+            "hex": "#b3805b",
+            "coveragePercent": 21.0847
+          },
+          {
+            "hex": "#d4a26d",
+            "coveragePercent": 11.0855
+          },
+          {
+            "hex": "#436b92",
+            "coveragePercent": 2.0636
+          },
+          {
+            "hex": "#5b8eb7",
+            "coveragePercent": 1.6706
+          }
+        ],
+        "visibleSamples": 383788,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowNinjas.assassin": {
+      "source": "assets/images/enemies/shadow-ninja-assassin-v1.png",
+      "frameMetadata": "ART_SHADOW_NINJAS.assassin.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#393032",
+            "coveragePercent": 16.2292
+          },
+          {
+            "hex": "#493b3a",
+            "coveragePercent": 13.7672
+          },
+          {
+            "hex": "#634b43",
+            "coveragePercent": 11.8808
+          },
+          {
+            "hex": "#2a2326",
+            "coveragePercent": 11.2487
+          },
+          {
+            "hex": "#53484c",
+            "coveragePercent": 8.9756
+          },
+          {
+            "hex": "#64585c",
+            "coveragePercent": 8.4377
+          },
+          {
+            "hex": "#785e53",
+            "coveragePercent": 5.9473
+          },
+          {
+            "hex": "#866e65",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#9f8374",
+            "coveragePercent": 3.8087
+          },
+          {
+            "hex": "#1d181b",
+            "coveragePercent": 3.7008
+          },
+          {
+            "hex": "#e3c1a5",
+            "coveragePercent": 3.6932
+          },
+          {
+            "hex": "#b69986",
+            "coveragePercent": 2.5774
+          },
+          {
+            "hex": "#d0ae96",
+            "coveragePercent": 2.272
+          },
+          {
+            "hex": "#738584",
+            "coveragePercent": 1.1054
+          },
+          {
+            "hex": "#cfc6c4",
+            "coveragePercent": 0.5863
+          },
+          {
+            "hex": "#f3eae5",
+            "coveragePercent": 0.4552
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a6547",
+            "coveragePercent": 45.4248
+          },
+          {
+            "hex": "#a77e57",
+            "coveragePercent": 26.1492
+          },
+          {
+            "hex": "#c69868",
+            "coveragePercent": 8.9058
+          },
+          {
+            "hex": "#40648d",
+            "coveragePercent": 7.7697
+          },
+          {
+            "hex": "#50799f",
+            "coveragePercent": 6.8189
+          },
+          {
+            "hex": "#6191be",
+            "coveragePercent": 4.9316
+          }
+        ],
+        "visibleSamples": 337470,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "npc.shadowNinjas.leader": {
+      "source": "assets/images/enemies/shadow-ninja-leader-v1.png",
+      "frameMetadata": "ART_SHADOW_NINJAS.leader.frames",
+      "frameCount": 8,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#332e33",
+            "coveragePercent": 14.9223
+          },
+          {
+            "hex": "#4b3b38",
+            "coveragePercent": 9.9873
+          },
+          {
+            "hex": "#262126",
+            "coveragePercent": 9.646
+          },
+          {
+            "hex": "#725f5d",
+            "coveragePercent": 9.1883
+          },
+          {
+            "hex": "#564d55",
+            "coveragePercent": 8.9379
+          },
+          {
+            "hex": "#3b3e46",
+            "coveragePercent": 7.8045
+          },
+          {
+            "hex": "#664d44",
+            "coveragePercent": 7.4996
+          },
+          {
+            "hex": "#5a6c6f",
+            "coveragePercent": 4.9349
+          },
+          {
+            "hex": "#425359",
+            "coveragePercent": 4.8831
+          },
+          {
+            "hex": "#807772",
+            "coveragePercent": 4.8495
+          },
+          {
+            "hex": "#9c8575",
+            "coveragePercent": 3.5114
+          },
+          {
+            "hex": "#b29c8b",
+            "coveragePercent": 3.4765
+          },
+          {
+            "hex": "#e8caae",
+            "coveragePercent": 3.4467
+          },
+          {
+            "hex": "#cfb49d",
+            "coveragePercent": 3.2549
+          },
+          {
+            "hex": "#18151a",
+            "coveragePercent": 3.1459
+          },
+          {
+            "hex": "#eee3d9",
+            "coveragePercent": 0.5113
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a5f42",
+            "coveragePercent": 42.9797
+          },
+          {
+            "hex": "#9f744e",
+            "coveragePercent": 28.2866
+          },
+          {
+            "hex": "#bc8f5e",
+            "coveragePercent": 18.7912
+          },
+          {
+            "hex": "#ddb074",
+            "coveragePercent": 5.0657
+          },
+          {
+            "hex": "#538bb4",
+            "coveragePercent": 2.722
+          },
+          {
+            "hex": "#38628b",
+            "coveragePercent": 2.1548
+          }
+        ],
+        "visibleSamples": 480645,
+        "dominantCoveragePercent": 100.0001
+      }
+    }
+  },
+  "assets": {
+    "assets/images/enemies/shadow-ninja-assassin-v1.png": {
+      "sha256": "0d8cb38395c8c1c2ed01c1285a15d8e26862bb361dc19d4c2b22e9232578a4d7",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "ninjaAssassin"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#393032",
+            "coveragePercent": 16.2292
+          },
+          {
+            "hex": "#493b3a",
+            "coveragePercent": 13.7672
+          },
+          {
+            "hex": "#634b43",
+            "coveragePercent": 11.8808
+          },
+          {
+            "hex": "#2a2326",
+            "coveragePercent": 11.2487
+          },
+          {
+            "hex": "#53484c",
+            "coveragePercent": 8.9756
+          },
+          {
+            "hex": "#64585c",
+            "coveragePercent": 8.4377
+          },
+          {
+            "hex": "#785e53",
+            "coveragePercent": 5.9473
+          },
+          {
+            "hex": "#866e65",
+            "coveragePercent": 5.3144
+          },
+          {
+            "hex": "#9f8374",
+            "coveragePercent": 3.8087
+          },
+          {
+            "hex": "#1d181b",
+            "coveragePercent": 3.7008
+          },
+          {
+            "hex": "#e3c1a5",
+            "coveragePercent": 3.6932
+          },
+          {
+            "hex": "#b69986",
+            "coveragePercent": 2.5774
+          },
+          {
+            "hex": "#d0ae96",
+            "coveragePercent": 2.272
+          },
+          {
+            "hex": "#738584",
+            "coveragePercent": 1.1054
+          },
+          {
+            "hex": "#cfc6c4",
+            "coveragePercent": 0.5863
+          },
+          {
+            "hex": "#f3eae5",
+            "coveragePercent": 0.4552
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a6547",
+            "coveragePercent": 45.4248
+          },
+          {
+            "hex": "#a77e57",
+            "coveragePercent": 26.1492
+          },
+          {
+            "hex": "#c69868",
+            "coveragePercent": 8.9058
+          },
+          {
+            "hex": "#40648d",
+            "coveragePercent": 7.7697
+          },
+          {
+            "hex": "#50799f",
+            "coveragePercent": 6.8189
+          },
+          {
+            "hex": "#6191be",
+            "coveragePercent": 4.9316
+          }
+        ],
+        "visibleSamples": 337470,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-ninja-crossbow-v1.png": {
+      "sha256": "cbdb39c4726eff5d3c30a34934c9aabd77db3cb1bc28ad1604a2fadeba1948eb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "ninjaCrossbow"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#362f34",
+            "coveragePercent": 10.7237
+          },
+          {
+            "hex": "#2c2428",
+            "coveragePercent": 10.2787
+          },
+          {
+            "hex": "#574d55",
+            "coveragePercent": 9.8229
+          },
+          {
+            "hex": "#473e43",
+            "coveragePercent": 9.3695
+          },
+          {
+            "hex": "#43312d",
+            "coveragePercent": 8.2127
+          },
+          {
+            "hex": "#563e36",
+            "coveragePercent": 7.5022
+          },
+          {
+            "hex": "#674d44",
+            "coveragePercent": 7.3764
+          },
+          {
+            "hex": "#6b6169",
+            "coveragePercent": 6.954
+          },
+          {
+            "hex": "#795c51",
+            "coveragePercent": 5.6547
+          },
+          {
+            "hex": "#917467",
+            "coveragePercent": 4.9953
+          },
+          {
+            "hex": "#201b1f",
+            "coveragePercent": 4.8967
+          },
+          {
+            "hex": "#a88b7c",
+            "coveragePercent": 3.9103
+          },
+          {
+            "hex": "#e1c7b0",
+            "coveragePercent": 3.4225
+          },
+          {
+            "hex": "#bea28e",
+            "coveragePercent": 3.2295
+          },
+          {
+            "hex": "#d6b79e",
+            "coveragePercent": 2.766
+          },
+          {
+            "hex": "#73898c",
+            "coveragePercent": 0.885
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#886042",
+            "coveragePercent": 44.2001
+          },
+          {
+            "hex": "#9b714f",
+            "coveragePercent": 31.8212
+          },
+          {
+            "hex": "#b68b60",
+            "coveragePercent": 12.9925
+          },
+          {
+            "hex": "#4578a4",
+            "coveragePercent": 3.7821
+          },
+          {
+            "hex": "#5c91be",
+            "coveragePercent": 3.6472
+          },
+          {
+            "hex": "#2e5e8e",
+            "coveragePercent": 3.5569
+          }
+        ],
+        "visibleSamples": 383179,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/shadow-ninja-leader-v1.png": {
+      "sha256": "1648addce23acc3d22db3e0aff012673ff8beb9d0f1636927ac0d31c39ce85d9",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "ninjaLeader"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#332e33",
+            "coveragePercent": 14.9223
+          },
+          {
+            "hex": "#4b3b38",
+            "coveragePercent": 9.9873
+          },
+          {
+            "hex": "#262126",
+            "coveragePercent": 9.646
+          },
+          {
+            "hex": "#725f5d",
+            "coveragePercent": 9.1883
+          },
+          {
+            "hex": "#564d55",
+            "coveragePercent": 8.9379
+          },
+          {
+            "hex": "#3b3e46",
+            "coveragePercent": 7.8045
+          },
+          {
+            "hex": "#664d44",
+            "coveragePercent": 7.4996
+          },
+          {
+            "hex": "#5a6c6f",
+            "coveragePercent": 4.9349
+          },
+          {
+            "hex": "#425359",
+            "coveragePercent": 4.8831
+          },
+          {
+            "hex": "#807772",
+            "coveragePercent": 4.8495
+          },
+          {
+            "hex": "#9c8575",
+            "coveragePercent": 3.5114
+          },
+          {
+            "hex": "#b29c8b",
+            "coveragePercent": 3.4765
+          },
+          {
+            "hex": "#e8caae",
+            "coveragePercent": 3.4467
+          },
+          {
+            "hex": "#cfb49d",
+            "coveragePercent": 3.2549
+          },
+          {
+            "hex": "#18151a",
+            "coveragePercent": 3.1459
+          },
+          {
+            "hex": "#eee3d9",
+            "coveragePercent": 0.5113
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a5f42",
+            "coveragePercent": 42.9797
+          },
+          {
+            "hex": "#9f744e",
+            "coveragePercent": 28.2866
+          },
+          {
+            "hex": "#bc8f5e",
+            "coveragePercent": 18.7912
+          },
+          {
+            "hex": "#ddb074",
+            "coveragePercent": 5.0657
+          },
+          {
+            "hex": "#538bb4",
+            "coveragePercent": 2.722
+          },
+          {
+            "hex": "#38628b",
+            "coveragePercent": 2.1548
+          }
+        ],
+        "visibleSamples": 480645,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/shadow-ninja-ninjutsu-v1.png": {
+      "sha256": "0e9e0123266e905a3eae68cc17c0c0a47d91ed34725827afe2ab2c5c870a6d59",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "ninjaNinjutsu"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#352b31",
+            "coveragePercent": 13.489
+          },
+          {
+            "hex": "#3f353e",
+            "coveragePercent": 10.047
+          },
+          {
+            "hex": "#5e4d5b",
+            "coveragePercent": 9.8232
+          },
+          {
+            "hex": "#4e414c",
+            "coveragePercent": 8.614
+          },
+          {
+            "hex": "#292228",
+            "coveragePercent": 8.5802
+          },
+          {
+            "hex": "#6c4f46",
+            "coveragePercent": 8.5176
+          },
+          {
+            "hex": "#6e5d6a",
+            "coveragePercent": 8.2487
+          },
+          {
+            "hex": "#543d38",
+            "coveragePercent": 8.0453
+          },
+          {
+            "hex": "#857477",
+            "coveragePercent": 3.9684
+          },
+          {
+            "hex": "#f0d1b2",
+            "coveragePercent": 3.7876
+          },
+          {
+            "hex": "#896658",
+            "coveragePercent": 3.783
+          },
+          {
+            "hex": "#c6a28b",
+            "coveragePercent": 3.4253
+          },
+          {
+            "hex": "#a69089",
+            "coveragePercent": 2.8509
+          },
+          {
+            "hex": "#a7816d",
+            "coveragePercent": 2.6595
+          },
+          {
+            "hex": "#e1bb9d",
+            "coveragePercent": 2.6236
+          },
+          {
+            "hex": "#1d181e",
+            "coveragePercent": 1.5366
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9d6951",
+            "coveragePercent": 37.6698
+          },
+          {
+            "hex": "#895847",
+            "coveragePercent": 26.4258
+          },
+          {
+            "hex": "#b3805b",
+            "coveragePercent": 21.0847
+          },
+          {
+            "hex": "#d4a26d",
+            "coveragePercent": 11.0855
+          },
+          {
+            "hex": "#436b92",
+            "coveragePercent": 2.0636
+          },
+          {
+            "hex": "#5b8eb7",
+            "coveragePercent": 1.6706
+          }
+        ],
+        "visibleSamples": 383788,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/shadow-ninja-shuriken-v1.png": {
+      "sha256": "9b8a12cfda816bbe93b648589b6c9f942a0fb83e25ed75302d5b9384b48b6fed",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "ninjaShuriken"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#30272a",
+            "coveragePercent": 13.2412
+          },
+          {
+            "hex": "#413232",
+            "coveragePercent": 10.6693
+          },
+          {
+            "hex": "#594b53",
+            "coveragePercent": 9.6089
+          },
+          {
+            "hex": "#5a423a",
+            "coveragePercent": 8.8663
+          },
+          {
+            "hex": "#6d4f45",
+            "coveragePercent": 8.0086
+          },
+          {
+            "hex": "#675a65",
+            "coveragePercent": 7.6537
+          },
+          {
+            "hex": "#1f181c",
+            "coveragePercent": 6.9031
+          },
+          {
+            "hex": "#463d44",
+            "coveragePercent": 6.5392
+          },
+          {
+            "hex": "#7f5e50",
+            "coveragePercent": 5.7377
+          },
+          {
+            "hex": "#99725d",
+            "coveragePercent": 4.4096
+          },
+          {
+            "hex": "#e7cab1",
+            "coveragePercent": 4.0327
+          },
+          {
+            "hex": "#aa8875",
+            "coveragePercent": 3.8095
+          },
+          {
+            "hex": "#bf9e88",
+            "coveragePercent": 3.4697
+          },
+          {
+            "hex": "#816f71",
+            "coveragePercent": 3.2823
+          },
+          {
+            "hex": "#d7b59a",
+            "coveragePercent": 2.737
+          },
+          {
+            "hex": "#749194",
+            "coveragePercent": 1.0311
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8b5e49",
+            "coveragePercent": 50.1561
+          },
+          {
+            "hex": "#a77d57",
+            "coveragePercent": 29.376
+          },
+          {
+            "hex": "#cfa46c",
+            "coveragePercent": 9.9803
+          },
+          {
+            "hex": "#4381ab",
+            "coveragePercent": 4.5391
+          },
+          {
+            "hex": "#30678f",
+            "coveragePercent": 3.613
+          },
+          {
+            "hex": "#5c9cc0",
+            "coveragePercent": 2.3355
+          }
+        ],
+        "visibleSamples": 336563,
+        "dominantCoveragePercent": 99.9999
+      }
+    }
+  }
+}

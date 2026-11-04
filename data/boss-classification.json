@@ -31,5 +31,6 @@
   { "id": "voidDemon", "name": "fia.void.demon", "group": "optional" },
   { "id": "hannah", "name": "ziggurat.hannah", "group": "main" },
   { "id": "voidGatekeeper", "name": "descent.gatekeeper", "group": "main" },
+  { "id": "shadowNinjaLeader", "name": "islands.ninjaLeader", "group": "main" },
   { "id": "fiaRitual", "name": "fia.name", "group": "optional" }
 ]

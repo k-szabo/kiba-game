@@ -1750,6 +1750,22 @@
           "en": "Fia stays in place until the dragon-eye turn-in dialogue ends."
         }
       ]
+    },
+    {
+      "version": "0.9.71_e96d3917",
+      "code": "e96d3917",
+      "baseVersion": "0.9.71",
+      "slug": "floating-islands-shadow-ninjas",
+      "summary": {
+        "hu": "Kampóval a felhők fölött",
+        "en": "Grappling Above the Clouds"
+      },
+      "fixes": [
+        {
+          "hu": "A lebegő szigetek új történeti útvonala sziámi árnyéknindzsákkal és egy megszerezhető kapaszkodókampóval folytatja Momo útját.",
+          "en": "A new story route across the Floating Islands continues Momo’s journey with Siamese shadow ninjas and an obtainable grappling hook."
+        }
+      ]
     }
   ]
 }

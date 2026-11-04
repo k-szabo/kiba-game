@@ -19,6 +19,7 @@ const DevBossHealth=(()=>{
   label.hidden=true;if(!CombatDisplay.get('bossHealth')||typeof DuelMode!=='undefined'&&DuelMode.active||$('bossHud').hidden)return;
   let target;
   if(Prologue.active)target=boss;
+  else if(typeof FloatingIslands!=='undefined'&&FloatingIslands.active())target=enemies.find(e=>!e.dead&&e.active&&FloatingIslands.is(e));
   else if(FiaRitual.enemy)target=FiaRitual.enemy;
   else if(VoidEncounter.active())target=VoidEncounter.actor;
   else if(DragonRaid.active())target=DragonRaid.health();

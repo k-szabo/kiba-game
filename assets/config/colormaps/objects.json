@@ -408,6 +408,10 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.foxfireKatana"
     },
+    "inventoryItem.grapplingHook": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.grapplingHook"
+    },
     "secretWall.angel": {
       "kind": "scenery",
       "paletteGroup": "object.secretWall.angel",

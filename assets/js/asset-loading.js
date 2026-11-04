@@ -12,6 +12,7 @@ const AssetLoading=(()=>{
  // Every painting, hidden sector, NPC and future combat pose owned by a map is
  // required at entry. Camera position and a boss's current phase never narrow it.
  const maps={
+  floatingIslands:list('islandsArrivalBackdrop islandsRouteBackdrop islandsWatchtowerBackdrop ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin ninjaLeader momoHook grapplingHook haruFollow'),
   japan:list('japanBackdrop japanClouds japanGuard japanArcher japanShield japanMage samurai samuraiJump bosses oldAngel oldCultist angelRuinBackdrop cultCaveBackdrop angelRuinWall cultCaveWall cultRuinedGate whiteSerpent whiteSerpentBackdrop serpentRelics campSupplies oathbreakerSoul'),
   yomi:list('yomiBackdrop yomiWalk yomiAttack lavaSerpent serpentScale fxLava bosses councilGateClosed councilGateOpen councilKey akash slayerMelee slayerRanged slayerDaisy slayerLightning slayerArena slayerGravestone slayerBarrel slayerCrossbow yomiGuardianSoul'),
   heaven:list('heavenBackdrop heavenDarkBackdrop heavenEclipseBackdrop heavenWalk heavenAttack angelLight angelDark angelEclipse holyArrow holyLance bosses wingedSerpent wingedSerpentBackdrop serpentRelics haruElder seraphSoul eclipseRelic'),
@@ -38,7 +39,7 @@ const AssetLoading=(()=>{
   shadowUnderworld:[...list('shadowUnderworldBackdrop campTerrain underworldServices fiaUnderworldCorrupted arenaCyclops'),...residents],
   voidForbidden:list('voidForbiddenBackdrop voidKeepers voidLieutenant voidDemon rawVoidCrystal')
  };
- const backgrounds={zigguratDepths:'descentBackdrop',japanHeights:'japanHeightsBackdrop',japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
+ const backgrounds={floatingIslands:"islandsArrivalBackdrop",zigguratDepths:'descentBackdrop',japanHeights:'japanHeightsBackdrop',japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
  let shown=false,focus=null,initialized=false,refreshQueued=false,backdrop=null;
  function prepare(){
   const duel=typeof DuelMode!=='undefined'&&DuelMode.active,menu=!duel&&(state==='menu'||state==='help'&&helpOrigin==='menu'),tower=!menu&&typeof TowerMode!=='undefined'&&TowerMode.active;
@@ -59,6 +60,7 @@ const AssetLoading=(()=>{
    if(level?.id==='fiaRitual')keys.push('arenaCyclops');
    if(typeof flags!=='undefined'&&flags[3]?.includes('dawnblade'))keys.push('momoDawnblade');
    if(typeof flags!=='undefined'&&flags[3]?.includes('kibaShield'))keys.push('kibaShield');
+   if(typeof flags!=='undefined'&&flags[0]?.includes('grapplingHook'))keys.push('momoHook','grapplingHook');
    // The scene may start its story, open a backpack, or expose existing loot.
    // These common UI/owned-item images are paid for once at scene entry.
    keys.push('dialogue'+['Japan','Yomi','Heaven','Shadow'][typeof realm==='number'?realm:0],'inventoryTravelBag','inventoryMomoPortrait','inventoryKatana','inventoryStarterWeapons','travelAtlas');

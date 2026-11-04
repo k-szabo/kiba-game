@@ -5,6 +5,9 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  islandsArrivalBackdrop:{asset:'islandsArrivalBackdropMotionPhaseB',sourceSize:[1672,941],regions:[['arrival-cloud',16,[[.25,.50],[.36,.50],[.36,.63],[.25,.63]],10],['cherry-tips',13,[[.87,.02],[.96,.02],[.96,.12],[.87,.12]],8]]},
+  islandsRouteBackdrop:{asset:'islandsRouteBackdropMotionPhaseB',sourceSize:[1672,941],regions:[['gap-mist',18,[[.45,.65],[.60,.65],[.60,.78],[.45,.78]],12],['cherry-tips',13,[[.01,.01],[.12,.01],[.12,.10],[.01,.10]],8]]},
+  islandsWatchtowerBackdrop:{asset:'islandsWatchtowerBackdropMotionPhaseB',sourceSize:[1672,941],regions:[['watchtower-mist',17,[[.54,.57],[.65,.57],[.65,.64],[.54,.64]],10],['window-light',4,[[.13,.185],[.155,.185],[.155,.215],[.13,.215]],4]]},
   descentBackdrop:{asset:'descentBackdropMotionPhaseB',sourceSize:[1671,941],regions:[['depths-mist',16,[[.15,.62],[.68,.62],[.68,.76],[.15,.76]],10]]},
   japanHeightsBackdrop:{asset:'japanHeightsBackdropMotionPhaseB',sourceSize:[1671,941],regions:[['heights-clouds',18,[[.4,.52],[.75,.52],[.75,.72],[.4,.72]],10]]},
   towerBackdrop:{asset:'towerBackdropMotionPhaseB',regions:[

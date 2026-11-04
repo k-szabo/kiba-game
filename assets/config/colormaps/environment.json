@@ -3528,6 +3528,636 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/backgrounds/floating-islands-arrival-motion-b-v1.png": {
+      "sha256": "09d8f37f770d1e361b2c2b4163b4a83dedd556f8126388a689166f01b11b92d4",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsArrivalBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#c59cda",
+            "coveragePercent": 9.7862
+          },
+          {
+            "hex": "#aa8584",
+            "coveragePercent": 9.3082
+          },
+          {
+            "hex": "#a28ad0",
+            "coveragePercent": 8.6517
+          },
+          {
+            "hex": "#c79d95",
+            "coveragePercent": 7.8464
+          },
+          {
+            "hex": "#8d7071",
+            "coveragePercent": 7.3608
+          },
+          {
+            "hex": "#f0b4a4",
+            "coveragePercent": 7.3454
+          },
+          {
+            "hex": "#eea5cb",
+            "coveragePercent": 7.2191
+          },
+          {
+            "hex": "#6c5a5d",
+            "coveragePercent": 6.4644
+          },
+          {
+            "hex": "#50433c",
+            "coveragePercent": 6.4568
+          },
+          {
+            "hex": "#3a2b1e",
+            "coveragePercent": 6.2744
+          },
+          {
+            "hex": "#787497",
+            "coveragePercent": 6.1906
+          },
+          {
+            "hex": "#f9cbd4",
+            "coveragePercent": 4.6672
+          },
+          {
+            "hex": "#694e2a",
+            "coveragePercent": 4.3483
+          },
+          {
+            "hex": "#df7fab",
+            "coveragePercent": 3.9258
+          },
+          {
+            "hex": "#976e3b",
+            "coveragePercent": 2.4841
+          },
+          {
+            "hex": "#da9455",
+            "coveragePercent": 1.6707
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#936934",
+            "coveragePercent": 27.7781
+          },
+          {
+            "hex": "#dd6d9c",
+            "coveragePercent": 27.6373
+          },
+          {
+            "hex": "#cd884c",
+            "coveragePercent": 20.2484
+          },
+          {
+            "hex": "#f1b570",
+            "coveragePercent": 14.634
+          },
+          {
+            "hex": "#ac5259",
+            "coveragePercent": 8.4413
+          },
+          {
+            "hex": "#4b608c",
+            "coveragePercent": 1.2609
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/floating-islands-arrival-v1.png": {
+      "sha256": "c629d4eb148b85ec2f337f62ee6d4aee6a26cd6d7ebed4276d120df7a4abc715",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsArrivalBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#574537",
+            "coveragePercent": 9.7803
+          },
+          {
+            "hex": "#b28889",
+            "coveragePercent": 9.2865
+          },
+          {
+            "hex": "#947373",
+            "coveragePercent": 8.0262
+          },
+          {
+            "hex": "#6e5c66",
+            "coveragePercent": 7.1928
+          },
+          {
+            "hex": "#f4b9a4",
+            "coveragePercent": 7.083
+          },
+          {
+            "hex": "#d0a297",
+            "coveragePercent": 6.8921
+          },
+          {
+            "hex": "#382a21",
+            "coveragePercent": 6.7319
+          },
+          {
+            "hex": "#eaa2cb",
+            "coveragePercent": 6.6491
+          },
+          {
+            "hex": "#a289d4",
+            "coveragePercent": 6.1436
+          },
+          {
+            "hex": "#c5a1e0",
+            "coveragePercent": 6.119
+          },
+          {
+            "hex": "#7e749d",
+            "coveragePercent": 5.8134
+          },
+          {
+            "hex": "#c18dca",
+            "coveragePercent": 5.2525
+          },
+          {
+            "hex": "#f9ccd6",
+            "coveragePercent": 5.0499
+          },
+          {
+            "hex": "#ec87a7",
+            "coveragePercent": 4.4979
+          },
+          {
+            "hex": "#856337",
+            "coveragePercent": 3.5974
+          },
+          {
+            "hex": "#d18d50",
+            "coveragePercent": 1.8843
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#95613c",
+            "coveragePercent": 31.6243
+          },
+          {
+            "hex": "#dc6b9a",
+            "coveragePercent": 29.3684
+          },
+          {
+            "hex": "#c9834c",
+            "coveragePercent": 20.7758
+          },
+          {
+            "hex": "#eeb26d",
+            "coveragePercent": 15.1786
+          },
+          {
+            "hex": "#a16dcc",
+            "coveragePercent": 1.6059
+          },
+          {
+            "hex": "#57588c",
+            "coveragePercent": 1.447
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/floating-islands-route-motion-b-v1.png": {
+      "sha256": "c61aa2f43a478aed1f0feb1cfca19aed8de6a24f1eec2cf15934adfb87e1945b",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsRouteBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#c9a0e5",
+            "coveragePercent": 19.1653
+          },
+          {
+            "hex": "#e4aee8",
+            "coveragePercent": 16.5107
+          },
+          {
+            "hex": "#b293d9",
+            "coveragePercent": 11.4281
+          },
+          {
+            "hex": "#fbc6e4",
+            "coveragePercent": 11.0678
+          },
+          {
+            "hex": "#6f5c66",
+            "coveragePercent": 5.9608
+          },
+          {
+            "hex": "#f6a5cb",
+            "coveragePercent": 5.6476
+          },
+          {
+            "hex": "#9882bc",
+            "coveragePercent": 5.5548
+          },
+          {
+            "hex": "#846e86",
+            "coveragePercent": 5.4102
+          },
+          {
+            "hex": "#544349",
+            "coveragePercent": 3.4864
+          },
+          {
+            "hex": "#e0a693",
+            "coveragePercent": 3.3441
+          },
+          {
+            "hex": "#fac5b2",
+            "coveragePercent": 3.1167
+          },
+          {
+            "hex": "#b18988",
+            "coveragePercent": 2.8811
+          },
+          {
+            "hex": "#6e5228",
+            "coveragePercent": 1.7268
+          },
+          {
+            "hex": "#332217",
+            "coveragePercent": 1.6875
+          },
+          {
+            "hex": "#d36ba1",
+            "coveragePercent": 1.5451
+          },
+          {
+            "hex": "#b2884c",
+            "coveragePercent": 1.4671
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c4598a",
+            "coveragePercent": 21.3464
+          },
+          {
+            "hex": "#e574ad",
+            "coveragePercent": 18.992
+          },
+          {
+            "hex": "#9c7939",
+            "coveragePercent": 18.4388
+          },
+          {
+            "hex": "#c6984f",
+            "coveragePercent": 18.1843
+          },
+          {
+            "hex": "#e6b267",
+            "coveragePercent": 12.0456
+          },
+          {
+            "hex": "#924f43",
+            "coveragePercent": 10.9929
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/floating-islands-route-v1.png": {
+      "sha256": "b7b87c910855ef46eac3297cce37d96b1c485bcd43c7761d990138b033a4f568",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsRouteBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#d9a6e8",
+            "coveragePercent": 19.0342
+          },
+          {
+            "hex": "#c097e2",
+            "coveragePercent": 18.0536
+          },
+          {
+            "hex": "#f4b6e6",
+            "coveragePercent": 11.0464
+          },
+          {
+            "hex": "#a786cb",
+            "coveragePercent": 7.9268
+          },
+          {
+            "hex": "#f4a4d2",
+            "coveragePercent": 6.0631
+          },
+          {
+            "hex": "#776274",
+            "coveragePercent": 5.4176
+          },
+          {
+            "hex": "#604d56",
+            "coveragePercent": 5.3965
+          },
+          {
+            "hex": "#8c759b",
+            "coveragePercent": 4.3897
+          },
+          {
+            "hex": "#fdd3df",
+            "coveragePercent": 4.0756
+          },
+          {
+            "hex": "#513c2f",
+            "coveragePercent": 3.4224
+          },
+          {
+            "hex": "#fbc5b9",
+            "coveragePercent": 3.2667
+          },
+          {
+            "hex": "#f1a2ab",
+            "coveragePercent": 3.0589
+          },
+          {
+            "hex": "#cf9f8a",
+            "coveragePercent": 2.9667
+          },
+          {
+            "hex": "#bf738f",
+            "coveragePercent": 2.5582
+          },
+          {
+            "hex": "#a07a51",
+            "coveragePercent": 1.946
+          },
+          {
+            "hex": "#281a13",
+            "coveragePercent": 1.3776
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c8598c",
+            "coveragePercent": 23.5147
+          },
+          {
+            "hex": "#e373ab",
+            "coveragePercent": 20.2341
+          },
+          {
+            "hex": "#ba904d",
+            "coveragePercent": 17.2216
+          },
+          {
+            "hex": "#927137",
+            "coveragePercent": 16.4603
+          },
+          {
+            "hex": "#deae64",
+            "coveragePercent": 12.9116
+          },
+          {
+            "hex": "#9e4458",
+            "coveragePercent": 9.6576
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/floating-islands-watchtower-motion-b-v1.png": {
+      "sha256": "bfa5279d4a31e712c92759f7671ba7d1def70cf46f2a085ce2fb0d7df8288590",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsWatchtowerBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#b682c0",
+            "coveragePercent": 12.6473
+          },
+          {
+            "hex": "#3c2d28",
+            "coveragePercent": 9.5317
+          },
+          {
+            "hex": "#513e3b",
+            "coveragePercent": 9.426
+          },
+          {
+            "hex": "#d590c2",
+            "coveragePercent": 8.2287
+          },
+          {
+            "hex": "#f59fb3",
+            "coveragePercent": 7.3382
+          },
+          {
+            "hex": "#604e61",
+            "coveragePercent": 6.9855
+          },
+          {
+            "hex": "#795836",
+            "coveragePercent": 6.9425
+          },
+          {
+            "hex": "#a36fa9",
+            "coveragePercent": 6.8584
+          },
+          {
+            "hex": "#8d6664",
+            "coveragePercent": 6.2943
+          },
+          {
+            "hex": "#b68376",
+            "coveragePercent": 4.7094
+          },
+          {
+            "hex": "#7b6488",
+            "coveragePercent": 4.3002
+          },
+          {
+            "hex": "#231816",
+            "coveragePercent": 4.2068
+          },
+          {
+            "hex": "#d7809c",
+            "coveragePercent": 4.0606
+          },
+          {
+            "hex": "#ae7a40",
+            "coveragePercent": 3.689
+          },
+          {
+            "hex": "#f5aa8a",
+            "coveragePercent": 3.3176
+          },
+          {
+            "hex": "#f9c9bd",
+            "coveragePercent": 1.4637
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e6139",
+            "coveragePercent": 33.9191
+          },
+          {
+            "hex": "#aa7843",
+            "coveragePercent": 27.5303
+          },
+          {
+            "hex": "#d28f50",
+            "coveragePercent": 14.3753
+          },
+          {
+            "hex": "#e17493",
+            "coveragePercent": 8.6997
+          },
+          {
+            "hex": "#b2567d",
+            "coveragePercent": 7.8741
+          },
+          {
+            "hex": "#f5b175",
+            "coveragePercent": 7.6015
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/floating-islands-watchtower-v1.png": {
+      "sha256": "a1c193e5491d9faa7055b2256cf45b9c2df7a6c392b7fd4d1f2b7db2c41c18ac",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "islandsWatchtowerBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#b984c0",
+            "coveragePercent": 12.3371
+          },
+          {
+            "hex": "#41322c",
+            "coveragePercent": 10.3998
+          },
+          {
+            "hex": "#da93c0",
+            "coveragePercent": 9.2296
+          },
+          {
+            "hex": "#f7a0a7",
+            "coveragePercent": 7.8693
+          },
+          {
+            "hex": "#4f3e49",
+            "coveragePercent": 7.5
+          },
+          {
+            "hex": "#a571ad",
+            "coveragePercent": 7.2541
+          },
+          {
+            "hex": "#6d5033",
+            "coveragePercent": 7.0358
+          },
+          {
+            "hex": "#271d1a",
+            "coveragePercent": 6.4412
+          },
+          {
+            "hex": "#85615e",
+            "coveragePercent": 5.9059
+          },
+          {
+            "hex": "#62526a",
+            "coveragePercent": 5.0469
+          },
+          {
+            "hex": "#aa7974",
+            "coveragePercent": 4.9929
+          },
+          {
+            "hex": "#d38298",
+            "coveragePercent": 4.3464
+          },
+          {
+            "hex": "#80658c",
+            "coveragePercent": 3.9515
+          },
+          {
+            "hex": "#9d703b",
+            "coveragePercent": 3.8946
+          },
+          {
+            "hex": "#f9c5b2",
+            "coveragePercent": 2.1316
+          },
+          {
+            "hex": "#d69555",
+            "coveragePercent": 1.6633
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8d6138",
+            "coveragePercent": 32.2319
+          },
+          {
+            "hex": "#a87741",
+            "coveragePercent": 26.576
+          },
+          {
+            "hex": "#ce8d4f",
+            "coveragePercent": 14.9845
+          },
+          {
+            "hex": "#de7295",
+            "coveragePercent": 9.3258
+          },
+          {
+            "hex": "#af537c",
+            "coveragePercent": 8.6299
+          },
+          {
+            "hex": "#f3af73",
+            "coveragePercent": 8.2519
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/forest-camp-hd-center-motion-b-v1.png": {
       "sha256": "8fe79121597c89dc7be761d46ab5705a05eca6f856a174d9f849caeb849e0cfe",
       "width": 1254,
