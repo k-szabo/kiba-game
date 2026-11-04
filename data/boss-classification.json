@@ -32,5 +32,7 @@
   { "id": "hannah", "name": "ziggurat.hannah", "group": "main" },
   { "id": "voidGatekeeper", "name": "descent.gatekeeper", "group": "main" },
   { "id": "shadowNinjaLeader", "name": "islands.ninjaLeader", "group": "main" },
+  { "id": "prologueShadow", "name": "prologue.boss", "group": "optional" },
+  { "id": "fiaVengeance", "name": "fia.name", "group": "optional" },
   { "id": "fiaRitual", "name": "fia.name", "group": "optional" }
 ]

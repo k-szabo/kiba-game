@@ -34,7 +34,7 @@ r('Object.defineProperty(Visuals,"blocked",oldBlocked)');
  const before=plan('shadowArena');planBox.state='dialog';planBox.enemies=[{miniboss:'arenaFia'}];const after=plan('shadowArena');assert.equal(after.token,before.token,'Dialogues and future actors cannot discard the current scene scope');
  planBox.Prologue.active=true;assert(plan('dream').keys.includes('momoRoom'),'Awakening is ready before prologue combat finishes');planBox.Prologue.active=false;
  planBox.state='menu';const menu=plan('japan');assert.equal(new Set(menu.keys).size,5,'Main-menu package stays small');
- planBox.state='towerConfirm';planBox.TowerMode.active=true;const tower=plan('infiniteTower');assert(tower.keys.includes('towerBackdrop'));for(const key of ['arenaCaptain','arenaSerpent','arenaCyclops','dungeonCaptain','dungeonCouncil','cultTempleGuard','cultWoundedAngel'])assert(tower.keys.includes(key));
+ planBox.state='towerConfirm';planBox.TowerMode.active=true;planBox.enemies=[{miniboss:'arenaCaptain',towerBoss:true}];planBox.TowerBossArt={assets:()=>['arenaCaptain']};const tower=plan('infiniteTower');assert(tower.keys.includes('towerBackdrop'));assert(tower.keys.includes('arenaCaptain'));assert(!tower.keys.includes('arenaSerpent'),'Unrelated boss assets wait for their floor');
 }
 // Inspect actual drawing dependencies at multiple depths/ends of every registered
 // scene. Read-only fake Image properties let private renderer accesses be seen

@@ -51,7 +51,7 @@ const AssetLoading=(()=>{
   else{
    keys=[backdrop,...combat,...weapon(weaponStyle),...(maps[level?.id]||[])];
    // Tower rounds share a fixed pool; do not interrupt a new boss move or summon.
-   if(tower)keys.push('towerBackdrop',...japanActors,...shadowActors,...heavenActors,'yomiWalk','yomiAttack',...['arenaCaptain','arenaSerpent','arenaCyclops','dungeonCaptain','dungeonCouncil','cultTempleGuard','woundedAngel'].flatMap(id=>actors[id]));
+   if(tower)keys.push('towerBackdrop','prisonTerrain',...japanActors,...shadowActors,...heavenActors,'yomiWalk','yomiAttack',...enemies.filter(e=>e.towerBoss).flatMap(e=>TowerBossArt.assets(e)));
    // Dungeon factions differ from their host realm. Summons and both sides of
    // the battle must be ready even when they enter from outside the camera.
    if(level?.dungeon)keys.push(...japanActors,...shadowActors,...heavenActors);

@@ -134,6 +134,7 @@ const DungeonRun=(()=>{
   if(!enemies.some(e=>e.dungeonSummon&&!e.dead))projectiles=projectiles.filter(p=>p.source!=='dungeon-minion');
  }
  function summon(owner){
+  if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(owner))return TowerBossCombat.summon(owner);
   if(state!=='play'||!currentOwner(owner))return false;
   if(enemies.filter(e=>e.dungeonSummon&&!e.dead).length+pending.length>=4)return false;
   for(const portal of owner.summons||[])if(enemies.filter(e=>e.dungeonSummon&&!e.dead).length+pending.length<4)pending.push({x:clamp(portal.x,level.arena.x+45,level.arena.x+level.arena.w-100),y:level.arena.y,warning:.8,run:runId(),dungeon:dungeonId(),owner});return true;

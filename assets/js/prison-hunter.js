@@ -4,7 +4,8 @@ const PrisonHunter=(()=>{
  const flag='guardian:prisonHunter';
  const is=enemy=>enemy?.miniboss==='prisonHunter';
  const source=enemy=>'mini:'+enemy.id;
- const current=enemy=>is(enemy)&&realm===3&&level.id==='shadowPrison'&&enemies.includes(enemy)&&!enemy.dead;
+ const tower=enemy=>enemy?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
+ const current=enemy=>is(enemy)&&(tower(enemy)||realm===3&&level.id==='shadowPrison')&&enemies.includes(enemy)&&!enemy.dead;
  const enraged=enemy=>enemy.hp<=enemy.maxHp*.5;
  function phase(enemy,next,duration){
   enemy.phase=next;enemy.clock=duration;enemy.phaseDuration=duration;
@@ -80,7 +81,7 @@ const PrisonHunter=(()=>{
  }
  function defeat(enemy){
   if(!current(enemy)||!enemy.active||enemy.hp>0)return false;
-  const first=!enemy.replay&&!flags[3].includes(flag);
+  const first=!tower(enemy)&&!enemy.replay&&!flags[3].includes(flag);
   enemy.dead=true;enemy.active=false;enemy.phase='dead';enemy.attackBox=null;enemy.windup=0;enemy.attackTime=0;enemy.walkSpeed=0;
   clearShots(enemy);
   if(first){flags[3].push(flag);Merchant.award(Merchant.rewards.miniboss);awardXP(200);persist();updateHUD();}

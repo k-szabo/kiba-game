@@ -16,6 +16,7 @@ const Serpents=(()=>{
  const is=spec=>Object.hasOwn(profiles,type(spec));
  const profile=enemy=>profiles[type(enemy)];
  const source=enemy=>(type(enemy)==='lava'?'serpent:':'mini:')+enemy.id;
+ const tower=enemy=>enemy?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
  function phase(enemy,next,duration){
   enemy.phase=next;enemy.clock=duration;enemy.phaseDuration=duration;
   enemy.windup=next==='windup'?duration:0;enemy.windupDuration=duration;
@@ -23,7 +24,9 @@ const Serpents=(()=>{
   enemy.attackElapsed=0;enemy.hitDone=false;
  }
  function current(enemy){
-  const p=profile(enemy);if(!p||enemy.dead||!enemies.includes(enemy)||realm!==p.realm||level!==levels[p.realm])return false;
+  const p=profile(enemy);if(!p||enemy.dead||!enemies.includes(enemy))return false;
+  if(tower(enemy))return true;
+  if(realm!==p.realm||level!==levels[p.realm])return false;
   return type(enemy)!=='lava'||enemy===boss.serpent&&bossStarted&&!boss.dead;
  }
  function meleeBox(enemy,width){
@@ -34,7 +37,7 @@ const Serpents=(()=>{
   Object.assign(enemy,{x:enemy.origin,y:enemy.baseY,hp:enemy.maxHp,active:false,dead:!enemy.replay&&!!p.guardian&&flags[p.realm].includes(p.guardian),
    face:-1,attackFace:-1,inv:0,stun:0,animTime:0,walkSpeed:0,cycles:0,move:null,attackBox:null,hazards:[],guardBreak:0,blockFlash:0});
   phase(enemy,'wait',type(enemy)==='lava'?.7:1);
-  if(type(enemy)!=='lava')projectiles=projectiles.filter(projectile=>projectile.source!==source(enemy));
+  if(type(enemy)!=='lava'||tower(enemy))projectiles=projectiles.filter(projectile=>projectile.source!==source(enemy));
   return enemy;
  }
  function create(spec){
@@ -134,7 +137,7 @@ const Serpents=(()=>{
  }
  function defeat(enemy){
   if(!current(enemy)||!enemy.active||enemy.hp>0)return false;
-  const p=profile(enemy),first=!enemy.replay&&!flags[p.realm].includes(p.guardian||p.reward);
+  const p=profile(enemy),first=!tower(enemy)&&!enemy.replay&&!flags[p.realm].includes(p.guardian||p.reward);
   enemy.dead=true;enemy.active=false;enemy.phase='dead';enemy.attackBox=null;enemy.hazards=[];enemy.windup=0;enemy.attackTime=0;
   if(first){
    if(p.guardian)flags[p.realm].push(p.guardian);
@@ -143,7 +146,8 @@ const Serpents=(()=>{
    if(type(enemy)==='lava')toast(I18n.t('yomi.serpent.scale.gained'));else toast(I18n.format('serpent.reward.gained',[I18n.t('item.'+p.reward)]));
   }
   burst(enemy.x+enemy.w/2,enemy.y+enemy.h*.5,type(enemy)==='lava'?'#ffbd69':type(enemy)==='white'?'#b8e8ee':'#e0b9ff',36);
-  if(type(enemy)==='lava'&&boss.yomiStage==='shelter')endYomiShelter();
+  if(tower(enemy))projectiles=projectiles.filter(projectile=>projectile.source!==source(enemy));
+  if(!tower(enemy)&&type(enemy)==='lava'&&boss.yomiStage==='shelter')endYomiShelter();
   return first;
  }
  return Object.freeze({profiles,is,create,reset,update,defeat});

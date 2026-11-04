@@ -5,6 +5,8 @@ const DoomSlayer=(()=>{
  const armorGain=50,armorCap=400;
  const mobility={run:480,sawRun:620,jump:460,sawRush:720,spacing:130};
  const is=e=>e?.miniboss==='slayer';
+ const tower=e=>e?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
+ const ownsShot=(e,p)=>p.slayer&&(!e.towerBoss||p.slayerOwner===e.id);
  const facing=e=>Math.sign(player.x+player.w/2-e.x-e.w/2)||e.face;
  function phase(e,name,duration){
   e.phase=name;e.clock=duration;e.phaseDuration=duration;e.hitDone=false;e.attackElapsed=0;
@@ -18,10 +20,10 @@ const DoomSlayer=(()=>{
  function clear(e){
   if(!e){for(const enemy of enemies)if(is(enemy))clear(enemy);projectiles=projectiles.filter(p=>!p.slayer);return;}
   release(e);e.hazards=[];e.oils=[];e.barrels=[];e.vy=0;e.walkSpeed=0;
-  projectiles=projectiles.filter(p=>!p.slayer);
+  projectiles=projectiles.filter(p=>!ownsShot(e,p));
  }
  function reset(e){
-  const graveAwake=!!(e.graveAwake||e.replay||flags[1].includes(summonFlag));
+  const graveAwake=!!(e.towerBoss||e.graveAwake||e.replay||flags[1].includes(summonFlag));
   clear(e);Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,active:false,dead:!e.replay&&flags[1].includes(flag),graveAwake,
    cycles:0,comboCount:0,move:null,inv:0,stun:0,armor:0,sawTriggered:false,sawReady:false,jumps:0,
    jumpUsed:false,landed:false,blockFlash:0,victoryPending:false,animTime:0,contactCd:0});
@@ -30,9 +32,9 @@ const DoomSlayer=(()=>{
  }
  function barrels(e){e.barrels=Array.from({length:9},(_,i)=>({id:i,x:e.arena.x+e.arena.w*(.08+i*.105),y:e.arena.y,punctured:false}));}
  function create(spec,i=0){
-  const area=level.secrets.find(s=>s.id===spec.secretArea);if(!area?.arena)throw Error('Missing grave arena');
-  const e={...spec,w:76,h:112,maxHp:260,origin:spec.x,baseY:spec.y-112,arena:area.arena,
-   face:-1,attackFace:-1,patrolFace:-1,patrolLeft:area.arena.x+22,patrolRight:area.arena.x+area.arena.w-98,
+  const arena=spec.arena||level.secrets.find(s=>s.id===spec.secretArea)?.arena;if(!arena)throw Error('Missing grave arena');
+  const e={...spec,w:76,h:112,maxHp:260,origin:spec.x,baseY:spec.y-112,arena,
+   face:-1,attackFace:-1,patrolFace:-1,patrolLeft:arena.x+22,patrolRight:arena.x+arena.w-98,
    recovery:0,attackTime:0,attackDuration:.65,turnCooldown:0,guardBreak:0,blocks:0,index:i};
   return reset(e);
  }
@@ -56,20 +58,20 @@ const DoomSlayer=(()=>{
  function meleeBox(e,width=150){return{x:e.attackFace>0?e.x+e.w*.4:e.x-width,y:e.y-4,w:width+e.w*.6,h:e.h+12};}
  function shot(e,x,y,vx,vy,damageValue,kind='arrow',extra={}){
   shoot(x,y,vx,vy,kind==='arrow'?'#f0a35f':'#c3d9f1',4,kind);
-  Object.assign(projectiles.at(-1),{damage:damageValue,slayer:true,source:'slayer',radius:8,...extra});
+  Object.assign(projectiles.at(-1),{damage:damageValue,slayer:true,source:'slayer',slayerOwner:e.towerBoss?e.id:null,radius:8,...extra});
  }
  function hazard(e,kind,x,width,warning,active,damageValue,height=180){
   e.hazards.push({kind,x:clamp(x-width/2,e.arena.x+12,e.arena.x+e.arena.w-width-12),y:e.arena.y-height,
    w:width,h:height,warning,warningDuration:warning,life:warning+active,active:false,damage:damageValue});
  }
  function beginSaw(e){
-  e.sawTriggered=true;e.comboCount=0;release(e);e.hazards=[];projectiles=projectiles.filter(p=>!p.slayer);
+  e.sawTriggered=true;e.comboCount=0;release(e);e.hazards=[];projectiles=projectiles.filter(p=>!ownsShot(e,p));
   e.move='saw';e.attackFace=facing(e);e.face=e.attackFace;e.retreatFrom=e.x;
   e.retreatTo=clamp(e.x-e.attackFace*260,e.patrolLeft,e.patrolRight);phase(e,'retreat',.65);
  }
  function defeat(e){
   if(e.dead)return false;
-  const first=!flags[1].includes(flag);e.hp=0;e.dead=true;e.active=false;clear(e);e.pose='defeat';e.victoryPending=first;
+  const first=!tower(e)&&!flags[1].includes(flag);e.hp=0;e.dead=true;e.active=false;clear(e);e.pose='defeat';e.victoryPending=first;
   if(first){flags[1].push(flag);persist();}updateHUD();return first;
  }
  function hit(e,hitbox,amount,kind='normal'){
@@ -115,7 +117,7 @@ const DoomSlayer=(()=>{
  function strikeContact(e){
   if(e.hitDone||!['flail','kick','grab','saw'].includes(e.move)||!overlap(player,meleeBox(e,e.move==='flail'?185:e.move==='grab'?105:140)))return;
   e.hitDone=true;
-  const lowGrab=e.move==='grab'&&player.hp<=3,amount=lowGrab?player.hp:({flail:5,kick:3,grab:2,saw:5}[e.move]);
+  const lowGrab=!tower(e)&&e.move==='grab'&&player.hp<=3,amount=lowGrab?player.hp:({flail:5,kick:3,grab:2,saw:5}[e.move]);
   const victim=hurt(e,amount,e.attackFace,!lowGrab,lowGrab);if(!victim)return;
   if(e.move==='kick'){victim.vx=e.attackFace*720;victim.vy=-280;}
   if(e.move==='grab')capture(e,victim,.5);
@@ -129,7 +131,7 @@ const DoomSlayer=(()=>{
   e.hazards=e.hazards.filter(h=>h.life>0);
   for(const oil of e.oils){
    oil.life-=dt;if(oil.lit){oil.warning=Math.max(0,oil.warning-dt);if(!oil.warning&&overlap(player,oil)){hurt(e,2,player.x>oil.x?1:-1);if(!e.active)return;}}
-   else for(const p of projectiles)if(p.slayer&&p.fire&&p.life>0&&overlap({x:p.x-10,y:p.y-10,w:20,h:20},oil)){oil.lit=true;oil.warning=.45;oil.life=12;p.life=0;break;}
+   else for(const p of projectiles)if(ownsShot(e,p)&&p.fire&&p.life>0&&overlap({x:p.x-10,y:p.y-10,w:20,h:20},oil)){oil.lit=true;oil.warning=.45;oil.life=12;p.life=0;break;}
   }
   e.oils=e.oils.filter(o=>o.life>0);
  }

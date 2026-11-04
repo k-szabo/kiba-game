@@ -11,6 +11,7 @@ function createEnemies() {
   return level.enemies.map(createEnemy);
 }
 function createEnemy(spec,i=0) {
+    if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(spec))return TowerBossCombat.create(spec);
     if(spec.miniboss)return createMiniboss(spec,i);
     const ninja=typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(spec);
     const h=ninja?.h??(spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
@@ -36,6 +37,7 @@ function respawnEnemies() {
 }
 function killEnemy(e) {
   if(e.dead||e.hp>0)return;
+  if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(e)){TowerBossCombat.defeat(e);return;}
   if(Serpents.is(e)){Serpents.defeat(e);return;}
   if(e.miniboss){defeatMiniboss(e);return;}
   if(e.noReward){e.dead=true;updateHUD();return;}
@@ -90,6 +92,7 @@ function updateEnemies(dt) {
   for(const e of enemies){if(!e.dead)DevLog.scope(e,()=>updateEnemy(e,dt));}
 }
 function updateEnemy(e,dt){
+    if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(e)){TowerBossCombat.update(e,dt);return;}
     if(typeof Grapple!=='undefined'&&Grapple.moveEnemy(e,dt))return;
     if(HannahCombat.updateSupport(e,dt))return;
     if(CampMaster.updateSupport(e,dt))return;
