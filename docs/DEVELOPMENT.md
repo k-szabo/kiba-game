@@ -273,6 +273,8 @@ A `test-arena-combat.cjs` és `test-arena-challenge.cjs` célzott tesztek a harc
 
 ## Zikkurat és Hajnalkard
 
+Hannah után a [zikkurat mélységi fő története](ZIGGURAT-DESCENT.md) következik: `ziggurat-descent*.js`, `ziggurat-gatekeeper.js` és `haru-follower.js`. Haru követése, a portálőr és a Japánba visszavezető út a közös helyszín-, mentés-, iránytű- és dev-katalógust használja.
+
 A három új árnyékvilági oldalhelyszín, Hannah állapotgépe, a történeti ultimate és az ellenőrzések részletei a [zikkurat technikai referenciában](ZIGGURAT.md) találhatók. A kompatibilitási korszak változatlan; az új mérföldkövek és pihenők hozzáadott, opcionális haladást jelentenek.
 
 A szellemlépés régi 8–12. fokozatát a szigorú mentésvalidáció után a 7. fokozatra normalizáljuk, az összes felszabaduló pont visszakerül a keretbe. Az XP és a kiosztott plusz szabad pontok összege továbbra is pontosan ellenőrzött. Nagy HP-nál a HUD tömör, lokalizált számlálót használ, hogy a menügombok elérhetők maradjanak.

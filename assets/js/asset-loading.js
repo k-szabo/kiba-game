@@ -8,7 +8,7 @@ const AssetLoading=(()=>{
  const fia=list('fiaKitsune fiaFox fiaFoxDead fiaArenaCasting fiaArenaYield fiaArenaWalk fiaTeleport fiaFoxfire fiaDrain fiaCharm kibaShield fiaJourneyItems'),residents=list('fiaDenResidents denNinja denThief fiaRitualAttendants');
  const actors={arenaCaptain:['arenaCaptain'],arenaSerpent:['arenaSerpent'],arenaCyclops:['arenaCyclops'],arenaFia:fia,
   dungeonCaptain:['dungeonCaptain'],dungeonCouncil:['dungeonCouncil'],dungeonNecromancer:['dungeonNecromancer','japanRaised'],cultTempleGuard:['cultTempleGuard'],woundedAngel:['cultWoundedAngel','holyArrow'],cultHighPriestess:['cultHighPriestess'],
-  campMaster:['campMaster','campMasterJump'],prisonWarden:['prisonWarden'],prisonHunter:['prisonHunter'],fiaVengeance:fia,hannah:list('hannahWalk hannahCombo hannahJump hannahRitual'),slayer:list('slayerMelee slayerRanged slayerDaisy slayerLightning')};
+  campMaster:['campMaster','campMasterJump'],voidGatekeeper:['voidGatekeeper'],prisonWarden:['prisonWarden'],prisonHunter:['prisonHunter'],fiaVengeance:fia,hannah:list('hannahWalk hannahCombo hannahJump hannahRitual'),slayer:list('slayerMelee slayerRanged slayerDaisy slayerLightning')};
  // Every painting, hidden sector, NPC and future combat pose owned by a map is
  // required at entry. Camera position and a boss's current phase never narrow it.
  const maps={
@@ -30,14 +30,15 @@ const AssetLoading=(()=>{
   cultDungeon1:list('cultDungeonForecourt cultTempleGuard dungeonProps cultDungeonItems'),
   cultDungeon2:list('cultDungeonHall cultWoundedAngel holyArrow dungeonProps cultDungeonItems'),
   cultDungeon3:list('cultDungeonSanctum cultHighPriestess dungeonProps cultDungeonItems'),
-  zigguratApproach:list('zigguratApproach'),zigguratInterior:list('zigguratInterior'),
-  zigguratSummit:[...list('zigguratThrone zigguratStorm hannahWalk hannahCombo hannahJump hannahRitual haruElder haruBindingPillar momoDawnblade slayerLightning demonLordSoulArt demonLordHeartArt'),...fia],
+  zigguratDepths:list('descentBackdrop haruFollow voidGatekeeper voidKeepers yomiWalk yomiAttack'),japanHeights:list('japanHeightsBackdrop haruFollow'),
+  zigguratApproach:list('zigguratApproach'),zigguratInterior:list('zigguratInterior haruFollow'),
+  zigguratSummit:[...list('zigguratThrone zigguratStorm haruFollow hannahWalk hannahCombo hannahJump hannahRitual haruElder haruBindingPillar momoDawnblade slayerLightning demonLordSoulArt demonLordHeartArt'),...fia],
   dragonCatacombs:list('dragonRaidHall dragonIdle dragonBreath dragonFlight dragonFront dragonStagger haruBindingPillar dragonItems'),
   fiaRitual:[...list('fiaRitualBackdrop fiaRitual fiaRitualPowers fiaRitualChains fiaAttendantSpirits fiaJourneyItems demonLordHeartArt dragonItems rawVoidCrystal foxfireKatanaArt'),...fia,...residents],
   shadowUnderworld:[...list('shadowUnderworldBackdrop campTerrain underworldServices fiaUnderworldCorrupted arenaCyclops'),...residents],
   voidForbidden:list('voidForbiddenBackdrop voidKeepers voidLieutenant voidDemon rawVoidCrystal')
  };
- const backgrounds={japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
+ const backgrounds={zigguratDepths:'descentBackdrop',japanHeights:'japanHeightsBackdrop',japan:'japanBackdrop',yomi:'yomiBackdrop',heaven:'heavenBackdrop',shadowRealm:'shadowCultBackdrop',forestCamp:'campHDCenter',samuraiCamp:'samuraiCampHDCenter',forgeInterior:'forgeBackdrop',herbalHut:'herbalBackdrop',mysticTent:'mysticBackdrop',councilHall:'councilHall',shadowPrison:'zenPrisonCenter',shadowDen:'fiaDenWest',shadowArena:'arenaCenter',fiaChambers:'fiaChambersBackdrop',yomiDungeon1:'dungeonCourtyardCenter',yomiDungeon2:'dungeonCrypt',yomiDungeon3:'dungeonThrones',cultDungeon1:'cultDungeonForecourt',cultDungeon2:'cultDungeonHall',cultDungeon3:'cultDungeonSanctum',zigguratApproach:'zigguratApproach',zigguratInterior:'zigguratInterior',zigguratSummit:'zigguratThrone',dragonCatacombs:'dragonRaidHall',fiaRitual:'fiaRitualBackdrop',shadowUnderworld:'shadowUnderworldBackdrop',voidForbidden:'voidForbiddenBackdrop'};
  let shown=false,focus=null,initialized=false,refreshQueued=false,backdrop=null;
  function prepare(){
   const duel=typeof DuelMode!=='undefined'&&DuelMode.active,menu=!duel&&(state==='menu'||state==='help'&&helpOrigin==='menu'),tower=!menu&&typeof TowerMode!=='undefined'&&TowerMode.active;

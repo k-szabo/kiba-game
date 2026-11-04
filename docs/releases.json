@@ -1682,6 +1682,22 @@
           "en": "After death in the Shadow Den Arena, restart the current round without repeating earlier rounds. One-time rewards cannot be earned again."
         }
       ]
+    },
+    {
+      "version": "0.9.69_1e6d43a0",
+      "code": "1e6d43a0",
+      "baseVersion": "0.9.69",
+      "slug": "ziggurat-descent-haru-return",
+      "summary": {
+        "hu": "Hazavezető út a mélyben",
+        "en": "A Way Home Below"
+      },
+      "fixes": [
+        {
+          "hu": "Hannah legyőzése után Haru Momót követve indul a zikkurat mélyére. Új ellenfelek, egy voidfertőzött kapuőr és a Japán lebegő hegyeihez vezető portál folytatják a fő történetet.",
+          "en": "After Hannah’s defeat, Haru follows Momo into the ziggurat depths. New enemies, a void-tainted gatekeeper and a portal to Japan’s floating mountains continue the main story."
+        }
+      ]
     }
   ]
 }

@@ -27,6 +27,11 @@
       "faction": "japan",
       "paletteGroup": "npc.dungeon.captain"
     },
+    "descent.haru": {
+      "role": "father",
+      "faction": "japan",
+      "paletteGroup": "npc.descent.haru"
+    },
     "japan.guard": {
       "faction": "japan",
       "role": "guard",
@@ -584,6 +589,107 @@
         ],
         "visibleSamples": 314698,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.descent.haru": {
+      "source": "assets/images/npcs/haru-follow-v1.png",
+      "frameMetadata": "ART_ZIGGURAT_DESCENT.haru.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdead4",
+            "coveragePercent": 9.2107
+          },
+          {
+            "hex": "#e4a978",
+            "coveragePercent": 8.654
+          },
+          {
+            "hex": "#766267",
+            "coveragePercent": 8.582
+          },
+          {
+            "hex": "#c6926e",
+            "coveragePercent": 8.2615
+          },
+          {
+            "hex": "#5d4d55",
+            "coveragePercent": 7.3033
+          },
+          {
+            "hex": "#eebf98",
+            "coveragePercent": 6.4695
+          },
+          {
+            "hex": "#36282a",
+            "coveragePercent": 6.0434
+          },
+          {
+            "hex": "#b57a55",
+            "coveragePercent": 6.0375
+          },
+          {
+            "hex": "#f8d7b8",
+            "coveragePercent": 5.9124
+          },
+          {
+            "hex": "#463a42",
+            "coveragePercent": 5.8379
+          },
+          {
+            "hex": "#956247",
+            "coveragePercent": 5.4626
+          },
+          {
+            "hex": "#251818",
+            "coveragePercent": 4.9634
+          },
+          {
+            "hex": "#774e39",
+            "coveragePercent": 4.6005
+          },
+          {
+            "hex": "#96776b",
+            "coveragePercent": 4.5116
+          },
+          {
+            "hex": "#0e0809",
+            "coveragePercent": 4.345
+          },
+          {
+            "hex": "#5a3829",
+            "coveragePercent": 3.8048
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dd9e6b",
+            "coveragePercent": 20.5056
+          },
+          {
+            "hex": "#b47651",
+            "coveragePercent": 17.7303
+          },
+          {
+            "hex": "#f1b378",
+            "coveragePercent": 17.4911
+          },
+          {
+            "hex": "#c78a5f",
+            "coveragePercent": 17.3152
+          },
+          {
+            "hex": "#9d6647",
+            "coveragePercent": 15.4454
+          },
+          {
+            "hex": "#8a563b",
+            "coveragePercent": 11.5124
+          }
+        ],
+        "visibleSamples": 502630,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "npc.japan.guard.walk.v5": {
@@ -2440,6 +2546,111 @@
         ],
         "visibleSamples": 314698,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/npcs/haru-follow-v1.png": {
+      "sha256": "ed9e3a64f5bf16244eb596683af036f584f9479b578ef1004584338d6e48c6ff",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "haruFollow"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fdead4",
+            "coveragePercent": 9.2107
+          },
+          {
+            "hex": "#e4a978",
+            "coveragePercent": 8.654
+          },
+          {
+            "hex": "#766267",
+            "coveragePercent": 8.582
+          },
+          {
+            "hex": "#c6926e",
+            "coveragePercent": 8.2615
+          },
+          {
+            "hex": "#5d4d55",
+            "coveragePercent": 7.3033
+          },
+          {
+            "hex": "#eebf98",
+            "coveragePercent": 6.4695
+          },
+          {
+            "hex": "#36282a",
+            "coveragePercent": 6.0434
+          },
+          {
+            "hex": "#b57a55",
+            "coveragePercent": 6.0375
+          },
+          {
+            "hex": "#f8d7b8",
+            "coveragePercent": 5.9124
+          },
+          {
+            "hex": "#463a42",
+            "coveragePercent": 5.8379
+          },
+          {
+            "hex": "#956247",
+            "coveragePercent": 5.4626
+          },
+          {
+            "hex": "#251818",
+            "coveragePercent": 4.9634
+          },
+          {
+            "hex": "#774e39",
+            "coveragePercent": 4.6005
+          },
+          {
+            "hex": "#96776b",
+            "coveragePercent": 4.5116
+          },
+          {
+            "hex": "#0e0809",
+            "coveragePercent": 4.345
+          },
+          {
+            "hex": "#5a3829",
+            "coveragePercent": 3.8048
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dd9e6b",
+            "coveragePercent": 20.5056
+          },
+          {
+            "hex": "#b47651",
+            "coveragePercent": 17.7303
+          },
+          {
+            "hex": "#f1b378",
+            "coveragePercent": 17.4911
+          },
+          {
+            "hex": "#c78a5f",
+            "coveragePercent": 17.3152
+          },
+          {
+            "hex": "#9d6647",
+            "coveragePercent": 15.4454
+          },
+          {
+            "hex": "#8a563b",
+            "coveragePercent": 11.5124
+          }
+        ],
+        "visibleSamples": 502630,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/npcs/zen-priestess-v2.png": {

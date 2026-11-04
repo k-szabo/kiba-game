@@ -128,7 +128,7 @@ const HannahEncounter=(()=>{
   if(level===levels[3]&&defeated[3]&&pointNear(level.zigguratEntrance,105,90))return {type:'zigguratEnter',id:'zigguratApproach',text:I18n.format('ziggurat.enter',[I18n.t('ziggurat.name')])};
   if(!active())return null;
   if(level.nextPoint&&pointNear(level.nextPoint,105,85))return {type:'zigguratEnter',id:level.nextDestination.location,text:I18n.format('ziggurat.enter',[I18n.t(SIDE_LOCATIONS[level.nextDestination.location].map.name)])};
-  if(summit()&&completed()&&pointNear({x:1800,y:1400-lift},100,100))return {type:'zigguratHaru',text:I18n.format('camp.talk',[I18n.t('HARU')])};
+  if(summit()&&completed()&&!ZigguratDescentRules.eligible(flags,defeated)&&pointNear({x:1800,y:1400-lift},100,100))return {type:'zigguratHaru',text:I18n.format('camp.talk',[I18n.t('HARU')])};
   if(pointNear(level.returnPoint,100,85))return {type:'zigguratReturn',text:I18n.format('ziggurat.return',[I18n.t(level.returnDestination.location?SIDE_LOCATIONS[level.returnDestination.location].map.name:'shadow.name')])};
   return null;
  }

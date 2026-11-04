@@ -113,7 +113,7 @@ const HannahArt=(()=>{
   const x=2280+(1800-2280)*release,feet=floor-135*(1-release);
   prop('haruBindingPillar',2280,floor,350);
   if(e?.active)for(const edge of [e.arena.x,e.arena.x+e.arena.w])prop('haruBindingPillar',edge,floor,240);
-  if(haru(x,feet,125,-1))nameplate(x,feet,125,'HARU');
+  if((typeof ZigguratDescentRules==='undefined'||!ZigguratDescentRules.accepted(flags))&&haru(x,feet,125,-1))nameplate(x,feet,125,'HARU');
   ctx.save();
   if(!v.haruFreed){
    for(const side of [-1,1]){ctx.beginPath();ctx.moveTo(x+side*32,feet-55);ctx.lineTo(x+side*65,feet-110);ctx.lineWidth=7;ctx.strokeStyle='#15101d';ctx.stroke();ctx.lineWidth=3;ctx.strokeStyle='#bd9b72';ctx.setLineDash([6,3]);ctx.stroke();ctx.setLineDash([]);}

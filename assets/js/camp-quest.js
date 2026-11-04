@@ -16,7 +16,7 @@ const CampQuest=(()=>{
   const id=level?.id;
   return typeof id==='string'&&Object.hasOwn(SIDE_LOCATIONS,id)&&SIDE_LOCATIONS[id].map===level?id:null;
  }
- const isSide=()=>!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
+ const isSide=()=>!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -30,7 +30,7 @@ const CampQuest=(()=>{
   resetCamera();updateHUD();if(save)persist();return true;
  }
  function enter(id,{point=null,atShrine=false,save=true}={}){
-  if((FiaRitual.blocked()||VoidEncounter.locked()||DragonRaid.locked()||FiaConflict.blocked())&&!DevSession.active)return false;
+  if((ZigguratDescent.locked()||FiaRitual.blocked()||VoidEncounter.locked()||DragonRaid.locked()||FiaConflict.blocked())&&!DevSession.active)return false;
   if(typeof id!=='string'||!Object.hasOwn(SIDE_LOCATIONS,id)||Prologue.active&&!DevSession.active||!eligible(id))return false;
   const map=SIDE_LOCATIONS[id].map,rest=point==null?(map.checkpoints?.[0]||map.rests[0]):[...map.rests,...(map.checkpoints||[])].find(candidate=>candidate.id===point.id);
   if(map.dungeon?.id==='sectFall'&&!DevSession.active&&!abilities[1])return false;
@@ -45,7 +45,7 @@ const CampQuest=(()=>{
   return finishEntry(save);
  }
  function leave(){
-  if(state!=='play'||!isSide()||FiaRitual.blocked()||VoidEncounter.locked()||DragonRaid.locked()||FiaConflict.blocked())return false;
+  if(state!=='play'||!isSide()||ZigguratDescent.locked()||FiaRitual.blocked()||VoidEncounter.locked()||DragonRaid.locked()||FiaConflict.blocked())return false;
   const map=level,hp=player.hp,destination=map.returnDestination;
   FiaRitual.escaped(destination.location?SIDE_LOCATIONS[destination.location]?.map:levels[destination.realm??0]);
   KitsuneQuest.leaveFor(destination.location?SIDE_LOCATIONS[destination.location]?.map:levels[destination.realm??0]);
@@ -143,7 +143,7 @@ const CampQuest=(()=>{
   return null;
  }
  function objective(){
-  if(level.ziggurat||level.dungeon||level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
+  if(level.descent||level.ziggurat||level.dungeon||level===shadowPrison||level===shadowDen||level===shadowArena||level===fiaChambers)return null;
   if(level===samuraiCamp){
    const cage=level.cages.find(candidate=>!owns(candidate.flag));
    const target=!owns('guardian:campMaster')?{point:level.arena,text:'camp.rescue.objective.master'}:cage?{point:cage,text:'camp.rescue.objective.rescue'}:{point:level.returnPoint,text:'camp.rescue.objective.return'};

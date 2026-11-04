@@ -1,6 +1,8 @@
 # Festett hátterek helyi animációja
 
-A `background-motion.js` mind a 52 háttérfestmény natív méretű második fázisából készít maszkolt, finoman átúszó részleteket. A fő pályák mellett a rejtett arénák, táborok, belső terek és dungeonök is saját festett fázist kaptak. Az alternatív képek az `ART_MANIFEST` részei, de a `Visuals` induló képlistája kizárja őket: az első jelenetrajzoláskor az `AssetCache` tölti be őket. A sor egyszerre egy képet tölt, legfeljebb három fázist tart meg, és 64 MiB memóriafoglalási kerettel számol. Hiányzó vagy hibás B képnél a korábbi, kis forrásmaszkos tartalék rajzolás marad.
+A zikkurat mélysége és Japán lebegő hegyei a meglévő, jóváhagyott köd-/felhőmozgást használják két további B fázissal. Csak a kijelölt távoli ködrészletek úsznak át; az építészet, sziklák és a járható terep rögzített. A két B kép egy pixellel keskenyebb forrását a `[1671,941]` regisztráció illeszti az eredeti `[1672,941]` képre.
+
+A `background-motion.js` mind az 54 háttérfestmény natív méretű második fázisából készít maszkolt, finoman átúszó részleteket. A fő pályák mellett a rejtett arénák, táborok, belső terek és dungeonök is saját festett fázist kaptak. Az alternatív képek az `ART_MANIFEST` részei, de a `Visuals` induló képlistája kizárja őket: az első jelenetrajzoláskor az `AssetCache` tölti be őket. A sor egyszerre egy képet tölt, legfeljebb három fázist tart meg, és 64 MiB memóriafoglalási kerettel számol. Hiányzó vagy hibás B képnél a korábbi, kis forrásmaszkos tartalék rajzolás marad.
 
 Az új részletek kézzel kijelölt területei befelé halványulnak. Yomi lámpásának teteje és talapzata védett terület. A tartalék forrásmaszk legfeljebb 512 pixel széles; a sikeresen betöltött festett fázisok nem használják a régi fényerőpulzálást. Hiányzó vagy eltérő méretű B kép esetén a régi rajzolás marad. A forráskép vetítési és vágási koordinátái változatlanok.
 
@@ -26,7 +28,7 @@ A fő birodalmak, a szentély- és barlanghátterek, az erdei menedék, a szolg�
 
 ## Teljes festett A/B lefedettség
 
-Mind a 52 forrásképhez külön, natív méretű B fázis és kézzel kijelölt mozgásterület tartozik. A 51 elérhető kép mellett az egyelőre nem használt `samuraiCampBackdrop` tartalékkép is szerepel. Az épített környezet és a pályageometria változatlan. A teljes leltárt a fő birodalmak, a mennyország három bossfázisa, a prológus és ébredés, az öt rejtett arénakép, a zikkurat négy képe, a három szolgáltatói belső tér, a tanácsosi csarnok és az alábbi panelek alkotják:
+Mind az 54 forrásképhez külön, natív méretű B fázis és kézzel kijelölt mozgásterület tartozik. Az 53 elérhető kép mellett az egyelőre nem használt `samuraiCampBackdrop` tartalékkép is szerepel. Az épített környezet és a pályageometria változatlan. A teljes leltárt a fő birodalmak, a mennyország három bossfázisa, a prológus és ébredés, az öt rejtett arénakép, a zikkurat négy képe, a három szolgáltatói belső tér, a tanácsosi csarnok és az alábbi panelek alkotják:
 
 | Helyszíncsoport | Háttérkulcsok |
 | --- | --- |

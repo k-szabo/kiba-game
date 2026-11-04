@@ -23,7 +23,7 @@ const Compass=(()=>{
   // A dungeon or an active side quest keeps its own immediate instructions.
   // Ordinary travel instead follows the persistent main-story milestones.
   if(Prologue.active||FiaRitual.pendingEscape()||flags[3].includes('fiaRitualAccepted')&&!flags[3].includes('fiaSlain')||FiaVoidJourney.active()||DragonRaid.questRoute()||level.dragonRaid||level.dungeon||[samuraiCamp,shadowPrison,shadowArena,shadowDen,fiaChambers].includes(level))return local;
-  if(flags[3].includes(HannahRules.progress.defeated))return {compass:false,journeyEnd:true,text:'story.journeyEnd'};
+  if(flags[3].includes(HannahRules.progress.defeated))return ZigguratDescent.objective()||local;
   const target=mainTarget();
   if(level===target.map||level.ziggurat&&target.map===zigguratSummit)return local;
   if(level===levels[3]&&defeated[3])return {point:level.zigguratEntrance,name:'ziggurat.name',text:'ziggurat.objective.approach'};

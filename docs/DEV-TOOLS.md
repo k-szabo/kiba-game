@@ -180,6 +180,8 @@ Az Árnyékzugban és Fia lakosztályában a boss-választó külön `fiaVengean
 
 ## Zikkurat
 
+A [hazavezető folytatás](ZIGGURAT-DESCENT.md) két további regisztrált teleportcélt ad (`zigguratDepths`, `japanHeights`). A mélységi helyszínen a bossválasztó külön visszajátszhatja a voidfertőzött kapuőrt, normál mentési vagy történeti jutalom nélkül.
+
 A rituálészoba bossválasztója külön `fiaRitual` végső harcot is kínál.
 A replay a teljes első fázisból indul, nem áldoz fel udvarlányt és nem ad
 XP-t, pontot, lelket, pajzsot vagy ritka fegyvert. A normál `fiaVengeance`

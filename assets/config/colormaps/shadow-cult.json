@@ -35,6 +35,11 @@
       "faction": "shadowCult",
       "paletteGroup": "npc.cultDungeon.highPriestess"
     },
+    "descent.gatekeeper": {
+      "role": "portal-guardian",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.descent.gatekeeper"
+    },
     "hannah.walk": {
       "role": "demon-lord",
       "faction": "shadowCult",
@@ -914,6 +919,107 @@
         ],
         "visibleSamples": 610024,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.descent.gatekeeper": {
+      "source": "assets/images/enemies/void-gatekeeper-v1.png",
+      "frameMetadata": "ART_ZIGGURAT_DESCENT.gatekeeper.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#190a0f",
+            "coveragePercent": 14.83
+          },
+          {
+            "hex": "#5c3943",
+            "coveragePercent": 13.4878
+          },
+          {
+            "hex": "#39222d",
+            "coveragePercent": 12.9592
+          },
+          {
+            "hex": "#825257",
+            "coveragePercent": 10.5812
+          },
+          {
+            "hex": "#ac7373",
+            "coveragePercent": 7.6159
+          },
+          {
+            "hex": "#e4433c",
+            "coveragePercent": 6.2561
+          },
+          {
+            "hex": "#591e17",
+            "coveragePercent": 5.8377
+          },
+          {
+            "hex": "#d79053",
+            "coveragePercent": 5.7643
+          },
+          {
+            "hex": "#a86c3c",
+            "coveragePercent": 5.2415
+          },
+          {
+            "hex": "#953328",
+            "coveragePercent": 5.0323
+          },
+          {
+            "hex": "#f2c158",
+            "coveragePercent": 3.3703
+          },
+          {
+            "hex": "#efbf95",
+            "coveragePercent": 2.8292
+          },
+          {
+            "hex": "#fadedc",
+            "coveragePercent": 1.718
+          },
+          {
+            "hex": "#ed89f1",
+            "coveragePercent": 1.546
+          },
+          {
+            "hex": "#c54fcc",
+            "coveragePercent": 1.5165
+          },
+          {
+            "hex": "#8c2e8a",
+            "coveragePercent": 1.4139
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#974332",
+            "coveragePercent": 24.4858
+          },
+          {
+            "hex": "#bf7d49",
+            "coveragePercent": 23.2531
+          },
+          {
+            "hex": "#e5443c",
+            "coveragePercent": 19.7637
+          },
+          {
+            "hex": "#eeb55c",
+            "coveragePercent": 18.4014
+          },
+          {
+            "hex": "#9b3d7e",
+            "coveragePercent": 8.0775
+          },
+          {
+            "hex": "#d65ddd",
+            "coveragePercent": 6.0184
+          }
+        ],
+        "visibleSamples": 408694,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.hannah.walk": {
@@ -7290,6 +7396,111 @@
         ],
         "visibleSamples": 466789,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/void-gatekeeper-v1.png": {
+      "sha256": "f095aa24f8ea0a8888edf0b10756c58a6198460ff20dc9137795f1fbf184c8cb",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "voidGatekeeper"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#190a0f",
+            "coveragePercent": 14.83
+          },
+          {
+            "hex": "#5c3943",
+            "coveragePercent": 13.4878
+          },
+          {
+            "hex": "#39222d",
+            "coveragePercent": 12.9592
+          },
+          {
+            "hex": "#825257",
+            "coveragePercent": 10.5812
+          },
+          {
+            "hex": "#ac7373",
+            "coveragePercent": 7.6159
+          },
+          {
+            "hex": "#e4433c",
+            "coveragePercent": 6.2561
+          },
+          {
+            "hex": "#591e17",
+            "coveragePercent": 5.8377
+          },
+          {
+            "hex": "#d79053",
+            "coveragePercent": 5.7643
+          },
+          {
+            "hex": "#a86c3c",
+            "coveragePercent": 5.2415
+          },
+          {
+            "hex": "#953328",
+            "coveragePercent": 5.0323
+          },
+          {
+            "hex": "#f2c158",
+            "coveragePercent": 3.3703
+          },
+          {
+            "hex": "#efbf95",
+            "coveragePercent": 2.8292
+          },
+          {
+            "hex": "#fadedc",
+            "coveragePercent": 1.718
+          },
+          {
+            "hex": "#ed89f1",
+            "coveragePercent": 1.546
+          },
+          {
+            "hex": "#c54fcc",
+            "coveragePercent": 1.5165
+          },
+          {
+            "hex": "#8c2e8a",
+            "coveragePercent": 1.4139
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#974332",
+            "coveragePercent": 24.4858
+          },
+          {
+            "hex": "#bf7d49",
+            "coveragePercent": 23.2531
+          },
+          {
+            "hex": "#e5443c",
+            "coveragePercent": 19.7637
+          },
+          {
+            "hex": "#eeb55c",
+            "coveragePercent": 18.4014
+          },
+          {
+            "hex": "#9b3d7e",
+            "coveragePercent": 8.0775
+          },
+          {
+            "hex": "#d65ddd",
+            "coveragePercent": 6.0184
+          }
+        ],
+        "visibleSamples": 408694,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/enemies/void-keepers-v1.png": {

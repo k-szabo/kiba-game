@@ -2350,14 +2350,14 @@
       {
         "value": "#fff",
         "lines": [
-          143
+          145
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          143
+          145
         ],
         "dynamic": false
       }
@@ -2549,7 +2549,7 @@
       {
         "value": "#b087dd",
         "lines": [
-          552
+          554
         ],
         "dynamic": false
       },
@@ -2578,7 +2578,7 @@
       {
         "value": "#cf8aff",
         "lines": [
-          536
+          538
         ],
         "dynamic": false
       },
@@ -2614,14 +2614,14 @@
       {
         "value": "#ffe6a2",
         "lines": [
-          551
+          553
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          536
+          538
         ],
         "dynamic": false
       },
@@ -4258,6 +4258,7 @@
     "assets/js/hannah-combat.js": [],
     "assets/js/hannah-encounter.js": [],
     "assets/js/hannah-rules.js": [],
+    "assets/js/haru-follower.js": [],
     "assets/js/i18n.js": [],
     "assets/js/inventory.js": [],
     "assets/js/keybindings.js": [],
@@ -4871,6 +4872,28 @@
     "assets/js/weapon-equipment.js": [],
     "assets/js/weapon-selection.js": [],
     "assets/js/weapons.js": [],
+    "assets/js/ziggurat-descent-art-data.js": [],
+    "assets/js/ziggurat-descent-art.js": [
+      {
+        "value": "#ba80e626",
+        "lines": [
+          35
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/ziggurat-descent-maps.js": [],
+    "assets/js/ziggurat-descent-rules.js": [],
+    "assets/js/ziggurat-descent.js": [],
+    "assets/js/ziggurat-gatekeeper.js": [
+      {
+        "value": "#ba80ed",
+        "lines": [
+          65
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/ziggurat-maps.js": []
   }
 }

@@ -7,7 +7,7 @@ const fs=require('node:fs'),path=require('node:path');
  // #190 repairs visible paw registration per pose; collision/body scale stays fixed.
  for(const [i,f]of Array.from(r('ART_DRAGON.front.frames')).entries())assert.deepEqual([f.x,f.y,f.w,f.h,f.anchorX,f.anchorY,f.bodyHeight],[i%2*768,Math.floor(i/2)*512,768,[477,481,453,456][i],i%2*768+384,[476,480,964,967][i],400],'Frontal pose '+i+' uses its measured paw baseline without changing body scale');
 }
-function entry(){const h=harness();h.run("Prologue.stop();defeated=[true,true,true,true];flags[3]=['hannahDefeated','fiaTalismanCompleted','fiaRescued','arenaChampion'];CampQuest.enter('zigguratInterior',{save:false});enemies=[];state='play';");return h;}
+function entry(){const h=harness();h.run("Prologue.stop();defeated=[true,true,true,true];flags[3]=['hannahDefeated','guardian:Hannah','dawnblade','fiaTalismanCompleted','fiaRescued','arenaChampion'];CampQuest.enter('zigguratInterior',{save:false});enemies=[];state='play';");return h;}
 {
  const h=entry(),r=h.run;r('initPlayer(level.dragonRaidEntrance)');assert.equal(r('getContext().type'),'dragonRaidEnter');
  h.press({action:'interact'});h.tick();h.release({action:'interact'});assert.equal(r('state'),'dungeonMenu');h.elements.get('dungeonNew').onclick();assert.equal(r('level.id'),'dragonCatacombs');
@@ -16,11 +16,11 @@ function entry(){const h=harness();h.run("Prologue.stop();defeated=[true,true,tr
  const h=entry(),r=h.run;r('initPlayer(level.returnPoint)');assert.equal(r('getContext().type'),'zigguratReturn');h.press({action:'interact'});h.tick();h.release({action:'interact'});assert.equal(r('level.id'),'zigguratApproach');
 }
 {
- const h=entry(),r=h.run;assert.equal(r('nextObjective().text'),'story.journeyEnd');r("flags[3].push('fiaDragonAccepted')");
+ const h=entry(),r=h.run;assert.equal(r('nextObjective().text'),'descent.objective.haru');r("flags[3].push('fiaDragonAccepted')");
  for(const id of ['zigguratInterior','zigguratSummit','fiaChambers']){r(`CampQuest.enter('${id}',{save:false});`);assert.equal(r('nextObjective().text'),'fia.dragon.location');}
  r("flags[3].push('dragonEyes');CampQuest.enter('zigguratInterior',{save:false})");assert.equal(r('nextObjective().text'),'fia.dragon.objective.return');
- r("flags[3].push('fiaDragonCompleted')");assert.equal(r('nextObjective().text'),'story.journeyEnd');
- r("flags[3]=flags[3].filter(id=>id!=='fiaDragonCompleted');flags[3].push('fiaSlain')");assert.equal(r('nextObjective().text'),'story.journeyEnd');
+ r("flags[3].push('fiaDragonCompleted')");assert.equal(r('nextObjective().text'),'descent.objective.haru');
+ r("flags[3]=flags[3].filter(id=>id!=='fiaDragonCompleted');flags[3].push('fiaSlain')");assert.equal(r('nextObjective().text'),'descent.objective.haru');
 }
 for(const fps of [30,60,120])for(const near of [true,false]){
  const h=entry(),r=h.run;r(`initPlayer(level.dragonRaidEntrance);DragonRaid.begin();

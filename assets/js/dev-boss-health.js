@@ -22,6 +22,7 @@ const DevBossHealth=(()=>{
   else if(FiaRitual.enemy)target=FiaRitual.enemy;
   else if(VoidEncounter.active())target=VoidEncounter.actor;
   else if(DragonRaid.active())target=DragonRaid.health();
+  else if(typeof GatekeeperCombat!=='undefined'&&level?.id==='zigguratDepths')target=enemies.find(e=>!e.dead&&e.active&&GatekeeperCombat.is(e));
   else if(HannahEncounter.active()||FiaConflict.enemy||DungeonRun.active()||ArenaChallenge.active()||level===samuraiCamp)
    target=enemies.find(e=>!e.dead&&e.active&&(HannahCombat.is(e)||FiaCombat.is(e)||DungeonCombat.is(e)||ArenaCombat.is(e)||CampMaster.is(e)));
   else if(bossStarted)target=boss;

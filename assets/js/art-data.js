@@ -18,6 +18,12 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ descentBackdrop:'assets/images/backgrounds/ziggurat-depths-v1.png',
+ descentBackdropMotionPhaseB:'assets/images/backgrounds/ziggurat-depths-motion-b-v1.png',
+ japanHeightsBackdrop:'assets/images/backgrounds/japan-heights-v1.png',
+ japanHeightsBackdropMotionPhaseB:'assets/images/backgrounds/japan-heights-motion-b-v1.png',
+ voidGatekeeper:'assets/images/enemies/void-gatekeeper-v1.png',
+ haruFollow:'assets/images/npcs/haru-follow-v1.png',
  towerBackdrop:'assets/images/backgrounds/endless-tower-v1.png',
  towerBackdropMotionPhaseB:'assets/images/backgrounds/endless-tower-motion-b-v1.png',
  travelAtlas:'assets/images/ui/travel-atlas-v1.png',
