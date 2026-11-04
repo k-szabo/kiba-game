@@ -19,6 +19,7 @@ let attackElapsed=0,attackFace=1,attackHit=false,attackKind='normal';
 let attack=0,attackCooldown=0,dash=0,dashCooldown=0,dashTrailClock=0,jumpBuffer=0,coyote=0,dropTimer=0;
 let toastTimer=0,shake=0,sound=false,audio,musicClock=0,context=null,bossStarted=false,loadingReady=false,storageReady=false,saveWarning=false;
 const keys=new Set(),pressed=new Set();
+if(typeof Fullscreen!=='undefined')Fullscreen.init();
 AssetLoading.init();
 let resolutionBlocked=false,resolutionFocus=null;
 const realms=[
@@ -419,7 +420,7 @@ function renderHelp(){
  const labels={combatDisplayTitle:'combat.title',combatIncomingLabel:'combat.incoming',combatOutgoingLabel:'combat.outgoing',combatBossHealthLabel:'combat.bossHealth',helpEyebrow:'help.eyebrow',helpTitle:'help.title',helpMoveTitle:'help.move.title',helpMoveBody:'help.move.body',helpFightTitle:'help.fight.title',helpFightBody:'help.fight.body',helpJourneyTitle:'help.journey.title',helpJourneyBody:'help.journey.body',helpBindingsTitle:'help.bindings.title',helpBindingsBody:'help.bindings.body',bindingProfileLabel:'help.bindings.profile',resetBindings:'help.bindings.reset',exportBindings:'help.bindings.export',importBindings:'help.bindings.import',closeHelp:'help.close',pauseHelpButton:'help.pause.button'};
  for(const [id,key] of Object.entries(labels))$(id).textContent=I18n.t(key);$('helpJourneyBody').textContent+=' '+I18n.format('help.inventory.body',[bindingKeyLabel(Bindings.read('inventory')[0])]);
  $('helpFightBody').textContent+=' '+I18n.format('help.attack.body',[bindingKeyLabel(Bindings.read('attack')[0]),bindingKeyLabel(Bindings.read('heavyAttack')[0])]);
- $('helpFightBody').textContent+=' '+I18n.t('help.pointerLock');
+ $('helpFightBody').textContent+=' '+I18n.t('help.pointerLock')+' '+I18n.t('help.fullscreen');
  if(Dawnblade.owned())$('helpFightBody').textContent+=' '+I18n.format('help.dawnblade',[bindingKeyLabel(Bindings.read('ultimate')[0])]);
  $('helpJourneyBody').textContent+=' '+I18n.format('help.merchant.body',[bindingKeyLabel(Bindings.read('useMeat')[0])]);
  const select=$('bindingProfile');select.replaceChildren();
@@ -494,7 +495,7 @@ function handleKeyDown(e){
  if(state==='shop'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k))){e.preventDefault();Merchant.close();}return;}
  if(state==='inventory'){if(!e.repeat&&(k==='escape'||Bindings.read('pause').includes(k)||Bindings.read('inventory').includes(k))){e.preventDefault();Inventory.close();}return;}
  if(state==='help'){
-  if(captureAction){e.preventDefault();if(e.repeat)return;if(k==='escape'){captureAction=null;renderHelp();$('bindingMessage').textContent='';return;}
+  if(captureAction){e.preventDefault();if(e.repeat||['control','alt','meta'].includes(k))return;if(k==='escape'){captureAction=null;renderHelp();$('bindingMessage').textContent='';return;}
    finishBindingCapture(k);return;
   }
   if(k==='escape'){e.preventDefault();closeHelp();}return;

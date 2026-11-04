@@ -1698,6 +1698,34 @@
           "en": "After Hannah’s defeat, Haru follows Momo into the ziggurat depths. New enemies, a void-tainted gatekeeper and a portal to Japan’s floating mountains continue the main story."
         }
       ]
+    },
+    {
+      "version": "0.9.70_a818a30b",
+      "code": "a818a30b",
+      "baseVersion": "0.9.70",
+      "slug": "fullscreen-and-quest-fixes",
+      "summary": {
+        "hu": "Teljes képernyő és küldetésjavítások",
+        "en": "Fullscreen and quest fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A játék Ctrl+F billentyűkombinációval teljes képernyőre váltható.",
+          "en": "Toggle fullscreen with Ctrl+F."
+        },
+        {
+          "hu": "A betöltést felugró ablak helyett a képernyő alján százalékos csík jelzi.",
+          "en": "A percentage bar at the bottom of the screen replaces the loading popup."
+        },
+        {
+          "hu": "Daichi mentőküldetésének első leadása 600 XP-t ad. A korábban lezárt küldetésekhez nem jár utólagos jutalom.",
+          "en": "Turning in Daichi’s rescue quest for the first time grants 600 XP. Previously completed quests do not receive a retroactive reward."
+        },
+        {
+          "hu": "Fia a sárkányszemek leadásakor a párbeszéd végéig a helyén marad.",
+          "en": "Fia stays in place until the dragon-eye turn-in dialogue ends."
+        }
+      ]
     }
   ]
 }

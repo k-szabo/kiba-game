@@ -159,5 +159,11 @@
         }
       }
     }
+  },
+  "shortcuts": {
+    "fullscreen": {
+      "key": "f",
+      "ctrl": true
+    }
   }
 }
