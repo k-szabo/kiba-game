@@ -134,6 +134,7 @@ const CampQuest=(()=>{
   const fiaMarker=FiaRitual.questMarker(id)||FiaVoidJourney.questMarker(id)||FiaQuest.questMarker(id);if(fiaMarker)return fiaMarker;
   const arenaMarker=ArenaChallenge.questMarker(id);if(arenaMarker)return arenaMarker;
   if(Prologue.active||state==='menu')return null;
+  if(id==='zen'&&PrisonQuest.purificationReady())return '?';
   if(id==='daichi'&&level===forestCamp&&defeated[0])return !owns('campQuestAccepted')?'!':rescueFlags.every(owns)&&!owns('campQuestCompleted')?'?':null;
   if(id==='herbalist'&&level===herbalHut&&(DevSession.active||owns('herbalistRescued'))){
    if(campServices.herbs>=CampServiceRules.profile.herbsPerBrew)return '?';

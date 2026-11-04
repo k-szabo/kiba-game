@@ -118,6 +118,7 @@ const SaveVault=(()=>{
    if((chickenCount>0||data.quickHeal==='roastChicken')&&!completed)throw Error('Invalid chicken reward');
    if(slain&&(!rescuedFia||!data.defeated[shadowIndex])||['fiaRewardClaimed','kitsuneSoul','kibaShield'].some(id=>shadow.includes(id)!==slain))throw Error('Invalid Fia victory');
    if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
+   if(shadow.includes('zenHymnPurified')&&(!shadow.includes('zenRescued')||!shadow.includes('corruptedHymn')||data.soldItems.includes('corruptedHymn')))throw Error('Invalid hymn purification');
   }
   for(const o of levels[0].objects.filter(o=>o.type==='relic'))if(data.flags[0].includes(o.id)&&(!data.abilities[0]||!data.flags[0].includes('guardian:'+o.guardian)))throw Error('Unguarded relic');
   if(data.flags[2].includes('eclipseRelic')&&(!data.defeated[2]||!['angelHalo','demonHorn'].every(id=>data.flags[0].includes(id))))throw Error('Invalid united relic');

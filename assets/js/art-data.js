@@ -325,7 +325,7 @@ const ART_INVENTORY = {
     daisyPlush:{name:'item.daisyPlush',realm:1,image:'slayerDaisy',x:176,y:3,w:1098,h:1121,consumedBy:{realm:0,id:'daisyPlaced'}},
     slayerCrossbow:{name:'item.slayerCrossbow',realm:1,image:'slayerCrossbow',x:34,y:69,w:1497,h:869},
     madPriestSoul:{name:'item.madPriestSoul',realm:3,image:'madPriestSoul',x:77,y:4,w:1079,h:1246},
-    corruptedHymn:{name:'item.corruptedHymn',realm:3,image:'corruptedHymn',x:39,y:166,w:1202,h:944},
+    corruptedHymn:{name:'item.corruptedHymn',realm:3,image:'corruptedHymn',x:39,y:166,w:1202,h:944,consumedBy:{realm:3,id:'zenHymnPurified'}},
     prisonKey:{name:'item.prisonKey',realm:3,image:'prisonKey',x:50,y:68,w:1178,h:1143,consumedBy:{realm:3,id:'prisonOpen'}},
     phoneCase:{name:'item.phoneCase',realm:1,category:'trinket',image:'phoneCase',x:49,y:26,w:1034,h:1328},
     compass:{name:'item.compass',realm:1,category:'travelGear',image:'compass',x:180,y:26,w:912,h:1200},
