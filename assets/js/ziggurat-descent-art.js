@@ -13,6 +13,12 @@ const ZigguratDescentArt=(()=>{
   BackgroundMotion.draw(image,x,y,w,h);ctx.restore();return true;
  }
  function scenery(){
+  if(level===zigguratInterior&&ZigguratDescentRules.accepted(flags)){
+   const p=level.descentEntrance;
+   BossVFX.portal(p.x,p.y,165,.82);
+   Visuals.campPathMarker(p,I18n.t(zigguratDepths.name));
+   return;
+  }
   if(!active())return;
   const p=level===zigguratDepths?level.portalPoint:level.returnPoint;
   const open=ZigguratDescentRules.gateCleared(flags);
