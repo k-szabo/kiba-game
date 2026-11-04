@@ -1313,7 +1313,13 @@
       "menu.changelog.0968.9feefa17.title": "Arénamenetek újrapróbálása",
       "menu.changelog.0968.9feefa17.0": "Az Árnyékzug arénájában halál után az aktuális menet indul újra; a korábbi meneteket nem kell megismételni. Az egyszeri jutalmak nem szerezhetők meg újra.",
       "menu.changelog.0969.1e6d43a0.title": "Hazavezető út a mélyben",
-      "menu.changelog.0969.1e6d43a0.0": "Hannah legyőzése után Haru Momót követve indul a zikkurat mélyére. Új ellenfelek, egy voidfertőzött kapuőr és a Japán lebegő hegyeihez vezető portál folytatják a fő történetet."
+      "menu.changelog.0969.1e6d43a0.0": "Hannah legyőzése után Haru Momót követve indul a zikkurat mélyére. Új ellenfelek, egy voidfertőzött kapuőr és a Japán lebegő hegyeihez vezető portál folytatják a fő történetet.",
+      "help.fullscreen": "Ctrl+F: teljes képernyős mód be- és kikapcsolása. Az Esc billentyű kilép a teljes képernyőből; a kaland szünetel, a párbaj tovább fut.",
+      "menu.changelog.0970.a818a30b.title": "Teljes képernyő és küldetésjavítások",
+      "menu.changelog.0970.a818a30b.0": "A játék Ctrl+F billentyűkombinációval teljes képernyőre váltható.",
+      "menu.changelog.0970.a818a30b.1": "A betöltést felugró ablak helyett a képernyő alján százalékos csík jelzi.",
+      "menu.changelog.0970.a818a30b.2": "Daichi mentőküldetésének első leadása 600 XP-t ad. A korábban lezárt küldetésekhez nem jár utólagos jutalom.",
+      "menu.changelog.0970.a818a30b.3": "Fia a sárkányszemek leadásakor a párbeszéd végéig a helyén marad."
     }
   },
   "en": {
@@ -2630,7 +2636,13 @@
       "menu.changelog.0968.9feefa17.title": "Retry arena rounds",
       "menu.changelog.0968.9feefa17.0": "After death in the Shadow Den Arena, restart the current round without repeating earlier rounds. One-time rewards cannot be earned again.",
       "menu.changelog.0969.1e6d43a0.title": "A Way Home Below",
-      "menu.changelog.0969.1e6d43a0.0": "After Hannah’s defeat, Haru follows Momo into the ziggurat depths. New enemies, a void-tainted gatekeeper and a portal to Japan’s floating mountains continue the main story."
+      "menu.changelog.0969.1e6d43a0.0": "After Hannah’s defeat, Haru follows Momo into the ziggurat depths. New enemies, a void-tainted gatekeeper and a portal to Japan’s floating mountains continue the main story.",
+      "help.fullscreen": "Ctrl+F: toggle fullscreen mode. Esc leaves fullscreen; the adventure pauses, while a duel keeps running.",
+      "menu.changelog.0970.a818a30b.title": "Fullscreen and quest fixes",
+      "menu.changelog.0970.a818a30b.0": "Toggle fullscreen with Ctrl+F.",
+      "menu.changelog.0970.a818a30b.1": "A percentage bar at the bottom of the screen replaces the loading popup.",
+      "menu.changelog.0970.a818a30b.2": "Turning in Daichi’s rescue quest for the first time grants 600 XP. Previously completed quests do not receive a retroactive reward.",
+      "menu.changelog.0970.a818a30b.3": "Fia stays in place until the dragon-eye turn-in dialogue ends."
     }
   }
 }

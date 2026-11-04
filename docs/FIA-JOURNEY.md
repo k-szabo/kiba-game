@@ -17,6 +17,8 @@ a szemek; leadásuk egyszer 800 XP és egy fejlesztéspont. A megszerzési
 jelző megmarad, a leadási jelző a birtoklási nézetből fogyasztja el a tárgyat.
 A menetazonosító megakadályozza a korábbi menetből érkező jutalomeseményt.
 
+A sárkányszemek leadása a teljes, lapozható párbeszéd végén kerül mentésre és ad jutalmat. Addig a `fiaDragonCompleted` jelző még hiányzik, így Fia a jelenlegi helyszínén látható marad. Megszakított vagy más helyszínre váltással érvénytelenített beszélgetés nem fogyasztja el a szemeket; a tranzakció az aktuális állapotot újraellenőrzi, és csak egyszer adja a jutalmat. A régi, már leadott mentések változatlanul a rituálészobai állapotot használják.
+
 A külön `fiaJourney` mentési rekord hiánya a régi mentésben üres kezdetet
 jelent; a kifejezetten hibás rekordot elutasítjuk. A dungeonök korábbi, pontos
 sémája változatlan. A mentés és a dev-teszt külön mély másolatot tart,

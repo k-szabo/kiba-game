@@ -102,6 +102,8 @@ const Bindings=(()=>{
       profile=data.selection;modified=changes;save();return true;
     }catch{return false;}
   }
+  // Interface chords are configured separately from remappable gameplay keys.
+  const shortcut=(action,event)=>{const chord=KEY_BINDINGS.shortcuts?.[action];return !!chord&&normalize(event.key)===chord.key&&!!event.ctrlKey===!!chord.ctrl&&!!event.altKey===!!chord.alt&&!!event.shiftKey===!!chord.shift&&!!event.metaKey===!!chord.meta;};
   const exportData=()=>({version:KEY_BINDINGS.version,revision,original:KEY_BINDINGS.original,profiles:KEY_BINDINGS.profiles,selection:profile,modified:JSON.parse(JSON.stringify(modified))});
-  return Object.freeze({actions,profiles,normalize,mouseKey,read:action=>[...current(action)],has:(action,set)=>current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
+  return Object.freeze({actions,profiles,normalize,mouseKey,shortcut,read:action=>[...current(action)],has:(action,set)=>current(action).some(key=>set.has(key)),uses:key=>actions.some(action=>current(action).includes(key)),choose,setPrimary,reset,importData,exportData,get profile(){return profile;},get changed(){return !!Object.keys(modified[profile]||{}).length;}});
 })();

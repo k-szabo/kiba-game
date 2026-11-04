@@ -63,7 +63,7 @@ const CampQuest=(()=>{
   if(state!=='play'||level!==forestCamp||Prologue.active||!defeated[0]||!pointNear(npc,95,85))return false;
   const complete=rescueFlags.every(owns);
   if(!owns('campQuestAccepted')){flags[0].push('campQuestAccepted');persist();updateHUD();}
-  if(complete&&!owns('campQuestCompleted')){flags[0].push('campQuestCompleted');persist();updateHUD();}
+  if(complete&&!owns('campQuestCompleted')){flags[0].push('campQuestCompleted');awardXP(600);persist();updateHUD();}
   story('camp.dialogue.label',npc.name,complete?'camp.rescue.complete.story':'camp.rescue.quest.story',null,{right:'daichi',speaker:'daichi'});
   return true;
  }

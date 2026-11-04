@@ -23,6 +23,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `index.html` | A játék belépési pontja és kezelőfelülete. |
 | `assets/js/inventory.js` | Hátizsák, tárgyleírások és Momo felszerelési nézete. |
 | `assets/js/compass.js` | A birtokolt iránytű olvasható HUD-nézete; megnevezett fő cél, nyolc irány és közelség. |
+| `assets/js/fullscreen.js` | Natív, Ctrl+F kombinációval kapcsolható [teljes képernyő](FULLSCREEN.md), a mutatórögzítéstől és mentéstől függetlenül. |
 | `assets/js/cursor.js` | Játéktérre kattintással kért egérrögzítés, biztonságos feloldás menükben és fókuszvesztéskor, mancskurzor a kezelőfelületen; [részletek](POINTER-LOCK.md). |
 | `assets/js/merchant.js` | Akash kiszabadítása, bolt, érmék, fogyasztható étel és helyi minimap; [működés](MERCHANT.md). |
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
