@@ -30,5 +30,6 @@
   { "id": "voidLieutenant", "name": "fia.void.lieutenant", "group": "optional" },
   { "id": "voidDemon", "name": "fia.void.demon", "group": "optional" },
   { "id": "hannah", "name": "ziggurat.hannah", "group": "main" },
+  { "id": "voidGatekeeper", "name": "descent.gatekeeper", "group": "main" },
   { "id": "fiaRitual", "name": "fia.name", "group": "optional" }
 ]

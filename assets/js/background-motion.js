@@ -5,6 +5,8 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  descentBackdrop:{asset:'descentBackdropMotionPhaseB',sourceSize:[1671,941],regions:[['depths-mist',16,[[.15,.62],[.68,.62],[.68,.76],[.15,.76]],10]]},
+  japanHeightsBackdrop:{asset:'japanHeightsBackdropMotionPhaseB',sourceSize:[1671,941],regions:[['heights-clouds',18,[[.4,.52],[.75,.52],[.75,.72],[.4,.72]],10]]},
   towerBackdrop:{asset:'towerBackdropMotionPhaseB',regions:[
    ['window-forest',13,[[.075,.225],[.18,.225],[.18,.32],[.075,.32]],10],
    ['window-fire',14,[[.24,.235],[.345,.235],[.345,.335],[.24,.335]],10],

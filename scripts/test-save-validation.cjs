@@ -7,7 +7,7 @@ vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-ru
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.js'),'utf8'),context);
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8').replace('return Object.freeze({ready,','globalThis.__validateSave=validate;return Object.freeze({ready,');

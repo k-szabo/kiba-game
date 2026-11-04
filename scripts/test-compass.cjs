@@ -40,8 +40,11 @@ const before=r('JSON.stringify({coins,meatCount,flags,progression,abilities,defe
 r("flags[2].push('shadowEntered');defeated=[true,true,true,true];enterRealm(0);updateHUD();");
 assert.equal(r('nextObjective().name'),'ziggurat.hannah');assert.equal(r('nextObjective().point'),r('japan.exit'));
 r('enterRealm(3);updateHUD();');assert.equal(r('nextObjective().point'),r('shadowRealm.zigguratEntrance'));assert.equal(r('nextObjective().text'),'ziggurat.objective.approach');
+r("flags[3]=[...new Set([...flags[3],'hannahDefeated','guardian:Hannah','dawnblade'])];enterRealm(0);updateHUD();");
+assert.equal(r('nextObjective().text'),'descent.objective.haru','Hannah victory points to the new main-story continuation');
+r("flags[3].push(...Object.values(ZigguratDescentRules.progress));");
 for(const realm of [0,1,2,3]){
- r(`flags[3].push(HannahRules.progress.defeated);enterRealm(${realm});updateHUD();`);
+ r(`enterRealm(${realm});updateHUD();`);
  assert.equal(r('nextObjective().text'),'story.journeyEnd');assert(node('compassTarget').hidden);assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('story.journeyEnd')"));
 }
 r("enterForestCamp();updateHUD();");assert.equal(r('nextObjective().text'),'story.journeyEnd');

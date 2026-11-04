@@ -1,5 +1,7 @@
 # Összemosódott zikkurat
 
+Hannah legyőzése után a fő történet [Haru hazavezető útjával](ZIGGURAT-DESCENT.md) folytatódik: közös leereszkedés, portálőr és átlépés Japán lebegő hegyeihez.
+
 A negyedik birodalom folytatása három `SIDE_LOCATIONS` helyszín: `zigguratApproach`, `zigguratInterior`, `zigguratSummit`. A fizikai bejutás egyetlen feltétele az őrült pap legyőzése. Fia megmentése, a börtön és a két mozgásképesség opcionális; a fő út és az alsó ág visszaútja egyszeres ugrással is bejárható.
 
 ## Modulok
@@ -39,7 +41,7 @@ A `dawnblade` mérföldkő az ébredés után megmarad. A `hannahDefeated` és `
 
 A korábbi, kompatibilis Hannah-győzelemhez a következő birodalomba lépéskor a hiányzó lélek- és szívtárgyjelzők pótlódnak, újabb XP vagy pont nélkül. A tárgyakhoz kötelező az érvényes Hannah-győzelem; a szív átadási jelzőjéhez a szív történeti birtoklása és Fia korábbi megmentése is szükséges. Eladás vagy átadás nem törli a megszerzés történetét.
 
-Fia akkor segít, ha megmentettük, az arénát és talizmánküldetését befejeztük, és életben van. Más esetben a villám szabadítja ki Harut. A folytatás nyitott marad a zikkuratnál; nem állítunk be végleges játéklezárást.
+Fia akkor segít, ha megmentettük, az arénát és talizmánküldetését befejeztük, és életben van. Más esetben a villám szabadítja ki Harut. Haru a tróntermi megbízás után a mélységi portálhoz követi Momót; a folytatás Japán lebegő hegyein marad nyitott.
 
 A segítő Fia a trónteremben a győzelem után is látható. A démon lord szíve a közelében egyszer átadható; a lakosztályában, illetve az arénagyőzelem előtti tábori helyén is elérhető ugyanez az interakció. A `demonLordHeartGiven` elrejti a tárgyat az inventoryból. Ha Fia később meghal, az egykori segítség története megmarad, de a tróntermi élő megjelenése és az átadás megszűnik.
 

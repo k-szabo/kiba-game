@@ -2,7 +2,7 @@
 'use strict';
 const DevBoss=(()=>{
  let encounter='main';
- const available=()=>DevSession.active&&!!player&&(Prologue.active||VoidEncounter.active()||level.dragonRaid||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||level===fiaRitual||!!level.dungeon||level===zigguratSummit);
+ const available=()=>DevSession.active&&!!player&&(Prologue.active||VoidEncounter.active()||level.dragonRaid||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||level===fiaRitual||!!level.dungeon||level===zigguratSummit||level.id==='zigguratDepths');
  const encounters=()=>[...(level===fiaRitual?[{id:'fiaRitual',name:'fia.ritual.quest'}]:[]),...(VoidEncounter.active()?[{id:"voidEncounter",name:"fia.void.lieutenant"}]:[]),...(level.dragonRaid?['hall','flight','vault'].map((name,i)=>({id:'dragonRaid'+(i+1),name:'fia.dragon.'+name})):[]),...([shadowDen,fiaChambers,fiaRitual].includes(level)?[{id:'fiaVengeance',name:'fia.name'}]:[]),...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
   ...(Prologue.active?[]:(level.arenaEncounters||level.enemies).filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
  function fields(){
@@ -36,7 +36,7 @@ const DevBoss=(()=>{
   clearEncounterEffects();if(!boss.dead)resetBossBattle();
   resetMinibosses();projectiles=[];
   // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
-  if(DungeonCombat.is(replay)||ArenaCombat.is(replay)||PrisonHunter.is(replay)||PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
+  if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(replay)||DungeonCombat.is(replay)||ArenaCombat.is(replay)||PrisonHunter.is(replay)||PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
   if(CampMaster.is(replay))CampMaster.reset(replay);else resetMiniboss(replay);replay.dead=false;
   if(DoomSlayer.is(replay))DoomSlayer.start(replay);else replay.active=true;
   initPlayer({x:a.x+70,y:floor.y});

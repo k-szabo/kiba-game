@@ -5208,6 +5208,216 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/japan-heights-motion-b-v1.png": {
+      "sha256": "3bfec26697e675594f6b6f801125e2da6f55bfe2da34f5f45f7259b0c9d65057",
+      "width": 1671,
+      "height": 941,
+      "runtimeKeys": [
+        "japanHeightsBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#fbe6e6",
+            "coveragePercent": 10.7843
+          },
+          {
+            "hex": "#c3b4e5",
+            "coveragePercent": 9.9636
+          },
+          {
+            "hex": "#f5bebb",
+            "coveragePercent": 9.9371
+          },
+          {
+            "hex": "#e0ccea",
+            "coveragePercent": 9.4674
+          },
+          {
+            "hex": "#65636a",
+            "coveragePercent": 7.9867
+          },
+          {
+            "hex": "#494b4d",
+            "coveragePercent": 7.8519
+          },
+          {
+            "hex": "#3f3624",
+            "coveragePercent": 7.7317
+          },
+          {
+            "hex": "#7a7d98",
+            "coveragePercent": 5.7288
+          },
+          {
+            "hex": "#9997d1",
+            "coveragePercent": 5.2964
+          },
+          {
+            "hex": "#f1b88c",
+            "coveragePercent": 4.9188
+          },
+          {
+            "hex": "#17140e",
+            "coveragePercent": 4.6822
+          },
+          {
+            "hex": "#796824",
+            "coveragePercent": 4.5659
+          },
+          {
+            "hex": "#b19180",
+            "coveragePercent": 4.2477
+          },
+          {
+            "hex": "#cba528",
+            "coveragePercent": 3.2791
+          },
+          {
+            "hex": "#e66b8b",
+            "coveragePercent": 2.083
+          },
+          {
+            "hex": "#b14d39",
+            "coveragePercent": 1.4754
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9c682b",
+            "coveragePercent": 30.5411
+          },
+          {
+            "hex": "#cda529",
+            "coveragePercent": 25.6438
+          },
+          {
+            "hex": "#e26781",
+            "coveragePercent": 19.0405
+          },
+          {
+            "hex": "#f2bc74",
+            "coveragePercent": 17.267
+          },
+          {
+            "hex": "#426290",
+            "coveragePercent": 4.3
+          },
+          {
+            "hex": "#6f87d8",
+            "coveragePercent": 3.2076
+          }
+        ],
+        "visibleSamples": 1572411,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/japan-heights-v1.png": {
+      "sha256": "d7e72f3fb8cef1479a54ba729fc2a648394dd06e9503f20eb0820a39768b6140",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "japanHeightsBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#cfc2e9",
+            "coveragePercent": 10.8892
+          },
+          {
+            "hex": "#42392c",
+            "coveragePercent": 10.1811
+          },
+          {
+            "hex": "#53535b",
+            "coveragePercent": 9.3415
+          },
+          {
+            "hex": "#efd3e3",
+            "coveragePercent": 8.9891
+          },
+          {
+            "hex": "#767282",
+            "coveragePercent": 7.2714
+          },
+          {
+            "hex": "#b0a2da",
+            "coveragePercent": 6.518
+          },
+          {
+            "hex": "#e8a7ba",
+            "coveragePercent": 6.0772
+          },
+          {
+            "hex": "#1b1610",
+            "coveragePercent": 6.0309
+          },
+          {
+            "hex": "#fbeeef",
+            "coveragePercent": 5.9811
+          },
+          {
+            "hex": "#fad5bc",
+            "coveragePercent": 5.4021
+          },
+          {
+            "hex": "#f5bc90",
+            "coveragePercent": 4.8566
+          },
+          {
+            "hex": "#8b8cb5",
+            "coveragePercent": 4.7987
+          },
+          {
+            "hex": "#7b6628",
+            "coveragePercent": 4.7089
+          },
+          {
+            "hex": "#ca8380",
+            "coveragePercent": 4.2177
+          },
+          {
+            "hex": "#c9a52d",
+            "coveragePercent": 3.1287
+          },
+          {
+            "hex": "#b84843",
+            "coveragePercent": 1.6077
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9b632d",
+            "coveragePercent": 29.1288
+          },
+          {
+            "hex": "#c8a32d",
+            "coveragePercent": 27.0972
+          },
+          {
+            "hex": "#e1657f",
+            "coveragePercent": 20.0996
+          },
+          {
+            "hex": "#f2be74",
+            "coveragePercent": 17.5955
+          },
+          {
+            "hex": "#435e91",
+            "coveragePercent": 3.8686
+          },
+          {
+            "hex": "#6f83d6",
+            "coveragePercent": 2.2103
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/japan-motion-b-v1.png": {
       "sha256": "db153dfafd3ac5618b1939e9eed7fb7451a557f96f6c770eec417cbe4824f25a",
       "width": 1774,
@@ -11611,6 +11821,216 @@
         ],
         "visibleSamples": 1573352,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "assets/images/backgrounds/ziggurat-depths-motion-b-v1.png": {
+      "sha256": "92ed56be62ff030a97fd8bf9823d4f9c503f90d0ad4d11fc6fbe2e703160c8c3",
+      "width": 1671,
+      "height": 941,
+      "runtimeKeys": [
+        "descentBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3a2650",
+            "coveragePercent": 15.9708
+          },
+          {
+            "hex": "#291731",
+            "coveragePercent": 15.1233
+          },
+          {
+            "hex": "#4e3268",
+            "coveragePercent": 14.1857
+          },
+          {
+            "hex": "#573a88",
+            "coveragePercent": 10.4951
+          },
+          {
+            "hex": "#110813",
+            "coveragePercent": 9.3025
+          },
+          {
+            "hex": "#6d48aa",
+            "coveragePercent": 7.381
+          },
+          {
+            "hex": "#662430",
+            "coveragePercent": 5.5391
+          },
+          {
+            "hex": "#7c57d4",
+            "coveragePercent": 4.5985
+          },
+          {
+            "hex": "#904e6e",
+            "coveragePercent": 3.6653
+          },
+          {
+            "hex": "#a564e4",
+            "coveragePercent": 3.3431
+          },
+          {
+            "hex": "#a7382f",
+            "coveragePercent": 2.7824
+          },
+          {
+            "hex": "#e95f2e",
+            "coveragePercent": 2.3732
+          },
+          {
+            "hex": "#ea9572",
+            "coveragePercent": 1.4405
+          },
+          {
+            "hex": "#d683ee",
+            "coveragePercent": 1.3505
+          },
+          {
+            "hex": "#9b98f4",
+            "coveragePercent": 1.3122
+          },
+          {
+            "hex": "#e7d9f3",
+            "coveragePercent": 1.1367
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#5a3b93",
+            "coveragePercent": 33.9648
+          },
+          {
+            "hex": "#764ebf",
+            "coveragePercent": 23.891
+          },
+          {
+            "hex": "#a167ec",
+            "coveragePercent": 16.1632
+          },
+          {
+            "hex": "#9c3c40",
+            "coveragePercent": 13.4165
+          },
+          {
+            "hex": "#e25125",
+            "coveragePercent": 6.8753
+          },
+          {
+            "hex": "#eb875d",
+            "coveragePercent": 5.6892
+          }
+        ],
+        "visibleSamples": 1572411,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/backgrounds/ziggurat-depths-v1.png": {
+      "sha256": "ff65dd38de8e295187b9b11a021ac566761e61b855fb5b2cd379a633ac5efd75",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "descentBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3d2853",
+            "coveragePercent": 18.3834
+          },
+          {
+            "hex": "#281833",
+            "coveragePercent": 16.0543
+          },
+          {
+            "hex": "#4f3472",
+            "coveragePercent": 14.9032
+          },
+          {
+            "hex": "#614096",
+            "coveragePercent": 9.7686
+          },
+          {
+            "hex": "#110814",
+            "coveragePercent": 9.5417
+          },
+          {
+            "hex": "#764fbf",
+            "coveragePercent": 6.0276
+          },
+          {
+            "hex": "#9264e6",
+            "coveragePercent": 4.5486
+          },
+          {
+            "hex": "#631f29",
+            "coveragePercent": 4.5058
+          },
+          {
+            "hex": "#803c4e",
+            "coveragePercent": 3.9412
+          },
+          {
+            "hex": "#ba3929",
+            "coveragePercent": 2.4444
+          },
+          {
+            "hex": "#a55d88",
+            "coveragePercent": 2.3604
+          },
+          {
+            "hex": "#ee6933",
+            "coveragePercent": 2.2113
+          },
+          {
+            "hex": "#ca7bf0",
+            "coveragePercent": 2.1789
+          },
+          {
+            "hex": "#edd9f3",
+            "coveragePercent": 1.0591
+          },
+          {
+            "hex": "#f3a673",
+            "coveragePercent": 1.0456
+          },
+          {
+            "hex": "#a7aaf6",
+            "coveragePercent": 1.026
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#5b3c94",
+            "coveragePercent": 34.2376
+          },
+          {
+            "hex": "#7850c1",
+            "coveragePercent": 23.3257
+          },
+          {
+            "hex": "#a569ed",
+            "coveragePercent": 15.7381
+          },
+          {
+            "hex": "#9c3b40",
+            "coveragePercent": 13.7116
+          },
+          {
+            "hex": "#e35125",
+            "coveragePercent": 7.2236
+          },
+          {
+            "hex": "#ed8a5c",
+            "coveragePercent": 5.7634
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
       }
     },
     "assets/images/backgrounds/ziggurat-interior-motion-b-v1.png": {

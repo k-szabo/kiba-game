@@ -38,6 +38,7 @@ const SaveVault=(()=>{
    if(!Array.isArray(data.flags[i])||data.flags[i].length>allowed.size||data.flags[i].some(f=>typeof f!=='string'||!allowed.has(f))||new Set(data.flags[i]).size!==data.flags[i].length)throw Error('Invalid quest flags');
    const rests=new Set(realmRests(i).map(r=>r.id));if(!Array.isArray(data.visitedRests[i])||data.visitedRests[i].length>rests.size||data.visitedRests[i].some(id=>!rests.has(id))||new Set(data.visitedRests[i]).size!==data.visitedRests[i].length)throw Error('Invalid checkpoints');
   }
+  if(!ZigguratDescentRules.validate(data.flags,data.defeated))throw Error('Invalid ziggurat descent progress');
   const hannah=data.flags[3],hasHannah=id=>hannah.includes(id);
   if(['dawnblade','hannahDefeated','hannahFiaRescue','guardian:Hannah','discovered:hannahCourt'].some(id=>hasHannah(id)&&!data.defeated[3]))throw Error('Invalid ziggurat progress');
   if(hasHannah('hannahDefeated')&&(!hasHannah('dawnblade')||!hasHannah('guardian:Hannah'))||hasHannah('guardian:Hannah')&&!hasHannah('hannahDefeated'))throw Error('Invalid Hannah victory');
