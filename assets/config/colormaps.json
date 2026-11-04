@@ -99,7 +99,7 @@
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "e8c3a6666a6cccc6925916c68e19a34c0c4c5ac5d3ed8516ab167434ab2e6013",
+      "sha256": "00caf4175ca6643d85cc1f11931d5cde7d1327daf39ff7a480e789e77f12e347",
       "counts": {
         "codeColors": 121
       }

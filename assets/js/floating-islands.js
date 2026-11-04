@@ -102,7 +102,7 @@ const FloatingIslands=(()=>{
   const actual=context();if(state!=='play'||!actual||candidate?.type!==actual.type)return false;
   if(actual.type==='islandsEnter')return CampQuest.enter('floatingIslands');
   if(actual.type==='islandsReturn')return CampQuest.leave();
-  const next=rules.transition(flags,'takeHook');if(!next.ok)return false;flags=next.flags;persist();updateHUD();return true;
+  const next=rules.transition(flags,'takeHook');if(!next.ok)return false;flags=next.flags;persist();updateHUD();toast(I18n.format('help.grapple',[bindingKeyLabel(Bindings.read('grapple')[0])]));return true;
  }
  function objective({remote=true}={}){
   if(!rules.eligible(flags)&&!(DevSession.active&&active()))return null;

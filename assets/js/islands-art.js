@@ -2,19 +2,24 @@
 'use strict';
 const IslandsArt=(()=>{
  const definitions=()=>typeof ART_SHADOW_NINJAS==='undefined'?{}:ART_SHADOW_NINJAS;
+ const leaderHeight=180,blended=new WeakMap();
+ function panel(image){
+  let surface=blended.get(image);if(surface)return surface;
+  surface=BackgroundMotion.masked(image,{left:.14,right:.14,top:.08,bottom:.1});blended.set(image,surface);return surface;
+ }
  function backdrop(){
   if(!FloatingIslands.active())return false;
   const image=Visuals.images.islandsRouteBackdrop;if(!image?.naturalWidth)return false;
   BackgroundFraming.cover(image,{vertical:.4});
-  // Grounded paintings belong to their islands, never to viewport-wide void.
-  // Their fixed world projection also keeps the watchtower inside its island.
+  // Native-density feathered panels blend all four edges into the cloud layer.
+  // Keep their original world projection: architecture stays on its island and
+  // painted floors never bridge a collision gap. The motion alias shares masks.
   for(const [id,key]of [['floating-island-0','islandsArrivalBackdrop'],['floating-island-3','islandsWatchtowerBackdrop']]){
    const island=platforms.find(p=>p.id===id&&!p.broken),art=Visuals.images[key];
    if(!island||!art?.naturalWidth)continue;
    const x=island.x-camera,left=Math.max(0,x),right=Math.min(viewW,x+island.w);if(right<=left)continue;
    const height=art.naturalHeight*island.w/art.naturalWidth,y=island.y-cameraY-height*.8;
-   ctx.save();ctx.beginPath();ctx.rect(left,0,right-left,H);ctx.clip();
-   BackgroundMotion.draw(art,x,y,island.w,height);ctx.restore();
+   BackgroundMotion.draw(panel(art),x,y,island.w,height);
   }
   return true;
  }
@@ -22,7 +27,7 @@ const IslandsArt=(()=>{
  function actor(e){
   const leader=FloatingIslands.is(e),role=leader?'leader':e.shadowNinjaRole;if(!role)return false;
   const index=leader?(reducedMotion.matches&&e.phase==='wait'?0:e.poseIndex):e.windup>0?3:e.attackTime>0?4:e.recovery>0?5:Math.abs(e.walkSpeed)>1&&!reducedMotion.matches?1+Math.floor(e.animTime*7)%2:0;
-  if(!stamp(role,index,e.x+e.w/2,e.y+e.h,e.h,e.face))return false;
+  if(!stamp(role,index,e.x+e.w/2,e.y+e.h,leader?leaderHeight:e.h,e.face))return false;
   if(!leader){Visuals.healthBar(e);if(e.windup>0)BossCues.box(enemyRole(e)==='guard'?enemyMeleeBox(e):{x:e.targetX-45,y:e.targetY-45,w:90,h:90});}
   else if(e.active&&e.phase==='windup')BossCues.box(e.attackBox||{x:e.targetX-45,y:e.targetY-45,w:90,h:90});
   return true;
@@ -37,7 +42,7 @@ const IslandsArt=(()=>{
   const departure=FloatingIslands.departure();
   if(departure){
    const e=departure.actor,t=Math.max(0,(departure.elapsed-.3)/1.1),x=e.x+e.w/2+t*650,y=e.y+e.h-Math.sin(t*Math.PI)*110;
-   stamp('leader',departure.elapsed<.3?6:7,x,y,e.h,1);
+   stamp('leader',departure.elapsed<.3?6:7,x,y,leaderHeight,1);
    const h=departure.haru;if(h){const hx=h.x+h.w/2+(x-h.x-h.w/2)*Math.min(1,t*1.5),hy=h.y+h.h-Math.sin(t*Math.PI)*75;ArenaArt.stamp(ART_ZIGGURAT_DESCENT.haru,t>0?4:0,hx,hy,125,1);ctx.save();ctx.strokeStyle='#c9b384';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x,y-e.h*.55);ctx.lineTo(hx,hy-60);ctx.stroke();ctx.restore();}
   }
   const selected=Grapple.selection();
@@ -62,5 +67,5 @@ const IslandsArt=(()=>{
   if(e){ctx.save();ctx.strokeStyle='#c9b384';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(e.x+e.w/2,e.y+e.h*.4);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.restore();}
   hook(p,32);return true;
  }
- return Object.freeze({backdrop,actor,scenery,companion,player:playerOverlay,projectile});
+ return Object.freeze({backdrop,actor,scenery,companion,player:playerOverlay,projectile,leaderHeight});
 })();
