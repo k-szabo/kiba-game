@@ -3434,6 +3434,107 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "object.inventoryItem.watchtowerCellKey": {
+      "source": "assets/images/ui/prison-key-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.watchtowerCellKey",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#060202",
+            "coveragePercent": 17.0028
+          },
+          {
+            "hex": "#1a0806",
+            "coveragePercent": 13.6347
+          },
+          {
+            "hex": "#2c1410",
+            "coveragePercent": 11.8041
+          },
+          {
+            "hex": "#422a25",
+            "coveragePercent": 9.2182
+          },
+          {
+            "hex": "#4d1009",
+            "coveragePercent": 7.4727
+          },
+          {
+            "hex": "#614541",
+            "coveragePercent": 6.0142
+          },
+          {
+            "hex": "#6c321a",
+            "coveragePercent": 5.2079
+          },
+          {
+            "hex": "#841013",
+            "coveragePercent": 4.5434
+          },
+          {
+            "hex": "#83665f",
+            "coveragePercent": 4.2109
+          },
+          {
+            "hex": "#9c5029",
+            "coveragePercent": 4.083
+          },
+          {
+            "hex": "#cc7640",
+            "coveragePercent": 3.6402
+          },
+          {
+            "hex": "#bc2127",
+            "coveragePercent": 2.9154
+          },
+          {
+            "hex": "#eaa966",
+            "coveragePercent": 2.8333
+          },
+          {
+            "hex": "#f0d2a2",
+            "coveragePercent": 2.7301
+          },
+          {
+            "hex": "#ad9187",
+            "coveragePercent": 2.3511
+          },
+          {
+            "hex": "#fbf5e0",
+            "coveragePercent": 2.338
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#954c29",
+            "coveragePercent": 22.495
+          },
+          {
+            "hex": "#951517",
+            "coveragePercent": 21.9895
+          },
+          {
+            "hex": "#bc6a3a",
+            "coveragePercent": 18.55
+          },
+          {
+            "hex": "#dd8e50",
+            "coveragePercent": 14.9997
+          },
+          {
+            "hex": "#c5262b",
+            "coveragePercent": 12.1564
+          },
+          {
+            "hex": "#f4bc6f",
+            "coveragePercent": 9.8094
+          }
+        ],
+        "visibleSamples": 336740,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "object.inventoryItem.grapplingHook": {
       "source": "assets/images/ui/grappling-hook-v1.png",
       "frameMetadata": "ART_INVENTORY.items.grapplingHook",

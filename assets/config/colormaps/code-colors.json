@@ -2339,16 +2339,16 @@
       {
         "value": "#fff",
         "lines": [
-          165,
-          166
+          168,
+          169
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          165,
-          166
+          168,
+          169
         ],
         "dynamic": false
       }
@@ -2540,86 +2540,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          562
+          565
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          416
+          417
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          378,
-          412
+          379,
+          413
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          207
+          208
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          546
+          549
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          289
+          290
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          402
+          403
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          347,
-          398
+          348,
+          399
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          207
+          208
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          561
+          564
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          546
+          549
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          407
+          408
         ],
         "dynamic": false
       }
@@ -4992,6 +4992,106 @@
         "dynamic": false
       }
     ],
+    "assets/js/watchtower-art-data.js": [],
+    "assets/js/watchtower-balloon-art.js": [
+      {
+        "value": "#332b35",
+        "lines": [
+          58
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#473322",
+        "lines": [
+          40
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#caa8ed",
+        "lines": [
+          102
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8b66d",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d8c49d",
+        "lines": [
+          82
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dcf3ff",
+        "lines": [
+          102
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff2a5",
+        "lines": [
+          41
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "rgba(0,0,0,0)",
+        "lines": [
+          11
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "rgba(0,0,0,1)",
+        "lines": [
+          11
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/watchtower-balloon-combat.js": [
+      {
+        "value": "#b597df",
+        "lines": [
+          80
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b9d6ff",
+        "lines": [
+          82
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c6d8d8",
+        "lines": [
+          79
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e8a15d",
+        "lines": [
+          81,
+          86
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/watchtower-balloon-maps.js": [],
+    "assets/js/watchtower-balloon-rules.js": [],
+    "assets/js/watchtower-balloon.js": [],
     "assets/js/weapon-equipment.js": [],
     "assets/js/weapon-selection.js": [],
     "assets/js/weapons.js": [],

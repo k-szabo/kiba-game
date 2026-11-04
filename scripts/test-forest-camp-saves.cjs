@@ -10,7 +10,7 @@ vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rul
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
-vm.runInContext((fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8')),context);
+vm.runInContext((fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8')),context);
 const read=expression=>JSON.parse(vm.runInContext(`JSON.stringify(${expression})`,context)),copy=value=>structuredClone(value);
 const rewards=read('BOSS_REWARDS'),campRest=read('forestCamp.rests[0]'),realmCount=read('levels.length');
 const rules=vm.runInContext('PROGRESSION_RULES',context);

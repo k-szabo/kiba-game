@@ -27,6 +27,26 @@
       "faction": "japan",
       "paletteGroup": "npc.dungeon.captain"
     },
+    "watchtower.wasp": {
+      "role": "regular-enemy",
+      "faction": "japan",
+      "paletteGroup": "npc.watchtower.wasp"
+    },
+    "watchtower.pilot": {
+      "role": "companion",
+      "faction": "japan",
+      "paletteGroup": "npc.watchtower.pilot"
+    },
+    "watchtower.seal": {
+      "role": "boss",
+      "faction": "japan",
+      "paletteGroup": "npc.watchtower.seal"
+    },
+    "watchtower.dragon": {
+      "role": "boss",
+      "faction": "japan",
+      "paletteGroup": "npc.watchtower.dragon"
+    },
     "descent.haru": {
       "role": "father",
       "faction": "japan",
@@ -589,6 +609,410 @@
         ],
         "visibleSamples": 314698,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.watchtower.wasp": {
+      "source": "assets/images/enemies/giant-wasp-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.wasp.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#d7beac",
+            "coveragePercent": 12.5338
+          },
+          {
+            "hex": "#463024",
+            "coveragePercent": 11.73
+          },
+          {
+            "hex": "#ccad95",
+            "coveragePercent": 9.3722
+          },
+          {
+            "hex": "#e4cdbb",
+            "coveragePercent": 8.5824
+          },
+          {
+            "hex": "#594236",
+            "coveragePercent": 7.518
+          },
+          {
+            "hex": "#31221a",
+            "coveragePercent": 6.565
+          },
+          {
+            "hex": "#775946",
+            "coveragePercent": 6.1146
+          },
+          {
+            "hex": "#965b23",
+            "coveragePercent": 6.0205
+          },
+          {
+            "hex": "#bf9570",
+            "coveragePercent": 5.8933
+          },
+          {
+            "hex": "#a27752",
+            "coveragePercent": 5.2681
+          },
+          {
+            "hex": "#70431d",
+            "coveragePercent": 5.259
+          },
+          {
+            "hex": "#d88e32",
+            "coveragePercent": 4.0352
+          },
+          {
+            "hex": "#bc7425",
+            "coveragePercent": 3.7724
+          },
+          {
+            "hex": "#eeaa4a",
+            "coveragePercent": 2.9839
+          },
+          {
+            "hex": "#f1e0cd",
+            "coveragePercent": 2.4167
+          },
+          {
+            "hex": "#f3c271",
+            "coveragePercent": 1.935
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#925620",
+            "coveragePercent": 22.4597
+          },
+          {
+            "hex": "#bc7425",
+            "coveragePercent": 17.2895
+          },
+          {
+            "hex": "#e09534",
+            "coveragePercent": 16.7047
+          },
+          {
+            "hex": "#9a6a41",
+            "coveragePercent": 15.6303
+          },
+          {
+            "hex": "#c18c57",
+            "coveragePercent": 14.2573
+          },
+          {
+            "hex": "#f2b85e",
+            "coveragePercent": 13.6585
+          }
+        ],
+        "visibleSamples": 341765,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.watchtower.pilot": {
+      "source": "assets/images/npcs/westheru-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.pilot.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#9b8885",
+            "coveragePercent": 9.1628
+          },
+          {
+            "hex": "#3d3336",
+            "coveragePercent": 9.0691
+          },
+          {
+            "hex": "#b39d93",
+            "coveragePercent": 8.1663
+          },
+          {
+            "hex": "#261f22",
+            "coveragePercent": 7.8811
+          },
+          {
+            "hex": "#665e63",
+            "coveragePercent": 7.4989
+          },
+          {
+            "hex": "#837072",
+            "coveragePercent": 7.3872
+          },
+          {
+            "hex": "#484852",
+            "coveragePercent": 7.2926
+          },
+          {
+            "hex": "#0f0b0d",
+            "coveragePercent": 6.9098
+          },
+          {
+            "hex": "#6d4d3b",
+            "coveragePercent": 5.848
+          },
+          {
+            "hex": "#ccb2a5",
+            "coveragePercent": 5.7361
+          },
+          {
+            "hex": "#ebceb8",
+            "coveragePercent": 5.7176
+          },
+          {
+            "hex": "#9b7053",
+            "coveragePercent": 4.952
+          },
+          {
+            "hex": "#76848c",
+            "coveragePercent": 3.8011
+          },
+          {
+            "hex": "#f7e4d3",
+            "coveragePercent": 3.6322
+          },
+          {
+            "hex": "#c3956d",
+            "coveragePercent": 3.4995
+          },
+          {
+            "hex": "#e5bb91",
+            "coveragePercent": 3.4457
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e6e4a",
+            "coveragePercent": 23.8718
+          },
+          {
+            "hex": "#8a5c3d",
+            "coveragePercent": 22.8628
+          },
+          {
+            "hex": "#b28055",
+            "coveragePercent": 20.926
+          },
+          {
+            "hex": "#c79462",
+            "coveragePercent": 18.7638
+          },
+          {
+            "hex": "#dfae74",
+            "coveragePercent": 13.2436
+          },
+          {
+            "hex": "#466d87",
+            "coveragePercent": 0.3319
+          }
+        ],
+        "visibleSamples": 389414,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.watchtower.seal": {
+      "source": "assets/images/enemies/westheru-seal-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.seal.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6a6367",
+            "coveragePercent": 11.4234
+          },
+          {
+            "hex": "#807575",
+            "coveragePercent": 10.3453
+          },
+          {
+            "hex": "#ac9c96",
+            "coveragePercent": 10.0334
+          },
+          {
+            "hex": "#958884",
+            "coveragePercent": 9.3403
+          },
+          {
+            "hex": "#54555c",
+            "coveragePercent": 8.7998
+          },
+          {
+            "hex": "#40444b",
+            "coveragePercent": 7.8226
+          },
+          {
+            "hex": "#363437",
+            "coveragePercent": 6.9057
+          },
+          {
+            "hex": "#c8b6ad",
+            "coveragePercent": 5.6857
+          },
+          {
+            "hex": "#614c42",
+            "coveragePercent": 4.604
+          },
+          {
+            "hex": "#ebd6c6",
+            "coveragePercent": 4.4151
+          },
+          {
+            "hex": "#66757a",
+            "coveragePercent": 4.0474
+          },
+          {
+            "hex": "#242227",
+            "coveragePercent": 3.8594
+          },
+          {
+            "hex": "#cba67f",
+            "coveragePercent": 3.7723
+          },
+          {
+            "hex": "#896852",
+            "coveragePercent": 3.4331
+          },
+          {
+            "hex": "#ae8867",
+            "coveragePercent": 3.0205
+          },
+          {
+            "hex": "#e5bf94",
+            "coveragePercent": 2.492
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b28455",
+            "coveragePercent": 22.0713
+          },
+          {
+            "hex": "#9d734b",
+            "coveragePercent": 19.5894
+          },
+          {
+            "hex": "#c69661",
+            "coveragePercent": 19.4087
+          },
+          {
+            "hex": "#8a6240",
+            "coveragePercent": 17.2297
+          },
+          {
+            "hex": "#d8a76c",
+            "coveragePercent": 14.9223
+          },
+          {
+            "hex": "#eabb76",
+            "coveragePercent": 6.7785
+          }
+        ],
+        "visibleSamples": 466763,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.watchtower.dragon": {
+      "source": "assets/images/enemies/sky-dragon-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.dragon.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#51505a",
+            "coveragePercent": 10.8972
+          },
+          {
+            "hex": "#676771",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#977962",
+            "coveragePercent": 8.498
+          },
+          {
+            "hex": "#bf9770",
+            "coveragePercent": 8.2426
+          },
+          {
+            "hex": "#755d4c",
+            "coveragePercent": 7.5954
+          },
+          {
+            "hex": "#3b3a42",
+            "coveragePercent": 7.5542
+          },
+          {
+            "hex": "#e3b67f",
+            "coveragePercent": 7.4475
+          },
+          {
+            "hex": "#7b7b85",
+            "coveragePercent": 6.9825
+          },
+          {
+            "hex": "#969092",
+            "coveragePercent": 6.8488
+          },
+          {
+            "hex": "#5d4029",
+            "coveragePercent": 5.8436
+          },
+          {
+            "hex": "#292325",
+            "coveragePercent": 4.5254
+          },
+          {
+            "hex": "#b7aaa0",
+            "coveragePercent": 3.9206
+          },
+          {
+            "hex": "#925e28",
+            "coveragePercent": 3.618
+          },
+          {
+            "hex": "#c2812d",
+            "coveragePercent": 3.5963
+          },
+          {
+            "hex": "#f1d6af",
+            "coveragePercent": 2.9816
+          },
+          {
+            "hex": "#e6a841",
+            "coveragePercent": 2.4042
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e6b46f",
+            "coveragePercent": 25.3503
+          },
+          {
+            "hex": "#926231",
+            "coveragePercent": 23.7278
+          },
+          {
+            "hex": "#bb8b5a",
+            "coveragePercent": 19.2255
+          },
+          {
+            "hex": "#be7d29",
+            "coveragePercent": 17.5683
+          },
+          {
+            "hex": "#e3a138",
+            "coveragePercent": 14.0537
+          },
+          {
+            "hex": "#4b8cb0",
+            "coveragePercent": 0.0745
+          }
+        ],
+        "visibleSamples": 303343,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.descent.haru": {
@@ -1813,6 +2237,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/enemies/giant-wasp-v1.png": {
+      "sha256": "78032ea57a300312203e405d6a6386807668eaeafaa490470c807d82237f2e2d",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "giantWaspArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#d7beac",
+            "coveragePercent": 12.5338
+          },
+          {
+            "hex": "#463024",
+            "coveragePercent": 11.73
+          },
+          {
+            "hex": "#ccad95",
+            "coveragePercent": 9.3722
+          },
+          {
+            "hex": "#e4cdbb",
+            "coveragePercent": 8.5824
+          },
+          {
+            "hex": "#594236",
+            "coveragePercent": 7.518
+          },
+          {
+            "hex": "#31221a",
+            "coveragePercent": 6.565
+          },
+          {
+            "hex": "#775946",
+            "coveragePercent": 6.1146
+          },
+          {
+            "hex": "#965b23",
+            "coveragePercent": 6.0205
+          },
+          {
+            "hex": "#bf9570",
+            "coveragePercent": 5.8933
+          },
+          {
+            "hex": "#a27752",
+            "coveragePercent": 5.2681
+          },
+          {
+            "hex": "#70431d",
+            "coveragePercent": 5.259
+          },
+          {
+            "hex": "#d88e32",
+            "coveragePercent": 4.0352
+          },
+          {
+            "hex": "#bc7425",
+            "coveragePercent": 3.7724
+          },
+          {
+            "hex": "#eeaa4a",
+            "coveragePercent": 2.9839
+          },
+          {
+            "hex": "#f1e0cd",
+            "coveragePercent": 2.4167
+          },
+          {
+            "hex": "#f3c271",
+            "coveragePercent": 1.935
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#925620",
+            "coveragePercent": 22.4597
+          },
+          {
+            "hex": "#bc7425",
+            "coveragePercent": 17.2895
+          },
+          {
+            "hex": "#e09534",
+            "coveragePercent": 16.7047
+          },
+          {
+            "hex": "#9a6a41",
+            "coveragePercent": 15.6303
+          },
+          {
+            "hex": "#c18c57",
+            "coveragePercent": 14.2573
+          },
+          {
+            "hex": "#f2b85e",
+            "coveragePercent": 13.6585
+          }
+        ],
+        "visibleSamples": 341765,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/enemies/japan-archer-v5.png": {
       "sha256": "86545f8c640ff15817f80dd71e3509d85217e09114bbc2cedaf1fae2b5373605",
       "width": 1086,
@@ -2338,6 +2867,216 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/enemies/sky-dragon-v1.png": {
+      "sha256": "cf2d30f9035c57ff31aa133c682b147cc39c4aa78d8fd43cceffbab2ed8b84d8",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "skyDragonArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#51505a",
+            "coveragePercent": 10.8972
+          },
+          {
+            "hex": "#676771",
+            "coveragePercent": 9.044
+          },
+          {
+            "hex": "#977962",
+            "coveragePercent": 8.498
+          },
+          {
+            "hex": "#bf9770",
+            "coveragePercent": 8.2426
+          },
+          {
+            "hex": "#755d4c",
+            "coveragePercent": 7.5954
+          },
+          {
+            "hex": "#3b3a42",
+            "coveragePercent": 7.5542
+          },
+          {
+            "hex": "#e3b67f",
+            "coveragePercent": 7.4475
+          },
+          {
+            "hex": "#7b7b85",
+            "coveragePercent": 6.9825
+          },
+          {
+            "hex": "#969092",
+            "coveragePercent": 6.8488
+          },
+          {
+            "hex": "#5d4029",
+            "coveragePercent": 5.8436
+          },
+          {
+            "hex": "#292325",
+            "coveragePercent": 4.5254
+          },
+          {
+            "hex": "#b7aaa0",
+            "coveragePercent": 3.9206
+          },
+          {
+            "hex": "#925e28",
+            "coveragePercent": 3.618
+          },
+          {
+            "hex": "#c2812d",
+            "coveragePercent": 3.5963
+          },
+          {
+            "hex": "#f1d6af",
+            "coveragePercent": 2.9816
+          },
+          {
+            "hex": "#e6a841",
+            "coveragePercent": 2.4042
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e6b46f",
+            "coveragePercent": 25.3503
+          },
+          {
+            "hex": "#926231",
+            "coveragePercent": 23.7278
+          },
+          {
+            "hex": "#bb8b5a",
+            "coveragePercent": 19.2255
+          },
+          {
+            "hex": "#be7d29",
+            "coveragePercent": 17.5683
+          },
+          {
+            "hex": "#e3a138",
+            "coveragePercent": 14.0537
+          },
+          {
+            "hex": "#4b8cb0",
+            "coveragePercent": 0.0745
+          }
+        ],
+        "visibleSamples": 303343,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/westheru-seal-v1.png": {
+      "sha256": "df998af8f08b4603431164e1610748727776269c422c319fd279523d63152984",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "westheruSealArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6a6367",
+            "coveragePercent": 11.4234
+          },
+          {
+            "hex": "#807575",
+            "coveragePercent": 10.3453
+          },
+          {
+            "hex": "#ac9c96",
+            "coveragePercent": 10.0334
+          },
+          {
+            "hex": "#958884",
+            "coveragePercent": 9.3403
+          },
+          {
+            "hex": "#54555c",
+            "coveragePercent": 8.7998
+          },
+          {
+            "hex": "#40444b",
+            "coveragePercent": 7.8226
+          },
+          {
+            "hex": "#363437",
+            "coveragePercent": 6.9057
+          },
+          {
+            "hex": "#c8b6ad",
+            "coveragePercent": 5.6857
+          },
+          {
+            "hex": "#614c42",
+            "coveragePercent": 4.604
+          },
+          {
+            "hex": "#ebd6c6",
+            "coveragePercent": 4.4151
+          },
+          {
+            "hex": "#66757a",
+            "coveragePercent": 4.0474
+          },
+          {
+            "hex": "#242227",
+            "coveragePercent": 3.8594
+          },
+          {
+            "hex": "#cba67f",
+            "coveragePercent": 3.7723
+          },
+          {
+            "hex": "#896852",
+            "coveragePercent": 3.4331
+          },
+          {
+            "hex": "#ae8867",
+            "coveragePercent": 3.0205
+          },
+          {
+            "hex": "#e5bf94",
+            "coveragePercent": 2.492
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b28455",
+            "coveragePercent": 22.0713
+          },
+          {
+            "hex": "#9d734b",
+            "coveragePercent": 19.5894
+          },
+          {
+            "hex": "#c69661",
+            "coveragePercent": 19.4087
+          },
+          {
+            "hex": "#8a6240",
+            "coveragePercent": 17.2297
+          },
+          {
+            "hex": "#d8a76c",
+            "coveragePercent": 14.9223
+          },
+          {
+            "hex": "#eabb76",
+            "coveragePercent": 6.7785
+          }
+        ],
+        "visibleSamples": 466763,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/enemies/white-serpent-v1.png": {
       "sha256": "0b68075d5b5127556581e134e944558c2e1cd9c41775cb3ba30985fd74bfc813",
       "width": 1774,
@@ -2651,6 +3390,111 @@
         ],
         "visibleSamples": 502630,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/npcs/westheru-v1.png": {
+      "sha256": "8cfb5aabd4fd11192442afd3f0258ee5f183f1adb2e9dcb5f1f0d6ee7627d155",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "westheruArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#9b8885",
+            "coveragePercent": 9.1628
+          },
+          {
+            "hex": "#3d3336",
+            "coveragePercent": 9.0691
+          },
+          {
+            "hex": "#b39d93",
+            "coveragePercent": 8.1663
+          },
+          {
+            "hex": "#261f22",
+            "coveragePercent": 7.8811
+          },
+          {
+            "hex": "#665e63",
+            "coveragePercent": 7.4989
+          },
+          {
+            "hex": "#837072",
+            "coveragePercent": 7.3872
+          },
+          {
+            "hex": "#484852",
+            "coveragePercent": 7.2926
+          },
+          {
+            "hex": "#0f0b0d",
+            "coveragePercent": 6.9098
+          },
+          {
+            "hex": "#6d4d3b",
+            "coveragePercent": 5.848
+          },
+          {
+            "hex": "#ccb2a5",
+            "coveragePercent": 5.7361
+          },
+          {
+            "hex": "#ebceb8",
+            "coveragePercent": 5.7176
+          },
+          {
+            "hex": "#9b7053",
+            "coveragePercent": 4.952
+          },
+          {
+            "hex": "#76848c",
+            "coveragePercent": 3.8011
+          },
+          {
+            "hex": "#f7e4d3",
+            "coveragePercent": 3.6322
+          },
+          {
+            "hex": "#c3956d",
+            "coveragePercent": 3.4995
+          },
+          {
+            "hex": "#e5bb91",
+            "coveragePercent": 3.4457
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#9e6e4a",
+            "coveragePercent": 23.8718
+          },
+          {
+            "hex": "#8a5c3d",
+            "coveragePercent": 22.8628
+          },
+          {
+            "hex": "#b28055",
+            "coveragePercent": 20.926
+          },
+          {
+            "hex": "#c79462",
+            "coveragePercent": 18.7638
+          },
+          {
+            "hex": "#dfae74",
+            "coveragePercent": 13.2436
+          },
+          {
+            "hex": "#466d87",
+            "coveragePercent": 0.3319
+          }
+        ],
+        "visibleSamples": 389414,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/npcs/zen-priestess-v2.png": {

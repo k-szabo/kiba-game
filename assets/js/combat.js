@@ -14,7 +14,7 @@ function createEnemy(spec,i=0) {
     if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(spec))return TowerBossCombat.create(spec);
     if(spec.miniboss)return createMiniboss(spec,i);
     const ninja=typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(spec);
-    const h=ninja?.h??(spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
+    const h=ninja?.h??(spec.balloonWasp?60:spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.balloonWasp?82:spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
     const tier=ENEMY_TIERS[spec.summoned?0:(level.enemyRealm??Math.max(0,levels.indexOf(level)))];
     const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
     const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
@@ -92,6 +92,7 @@ function updateEnemies(dt) {
   for(const e of enemies){if(!e.dead)DevLog.scope(e,()=>updateEnemy(e,dt));}
 }
 function updateEnemy(e,dt){
+    if(WatchtowerBalloon.updateWasp(e,dt))return;
     if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(e)){TowerBossCombat.update(e,dt);return;}
     if(typeof Grapple!=='undefined'&&Grapple.moveEnemy(e,dt))return;
     if(HannahCombat.updateSupport(e,dt))return;
@@ -490,6 +491,7 @@ function minibossFlag(id){return 'guardian:'+id;}
 function secretKnown(id){return flags[realm].includes('discovered:'+id);}
 function relicUnlocked(o){return !o.guardian||flags[realm].includes(minibossFlag(o.guardian));}
 function createMiniboss(spec,i){
+  if(WatchtowerBalloonCombat.is(spec))return WatchtowerBalloonCombat.create(spec);
   if(FloatingIslands.is(spec))return FloatingIslands.create(spec);
   if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(spec))return GatekeeperCombat.create(spec);
   if(HannahCombat.is(spec))return HannahCombat.create(spec);
@@ -509,6 +511,7 @@ function createMiniboss(spec,i){
     turnCooldown:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false,arena:a};
 }
 function resetMiniboss(e){
+  if(WatchtowerBalloonCombat.is(e)){WatchtowerBalloonCombat.reset(e);return;}
   if(FloatingIslands.is(e)){FloatingIslands.reset(e);return;}
   if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.reset(e);return;}
   if(HannahCombat.is(e)){HannahCombat.reset(e);return;}
@@ -531,7 +534,7 @@ function discoverSecrets(){
     flags[realm].push('discovered:'+area.id);persist();if(!area.silent)toast(I18n.t('hint.hidden.area.prefix')+I18n.t(area.name));
   }
 }
-function defeatMiniboss(e){if(FloatingIslands.is(e)){FloatingIslands.defeat(e);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.defeat(e);return;}if(HannahCombat.is(e)){HannahCombat.defeat(e);return;}if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
+function defeatMiniboss(e){if(WatchtowerBalloonCombat.is(e)){WatchtowerBalloonCombat.defeat(e);return;}if(FloatingIslands.is(e)){FloatingIslands.defeat(e);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.defeat(e);return;}if(HannahCombat.is(e)){HannahCombat.defeat(e);return;}if(FiaCombat.is(e)){FiaCombat.defeat(e);return;}
   if(DungeonCombat.is(e)){DungeonCombat.defeat(e);return;}
   if(ArenaCombat.is(e)){ArenaCombat.defeat(e);return;}
   if(PrisonHunter.is(e)){PrisonHunter.defeat(e);return;}
@@ -563,7 +566,7 @@ function releaseMiniAttack(e){
   if(e.move==='sigils')for(const d of [-1,0,1])e.hazards.push({x:clamp(e.targetX+d*140,e.arena.x+40,e.arena.x+e.arena.w-40)-28,y:e.arena.y-145,w:56,h:145,warning:.9,life:1.55,active:false});
   if(e.move==='glaive'||e.move==='staff')miniMelee(e,e.move==='glaive'?155:125);
 }
-function updateMiniboss(e,dt){if(FloatingIslands.is(e)){FloatingIslands.updateEnemy(e,dt);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.update(e,dt);return;}if(HannahCombat.is(e)){HannahCombat.update(e,dt);return;}if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
+function updateMiniboss(e,dt){if(WatchtowerBalloonCombat.is(e)){WatchtowerBalloonCombat.update(e,dt);return;}if(FloatingIslands.is(e)){FloatingIslands.updateEnemy(e,dt);return;}if(typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(e)){GatekeeperCombat.update(e,dt);return;}if(HannahCombat.is(e)){HannahCombat.update(e,dt);return;}if(FiaCombat.is(e)){FiaCombat.update(e,dt);return;}if(DungeonCombat.is(e)){DungeonCombat.update(e,dt);return;}if(ArenaCombat.is(e)){ArenaCombat.update(e,dt);return;}if(PrisonHunter.is(e)){PrisonHunter.update(e,dt);return;}if(PrisonWarden.is(e)){PrisonWarden.update(e,dt);return;}if(Serpents.is(e)){Serpents.update(e,dt);return;}if(CampMaster.is(e)){CampMaster.update(e,dt);return;}if(DoomSlayer.is(e)){DoomSlayer.update(e,dt);return;}if(ShadowRealm.active()){ShadowRealm.updateMini(e,dt);return;}
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-100&&player.x<a.x+a.w+100&&dy>=-320&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}
   if(!e.active){if(dy>12||dy< -180)return;e.active=true;toast(e.name+I18n.t("text.watch.the.attack.tells"));}

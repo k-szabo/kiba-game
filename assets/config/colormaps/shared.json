@@ -4223,6 +4223,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/balloon-v1.png": {
+      "sha256": "52a5579ea65457290d1555a4766f4b96ce5a65c9f73eebf7a372f65bca0a1289",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "balloonVehicle"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3f2666",
+            "coveragePercent": 15.3953
+          },
+          {
+            "hex": "#311b44",
+            "coveragePercent": 12.9053
+          },
+          {
+            "hex": "#5e2d20",
+            "coveragePercent": 9.0872
+          },
+          {
+            "hex": "#7e3f24",
+            "coveragePercent": 9.0309
+          },
+          {
+            "hex": "#563283",
+            "coveragePercent": 8.0512
+          },
+          {
+            "hex": "#ec9228",
+            "coveragePercent": 6.3654
+          },
+          {
+            "hex": "#1c0b11",
+            "coveragePercent": 6.3503
+          },
+          {
+            "hex": "#411d15",
+            "coveragePercent": 6.2612
+          },
+          {
+            "hex": "#a05324",
+            "coveragePercent": 6.2267
+          },
+          {
+            "hex": "#fab82f",
+            "coveragePercent": 4.6392
+          },
+          {
+            "hex": "#c36c45",
+            "coveragePercent": 4.1953
+          },
+          {
+            "hex": "#cd6e12",
+            "coveragePercent": 3.9725
+          },
+          {
+            "hex": "#8a4a5c",
+            "coveragePercent": 2.8733
+          },
+          {
+            "hex": "#fcd956",
+            "coveragePercent": 1.9494
+          },
+          {
+            "hex": "#f0a65f",
+            "coveragePercent": 1.9004
+          },
+          {
+            "hex": "#fceb9b",
+            "coveragePercent": 0.7963
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#f2a12e",
+            "coveragePercent": 25.0064
+          },
+          {
+            "hex": "#934a24",
+            "coveragePercent": 24.0848
+          },
+          {
+            "hex": "#cf7218",
+            "coveragePercent": 14.9139
+          },
+          {
+            "hex": "#b6634a",
+            "coveragePercent": 13.3993
+          },
+          {
+            "hex": "#5c358a",
+            "coveragePercent": 11.865
+          },
+          {
+            "hex": "#facb58",
+            "coveragePercent": 10.7306
+          }
+        ],
+        "visibleSamples": 707985,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/council-gate-closed-v1.png": {
       "sha256": "e32cf36f69c16ed9c64397fdb3a1a3e3bf9558edbdc5ffe49774201a4f2a9b48",
       "width": 1254,

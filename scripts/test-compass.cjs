@@ -48,7 +48,8 @@ for(const realm of [0,1,2,3]){
  assert.equal(r('nextObjective().text'),'islands.objective.protect');assert(!node('compassTarget').hidden);assert.equal(node('compassArrow').textContent,'—');assert.equal(node('compassDirection').textContent,r("I18n.t('compass.otherLocation')"));
 }
 r('flags[0].push(...Object.values(FloatingIslandsRules.progress));');
-r("enterForestCamp();updateHUD();");assert.equal(r('nextObjective().text'),'story.journeyEnd');
+r("enterForestCamp();updateHUD();");assert.equal(r('nextObjective().text'),'watchtower.objective.rescue');
+r('flags[0].push(...Object.values(WatchtowerBalloonRules.progress));updateHUD();');assert.equal(r('nextObjective().text'),'story.journeyEnd');
 const local={point:{x:20,y:30},name:'Optional encounter',text:'Optional encounter'};
 h.sandbox.optionalObjective=local;r('level=shadowPrison');assert.equal(r('Compass.objective(optionalObjective)'),local,'Active prison objectives survive main-story completion');
 console.log('PASS: owned compass display, eight centered bearings/near cue, named objective transitions, hidden secrets, side-area idle, dream/menu hiding and paused/pure rendering.');

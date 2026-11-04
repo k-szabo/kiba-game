@@ -1814,6 +1814,22 @@
           "en": "Once rescued, Zen can purify the corrupted hymn at the Forest Refuge for a one-time reward of training points."
         }
       ]
+    },
+    {
+      "version": "0.9.74_95d17dc4",
+      "code": "95d17dc4",
+      "baseVersion": "0.9.74",
+      "slug": "ninja-watchtower-balloon",
+      "summary": {
+        "hu": "Őrtoronyból a felhők fölé",
+        "en": "From Watchtower to the Clouds"
+      },
+      "fixes": [
+        {
+          "hu": "Az őrtorony tömlöcében új társ vár kiszabadításra. Westheru ballonútja darázsrajokon, légi sárkányharcon és egy különös viharon át vezet az örvény túlpartjára.",
+          "en": "A new companion awaits rescue in the watchtower dungeon. Westheru’s balloon voyage leads through wasp swarms, a battle with a sky dragon and a strange storm to the far side of a vortex."
+        }
+      ]
     }
   ]
 }

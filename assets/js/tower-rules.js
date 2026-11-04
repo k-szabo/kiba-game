@@ -41,6 +41,10 @@ const TowerRules=(()=>{
   ['hannah','ziggurat.hannah',56],
   ['voidGatekeeper','descent.gatekeeper',48],
   ['shadowNinjaLeader','islands.ninjaLeader',44],
+  ['watchtowerJailer','watchtower.jailer',46],
+  ['watchtowerSentinel','watchtower.sentinel',46],
+  ['balloonDragon','balloon.dragon',54],
+  ['westheruSeal','balloon.westheru',50],
   ['fiaRitual','fia.name',56],
   ['prologueShadow','prologue.boss',60],
   ['fiaVengeance','fia.name',52]
@@ -62,13 +66,16 @@ const TowerRules=(()=>{
   if(!word)word=0x6d2b79f5;
   const random=()=>{word^=word<<13;word^=word>>>17;word^=word<<5;return (word>>>0)/0x100000000;};
   const count=enemyCount(number),realm=Math.floor((number-1)/5)%4,elite=number%profile.checkpointEvery===0;
-  const pool=['guard',...(number>=2?['archer']:[]),...(number>=3?['mage']:[]),...(number>=4?['shield']:[]),...(number>=7?['fly']:[])];
+  const ninjaKinds={ninjaCrossbow:'crossbow',ninjaShuriken:'shuriken',ninjaNinjutsu:'ninjutsu',ninjaAssassin:'assassin'};
+  const pool=['guard',...(number>=2?['archer']:[]),...(number>=3?['mage']:[]),...(number>=4?['shield']:[]),...(number>=7?['fly',...Object.keys(ninjaKinds),'giantWasp']:[])];
   const healthScale=1+(number-1)*.12,damageScale=1+Math.floor((number-1)/5)*.3;
   const enemies=Array.from({length:count},(_,i)=>{
-   const towerElite=elite&&i===0,kind=towerElite?(random()<.5?'guard':'shield'):pool[Math.floor(random()*pool.length)];
-   const baseHp={guard:4,archer:3,shield:6,mage:4,fly:2}[kind];
+   const towerElite=elite&&i===0,archetype=towerElite?(random()<.5?'guard':'shield'):pool[Math.floor(random()*pool.length)],ninja=ninjaKinds[archetype],wasp=archetype==='giantWasp';
+   const kind=wasp?'fly':ninja?(ninja==='ninjutsu'?'mage':ninja==='assassin'?'guard':'archer'):archetype;
+   const baseHp=wasp?3:{guard:4,archer:3,shield:6,mage:4,fly:2}[kind];
    return {id:'tower-'+number+'-'+i,kind,x:Math.round(560+i*1060/Math.max(1,count-1)+(random()-.5)*60),y:layout.groundY,patrol:layout.width,
-    factionOverride:factions[realm],noReward:true,towerEnemy:true,towerElite,
+    factionOverride:ninja?'shadowNinjas':factions[realm],noReward:true,towerEnemy:true,towerElite,
+    ...(ninja?{shadowNinjaRole:ninja,name:'islands.ninja.'+ninja}:wasp?{balloonWasp:true,name:'balloon.wasp',grappleable:false}:{}),
     maxHp:Math.min(Number.MAX_SAFE_INTEGER,Math.ceil(baseHp*healthScale*(towerElite?1.7:1))),
     damageValue:Math.min(Number.MAX_SAFE_INTEGER,Math.round(damageScale*(towerElite?1.25:1)*100)/100)};
   });
@@ -76,7 +83,8 @@ const TowerRules=(()=>{
   const bosses=bossCount(number),speedScale=1+Math.min(.6,(number-1)*.0125),towerDamageScale=.5+(number-1)*.0125;
   for(let i=0;i<bosses;i++){
    const entry=bossCatalog[((number-1)%bossPool.length+(seed%bossPool.length)+i*2)%bossPool.length];
-   Object.assign(enemies[i],{miniboss:entry.id,towerEncounter:entry.id,name:entry.name,towerBoss:true,towerElite:false,replay:true,x:520+i*430,towerSpeed:speedScale,towerDamageScale,
+   delete enemies[i].shadowNinjaRole;delete enemies[i].balloonWasp;
+   Object.assign(enemies[i],{miniboss:entry.id,towerEncounter:entry.id,name:entry.name,towerBoss:true,towerElite:false,replay:true,factionOverride:factions[realm],grappleable:false,x:520+i*430,towerSpeed:speedScale,towerDamageScale,
     maxHp:Math.min(Number.MAX_SAFE_INTEGER,Math.ceil(entry.baseHealth*(1+(number-1)*.1)))});
   }
   return {number,realm,faction:factions[realm],enemyCount:count,bossCount:bosses,elite,healthScale,damageScale,speedScale,enemies};

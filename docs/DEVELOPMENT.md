@@ -32,6 +32,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/game.js` | Mozgás, kamera, interakciók, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
 | `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
 | `assets/js/floating-islands*.js`, `grapple*.js`, `shadow-ninjas.js`, `islands-art.js`, `shadow-ninja-art-data.js` | A [lebegő szigetek](FLOATING-ISLANDS.md) történeti folytatása, sziámi nindzsák, fix pontokra célzó kampó, tartós mérföldkövek és natív grafikák. |
+| `assets/js/watchtower-balloon*.js`, `watchtower-art-data.js` | A [nindzsa őrtorony és ballonút](WATCHTOWER-BALLOON.md) sorrendi története, sérthetetlen kísérője, szakaszharcai és grafikai regisztrációja. |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
 | `assets/js/prison-quest.js`, `prison-warden.js`, `prison-art.js` | Zen opcionális [börtönága](ZEN-PRISON.md), a belső börtönnagy, megmentés és natív grafika. |
 | `assets/js/combat.js` | Ellenfélviselkedés, boss-támadások, idézés és lávamechanikák. |

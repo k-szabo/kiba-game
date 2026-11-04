@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
-for(const name of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','haru-follower','floating-islands-rules','floating-islands-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+for(const name of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','haru-follower','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 const read=expression=>JSON.parse(vm.runInContext('JSON.stringify('+expression+')',context));
 const count=read('levels.length'),copy=value=>structuredClone(value),fresh=style=>({ownedWeapons:[style],weaponRank:0,armorRank:0,herbs:0,potions:0});
 const quest=['campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted'];
@@ -23,7 +23,7 @@ function rejects(mutate,message,base=fixture()){
 const normal=fixture();valid(normal,'A completed rescue quest can retain default equipment');
 for(const style of ['katana','naginata','swordShield'])valid(fixture({complete:false,style}),'Each unrescued starting style has an independent default service inventory');
 const absent=fixture();delete absent.campServices;valid(absent,'Existing same-format fixtures may omit new service state');
-for(const id of read('Object.keys(SIDE_LOCATIONS).filter(id=>SIDE_LOCATIONS[id].realm===0&&SIDE_LOCATIONS[id].flagRealm==null&&!SIDE_LOCATIONS[id].map.dungeon&&!SIDE_LOCATIONS[id].map.descent)')){
+for(const id of read('Object.keys(SIDE_LOCATIONS).filter(id=>SIDE_LOCATIONS[id].realm===0&&SIDE_LOCATIONS[id].flagRealm==null&&!SIDE_LOCATIONS[id].map.dungeon&&!SIDE_LOCATIONS[id].map.descent&&!SIDE_LOCATIONS[id].map.watchtowerBalloon)')){
  const save=fixture(),rest=read('SIDE_LOCATIONS['+JSON.stringify(id)+'].map.rests[0]');
  save.location=id;save.checkpoint=rest;save.visitedRests[0].push(rest.id);valid(save,'Exact canonical checkpoint restores '+id);
  const elsewhere=copy(save);elsewhere.location=null;elsewhere.checkpoint=read('japan.rests[0]');valid(elsewhere,'Visited '+id+' remains recorded outside the side area');

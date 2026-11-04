@@ -24,6 +24,16 @@
       "role": "ambush-boss",
       "faction": "shadowNinjas",
       "paletteGroup": "npc.shadowNinjas.leader"
+    },
+    "watchtower.jailer": {
+      "role": "boss",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.watchtower.jailer"
+    },
+    "watchtower.sentinel": {
+      "role": "boss",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.watchtower.sentinel"
     }
   },
   "paletteGroups": {
@@ -529,6 +539,208 @@
           }
         ],
         "visibleSamples": 480645,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.watchtower.jailer": {
+      "source": "assets/images/enemies/watchtower-jailer-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.jailer.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#35313b",
+            "coveragePercent": 16.9841
+          },
+          {
+            "hex": "#49424c",
+            "coveragePercent": 14.6839
+          },
+          {
+            "hex": "#5f545e",
+            "coveragePercent": 11.478
+          },
+          {
+            "hex": "#252128",
+            "coveragePercent": 7.6425
+          },
+          {
+            "hex": "#75666e",
+            "coveragePercent": 7.3456
+          },
+          {
+            "hex": "#654c45",
+            "coveragePercent": 7.1415
+          },
+          {
+            "hex": "#816052",
+            "coveragePercent": 6.2294
+          },
+          {
+            "hex": "#4b3a37",
+            "coveragePercent": 5.9306
+          },
+          {
+            "hex": "#94766c",
+            "coveragePercent": 5.823
+          },
+          {
+            "hex": "#ae8c79",
+            "coveragePercent": 4.0357
+          },
+          {
+            "hex": "#cca284",
+            "coveragePercent": 3.5129
+          },
+          {
+            "hex": "#e3b894",
+            "coveragePercent": 3.2791
+          },
+          {
+            "hex": "#f0cbaa",
+            "coveragePercent": 2.8139
+          },
+          {
+            "hex": "#f8dbbe",
+            "coveragePercent": 1.7537
+          },
+          {
+            "hex": "#b88050",
+            "coveragePercent": 1.3135
+          },
+          {
+            "hex": "#8cc2d7",
+            "coveragePercent": 0.0327
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5f3d",
+            "coveragePercent": 30.4565
+          },
+          {
+            "hex": "#ad774b",
+            "coveragePercent": 27.8745
+          },
+          {
+            "hex": "#ce945a",
+            "coveragePercent": 23.6706
+          },
+          {
+            "hex": "#ecb772",
+            "coveragePercent": 17.464
+          },
+          {
+            "hex": "#3f7b9f",
+            "coveragePercent": 0.3207
+          },
+          {
+            "hex": "#6bb9d8",
+            "coveragePercent": 0.2138
+          }
+        ],
+        "visibleSamples": 676312,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.watchtower.sentinel": {
+      "source": "assets/images/enemies/watchtower-sentinel-v1.png",
+      "frameMetadata": "ART_WATCHTOWER.sentinel.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#32303c",
+            "coveragePercent": 9.7193
+          },
+          {
+            "hex": "#3e414f",
+            "coveragePercent": 8.8257
+          },
+          {
+            "hex": "#614c48",
+            "coveragePercent": 8.7141
+          },
+          {
+            "hex": "#4c3b39",
+            "coveragePercent": 8.6994
+          },
+          {
+            "hex": "#29252e",
+            "coveragePercent": 8.2976
+          },
+          {
+            "hex": "#72616e",
+            "coveragePercent": 8.0894
+          },
+          {
+            "hex": "#565463",
+            "coveragePercent": 7.774
+          },
+          {
+            "hex": "#7e5f52",
+            "coveragePercent": 5.9811
+          },
+          {
+            "hex": "#867d82",
+            "coveragePercent": 5.4335
+          },
+          {
+            "hex": "#1b1822",
+            "coveragePercent": 4.5316
+          },
+          {
+            "hex": "#a99284",
+            "coveragePercent": 4.3603
+          },
+          {
+            "hex": "#9c7862",
+            "coveragePercent": 4.2584
+          },
+          {
+            "hex": "#caa684",
+            "coveragePercent": 4.2366
+          },
+          {
+            "hex": "#657682",
+            "coveragePercent": 4.129
+          },
+          {
+            "hex": "#e2bc9b",
+            "coveragePercent": 3.884
+          },
+          {
+            "hex": "#f5d7bc",
+            "coveragePercent": 3.0661
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e633f",
+            "coveragePercent": 30.0045
+          },
+          {
+            "hex": "#ab7c4e",
+            "coveragePercent": 28.1967
+          },
+          {
+            "hex": "#c9985e",
+            "coveragePercent": 24.0595
+          },
+          {
+            "hex": "#e8ba72",
+            "coveragePercent": 16.7326
+          },
+          {
+            "hex": "#6fa4da",
+            "coveragePercent": 0.5115
+          },
+          {
+            "hex": "#4b70a1",
+            "coveragePercent": 0.4952
+          }
+        ],
+        "visibleSamples": 508209,
         "dominantCoveragePercent": 100.0001
       }
     }
@@ -1057,6 +1269,216 @@
         ],
         "visibleSamples": 336563,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/watchtower-jailer-v1.png": {
+      "sha256": "af947cd4977b3e04bdb8b531d5a50b3832321931c275c4999ee33742cd9cc32f",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "watchtowerJailerArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#35313b",
+            "coveragePercent": 16.9841
+          },
+          {
+            "hex": "#49424c",
+            "coveragePercent": 14.6839
+          },
+          {
+            "hex": "#5f545e",
+            "coveragePercent": 11.478
+          },
+          {
+            "hex": "#252128",
+            "coveragePercent": 7.6425
+          },
+          {
+            "hex": "#75666e",
+            "coveragePercent": 7.3456
+          },
+          {
+            "hex": "#654c45",
+            "coveragePercent": 7.1415
+          },
+          {
+            "hex": "#816052",
+            "coveragePercent": 6.2294
+          },
+          {
+            "hex": "#4b3a37",
+            "coveragePercent": 5.9306
+          },
+          {
+            "hex": "#94766c",
+            "coveragePercent": 5.823
+          },
+          {
+            "hex": "#ae8c79",
+            "coveragePercent": 4.0357
+          },
+          {
+            "hex": "#cca284",
+            "coveragePercent": 3.5129
+          },
+          {
+            "hex": "#e3b894",
+            "coveragePercent": 3.2791
+          },
+          {
+            "hex": "#f0cbaa",
+            "coveragePercent": 2.8139
+          },
+          {
+            "hex": "#f8dbbe",
+            "coveragePercent": 1.7537
+          },
+          {
+            "hex": "#b88050",
+            "coveragePercent": 1.3135
+          },
+          {
+            "hex": "#8cc2d7",
+            "coveragePercent": 0.0327
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8f5f3d",
+            "coveragePercent": 30.4565
+          },
+          {
+            "hex": "#ad774b",
+            "coveragePercent": 27.8745
+          },
+          {
+            "hex": "#ce945a",
+            "coveragePercent": 23.6706
+          },
+          {
+            "hex": "#ecb772",
+            "coveragePercent": 17.464
+          },
+          {
+            "hex": "#3f7b9f",
+            "coveragePercent": 0.3207
+          },
+          {
+            "hex": "#6bb9d8",
+            "coveragePercent": 0.2138
+          }
+        ],
+        "visibleSamples": 676312,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/watchtower-sentinel-v1.png": {
+      "sha256": "22d57e207535cbc8ac59488f2e028e929044f15b78b84f1152b6ce1cfdcdf801",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "watchtowerSentinelArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#32303c",
+            "coveragePercent": 9.7193
+          },
+          {
+            "hex": "#3e414f",
+            "coveragePercent": 8.8257
+          },
+          {
+            "hex": "#614c48",
+            "coveragePercent": 8.7141
+          },
+          {
+            "hex": "#4c3b39",
+            "coveragePercent": 8.6994
+          },
+          {
+            "hex": "#29252e",
+            "coveragePercent": 8.2976
+          },
+          {
+            "hex": "#72616e",
+            "coveragePercent": 8.0894
+          },
+          {
+            "hex": "#565463",
+            "coveragePercent": 7.774
+          },
+          {
+            "hex": "#7e5f52",
+            "coveragePercent": 5.9811
+          },
+          {
+            "hex": "#867d82",
+            "coveragePercent": 5.4335
+          },
+          {
+            "hex": "#1b1822",
+            "coveragePercent": 4.5316
+          },
+          {
+            "hex": "#a99284",
+            "coveragePercent": 4.3603
+          },
+          {
+            "hex": "#9c7862",
+            "coveragePercent": 4.2584
+          },
+          {
+            "hex": "#caa684",
+            "coveragePercent": 4.2366
+          },
+          {
+            "hex": "#657682",
+            "coveragePercent": 4.129
+          },
+          {
+            "hex": "#e2bc9b",
+            "coveragePercent": 3.884
+          },
+          {
+            "hex": "#f5d7bc",
+            "coveragePercent": 3.0661
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e633f",
+            "coveragePercent": 30.0045
+          },
+          {
+            "hex": "#ab7c4e",
+            "coveragePercent": 28.1967
+          },
+          {
+            "hex": "#c9985e",
+            "coveragePercent": 24.0595
+          },
+          {
+            "hex": "#e8ba72",
+            "coveragePercent": 16.7326
+          },
+          {
+            "hex": "#6fa4da",
+            "coveragePercent": 0.5115
+          },
+          {
+            "hex": "#4b70a1",
+            "coveragePercent": 0.4952
+          }
+        ],
+        "visibleSamples": 508209,
+        "dominantCoveragePercent": 100.0001
       }
     }
   }
