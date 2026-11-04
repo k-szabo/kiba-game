@@ -1,17 +1,17 @@
 # Célzott képletöltés
 
-A GitHub Pages-változat nem tölti le induláskor a teljes képkatalógust. A `graphics.js` `Visuals` betöltője stabil `Image` objektumokat ad a meglévő renderelőknek, és csak a szükséges képeket kéri le. Az `asset-loading.js` kapcsolja ehhez a helyszíntervezőt és a lokalizált betöltési ablakot. Nincs backend vagy service worker.
+A GitHub Pages-változat nem tölti le induláskor a teljes képkatalógust. A `graphics.js` `Visuals` betöltője stabil `Image` objektumokat ad a meglévő renderelőknek, és csak a szükséges képeket kéri le. Az `asset-loading.js` kapcsolja ehhez a helyszíntervezőt és a lokalizált betöltési csíkot. Nincs backend vagy service worker.
 
 ## Igények és várakozás
 
 - Induláskor a főmenü háttere, terepe és kellékei, valamint a két közvetlen Momo-képlap szükséges. A `Visuals.ready` a menücsomagot jelenti, nem a teljes manifestet.
 - A helyszíntervező teljes, explicit helyszíncsomagot kér belépéskor: a pálya és rejtett szektorainak háttereit, NPC-it, lehetséges ellenfeleit, későbbi harci fázisait és helyi jutalmainak képeit is. A csomag nem szűkül a kamera előtt látható szereplőkre. Így például Japán rejtett kígyója és barlangja, Yomi titkos arénája, Hannah viharos fázisa és a sárkány összes póza már a pályaindítási várakozás alatt előkészül.
 - A torony a forgó bosskészletet előre kéri; az aktuális ellenféllista vagy a kilépési megerősítés nem dobja el ezt a csomagot. A dungeonök minden emelete saját hátteret és bosst tölt, mindkét harcoló frakcióval és az idézhető katonákkal. A párbaj mindhárom kezdőfegyvert és az összes lehetséges arénahátteret előkészíti a készenlét előtt.
-- A betöltési ablak az adott pálya meglévő festményét használja háttérként, változatlan tartalomazonosított URL-lel. Nem készül új háttérgrafika. A dialóguskeret, hátizsák és térkép alapképei, valamint a már birtokolt inventorytárgyak a helyszíncsomaggal együtt érkeznek.
+- A betöltést a képernyő alján keskeny, százalékos sáv jelzi; nincs középső felugró ablak, második háttérkép vagy elmosás. Normál letöltés nem veszi el a fókuszt. A dialóguskeret, hátizsák és térkép alapképei, valamint a már birtokolt inventorytárgyak a helyszíncsomaggal együtt érkeznek.
 - A renderelés közben olvasott `Visuals.images[key]` továbbra is regisztrál további kötelező igényt biztonsági tartalékként; a normál felfedezés és az előre ismert bossfázisok már a helyszíncsomagra támaszkodnak. A dialógus, inventory és bolt a képletöltés után újrarajzolódik. A képkörnyezet tokenje a helyszínt és fegyvert követi, a panelváltás, ellenfélhalál és idézés nem törli a korábbi kötelező portré- és ikonigényeket.
 - A manifest képei legfeljebb négy párhuzamos betöltést/dekódolást használnak. A két közvetlen Momo-képlap külön indul. Helyszínváltáskor a még sorban álló, már nem szükséges munkák kiesnek; a legfeljebb négy folyamatban lévő kérés befejeződhet.
-- A kötelező kép hiánya alatt a játék órái, fizikája és harca áll. A betöltési ablak elnyeli a játékinputot, billentyűzettel is kezelhető. Sikertelen kérésnél újrapróbálás vagy visszalépés lehetséges. Egy elhagyott helyszín hibája nem akadályozza az új helyszínt.
-- Párbajban a hálózati koordináció tovább fut, és a meglévő szünetjelzés továbbítja a helyi betöltési várakozást. A minimumfelbontás értesítése elsőbbséget kap a betöltési ablak fókuszával szemben.
+- A kötelező kép hiánya alatt a játék órái, fizikája és harca áll. A betöltési csík mellett a játékinput továbbra is blokkolt, a teljes képernyős gyorskapcsoló viszont használható. Csak letöltési hiba esetén jelenik meg a hibaüzenet és a két billentyűzettel kezelhető művelet. Sikertelen kérésnél újrapróbálás vagy visszalépés lehetséges. Egy elhagyott helyszín hibája nem akadályozza az új helyszínt.
+- Párbajban a hálózati koordináció tovább fut, és a meglévő szünetjelzés továbbítja a helyi betöltési várakozást. A minimumfelbontás értesítése elsőbbséget kap a betöltési hiba fókuszával szemben.
 
 A `Visuals.peek(key)` csak a már létrehozott objektum azonosságát olvassa, és nem indít letöltést. Ilyet használj katalóguskeresésnél, például a háttéranimáció forrásképének azonosításakor. A `prefetch()` opcionális: jelenleg a legyőzött őrző utáni közeli portál előkészítheti a következő birodalom hátterét. Ennek hibája nem blokkol, a befejezése nem építi újra az aktív menüt. A háttéranimáció kiegészítő képeinek betöltése a kötelező képek után indul.
 
@@ -43,3 +43,5 @@ A sikeresen betöltött képek egy böngészőmunkameneten belül memóriában m
 - `node scripts/test-asset-loading.cjs`: menücsomag, négyes sor, elhagyott munkák és hibák, kötelező renderigények, portrék scope-váltása, opcionális előtöltés, újrapróbálás, megállított játékmenet és párbajjelzés; az összes regisztrált helyszín csomagja, a rejtett bossok és későbbi fázisok, a változatlanul kis főmenü és a panelváltást túlélő helyszínkörnyezet.
 - `node scripts/test-asset-cache.cjs`: tartalomazonosság, integritás, verzióváltás, biztonságos takarítás, cache-hibák és fejlesztői kapcsoló.
 - `node scripts/build-game.mjs --check`: a forrás és a képlenyomatok szerinti generált runtime ellenőrzése.
+
+A `node scripts/test-loading-strip.cjs` a százalékot, az akadálymentes előrehaladási szerepet, a fókusz megőrzését és a hibából való újrapróbálást ellenőrzi.

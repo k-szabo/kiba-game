@@ -82,18 +82,22 @@ const AssetLoading=(()=>{
  }
  function render(){
   if(!initialized)return;
-  const blocked=Visuals.blocked,failed=Visuals.failures.length>0,panel=$('assetLoading');
+  const blocked=Visuals.blocked,failed=blocked&&Visuals.failures.length>0,panel=$('assetLoading');
   panel.hidden=!blocked;
-  const path=ART_MANIFEST[backdrop],hash=typeof IMAGE_REVISIONS==='object'?IMAGE_REVISIONS[path]:null;
-  const source=path&&(typeof URL==='function'&&document.baseURI?new URL(path+(hash?'?v='+hash:''),document.baseURI).href:path+(hash?'?v='+hash:''));
-  panel.style?.setProperty?.('--loading-art',source?'url('+JSON.stringify(source)+')':'none');
+  if(failed)panel.dataset.failed='true';else delete panel.dataset.failed;
+  const percent=Visuals.total?Math.min(100,Math.max(0,Math.floor(Visuals.loaded/Visuals.total*100))):0;
+  $('assetLoadingFill').style.width=percent+'%';$('assetLoadingPercent').textContent=percent+'%';
+  $('assetLoadingProgress').setAttribute('aria-valuenow',String(percent));
   $('assetLoadingText').textContent=failed?I18n.t('loading.failed'):I18n.format('loading.progress',[Visuals.loaded,Visuals.total]);
-  $('assetRetry').hidden=!failed;$('assetRetry').textContent=I18n.t('loading.retry');$('assetBack').textContent=I18n.t('weapon.choose.back');
-  if(blocked&&!shown&&!resolutionBlocked){focus=document.activeElement;$('assetLoadingText').focus();}
-  if(!blocked&&shown&&!resolutionBlocked){
+  $('assetRetry').hidden=!failed;$('assetBack').hidden=!failed;
+  $('assetRetry').textContent=I18n.t('loading.retry');$('assetBack').textContent=I18n.t('weapon.choose.back');
+  // Ordinary progress never steals focus. Only failed loads expose a focus trap.
+  if(failed&&!shown&&!resolutionBlocked){focus=document.activeElement;$('assetLoadingText').focus();}
+  if(!failed&&shown&&!resolutionBlocked){
    if(focus?.isConnected&&!focus.disabled&&!focus.closest?.('[hidden],[inert]'))focus.focus();
    else if(state==='dialog')$('dialogOk').focus();else if(state==='inventory')$('closeInventory').focus();else if(state==='shop')$('closeShop').focus();else{canvas.tabIndex=-1;canvas.focus();}
-  }shown=blocked&&!resolutionBlocked;
+   focus=null;
+  }shown=failed&&!resolutionBlocked;
  }
  function init(){
   initialized=true;
@@ -105,6 +109,7 @@ const AssetLoading=(()=>{
   // Suppress inputs before gameplay/rebinding handlers while a required image is absent.
   for(const name of ['keydown','keyup','mousedown','mouseup','click','contextmenu'])addEventListener(name,event=>{
    if(!Visuals.blocked||resolutionBlocked)return;
+   if(name==='keydown'&&typeof Fullscreen!=='undefined'&&Bindings.shortcut('fullscreen',event))return;
    // A tower loading failure can still be left through the same safe exit
    // confirmation. Its own keyboard trap handles this higher modal.
    if(!$('towerExitConfirm').hidden&&event.target?.closest?.('#towerExitConfirm'))return;
@@ -112,7 +117,7 @@ const AssetLoading=(()=>{
    if(!allowed){event.preventDefault();event.stopImmediatePropagation();keys.clear();pressed.clear();}
    else if(name==='keydown'&&event.key==='Tab'){
     const controls=[$('assetRetry'),$('assetBack')].filter(node=>!node.hidden),index=controls.indexOf(document.activeElement);
-    event.preventDefault();controls[(index+(event.shiftKey?-1:1)+controls.length)%controls.length].focus();
+    event.preventDefault();if(controls.length)controls[(index+(event.shiftKey?-1:1)+controls.length)%controls.length].focus();
    }
   },true);
  }
