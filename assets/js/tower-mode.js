@@ -5,7 +5,7 @@ const TowerMode=(()=>{
  const node=id=>document.getElementById(id),clone=value=>value?JSON.parse(JSON.stringify(value)):null;
  const ready=()=>!resolutionBlocked&&storageReady&&loadingReady&&Visuals.loaded===Visuals.total&&!Visuals.failures.length;
  const formatTime=seconds=>{const value=Math.floor(seconds);return Math.floor(value/60)+':'+String(value%60).padStart(2,'0');};
- const score=()=>run?{...TowerRules.score(run),kills:run.kills+(currentSpec?.enemies.filter((_,i)=>enemies[i]?.dead).length||0),elapsed:run.elapsed+floorElapsed}:null;
+ const score=()=>run?{...TowerRules.score(run),kills:run.kills+(currentSpec?.enemies.filter(spec=>enemies.find(e=>e.id===spec.id)?.dead).length||0),elapsed:run.elapsed+floorElapsed}:null;
  function stored(result){if(result&&!result.persisted)warning=true;return result?.ok===true;}
  function record(){if(run)stored(TowerStore.finish(score()));}
  function clearInput(){keys.clear();pressed.clear();context=null;$('prompt').hidden=true;}
@@ -46,7 +46,7 @@ const TowerMode=(()=>{
  }
  function clearFloor(){
   if(stage!=='fight'||enemies.some(e=>!e.dead))return false;
-  const next=TowerRules.advance(run,{kills:enemies.length,elapsed:floorElapsed});if(!next.ok){fail();return false;}
+  const next=TowerRules.advance(run,{kills:currentSpec.enemyCount,elapsed:floorElapsed});if(!next.ok){fail();return false;}
   run=next.state;floorElapsed=0;currentSpec=null;projectiles=[];particles=[];
   player.hp=TowerRules.heal(player.hp,player.maxHp,run.cleared);stored(TowerStore.finish(TowerRules.score(run)));if(next.checkpoint)stored(TowerStore.saveCheckpoint(run.checkpoint));
   stage='clear';state='tower';clearInput();showResult();return true;
@@ -106,15 +106,13 @@ const TowerMode=(()=>{
  function update(dt){
   if(!active||stage!=='fight'||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   floorElapsed+=dt;movingPlatforms(dt);input(dt);if(state!=='play')return;const victim=player;movePlayer(dt);if(state!=='play'||player!==victim)return;
-  dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}advanceSwordAttack(dt);if(state!=='play')return;for(const enemy of enemies){
-   if(enemy.dead)continue;const before=projectiles.length;
-   DevLog.scope(enemy,()=>updateEnemy(enemy,dt*(enemy.towerSpeed||1)));
-   // Shared controllers author base projectile damage; scale each new shot once.
-   if(enemy.towerBoss)for(let i=before;i<projectiles.length;i++){const p=projectiles[i];p.damage=(p.damage||1)*enemy.towerDamageScale;p.vx*=enemy.towerSpeed;p.vy*=enemy.towerSpeed;p.life/=enemy.towerSpeed;}
+  dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}advanceSwordAttack(dt);if(state!=='play')return;for(const enemy of [...enemies]){
+   if(enemy.dead)continue;
+   DevLog.scope(enemy,()=>enemy.towerSummonOwner?TowerBossCombat.updateSupport(enemy,dt):updateEnemy(enemy,dt));
    if(state!=='play')return;
   }
   for(const p of projectiles){p.life-=dt;if(p.kind==='arrow')p.vy+=55*dt;const x=p.x,y=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;const radius=p.radius||7,box={x:Math.min(x,p.x)-radius,y:Math.min(y,p.y)-radius,w:Math.abs(x-p.x)+radius*2,h:Math.abs(y-p.y)+radius*2};
-   if(p.life>0&&overlap(player,box)){damage(p.damage||1,p.vx>=0?1:-1,true);p.life=0;if(state!=='play')return;}}
+   if(p.life>0&&overlap(player,box)){TowerBossCombat.projectile(p);p.life=0;if(state!=='play')return;}}
   projectiles=projectiles.filter(p=>p.life>0);
   for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.kind!=='dashWisp')p.vy+=500*dt;}particles=particles.filter(p=>p.life>0);
   camera+=(clamp(player.x-viewW*.43,0,Math.max(0,level.width-viewW))-camera)*Math.min(1,dt*6);cameraY+=(clamp(player.y-H*.54,0,Math.max(0,level.height-H))-cameraY)*Math.min(1,dt*8);
@@ -123,7 +121,7 @@ const TowerMode=(()=>{
  function draw(){
   if(!active)return false;BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);ctx.fillStyle='#161b26';ctx.fillRect(0,0,viewW,H);
   const image=Visuals.images.towerBackdrop;if(image?.complete&&image.naturalWidth){const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),top=run&&stage!=='lobby'?TowerRules.layout.groundY-cameraY-image.naturalHeight*s*.82:0;BackgroundMotion.draw(image,(viewW-image.naturalWidth*s)/2,top,image.naturalWidth*s,image.naturalHeight*s);}
-  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);for(const enemy of enemies)if(!enemy.dead){drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const enemy of enemies)if(!enemy.dead)ArenaArt.effects(enemy);for(const p of projectiles)Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
+  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);for(const enemy of enemies)if(!enemy.dead){if(!TowerBossArt.actor(enemy))drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const enemy of enemies)if(!enemy.dead)TowerBossArt.effects(enemy);for(const p of projectiles)if(!IslandsArt.projectile(p)&&!SerpentArt.projectile(p)&&!FiaRitualArt.projectile(p))Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
   ctx.restore();return true;
  }
  function init(){

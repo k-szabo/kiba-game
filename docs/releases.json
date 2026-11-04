@@ -1766,6 +1766,22 @@
           "en": "A new story route across the Floating Islands continues Momo’s journey with Siamese shadow ninjas and an obtainable grappling hook."
         }
       ]
+    },
+    {
+      "version": "0.9.72_ab740729",
+      "code": "ab740729",
+      "baseVersion": "0.9.72",
+      "slug": "endless-tower-complete-boss-roster",
+      "summary": {
+        "hu": "A birodalmak bossai a toronyban",
+        "en": "Bosses of the realms in the tower"
+      },
+      "fixes": [
+        {
+          "hu": "A végtelen torony bossválasztéka a kimaradó fő- és opcionális bossok toronyhoz igazított változataival bővült. A találkozások történeti események nélkül működnek; a korábbi checkpointok, rekordok és a kalandmentés megmaradnak.",
+          "en": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved."
+        }
+      ]
     }
   ]
 }

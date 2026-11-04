@@ -2525,7 +2525,7 @@
       {
         "value": "#f5cb83",
         "lines": [
-          120
+          121
         ],
         "dynamic": false
       }
@@ -2538,86 +2538,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          559
+          562
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          413
+          416
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          375,
-          409
+          378,
+          412
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          204
+          207
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          543
+          546
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          286
+          289
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          399
+          402
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          344,
-          395
+          347,
+          398
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          204
+          207
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          558
+          561
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          543
+          546
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          404
+          407
         ],
         "dynamic": false
       }
@@ -2687,14 +2687,14 @@
       {
         "value": "#c3d9f1",
         "lines": [
-          58
+          60
         ],
         "dynamic": false
       },
       {
         "value": "#f0a35f",
         "lines": [
-          58
+          60
         ],
         "dynamic": false
       }
@@ -2946,22 +2946,22 @@
       {
         "value": "#8c909b",
         "lines": [
-          23,
-          38
+          29,
+          44
         ],
         "dynamic": false
       },
       {
         "value": "#95c485",
         "lines": [
-          41
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#c6d8d8",
         "lines": [
-          41
+          47
         ],
         "dynamic": false
       }
@@ -4283,57 +4283,57 @@
       {
         "value": "#33281f",
         "lines": [
-          47
+          57
         ],
         "dynamic": false
       },
       {
         "value": "#49392b",
         "lines": [
-          36
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#8d7b5b",
         "lines": [
-          37
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#c9b384",
         "lines": [
-          31,
-          52
+          41,
+          62
         ],
         "dynamic": false
       },
       {
         "value": "#ccac65",
         "lines": [
-          37
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#ddc69c",
         "lines": [
-          47
+          57
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a8",
         "lines": [
-          37
+          47
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c4",
         "lines": [
-          38
+          48
         ],
         "dynamic": false
       }
@@ -4502,7 +4502,7 @@
       {
         "value": "#d5bb89",
         "lines": [
-          53
+          54
         ],
         "dynamic": false
       }
@@ -4512,7 +4512,7 @@
       {
         "value": "#bd92e8",
         "lines": [
-          59
+          60
         ],
         "dynamic": false
       }
@@ -4763,14 +4763,14 @@
         "value": "#b8e8ee",
         "lines": [
           11,
-          145
+          148
         ],
         "dynamic": false
       },
       {
         "value": "#e0b9ff",
         "lines": [
-          145
+          148
         ],
         "dynamic": false
       },
@@ -4784,7 +4784,7 @@
       {
         "value": "#ffbd69",
         "lines": [
-          145
+          148
         ],
         "dynamic": false
       },
@@ -4941,32 +4941,43 @@
       }
     ],
     "assets/js/slayer-dialog.js": [],
+    "assets/js/tower-boss-art.js": [],
+    "assets/js/tower-boss-combat.js": [],
     "assets/js/tower-leaderboard-api.js": [],
     "assets/js/tower-leaderboard.js": [],
     "assets/js/tower-mode.js": [
       {
         "value": "#07111c",
         "lines": [
-          126
+          124
         ],
         "dynamic": false
       },
       {
         "value": "#161b26",
         "lines": [
-          124
+          122
         ],
         "dynamic": false
       },
       {
         "value": "#fff1cd",
         "lines": [
-          126
+          124
         ],
         "dynamic": false
       }
     ],
     "assets/js/tower-rules.js": [],
+    "assets/js/tower-special-bosses.js": [
+      {
+        "value": "#cf9bf3",
+        "lines": [
+          44
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/tower-store.js": [],
     "assets/js/travel-atlas.js": [],
     "assets/js/void-encounter-rules.js": [],
@@ -4999,7 +5010,7 @@
       {
         "value": "#ba80ed",
         "lines": [
-          65
+          66
         ],
         "dynamic": false
       }

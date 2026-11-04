@@ -1348,7 +1348,9 @@
       "menu.changelog.0970.88f2c94c.1": "A zikkurat belsejéből a mélybe vezető kapu külön, látható portálként jelenik meg; az oltár továbbra is pihenőhelyként működik.",
       "menu.changelog.0970.88f2c94c.2": "A korábbi mentések nem kompatibilisek ezzel a kiadással; új kaland indul. A nyelv- és billentyűbeállítások megmaradnak.",
       "menu.changelog.0971.e96d3917.title": "Kampóval a felhők fölött",
-      "menu.changelog.0971.e96d3917.0": "A lebegő szigetek új történeti útvonala sziámi árnyéknindzsákkal és egy megszerezhető kapaszkodókampóval folytatja Momo útját."
+      "menu.changelog.0971.e96d3917.0": "A lebegő szigetek új történeti útvonala sziámi árnyéknindzsákkal és egy megszerezhető kapaszkodókampóval folytatja Momo útját.",
+      "menu.changelog.0972.ab740729.title": "A birodalmak bossai a toronyban",
+      "menu.changelog.0972.ab740729.0": "A végtelen torony bossválasztéka a kimaradó fő- és opcionális bossok toronyhoz igazított változataival bővült. A találkozások történeti események nélkül működnek; a korábbi checkpointok, rekordok és a kalandmentés megmaradnak."
     }
   },
   "en": {
@@ -2700,7 +2702,9 @@
       "menu.changelog.0970.88f2c94c.1": "The gate from the ziggurat interior to its depths now appears as a separate, visible portal; the altar remains a rest point.",
       "menu.changelog.0970.88f2c94c.2": "Previous saves are incompatible with this release; start a new journey. Language and control preferences are preserved.",
       "menu.changelog.0971.e96d3917.title": "Grappling Above the Clouds",
-      "menu.changelog.0971.e96d3917.0": "A new story route across the Floating Islands continues Momo’s journey with Siamese shadow ninjas and an obtainable grappling hook."
+      "menu.changelog.0971.e96d3917.0": "A new story route across the Floating Islands continues Momo’s journey with Siamese shadow ninjas and an obtainable grappling hook.",
+      "menu.changelog.0972.ab740729.title": "Bosses of the realms in the tower",
+      "menu.changelog.0972.ab740729.0": "The Endless Tower roster now includes tower-adapted versions of the missing main and optional bosses. Encounters run without story events; existing checkpoints, records and your journey save are preserved."
     }
   }
 }

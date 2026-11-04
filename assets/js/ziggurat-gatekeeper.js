@@ -3,9 +3,10 @@
 const GatekeeperCombat=(()=>{
  const guardian='guardian:VoidGatekeeper',order=['crescentSweep','riftFan','voidEruption','piercingThrust'];
  const is=e=>e?.miniboss==='voidGatekeeper',source=e=>'mini:'+e.id;
- const current=e=>is(e)&&realm===3&&level.id==='zigguratDepths'&&enemies.includes(e)&&!e.dead;
+ const tower=e=>e?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
+ const current=e=>is(e)&&(tower(e)||realm===3&&level.id==='zigguratDepths')&&enemies.includes(e)&&!e.dead;
  const enraged=e=>e.hp<=e.maxHp*.5;
- const eligible=e=>flags[3].includes('zigguratDescentAccepted')||e.replay&&DevSession.active;
+ const eligible=e=>tower(e)||flags[3].includes('zigguratDescentAccepted')||e.replay&&DevSession.active;
  const enemy=()=>enemies.find(e=>current(e)&&e.active);
  const locked=()=>!!enemy();
  function phase(e,next,duration){
@@ -102,7 +103,7 @@ const GatekeeperCombat=(()=>{
  function defeat(e){
   if(!current(e)||!e.active||e.hp>0)return false;
   e.dead=true;e.active=false;e.phase='dead';e.attackBox=null;e.hazards=[];e.windup=0;e.attackTime=0;e.walkSpeed=0;clearShots(e);
-  if(e.replay)return false;
+  if(tower(e)||e.replay)return false;
   return typeof ZigguratDescent!=='undefined'&&ZigguratDescent.gateVictory(e);
  }
  return Object.freeze({is,create,reset,update,defeat,locked,enforceBounds});

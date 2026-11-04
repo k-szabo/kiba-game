@@ -5,7 +5,8 @@ const CampMaster=(()=>{
  const rules=Object.freeze({executionSeconds:15,summonWarning:.95,jumpHeight:250,jumpDuration:.95});
  let serial=0;
  const is=enemy=>enemy?.miniboss==='campMaster';
- const current=enemy=>level===samuraiCamp&&enemies.includes(enemy)&&!enemy.dead;
+ const tower=enemy=>enemy?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
+ const current=enemy=>(level===samuraiCamp||tower(enemy))&&enemies.includes(enemy)&&!enemy.dead;
  function phase(enemy,next,duration){
   enemy.phase=next;enemy.clock=duration;enemy.phaseDuration=duration;
   enemy.windup=next==='windup'?duration:0;enemy.windupDuration=duration;
@@ -29,7 +30,7 @@ const CampMaster=(()=>{
   phase(enemy,'wait',.8);return enemy;
  }
  function create(spec){
-  const arena=samuraiCamp.secrets.find(area=>area.id===spec.secretArea)?.arena||samuraiCamp.arena;
+  const arena=spec.arena||samuraiCamp.secrets.find(area=>area.id===spec.secretArea)?.arena||samuraiCamp.arena;
   return reset({...spec,w:90,h:150,maxHp:100,origin:spec.x,baseY:spec.y-150,
    patrolLeft:arena.x+25,patrolRight:arena.x+arena.w-115,arena,encounterToken:++serial});
  }
@@ -80,7 +81,7 @@ const CampMaster=(()=>{
  }
  function supportTick(enemy,dt){
   for(const threshold of [.6,.4])if(enemy.hp<=enemy.maxHp*threshold&&!enemy.summonThresholds.includes(threshold))summon(enemy,threshold);
-  if(enemy.hp<=enemy.maxHp*.1&&!enemy.executionStarted)beginExecution(enemy);
+  if(!tower(enemy)&&enemy.hp<=enemy.maxHp*.1&&!enemy.executionStarted)beginExecution(enemy);
   for(const portal of enemy.summons){
    portal.warning=Math.max(0,portal.warning-dt);if(portal.warning>0)continue;
    const index=++enemy.summonSerial,support=createEnemy({id:'camp-reinforcement-'+enemy.encounterToken+'-'+index,
@@ -139,7 +140,7 @@ const CampMaster=(()=>{
   if(Math.abs(dx)<125&&support.cd<=0&&Math.abs(player.y+player.h-owner.arena.y)<180){
    if(Math.abs(dx)<18||Math.sign(dx)===support.face){support.windupDuration=support.kind==='shield'?.8:.55;support.windup=support.windupDuration;}
   }else if(Math.abs(dx)>70)moveEnemy(support,Math.sign(dx)*(support.kind==='shield'?70:105),dt);
-  if(overlap(player,support)&&support.contactCd<=0){support.contactCd=1.1;damage(1,dx>0?1:-1,true);}
+  if(overlap(player,support)&&support.contactCd<=0){support.contactCd=1.1;damage(support.damageValue||1,dx>0?1:-1,true);}
   return true;
  }
  function update(enemy,dt){
@@ -149,7 +150,7 @@ const CampMaster=(()=>{
   if(!inside){if(enemy.active)reset(enemy);return;}
   if(!enemy.active){
    if(feet<a.y-180)return;
-   if(!enemy.replay&&!flags[0].includes('mayorExecuted')){CampQuest.masterScene(enemy);return;}
+   if(!tower(enemy)&&!enemy.replay&&!flags[0].includes('mayorExecuted')){CampQuest.masterScene(enemy);return;}
    enemy.active=true;
   }
   if(enemy.hp<=0){defeat(enemy);return;}
@@ -189,6 +190,7 @@ const CampMaster=(()=>{
   enemy.dead=true;enemy.active=false;enemy.y=enemy.baseY;enemy.attackBox=null;enemy.hazards=[];
   clearSupport(enemy);enemy.executionRemaining=0;enemy.executionResolved=true;
   enemy.poseIndex=0;enemy.move=null;enemy.attackTime=0;enemy.attackElapsed=0;enemy.windup=0;enemy.hitDone=false;enemy.walkSpeed=0;
+  if(tower(enemy))return true;
   const first=!enemy.replay&&!flags[0].includes(flag);
   if(first){
    flags[0].push(flag);if(!flags[0].includes(soul))flags[0].push(soul);

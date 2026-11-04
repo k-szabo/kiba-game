@@ -4,19 +4,25 @@ const FloatingIslands=(()=>{
  const rules=FloatingIslandsRules,companion=HaruFollower.create(),is=e=>e?.miniboss==='shadowNinjaLeader';
  let tracked=null,poison=null,tether=null,departing=null;
  const active=()=>level===floatingIslands&&!Prologue.active;
+ const tower=e=>e?.towerBoss&&level.tower&&typeof TowerMode!=='undefined'&&TowerMode.running;
  const abducted=()=>rules.abducted(flags);
- const current=e=>active()&&is(e)&&enemies.includes(e)&&!e.dead;
+ const current=e=>(active()||tower(e))&&is(e)&&enemies.includes(e)&&!e.dead;
  const enemy=()=>active()?enemies.find(e=>is(e)&&!e.dead&&e.active):null;
  const locked=()=>!!departing||!!enemy();
  const source=e=>'mini:'+e.id;
  function reset(e){
   projectiles=projectiles.filter(p=>p.source!==source(e));
+  if(e.towerBoss){if(poison?.sourceId===e.id)poison=null;if(tether?.sourceId===e.id)tether=null;}
   Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,active:false,dead:!e.replay&&abducted(),face:-1,attackFace:-1,cycles:0,phase:'wait',clock:.7,windup:0,windupDuration:.8,attackTime:0,attackElapsed:0,attackDuration:.4,inv:0,stun:0,animTime:0,walkSpeed:0,poseIndex:0,move:null,attackBox:null,hitDone:false,hazards:[],guardBreak:0,blockFlash:0});return e;
  }
  function create(spec){const a=spec.arena||level.arena;return reset({...spec,w:70,h:112,maxHp:1800,origin:spec.x,baseY:spec.y-112,arena:a,patrolLeft:a.x+20,patrolRight:a.x+a.w-90});}
  function enforceBounds(){const e=enemy();if(!e||state!=='play')return;player.x=clamp(player.x,e.arena.x+10,e.arena.x+e.arena.w-player.w-10);}
  function escape(e){
   if(!current(e)||!e.active)return false;
+  if(tower(e)){
+   e.dead=true;e.active=false;e.phase='dead';e.attackBox=null;e.hazards=[];e.windup=0;e.attackTime=0;
+   projectiles=projectiles.filter(p=>p.source!==source(e));if(poison?.sourceId===e.id)poison=null;if(tether?.sourceId===e.id)tether=null;return true;
+  }
   e.dead=true;e.active=false;e.phase='escaped';e.poseIndex=7;e.attackBox=null;e.hazards=[];projectiles=projectiles.filter(p=>p.source!==source(e));poison=tether=null;
   if(e.replay||DevSession.active)return true;
   const next=rules.transition(flags,'escape');if(!next.ok)return false;
@@ -44,9 +50,10 @@ const FloatingIslands=(()=>{
  }
  function updateEnemy(e,dt){
   if(!current(e)||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
-  if(!rules.eligible(flags)&&!DevSession.active)return;
+  if(!tower(e)&&!rules.eligible(flags)&&!DevSession.active)return;
   if(!e.active){if(player.x+player.w<e.arena.triggerX||player.x>e.arena.x+e.arena.w)return;e.active=true;}
-  if(rules.shouldEscape(e.hp,e.maxHp)){escape(e);return;}
+  if(tower(e)){if(e.hp<=0){escape(e);return;}if(!tickEffects(dt,e.id))return;}
+  else if(rules.shouldEscape(e.hp,e.maxHp)){escape(e);return;}
   enforceBounds();e.clock-=dt;e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.attackTime=Math.max(0,e.attackTime-dt);e.animTime+=dt;e.walkSpeed=0;
   if(e.phase==='wait'){
    const dx=player.x+player.w/2-e.x-e.w/2;e.face=Math.sign(dx)||e.face;
@@ -65,17 +72,23 @@ const FloatingIslands=(()=>{
   if(!active()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   if(departing){departing.elapsed+=dt;player.inv=Math.max(player.inv,.15);if(departing.elapsed>=1.4){departing=null;story('islands.name','islands.ninjaLeader','islands.abduction');}return;}
   if(!abducted()){if(tracked!==level)resetFollower();if(tracked===level)companion.update(dt,player,platforms);}
-  if(poison){
-   if(poison.owner!==player){poison=null;}else{poison.left-=dt;poison.tick-=dt;if(poison.tick<=0){poison.tick+=1;const owner=player;damage(1,0,false);if(owner!==player)return;}if(poison&&poison.left<=0)poison=null;}
-  }
-  if(tether){if(tether.owner!==player){tether=null;}else{tether.left-=dt;const step=GrappleRules.move(player,tether.point,dt,platforms);if(step){player.x=step.x;player.y=step.y;}if(!step||step.done||tether.left<=0)tether=null;}}
+  if(!tickEffects(dt))return;
   if(rules.hookOwned(flags)&&!flags[0].includes(rules.progress.trail)&&pointNear(level.trailPoint,90,100)){const next=rules.transition(flags,'reachTrail');if(next.ok){flags=next.flags;persist();updateHUD();}}
  }
+ function tickEffects(dt,sourceId=null){
+  if(poison&&(sourceId===null||poison.sourceId===sourceId)){
+   if(poison.owner!==player){poison=null;}else{poison.left-=dt;poison.tick-=dt;if(poison.tick<=0){poison.tick+=1;const owner=player;damage(1,0,false);if(owner!==player)return;}if(poison&&poison.left<=0)poison=null;}
+  }
+  if(state!=='play')return false;
+  if(tether&&(sourceId===null||tether.sourceId===sourceId)){if(tether.owner!==player){tether=null;}else{tether.left-=dt;const step=GrappleRules.move(player,tether.point,dt,platforms);if(step){player.x=step.x;player.y=step.y;}if(!step||step.done||tether.left<=0)tether=null;}}
+  return true;
+ }
  function projectile(p,victim,before){
-  if(!active()||victim!==player||state!=='play'||before<=victim.hp)return;
-  if(p.islandEffect==='poison'){poison={owner:player,left:3,tick:1};toast(I18n.t('islands.poison'));}
+  const leader=active()?enemy():enemies.find(e=>is(e)&&tower(e)&&e.id===p.ownerId&&!e.dead);
+  if((!active()&&!leader)||victim!==player||state!=='play'||before<=victim.hp)return;
+  if(p.islandEffect==='poison'){poison={owner:player,sourceId:p.ownerId,left:3,tick:1};toast(I18n.t('islands.poison'));}
   if(p.islandEffect==='hook'){
-   const e=enemy();if(e&&e.id===p.ownerId)tether={owner:player,left:.35,point:{x:e.x+e.w/2+e.face*100,y:e.arena.y-player.h/2}};
+   const e=leader;if(e&&e.id===p.ownerId)tether={owner:player,sourceId:e.id,left:.35,point:{x:e.x+e.w/2+e.face*100,y:e.arena.y-player.h/2}};
   }
  }
  function context(){
