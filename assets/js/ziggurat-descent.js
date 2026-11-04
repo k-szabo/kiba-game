@@ -41,10 +41,10 @@ const ZigguratDescent=(()=>{
  }
  function context(){
   if(Prologue.active||!eligible()||locked())return null;
-  if(level===zigguratSummit&&pointNear({x:1800,y:1400},110,100)&&!accepted())return {type:'descentAccept',text:I18n.format('camp.talk',[I18n.t('HARU')])};
+  if(level===zigguratSummit&&pointNear({x:1800,y:1400},110,100)&&!accepted())return {type:'descentAccept',text:'descent.haruPrompt'};
   if(level===zigguratInterior&&accepted()&&pointNear(level.descentEntrance,95,80))return {type:'descentEnter',text:'descent.enter'};
   if(level===zigguratDepths&&pointNear(level.portalPoint,95,85))return {type:'descentPortal',text:rules.gateCleared(flags)?'descent.portal':'descent.locked',locked:!rules.gateCleared(flags)};
-  if(level===japanHeights&&pointNear(level.haruPoint,100,85))return {type:'descentHaru',text:I18n.format('camp.talk',[I18n.t('HARU')])};
+  if(level===japanHeights&&pointNear(level.haruPoint,100,85))return {type:'descentHaru',text:'descent.haruPrompt'};
   return null;
  }
  function interact(candidate){

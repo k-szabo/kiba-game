@@ -1032,6 +1032,7 @@
       "descent.objective.portal": "Lépjetek át a Japánba vezető portálon.",
       "descent.objective.arrival": "Beszélj Haruval a lebegő hegyeknél.",
       "descent.enter": "E · Belépés a zikkurat mélyére",
+      "descent.haruPrompt": "E · Beszélgetés Haruval",
       "descent.portal": "E · Átlépés Japánba",
       "descent.locked": "A kaput a kapuőr tartja lezárva.",
       "ziggurat.hannah": "Hannah, az Árnyékvilág Démon Lordja",
@@ -1319,7 +1320,11 @@
       "menu.changelog.0970.a818a30b.0": "A játék Ctrl+F billentyűkombinációval teljes képernyőre váltható.",
       "menu.changelog.0970.a818a30b.1": "A betöltést felugró ablak helyett a képernyő alján százalékos csík jelzi.",
       "menu.changelog.0970.a818a30b.2": "Daichi mentőküldetésének első leadása 600 XP-t ad. A korábban lezárt küldetésekhez nem jár utólagos jutalom.",
-      "menu.changelog.0970.a818a30b.3": "Fia a sárkányszemek leadásakor a párbeszéd végéig a helyén marad."
+      "menu.changelog.0970.a818a30b.3": "Fia a sárkányszemek leadásakor a párbeszéd végéig a helyén marad.",
+      "menu.changelog.0970.88f2c94c.title": "Haru-felirat és zikkuratkapu javítása",
+      "menu.changelog.0970.88f2c94c.0": "Haru interakciós jelzése most helyesen jelenik meg.",
+      "menu.changelog.0970.88f2c94c.1": "A zikkurat belsejéből a mélybe vezető kapu külön, látható portálként jelenik meg; az oltár továbbra is pihenőhelyként működik.",
+      "menu.changelog.0970.88f2c94c.2": "A korábbi mentések nem kompatibilisek ezzel a kiadással; új kaland indul. A nyelv- és billentyűbeállítások megmaradnak."
     }
   },
   "en": {
@@ -2355,6 +2360,7 @@
       "descent.objective.portal": "Step through the portal to Japan.",
       "descent.objective.arrival": "Speak with Haru in the Floating Mountains.",
       "descent.enter": "E · Enter the ziggurat depths",
+      "descent.haruPrompt": "E · Talk to Haru",
       "descent.portal": "E · Cross into Japan",
       "descent.locked": "The gatekeeper holds the gate shut.",
       "ziggurat.hannah": "Hannah, Demon Lord of the Shadow Realm",
@@ -2642,7 +2648,11 @@
       "menu.changelog.0970.a818a30b.0": "Toggle fullscreen with Ctrl+F.",
       "menu.changelog.0970.a818a30b.1": "A percentage bar at the bottom of the screen replaces the loading popup.",
       "menu.changelog.0970.a818a30b.2": "Turning in Daichi’s rescue quest for the first time grants 600 XP. Previously completed quests do not receive a retroactive reward.",
-      "menu.changelog.0970.a818a30b.3": "Fia stays in place until the dragon-eye turn-in dialogue ends."
+      "menu.changelog.0970.a818a30b.3": "Fia stays in place until the dragon-eye turn-in dialogue ends.",
+      "menu.changelog.0970.88f2c94c.title": "Haru prompt and ziggurat gate fixes",
+      "menu.changelog.0970.88f2c94c.0": "Haru’s interaction prompt now displays correctly.",
+      "menu.changelog.0970.88f2c94c.1": "The gate from the ziggurat interior to its depths now appears as a separate, visible portal; the altar remains a rest point.",
+      "menu.changelog.0970.88f2c94c.2": "Previous saves are incompatible with this release; start a new journey. Language and control preferences are preserved."
     }
   }
 }

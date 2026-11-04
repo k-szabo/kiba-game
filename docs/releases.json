@@ -748,6 +748,30 @@
           "en": "Location artwork loads on entry behind a loading screen showing the area. Ending a tower run asks for confirmation. Boss health bars stay red, cyclops stomps remain visible at a distance, and Hannah’s second phase renders faster. The drake’s foreleg labels are correct, and roast chicken feedback shows the health actually restored."
         }
       ]
+    },
+    {
+      "version": "0.9.70_88f2c94c",
+      "code": "88f2c94c",
+      "baseVersion": "0.9.70",
+      "slug": "haru-prompt-ziggurat-save-reset",
+      "summary": {
+        "hu": "Haru-felirat és zikkuratkapu javítása",
+        "en": "Haru prompt and ziggurat gate fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Haru interakciós jelzése most helyesen jelenik meg.",
+          "en": "Haru’s interaction prompt now displays correctly."
+        },
+        {
+          "hu": "A zikkurat belsejéből a mélybe vezető kapu külön, látható portálként jelenik meg; az oltár továbbra is pihenőhelyként működik.",
+          "en": "The gate from the ziggurat interior to its depths now appears as a separate, visible portal; the altar remains a rest point."
+        },
+        {
+          "hu": "A korábbi mentések nem kompatibilisek ezzel a kiadással; új kaland indul. A nyelv- és billentyűbeállítások megmaradnak.",
+          "en": "Previous saves are incompatible with this release; start a new journey. Language and control preferences are preserved."
+        }
+      ]
     }
   ],
   "releases": [

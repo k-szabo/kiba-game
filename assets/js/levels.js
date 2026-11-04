@@ -543,7 +543,9 @@ const dragonCatacombs=createDragonRaidMap({makeLevel,ledge,rest,zone});
 const {fiaRitual,shadowUnderworld,voidForbidden}=createFiaVoidMaps({makeLevel,ledge,rest,zone});
 fiaChambers.ritualEntrance={x:1450,y:820};shadowDen.underworldEntrance={x:1800,y:820};
 zigguratInterior.dragonRaidEntrance={x:1250,y:1700};
-zigguratInterior.descentEntrance={x:2350,y:2420};
+// Keep the depth gate distinct from the lower shrine so the player can see
+// and enter the portal without interacting with the altar.
+zigguratInterior.descentEntrance={x:1840,y:2420};
 const SIDE_LOCATIONS=Object.freeze({
  zigguratDepths:Object.freeze({map:zigguratDepths,realm:3,requiredFlags:Object.freeze(['zigguratDescentAccepted'])}),
  japanHeights:Object.freeze({map:japanHeights,realm:0,flagRealm:3,requiredFlags:Object.freeze(['japanHeightsReached'])}),
