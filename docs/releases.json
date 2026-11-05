@@ -824,6 +824,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.74_cbf2c125",
+      "code": "cbf2c125",
+      "baseVersion": "0.9.74",
+      "slug": "tower-single-health-bar",
+      "summary": {
+        "hu": "Egységes bosséletcsíkok a toronyban",
+        "en": "Consistent tower boss health bars"
+      },
+      "fixes": [
+        {
+          "hu": "A végtelen torony bossai egyetlen életcsíkkal jelennek meg; a számszerű HP-kijelzés továbbra is a beállításodat követi.",
+          "en": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting."
+        }
+      ]
     }
   ],
   "releases": [

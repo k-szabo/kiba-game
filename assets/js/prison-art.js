@@ -81,9 +81,11 @@ const PrisonArt=(()=>{
    if(enemy.hp<enemy.maxHp){ctx.save();ctx.fillStyle='#0a172bcc';ctx.fillRect(enemy.x+enemy.w/2-19,enemy.y+enemy.h-108,38,4);ctx.fillStyle='#d99583';ctx.fillRect(enemy.x+enemy.w/2-19,enemy.y+enemy.h-108,38*clamp(enemy.hp/enemy.maxHp,0,1),4);ctx.restore();}
    return true;
   }
-  const headroom=definition?.frames?.length?Math.max(...definition.frames.map(frame=>(frame.anchorY-(frame.visibleBounds?.[1]??frame.y))*enemy.h/frame.bodyHeight)):enemy.h,
-   x=enemy.x+enemy.w/2,top=enemy.y+enemy.h-headroom-62,label=I18n.t('zen.warden.name');ctx.save();ctx.font='600 15px "Kiba UI", sans-serif';ctx.textAlign='center';const width=Math.max(220,ctx.measureText(label).width+24);
-  ctx.fillStyle='#101725ed';ctx.fillRect(x-width/2,top,width,49);ctx.fillStyle='#fff0c4';ctx.fillText(label,x,top+19);ctx.fillStyle='#070d17';ctx.fillRect(x-width/2+8,top+30,width-16,9);ctx.fillStyle='#bf6b61';ctx.fillRect(x-width/2+8,top+30,(width-16)*clamp(enemy.hp/enemy.maxHp,0,1),9);DevBossHealth.bar(enemy,x,top+30,width-16);ctx.restore();
+  const x=enemy.x+enemy.w/2;if(!enemy.towerBoss){
+   const headroom=definition?.frames?.length?Math.max(...definition.frames.map(frame=>(frame.anchorY-(frame.visibleBounds?.[1]??frame.y))*enemy.h/frame.bodyHeight)):enemy.h,
+    top=enemy.y+enemy.h-headroom-62,label=I18n.t('zen.warden.name');ctx.save();ctx.font='600 15px "Kiba UI", sans-serif';ctx.textAlign='center';const width=Math.max(220,ctx.measureText(label).width+24);
+   ctx.fillStyle='#101725ed';ctx.fillRect(x-width/2,top,width,49);ctx.fillStyle='#fff0c4';ctx.fillText(label,x,top+19);ctx.fillStyle='#070d17';ctx.fillRect(x-width/2+8,top+30,width-16,9);ctx.fillStyle='#bf6b61';ctx.fillRect(x-width/2+8,top+30,(width-16)*clamp(enemy.hp/enemy.maxHp,0,1),9);DevBossHealth.bar(enemy,x,top+30,width-16);ctx.restore();
+  }
   if(enemy.phase==='windup'&&enemy.attackBox)BossCues.box(enemy.attackBox,BossCues.color);
   for(const hazard of enemy.hazards){
    if(!hazard.active){BossCues.box(hazard,BossCues.color);BossVFX.marker(hazard.x+hazard.w/2,hazard.y+hazard.h,hazard.w,BossCues.color);}

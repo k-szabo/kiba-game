@@ -536,9 +536,11 @@ const Visuals = (() => {
       }else if(e.phase==='strike')BossVFX.slash('slashShadow',x+e.face*70,feet-68,220,145,e.face,1-e.clock/e.phaseDuration);
     }
     if(e.active){
-      ctx.fillStyle='#122739df';ctx.fillRect(x-98,feet-height-79,196,e.phase==='windup'?57:53);
-      ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle='#bf6b61';ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);DevBossHealth.bar(e,x,feet-height-34,180);
-      ctx.font='bold 11px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;ctx.fillText(I18n.t(e.name),x,feet-height-43);
+      if(!e.towerBoss){
+       ctx.fillStyle='#122739df';ctx.fillRect(x-98,feet-height-79,196,e.phase==='windup'?57:53);
+       ctx.fillStyle='#08121cdd';ctx.fillRect(x-90,feet-height-34,180,7);ctx.fillStyle='#bf6b61';ctx.fillRect(x-90,feet-height-34,180*Math.max(0,e.hp/e.maxHp),7);DevBossHealth.bar(e,x,feet-height-34,180);
+      }
+      ctx.font='bold 11px "Kiba UI", "Kiba Story", sans-serif';ctx.textAlign='center';ctx.fillStyle=color;ctx.shadowColor='#07111c';ctx.shadowBlur=4;if(!e.towerBoss)ctx.fillText(I18n.t(e.name),x,feet-height-43);
       if(e.phase==='windup'){
         const names={glaive:I18n.t("text.ancient.blade"),holyFan:I18n.t("text.broken.light"),lunge:I18n.t('attack.angelic.charge'),staff:I18n.t("text.ritual.slash"),curse:I18n.t("text.shadow.curse"),sigils:I18n.t("text.cult.sigils")};
         ctx.fillText(I18n.t(names[e.move]||'text.attack'),x,feet-height-63);
