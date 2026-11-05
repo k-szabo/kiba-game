@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "dungeonCaptain",
+  "name": "dungeon.boss.captain",
+  "group": "optional",
+  "story": {
+    "name": "dungeon.boss.captain",
+    "floor": 0,
+    "w": 88,
+    "h": 145,
+    "hp": 220,
+    "speed": 105,
+    "range": 220,
+    "moves": [
+      "captainReach",
+      "captainThrust",
+      "captainLeap"
+    ]
+  },
+  "tower": {
+    "baseHealth": 36
+  },
+  "assets": [
+    "dungeonCaptain"
+  ]
+}

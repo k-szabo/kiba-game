@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "id": "serpent",
+  "name": "yomi.serpent.name",
+  "group": "optional",
+  "story": {
+    "realm": 1,
+    "name": "yomi.serpent.name",
+    "reward": "serpentScale",
+    "guardian": null,
+    "xp": 70,
+    "w": 120,
+    "h": 84,
+    "hp": 24,
+    "speed": 115,
+    "range": 135,
+    "wait": 0.7,
+    "recover": 0.65,
+    "moves": {
+      "emberFan": {
+        "tell": 1.1,
+        "strike": 0.42,
+        "kind": "ember",
+        "color": "#ffa465",
+        "speed": 240,
+        "spread": 0.22,
+        "count": 3,
+        "damage": 1
+      },
+      "bite": {
+        "tell": 0.8,
+        "strike": 0.42,
+        "width": 125,
+        "damage": 2
+      }
+    }
+  },
+  "tower": {
+    "baseHealth": 44
+  },
+  "assets": [
+    "lavaSerpent",
+    "fxLava"
+  ]
+}

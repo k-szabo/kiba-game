@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "eclipse",
+  "name": "text.lord.of.two.worlds.hidden.phase.iii",
+  "group": "optional",
+  "story": {
+    "hp": 180,
+    "w": 96,
+    "h": 115
+  },
+  "tower": {
+    "baseHealth": 48,
+    "name": "text.lord.of.two.worlds.hidden.phase.iii",
+    "w": 110,
+    "h": 180,
+    "speed": 120,
+    "range": 320,
+    "moves": [
+      "eclipse",
+      "hellfire",
+      "lightArrows",
+      "shadowBolts"
+    ]
+  },
+  "assets": [
+    "angelEclipse",
+    "holyArrow",
+    "holyLance"
+  ]
+}

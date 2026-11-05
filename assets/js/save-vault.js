@@ -132,7 +132,8 @@ const SaveVault=(()=>{
   const checkpointMap=data.location!=null?SIDE_LOCATIONS[data.location].map:levels[data.realm];
   const checkpoint=[...checkpointMap.rests,...(checkpointMap.checkpoints||[])].find(r=>r.id===data.checkpoint?.id);
   const relocatedUpper=data.location==='zigguratInterior'&&data.checkpoint?.id==='zigguratInteriorUpper'&&data.checkpoint.x===1500&&data.checkpoint.y===440;
-  if(!checkpoint||!relocatedUpper&&(data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y)||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
+  const relocatedWatchtower=data.location==='ninjaWatchtower'&&data.checkpoint?.id==='watchtowerEntrance'&&data.checkpoint.x===1000&&data.checkpoint.y===2000;
+  if(!checkpoint||!relocatedUpper&&!relocatedWatchtower&&(data.checkpoint.x!==checkpoint.x||data.checkpoint.y!==checkpoint.y)||!data.visitedRests[data.realm].includes(checkpoint.id))throw Error('Invalid save location');
   const normalized=JSON.parse(JSON.stringify(data));
   const excess=Math.max(0,normalized.progression.stats.spirit-PROGRESSION_RULES.statLimitFor('spirit'));
   normalized.progression.stats.spirit-=excess;normalized.progression.points+=excess;
@@ -145,7 +146,7 @@ const SaveVault=(()=>{
    if(data.location==='shadowDen'){const rest=levels[3].rests.find(rest=>rest.id==='cathedral');delete normalized.location;normalized.checkpoint={id:rest.id,x:rest.x,y:rest.y};if(!normalized.visitedRests[3].includes(rest.id))normalized.visitedRests[3].push(rest.id);}
    return validate(normalized);
   }
-  if(relocatedUpper)normalized.checkpoint={...normalized.checkpoint,x:checkpoint.x,y:checkpoint.y};
+  if(relocatedUpper||relocatedWatchtower)normalized.checkpoint={...normalized.checkpoint,x:checkpoint.x,y:checkpoint.y};
   return repairHeart?validate(normalized):normalized;
  }
  const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});

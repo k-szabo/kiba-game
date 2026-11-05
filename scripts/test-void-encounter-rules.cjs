@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/void-encounter-rules.js'),'utf8')+';globalThis.rules=VoidEncounterRules;',context);
+const context=vm.createContext({});vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/void-encounter-rules.js'),'utf8')+';globalThis.rules=VoidEncounterRules;',context);
 const rules=context.rules,plain=value=>JSON.parse(JSON.stringify(value)),same=(a,b)=>assert.deepEqual(plain(a),plain(b));
 assert(Object.isFrozen(rules));assert(Object.isFrozen(rules.tuning));
 for(const id of [undefined,null,0,-1,.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1,'1'])assert.equal(rules.fresh(id),null);

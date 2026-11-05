@@ -1,12 +1,7 @@
 /* Combat owns fixed targets, active-time clocks and source-scoped projectiles. */
 'use strict';
 const WatchtowerBalloonCombat=(()=>{
- const profiles=Object.freeze({
-  watchtowerJailer:{w:135,h:165,hp:1800,moves:['club','belly','club']},
-  watchtowerSentinel:{w:72,h:118,hp:2200,moves:['crossbow','sigils','crossbow','ninjutsu']},
-  balloonDragon:{w:280,h:230,hp:3200,moves:['dragonFan','claw','balloonBreath']},
-  westheruSeal:{w:145,h:130,hp:2800,moves:['lightning','stormFan','lightning','stormFan']}
- });
+ const profiles=Object.freeze(Object.fromEntries(["watchtowerJailer","watchtowerSentinel","balloonDragon","westheruSeal"].map(id=>[id,BossCatalog.story(id)])));
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss),source=e=>'mini:'+e.id;
  const tower=e=>!!e?.towerBoss&&level.tower&&TowerMode.running;
  const current=e=>is(e)&&(WatchtowerBalloon.active()||tower(e))&&enemies.includes(e)&&!e.dead;

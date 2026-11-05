@@ -33,7 +33,7 @@ const DoomSlayer=(()=>{
  function barrels(e){e.barrels=Array.from({length:9},(_,i)=>({id:i,x:e.arena.x+e.arena.w*(.08+i*.105),y:e.arena.y,punctured:false}));}
  function create(spec,i=0){
   const arena=spec.arena||level.secrets.find(s=>s.id===spec.secretArea)?.arena;if(!arena)throw Error('Missing grave arena');
-  const e={...spec,w:76,h:112,maxHp:260,origin:spec.x,baseY:spec.y-112,arena,
+  const e={...spec,w:BossCatalog.story('slayer').w,h:BossCatalog.story('slayer').h,maxHp:BossCatalog.story('slayer').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('slayer').h,arena,
    face:-1,attackFace:-1,patrolFace:-1,patrolLeft:arena.x+22,patrolRight:arena.x+arena.w-98,
    recovery:0,attackTime:0,attackDuration:.65,turnCooldown:0,guardBreak:0,blocks:0,index:i};
   return reset(e);

@@ -92,8 +92,9 @@ const DragonRaidArt=(()=>{
    const mouth=phase===1?{x:3070,y:450}:{x:DragonRaid.head.x-50,y:700+DragonRaid.head.y},target={x:w.box.x+w.box.w/2,y:w.box.y+w.box.h/2},t=clamp(1-w.remaining/.45,0,1);
    BossVFX.stamp('ember',mouth.x+(target.x-mouth.x)*t,mouth.y+(target.y-mouth.y)*t,155,70,{angle:Math.atan2(target.y-mouth.y,target.x-mouth.x)});
   }
-  if(hit){const b=hit.box,physical=hit.kind==='headSlam'||hit.kind==='bite';BossVFX.stamp(physical||hit.kind==='fire'?'impact':'shadowColumn',b.x+b.w/2,b.y+b.h,b.w,b.h,{alpha:Math.min(1,hit.remaining*4)});}
+  impact(hit);
   ctx.restore();
  }
- return Object.freeze({backdrop,scenery,frontPose,pillarState});
+ function impact(hit){if(hit){const b=hit.box,physical=hit.kind==='headSlam'||hit.kind==='bite';BossVFX.stamp(physical||hit.kind==='fire'?'impact':'shadowColumn',b.x+b.w/2,b.y+b.h,b.w,b.h,{alpha:Math.min(1,hit.remaining*4)});}}
+ return Object.freeze({backdrop,scenery,frontPose,pillarState,impact});
 })();

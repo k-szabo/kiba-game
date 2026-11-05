@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "organist",
+  "name": "shadow.boss.organist",
+  "group": "optional",
+  "story": {
+    "hp": 105,
+    "w": 250,
+    "h": 210
+  },
+  "tower": {
+    "baseHealth": 40
+  },
+  "assets": [
+    "shadowMadOrganist"
+  ]
+}

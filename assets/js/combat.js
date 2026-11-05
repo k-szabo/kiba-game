@@ -16,12 +16,12 @@ function createEnemy(spec,i=0) {
     const ninja=typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(spec);
     const h=ninja?.h??(spec.balloonWasp?60:spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.balloonWasp?82:spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
     const tier=ENEMY_TIERS[spec.summoned?0:(level.enemyRealm??Math.max(0,levels.indexOf(level)))];
-    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
+    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=spec.combatStats?.hp??ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
     const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
     const left=Math.max(spec.x-spec.patrol,support?support.x+4:0),right=Math.min(spec.x+spec.patrol,support?support.x+support.w-w-4:level.width-w);
     return {...spec,grappleable:spec.grappleable??(w<=64&&h<=96),x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
-      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:ninja?.damage??tier.damage,xpValue:ninja?.xp??Math.round(baseXP*tier.xp),
+      patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:spec.combatStats?.damage??ninja?.damage??tier.damage,xpValue:spec.combatStats?.xp??ninja?.xp??Math.round(baseXP*tier.xp),
       stun:0,cd:1+i*.13,contactCd:0,windup:0,windupDuration:0,attackTime:0,attackDuration:.42,
       recovery:0,turnCooldown:0,edgePause:0,blocks:0,guardBreak:0,blockFlash:0,walkSpeed:0,
       animTime:i*.17,attackElapsed:0,dead:false};
@@ -165,12 +165,12 @@ function uniteVictoryRelics(){
   // Original collection flags are historical: keep the tower/cave relics from respawning.
   flags[2].push('eclipseRelic');return true;
 }
-const ANGEL_HEALTH=140, ECLIPSE_HEALTH=180;
-const SAMURAI_JUMP={reactionChance:.4,cooldown:4,windup:.7,duration:1,height:185,maxTravel:340};
+const ANGEL_HEALTH=BossCatalog.story('main-2').hp, ECLIPSE_HEALTH=BossCatalog.story('eclipse').hp;
+const SAMURAI_JUMP=BossCatalog.story('main-0').jump;
 let yomiEncounterSerial=0;
 function createBoss(){
-  const max=[28,48,ANGEL_HEALTH,180][realm];
-  return {x:level.boss.x,y:level.boss.y-115,w:96,h:115,hp:max,max,phase:'wait',clock:1.4,
+  const p=BossCatalog.story(['main-0','main-1','main-2','madPriest'][realm]),max=p.hp;
+  return {x:level.boss.x,y:level.boss.y-p.h,w:p.w,h:p.h,hp:max,max,phase:'wait',clock:1.4,
     phaseDuration:1.4,vx:0,face:-1,inv:0,dead:defeated[realm],cycles:0,move:null,attackStep:0,targetX:0,
     hazards:[],lava:null,platformOrder:[],destroyedCount:0,animClock:0,stage:1,
     jumpSeen:false,jumpCooldown:0,leap:null,
@@ -503,7 +503,7 @@ function createMiniboss(spec,i){
   if(Serpents.is(spec))return Serpents.create(spec);
   if(CampMaster.is(spec))return CampMaster.create(spec);
   if(DoomSlayer.is(spec))return DoomSlayer.create(spec,i);
-  const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:94,w:68,maxHp:spec.miniboss==='angel'?36:42};
+  const area=level.secrets.find(s=>s.id===spec.secretArea),a=area.arena,p=BossCatalog.story(spec.miniboss),{h,w,maxHp}=realm===3?ShadowRealm.miniDimensions(spec):{h:p.h,w:p.w,maxHp:p.hp};
   return {...spec,x:spec.x,y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,hp:maxHp,maxHp,
     patrolLeft:a.x+25,patrolRight:a.x+a.w-w-25,face:-1,patrolFace:-1,phase:'wait',clock:1.2,phaseDuration:1.2,
     cycles:0,move:null,active:false,dead:flags[realm].includes(minibossFlag(spec.id)),inv:0,stun:0,

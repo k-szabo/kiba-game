@@ -31,7 +31,7 @@ const CampMaster=(()=>{
  }
  function create(spec){
   const arena=spec.arena||samuraiCamp.secrets.find(area=>area.id===spec.secretArea)?.arena||samuraiCamp.arena;
-  return reset({...spec,w:90,h:150,maxHp:100,origin:spec.x,baseY:spec.y-150,
+  return reset({...spec,w:BossCatalog.story('campMaster').w,h:BossCatalog.story('campMaster').h,maxHp:BossCatalog.story('campMaster').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('campMaster').h,
    patrolLeft:arena.x+25,patrolRight:arena.x+arena.w-115,arena,encounterToken:++serial});
  }
  function meleeBox(enemy,width=170,height=120){

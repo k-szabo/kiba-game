@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const c=vm.createContext({});vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../assets/js/dragon-raid-rules.js'),'utf8')+';globalThis.rules=DragonRaidRules;',c);
+const c=vm.createContext({});vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,c);vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../assets/js/dragon-raid-rules.js'),'utf8')+';globalThis.rules=DragonRaidRules;',c);
 const r=c.rules,plain=s=>JSON.parse(JSON.stringify(s));
 assert.equal(r.fresh(0),null);assert.equal(r.fresh(.1),null);
 let state=r.fresh(1),initial=plain(state);

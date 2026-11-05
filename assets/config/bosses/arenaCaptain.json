@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "arenaCaptain",
+  "name": "arena.boss.captain",
+  "group": "optional",
+  "story": {
+    "name": "arena.boss.captain",
+    "w": 88,
+    "h": 180,
+    "hp": 180,
+    "speed": 115,
+    "range": 170,
+    "moves": [
+      "captainCleave",
+      "captainCharge",
+      "captainBolts"
+    ]
+  },
+  "tower": {
+    "baseHealth": 32
+  },
+  "assets": [
+    "arenaCaptain"
+  ]
+}

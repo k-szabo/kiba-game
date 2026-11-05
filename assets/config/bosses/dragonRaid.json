@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "id": "dragonRaid",
+  "name": "fia.dragon.boss",
+  "group": "optional",
+  "story": {
+    "hp": 1200,
+    "w": 540,
+    "h": 310,
+    "tuning": {
+      "chainHp": 6,
+      "tumorHp": 12,
+      "chains": 4,
+      "tumors": 3,
+      "manifestations": 2,
+      "maxHp": 1200,
+      "pillars": 4,
+      "pillarInterval": 45,
+      "forelegHp": 120,
+      "fallDuration": 0.65,
+      "headWindow": 6,
+      "riseDuration": 1,
+      "headMultiplier": 4
+    }
+  },
+  "tower": {
+    "baseHealth": 60,
+    "name": "fia.dragon.boss",
+    "w": 540,
+    "h": 310,
+    "speed": 0,
+    "range": 800,
+    "moves": [
+      "dragonBite",
+      "dragonFire",
+      "dragonRift"
+    ]
+  },
+  "assets": [
+    "dragonFront",
+    "dragonStagger"
+  ]
+}

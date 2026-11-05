@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "id": "hannah",
+  "name": "ziggurat.hannah",
+  "group": "main",
+  "story": {
+    "hp": 1200,
+    "w": 120,
+    "h": 228,
+    "tuning": {
+      "phase1": {
+        "maxHp": 1200,
+        "gates": [
+          {
+            "id": "transform",
+            "ratio": 0.1
+          }
+        ]
+      },
+      "phase2": {
+        "maxHp": 1600,
+        "gates": [
+          {
+            "id": "drain60",
+            "ratio": 0.6
+          },
+          {
+            "id": "drain40",
+            "ratio": 0.4
+          },
+          {
+            "id": "rescue",
+            "ratio": 0.1
+          }
+        ]
+      },
+      "drain": {
+        "duration": 8,
+        "interruptMultiplier": 6,
+        "interruptMinimum": 12,
+        "haruMaxHp": 50,
+        "haruPerSecond": 4
+      },
+      "combat": {
+        "echoDamageMultiplier": 0.8,
+        "followUpMargin": 0.12,
+        "echoMargin": 0.15,
+        "returnTravel": 0.42,
+        "phase1Pattern": [
+          "combo",
+          "jump",
+          "dashReturn",
+          "summon",
+          "crossCombo",
+          "riftBurst"
+        ],
+        "phase2Pattern": [
+          "combo",
+          "jump",
+          "dashReturn",
+          "crossCombo",
+          "riftBurst"
+        ]
+      },
+      "ultimate": {
+        "damageMultiplier": 8,
+        "cooldown": 60,
+        "recoil": 10,
+        "recoilFloor": 1
+      }
+    }
+  },
+  "tower": {
+    "baseHealth": 56,
+    "name": "ziggurat.hannah",
+    "w": 120,
+    "h": 228,
+    "speed": 170,
+    "range": 205,
+    "moves": [
+      "combo",
+      "jump",
+      "dashReturn",
+      "riftBurst"
+    ]
+  },
+  "assets": [
+    "hannahWalk",
+    "hannahCombo",
+    "hannahJump",
+    "hannahRitual",
+    "shadowGuard"
+  ]
+}

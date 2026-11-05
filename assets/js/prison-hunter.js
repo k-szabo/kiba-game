@@ -24,7 +24,7 @@ const PrisonHunter=(()=>{
  }
  function create(spec){
   const arena=spec.arena||level.secrets?.find(area=>area.id===spec.secretArea)?.arena||level.hunterArena;
-  return reset({...spec,name:'fia.hunter.name',w:90,h:145,maxHp:140,origin:spec.x,baseY:spec.y-145,
+  return reset({...spec,name:'fia.hunter.name',w:BossCatalog.story('prisonHunter').w,h:BossCatalog.story('prisonHunter').h,maxHp:BossCatalog.story('prisonHunter').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('prisonHunter').h,
    patrolLeft:arena.x+25,patrolRight:Math.max(arena.x+25,arena.x+arena.w-115),arena});
  }
  function inside(enemy){

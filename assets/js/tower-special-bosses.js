@@ -1,22 +1,7 @@
 /* Story-bound encounters borrow their identities and attacks, never their quest controllers. */
 'use strict';
 const TowerSpecialBosses=(()=>{
- const profiles=Object.freeze({
-  'main-0':{name:'text.the.forest.oathbreaker',w:96,h:135,speed:170,range:170,moves:['cleave','dash','doubleCut','jumpCut']},
-  'main-1':{name:'text.guardian.of.the.silent.river',w:140,h:190,speed:90,range:230,moves:['hammer','slam','embers','lavaWave']},
-  'main-2':{name:'text.the.corrupted.seraph',w:100,h:170,speed:100,range:330,moves:['lightArrows','holySweep','shadowRain','eclipse']},
-  seraph:{name:'text.angel.of.dawn.phase.i',w:100,h:170,speed:100,range:330,moves:['lightArrows','holySweep','lightArrows']},
-  eclipse:{name:'text.lord.of.two.worlds.hidden.phase.iii',w:110,h:180,speed:120,range:320,moves:['eclipse','hellfire','lightArrows','shadowBolts']},
-  madPriest:{name:'shadow.boss.priest',w:95,h:155,speed:100,range:280,moves:['priestStaff','priestBell','shadowBolts','hellfire']},
-  hannah:{name:'ziggurat.hannah',w:120,h:228,speed:170,range:205,moves:['combo','jump','dashReturn','riftBurst']},
-  arenaFia:{name:'arena.boss.fia',w:75,h:130,speed:100,range:350,moves:['fiaBolts','fiaSigils','fiaSummon']},
-  dragonRaid:{name:'fia.dragon.boss',w:540,h:310,speed:0,range:800,moves:['dragonBite','dragonFire','dragonRift']},
-  voidLieutenant:{name:'fia.void.lieutenant',w:80,h:170,speed:180,range:230,moves:['voidSlash','voidVolley','voidRift']},
-  voidDemon:{name:'fia.void.demon',w:150,h:240,speed:135,range:270,moves:['voidClaw','voidVolley','voidRift']},
-  fiaRitual:{name:'fia.name',w:76,h:140,speed:230,range:280,moves:['foxfire','teleport','drain','charm','ritualHymn','ritualHell','ritualDragon','ritualVoid']},
-  prologueShadow:{name:'prologue.boss',w:260,h:310,speed:70,range:390,moves:['cleave','shadowBolts','shadowRain','eclipse']},
-  fiaVengeance:{name:'fia.name',w:76,h:140,speed:230,range:280,moves:['foxfire','teleport','drain','charm','voidVolley','fiaSigils']}
- });
+ const profiles=Object.freeze(Object.fromEntries(["main-0","main-1","main-2","seraph","eclipse","madPriest","hannah","arenaFia","dragonRaid","voidLieutenant","voidDemon","fiaRitual","prologueShadow","fiaVengeance"].map(id=>[id,BossCatalog.tower(id)])));
  let serial=0;const owners=new WeakMap();
  const type=e=>e?.towerEncounter||e?.miniboss;
  const is=e=>!!e?.towerBoss&&Object.hasOwn(profiles,type(e));
@@ -41,7 +26,7 @@ const TowerSpecialBosses=(()=>{
  function deal(e,hit,amount){if(hit&&overlap(player,hit)){const victim=player;damage(amount,e.attackFace,true);return player===victim&&live(e);}return live(e);}
  function shots(e,count,spread,speed,damageValue=3,origin=null){
   const x=origin?.x??e.x+e.w/2,y=origin?.y??e.y+e.h*.35,angle=Math.atan2(e.targetY-y,e.targetX-x);
-  for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*spread;shoot(x,y,Math.cos(a)*speed,Math.sin(a)*speed,'#cf9bf3',4,'orb');const p=projectiles.at(-1);Object.assign(p,{source:source(e),damage:damageValue,radius:9,towerSpecialOwner:e.id});if(['fiaRitual','fiaVengeance','arenaFia'].includes(type(e)))Object.assign(p,{fiaEffect:'foxfire',fiaLife:4});owners.set(p,e);}
+  for(let i=0;i<count;i++){const a=angle+(i-(count-1)/2)*spread;const kind=e.move==='lightArrows'?'holyArrow':['embers','dragonFire','ritualHell','ritualDragon'].includes(e.move)?'ember':e.move==='shadowBolts'?'shadowBolt':'orb';shoot(x,y,Math.cos(a)*speed,Math.sin(a)*speed,'#cf9bf3',4,kind);const p=projectiles.at(-1);Object.assign(p,{source:source(e),damage:damageValue,radius:9,towerSpecialOwner:e.id,ritualEffect:e.ritualEffect||undefined});if(['fiaRitual','fiaVengeance','arenaFia'].includes(type(e)))Object.assign(p,{fiaEffect:'foxfire',fiaLife:4});owners.set(p,e);}
  }
  function marks(e,offsets,width,height=140,delay=.85){
   for(const offset of offsets){const b=targetBox(e,width,height,offset);if(e.hazards.some(h=>Math.abs(h.x-b.x)<width+20))continue;e.hazards.push({...b,warning:delay,warningDuration:delay,delay,life:delay+.4,active:false,hitDone:false,damage:3,kind:'towerRift',ritualEffect:e.ritualEffect});}

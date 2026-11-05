@@ -1,7 +1,7 @@
 /* Pure, transient void encounter rules. Controllers own actors and clocks. */
 'use strict';
 const VoidEncounterRules=(()=>{
- const tuning=Object.freeze({lieutenantMaxHp:1000,absorptionRatio:.7,demonMaxHp:2000,demonInitialHp:1000,lifeStealMultiplier:20});
+ const tuning=Object.freeze({lieutenantMaxHp:BossCatalog.story('voidLieutenant').hp,absorptionRatio:BossCatalog.story('voidLieutenant').absorptionRatio,demonMaxHp:BossCatalog.story('voidDemon').hp,demonInitialHp:BossCatalog.story('voidDemon').initialHp,lifeStealMultiplier:BossCatalog.story('voidDemon').lifeStealMultiplier});
  const fields=Object.freeze(['attempt','generation','phase','hp','maxHp','gateConsumed','won','failed']);
  const positiveInteger=value=>Number.isSafeInteger(value)&&value>0;
  const amount=value=>Number.isFinite(value)&&value>0&&value<=Number.MAX_SAFE_INTEGER;

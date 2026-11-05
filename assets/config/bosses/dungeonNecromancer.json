@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "id": "dungeonNecromancer",
+  "name": "dungeon.boss.necromancer",
+  "group": "optional",
+  "story": {
+    "name": "dungeon.boss.necromancer",
+    "floor": 1,
+    "w": 82,
+    "h": 145,
+    "hp": 280,
+    "speed": 70,
+    "range": 350,
+    "moves": [
+      "necroBolts",
+      "necroSigils",
+      "necroSummon"
+    ]
+  },
+  "tower": {
+    "baseHealth": 40
+  },
+  "assets": [
+    "dungeonNecromancer",
+    "japanRaised"
+  ]
+}

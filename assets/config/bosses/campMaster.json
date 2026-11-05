@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "campMaster",
+  "name": "camp.rescue.boss",
+  "group": "optional",
+  "story": {
+    "hp": 100,
+    "w": 90,
+    "h": 150
+  },
+  "tower": {
+    "baseHealth": 40
+  },
+  "assets": [
+    "campMaster",
+    "campMasterJump"
+  ]
+}

@@ -344,7 +344,7 @@ for row in (0, 2):
 
 literal_re = re.compile(r'#[0-9a-fA-F]{8}\b|#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{4}\b|#[0-9a-fA-F]{3}\b|rgba?\([^()]*\)|hsla?\([^()]*\)')
 code_colors = {}
-for file in sorted(list((ROOT / 'assets/js').glob('*.js')) + list((ROOT / 'assets/css').glob('*.css'))):
+for file in sorted(list((ROOT / 'assets/js').glob('*.js')) + list((ROOT / 'assets/css').glob('*.css')) + list((ROOT / 'assets/config/bosses').glob('*.json'))):
     if file.name == 'runtime.js':
         continue
     source = file.relative_to(ROOT).as_posix()

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "id": "main-0",
+  "name": "text.the.forest.oathbreaker",
+  "group": "main",
+  "story": {
+    "hp": 28,
+    "w": 96,
+    "h": 115,
+    "jump": {
+      "reactionChance": 0.4,
+      "cooldown": 4,
+      "windup": 0.7,
+      "duration": 1,
+      "height": 185,
+      "maxTravel": 340
+    }
+  },
+  "tower": {
+    "baseHealth": 34,
+    "name": "text.the.forest.oathbreaker",
+    "w": 96,
+    "h": 135,
+    "speed": 170,
+    "range": 170,
+    "moves": [
+      "cleave",
+      "dash",
+      "doubleCut",
+      "jumpCut"
+    ]
+  },
+  "assets": [
+    "samurai",
+    "samuraiJump"
+  ]
+}

@@ -1,7 +1,7 @@
 /* Additive Japan milestones. Encounter clocks and balloon damage are transient. */
 'use strict';
 const WatchtowerBalloonRules=(()=>{
- const progress=Object.freeze({jailer:'watchtowerJailerDefeated',key:'watchtowerCellKey',rescued:'westheruRescued',sentinel:'watchtowerSentinelEscaped',boarded:'balloonJourneyStarted',wasps:'balloonWaspsCleared',dragon:'balloonDragonDefeated',restored:'westheruRestored',arrived:'balloonVortexArrived'});
+ const progress=Object.freeze({jailer:'watchtowerJailerDefeated',key:'watchtowerCellKey',rescued:'westheruRescued',sentinel:'watchtowerSentinelEscaped',boarded:'balloonJourneyStarted',wasps:'balloonWaspsCleared',dragon:'balloonDragonDefeated',restored:'westheruRestored',arrived:'balloonVortexArrived',departed:'westheruDeparted'});
  const has=(flags,key)=>flags?.[0]?.includes(key)===true;
  const eligible=flags=>FloatingIslandsRules.validate(flags)&&has(flags,FloatingIslandsRules.progress.trail);
  const sequence=Object.freeze([
@@ -12,7 +12,8 @@ const WatchtowerBalloonRules=(()=>{
   {event:'clearWasps',requires:progress.boarded,adds:[progress.wasps]},
   {event:'defeatDragon',requires:progress.wasps,adds:[progress.dragon]},
   {event:'restoreWestheru',requires:progress.dragon,adds:[progress.restored]},
-  {event:'arrive',requires:progress.restored,adds:[progress.arrived]}
+  {event:'arrive',requires:progress.restored,adds:[progress.arrived]},
+  {event:'depart',requires:progress.arrived,adds:[progress.departed]}
  ].map(rule=>Object.freeze({...rule,adds:Object.freeze(rule.adds)})));
  function validate(flags){
   if(!FloatingIslandsRules.validate(flags))return false;

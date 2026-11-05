@@ -4,7 +4,9 @@ Cards: [Ninja Watchtower](https://trello.com/c/JD7nkaah), [Balloon Voyage](https
 
 ## Story and ownership
 
-Starts after `islandsTrailReached`. Haru remains abducted; Momo rescues Westheru and travels with him. The four registered Japan side locations are `ninjaWatchtower`, `balloonJourney`, `skyLanding`, and `stormIslands`. Existing locations and checkpoint coordinates are preserved.
+Starts after `islandsTrailReached`. Haru remains abducted; Momo rescues Westheru and travels with him. The four registered Japan side locations are `ninjaWatchtower`, `balloonJourney`, `skyLanding`, and `stormIslands`. The entrance shrine keeps its `watchtowerEntrance` ID but moves from x=1000 to x=1300, away from the return gate. Strict validation accepts only the exact old (1000,2000) checkpoint and normalizes it to (1300,2000).
+
+After the vortex, Westheru arrives aboard the balloon, speaks, then flies onward over four active seconds. `westheruDeparted` records completion and requires `balloonVortexArrived`. Compatible old saves may lack the new flag; an interrupted arrival can replay, while a completed departure cannot. The prior landing site no longer shows Westheru after vortex arrival. Pause freezes departure; reduced motion uses a fade. Momo is protected during the locked departure.
 
 `watchtower-balloon-rules.js` owns the immutable milestone chain. The jailer and cell-key flags commit together; rescue, sentinel escape at 70%, boarding, wasp clearance, dragon defeat, Westheru's restoration and vortex arrival each require the preceding milestone. The strict save validator uses the same rules. The held key disappears through `consumedBy` when Westheru is rescued, while its acquisition history remains. No new save field or compatibility epoch is introduced.
 

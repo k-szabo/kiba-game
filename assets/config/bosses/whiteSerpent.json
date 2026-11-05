@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "id": "whiteSerpent",
+  "name": "serpent.white.name",
+  "group": "optional",
+  "story": {
+    "realm": 0,
+    "name": "serpent.white.name",
+    "reward": "whiteSerpentScale",
+    "guardian": "guardian:whiteSerpent",
+    "xp": 100,
+    "w": 150,
+    "h": 100,
+    "hp": 72,
+    "speed": 85,
+    "range": 165,
+    "wait": 0.65,
+    "recover": 0.8,
+    "moves": {
+      "bite": {
+        "tell": 0.85,
+        "strike": 0.32,
+        "width": 150,
+        "damage": 2
+      },
+      "frostFan": {
+        "tell": 1.05,
+        "strike": 0.45,
+        "kind": "magic",
+        "color": "#b8e8ee",
+        "speed": 250,
+        "spread": 0.23,
+        "count": 3,
+        "damage": 1
+      },
+      "groundBurst": {
+        "tell": 1.2,
+        "strike": 0.4,
+        "damage": 2
+      }
+    }
+  },
+  "tower": {
+    "baseHealth": 44
+  },
+  "assets": [
+    "whiteSerpent",
+    "holyArrow"
+  ]
+}

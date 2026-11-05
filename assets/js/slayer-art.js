@@ -28,6 +28,10 @@ const SlayerArt=(()=>{
  }
  function scenery(){
   const e=guardian();if(!e||!e.graveAwake||e.dead)return;
+  effects(e);
+ }
+ function effects(e){
+  if(!e||e.dead)return;
   for(const b of e.barrels){
    stamp(ART_SLAYER.barrel,b.x,b.y+2,80,1,b.punctured?.6:1);
    if(b.punctured)BossVFX.fissure(b.x,b.y,64,.8);
@@ -96,5 +100,5 @@ const SlayerArt=(()=>{
   ctx.fillText(I18n.format('slayer.armor',[e.armor]),hudX,top+37);ctx.fillText(I18n.format('slayer.steam',[steam]),hudX,top+53);
   ctx.fillStyle='#06101b';ctx.fillRect(hudX-width/2+12,top+64,width-24,9);ctx.fillStyle='#bf6b61';ctx.fillRect(hudX-width/2+12,top+64,(width-24)*clamp(e.hp/e.maxHp,0,1),9);DevBossHealth.bar(e,hudX,top+64,width-24);ctx.restore();
  }
- return Object.freeze({backdrop,objects,scenery,actor,pose});
+ return Object.freeze({backdrop,objects,scenery,effects,actor,pose});
 })();

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "prisonWarden",
+  "name": "zen.warden.name",
+  "group": "optional",
+  "story": {
+    "hp": 150,
+    "w": 105,
+    "h": 170
+  },
+  "tower": {
+    "baseHealth": 44
+  },
+  "assets": [
+    "prisonWarden"
+  ]
+}

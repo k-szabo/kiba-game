@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "id": "fiaRitual",
+  "name": "fia.name",
+  "group": "optional",
+  "story": {
+    "hp": 1800,
+    "w": 76,
+    "h": 140
+  },
+  "tower": {
+    "baseHealth": 56,
+    "name": "fia.name",
+    "w": 76,
+    "h": 140,
+    "speed": 230,
+    "range": 280,
+    "moves": [
+      "foxfire",
+      "teleport",
+      "drain",
+      "charm",
+      "ritualHymn",
+      "ritualHell",
+      "ritualDragon",
+      "ritualVoid"
+    ]
+  },
+  "assets": [
+    "fiaRitual",
+    "fiaRitualPowers",
+    "fiaAttendantSpirits",
+    "fiaTeleport",
+    "fiaFoxfire",
+    "fiaDrain",
+    "fiaCharm",
+    "arenaCyclops",
+    "fiaArenaWalk",
+    "fiaArenaCasting",
+    "fiaArenaYield"
+  ]
+}

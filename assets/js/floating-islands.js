@@ -15,7 +15,7 @@ const FloatingIslands=(()=>{
   if(e.towerBoss){if(poison?.sourceId===e.id)poison=null;if(tether?.sourceId===e.id)tether=null;}
   Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,active:false,dead:!e.replay&&abducted(),face:-1,attackFace:-1,cycles:0,phase:'wait',clock:.7,windup:0,windupDuration:.8,attackTime:0,attackElapsed:0,attackDuration:.4,inv:0,stun:0,animTime:0,walkSpeed:0,poseIndex:0,move:null,attackBox:null,hitDone:false,hazards:[],guardBreak:0,blockFlash:0});return e;
  }
- function create(spec){const a=spec.arena||level.arena;return reset({...spec,w:70,h:112,maxHp:1800,origin:spec.x,baseY:spec.y-112,arena:a,patrolLeft:a.x+20,patrolRight:a.x+a.w-90});}
+ function create(spec){const a=spec.arena||level.arena;return reset({...spec,w:BossCatalog.story('shadowNinjaLeader').w,h:BossCatalog.story('shadowNinjaLeader').h,maxHp:BossCatalog.story('shadowNinjaLeader').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('shadowNinjaLeader').h,arena:a,patrolLeft:a.x+20,patrolRight:a.x+a.w-90});}
  function enforceBounds(){const e=enemy();if(!e||state!=='play')return;player.x=clamp(player.x,e.arena.x+10,e.arena.x+e.arena.w-player.w-10);}
  function escape(e){
   if(!current(e)||!e.active)return false;

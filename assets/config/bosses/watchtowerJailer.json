@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "watchtowerJailer",
+  "name": "watchtower.jailer",
+  "group": "main",
+  "story": {
+    "w": 135,
+    "h": 165,
+    "hp": 1800,
+    "moves": [
+      "club",
+      "belly",
+      "club"
+    ]
+  },
+  "tower": {
+    "baseHealth": 46
+  },
+  "assets": [
+    "watchtowerJailerArt"
+  ]
+}

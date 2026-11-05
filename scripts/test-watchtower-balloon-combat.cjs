@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const context=vm.createContext({console});
-vm.runInContext(`
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(`
  let flags=[[],[],[],[]],state='play',projectiles=[],enemies=[],victories=[],balloonDamage=0;
  const level={arena:{x:0,y:600,w:1200,triggerX:0}};
  let player={x:250,y:531,w:43,h:69,vx:0,hp:20};

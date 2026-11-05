@@ -18,7 +18,7 @@ function createWatchtowerBalloonMaps({makeLevel,ledge,rest,foe,zone}){
  }
  ledge(ninjaWatchtower,'watchtower-cellar-floor',0,3200,3800,'ground',400);
  ninjaWatchtower.grappleAnchors.push({id:'watchtower-cellar-ring',x:32,y:2934,w:32,h:32});
- rest(ninjaWatchtower,'watchtowerEntrance',1000,2000,'watchtower.rest.entrance');
+ rest(ninjaWatchtower,'watchtowerEntrance',1300,2000,'watchtower.rest.entrance');
  rest(ninjaWatchtower,'watchtowerCellar',240,3200,'watchtower.rest.cellar');
  rest(ninjaWatchtower,'watchtowerRoof',2200,400,'watchtower.rest.roof');
  ninjaWatchtower.returnPoint={x:1000,y:2000};
@@ -74,7 +74,7 @@ function createWatchtowerBalloonMaps({makeLevel,ledge,rest,foe,zone}){
  }
  for(const [i,x,kind]of [[0,750,'guard'],[1,2400,'archer'],[2,3200,'mage']]){
   foe(stormIslands,'storm-cultist-'+i,x,1300,kind,null,100);
-  Object.assign(stormIslands.enemies.at(-1),{factionOverride:'shadowCult',grappleable:true});
+  Object.assign(stormIslands.enemies.at(-1),{factionOverride:'shadowCult',grappleable:true,combatStats:{hp:100,damage:3,xp:65}});
  }
  stormIslands.arenaEncounters=[];
  return {ninjaWatchtower,balloonJourney,skyLanding,stormIslands};

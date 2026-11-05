@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const context=vm.createContext({});
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/hannah-rules.js'),'utf8'),context);
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/hannah-rules.js'),'utf8'),context);
 const rules=vm.runInContext('HannahRules',context),plain=value=>JSON.parse(JSON.stringify(value));
 const hit=(state,amount)=>plain(rules.planHit(state,amount));
 

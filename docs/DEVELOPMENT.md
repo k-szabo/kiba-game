@@ -70,6 +70,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/tower-leaderboard-api.js`, `tower-leaderboard.js`, `supabase/` | Opcionális [közösségi toronyranglista](ENDLESS-TOWER.md#közösségi-ranglista), anonim identitás, elkülönített SQL és Edge Function. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés, kompatibilis kiadások közötti megőrzés; [szabályok](SAVE-COMPATIBILITY.md). |
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
+| `assets/config/bosses/*.json`, `assets/js/boss-catalog.js` | [Közös bosskatalógus](BOSS-CATALOG.md): bossenkénti sztori-/toronyalapértékek, profilok és grafikai függőségek; buildkor beágyazva. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |

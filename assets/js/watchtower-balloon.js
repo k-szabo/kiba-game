@@ -3,12 +3,20 @@
 const WatchtowerBalloon=(()=>{
  const rules=WatchtowerBalloonRules,p=rules.progress,owns=id=>flags[0].includes(id);
  let escort=HaruFollower.create({w:58,h:85,speed:185});
- let flight=null,tracked=null,departing=null,transfer=false,sealIntroduced=false,ropeEscort=null,vortex=null,morph=null;
+ let flight=null,tracked=null,departing=null,transfer=false,sealIntroduced=false,ropeEscort=null,vortex=null,morph=null,arrival=null;
  const active=()=>!!level.watchtowerBalloon&&!Prologue.active;
- const locked=()=>!transfer&&active()&&(level===balloonJourney&&!DevSession.active||!!departing||!!vortex||!!morph||enemies.some(e=>WatchtowerBalloonCombat.is(e)&&e.active&&!e.dead));
+ const locked=()=>!transfer&&active()&&(level===balloonJourney&&!DevSession.active||!!departing||!!vortex||!!morph||!!arrival||enemies.some(e=>WatchtowerBalloonCombat.is(e)&&e.active&&!e.dead));
  function commit(event){const next=rules.transition(flags,event);if(!next.ok)return false;flags=next.flags;persist();updateHUD();return true;}
  function travel(id){transfer=true;try{return CampQuest.enter(id);}finally{transfer=false;}}
- function clear(){flight=null;tracked=null;departing=null;sealIntroduced=false;ropeEscort=null;vortex=null;morph=null;escort=HaruFollower.create({w:58,h:85,speed:185});}
+ function clear(){flight=null;tracked=null;departing=null;sealIntroduced=false;ropeEscort=null;vortex=null;morph=null;arrival=null;escort=HaruFollower.create({w:58,h:85,speed:185});}
+ function arrive(){
+  if(level!==stormIslands||!owns(p.arrived)||owns(p.departed)||arrival)return;
+  const owner=player;arrival={elapsed:0,departing:false,x:420,y:1300};attack=0;
+  story('balloon.stormIslands','balloon.pilot','balloon.arrivalStory',()=>{
+   if(level!==stormIslands||player!==owner)return;
+   story('balloon.stormIslands','balloon.pilot','balloon.departureStory',()=>{if(level===stormIslands&&player===owner&&arrival)arrival.departing=true;},{right:'westheru',speaker:'westheru'});
+  },{right:'westheru',speaker:null});
+ }
  function companion(){return tracked===level&&active()&&level===ninjaWatchtower&&owns(p.rescued)&&!owns(p.boarded)?ropeEscort?.actor||escort.snapshot():null;}
  function resetEscort(){
   const support=platforms.find(s=>!s.broken&&Math.abs(player.y+player.h-s.y)<5&&player.x+player.w>s.x&&player.x<s.x+s.w);
@@ -68,6 +76,13 @@ const WatchtowerBalloon=(()=>{
  function update(dt){
   if(!active()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   if(tracked!==level){tracked=level;if(level===balloonJourney)populate();if(level===ninjaWatchtower)resetEscort();}
+  if(level===stormIslands&&owns(p.arrived)&&!owns(p.departed)&&!arrival){arrive();return;}
+  if(arrival){
+   if(level!==stormIslands){arrival=null;return;}
+   player.inv=Math.max(player.inv,.2);
+   if(arrival.departing){arrival.elapsed+=dt;if(arrival.elapsed>=4&&commit('depart'))arrival=null;}
+   return;
+  }
   if(morph){
    morph.elapsed+=dt;
    if(morph.elapsed>=2){const kind=morph.kind;morph=null;story('balloon.landing','balloon.pilot',kind==='restore'?'balloon.restoredStory':'balloon.transformStory',null,{right:kind==='restore'?'westheru':'westheruSeal',speaker:kind==='restore'?'westheru':null});}
@@ -79,7 +94,7 @@ const WatchtowerBalloon=(()=>{
     vortex=null;const previous=flags;
     if(!owns(p.arrived)&&!commit('arrive'))return;
     if(!travel('stormIslands')){flags=previous;persist();return;}
-    story('balloon.stormIslands','balloon.pilot','balloon.arrivalStory');
+    arrive();
    }
    return;
   }
@@ -160,5 +175,5 @@ const WatchtowerBalloon=(()=>{
   if(e.cd<=0){e.windup=e.windupDuration=.8;e.targetX=player.x;e.targetY=player.y;}
   return true;
  }
- return Object.freeze({active,locked,clear,update,updateWasp,context,interact,objective,hud,victory,damageBalloon,companion,ropeEscort:()=>ropeEscort,flight:()=>flight,morph:()=>morph,vortex:()=>vortex,departure:()=>departing,cinematic:()=>!!departing||!!vortex||!!morph});
+ return Object.freeze({active,locked,clear,update,updateWasp,context,interact,objective,hud,victory,damageBalloon,companion,ropeEscort:()=>ropeEscort,flight:()=>flight,morph:()=>morph,vortex:()=>vortex,departure:()=>departing,arrival:()=>arrival,cinematic:()=>!!departing||!!vortex||!!morph||!!arrival});
 })();
