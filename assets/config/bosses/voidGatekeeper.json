@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "voidGatekeeper",
+  "name": "descent.gatekeeper",
+  "group": "main",
+  "story": {
+    "hp": 2200,
+    "w": 110,
+    "h": 190
+  },
+  "tower": {
+    "baseHealth": 48
+  },
+  "assets": [
+    "voidGatekeeper"
+  ]
+}

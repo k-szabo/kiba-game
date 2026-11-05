@@ -5,6 +5,7 @@ r("Prologue.stop();flags=levels.map(()=>[]);flags[0].push('forestBell','villageB
 function interactAt(x,y){h.place(x,y);h.press({action:'interact'});h.tick();h.release({action:'interact'});}
 function win(kind){r(`var foe=enemies.find(e=>e.miniboss==='${kind}');player.x=foe.arena.triggerX+30;player.y=foe.arena.y-player.h;WatchtowerBalloonCombat.update(foe,.01);foe.hp=0;WatchtowerBalloonCombat.update(foe,.01);`);}
 interactAt(6800,1650);assert.equal(r('level.id'),'ninjaWatchtower');
+const legacy=r('captureProgress()');legacy.checkpoint={id:'watchtowerEntrance',x:1000,y:2000};if(!legacy.visitedRests[0].includes('watchtowerEntrance'))legacy.visitedRests[0].push('watchtowerEntrance');assert.equal(validate(legacy).checkpoint.x,1300,'Only the exact old shrine coordinate migrates');legacy.checkpoint.x=1001;assert.throws(()=>validate(legacy),/save location/);
 interactAt(3250,3200);assert(!r('flags[0].includes("westheruRescued")'),'Cell rejects missing key');
 win('watchtowerJailer');assert(r('flags[0].includes("watchtowerCellKey")'));h.dismiss();
 interactAt(3250,3200);assert(r('flags[0].includes("westheruRescued")'));h.dismiss();
@@ -20,5 +21,6 @@ win('balloonDragon');r('WatchtowerBalloon.update(.01);');assert.equal(r('level.i
 r('player.x=1050;player.y=1000-player.h;WatchtowerBalloon.update(.01);');assert.equal(r('WatchtowerBalloon.morph().kind'),'transform');r("state='pause';WatchtowerBalloon.update(1);");assert.equal(r('WatchtowerBalloon.morph().elapsed'),0);r("state='play';WatchtowerBalloon.update(2.1);");h.dismiss();
 win('westheruSeal');assert.equal(r('WatchtowerBalloon.morph().kind'),'restore');r('WatchtowerBalloon.update(2.1);');h.dismiss();assert(r('flags[0].includes("westheruRestored")'));
 interactAt(280,1000);assert(r('WatchtowerBalloon.cinematic()'));const vortexTime=r('WatchtowerBalloon.vortex().elapsed');r("state='pause';WatchtowerBalloon.update(1);");assert.equal(r('WatchtowerBalloon.vortex().elapsed'),vortexTime);r("state='play';WatchtowerBalloon.update(3.1);");h.dismiss();assert.equal(r('level.id'),'stormIslands');validate(r('captureProgress()'));
+assert(r('WatchtowerBalloon.arrival().departing'));r("state='pause';WatchtowerBalloon.update(1)");assert.equal(r('WatchtowerBalloon.arrival().elapsed'),0);r("state='play';WatchtowerBalloon.update(4.1)");assert(r('flags[0].includes("westheruDeparted")'));assert.equal(r('WatchtowerBalloon.arrival()'),null);validate(r('captureProgress()'));
 const bad=r('captureProgress()');bad.flags[0]=bad.flags[0].filter(id=>id!=='westheruRescued');assert.throws(()=>validate(bad),/watchtower/);
 console.log('PASS watchtower/balloon story: actual entry/rescue/boarding inputs, stage retry, pause, Haru retention and strict saves.');

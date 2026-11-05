@@ -525,7 +525,8 @@ const Visuals = (() => {
     }else if(e.phase==='strike'&&e.move==='bite')BossVFX.slash('slashFire',x+e.face*60,e.y+e.h*.5,160,86,e.face,progress);
     ctx.restore();
   }
-  function miniEffects(e,height){
+  function miniEffects(e,height,world=realm){
+    const realm=world;
     const x=e.x+e.w/2,feet=e.y+e.h,color=e.miniboss==='angel'?'#ffe0a2':'#c39ae7';
     ctx.save();
     if(realm===3&&e.move==='axe'){
@@ -714,8 +715,9 @@ const Visuals = (() => {
       }
     }
   }
-  function bossEffects(r) {
-    if(!bossStarted||!boss||boss.dead)return;
+  function bossEffects(r,entity=boss,world=realm,standalone=false) {
+    const boss=entity,realm=world;
+    if(!standalone&&!bossStarted||!boss||boss.dead)return;
     ctx.save();
     if(realm===3){
       if(boss.move==='bell'&&['windup','strike'].includes(boss.phase)){
@@ -888,5 +890,5 @@ const Visuals = (() => {
     ctx.drawImage(images[art.image],-art.tipX*sx,-art.tipY*sy,art.w*sx,art.h*sy);
     ctx.restore();
   }
-  return {ready,images,prefetch,watchExternal(key,image,retry){records.set(key,{image,retry,status:'loading'});},externalStart(key){const e=records.get(key);if(e)e.status='loading';},externalResult(key,ok){const e=records.get(key);if(e){e.status=ok?'ready':'failed';notify(key);}},peek:key=>rawImages[key],scope,retry,onLoad:fn=>{listeners.add(fn);return ()=>listeners.delete(fn);},beginFrame(){frameKeys=new Set();inFrame=true;},endFrame(){inFrame=false;},get blocked(){return pending();},get failures(){return failures();},get loaded(){return [...currentKeys()].filter(key=>records.get(key)?.status==='ready').length;},get total(){return currentKeys().size;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,duelTerrain,torii,shrine,objects,actor,healthBar,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
+  return {ready,images,prefetch,watchExternal(key,image,retry){records.set(key,{image,retry,status:'loading'});},externalStart(key){const e=records.get(key);if(e)e.status='loading';},externalResult(key,ok){const e=records.get(key);if(e){e.status=ok?'ready':'failed';notify(key);}},peek:key=>rawImages[key],scope,retry,onLoad:fn=>{listeners.add(fn);return ()=>listeners.delete(fn);},beginFrame(){frameKeys=new Set();inFrame=true;},endFrame(){inFrame=false;},get blocked(){return pending();},get failures(){return failures();},get loaded(){return [...currentKeys()].filter(key=>records.get(key)?.status==='ready').length;},get total(){return currentKeys().size;},backdropPhase,updateAtmosphere,resetAtmosphere,secretBackdropState,backdrop,campBackdrop,campScenery,campPathMarker,councilBackdrop,councilGate,councilKey,terrain,duelTerrain,torii,shrine,objects,actor,healthBar,miniEffects,holySpell,projectile,gates,hazards,winds,bossEffects,levelUp,momoSlash,momoCarry,dashTrail,secretScenery};
 })();

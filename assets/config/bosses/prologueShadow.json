@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "prologueShadow",
+  "name": "prologue.boss",
+  "group": "optional",
+  "story": {
+    "hp": 100000,
+    "w": 460,
+    "h": 440
+  },
+  "tower": {
+    "baseHealth": 60,
+    "name": "prologue.boss",
+    "w": 260,
+    "h": 310,
+    "speed": 70,
+    "range": 390,
+    "moves": [
+      "cleave",
+      "shadowBolts",
+      "shadowRain",
+      "eclipse"
+    ]
+  },
+  "assets": [
+    "shadowIdle",
+    "shadowMelee",
+    "shadowCast"
+  ]
+}

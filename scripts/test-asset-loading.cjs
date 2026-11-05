@@ -3,6 +3,7 @@ const loads=[];let active=0,maximum=0;
 const manifest=Object.fromEntries(['japanBackdrop','terrain','props','a','b','c','d','e','f','g','h'].map(key=>[key,'assets/images/'+key+'.png']));
 const box=vm.createContext({Promise,Set,Map,WeakMap,Proxy,Image:class{complete=false;naturalWidth=0;},ART_MANIFEST:manifest,
  document:{getElementById:()=>null},I18n:{t:x=>x,format:x=>x},AssetCache:{load(image,source,done){active++;maximum=Math.max(maximum,active);loads.push({image,source,finish(ok=true){active--;image.complete=true;image.naturalWidth=ok?100:0;done(ok);}});}}});
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,box);
 vm.runInContext(fs.readFileSync('assets/js/graphics.js','utf8')+'\nthis.visuals=Visuals;',box);const v=box.visuals;
 assert.equal(loads.length,3,'Boot requests only the menu bundle');assert(v.blocked);assert.equal(v.peek('a'),undefined);assert.equal(loads.length,3,'Identity queries never trigger downloads');
 loads.slice().forEach(load=>load.finish());assert(!v.blocked);
@@ -23,6 +24,7 @@ r('Object.defineProperty(Visuals,"blocked",oldBlocked)');
 // minion spawning first asks the renderer for them. No full-catalog preload.
 {
  const calls=[],planBox=vm.createContext({state:'play',realm:0,weaponStyle:'katana',enemies:[],flags:[[],[],[],[]],Prologue:{active:false},DuelMode:{active:false},TowerMode:{active:false},Visuals:{blocked:true,scope(token,keys){calls.push({token,keys});return true;}},Dialogue:{render(){}},Inventory:{render(){},quantity(){return 0;}},Merchant:{render(){}}});
+ vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,planBox);
  vm.runInContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\nthis.manifest=ART_MANIFEST;',planBox);
  vm.runInContext(fs.readFileSync('assets/js/asset-loading.js','utf8')+'\nthis.loading=AssetLoading;',planBox);
  const plan=(id,extra={})=>{planBox.level={id,...extra};planBox.loading.prepare();const result=calls.at(-1);for(const key of result.keys)assert(Object.hasOwn(planBox.manifest,key)||['momoSheet','menuSheet'].includes(key),'Unknown planned asset '+key);assert(new Set(result.keys).size<Object.keys(planBox.manifest).length/2,'A scene must not preload the full catalog');return result;};

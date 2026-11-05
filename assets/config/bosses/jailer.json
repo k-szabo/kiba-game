@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "jailer",
+  "name": "shadow.boss.jailer",
+  "group": "optional",
+  "story": {
+    "hp": 75,
+    "w": 82,
+    "h": 110
+  },
+  "tower": {
+    "baseHealth": 42
+  },
+  "assets": [
+    "shadowCultJailer"
+  ]
+}

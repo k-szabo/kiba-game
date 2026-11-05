@@ -165,7 +165,13 @@ const BossVFX=(()=>{
     ctx.fillStyle=glow;ctx.fillRect(h.x-h.w*.2,h.y-h.h*.3,h.w*1.4,h.h*1.7);ctx.restore();
     portal(x,feet-4,Math.min(740,h.w*.7),.85);
   }
-  return Object.freeze({stamp,marker,fissure,impact,portal,slash,lava,column,eruption,projectile,devour});
+  function lightning(x,feet,height,width=null,alpha=1){
+    const art=ART_SLAYER.lightning,image=Visuals.images[art.image];if(!image?.complete||!image.naturalWidth)return;
+    const sy=height/art.bodyHeight,sx=width===null?sy:width/art.w;
+    ctx.save();ctx.globalAlpha*=alpha;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.drawImage(image,art.x,art.y,art.w,art.h,x+(art.x-art.anchorX)*sx,feet+(art.y-art.anchorY)*sy,art.w*sx,art.h*sy);ctx.restore();
+  }
+  return Object.freeze({stamp,marker,fissure,impact,portal,slash,lava,column,eruption,projectile,devour,lightning});
 })();
 
 /* Geometry-only boss warnings share their readable dash style. No combat clock is advanced. */

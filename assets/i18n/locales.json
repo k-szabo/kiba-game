@@ -1375,7 +1375,7 @@
       "balloon.rest.landing": "Felhők közötti pihenő",
       "balloon.rest.storm": "Az örvény túlpartja",
       "watchtower.key": "A cella kulcsa",
-      "inventory.desc.watchtowerCellKey": "Az őrtorony tömlöcében Westheru celláját nyitja.",
+      "inventory.desc.watchtowerCellKey": "Az őrtorony tömlöcében Westheru celláját nyitja. A cellánál a {0} gombbal használhatod.",
       "watchtower.enter": "E · Belépés az őrtoronyba",
       "watchtower.return": "E · Vissza a lebegő szigetekre",
       "watchtower.free": "E · Westheru kiszabadítása",
@@ -1396,7 +1396,13 @@
       "balloon.health": "Ballon: {0}/{1}",
       "balloon.failed": "A ballon megsemmisült. A szakasz újrapróbálható.",
       "menu.changelog.0974.95d17dc4.title": "Őrtoronyból a felhők fölé",
-      "menu.changelog.0974.95d17dc4.0": "Az őrtorony tömlöcében új társ vár kiszabadításra. Westheru ballonútja darázsrajokon, légi sárkányharcon és egy különös viharon át vezet az örvény túlpartjára."
+      "menu.changelog.0974.95d17dc4.0": "Az őrtorony tömlöcében új társ vár kiszabadításra. Westheru ballonútja darázsrajokon, légi sárkányharcon és egy különös viharon át vezet az örvény túlpartjára.",
+      "balloon.departureStory": "Ennyi kultista… Tudod mit, Momo? Én inkább odafentről figyelem, mi történik. Kiteszlek itt, aztán továbbindulok a ballonnal. Vigyázz magadra!",
+      "menu.changelog.0974.e86e9e6e.title": "Őrtorony, ballonút és bosshatások javítása",
+      "menu.changelog.0974.e86e9e6e.0": "Az őrtorony bejárati oltára külön helyre került, a bossok számszerű életereje látható. A háttér ugráskor is megtartja léptékét, átmenetei finomabbak. Az új terület kultistái erősebbek; Westheru a ballonnal az örvény túloldalára érkezik, majd továbbindul. A torony és a történet bossai közös konfigurációt és egységes varázslatgrafikákat használnak.",
+      "menu.changelog.0974.92487480.title": "Festett cella és belső javítások",
+      "menu.changelog.0974.92487480.0": "Westheru cellája a játék festett ketrecgrafikáját használja. A cellakulcs leírása és használata javult.",
+      "menu.changelog.0974.92487480.1": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -2775,7 +2781,7 @@
       "balloon.rest.landing": "Rest Above the Clouds",
       "balloon.rest.storm": "Beyond the Vortex",
       "watchtower.key": "Cell Key",
-      "inventory.desc.watchtowerCellKey": "Opens Westheru’s cell in the watchtower dungeon.",
+      "inventory.desc.watchtowerCellKey": "Opens Westheru’s cell in the watchtower dungeon. Use it beside the cell with {0}.",
       "watchtower.enter": "E · Enter the watchtower",
       "watchtower.return": "E · Return to the Floating Islands",
       "watchtower.free": "E · Free Westheru",
@@ -2796,7 +2802,13 @@
       "balloon.health": "Balloon: {0}/{1}",
       "balloon.failed": "The balloon was destroyed. You can retry this stage.",
       "menu.changelog.0974.95d17dc4.title": "From Watchtower to the Clouds",
-      "menu.changelog.0974.95d17dc4.0": "A new companion awaits rescue in the watchtower dungeon. Westheru’s balloon voyage leads through wasp swarms, a battle with a sky dragon and a strange storm to the far side of a vortex."
+      "menu.changelog.0974.95d17dc4.0": "A new companion awaits rescue in the watchtower dungeon. Westheru’s balloon voyage leads through wasp swarms, a battle with a sky dragon and a strange storm to the far side of a vortex.",
+      "balloon.departureStory": "So many cultists… You know what, Momo? I’d rather keep an eye on things from above. I’ll drop you off here, then carry on in the balloon. Take care!",
+      "menu.changelog.0974.e86e9e6e.title": "Watchtower, balloon voyage and boss effect fixes",
+      "menu.changelog.0974.e86e9e6e.0": "The watchtower’s entrance shrine has moved to a separate spot, and numeric boss health is visible. Background scale remains stable when jumping, with smoother transitions. Cultists in the new area are stronger; Westheru arrives beyond the vortex in the balloon, then flies onward. Tower and story bosses use shared configuration and consistent spell artwork.",
+      "menu.changelog.0974.92487480.title": "Painted cell and internal fixes",
+      "menu.changelog.0974.92487480.0": "Westheru’s cell now uses the game’s painted cage artwork. The cell key’s description and use have been corrected.",
+      "menu.changelog.0974.92487480.1": "Internal maintenance and technical improvements."
     }
   }
 }

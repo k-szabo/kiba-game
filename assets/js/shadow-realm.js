@@ -117,7 +117,7 @@ const ShadowRealm=(()=>{
    if(boss===encounter&&bossStarted&&boss.clock<=0)setBossPhase('recover',1.1);
   }else if(boss.phase==='recover'&&boss.clock<=0)setBossPhase('wait',.7);
  }
- function miniDimensions(spec){return spec.miniboss==='organist'?{h:210,w:250,maxHp:105}:{h:110,w:82,maxHp:75};}
+ function miniDimensions(spec){const p=BossCatalog.story(spec.miniboss);return {h:p.h,w:p.w,maxHp:p.hp};}
  function updateMini(e,dt){
   const a=e.arena,dy=player.y+player.h-a.y,inside=player.x+player.w>a.x-80&&player.x<a.x+a.w+80&&dy>=-340&&dy<=25;
   if(!inside){if(e.active)resetMiniboss(e);return;}

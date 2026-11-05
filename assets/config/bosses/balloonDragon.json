@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "balloonDragon",
+  "name": "balloon.dragon",
+  "group": "main",
+  "story": {
+    "w": 280,
+    "h": 230,
+    "hp": 3200,
+    "moves": [
+      "dragonFan",
+      "claw",
+      "balloonBreath"
+    ]
+  },
+  "tower": {
+    "baseHealth": 54
+  },
+  "assets": [
+    "skyDragonArt"
+  ]
+}

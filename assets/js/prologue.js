@@ -1,7 +1,7 @@
 /* A playable nightmare. Its defeat leads to Japan, never to a shrine or boss reward. */
 'use strict';
 const Prologue=(()=>{
-  const FLOOR=720,ARENA_LEFT=2940,ARENA_RIGHT=4230,SHADOW_X=3790,MAX_HP=100000;
+  const FLOOR=720,ARENA_LEFT=2940,ARENA_RIGHT=4230,SHADOW_X=3790,MAX_HP=BossCatalog.story('prologueShadow').hp;
   const dream=makeLevel('dream',4500,1000,{x:240,y:FLOOR});
   ledge(dream,'silent-path',0,FLOOR,4500,'ground',280);
   let phase='off',clock=0,battleTime=0,zoom=1,castIndex=0,heartbeat=0;

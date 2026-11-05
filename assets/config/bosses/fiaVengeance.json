@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "id": "fiaVengeance",
+  "name": "fia.name",
+  "group": "optional",
+  "story": {
+    "hp": 900,
+    "w": 76,
+    "h": 140
+  },
+  "tower": {
+    "baseHealth": 52,
+    "name": "fia.name",
+    "w": 76,
+    "h": 140,
+    "speed": 230,
+    "range": 280,
+    "moves": [
+      "foxfire",
+      "teleport",
+      "drain",
+      "charm",
+      "voidVolley",
+      "fiaSigils"
+    ]
+  },
+  "assets": [
+    "fiaArenaCasting",
+    "fiaArenaYield",
+    "fiaArenaWalk",
+    "fiaTeleport",
+    "fiaFoxfire",
+    "fiaDrain",
+    "fiaCharm"
+  ]
+}

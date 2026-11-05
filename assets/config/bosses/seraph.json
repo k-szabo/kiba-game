@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "seraph",
+  "name": "text.angel.of.dawn.phase.i",
+  "group": "optional",
+  "story": {
+    "hp": 140,
+    "w": 96,
+    "h": 115
+  },
+  "tower": {
+    "baseHealth": 42,
+    "name": "text.angel.of.dawn.phase.i",
+    "w": 100,
+    "h": 170,
+    "speed": 100,
+    "range": 330,
+    "moves": [
+      "lightArrows",
+      "holySweep",
+      "lightArrows"
+    ]
+  },
+  "assets": [
+    "angelLight",
+    "holyArrow",
+    "holyLance"
+  ]
+}

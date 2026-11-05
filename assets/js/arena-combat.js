@@ -1,12 +1,7 @@
 /* Arena encounters share one transient controller. The challenge owns rewards. */
 'use strict';
 const ArenaCombat=(()=>{
- const profiles=Object.freeze({
-  arenaCaptain:Object.freeze({name:'arena.boss.captain',w:88,h:180,hp:180,speed:115,range:170,moves:Object.freeze(['captainCleave','captainCharge','captainBolts'])}),
-  arenaSerpent:Object.freeze({name:'arena.boss.serpent',w:380,h:360,hp:220,speed:75,range:260,moves:Object.freeze(['serpentBite','serpentSpit','serpentRupture'])}),
-  arenaCyclops:Object.freeze({name:'arena.boss.guards',w:400,h:180,hp:300,speed:75,range:240,moves:Object.freeze(['pairedStomp','pairedLance'])}),
-  arenaFia:Object.freeze({name:'arena.boss.fia',w:75,h:130,hp:1,speed:65,range:350,moves:Object.freeze(['fiaBolts','fiaSigils','fiaBolts','fiaSummon'])})
- });
+ const profiles=Object.freeze(Object.fromEntries(["arenaCaptain","arenaSerpent","arenaCyclops","arenaFia"].map(id=>[id,BossCatalog.story(id)])));
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss);
  const profile=e=>profiles[e.miniboss];
  const hurt=(e,amount,dir,blockable=false)=>damage(amount*(e.towerBoss?e.towerDamageScale:1),dir,blockable);

@@ -3,15 +3,7 @@
  * Independent snakes use ordinary miniboss persistence and replay isolation. */
 'use strict';
 const Serpents=(()=>{
- const freezeMoves=entries=>Object.freeze(Object.fromEntries(Object.entries(entries).map(([id,m])=>[id,Object.freeze(m)])));
- const profiles=Object.freeze({
-  lava:Object.freeze({realm:1,name:'yomi.serpent.name',reward:'serpentScale',guardian:null,xp:70,w:120,h:84,hp:24,speed:115,range:135,wait:.7,recover:.65,
-   moves:freezeMoves({emberFan:{tell:1.1,strike:.42,kind:'ember',color:'#ffa465',speed:240,spread:.22,count:3,damage:1},bite:{tell:.8,strike:.42,width:125,damage:2}})}),
-  white:Object.freeze({realm:0,name:'serpent.white.name',reward:'whiteSerpentScale',guardian:'guardian:whiteSerpent',xp:100,w:150,h:100,hp:72,speed:85,range:165,wait:.65,recover:.8,
-   moves:freezeMoves({bite:{tell:.85,strike:.32,width:150,damage:2},frostFan:{tell:1.05,strike:.45,kind:'magic',color:'#b8e8ee',speed:250,spread:.23,count:3,damage:1},groundBurst:{tell:1.2,strike:.4,damage:2}})}),
-  winged:Object.freeze({realm:2,name:'serpent.winged.name',reward:'wingedSerpentScale',guardian:'guardian:wingedSerpent',xp:180,w:190,h:125,hp:150,speed:100,range:175,wait:.55,recover:.8,
-   moves:freezeMoves({bite:{tell:.8,strike:.35,width:170,damage:2},holyFan:{tell:1.15,strike:.5,kind:'holyArrow',color:'#ffe6a2',speed:280,spread:.2,count:5,damage:1},shadowSweep:{tell:1.15,strike:.5,width:90,speed:420,damage:2}})})
- });
+ const profiles=Object.freeze(Object.fromEntries(Object.entries({lava:'serpent',white:'whiteSerpent',winged:'wingedSerpent'}).map(([type,id])=>[type,BossCatalog.story(id)])));
  const type=spec=>spec?.serpentType||(spec?.serpent===true?'lava':null);
  const is=spec=>Object.hasOwn(profiles,type(spec));
  const profile=enemy=>profiles[type(enemy)];

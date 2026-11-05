@@ -1,7 +1,8 @@
 /* Native artwork uses world coordinates; rendering never advances encounter time. */
 'use strict';
 const WatchtowerBalloonArt=(()=>{
- const vortices=new WeakMap();
+ const vortices=new WeakMap(),towerPanels=new WeakMap();
+ function towerPanel(image){let panel=towerPanels.get(image);if(!panel){panel=BackgroundMotion.masked(image,{left:.1,right:.1,top:.06,bottom:.08});towerPanels.set(image,panel);}return panel;}
  function vortexPainting(){
   const image=Visuals.images.stormIslandsBackdrop;if(!image?.naturalWidth)return null;
   if(vortices.has(image))return vortices.get(image);
@@ -20,12 +21,12 @@ const WatchtowerBalloonArt=(()=>{
    if(level===balloonJourney){
     const sourceH=image.naturalHeight*.70,h=H,w=image.naturalWidth*h/sourceH,offset=scroll%w;
     for(let x=-offset;x<viewW;x+=w)BackgroundMotion.draw(image,0,0,image.naturalWidth,sourceH,x,0,w,h);
-   }else if(level===skyLanding||level===stormIslands)BackgroundFraming.cover(image,{ground:image.naturalHeight*.81,floor:(level===skyLanding?1000:1300)-cameraY});
+   }else if(level===skyLanding||level===stormIslands){const floor=level===skyLanding?1000:1300;BackgroundFraming.cover(image,{ground:image.naturalHeight*.81,floor:floor-cameraY,scaleFloor:H*.81});}
    else BackgroundFraming.cover(image,{vertical:.5});
   }
   if(level===ninjaWatchtower){
    const tower=Visuals.images.watchtowerBackdrop;
-   if(tower?.naturalWidth){const h=level.height,w=h*tower.naturalWidth/tower.naturalHeight;BackgroundMotion.draw(tower,(level.width-w)/2-camera,-cameraY,w,h);}
+   if(tower?.naturalWidth){const h=level.height,w=h*tower.naturalWidth/tower.naturalHeight;BackgroundMotion.draw(towerPanel(tower),(level.width-w)/2-camera,-cameraY,w,h);}
   }
   return true;
  }
@@ -54,16 +55,14 @@ const WatchtowerBalloonArt=(()=>{
   if(level===ninjaWatchtower){
    Visuals.campPathMarker(level.returnPoint,I18n.t('islands.name'));
    if(!owns(p.rescued)){
-    const q=level.cellPoint;pilot(q.x,q.y);
-    ctx.save();ctx.strokeStyle='#332b35';ctx.lineWidth=9;
-    for(let x=q.x-85;x<=q.x+85;x+=28){ctx.beginPath();ctx.moveTo(x,q.y-145);ctx.lineTo(x,q.y);ctx.stroke();}
-    ctx.strokeRect(q.x-95,q.y-150,190,150);ctx.restore();
+    const q=level.cellPoint;stamp('pilot',0,q.x,q.y,110);
+    ArenaArt.stamp({image:'props',frames:[ART_FRAMES.props.cage],intersectOutlines:true},0,q.x,q.y,185);HannahArt.nameplate(q.x,q.y,195,'balloon.pilot');
    }
    if(owns(p.sentinel)){balloon(2850,400,700);Visuals.campPathMarker(level.boardPoint,I18n.t('balloon.board'));}
    const departure=WatchtowerBalloon.departure();
    if(departure){const e=departure.actor,t=Math.min(1,departure.elapsed/1.2);ctx.save();ctx.globalAlpha=1-t;stamp('sentinel',5,e.x+e.w/2+t*400,e.y+e.h-80*Math.sin(t*Math.PI),150,e.face);ctx.restore();}
   }else if(level===balloonJourney){balloon(220,850,1560);pilot(level.pilotPoint.x,level.pilotPoint.y);}
-  else if(level===skyLanding&&owns(p.restored)){
+  else if(level===skyLanding&&owns(p.restored)&&!owns(p.arrived)){
    const changing=WatchtowerBalloon.morph();if(changing){balloon(70,1000,600);morphActor(changing);return;}
    const vortex=WatchtowerBalloon.vortex(),t=reducedMotion.matches?0:Math.min(1,(vortex?.elapsed||0)/3);
    if(vortex){
@@ -74,7 +73,10 @@ const WatchtowerBalloonArt=(()=>{
    if(vortex)pilot(190+t*300,1000-t*250);
    if(!vortex){pilot(level.pilotPoint.x,level.pilotPoint.y);Visuals.campPathMarker(level.boardPoint,I18n.t('balloon.continue'));}
   }
-  else if(level===stormIslands)balloon(90,1300,500);
+  else if(level===stormIslands){
+   const arrival=WatchtowerBalloon.arrival();if(arrival){const t=arrival.departing?Math.min(1,arrival.elapsed/4):0,move=reducedMotion.matches?0:t;
+    ctx.save();ctx.globalAlpha*=reducedMotion.matches?1-t:1;balloon(arrival.x-180+move*420,arrival.y-move*700,500);pilot(arrival.x-80+move*420,arrival.y-move*700);ctx.restore();}
+  }
  }
  function companion(){
   const e=WatchtowerBalloon.companion();if(!e)return;
@@ -98,9 +100,7 @@ const WatchtowerBalloonArt=(()=>{
    BossCues.box(e.attackBox||{x:e.targetX-35,y:e.targetY-45,w:70,h:90});
    if(e.move==='balloonBreath')BossCues.box({x:220,y:level.arena.y-30,w:1560,h:50});
   }
-  for(const h of e.hazards||[])if(!h.active)BossCues.box(h);else{
-   ctx.save();ctx.strokeStyle=h.kind==='lightning'?'#dcf3ff':'#caa8ed';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(h.x+h.w*.5,h.y);ctx.lineTo(h.x+h.w*.3,h.y+h.h*.55);ctx.lineTo(h.x+h.w*.7,h.y+h.h*.45);ctx.lineTo(h.x+h.w*.5,h.y+h.h);ctx.stroke();ctx.restore();
-  }
+  for(const h of e.hazards||[])if(!h.active)BossCues.box(h);else if(h.kind==='lightning')BossVFX.lightning(h.x+h.w/2,h.y+h.h,h.h,h.w);else BossVFX.column(h);
   return true;
  }
  function playerOverlay(){

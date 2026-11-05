@@ -1,14 +1,7 @@
 /* Dungeon combat is transient; the run controller owns completion and rewards. */
 'use strict';
 const DungeonCombat=(()=>{
- const profiles=Object.freeze({
-  dungeonCaptain:Object.freeze({name:'dungeon.boss.captain',floor:0,w:88,h:145,hp:220,speed:105,range:220,moves:Object.freeze(['captainReach','captainThrust','captainLeap'])}),
-  dungeonNecromancer:Object.freeze({name:'dungeon.boss.necromancer',floor:1,w:82,h:145,hp:280,speed:70,range:350,moves:Object.freeze(['necroBolts','necroSigils','necroSummon'])}),
-  dungeonCouncil:Object.freeze({name:'dungeon.boss.council',floor:2,w:180,h:190,hp:400,speed:65,range:240,moves:Object.freeze(['councilSweep','councilSigils','councilVolley'])}),
-  cultTempleGuard:Object.freeze({name:'cultDungeon.boss.guard',dungeon:'sectFall',realm:0,art:'templeGuard',floor:0,w:100,h:158,hp:260,speed:85,range:230,moves:Object.freeze(['guardFlail','guardBash','guardCircle'])}),
-  woundedAngel:Object.freeze({name:'cultDungeon.boss.angel',dungeon:'sectFall',realm:0,art:'woundedAngel',floor:1,w:94,h:165,hp:320,speed:110,range:210,moves:Object.freeze(['angelCut','angelLance','angelDive'])}),
-  cultHighPriestess:Object.freeze({name:'cultDungeon.boss.priestess',dungeon:'sectFall',realm:0,art:'highPriestess',floor:2,w:86,h:158,hp:460,speed:65,range:400,moves:Object.freeze(['priestessSummon','priestessBolts','priestessChant','priestessSigils'])})
- });
+ const profiles=Object.freeze(Object.fromEntries(["dungeonCaptain","dungeonNecromancer","dungeonCouncil","cultTempleGuard","woundedAngel","cultHighPriestess"].map(id=>[id,BossCatalog.story(id)])));
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss);
  const profile=e=>profiles[e.miniboss];
  const hurt=(e,amount,dir,blockable=false)=>damage(amount*(e.towerBoss?e.towerDamageScale:1),dir,blockable);

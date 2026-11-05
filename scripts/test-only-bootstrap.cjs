@@ -3,7 +3,11 @@ const fs=require('node:fs'),path=require('node:path');
 const locale=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/i18n/locales.json'),'utf8')).hu.dict;
 const bindings=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/keybindings.json'),'utf8'));
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8'));
+const bossData=Object.fromEntries(fs.readdirSync(path.join(__dirname,'../assets/config/bosses')).filter(x=>x.endsWith('.json')).sort().map(x=>{const record=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/bosses',x),'utf8'));return [record.id,record];}));
+exports.bossCatalog='const BOSS_DATA='+JSON.stringify(bossData)+';\n'+fs.readFileSync(path.join(__dirname,'../assets/js/boss-catalog.js'),'utf8');
 exports.before=`
+${exports.bossCatalog}
+
 const GAME_RELEASE=${JSON.stringify(release)};
 const LEADERBOARD_CONFIG=${fs.readFileSync(path.join(__dirname,'../assets/config/leaderboard.json'),'utf8')};
 const TEST_LOCALE=${JSON.stringify(locale)};

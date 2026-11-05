@@ -24,7 +24,7 @@ const PrisonWarden=(()=>{
  }
  function create(spec){
   const arena=spec.arena||level.secrets?.find(area=>area.id===spec.secretArea)?.arena||level.arena;
-  return reset({...spec,name:'zen.warden.name',w:105,h:170,maxHp:150,origin:spec.x,baseY:spec.y-170,
+  return reset({...spec,name:'zen.warden.name',w:BossCatalog.story('prisonWarden').w,h:BossCatalog.story('prisonWarden').h,maxHp:BossCatalog.story('prisonWarden').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('prisonWarden').h,
    patrolLeft:arena.x+25,patrolRight:Math.max(arena.x+25,arena.x+arena.w-130),arena});
  }
  function inside(enemy){

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "main-2",
+  "name": "text.the.corrupted.seraph",
+  "group": "main",
+  "story": {
+    "hp": 140,
+    "w": 96,
+    "h": 115
+  },
+  "tower": {
+    "baseHealth": 44,
+    "name": "text.the.corrupted.seraph",
+    "w": 100,
+    "h": 170,
+    "speed": 100,
+    "range": 330,
+    "moves": [
+      "lightArrows",
+      "holySweep",
+      "shadowRain",
+      "eclipse"
+    ]
+  },
+  "assets": [
+    "angelLight",
+    "angelDark",
+    "angelEclipse",
+    "holyArrow",
+    "holyLance"
+  ]
+}

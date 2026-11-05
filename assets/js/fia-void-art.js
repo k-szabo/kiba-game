@@ -25,6 +25,10 @@ const FiaVoidArt=(()=>{
  }
  function marker(point,name){Visuals.campPathMarker(point,I18n.t(name));}
  function label(npc){const text=I18n.t(npc.name);ctx.save();ctx.font='600 15px "Kiba UI", sans-serif';ctx.textAlign='center';const w=ctx.measureText(text).width+22,y=npc.y-npc.height-24;ctx.fillStyle='#100d1bed';ctx.fillRect(npc.x-w/2,y-22,w,30);ctx.fillStyle='#fff0cc';ctx.fillText(text,npc.x,y);ctx.restore();}
+ function attack(warning,impact){
+  if(warning)BossCues.box(warning.box,BossCues.color);
+  if(impact)BossVFX.stamp(impact.kind==='rift'?'shadowColumn':'impact',impact.box.x+impact.box.w/2,impact.box.y+impact.box.h,impact.box.w,impact.box.h,{alpha:Math.min(1,impact.remaining*4)});
+ }
  function scenery(){
   if(Prologue.active||state==='menu')return;
   if(level===fiaChambers&&(flags[3].includes('fiaDragonCompleted')||DevSession.active))marker(level.ritualEntrance,'fia.ritual.location');
@@ -49,8 +53,7 @@ const FiaVoidArt=(()=>{
   }else{
    if(!flags[3].includes('voidDemonDefeated')){BossVFX.stamp('shadowColumn',level.rift.x,level.rift.y-100,300,510);BossVFX.portal(level.rift.x,level.rift.y,190,.9);}
    const actor=VoidEncounter.actor;if(actor&&VoidEncounter.snapshot?.phase!=='victory'){const definition=ART_FIA_VOID[VoidEncounter.snapshot.generation===2?'demon':'lieutenant'];stamp(definition,VoidEncounter.pose,actor.x+actor.w/2,actor.y+actor.h,actor.h,actor.face);}
-   if(VoidEncounter.warning)BossCues.box(VoidEncounter.warning.box,BossCues.color);
-   const impact=VoidEncounter.impact;if(impact)BossVFX.stamp(impact.kind==='rift'?'shadowColumn':'impact',impact.box.x+impact.box.w/2,impact.box.y+impact.box.h,impact.box.w,impact.box.h,{alpha:Math.min(1,impact.remaining*4)});
+   attack(VoidEncounter.warning,VoidEncounter.impact);
    if(VoidEncounter.locked())for(const x of [level.voidArena.x,level.voidArena.x+level.voidArena.w])BossVFX.portal(x,level.voidArena.y,100,.8);
   }
  }
@@ -60,5 +63,5 @@ const FiaVoidArt=(()=>{
   stamp(ART_FIA_VOID[e.voidKeeperRole],pose,e.x+e.w/2,e.y+e.h,e.h,e.face);Visuals.healthBar(e);
   if(e.windup>0)BossCues.box(enemyRole(e)==='guard'?enemyMeleeBox(e):{x:e.targetX-55,y:e.targetY-55,w:110,h:110},BossCues.color);return true;
  }
- return Object.freeze({backdrop,scenery,actor,stamp,roomLayout});
+ return Object.freeze({backdrop,scenery,actor,stamp,roomLayout,attack});
 })();

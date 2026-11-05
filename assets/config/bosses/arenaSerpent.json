@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "arenaSerpent",
+  "name": "arena.boss.serpent",
+  "group": "optional",
+  "story": {
+    "name": "arena.boss.serpent",
+    "w": 380,
+    "h": 360,
+    "hp": 220,
+    "speed": 75,
+    "range": 260,
+    "moves": [
+      "serpentBite",
+      "serpentSpit",
+      "serpentRupture"
+    ]
+  },
+  "tower": {
+    "baseHealth": 42
+  },
+  "assets": [
+    "arenaSerpent"
+  ]
+}

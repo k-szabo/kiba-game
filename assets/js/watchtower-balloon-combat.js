@@ -1,12 +1,7 @@
 /* Combat owns fixed targets, active-time clocks and source-scoped projectiles. */
 'use strict';
 const WatchtowerBalloonCombat=(()=>{
- const profiles=Object.freeze({
-  watchtowerJailer:{w:135,h:165,hp:1800,moves:['club','belly','club']},
-  watchtowerSentinel:{w:72,h:118,hp:2200,moves:['crossbow','sigils','crossbow','ninjutsu']},
-  balloonDragon:{w:280,h:230,hp:3200,moves:['dragonFan','claw','balloonBreath']},
-  westheruSeal:{w:145,h:130,hp:2800,moves:['lightning','stormFan','lightning','stormFan']}
- });
+ const profiles=Object.freeze(Object.fromEntries(["watchtowerJailer","watchtowerSentinel","balloonDragon","westheruSeal"].map(id=>[id,BossCatalog.story(id)])));
  const is=e=>!!e&&Object.hasOwn(profiles,e.miniboss),source=e=>'mini:'+e.id;
  const tower=e=>!!e?.towerBoss&&level.tower&&TowerMode.running;
  const current=e=>is(e)&&(WatchtowerBalloon.active()||tower(e))&&enemies.includes(e)&&!e.dead;
@@ -99,7 +94,7 @@ const WatchtowerBalloonCombat=(()=>{
  }
  function defeat(e){
   if(!current(e)||!e.active||e.victoryIssued)return false;
-  const escape=!tower(e)&&e.miniboss==='watchtowerSentinel'&&WatchtowerBalloonRules.shouldEscape(e.hp,e.maxHp);
+  const escape=!tower(e)&&!e.replay&&e.miniboss==='watchtowerSentinel'&&WatchtowerBalloonRules.shouldEscape(e.hp,e.maxHp);
   if(!escape&&e.hp>0)return false;
   e.victoryIssued=true;e.dead=true;e.active=false;e.phase=escape?'escaped':'dead';e.poseIndex=escape?5:0;
   e.attackBox=null;e.hazards=[];e.windup=0;e.attackTime=0;e.walkSpeed=0;clearShots(e);
@@ -109,12 +104,12 @@ const WatchtowerBalloonCombat=(()=>{
   if(state!=='play'||!Number.isFinite(dt)||dt<=0||!current(e))return;
   if(!tower(e)&&WatchtowerBalloon.morph?.())return;
   if(!e.active){
-   if(e.miniboss==='watchtowerSentinel'&&!e.replay&&!flags[0].includes(WatchtowerBalloonRules.progress.rescued))return;
+   if(e.miniboss==='watchtowerSentinel'&&!e.replay&&!DevSession.active&&!flags[0].includes(WatchtowerBalloonRules.progress.rescued))return;
    const feet=player.y+player.h;
    if(player.x+player.w<(e.arena.triggerX??e.arena.x)||player.x>e.arena.x+e.arena.w||feet<e.arena.y-260||feet>e.arena.y+35)return;
    e.active=true;
   }
-  if(e.hp<=0||!tower(e)&&e.miniboss==='watchtowerSentinel'&&WatchtowerBalloonRules.shouldEscape(e.hp,e.maxHp)){defeat(e);return;}
+  if(e.hp<=0||!tower(e)&&!e.replay&&e.miniboss==='watchtowerSentinel'&&WatchtowerBalloonRules.shouldEscape(e.hp,e.maxHp)){defeat(e);return;}
   enforceBounds();e.inv=Math.max(0,e.inv-dt);e.stun=Math.max(0,e.stun-dt);e.clock-=dt;e.animTime+=dt;e.walkSpeed=0;
   if(!hazards(e,dt))return;
   if(e.phase==='wait'){

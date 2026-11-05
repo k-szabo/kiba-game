@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "madPriest",
+  "name": "shadow.boss.priest",
+  "group": "main",
+  "story": {
+    "hp": 180,
+    "w": 96,
+    "h": 115
+  },
+  "tower": {
+    "baseHealth": 46,
+    "name": "shadow.boss.priest",
+    "w": 95,
+    "h": 155,
+    "speed": 100,
+    "range": 280,
+    "moves": [
+      "priestStaff",
+      "priestBell",
+      "shadowBolts",
+      "hellfire"
+    ]
+  },
+  "assets": [
+    "shadowMadPriest"
+  ]
+}

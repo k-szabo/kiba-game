@@ -22,7 +22,7 @@ const GatekeeperCombat=(()=>{
  }
  function create(spec){
   const arena=spec.arena||level.arena;
-  return reset({...spec,name:'descent.gatekeeper',w:110,h:190,maxHp:2200,origin:spec.x,baseY:spec.y-190,
+  return reset({...spec,name:'descent.gatekeeper',w:BossCatalog.story('voidGatekeeper').w,h:BossCatalog.story('voidGatekeeper').h,maxHp:BossCatalog.story('voidGatekeeper').hp,origin:spec.x,baseY:spec.y-BossCatalog.story('voidGatekeeper').h,
    arena,patrolLeft:arena.x+25,patrolRight:arena.x+arena.w-135});
  }
  function enforceBounds(){

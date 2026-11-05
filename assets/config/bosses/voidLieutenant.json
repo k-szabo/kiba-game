@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "voidLieutenant",
+  "name": "fia.void.lieutenant",
+  "group": "optional",
+  "story": {
+    "hp": 1000,
+    "w": 80,
+    "h": 170,
+    "absorptionRatio": 0.7
+  },
+  "tower": {
+    "baseHealth": 44,
+    "name": "fia.void.lieutenant",
+    "w": 80,
+    "h": 170,
+    "speed": 180,
+    "range": 230,
+    "moves": [
+      "voidSlash",
+      "voidVolley",
+      "voidRift"
+    ]
+  },
+  "assets": [
+    "voidLieutenant"
+  ]
+}

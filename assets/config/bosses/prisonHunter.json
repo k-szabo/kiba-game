@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "prisonHunter",
+  "name": "fia.hunter.name",
+  "group": "optional",
+  "story": {
+    "hp": 140,
+    "w": 90,
+    "h": 145
+  },
+  "tower": {
+    "baseHealth": 44
+  },
+  "assets": [
+    "prisonHunter"
+  ]
+}

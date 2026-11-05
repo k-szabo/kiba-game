@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "dungeonCouncil",
+  "name": "dungeon.boss.council",
+  "group": "optional",
+  "story": {
+    "name": "dungeon.boss.council",
+    "floor": 2,
+    "w": 180,
+    "h": 190,
+    "hp": 400,
+    "speed": 65,
+    "range": 240,
+    "moves": [
+      "councilSweep",
+      "councilSigils",
+      "councilVolley"
+    ]
+  },
+  "tower": {
+    "baseHealth": 48
+  },
+  "assets": [
+    "dungeonCouncil"
+  ]
+}

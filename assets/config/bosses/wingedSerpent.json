@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "id": "wingedSerpent",
+  "name": "serpent.winged.name",
+  "group": "optional",
+  "story": {
+    "realm": 2,
+    "name": "serpent.winged.name",
+    "reward": "wingedSerpentScale",
+    "guardian": "guardian:wingedSerpent",
+    "xp": 180,
+    "w": 190,
+    "h": 125,
+    "hp": 150,
+    "speed": 100,
+    "range": 175,
+    "wait": 0.55,
+    "recover": 0.8,
+    "moves": {
+      "bite": {
+        "tell": 0.8,
+        "strike": 0.35,
+        "width": 170,
+        "damage": 2
+      },
+      "holyFan": {
+        "tell": 1.15,
+        "strike": 0.5,
+        "kind": "holyArrow",
+        "color": "#ffe6a2",
+        "speed": 280,
+        "spread": 0.2,
+        "count": 5,
+        "damage": 1
+      },
+      "shadowSweep": {
+        "tell": 1.15,
+        "strike": 0.5,
+        "width": 90,
+        "speed": 420,
+        "damage": 2
+      }
+    }
+  },
+  "tower": {
+    "baseHealth": 46
+  },
+  "assets": [
+    "wingedSerpent",
+    "holyArrow"
+  ]
+}

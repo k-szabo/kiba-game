@@ -7,48 +7,7 @@ const TowerRules=(()=>{
  // Every classified encounter has an explicit tower entry. Names reuse the
  // shared locale keys; catalog coverage is checked against classification JSON.
  // Keep the original seven first, then rotate through the complete roster.
- const bossCatalog=Object.freeze([
-  ['arenaCaptain','arena.boss.captain',32],
-  ['dungeonCaptain','dungeon.boss.captain',36],
-  ['cultTempleGuard','cultDungeon.boss.guard',40],
-  ['arenaSerpent','arena.boss.serpent',42],
-  ['woundedAngel','cultDungeon.boss.angel',38],
-  ['dungeonCouncil','dungeon.boss.council',48],
-  ['arenaCyclops','arena.boss.guards',44],
-  ['main-0','text.the.forest.oathbreaker',34],
-  ['angel','text.the.mad.elder.angel',36],
-  ['cultist','text.the.ancient.cult.s.elder',36],
-  ['campMaster','camp.rescue.boss',40],
-  ['main-1','text.guardian.of.the.silent.river',40],
-  ['serpent','yomi.serpent.name',44],
-  ['dungeonNecromancer','dungeon.boss.necromancer',40],
-  ['slayer','slayer.name',48],
-  ['main-2','text.the.corrupted.seraph',44],
-  ['seraph','text.angel.of.dawn.phase.i',42],
-  ['eclipse','text.lord.of.two.worlds.hidden.phase.iii',48],
-  ['whiteSerpent','serpent.white.name',44],
-  ['wingedSerpent','serpent.winged.name',46],
-  ['madPriest','shadow.boss.priest',46],
-  ['organist','shadow.boss.organist',40],
-  ['jailer','shadow.boss.jailer',42],
-  ['prisonWarden','zen.warden.name',44],
-  ['prisonHunter','fia.hunter.name',44],
-  ['cultHighPriestess','cultDungeon.boss.priestess',46],
-  ['arenaFia','arena.boss.fia',40],
-  ['dragonRaid','fia.dragon.boss',60],
-  ['voidLieutenant','fia.void.lieutenant',44],
-  ['voidDemon','fia.void.demon',52],
-  ['hannah','ziggurat.hannah',56],
-  ['voidGatekeeper','descent.gatekeeper',48],
-  ['shadowNinjaLeader','islands.ninjaLeader',44],
-  ['watchtowerJailer','watchtower.jailer',46],
-  ['watchtowerSentinel','watchtower.sentinel',46],
-  ['balloonDragon','balloon.dragon',54],
-  ['westheruSeal','balloon.westheru',50],
-  ['fiaRitual','fia.name',56],
-  ['prologueShadow','prologue.boss',60],
-  ['fiaVengeance','fia.name',52]
- ].map(([id,name,baseHealth])=>Object.freeze({id,name,baseHealth})));
+ const bossCatalog=Object.freeze(["arenaCaptain","dungeonCaptain","cultTempleGuard","arenaSerpent","woundedAngel","dungeonCouncil","arenaCyclops","main-0","angel","cultist","campMaster","main-1","serpent","dungeonNecromancer","slayer","main-2","seraph","eclipse","whiteSerpent","wingedSerpent","madPriest","organist","jailer","prisonWarden","prisonHunter","cultHighPriestess","arenaFia","dragonRaid","voidLieutenant","voidDemon","hannah","voidGatekeeper","shadowNinjaLeader","watchtowerJailer","watchtowerSentinel","balloonDragon","westheruSeal","fiaRitual","prologueShadow","fiaVengeance"].map(id=>Object.freeze({id,name:BossCatalog.get(id).name,baseHealth:BossCatalog.tower(id).baseHealth})));
  const bossPool=Object.freeze(bossCatalog.map(entry=>entry.id));
  const bossCount=number=>integer(number,1)?number>=26?3:number>=11?2:1:null;
  const runKeys=Object.freeze(['seed','weapon','floor','cleared','kills','elapsed','checkpoint']),checkpointKeys=Object.freeze(['seed','weapon','cleared','kills','elapsed']);

@@ -16,6 +16,9 @@ const drawn=[];h.sandbox.document.getElementById('world').getContext('2d').fillT
 const fills=[],drawContext=h.sandbox.document.getElementById('world').getContext('2d');drawContext.fillRect=function(...rect){fills.push({color:this.fillStyle,rect});};
 for(const text of ["{hp:13,maxHp:20}","{hp:2.25,maxHp:88.5}"]){r('DevBossHealth.bar('+text+',200,100,180)');assert.equal(drawn.at(-1),r('DevBossHealth.value('+text+')'));}
 assert.equal(fills.filter(fill=>fill.color==='#bf6b61').length,2,'Numeric health retains the shared red boss fill');assert(!fills.some(fill=>fill.color==='#855638'),'Numeric health cannot repaint the bar brown');
+for(const [map,kind] of [['ninjaWatchtower','watchtowerJailer'],['ninjaWatchtower','watchtowerSentinel'],['skyLanding','westheruSeal']]){
+ r(`CampQuest.enter('${map}');globalThis.wHP=enemies.find(e=>e.miniboss==='${kind}');for(const e of enemies)e.active=false;wHP.active=true;wHP.hp=123.5;updateHUD();DevBossHealth.hud()`);assert(!node.hidden);assert.equal(node.textContent,r('DevBossHealth.value(wHP)'));
+}
 r('DevSession.end();DevBossHealth.hud()');assert(node.hidden);const count=drawn.length;r('DevBossHealth.bar({hp:3,maxHp:5},200,100,180)');assert.equal(drawn.length,count);
 assert.equal(r('DevBossHealth.value({hp:3,maxHp:0})'),'');assert.equal(r('DevBossHealth.value({hp:NaN,maxHp:5})'),'');
 console.log('PASS: isolated current/max boss HP, phase maxima, prologue, hidden/dead states, fractional formatting and Canvas diagnostics.');

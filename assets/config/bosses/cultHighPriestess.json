@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "cultHighPriestess",
+  "name": "cultDungeon.boss.priestess",
+  "group": "optional",
+  "story": {
+    "name": "cultDungeon.boss.priestess",
+    "dungeon": "sectFall",
+    "realm": 0,
+    "art": "highPriestess",
+    "floor": 2,
+    "w": 86,
+    "h": 158,
+    "hp": 460,
+    "speed": 65,
+    "range": 400,
+    "moves": [
+      "priestessSummon",
+      "priestessBolts",
+      "priestessChant",
+      "priestessSigils"
+    ]
+  },
+  "tower": {
+    "baseHealth": 46
+  },
+  "assets": [
+    "cultHighPriestess",
+    "shadowGuard",
+    "shadowMage"
+  ]
+}

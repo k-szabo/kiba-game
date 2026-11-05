@@ -14,7 +14,7 @@ const FiaCombat=(()=>{
   if(!is(e))return false;clean(e);tokens.set(e,++serial);
   Object.assign(e,{x:e.origin,y:e.baseY,hp:e.maxHp,dead:false,active:true,face:-1,attackFace:-1,inv:0,stun:0,cycles:0,move:null,poseIndex:0,walkSpeed:0,animTime:0,shieldRemaining:0,shieldClock:9,teleportTarget:null,blockFlash:0,ritualEmpowered:false,ritualCycles:0,ritualEffect:null,spiritClock:4,spiritCounter:0});phase(e,'wait',.75);sync(e);return e;
  }
- function create(spec){const e={...spec,name:'fia.name',w:76,h:140,maxHp:spec.ritual?1800:900,origin:spec.x,baseY:spec.y-140,arena:spec.arena};return reset(e);}
+ function create(spec){const e={...spec,name:'fia.name',w:BossCatalog.story(spec.ritual?'fiaRitual':'fiaVengeance').w,h:BossCatalog.story(spec.ritual?'fiaRitual':'fiaVengeance').h,maxHp:BossCatalog.story(spec.ritual?'fiaRitual':'fiaVengeance').hp,origin:spec.x,baseY:spec.y-BossCatalog.story(spec.ritual?'fiaRitual':'fiaVengeance').h,arena:spec.arena};return reset(e);}
  function tellRitual(e){
   const rage=ferocity(e);e.move=ritualMoves[e.ritualCycles++%ritualMoves.length];e.ritualEffect={ritualHymn:'hymn',ritualHell:'hell',ritualDragon:'dragon',ritualVoid:'void'}[e.move];
   e.attackFace=e.face;e.targetX=player.x+player.w/2;e.targetY=player.y+player.h/2;e.attackBoxes=[];e.hazards=e.hazards.filter(h=>h.life>0);e.poseIndex=4;

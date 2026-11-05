@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "id": "slayer",
+  "name": "slayer.name",
+  "group": "optional",
+  "story": {
+    "hp": 260,
+    "w": 76,
+    "h": 112
+  },
+  "tower": {
+    "baseHealth": 48
+  },
+  "assets": [
+    "slayerMelee",
+    "slayerRanged",
+    "slayerLightning",
+    "slayerBarrel"
+  ]
+}

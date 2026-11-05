@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "shadowNinjaLeader",
+  "name": "islands.ninjaLeader",
+  "group": "main",
+  "story": {
+    "hp": 1800,
+    "w": 70,
+    "h": 112
+  },
+  "tower": {
+    "baseHealth": 44
+  },
+  "assets": [
+    "ninjaLeader",
+    "grapplingHook"
+  ]
+}

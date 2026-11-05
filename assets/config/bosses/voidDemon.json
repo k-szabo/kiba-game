@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "voidDemon",
+  "name": "fia.void.demon",
+  "group": "optional",
+  "story": {
+    "hp": 2000,
+    "w": 150,
+    "h": 240,
+    "initialHp": 1000,
+    "lifeStealMultiplier": 20
+  },
+  "tower": {
+    "baseHealth": 52,
+    "name": "fia.void.demon",
+    "w": 150,
+    "h": 240,
+    "speed": 135,
+    "range": 270,
+    "moves": [
+      "voidClaw",
+      "voidVolley",
+      "voidRift"
+    ]
+  },
+  "assets": [
+    "voidDemon"
+  ]
+}

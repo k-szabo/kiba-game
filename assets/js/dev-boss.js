@@ -2,7 +2,7 @@
 'use strict';
 const DevBoss=(()=>{
  let encounter='main';
- const available=()=>DevSession.active&&!!player&&(Prologue.active||VoidEncounter.active()||level.dragonRaid||level===levels[realm]||level===samuraiCamp||level===shadowPrison||level===shadowArena||level===shadowDen||level===fiaChambers||level===fiaRitual||!!level.dungeon||level===zigguratSummit||level.id==='zigguratDepths');
+ const available=()=>DevSession.active&&!!player&&encounters().length>0;
  const encounters=()=>[...(level===fiaRitual?[{id:'fiaRitual',name:'fia.ritual.quest'}]:[]),...(VoidEncounter.active()?[{id:"voidEncounter",name:"fia.void.lieutenant"}]:[]),...(level.dragonRaid?['hall','flight','vault'].map((name,i)=>({id:'dragonRaid'+(i+1),name:'fia.dragon.'+name})):[]),...([shadowDen,fiaChambers,fiaRitual].includes(level)?[{id:'fiaVengeance',name:'fia.name'}]:[]),...(Prologue.active||level===levels[realm]?[{id:'main',name:Prologue.active?'prologue.boss':realms[realm].boss}]:[]),
   ...(Prologue.active?[]:(level.arenaEncounters||level.enemies).filter(spec=>spec.miniboss).map(spec=>({id:spec.id,name:spec.name})))];
  function fields(){
@@ -30,17 +30,20 @@ const DevBoss=(()=>{
  function reviveMiniboss(id){
   const specs=level.arenaEncounters||level.enemies,index=specs.findIndex(spec=>spec.id===id&&spec.miniboss);if(index<0)return false;
   const spec=specs[index];if(HannahCombat.is(spec))return HannahEncounter.replay();if(CampMaster.is(spec)&&level!==samuraiCamp)return false;
-  const replay=CampMaster.is(spec)?CampMaster.create(spec):createEnemy(spec,index),a=replay.arena;
+  const input=WatchtowerBalloonCombat.is(spec)?{...spec,replay:true}:spec;
+  const replay=CampMaster.is(input)?CampMaster.create(input):createEnemy(input,index),a=replay.arena;
   const floor=platforms.find(p=>!p.broken&&Math.abs(p.y-a.y)<2&&p.x<=a.x+70&&p.x+p.w>=a.x+70);
   if(!floor)return false;
   clearEncounterEffects();if(!boss.dead)resetBossBattle();
   resetMinibosses();projectiles=[];
   // Preserve permanent guardian/reward flags: only this in-memory encounter is replaced.
-  if(FloatingIslands.is(replay)||typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(replay)||DungeonCombat.is(replay)||ArenaCombat.is(replay)||PrisonHunter.is(replay)||PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
+  if(WatchtowerBalloonCombat.is(replay)||FloatingIslands.is(replay)||typeof GatekeeperCombat!=='undefined'&&GatekeeperCombat.is(replay)||DungeonCombat.is(replay)||ArenaCombat.is(replay)||PrisonHunter.is(replay)||PrisonWarden.is(replay)||DoomSlayer.is(replay)||CampMaster.is(replay)||Serpents.is(replay))replay.replay=true;
   if(CampMaster.is(replay))CampMaster.reset(replay);else resetMiniboss(replay);replay.dead=false;
   if(DoomSlayer.is(replay))DoomSlayer.start(replay);else replay.active=true;
   initPlayer({x:a.x+70,y:floor.y});
-  const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;particles=[];drops=[];keys.clear();pressed.clear();
+  const existing=enemies.findIndex(enemy=>enemy.id===id);if(existing<0)enemies.push(replay);else enemies[existing]=replay;
+  if(WatchtowerBalloonCombat.is(replay))WatchtowerBalloon.prepareReplay(replay);
+  particles=[];drops=[];keys.clear();pressed.clear();
   resetCamera();updateHUD();DevTools.setReturnState('play');return true;
  }
  function init(){DevTools.register({id:'boss-revive',labelKey:'dev.boss',available,fields,run:revive});}

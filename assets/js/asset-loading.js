@@ -6,15 +6,16 @@ const AssetLoading=(()=>{
  const weapon=style=>style==='naginata'?list('momoNaginataNormal momoNaginataHeavy naginataRigid'):style==='swordShield'?list('momoShieldNormal momoShieldHeavy swordRigid'):style==='foxfireKatana'?list('momoFoxfireNormal momoFoxfireHeavy'):[];
  const japanActors=list('japanGuard japanArcher japanShield japanMage'),shadowActors=list('shadowGuard shadowArcher shadowMage shadowShield'),heavenActors=list('heavenWalk heavenAttack');
  const fia=list('fiaKitsune fiaFox fiaFoxDead fiaArenaCasting fiaArenaYield fiaArenaWalk fiaTeleport fiaFoxfire fiaDrain fiaCharm kibaShield fiaJourneyItems'),residents=list('fiaDenResidents denNinja denThief fiaRitualAttendants');
- const actors={arenaCaptain:['arenaCaptain'],arenaSerpent:['arenaSerpent'],arenaCyclops:['arenaCyclops'],arenaFia:fia,
-  dungeonCaptain:['dungeonCaptain'],dungeonCouncil:['dungeonCouncil'],dungeonNecromancer:['dungeonNecromancer','japanRaised'],cultTempleGuard:['cultTempleGuard'],woundedAngel:['cultWoundedAngel','holyArrow'],cultHighPriestess:['cultHighPriestess'],
-  campMaster:['campMaster','campMasterJump'],voidGatekeeper:['voidGatekeeper'],prisonWarden:['prisonWarden'],prisonHunter:['prisonHunter'],fiaVengeance:fia,hannah:list('hannahWalk hannahCombo hannahJump hannahRitual'),slayer:list('slayerMelee slayerRanged slayerDaisy slayerLightning')};
+ const bossAssets=e=>{
+  const id=e?.towerEncounter||(e?.ritual?'fiaRitual':e?.serpentType?({lava:'serpent',white:'whiteSerpent',winged:'wingedSerpent'})[e.serpentType]:e?.miniboss);
+  return id&&BossCatalog.ids.includes(id)?BossCatalog.assets(id):[];
+ };
  // Every painting, hidden sector, NPC and future combat pose owned by a map is
  // required at entry. Camera position and a boss's current phase never narrow it.
  const maps={
   ninjaWatchtower:list('watchtowerBackdrop balloonSkyBackdrop balloonVehicle watchtowerJailerArt watchtowerSentinelArt westheruArt ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin prisonKey'),
   balloonJourney:list('balloonSkyBackdrop balloonVehicle giantWaspArt skyDragonArt westheruArt'),
-  skyLanding:list('balloonSkyBackdrop stormIslandsBackdrop balloonVehicle westheruArt westheruSealArt'),
+  skyLanding:list('balloonSkyBackdrop stormIslandsBackdrop balloonVehicle westheruArt westheruSealArt slayerLightning'),
   stormIslands:list('stormIslandsBackdrop balloonVehicle westheruArt ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin shadowGuard shadowArcher shadowMage'),
   floatingIslands:list('islandsArrivalBackdrop islandsRouteBackdrop islandsWatchtowerBackdrop ninjaCrossbow ninjaShuriken ninjaNinjutsu ninjaAssassin ninjaLeader momoHook grapplingHook haruFollow'),
   japan:list('japanBackdrop japanClouds japanGuard japanArcher japanShield japanMage samurai samuraiJump bosses oldAngel oldCultist angelRuinBackdrop cultCaveBackdrop angelRuinWall cultCaveWall cultRuinedGate whiteSerpent whiteSerpentBackdrop serpentRelics campSupplies oathbreakerSoul'),
@@ -51,7 +52,7 @@ const AssetLoading=(()=>{
   backdrop=menu?'japanBackdrop':duel?'japanBackdrop':tower?'towerBackdrop':backgrounds[level?.id]||['japanBackdrop','yomiBackdrop','heavenBackdrop','shadowCultBackdrop'][typeof realm==='number'?realm:0];
   if(menu)keys=['japanBackdrop','terrain','props'];
   else if(duel)keys=[...combat,...weapon('naginata'),...weapon('swordShield'),'japanBackdrop','yomiBackdrop','heavenBackdrop','shadowBackdrop'];
-  else if(Prologue.active){mode='dream';backdrop='shadowBackdrop';keys=list('shadowBackdrop shadowIdle shadowMelee shadowCast shadowDevour fxDarkMagic fxSlashes fxImpact fxFissure momoHeavy momoSlash momoRoom dialogueShadow dialogueJapan props');}
+  else if(Prologue.active){mode='dream';backdrop='shadowBackdrop';keys=[...BossCatalog.assets('prologueShadow'),...list('shadowBackdrop shadowIdle shadowMelee shadowCast shadowDevour fxDarkMagic fxSlashes fxImpact fxFissure momoHeavy momoSlash momoRoom dialogueShadow dialogueJapan props')];}
   else{
    keys=[backdrop,...combat,...weapon(weaponStyle),...(maps[level?.id]||[])];
    // Tower rounds share a fixed pool; do not interrupt a new boss move or summon.
@@ -60,7 +61,10 @@ const AssetLoading=(()=>{
    // the battle must be ready even when they enter from outside the camera.
    if(level?.dungeon)keys.push(...japanActors,...shadowActors,...heavenActors);
    else if(typeof realm==='number')keys.push(...(realm===0?japanActors:realm===1?['yomiWalk','yomiAttack']:realm===2?heavenActors:shadowActors));
-   for(const e of enemies||[])keys.push(...(actors[e.miniboss]||[]));
+   for(const e of enemies||[])keys.push(...bossAssets(e));
+   if(!tower&&typeof boss!=='undefined'&&boss)keys.push(...BossCatalog.assets(realm===3?'madPriest':'main-'+realm));
+   if(level?.id==='voidForbidden')keys.push(...BossCatalog.assets('voidLieutenant'),...BossCatalog.assets('voidDemon'));
+   if(level?.id==='dragonCatacombs')keys.push(...BossCatalog.assets('dragonRaid'));
    if(level?.id==='fiaRitual')keys.push('arenaCyclops');
    if(typeof flags!=='undefined'&&flags[3]?.includes('dawnblade'))keys.push('momoDawnblade');
    if(typeof flags!=='undefined'&&flags[3]?.includes('kibaShield'))keys.push('kibaShield');

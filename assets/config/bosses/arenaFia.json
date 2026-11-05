@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "id": "arenaFia",
+  "name": "arena.boss.fia",
+  "group": "optional",
+  "story": {
+    "name": "arena.boss.fia",
+    "w": 75,
+    "h": 130,
+    "hp": 1,
+    "speed": 65,
+    "range": 350,
+    "moves": [
+      "fiaBolts",
+      "fiaSigils",
+      "fiaBolts",
+      "fiaSummon"
+    ]
+  },
+  "tower": {
+    "baseHealth": 40,
+    "name": "arena.boss.fia",
+    "w": 75,
+    "h": 130,
+    "speed": 100,
+    "range": 350,
+    "moves": [
+      "fiaBolts",
+      "fiaSigils",
+      "fiaSummon"
+    ]
+  },
+  "assets": [
+    "fiaArenaCasting",
+    "fiaArenaYield",
+    "fiaArenaWalk",
+    "fiaFoxfire",
+    "fiaCharm",
+    "arenaCyclops"
+  ]
+}

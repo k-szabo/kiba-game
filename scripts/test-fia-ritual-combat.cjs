@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 function setup(ritual=true){
- const c=vm.createContext({});vm.runInContext(`
+ const c=vm.createContext({});vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,c);vm.runInContext(`
  let state='play',projectiles=[],particles=[],dash=0,player={x:620,y:751,w:43,h:69,hp:500,maxHp:500,inv:0},currentEnemy=null,empowered=0,victories=0,hits=[];
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
  const DevImmortality={active:false},DevDamage={record(){}};

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "cultTempleGuard",
+  "name": "cultDungeon.boss.guard",
+  "group": "optional",
+  "story": {
+    "name": "cultDungeon.boss.guard",
+    "dungeon": "sectFall",
+    "realm": 0,
+    "art": "templeGuard",
+    "floor": 0,
+    "w": 100,
+    "h": 158,
+    "hp": 260,
+    "speed": 85,
+    "range": 230,
+    "moves": [
+      "guardFlail",
+      "guardBash",
+      "guardCircle"
+    ]
+  },
+  "tower": {
+    "baseHealth": 40
+  },
+  "assets": [
+    "cultTempleGuard"
+  ]
+}

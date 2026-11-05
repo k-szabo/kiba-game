@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
+const context=vm.createContext({});vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
 const rules=context.rules,plain=value=>JSON.parse(JSON.stringify(value)),same=(a,b)=>assert.deepEqual(plain(a),plain(b));
 assert(Object.isFrozen(rules));assert(Object.isFrozen(rules.profile));assert(Object.isFrozen(rules.layout));
 for(const seed of [undefined,null,0,-1,.2,NaN,Infinity,0x100000000,'1']){assert.equal(rules.fresh(seed),null);assert.equal(rules.floor(1,seed),null);}

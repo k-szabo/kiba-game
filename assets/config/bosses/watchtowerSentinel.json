@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "id": "watchtowerSentinel",
+  "name": "watchtower.sentinel",
+  "group": "main",
+  "story": {
+    "w": 72,
+    "h": 118,
+    "hp": 2200,
+    "moves": [
+      "crossbow",
+      "sigils",
+      "crossbow",
+      "ninjutsu"
+    ]
+  },
+  "tower": {
+    "baseHealth": 46
+  },
+  "assets": [
+    "watchtowerSentinelArt"
+  ]
+}

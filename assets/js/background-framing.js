@@ -1,12 +1,20 @@
 /* Viewport-sized painted scenery; camera travel never magnifies the artwork. */
 'use strict';
 const BackgroundFraming=(()=>{
- function cover(image,{vertical=.35,ground=null,floor=null}={}){
+ function cover(image,{vertical=.35,ground=null,floor=null,scaleFloor=floor}={}){
   if(!image?.complete||!image.naturalWidth)return false;
   const grounded=Number.isFinite(ground)&&ground>0&&ground<image.naturalHeight&&Number.isFinite(floor);
-  const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight,grounded?Math.max(0,floor)/ground:0),w=image.naturalWidth*s,h=image.naturalHeight*s;
+  // A grounded panorama can keep its viewport framing while the world floor
+  // moves vertically. Camera motion must not become a new zoom factor.
+  const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight,grounded?Math.max(0,scaleFloor)/ground:0),w=image.naturalWidth*s,h=image.naturalHeight*s;
   const pan=clamp(camera/Math.max(1,level.width-viewW),0,1);
   const x=-(w-viewW)*pan,y=grounded?floor-ground*s:-(h-H)*vertical;
+  if(grounded&&y>0){
+   // Continue only the upper sky band when the camera rises above the painting;
+   // the mountains and buildings keep the same scale and floor registration.
+   const skyBand=Math.min(ground*.2,image.naturalHeight*.15);
+   BackgroundMotion.draw(image,0,0,image.naturalWidth,skyBand,x,0,w,y);
+  }
   BackgroundMotion.draw(image,x,y,w,h);
   if(grounded&&y+h<H){
    // Extend only the painted floor. Architecture retains its uniform scale,

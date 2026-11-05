@@ -8,7 +8,7 @@ assert(rules.validate(old),'Pre-feature progress remains valid without migration
 assert(!rules.eligible(old));assert(!rules.transition(old,'defeatJailer').ok);
 let flags=[[...Object.values(islands.progress)],[],[],['zigguratReturnCompleted']];
 assert(rules.validate(flags)&&rules.eligible(flags));assert.equal(rules.journeyStage(flags),null);
-const events=['defeatJailer','rescueWestheru','escapeSentinel','board','clearWasps','defeatDragon','restoreWestheru','arrive'];
+const events=['defeatJailer','rescueWestheru','escapeSentinel','board','clearWasps','defeatDragon','restoreWestheru','arrive','depart'];
 for(let i=0;i<events.length;i++){
  for(const later of events.slice(i+1))assert(!rules.transition(flags,later).ok,`${later} cannot skip its prerequisite`);
  const before=JSON.stringify(flags),result=rules.transition(flags,events[i]);
@@ -27,7 +27,7 @@ const noKey=flags.map(list=>list.filter(id=>id!==rules.progress.key));assert(!ru
 const duplicate=flags.map(list=>[...list]);duplicate[0].push(rules.progress.arrived);assert(!rules.validate(duplicate));
 assert(!rules.transition(flags,'__proto__').ok);assert(!rules.transition(flags,'fail').ok);
 assert(rules.shouldEscape(700,1000));assert(rules.shouldEscape(0,1000));assert(!rules.shouldEscape(701,1000));assert(!rules.shouldEscape(7,0));
-const dragonFlags=flags.map(list=>list.filter(id=>![rules.progress.dragon,rules.progress.restored,rules.progress.arrived].includes(id)));
+const dragonFlags=flags.map(list=>list.filter(id=>![rules.progress.dragon,rules.progress.restored,rules.progress.arrived,rules.progress.departed].includes(id)));
 let encounter=rules.restart(dragonFlags,100);assert.equal(encounter.stage,'dragon');
 const snapshot=JSON.stringify(dragonFlags),first=rules.damageBalloon(encounter,30);assert.equal(encounter.hp,100);assert.equal(first.hp,70);
 encounter=rules.damageBalloon(first,1000);assert(encounter.failed&&encounter.hp===0);assert.equal(rules.tick(encounter,10,true).elapsed,0,'A failed encounter cannot advance');

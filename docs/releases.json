@@ -788,6 +788,42 @@
           "en": "The ninja leader appears larger, and the Floating Islands’ backgrounds blend more smoothly. Picking up the hook shows instructions, and the route can be travelled in both directions. Pulled enemies no longer snap back to their old positions, and the hook has a 2.5-second cooldown."
         }
       ]
+    },
+    {
+      "version": "0.9.74_e86e9e6e",
+      "code": "e86e9e6e",
+      "baseVersion": "0.9.74",
+      "slug": "watchtower-balloon-tower-fixes",
+      "summary": {
+        "hu": "Őrtorony, ballonút és bosshatások javítása",
+        "en": "Watchtower, balloon voyage and boss effect fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Az őrtorony bejárati oltára külön helyre került, a bossok számszerű életereje látható. A háttér ugráskor is megtartja léptékét, átmenetei finomabbak. Az új terület kultistái erősebbek; Westheru a ballonnal az örvény túloldalára érkezik, majd továbbindul. A torony és a történet bossai közös konfigurációt és egységes varázslatgrafikákat használnak.",
+          "en": "The watchtower’s entrance shrine has moved to a separate spot, and numeric boss health is visible. Background scale remains stable when jumping, with smoother transitions. Cultists in the new area are stronger; Westheru arrives beyond the vortex in the balloon, then flies onward. Tower and story bosses use shared configuration and consistent spell artwork."
+        }
+      ]
+    },
+    {
+      "version": "0.9.74_92487480",
+      "code": "92487480",
+      "baseVersion": "0.9.74",
+      "slug": "watchtower-cell-dev-fixes",
+      "summary": {
+        "hu": "Festett cella és belső javítások",
+        "en": "Painted cell and internal fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Westheru cellája a játék festett ketrecgrafikáját használja. A cellakulcs leírása és használata javult.",
+          "en": "Westheru’s cell now uses the game’s painted cage artwork. The cell key’s description and use have been corrected."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

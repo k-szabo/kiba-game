@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "main-1",
+  "name": "text.guardian.of.the.silent.river",
+  "group": "main",
+  "story": {
+    "hp": 48,
+    "w": 96,
+    "h": 115
+  },
+  "tower": {
+    "baseHealth": 40,
+    "name": "text.guardian.of.the.silent.river",
+    "w": 140,
+    "h": 190,
+    "speed": 90,
+    "range": 230,
+    "moves": [
+      "hammer",
+      "slam",
+      "embers",
+      "lavaWave"
+    ]
+  },
+  "assets": [
+    "bosses",
+    "fxLava"
+  ]
+}

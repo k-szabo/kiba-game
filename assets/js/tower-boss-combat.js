@@ -15,7 +15,7 @@ const TowerBossCombat=(()=>{
   else if(WatchtowerBalloonCombat.is(input))e=WatchtowerBalloonCombat.create(input);
   else if(serpentTypes[type])e=Serpents.create({...input,serpentType:serpentTypes[type]});
   else if(legacy.has(type)){
-   const shadow=type==='organist'||type==='jailer',h=type==='organist'?210:shadow?110:94,w=type==='organist'?250:shadow?82:68;
+   const {w,h}=BossCatalog.story(type);
    e={...input,w,h,x:spec.x,y:spec.y-h,origin:spec.x,baseY:spec.y-h,patrolLeft:arena.x+25,patrolRight:arena.x+arena.w-w-25,face:-1,phase:'wait',clock:1.2,phaseDuration:1.2,cycles:0,move:null,active:true,dead:false,inv:0,stun:0,windup:0,windupDuration:1,attackTime:0,attackDuration:.5,attackElapsed:0,recovery:0,animTime:0,walkSpeed:0,guardBreak:0,blockFlash:0,hazards:[],hitDone:false};
   }else e=createMiniboss(input,0);
   Object.assign(e,{towerEncounter:type,name:entry.name,towerBoss:true,towerEnemy:true,noReward:true,replay:true,hp:spec.maxHp,maxHp:spec.maxHp,active:true,dead:false});

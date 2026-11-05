@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "westheruSeal",
+  "name": "balloon.westheru",
+  "group": "main",
+  "story": {
+    "w": 145,
+    "h": 130,
+    "hp": 2800,
+    "moves": [
+      "lightning",
+      "stormFan",
+      "lightning",
+      "stormFan"
+    ]
+  },
+  "tower": {
+    "baseHealth": 50
+  },
+  "assets": [
+    "westheruSealArt",
+    "slayerLightning"
+  ]
+}

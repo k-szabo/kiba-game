@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.join(__dirname,'..'),context=vm.createContext({});
-vm.runInContext(fs.readFileSync(path.join(root,'assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(root,'assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
 const rules=context.rules,classified=JSON.parse(fs.readFileSync(path.join(root,'data/boss-classification.json'),'utf8'));
 const locales=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/locales.json'),'utf8'));
 const plain=value=>JSON.parse(JSON.stringify(value));

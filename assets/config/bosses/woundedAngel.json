@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "woundedAngel",
+  "name": "cultDungeon.boss.angel",
+  "group": "optional",
+  "story": {
+    "name": "cultDungeon.boss.angel",
+    "dungeon": "sectFall",
+    "realm": 0,
+    "art": "woundedAngel",
+    "floor": 1,
+    "w": 94,
+    "h": 165,
+    "hp": 320,
+    "speed": 110,
+    "range": 210,
+    "moves": [
+      "angelCut",
+      "angelLance",
+      "angelDive"
+    ]
+  },
+  "tower": {
+    "baseHealth": 38
+  },
+  "assets": [
+    "cultWoundedAngel",
+    "holyArrow",
+    "holyLance"
+  ]
+}
