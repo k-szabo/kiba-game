@@ -9,3 +9,5 @@ Minden besorolt boss saját fájlt kap az `assets/config/bosses/` könyvtárban.
 A build a JSON-fájlokat validálva beágyazza a runtime-ba; nincs új hálózati kérés vagy futás közbeni fájlbetöltés. A `BossCatalog` mélyen fagyasztott adatokat ad a vezérlőknek. A történeti események, mentésírások, jutalmak és az aktív támadási állapotgépek továbbra is a hozzájuk tartozó forrásmodulokban élnek.
 
 Új bossnál a besorolást, a saját JSON-fájlt és a szükséges vezérlő/renderer integrációt együtt kell hozzáadni. A fájl megléte önmagában nem hoz létre új harcot. A `scripts/test-boss-catalog.cjs` ellenőrzi a teljes besorolás lefedését, a képkulcsokat, a közös profilt és hogy egy adatváltoztatás a tényleges sztori-/toronykonstruktorban is megjelenik.
+
+Tower health display is owned by `TowerMode.draw`: native serpent, prison warden, hunter and legacy miniboss renderers omit their campaign health panels for `towerBoss` actors, while keeping their attack cues. Numeric HP overlays the same common bar. The full roster is covered by `scripts/test-tower-vfx-parity.cjs`.

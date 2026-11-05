@@ -1402,7 +1402,9 @@
       "menu.changelog.0974.e86e9e6e.0": "Az őrtorony bejárati oltára külön helyre került, a bossok számszerű életereje látható. A háttér ugráskor is megtartja léptékét, átmenetei finomabbak. Az új terület kultistái erősebbek; Westheru a ballonnal az örvény túloldalára érkezik, majd továbbindul. A torony és a történet bossai közös konfigurációt és egységes varázslatgrafikákat használnak.",
       "menu.changelog.0974.92487480.title": "Festett cella és belső javítások",
       "menu.changelog.0974.92487480.0": "Westheru cellája a játék festett ketrecgrafikáját használja. A cellakulcs leírása és használata javult.",
-      "menu.changelog.0974.92487480.1": "Belső karbantartás és technikai fejlesztések."
+      "menu.changelog.0974.92487480.1": "Belső karbantartás és technikai fejlesztések.",
+      "menu.changelog.0974.cbf2c125.title": "Egységes bosséletcsíkok a toronyban",
+      "menu.changelog.0974.cbf2c125.0": "A végtelen torony bossai egyetlen életcsíkkal jelennek meg; a számszerű HP-kijelzés továbbra is a beállításodat követi."
     }
   },
   "en": {
@@ -2808,7 +2810,9 @@
       "menu.changelog.0974.e86e9e6e.0": "The watchtower’s entrance shrine has moved to a separate spot, and numeric boss health is visible. Background scale remains stable when jumping, with smoother transitions. Cultists in the new area are stronger; Westheru arrives beyond the vortex in the balloon, then flies onward. Tower and story bosses use shared configuration and consistent spell artwork.",
       "menu.changelog.0974.92487480.title": "Painted cell and internal fixes",
       "menu.changelog.0974.92487480.0": "Westheru’s cell now uses the game’s painted cage artwork. The cell key’s description and use have been corrected.",
-      "menu.changelog.0974.92487480.1": "Internal maintenance and technical improvements."
+      "menu.changelog.0974.92487480.1": "Internal maintenance and technical improvements.",
+      "menu.changelog.0974.cbf2c125.title": "Consistent tower boss health bars",
+      "menu.changelog.0974.cbf2c125.0": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting."
     }
   }
 }
