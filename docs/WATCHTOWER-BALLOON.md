@@ -4,6 +4,10 @@ Cards: [Ninja Watchtower](https://trello.com/c/JD7nkaah), [Balloon Voyage](https
 
 ## Story and ownership
 
+The cell reuses `ART_FRAMES.props.cage` from the painted props atlas, using the same intersecting crop masks as other legacy props. It is presentation only and adds no collision or new image download.
+
+Developer replay uses an explicit isolated actor owned by `WatchtowerBalloon.prepareReplay`. It suppresses flight repopulation, automatic story travel and transformation while that actor is installed. Replay victories do not grant milestones/rewards; the sentinel replay can be fought to zero HP. Fresh developer rooftop visits bypass only the rescue prerequisite, so the native sentinel can attack. Developer cell interactions/flight stages can be exercised without manufacturing the full campaign flag chain; the normal rules and save validator remain strict. The new regression checks actual updates at 30/60/120 FPS and unchanged normal saves.
+
 Starts after `islandsTrailReached`. Haru remains abducted; Momo rescues Westheru and travels with him. The four registered Japan side locations are `ninjaWatchtower`, `balloonJourney`, `skyLanding`, and `stormIslands`. The entrance shrine keeps its `watchtowerEntrance` ID but moves from x=1000 to x=1300, away from the return gate. Strict validation accepts only the exact old (1000,2000) checkpoint and normalizes it to (1300,2000).
 
 After the vortex, Westheru arrives aboard the balloon, speaks, then flies onward over four active seconds. `westheruDeparted` records completion and requires `balloonVortexArrived`. Compatible old saves may lack the new flag; an interrupted arrival can replay, while a completed departure cannot. The prior landing site no longer shows Westheru after vortex arrival. Pause freezes departure; reduced motion uses a fade. Momo is protected during the locked departure.

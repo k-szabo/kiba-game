@@ -43,7 +43,7 @@ const Merchant=(()=>{
   flags[1].push('akashRescued');persist();updateHUD();
   story('merchant.name','camp.name','merchant.rescue.story',null,{right:'akash'});return true;
  }
- function description(id){if(id==='grapplingHook')return I18n.t('islands.hook.desc');return healingItems.includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
+ function description(id){if(id==='grapplingHook')return I18n.t('islands.hook.desc');if(id==='watchtowerCellKey')return I18n.format('inventory.desc.watchtowerCellKey',[bindingKeyLabel(Bindings.read('interact')[0])]);return healingItems.includes(id)?I18n.format('inventory.description.'+id,[bindingKeyLabel(Bindings.read('useMeat')[0])]):I18n.t('inventory.description.'+id);}
  function purchase(id){
   if(state!=='shop'||$('shop').hidden||!nearVendor()||!Object.hasOwn(provider().products,id))return false;
   const product=provider().products[id];

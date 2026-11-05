@@ -5045,13 +5045,6 @@
     "assets/js/watchtower-art-data.js": [],
     "assets/js/watchtower-balloon-art.js": [
       {
-        "value": "#332b35",
-        "lines": [
-          59
-        ],
-        "dynamic": false
-      },
-      {
         "value": "#473322",
         "lines": [
           41
@@ -5068,7 +5061,7 @@
       {
         "value": "#d8c49d",
         "lines": [
-          86
+          84
         ],
         "dynamic": false
       },

@@ -804,6 +804,26 @@
           "en": "The watchtower’s entrance shrine has moved to a separate spot, and numeric boss health is visible. Background scale remains stable when jumping, with smoother transitions. Cultists in the new area are stronger; Westheru arrives beyond the vortex in the balloon, then flies onward. Tower and story bosses use shared configuration and consistent spell artwork."
         }
       ]
+    },
+    {
+      "version": "0.9.74_92487480",
+      "code": "92487480",
+      "baseVersion": "0.9.74",
+      "slug": "watchtower-cell-dev-fixes",
+      "summary": {
+        "hu": "Festett cella és belső javítások",
+        "en": "Painted cell and internal fixes"
+      },
+      "fixes": [
+        {
+          "hu": "Westheru cellája a játék festett ketrecgrafikáját használja. A cellakulcs leírása és használata javult.",
+          "en": "Westheru’s cell now uses the game’s painted cage artwork. The cell key’s description and use have been corrected."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ],
   "releases": [

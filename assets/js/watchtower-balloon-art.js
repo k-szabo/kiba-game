@@ -55,10 +55,8 @@ const WatchtowerBalloonArt=(()=>{
   if(level===ninjaWatchtower){
    Visuals.campPathMarker(level.returnPoint,I18n.t('islands.name'));
    if(!owns(p.rescued)){
-    const q=level.cellPoint;pilot(q.x,q.y);
-    ctx.save();ctx.strokeStyle='#332b35';ctx.lineWidth=9;
-    for(let x=q.x-85;x<=q.x+85;x+=28){ctx.beginPath();ctx.moveTo(x,q.y-145);ctx.lineTo(x,q.y);ctx.stroke();}
-    ctx.strokeRect(q.x-95,q.y-150,190,150);ctx.restore();
+    const q=level.cellPoint;stamp('pilot',0,q.x,q.y,110);
+    ArenaArt.stamp({image:'props',frames:[ART_FRAMES.props.cage],intersectOutlines:true},0,q.x,q.y,185);HannahArt.nameplate(q.x,q.y,195,'balloon.pilot');
    }
    if(owns(p.sentinel)){balloon(2850,400,700);Visuals.campPathMarker(level.boardPoint,I18n.t('balloon.board'));}
    const departure=WatchtowerBalloon.departure();
