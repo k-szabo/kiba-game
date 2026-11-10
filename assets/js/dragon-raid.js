@@ -100,7 +100,7 @@ const DragonRaid=(()=>{
   ($('dungeonContinue').disabled?$('dungeonNew'):$('dungeonContinue')).focus();return true;
  }
  function context(){
-  if(level===zigguratSummit&&questPoint()&&pointNear(questPoint(),100,90))return {type:'dragonQuestTalk',text:I18n.format('camp.talk',[I18n.t('fia.name')])};
+  if(level===zigguratSummit&&questPoint()&&pointNear(questPoint(),100,90))return {type:'dragonQuestTalk',text:'fia.talkPrompt'};
   if(atEntrance()&&(unlocked()||DevSession.active))return {type:'dragonRaidEnter',text:I18n.format('ziggurat.enter',[I18n.t('fia.dragon.location')])};
   if(active()&&pointNear(exitPoint(),100,85)&&(!attempt||attempt.phase===1||attempt.won))return {type:'dragonRaidLeave',text:'fia.dragon.return'};
   return null;

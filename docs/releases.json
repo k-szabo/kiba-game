@@ -840,6 +840,22 @@
           "en": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting."
         }
       ]
+    },
+    {
+      "version": "0.9.74_e6a13739",
+      "code": "e6a13739",
+      "baseVersion": "0.9.74",
+      "slug": "serpent-fia-storm-island-fixes",
+      "summary": {
+        "hu": "Kígyólövedékek és viharszigeti javítások",
+        "en": "Serpent projectile and Storm Island fixes"
+      },
+      "fixes": [
+        {
+          "hu": "A fehér kígyó fagyszilánkjai hatékonyabban jelennek meg. Fia beszélgetésfelirata helyesen olvasható. A viharszigeti oltár külön helyre került a kaputól; az utolsó pálya háttere ugráskor is stabil, ismétlődő képrészletek nélkül.",
+          "en": "The White Serpent’s frost shards render more efficiently. Fia’s conversation prompt displays correctly. The Storm Island shrine is separated from the gate, and the final area’s background stays steady during jumps without repeated artwork."
+        }
+      ]
     }
   ],
   "releases": [

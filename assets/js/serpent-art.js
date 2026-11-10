@@ -60,9 +60,27 @@ const SerpentArt=(()=>{
   if(e.phase==='strike'&&['bite','shadowSweep'].includes(e.move))BossVFX.slash(white?'slashGold':'slashShadow',x+e.attackFace*75,feet-e.h*.45,190,115,e.attackFace,Math.min(1,e.attackElapsed/e.attackDuration));
   ctx.restore();return true;
  }
+ const frostArrows=new WeakMap();
+ function frostArrow(image,length){
+  const density=clamp(window.devicePixelRatio||1,1,3),art=ART_EFFECTS.holyArrow;
+  let variants=frostArrows.get(image);if(!variants){variants=new Map();frostArrows.set(image,variants);}
+  let cached=variants.get(length);if(cached?.density===density)return cached;
+  const sx=length/(art.tipX-art.start),sy=32/art.inkHeight,padding=12;
+  const width=Math.ceil(art.w*sx)+padding*2,height=Math.ceil(art.h*sy)+padding*2;
+  const surface=document.createElement('canvas');surface.width=Math.ceil(width*density);surface.height=Math.ceil(height*density);
+  const paint=surface.getContext('2d');paint.scale(density,density);paint.imageSmoothingEnabled=true;paint.imageSmoothingQuality='high';
+  // Tint and shadow the small displayed sprite once. Filtering the full world
+  // canvas for every arrow forced a new filtered layer on every rendered frame.
+  paint.filter='hue-rotate(145deg) saturate(.65) brightness(1.15)';paint.shadowColor='#142b3f';paint.shadowBlur=3;
+  paint.drawImage(image,padding,padding,art.w*sx,art.h*sy);
+  cached={surface,density,width:surface.width/density,height:surface.height/density,x:-art.tipX*sx-padding,y:-art.tipY*sy-padding};
+  variants.set(length,cached);return cached;
+ }
  function projectile(p){
   if(p.serpentType!=='white')return false;
-  ctx.save();ctx.filter='hue-rotate(145deg) saturate(.65) brightness(1.15)';Visuals.projectile({...p,kind:'holyArrow'});ctx.restore();return true;
+  const image=Visuals.images[ART_EFFECTS.holyArrow.image];if(!image?.complete||!image.naturalWidth)return true;
+  const arrow=frostArrow(image,p.source?.startsWith('mini:')?100:124);
+  ctx.save();ctx.translate(p.x,p.y);ctx.rotate(Math.atan2(p.vy,p.vx));ctx.drawImage(arrow.surface,arrow.x,arrow.y,arrow.width,arrow.height);ctx.restore();return true;
  }
  return Object.freeze({areas,hasBackdrop,backdrop,backdropState,updateBackdrop,resetBackdrop,actor,projectile,pose});
 })();

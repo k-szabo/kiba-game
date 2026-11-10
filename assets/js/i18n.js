@@ -12,7 +12,12 @@ const I18n=(()=>{
  const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
  for(const id of Object.keys(LOCALES[fallback].dict)){
   const variants=languages.map(language=>LOCALES[language].dict[id]).filter(value=>typeof value==='string'&&/\{\d+\}/.test(value));
-  if(variants.length)patterns.push({id,matchers:variants.map(value=>new RegExp('^'+value.split(/\{\d+\}/).map(escape).join('(.*?)')+'$'))});
+  if(variants.length)patterns.push({id,matchers:variants.map(value=>{
+   // Bare time templates must not translate prose ending in s, e.g. the
+   // Hungarian word Beszélgetés passed through a formatted interaction.
+   const capture=/^\{\d+\}(?:s| mp)$/.test(value)?'([+-]?\\d+(?:[.,]\\d+)?)':'(.*?)';
+   return new RegExp('^'+value.split(/\{\d+\}/).map(escape).join(capture)+'$');
+  })});
  }
  const lookup=id=>LOCALES[locale]?.dict[id]??LOCALES[fallback].dict[id]??id;
  function format(id,args){return lookup(id).replace(/\{(\d+)\}/g,(_,index)=>t(String(args[index]??'')));}

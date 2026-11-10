@@ -37,3 +37,17 @@ for(const width of [1280,1920,2560]){
  }
 }
 console.log('PASS: watchtower gate/shrine separation and support, late-area cultist stats, stable panorama scale and ground registration across cameras and desktop widths.');
+
+for(const map of ['skyLanding','stormIslands']){
+ r('level='+map+';');
+ if(map==='skyLanding')assert(r('Math.abs(level.boardPoint.x-level.rests[0].x)>250'),'Landing boarding gate and shrine have separate interaction zones');
+ for(const width of [1280,1920,2560]){
+  let projection;
+  for(const height of [0,300,700,1000]){
+   draws.length=0;r('viewW='+width+';cameraY='+height+';WatchtowerBalloonArt.backdrop();');
+   assert.equal(draws.length,1,'Distant panorama is painted once without repeating sky/floor strips');
+   if(projection)assert.deepEqual(draws[0],projection,'Jumping does not move or magnify distant scenery');
+   projection=[...draws[0]];
+  }
+ }
+}

@@ -21,7 +21,9 @@ const WatchtowerBalloonArt=(()=>{
    if(level===balloonJourney){
     const sourceH=image.naturalHeight*.70,h=H,w=image.naturalWidth*h/sourceH,offset=scroll%w;
     for(let x=-offset;x<viewW;x+=w)BackgroundMotion.draw(image,0,0,image.naturalWidth,sourceH,x,0,w,h);
-   }else if(level===skyLanding||level===stormIslands){const floor=level===skyLanding?1000:1300;BackgroundFraming.cover(image,{ground:image.naturalHeight*.81,floor:floor-cameraY,scaleFloor:H*.81});}
+   // These paintings are distant panoramas. Keep the whole image steady on
+   // jumps instead of repeating its sky/floor bands to follow world geometry.
+   }else if(level===skyLanding||level===stormIslands){BackgroundFraming.cover(image,{vertical:.35});}
    else BackgroundFraming.cover(image,{vertical:.5});
   }
   if(level===ninjaWatchtower){
