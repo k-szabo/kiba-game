@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "forgotten-prisoner",
+  "kind": "enemy",
+  "faction": "undead",
+  "name": "zen.enemy.undead",
+  "selectors": [
+    {
+      "undead": true
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "prisonUndead",
+        "metadata": "ART_PRISON.undead"
+      }
+    ],
+    "effects": []
+  }
+}

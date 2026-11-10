@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "soulLower",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "text.the.homesick.soul",
+  "selectors": [
+    {
+      "npcId": "soulLower"
+    }
+  ],
+  "art": {
+    "sprites": [],
+    "effects": [],
+    "procedural": "Visuals.drawSpirit"
+  }
+}

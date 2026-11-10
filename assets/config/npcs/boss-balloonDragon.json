@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-balloonDragon",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "balloon.dragon",
+  "selectors": [
+    {
+      "bossId": "balloonDragon"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "skyDragonArt",
+        "metadata": "ART_WATCHTOWER.dragon"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/balloonDragon.json"
+}

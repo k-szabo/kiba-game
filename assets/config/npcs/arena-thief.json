@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "arena-thief",
+  "kind": "enemy",
+  "faction": "shadowDen",
+  "name": "arena.minion.thief",
+  "selectors": [
+    {
+      "arenaMinion": true,
+      "arenaRole": "thief"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "arenaMinions",
+        "metadata": "ART_ARENA.minions.thief"
+      }
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-dungeonCaptain",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "dungeon.boss.captain",
+  "selectors": [
+    {
+      "bossId": "dungeonCaptain"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "dungeonCaptain",
+        "metadata": "ART_DUNGEON.captain"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/dungeonCaptain.json"
+}

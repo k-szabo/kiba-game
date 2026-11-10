@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-watchtowerSentinel",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "watchtower.sentinel",
+  "selectors": [
+    {
+      "bossId": "watchtowerSentinel"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "watchtowerSentinelArt",
+        "metadata": "ART_WATCHTOWER.sentinel"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/watchtowerSentinel.json"
+}

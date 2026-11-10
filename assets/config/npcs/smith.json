@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "smith",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.npc.smith.name",
+  "selectors": [
+    {
+      "npcId": "smith"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campSpecialists",
+        "metadata": "ART_CAMP.smith"
+      }
+    ],
+    "effects": []
+  }
+}

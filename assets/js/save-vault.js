@@ -5,7 +5,7 @@ const SaveVault=(()=>{
  const encode=new TextEncoder(),decode=new TextDecoder('utf-8',{fatal:true});
  const scope=location.origin+location.pathname.replace(/[^/]*$/,'');
  const prefix='MOMO2.',storeName='vault';
- let db,readyFlag=false,initialNotice='',queue=Promise.resolve();
+ let db,readyFlag=false,initialNotice='',queue=Promise.resolve(),activeSlot=1,selection=0;
  const b64=bytes=>btoa(String.fromCharCode(...bytes));
  function bytes(text,size){if(typeof text!=='string'||text.length>30000)throw Error('Invalid encoding');const result=Uint8Array.from(atob(text),c=>c.charCodeAt(0));if(size&&result.length!==size)throw Error('Invalid length');return result;}
  const random=n=>crypto.getRandomValues(new Uint8Array(n));
@@ -151,13 +151,24 @@ const SaveVault=(()=>{
  }
  const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});
  const complete=tx=>new Promise((resolve,reject)=>{tx.oncomplete=resolve;tx.onabort=tx.onerror=()=>reject(tx.error||Error('Storage aborted'));});
- async function records(){const tx=db.transaction(storeName,'readonly'),done=complete(tx),store=tx.objectStore(storeName);const [profile,sealed]=await Promise.all([request(store.get('profile')),request(store.get('save'))]);await done;return {profile,sealed};}
+ async function records(){const tx=db.transaction(storeName,'readonly'),done=complete(tx),store=tx.objectStore(storeName);const [profile,sealed,storedSlots]=await Promise.all([request(store.get('profile')),request(store.get('save')),request(store.get('slots'))]);await done;return {profile,sealed,storedSlots};}
+ function slotsFor({profile,sealed,storedSlots}){
+  if(profile?.slotSchema!==1)return [sealed?{sealed,revision:profile.revision}:null,null,null];
+  if(!Array.isArray(storedSlots)||storedSlots.length!==3||!integer(profile.activeSlot,1,3)||!integer(profile.selection,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid save slots');
+  for(const entry of storedSlots)if(entry!==null&&(!entry||typeof entry.sealed!=='string'||!integer(entry.revision,1,profile.revision)))throw Error('Invalid save slot');
+  if((storedSlots[profile.activeSlot-1]?.sealed??undefined)!==sealed)throw Error('Inconsistent active save');
+  return storedSlots;
+ }
+ function openSlot(entry,profile){return entry?open(entry.sealed,{...profile,revision:entry.revision}):Promise.resolve(null);}
+ function requireSelection(profile){requireCurrent(profile);if(profile.activeSlot!==activeSlot||profile.selection!==selection){const error=Error('Save slot changed in another tab');error.code='stale_slot';throw error;}}
+ function mirror(sealed){try{if(sealed)localStorage.setItem(SAVE_KEY,sealed);else localStorage.removeItem(SAVE_KEY);}catch{/* IndexedDB remains the durable source. */}}
  async function keyFor(profile,salt){return crypto.subtle.deriveKey({name:'HKDF',hash:'SHA-256',salt,info:encode.encode('momo-save-v2|'+scope+'|'+profile.release+'|'+profile.device)},profile.key,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
  function aad(profile,revision){return encode.encode('momo-save-v2|'+scope+'|'+profile.release+'|'+profile.device+'|'+revision);}
  async function seal(data,profile){
   if(profile.revision>=Number.MAX_SAFE_INTEGER)throw Error('Save revision limit reached');
   const salt=random(16),iv=random(12),revision=profile.revision+1,key=await keyFor(profile,salt);
-  const ciphertext=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:aad(profile,revision),tagLength:128},key,encode.encode(JSON.stringify(validate(data))));
+  const plain=encode.encode(JSON.stringify(validate(data)));if(plain.length>17984)throw Error('Save too large');
+  const ciphertext=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:aad(profile,revision),tagLength:128},key,plain);
   return prefix+btoa(JSON.stringify({v:2,release:profile.release,device:profile.device,revision,salt:b64(salt),iv:b64(iv),data:b64(new Uint8Array(ciphertext))}));
  }
  async function open(sealed,profile){
@@ -180,14 +191,18 @@ const SaveVault=(()=>{
   // compatibility anchor can establish its historical identity.
   return value===GAME_RELEASE.saveCompatibility;
  }
- async function writeOne(snapshot){
-  const {profile}=await records();requireCurrent(profile);
+ async function writeOne(snapshot,slot=activeSlot,{importing=false}={}){
+  const source=await records(),{profile}=source;requireSelection(profile);const slots=slotsFor(source).slice();
+  const invalidate=importing&&slot===activeSlot;if(invalidate&&profile.selection>=Number.MAX_SAFE_INTEGER)throw Error('Save revision limit reached');
   const sealed=await seal(snapshot,profile);
   const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName);
   const current=await request(store.get('profile'));
-  if(!sameProfile(current,profile)){tx.abort();await done;return;}
-  store.put({...profile,revision:profile.revision+1},'profile');store.put(sealed,'save');await done;
-  try{localStorage.setItem(SAVE_KEY,sealed);}catch{/* IndexedDB remains the durable source. */}
+  if(!sameProfile(current,profile)){tx.abort();try{await done;}catch{}throw Error('Storage aborted: save changed in another tab');}
+  slots[slot-1]={sealed,revision:profile.revision+1};
+  const nextSelection=invalidate?profile.selection+1:profile.selection;
+  store.put({...profile,revision:profile.revision+1,selection:nextSelection},'profile');store.put(slots,'slots');if(slot===activeSlot)store.put(sealed,'save');await done;
+  if(invalidate)selection=nextSelection;
+  if(slot===activeSlot)mirror(sealed);
  }
  function locked(operation){
   if(navigator.locks?.request)return navigator.locks.request('momo-save-v2',operation);
@@ -229,20 +244,21 @@ const SaveVault=(()=>{
  function preservesSaves(){return GAME_RELEASE.savePolicy==='preserve-compatible';}
  function compatibleProfile(profile){return preservesSaves()&&!!profile&&(profile.compatibility===GAME_RELEASE.saveCompatibility||profile.compatibility===undefined&&profile.release===GAME_RELEASE.saveCompatibility);}
  function profileKey(profile){if(profile?.key?.extractable!==false||profile.key?.algorithm?.name!=='HKDF'||!integer(profile.revision,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid profile key');}
- function sameProfile(a,b){return a?.release===b?.release&&a?.device===b?.device&&a?.revision===b?.revision&&a?.compatibility===b?.compatibility;}
+ function sameProfile(a,b){return a?.release===b?.release&&a?.device===b?.device&&a?.revision===b?.revision&&a?.compatibility===b?.compatibility&&a?.slotSchema===b?.slotSchema&&a?.activeSlot===b?.activeSlot&&a?.selection===b?.selection;}
  function localProgress(){try{return !!(localStorage.getItem(SAVE_KEY)||localStorage.getItem(LEGACY_SAVE_KEY));}catch{return false;}}
  function clearOldMirrors(){try{localStorage.removeItem(SAVE_KEY);localStorage.removeItem(LEGACY_SAVE_KEY);}catch{/* IndexedDB remains the durable source. */}}
  async function initializeStored(attempt=0){
   if(attempt>=8)throw Error('Save changed during initialization');
-  let {profile,sealed}=await records(),migratedFrom;
+  let source=await records(),{profile,sealed}=source,migratedFrom,slots;
   const current=profile?.release===GAME_RELEASE.version&&(!preservesSaves()||profile.compatibility===GAME_RELEASE.saveCompatibility);
+  if(current||compatibleProfile(profile))slots=slotsFor(source);
   if(!current){
    if(profile?.release!=null){const order=compareRelease(profile.release,GAME_RELEASE.version);if(order===null||order>0||order===0&&!compatibleProfile(profile))requireCurrent(profile);}
-   const migrating=compatibleProfile(profile);let candidate,nextSave;
+   const migrating=compatibleProfile(profile);let candidate,nextSlots=[null,null,null];
    if(migrating){
-    profileKey(profile);const progress=sealed?await open(sealed,profile):null;
+    profileKey(profile);const progress=await Promise.all(slots.map(entry=>openSlot(entry,profile)));
     candidate={...profile,release:GAME_RELEASE.version,compatibility:GAME_RELEASE.saveCompatibility};
-    if(progress){nextSave=await seal(progress,candidate);candidate={...candidate,revision:candidate.revision+1};}
+    for(let i=0;i<3;i++)if(progress[i]){const ciphertext=await seal(progress[i],candidate);candidate={...candidate,revision:candidate.revision+1};nextSlots[i]={sealed:ciphertext,revision:candidate.revision};}
    }else{
     const seed=random(32),key=await crypto.subtle.importKey('raw',seed,'HKDF',false,['deriveKey']);seed.fill(0);
     candidate={release:GAME_RELEASE.version,device:b64(random(16)),key,revision:0,...(preservesSaves()?{compatibility:GAME_RELEASE.saveCompatibility}:{})};
@@ -250,18 +266,28 @@ const SaveVault=(()=>{
    const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName),existing=await request(store.get('profile')),existingSave=await request(store.get('save'));
    // A source change during crypto work retries without replacing newer data.
    if(!sameProfile(existing,profile)||existingSave!==sealed){await done;return initializeStored(attempt+1);}
-   store.put(candidate,'profile');if(nextSave)store.put(nextSave,'save');else store.delete('save');await done;
+   candidate={...candidate,slotSchema:1,activeSlot:migrating?(profile.activeSlot||1):1,selection:migrating?(profile.selection||0):0};
+   store.put(candidate,'profile');store.put(nextSlots,'slots');const nextSave=nextSlots[candidate.activeSlot-1]?.sealed;if(nextSave)store.put(nextSave,'save');else store.delete('save');await done;
    if(migrating)migratedFrom=sealed;
    if(!migrating){
     if(sealed||profile?.revision>0||localProgress())initialNotice='text.save.reset.new.version';
     const latest=await records();if(sameProfile(latest.profile,candidate))clearOldMirrors();
    }
-   ({profile,sealed}=await records());
+   source=await records();({profile,sealed}=source);slots=slotsFor(source);
   }
   requireCurrent(profile);profileKey(profile);
+  // An existing single-save profile is promoted atomically without changing
+  // the encrypted record, its key, revision, or the compatibility epoch.
+  if(profile.slotSchema!==1){
+   if(sealed)await open(sealed,profile);
+   const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName),existing=await request(store.get('profile')),existingSave=await request(store.get('save'));
+   if(!sameProfile(existing,profile)||existingSave!==sealed){await done;return initializeStored(attempt+1);}
+   profile={...profile,slotSchema:1,activeSlot:1,selection:0};store.put(profile,'profile');store.put(slots,'slots');await done;
+  }
+  activeSlot=profile.activeSlot;selection=profile.selection;
   let result=null;
   if(sealed){
-   result=await open(sealed,profile);let mirror;try{mirror=localStorage.getItem(SAVE_KEY);}catch{}
+   result=await openSlot(slots[activeSlot-1],profile);let mirror;try{mirror=localStorage.getItem(SAVE_KEY);}catch{}
    if(mirror&&mirror!==sealed&&mirror!==migratedFrom)initialNotice='text.save.recovered';
    try{localStorage.setItem(SAVE_KEY,sealed);}catch{}
   }else if(localProgress()){
@@ -275,5 +301,28 @@ const SaveVault=(()=>{
   return locked(initializeStored);
  }
  const ready=initialize().catch(error=>{initialNotice=error.notice||'text.save.unavailable';return null;});
- return Object.freeze({ready,get isReady(){return readyFlag;},get notice(){return initialNotice;},write(snapshot){const data=validate(snapshot);const operation=queue.catch(()=>{}).then(async()=>{await ready;if(!readyFlag)throw Error('Secure storage unavailable');await locked(()=>writeOne(data));});queue=operation;return operation;}});
+ function enqueue(action){const operation=queue.catch(()=>{}).then(async()=>{await ready;if(!readyFlag)throw Error('Secure storage unavailable');return locked(action);});queue=operation;return operation;}
+ const validSlot=slot=>{if(!integer(slot,1,3))throw Error('Invalid save slot');return slot;};
+ async function listSlots(){const source=await records();requireSelection(source.profile);return Promise.all(slotsFor(source).map(async(entry,index)=>({slot:index+1,occupied:!!entry,snapshot:await openSlot(entry,source.profile)})));}
+ async function selectSlot(slot){
+  const source=await records(),{profile}=source;requireCurrent(profile);const slots=slotsFor(source),snapshot=await openSlot(slots[slot-1],profile);
+  const tx=db.transaction(storeName,'readwrite'),done=complete(tx),store=tx.objectStore(storeName),existing=await request(store.get('profile'));
+  if(!sameProfile(existing,profile)){tx.abort();try{await done;}catch{}throw Error('Storage aborted: save changed in another tab');}
+  if(profile.revision>=Number.MAX_SAFE_INTEGER||profile.selection>=Number.MAX_SAFE_INTEGER)throw Error('Save revision limit reached');
+  const next={...profile,activeSlot:slot,selection:profile.selection+1,revision:profile.revision+1};store.put(next,'profile');if(slots[slot-1])store.put(slots[slot-1].sealed,'save');else store.delete('save');await done;
+  activeSlot=slot;selection=next.selection;mirror(slots[slot-1]?.sealed);return snapshot;
+ }
+ function importData(text){
+  if(typeof text!=='string'||text.length>30000)throw Error('Invalid save export');const file=JSON.parse(text);
+  if(!file||Object.keys(file).sort().join(',')!=='compatibility,format,release,snapshot,version'||file.format!=='kiba-realms-save'||file.version!==1||file.compatibility!==GAME_RELEASE.saveCompatibility||file.snapshot?.release!==file.release)throw Error('Incompatible save export');
+  const order=compareRelease(file.release,GAME_RELEASE.version);if(order===null||order>0||file.release!==GAME_RELEASE.version&&!registeredHistoricalRelease(file.release))throw Error('Unknown or newer save export');
+  const epoch=compareRelease(file.release,GAME_RELEASE.saveCompatibility);if(epoch===null||epoch<0)throw Error('Incompatible save export');
+  return validate({...file.snapshot,release:GAME_RELEASE.version});
+ }
+ return Object.freeze({ready,get isReady(){return readyFlag;},get notice(){return initialNotice;},get activeSlot(){return activeSlot;},
+  write(snapshot){const data=validate(snapshot),slot=activeSlot,token=selection;return enqueue(()=>{if(slot!==activeSlot||token!==selection)throw Error('Save slot changed');return writeOne(data,slot);});},
+  listSlots(){return enqueue(listSlots);},selectSlot(slot){validSlot(slot);return enqueue(()=>selectSlot(slot));},
+  exportSlot(slot){validSlot(slot);return enqueue(async()=>{const source=await records();requireSelection(source.profile);const snapshot=await openSlot(slotsFor(source)[slot-1],source.profile);if(!snapshot)throw Error('Empty save slot');return JSON.stringify({format:'kiba-realms-save',version:1,release:GAME_RELEASE.version,compatibility:GAME_RELEASE.saveCompatibility,snapshot});});},
+  importSlot(slot,text){validSlot(slot);const data=importData(text);return enqueue(async()=>{await writeOne(data,slot,{importing:true});return data;});}
+ });
 })();

@@ -11,20 +11,23 @@ function createEnemies() {
   return level.enemies.map(createEnemy);
 }
 function createEnemy(spec,i=0) {
-    if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(spec))return TowerBossCombat.create(spec);
-    if(spec.miniboss)return createMiniboss(spec,i);
+    const faction=spec.factionOverride||['japan','yomi','heaven','shadowCult'][level.enemyRealm??Math.max(0,levels.indexOf(level))];
+    const npcCatalogId=typeof NpcCatalog==='undefined'?null:NpcCatalog.forEnemy(spec,faction),catalog=npcCatalogId?NpcCatalog.get(npcCatalogId):null;
+    const identify=enemy=>{if(npcCatalogId)enemy.npcCatalogId=npcCatalogId;return enemy;};
+    if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(spec))return identify(TowerBossCombat.create(spec));
+    if(spec.miniboss)return identify(createMiniboss(spec,i));
     const ninja=typeof ShadowNinjas==='undefined'?null:ShadowNinjas.profile(spec);
-    const h=ninja?.h??(spec.balloonWasp?60:spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??(spec.balloonWasp?82:spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
+    const h=ninja?.h??catalog?.combat?.h??(spec.balloonWasp?60:spec.voidKeeperRole?132:spec.kind==='shield'?62:spec.kind==='mage'?58:54),w=ninja?.w??catalog?.combat?.w??(spec.balloonWasp?82:spec.voidKeeperRole?64:spec.kind==='shield'?48:40);
     const tier=ENEMY_TIERS[spec.summoned?0:(level.enemyRealm??Math.max(0,levels.indexOf(level)))];
-    const baseHp=spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4,maxHp=spec.combatStats?.hp??ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
-    const baseXP={guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18;
+    const baseHp=catalog?.combat?.baseHp??(spec.kind==='shield'?6:spec.kind==='archer'?3:spec.kind==='fly'?2:4),maxHp=spec.combatStats?.hp??ninja?.hp??(spec.voidKeeperRole?(spec.kind==='guard'?160:120):Math.ceil(baseHp*tier.health));
+    const baseXP=catalog?.combat?.baseXp??({guard:20,archer:18,shield:26,mage:24}[enemyRole(spec)]||18);
     const support=spec.kind==='fly'?null:platforms.find(p=>Math.abs(p.y-spec.y)<4&&spec.x+w>p.x&&spec.x<p.x+p.w);
     const left=Math.max(spec.x-spec.patrol,support?support.x+4:0),right=Math.min(spec.x+spec.patrol,support?support.x+support.w-w-4:level.width-w);
-    return {...spec,grappleable:spec.grappleable??(w<=64&&h<=96),x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
+    return identify({...spec,grappleable:spec.grappleable??(w<=64&&h<=96),x:clamp(spec.x,left,Math.max(left,right)),y:spec.y-h,w,h,origin:spec.x,baseY:spec.y-h,
       patrolLeft:left,patrolRight:Math.max(left,right),face:i%2?-1:1,patrolFace:i%2?-1:1,hp:maxHp,maxHp,damageValue:spec.combatStats?.damage??ninja?.damage??tier.damage,xpValue:spec.combatStats?.xp??ninja?.xp??Math.round(baseXP*tier.xp),
       stun:0,cd:1+i*.13,contactCd:0,windup:0,windupDuration:0,attackTime:0,attackDuration:.42,
       recovery:0,turnCooldown:0,edgePause:0,blocks:0,guardBreak:0,blockFlash:0,walkSpeed:0,
-      animTime:i*.17,attackElapsed:0,dead:false};
+      animTime:i*.17,attackElapsed:0,dead:false});
 }
 function respawnEnemies() {
   // Grave retry state is separate from `summoned`, which denotes disposable minions.

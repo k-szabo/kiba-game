@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "redAttendant",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.ritual.red",
+  "selectors": [
+    {
+      "npcId": "redAttendant"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaRitualAttendants",
+        "metadata": "ART_FIA_RITUAL.red"
+      },
+      {
+        "image": "fiaAttendantSpirits",
+        "metadata": "ART_FIA_SPIRITS.red"
+      }
+    ],
+    "effects": []
+  }
+}

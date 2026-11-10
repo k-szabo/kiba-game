@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "heaven-fly",
+  "kind": "enemy",
+  "faction": "heaven",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "fly",
+      "faction": "heaven"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "heavenWalk",
+        "metadata": "ART_FRAMES.animations.heaven.walk.archer"
+      },
+      {
+        "image": "heavenAttack",
+        "metadata": "ART_FRAMES.animations.heaven.attack.archer"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 2,
+    "baseXp": 18,
+    "w": 40,
+    "h": 54
+  }
+}

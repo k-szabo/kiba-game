@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "ninja-ninjutsu",
+  "kind": "enemy",
+  "faction": "shadowNinjas",
+  "name": "islands.ninja.ninjutsu",
+  "selectors": [
+    {
+      "shadowNinjaRole": "ninjutsu"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "ninjaNinjutsu",
+        "metadata": "ART_SHADOW_NINJAS.ninjutsu"
+      }
+    ],
+    "effects": []
+  }
+}

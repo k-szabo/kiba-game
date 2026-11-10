@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "japan-archer",
+  "kind": "enemy",
+  "faction": "japan",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "archer",
+      "faction": "japan"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "japanArcher",
+        "metadata": "ART_JAPAN.archer"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 3,
+    "baseXp": 18,
+    "w": 40,
+    "h": 54
+  }
+}

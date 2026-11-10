@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "enchanter",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.npc.enchanter.name",
+  "selectors": [
+    {
+      "npcId": "enchanter"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campSpecialists",
+        "metadata": "ART_CAMP.enchanter"
+      }
+    ],
+    "effects": []
+  }
+}

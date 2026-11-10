@@ -53,6 +53,7 @@ try{
  for(const dir of ['scripts','docs','data','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/config/leaderboard.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
  fs.cpSync(path.join(root,'assets/config/bosses'),path.join(fixture,'assets/config/bosses'),{recursive:true});
+ fs.cpSync(path.join(root,'assets/config/npcs'),path.join(fixture,'assets/config/npcs'),{recursive:true});
  fs.copyFileSync(path.join(root,'data/boss-classification.json'),path.join(fixture,'data/boss-classification.json'));
  const build=fs.readFileSync(path.join(root,'scripts/build-game.mjs'),'utf8');
  const modules=JSON.parse(build.match(/const files=(\[[^\]]+\]);/)[1].replaceAll("'",'"'));

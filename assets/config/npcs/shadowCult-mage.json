@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "shadowCult-mage",
+  "kind": "enemy",
+  "faction": "shadowCult",
+  "name": "shadow.enemy.mage",
+  "selectors": [
+    {
+      "kind": "mage",
+      "faction": "shadowCult"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowMage",
+        "metadata": "ART_SHADOW.actors.mage"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 24,
+    "w": 40,
+    "h": 58
+  }
+}

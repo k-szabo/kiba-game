@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "shadowCult-shield",
+  "kind": "enemy",
+  "faction": "shadowCult",
+  "name": "shadow.enemy.shield",
+  "selectors": [
+    {
+      "kind": "shield",
+      "faction": "shadowCult"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowShield",
+        "metadata": "ART_SHADOW.actors.shield"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 6,
+    "baseXp": 26,
+    "w": 48,
+    "h": 62
+  }
+}

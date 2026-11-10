@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-arenaSerpent",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "arena.boss.serpent",
+  "selectors": [
+    {
+      "bossId": "arenaSerpent"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "arenaSerpent",
+        "metadata": "ART_ARENA.serpent"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/arenaSerpent.json"
+}

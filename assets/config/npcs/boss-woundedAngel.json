@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "boss-woundedAngel",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "cultDungeon.boss.angel",
+  "selectors": [
+    {
+      "bossId": "woundedAngel"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "cultWoundedAngel",
+        "metadata": "ART_CULT_DUNGEON.woundedAngel"
+      }
+    ],
+    "effects": [
+      "holyArrow",
+      "holyLance"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/woundedAngel.json"
+}

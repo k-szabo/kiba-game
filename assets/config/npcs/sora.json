@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "sora",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.npc.sora.name",
+  "selectors": [
+    {
+      "npcId": "sora"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campSora",
+        "metadata": "ART_CAMP.sora"
+      }
+    ],
+    "effects": []
+  }
+}

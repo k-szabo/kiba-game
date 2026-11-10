@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "ninja-shuriken",
+  "kind": "enemy",
+  "faction": "shadowNinjas",
+  "name": "islands.ninja.shuriken",
+  "selectors": [
+    {
+      "shadowNinjaRole": "shuriken"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "ninjaShuriken",
+        "metadata": "ART_SHADOW_NINJAS.shuriken"
+      }
+    ],
+    "effects": []
+  }
+}

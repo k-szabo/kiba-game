@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "shadowNinja",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.ninja.name",
+  "selectors": [
+    {
+      "npcId": "shadowNinja"
+    },
+    {
+      "denResidentRole": "shadowNinja"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaDenResidents",
+        "metadata": "ART_KITSUNE.residents.shadowNinja"
+      },
+      {
+        "image": "denNinja",
+        "metadata": "ART_FIA.ninja"
+      }
+    ],
+    "effects": []
+  }
+}

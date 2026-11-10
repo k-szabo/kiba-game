@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "whiteAttendant",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.ritual.white",
+  "selectors": [
+    {
+      "npcId": "whiteAttendant"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaRitualAttendants",
+        "metadata": "ART_FIA_RITUAL.white"
+      },
+      {
+        "image": "fiaAttendantSpirits",
+        "metadata": "ART_FIA_SPIRITS.white"
+      }
+    ],
+    "effects": []
+  }
+}

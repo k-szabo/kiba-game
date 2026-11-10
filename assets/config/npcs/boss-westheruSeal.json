@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "boss-westheruSeal",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "balloon.westheru",
+  "selectors": [
+    {
+      "bossId": "westheruSeal"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "westheruSealArt",
+        "metadata": "ART_WATCHTOWER.seal"
+      }
+    ],
+    "effects": [
+      "slayerLightning"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/westheruSeal.json"
+}

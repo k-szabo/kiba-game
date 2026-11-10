@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "daichi",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.npc.daichi.name",
+  "selectors": [
+    {
+      "npcId": "daichi"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campDaichi",
+        "metadata": "ART_CAMP.daichi"
+      }
+    ],
+    "effects": []
+  }
+}

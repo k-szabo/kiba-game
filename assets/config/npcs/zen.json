@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "zen",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "zen.name",
+  "selectors": [
+    {
+      "npcId": "zen"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "zenPriestess",
+        "metadata": "ART_PRISON.zen"
+      }
+    ],
+    "effects": []
+  }
+}

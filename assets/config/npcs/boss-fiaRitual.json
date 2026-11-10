@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "id": "boss-fiaRitual",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.name",
+  "selectors": [
+    {
+      "bossId": "fiaRitual"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaArenaCasting",
+        "metadata": "ART_ARENA.fia"
+      },
+      {
+        "image": "fiaArenaWalk",
+        "metadata": "ART_ARENA.fiaWalk"
+      }
+    ],
+    "effects": [
+      "fiaRitual",
+      "fiaRitualPowers",
+      "fiaAttendantSpirits",
+      "fiaTeleport",
+      "fiaFoxfire",
+      "fiaDrain",
+      "fiaCharm",
+      "arenaCyclops",
+      "fiaArenaYield"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/fiaRitual.json"
+}

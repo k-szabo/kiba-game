@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "heaven-guard",
+  "kind": "enemy",
+  "faction": "heaven",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "guard",
+      "faction": "heaven"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "heavenWalk",
+        "metadata": "ART_FRAMES.animations.heaven.walk.guard"
+      },
+      {
+        "image": "heavenAttack",
+        "metadata": "ART_FRAMES.animations.heaven.attack.guard"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 20,
+    "w": 40,
+    "h": 54
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-voidLieutenant",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.void.lieutenant",
+  "selectors": [
+    {
+      "bossId": "voidLieutenant"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidLieutenant",
+        "metadata": "ART_FIA_VOID.lieutenant"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/voidLieutenant.json"
+}

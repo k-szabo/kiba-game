@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-prisonHunter",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.hunter.name",
+  "selectors": [
+    {
+      "bossId": "prisonHunter"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "prisonHunter",
+        "metadata": "ART_KITSUNE.hunter"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/prisonHunter.json"
+}

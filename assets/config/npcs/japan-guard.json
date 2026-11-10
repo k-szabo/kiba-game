@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "japan-guard",
+  "kind": "enemy",
+  "faction": "japan",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "guard",
+      "faction": "japan"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "japanGuard",
+        "metadata": "ART_JAPAN.guard"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 20,
+    "w": 40,
+    "h": 54
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "heaven-mage",
+  "kind": "enemy",
+  "faction": "heaven",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "mage",
+      "faction": "heaven"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "heavenWalk",
+        "metadata": "ART_FRAMES.animations.heaven.walk.mage"
+      },
+      {
+        "image": "heavenAttack",
+        "metadata": "ART_FRAMES.animations.heaven.attack.mage"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 24,
+    "w": 40,
+    "h": 58
+  }
+}

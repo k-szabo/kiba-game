@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "shadowThief",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.thief.name",
+  "selectors": [
+    {
+      "npcId": "shadowThief"
+    },
+    {
+      "denResidentRole": "shadowThief"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaDenResidents",
+        "metadata": "ART_KITSUNE.residents.shadowThief"
+      },
+      {
+        "image": "denThief",
+        "metadata": "ART_FIA.thief"
+      }
+    ],
+    "effects": []
+  }
+}

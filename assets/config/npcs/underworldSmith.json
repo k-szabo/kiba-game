@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "underworldSmith",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.void.smith",
+  "selectors": [
+    {
+      "npcId": "underworldSmith"
+    },
+    {
+      "underworldServiceRole": "smith"
+    },
+    {
+      "underworldHostileRole": "smith"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "underworldServices",
+        "metadata": "ART_FIA_VOID.smith"
+      },
+      {
+        "image": "fiaUnderworldCorrupted",
+        "metadata": "ART_FIA_RITUAL.services.smith"
+      }
+    ],
+    "effects": []
+  }
+}

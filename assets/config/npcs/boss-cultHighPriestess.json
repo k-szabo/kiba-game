@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "boss-cultHighPriestess",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "cultDungeon.boss.priestess",
+  "selectors": [
+    {
+      "bossId": "cultHighPriestess"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "cultHighPriestess",
+        "metadata": "ART_CULT_DUNGEON.highPriestess"
+      }
+    ],
+    "effects": [
+      "shadowGuard",
+      "shadowMage"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/cultHighPriestess.json"
+}

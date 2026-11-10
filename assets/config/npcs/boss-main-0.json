@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "boss-main-0",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.the.forest.oathbreaker",
+  "selectors": [
+    {
+      "bossId": "main-0"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "samurai",
+        "metadata": "ART_FRAMES.samurai"
+      },
+      {
+        "image": "samuraiJump",
+        "metadata": "ART_FRAMES.samuraiJump"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/main-0.json"
+}

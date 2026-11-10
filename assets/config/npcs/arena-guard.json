@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "arena-guard",
+  "kind": "enemy",
+  "faction": "shadowDen",
+  "name": "arena.minion.guard",
+  "selectors": [
+    {
+      "arenaMinion": true,
+      "arenaRole": "guard"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "arenaMinions",
+        "metadata": "ART_ARENA.minions.guard"
+      }
+    ],
+    "effects": []
+  }
+}

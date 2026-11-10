@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "yomi-guard",
+  "kind": "enemy",
+  "faction": "yomi",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "guard",
+      "faction": "yomi"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "yomiWalk",
+        "metadata": "ART_FRAMES.animations.yomi.walk.guard"
+      },
+      {
+        "image": "yomiAttack",
+        "metadata": "ART_FRAMES.animations.yomi.attack.guard"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 20,
+    "w": 40,
+    "h": 54
+  }
+}

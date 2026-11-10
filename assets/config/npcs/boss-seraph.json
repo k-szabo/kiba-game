@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "boss-seraph",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.angel.of.dawn.phase.i",
+  "selectors": [
+    {
+      "bossId": "seraph"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "angelLight",
+        "metadata": "ART_FRAMES.angelLight"
+      }
+    ],
+    "effects": [
+      "holyArrow",
+      "holyLance"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/seraph.json"
+}

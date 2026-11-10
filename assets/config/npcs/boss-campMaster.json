@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "boss-campMaster",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "camp.rescue.boss",
+  "selectors": [
+    {
+      "bossId": "campMaster"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campMaster",
+        "metadata": "ART_CAMP_MASTER"
+      }
+    ],
+    "effects": [
+      "campMasterJump"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/campMaster.json"
+}
