@@ -26,3 +26,28 @@ for(const [species,a]of Object.entries(art)){
 for(const id of ['whiteSerpentScale','wingedSerpentScale','triuneSerpentTalisman']){const rect=JSON.parse(run('JSON.stringify(ART_INVENTORY.items['+JSON.stringify(id)+'])'));assert.equal(rect.image,'serpentRelics');assert(rect.w>300&&rect.h>300);}
 for(const [realm,id]of [[0,'whiteSerpentCave'],[2,'wingedSerpentRoost']]){run('enterRealm('+realm+');var a=level.secrets.find(s=>s.id==='+JSON.stringify(id)+');initPlayer({x:a.arena.x+500,y:a.arena.y});resetCamera();');assert(run('SerpentArt.hasBackdrop(Visuals.secretBackdropState().area)'));run('draw();');}
 console.log('PASS: sixteen native complete alpha silhouettes, fixed body scales, shared pose/render invariance, protected DPR inventory art and both registered secret backdrops.');
+
+// Repeated frost volleys must reuse a small tinted sprite rather than applying
+// a live filter to the world canvas for each projectile on every frame.
+const world=h.sandbox.document.getElementById('world').getContext('2d'),surfaces=[],blits=[];
+let screenFilters=0;Object.defineProperty(world,'filter',{configurable:true,set(){screenFilters++;},get(){return 'none';}});
+const makeElement=h.sandbox.document.createElement;
+h.sandbox.document.createElement=tag=>{
+ if(tag!=='canvas')return makeElement(tag);
+ const surface={width:0,height:0},bakes=[];surface.getContext=()=>({scale(){},drawImage(...args){bakes.push(args);}});
+ surfaces.push({surface,bakes});return surface;
+};
+world.drawImage=(...args)=>blits.push(args);
+run("var frostProjectile={serpentType:'white',kind:'holyArrow',source:'mini:0:whiteSerpent',x:400,y:300,vx:120,vy:-30};var frostBefore=JSON.stringify(frostProjectile);");
+for(let frame=0;frame<120;frame++)run('for(let arrow=0;arrow<3;arrow++)SerpentArt.projectile(frostProjectile);');
+assert.equal(surfaces.length,1,'All arrows and frames share one source/size/DPR bake');assert.equal(surfaces[0].bakes.length,1);
+assert.equal(blits.length,360);assert(blits.every(b=>b[0]===surfaces[0].surface));assert.equal(screenFilters,0,'No world-canvas filter per projectile');
+assert(surfaces[0].surface.width<180&&surfaces[0].surface.height<100,'Cache matches displayed size, not the large source bitmap');
+assert(run('JSON.stringify(frostProjectile)===frostBefore'),'Rendering preserves the projectile state');
+run("SerpentArt.projectile({...frostProjectile,source:'tower:whiteSerpent'});");assert.equal(surfaces.length,2,'Both existing campaign/tower arrow lengths are retained');
+run('devicePixelRatio=2;SerpentArt.projectile(frostProjectile);');assert.equal(surfaces.length,3,'Desktop density changes refresh the displayed sprite');
+run('Visuals.images.holyArrow=new Image();SerpentArt.projectile(frostProjectile);');assert.equal(surfaces.length,4,'A replaced source cannot reuse stale pixels');
+run('Visuals.images.holyArrow.complete=false;SerpentArt.projectile(frostProjectile);');assert.equal(surfaces.length,4,'Pending source images never create an empty cached sprite');
+assert.equal(run("SerpentArt.projectile({serpentType:'winged'})"),false,'Other projectile renderers keep ownership');
+run('Visuals.images.holyArrow.complete=true;');h.sandbox.document.createElement=makeElement;
+console.log('PASS: frost volleys bake tint once per source/size/DPR, retain both lengths and alpha-capable padding, avoid live world filters and refresh on source changes.');

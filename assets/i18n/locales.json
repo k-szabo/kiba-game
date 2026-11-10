@@ -1404,7 +1404,10 @@
       "menu.changelog.0974.92487480.0": "Westheru cellája a játék festett ketrecgrafikáját használja. A cellakulcs leírása és használata javult.",
       "menu.changelog.0974.92487480.1": "Belső karbantartás és technikai fejlesztések.",
       "menu.changelog.0974.cbf2c125.title": "Egységes bosséletcsíkok a toronyban",
-      "menu.changelog.0974.cbf2c125.0": "A végtelen torony bossai egyetlen életcsíkkal jelennek meg; a számszerű HP-kijelzés továbbra is a beállításodat követi."
+      "menu.changelog.0974.cbf2c125.0": "A végtelen torony bossai egyetlen életcsíkkal jelennek meg; a számszerű HP-kijelzés továbbra is a beállításodat követi.",
+      "fia.talkPrompt": "E · Beszélgetés Fiával",
+      "menu.changelog.0974.e6a13739.title": "Kígyólövedékek és viharszigeti javítások",
+      "menu.changelog.0974.e6a13739.0": "A fehér kígyó fagyszilánkjai hatékonyabban jelennek meg. Fia beszélgetésfelirata helyesen olvasható. A viharszigeti oltár külön helyre került a kaputól; az utolsó pálya háttere ugráskor is stabil, ismétlődő képrészletek nélkül."
     }
   },
   "en": {
@@ -2812,7 +2815,10 @@
       "menu.changelog.0974.92487480.0": "Westheru’s cell now uses the game’s painted cage artwork. The cell key’s description and use have been corrected.",
       "menu.changelog.0974.92487480.1": "Internal maintenance and technical improvements.",
       "menu.changelog.0974.cbf2c125.title": "Consistent tower boss health bars",
-      "menu.changelog.0974.cbf2c125.0": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting."
+      "menu.changelog.0974.cbf2c125.0": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting.",
+      "fia.talkPrompt": "E · Talk to Fia",
+      "menu.changelog.0974.e6a13739.title": "Serpent projectile and Storm Island fixes",
+      "menu.changelog.0974.e6a13739.0": "The White Serpent’s frost shards render more efficiently. Fia’s conversation prompt displays correctly. The Storm Island shrine is separated from the gate, and the final area’s background stays steady during jumps without repeated artwork."
     }
   }
 }

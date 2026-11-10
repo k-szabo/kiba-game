@@ -54,7 +54,7 @@ function createWatchtowerBalloonMaps({makeLevel,ledge,rest,foe,zone}){
  rest(skyLanding,'skyLandingMooring',300,1000,'balloon.rest.landing');
  skyLanding.arena={x:650,y:1000,w:1550,triggerX:800,restId:'skyLandingMooring'};
  skyLanding.pilotPoint={x:1350,y:1000};
- skyLanding.boardPoint={x:280,y:1000};
+ skyLanding.boardPoint={x:650,y:1000};
  skyLanding.returnPoint=skyLanding.boardPoint;
  skyLanding.returnDestination={location:'balloonJourney',x:1650,y:850};
  foe(skyLanding,'westheruSeal',1350,1000,'mage',null,300);
