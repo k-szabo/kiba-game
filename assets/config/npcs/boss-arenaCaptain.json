@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-arenaCaptain",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "arena.boss.captain",
+  "selectors": [
+    {
+      "bossId": "arenaCaptain"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "arenaCaptain",
+        "metadata": "ART_ARENA.captain"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/arenaCaptain.json"
+}

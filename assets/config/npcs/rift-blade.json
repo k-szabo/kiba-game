@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "rift-blade",
+  "kind": "enemy",
+  "faction": "void",
+  "name": "fia.void.blade",
+  "selectors": [
+    {
+      "voidKeeperRole": "blade"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidKeepers",
+        "metadata": "ART_FIA_VOID.blade"
+      }
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "boss-eclipse",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.lord.of.two.worlds.hidden.phase.iii",
+  "selectors": [
+    {
+      "bossId": "eclipse"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "angelEclipse",
+        "metadata": "ART_FRAMES.angelEclipse"
+      }
+    ],
+    "effects": [
+      "holyArrow",
+      "holyLance"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/eclipse.json"
+}

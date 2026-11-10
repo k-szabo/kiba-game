@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "boss-fiaVengeance",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.name",
+  "selectors": [
+    {
+      "bossId": "fiaVengeance"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaArenaCasting",
+        "metadata": "ART_ARENA.fia"
+      },
+      {
+        "image": "fiaArenaWalk",
+        "metadata": "ART_ARENA.fiaWalk"
+      }
+    ],
+    "effects": [
+      "fiaArenaYield",
+      "fiaTeleport",
+      "fiaFoxfire",
+      "fiaDrain",
+      "fiaCharm"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/fiaVengeance.json"
+}

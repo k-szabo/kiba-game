@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "id": "boss-hannah",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "ziggurat.hannah",
+  "selectors": [
+    {
+      "bossId": "hannah"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "hannahWalk",
+        "metadata": "ART_HANNAH.walk"
+      },
+      {
+        "image": "hannahCombo",
+        "metadata": "ART_HANNAH.combo"
+      },
+      {
+        "image": "hannahJump",
+        "metadata": "ART_HANNAH.jump"
+      },
+      {
+        "image": "hannahRitual",
+        "metadata": "ART_HANNAH.ritual"
+      }
+    ],
+    "effects": [
+      "shadowGuard"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/hannah.json"
+}

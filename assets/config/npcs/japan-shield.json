@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "japan-shield",
+  "kind": "enemy",
+  "faction": "japan",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "shield",
+      "faction": "japan"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "japanShield",
+        "metadata": "ART_JAPAN.shield"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 6,
+    "baseXp": 26,
+    "w": 48,
+    "h": 62
+  }
+}

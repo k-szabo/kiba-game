@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "boss-slayer",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "slayer.name",
+  "selectors": [
+    {
+      "bossId": "slayer"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "slayerMelee",
+        "metadata": "ART_SLAYER.frames"
+      }
+    ],
+    "effects": [
+      "slayerRanged",
+      "slayerLightning",
+      "slayerBarrel"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/slayer.json"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "boss-angel",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.the.mad.elder.angel",
+  "selectors": [
+    {
+      "bossId": "angel"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "oldAngel",
+        "metadata": "ART_FRAMES.oldAngel"
+      }
+    ],
+    "effects": [
+      "holyArrow"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/angel.json"
+}

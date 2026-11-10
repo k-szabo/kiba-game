@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "id": "boss-main-2",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.the.corrupted.seraph",
+  "selectors": [
+    {
+      "bossId": "main-2"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "angelLight",
+        "metadata": "ART_FRAMES.angelLight"
+      },
+      {
+        "image": "angelDark",
+        "metadata": "ART_FRAMES.angelDark"
+      },
+      {
+        "image": "angelEclipse",
+        "metadata": "ART_FRAMES.angelEclipse"
+      }
+    ],
+    "effects": [
+      "holyArrow",
+      "holyLance"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/main-2.json"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "giant-wasp",
+  "kind": "enemy",
+  "faction": "wildlife",
+  "name": "balloon.wasp",
+  "selectors": [
+    {
+      "balloonWasp": true
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "giantWaspArt",
+        "metadata": "ART_WATCHTOWER.wasp"
+      }
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-madPriest",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "shadow.boss.priest",
+  "selectors": [
+    {
+      "bossId": "madPriest"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowMadPriest",
+        "metadata": "ART_SHADOW.actors.madPriest"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/madPriest.json"
+}

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "haru",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": null,
+  "selectors": [
+    {
+      "npcId": "haru"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "haruFollow",
+        "metadata": "ART_ZIGGURAT_DESCENT.haru"
+      },
+      {
+        "image": "haruElder",
+        "renderer": "HannahArt.haru"
+      }
+    ],
+    "effects": []
+  },
+  "legacyName": "HARU"
+}

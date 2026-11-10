@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "soulUpper",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "text.the.remembering.soul",
+  "selectors": [
+    {
+      "npcId": "soulUpper"
+    }
+  ],
+  "art": {
+    "sprites": [],
+    "effects": [],
+    "procedural": "Visuals.drawSpirit"
+  }
+}

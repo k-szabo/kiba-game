@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "fia",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.name",
+  "selectors": [
+    {
+      "npcId": "fia"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaKitsune",
+        "metadata": "ART_KITSUNE.fia"
+      },
+      {
+        "image": "fiaFox",
+        "metadata": "ART_KITSUNE.fox"
+      },
+      {
+        "image": "fiaFoxDead",
+        "metadata": "ART_KITSUNE.deadFox"
+      }
+    ],
+    "effects": []
+  }
+}

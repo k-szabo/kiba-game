@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "boss-prologueShadow",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "prologue.boss",
+  "selectors": [
+    {
+      "bossId": "prologueShadow"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowIdle",
+        "metadata": "SHADOW_CLIPS.idle"
+      }
+    ],
+    "effects": [
+      "shadowMelee",
+      "shadowCast"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/prologueShadow.json"
+}

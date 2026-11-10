@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "japan-fly",
+  "kind": "enemy",
+  "faction": "japan",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "fly",
+      "faction": "japan"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "japanMage",
+        "metadata": "ART_JAPAN.mage"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 2,
+    "baseXp": 24,
+    "w": 40,
+    "h": 54
+  }
+}

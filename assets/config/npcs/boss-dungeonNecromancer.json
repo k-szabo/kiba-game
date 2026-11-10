@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "boss-dungeonNecromancer",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "dungeon.boss.necromancer",
+  "selectors": [
+    {
+      "bossId": "dungeonNecromancer"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "dungeonNecromancer",
+        "metadata": "ART_DUNGEON.necromancer"
+      }
+    ],
+    "effects": [
+      "japanRaised"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/dungeonNecromancer.json"
+}

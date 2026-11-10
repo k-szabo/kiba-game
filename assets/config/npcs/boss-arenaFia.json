@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "boss-arenaFia",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "arena.boss.fia",
+  "selectors": [
+    {
+      "bossId": "arenaFia"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "fiaArenaCasting",
+        "metadata": "ART_ARENA.fia"
+      },
+      {
+        "image": "fiaArenaWalk",
+        "metadata": "ART_ARENA.fiaWalk"
+      }
+    ],
+    "effects": [
+      "fiaArenaYield",
+      "fiaFoxfire",
+      "fiaCharm",
+      "arenaCyclops"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/arenaFia.json"
+}

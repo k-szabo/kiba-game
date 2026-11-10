@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-watchtowerJailer",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "watchtower.jailer",
+  "selectors": [
+    {
+      "bossId": "watchtowerJailer"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "watchtowerJailerArt",
+        "metadata": "ART_WATCHTOWER.jailer"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/watchtowerJailer.json"
+}

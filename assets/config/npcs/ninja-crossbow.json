@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "ninja-crossbow",
+  "kind": "enemy",
+  "faction": "shadowNinjas",
+  "name": "islands.ninja.crossbow",
+  "selectors": [
+    {
+      "shadowNinjaRole": "crossbow"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "ninjaCrossbow",
+        "metadata": "ART_SHADOW_NINJAS.crossbow"
+      }
+    ],
+    "effects": []
+  }
+}

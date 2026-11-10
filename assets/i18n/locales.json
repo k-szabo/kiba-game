@@ -1407,7 +1407,24 @@
       "menu.changelog.0974.cbf2c125.0": "A végtelen torony bossai egyetlen életcsíkkal jelennek meg; a számszerű HP-kijelzés továbbra is a beállításodat követi.",
       "fia.talkPrompt": "E · Beszélgetés Fiával",
       "menu.changelog.0974.e6a13739.title": "Kígyólövedékek és viharszigeti javítások",
-      "menu.changelog.0974.e6a13739.0": "A fehér kígyó fagyszilánkjai hatékonyabban jelennek meg. Fia beszélgetésfelirata helyesen olvasható. A viharszigeti oltár külön helyre került a kaputól; az utolsó pálya háttere ugráskor is stabil, ismétlődő képrészletek nélkül."
+      "menu.changelog.0974.e6a13739.0": "A fehér kígyó fagyszilánkjai hatékonyabban jelennek meg. Fia beszélgetésfelirata helyesen olvasható. A viharszigeti oltár külön helyre került a kaputól; az utolsó pálya háttere ugráskor is stabil, ismétlődő képrészletek nélkül.",
+      "saves.title": "Mentések",
+      "saves.slot": "Mentési hely: {0}",
+      "saves.empty": "Üres",
+      "saves.active": "Aktív",
+      "saves.select": "Kiválasztás",
+      "saves.export": "Mentés exportálása",
+      "saves.import": "Mentés importálása",
+      "saves.imported": "A mentést importáltad.",
+      "saves.exported": "A mentést exportáltad.",
+      "saves.invalid": "A mentés nem érvényes vagy nem kompatibilis ezzel a kiadással.",
+      "saves.failed": "A mentési művelet sikertelen. Ellenőrizd a böngésző tárhelyét.",
+      "saves.overwrite": "Felülírod a(z) {0}. mentési helyet?",
+      "saves.newConfirm": "Új kalandot indítasz az aktív mentési helyen? A korábbi haladás felülíródik.",
+      "saves.info": "Három külön kalandot tárolhatsz. Az exportált fájlt másik böngészőben is importálhatod. A fájl a kaland haladását tartalmazza; a toronyrekord, a nyelv és az irányítás külön marad.",
+      "menu.changelog.0975.d3747dd1.title": "Kalandmentések és szereplőkatalógus",
+      "menu.changelog.0975.d3747dd1.0": "Három mentési hely és böngészők között átvihető kalandexport/import segíti a folytatást. A meglévő kaland az első helyre kerül.",
+      "menu.changelog.0975.d3747dd1.1": "Belső karbantartás és technikai fejlesztések."
     }
   },
   "en": {
@@ -2818,7 +2835,24 @@
       "menu.changelog.0974.cbf2c125.0": "Endless Tower bosses now display a single health bar, while numeric HP continues to follow your display setting.",
       "fia.talkPrompt": "E · Talk to Fia",
       "menu.changelog.0974.e6a13739.title": "Serpent projectile and Storm Island fixes",
-      "menu.changelog.0974.e6a13739.0": "The White Serpent’s frost shards render more efficiently. Fia’s conversation prompt displays correctly. The Storm Island shrine is separated from the gate, and the final area’s background stays steady during jumps without repeated artwork."
+      "menu.changelog.0974.e6a13739.0": "The White Serpent’s frost shards render more efficiently. Fia’s conversation prompt displays correctly. The Storm Island shrine is separated from the gate, and the final area’s background stays steady during jumps without repeated artwork.",
+      "saves.title": "Saves",
+      "saves.slot": "Save slot: {0}",
+      "saves.empty": "Empty",
+      "saves.active": "Active",
+      "saves.select": "Select",
+      "saves.export": "Export save",
+      "saves.import": "Import save",
+      "saves.imported": "Save imported.",
+      "saves.exported": "Save exported.",
+      "saves.invalid": "This save is invalid or incompatible with this release.",
+      "saves.failed": "The save operation failed. Check your browser storage.",
+      "saves.overwrite": "Overwrite save slot {0}?",
+      "saves.newConfirm": "Start a new journey in the active save slot? Its existing progress will be overwritten.",
+      "saves.info": "Store three separate journeys. Import an exported file in another browser. The file contains journey progress; tower records, language and controls remain separate.",
+      "menu.changelog.0975.d3747dd1.title": "Journey saves and character catalog",
+      "menu.changelog.0975.d3747dd1.0": "Three save slots and portable journey export/import help you continue across browsers. Your existing journey moves into the first slot.",
+      "menu.changelog.0975.d3747dd1.1": "Internal maintenance and technical improvements."
     }
   }
 }

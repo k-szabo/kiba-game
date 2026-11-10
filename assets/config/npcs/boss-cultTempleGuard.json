@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-cultTempleGuard",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "cultDungeon.boss.guard",
+  "selectors": [
+    {
+      "bossId": "cultTempleGuard"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "cultTempleGuard",
+        "metadata": "ART_CULT_DUNGEON.templeGuard"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/cultTempleGuard.json"
+}

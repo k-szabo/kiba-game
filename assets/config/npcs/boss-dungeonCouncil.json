@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-dungeonCouncil",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "dungeon.boss.council",
+  "selectors": [
+    {
+      "bossId": "dungeonCouncil"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "dungeonCouncil",
+        "metadata": "ART_DUNGEON.council"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/dungeonCouncil.json"
+}

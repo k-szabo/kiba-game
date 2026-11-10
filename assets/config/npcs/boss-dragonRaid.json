@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "id": "boss-dragonRaid",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.dragon.boss",
+  "selectors": [
+    {
+      "bossId": "dragonRaid"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "dragonIdle",
+        "metadata": "ART_DRAGON.idle"
+      },
+      {
+        "image": "dragonBreath",
+        "metadata": "ART_DRAGON.breath"
+      },
+      {
+        "image": "dragonFlight",
+        "metadata": "ART_DRAGON.flight"
+      },
+      {
+        "image": "dragonFront",
+        "metadata": "ART_DRAGON.front"
+      },
+      {
+        "image": "dragonStagger",
+        "metadata": "ART_DRAGON.stagger"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/dragonRaid.json"
+}

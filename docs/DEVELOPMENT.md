@@ -68,6 +68,8 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/duel-rules.js`, `peer-session.js`, `duel-mode.js` | Mentéstől független párbajszimuláció, újrahasználható WebRTC-kapcsolat és két megnyert menetes mérkőzés; [hálózati referencia](MULTIPLAYER.md). |
 | `assets/js/tower-rules.js`, `tower-store.js`, `tower-mode.js`, `tower-boss-combat.js`, `tower-special-bosses.js`, `tower-boss-art.js` | Külön [végtelen torony](ENDLESS-TOWER.md), teljes bossválaszték történeti események nélkül, determinisztikus nehezedés, öt emeletenkénti checkpoint és a kalandtól elkülönített helyi rekord. |
 | `assets/js/tower-leaderboard-api.js`, `tower-leaderboard.js`, `supabase/` | Opcionális [közösségi toronyranglista](ENDLESS-TOWER.md#közösségi-ranglista), anonim identitás, elkülönített SQL és Edge Function. |
+| `assets/js/save-manager.js` | Három kalandhely főmenüs kezelője és hordozható export/import, a helyi titkosított tárolást a SaveVault végzi. |
+| `assets/js/npc-catalog.js`, `assets/config/npcs/` | Minden szereplő közös, JSON-alapú [katalógusa](NPC-CATALOG.md), sprite- és effekthivatkozásokkal. |
 | `assets/js/save-vault.js` | Titkosított, profilhoz kötött mentés, kompatibilis kiadások közötti megőrzés; [szabályok](SAVE-COMPATIBILITY.md). |
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/config/bosses/*.json`, `assets/js/boss-catalog.js` | [Közös bosskatalógus](BOSS-CATALOG.md): bossenkénti sztori-/toronyalapértékek, profilok és grafikai függőségek; buildkor beágyazva. |

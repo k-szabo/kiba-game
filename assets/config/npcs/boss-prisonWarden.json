@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-prisonWarden",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "zen.warden.name",
+  "selectors": [
+    {
+      "bossId": "prisonWarden"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "prisonWarden",
+        "metadata": "ART_PRISON.warden"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/prisonWarden.json"
+}

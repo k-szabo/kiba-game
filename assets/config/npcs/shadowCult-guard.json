@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "shadowCult-guard",
+  "kind": "enemy",
+  "faction": "shadowCult",
+  "name": "shadow.enemy.guard",
+  "selectors": [
+    {
+      "kind": "guard",
+      "faction": "shadowCult"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowGuard",
+        "metadata": "ART_SHADOW.actors.guard"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 4,
+    "baseXp": 20,
+    "w": 40,
+    "h": 54
+  }
+}

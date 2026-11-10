@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-jailer",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "shadow.boss.jailer",
+  "selectors": [
+    {
+      "bossId": "jailer"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowCultJailer",
+        "metadata": "ART_SHADOW.actors.cultJailer"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/jailer.json"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "underworldCook",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.void.cook",
+  "selectors": [
+    {
+      "npcId": "underworldCook"
+    },
+    {
+      "underworldServiceRole": "cook"
+    },
+    {
+      "underworldHostileRole": "cook"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "underworldServices",
+        "metadata": "ART_FIA_VOID.cook"
+      },
+      {
+        "image": "fiaUnderworldCorrupted",
+        "metadata": "ART_FIA_RITUAL.services.cook"
+      }
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "raised-samurai",
+  "kind": "enemy",
+  "faction": "undead",
+  "name": null,
+  "selectors": [
+    {
+      "raisedSamurai": true
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "japanRaised",
+        "metadata": "ART_JAPAN.raised"
+      }
+    ],
+    "effects": []
+  }
+}

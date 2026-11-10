@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-cultist",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "text.the.ancient.cult.s.elder",
+  "selectors": [
+    {
+      "bossId": "cultist"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "oldCultist",
+        "metadata": "ART_FRAMES.oldCultist"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/cultist.json"
+}

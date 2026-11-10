@@ -1898,6 +1898,26 @@
           "en": "A new companion awaits rescue in the watchtower dungeon. Westheru’s balloon voyage leads through wasp swarms, a battle with a sky dragon and a strange storm to the far side of a vortex."
         }
       ]
+    },
+    {
+      "version": "0.9.75_d3747dd1",
+      "code": "d3747dd1",
+      "baseVersion": "0.9.75",
+      "slug": "enemy-catalog-save-transfer",
+      "summary": {
+        "hu": "Kalandmentések és szereplőkatalógus",
+        "en": "Journey saves and character catalog"
+      },
+      "fixes": [
+        {
+          "hu": "Három mentési hely és böngészők között átvihető kalandexport/import segíti a folytatást. A meglévő kaland az első helyre kerül.",
+          "en": "Three save slots and portable journey export/import help you continue across browsers. Your existing journey moves into the first slot."
+        },
+        {
+          "hu": "Belső karbantartás és technikai fejlesztések.",
+          "en": "Internal maintenance and technical improvements."
+        }
+      ]
     }
   ]
 }

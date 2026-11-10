@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "akash",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "merchant.name",
+  "selectors": [
+    {
+      "npcId": "akash"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "akash",
+        "metadata": "ART_CAMP.akash"
+      }
+    ],
+    "effects": []
+  }
+}

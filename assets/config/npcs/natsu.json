@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "natsu",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.npc.natsu.name",
+  "selectors": [
+    {
+      "npcId": "natsu"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campNatsu",
+        "metadata": "ART_CAMP.natsu"
+      }
+    ],
+    "effects": []
+  }
+}

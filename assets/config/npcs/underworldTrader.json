@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "underworldTrader",
+  "kind": "npc",
+  "faction": "shadowDen",
+  "name": "fia.void.trader",
+  "selectors": [
+    {
+      "npcId": "underworldTrader"
+    },
+    {
+      "underworldServiceRole": "trader"
+    },
+    {
+      "underworldHostileRole": "trader"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "underworldServices",
+        "metadata": "ART_FIA_VOID.trader"
+      },
+      {
+        "image": "fiaUnderworldCorrupted",
+        "metadata": "ART_FIA_RITUAL.services.trader"
+      }
+    ],
+    "effects": []
+  }
+}

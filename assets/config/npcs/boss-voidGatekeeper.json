@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-voidGatekeeper",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "descent.gatekeeper",
+  "selectors": [
+    {
+      "bossId": "voidGatekeeper"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidGatekeeper",
+        "metadata": "ART_ZIGGURAT_DESCENT.gatekeeper"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/voidGatekeeper.json"
+}

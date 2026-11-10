@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "ninja-assassin",
+  "kind": "enemy",
+  "faction": "shadowNinjas",
+  "name": "islands.ninja.assassin",
+  "selectors": [
+    {
+      "shadowNinjaRole": "assassin"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "ninjaAssassin",
+        "metadata": "ART_SHADOW_NINJAS.assassin"
+      }
+    ],
+    "effects": []
+  }
+}

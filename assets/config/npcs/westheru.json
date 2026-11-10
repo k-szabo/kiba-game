@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "westheru",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "balloon.pilot",
+  "selectors": [
+    {
+      "npcId": "westheru"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "westheruArt",
+        "metadata": "ART_WATCHTOWER.pilot"
+      }
+    ],
+    "effects": []
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "yomi-fly",
+  "kind": "enemy",
+  "faction": "yomi",
+  "name": null,
+  "selectors": [
+    {
+      "kind": "fly",
+      "faction": "yomi"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "yomiWalk",
+        "metadata": "ART_FRAMES.animations.yomi.walk.archer"
+      },
+      {
+        "image": "yomiAttack",
+        "metadata": "ART_FRAMES.animations.yomi.attack.archer"
+      }
+    ],
+    "effects": []
+  },
+  "combat": {
+    "baseHp": 2,
+    "baseXp": 18,
+    "w": 40,
+    "h": 54
+  }
+}

@@ -30,7 +30,10 @@ async function historicalRecord(env,data){
  const ciphertext=await webcrypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode(base+'|'+revision),tagLength:128},key,new TextEncoder().encode(JSON.stringify(data)));
  const encode=value=>Buffer.from(value).toString('base64');
  const sealed='MOMO2.'+btoa(JSON.stringify({v:2,release:profile.release,device:profile.device,revision,salt:encode(salt),iv:encode(iv),data:encode(ciphertext)}));
- env.records.set('profile',{...profile,revision});env.records.set('save',sealed);env.local.set('momo-three-worlds-v2',sealed);return sealed;
+ // Historical builds had one save and no slot metadata. Keep this fixture
+ // faithful rather than leaving a new slot index inconsistent with its save.
+ const historicalProfile={...profile,revision};for(const key of ['slotSchema','activeSlot','selection'])delete historicalProfile[key];
+ env.records.delete('slots');env.records.set('profile',historicalProfile);env.records.set('save',sealed);env.local.set('momo-three-worlds-v2',sealed);return sealed;
 }
 async function main(){
  const old=baseline();assert.doesNotThrow(()=>validate(old),'Existing fourth-realm saves require none of the optional new flags');

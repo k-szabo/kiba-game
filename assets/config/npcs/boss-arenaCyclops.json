@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-arenaCyclops",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "arena.boss.guards",
+  "selectors": [
+    {
+      "bossId": "arenaCyclops"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "arenaCyclops",
+        "metadata": "ART_ARENA.cyclops"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/arenaCyclops.json"
+}

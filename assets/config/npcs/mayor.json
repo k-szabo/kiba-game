@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "mayor",
+  "kind": "npc",
+  "faction": "neutral",
+  "name": "camp.rescue.mayor",
+  "selectors": [
+    {
+      "npcId": "mayor"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "campSpecialists",
+        "metadata": "ART_CAMP.mayor"
+      }
+    ],
+    "effects": []
+  }
+}

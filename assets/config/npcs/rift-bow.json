@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "rift-bow",
+  "kind": "enemy",
+  "faction": "void",
+  "name": "fia.void.bow",
+  "selectors": [
+    {
+      "voidKeeperRole": "bow"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidKeepers",
+        "metadata": "ART_FIA_VOID.bow"
+      }
+    ],
+    "effects": []
+  }
+}

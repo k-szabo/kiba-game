@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "rift-mage",
+  "kind": "enemy",
+  "faction": "void",
+  "name": "fia.void.mage",
+  "selectors": [
+    {
+      "voidKeeperRole": "mage"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidKeepers",
+        "metadata": "ART_FIA_VOID.mage"
+      }
+    ],
+    "effects": []
+  }
+}

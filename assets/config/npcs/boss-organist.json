@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-organist",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "shadow.boss.organist",
+  "selectors": [
+    {
+      "bossId": "organist"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "shadowMadOrganist",
+        "metadata": "ART_SHADOW.actors.madOrganist"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/organist.json"
+}

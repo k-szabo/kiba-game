@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "id": "boss-voidDemon",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "fia.void.demon",
+  "selectors": [
+    {
+      "bossId": "voidDemon"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "voidDemon",
+        "metadata": "ART_FIA_VOID.demon"
+      }
+    ],
+    "effects": []
+  },
+  "bossConfig": "assets/config/bosses/voidDemon.json"
+}

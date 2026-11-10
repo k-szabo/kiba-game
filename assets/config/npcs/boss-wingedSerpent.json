@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "boss-wingedSerpent",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "serpent.winged.name",
+  "selectors": [
+    {
+      "bossId": "wingedSerpent"
+    }
+  ],
+  "art": {
+    "sprites": [
+      {
+        "image": "wingedSerpent",
+        "metadata": "ART_REALM_SERPENTS.winged"
+      }
+    ],
+    "effects": [
+      "holyArrow"
+    ]
+  },
+  "bossConfig": "assets/config/bosses/wingedSerpent.json"
+}
