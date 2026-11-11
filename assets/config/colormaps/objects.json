@@ -494,6 +494,54 @@
         "worldFloorY": 820
       }
     },
+    "bossFX.windBuild": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.windBuild",
+      "registration": {
+        "anchorX": 249,
+        "anchorY": 190
+      }
+    },
+    "bossFX.windCrest": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.windCrest",
+      "registration": {
+        "anchorX": 255,
+        "anchorY": 287
+      }
+    },
+    "bossFX.windFade": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.windFade",
+      "registration": {
+        "anchorX": 232,
+        "anchorY": 213
+      }
+    },
+    "bossFX.meteorFall": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.meteorFall",
+      "registration": {
+        "anchorX": 364,
+        "anchorY": 385
+      }
+    },
+    "bossFX.meteorImpact": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.meteorImpact",
+      "registration": {
+        "anchorX": 219,
+        "anchorY": 368
+      }
+    },
+    "bossFX.meteorSmoke": {
+      "kind": "boss-effect",
+      "paletteGroup": "effect.meteorSmoke",
+      "registration": {
+        "anchorX": 188,
+        "anchorY": 280
+      }
+    },
     "bossFX.lava": {
       "kind": "boss-effect",
       "paletteGroup": "effect.lava",

@@ -1,13 +1,16 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {run,tick,sandbox}=require('./test-harness.cjs')();
 const art=run('BOSS_FX_ART'),manifest=run('ART_MANIFEST');
-assert.equal(Object.keys(art).length,10,'The boss effect catalog is incomplete');
+assert.equal(Object.keys(art).length,16,'The boss effect catalog is incomplete');
 const ctx=sandbox.document.getElementById('world').getContext('2d'),draws=[],stack=[];
 ctx.globalAlpha=1;ctx.save=()=>stack.push(ctx.globalAlpha);ctx.restore=()=>{assert(stack.length,'Unbalanced effect restore');ctx.globalAlpha=stack.pop();};
 ctx.drawImage=(image,...args)=>{draws.push({key:image.effectKey,args,alpha:ctx.globalAlpha});};
 for(const [key,a]of Object.entries(art)){
- const png=fs.readFileSync(path.join(__dirname,'..',manifest[a.image])),w=png.readUInt32BE(16),h=png.readUInt32BE(20),r=a.rect;
- assert.equal(png[25],6,'Effect lost its generated alpha channel');
+ const bytes=fs.readFileSync(path.join(__dirname,'..',manifest[a.image])),r=a.rect;
+ const webp=manifest[a.image].endsWith('.webp');
+ if(webp)assert.equal(bytes.toString('ascii',8,16),'WEBPVP8X','Expected an extended WebP with alpha');
+ assert(webp?(bytes[20]&16)!==0:bytes[25]===6,'Effect lost its generated alpha channel');
+ const w=webp?bytes.readUIntLE(24,3)+1:bytes.readUInt32BE(16),h=webp?bytes.readUIntLE(27,3)+1:bytes.readUInt32BE(20);
  assert(r.x>=0&&r.y>=0&&r.x+r.w<=w&&r.y+r.h<=h&&r.w>0&&r.h>0,`Invalid source bounds: ${key}`);
  assert(a.anchorX>=0&&a.anchorX<=r.w&&a.anchorY>=0&&a.anchorY<=r.h,`Invalid registration: ${key}`);
  run(`Visuals.images[${JSON.stringify(a.image)}]={complete:true,naturalWidth:${w},naturalHeight:${h},effectKey:${JSON.stringify(a.image)}}`);
@@ -47,4 +50,4 @@ for(let i=0;i<4000&&nightmare.run("Prologue.phase==='battle'");i++){
 }
 for(const kind of ['sweep','rift','storm','devour'])assert(kinds.has(kind),'A nightmare area effect was not exercised');
 assert.equal(nightmare.run('Prologue.phase'),'death');
-console.log('PASS: all boss move families and auto strikes render painted effects; strict PNG regions/anchors, unchanged damage/geometry/timers/platforms, cultist sigils, frozen pause and every nightmare area attack through its inevitable defeat.');
+console.log('PASS: all boss move families and auto strikes render painted effects; strict atlas regions/anchors and alpha, unchanged damage/geometry/timers/platforms, cultist sigils, frozen pause and every nightmare area attack through its inevitable defeat.');

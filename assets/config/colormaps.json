@@ -91,25 +91,25 @@
   "counts": {
     "pc": 3,
     "npcs": 103,
-    "objects": 127,
-    "paletteGroups": 244,
-    "assets": 305,
-    "codeColors": 168
+    "objects": 133,
+    "paletteGroups": 250,
+    "assets": 306,
+    "codeColors": 171
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "8f207f0943f79397542b5874086c65fabb4f525d9265b6147dc6392eac513ffc",
+      "sha256": "4a49a5cccec87fd8c3cff8e5d3ff7d239b8b7e7d4d7c215983da36734d7c9384",
       "counts": {
-        "codeColors": 168
+        "codeColors": 171
       }
     },
     {
       "file": "colormaps/effects.json",
-      "sha256": "47fe48c3cc52692ab740bd84f6a7d239e7da1984e60b7c935c5eb091dc195bc7",
+      "sha256": "74715f89d43b441641800de8cf75610bee74df93fc9da4f54265134cbf4fd840",
       "counts": {
-        "paletteGroups": 17,
-        "assets": 17
+        "paletteGroups": 23,
+        "assets": 18
       }
     },
     {
@@ -157,9 +157,9 @@
     },
     {
       "file": "colormaps/objects.json",
-      "sha256": "ca3d39a6821847dc00eb764666c1fb0840086c826e5dffb3b8c1d1c162a8eab6",
+      "sha256": "2b4ad61bbb6f4ed0cc9a9a2afbe3761aaa145d2ccae8ee8f61a640a1fe29757c",
       "counts": {
-        "objects": 127
+        "objects": 133
       }
     },
     {

@@ -43,6 +43,18 @@ for(const type of types){
  }
 }
 const h=context(),r=h.run;
+for(const [cycle,move,raw] of [[2,'windstorm',4],[4,'meteorShower',5]]){
+ r(`
+  enemies=[];player.x=250;player.hp=10000;
+  var seal=TowerBossCombat.create({id:'seal',miniboss:'westheruSeal',x:800,y:760,maxHp:100,towerBoss:true,towerDamageScale:.5});
+  enemies.push(seal);seal.cycles=${cycle};seal.clock=0;TowerBossCombat.update(seal,1/60);
+  for(let i=0;i<120;i++)TowerBossCombat.update(seal,1/60);
+ `);
+ assert.equal(r('seal.move'),move);
+ assert.equal(r('player.hp'),10000-raw*.5,move+' uses the tower damage scale');
+ r('TowerBossCombat.defeat(seal)');
+ assert.equal(r('seal.hazards.length'),0);
+}
 const checkpoint=r("var a=TowerRules.fresh(42,'katana');for(var i=0;i<5;i++)a=TowerRules.advance(a,{kills:TowerRules.enemyCount(a.floor),elapsed:10}).state;a.checkpoint");
 assert.equal(checkpoint.cleared,5);assert.equal(checkpoint.kills,r('TowerRules.killsThrough(5)'));
 assert.equal(r('TowerRules.validCheckpoint(a.checkpoint)'),true);

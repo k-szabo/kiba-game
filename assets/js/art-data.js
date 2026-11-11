@@ -30,6 +30,7 @@ const ART_MANIFEST = {
  giantWaspArt:'assets/images/enemies/giant-wasp-v1.png',
  westheruArt:'assets/images/npcs/westheru-v1.png',
  westheruSealArt:'assets/images/enemies/westheru-seal-v1.png',
+ westheruStormFx:'assets/images/effects/westheru-storm-v1.webp',
  skyDragonArt:'assets/images/enemies/sky-dragon-v1.png',
  islandsArrivalBackdrop:'assets/images/backgrounds/floating-islands-arrival-v1.png',
  islandsArrivalBackdropMotionPhaseB:'assets/images/backgrounds/floating-islands-arrival-motion-b-v1.png',

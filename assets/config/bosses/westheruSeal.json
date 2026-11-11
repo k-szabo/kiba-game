@@ -10,8 +10,9 @@
     "moves": [
       "lightning",
       "stormFan",
+      "windstorm",
       "lightning",
-      "stormFan"
+      "meteorShower"
     ]
   },
   "tower": {
@@ -19,6 +20,7 @@
   },
   "assets": [
     "westheruSealArt",
-    "slayerLightning"
+    "slayerLightning",
+    "westheruStormFx"
   ]
 }

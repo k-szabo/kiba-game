@@ -45,7 +45,8 @@ const TowerBossArt=(()=>{
  function effects(e){
   if(!TowerBossCombat.is(e)||e.dead)return;
   const type=TowerBossCombat.id(e);
-  if(WatchtowerBalloonCombat.is(e)||DungeonCombat.is(e)||Serpents.is(e)&&e.serpentType!=='lava'||type==='fiaVengeance'||type==='fiaRitual'||CampMaster.is(e)||PrisonWarden.is(e)||PrisonHunter.is(e)||FloatingIslands.is(e))return;
+  if(WatchtowerBalloonCombat.is(e)){WatchtowerBalloonArt.effects(e);return;}
+  if(DungeonCombat.is(e)||Serpents.is(e)&&e.serpentType!=='lava'||type==='fiaVengeance'||type==='fiaRitual'||CampMaster.is(e)||PrisonWarden.is(e)||PrisonHunter.is(e)||FloatingIslands.is(e))return;
   if(GatekeeperCombat.is(e)){ZigguratDescentArt.effects(e);return;}
   if(type==='slayer'){SlayerArt.effects(e);return;}
   if(ArenaCombat.is(e)){ArenaArt.effects(e);return;}

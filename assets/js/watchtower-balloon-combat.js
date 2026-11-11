@@ -38,13 +38,27 @@ const WatchtowerBalloonCombat=(()=>{
     warning,life:warning+.42,active:false,damage:damageAmount,hitDone:false});
   }
  }
+ function storm(e,warning){
+  const {x,y,w}=e.arena,width=Math.min(w,180),sweep=1.1,dir=e.attackFace;
+  e.hazards.push({kind:'windstorm',x:dir>0?x:x+w-width,y:y-72,w:width,h:72,warning,
+   life:warning+sweep,sweep,dir,active:false,damage:4,hitDone:false});
+ }
+ function meteors(e,warning){
+  const {x,y,w}=e.arena,spacing=Math.min(210,w/3),width=Math.min(118,spacing*.65);
+  const center=clamp(e.targetX,x+spacing+width/2,x+w-spacing-width/2);
+  for(const [index,offset] of [0,-e.attackFace,e.attackFace].entries()){
+   const delay=warning+index*.33;
+   e.hazards.push({kind:'meteor',x:center+offset*spacing-width/2,y:y-108,w:width,h:108,
+    warning:delay,preview:warning,life:delay+.24,active:false,damage:5,hitDone:false,dir:e.attackFace});
+  }
+ }
  function tell(e){
   const p=profiles[e.miniboss];e.move=p.moves[e.cycles++%p.moves.length];
   const dx=player.x+player.w/2-e.x-e.w/2;
   if(e.move==='club'&&Math.abs(dx)>300)e.move='belly';
   if(e.move==='claw'&&Math.abs(dx)>430)e.move='dragonFan';
   e.attackFace=e.face;e.targetX=player.x+player.w/2;e.targetY=player.y+player.h*.5;e.attackBox=null;e.windupHp=e.hp;
-  const duration=e.move==='balloonBreath'?1.5:e.move==='lightning'?1.05:e.move==='sigils'?1:.8;
+  const duration=e.move==='balloonBreath'?1.5:e.move==='meteorShower'?1.2:e.move==='lightning'||e.move==='windstorm'?1.05:e.move==='sigils'?1:.8;
   if(e.move==='club'||e.move==='claw'){
    const reach=e.move==='claw'?320:230;
    e.attackBox={x:e.attackFace>0?e.x+e.w*.35:e.x-reach,y:e.y-15,w:reach+e.w*.65,h:e.h+25};
@@ -52,6 +66,8 @@ const WatchtowerBalloonCombat=(()=>{
    e.attackBox={x:e.x+e.w/2-245,y:e.arena.y-130,w:490,h:130};
   }else if(e.move==='sigils')pillars(e,3,100,160,duration,3,170);
   else if(e.move==='lightning')pillars(e,e.hp<=e.maxHp*.5?5:3,90,440,duration,4,155);
+  else if(e.move==='windstorm')storm(e,duration);
+  else if(e.move==='meteorShower')meteors(e,duration);
   phase(e,'windup',duration);e.poseIndex=2;
  }
  function hit(e){
@@ -85,8 +101,12 @@ const WatchtowerBalloonCombat=(()=>{
  function hazards(e,dt){
   for(const h of e.hazards){
    h.warning=Math.max(0,h.warning-dt);h.life-=dt;h.active=h.warning<=0;
+   if(h.kind==='windstorm'&&h.active){
+    const t=clamp(1-h.life/h.sweep,0,1);
+    h.x=e.arena.x+(e.arena.w-h.w)*(h.dir>0?t:1-t);
+   }
    if(h.hitDone||!h.active||h.life<=0||!overlap(player,h))continue;
-   const victim=player,accepted=damage(h.damage,player.x+player.w/2>h.x+h.w/2?1:-1,true);
+   const victim=player,dir=h.kind==='windstorm'?h.dir:player.x+player.w/2>h.x+h.w/2?1:-1,accepted=damage(h.damage,dir,true);
    if(accepted!==false)h.hitDone=true;
    if(victim!==player||!current(e)||state!=='play')return false;
   }
