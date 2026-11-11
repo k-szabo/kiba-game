@@ -23,7 +23,7 @@ parser.add_argument('--check', action='store_true', help='Verify the existing re
 args = parser.parse_args()
 atlas_script = r"""
 const fs=require('node:fs'),vm=require('node:vm');
-const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/shadow-ninja-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/watchtower-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/ziggurat-descent-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({watchtower:ART_WATCHTOWER,ninjas:ART_SHADOW_NINJAS,descent:ART_ZIGGURAT_DESCENT,manifest:ART_MANIFEST,frames:ART_FRAMES,foxfire:ART_FOXFIRE,fiaSpirits:ART_FIA_SPIRITS,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
+const art=vm.runInNewContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/shadow-ninja-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/watchtower-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/ziggurat-descent-art-data.js','utf8')+'\n'+fs.readFileSync('assets/js/hannah-art-data.js','utf8')+';({watchtower:ART_WATCHTOWER,ninjaClan:ART_NINJA_CLAN,ninjas:ART_SHADOW_NINJAS,descent:ART_ZIGGURAT_DESCENT,manifest:ART_MANIFEST,frames:ART_FRAMES,foxfire:ART_FOXFIRE,fiaSpirits:ART_FIA_SPIRITS,effects:ART_EFFECTS,council:ART_COUNCIL,camp:ART_CAMP,secretWalls:ART_SECRET_WALLS,inventory:ART_INVENTORY,serpent:ART_SERPENT,shadowCult:ART_SHADOW,shadowAltar:ART_SHADOW_ALTAR,slayer:ART_SLAYER,campMaster:ART_CAMP_MASTER,campTerrain:ART_CAMP_TERRAIN,samuraiCamp:ART_SAMURAI_CAMP,realmSerpents:ART_REALM_SERPENTS,prison:ART_PRISON,kitsune:ART_KITSUNE,arena:ART_ARENA,dungeon:ART_DUNGEON,cultDungeon:ART_CULT_DUNGEON,fia:ART_FIA,japan:ART_JAPAN,hannah:ART_HANNAH,dragon:ART_DRAGON,fiaVoid:ART_FIA_VOID,fiaRitual:ART_FIA_RITUAL})');
 art.shadow=vm.runInNewContext(fs.readFileSync('assets/js/shadow-animation.js','utf8')+';SHADOW_CLIPS');
 art.bossEffects=vm.runInNewContext(fs.readFileSync('assets/js/boss-vfx.js','utf8')+';BOSS_FX_ART');
 const game=fs.readFileSync('assets/js/game.js','utf8');
@@ -189,6 +189,10 @@ for name in ('captain', 'necromancer', 'council'):
 for name in ('templeGuard', 'woundedAngel', 'highPriestess'):
     definition = atlas['cultDungeon'][name]
     npcs['cultDungeon.' + name] = {'role': 'dungeon-boss', 'faction': 'heaven' if name == 'woundedAngel' else 'shadowCult', 'paletteGroup': group('npc.cultDungeon.' + name, manifest[definition['image']], definition['frames'], 'ART_CULT_DUNGEON.' + name + '.frames')}
+for name, definition in atlas['ninjaClan'].items():
+    npcs['ninjaClan.' + name] = {'role': 'dungeon-boss' if name == 'ritualist' else 'camp-service',
+        'faction': 'shadowCult' if name == 'ritualist' else 'shadowNinjas',
+        'paletteGroup': group('npc.ninjaClan.' + name, manifest[definition['image']], definition.get('frames', definition), 'ART_NINJA_CLAN.' + name)}
 for name, definition in atlas['ninjas'].items():
     if name == 'momoHook':
         pc['grapple'] = {'paletteGroup': group('pc.momo.grapple', manifest[definition['image']], definition['frames'], 'ART_SHADOW_NINJAS.momoHook.frames')}
@@ -381,7 +385,7 @@ result = {'schemaVersion': 1,
           'flags': flags, 'codeColors': code_colors}
 index, parts = partition(result)
 serialized = serialize(index)
-assert len(npcs) == 97 + len(atlas['watchtower']), 'Missing current character entry'
+assert len(npcs) == 97 + len(atlas['watchtower']) + len(atlas['ninjaClan']), 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
 assert len(assets) == len(image_files), 'Incomplete image inventory'

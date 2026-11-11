@@ -85,7 +85,9 @@ for(const fps of [30,60,120]){
  const art=fs.readFileSync(path.join(__dirname,'../assets/js/art-data.js'),'utf8'),start=art.indexOf('const ART_MANIFEST = {');
  const manifest=vm.runInNewContext(art.slice(start,art.indexOf('\n};',start)+3)+';ART_MANIFEST');
  const authored=vm.runInNewContext(source.slice(source.indexOf(' const authored={'),source.indexOf(' const authoredLoads'))+';authored');
- const keys=Object.keys(manifest).filter(k=>manifest[k].includes('/backgrounds/')&&!/Terrain$/.test(k)&&!k.endsWith('MotionPhaseB'));
+ // These atlas backgrounds use a story-driven rift transition, without an authored ambient phase.
+ const staticAtlases=new Set(['ninjaDungeonBackdrops','ninjaRiftClosed']);
+ const keys=Object.keys(manifest).filter(k=>!staticAtlases.has(k)&&manifest[k].includes('/backgrounds/')&&!/Terrain$/.test(k)&&!k.endsWith('MotionPhaseB'));
  assert.deepEqual(Object.keys(authored).sort(),keys.sort(),'Every background, including hidden arenas and fallback panoramas, has a painted phase');
  for(const key of keys){const profile=authored[key],a=fs.readFileSync(path.join(__dirname,'..',manifest[key])),b=fs.readFileSync(path.join(__dirname,'..',manifest[profile.asset]));assert.equal(profile.sourceSize?.[0]??a.readUInt32BE(16),b.readUInt32BE(16),key+' registered native width');assert.equal(profile.sourceSize?.[1]??a.readUInt32BE(20),b.readUInt32BE(20),key+' registered native height');if(profile.sourceSize){assert(Math.abs(a.readUInt32BE(16)-b.readUInt32BE(16))<=1);assert(Math.abs(a.readUInt32BE(20)-b.readUInt32BE(20))<=1);}assert(profile.regions.length>0);}
 }

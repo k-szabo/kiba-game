@@ -62,8 +62,9 @@ const SaveVault=(()=>{
   // loading supplies fresh(equipped); explicit malformed service state fails.
   if(Object.hasOwn(data,'campServices')){
    const service=data.campServices;
-   if(!CampServiceRules.validate(service,data.weaponStyle))throw Error('Invalid camp services');
-   if((service.weaponRank||service.armorRank||service.ownedWeapons.filter(id=>id!=='foxfireKatana').length>1)&&!hasCampFlag('smithRescued')&&!hasHannah('underworldSmithMet'))throw Error('Invalid smith progress');
+   const advancedSmith=hasCampFlag('ninjaClanRitualistReward')&&data.visitedRests[0].includes('ninjaCampArrival');
+   if(!CampServiceRules.validate(service,data.weaponStyle,advancedSmith))throw Error('Invalid camp services');
+   if((service.weaponRank||service.armorRank||service.ownedWeapons.filter(id=>id!=='foxfireKatana').length>1)&&!hasCampFlag('smithRescued')&&!hasHannah('underworldSmithMet')&&!advancedSmith)throw Error('Invalid smith progress');
    if(service.ownedWeapons.includes('foxfireKatana')!==hasHannah('foxfireKatana'))throw Error('Invalid relic weapon ownership');
    if((service.herbs||service.potions)&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid herbalist progress');
    if((data.prologueComplete===false||data.weaponChoicePending===true)&&(service.ownedWeapons.length!==1||service.ownedWeapons[0]!=='katana'||service.weaponRank||service.armorRank||service.herbs||service.potions))throw Error('Invalid dream equipment');
@@ -80,6 +81,9 @@ const SaveVault=(()=>{
   if((data.location==='dragonCatacombs'||data.visitedRests[3].includes('dragonRaidEntrance'))&&!(data.fiaJourney?.dragon.run>0))throw Error('Invalid dragon raid entry');
   if(['underworldTraderMet','underworldCookMet','underworldSmithMet'].some(id=>hasHannah(id)&&!data.visitedRests[3].some(rest=>shadowUnderworld.rests.some(r=>r.id===rest))))throw Error('Invalid underworld service history');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
+  if(hasCampFlag('ninjaCorruptedSeal')!==hasCampFlag('ninjaClanRitualistReward')||
+     hasCampFlag('ninjaSealPurified')&&(!hasCampFlag('ninjaCorruptedSeal')||!hasHannah('zenRescued')))throw Error('Invalid ninja seal');
+  if(hasCampFlag('ninjaClanDebrief')&&(!hasCampFlag('ninjaClanRitualistReward')||!data.visitedRests[0].includes('ninjaCampArrival')))throw Error('Invalid ninja camp debrief');
   if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
   if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
@@ -116,7 +120,8 @@ const SaveVault=(()=>{
    if(accepted&&(!rescuedFia||!data.defeated[shadowIndex])||captain&&!accepted||serpent&&!captain||guards&&!serpent||champion&&!guards||shadow.includes('arenaSerpentScale')!==serpent)throw Error('Invalid arena progress');
    const heard=shadow.includes('fiaChambersHeard'),talismanAccepted=shadow.includes('fiaTalismanAccepted'),talisman=shadow.includes('priestessTalisman'),completed=shadow.includes('fiaTalismanCompleted'),slain=shadow.includes('fiaSlain');
    if(heard&&!champion||talismanAccepted&&(!heard||!champion)||talisman&&(!talismanAccepted||!camp.includes('sectPriestessReward'))||completed&&(!talisman||!talismanAccepted))throw Error('Invalid Fia quest progress');
-   if((chickenCount>0||data.quickHeal==='roastChicken')&&!completed)throw Error('Invalid chicken reward');
+   const ninjaVendor=rescued&&hasCampFlag('ninjaClanRitualistReward')&&data.visitedRests[0].includes('ninjaCampArrival');
+   if((chickenCount>0||data.quickHeal==='roastChicken')&&!completed&&!ninjaVendor)throw Error('Invalid chicken reward');
    if(slain&&(!rescuedFia||!data.defeated[shadowIndex])||['fiaRewardClaimed','kitsuneSoul','kibaShield'].some(id=>shadow.includes(id)!==slain))throw Error('Invalid Fia victory');
    if(shadow.includes('corruptedHymn')&&!shadow.includes('guardian:madOrganist'))throw Error('Invalid shadow item');
    if(shadow.includes('zenHymnPurified')&&(!shadow.includes('zenRescued')||!shadow.includes('corruptedHymn')||data.soldItems.includes('corruptedHymn')))throw Error('Invalid hymn purification');

@@ -8,11 +8,22 @@ const DungeonRun=(()=>{
  const floor=()=>active()?level.dungeon.floor:-1;
  const definition=id=>DUNGEON_CATALOGUE[id||dungeonId()];
  const rules=id=>DungeonRules.definitions[id||dungeonId()];
- const entrance=()=>Object.values(DUNGEON_CATALOGUE).find(spec=>level===spec.entryMap&&pointNear(spec.entryPoint,130,110)&&(spec.id!=='sectFall'||DevSession.active||abilities[1]&&flags[0].includes('guardian:oldCultist')));
+ const entrance=()=>Object.values(DUNGEON_CATALOGUE).find(spec=>level===spec.entryMap&&pointNear(spec.entryPoint,130,110)&&
+  (spec.id!=='sectFall'||DevSession.active||abilities[1]&&flags[0].includes('guardian:oldCultist')));
  const dungeonId=()=>active()?level.dungeon.id:entrance()?.id||'yomiFall';
  const owns=(id,which=dungeonId())=>flags[definition(which).realm].includes(id);
  const runId=(id=dungeonId())=>DungeonRules.runInfo(dungeonState,id)?.run??0;
  const cleared=(index,id=dungeonId())=>owns(definition(id).rewards[index]?.stage,id);
+ const friendly=e=>level.dungeon?.id==='ninjaClan'&&e.dungeonSide==='ninja'&&owns('ninjaClanSentinelReward','ninjaClan');
+ function campNpc(id){
+  if(Prologue.active||level.id!=='ninjaClanCamp')return null;
+  if(id==='akash'&&!Merchant.rescued()||id==='zen'&&!PrisonQuest.rescued())return null;
+  return level.npcs.find(npc=>npc.id===id||npc.service===id)||null;
+ }
+ function campProvider(id){
+  const npc=campNpc(id);
+  return npc&&pointNear(npc,95,85)?npc:null;
+ }
  const checkpointFloor=(point,id=dungeonId())=>definition(id).floors.find(map=>[...map.rests,...map.checkpoints].some(r=>r.id===point?.id));
  const saveLocation=()=>active()?checkpointFloor(checkpoint)?.id||level.id:CampQuest.locationId();
  const atScroll=(id=null)=>!!entrance()&&(!id||entrance().id===id);
@@ -53,7 +64,9 @@ const DungeonRun=(()=>{
   const roll=Math.random()<.25?DungeonRules.enhancements[Math.min(2,Math.floor(Math.random()*3))]:null,result=DungeonRules.begin(dungeonState,roll,id);if(!result.ok)return false;
   const currentFlags=[r.started,...r.stages,r.chest];dungeonState=result.state;flags[spec.realm]=flags[spec.realm].filter(flag=>!currentFlags.includes(flag));flags[spec.realm].push(r.started);
   const ids=new Set(spec.floors.flatMap(map=>[...map.rests,...map.checkpoints].map(rest=>rest.id)));visitedRests[spec.realm]=visitedRests[spec.realm].filter(rest=>!ids.has(rest));
-  const run=runId(id);persist();story(spec.name,spec.title,spec.intro,()=>{if(state==='play'&&runId(id)===run&&atScroll(id))enterFloor(0,{preserveCheckpoint:false,id});});return true;
+  const run=runId(id);persist();
+  if(!spec.intro)return enterFloor(0,{preserveCheckpoint:false,id});
+  story(spec.name,spec.title,spec.intro,()=>{if(state==='play'&&runId(id)===run&&atScroll(id))enterFloor(0,{preserveCheckpoint:false,id});});return true;
  }
  function resume(){
   if(state!=='play'||!atScroll())return false;
@@ -65,8 +78,12 @@ const DungeonRun=(()=>{
  function leave(){
   if(state!=='play'||!active())return false;
   const spec=definition(),hp=player.hp;
-  enterRealm(spec.realm,levels[spec.realm].rests.findLast(rest=>visitedRests[spec.realm].includes(rest.id))||levels[spec.realm].rests[0]);
-  if(spec.id==='yomiFall'&&!enterCouncilHall())return false;
+  if(spec.entryLocation){
+   if(!CampQuest.enter(spec.entryLocation,{save:false}))return false;
+  }else{
+   enterRealm(spec.realm,levels[spec.realm].rests.findLast(rest=>visitedRests[spec.realm].includes(rest.id))||levels[spec.realm].rests[0]);
+   if(spec.id==='yomiFall'&&!enterCouncilHall())return false;
+  }
   initPlayer(spec.entryPoint);player.hp=Math.min(hp,player.maxHp);resetCamera();persist();updateHUD();return true;
  }
  function respawn(){
@@ -88,12 +105,18 @@ const DungeonRun=(()=>{
  function onBossDefeated(enemy){
   const index=floor(),spec=definition(),reward=spec.rewards[index];
   if(state!=='play'||index<0||!reward||runId()<=0||enemy.replay||!enemies.includes(enemy)||!enemy.dead||enemy.runId!==runId()||enemy.dungeonId!==spec.id||enemy.miniboss!==reward.type||cleared(index)||index>0&&!cleared(index-1))return false;
+  const firstClear=!owns(reward.claim);
   flags[spec.realm].push(reward.stage);
-  if(!owns(reward.claim)){flags[spec.realm].push(reward.claim);progression.points+=reward.points;if(reward.soul&&!owns(reward.soul))flags[spec.realm].push(reward.soul);}
+  if(firstClear){
+   flags[spec.realm].push(reward.claim);progression.points+=reward.points;
+   if(reward.soul&&!owns(reward.soul))flags[spec.realm].push(reward.soul);
+   if(spec.id==='ninjaClan'&&index===2)flags[0].push('ninjaCorruptedSeal');
+  }
   pending=[];for(const e of enemies)if(e.dungeonSummon){e.dead=true;e.active=false;}
   projectiles=projectiles.filter(p=>p.source!==DungeonCombat.source(enemy)&&p.source!=='dungeon-minion');
   FiaQuest.onPriestessDefeated(enemy);Merchant.award(reward.coins);awardXP(reward.xp);persist();updateHUD();
-  if(index===2)story(spec.name,enemy.name,spec.victory);return true;
+  if(firstClear&&spec.id==='ninjaClan'&&index===1)story('ninjaClan.name',enemy.name,'ninjaClan.surrender',null,{right:'reika',speaker:'reika'});
+  else if(index===2&&spec.victory)story(spec.name,enemy.name,spec.victory);return true;
  }
  function openChest(){
   if(state!=='play'||floor()!==2||!pointNear(level.rewardChest,100,100)||!cleared(2)||runId()<=0)return false;
@@ -106,25 +129,79 @@ const DungeonRun=(()=>{
  }
  function context(){
   if(Prologue.active)return null;
-  if(atScroll())return {type:'dungeonScroll',id:entrance().id,text:I18n.t(entrance().prompt)};
+  if(level.id==='ninjaClanCamp'){
+   for(const id of ['akash','smith','healer','reika']){
+    const npc=campProvider(id);
+    if(npc)return {type:'ninjaCampService',id,text:I18n.format('camp.talk',[I18n.t(npc.name)])};
+   }
+   return pointNear(level.returnPoint,100,85)?{type:'ninjaCampReturn',text:I18n.format('ziggurat.return',[I18n.t('balloon.stormIslands')])}:null;
+  }
+  if(atScroll()){
+   const spec=entrance(),text=spec.entryLocation?I18n.format('service.enter',[I18n.t(spec.title)]):I18n.t(spec.prompt);
+   return {type:'dungeonScroll',id:spec.id,text};
+  }
   if(!active())return null;
   const index=floor();
   if(index===2&&cleared(2)&&pointNear(level.rewardChest,100,100))return {type:'dungeonChest',text:I18n.t(owns(rules().chest)?'dungeon.chest.empty':'dungeon.chest.open')};
-  if(pointNear(level.returnPoint,100,85))return {type:index===0?'dungeonLeave':'dungeonPrevious',text:I18n.t(index===0?definition().returnPrompt:'dungeon.previous')};
-  if(cleared(index)&&pointNear(level.nextPoint,100,100))return {type:index===2?'dungeonLeave':'dungeonNext',text:I18n.t(index===2?definition().returnPrompt:'dungeon.next')};return null;
+  if(pointNear(level.returnPoint,100,85)){
+   const spec=definition();
+   const text=index===0&&spec.entryLocation?I18n.format('ziggurat.return',[I18n.t('balloon.stormIslands')]):I18n.t(index===0?spec.returnPrompt:'dungeon.previous');
+   return {type:index===0?'dungeonLeave':'dungeonPrevious',text};
+  }
+  if(cleared(index)&&pointNear(level.nextPoint,100,100)){
+   const final=index===definition().floors.length-1;
+   const exit=final&&definition().exitLocation;
+   return {type:final?(exit?'dungeonExit':'dungeonLeave'):'dungeonNext',text:exit?I18n.format('service.enter',[I18n.t('ninjaClan.camp')]):I18n.t(final?definition().returnPrompt:'dungeon.next')};
+  }return null;
  }
  function interact(candidate){
   if(state!=='play'||!candidate)return false;const actual=context();if(!actual||actual.type!==candidate.type)return false;
+  if(actual.type==='ninjaCampReturn')return CampQuest.leave();
+  if(actual.type==='ninjaCampService'){
+   if(candidate.id!==actual.id)return false;
+   if(actual.id==='akash')return Merchant.open();
+   if(actual.id==='smith')return CampWorkshop.open('forge');
+   if(actual.id==='reika'){
+    if(!flags[0].includes('ninjaClanDebrief')){flags[0].push('ninjaClanDebrief');persist();}
+    story('ninjaClan.camp','ninjaClan.sentinel','ninjaClan.reikaCamp',null,{right:'reika',speaker:'reika'});return true;
+   }
+   if(player.hp>=player.maxHp)return false;
+   player.hp=player.maxHp;updateHUD();persist();return true;
+  }
   if(actual.type==='dungeonScroll')return (!candidate.id||candidate.id===actual.id)&&menu();if(actual.type==='dungeonChest')return openChest();if(actual.type==='dungeonLeave')return leave();
+  if(actual.type==='dungeonExit')return CampQuest.enter(definition().exitLocation);
   if(actual.type==='dungeonPrevious')return enterFloor(floor()-1);if(actual.type==='dungeonNext')return enterFloor(floor()+1);return false;
  }
  function objective(){
+  if(level.id==='ninjaClanCamp'){
+   const reika=campNpc('reika');
+   return flags[0].includes('ninjaClanDebrief')?{compass:false,text:'story.journeyEnd',journeyEnd:true}:
+    {point:reika,name:reika.name,compass:false,text:I18n.format('camp.talk',[I18n.t(reika.name)])};
+  }
   if(level===councilHall)return {point:level.memoryScroll,compass:false,text:'dungeon.scroll.prompt'};
+  if(level===stormIslands&&!flags[0].includes('ninjaClanRitualistReward')&&flags[0].includes('westheruDeparted')){
+   return {point:level.endPoint,compass:false,text:I18n.format('service.enter',[I18n.t('ninjaClan.name')])};
+  }
+  if(active()&&dungeonId()==='ninjaClan'&&cleared(2)){
+   if(!owns(rules().chest))return {point:level.rewardChest,compass:false,text:'dungeon.chest.open'};
+   return {point:level.nextPoint,compass:false,text:I18n.format('service.enter',[I18n.t('ninjaClan.camp')])};
+  }
   if(!active())return null;const index=floor();return {point:cleared(index)?index===2?level.rewardChest:level.nextPoint:level.arena,compass:false,text:cleared(2)?dungeonId()==='sectFall'?'cultDungeon.objective.chest':'dungeon.objective.chest':'dungeon.objective.boss'};
  }
  function currentOwner(owner){
   return active()&&DungeonCombat.is(owner)&&['dungeonNecromancer','cultHighPriestess'].includes(owner.miniboss)&&
    (DungeonCombat.profiles[owner.miniboss].dungeon||'yomiFall')===dungeonId()&&owner.runId===runId()&&owner.active&&!owner.dead&&owner.hp>0&&enemies.includes(owner);
+ }
+ function storyObjective(){
+  if(!flags[0].includes('westheruDeparted'))return null;
+  if(level.id==='ninjaClanCamp')return objective();
+  if(flags[0].includes('ninjaClanDebrief'))return {text:'story.journeyEnd',compass:false,journeyEnd:true};
+  const campReached=visitedRests[0].includes('ninjaCampArrival');
+  const map=campReached?ninjaCamp:stormIslands;
+  const title=campReached?'ninjaClan.camp':'ninjaClan.name';
+  const text=I18n.format('service.enter',[I18n.t(title)]);
+  return level===map?{point:stormIslands.endPoint,name:title,text,compass:true}:
+   {name:map.name,text,compass:false,remote:true};
  }
  function currentSummon(e){const token=summonOwners.get(e);return !!token&&token.dungeon===dungeonId()&&token.run===runId()&&currentOwner(token.owner);}
  function retireSummon(e){e.dead=true;e.active=false;e.windup=e.attackTime=e.walkSpeed=0;}
@@ -161,18 +238,18 @@ const DungeonRun=(()=>{
   const others=enemies.filter(other=>other!==e&&other.dungeonEnemy&&!other.dead&&other.dungeonSide!==e.dungeonSide&&Math.abs(other.y+other.h/2-e.y-e.h/2)<70&&Math.abs(other.x-e.x)<520),
    // Raised soldiers belong to this boss encounter, not to the ambient faction
    // skirmish. They pursue Momo across the arena even beyond normal sight range.
-   target=e.dungeonSummon?player:[player,...others].sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y))[0],dx=target.x+target.w/2-e.x-e.w/2,dy=target.y+target.h/2-e.y-e.h/2,role=enemyRole(e),range=role==='mage'?500:role==='archer'?440:110,
+   target=e.dungeonSummon?player:(friendly(e)?others:[player,...others]).sort((a,b)=>Math.hypot(a.x-e.x,a.y-e.y)-Math.hypot(b.x-e.x,b.y-e.y))[0]||e,dx=target.x+target.w/2-e.x-e.w/2,dy=target.y+target.h/2-e.y-e.h/2,role=enemyRole(e),range=role==='mage'?500:role==='archer'?440:110,
    a=level.arena,feet=player.y+player.h,summonAggro=e.dungeonSummon&&player.x+player.w>a.x&&player.x<a.x+a.w&&feet>=a.y-420&&feet<=a.y+30,
-   near=summonAggro||Math.abs(dx)<520&&Math.abs(dy)<150;
+   near=target!==e&&(summonAggro||Math.abs(dx)<520&&Math.abs(dy)<150);
   if(e.stun<=0&&e.windup>0){
    e.windup=Math.max(0,e.windup-dt);if(e.windup===0){
     const oldPlayer=player;
     if(role==='mage'||role==='archer'){
-     const before=projectiles.length;releaseEnemyAttack(e);for(const p of projectiles.slice(before)){p.dungeonSide=e.dungeonSide;p.source=e.dungeonSummon?'dungeon-minion':'dungeon-faction';}
+     const before=projectiles.length;releaseEnemyAttack(e);for(const p of projectiles.slice(before)){p.dungeonSide=e.dungeonSide;p.source=e.dungeonSummon?'dungeon-minion':'dungeon-faction';if(friendly(e))p.friendlyDungeon=true;}
     }else{
      e.attackTime=e.attackDuration;e.attackElapsed=0;e.recovery=.45;e.cd=e.kind==='shield'?2.2:1.65;
      const hit={x:e.face>0?e.x+e.w*.5:e.x-78,y:e.y-4,w:e.w+78,h:e.h+8};
-     if(overlap(player,hit))damage(e.damageValue||1,e.face,true);
+     if(!friendly(e)&&overlap(player,hit))damage(e.damageValue||1,e.face,true);
      if(player!==oldPlayer||state!=='play'||!enemies.includes(e))return true;
      for(const other of enemies)if(other!==e&&other.dungeonEnemy&&!other.dead&&other.dungeonSide!==e.dungeonSide&&overlap(other,hit)){other.hp=Math.max(0,other.hp-1);other.stun=.18;if(other.hp<=0)other.dead=true;}
     }
@@ -187,7 +264,7 @@ const DungeonRun=(()=>{
     if(speed&&!near&&e.turnCooldown<=0)e.face=direction;moveEnemy(e,direction*speed*(chant?1.35:1),dt,!near);
    }
   }
-  if(overlap(player,e)&&e.contactCd<=0){const old=player;damage(e.damageValue||1,player.x>e.x?1:-1,true);e.contactCd=1.1;if(player!==old)return true;}return true;
+  if(!friendly(e)&&overlap(player,e)&&e.contactCd<=0){const old=player;damage(e.damageValue||1,player.x>e.x?1:-1,true);e.contactCd=1.1;if(player!==old)return true;}return true;
  }
  function projectile(shot,hit){
   if(state!=='play'||!active()||!shot.dungeonSide||shot.life<=0)return false;
@@ -195,7 +272,16 @@ const DungeonRun=(()=>{
   victim.hp=Math.max(0,victim.hp-(shot.damage||1));victim.stun=.18;if(victim.hp<=0)victim.dead=true;return true;
  }
  function hud(){
-  if(!active())return false;const e=enemies.find(e=>DungeonCombat.is(e)&&!e.dead&&e.active);$('bossHud').hidden=!e;if(e){$('bossName').textContent=I18n.t(e.name);$('bossHealth').style.width=100*clamp(e.hp/e.maxHp,0,1)+'%';}return true;
+  if(level.id==='ninjaClanCamp'){$('bossHud').hidden=true;return true;}
+  if(!active())return false;
+  const e=enemies.find(e=>DungeonCombat.is(e)&&!e.dead&&e.active);$('bossHud').hidden=!e;
+  if(e){
+   $('bossName').textContent=I18n.t(e.name);$('bossHealth').style.width=100*clamp(e.hp/e.maxHp,0,1)+'%';
+   if(e.attempt?.phase==='ritualist'){
+    const warning=$('campExecutionWarning');warning.hidden=false;
+    warning.textContent=I18n.format('ninjaClan.ritualTimer',[Math.ceil(e.attempt.remaining)]);
+   }
+  }return true;
  }
- return Object.freeze({active,floor,dungeonId,definition,owns,runId,cleared,saveLocation,cancel,menu,keydown,newRun,resume,enterFloor,leave,respawn,stock,addItem,removeItem,consume,canConsume,onBossDefeated,openChest,context,interact,objective,summon,cleanupSummons,update,updateEnemy,projectile,hud,get pending(){return pending;}});
+ return Object.freeze({active,floor,dungeonId,definition,owns,runId,cleared,friendly,campNpc,campProvider,saveLocation,cancel,menu,keydown,newRun,resume,enterFloor,leave,respawn,stock,addItem,removeItem,consume,canConsume,onBossDefeated,openChest,context,interact,objective,storyObjective,summon,cleanupSummons,update,updateEnemy,projectile,hud,get pending(){return pending;}});
 })();

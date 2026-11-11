@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "boss-ninjaClanLeader",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "islands.ninjaLeader",
+  "selectors": [{"bossId": "ninjaClanLeader"}],
+  "art": {
+    "sprites": [{"image": "ninjaLeader", "metadata": "ART_SHADOW_NINJAS.leader"}],
+    "effects": ["fxDarkMagic", "grapplingHook"]
+  }
+}

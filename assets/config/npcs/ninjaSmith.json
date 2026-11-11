@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "ninjaSmith",
+  "kind": "npc",
+  "faction": "shadowNinjas",
+  "name": "ninjaClan.smith",
+  "selectors": [{"npcId": "ninjaSmith"}],
+  "art": {
+    "sprites": [{"image": "ninjaCampSpecialists", "metadata": "ART_NINJA_CLAN.smith"}],
+    "effects": []
+  }
+}

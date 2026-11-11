@@ -16,7 +16,7 @@ const CampQuest=(()=>{
   const id=level?.id;
   return typeof id==='string'&&Object.hasOwn(SIDE_LOCATIONS,id)&&SIDE_LOCATIONS[id].map===level?id:null;
  }
- const isSide=()=>!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers'].includes(locationId());
+ const isSide=()=>!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','ninjaClanCamp'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -134,7 +134,7 @@ const CampQuest=(()=>{
   const fiaMarker=FiaRitual.questMarker(id)||FiaVoidJourney.questMarker(id)||FiaQuest.questMarker(id);if(fiaMarker)return fiaMarker;
   const arenaMarker=ArenaChallenge.questMarker(id);if(arenaMarker)return arenaMarker;
   if(Prologue.active||state==='menu')return null;
-  if(id==='zen'&&PrisonQuest.purificationReady())return '?';
+  if(id==='zen'&&(PrisonQuest.purificationReady()||PrisonQuest.ninjaSealReady()))return '?';
   if(id==='daichi'&&level===forestCamp&&defeated[0])return !owns('campQuestAccepted')?'!':rescueFlags.every(owns)&&!owns('campQuestCompleted')?'?':null;
   if(id==='herbalist'&&level===herbalHut&&(DevSession.active||owns('herbalistRescued'))){
    if(campServices.herbs>=CampServiceRules.profile.herbsPerBrew)return '?';

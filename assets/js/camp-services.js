@@ -5,7 +5,7 @@
  * malformed states produce state:null. No function mutates the supplied state. */
 'use strict';
 const CampServiceRules=(()=>{
- const profile=Object.freeze({rankLimit:5,weaponStep:.5,armorStep:20,weaponBuy:100,weaponSell:50,herbsPerBrew:3,brewHeal:3});
+ const profile=Object.freeze({rankLimit:5,advancedRankLimit:10,weaponStep:.5,armorStep:20,weaponBuy:100,weaponSell:50,herbsPerBrew:3,brewHeal:3});
  const starters=Object.freeze(['katana','naginata','swordShield']);
  const styles=Object.freeze([...starters,'foxfireKatana']);
  const fields=Object.freeze(['ownedWeapons','weaponRank','armorRank','herbs','potions']);
@@ -15,18 +15,22 @@ const CampServiceRules=(()=>{
   if(!starters.includes(style))throw new TypeError('Unknown camp weapon style');
   return {ownedWeapons:[style],weaponRank:0,armorRank:0,herbs:0,potions:0};
  }
- function validate(data,equipped){
+ function validate(data,equipped,advancedUnlocked=false){
+  const limit=advancedUnlocked?profile.advancedRankLimit:profile.rankLimit;
   return !!data&&typeof data==='object'&&!Array.isArray(data)&&Object.keys(data).length===fields.length&&fields.every(key=>Object.hasOwn(data,key))&&
    Array.isArray(data.ownedWeapons)&&data.ownedWeapons.length>0&&data.ownedWeapons.length<=styles.length&&
    Array.from(data.ownedWeapons).every(validStyle)&&new Set(data.ownedWeapons).size===data.ownedWeapons.length&&
    validStyle(equipped)&&data.ownedWeapons.includes(equipped)&&
-   integer(data.weaponRank,0,profile.rankLimit)&&integer(data.armorRank,0,profile.rankLimit)&&
+   integer(data.weaponRank,0,limit)&&integer(data.armorRank,0,limit)&&
    integer(data.herbs,0)&&integer(data.potions,0);
  }
- function price(rank){return integer(rank,0,profile.rankLimit-1)?50*(rank+1):null;}
+ function price(rank,advancedForge=false){
+  const limit=advancedForge?profile.advancedRankLimit:profile.rankLimit;
+  return integer(rank,0,limit-1)?50*(rank+1):null;
+ }
  function copy(data){return {ownedWeapons:[...data.ownedWeapons],weaponRank:data.weaponRank,armorRank:data.armorRank,herbs:data.herbs,potions:data.potions};}
  function transact(data,coins,action,context={}){
-  const state=validate(data,context?.equipped)?copy(data):null;
+  const state=validate(data,context?.equipped,context?.advancedUnlocked===true)?copy(data):null;
   const fail=reason=>({ok:false,state,coins,reason});
   if(!state)return fail('invalidState');
   if(!integer(coins,0))return fail('invalidCoins');
@@ -57,7 +61,7 @@ const CampServiceRules=(()=>{
    }
    return success();
   }
-  const rank=action.type==='forgeWeapon'?'weaponRank':'armorRank',cost=price(state[rank]);
+  const rank=action.type==='forgeWeapon'?'weaponRank':'armorRank',cost=price(state[rank],context.advancedUnlocked===true&&context.advancedForge===true);
   if(cost===null)return fail('maxRank');
   if(coins<cost)return fail('insufficientCoins');
   state[rank]++;coins-=cost;return success();

@@ -3,13 +3,14 @@
  * Transactions validate structure only; their caller commits flags and state together. */
 'use strict';
 const DungeonRules=(()=>{
- const items=Object.freeze({dungeonSeal:null,sectSeal:null,weaponEnhancement:'weapon',armorEnhancement:'armor',spiritEnhancement:'spirit'});
+ const items=Object.freeze({dungeonSeal:null,sectSeal:null,ninjaCampSpoils:null,weaponEnhancement:'weapon',armorEnhancement:'armor',spiritEnhancement:'spirit'});
  const enhancements=Object.freeze(Object.keys(items).filter(id=>items[id]!==null)),boostKeys=Object.freeze(['weapon','armor','spirit']);
  const fields=Object.freeze(['runs','stock','boosts']),limit=5;
  const freeze=spec=>Object.freeze(Object.fromEntries(Object.entries(spec).map(([key,value])=>[key,Array.isArray(value)?Object.freeze(value):value])));
  const definitions=Object.freeze({
   yomiFall:freeze({realm:1,started:'dungeonRunStarted',stages:['dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear'],rewards:['dungeonCaptainReward','dungeonNecromancerReward','dungeonCouncilReward'],chest:'dungeonChestClaimed',soul:'councilSoul',loot:'dungeonSeal',requiredFlags:['councilGateOpen'],requiresRealmBoss:true}),
-  sectFall:freeze({realm:0,started:'sectRunStarted',stages:['sectStage1Clear','sectStage2Clear','sectStage3Clear'],rewards:['sectGuardReward','sectAngelReward','sectPriestessReward'],chest:'sectChestClaimed',soul:'highPriestessSoul',loot:'sectSeal',requiredFlags:['guardian:oldCultist','cultTempleDiscovered'],requiresRealmBoss:true})
+  sectFall:freeze({realm:0,started:'sectRunStarted',stages:['sectStage1Clear','sectStage2Clear','sectStage3Clear'],rewards:['sectGuardReward','sectAngelReward','sectPriestessReward'],chest:'sectChestClaimed',soul:'highPriestessSoul',loot:'sectSeal',requiredFlags:['guardian:oldCultist','cultTempleDiscovered'],requiresRealmBoss:true}),
+  ninjaClan:freeze({realm:0,started:'ninjaClanRunStarted',stages:['ninjaClanStage1Clear','ninjaClanStage2Clear','ninjaClanStage3Clear'],rewards:['ninjaClanLeaderReward','ninjaClanSentinelReward','ninjaClanRitualistReward'],chest:'ninjaClanChestClaimed',soul:'ninjaClanLeaderSoul',soulStage:0,loot:'ninjaCampSpoils',requiredFlags:['balloonVortexArrived'],requiresRealmBoss:true})
  });
  const ids=Object.freeze(Object.keys(definitions));
  const integer=(n,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
@@ -21,10 +22,17 @@ const DungeonRules=(()=>{
    exact(data.stock,Object.keys(items))&&Object.keys(items).every(id=>integer(data.stock[id]))&&
    exact(data.boosts,boostKeys)&&boostKeys.every(key=>integer(data.boosts[key],0,limit));
  }
- function copy(data){return structure(data)?{runs:Object.fromEntries(ids.map(id=>[id,{...data.runs[id]}])),stock:{...data.stock},boosts:{...data.boosts}}:null;}
+ function copy(data){
+  if(exact(data,fields)&&exact(data.runs,['yomiFall','sectFall'])&&
+     exact(data.stock,Object.keys(items).filter(id=>id!=='ninjaCampSpoils'))){
+   data={...data,runs:{...data.runs,ninjaClan:{run:0,roll:null}},stock:{...data.stock,ninjaCampSpoils:0}};
+  }
+  return structure(data)?{runs:Object.fromEntries(ids.map(id=>[id,{...data.runs[id]}])),stock:{...data.stock},boosts:{...data.boosts}}:null;
+ }
  function runInfo(data,id='yomiFall'){return structure(data)&&Object.hasOwn(definitions,id)?{...data.runs[id]}:null;}
  function validate(data,worldFlags=[],defeated=[]){
-  if(!structure(data)||!Array.isArray(worldFlags)||!Array.isArray(defeated))return false;
+  data=copy(data);
+  if(!data||!Array.isArray(worldFlags)||!Array.isArray(defeated))return false;
   let completed=false;
   for(const id of ids){
    const spec=definitions[id],known=worldFlags[spec.realm]??[];if(!Array.isArray(known)||known.some(flag=>typeof flag!=='string')||new Set(known).size!==known.length)return false;
@@ -34,7 +42,7 @@ const DungeonRules=(()=>{
    if((stages.some(Boolean)||rewards.some(Boolean)||soul||has(spec.chest))&&!started)return false;
    if(stages.some((cleared,index)=>cleared&&(!rewards[index]||index>0&&!stages[index-1])))return false;
    if(rewards.some((claimed,index)=>claimed&&index>0&&!rewards[index-1]))return false;
-   if(soul!==rewards[2]||has(spec.chest)&&!stages[2])return false;
+   if(soul!==rewards[spec.soulStage??2]||has(spec.chest)&&!stages[2])return false;
    if(data.stock[spec.loot]>0&&!rewards[2])return false;
    completed||=rewards[2];
   }

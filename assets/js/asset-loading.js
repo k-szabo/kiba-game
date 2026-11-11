@@ -55,6 +55,11 @@ const AssetLoading=(()=>{
   else if(Prologue.active){mode='dream';backdrop='shadowBackdrop';keys=[...BossCatalog.assets('prologueShadow'),...list('shadowBackdrop shadowIdle shadowMelee shadowCast shadowDevour fxDarkMagic fxSlashes fxImpact fxFissure momoHeavy momoSlash momoRoom dialogueShadow dialogueJapan props')];}
   else{
    keys=[backdrop,...combat,...weapon(weaponStyle),...(maps[level?.id]||[])];
+   if(level?.dungeon?.id==='ninjaClan'){
+    keys.push('ninjaDungeonBackdrops','ninjaLeader','watchtowerSentinelArt','ninjaRitualist','ninjaCrossbow','ninjaAssassin','dungeonProps','ninjaClanItems');
+    if(level.dungeon.floor===2)keys.push('ninjaRiftClosed');
+   }
+   if(level?.id==='ninjaClanCamp')keys.push('ninjaDungeonBackdrops','watchtowerSentinelArt','ninjaCampSpecialists','westheruArt','akash','zenPriestess');
    // Tower rounds share a fixed pool; do not interrupt a new boss move or summon.
    if(tower)keys.push('towerBackdrop','prisonTerrain',...japanActors,...shadowActors,...heavenActors,'yomiWalk','yomiAttack',...enemies.filter(e=>e.towerBoss).flatMap(e=>TowerBossArt.assets(e)),...enemies.flatMap(e=>e.balloonWasp?['giantWaspArt']:e.shadowNinjaRole?[{crossbow:'ninjaCrossbow',shuriken:'ninjaShuriken',ninjutsu:'ninjaNinjutsu',assassin:'ninjaAssassin'}[e.shadowNinjaRole]]:[]));
    // Dungeon factions differ from their host realm. Summons and both sides of

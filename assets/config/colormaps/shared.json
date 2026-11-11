@@ -1414,6 +1414,309 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "object.inventoryItem.ninjaClanLeaderSoul": {
+      "source": "assets/images/items/ninja-clan-items-v1.webp",
+      "frameMetadata": "ART_INVENTORY.items.ninjaClanLeaderSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#dbe7fb",
+            "coveragePercent": 22.7256
+          },
+          {
+            "hex": "#bccff8",
+            "coveragePercent": 10.6573
+          },
+          {
+            "hex": "#9db0f8",
+            "coveragePercent": 9.4224
+          },
+          {
+            "hex": "#7fa2ee",
+            "coveragePercent": 8.0647
+          },
+          {
+            "hex": "#6f83dc",
+            "coveragePercent": 7.6619
+          },
+          {
+            "hex": "#8f8aed",
+            "coveragePercent": 6.5127
+          },
+          {
+            "hex": "#3e2072",
+            "coveragePercent": 5.5266
+          },
+          {
+            "hex": "#2b104d",
+            "coveragePercent": 4.6508
+          },
+          {
+            "hex": "#a9b5dc",
+            "coveragePercent": 4.2851
+          },
+          {
+            "hex": "#5f62bf",
+            "coveragePercent": 3.8282
+          },
+          {
+            "hex": "#462aa1",
+            "coveragePercent": 3.6266
+          },
+          {
+            "hex": "#d8d1d8",
+            "coveragePercent": 3.4431
+          },
+          {
+            "hex": "#5c4d93",
+            "coveragePercent": 2.8712
+          },
+          {
+            "hex": "#b5a8bf",
+            "coveragePercent": 2.4417
+          },
+          {
+            "hex": "#8a7cab",
+            "coveragePercent": 2.2312
+          },
+          {
+            "hex": "#6135c8",
+            "coveragePercent": 2.0508
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#7384e3",
+            "coveragePercent": 30.1006
+          },
+          {
+            "hex": "#7ca4f2",
+            "coveragePercent": 21.53
+          },
+          {
+            "hex": "#6166c7",
+            "coveragePercent": 14.9095
+          },
+          {
+            "hex": "#452393",
+            "coveragePercent": 14.0934
+          },
+          {
+            "hex": "#4f44a8",
+            "coveragePercent": 13.9232
+          },
+          {
+            "hex": "#682eca",
+            "coveragePercent": 5.4432
+          }
+        ],
+        "visibleSamples": 257759,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.ninjaCorruptedSeal": {
+      "source": "assets/images/items/ninja-clan-items-v1.webp",
+      "frameMetadata": "ART_INVENTORY.items.ninjaCorruptedSeal",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7d906e",
+            "coveragePercent": 20.1147
+          },
+          {
+            "hex": "#9aa582",
+            "coveragePercent": 14.6427
+          },
+          {
+            "hex": "#484f3c",
+            "coveragePercent": 12.7678
+          },
+          {
+            "hex": "#667757",
+            "coveragePercent": 11.6727
+          },
+          {
+            "hex": "#2f3826",
+            "coveragePercent": 7.1195
+          },
+          {
+            "hex": "#c4c0a2",
+            "coveragePercent": 5.8549
+          },
+          {
+            "hex": "#161811",
+            "coveragePercent": 5.3447
+          },
+          {
+            "hex": "#4b1861",
+            "coveragePercent": 3.753
+          },
+          {
+            "hex": "#f0ebd9",
+            "coveragePercent": 3.5574
+          },
+          {
+            "hex": "#280638",
+            "coveragePercent": 3.1098
+          },
+          {
+            "hex": "#572515",
+            "coveragePercent": 2.828
+          },
+          {
+            "hex": "#644d7a",
+            "coveragePercent": 2.7653
+          },
+          {
+            "hex": "#84442c",
+            "coveragePercent": 2.2077
+          },
+          {
+            "hex": "#6e13a1",
+            "coveragePercent": 1.8719
+          },
+          {
+            "hex": "#a65dc7",
+            "coveragePercent": 1.525
+          },
+          {
+            "hex": "#cb6f42",
+            "coveragePercent": 0.8648
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#69119b",
+            "coveragePercent": 33.2859
+          },
+          {
+            "hex": "#934224",
+            "coveragePercent": 16.3048
+          },
+          {
+            "hex": "#b1623a",
+            "coveragePercent": 15.901
+          },
+          {
+            "hex": "#6b499a",
+            "coveragePercent": 13.5572
+          },
+          {
+            "hex": "#ae38e2",
+            "coveragePercent": 13.5125
+          },
+          {
+            "hex": "#e58f5c",
+            "coveragePercent": 7.4386
+          }
+        ],
+        "visibleSamples": 196151,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "object.inventoryItem.ninjaCampSpoils": {
+      "source": "assets/images/items/ninja-clan-items-v1.webp",
+      "frameMetadata": "ART_INVENTORY.items.ninjaCampSpoils",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#221e35",
+            "coveragePercent": 15.8311
+          },
+          {
+            "hex": "#100d1a",
+            "coveragePercent": 15.8097
+          },
+          {
+            "hex": "#312d4d",
+            "coveragePercent": 15.0992
+          },
+          {
+            "hex": "#413c64",
+            "coveragePercent": 10.8277
+          },
+          {
+            "hex": "#603a27",
+            "coveragePercent": 5.3011
+          },
+          {
+            "hex": "#534e79",
+            "coveragePercent": 5.2446
+          },
+          {
+            "hex": "#815338",
+            "coveragePercent": 4.8266
+          },
+          {
+            "hex": "#a46a45",
+            "coveragePercent": 4.6487
+          },
+          {
+            "hex": "#3f2215",
+            "coveragePercent": 4.2036
+          },
+          {
+            "hex": "#c38659",
+            "coveragePercent": 4.007
+          },
+          {
+            "hex": "#dea975",
+            "coveragePercent": 3.5893
+          },
+          {
+            "hex": "#f6cb97",
+            "coveragePercent": 3.1136
+          },
+          {
+            "hex": "#6b658b",
+            "coveragePercent": 2.6375
+          },
+          {
+            "hex": "#9a8a8f",
+            "coveragePercent": 1.8227
+          },
+          {
+            "hex": "#bdaeb2",
+            "coveragePercent": 1.533
+          },
+          {
+            "hex": "#f5e1c5",
+            "coveragePercent": 1.5045
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a56943",
+            "coveragePercent": 25.2635
+          },
+          {
+            "hex": "#be7e52",
+            "coveragePercent": 21.9472
+          },
+          {
+            "hex": "#8c5737",
+            "coveragePercent": 21.8629
+          },
+          {
+            "hex": "#d49865",
+            "coveragePercent": 18.4562
+          },
+          {
+            "hex": "#eab47a",
+            "coveragePercent": 11.6201
+          },
+          {
+            "hex": "#4c4885",
+            "coveragePercent": 0.8502
+          }
+        ],
+        "visibleSamples": 225057,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "object.inventoryItem.demonLordSoul": {
       "source": "assets/images/items/first-demon-lord-soul-v1.png",
       "frameMetadata": "ART_INVENTORY.items.demonLordSoul",
@@ -5478,6 +5781,111 @@
           }
         ],
         "visibleSamples": 632690,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/items/ninja-clan-items-v1.webp": {
+      "sha256": "b53b97e68fa2dc94e905815eedcfa05ed21eff08402e432870cf253ddd10c47b",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "ninjaClanItems"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#dae4f6",
+            "coveragePercent": 11.158
+          },
+          {
+            "hex": "#2b2044",
+            "coveragePercent": 10.4874
+          },
+          {
+            "hex": "#16121b",
+            "coveragePercent": 10.1028
+          },
+          {
+            "hex": "#433568",
+            "coveragePercent": 9.4537
+          },
+          {
+            "hex": "#7a8c6b",
+            "coveragePercent": 8.0068
+          },
+          {
+            "hex": "#473827",
+            "coveragePercent": 7.4554
+          },
+          {
+            "hex": "#7e8ce4",
+            "coveragePercent": 7.2879
+          },
+          {
+            "hex": "#a3b6f3",
+            "coveragePercent": 6.8243
+          },
+          {
+            "hex": "#9da388",
+            "coveragePercent": 5.7669
+          },
+          {
+            "hex": "#5a634f",
+            "coveragePercent": 4.6704
+          },
+          {
+            "hex": "#675fa2",
+            "coveragePercent": 3.8704
+          },
+          {
+            "hex": "#8a5437",
+            "coveragePercent": 3.6698
+          },
+          {
+            "hex": "#c2bcbc",
+            "coveragePercent": 3.0402
+          },
+          {
+            "hex": "#c38558",
+            "coveragePercent": 2.8611
+          },
+          {
+            "hex": "#5827aa",
+            "coveragePercent": 2.7223
+          },
+          {
+            "hex": "#eec695",
+            "coveragePercent": 2.6225
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#7892e9",
+            "coveragePercent": 29.5828
+          },
+          {
+            "hex": "#512a9b",
+            "coveragePercent": 19.6441
+          },
+          {
+            "hex": "#6757c7",
+            "coveragePercent": 15.4155
+          },
+          {
+            "hex": "#965a38",
+            "coveragePercent": 14.6268
+          },
+          {
+            "hex": "#bd7b4f",
+            "coveragePercent": 12.383
+          },
+          {
+            "hex": "#e0a66f",
+            "coveragePercent": 8.3478
+          }
+        ],
+        "visibleSamples": 678967,
         "dominantCoveragePercent": 99.9999
       }
     },

@@ -35,6 +35,11 @@
       "faction": "shadowCult",
       "paletteGroup": "npc.cultDungeon.highPriestess"
     },
+    "ninjaClan.ritualist": {
+      "role": "dungeon-boss",
+      "faction": "shadowCult",
+      "paletteGroup": "npc.ninjaClan.ritualist"
+    },
     "descent.gatekeeper": {
       "role": "portal-guardian",
       "faction": "shadowCult",
@@ -919,6 +924,107 @@
         ],
         "visibleSamples": 610024,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "npc.ninjaClan.ritualist": {
+      "source": "assets/images/enemies/ninja-ritualist-v1.webp",
+      "frameMetadata": "ART_NINJA_CLAN.ritualist",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c3950",
+            "coveragePercent": 15.4264
+          },
+          {
+            "hex": "#3d2d41",
+            "coveragePercent": 13.9914
+          },
+          {
+            "hex": "#6c5071",
+            "coveragePercent": 12.0818
+          },
+          {
+            "hex": "#5b4462",
+            "coveragePercent": 11.4935
+          },
+          {
+            "hex": "#302335",
+            "coveragePercent": 9.5399
+          },
+          {
+            "hex": "#251a29",
+            "coveragePercent": 6.909
+          },
+          {
+            "hex": "#845983",
+            "coveragePercent": 6.0848
+          },
+          {
+            "hex": "#9a7083",
+            "coveragePercent": 5.3243
+          },
+          {
+            "hex": "#835f6a",
+            "coveragePercent": 4.6234
+          },
+          {
+            "hex": "#1b111e",
+            "coveragePercent": 3.9886
+          },
+          {
+            "hex": "#674c52",
+            "coveragePercent": 3.6224
+          },
+          {
+            "hex": "#b58b95",
+            "coveragePercent": 2.4541
+          },
+          {
+            "hex": "#a16ea8",
+            "coveragePercent": 1.3183
+          },
+          {
+            "hex": "#12070f",
+            "coveragePercent": 1.2237
+          },
+          {
+            "hex": "#d1b0ca",
+            "coveragePercent": 1.1628
+          },
+          {
+            "hex": "#f4def4",
+            "coveragePercent": 0.7555
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#874782",
+            "coveragePercent": 55.1521
+          },
+          {
+            "hex": "#995192",
+            "coveragePercent": 32.1189
+          },
+          {
+            "hex": "#6c4488",
+            "coveragePercent": 6.3197
+          },
+          {
+            "hex": "#8c5caf",
+            "coveragePercent": 3.1783
+          },
+          {
+            "hex": "#865e49",
+            "coveragePercent": 2.1724
+          },
+          {
+            "hex": "#a76ecc",
+            "coveragePercent": 1.0587
+          }
+        ],
+        "visibleSamples": 344961,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.descent.gatekeeper": {
@@ -5506,6 +5612,111 @@
         ],
         "visibleSamples": 504890,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/ninja-ritualist-v1.webp": {
+      "sha256": "4de1e35c119777e88a31950a4a0097bdc3dc6bbf119bfecf5478d3457eddf048",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "ninjaRitualist"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c3950",
+            "coveragePercent": 15.4264
+          },
+          {
+            "hex": "#3d2d41",
+            "coveragePercent": 13.9914
+          },
+          {
+            "hex": "#6c5071",
+            "coveragePercent": 12.0818
+          },
+          {
+            "hex": "#5b4462",
+            "coveragePercent": 11.4935
+          },
+          {
+            "hex": "#302335",
+            "coveragePercent": 9.5399
+          },
+          {
+            "hex": "#251a29",
+            "coveragePercent": 6.909
+          },
+          {
+            "hex": "#845983",
+            "coveragePercent": 6.0848
+          },
+          {
+            "hex": "#9a7083",
+            "coveragePercent": 5.3243
+          },
+          {
+            "hex": "#835f6a",
+            "coveragePercent": 4.6234
+          },
+          {
+            "hex": "#1b111e",
+            "coveragePercent": 3.9886
+          },
+          {
+            "hex": "#674c52",
+            "coveragePercent": 3.6224
+          },
+          {
+            "hex": "#b58b95",
+            "coveragePercent": 2.4541
+          },
+          {
+            "hex": "#a16ea8",
+            "coveragePercent": 1.3183
+          },
+          {
+            "hex": "#12070f",
+            "coveragePercent": 1.2237
+          },
+          {
+            "hex": "#d1b0ca",
+            "coveragePercent": 1.1628
+          },
+          {
+            "hex": "#f4def4",
+            "coveragePercent": 0.7555
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#874782",
+            "coveragePercent": 55.1521
+          },
+          {
+            "hex": "#995192",
+            "coveragePercent": 32.1189
+          },
+          {
+            "hex": "#6c4488",
+            "coveragePercent": 6.3197
+          },
+          {
+            "hex": "#8c5caf",
+            "coveragePercent": 3.1783
+          },
+          {
+            "hex": "#865e49",
+            "coveragePercent": 2.1724
+          },
+          {
+            "hex": "#a76ecc",
+            "coveragePercent": 1.0587
+          }
+        ],
+        "visibleSamples": 344961,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/enemies/old-cultist-v6.png": {

@@ -14,6 +14,53 @@ function next(h){const r=h.run;r('initPlayer(level.nextPoint);interact();player.
 function scroll(h){const r=h.run;assert(r('DungeonRun.leave()'));assert.equal(r('level.id'),'councilHall');assert.equal(r('getContext().type'),'dungeonScroll');}
 function current(h){return h.run('JSON.stringify([dungeonState,flags,progression,coins,visitedRests])');}
 {
+ const h=harness(),r=h.run,original=r('JSON.stringify(saved)');
+ r('DevTools.open();DevSession.begin();DevTools.close();CampQuest.enter("stormIslands",{save:false});initPlayer(level.endPoint);');
+ assert(r('DungeonRun.newRun()'));assert.equal(r('level.id'),'ninjaDungeon1');
+ const hitBoss=amount=>r(`
+  var encounter=enemies.find(DungeonCombat.is);
+  player.x=encounter.arena.x+150;player.y=encounter.arena.y-player.h;
+  encounter.active=true;encounter.inv=0;
+  DungeonCombat.hit(encounter,encounter.parts[0],${amount});
+ `);
+ hitBoss(9000);
+ assert.equal(r('encounter.attempt.phase'),'transforming');
+ assert.equal(r('encounter.hp'),r('encounter.maxHp*.5'));
+ assert.equal(r('state'),'dialog');h.dismiss();
+ r('DungeonCombat.update(encounter,1.3);');
+ assert.equal(r('encounter.attempt.phase'),'infected');
+ r('var victim=player;victim.hp=3;DungeonCombat.projectileHit({ninjaDungeonOwner:encounter},victim,4);');
+ assert.equal(r('encounter.hp'),r('encounter.maxHp*.5+20'));
+ hitBoss(9000);
+ assert(r('flags[0].includes("ninjaClanLeaderSoul")'));
+ next(h);assert.equal(r('level.id'),'ninjaDungeon2');
+ hitBoss(9000);
+ assert(r('DungeonRun.friendly(enemies.find(e=>e.dungeonSide==="ninja"))'));
+ assert.equal(r('state'),'dialog');h.dismiss();
+ next(h);assert.equal(r('level.id'),'ninjaDungeon3');
+ hitBoss(9000);
+ assert.equal(r('encounter.phase'),'banish');r('DungeonCombat.update(encounter,1.2);');
+ assert(r('flags[0].includes("ninjaClanStage3Clear")'));
+ assert(r('flags[0].includes("ninjaCorruptedSeal")'));
+ r('initPlayer(level.rewardChest);interact();');
+ assert.equal(r('DungeonRun.stock("ninjaCampSpoils")'),1);
+ next(h);assert.equal(r('level.id'),'ninjaClanCamp');
+ r('initPlayer(DungeonRun.campNpc("healer"));player.hp=1;interact();');
+ assert.equal(r('player.hp'),r('player.maxHp'));
+ r('initPlayer(DungeonRun.campNpc("smith"));coins=20000;interact();');
+ for(let rank=0;rank<10;rank++)assert(r('CampWorkshop.action({type:"forgeWeapon"})'));
+ assert.equal(r('campServices.weaponRank'),10);
+ assert(!r('CampWorkshop.action({type:"forgeWeapon"})'));
+ r('CampWorkshop.close();flags[1].push("akashRescued");initPlayer(level.npcs.find(n=>n.id==="akash"));');
+ assert.equal(r('Merchant.provider().products.roastChicken.price'),40);
+ r('flags[3].push("zenRescued");initPlayer(level.npcs.find(n=>n.id==="zen"));');
+ const points=r('progression.points');
+ r('interact();interact();');
+ assert.equal(r('progression.points'),points+2);
+ assert(r('flags[0].includes("ninjaSealPurified")'));
+ assert.equal(r('JSON.stringify(saved)'),original,'Preview progress stays in the developer session');
+}
+{
  const h=setup(),r=h.run;r('interact();');assert.equal(r('state'),'dungeonMenu');assert(h.elements.get('dungeonContinue').disabled);const before=current(h);h.elements.get('dungeonBack').onclick();assert.equal(r('state'),'play');assert.equal(current(h),before);
  r('interact();');const stale=h.elements.get('dungeonNew').onclick;h.elements.get('dungeonBack').onclick();stale();assert.equal(current(h),before,'Closed scroll callback cannot start a run');
  r('player.x=0;');assert(!r('DungeonRun.newRun()'));assert(!r('DungeonRun.menu()'));assert.equal(r('dungeonState.runs.yomiFall.run'),0);

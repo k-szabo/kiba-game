@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "reika",
+  "kind": "npc",
+  "faction": "shadowNinjas",
+  "name": "ninjaClan.sentinel",
+  "selectors": [{"npcId": "reika"}],
+  "art": {
+    "sprites": [{"image": "watchtowerSentinelArt", "metadata": "ART_WATCHTOWER.sentinel"}],
+    "effects": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "ninjaHealer",
+  "kind": "npc",
+  "faction": "shadowNinjas",
+  "name": "ninjaClan.healer",
+  "selectors": [{"npcId": "ninjaHealer"}],
+  "art": {
+    "sprites": [{"image": "ninjaCampSpecialists", "metadata": "ART_NINJA_CLAN.healer"}],
+    "effects": []
+  }
+}

@@ -6,7 +6,41 @@ const flags=(...extra)=>[[],['councilGateOpen','dungeonRunStarted',...extra]],de
 const first=['dungeonCaptainReward'],second=[...first,'dungeonNecromancerReward'],all=[...second,'dungeonCouncilReward','councilSoul'];
 const staged=['dungeonStage1Clear','dungeonStage2Clear','dungeonStage3Clear'];
 const initial=rules.fresh();assert(rules.validate(initial));assert(Object.isFrozen(rules));assert(Object.isFrozen(rules.items));assert(Object.isFrozen(rules.enhancements));
-same(initial,{runs:{yomiFall:{run:0,roll:null},sectFall:{run:0,roll:null}},stock:{dungeonSeal:0,sectSeal:0,weaponEnhancement:0,armorEnhancement:0,spiritEnhancement:0},boosts:{weapon:0,armor:0,spirit:0}});
+{
+ const source=fs.readFileSync(path.join(__dirname,'../assets/js/ninja-dungeon-encounters.js'),'utf8');
+ const encounters=vm.runInContext(source+'\nNinjaDungeonEncounters',sandbox);
+ const leader=encounters.begin('leader',1000);
+ const transformation=encounters.hit(leader,5000);
+ assert.equal(transformation.phase,'transforming');
+ assert.equal(transformation.hp,500);
+ assert.equal(encounters.hit(transformation,5000),transformation);
+ const infected=encounters.finishTransformation(transformation);
+ assert.equal(encounters.healFromHit(infected,0),infected);
+ assert.equal(encounters.healFromHit(infected,10).hp,700);
+ assert.equal(encounters.healFromHit(infected,25).phase,'failed');
+ assert.equal(encounters.hit(infected,500).phase,'cleared');
+ assert.equal(encounters.hit(encounters.begin('sentinel',1000),5000).hp,100);
+ const ritual=encounters.begin('ritualist',1000);
+ assert.equal(encounters.tick(ritual,90).phase,'failed');
+ const stopped=encounters.hit(encounters.tick(ritual,89),900);
+ assert.equal(stopped.phase,'cleared');
+ assert.equal(encounters.tick(stopped,5),stopped);
+}
+same(initial,{runs:{yomiFall:{run:0,roll:null},sectFall:{run:0,roll:null},ninjaClan:{run:0,roll:null}},stock:{dungeonSeal:0,sectSeal:0,ninjaCampSpoils:0,weaponEnhancement:0,armorEnhancement:0,spiritEnhancement:0},boosts:{weapon:0,armor:0,spirit:0}});
+{
+ const legacy=plain(initial);
+ delete legacy.runs.ninjaClan;
+ delete legacy.stock.ninjaCampSpoils;
+ assert(rules.validate(legacy));
+ same(rules.copy(legacy),initial);
+ const spec=rules.definitions.ninjaClan;
+ const run=rules.begin(legacy,null,'ninjaClan').state;
+ const world=[['balloonVortexArrived',spec.started,spec.stages[0],spec.rewards[0]]];
+ assert(!rules.validate(run,world,[true]),'The first boss reward requires its soul');
+ world[0].push(spec.soul);
+ assert(rules.validate(run,world,[true]),'The leader soul does not require the ritualist to be cleared');
+ assert(!rules.validate(legacy,world,[true]),'Legacy data cannot contain third dungeon progress');
+}
 const independent=rules.fresh();independent.stock.dungeonSeal=7;independent.boosts.weapon=2;assert.equal(initial.stock.dungeonSeal,0);assert.equal(initial.boosts.weapon,0);
 {
  const copy=rules.copy(initial);assert.notEqual(copy,initial);assert.notEqual(copy.stock,initial.stock);assert.notEqual(copy.boosts,initial.boosts);copy.stock.dungeonSeal++;assert.equal(initial.stock.dungeonSeal,0);
@@ -32,7 +66,7 @@ for(const extras of [['dungeonStage1Clear'],['dungeonStage2Clear',...second],['d
 assert(rules.validate(run,flags(...all),defeated),'New run can retain permanent first-clear rewards without current stage clears');assert(rules.validate(run,flags(...all,...staged,'dungeonChestClaimed'),defeated));
 assert(!rules.validate(initial,[[],['councilGateOpen',...all]],defeated),'Permanent rewards need a historical run');
 {
- let state=plain(run);for(const id of Object.keys(rules.items).filter(id=>id!=='sectSeal')){
+ let state=plain(run);for(const id of ['dungeonSeal',...rules.enhancements]){
   const before=plain(state),result=rules.addStock(state,id,3);assert(result.ok);assert.equal(rules.quantity(result.state,id),3);same(state,before,'Adding stock never mutates input');state=result.state;
   const remove=rules.removeStock(state,id,2);assert(remove.ok);assert.equal(rules.quantity(remove.state,id),1);assert.equal(state.stock[id],3);state=remove.state;
  }
@@ -72,4 +106,4 @@ for(const [id,key]of [['weaponEnhancement','weapon'],['armorEnhancement','armor'
  for(const id of ['yomiFall','sectFall'])for(const bad of [-1,.5,NaN,Infinity,Number.MAX_SAFE_INTEGER+1]){const broken=plain(initial);broken.runs[id].run=bad;assert.equal(rules.copy(broken),null);}
  const detached=rules.copy(yomi);detached.runs.sectFall.run++;assert.notEqual(detached.runs.sectFall.run,yomi.runs.sectFall.run);
 }
-console.log('PASS: exact two-dungeon schema, independent immutable runs/rolls/reward chains, shared stock/capped boosts, strict IDs and preserved inventory.');
+console.log('PASS: strict dungeon schema and old-save migration, independent runs, first-floor ninja soul, encounter phases, stock and capped boosts.');

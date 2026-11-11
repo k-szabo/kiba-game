@@ -27,7 +27,11 @@ const IslandsArt=(()=>{
  function actor(e){
   const leader=FloatingIslands.is(e),role=leader?'leader':e.shadowNinjaRole;if(!role)return false;
   const index=leader?(reducedMotion.matches&&e.phase==='wait'?0:e.poseIndex):e.windup>0?3:e.attackTime>0?4:e.recovery>0?5:Math.abs(e.walkSpeed)>1&&!reducedMotion.matches?1+Math.floor(e.animTime*7)%2:0;
-  if(!stamp(role,index,e.x+e.w/2,e.y+e.h,leader?leaderHeight:e.h,e.face))return false;
+  const infected=e.dungeonSide==='infected';
+  if(infected){ctx.save();ctx.filter='hue-rotate(235deg) saturate(1.4)';}
+  const drawn=stamp(role,index,e.x+e.w/2,e.y+e.h,leader?leaderHeight:e.h,e.face);
+  if(infected)ctx.restore();
+  if(!drawn)return false;
   if(!leader){Visuals.healthBar(e);if(e.windup>0)BossCues.box(enemyRole(e)==='guard'?enemyMeleeBox(e):{x:e.targetX-45,y:e.targetY-45,w:90,h:90});}
   else if(e.active&&e.phase==='windup')BossCues.box(e.attackBox||{x:e.targetX-45,y:e.targetY-45,w:90,h:90});
   return true;

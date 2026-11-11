@@ -69,6 +69,7 @@ const FloatingIslands=(()=>{
   companion.reset({x:clamp(player.x-78,p.x+4,p.x+p.w-46),y:p.y-70,face:player.face},platforms);tracked=level;
  }
  function update(dt){
+  if(level.dungeon?.id==='ninjaClan'&&state==='play'&&Number.isFinite(dt)&&dt>0){tickEffects(dt);return;}
   if(!active()||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   if(departing){departing.elapsed+=dt;player.inv=Math.max(player.inv,.15);if(departing.elapsed>=1.4){departing=null;story('islands.name','islands.ninjaLeader','islands.abduction');}return;}
   if(!abducted()){if(tracked!==level)resetFollower();if(tracked===level)companion.update(dt,player,platforms);}
@@ -84,7 +85,8 @@ const FloatingIslands=(()=>{
   return true;
  }
  function projectile(p,victim,before){
-  const leader=active()?enemy():enemies.find(e=>is(e)&&tower(e)&&e.id===p.ownerId&&!e.dead);
+  const leader=active()?enemy():enemies.find(e=>e.id===p.ownerId&&!e.dead&&
+   (is(e)&&tower(e)||level.dungeon?.id==='ninjaClan'&&e.miniboss==='ninjaClanLeader'&&e.attempt?.phase==='leader'));
   if((!active()&&!leader)||victim!==player||state!=='play'||before<=victim.hp)return;
   if(p.islandEffect==='poison'){poison={owner:player,sourceId:p.ownerId,left:3,tick:1};toast(I18n.t('islands.poison'));}
   if(p.islandEffect==='hook'){
