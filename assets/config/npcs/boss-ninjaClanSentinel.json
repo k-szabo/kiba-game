@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "boss-ninjaClanSentinel",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "ninjaClan.sentinel",
+  "selectors": [{"bossId": "ninjaClanSentinel"}],
+  "art": {
+    "sprites": [{"image": "watchtowerSentinelArt", "metadata": "ART_WATCHTOWER.sentinel"}],
+    "effects": ["fxDarkMagic"]
+  }
+}

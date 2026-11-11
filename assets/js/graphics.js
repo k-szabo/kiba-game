@@ -313,7 +313,7 @@ const Visuals = (() => {
       // A subtle material-colored rim identifies the true collision surface.
       ctx.strokeStyle = realm === 0 ? '#abb78d66' : realm === 1 ? '#d199aa55' : '#ffe8b98c';
       ctx.lineWidth = 1;ctx.beginPath();ctx.moveTo(p.x + 4, p.y + .5);ctx.lineTo(p.x + p.w - 4, p.y + .5);ctx.stroke();
-      if (realm === 0 && p.kind === 'ground') {
+      if (realm === 0 && p.kind === 'ground' && level.id!=='ninjaClanCamp') {
         for (let x = p.x + 130; x < p.x + p.w - 90; x += 470) {
           if (state !== 'menu' && !visiblePoint({x, y: p.y}, 180)) continue;
           prop('foliage', x, p.y + 2, 125 + noise(x) * 45, .75);

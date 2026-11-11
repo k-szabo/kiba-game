@@ -2927,28 +2927,28 @@
       {
         "value": "#15121c",
         "lines": [
-          25
+          46
         ],
         "dynamic": false
       },
       {
         "value": "#d9bd80",
         "lines": [
-          35
+          70
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          21
+          25
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          21
+          25
         ],
         "dynamic": false
       }
@@ -2957,14 +2957,14 @@
       {
         "value": "#bd82dc",
         "lines": [
-          96
+          129
         ],
         "dynamic": false
       },
       {
         "value": "#ffdb8c",
         "lines": [
-          120
+          161
         ],
         "dynamic": false
       }
@@ -4393,57 +4393,57 @@
       {
         "value": "#33281f",
         "lines": [
-          65
+          69
         ],
         "dynamic": false
       },
       {
         "value": "#49392b",
         "lines": [
-          56
+          60
         ],
         "dynamic": false
       },
       {
         "value": "#8d7b5b",
         "lines": [
-          57
+          61
         ],
         "dynamic": false
       },
       {
         "value": "#c9b384",
         "lines": [
-          46,
-          70
+          50,
+          74
         ],
         "dynamic": false
       },
       {
         "value": "#ccac65",
         "lines": [
-          57
+          61
         ],
         "dynamic": false
       },
       {
         "value": "#ddc69c",
         "lines": [
-          65
+          69
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a8",
         "lines": [
-          57
+          61
         ],
         "dynamic": false
       },
       {
         "value": "#fff5c4",
         "lines": [
-          58
+          62
         ],
         "dynamic": false
       }
@@ -4509,39 +4509,40 @@
       {
         "value": "#101d29",
         "lines": [
-          149
+          155
         ],
         "dynamic": false
       },
       {
         "value": "#8ad8df",
         "lines": [
-          154
+          160
         ],
         "dynamic": false
       },
       {
         "value": "#d8c7a2",
         "lines": [
-          152
+          158
         ],
         "dynamic": false
       },
       {
         "value": "#ffcb74",
         "lines": [
-          156
+          162
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          156
+          162
         ],
         "dynamic": false
       }
     ],
+    "assets/js/ninja-dungeon-encounters.js": [],
     "assets/js/npc-catalog.js": [],
     "assets/js/peer-session.js": [],
     "assets/js/prison-art.js": [

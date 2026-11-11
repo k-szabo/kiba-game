@@ -23,4 +23,33 @@ win('westheruSeal');assert.equal(r('WatchtowerBalloon.morph().kind'),'restore');
 interactAt(r('skyLanding.boardPoint.x'),1000);assert(r('WatchtowerBalloon.cinematic()'));const vortexTime=r('WatchtowerBalloon.vortex().elapsed');r("state='pause';WatchtowerBalloon.update(1);");assert.equal(r('WatchtowerBalloon.vortex().elapsed'),vortexTime);r("state='play';WatchtowerBalloon.update(3.1);");h.dismiss();assert.equal(r('level.id'),'stormIslands');validate(r('captureProgress()'));
 assert(r('WatchtowerBalloon.arrival().departing'));r("state='pause';WatchtowerBalloon.update(1)");assert.equal(r('WatchtowerBalloon.arrival().elapsed'),0);r("state='play';WatchtowerBalloon.update(4.1)");assert(r('flags[0].includes("westheruDeparted")'));assert.equal(r('WatchtowerBalloon.arrival()'),null);validate(r('captureProgress()'));
 const bad=r('captureProgress()');bad.flags[0]=bad.flags[0].filter(id=>id!=='westheruRescued');assert.throws(()=>validate(bad),/watchtower/);
+assert.equal(r('nextObjective().point.x'),r('stormIslands.endPoint.x'));
+interactAt(r('stormIslands.endPoint.x'),r('stormIslands.endPoint.y'));
+assert.equal(r('state'),'dungeonMenu');h.elements.get('dungeonNew').onclick();
+for(let floor=0;floor<3;floor++){
+ assert.equal(r('DungeonRun.floor()'),floor);
+ r('initPlayer(level.rests[0]);interact();');
+ r('var ninjaBoss=enemies.find(DungeonCombat.is);player.x=ninjaBoss.arena.x+170;player.y=ninjaBoss.arena.y-player.h;ninjaBoss.active=true;');
+ if(floor===2){
+  r('DungeonCombat.update(ninjaBoss,90);');
+  assert(!r('flags[0].includes("ninjaClanRitualistReward")'),'The ritual finishing gives no reward');
+  r('ninjaBoss=enemies.find(DungeonCombat.is);player.x=ninjaBoss.arena.x+170;player.y=ninjaBoss.arena.y-player.h;ninjaBoss.active=true;');
+ }
+ r('DungeonCombat.hit(ninjaBoss,ninjaBoss.parts[0],9999);');
+ if(floor===0){h.dismiss();r('DungeonCombat.update(ninjaBoss,1.3);ninjaBoss.inv=0;DungeonCombat.hit(ninjaBoss,ninjaBoss.parts[0],9999);');}
+ if(floor===1)h.dismiss();
+ if(floor===2)r('DungeonCombat.update(ninjaBoss,1.2);initPlayer(level.rewardChest);interact();');
+ assert(r('DungeonRun.cleared(DungeonRun.floor())'));validate(r('captureProgress()'));
+ r('initPlayer(level.nextPoint);interact();');
+}
+assert.equal(r('level.id'),'ninjaClanCamp');
+assert.equal(r('Inventory.quantity("ninjaClanLeaderSoul")'),1);
+assert.equal(r('Inventory.quantity("ninjaCorruptedSeal")'),1);
+assert.equal(r('Inventory.quantity("ninjaCampSpoils")'),1);
+r('initPlayer(level.npcs.find(npc=>npc.id==="reika"));interact();');h.dismiss();
+assert(r('flags[0].includes("ninjaClanDebrief")'));
+r("flags[1].push('akashRescued');flags[3].push('guardian:cultJailer','prisonOpen','guardian:prisonWarden','zenRescued');initPlayer(level.npcs.find(npc=>npc.id==='zen'));interact();");
+h.dismiss();assert.equal(r('Inventory.quantity("ninjaCorruptedSeal")'),0);validate(r('captureProgress()'));
+r('persist();mainMenu();startGame(true);');assert.equal(r('level.id'),'ninjaClanCamp');
+assert(r('flags[0].includes("ninjaSealPurified")'));validate(r('captureProgress()'));
 console.log('PASS watchtower/balloon story: actual entry/rescue/boarding inputs, stage retry, pause, Haru retention and strict saves.');

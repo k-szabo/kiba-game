@@ -1,5 +1,15 @@
 {
   "npcs": {
+    "ninjaClan.healer": {
+      "role": "camp-service",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.ninjaClan.healer"
+    },
+    "ninjaClan.smith": {
+      "role": "camp-service",
+      "faction": "shadowNinjas",
+      "paletteGroup": "npc.ninjaClan.smith"
+    },
     "shadowNinjas.crossbow": {
       "role": "crossbow",
       "faction": "shadowNinjas",
@@ -37,6 +47,208 @@
     }
   },
   "paletteGroups": {
+    "npc.ninjaClan.healer": {
+      "source": "assets/images/npcs/ninja-camp-specialists-v1.webp",
+      "frameMetadata": "ART_NINJA_CLAN.healer",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#e4c3b0",
+            "coveragePercent": 15.9421
+          },
+          {
+            "hex": "#efd2bf",
+            "coveragePercent": 8.9369
+          },
+          {
+            "hex": "#d3b4a2",
+            "coveragePercent": 7.7192
+          },
+          {
+            "hex": "#5c4636",
+            "coveragePercent": 7.5624
+          },
+          {
+            "hex": "#665868",
+            "coveragePercent": 7.5517
+          },
+          {
+            "hex": "#3c2f2f",
+            "coveragePercent": 7.534
+          },
+          {
+            "hex": "#7a5e4a",
+            "coveragePercent": 7.3286
+          },
+          {
+            "hex": "#86706d",
+            "coveragePercent": 5.9869
+          },
+          {
+            "hex": "#291f1e",
+            "coveragePercent": 5.7223
+          },
+          {
+            "hex": "#a58b83",
+            "coveragePercent": 5.3815
+          },
+          {
+            "hex": "#c1a28e",
+            "coveragePercent": 5.3716
+          },
+          {
+            "hex": "#494353",
+            "coveragePercent": 4.7228
+          },
+          {
+            "hex": "#f8e3d3",
+            "coveragePercent": 3.8377
+          },
+          {
+            "hex": "#140c0c",
+            "coveragePercent": 3.1988
+          },
+          {
+            "hex": "#a9825c",
+            "coveragePercent": 3.1549
+          },
+          {
+            "hex": "#8bb9d3",
+            "coveragePercent": 0.0486
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e6344",
+            "coveragePercent": 37.6542
+          },
+          {
+            "hex": "#ac8057",
+            "coveragePercent": 35.888
+          },
+          {
+            "hex": "#c99e69",
+            "coveragePercent": 17.5212
+          },
+          {
+            "hex": "#898e40",
+            "coveragePercent": 8.3041
+          },
+          {
+            "hex": "#66abd2",
+            "coveragePercent": 0.3615
+          },
+          {
+            "hex": "#487c9d",
+            "coveragePercent": 0.2709
+          }
+        ],
+        "visibleSamples": 141037,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.ninjaClan.smith": {
+      "source": "assets/images/npcs/ninja-camp-specialists-v1.webp",
+      "frameMetadata": "ART_NINJA_CLAN.smith",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2f2b38",
+            "coveragePercent": 14.7302
+          },
+          {
+            "hex": "#514a5b",
+            "coveragePercent": 12.2336
+          },
+          {
+            "hex": "#67493f",
+            "coveragePercent": 11.2472
+          },
+          {
+            "hex": "#7c5747",
+            "coveragePercent": 10.0818
+          },
+          {
+            "hex": "#251e23",
+            "coveragePercent": 9.5086
+          },
+          {
+            "hex": "#403c4d",
+            "coveragePercent": 8.3092
+          },
+          {
+            "hex": "#4e3731",
+            "coveragePercent": 7.1117
+          },
+          {
+            "hex": "#120c0f",
+            "coveragePercent": 4.9216
+          },
+          {
+            "hex": "#786462",
+            "coveragePercent": 4.5402
+          },
+          {
+            "hex": "#96694f",
+            "coveragePercent": 4.3481
+          },
+          {
+            "hex": "#d4b29b",
+            "coveragePercent": 3.2958
+          },
+          {
+            "hex": "#9e7d6d",
+            "coveragePercent": 3.1633
+          },
+          {
+            "hex": "#c19a7f",
+            "coveragePercent": 2.3454
+          },
+          {
+            "hex": "#e4c9b6",
+            "coveragePercent": 2.0781
+          },
+          {
+            "hex": "#a49291",
+            "coveragePercent": 1.1457
+          },
+          {
+            "hex": "#f1dfd4",
+            "coveragePercent": 0.9396
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a5c43",
+            "coveragePercent": 58.9659
+          },
+          {
+            "hex": "#a06d4b",
+            "coveragePercent": 27.8218
+          },
+          {
+            "hex": "#bb8457",
+            "coveragePercent": 9.8406
+          },
+          {
+            "hex": "#e4ab73",
+            "coveragePercent": 3.1513
+          },
+          {
+            "hex": "#396997",
+            "coveragePercent": 0.1155
+          },
+          {
+            "hex": "#649cca",
+            "coveragePercent": 0.105
+          }
+        ],
+        "visibleSamples": 182399,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "npc.shadowNinjas.crossbow": {
       "source": "assets/images/enemies/shadow-ninja-crossbow-v1.png",
       "frameMetadata": "ART_SHADOW_NINJAS.crossbow.frames",
@@ -1479,6 +1691,111 @@
         ],
         "visibleSamples": 508209,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/npcs/ninja-camp-specialists-v1.webp": {
+      "sha256": "4e194e456b0fcb59b1f8e3e22956afea858e8e1bd2749803ff0e7a24e0fdba7b",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "ninjaCampSpecialists"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#7b5948",
+            "coveragePercent": 10.9859
+          },
+          {
+            "hex": "#61463b",
+            "coveragePercent": 9.0673
+          },
+          {
+            "hex": "#debeaa",
+            "coveragePercent": 8.2756
+          },
+          {
+            "hex": "#514a5a",
+            "coveragePercent": 8.0433
+          },
+          {
+            "hex": "#251f26",
+            "coveragePercent": 7.9577
+          },
+          {
+            "hex": "#302d3a",
+            "coveragePercent": 7.4906
+          },
+          {
+            "hex": "#413c4a",
+            "coveragePercent": 6.5467
+          },
+          {
+            "hex": "#edcfbb",
+            "coveragePercent": 6.4285
+          },
+          {
+            "hex": "#453128",
+            "coveragePercent": 5.7827
+          },
+          {
+            "hex": "#c8a894",
+            "coveragePercent": 5.1959
+          },
+          {
+            "hex": "#88706b",
+            "coveragePercent": 4.7868
+          },
+          {
+            "hex": "#140d0f",
+            "coveragePercent": 4.7865
+          },
+          {
+            "hex": "#685a68",
+            "coveragePercent": 4.7132
+          },
+          {
+            "hex": "#aa8d7f",
+            "coveragePercent": 4.6999
+          },
+          {
+            "hex": "#a17554",
+            "coveragePercent": 2.9776
+          },
+          {
+            "hex": "#f6e2d3",
+            "coveragePercent": 2.2618
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#885c42",
+            "coveragePercent": 41.585
+          },
+          {
+            "hex": "#9a6c49",
+            "coveragePercent": 32.006
+          },
+          {
+            "hex": "#b28457",
+            "coveragePercent": 18.9016
+          },
+          {
+            "hex": "#d4a36c",
+            "coveragePercent": 7.1563
+          },
+          {
+            "hex": "#64a4cd",
+            "coveragePercent": 0.2006
+          },
+          {
+            "hex": "#3f7097",
+            "coveragePercent": 0.1504
+          }
+        ],
+        "visibleSamples": 323437,
+        "dominantCoveragePercent": 100.0
       }
     }
   }

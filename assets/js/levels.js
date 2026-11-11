@@ -1,13 +1,21 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
 // Shared progression rules also load before the standalone save validator.
-const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,xpForLevel:n=>60+(n-1)*35});
+const PROGRESSION_RULES=Object.freeze({
+ levelLimit:50,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,
+ xpForLevel:n=>60+(n-1)*35,
+ progressForXP(totalXp,limit=this.levelLimit){
+  let xp=totalXp,level=1;
+  while(level<limit&&xp>=this.xpForLevel(level)){xp-=this.xpForLevel(level);level++;}
+  return {level,xp:level===limit?0:xp};
+ }
+});
 const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
 const ZEN_PURIFICATION_POINTS=2;
 // Sale prices and unique-item realms are shared with strict save validation.
 const MERCHANT_SALES=Object.freeze(Object.fromEntries(Object.entries({
  roastMeat:{price:4,stack:true},tea:{price:10,stack:true},
- dungeonSeal:{price:50,stack:true},sectSeal:{price:50,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},highPriestessSoul:{price:400,realm:0},
+ dungeonSeal:{price:50,stack:true},sectSeal:{price:50,stack:true},ninjaCampSpoils:{price:65,stack:true},weaponEnhancement:{price:20,stack:true},armorEnhancement:{price:20,stack:true},spiritEnhancement:{price:20,stack:true},councilSoul:{price:350,realm:1},highPriestessSoul:{price:400,realm:0},ninjaClanLeaderSoul:{price:450,realm:0},
  compass:{price:90,realm:1},minimap:{price:140,realm:1},phoneCase:{price:50,realm:1},
  campMasterSoul:{price:200,realm:0},oathbreakerSoul:{price:200,realm:0},yomiGuardianSoul:{price:300,realm:1},
  seraphSoul:{price:500,realm:2},madPriestSoul:{price:600,realm:3},demonLordSoul:{price:800,realm:3},arenaSerpentScale:{price:80,realm:3},
@@ -31,7 +39,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return (worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return (worldFlags?.[0]?.includes('ninjaSealPurified')?ZEN_PURIFICATION_POINTS:0)+(worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS],[0,NINJA_CLAN_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -525,10 +533,6 @@ for(const [map,specs]of [[cultForecourt,[[650,1120,'shield','japan'],[940,1120,'
  for(const [i,[x,y,kind,faction]]of specs.entries())map.enemies.push({id:map.id+'-soldier'+i,x,y,kind,factionOverride:faction,dungeonEnemy:true,dungeonSide:faction==='shadowCult'?'sect':'alliance',patrol:230});
 }
 cultSanctum.rewardChest={x:6240,y:1160};
-const DUNGEON_CATALOGUE=Object.freeze({
- yomiFall:Object.freeze({id:'yomiFall',realm:1,floors:DUNGEON_FLOORS,rewards:DUNGEON_REWARDS,entryMap:councilHall,entryPoint:councilHall.memoryScroll,name:'dungeon.name',title:'dungeon.scroll.title',intro:'dungeon.intro',victory:'dungeon.victory',prompt:'dungeon.scroll.prompt',returnPrompt:'dungeon.return'}),
- sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'})
-});
 japan.progressFlags.push('cultTempleDiscovered','sectRunStarted','sectStage1Clear','sectStage2Clear','sectStage3Clear','sectChestClaimed','sectGuardReward','sectAngelReward','sectPriestessReward','highPriestessSoul');
 const CULT_TRAVEL=Object.freeze({id:'cultTempleEntrance',x:1150,y:2620,name:'cultDungeon.memory.title',travelOnly:true,dungeonEntrance:true,unlockFlag:'cultTempleDiscovered'});
 // A virtual route anchor: unlocking the chained entrance makes the scroll
@@ -551,9 +555,72 @@ const floatingIslands=createFloatingIslandMaps({makeLevel,ledge,rest,foe,zone});
 japanHeights.islandsEntrance={x:3850,y:1100};
 japan.progressFlags.push(...Object.values(FloatingIslandsRules.progress));
 const {ninjaWatchtower,balloonJourney,skyLanding,stormIslands}=createWatchtowerBalloonMaps({makeLevel,ledge,rest,foe,zone});
+const ninjaClanRules=DungeonRules.definitions.ninjaClan;
+const NINJA_CLAN_REWARDS=Object.freeze(['ninjaClanLeader','ninjaClanSentinel','ninjaClanRitualist'].map((type,i)=>Object.freeze({
+ type,stage:ninjaClanRules.stages[i],claim:ninjaClanRules.rewards[i],xp:[900,700,1100][i],coins:[250,200,350][i],points:1,
+ ...(i===0?{soul:ninjaClanRules.soul}:{})
+})));
+const NINJA_CLAN_FLOORS=Object.freeze([
+ {startY:850,arenaY:1110,grounds:[[0,850,950],[1060,980,940],[2120,1110,2680]],name:'ninjaClan.stockade',bossName:'islands.ninjaLeader'},
+ {startY:1040,arenaY:1040,grounds:[[0,1040,1360],[1470,940,850],[2440,1040,2360]],name:'ninjaClan.courtyard',bossName:'ninjaClan.sentinel'},
+ {startY:900,arenaY:1200,grounds:[[0,900,860],[970,1000,850],[1930,1100,650],[2680,1200,2120]],name:'ninjaClan.sanctum',bossName:'ninjaClan.ritualist'}
+].map(({startY,arenaY,grounds,name,bossName},i)=>{
+ const reward=NINJA_CLAN_REWARDS[i],id='ninjaDungeon'+(i+1);
+ const map=makeLevel(id,4800,1700,{x:200,y:startY});
+ map.name=name;
+ map.enemyRealm=3;
+ map.dungeon={id:'ninjaClan',floor:i,stage:reward.stage};
+ map.checkpoints=[{id:id+'Entry',x:map.start.x,y:map.start.y,name,checkpointOnly:true}];
+ for(const [x,y,w] of grounds)ledge(map,id+'Ground'+x,x,y,w,'ground',240);
+ rest(map,id+'Shrine',3110,arenaY,name);
+ map.arena={x:3260,y:arenaY,w:1400,restId:map.rests[0].id};
+ map.boss={x:-10000,y:arenaY};
+ map.returnPoint={x:100,y:startY};
+ map.nextPoint={x:4690,y:arenaY};
+ map.returnDestination={location:'stormIslands',...stormIslands.endPoint};
+ map.enemies.push({id:reward.type,miniboss:reward.type,name:bossName,kind:'guard',x:4120,y:arenaY,patrol:300,arena:map.arena});
+ map.arenaEncounters=map.enemies.slice();
+ for(const [index,[x,y,w]] of grounds.entries()){
+  const kind=index%2?'archer':'guard',role=kind==='archer'?'crossbow':'assassin';
+  map.enemies.push({id:id+'Cult'+index,x:x+250,y,kind,factionOverride:'shadowCult',dungeonEnemy:true,dungeonSide:'cult',patrol:100});
+  if(x+450<3000)map.enemies.push({id:id+'Ninja'+index,x:x+Math.min(w-120,500),y,kind,shadowNinjaRole:role,dungeonEnemy:true,
+   dungeonSide:i>0&&index%2?'infected':'ninja',patrol:100});
+ }
+ if(i===2)map.rewardChest={x:4530,y:arenaY};
+ zone(map,name,0,0,map.width,map.height);
+ return map;
+}));
+const ninjaCamp=makeLevel('ninjaClanCamp',2500,1400,{x:240,y:1020});
+ninjaCamp.name='ninjaClan.camp';
+ninjaCamp.boss={x:-10000,y:1020};
+ninjaCamp.npcs=[
+ {id:'reika',name:'ninjaClan.sentinel',x:685,y:1020},
+ {id:'ninjaHealer',service:'healer',name:'ninjaClan.healer',x:965,y:1020},
+ {id:'ninjaSmith',service:'smith',name:'ninjaClan.smith',x:1245,y:1020},
+ {id:'akash',name:'merchant.name',x:1530,y:1020},
+ {id:'zen',name:'zen.name',x:1815,y:1020},
+ {id:'westheru',name:'balloon.pilot',x:2140,y:1020}
+];
+ledge(ninjaCamp,'ninjaCampGround',0,1020,2500,'ground',250);
+rest(ninjaCamp,'ninjaCampArrival',430,1020,'ninjaClan.camp');
+ninjaCamp.returnPoint={x:120,y:1020};
+ninjaCamp.returnDestination={location:'stormIslands',...stormIslands.endPoint};
+zone(ninjaCamp,ninjaCamp.name,0,0,ninjaCamp.width,ninjaCamp.height);
+const DUNGEON_CATALOGUE=Object.freeze({
+ yomiFall:Object.freeze({id:'yomiFall',realm:1,floors:DUNGEON_FLOORS,rewards:DUNGEON_REWARDS,entryMap:councilHall,entryPoint:councilHall.memoryScroll,name:'dungeon.name',title:'dungeon.scroll.title',intro:'dungeon.intro',victory:'dungeon.victory',prompt:'dungeon.scroll.prompt',returnPrompt:'dungeon.return'}),
+ sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'}),
+ ninjaClan:Object.freeze({id:'ninjaClan',realm:0,floors:NINJA_CLAN_FLOORS,rewards:NINJA_CLAN_REWARDS,entryMap:stormIslands,entryPoint:stormIslands.endPoint,
+  entryLocation:'stormIslands',exitLocation:'ninjaClanCamp',title:'ninjaClan.name',prompt:'dungeon.next',returnPrompt:'dungeon.back'})
+});
+japan.progressFlags.push(ninjaClanRules.started,...ninjaClanRules.stages,...ninjaClanRules.rewards,ninjaClanRules.chest,ninjaClanRules.soul,
+ 'ninjaCorruptedSeal','ninjaSealPurified','ninjaClanDebrief');
 floatingIslands.watchtowerEntrance={x:6800,y:1650};
 japan.progressFlags.push(...Object.values(WatchtowerBalloonRules.progress));
 const SIDE_LOCATIONS=Object.freeze({
+ ...Object.fromEntries(NINJA_CLAN_FLOORS.map((map,i)=>[map.id,Object.freeze({map,realm:0,requiredFlags:Object.freeze([
+  ...ninjaClanRules.requiredFlags,ninjaClanRules.started,...ninjaClanRules.stages.slice(0,i)
+ ])})])),
+ ninjaClanCamp:Object.freeze({map:ninjaCamp,realm:0,requiredFlags:Object.freeze([ninjaClanRules.rewards[2]])}),
  ninjaWatchtower:Object.freeze({map:ninjaWatchtower,realm:0,requiredFlags:Object.freeze(['islandsTrailReached'])}),
  balloonJourney:Object.freeze({map:balloonJourney,realm:0,requiredFlags:Object.freeze(['balloonJourneyStarted'])}),
  skyLanding:Object.freeze({map:skyLanding,realm:0,requiredFlags:Object.freeze(['balloonDragonDefeated'])}),

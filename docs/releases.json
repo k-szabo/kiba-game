@@ -1934,6 +1934,38 @@
           "en": "In seal form, Westheru summons a windstorm and a meteor shower in the story and the Endless Tower."
         }
       ]
+    },
+    {
+      "version": "0.9.77_04dda57a",
+      "code": "04dda57a",
+      "baseVersion": "0.9.77",
+      "slug": "level-cap-50",
+      "summary": {
+        "hu": "50. szintig fejlődhetsz",
+        "en": "Level up to 50"
+      },
+      "fixes": [
+        {
+          "hu": "Momo maximális szintje 50. A 30. szint elérése után korábban gyűjtött XP beszámít a további fejlődésbe.",
+          "en": "Momo’s maximum level is now 50. XP previously earned after reaching level 30 counts toward further progression."
+        }
+      ]
+    },
+    {
+      "version": "0.9.78_16d08d67",
+      "code": "16d08d67",
+      "baseVersion": "0.9.78",
+      "slug": "ninja-clan-dungeon",
+      "summary": {
+        "hu": "A széthullott klán",
+        "en": "The Fractured Clan"
+      },
+      "fixes": [
+        {
+          "hu": "Az örvény túlpartjáról új, háromszintes dungeon vezet a nindzsák táborába. A táborban gyógyító és kovács segíti Momót; a fegyver és a páncél a 10. fokozatig fejleszthető.",
+          "en": "A new three-floor dungeon leads from Beyond the Vortex to the ninja camp. A healer and a smith help Momo there, with weapon and armor upgrades available up to rank 10."
+        }
+      ]
     }
   ]
 }

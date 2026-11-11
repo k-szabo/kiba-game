@@ -90,18 +90,18 @@
   "dataSchemaVersion": 1,
   "counts": {
     "pc": 3,
-    "npcs": 103,
-    "objects": 133,
-    "paletteGroups": 250,
-    "assets": 306,
-    "codeColors": 171
+    "npcs": 106,
+    "objects": 136,
+    "paletteGroups": 256,
+    "assets": 311,
+    "codeColors": 172
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "4a49a5cccec87fd8c3cff8e5d3ff7d239b8b7e7d4d7c215983da36734d7c9384",
+      "sha256": "aad95de718a7639610155a023178c4e0c97e185c7fcd2b0dfc1148c5095e1983",
       "counts": {
-        "codeColors": 171
+        "codeColors": 172
       }
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "65c003b069602747f255c0d9f0aeff96fef6b40ec55a1ad3b67ac767d885c0f9",
+      "sha256": "6cf9da058e11af030f8357357bdc6520622f86cf524406a33c4010e126beb6ad",
       "counts": {
         "paletteGroups": 11,
-        "assets": 122
+        "assets": 124
       }
     },
     {
@@ -157,9 +157,9 @@
     },
     {
       "file": "colormaps/objects.json",
-      "sha256": "2b4ad61bbb6f4ed0cc9a9a2afbe3761aaa145d2ccae8ee8f61a640a1fe29757c",
+      "sha256": "0de9cf755170c14845ed93be43c5c584159d2d5a519072d4e3972e642a19f2e2",
       "counts": {
-        "objects": 133
+        "objects": 136
       }
     },
     {
@@ -173,11 +173,11 @@
     },
     {
       "file": "colormaps/shadow-cult.json",
-      "sha256": "de24bf902bc94fc1a9ebaecbe32e0795f9565aaa27643648d597f0ce5b6c4854",
+      "sha256": "445d7aade66ae943e874a55b31bbfc175a25d3bedf7d9d720250913711cce346",
       "counts": {
-        "npcs": 38,
-        "paletteGroups": 42,
-        "assets": 35
+        "npcs": 39,
+        "paletteGroups": 43,
+        "assets": 36
       }
     },
     {
@@ -191,19 +191,19 @@
     },
     {
       "file": "colormaps/shadow-ninjas.json",
-      "sha256": "7faf6784b64ba91d4e90d18671a97b9851c2462fe4a0066de490d56a4eb4e852",
+      "sha256": "2558f9790cee1819d70cef9603f155da1db370b0184845ecc53fa2e6a86448d3",
       "counts": {
-        "npcs": 7,
-        "paletteGroups": 7,
-        "assets": 7
+        "npcs": 9,
+        "paletteGroups": 9,
+        "assets": 8
       }
     },
     {
       "file": "colormaps/shared.json",
-      "sha256": "9cb9c0fc547f9346e876835e76f710d415d102617abb3b4eb000c72e72542250",
+      "sha256": "182274e36c02a776fe88889429fc77d534a9a8fd38e5b1dfcd2a24567b7b44df",
       "counts": {
-        "paletteGroups": 41,
-        "assets": 25
+        "paletteGroups": 44,
+        "assets": 26
       }
     },
     {

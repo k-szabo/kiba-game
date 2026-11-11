@@ -392,6 +392,18 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.sectSeal"
     },
+    "inventoryItem.ninjaClanLeaderSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.ninjaClanLeaderSoul"
+    },
+    "inventoryItem.ninjaCorruptedSeal": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.ninjaCorruptedSeal"
+    },
+    "inventoryItem.ninjaCampSpoils": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.ninjaCampSpoils"
+    },
     "inventoryItem.demonLordSoul": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.demonLordSoul"

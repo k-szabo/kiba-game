@@ -72,7 +72,8 @@ const Inventory=(()=>{
   $('sellInventoryItem').hidden=!id||weapon||!price;
   $('sellInventoryItem').disabled=!Merchant.canSell(id);
   $('sellInventoryItem').textContent=I18n.format('merchant.sell.price',[price]);
-  $('inventorySellHint').textContent=!id||weapon?'':!price?I18n.t('merchant.unsellable'):!Merchant.nearVendor()?I18n.t('merchant.sell.visit'):'';
+  $('inventorySellHint').textContent=!id||weapon?'':!price?I18n.t('merchant.unsellable'):
+   !Merchant.nearVendor()?I18n.t(level.id==='ninjaClanCamp'&&DungeonRun.campNpc('akash')?'merchant.sell.title':'merchant.sell.visit'):'';
   $('confirmInventorySale').textContent=I18n.t('merchant.sell.confirm');$('cancelInventorySale').textContent=I18n.t('merchant.sell.cancel');
  }
  function choose(id){selected=id;for(const button of document.querySelectorAll('#inventory [data-inventory-item]'))button.setAttribute('aria-pressed',String(button.dataset.inventoryItem===id));details(id);}

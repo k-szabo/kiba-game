@@ -6783,6 +6783,216 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "assets/images/backgrounds/ninja-dungeon-rift-closed-v1.webp": {
+      "sha256": "c455e337d415879b98237cc557a2d103c202bcfc66f3bee787979340e71abccf",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "ninjaRiftClosed"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#26304e",
+            "coveragePercent": 14.5053
+          },
+          {
+            "hex": "#1c2133",
+            "coveragePercent": 14.3129
+          },
+          {
+            "hex": "#374167",
+            "coveragePercent": 13.2726
+          },
+          {
+            "hex": "#101119",
+            "coveragePercent": 8.666
+          },
+          {
+            "hex": "#475083",
+            "coveragePercent": 8.6447
+          },
+          {
+            "hex": "#6286c5",
+            "coveragePercent": 6.2659
+          },
+          {
+            "hex": "#4e6ba3",
+            "coveragePercent": 5.984
+          },
+          {
+            "hex": "#839cd4",
+            "coveragePercent": 5.2527
+          },
+          {
+            "hex": "#4b3c3a",
+            "coveragePercent": 5.2103
+          },
+          {
+            "hex": "#8067a6",
+            "coveragePercent": 4.0777
+          },
+          {
+            "hex": "#6c606d",
+            "coveragePercent": 3.852
+          },
+          {
+            "hex": "#af85bc",
+            "coveragePercent": 2.8585
+          },
+          {
+            "hex": "#a6b7e6",
+            "coveragePercent": 2.3247
+          },
+          {
+            "hex": "#905b3f",
+            "coveragePercent": 1.7001
+          },
+          {
+            "hex": "#ecc8ce",
+            "coveragePercent": 1.6328
+          },
+          {
+            "hex": "#d3986c",
+            "coveragePercent": 1.4398
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#42659b",
+            "coveragePercent": 33.4496
+          },
+          {
+            "hex": "#5f88ca",
+            "coveragePercent": 31.8356
+          },
+          {
+            "hex": "#574692",
+            "coveragePercent": 17.0317
+          },
+          {
+            "hex": "#8b5cc3",
+            "coveragePercent": 7.3428
+          },
+          {
+            "hex": "#9e5e3d",
+            "coveragePercent": 6.0791
+          },
+          {
+            "hex": "#e59d5f",
+            "coveragePercent": 4.2611
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/ninja-dungeon-v1.webp": {
+      "sha256": "3e36e2191dc7b4cfc03aabc452369cc5de5e0a3d13887a8aa2f94b8f36fbf278",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "ninjaDungeonBackdrops"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#253051",
+            "coveragePercent": 13.5559
+          },
+          {
+            "hex": "#36406a",
+            "coveragePercent": 13.4097
+          },
+          {
+            "hex": "#1b2135",
+            "coveragePercent": 13.2876
+          },
+          {
+            "hex": "#48528a",
+            "coveragePercent": 10.4979
+          },
+          {
+            "hex": "#101219",
+            "coveragePercent": 8.0039
+          },
+          {
+            "hex": "#7190cd",
+            "coveragePercent": 7.0374
+          },
+          {
+            "hex": "#5375b1",
+            "coveragePercent": 6.2181
+          },
+          {
+            "hex": "#433937",
+            "coveragePercent": 5.2665
+          },
+          {
+            "hex": "#98ade0",
+            "coveragePercent": 4.4266
+          },
+          {
+            "hex": "#6b5552",
+            "coveragePercent": 3.7448
+          },
+          {
+            "hex": "#7b6f92",
+            "coveragePercent": 3.5134
+          },
+          {
+            "hex": "#ae7ccb",
+            "coveragePercent": 3.4344
+          },
+          {
+            "hex": "#7649bc",
+            "coveragePercent": 3.0368
+          },
+          {
+            "hex": "#e6c4de",
+            "coveragePercent": 1.8727
+          },
+          {
+            "hex": "#ae7c57",
+            "coveragePercent": 1.4707
+          },
+          {
+            "hex": "#dfb08b",
+            "coveragePercent": 1.2236
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#494690",
+            "coveragePercent": 30.7926
+          },
+          {
+            "hex": "#4f6aa8",
+            "coveragePercent": 27.1487
+          },
+          {
+            "hex": "#618cce",
+            "coveragePercent": 21.884
+          },
+          {
+            "hex": "#9356d2",
+            "coveragePercent": 12.4073
+          },
+          {
+            "hex": "#9d5f3f",
+            "coveragePercent": 4.6465
+          },
+          {
+            "hex": "#e49f60",
+            "coveragePercent": 3.1209
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/backgrounds/ninja-watchtower-motion-b-v1.png": {
       "sha256": "68ef8f0b347ae1ac35e8a05aabaed37f3a8dc010c52464988516e336720cfdde",
       "width": 1086,

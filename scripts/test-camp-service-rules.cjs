@@ -17,7 +17,15 @@ function fails(state,coins,action,reason,options=access){
  assert.deepEqual(plain(result.state),plain(state),'Rejected valid-state transactions are atomic');return result;
 }
 assert(Object.isFrozen(rules));assert(Object.isFrozen(rules.profile));
-assert.deepEqual(plain(rules.profile),{rankLimit:5,weaponStep:.5,armorStep:20,weaponBuy:100,weaponSell:50,herbsPerBrew:3,brewHeal:3});
+assert.deepEqual(plain(rules.profile),{rankLimit:5,advancedRankLimit:10,weaponStep:.5,armorStep:20,weaponBuy:100,weaponSell:50,herbsPerBrew:3,brewHeal:3});
+const veteran={...rules.fresh('katana'),weaponRank:5};
+fails(veteran,2000,{type:'forgeWeapon'},'maxRank',{...access,advancedUnlocked:true});
+const upgraded=transact(veteran,2000,{type:'forgeWeapon'},{...access,advancedUnlocked:true,advancedForge:true});
+assert(upgraded.ok);
+assert.equal(upgraded.state.weaponRank,6);
+assert.equal(upgraded.coins,1700);
+assert(!rules.validate(upgraded.state,'katana'));
+assert(rules.validate(upgraded.state,'katana',true));
 for(const id of ['katana','naginata','swordShield']){
  const state=rules.fresh(id);assert.deepEqual(plain(state),{ownedWeapons:[id],weaponRank:0,armorRank:0,herbs:0,potions:0});
  assert(rules.validate(state,id));assert.notEqual(rules.fresh(id).ownedWeapons,state.ownedWeapons);

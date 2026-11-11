@@ -5,10 +5,13 @@ const PrisonQuest=(()=>{
  const rescued=()=>flags[3].includes('zenRescued');
  const won=()=>flags[3].includes('guardian:prisonWarden');
  const purificationReady=()=>!Prologue.active&&level===forestCamp&&rescued()&&!flags[3].includes('zenHymnPurified')&&Inventory.quantity('corruptedHymn')>0;
+ const ninjaSealReady=()=>!Prologue.active&&(level===forestCamp||level.id==='ninjaClanCamp')&&rescued()&&
+  flags[0].includes('ninjaCorruptedSeal')&&!flags[0].includes('ninjaSealPurified');
  function context(){
   if(Prologue.active)return null;
-  const zen=level===forestCamp?level.npcs.find(npc=>npc.id==='zen'):null;
+  const zen=level===forestCamp?level.npcs.find(npc=>npc.id==='zen'):DungeonRun.campNpc('zen');
   if(zen&&purificationReady()&&pointNear(zen,95,85))return {type:'zenPurify',text:'zen.purify'};
+  if(zen&&ninjaSealReady()&&pointNear(zen,95,85))return {type:'zenNinjaPurify',text:I18n.format('camp.talk',[I18n.t('zen.name')])};
   if(level===shadowRealm&&hasFlag('prisonOpen')&&pointNear(level.prisonDoor,125,90))return {type:'prisonEnter',text:I18n.t('zen.prison.enter')};
   if(!active())return null;
   if(pointNear(level.returnPoint,100,85))return {type:'prisonReturn',text:I18n.t('zen.prison.return')};
@@ -21,6 +24,11 @@ const PrisonQuest=(()=>{
   if(actual.type==='zenPurify'){
    flags[3].push('zenHymnPurified');progression.points+=ZEN_PURIFICATION_POINTS;persist();updateHUD();
    story('camp.dialogue.label','zen.name','zen.purify.dialogue',()=>toast(I18n.format('zen.purify.reward',[ZEN_PURIFICATION_POINTS])),{right:'zen',speaker:'zen'});return true;
+  }
+  if(actual.type==='zenNinjaPurify'){
+   flags[0].push('ninjaSealPurified');
+   progression.points+=ZEN_PURIFICATION_POINTS;persist();updateHUD();
+   story('camp.dialogue.label','zen.name','ninjaClan.zenSeal',null,{right:'zen',speaker:'zen'});return true;
   }
   if(actual.type==='prisonEnter')return CampQuest.enter('shadowPrison');
   if(actual.type==='prisonReturn')return CampQuest.leave();
@@ -40,5 +48,5 @@ const PrisonQuest=(()=>{
   if(!active()||state!=='play'||!enemies.includes(enemy)||!enemy.dead||!won())return false;
   story('shadow.label','zen.warden.name','zen.warden.victory',null,{right:'prisonWarden'});return true;
  }
- return Object.freeze({active,rescued,purificationReady,context,interact,objective,wardenVictory});
+ return Object.freeze({active,rescued,purificationReady,ninjaSealReady,context,interact,objective,wardenVictory});
 })();

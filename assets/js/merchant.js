@@ -31,7 +31,13 @@ const Merchant=(()=>{
  }
  const vendor=()=>forestCamp.npcs.find(n=>n.id==='akash');
  const cookCatalogue=Object.freeze({roastMeat:catalogue.roastMeat,tea:catalogue.tea,roastChicken:Object.freeze({price:40,stack:true})});
- const provider=()=>{const npc=FiaVoidJourney.provider();return npc&&['cook','trader'].includes(npc.service)?{id:npc.service,products:npc.service==='cook'?cookCatalogue:{},title:npc.name}:level===forestCamp&&rescued()&&pointNear(vendor(),95,85)?{id:'akash',products:catalogue,title:'merchant.shop.title'}:null;};
+ const ninjaCatalogue=Object.freeze({...catalogue,roastChicken:cookCatalogue.roastChicken});
+ const provider=()=>{
+  if(DungeonRun.campProvider('akash'))return {id:'akash',products:ninjaCatalogue,title:'merchant.shop.title'};
+  const npc=FiaVoidJourney.provider();
+  if(npc&&['cook','trader'].includes(npc.service))return {id:npc.service,products:npc.service==='cook'?cookCatalogue:{},title:npc.name};
+  return level===forestCamp&&rescued()&&pointNear(vendor(),95,85)?{id:'akash',products:catalogue,title:'merchant.shop.title'}:null;
+ };
  const nearVendor=()=>!!provider();
  function award(amount){
   if(!Number.isSafeInteger(amount)||amount<0)throw Error('Invalid coin reward');

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "id": "boss-ninjaClanRitualist",
+  "kind": "boss",
+  "faction": "encounter",
+  "name": "ninjaClan.ritualist",
+  "selectors": [{"bossId": "ninjaClanRitualist"}],
+  "art": {
+    "sprites": [{"image": "ninjaRitualist", "metadata": "ART_NINJA_CLAN.ritualist"}],
+    "effects": ["fxDarkMagic"]
+  }
+}
