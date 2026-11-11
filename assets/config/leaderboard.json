@@ -1,5 +1,5 @@
 {
   "url": "https://vxijfdqxczngytwqgrvq.supabase.co",
   "keyFile": "assets/config/leaderboard-public.json",
-  "function": "tower-leaderboard"
+  "function": "tower-leaderboard-v2"
 }

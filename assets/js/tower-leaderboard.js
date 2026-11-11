@@ -17,7 +17,7 @@ const TowerLeaderboard=(()=>{
   finally{if(token===revision){busy=false;render();}}
  }
  async function submit(){
-  if(!opened||busy)return;const name=node('leaderboardName').value.trim().normalize('NFC'),score=TowerStore.read().best;
+  if(!opened||busy)return;const name=node('leaderboardName').value.trim().normalize('NFC'),score=TowerStore.read().ranking?.best;
   if(!TowerLeaderboardAPI.nameValid(name)){status='invalidName';render();return;}
   if(!TowerLeaderboardAPI.scoreValid(score)){status='noScore';render();return;}
   const token=revision;busy=true;status='loading';render();

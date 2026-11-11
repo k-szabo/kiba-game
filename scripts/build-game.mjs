@@ -14,7 +14,7 @@ const readSource=file=>fs.readFileSync(path.join(root,file),'utf8').replace(/\r\
 const locales=JSON.parse(readSource(localePath));
 const bindings=JSON.parse(readSource(bindingPath));
 const leaderboard=JSON.parse(readSource(leaderboardPath));
-if(!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(leaderboard.url)||leaderboard.keyFile!=='assets/config/leaderboard-public.json'||Object.hasOwn(leaderboard,'publishableKey')||leaderboard.function!=='tower-leaderboard')throw Error('Invalid public leaderboard configuration.');
+if(!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(leaderboard.url)||leaderboard.keyFile!=='assets/config/leaderboard-public.json'||Object.hasOwn(leaderboard,'publishableKey')||!['tower-leaderboard','tower-leaderboard-v2'].includes(leaderboard.function))throw Error('Invalid public leaderboard configuration.');
 const release=JSON.parse(readSource(releasePath));
 const registry=JSON.parse(readSource(registryPath));
 validateRelease(release,registry);

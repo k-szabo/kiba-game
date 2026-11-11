@@ -32,5 +32,14 @@ for(const block of ['blockRead','blockWrite']){
 // Best results merge before writing, including a newer result from another tab.
 const tabs=new Map(),one=setup(tabs),two=setup(tabs);call(one,'start',{seed:7,weapon:'katana'});call(one,'saveCheckpoint',point(7,5));two.run('TowerStore.read()');call(one,'finish',point(7,12));call(two,'finish',point(7,8));assert.equal(two.json('TowerStore.read().best.cleared'),12);
 const detached=one.json('TowerStore.read()');detached.best.cleared=0;assert.equal(one.json('TowerStore.read().best.cleared'),12,'Returned data cannot mutate the store');
+const previous=setup(new Map([[key,JSON.stringify({schema:1,checkpoint:point(12,10),best:point(12,20),last:null})]]));
+assert(call(previous,'finish',point(12,21)).ok);
+assert.equal(previous.run('TowerStore.read().ranking'),undefined,'A continued old run cannot enter the new season');
+assert(call(previous,'start',{seed:13,weapon:'katana'}).ok);
+assert.equal(previous.run('TowerStore.read().ranking.best'),null);
+assert(call(previous,'finish',point(13,4,16,50)).ok);
+assert(call(previous,'finish',point(13,4,17,60)).ok);
+assert.equal(previous.run('TowerStore.read().ranking.best.elapsed'),50,'The season uses the same time tiebreak as Supabase');
+assert.equal(previous.run('TowerStore.read().best.cleared'),21,'The historical personal record is preserved');
 for(const [name,value]of initial)assert.equal(shared.get(name),value);assert([...a.reads,...a.writes,...reload.reads,...reload.writes].every(name=>name===key),'Tower storage never touches adventure keys, preferences or profiles');
 console.log('PASS: isolated tower fifth-floor checkpoints, reload/new-run records, strict bounded schema, stale-tab protection, monotonic best merging, future/corrupt preservation, storage failure memory fallback and untouched adventure storage.');
