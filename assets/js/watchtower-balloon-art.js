@@ -98,12 +98,24 @@ const WatchtowerBalloonArt=(()=>{
   const height=key==='jailer'?190:key==='dragon'?330:key==='seal'?170:e.balloonWasp?110:150;
   stamp(key,pose,e.x+e.w/2,e.y+e.h,height,e.face);
   if(e.balloonWasp){Visuals.healthBar(e);if(e.windup>0)BossCues.box({x:e.targetX-25,y:e.targetY-25,w:90,h:110});return true;}
-  if(e.phase==='windup'){
+  if(e.phase==='windup'&&e.move!=='windstorm'&&e.move!=='meteorShower'){
    BossCues.box(e.attackBox||{x:e.targetX-35,y:e.targetY-45,w:70,h:90});
    if(e.move==='balloonBreath')BossCues.box({x:220,y:level.arena.y-30,w:1560,h:50});
   }
-  for(const h of e.hazards||[])if(!h.active)BossCues.box(h);else if(h.kind==='lightning')BossVFX.lightning(h.x+h.w/2,h.y+h.h,h.h,h.w);else BossVFX.column(h);
+  for(const h of e.hazards||[]){
+   if(h.kind==='windstorm'||h.kind==='meteor')continue;
+   if(!h.active)BossCues.box(h);
+   else if(h.kind==='lightning')BossVFX.lightning(h.x+h.w/2,h.y+h.h,h.h,h.w);
+   else BossVFX.column(h);
+  }
   return true;
+ }
+ function effects(e){
+  if(e.miniboss!=='westheruSeal')return;
+  for(const h of e.hazards||[]){
+   if(h.kind==='windstorm')BossVFX.windstorm(h,e.arena);
+   else if(h.kind==='meteor')BossVFX.meteor(h);
+  }
  }
  function playerOverlay(){
   const vortex=WatchtowerBalloon.vortex();if(!vortex)return false;
@@ -111,5 +123,5 @@ const WatchtowerBalloonArt=(()=>{
   drawMomo(340+t*300,1000-t*250,96,0,0,1);return true;
  }
  function dialogueActors(){return Object.fromEntries([['westheru','pilot'],['westheruSeal','seal']].map(([id,key])=>{const a=ART_WATCHTOWER[key],f=a.frames[0],b=f.visibleBounds;return [id,{name:'balloon.pilot',image:a.image,rect:{x:b[0],y:b[1],w:b[2]-b[0],h:b[3]-b[1]}}];}));}
- return Object.freeze({backdrop,scenery,companion,actor,player:playerOverlay,dialogueActors});
+ return Object.freeze({backdrop,scenery,companion,actor,effects,player:playerOverlay,dialogueActors});
 })();

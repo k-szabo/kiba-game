@@ -707,6 +707,587 @@
         "dominantCoveragePercent": 100.0001
       }
     },
+    "effect.windBuild": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.windBuild",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#57bcb6",
+            "coveragePercent": 11.2439
+          },
+          {
+            "hex": "#3ac3b4",
+            "coveragePercent": 9.2522
+          },
+          {
+            "hex": "#54d1c2",
+            "coveragePercent": 9.2163
+          },
+          {
+            "hex": "#3daaa5",
+            "coveragePercent": 7.1643
+          },
+          {
+            "hex": "#f9fdfd",
+            "coveragePercent": 6.6723
+          },
+          {
+            "hex": "#9bcdca",
+            "coveragePercent": 6.6117
+          },
+          {
+            "hex": "#76c0bc",
+            "coveragePercent": 6.3822
+          },
+          {
+            "hex": "#b3dbd9",
+            "coveragePercent": 5.9424
+          },
+          {
+            "hex": "#e1faf8",
+            "coveragePercent": 5.7288
+          },
+          {
+            "hex": "#22b3a5",
+            "coveragePercent": 5.4854
+          },
+          {
+            "hex": "#c2f1eb",
+            "coveragePercent": 5.4057
+          },
+          {
+            "hex": "#3bdbc3",
+            "coveragePercent": 4.8267
+          },
+          {
+            "hex": "#1c9992",
+            "coveragePercent": 4.3025
+          },
+          {
+            "hex": "#7addcd",
+            "coveragePercent": 4.2286
+          },
+          {
+            "hex": "#93f2e1",
+            "coveragePercent": 3.9932
+          },
+          {
+            "hex": "#5fead5",
+            "coveragePercent": 3.5439
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#34b5aa",
+            "coveragePercent": 22.0017
+          },
+          {
+            "hex": "#52bcb5",
+            "coveragePercent": 21.6955
+          },
+          {
+            "hex": "#40d4c0",
+            "coveragePercent": 19.7209
+          },
+          {
+            "hex": "#5dd1c3",
+            "coveragePercent": 15.7014
+          },
+          {
+            "hex": "#20a097",
+            "coveragePercent": 12.9919
+          },
+          {
+            "hex": "#6decd8",
+            "coveragePercent": 7.8886
+          }
+        ],
+        "visibleSamples": 40960,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "effect.windCrest": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.windCrest",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5ec8c0",
+            "coveragePercent": 10.9052
+          },
+          {
+            "hex": "#45bbb3",
+            "coveragePercent": 9.5323
+          },
+          {
+            "hex": "#31aaa4",
+            "coveragePercent": 8.2346
+          },
+          {
+            "hex": "#f5fdfc",
+            "coveragePercent": 8.1906
+          },
+          {
+            "hex": "#199e96",
+            "coveragePercent": 7.9533
+          },
+          {
+            "hex": "#27c1af",
+            "coveragePercent": 7.8084
+          },
+          {
+            "hex": "#7ccdc5",
+            "coveragePercent": 7.0824
+          },
+          {
+            "hex": "#40d5c0",
+            "coveragePercent": 6.329
+          },
+          {
+            "hex": "#dbf7f3",
+            "coveragePercent": 5.7496
+          },
+          {
+            "hex": "#5cb9b6",
+            "coveragePercent": 5.6168
+          },
+          {
+            "hex": "#61e3cc",
+            "coveragePercent": 4.7637
+          },
+          {
+            "hex": "#c1f2e9",
+            "coveragePercent": 4.583
+          },
+          {
+            "hex": "#83ead6",
+            "coveragePercent": 3.891
+          },
+          {
+            "hex": "#98d7cd",
+            "coveragePercent": 3.8836
+          },
+          {
+            "hex": "#a1f2e1",
+            "coveragePercent": 3.1707
+          },
+          {
+            "hex": "#b6ddd9",
+            "coveragePercent": 2.3059
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#5ac2bc",
+            "coveragePercent": 26.21
+          },
+          {
+            "hex": "#3cb0ab",
+            "coveragePercent": 17.1462
+          },
+          {
+            "hex": "#1ca198",
+            "coveragePercent": 16.9948
+          },
+          {
+            "hex": "#29c2b0",
+            "coveragePercent": 14.3327
+          },
+          {
+            "hex": "#44d3bf",
+            "coveragePercent": 13.5554
+          },
+          {
+            "hex": "#6ae2ce",
+            "coveragePercent": 11.761
+          }
+        ],
+        "visibleSamples": 69026,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "effect.windFade": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.windFade",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a6cdca",
+            "coveragePercent": 18.4683
+          },
+          {
+            "hex": "#add4d1",
+            "coveragePercent": 13.2916
+          },
+          {
+            "hex": "#a7d9d4",
+            "coveragePercent": 12.4819
+          },
+          {
+            "hex": "#9bb9b7",
+            "coveragePercent": 8.9397
+          },
+          {
+            "hex": "#9ccecb",
+            "coveragePercent": 7.41
+          },
+          {
+            "hex": "#91c5c2",
+            "coveragePercent": 7.3251
+          },
+          {
+            "hex": "#a2c2bf",
+            "coveragePercent": 7.3238
+          },
+          {
+            "hex": "#9cc7c5",
+            "coveragePercent": 7.1542
+          },
+          {
+            "hex": "#bbdcdb",
+            "coveragePercent": 4.4052
+          },
+          {
+            "hex": "#90acaa",
+            "coveragePercent": 3.7222
+          },
+          {
+            "hex": "#95b3b1",
+            "coveragePercent": 3.1685
+          },
+          {
+            "hex": "#86a2a0",
+            "coveragePercent": 2.1239
+          },
+          {
+            "hex": "#c2e3e3",
+            "coveragePercent": 2.0771
+          },
+          {
+            "hex": "#ceeaea",
+            "coveragePercent": 1.2726
+          },
+          {
+            "hex": "#d7f2f3",
+            "coveragePercent": 0.4644
+          },
+          {
+            "hex": "#7e908f",
+            "coveragePercent": 0.3714
+          }
+        ],
+        "accents": [],
+        "visibleSamples": 14942,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "effect.meteorFall": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.meteorFall",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6d486e",
+            "coveragePercent": 14.6779
+          },
+          {
+            "hex": "#785682",
+            "coveragePercent": 13.0251
+          },
+          {
+            "hex": "#8d4b5d",
+            "coveragePercent": 11.5105
+          },
+          {
+            "hex": "#5f3858",
+            "coveragePercent": 10.6087
+          },
+          {
+            "hex": "#af5554",
+            "coveragePercent": 8.2335
+          },
+          {
+            "hex": "#ee732c",
+            "coveragePercent": 5.8252
+          },
+          {
+            "hex": "#90382f",
+            "coveragePercent": 5.7162
+          },
+          {
+            "hex": "#cc5934",
+            "coveragePercent": 5.6999
+          },
+          {
+            "hex": "#4f2438",
+            "coveragePercent": 4.7586
+          },
+          {
+            "hex": "#f99736",
+            "coveragePercent": 4.3368
+          },
+          {
+            "hex": "#d4705b",
+            "coveragePercent": 3.9785
+          },
+          {
+            "hex": "#a2678a",
+            "coveragePercent": 3.4952
+          },
+          {
+            "hex": "#f9b95c",
+            "coveragePercent": 2.5759
+          },
+          {
+            "hex": "#bc88af",
+            "coveragePercent": 2.2753
+          },
+          {
+            "hex": "#fdde89",
+            "coveragePercent": 1.8314
+          },
+          {
+            "hex": "#fef2bc",
+            "coveragePercent": 1.4512
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#994c56",
+            "coveragePercent": 26.7764
+          },
+          {
+            "hex": "#c7604d",
+            "coveragePercent": 23.3914
+          },
+          {
+            "hex": "#e96e2c",
+            "coveragePercent": 18.0619
+          },
+          {
+            "hex": "#f89a3d",
+            "coveragePercent": 13.4974
+          },
+          {
+            "hex": "#9e3d2b",
+            "coveragePercent": 12.0914
+          },
+          {
+            "hex": "#fccb6d",
+            "coveragePercent": 6.1814
+          }
+        ],
+        "visibleSamples": 39965,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "effect.meteorImpact": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.meteorImpact",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6b5171",
+            "coveragePercent": 15.2573
+          },
+          {
+            "hex": "#7b6080",
+            "coveragePercent": 14.3556
+          },
+          {
+            "hex": "#5d3d57",
+            "coveragePercent": 11.6558
+          },
+          {
+            "hex": "#856c90",
+            "coveragePercent": 7.9312
+          },
+          {
+            "hex": "#442740",
+            "coveragePercent": 7.2468
+          },
+          {
+            "hex": "#a0687e",
+            "coveragePercent": 7.2238
+          },
+          {
+            "hex": "#8c5464",
+            "coveragePercent": 6.6047
+          },
+          {
+            "hex": "#823c3d",
+            "coveragePercent": 4.9901
+          },
+          {
+            "hex": "#c46b60",
+            "coveragePercent": 4.3233
+          },
+          {
+            "hex": "#ed7d36",
+            "coveragePercent": 3.944
+          },
+          {
+            "hex": "#ed9880",
+            "coveragePercent": 3.7223
+          },
+          {
+            "hex": "#b95237",
+            "coveragePercent": 3.3218
+          },
+          {
+            "hex": "#f9ae57",
+            "coveragePercent": 3.1596
+          },
+          {
+            "hex": "#bf7f8e",
+            "coveragePercent": 3.0655
+          },
+          {
+            "hex": "#fdd785",
+            "coveragePercent": 2.1126
+          },
+          {
+            "hex": "#fef7c9",
+            "coveragePercent": 1.0857
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#944543",
+            "coveragePercent": 22.7568
+          },
+          {
+            "hex": "#c3685c",
+            "coveragePercent": 18.642
+          },
+          {
+            "hex": "#f29865",
+            "coveragePercent": 17.8486
+          },
+          {
+            "hex": "#f08434",
+            "coveragePercent": 16.0776
+          },
+          {
+            "hex": "#fcc86e",
+            "coveragePercent": 12.9582
+          },
+          {
+            "hex": "#c95831",
+            "coveragePercent": 11.7168
+          }
+        ],
+        "visibleSamples": 72386,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "effect.meteorSmoke": {
+      "source": "assets/images/effects/westheru-storm-v1.webp",
+      "frameMetadata": "BOSS_FX_ART.meteorSmoke",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a28ba3",
+            "coveragePercent": 14.328
+          },
+          {
+            "hex": "#745d76",
+            "coveragePercent": 13.6926
+          },
+          {
+            "hex": "#8d748d",
+            "coveragePercent": 13.2439
+          },
+          {
+            "hex": "#69516a",
+            "coveragePercent": 12.9518
+          },
+          {
+            "hex": "#80667f",
+            "coveragePercent": 11.878
+          },
+          {
+            "hex": "#5f435b",
+            "coveragePercent": 8.0007
+          },
+          {
+            "hex": "#ae98ae",
+            "coveragePercent": 6.8345
+          },
+          {
+            "hex": "#975c68",
+            "coveragePercent": 4.1356
+          },
+          {
+            "hex": "#805161",
+            "coveragePercent": 4.1157
+          },
+          {
+            "hex": "#a06b7b",
+            "coveragePercent": 3.5121
+          },
+          {
+            "hex": "#b56764",
+            "coveragePercent": 2.915
+          },
+          {
+            "hex": "#cb7974",
+            "coveragePercent": 1.4933
+          },
+          {
+            "hex": "#dc7856",
+            "coveragePercent": 1.4167
+          },
+          {
+            "hex": "#f69959",
+            "coveragePercent": 0.9884
+          },
+          {
+            "hex": "#fdcb77",
+            "coveragePercent": 0.3603
+          },
+          {
+            "hex": "#fff9c3",
+            "coveragePercent": 0.1334
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#e47f5c",
+            "coveragePercent": 26.4568
+          },
+          {
+            "hex": "#c96f60",
+            "coveragePercent": 25.3918
+          },
+          {
+            "hex": "#b36155",
+            "coveragePercent": 18.7491
+          },
+          {
+            "hex": "#f79e57",
+            "coveragePercent": 14.8511
+          },
+          {
+            "hex": "#954e53",
+            "coveragePercent": 8.4585
+          },
+          {
+            "hex": "#fdcb73",
+            "coveragePercent": 6.0927
+          }
+        ],
+        "visibleSamples": 38112,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "effect.lava": {
       "source": "assets/images/effects/lava-surface-v1.png",
       "frameMetadata": "BOSS_FX_ART.lava",
@@ -3502,6 +4083,111 @@
         ],
         "visibleSamples": 271237,
         "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/effects/westheru-storm-v1.webp": {
+      "sha256": "d7022372ca9bc5c74b140502a622febfffb74c17eabba650143e96a87e157543",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "westheruStormFx"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#6d4d6b",
+            "coveragePercent": 14.2312
+          },
+          {
+            "hex": "#836482",
+            "coveragePercent": 13.8172
+          },
+          {
+            "hex": "#58c8bd",
+            "coveragePercent": 10.554
+          },
+          {
+            "hex": "#37bdb0",
+            "coveragePercent": 8.0726
+          },
+          {
+            "hex": "#523049",
+            "coveragePercent": 6.3688
+          },
+          {
+            "hex": "#b16365",
+            "coveragePercent": 5.4424
+          },
+          {
+            "hex": "#9ecfcb",
+            "coveragePercent": 5.3883
+          },
+          {
+            "hex": "#effbf8",
+            "coveragePercent": 5.1947
+          },
+          {
+            "hex": "#78e0cf",
+            "coveragePercent": 4.809
+          },
+          {
+            "hex": "#20a29a",
+            "coveragePercent": 4.6441
+          },
+          {
+            "hex": "#a989a1",
+            "coveragePercent": 4.6133
+          },
+          {
+            "hex": "#924341",
+            "coveragePercent": 4.357
+          },
+          {
+            "hex": "#bceee6",
+            "coveragePercent": 4.2301
+          },
+          {
+            "hex": "#e47134",
+            "coveragePercent": 3.8994
+          },
+          {
+            "hex": "#f3a164",
+            "coveragePercent": 3.0597
+          },
+          {
+            "hex": "#fddd90",
+            "coveragePercent": 1.3183
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#55cec0",
+            "coveragePercent": 37.397
+          },
+          {
+            "hex": "#2baea4",
+            "coveragePercent": 27.0715
+          },
+          {
+            "hex": "#994646",
+            "coveragePercent": 10.7943
+          },
+          {
+            "hex": "#c7634f",
+            "coveragePercent": 10.2871
+          },
+          {
+            "hex": "#f08135",
+            "coveragePercent": 8.126
+          },
+          {
+            "hex": "#f9b668",
+            "coveragePercent": 6.324
+          }
+        ],
+        "visibleSamples": 275391,
+        "dominantCoveragePercent": 100.0001
       }
     }
   }

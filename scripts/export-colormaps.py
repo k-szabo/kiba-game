@@ -126,9 +126,10 @@ def group(identifier, source, rects, metadata):
 
 
 manifest = atlas['manifest']
-entry_images = set(re.findall(r'assets/[^?"\s]+\.png', (ROOT / 'index.html').read_text(encoding='utf-8')))
+entry_images = set(re.findall(r'assets/[^?"\s]+\.(?:png|webp)', (ROOT / 'index.html').read_text(encoding='utf-8')))
 assets = {}
-for file in sorted((ROOT / 'assets').rglob('*.png')):
+image_files = sorted(file for file in (ROOT / 'assets').rglob('*') if file.is_file() and file.suffix in ('.png', '.webp'))
+for file in image_files:
     source = file.relative_to(ROOT).as_posix()
     arr = image_array(source)
     keys = [k for k, v in manifest.items() if v == source]
@@ -383,7 +384,7 @@ serialized = serialize(index)
 assert len(npcs) == 97 + len(atlas['watchtower']), 'Missing current character entry'
 assert {'kitsune.fia', 'kitsune.fox', 'kitsune.hunter', 'shadowDen.shadowNinja', 'shadowDen.shadowThief'} <= npcs.keys(), 'Missing kitsune/camp reference'
 assert {'dungeon.captain', 'dungeon.necromancer', 'dungeon.council'} <= npcs.keys(), 'Missing dungeon bosses'
-assert len(assets) == len(list((ROOT / 'assets').rglob('*.png'))), 'Incomplete image inventory'
+assert len(assets) == len(image_files), 'Incomplete image inventory'
 if args.check:
     assert OUTPUT.read_text(encoding='utf-8') == serialized, 'Colormaps are stale; regenerate the reference.'
     directory = OUTPUT.with_suffix('')

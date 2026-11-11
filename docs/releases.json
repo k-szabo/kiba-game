@@ -1918,6 +1918,22 @@
           "en": "Internal maintenance and technical improvements."
         }
       ]
+    },
+    {
+      "version": "0.9.76_43eb6582",
+      "code": "43eb6582",
+      "baseVersion": "0.9.76",
+      "slug": "westheru-seal-abilities",
+      "summary": {
+        "hu": "Westheru vihara",
+        "en": "Westheru’s storm"
+      },
+      "fixes": [
+        {
+          "hu": "Westheru fókaalakban szélvihart és meteorzáport idéz a történetben és a Végtelen toronyban.",
+          "en": "In seal form, Westheru summons a windstorm and a meteor shower in the story and the Endless Tower."
+        }
+      ]
     }
   ]
 }

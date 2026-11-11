@@ -29,5 +29,30 @@ run(`flags[0].push(WatchtowerBalloonRules.progress.sentinel);WatchtowerBalloonCo
 run(`let seal=WatchtowerBalloonCombat.create({id:'seal',miniboss:'westheruSeal',x:800,y:600});enemies=[seal];seal.active=true;seal.clock=0;WatchtowerBalloonCombat.update(seal,.01);`);
 assert.equal(run('seal.hazards.length'),3);assert.ok(run('seal.hazards.every(h=>h.y+h.h===600&&h.warning>0&&!h.active)'));
 const hp=run('player.hp');run('WatchtowerBalloonCombat.update(seal,.2)');assert.equal(run('player.hp'),hp);
+const startSealMove=index=>run(`
+ WatchtowerBalloonCombat.reset(seal);enemies=[seal];player.x=900;player.y=531;player.hp=20;
+ seal.cycles=${index};seal.clock=0;WatchtowerBalloonCombat.update(seal,.01);
+`);
+const stepSeal=(frames,fps=60)=>run(`for(let i=0;i<${frames};i++)WatchtowerBalloonCombat.update(seal,1/${fps});`);
+for(const fps of [30,60,120]){
+ startSealMove(2);
+ assert.equal(run('seal.move'),'windstorm');
+ const start=run('seal.hazards[0].x');
+ stepSeal(fps,fps);
+ assert.equal(run('player.hp'),20,'Grounded player is safe until the gust is released');
+ stepSeal(fps,fps);
+ assert.equal(run('player.hp'),16,'The advancing gust damages once');
+ assert(run('seal.hazards[0].x')>start,'The gust travels in the cast direction');
+ startSealMove(2);run('player.y-=100');stepSeal(2*fps,fps);
+ assert.equal(run('player.hp'),20,'Jumping above the gust avoids it');
+}
+startSealMove(4);
+assert.equal(run('seal.move'),'meteorShower');
+assert(run('seal.hazards.length===3&&seal.hazards.every((h,i,all)=>!h.active&&h.y+h.h===600&&(i===0||h.warning>all[i-1].warning))'));
+assert.equal(run('new Set(seal.hazards.map(h=>h.x)).size'),3);
+stepSeal(69);assert.equal(run('player.hp'),20,'Meteor landing markers do not deal damage');
+stepSeal(6);assert.equal(run('player.hp'),15,'Meteor lands at the marked position');
+run("player.x=40;WatchtowerBalloonCombat.reset(seal)");
+assert.equal(run('seal.hazards.length'),0,'Reset removes queued impacts');
 run(`let jailer=WatchtowerBalloonCombat.create({id:'jailer',miniboss:'watchtowerJailer',x:400,y:600});enemies=[jailer];jailer.active=true;player.x=-20;WatchtowerBalloonCombat.enforceBounds();`);assert.equal(run('player.x'),12);
 console.log('PASS watchtower/balloon combat: pause, interrupted balloon attack, source cleanup, one-time escape, warning geometry and bounds');

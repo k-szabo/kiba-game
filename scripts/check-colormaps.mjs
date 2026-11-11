@@ -42,10 +42,10 @@ function refs(value){
 refs(data.pc);refs(data.npcs);refs(data.objects);
 for(const id of ['jailer','sentinel','wasp','pilot','seal','dragon'])assert(Object.hasOwn(data.npcs,'watchtower.'+id),'Missing watchtower actor: '+id);
 for(const [key,group] of Object.entries(data.paletteGroups))assert(Object.hasOwn(data.assets,group.source),`Missing source: ${key}`);
-function pngs(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?pngs(path.join(dir,entry.name)):entry.name.endsWith('.png')?[path.relative(root,path.join(dir,entry.name)).replaceAll('\\','/')]:[]);}
-assert.deepEqual(Object.keys(data.assets).sort(),pngs(path.join(root,'assets')).sort(),'Incomplete PNG inventory');
+function rasterAssets(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?rasterAssets(path.join(dir,entry.name)):/\.(?:png|webp)$/.test(entry.name)?[path.relative(root,path.join(dir,entry.name)).replaceAll('\\','/')]:[]);}
+assert.deepEqual(Object.keys(data.assets).sort(),rasterAssets(path.join(root,'assets')).sort(),'Incomplete raster inventory');
 for(const [file,record] of Object.entries(data.assets))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex'),record.sha256,`Changed image: ${file}`);
 for(const file of Object.keys(data.codeColors))assert(fs.existsSync(path.join(root,file)),`Removed code source: ${file}`);
 assert(Object.hasOwn(JSON.parse(fs.readFileSync(path.join(directory,'colormaps/japan.json'))).npcs,'japan.guard'));
 assert(Object.hasOwn(JSON.parse(fs.readFileSync(path.join(directory,'colormaps/shadow-den.json'))).npcs,'kitsune.fia'));
-console.log(`PASS: ${names.size} colormap parts, unique records, checksums, references and complete PNG inventory.`);
+console.log(`PASS: ${names.size} colormap parts, unique records, checksums, references and complete raster inventory.`);

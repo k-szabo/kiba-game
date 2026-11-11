@@ -1,6 +1,12 @@
 /* Painted boss effects. Source pixels are never recolored; gameplay owns timing and collision. */
 'use strict';
 const BOSS_FX_ART={
+  windBuild:{image:'westheruStormFx',rect:{x:14,y:174,w:498,h:217},anchorX:249,anchorY:190},
+  windCrest:{image:'westheruStormFx',rect:{x:514,y:108,w:510,h:309},anchorX:255,anchorY:287},
+  windFade:{image:'westheruStormFx',rect:{x:1048,y:157,w:465,h:234},anchorX:232,anchorY:213},
+  meteorFall:{image:'westheruStormFx',rect:{x:15,y:542,w:468,h:403},anchorX:364,anchorY:385},
+  meteorImpact:{image:'westheruStormFx',rect:{x:524,y:556,w:480,h:389},anchorX:219,anchorY:368},
+  meteorSmoke:{image:'westheruStormFx',rect:{x:1042,y:643,w:474,h:299},anchorX:188,anchorY:280},
   "lava": {
     "image": "fxLava",
     "rect": {
@@ -152,6 +158,29 @@ const BossVFX=(()=>{
     fissure(x,feet,h.w+36,h.active?1:.7);marker(x,feet,h.w+8,'#efb07c');
     if(h.active)impact(x,feet,h.w+28,h.h+24);
   }
+  function windstorm(h,arena){
+    const x=h.x+h.w/2,feet=h.y+h.h;
+    if(!h.active){
+      BossCues.box({...h,x:arena.x,w:arena.w});
+      if(h.warning<.48)stamp('windBuild',x,feet,h.w,h.h,{face:h.dir,alpha:.55});
+      return;
+    }
+    const progress=clamp(1-h.life/h.sweep,0,1),still=reducedMotion.matches;
+    const pose=still?'windCrest':progress<.18?'windBuild':progress>.80?'windFade':'windCrest';
+    stamp(pose,x,feet,h.w+16,h.h+8,{face:h.dir,alpha:still?1:clamp((1-progress)*4,.35,1)});
+  }
+  function meteor(h){
+    if(!h.active&&h.warning>h.preview)return;
+    const x=h.x+h.w/2,feet=h.y+h.h;
+    marker(x,feet,h.w,BossCues.color);
+    if(h.active){
+      const fade=!reducedMotion.matches&&h.life<.08;
+      stamp(fade?'meteorSmoke':'meteorImpact',x,feet,h.w+28,h.h+18,{alpha:fade?.72:1});
+    }else if(!reducedMotion.matches&&h.warning<=.58){
+      const t=clamp(h.warning/.58,0,1);
+      stamp('meteorFall',x-235*t*h.dir,feet-460*t,142,122,{face:h.dir});
+    }
+  }
   function projectile(p){
     const ember=p.kind==='ember',wave=p.kind==='wave',radius=p.radius||(ember?9:10);
     if(!ember&&!wave&&p.kind!=='shadowBolt')return false;
@@ -171,7 +200,7 @@ const BossVFX=(()=>{
     ctx.save();ctx.globalAlpha*=alpha;ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
     ctx.drawImage(image,art.x,art.y,art.w,art.h,x+(art.x-art.anchorX)*sx,feet+(art.y-art.anchorY)*sy,art.w*sx,art.h*sy);ctx.restore();
   }
-  return Object.freeze({stamp,marker,fissure,impact,portal,slash,lava,column,eruption,projectile,devour,lightning});
+  return Object.freeze({stamp,marker,fissure,impact,portal,slash,lava,column,eruption,windstorm,meteor,projectile,devour,lightning});
 })();
 
 /* Geometry-only boss warnings share their readable dash style. No combat clock is advanced. */
