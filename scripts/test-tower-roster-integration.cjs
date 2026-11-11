@@ -25,7 +25,7 @@ for(const [index,id]of catalog.entries()){
  r('target.hp=0;killEnemy(target);');assert(r('target.dead'),id+' dies without a story transition');assert.equal(r('TowerMode.phase'),'fight');
  assert.equal(r('JSON.stringify([saved,flags,defeated,progression,coins,visitedRests,window.__saveSnapshots])'),saved,id+' cannot change journey state');
  r('for(const e of [...enemies]){e.active=true;e.hp=0;killEnemy(e);}update(1/120);');assert.equal(r('TowerMode.phase'),'clear');assert.equal(r('TowerMode.snapshot().kills'),3,'Summons do not alter historical floor kill totals');
- r('TowerMode.enterFloor();');assert.equal(r('TowerMode.phase'),'fight');
+ r('const unlock=Date.now()+3000;Date.now=()=>unlock;TowerMode.claim(TowerRewards.choices(TowerMode.snapshot().seed,1)[0]);TowerMode.enterFloor();');assert.equal(r('TowerMode.phase'),'fight');
 }
 // Minions inherit their owner's damage once, including shots and per-owner cleanup.
 {

@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const source=fs.readFileSync(path.join(__dirname,'../assets/js/tower-store.js'),'utf8'),key='kiba-infinite-tower-v1';
+const source=fs.readFileSync(path.join(__dirname,'../assets/js/tower-rewards.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/tower-store.js'),'utf8'),key='kiba-infinite-tower-v1';
 function setup(shared=new Map(),options={}){
  const reads=[],writes=[],sandbox={localStorage:{getItem(name){reads.push(name);if(options.blockRead)throw Error('blocked');return shared.get(name)??null;},setItem(name,value){writes.push(name);if(options.blockWrite)throw Error('quota');shared.set(name,value);}}};
  vm.createContext(sandbox);vm.runInContext(source,sandbox);const run=text=>vm.runInContext(text,sandbox),json=text=>JSON.parse(JSON.stringify(run(text)));

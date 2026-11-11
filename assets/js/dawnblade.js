@@ -2,7 +2,7 @@
 'use strict';
 const Dawnblade=(()=>{
  let cooldown=0,cast=null;
- const owned=()=>flags[3].includes(HannahRules.progress.awakening);
+ const owned=()=>typeof TowerMode!=='undefined'&&TowerMode.active?TowerMode.hasRelic('dawnblade'):flags[3].includes(HannahRules.progress.awakening);
  const ready=()=>owned()||HannahEncounter.finisherReady();
  const casting=()=>!!cast;
  function resetPlayer(){cast=null;}

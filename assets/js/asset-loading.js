@@ -62,6 +62,8 @@ const AssetLoading=(()=>{
    if(level?.dungeon)keys.push(...japanActors,...shadowActors,...heavenActors);
    else if(typeof realm==='number')keys.push(...(realm===0?japanActors:realm===1?['yomiWalk','yomiAttack']:realm===2?heavenActors:shadowActors));
    for(const e of enemies||[])keys.push(...bossAssets(e));
+   if(tower&&TowerMode.hasRelic('dawnblade'))keys.push('momoDawnblade');
+   if(tower&&TowerMode.hasRelic('grapple'))keys.push('momoHook','grapplingHook');
    if(!tower&&typeof boss!=='undefined'&&boss)keys.push(...BossCatalog.assets(realm===3?'madPriest':'main-'+realm));
    if(level?.id==='voidForbidden')keys.push(...BossCatalog.assets('voidLieutenant'),...BossCatalog.assets('voidDemon'));
    if(level?.id==='dragonCatacombs')keys.push(...BossCatalog.assets('dragonRaid'));

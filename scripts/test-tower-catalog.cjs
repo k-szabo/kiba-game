@@ -25,7 +25,7 @@ for(const seed of seeds){
    assert.deepEqual(plain(spec),plain(rules.floor(floor,seed)),'Catalog rotation is deterministic');
    assert.equal(bosses.length,floor>=26?3:floor>=11?2:1);
    assert.equal(new Set(bosses.map(enemy=>enemy.towerEncounter)).size,bosses.length,'Simultaneous encounters must be different');
-   assert.equal(spec.enemies.length,rules.enemyCount(floor),'Bosses replace slots; they do not change historical kill totals');
+   assert.equal(spec.enemies.length,rules.enemyCount(floor),'Floor counts match actual boss-only or supported encounters');
    primaries.push(bosses[0].towerEncounter);
    for(const enemy of bosses){
     const entry=rules.bossCatalog.find(item=>item.id===enemy.towerEncounter);
@@ -38,10 +38,10 @@ for(const seed of seeds){
  }
 }
 for(const [cleared,kills]of [[5,17],[10,40],[25,145],[100,745]]){
- assert.equal(rules.killsThrough(cleared),kills,'Historical checkpoint enemy count must remain exact');
+ assert.equal(rules.legacyKillsThrough(cleared),kills,'Historical checkpoint enemy count remains recognizable');
  const checkpoint={seed:123,weapon:'katana',cleared,kills,elapsed:cleared*45};
  assert(rules.validCheckpoint(checkpoint));const run=rules.fromCheckpoint(checkpoint);assert(rules.valid(run));
- assert.equal(run.floor,cleared+1);assert.deepEqual(plain(run.checkpoint),checkpoint);
+ assert.equal(run.floor,cleared+1);assert.deepEqual(plain(run.checkpoint),{...checkpoint,legacyCleared:cleared});assert.equal(run.kills,kills);
  assert.equal(rules.advance(run,{kills:rules.floor(run.floor,run.seed).enemyCount,elapsed:30}).ok,true);
 }
 console.log('PASS: complete classified tower roster, existing localized names, full deterministic coverage, unique concurrent bosses and unchanged historical checkpoints.');

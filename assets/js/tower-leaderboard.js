@@ -30,7 +30,7 @@ const TowerLeaderboard=(()=>{
   finally{if(token===revision){busy=false;render();}}
  }
  function open(){
-  if(opened||state!=='tower'||!TowerMode.active)return false;opened=true;revision++;busy=false;rows=[];status='';
+  if(opened||state!=='tower'||!TowerMode.active||TowerMode.resultLocked)return false;opened=true;revision++;busy=false;rows=[];status='';
   source=node(TowerMode.phase==='lobby'?'towerPanel':'towerResult');returnFocus=document.activeElement;source.hidden=true;node('towerLeaderboard').hidden=false;
   let name='';try{name=localStorage.getItem('kiba-tower-display-name')||'';}catch{}node('leaderboardName').value=name;render();node('leaderboardBack').focus();void refresh();return true;
  }
@@ -46,5 +46,5 @@ const TowerLeaderboard=(()=>{
    }
   },true);
  }
- return Object.freeze({init,open,close});
+ return Object.freeze({init,open,close,get active(){return opened;}});
 })();

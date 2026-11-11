@@ -23,7 +23,7 @@ r('Object.defineProperty(Visuals,"blocked",oldBlocked)');
 // Map plans must include assets before camera exploration, future phases or
 // minion spawning first asks the renderer for them. No full-catalog preload.
 {
- const calls=[],planBox=vm.createContext({state:'play',realm:0,weaponStyle:'katana',enemies:[],flags:[[],[],[],[]],Prologue:{active:false},DuelMode:{active:false},TowerMode:{active:false},Visuals:{blocked:true,scope(token,keys){calls.push({token,keys});return true;}},Dialogue:{render(){}},Inventory:{render(){},quantity(){return 0;}},Merchant:{render(){}}});
+ const calls=[],planBox=vm.createContext({state:'play',realm:0,weaponStyle:'katana',enemies:[],flags:[[],[],[],[]],Prologue:{active:false},DuelMode:{active:false},TowerMode:{active:false,hasRelic:()=>false},Visuals:{blocked:true,scope(token,keys){calls.push({token,keys});return true;}},Dialogue:{render(){}},Inventory:{render(){},quantity(){return 0;}},Merchant:{render(){}}});
  vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,planBox);
  vm.runInContext(fs.readFileSync('assets/js/art-data.js','utf8')+'\nthis.manifest=ART_MANIFEST;',planBox);
  vm.runInContext(fs.readFileSync('assets/js/asset-loading.js','utf8')+'\nthis.loading=AssetLoading;',planBox);
@@ -38,6 +38,8 @@ r('Object.defineProperty(Visuals,"blocked",oldBlocked)');
  planBox.Prologue.active=true;assert(plan('dream').keys.includes('momoRoom'),'Awakening is ready before prologue combat finishes');planBox.Prologue.active=false;
  planBox.state='menu';const menu=plan('japan');assert.equal(new Set(menu.keys).size,5,'Main-menu package stays small');
  planBox.state='towerConfirm';planBox.TowerMode.active=true;planBox.enemies=[{miniboss:'arenaCaptain',towerBoss:true}];planBox.TowerBossArt={assets:()=>['arenaCaptain']};const tower=plan('infiniteTower');assert(tower.keys.includes('towerBackdrop'));assert(tower.keys.includes('arenaCaptain'));assert(!tower.keys.includes('arenaSerpent'),'Unrelated boss assets wait for their floor');
+ planBox.TowerMode.hasRelic=id=>id==='grapple';const hook=plan('infiniteTower').keys;assert(hook.includes('momoHook')&&hook.includes('grapplingHook'));assert(!hook.includes('momoDawnblade'));
+ planBox.TowerMode.hasRelic=id=>id==='dawnblade';assert(plan('infiniteTower').keys.includes('momoDawnblade'));
 }
 // Inspect actual drawing dependencies at multiple depths/ends of every registered
 // scene. Read-only fake Image properties let private renderer accesses be seen

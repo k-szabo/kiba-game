@@ -10,15 +10,18 @@ const TowerStore=(()=>{
  const compare=(a,b)=>!a?-1:!b?1:a.cleared-b.cleared||a.kills-b.kills||b.elapsed-a.elapsed;
  const best=(a,b)=>copy(compare(a,b)>=0?a:b);
  const same=(a,b)=>a&&b&&a.seed===b.seed&&a.weapon===b.weapon;
+ function checkpointScore(value){const point=value&&{...value};if(point&&Object.hasOwn(point,'legacyCleared')){if(!integer(point.legacyCleared)||!point.legacyCleared||point.legacyCleared%5||point.legacyCleared>point.cleared)return false;delete point.legacyCleared;}return validScore(point);}
+ const rewardsFor=data=>data.checkpointRewards??TowerRewards.fresh(data.checkpoint?.cleared||0);
  function valid(data){
-  if(!record(data,['schema','checkpoint','best','last'])||data.schema!==1)return false;
+  if(!record(data,['schema','checkpoint','best','last'])&&!record(data,['schema','checkpoint','best','last','checkpointRewards'])||data.schema!==1)return false;
   if(data.best!==null&&!validScore(data.best)||data.last!==null&&!validScore(data.last))return false;
   if(data.last&&(!data.best||compare(data.best,data.last)<0))return false;
   const p=data.checkpoint;
   if(p!==null){
-   if(!validScore(p)||p.cleared%5!==0||p.cleared===0&&(p.kills!==0||p.elapsed!==0))return false;
+   if(!checkpointScore(p)||p.cleared%5!==0||p.cleared===0&&(p.kills!==0||p.elapsed!==0))return false;
    if(p.cleared>0&&(!data.best||compare(data.best,p)<0))return false;
   }
+  if(Object.hasOwn(data,'checkpointRewards')&&(!p||!TowerRewards.valid(data.checkpointRewards)||data.checkpointRewards.rewardedFloor!==p.cleared))return false;
   return true;
  }
  let memory=fresh(),reason=null,volatileReason=null;
@@ -37,7 +40,7 @@ const TowerStore=(()=>{
   if(disk.data){const merged=copy(disk.data);if(memory.best)merged.best=best(memory.best,merged.best);memory=merged;}
   return disk;
  }
- function read(){synchronize();return copy(memory);}
+ function read(){synchronize();const result=copy(memory);if(result.checkpoint)result.checkpointRewards=copy(rewardsFor(result));return result;}
  function result(ok,persisted,why=reason){return {ok,persisted,reason:why,data:copy(memory)};}
  function write(data,disk){
   if(!valid(data))return result(false,false,'invalid');
@@ -49,14 +52,15 @@ const TowerStore=(()=>{
   if(!record(input,['seed','weapon']))return result(false,false,'invalid');
   const point={seed:input.seed,weapon:input.weapon,cleared:0,kills:0,elapsed:0};
   if(!validScore(point))return result(false,false,'invalid');
-  const disk=synchronize(),data=copy(memory);data.checkpoint=point;return write(data,disk);
+  const disk=synchronize(),data=copy(memory);data.checkpoint=point;data.checkpointRewards=TowerRewards.fresh();return write(data,disk);
  }
- function advance(point,checkpoint){
-  if(!validScore(point)||checkpoint&&point.cleared%5!==0)return result(false,false,'invalid');
+ function advance(point,checkpoint,rewards){
+  if(!(checkpoint?checkpointScore(point):validScore(point))||checkpoint&&point.cleared%5!==0)return result(false,false,'invalid');
+  if(rewards!==undefined&&(!checkpoint||!TowerRewards.valid(rewards)||rewards.rewardedFloor!==point.cleared))return result(false,false,'invalid');
   const disk=synchronize(),data=copy(memory),old=data.checkpoint;
   if(!same(point,old)||point.cleared<old.cleared||point.kills<old.kills||point.elapsed<old.elapsed)return result(false,false,'stale');
-  data.best=best(data.best,point);if(checkpoint)data.checkpoint=copy(point);else data.last=copy(point);
+  const score=Object.fromEntries(scoreKeys.map(key=>[key,point[key]]));data.best=best(data.best,score);if(checkpoint){data.checkpoint=copy(point);data.checkpointRewards=copy(rewards??TowerRewards.fresh(point.cleared));}else data.last=copy(point);
   return write(data,disk);
  }
- return Object.freeze({read,start,saveCheckpoint:point=>advance(point,true),finish:point=>advance(point,false),valid,get available(){return reason===null;},get reason(){return reason;}});
+ return Object.freeze({read,start,saveCheckpoint:(point,rewards)=>advance(point,true,rewards),finish:point=>advance(point,false),valid,get available(){return reason===null;},get reason(){return reason;}});
 })();

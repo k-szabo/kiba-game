@@ -3,8 +3,9 @@
 const Grapple=(()=>{
  let pull=null,finishing=null,cooldown=0,age=0;
  const center=e=>({x:e.x+e.w/2,y:e.y+e.h/2});
- const owned=()=>flags?.[0]?.includes('grapplingHook')===true;
- const playable=()=>state==='play'&&!Prologue.active&&!resolutionBlocked&&!Visuals.blocked&&!(typeof TowerMode!=='undefined'&&TowerMode.active)&&!(typeof DuelMode!=='undefined'&&DuelMode.active);
+ const tower=()=>typeof TowerMode!=='undefined'&&TowerMode.active;
+ const owned=()=>tower()?TowerMode.hasRelic('grapple'):flags?.[0]?.includes('grapplingHook')===true;
+ const playable=()=>state==='play'&&!Prologue.active&&!resolutionBlocked&&!Visuals.blocked&&!(typeof DuelMode!=='undefined'&&DuelMode.active);
  const terrain=()=>[...platforms,...level.gates.filter(g=>!gatePass(g))];
  function rebase(e){
   e.origin=e.x;e.baseY=e.y;e.patrolLeft=e.patrolRight=e.x;

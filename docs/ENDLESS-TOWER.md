@@ -11,9 +11,9 @@ A főmenüből indítható külön kihívás a meglévő mozgást, fegyvereket, 
 
 ## Modulok
 
-`tower-rules.js`: tiszta, determinisztikus emeletgenerátor és futamszabályok. A seed és az emeletszám választja az ellenfeleket. Számuk 3-ról legfeljebb 8-ra nő, HP-juk és sebzésük folyamatosan skálázódik; az első emelettől egy boss, a 11.-től kettő, a 26.-tól három harcol kísérőkkel. A bossok a régi ellenfélslotokat váltják fel, ezért a checkpointok pontos történeti legyőzésszámai érvényesek maradnak. A témák öt emeletenként váltanak. A számlálók végesek és biztonságos számhatárok között maradnak.
+`tower-rules.js`: tiszta, determinisztikus emeletgenerátor és futamszabályok. A seed és az emeletszám választja az ellenfeleket. Számuk 3-ról legfeljebb 8-ra nő, HP-juk és sebzésük folyamatosan skálázódik; az első emelettől egy boss, a 11.-től kettő, a 26.-tól három harcol. Minden ötödik emeleten csak bossok indulnak. A korábbi checkpointokból a tényleges történeti legyőzésszám kerül át az új szabályok szerinti futamba. A témák öt emeletenként váltanak. A számlálók végesek és biztonságos számhatárok között maradnak.
 
-`tower-mode.js`: a közös harci motor elkülönített vezérlője. A közös játékos-időzítők egyszer, a fő ciklusban lépnek, a torony pedig saját emeletet, ellenfeleket, lövedékeket és UI-t futtat. Szünetben, dialógusban, emeletközi képernyőn és túl kicsi nézetnél nem lép a futamóra. A toronyban nincs XP-, érme- vagy kalandjutalom, inventory-, fejlesztés-, gyorsutazás- vagy dev-mód belépés. Kilépéskor a kaland korábbi mentéspéldánya tér vissza; a rendes Folytatás a normál betöltési útvonalat használja.
+`tower-mode.js`: a közös harci motor elkülönített vezérlője. A közös játékos-időzítők egyszer, a fő ciklusban lépnek, a torony pedig saját emeletet, ellenfeleket, lövedékeket és UI-t futtat. Szünetben, dialógusban, emeletközi képernyőn és túl kicsi nézetnél nem lép a futamóra. A torony külön érméket és erősítéseket ad. A gyógyító készlet a közös gyorsgombbal használható. A kaland XP-je és jutalmai a kalandban maradnak. Kilépéskor a kaland korábbi mentéspéldánya tér vissza; a rendes Folytatás a normál betöltési útvonalat használja.
 
 `tower-boss-combat.js`: a toronyhoz illesztett bossok létrehozása, elkülönített sebzésforrások, egyszeri skálázás, jutalom nélküli halál és tulajdonoshoz kötött idézések. `tower-special-bosses.js`: a globális történeti állapothoz vagy külön pályageometriához kötött bossok önálló toronyváltozatai. `tower-boss-art.js`: a meglévő natív grafikák, támadásjelzések és az aktuális emelethez szükséges képek listája; a képeket a helyszínbetöltő előre kéri, nem a teljes bosskatalógust tölti le induláskor.
 
@@ -21,7 +21,7 @@ A főmenüből indítható külön kihívás a meglévő mozgást, fegyvereket, 
 
 ## Ellenőrzések
 
-A futam kilépésgombjai és a szünetmenü főmenügombja megerősítést kérnek. Az ablak az aktuális checkpoint utáni emeletet és a rekordot mutatja; megnyitása megállítja a futam óráját és törli a lenyomott bemeneteket. A Mégse az előző állapotot állítja vissza. A fókusz alapból a megszakítás visszavonásán van, a végleges kilépés 400 ms-ig tiltott, így a harcból érkező ismételt kattintás nem zárja le véletlenül a futamot. A ranglista saját Escape-kezelése továbbra is csak a ranglistát zárja be.
+A futam kilépésgombjai és a szünetmenü főmenügombja megerősítést kérnek. Az ablak az aktuális checkpoint utáni emeletet és a rekordot mutatja; megnyitása megállítja a futam óráját és törli a lenyomott bemeneteket. A Mégse az előző állapotot állítja vissza. A fókusz alapból a megszakítás visszavonásán van, a végleges kilépés 400 ms-ig tiltott, így a harcból érkező ismételt kattintás nem zárja le véletlenül a futamot. A teljesítési és vereségablak gombjai három másodpercig inaktívak. A ranglista saját Escape-kezelése továbbra is csak a ranglistát zárja be.
 
 - `test-tower-rules.cjs`: determinisztikus emeletek, nehezedés, gyógyítás, checkpoint és hibás adatok.
 - `test-tower-store.cjs`: újratöltés, új futam, rekordmegőrzés, elavult lap, hibás/jövőbeli rekord és tárolási hibák; a kaland kulcsai változatlanok.
@@ -41,6 +41,16 @@ Az idézett kísérők tulajdonosazonosítót és `noReward` jelölést kapnak, 
 A `test-tower-bosses.cjs` az eredeti hét boss támadásait, a 26. emelet három párhuzamos bossát, szünetet és skálázást ellenőrzi. A `test-tower-catalog.cjs` teljes katalóguslefedettséget és történeti checkpointokat, a `test-tower-native-bosses.cjs` és `test-tower-special-bosses.cjs` saját támadásokat és különleges ciklusokat ellenőriz 30/60/120 FPS mellett. A `test-tower-roster-integration.cjs` minden típust a tényleges toronycikluson vezet át: létrehozás, támadás, véges rajzolási koordináták, fázisonként tervezett képbetöltés, közös fegyvertalálat, halál, emeletváltás és a kalandadatok változatlansága.
 
 A `0.9.72_ab740729` kiadás változatlanul megtartja a `0.9.70_88f2c94c` mentéskompatibilitási korszakot. A teljes csomag 223 ellenőrzése sikeres. Friss Edge-profilban, `/kiba-game/` útvonalon a 36 modell, HU/EN felület, 1280×720 és 1920×1080, többbossos emelet, szünet, minimumfelbontás és a régi 25. checkpoint utáni 26. emelet tényleges újratöltése ellenőrzött. A kaland titkosított tárolt rekordja byte szerint változatlan maradt. A teszt kiszolgált privát segédponttal választott seedeket, gyorsította a harcot és az emeletek teljesítését; ez nem teljes, segítség nélküli nehézségi végigjátszás.
+
+## Futamon belüli erősítések és készlet
+
+A `tower-rewards.js` tiszta szabálymodul külön futampénztárcát kezel: érmék, négy gyógyító tárgy darabszáma, négy stat-erősítés rangja, egyszeri újjáéledési töltetek, valamint az utoljára jutalmazott és kártyával lezárt emelet. Az emelet teljesítése és a kártyaválasztás két külön, sorrendben ellenőrzött tranzakció; ugyanaz az emelet egyik jutalmát sem adhatja meg kétszer. A három különböző felajánlott kártyát a seed és a teljesített emelet determinisztikusan választja ki. Tíz százalék eséllyel az egyik ajánlat a Hajnalkardot, a Kiba-pajzsot vagy a kapaszkodókampót adja a következő emeletre. A képesség a meglévő irányítást és újratöltést használja, majd az emelet teljesítésekor lejár.
+
+A kezdeti beállítás emeletenként `20 + 5 × emelet` érme. Az ötödik emeletek utáni biztonságos kereskedőnél a hús, tea, gyógyfőzet és sült csirkecomb 10/25/30/40 érméért vásárolható. A lehetséges erősítések: +2 maximális HP, +0,5 alap fegyversebzés, +10 páncél, −5% az alapul vett 0,8 mp-es dash-újratöltésből (minimum 0,2 mp), azonnali +5 HP, vagy egy 10 HP-s újjáéledési töltet. A tiszta vásárlási és fogyasztási tranzakciók másolt adaton dolgoznak; hibás készlet, negatív összeg és számlálótúlcsordulás elutasított.
+
+A TowerStore meglévő 1-es sémája opcionális `checkpointRewards` mezővel bővül. A checkpoint seed/fegyver/emelet/legyőzés/idő mezői és az online ranglistához használt ötmezős pontrekord változatlanok. Régi checkpoint betöltése az eredeti emeletet megőrzi, üres készletet ad, és a jutalommutatókat a checkpoint emeletére állítja: múltbeli jutalom nem jár utólag. Az új futam kiüríti a készletet, de megőrzi a rekordot. A checkpoint a függő erősítésválasztást is elmenti. Újratöltéskor előbb a választás jelenik meg. A toronyadatok tárolása külön működik a kaland SaveVault-adatbázisától.
+
+A `test-tower-rewards.cjs` az ismételt jutalom és választás kizárását, a determinisztikus kínálatot, mind a négy áru vásárlását, készlethiányt és túlcsordulást, újjáéledést, checkpoint-újratöltést, régi rekordok normalizálását és a változatlan pontrekordot ellenőrzi.
 
 ## Közösségi ranglista
 
