@@ -10,17 +10,17 @@ const SaveVault=(()=>{
  function bytes(text,size){if(typeof text!=='string'||text.length>30000)throw Error('Invalid encoding');const result=Uint8Array.from(atob(text),c=>c.charCodeAt(0));if(size&&result.length!==size)throw Error('Invalid length');return result;}
  const random=n=>crypto.getRandomValues(new Uint8Array(n));
  const integer=(n,min,max)=>Number.isSafeInteger(n)&&n>=min&&n<=max;
- function validProgress(p,worldFlags){
-  const {levelLimit,statLimit,xpForLevel}=PROGRESSION_RULES,maxPoints=levelLimit-1+bossBonusPoints(levels.map(map=>map.progressFlags));
+ function validProgress(p,worldFlags,levelLimit){
+  const {statLimit}=PROGRESSION_RULES,maxPoints=levelLimit-1+bossBonusPoints(levels.map(map=>map.progressFlags));
   if(!p||!integer(p.level,1,levelLimit)||!integer(p.totalXp,0,Number.MAX_SAFE_INTEGER)||!integer(p.points,0,maxPoints)||!integer(p.xp,0,Number.MAX_SAFE_INTEGER))return false;
   if(!p.stats||!['vitality','strength','spirit'].every(k=>integer(p.stats[k],0,k==='spirit'?statLimit:maxPoints)))return false;
   const shield=Object.hasOwn(p.stats,'shield')?p.stats.shield:0;
   if(!integer(shield,0,statLimit)||shield>0&&!worldFlags[3]?.includes('kibaShield'))return false;
   if(p.points+shield+['vitality','strength','spirit'].reduce((sum,key)=>sum+p.stats[key],0)!==p.level-1+bossBonusPoints(worldFlags))return false;
-  let xp=p.totalXp,level=1;while(level<levelLimit&&xp>=xpForLevel(level)){xp-=xpForLevel(level);level++;}
-  return level===p.level&&p.xp===(level===levelLimit?0:xp);
+  const {level,xp}=PROGRESSION_RULES.progressForXP(p.totalXp,levelLimit);
+  return level===p.level&&p.xp===xp;
  }
- function validate(data,{legacyDen=false,legacyHeart=false}={}){
+ function validate(data,{legacyDen=false,legacyHeart=false,legacyLevelCap=false}={}){
   if(!data||!Object.prototype.hasOwnProperty.call(data,'weaponStyle')||typeof data.weaponStyle!=='string'||!['katana','naginata','swordShield','foxfireKatana'].includes(data.weaponStyle))throw Error('Invalid weapon style');
   if(data?.prologueComplete!==undefined&&typeof data.prologueComplete!=='boolean')throw Error('Invalid prologue progress');
   if(data.weaponChoicePending!==undefined&&typeof data.weaponChoicePending!=='boolean')throw Error('Invalid pending weapon choice');
@@ -81,7 +81,7 @@ const SaveVault=(()=>{
   if(['underworldTraderMet','underworldCookMet','underworldSmithMet'].some(id=>hasHannah(id)&&!data.visitedRests[3].some(rest=>shadowUnderworld.rests.some(r=>r.id===rest))))throw Error('Invalid underworld service history');
   if(!DungeonRules.validate(data.dungeon??DungeonRules.fresh(),data.flags,data.defeated))throw Error('Invalid dungeon progress');
   if(camp.includes('cultTempleDiscovered')&&(!data.abilities[1]||!camp.includes('guardian:oldCultist')||!data.defeated[0]))throw Error('Invalid cult temple entry');
-  if(!validProgress(data.progression,data.flags))throw Error('Invalid save schema');
+  if(!validProgress(data.progression,data.flags,legacyLevelCap?30:PROGRESSION_RULES.levelLimit))throw Error('Invalid save schema');
   if(data.prologueComplete===false&&(data.realm!==0||data.won||data.defeated.some(Boolean)||data.abilities.some(Boolean)||data.flags.some(f=>f.length)||data.progression.totalXp))throw Error('Invalid dream progress');
   if(data.prologueComplete===false&&data.weaponStyle!=='katana')throw Error('Invalid dream weapon style');
   // The post-dream choice is resumable only before the journey can advance.
@@ -137,6 +137,11 @@ const SaveVault=(()=>{
   const normalized=JSON.parse(JSON.stringify(data));
   const excess=Math.max(0,normalized.progression.stats.spirit-PROGRESSION_RULES.statLimitFor('spirit'));
   normalized.progression.stats.spirit-=excess;normalized.progression.points+=excess;
+  if(legacyLevelCap){
+   const oldLevel=normalized.progression.level;
+   const next=PROGRESSION_RULES.progressForXP(normalized.progression.totalXp);
+   Object.assign(normalized.progression,next,{points:normalized.progression.points+next.level-oldLevel});
+  }
   // Only authenticated older releases can enter this repair. Their unconditional
   // reward bug created no Fia ending; never invent that history to keep an item.
   const repairHeart=legacyHeart&&!hasHannah('hannahFiaRescue')&&hasHannah('demonLordHeart');
@@ -181,7 +186,7 @@ const SaveVault=(()=>{
   const data=JSON.parse(decode.decode(plain));if(data.release!==profile.release)throw Error('Mismatched save release');
   const order=compareRelease(profile.release,'0.9.55_ab315218');
   const heartOrder=compareRelease(profile.release,'0.9.57_b9f518f8');
-  return validate({...data,release:GAME_RELEASE.version},{legacyDen:profile.release!==GAME_RELEASE.version&&order!==null&&order<=0,legacyHeart:profile.release!==GAME_RELEASE.version&&registeredHistoricalRelease(profile.release)&&heartOrder!==null&&heartOrder<=0});
+  return validate({...data,release:GAME_RELEASE.version},{legacyDen:profile.release!==GAME_RELEASE.version&&order!==null&&order<=0,legacyHeart:profile.release!==GAME_RELEASE.version&&registeredHistoricalRelease(profile.release)&&heartOrder!==null&&heartOrder<=0,legacyLevelCap:hasLegacyLevelCap(profile.release)});
  }
  function registeredHistoricalRelease(value){
   const release=/^((?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*))(?:_([a-z0-9]{8}))?$/.exec(value);
@@ -190,6 +195,10 @@ const SaveVault=(()=>{
   // A plain version has no code registry. Only the explicitly configured
   // compatibility anchor can establish its historical identity.
   return value===GAME_RELEASE.saveCompatibility;
+ }
+ function hasLegacyLevelCap(release){
+  const order=compareRelease(release,'0.9.76_43eb6582');
+  return release!==GAME_RELEASE.version&&registeredHistoricalRelease(release)&&order!==null&&order<=0;
  }
  async function writeOne(snapshot,slot=activeSlot,{importing=false}={}){
   const source=await records(),{profile}=source;requireSelection(profile);const slots=slotsFor(source).slice();
@@ -317,7 +326,7 @@ const SaveVault=(()=>{
   if(!file||Object.keys(file).sort().join(',')!=='compatibility,format,release,snapshot,version'||file.format!=='kiba-realms-save'||file.version!==1||file.compatibility!==GAME_RELEASE.saveCompatibility||file.snapshot?.release!==file.release)throw Error('Incompatible save export');
   const order=compareRelease(file.release,GAME_RELEASE.version);if(order===null||order>0||file.release!==GAME_RELEASE.version&&!registeredHistoricalRelease(file.release))throw Error('Unknown or newer save export');
   const epoch=compareRelease(file.release,GAME_RELEASE.saveCompatibility);if(epoch===null||epoch<0)throw Error('Incompatible save export');
-  return validate({...file.snapshot,release:GAME_RELEASE.version});
+  return validate({...file.snapshot,release:GAME_RELEASE.version},{legacyLevelCap:hasLegacyLevelCap(file.release)});
  }
  return Object.freeze({ready,get isReady(){return readyFlag;},get notice(){return initialNotice;},get activeSlot(){return activeSlot;},
   write(snapshot){const data=validate(snapshot),slot=activeSlot,token=selection;return enqueue(()=>{if(slot!==activeSlot||token!==selection)throw Error('Save slot changed');return writeOne(data,slot);});},
