@@ -3,7 +3,7 @@
 const FiaConflict=(()=>{
  let encounter=null,serial=0,shield=0,recharge=0,shieldFlash=0,shieldBreak=0;
  const clone=data=>JSON.parse(JSON.stringify(data));
- const owned=()=>flags[3].includes('kibaShield');
+ const owned=()=>typeof TowerMode!=='undefined'&&TowerMode.active?TowerMode.hasRelic('shield'):flags[3].includes('kibaShield');
  const profile=()=>{const rank=clamp(progression.stats.shield||0,0,STAT_LIMIT),rules=KIBA_SHIELD_RULES;return {capacity:rules.capacity+rank*rules.capacityStep,recharge:rules.recharge-rank*rules.rechargeStep};};
  const number=value=>Number(value.toFixed(2)).toLocaleString(I18n.locale,{maximumFractionDigits:2});
  const description=()=>{const p=profile();return I18n.format('ability.kibaShield.description',[number(p.capacity),number(p.recharge)]);};

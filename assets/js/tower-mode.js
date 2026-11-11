@@ -1,13 +1,18 @@
 /* Independent tower runs borrow the combat engine, never the journey's save slot. */
 'use strict';
 const TowerMode=(()=>{
- let active=false,run=null,normalSave=null,floorElapsed=0,currentSpec=null,stage='lobby',initialized=false,warning=false,pendingExit=null;
+ let active=false,run=null,normalSave=null,floorElapsed=0,currentSpec=null,stage='lobby',initialized=false,warning=false,pendingExit=null,wallet=null,resultReadyAt=0,resultRevision=0;
  const node=id=>document.getElementById(id),clone=value=>value?JSON.parse(JSON.stringify(value)):null;
  const ready=()=>!resolutionBlocked&&storageReady&&loadingReady&&Visuals.loaded===Visuals.total&&!Visuals.failures.length;
  const formatTime=seconds=>{const value=Math.floor(seconds);return Math.floor(value/60)+':'+String(value%60).padStart(2,'0');};
  const score=()=>run?{...TowerRules.score(run),kills:run.kills+(currentSpec?.enemies.filter(spec=>enemies.find(e=>e.id===spec.id)?.dead).length||0),elapsed:run.elapsed+floorElapsed}:null;
  function stored(result){if(result&&!result.persisted)warning=true;return result?.ok===true;}
- function record(){if(run)stored(TowerStore.finish(score()));}
+ function syncWallet(){if(!wallet)return;wallet={...wallet,coins,items:{roastMeat:meatCount,tea:teaCount,healingBrew:campServices.potions,roastChicken:chickenCount}};}
+ function applyWallet(){coins=wallet.coins;meatCount=wallet.items.roastMeat;teaCount=wallet.items.tea;campServices.potions=wallet.items.healingBrew;chickenCount=wallet.items.roastChicken;Merchant.selectAvailable();}
+ function record(){if(run){syncWallet();stored(TowerStore.finish(score()));}}
+ const resultLocked=()=>['clear','result'].includes(stage)&&Date.now()<resultReadyAt;
+ function checkpointWallet(){if(run?.checkpoint&&wallet?.rewardedFloor===run.cleared&&TowerRewards.vendor(run.cleared))stored(TowerStore.saveCheckpoint(run.checkpoint,wallet));}
+ function lockResult(){resultReadyAt=Date.now()+3000;const revision=++resultRevision;if(typeof setTimeout==='function')setTimeout(()=>{if(active&&revision===resultRevision&&['clear','result'].includes(stage)){showResult(false);const target=node(stage==='clear'&&wallet.claimedFloor<run.cleared?'towerPower0':stage==='clear'?'towerNext':'towerRetry');target.focus();}},3000);}
  function clearInput(){keys.clear();pressed.clear();context=null;$('prompt').hidden=true;}
  function restoreMenuControls(){for(const id of ['trainButton','inventoryButton','mapButton','mainMenuButton'])node(id).hidden=false;const progress=document.querySelector?.('.progression');if(progress)progress.hidden=false;node('towerEnd').hidden=true;node('towerHUD').hidden=true;}
  function open(){
@@ -21,41 +26,52 @@ const TowerMode=(()=>{
   abilities=[true,true];defeated=levels.map(()=>false);flags=levels.map(()=>[]);visitedRests=levels.map(()=>[]);visits=new Set();
   shards=coins=meatCount=teaCount=chickenCount=0;soldItems=[];quickHeal=equippedTalisman=null;weaponChoicePending=false;weaponStyle=run.weapon;
   progression=freshProgression();campServices=CampServiceRules.fresh(run.weapon);dungeonState=DungeonRules.fresh();fiaJourney=FiaJourneyRules.fresh();councilReturn=null;
+  applyWallet();resultReadyAt=0;
   node('towerPanel').hidden=true;node('towerResult').hidden=true;$('pause').hidden=true;showHUD(true);floorElapsed=0;
  }
  function start(){
   if(!active||stage!=='lobby'||!ready())return false;const weapon=node('towerWeapon').value;if(!TowerRules.validWeapon(weapon))return false;
-  run=TowerRules.fresh(seed(),weapon);stored(TowerStore.start({seed:run.seed,weapon:run.weapon}));prepare();enterFloor(true);return true;
+  run=TowerRules.fresh(seed(),weapon);wallet=TowerRewards.fresh();stored(TowerStore.start({seed:run.seed,weapon:run.weapon}));prepare();enterFloor(true);return true;
  }
  function resume(){
-  if(!active||!['lobby','result'].includes(stage)||!ready())return false;const point=TowerStore.read().checkpoint;
+  if(!active||!['lobby','result'].includes(stage)||resultLocked()||!ready())return false;const data=TowerStore.read(),point=data.checkpoint;
   const next=point?.cleared===0?TowerRules.fresh(point.seed,point.weapon):TowerRules.fromCheckpoint(point);if(!next)return false;
-  run=next;prepare();enterFloor(true);return true;
+  run=next;wallet=TowerRewards.copy(data.checkpointRewards);prepare();
+  if(!enterFloor(true))return false;
+  if(wallet.claimedFloor<run.cleared){
+   stage='clear';state='tower';currentSpec=null;enemies=[];clearInput();showResult();hud();
+  }
+  return true;
  }
  function enterFloor(initial=false){
-  if(!active||!TowerRules.valid(run)||stage!=='clear'&&initial!==true)return false;
+  if(!active||!TowerRules.valid(run)||stage!=='clear'&&initial!==true||initial!==true&&(resultLocked()||wallet.claimedFloor!==run.cleared))return false;
+  syncWallet();checkpointWallet();
   currentSpec=TowerRules.floor(run.floor,run.seed);if(!currentSpec)return false;
-  const previousHp=player?.hp,layout=TowerRules.layout;
+  const preserveHp=stage==='clear',previousHp=player?.hp,layout=TowerRules.layout;
   realm=currentSpec.realm;level=makeLevel('infiniteTower',layout.width,layout.height,{x:layout.spawnX,y:layout.groundY});level.tower=true;level.name='tower.name';level.enemyRealm=realm;
   ledge(level,'towerGround',0,layout.groundY,layout.width,'ground',240);ledge(level,'towerLedgeLeft',460,640,190);ledge(level,'towerLedgeRight',1120,620,190);
+  level.grappleAnchors=[{id:'towerAnchorLeft',x:544,y:444,w:32,h:32},{id:'towerAnchorRight',x:1204,y:424,w:32,h:32}];
   level.arena={x:0,y:layout.groundY,w:layout.width};level.enemies=currentSpec.enemies;platforms=level.platforms;
   boss={dead:true,hp:0,x:-10000,y:0};bossStarted=false;projectiles=[];particles=[];drops=[];checkpoint={...level.start};
-  initPlayer(level.start);if(stage==='clear'&&Number.isFinite(previousHp))player.hp=Math.min(player.maxHp,previousHp);
+  stage='fight';Dawnblade.resetJourney();initPlayer(level.start);if(preserveHp&&Number.isFinite(previousHp))player.hp=Math.min(player.maxHp,previousHp);
   enemies=currentSpec.enemies.map((spec,i)=>{const e=createEnemy(spec,i);e.hp=e.maxHp=spec.maxHp;e.damageValue=spec.damageValue;return e;});
-  floorElapsed=0;stage='fight';state='play';clearInput();node('towerResult').hidden=true;canvas.tabIndex=-1;canvas.focus?.();resetCamera();hud();return true;
+  floorElapsed=0;state='play';clearInput();node('towerResult').hidden=true;canvas.tabIndex=-1;canvas.focus?.();resetCamera();hud();return true;
  }
  function clearFloor(){
   if(stage!=='fight'||enemies.some(e=>!e.dead))return false;
   const next=TowerRules.advance(run,{kills:currentSpec.enemyCount,elapsed:floorElapsed});if(!next.ok){fail();return false;}
-  run=next.state;floorElapsed=0;currentSpec=null;projectiles=[];particles=[];
-  player.hp=TowerRules.heal(player.hp,player.maxHp,run.cleared);stored(TowerStore.finish(TowerRules.score(run)));if(next.checkpoint)stored(TowerStore.saveCheckpoint(run.checkpoint));
-  stage='clear';state='tower';clearInput();showResult();return true;
+  syncWallet();const reward=TowerRewards.award(wallet,next.state.cleared);if(!reward.ok)return false;
+  wallet=reward.wallet;applyWallet();run=next.state;floorElapsed=0;currentSpec=null;projectiles=[];particles=[];
+  Grapple.clear();Dawnblade.resetJourney();player.hp=TowerRules.heal(player.hp,player.maxHp,run.cleared);stored(TowerStore.finish(TowerRules.score(run)));
+  stage='clear';state='tower';checkpointWallet();clearInput();lockResult();showResult();return true;
  }
  function fail(){
-  if(!active||stage!=='fight')return false;record();player.hp=0;projectiles=[];particles=[];stage='result';state='tower';clearInput();showResult();return true;
+  if(!active||stage!=='fight')return false;syncWallet();const revival=TowerRewards.revive(wallet);
+  if(revival.ok){wallet=revival.wallet;initPlayer(level.start);player.hp=Math.min(player.maxHp,revival.heal);player.inv=2;projectiles=[];clearInput();resetCamera();hud();toast(I18n.t('tower.revived'));return true;}
+  record();Grapple.clear();Dawnblade.resetJourney();player.hp=0;projectiles=[];particles=[];stage='result';state='tower';clearInput();lockResult();showResult();hud();return true;
  }
  function leave(){
-  if(!active)return false;pendingExit=null;node('towerExitConfirm').hidden=true;if(stage==='fight')record();active=false;stage='lobby';run=null;currentSpec=null;
+  if(!active||resultLocked())return false;pendingExit=null;node('towerExitConfirm').hidden=true;if(stage==='fight')record();if(stage==='clear'){syncWallet();checkpointWallet();}active=false;stage='lobby';run=null;currentSpec=null;wallet=null;resultRevision++;
   saved=clone(normalSave);normalSave=null;projectiles=[];particles=[];node('towerPanel').hidden=true;node('towerResult').hidden=true;restoreMenuControls();clearInput();mainMenu();node('towerButton').focus();return true;
  }
  function exitCopy(){
@@ -64,7 +80,7 @@ const TowerMode=(()=>{
   node('towerConfirmExit').textContent=I18n.t('tower.end');node('towerCancelExit').textContent=I18n.t('merchant.sell.cancel');
  }
  function requestLeave(){
-  if(!active||pendingExit)return false;if(!run)return leave();
+  if(!active||pendingExit||resultLocked())return false;if(!run)return leave();
   pendingExit={state,focus:document.activeElement,readyAt:Date.now()+400};state='towerConfirm';clearInput();exitCopy();
   node('towerExitConfirm').hidden=false;node('towerConfirmExit').disabled=true;node('towerCancelExit').focus();
   const request=pendingExit;if(typeof setTimeout==='function')setTimeout(()=>{if(pendingExit===request)node('towerConfirmExit').disabled=false;},400);
@@ -75,14 +91,32 @@ const TowerMode=(()=>{
   if(request.focus?.isConnected)request.focus.focus();else{canvas.tabIndex=-1;canvas.focus?.();}return true;
  }
  function confirmLeave(){if(!pendingExit||state!=='towerConfirm'||Date.now()<pendingExit.readyAt)return false;return leave();}
- function lobby(){if(!active||!['clear','result'].includes(stage))return false;stage='lobby';node('towerResult').hidden=true;node('towerPanel').hidden=false;node('towerHUD').hidden=true;showHUD(false);render();node('towerStart').focus();return true;}
- function stats(){const weapon=run?.weapon||'katana';return {maxHp:TowerRules.maxHp(weapon),damage:2,armor:0,dashCooldown:.8,invulnerability:1.25};}
+ function lobby(){if(!active||!['clear','result'].includes(stage)||resultLocked())return false;stage='lobby';node('towerResult').hidden=true;node('towerPanel').hidden=false;node('towerHUD').hidden=true;showHUD(false);render();node('towerStart').focus();return true;}
+ const hasRelic=id=>active&&stage==='fight'&&wallet?.relic===id;
+ const relicNames={dawnblade:'ability.dawnblade',shield:'ability.kibaShield',grapple:'islands.hook'};
+ function stats(){return TowerRewards.stats(wallet||TowerRewards.fresh(),run?.weapon||'katana');}
+ function claim(id){
+  if(!active||stage!=='clear'||resultLocked())return false;syncWallet();const result=TowerRewards.claim(wallet,{seed:run.seed,cleared:run.cleared,id});if(!result.ok)return false;
+  wallet=result.wallet;applyWallet();player.maxHp=stats().maxHp;player.hp=Math.min(player.maxHp,player.hp+result.heal);checkpointWallet();showResult(false);hud();
+  const firstPurchase=TowerRewards.vendor(run.cleared)&&Object.keys(TowerRewards.items).map(id=>node('towerBuy-'+id)).find(button=>!button.disabled);
+  (firstPurchase||node('towerNext')).focus();return true;
+ }
+ function buy(id){
+  if(!active||stage!=='clear'||resultLocked()||!TowerRewards.vendor(run.cleared)||wallet.claimedFloor!==run.cleared)return false;syncWallet();const result=TowerRewards.buy(wallet,id);if(!result.ok){toast(I18n.t('tower.poor'));return false;}
+  wallet=result.wallet;applyWallet();checkpointWallet();showResult(false);hud();return true;
+ }
+ function selectHealing(id){if(!active||stage!=='clear'||resultLocked()||!TowerRewards.vendor(run.cleared)||wallet.claimedFloor!==run.cleared||!Object.hasOwn(wallet.items,id)||!wallet.items[id])return false;quickHeal=id;showResult(false);return true;}
  function hud(){
   if(!active)return false;if(!player||stage==='lobby')return true;
   $('realmLabel').textContent=I18n.format('tower.floor',[stage==='clear'?run.cleared:run.floor]);CampHealth.render($('health'),player.hp,player.maxHp);$('kibaCurrent').textContent=I18n.t('tower.name');
   for(const id of ['quest','coinPurse','trainButton','inventoryButton','mapButton','bossHud','campExecutionWarning','mainMenuButton'])node(id).hidden=true;
   node('towerEnd').hidden=false;node('towerHUD').hidden=false;node('towerEnemies').textContent=I18n.format('tower.enemies',[enemies.filter(e=>!e.dead).length]);
   node('towerClock').textContent=I18n.format('tower.time',[formatTime(run.elapsed+floorElapsed)]);node('towerObjective').textContent=I18n.t('tower.objective');node('towerWarning').hidden=!warning;node('towerWarning').textContent=I18n.t('tower.storage');
+  node('towerCoins').textContent=I18n.format('tower.coins',[coins]);const relic=node('towerRelics');relic.hidden=stage!=='fight'||!wallet.relic;relic.textContent=relic.hidden?'':I18n.t(relicNames[wallet.relic]);
+  if(!relic.hidden&&wallet.relic!=='shield'){
+   const action=wallet.relic==='dawnblade'?'ultimate':'grapple';
+   relic.textContent+=' · '+Bindings.read(action).map(bindingKeyLabel).join(' / ');
+  }node('towerRevivals').textContent=I18n.format('tower.revivals',[wallet.revivals]);
   const progress=document.querySelector?.('.progression');if(progress)progress.hidden=true;
   $('dropHint').hidden=false;$('dashHint').hidden=false;$('jumpHint').textContent=I18n.t('text.twice.double.jump');$('areaLabel').textContent=I18n.t('tower.name');
   return true;
@@ -94,18 +128,28 @@ const TowerMode=(()=>{
   for(const id of ['towerContinue','towerRetry']){node(id).hidden=!point||point.cleared>0&&!TowerRules.validCheckpoint(point);node(id).textContent=I18n.format('tower.continue',[(point?.cleared||0)+1]);}
   node('towerNext').textContent=I18n.t('tower.next');node('towerNew').textContent=I18n.t('tower.new');node('towerExit').textContent=I18n.t('tower.end');node('towerEnd').textContent=I18n.t('tower.end');node('towerButton').textContent=I18n.t('tower.name');
   node('towerStorage').hidden=!warning;node('towerStorage').textContent=I18n.t('tower.storage');
-  if(stage==='clear'||stage==='result')showResult(false);
+  if((stage==='clear'||stage==='result')&&!TowerLeaderboard.active)showResult(false);
  }
  function showResult(focus=true){
   const point=stage==='clear'?TowerRules.score(run):score(),data=TowerStore.read();node('towerResult').hidden=false;node('towerPanel').hidden=true;
   node('towerResultTitle').textContent=I18n.t(stage==='clear'?'tower.cleared':'tower.over');node('towerSummary').textContent=[I18n.format('tower.completed',[point.cleared]),I18n.format('tower.kills',[point.kills]),I18n.format('tower.time',[formatTime(point.elapsed)]),I18n.format('tower.best',[data.best?.cleared||0])].join(' · ');
   node('towerCheckpoint').hidden=!data.checkpoint?.cleared;node('towerCheckpoint').textContent=I18n.format('tower.checkpoint',[data.checkpoint?.cleared||0]);node('towerNext').hidden=stage!=='clear';node('towerRetry').hidden=stage!=='result'||!data.checkpoint;
   node('towerRetry').textContent=I18n.format('tower.continue',[(data.checkpoint?.cleared||0)+1]);
-  if(focus)node(stage==='clear'?'towerNext':'towerRetry').focus();
+  renderRewards();for(const id of ['towerNext','towerRetry','towerNew','towerResultLeaderboard','towerExit'])node(id).disabled=resultLocked()||id==='towerNext'&&wallet.claimedFloor!==run.cleared;
+  if(focus){node('towerResultBody').tabIndex=-1;node('towerResultBody').focus();}
+ }
+ function renderRewards(){
+  const cleared=stage==='clear',pending=cleared&&wallet.claimedFloor<run.cleared,shop=cleared&&!pending&&TowerRewards.vendor(run.cleared);
+  node('towerRewards').hidden=!cleared;node('towerRewardTitle').textContent=I18n.t(pending?'tower.reward.choose':'tower.reward.selected');node('towerNext').title=pending?I18n.t('tower.reward.required'):'';node('towerRewardCoins').textContent=I18n.format('tower.reward.coins',[20+5*run.cleared])+' · '+I18n.format('tower.coins',[wallet.coins]);
+  const choices=cleared?TowerRewards.choices(run.seed,run.cleared):[];for(let i=0;i<3;i++){const button=node('towerPower'+i),id=choices[i];button.hidden=!pending;button.disabled=resultLocked()||!pending;const nameKey='tower.power.'+id+'.name',descKey='tower.power.'+id+'.desc';
+   const name=I18n.t(nameKey),desc=I18n.t(descKey);
+   button.textContent=id?(name===nameKey?I18n.t(relicNames[id]):name)+(desc===descKey?'':' — '+desc):'';button.onclick=()=>claim(id);}
+  node('towerVendor').hidden=!shop;node('towerVendorTitle').textContent=I18n.t('tower.vendor');
+  for(const id of Object.keys(TowerRewards.items)){const count=wallet.items[id],name=I18n.t('item.'+id),price=TowerRewards.items[id];node('towerItem-'+id).textContent=name+' × '+count;const button=node('towerBuy-'+id);button.textContent=I18n.format('tower.buy',[price]);button.disabled=!shop||resultLocked()||pending||wallet.coins<price;button.onclick=()=>buy(id);const select=node('towerSelect-'+id);select.textContent=quickHeal===id?I18n.format('merchant.quick.selected',[name]):I18n.t('merchant.quick.assign');select.disabled=!shop||resultLocked()||pending||!count;select.onclick=()=>selectHealing(id);}
  }
  function update(dt){
   if(!active||stage!=='fight'||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
-  floorElapsed+=dt;movingPlatforms(dt);input(dt);if(state!=='play')return;const victim=player;movePlayer(dt);if(state!=='play'||player!==victim)return;
+  Merchant.update(dt);floorElapsed+=dt;movingPlatforms(dt);input(dt);if(state!=='play')return;const victim=player;movePlayer(dt);if(state!=='play'||player!==victim)return;
   dashTrailClock-=dt;if(dash>0&&dashTrailClock<=0){emitDashWisp();dashTrailClock=.035;}advanceSwordAttack(dt);if(state!=='play')return;for(const enemy of [...enemies]){
    if(enemy.dead)continue;
    DevLog.scope(enemy,()=>enemy.towerSummonOwner?TowerBossCombat.updateSupport(enemy,dt):updateEnemy(enemy,dt));
@@ -121,7 +165,7 @@ const TowerMode=(()=>{
  function draw(){
   if(!active)return false;BackgroundMotion.beginFrame();ctx.save();ctx.clearRect(0,0,viewW,H);ctx.fillStyle='#161b26';ctx.fillRect(0,0,viewW,H);
   const image=Visuals.images.towerBackdrop;if(image?.complete&&image.naturalWidth){const s=Math.max(viewW/image.naturalWidth,H/image.naturalHeight),top=run&&stage!=='lobby'?TowerRules.layout.groundY-cameraY-image.naturalHeight*s*.82:0;BackgroundMotion.draw(image,(viewW-image.naturalWidth*s)/2,top,image.naturalWidth*s,image.naturalHeight*s);}
-  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);for(const enemy of enemies)if(!enemy.dead){if(!TowerBossArt.actor(enemy))drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const enemy of enemies)if(!enemy.dead)TowerBossArt.effects(enemy);for(const p of projectiles)if(!IslandsArt.projectile(p)&&!SerpentArt.projectile(p)&&!FiaRitualArt.projectile(p))Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
+  if(run&&stage!=='lobby'){ctx.save();ctx.translate(-camera,-cameraY);Visuals.terrain(realms[realm],platforms);if(hasRelic('grapple'))IslandsArt.anchors();for(const enemy of enemies)if(!enemy.dead){if(!TowerBossArt.actor(enemy))drawEnemy(enemy,realms[realm]);if(enemy.towerBoss){Visuals.healthBar(enemy,enemy.x+enemy.w/2,enemy.y+enemy.h,enemy.h,150,5);DevBossHealth.bar(enemy,enemy.x+enemy.w/2,enemy.y-17,150);ctx.save();ctx.textAlign='center';ctx.font='bold 15px "Kiba UI", sans-serif';ctx.fillStyle='#fff1cd';ctx.shadowColor='#07111c';ctx.shadowBlur=5;ctx.fillText(I18n.t(enemy.name),enemy.x+enemy.w/2,enemy.y-29);ctx.restore();}}for(const enemy of enemies)if(!enemy.dead)TowerBossArt.effects(enemy);for(const p of projectiles)if(!IslandsArt.projectile(p)&&!SerpentArt.projectile(p)&&!FiaRitualArt.projectile(p))Visuals.projectile(p);drawParticles();drawPlayer();DevDamage.draw();ctx.restore();}
   ctx.restore();return true;
  }
  function init(){
@@ -139,11 +183,12 @@ const TowerMode=(()=>{
    if(!active||resolutionBlocked)return;
    if(state!=='tower')return;if(event.key==='Escape'){event.preventDefault();if(!event.repeat)requestLeave();return;}
    if(event.key==='Tab'){
-    const panel=node(stage==='lobby'?'towerPanel':'towerResult'),items=[...panel.querySelectorAll('button,select')].filter(el=>!el.hidden&&!el.disabled);
+    const panel=node(stage==='lobby'?'towerPanel':'towerResult');if(panel.hidden)return;
+    const items=[...panel.querySelectorAll('button,select')].filter(el=>!el.closest('[hidden]')&&!el.disabled);
     if(!items.length)return;event.preventDefault();const index=items.indexOf(document.activeElement);items[(index+(event.shiftKey?-1:1)+items.length)%items.length].focus();
    }
   });
   addEventListener('pagehide',()=>{if(active&&stage==='fight')record();});
  }
- return Object.freeze({open,start,resume,enterFloor,fail,leave,requestLeave,cancelLeave,confirmLeave,lobby,hud,update,draw,init,stats,render,get active(){return active;},get running(){return active&&!!run&&stage!=='lobby';},get phase(){return stage;},snapshot:()=>run?{...TowerRules.copy(run),floorElapsed}:null});
+ return Object.freeze({open,start,resume,enterFloor:()=>enterFloor(),fail,leave,requestLeave,cancelLeave,confirmLeave,lobby,hud,update,draw,init,stats,render,hasRelic,claim,buy,selectHealing,get wallet(){syncWallet();return TowerRewards.copy(wallet);},get resultLocked(){return resultLocked();},get active(){return active;},get running(){return active&&!!run&&stage!=='lobby';},get phase(){return stage;},snapshot:()=>run?{...TowerRules.copy(run),floorElapsed}:null});
 })();

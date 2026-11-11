@@ -4,6 +4,14 @@ This is an optional backend for the static GitHub Pages game. It stores communit
 
 ## Dashboard deployment
 
+### Season 2 on an existing project
+
+1. Run `migrations/202611110001_tower_leaderboard_v2.sql` in **SQL Editor**. This creates separate score and rate limit tables for the upgraded tower.
+2. Deploy `functions/tower-leaderboard-v2/index.ts` as a new function named `tower-leaderboard-v2`. Use the same gateway JWT setting as the original function. Public reads and preflight reach the handler, and the handler and database still check the user JWT on writes.
+3. Verify that the new function returns an empty list before publishing the updated game. The previous season remains accessible to older releases through `tower-leaderboard`. No existing scores or user accounts need to be removed.
+
+### Original season setup
+
 1. Enable anonymous sign-ins under **Authentication → Sign In / Providers**. New sign-ups must also be allowed. Anonymous users use the `authenticated` database role.
 2. Open **SQL Editor → New query**. Paste the complete contents of `migrations/202611020001_tower_leaderboard.sql` and run it. The transaction creates private score/rate tables and two narrowly granted public RPC functions. It does not read or reset adventure saves.
 3. Open **Edge Functions → Deploy a new function → Via Editor**, name the function `tower-leaderboard`, and use the complete contents of `functions/tower-leaderboard/index.ts` as its `index.ts`. Deploy it.
@@ -15,12 +23,12 @@ Anonymous sign-in abuse protection can be configured under Auth attack protectio
 
 ## API contract
 
-Endpoint: `<PROJECT_URL>/functions/v1/tower-leaderboard`.
+Endpoint: `<PROJECT_URL>/functions/v1/tower-leaderboard-v2` for the upgraded tower. Earlier releases use `tower-leaderboard`.
 
 Every browser call sends the project's public publishable key in `apikey`. POST also sends `Authorization: Bearer <user-access-token>`; an API key is never a user token.
 
 - `GET`: returns `{scores:[...]}` with at most 50 rows, ordered by completed floors descending, active time ascending, then submission date and internal user ID for stable ordering. Public output contains `rank`, `display_name`, `cleared`, `elapsed_ms`, `weapon`, `submitted_at`, and `version`; no user IDs or Auth records are exposed.
-- `POST`: exact JSON fields `{name,seed,weapon,cleared,kills,elapsedMs,version}`. Returns `{ok:true,improved:boolean}`. Ruleset is fixed to `tower-v1` and owner comes from the verified JWT. There is no client-supplied owner or season.
+- `POST`: exact JSON fields `{name,seed,weapon,cleared,kills,elapsedMs,version}`. Returns `{ok:true,improved:boolean}`. The endpoint selects the season, and the owner comes from the verified JWT.
 - Error codes: `unauthorized` (401), `origin_denied` (403), `invalid_name` / `invalid_score` (400), `rate_limited` (429 with `Retry-After: 60`), or `unavailable` (503). Unsupported content type is 415, oversized JSON is 413, unsupported method is 405.
 
 Names allow 3–20 Unicode letters/numbers, spaces, `_`, and `-`, with no surrounding whitespace. Scores require a positive uint32 seed, one of the three starting weapons, 1–10,000 cleared floors, up to 1,000,000 kills, and 1–31,536,000,000 milliseconds. These are storage/abuse bounds, not proof that a score was achieved honestly.

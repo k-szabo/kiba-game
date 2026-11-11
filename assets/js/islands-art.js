@@ -45,6 +45,11 @@ const IslandsArt=(()=>{
    stamp('leader',departure.elapsed<.3?6:7,x,y,leaderHeight,1);
    const h=departure.haru;if(h){const hx=h.x+h.w/2+(x-h.x-h.w/2)*Math.min(1,t*1.5),hy=h.y+h.h-Math.sin(t*Math.PI)*75;ArenaArt.stamp(ART_ZIGGURAT_DESCENT.haru,t>0?4:0,hx,hy,125,1);ctx.save();ctx.strokeStyle='#c9b384';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x,y-e.h*.55);ctx.lineTo(hx,hy-60);ctx.stroke();ctx.restore();}
   }
+  anchors();
+  if(FloatingIslandsRules.abducted(flags)&&!Grapple.owned())hook({x:level.hookPoint.x,y:level.hookPoint.y-25},52);
+  if(!FloatingIslands.locked())Visuals.campPathMarker(level.returnPoint,I18n.t('descent.heights'));
+ }
+ function anchors(){
   const selected=Grapple.selection();
   for(const anchor of level.grappleAnchors){
    const x=anchor.x+anchor.w/2,y=anchor.y+anchor.h/2,focus=selected?.id===anchor.id;
@@ -52,8 +57,6 @@ const IslandsArt=(()=>{
    ctx.fillStyle='#8d7b5b';ctx.fillRect(x-14,anchor.y+86,28,18);ctx.strokeStyle=focus?'#fff0a8':'#ccac65';ctx.lineWidth=5;ctx.beginPath();ctx.arc(x,y,13,0,Math.PI*2);ctx.stroke();
    if(focus){ctx.strokeStyle='#fff5c4';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,24,0,Math.PI*2);ctx.stroke();}ctx.restore();
   }
-  if(FloatingIslandsRules.abducted(flags)&&!Grapple.owned())hook({x:level.hookPoint.x,y:level.hookPoint.y-25},52);
-  if(!FloatingIslands.locked())Visuals.campPathMarker(level.returnPoint,I18n.t('descent.heights'));
  }
  function companion(){const e=FloatingIslands.follower();if(!e)return;const index=!e.onGround?4:Math.abs(e.vx)>2&&!reducedMotion.matches?1+Math.floor(e.animationTime*6)%2:0;ArenaArt.stamp(ART_ZIGGURAT_DESCENT.haru,index,e.x+e.w/2,e.y+e.h,125,e.face);HannahArt.nameplate(e.x+e.w/2,e.y+e.h,125,'HARU');}
  function playerOverlay(){
@@ -67,5 +70,5 @@ const IslandsArt=(()=>{
   if(e){ctx.save();ctx.strokeStyle='#c9b384';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(e.x+e.w/2,e.y+e.h*.4);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.restore();}
   hook(p,32);return true;
  }
- return Object.freeze({backdrop,actor,scenery,companion,player:playerOverlay,projectile,leaderHeight});
+ return Object.freeze({backdrop,actor,scenery,anchors,companion,player:playerOverlay,projectile,leaderHeight});
 })();

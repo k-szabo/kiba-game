@@ -4,17 +4,18 @@ const source=stripTypeScriptTypes(fs.readFileSync('supabase/functions/tower-lead
 const project='https://example.supabase.co',origin='https://k-szabo.github.io',token='abc.def.ghi';
 const score={name:'Momo_牙',seed:123,weapon:'katana',cleared:5,kills:20,elapsedMs:60000,version:'0.9.67_1234abcd'};
 function fixture(options={}){
+ const suffix=options.season2?'_v2':'',route=options.season2?'-v2':'';
  const calls=[],env={SUPABASE_URL:project,SUPABASE_PUBLISHABLE_KEYS:JSON.stringify({default:'sb_publishable_test'}),...options.env};let handler;
  const sandbox={Request,Response,Headers,AbortSignal,TextDecoder,Uint8Array,Error,console,
   Deno:{env:{get:key=>env[key]},serve:fn=>handler=fn},fetch:async(url,init)=>{
    calls.push({url,init});if(options.fail)throw Error('offline');
    if(url.endsWith('/auth/v1/user'))return new Response(JSON.stringify(options.user||{id:'11111111-1111-4111-8111-111111111111',role:'authenticated'}),{status:options.userStatus||200});
-   if(url.endsWith('/rest/v1/rpc/list_tower_scores'))return new Response(JSON.stringify(options.rows||[]));
-   if(url.endsWith('/rest/v1/rpc/submit_tower_score'))return new Response(JSON.stringify(options.outcome||{ok:true,improved:true}));
+   if(url.endsWith('/rest/v1/rpc/list_tower_scores'+suffix))return new Response(JSON.stringify(options.rows||[]));
+   if(url.endsWith('/rest/v1/rpc/submit_tower_score'+suffix))return new Response(JSON.stringify(options.outcome||{ok:true,improved:true}));
    throw Error('Unexpected URL');
   }};
- vm.createContext(sandbox);vm.runInContext(source,sandbox);
- const request=(method='POST',body=score,headers={})=>handler(new Request(project+'/functions/v1/tower-leaderboard',{method,headers:{origin,authorization:'Bearer '+token,'content-type':'application/json',...headers},...(method==='POST'?{body:typeof body==='string'?body:JSON.stringify(body)}:{})}));
+ vm.createContext(sandbox);vm.runInContext(options.season2?stripTypeScriptTypes(fs.readFileSync('supabase/functions/tower-leaderboard-v2/index.ts','utf8')).replace('export async function handle','async function handle'):source,sandbox);
+ const request=(method='POST',body=score,headers={})=>handler(new Request(project+'/functions/v1/tower-leaderboard'+route,{method,headers:{origin,authorization:'Bearer '+token,'content-type':'application/json',...headers},...(method==='POST'?{body:typeof body==='string'?body:JSON.stringify(body)}:{})}));
  return {request,calls};
 }
 (async()=>{
@@ -49,5 +50,14 @@ function fixture(options={}){
  assert.match(sql,/grant execute on function public\.submit_tower_score\([^;]+\) to authenticated;/);
  assert(!/grant (?:all|insert|update|delete|select) on .*tower_scores to (?:anon|authenticated)/i.test(sql),'Raw score tables have no client grants');
  assert.equal((sql.match(/security definer set search_path = ''/g)||[]).length,2);
+ const season=fixture({season2:true});
+ assert.deepEqual(await (await season.request('GET')).json(),{scores:[]});
+ assert.equal((await season.request()).status,200);
+ assert.equal(season.calls[0].url,project+'/rest/v1/rpc/list_tower_scores_v2');
+ assert.equal(season.calls[2].url,project+'/rest/v1/rpc/submit_tower_score_v2');
+ const nextSQL=fs.readFileSync('supabase/migrations/202611110001_tower_leaderboard_v2.sql','utf8');
+ assert.match(nextSQL,/where s.ruleset = 'tower-v2'/);
+ assert(!/\b(?:truncate|drop table|delete from)\b/i.test(nextSQL));
+ assert(!/leaderboard_private\.tower_(?:scores|submissions)\b/.test(nextSQL));
  console.log('PASS: Edge auth precedes write, public top list, exact CORS, bounded JSON, strict names/scores, forged identity rejection, failure handling and migration security structure. SQL execution/race behaviour requires a real Supabase/Postgres instance.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
