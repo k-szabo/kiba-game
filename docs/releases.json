@@ -1936,6 +1936,22 @@
       ]
     },
     {
+      "version": "0.9.77_04dda57a",
+      "code": "04dda57a",
+      "baseVersion": "0.9.77",
+      "slug": "level-cap-50",
+      "summary": {
+        "hu": "50. szintig fejlődhetsz",
+        "en": "Level up to 50"
+      },
+      "fixes": [
+        {
+          "hu": "Momo maximális szintje 50. A 30. szint elérése után korábban gyűjtött XP beszámít a további fejlődésbe.",
+          "en": "Momo’s maximum level is now 50. XP previously earned after reaching level 30 counts toward further progression."
+        }
+      ]
+    },
+    {
       "version": "0.9.78_16d08d67",
       "code": "16d08d67",
       "baseVersion": "0.9.78",

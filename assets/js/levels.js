@@ -1,7 +1,15 @@
 /* Three deliberately different routes: an expedition, a descent, an ascent. */
 'use strict';
 // Shared progression rules also load before the standalone save validator.
-const PROGRESSION_RULES=Object.freeze({levelLimit:30,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,xpForLevel:n=>60+(n-1)*35});
+const PROGRESSION_RULES=Object.freeze({
+ levelLimit:50,statLimit:12,statLimitFor:key=>key==='spirit'?7:key==='shield'?12:Number.MAX_SAFE_INTEGER,
+ xpForLevel:n=>60+(n-1)*35,
+ progressForXP(totalXp,limit=this.levelLimit){
+  let xp=totalXp,level=1;
+  while(level<limit&&xp>=this.xpForLevel(level)){xp-=this.xpForLevel(level);level++;}
+  return {level,xp:level===limit?0:xp};
+ }
+});
 const KIBA_SHIELD_RULES=Object.freeze({capacity:2,recharge:12,capacityStep:.25,rechargeStep:.5});
 const ZEN_PURIFICATION_POINTS=2;
 // Sale prices and unique-item realms are shared with strict save validation.

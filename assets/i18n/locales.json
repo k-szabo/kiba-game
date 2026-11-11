@@ -1470,7 +1470,9 @@
       "item.ninjaCampSpoils": "Klánzsákmány",
       "inventory.description.ninjaCampSpoils": "A táborból megmaradt értéktárgyak. Akash érmét ad értük.",
       "menu.changelog.0978.16d08d67.title": "A széthullott klán",
-      "menu.changelog.0978.16d08d67.0": "Az örvény túlpartjáról új, háromszintes dungeon vezet a nindzsák táborába. A táborban gyógyító és kovács segíti Momót; a fegyver és a páncél a 10. fokozatig fejleszthető."
+      "menu.changelog.0977.04dda57a.title": "50. szintig fejlődhetsz",
+      "menu.changelog.0978.16d08d67.0": "Az örvény túlpartjáról új, háromszintes dungeon vezet a nindzsák táborába. A táborban gyógyító és kovács segíti Momót; a fegyver és a páncél a 10. fokozatig fejleszthető.",
+      "menu.changelog.0977.04dda57a.0": "Momo maximális szintje 50. A 30. szint elérése után korábban gyűjtött XP beszámít a további fejlődésbe."
     }
   },
   "en": {
@@ -2944,7 +2946,9 @@
       "item.ninjaCampSpoils": "Clan Spoils",
       "inventory.description.ninjaCampSpoils": "Valuables recovered from the camp. Akash will pay coins for them.",
       "menu.changelog.0978.16d08d67.title": "The Fractured Clan",
-      "menu.changelog.0978.16d08d67.0": "A new three-floor dungeon leads from Beyond the Vortex to the ninja camp. A healer and a smith help Momo there, with weapon and armor upgrades available up to rank 10."
+      "menu.changelog.0977.04dda57a.title": "Level up to 50",
+      "menu.changelog.0978.16d08d67.0": "A new three-floor dungeon leads from Beyond the Vortex to the ninja camp. A healer and a smith help Momo there, with weapon and armor upgrades available up to rank 10.",
+      "menu.changelog.0977.04dda57a.0": "Momo’s maximum level is now 50. XP previously earned after reaching level 30 counts toward further progression."
     }
   }
 }

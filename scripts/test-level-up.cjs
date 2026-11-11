@@ -44,8 +44,8 @@ for(const style of ['katana','naginata','swordShield'])for(const vitality of [0,
 }
 {
  const test=harness(),run=test.run;
- run('progression=normalizeProgression({level:29},flags);player.hp=1;awardXP(xpForLevel(29));');
- assert.equal(run('progression.level'),30);assert.equal(run('player.hp'),run('player.maxHp'),'Reaching the final level still heals');
+ run('progression=normalizeProgression({level:LEVEL_LIMIT-1},flags);player.hp=1;awardXP(xpForLevel(LEVEL_LIMIT-1));');
+ assert.equal(run('progression.level'),run('LEVEL_LIMIT'));assert.equal(run('player.hp'),run('player.maxHp'),'Reaching the final level still heals');
  run('player.hp=1;awardXP(10000)');assert.equal(run('player.hp'),1,'Further XP at the level cap does not heal');
 }
 // The shared outer loop advances exactly once at all supported frame rates.
