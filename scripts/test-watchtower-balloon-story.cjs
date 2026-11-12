@@ -109,4 +109,33 @@ r('player.hp=20;player.inv=0;damage(10,0,false,true,"spell");');assert.equal(r('
 r('player.hp=20;player.inv=0;damage(10,0,false,true);');assert.equal(r('player.hp'),10);
 r('player.hp=20;player.inv=0;shoot(player.x+20,player.y+30,0,0,"#fff",1,"magic");');h.tick();
 assert(Math.abs(r('player.hp')-19.2)<1e-8,'The actual projectile collision applies spell resistance to a mage bolt');
-console.log('PASS watchtower, balloon and Sky Dragon raid: actual entry/boarding/grapple inputs, retry, pause, raid rewards and strict saves.');
+interactAt(r('DungeonRun.campNpc("reika").x'),1020);assert.equal(r('state'),'dialog');
+assert(!r('flags[0].includes(ThirdClanRules.progress.accepted)'));h.dismiss();
+assert(r('flags[0].includes(ThirdClanRules.progress.accepted)'));validate(r('captureProgress()'));
+interactAt(r('ninjaCamp.thirdClanExit.x'),1020);assert.equal(r('level.id'),'thirdClanPath');
+r('player.inv=999;');h.press({action:'moveRight'});h.tick(4200);h.release({action:'moveRight'});
+assert(r('player.x>5500&&player.y+player.h>=2850'),'The descending path reaches the cave terrace using normal movement: '+r('player.x+","+player.y'));
+interactAt(r('level.caveEntrance.x'),r('level.caveEntrance.y'));assert.equal(r('level.id'),'thirdClanPath','An intact ballista blocks cave entry');
+r('var routeBallista=level.ballistae[0];');
+for(let i=0;i<3;i++){
+ r(`routeBallista=level.ballistae[${i}];resolveMeleeDamage({kind:'heavy',amount:40,hit:{x:routeBallista.x-35,y:routeBallista.y-80,w:70,h:80}});`);
+}
+assert.equal(r('ThirdClanRules.disabled(flags)'),3);validate(r('captureProgress()'));
+r('persist();mainMenu();startGame(true);');assert.equal(r('ThirdClanRules.disabled(flags)'),3);
+interactAt(r('level.caveEntrance.x'),r('level.caveEntrance.y'));assert.equal(r('level.id'),'thirdClanCave');
+const waitNearGuardian=()=>{r('player.inv=100;player.x=ThirdClan.guardian.x-62;player.y=1030-player.h;player.vx=0;player.vy=0;player.face=1;');h.tick();};
+const strike=action=>{h.press({action});h.tick(55);h.release({action});r('attackCooldown=0;');};
+waitNearGuardian();strike('attack');assert.equal(r('ThirdClan.guardian.armor'),4);
+waitNearGuardian();strike('heavyAttack');assert.equal(r('ThirdClan.guardian.armor'),3);
+assert(!r('fastTravel(ninjaCamp.rests[0],0)'),'The cave guardian locks travel during combat');
+r('player.hp=0;revive();');assert.equal(r('ThirdClan.guardian.armor'),4);
+assert.equal(r('ThirdClanRules.disabled(flags)'),3,'Death preserves the disabled anti-air line');
+for(let i=0;i<4;i++){waitNearGuardian();strike('heavyAttack');}
+assert.equal(r('ThirdClan.guardian.armor'),0);assert.equal(r('state'),'dialog');h.dismiss();
+r('state="pause";ThirdClan.update(10);');assert.equal(r('ThirdClan.guardian.airshipTime'),0);
+r('state="play";ThirdClan.update(4);');assert(r('flags[0].includes(ThirdClanRules.progress.guardian)'));
+interactAt(r('level.haruTrail.x'),r('level.haruTrail.y'));h.dismiss();
+assert.equal(r('ThirdClanRules.stage(flags)'),'complete');validate(r('captureProgress()'));
+const invalidThirdClan=r('captureProgress()');invalidThirdClan.flags[0]=invalidThirdClan.flags[0].filter(id=>id!=='thirdClanBallistaEast');
+assert.throws(()=>validate(invalidThirdClan),/third-clan/);
+console.log('PASS watchtower, balloon, Sky Dragon raid and third clan: route inputs, retry, pause, rewards and strict saves.');

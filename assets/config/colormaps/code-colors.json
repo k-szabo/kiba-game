@@ -2446,16 +2446,16 @@
       {
         "value": "#fff",
         "lines": [
-          168,
-          169
+          175,
+          176
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          168,
-          169
+          175,
+          176
         ],
         "dynamic": false
       }
@@ -2934,7 +2934,7 @@
       {
         "value": "#d9bd80",
         "lines": [
-          70
+          71
         ],
         "dynamic": false
       },
@@ -5124,6 +5124,75 @@
       }
     ],
     "assets/js/slayer-dialog.js": [],
+    "assets/js/third-clan-art.js": [
+      {
+        "value": "#251e2a",
+        "lines": [
+          29
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e8b680",
+        "lines": [
+          30
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a9",
+        "lines": [
+          66
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/third-clan-maps.js": [],
+    "assets/js/third-clan-rules.js": [],
+    "assets/js/third-clan.js": [
+      {
+        "value": "#b387ea",
+        "lines": [
+          128
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#b67555",
+        "lines": [
+          90
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#dca66c",
+        "lines": [
+          99
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#debb89",
+        "lines": [
+          118
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e3ba85",
+        "lines": [
+          128
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e9bd7d",
+        "lines": [
+          90
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/tower-boss-art.js": [],
     "assets/js/tower-boss-combat.js": [],
     "assets/js/tower-leaderboard-api.js": [],

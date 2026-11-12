@@ -10983,6 +10983,426 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/third-clan-cave-motion-b-v1.webp": {
+      "sha256": "e8175540e72945bba888d6bc30049329ee08e1f7108f97364dacbdc792b4361b",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "thirdClanCaveBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#413b4f",
+            "coveragePercent": 17.6978
+          },
+          {
+            "hex": "#555069",
+            "coveragePercent": 14.1842
+          },
+          {
+            "hex": "#252636",
+            "coveragePercent": 12.0345
+          },
+          {
+            "hex": "#716984",
+            "coveragePercent": 8.3208
+          },
+          {
+            "hex": "#a48e9a",
+            "coveragePercent": 6.4617
+          },
+          {
+            "hex": "#9fbef8",
+            "coveragePercent": 5.4275
+          },
+          {
+            "hex": "#487ee5",
+            "coveragePercent": 5.0143
+          },
+          {
+            "hex": "#81aaf1",
+            "coveragePercent": 4.8651
+          },
+          {
+            "hex": "#5f96f5",
+            "coveragePercent": 4.774
+          },
+          {
+            "hex": "#bcd0fa",
+            "coveragePercent": 4.093
+          },
+          {
+            "hex": "#ceb3bb",
+            "coveragePercent": 4.0336
+          },
+          {
+            "hex": "#964d54",
+            "coveragePercent": 3.5895
+          },
+          {
+            "hex": "#6a88bc",
+            "coveragePercent": 2.8427
+          },
+          {
+            "hex": "#e3e7fb",
+            "coveragePercent": 2.8161
+          },
+          {
+            "hex": "#e5716e",
+            "coveragePercent": 2.498
+          },
+          {
+            "hex": "#7d29c4",
+            "coveragePercent": 1.3473
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4f83e0",
+            "coveragePercent": 37.5618
+          },
+          {
+            "hex": "#6fa2f6",
+            "coveragePercent": 30.1253
+          },
+          {
+            "hex": "#a34855",
+            "coveragePercent": 11.192
+          },
+          {
+            "hex": "#e8716d",
+            "coveragePercent": 10.0067
+          },
+          {
+            "hex": "#5f329a",
+            "coveragePercent": 8.1545
+          },
+          {
+            "hex": "#9d30e5",
+            "coveragePercent": 2.9597
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/third-clan-cave-v1.webp": {
+      "sha256": "336da27ae5561422a77f66f4bc0133cf37ada16ad99b971e5899d52d0adb3342",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "thirdClanCaveBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4a4458",
+            "coveragePercent": 15.9372
+          },
+          {
+            "hex": "#373244",
+            "coveragePercent": 13.1239
+          },
+          {
+            "hex": "#5d5974",
+            "coveragePercent": 10.5123
+          },
+          {
+            "hex": "#202130",
+            "coveragePercent": 9.3598
+          },
+          {
+            "hex": "#91b3f3",
+            "coveragePercent": 6.5091
+          },
+          {
+            "hex": "#b4caf8",
+            "coveragePercent": 6.2057
+          },
+          {
+            "hex": "#827486",
+            "coveragePercent": 5.7423
+          },
+          {
+            "hex": "#6899f1",
+            "coveragePercent": 5.5726
+          },
+          {
+            "hex": "#4a7de2",
+            "coveragePercent": 5.3606
+          },
+          {
+            "hex": "#ab94a1",
+            "coveragePercent": 5.2145
+          },
+          {
+            "hex": "#d3b7bc",
+            "coveragePercent": 3.5174
+          },
+          {
+            "hex": "#e0e4f8",
+            "coveragePercent": 3.3134
+          },
+          {
+            "hex": "#934a52",
+            "coveragePercent": 3.3064
+          },
+          {
+            "hex": "#6e8bbf",
+            "coveragePercent": 2.9009
+          },
+          {
+            "hex": "#df726f",
+            "coveragePercent": 2.3846
+          },
+          {
+            "hex": "#7330bc",
+            "coveragePercent": 1.0394
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4b7cd9",
+            "coveragePercent": 27.621
+          },
+          {
+            "hex": "#6091ec",
+            "coveragePercent": 25.6389
+          },
+          {
+            "hex": "#7aa9f8",
+            "coveragePercent": 16.8071
+          },
+          {
+            "hex": "#a14854",
+            "coveragePercent": 11.8369
+          },
+          {
+            "hex": "#e4726d",
+            "coveragePercent": 9.6406
+          },
+          {
+            "hex": "#6934a9",
+            "coveragePercent": 8.4555
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/third-clan-path-motion-b-v1.webp": {
+      "sha256": "22ac94f1e7f8e632ddd562b908193da5a764a8f0a64fb86ff45b1a44f089c4a7",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "thirdClanPathBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#556680",
+            "coveragePercent": 10.012
+          },
+          {
+            "hex": "#8ab3ef",
+            "coveragePercent": 9.6003
+          },
+          {
+            "hex": "#414e5f",
+            "coveragePercent": 8.987
+          },
+          {
+            "hex": "#679de1",
+            "coveragePercent": 8.8159
+          },
+          {
+            "hex": "#adc8f5",
+            "coveragePercent": 8.6761
+          },
+          {
+            "hex": "#547dac",
+            "coveragePercent": 7.3813
+          },
+          {
+            "hex": "#cedbf8",
+            "coveragePercent": 6.2807
+          },
+          {
+            "hex": "#8b8082",
+            "coveragePercent": 5.6413
+          },
+          {
+            "hex": "#393131",
+            "coveragePercent": 5.4222
+          },
+          {
+            "hex": "#ebecf6",
+            "coveragePercent": 4.922
+          },
+          {
+            "hex": "#4183db",
+            "coveragePercent": 4.7364
+          },
+          {
+            "hex": "#74533f",
+            "coveragePercent": 4.6862
+          },
+          {
+            "hex": "#8c9ab7",
+            "coveragePercent": 4.5653
+          },
+          {
+            "hex": "#e19057",
+            "coveragePercent": 3.731
+          },
+          {
+            "hex": "#bf573a",
+            "coveragePercent": 3.709
+          },
+          {
+            "hex": "#dbbc9e",
+            "coveragePercent": 2.8331
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#70a7ed",
+            "coveragePercent": 28.2009
+          },
+          {
+            "hex": "#578ac4",
+            "coveragePercent": 17.6323
+          },
+          {
+            "hex": "#b15639",
+            "coveragePercent": 14.5411
+          },
+          {
+            "hex": "#426c9a",
+            "coveragePercent": 13.8681
+          },
+          {
+            "hex": "#4083e1",
+            "coveragePercent": 13.3621
+          },
+          {
+            "hex": "#e69356",
+            "coveragePercent": 12.3955
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/third-clan-path-v1.webp": {
+      "sha256": "fbcbba414f195a52b2e4ee58f0f3ca872ecfb602c2832dd410452b4b41887416",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "thirdClanPathBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#444954",
+            "coveragePercent": 9.8058
+          },
+          {
+            "hex": "#a5c1f2",
+            "coveragePercent": 9.693
+          },
+          {
+            "hex": "#4e5f79",
+            "coveragePercent": 9.5305
+          },
+          {
+            "hex": "#84aeec",
+            "coveragePercent": 8.9007
+          },
+          {
+            "hex": "#6697dd",
+            "coveragePercent": 7.9577
+          },
+          {
+            "hex": "#c6d6f6",
+            "coveragePercent": 7.2729
+          },
+          {
+            "hex": "#557cac",
+            "coveragePercent": 6.7499
+          },
+          {
+            "hex": "#eaeaf5",
+            "coveragePercent": 6.5544
+          },
+          {
+            "hex": "#757582",
+            "coveragePercent": 6.2148
+          },
+          {
+            "hex": "#372c2b",
+            "coveragePercent": 5.4158
+          },
+          {
+            "hex": "#9199b0",
+            "coveragePercent": 4.6571
+          },
+          {
+            "hex": "#894f36",
+            "coveragePercent": 4.5969
+          },
+          {
+            "hex": "#dd6d3f",
+            "coveragePercent": 3.4674
+          },
+          {
+            "hex": "#3f7fdd",
+            "coveragePercent": 3.19
+          },
+          {
+            "hex": "#e5bc8f",
+            "coveragePercent": 3.0489
+          },
+          {
+            "hex": "#b48968",
+            "coveragePercent": 2.9441
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#73a7ef",
+            "coveragePercent": 23.9743
+          },
+          {
+            "hex": "#5e8fce",
+            "coveragePercent": 18.7946
+          },
+          {
+            "hex": "#b05536",
+            "coveragePercent": 16.4162
+          },
+          {
+            "hex": "#456f9f",
+            "coveragePercent": 15.496
+          },
+          {
+            "hex": "#e59557",
+            "coveragePercent": 12.7396
+          },
+          {
+            "hex": "#4181e0",
+            "coveragePercent": 12.5792
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/void-forbidden-motion-b-v1.png": {
       "sha256": "0d44fe49912c4ae014b863ed085739fb19a082fc8789fadf6ef198f7bd6a50f7",
       "width": 1672,

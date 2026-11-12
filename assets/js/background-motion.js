@@ -5,6 +5,13 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  thirdClanPathBackdrop:{asset:'thirdClanPathBackdropMotionPhaseB',regions:[
+   ['clan-distant-cloud',17,[[.84,.61],[.96,.61],[.96,.69],[.91,.73],[.85,.70]],11]
+  ]},
+  thirdClanCaveBackdrop:{asset:'thirdClanCaveBackdropMotionPhaseB',regions:[
+   ['clan-cave-mist',18,[[.035,.51],[.205,.51],[.205,.61],[.035,.61]],10],
+   ['clan-cave-glow',6,[[.885,.40],[.93,.405],[.965,.52],[.952,.59],[.91,.56]],6]
+  ]},
   watchtowerBackdrop:{asset:'watchtowerBackdropMotionPhaseB',regions:[['tower-window-mist',16,[[.39,.24],[.56,.24],[.56,.27],[.39,.27]],8],['tower-lamp',2.5,[[.14,.158],[.172,.158],[.172,.19],[.14,.19]],4]]},
   balloonSkyBackdrop:{asset:'balloonSkyBackdropMotionPhaseB',regions:[['cruise-cloud',17,[[.44,.56],[.59,.56],[.59,.65],[.44,.65]],12]]},
   stormIslandsBackdrop:{asset:'stormIslandsBackdropMotionPhaseB',regions:[['storm-mist',16,[[.37,.58],[.45,.58],[.45,.66],[.37,.66]],12]]},

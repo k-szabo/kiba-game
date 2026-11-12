@@ -50,6 +50,7 @@ const SaveVault=(()=>{
   if(!legacyHeart&&hasHannah('demonLordHeart')&&!hasHannah('hannahFiaRescue'))throw Error('Invalid demon lord heart');
   if(hasHannah('demonLordHeartGiven')&&(!hasHannah('demonLordHeart')||!hasHannah('fiaRescued')))throw Error('Invalid demon lord gift');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
+  if(!ThirdClanRules.valid(data.flags))throw Error('Invalid third-clan progress');
   const raid=data.skyDragonRaid;
   if(Object.hasOwn(data,'skyDragonRaid')&&(!SkyDragonRaidRules.validProgress(raid)||raid.run===0||!data.prologueComplete||!data.defeated[0]||
      !hasCampFlag('ninjaClanRitualistReward')||!hasCampFlag('grapplingHook')||!data.visitedRests[0].includes('ninjaCampArrival'))||

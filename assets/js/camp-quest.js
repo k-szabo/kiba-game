@@ -16,7 +16,7 @@ const CampQuest=(()=>{
   const id=level?.id;
   return typeof id==='string'&&Object.hasOwn(SIDE_LOCATIONS,id)&&SIDE_LOCATIONS[id].map===level?id:null;
  }
- const isSide=()=>!!level.skyDragonRaid||!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','ninjaClanCamp'].includes(locationId());
+ const isSide=()=>!!level.skyDragonRaid||!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','ninjaClanCamp','thirdClanPath','thirdClanCave'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});
@@ -131,6 +131,7 @@ const CampQuest=(()=>{
   },{right:'campMaster',button:'camp.master.retry'});return true;
  }
  function questMarker(id){
+  const thirdClanMarker=ThirdClan.questMarker(id);if(thirdClanMarker)return thirdClanMarker;
   const fiaMarker=FiaRitual.questMarker(id)||FiaVoidJourney.questMarker(id)||FiaQuest.questMarker(id);if(fiaMarker)return fiaMarker;
   const arenaMarker=ArenaChallenge.questMarker(id);if(arenaMarker)return arenaMarker;
   if(Prologue.active||state==='menu')return null;

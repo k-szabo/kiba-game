@@ -26,6 +26,12 @@ const ART_EFFECTS={
   holyLance:{image:'holyLance',w:1024,h:1536,tipX:508,tipY:1419,start:45,inkWidth:320}
 };
 const ART_MANIFEST = {
+ thirdClanPathBackdrop:'assets/images/backgrounds/third-clan-path-v1.webp',
+ thirdClanCaveBackdrop:'assets/images/backgrounds/third-clan-cave-v1.webp',
+ thirdClanPathBackdropMotionPhaseB:'assets/images/backgrounds/third-clan-path-motion-b-v1.webp',
+ thirdClanCaveBackdropMotionPhaseB:'assets/images/backgrounds/third-clan-cave-motion-b-v1.webp',
+ thirdClanGuardianArt:'assets/images/enemies/third-clan-guardian-v1.png',
+ thirdClanGuardianStagger:'assets/images/enemies/third-clan-guardian-stagger-v1.png',
  watchtowerBackdropMotionPhaseB:'assets/images/backgrounds/ninja-watchtower-motion-b-v1.png',
  balloonSkyBackdropMotionPhaseB:'assets/images/backgrounds/balloon-skies-motion-b-v1.png',
  stormIslandsBackdropMotionPhaseB:'assets/images/backgrounds/storm-islands-motion-b-v1.png',
