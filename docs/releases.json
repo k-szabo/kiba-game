@@ -1998,6 +1998,22 @@
           "en": "Reika sends Momo after Haru’s trail. Disable three ballistas on the descending path and break the cave guardian’s armor before Westheru arrives."
         }
       ]
+    },
+    {
+      "version": "0.9.81_f227c9a4",
+      "code": "f227c9a4",
+      "baseVersion": "0.9.81",
+      "slug": "second-ziggurat",
+      "summary": {
+        "hu": "A második zikkurat",
+        "en": "The Second Ziggurat"
+      },
+      "fixes": [
+        {
+          "hu": "Haru nyoma háromszakaszos történeti rajtaütéshez vezet, kilenc bossal és bossok közötti checkpointokkal. Reika és Westheru is részt vesz a harcokban.",
+          "en": "Haru’s trail leads to a three-stage story raid with nine bosses and checkpoints between encounters. Reika and Westheru take part in the battles."
+        }
+      ]
     }
   ]
 }

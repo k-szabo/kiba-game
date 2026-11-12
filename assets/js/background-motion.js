@@ -5,6 +5,15 @@ const BackgroundMotion=(()=>{
  const keys=new WeakMap(),layers=new WeakMap(),aliases=new WeakMap();
  const profiles=Object.freeze(Object.fromEntries(Object.entries(ART_MANIFEST).filter(([key,url])=>url.includes('/backgrounds/')&&!/Terrain$/.test(key)&&!key.endsWith('MotionPhaseB')).map(([key])=>[key,Object.freeze({foliage:key==='japanBackdrop',forest:/japanBackdrop|campHD|campBackdrop/.test(key)})])));
  const authored={
+  storyRaidCaveBackdrop:{asset:'storyRaidCaveBackdropMotionPhaseB',sourceSize:[1672,941],regions:[
+   ['story-raid-cave-mist',18,[[.35,.56],[.64,.56],[.64,.69],[.35,.69]],10]
+  ]},
+  storyRaidTerraceBackdrop:{asset:'storyRaidTerraceBackdropMotionPhaseB',sourceSize:[1672,941],regions:[
+   ['story-raid-terrace-clouds',19,[[.09,.11],[.36,.10],[.34,.27],[.10,.28]],12]
+  ]},
+  storyRaidSanctuaryBackdrop:{asset:'storyRaidSanctuaryBackdropMotionPhaseB',sourceSize:[1672,941],regions:[
+   ['story-raid-sanctuary-light',14,[[.40,.10],[.60,.10],[.63,.25],[.58,.31],[.42,.31],[.35,.25]],11]
+  ]},
   thirdClanPathBackdrop:{asset:'thirdClanPathBackdropMotionPhaseB',regions:[
    ['clan-distant-cloud',17,[[.84,.61],[.96,.61],[.96,.69],[.91,.73],[.85,.70]],11]
   ]},

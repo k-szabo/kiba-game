@@ -135,15 +135,17 @@ const SkyDragonRaid=(()=>{
   return true;
  }
  function prompt(type,key,extra={}){return {type,text:bindingKeyLabel(Bindings.read('interact')[0])+' · '+I18n.t(key),...extra};}
- const nearReika=()=>level===ninjaCamp&&!!DungeonRun.campProvider('reika');
+ const ringReceiver=()=>StoryRaidRules.recoilFree(flags)?'westheru':'reika';
+ const nearReceiver=id=>level===ninjaCamp&&!!DungeonRun.campProvider(id);
  function turnInRing(){
-  if(state!=='play'||!nearReika()||!rules.turnInRing(progress))return false;
-  story('skyDragonRaid.name','ninjaClan.sentinel','skyDragonRaid.reika',()=>{
-   if(!nearReika())return;
+  const receiver=ringReceiver(),westheru=receiver==='westheru';
+  if(state!=='play'||!nearReceiver(receiver)||!rules.turnInRing(progress))return false;
+  story('skyDragonRaid.name',westheru?'balloon.pilot':'ninjaClan.sentinel',westheru?'storyRaid.ring.westheru':'skyDragonRaid.reika',()=>{
+   if(ringReceiver()!==receiver||!nearReceiver(receiver))return;
    const result=rules.turnInRing(progress);if(!result)return;
    progress=result.progress;flags[0].push(ringReward);progression.points+=result.points;
    awardXP(result.xp);persist();updateHUD();toast(I18n.format('skyDragonRaid.reward',[result.xp,result.points]));
-  },{right:'reika',speaker:'reika'});
+  },{right:westheru?null:'reika',speaker:receiver});
   return true;
  }
  const canForge=()=>!!rules.forgeArmor(progress,FiaJourneyRules.quantity(fiaJourney));
@@ -159,7 +161,10 @@ const SkyDragonRaid=(()=>{
  }
  function getContext(){
   if(entrance())return prompt('skyRaidMenu','skyDragonRaid.enter');
-  if(progress.victories>0&&!progress.ringTurnedIn&&nearReika())return prompt('skyRaidRing','skyDragonRaid.ring');
+  if(progress.victories>0&&!progress.ringTurnedIn){
+   const receiver=ringReceiver();
+   if(nearReceiver(receiver))return prompt('skyRaidRing',receiver==='westheru'?'storyRaid.ring.give':'skyDragonRaid.ring');
+  }
   if(!active()||crash>0)return null;
   if(attempt.outcome==='failed')return prompt('skyRaidRetry','camp.master.retry');
   if(attempt.outcome==='cleared'&&attempt.phase==='rift'||pointNear(level.returnPoint||level.start,90,80))return prompt('skyRaidLeave','skyDragonRaid.return');

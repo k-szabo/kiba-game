@@ -40,15 +40,17 @@ const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 // session. Icon checks use that same supported grant path as the dev panel.
 run('Inventory.close();DevTools.open();DevSession.begin();DevTools.close();Inventory.open();');
 for(const id of iconIds){
- const quoted=JSON.stringify(id),raidReward=run(`!!ART_INVENTORY.items[${quoted}].raidReward`);
+ const quoted=JSON.stringify(id),{raidReward,storyRaidSoul}=run(`ART_INVENTORY.items[${quoted}]`);
  run('flags=[[],[],[],[]];meatCount=0;teaCount=0;chickenCount=0;dungeonState=DungeonRules.fresh();fiaJourney=FiaJourneyRules.fresh();campServices=CampServiceRules.fresh(weaponStyle);SkyDragonRaid.restore();');
  if(raidReward){
   const armorOwned=id!=='cloudDragonScale',victories=armorOwned?3:1;
   run(`SkyDragonRaid.restore(${JSON.stringify({run:victories,victories,phase:null,ringTurnedIn:id!=='cloudNinjaRing',armorOwned,armorEquipped:false})});`);
+ }else if(storyRaidSoul){
+  run(`flags[0].push(...ThirdClanRules.flagIds,...StoryRaidRules.milestones.slice(0,StoryRaidRules.encounters.findIndex(boss=>boss.soul===${quoted})+2));flags[3].push('dawnblade');`);
  }else run(`if(ART_INVENTORY.items[${quoted}].stack)Merchant.addStock(${quoted});flags[ART_INVENTORY.items[${quoted}].realm].push(${quoted});`);
  run('artDraws=[];artContext.globalAlpha=.2;Inventory.render();');
  if(id==='foxfireKatana')run('Inventory.close();DevTools.open();DevItems.add({item:"foxfireKatana"});DevTools.close();Inventory.open();');
- if(!raidReward)assert.equal(elements.get('inventoryGrid').children.length,1,id+': one owned inventory item');
+ if(!raidReward&&!storyRaidSoul)assert.equal(elements.get('inventoryGrid').children.length,1,id+': one owned inventory item');
  const row=elements.get('inventoryGrid').children.find(button=>button.dataset.inventoryItem===id);
  assert(row,id+': reward or item is visible');
  const icon=row.children[0],rect=run(`ART_INVENTORY.items[${quoted}]`);

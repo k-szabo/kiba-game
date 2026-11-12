@@ -2446,16 +2446,16 @@
       {
         "value": "#fff",
         "lines": [
-          175,
-          176
+          184,
+          185
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          175,
-          176
+          184,
+          185
         ],
         "dynamic": false
       }
@@ -4950,28 +4950,28 @@
       {
         "value": "#0a172bcc",
         "lines": [
-          312
+          317
         ],
         "dynamic": false
       },
       {
         "value": "#90d9b2",
         "lines": [
-          313
+          318
         ],
         "dynamic": false
       },
       {
         "value": "#9ac2c1",
         "lines": [
-          298
+          303
         ],
         "dynamic": false
       },
       {
         "value": "#a8e4ff",
         "lines": [
-          222
+          227
         ],
         "dynamic": false
       },
@@ -4979,45 +4979,45 @@
         "value": "#bc75ed",
         "lines": [
           78,
-          191,
-          222
+          196,
+          227
         ],
         "dynamic": false
       },
       {
         "value": "#bf74ff29",
         "lines": [
-          231
+          236
         ],
         "dynamic": false
       },
       {
         "value": "#bf74ff45",
         "lines": [
-          233
+          238
         ],
         "dynamic": false
       },
       {
         "value": "#d5a1ff",
         "lines": [
-          231,
-          254,
-          343
+          236,
+          259,
+          348
         ],
         "dynamic": false
       },
       {
         "value": "#e997f780",
         "lines": [
-          232
+          237
         ],
         "dynamic": false
       },
       {
         "value": "#fff1bc",
         "lines": [
-          317
+          322
         ],
         "dynamic": false
       }
@@ -5124,6 +5124,54 @@
       }
     ],
     "assets/js/slayer-dialog.js": [],
+    "assets/js/story-raid-combat.js": [],
+    "assets/js/story-raid-maps.js": [],
+    "assets/js/story-raid-rules.js": [],
+    "assets/js/story-raid.js": [
+      {
+        "value": "#b7a5ba",
+        "lines": [
+          172
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#c3b6ea",
+        "lines": [
+          136
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d4a8eb",
+        "lines": [
+          148
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ecc27e",
+        "lines": [
+          200
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe0a9",
+        "lines": [
+          272
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#ffe1a2",
+        "lines": [
+          257,
+          263
+        ],
+        "dynamic": false
+      }
+    ],
     "assets/js/third-clan-art.js": [
       {
         "value": "#251e2a",

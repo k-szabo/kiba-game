@@ -17,6 +17,7 @@ const DungeonRun=(()=>{
  const friendly=e=>level.dungeon?.id==='ninjaClan'&&e.dungeonSide==='ninja'&&owns('ninjaClanSentinelReward','ninjaClan');
  function campNpc(id){
   if(Prologue.active||level.id!=='ninjaClanCamp')return null;
+  if(id==='reika'&&StoryRaidRules.recoilFree(flags))return null;
   if(id==='akash'&&!Merchant.rescued()||id==='zen'&&!PrisonQuest.rescued())return null;
   return level.npcs.find(npc=>npc.id===id||npc.service===id)||null;
  }

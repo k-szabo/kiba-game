@@ -91,17 +91,17 @@
   "counts": {
     "pc": 3,
     "npcs": 108,
-    "objects": 139,
-    "paletteGroups": 261,
-    "assets": 326,
-    "codeColors": 179
+    "objects": 142,
+    "paletteGroups": 264,
+    "assets": 344,
+    "codeColors": 183
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "01506547b6db8a7d9e54dd8f7dcded033290402d141034a8634a8626659ae22f",
+      "sha256": "2de3d99ddc86836a7e47c31c7a0a6cf81ec8a05278eefafceaa0309e18ce0824",
       "counts": {
-        "codeColors": 179
+        "codeColors": 183
       }
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "3ff065030e901daa56b8eddd644e027ed6b69f53a9723126d5b8661d789db075",
+      "sha256": "a4f62a58cab402335e03f8c58787e1eb09841042a0820326649f125cf5821226",
       "counts": {
         "paletteGroups": 11,
-        "assets": 132
+        "assets": 138
       }
     },
     {
@@ -157,9 +157,9 @@
     },
     {
       "file": "colormaps/objects.json",
-      "sha256": "c42e44757567bea933625623a302f7bc0b119f00347e606fbb272b83ada6e53a",
+      "sha256": "74723e7071012f54c1cd0017ffc75a62c7c20f170d83530eeba72201820ec1ec",
       "counts": {
-        "objects": 139
+        "objects": 142
       }
     },
     {
@@ -200,10 +200,10 @@
     },
     {
       "file": "colormaps/shared.json",
-      "sha256": "994a4d99a2704e01bd052f15aee760588cf901c3c2b5e351752c9f2c30af89ef",
+      "sha256": "5a49e0a0c13fa129742249c5ff78165c3598364716aa836f4724fbf95d525133",
       "counts": {
-        "paletteGroups": 47,
-        "assets": 31
+        "paletteGroups": 50,
+        "assets": 43
       }
     },
     {
