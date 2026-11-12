@@ -9,7 +9,7 @@ const Inventory=(()=>{
  const weaponStyleFor=id=>id==='foxfireKatana'?'foxfireKatana':typeof id==='string'&&id.startsWith('weapon-')&&WeaponStyles.valid(id.slice(7))?id.slice(7):null;
  const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
  const itemName=id=>id==='equippedTalisman'?I18n.t(catalogue[talisman].name):weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
- function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id==='foxfireKatana'&&weaponStyle==='foxfireKatana'||id===talisman&&equippedTalisman===talisman)return 0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
+ function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id==='foxfireKatana'&&weaponStyle==='foxfireKatana'||id===talisman&&equippedTalisman===talisman)return 0;if(item.raidReward)return SkyDragonRaid.stock(id);if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
  function contents(){return [...ids.filter(id=>quantity(id)>0),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
@@ -54,16 +54,17 @@ const Inventory=(()=>{
  }
  function weaponName(style=weaponStyle){return I18n.t(style==='katana'&&defeated[1]?'item.dawnblade':'weapon.'+style+'.item');}
  function details(id){
-  const style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id),enhancement=isEnhancement(id);
+  const cloudscale=id==='cloudscaleArmor',style=id==='weapon'?weaponStyle:weaponStyleFor(id),weapon=!!style,item=catalogue[id==='equippedTalisman'?talisman:id],healing=Merchant.healingItems.includes(id),enhancement=isEnhancement(id);
   $('inventoryDetailName').textContent=weapon?weaponName(style):id?itemName(id):I18n.t('inventory.empty.title');
-  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':id==='forestHerb'?'inventory.type.backpack':item?.category==='trinket'?'inventory.type.trinket':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':id?'inventory.type.quest':'inventory.type.backpack');
+  $('inventoryDetailType').textContent=I18n.t(weapon?(id==='weapon'?'inventory.type.equipped':'inventory.weapon.slot'):isTalisman(id)?'inventory.talisman.slot':cloudscale?'tower.power.armor.name':id==='forestHerb'?'inventory.type.backpack':item?.category==='trinket'?'inventory.type.trinket':item?.stack?'inventory.type.consumable':item?.category==='travelGear'?'inventory.type.travelGear':id?'inventory.type.quest':'inventory.type.backpack');
+  if(cloudscale&&SkyDragonRaid.armorEquipped)$('inventoryDetailType').textContent+=' · '+I18n.t('inventory.equipped');
   const damage=kind=>number(momoStats().damage*WeaponStyles.attack(style,SWORD_ATTACKS[kind]).damageScale);
   $('inventoryDetailText').textContent=weapon?I18n.format(style==='foxfireKatana'?'inventory.description.foxfireKatana':'weapon.description',[damage('normal'),damage('heavy')]):id?Merchant.description(id==='equippedTalisman'?talisman:id):I18n.t('inventory.empty.body');
   $('inventoryQuantity').hidden=!item?.stack;
   $('inventoryQuantity').textContent=item?.stack?I18n.format('merchant.quantity',[quantity(id)]):'';
-  $('useInventoryItem').hidden=!healing&&!enhancement&&!(weapon&&id!=='weapon')&&!isTalisman(id);
+  $('useInventoryItem').hidden=!cloudscale&&!healing&&!enhancement&&!(weapon&&id!=='weapon')&&!isTalisman(id);
   $('useInventoryItem').disabled=enhancement?!DungeonRun.canConsume(id):isTalisman(id)?false:id==='roastChicken'?!FiaQuest.canEat():id==='tea'?!Merchant.canDrink():id==='healingBrew'?!Merchant.canUseBrew():!quantity(id);
-  $('useInventoryItem').textContent=I18n.t(enhancement?'dungeon.enhancement.apply':isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
+  $('useInventoryItem').textContent=I18n.t(cloudscale?(SkyDragonRaid.armorEquipped?'inventory.talisman.unequip':'service.equip'):enhancement?'dungeon.enhancement.apply':isTalisman(id)?(equippedTalisman?'inventory.talisman.unequip':'service.equip'):weapon?'service.equip':id==='tea'||id==='healingBrew'?'merchant.drink':'merchant.eat');
   $('assignQuickHeal').hidden=!healing;$('assignQuickHeal').disabled=id===quickHeal||!quantity(id);
   $('assignQuickHeal').textContent=I18n.t('merchant.quick.assign');
   $('inventoryQuickHeal').hidden=quickHeal===null;$('inventoryQuickHeal').textContent=quickHeal===null?'':I18n.format('merchant.quick.selected',[bindingKeyLabel(Bindings.read('useMeat')[0])+' · '+I18n.t('item.'+quickHeal)+' ×'+Merchant.stock(quickHeal)]);
@@ -100,7 +101,7 @@ const Inventory=(()=>{
   $('inventoryEmpty').hidden=items.length>0;$('inventoryEmpty').textContent=I18n.t('inventory.empty.title');
   $('inventoryWeaponName').textContent=weaponName();$('inventoryWeapon').setAttribute('aria-label',I18n.format('inventory.weapon.label',[weaponName()]));
   choose(selected==='weapon'||selected==='equippedTalisman'&&equippedTalisman||items.includes(selected)?selected:items[0]||null);
-  if(useFocused&&(Merchant.healingItems.includes(selected)||isEnhancement(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
+  if(useFocused&&(selected==='cloudscaleArmor'||Merchant.healingItems.includes(selected)||isEnhancement(selected)||weaponStyleFor(selected))&&!$('useInventoryItem').disabled&&!$('useInventoryItem').hidden)$('useInventoryItem').focus();
   else if(active||useFocused||assignFocused||saleFocused){const next=document.querySelector(`#inventory [data-inventory-item="${active||selected}"]`)||document.querySelector(`#inventory [data-inventory-item="${selected}"]`);(next||$('closeInventory')).focus();}
  }
  function open(){
@@ -121,6 +122,7 @@ const Inventory=(()=>{
    const style=weaponStyleFor(selected);
    if(isTalisman(selected)){const next=equippedTalisman?null:talisman;if(SerpentRelics.equip(next)){selected=next?'equippedTalisman':talisman;render();}}
    else if(style){const previous=selected;selected='weapon';if(!CampWorkshop.equipOwned(style))choose(previous);}
+   else if(selected==='cloudscaleArmor'){if(SkyDragonRaid.toggleArmor())render();}
    else if(isEnhancement(selected)){if(DungeonRun.consume(selected))render();}
    else if(selected==='roastMeat')Merchant.eat(true);else if(selected==='tea')Merchant.drink(true);else if(selected==='healingBrew')Merchant.useBrew(true);else if(selected==='roastChicken')FiaQuest.eat(true);
   };

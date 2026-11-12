@@ -1717,6 +1717,309 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "object.inventoryItem.cloudDragonScale": {
+      "source": "assets/images/items/sky-raid-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.cloudDragonScale",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#435253",
+            "coveragePercent": 9.2087
+          },
+          {
+            "hex": "#4e9098",
+            "coveragePercent": 8.8831
+          },
+          {
+            "hex": "#66756f",
+            "coveragePercent": 8.6953
+          },
+          {
+            "hex": "#60b6bd",
+            "coveragePercent": 7.4236
+          },
+          {
+            "hex": "#3a6d7b",
+            "coveragePercent": 7.3219
+          },
+          {
+            "hex": "#7d9f98",
+            "coveragePercent": 7.3178
+          },
+          {
+            "hex": "#5e3918",
+            "coveragePercent": 6.681
+          },
+          {
+            "hex": "#d2bc9b",
+            "coveragePercent": 5.8762
+          },
+          {
+            "hex": "#7c5936",
+            "coveragePercent": 5.7521
+          },
+          {
+            "hex": "#90cdcc",
+            "coveragePercent": 5.4986
+          },
+          {
+            "hex": "#b9a07e",
+            "coveragePercent": 5.1409
+          },
+          {
+            "hex": "#313634",
+            "coveragePercent": 5.0976
+          },
+          {
+            "hex": "#9d7e58",
+            "coveragePercent": 4.933
+          },
+          {
+            "hex": "#e8d8bb",
+            "coveragePercent": 4.505
+          },
+          {
+            "hex": "#22170e",
+            "coveragePercent": 4.0981
+          },
+          {
+            "hex": "#f0f2e3",
+            "coveragePercent": 3.5672
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4a9eaa",
+            "coveragePercent": 26.0356
+          },
+          {
+            "hex": "#3b7d8e",
+            "coveragePercent": 25.6357
+          },
+          {
+            "hex": "#5fc1ca",
+            "coveragePercent": 19.6757
+          },
+          {
+            "hex": "#8b5929",
+            "coveragePercent": 11.9114
+          },
+          {
+            "hex": "#a47646",
+            "coveragePercent": 11.3503
+          },
+          {
+            "hex": "#d19f61",
+            "coveragePercent": 5.3913
+          }
+        ],
+        "visibleSamples": 163899,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.cloudNinjaRing": {
+      "source": "assets/images/items/sky-raid-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.cloudNinjaRing",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#43362d",
+            "coveragePercent": 12.9897
+          },
+          {
+            "hex": "#5d4536",
+            "coveragePercent": 12.275
+          },
+          {
+            "hex": "#785a46",
+            "coveragePercent": 10.145
+          },
+          {
+            "hex": "#897263",
+            "coveragePercent": 7.2364
+          },
+          {
+            "hex": "#2c2722",
+            "coveragePercent": 7.0212
+          },
+          {
+            "hex": "#a68c7b",
+            "coveragePercent": 6.5302
+          },
+          {
+            "hex": "#c4a78f",
+            "coveragePercent": 6.4649
+          },
+          {
+            "hex": "#dcbfa2",
+            "coveragePercent": 6.2745
+          },
+          {
+            "hex": "#497080",
+            "coveragePercent": 5.2125
+          },
+          {
+            "hex": "#eed6bc",
+            "coveragePercent": 4.8104
+          },
+          {
+            "hex": "#618a98",
+            "coveragePercent": 4.3566
+          },
+          {
+            "hex": "#425055",
+            "coveragePercent": 4.3451
+          },
+          {
+            "hex": "#b27a4a",
+            "coveragePercent": 3.908
+          },
+          {
+            "hex": "#171310",
+            "coveragePercent": 3.1797
+          },
+          {
+            "hex": "#dca265",
+            "coveragePercent": 2.7013
+          },
+          {
+            "hex": "#faf1e1",
+            "coveragePercent": 2.5495
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c48951",
+            "coveragePercent": 20.076
+          },
+          {
+            "hex": "#a47147",
+            "coveragePercent": 18.9104
+          },
+          {
+            "hex": "#8b5b37",
+            "coveragePercent": 18.6534
+          },
+          {
+            "hex": "#44758a",
+            "coveragePercent": 17.1887
+          },
+          {
+            "hex": "#e3a969",
+            "coveragePercent": 15.8721
+          },
+          {
+            "hex": "#4f899c",
+            "coveragePercent": 9.2994
+          }
+        ],
+        "visibleSamples": 166475,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.cloudscaleArmor": {
+      "source": "assets/images/items/sky-raid-items-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.cloudscaleArmor",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#392e30",
+            "coveragePercent": 10.8314
+          },
+          {
+            "hex": "#251b1b",
+            "coveragePercent": 9.7803
+          },
+          {
+            "hex": "#444c50",
+            "coveragePercent": 8.8476
+          },
+          {
+            "hex": "#55706f",
+            "coveragePercent": 7.8968
+          },
+          {
+            "hex": "#69938e",
+            "coveragePercent": 7.0034
+          },
+          {
+            "hex": "#664128",
+            "coveragePercent": 6.8289
+          },
+          {
+            "hex": "#0f0b0c",
+            "coveragePercent": 6.2981
+          },
+          {
+            "hex": "#9a7c80",
+            "coveragePercent": 6.1599
+          },
+          {
+            "hex": "#74565e",
+            "coveragePercent": 5.489
+          },
+          {
+            "hex": "#e9c9a0",
+            "coveragePercent": 5.293
+          },
+          {
+            "hex": "#cfa87e",
+            "coveragePercent": 5.191
+          },
+          {
+            "hex": "#91653f",
+            "coveragePercent": 4.9769
+          },
+          {
+            "hex": "#81b8ad",
+            "coveragePercent": 4.4139
+          },
+          {
+            "hex": "#bf8a51",
+            "coveragePercent": 3.7981
+          },
+          {
+            "hex": "#c3a5b4",
+            "coveragePercent": 3.7052
+          },
+          {
+            "hex": "#efdfd4",
+            "coveragePercent": 3.4865
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e5d34",
+            "coveragePercent": 30.4606
+          },
+          {
+            "hex": "#ab7845",
+            "coveragePercent": 28.0952
+          },
+          {
+            "hex": "#cc9553",
+            "coveragePercent": 22.9024
+          },
+          {
+            "hex": "#ebba6d",
+            "coveragePercent": 13.2971
+          },
+          {
+            "hex": "#5db2ad",
+            "coveragePercent": 2.8106
+          },
+          {
+            "hex": "#4b8f8f",
+            "coveragePercent": 2.4342
+          }
+        ],
+        "visibleSamples": 252673,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "object.inventoryItem.demonLordSoul": {
       "source": "assets/images/items/first-demon-lord-soul-v1.png",
       "frameMetadata": "ART_INVENTORY.items.demonLordSoul",
@@ -5994,6 +6297,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/items/sky-raid-items-v1.png": {
+      "sha256": "7a16e1750739d688624a1e4a5fd47596b6504c3afdf133364697833e80f3a42e",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "skyRaidItems"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#413c3a",
+            "coveragePercent": 10.1789
+          },
+          {
+            "hex": "#342620",
+            "coveragePercent": 9.2922
+          },
+          {
+            "hex": "#588489",
+            "coveragePercent": 8.7639
+          },
+          {
+            "hex": "#466166",
+            "coveragePercent": 8.543
+          },
+          {
+            "hex": "#836a5c",
+            "coveragePercent": 7.1183
+          },
+          {
+            "hex": "#655046",
+            "coveragePercent": 6.9748
+          },
+          {
+            "hex": "#d4b79e",
+            "coveragePercent": 6.349
+          },
+          {
+            "hex": "#161110",
+            "coveragePercent": 6.2249
+          },
+          {
+            "hex": "#9a8a84",
+            "coveragePercent": 5.8925
+          },
+          {
+            "hex": "#69abab",
+            "coveragePercent": 5.6839
+          },
+          {
+            "hex": "#714624",
+            "coveragePercent": 5.4333
+          },
+          {
+            "hex": "#c8a179",
+            "coveragePercent": 5.2285
+          },
+          {
+            "hex": "#ead2b6",
+            "coveragePercent": 4.8969
+          },
+          {
+            "hex": "#b27d4a",
+            "coveragePercent": 3.9806
+          },
+          {
+            "hex": "#f4eddf",
+            "coveragePercent": 2.8336
+          },
+          {
+            "hex": "#8fcac6",
+            "coveragePercent": 2.6057
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#428293",
+            "coveragePercent": 23.4393
+          },
+          {
+            "hex": "#9e6f43",
+            "coveragePercent": 18.3506
+          },
+          {
+            "hex": "#c28a4f",
+            "coveragePercent": 17.4649
+          },
+          {
+            "hex": "#8a592e",
+            "coveragePercent": 15.029
+          },
+          {
+            "hex": "#58b5bf",
+            "coveragePercent": 14.7326
+          },
+          {
+            "hex": "#e4af69",
+            "coveragePercent": 10.9837
+          }
+        ],
+        "visibleSamples": 583047,
+        "dominantCoveragePercent": 100.0
+      }
+    },
     "assets/images/items/slayer-crossbow-v1.png": {
       "sha256": "974e0fc428c827288f80e632b23dc780d2674d43e21f200f55ee32e69c3aee43",
       "width": 1536,
@@ -6622,6 +7030,111 @@
         ],
         "visibleSamples": 830285,
         "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/sky-raid-props-v1.png": {
+      "sha256": "21baa97d8475e95f482a03016066cd4590f98da2493fa40e293c729a5a4e22a6",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "skyRaidProps"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#50362e",
+            "coveragePercent": 15.5773
+          },
+          {
+            "hex": "#3f2b26",
+            "coveragePercent": 14.4921
+          },
+          {
+            "hex": "#654134",
+            "coveragePercent": 13.4605
+          },
+          {
+            "hex": "#2d1f1d",
+            "coveragePercent": 12.0713
+          },
+          {
+            "hex": "#7b5139",
+            "coveragePercent": 7.9778
+          },
+          {
+            "hex": "#191010",
+            "coveragePercent": 6.173
+          },
+          {
+            "hex": "#926341",
+            "coveragePercent": 5.6014
+          },
+          {
+            "hex": "#a87958",
+            "coveragePercent": 4.9603
+          },
+          {
+            "hex": "#be9170",
+            "coveragePercent": 4.6321
+          },
+          {
+            "hex": "#d0a585",
+            "coveragePercent": 4.4282
+          },
+          {
+            "hex": "#dbb798",
+            "coveragePercent": 3.0897
+          },
+          {
+            "hex": "#873c3c",
+            "coveragePercent": 2.9817
+          },
+          {
+            "hex": "#e5cbb2",
+            "coveragePercent": 1.7702
+          },
+          {
+            "hex": "#a14d49",
+            "coveragePercent": 1.3383
+          },
+          {
+            "hex": "#7b675f",
+            "coveragePercent": 0.955
+          },
+          {
+            "hex": "#f6e7ca",
+            "coveragePercent": 0.4911
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a5b39",
+            "coveragePercent": 32.2924
+          },
+          {
+            "hex": "#9f6d47",
+            "coveragePercent": 22.7177
+          },
+          {
+            "hex": "#b78357",
+            "coveragePercent": 13.2575
+          },
+          {
+            "hex": "#883d3b",
+            "coveragePercent": 13.0912
+          },
+          {
+            "hex": "#9d4b47",
+            "coveragePercent": 11.3848
+          },
+          {
+            "hex": "#d5a06a",
+            "coveragePercent": 7.2564
+          }
+        ],
+        "visibleSamples": 576287,
+        "dominantCoveragePercent": 100.0
       }
     },
     "assets/images/props/slayer-barrel-v1.png": {

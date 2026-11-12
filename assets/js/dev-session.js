@@ -14,7 +14,7 @@ const DevSession=(()=>{
   if(active)return true;
   FiaConflict.abort();normalSave=clone(saved);active=true;fiaJourney=FiaJourneyRules.copy(fiaJourney)||FiaJourneyRules.fresh();weaponChoicePending=false;campServices=clone(campServices);dungeonState=DungeonRules.copy(dungeonState)||DungeonRules.fresh();
   if(DevTools.menuBackground){
-   const old=normalSave;
+   const old=normalSave;SkyDragonRaid.restore(old?.skyDragonRaid);
    abilities=old?[...old.abilities]:[false,false];defeated=old?[...old.defeated]:levels.map(()=>false);
    flags=old?old.flags.map(f=>[...f]):levels.map(()=>[]);visitedRests=old?old.visitedRests.map(f=>[...f]):levels.map(()=>[]);
    weaponStyle=old?.weaponStyle??'katana';shards=old?old.shards:0;coins=old?.coins??0;meatCount=old?.meatCount??0;teaCount=old?.teaCount??0;chickenCount=old?.chickenCount??0;soldItems=old?[...old.soldItems]:[];quickHeal=old?.quickHeal??null;progression=normalizeProgression(old?.progression,flags);
@@ -26,7 +26,7 @@ const DevSession=(()=>{
  }
  function end(){
   if(!active)return false;
-  FiaConflict.clear();active=false;saved=clone(normalSave);normalSave=null;
+  FiaConflict.clear();active=false;saved=clone(normalSave);normalSave=null;SkyDragonRaid.restore(saved?.skyDragonRaid);
   fiaJourney=FiaJourneyRules.copy(saved?.fiaJourney)||FiaJourneyRules.fresh();chickenCount=saved?.chickenCount??0;equippedTalisman=saved?.equippedTalisman??null;weaponStyle=saved?.weaponStyle??'katana';campServices=clone(saved?.campServices)||CampServiceRules.fresh(weaponStyle);dungeonState=DungeonRules.copy(saved?.dungeon)||DungeonRules.fresh();
   for(const handler of endHandlers)handler();
   if(DevTools.isOpen)DevTools.close();

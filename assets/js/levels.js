@@ -39,7 +39,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return (worldFlags?.[0]?.includes('ninjaSealPurified')?ZEN_PURIFICATION_POINTS:0)+(worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS],[0,NINJA_CLAN_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return ['skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn'].reduce((sum,id)=>sum+(worldFlags?.[0]?.includes(id)?1:0),0)+(worldFlags?.[0]?.includes('ninjaSealPurified')?ZEN_PURIFICATION_POINTS:0)+(worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS],[0,NINJA_CLAN_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -603,6 +603,7 @@ ninjaCamp.npcs=[
 ];
 ledge(ninjaCamp,'ninjaCampGround',0,1020,2500,'ground',250);
 rest(ninjaCamp,'ninjaCampArrival',430,1020,'ninjaClan.camp');
+ninjaCamp.skyport={x:2350,y:1020};
 ninjaCamp.returnPoint={x:120,y:1020};
 ninjaCamp.returnDestination={location:'stormIslands',...stormIslands.endPoint};
 zone(ninjaCamp,ninjaCamp.name,0,0,ninjaCamp.width,ninjaCamp.height);
@@ -613,7 +614,7 @@ const DUNGEON_CATALOGUE=Object.freeze({
   entryLocation:'stormIslands',exitLocation:'ninjaClanCamp',title:'ninjaClan.name',prompt:'dungeon.next',returnPrompt:'dungeon.back'})
 });
 japan.progressFlags.push(ninjaClanRules.started,...ninjaClanRules.stages,...ninjaClanRules.rewards,ninjaClanRules.chest,ninjaClanRules.soul,
- 'ninjaCorruptedSeal','ninjaSealPurified','ninjaClanDebrief');
+ 'ninjaCorruptedSeal','ninjaSealPurified','ninjaClanDebrief','skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn');
 floatingIslands.watchtowerEntrance={x:6800,y:1650};
 japan.progressFlags.push(...Object.values(WatchtowerBalloonRules.progress));
 const SIDE_LOCATIONS=Object.freeze({

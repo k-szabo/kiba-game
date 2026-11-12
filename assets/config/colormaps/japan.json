@@ -27,6 +27,16 @@
       "faction": "japan",
       "paletteGroup": "npc.dungeon.captain"
     },
+    "skyRaid.dragon": {
+      "role": "raid-boss",
+      "faction": "japan",
+      "paletteGroup": "npc.skyRaid.dragon"
+    },
+    "skyRaid.hatchling": {
+      "role": "regular-enemy",
+      "faction": "japan",
+      "paletteGroup": "npc.skyRaid.hatchling"
+    },
     "watchtower.wasp": {
       "role": "regular-enemy",
       "faction": "japan",
@@ -609,6 +619,208 @@
         ],
         "visibleSamples": 314698,
         "dominantCoveragePercent": 100.0002
+      }
+    },
+    "npc.skyRaid.dragon": {
+      "source": "assets/images/enemies/sky-raid-dragon-v1.png",
+      "frameMetadata": "ART_SKY_RAID.frames",
+      "frameCount": 6,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#8a8995",
+            "coveragePercent": 11.6993
+          },
+          {
+            "hex": "#9d99a4",
+            "coveragePercent": 10.9987
+          },
+          {
+            "hex": "#7a7883",
+            "coveragePercent": 9.688
+          },
+          {
+            "hex": "#656872",
+            "coveragePercent": 9.5958
+          },
+          {
+            "hex": "#4f5a66",
+            "coveragePercent": 7.7851
+          },
+          {
+            "hex": "#b1acb4",
+            "coveragePercent": 7.6855
+          },
+          {
+            "hex": "#cdbebe",
+            "coveragePercent": 7.0324
+          },
+          {
+            "hex": "#635555",
+            "coveragePercent": 5.9682
+          },
+          {
+            "hex": "#e3d2ce",
+            "coveragePercent": 5.4401
+          },
+          {
+            "hex": "#657784",
+            "coveragePercent": 4.8983
+          },
+          {
+            "hex": "#40424b",
+            "coveragePercent": 4.7291
+          },
+          {
+            "hex": "#7e655e",
+            "coveragePercent": 4.0476
+          },
+          {
+            "hex": "#907970",
+            "coveragePercent": 3.0545
+          },
+          {
+            "hex": "#ac8d7c",
+            "coveragePercent": 2.8716
+          },
+          {
+            "hex": "#c2a696",
+            "coveragePercent": 2.4993
+          },
+          {
+            "hex": "#f4ece6",
+            "coveragePercent": 2.0065
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b67c5d",
+            "coveragePercent": 37.5926
+          },
+          {
+            "hex": "#d2936e",
+            "coveragePercent": 20.3914
+          },
+          {
+            "hex": "#93604a",
+            "coveragePercent": 19.7157
+          },
+          {
+            "hex": "#824588",
+            "coveragePercent": 14.8221
+          },
+          {
+            "hex": "#476e8b",
+            "coveragePercent": 4.4017
+          },
+          {
+            "hex": "#a259b3",
+            "coveragePercent": 3.0765
+          }
+        ],
+        "visibleSamples": 493352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "npc.skyRaid.hatchling": {
+      "source": "assets/images/enemies/sky-raid-hatchlings-v1.png",
+      "frameMetadata": "ART_SKY_RAID.hatchlings.frames",
+      "frameCount": 4,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#888693",
+            "coveragePercent": 11.0087
+          },
+          {
+            "hex": "#a0939e",
+            "coveragePercent": 10.6533
+          },
+          {
+            "hex": "#b8a5b0",
+            "coveragePercent": 9.6771
+          },
+          {
+            "hex": "#757987",
+            "coveragePercent": 9.4216
+          },
+          {
+            "hex": "#d3b8b4",
+            "coveragePercent": 8.872
+          },
+          {
+            "hex": "#676c77",
+            "coveragePercent": 8.6735
+          },
+          {
+            "hex": "#605d65",
+            "coveragePercent": 7.0842
+          },
+          {
+            "hex": "#897570",
+            "coveragePercent": 6.26
+          },
+          {
+            "hex": "#e6cec0",
+            "coveragePercent": 5.8973
+          },
+          {
+            "hex": "#a9897a",
+            "coveragePercent": 4.7488
+          },
+          {
+            "hex": "#c4a38f",
+            "coveragePercent": 4.4092
+          },
+          {
+            "hex": "#94a8ad",
+            "coveragePercent": 4.293
+          },
+          {
+            "hex": "#4e4c53",
+            "coveragePercent": 3.381
+          },
+          {
+            "hex": "#f5eddf",
+            "coveragePercent": 2.7867
+          },
+          {
+            "hex": "#b4c3c2",
+            "coveragePercent": 2.5059
+          },
+          {
+            "hex": "#30292f",
+            "coveragePercent": 0.3276
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c28364",
+            "coveragePercent": 47.0312
+          },
+          {
+            "hex": "#da9971",
+            "coveragePercent": 21.7054
+          },
+          {
+            "hex": "#ab7158",
+            "coveragePercent": 21.2761
+          },
+          {
+            "hex": "#8d5947",
+            "coveragePercent": 8.7016
+          },
+          {
+            "hex": "#47738b",
+            "coveragePercent": 0.9346
+          },
+          {
+            "hex": "#5f98b0",
+            "coveragePercent": 0.3511
+          }
+        ],
+        "visibleSamples": 189749,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "npc.watchtower.wasp": {
@@ -2969,6 +3181,216 @@
           }
         ],
         "visibleSamples": 303343,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/sky-raid-dragon-v1.png": {
+      "sha256": "9b0a4c697262a43f8470b0f64a98d31e79a1a10e67339745a6f1ef1078e3905f",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "skyRaidDragon"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#8a8995",
+            "coveragePercent": 11.6993
+          },
+          {
+            "hex": "#9d99a4",
+            "coveragePercent": 10.9987
+          },
+          {
+            "hex": "#7a7883",
+            "coveragePercent": 9.688
+          },
+          {
+            "hex": "#656872",
+            "coveragePercent": 9.5958
+          },
+          {
+            "hex": "#4f5a66",
+            "coveragePercent": 7.7851
+          },
+          {
+            "hex": "#b1acb4",
+            "coveragePercent": 7.6855
+          },
+          {
+            "hex": "#cdbebe",
+            "coveragePercent": 7.0324
+          },
+          {
+            "hex": "#635555",
+            "coveragePercent": 5.9682
+          },
+          {
+            "hex": "#e3d2ce",
+            "coveragePercent": 5.4401
+          },
+          {
+            "hex": "#657784",
+            "coveragePercent": 4.8983
+          },
+          {
+            "hex": "#40424b",
+            "coveragePercent": 4.7291
+          },
+          {
+            "hex": "#7e655e",
+            "coveragePercent": 4.0476
+          },
+          {
+            "hex": "#907970",
+            "coveragePercent": 3.0545
+          },
+          {
+            "hex": "#ac8d7c",
+            "coveragePercent": 2.8716
+          },
+          {
+            "hex": "#c2a696",
+            "coveragePercent": 2.4993
+          },
+          {
+            "hex": "#f4ece6",
+            "coveragePercent": 2.0065
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#b67c5d",
+            "coveragePercent": 37.5926
+          },
+          {
+            "hex": "#d2936e",
+            "coveragePercent": 20.3914
+          },
+          {
+            "hex": "#93604a",
+            "coveragePercent": 19.7157
+          },
+          {
+            "hex": "#824588",
+            "coveragePercent": 14.8221
+          },
+          {
+            "hex": "#476e8b",
+            "coveragePercent": 4.4017
+          },
+          {
+            "hex": "#a259b3",
+            "coveragePercent": 3.0765
+          }
+        ],
+        "visibleSamples": 493352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/sky-raid-hatchlings-v1.png": {
+      "sha256": "78f92a8bfc15a8636aabd3c5d05247bdc41a6b673bf4791027c2d9f3da78d7a3",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "skyRaidHatchlings"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#888693",
+            "coveragePercent": 11.0087
+          },
+          {
+            "hex": "#a0939e",
+            "coveragePercent": 10.6533
+          },
+          {
+            "hex": "#b8a5b0",
+            "coveragePercent": 9.6771
+          },
+          {
+            "hex": "#757987",
+            "coveragePercent": 9.4216
+          },
+          {
+            "hex": "#d3b8b4",
+            "coveragePercent": 8.872
+          },
+          {
+            "hex": "#676c77",
+            "coveragePercent": 8.6735
+          },
+          {
+            "hex": "#605d65",
+            "coveragePercent": 7.0842
+          },
+          {
+            "hex": "#897570",
+            "coveragePercent": 6.26
+          },
+          {
+            "hex": "#e6cec0",
+            "coveragePercent": 5.8973
+          },
+          {
+            "hex": "#a9897a",
+            "coveragePercent": 4.7488
+          },
+          {
+            "hex": "#c4a38f",
+            "coveragePercent": 4.4092
+          },
+          {
+            "hex": "#94a8ad",
+            "coveragePercent": 4.293
+          },
+          {
+            "hex": "#4e4c53",
+            "coveragePercent": 3.381
+          },
+          {
+            "hex": "#f5eddf",
+            "coveragePercent": 2.7867
+          },
+          {
+            "hex": "#b4c3c2",
+            "coveragePercent": 2.5059
+          },
+          {
+            "hex": "#30292f",
+            "coveragePercent": 0.3276
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c28364",
+            "coveragePercent": 47.0312
+          },
+          {
+            "hex": "#da9971",
+            "coveragePercent": 21.7054
+          },
+          {
+            "hex": "#ab7158",
+            "coveragePercent": 21.2761
+          },
+          {
+            "hex": "#8d5947",
+            "coveragePercent": 8.7016
+          },
+          {
+            "hex": "#47738b",
+            "coveragePercent": 0.9346
+          },
+          {
+            "hex": "#5f98b0",
+            "coveragePercent": 0.3511
+          }
+        ],
+        "visibleSamples": 189749,
         "dominantCoveragePercent": 99.9999
       }
     },

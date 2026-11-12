@@ -16,7 +16,7 @@ const CampQuest=(()=>{
   const id=level?.id;
   return typeof id==='string'&&Object.hasOwn(SIDE_LOCATIONS,id)&&SIDE_LOCATIONS[id].map===level?id:null;
  }
- const isSide=()=>!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','ninjaClanCamp'].includes(locationId());
+ const isSide=()=>!!level.skyDragonRaid||!!level.watchtowerBalloon||!!level.floatingIslands||!!level.descent||!!level.fiaJourney||!!level.dragonRaid||!!level.ziggurat||!!level.dungeon||['samuraiCamp','forgeInterior','herbalHut','mysticTent','shadowPrison','shadowDen','shadowArena','fiaChambers','ninjaClanCamp'].includes(locationId());
  function materializeRoute(){
   if(level!==levels[0]||!defeated[0]||!owns('campQuestAccepted'))return false;
   for(const step of levels[0].campRescueSteps)if(!platforms.some(platform=>platform.id===step.id))platforms.push({...step,dx:0});

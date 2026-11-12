@@ -2648,86 +2648,86 @@
       {
         "value": "#b087dd",
         "lines": [
-          568
+          569
         ],
         "dynamic": false
       },
       {
         "value": "#b490ef",
         "lines": [
-          420
+          421
         ],
         "dynamic": false
       },
       {
         "value": "#bb87f8",
         "lines": [
-          382,
-          416
+          383,
+          417
         ],
         "dynamic": false
       },
       {
         "value": "#c89aff",
         "lines": [
-          211
+          212
         ],
         "dynamic": false
       },
       {
         "value": "#cf8aff",
         "lines": [
-          552
+          553
         ],
         "dynamic": false
       },
       {
         "value": "#df8568",
         "lines": [
-          293
+          294
         ],
         "dynamic": false
       },
       {
         "value": "#ff9b51",
         "lines": [
-          406
+          407
         ],
         "dynamic": false
       },
       {
         "value": "#ffae60",
         "lines": [
-          351,
-          402
+          352,
+          403
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a1",
         "lines": [
-          211
+          212
         ],
         "dynamic": false
       },
       {
         "value": "#ffe6a2",
         "lines": [
-          567
+          568
         ],
         "dynamic": false
       },
       {
         "value": "#ffe9aa",
         "lines": [
-          552
+          553
         ],
         "dynamic": false
       },
       {
         "value": "#fff0a5",
         "lines": [
-          411
+          412
         ],
         "dynamic": false
       }
@@ -4940,6 +4940,59 @@
         "value": "#be96eb",
         "lines": [
           63
+        ],
+        "dynamic": false
+      }
+    ],
+    "assets/js/sky-dragon-raid-maps.js": [],
+    "assets/js/sky-dragon-raid-rules.js": [],
+    "assets/js/sky-dragon-raid.js": [
+      {
+        "value": "#a8e4ff",
+        "lines": [
+          183
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bc75ed",
+        "lines": [
+          183
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bf74ff29",
+        "lines": [
+          191
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#bf74ff45",
+        "lines": [
+          193
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#d5a1ff",
+        "lines": [
+          191
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#e997f780",
+        "lines": [
+          192
+        ],
+        "dynamic": false
+      },
+      {
+        "value": "#fff1bc",
+        "lines": [
+          235
         ],
         "dynamic": false
       }
