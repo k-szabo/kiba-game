@@ -3,6 +3,7 @@ const h=harness(),run=h.run,saved=run('JSON.stringify(saved)'),writes=run('windo
 assert(!run('DevItems.add({item:"angelHalo"})'));assert(!run('DevItems.addCoins({amount:100})'));
 run('DevTools.open();');assert(!run('DevItems.addCoins({amount:100})'));run('DevSession.begin();');
 for(const id of run('Object.keys(ART_INVENTORY.items)')){
+ if(run(`!!ART_INVENTORY.items['${id}'].raidReward`)){assert(!run(`DevItems.add({item:'${id}'})`));continue;}
  assert.equal(run(`DevItems.add({item:'${id}'})`),true);assert(run(`Inventory.contents().includes('${id}')`));
  if(run(`!!ART_INVENTORY.items['${id}'].stack`)){assert.equal(run(`DevItems.add({item:'${id}'})`),true);assert.equal(run(`Inventory.quantity('${id}')`),2);continue;}
  assert.equal(run(`DevItems.add({item:'${id}'})`),'dev.item.owned');

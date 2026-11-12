@@ -50,6 +50,10 @@ const SaveVault=(()=>{
   if(!legacyHeart&&hasHannah('demonLordHeart')&&!hasHannah('hannahFiaRescue'))throw Error('Invalid demon lord heart');
   if(hasHannah('demonLordHeartGiven')&&(!hasHannah('demonLordHeart')||!hasHannah('fiaRescued')))throw Error('Invalid demon lord gift');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
+  const raid=data.skyDragonRaid;
+  if(Object.hasOwn(data,'skyDragonRaid')&&(!SkyDragonRaidRules.validProgress(raid)||raid.run===0||!data.prologueComplete||!data.defeated[0]||
+     !hasCampFlag('ninjaClanRitualistReward')||!hasCampFlag('grapplingHook')||!data.visitedRests[0].includes('ninjaCampArrival'))||
+    hasCampFlag('skyDragonRaidFirstClear')!==(raid?.victories>0)||hasCampFlag('skyDragonRaidRingTurnedIn')!==(raid?.ringTurnedIn===true))throw Error('Invalid sky dragon raid');
   if(hasCampFlag('daisyPlaced')&&(!data.defeated[0]||!data.flags[1].includes('daisyPlush')||!data.flags[1].includes('guardian:doomSlayer')||data.soldItems.includes('daisyPlush')))throw Error('Invalid Daisy placement');
   if(hasCampFlag('campQuestAccepted')&&!data.defeated[0]||hasCampFlag('mayorExecuted')&&!hasCampFlag('campQuestAccepted')||hasCampFlag('guardian:campMaster')&&!hasCampFlag('mayorExecuted'))throw Error('Invalid camp quest');
   if(['smithRescued','herbalistRescued','enchanterRescued'].some(id=>hasCampFlag(id)&&!hasCampFlag('guardian:campMaster'))||hasCampFlag('herbalistQuestAccepted')&&!hasCampFlag('herbalistRescued'))throw Error('Invalid camp rescue');

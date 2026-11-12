@@ -1966,6 +1966,22 @@
           "en": "A new three-floor dungeon leads from Beyond the Vortex to the ninja camp. A healer and a smith help Momo there, with weapon and armor upgrades available up to rank 10."
         }
       ]
+    },
+    {
+      "version": "0.9.79_4e6279ea",
+      "code": "4e6279ea",
+      "baseVersion": "0.9.79",
+      "slug": "sky-dragon-raid",
+      "summary": {
+        "hu": "Az égi sárkány",
+        "en": "The Sky Dragon"
+      },
+      "fixes": [
+        {
+          "hu": "A nindzsatábor légi kikötőjéből négyfázisú, újrajátszható rajtaütés indul, fázisonkénti checkpointtal. A megszerzett pikkelyekből Daigo varázsvédelmet adó páncélt kovácsolhat.",
+          "en": "A replayable four-phase raid starts at the ninja camp’s skyport, with a checkpoint at each phase. Daigo can forge spell-resistant armor from the scales you collect."
+        }
+      ]
     }
   ]
 }

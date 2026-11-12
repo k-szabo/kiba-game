@@ -31,6 +31,8 @@ for(const rating of [Number.MAX_SAFE_INTEGER,Number.MAX_VALUE]){
 }
 assert.equal(armor.damage(Number.MAX_VALUE,0),Number.MAX_VALUE);
 assert.equal(armor.playerK,300);
+for(const kind of ['orb','magic','shadowBolt','holyArrow','holyLance','frostShard','ember'])assert(armor.spellProjectile(kind));
+for(const kind of ['arrow','ninjaStar','bolt',null])assert(!armor.spellProjectile(kind));
 for(const [rating,reduction] of [[0,0],[20,1/16],[100,.25],[120,2/7],[145,29/89],[300,.5]]){
  close(armor.playerReduction(rating),reduction,'Player protection at '+rating+' armor');
  close(armor.playerDamage(12,rating),12*(1-reduction),'Player mitigated damage at '+rating+' armor');

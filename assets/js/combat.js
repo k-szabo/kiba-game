@@ -95,6 +95,7 @@ function updateEnemies(dt) {
   for(const e of enemies){if(!e.dead)DevLog.scope(e,()=>updateEnemy(e,dt));}
 }
 function updateEnemy(e,dt){
+    if(SkyDragonRaid.updateEnemy(e,dt))return;
     if(WatchtowerBalloon.updateWasp(e,dt))return;
     if(typeof TowerBossCombat!=='undefined'&&TowerBossCombat.is(e)){TowerBossCombat.update(e,dt);return;}
     if(typeof Grapple!=='undefined'&&Grapple.moveEnemy(e,dt))return;

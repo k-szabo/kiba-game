@@ -40,10 +40,18 @@ const iconIds=Array.from(run('Object.keys(ART_INVENTORY.items)'));
 // session. Icon checks use that same supported grant path as the dev panel.
 run('Inventory.close();DevTools.open();DevSession.begin();DevTools.close();Inventory.open();');
 for(const id of iconIds){
- run(`flags=[[],[],[],[]];meatCount=0;teaCount=0;chickenCount=0;dungeonState=DungeonRules.fresh();fiaJourney=FiaJourneyRules.fresh();campServices=CampServiceRules.fresh(weaponStyle);if(ART_INVENTORY.items[${JSON.stringify(id)}].stack)Merchant.addStock(${JSON.stringify(id)});flags[ART_INVENTORY.items[${JSON.stringify(id)}].realm].push(${JSON.stringify(id)});artDraws=[];artContext.globalAlpha=.2;Inventory.render();`);
+ const quoted=JSON.stringify(id),raidReward=run(`!!ART_INVENTORY.items[${quoted}].raidReward`);
+ run('flags=[[],[],[],[]];meatCount=0;teaCount=0;chickenCount=0;dungeonState=DungeonRules.fresh();fiaJourney=FiaJourneyRules.fresh();campServices=CampServiceRules.fresh(weaponStyle);SkyDragonRaid.restore();');
+ if(raidReward){
+  const armorOwned=id!=='cloudDragonScale',victories=armorOwned?3:1;
+  run(`SkyDragonRaid.restore(${JSON.stringify({run:victories,victories,phase:null,ringTurnedIn:id!=='cloudNinjaRing',armorOwned,armorEquipped:false})});`);
+ }else run(`if(ART_INVENTORY.items[${quoted}].stack)Merchant.addStock(${quoted});flags[ART_INVENTORY.items[${quoted}].realm].push(${quoted});`);
+ run('artDraws=[];artContext.globalAlpha=.2;Inventory.render();');
  if(id==='foxfireKatana')run('Inventory.close();DevTools.open();DevItems.add({item:"foxfireKatana"});DevTools.close();Inventory.open();');
- assert.equal(elements.get('inventoryGrid').children.length,1,id+': one owned inventory item');
- const icon=elements.get('inventoryGrid').children[0].children[0],rect=run(`ART_INVENTORY.items[${JSON.stringify(id)}]`);
+ if(!raidReward)assert.equal(elements.get('inventoryGrid').children.length,1,id+': one owned inventory item');
+ const row=elements.get('inventoryGrid').children.find(button=>button.dataset.inventoryItem===id);
+ assert(row,id+': reward or item is visible');
+ const icon=row.children[0],rect=run(`ART_INVENTORY.items[${quoted}]`);
  assert.equal(icon.width,224,`${id}: DPR2 icon width`);assert.equal(icon.height,224,`${id}: DPR2 icon height`);
  assert.equal(icon.className,'inventory-icon');assert.equal(icon.getContext('2d').globalAlpha,1,`${id}: stale drawing alpha is cleared`);
  const png=fs.readFileSync(path.join(__dirname,'..',run(`ART_MANIFEST[ART_INVENTORY.items[${JSON.stringify(id)}].image]`)));

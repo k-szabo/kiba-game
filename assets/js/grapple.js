@@ -15,14 +15,14 @@ const Grapple=(()=>{
  function stop(){if(pull?.type==='enemy'){rebase(pull.body);pull.body.grappleFalling=true;}pull=null;}
  function cancel(){stop();finishing=null;}
  function clear(){stop();finishing=null;cooldown=0;age=0;}
- function selection(){return owned()&&player?GrappleRules.target(center(player),player.face,{terrain:terrain(),anchors:level.grappleAnchors||[],enemies}):null;}
+ function selection(){return owned()&&player?GrappleRules.target(center(player),player.face,{terrain:terrain(),anchors:SkyDragonRaid.anchors(level.grappleAnchors||[]),enemies}):null;}
  function activate(){
   if(!playable()||!owned()||player.stun>0||Dawnblade.casting())return false;
   if(pull){stop();return true;}
   if(cooldown>0)return false;const target=selection();if(!target)return false;
   const body=target.type==='enemy'?enemies.find(e=>e.id===target.id):player;
   if(!body)return false;
-  finishing=null;pull={map:level,type:target.type,body,owner:player,face:player.face,point:{x:target.x,y:target.y}};age=0;cooldown=2.5;
+  finishing=null;pull={map:level,id:target.id,type:target.type,body,owner:player,face:player.face,point:{x:target.x,y:target.y}};age=0;cooldown=2.5;
   if(target.type==='anchor'){dash=0;player.vx=player.vy=0;player.onGround=false;player.support=null;}
   else{body.stun=Math.max(body.stun||0,.2);body.windup=body.attackTime=body.recovery=0;}
   return true;
@@ -30,7 +30,7 @@ const Grapple=(()=>{
  function move(body,to,dt){
   const next=GrappleRules.move(body,to,dt,terrain());if(!next){stop();return;}
   body.x=next.x;body.y=next.y;body.vx=body.vy=0;if(pull.type==='enemy')rebase(body);
-  if(next.done){if(pull.type==='anchor'&&!next.blocked)finishing={owner:player,point:{...pull.point},left:.18,ttl:1.5};stop();}
+  if(next.done){const reached=pull.type==='anchor'&&!next.blocked,id=pull.id;if(reached)finishing={owner:player,point:{...pull.point},left:.18,ttl:1.5};stop();if(reached)SkyDragonRaid.anchorReached(id);}
  }
  function update(dt){
   if(!playable()||!Number.isFinite(dt)||dt<=0)return;

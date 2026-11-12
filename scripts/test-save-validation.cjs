@@ -2,7 +2,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const locale=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/i18n/locales.json'),'utf8')).hu.dict;
 const GAME_RELEASE=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8'));
 const context={GAME_RELEASE,TextEncoder,TextDecoder,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,I18n:{t:value=>locale[value]??value}};vm.createContext(context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
+for(const name of ['dungeon-rules','sky-dragon-raid-rules'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rules.js'),'utf8'),context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);

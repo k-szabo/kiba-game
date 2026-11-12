@@ -18,6 +18,10 @@ const CampWorkshop=(()=>{
   if(!opened||state!=='campService'||$('campService').hidden||!accessible())return false;
   if(request.type==='uniteScales')return kind()==='mystic'&&SerpentRelics.unite();
   if(request.type==='equip')return equipOwned(request.weapon);
+  if(request.type==='forgeCloudscale'||request.type==='equipCloudscale'){
+   const applied=request.type==='forgeCloudscale'?SkyDragonRaid.forge():SkyDragonRaid.toggleArmor();
+   if(applied)render();return applied;
+  }
   const outcome=CampServiceRules.transact(campServices,coins,request,{
    equipped:weaponStyle,advancedUnlocked:advancedUnlocked(),advancedForge:!!ninjaSmith(),
    smithRescued:(flags[0].includes('smithRescued')||flags[3].includes('underworldSmithMet')||!!ninjaSmith()||DevSession.active)&&kind()==='forge',
@@ -41,6 +45,16 @@ const CampWorkshop=(()=>{
     button(row,price===null?I18n.format('service.rank',[rank]):I18n.format('merchant.buy',[price]),{type},price===null||coins<price);content.append(row);
    }
    const protection=document.createElement('p');protection.textContent=I18n.format('service.armor',[momoStats().armor,Math.round(Armor.playerReduction(momoStats().armor)*100)]);content.append(protection);
+   if(ninjaSmith()){
+    const row=document.createElement('section');row.className='camp-service-row';
+    const label=document.createElement('p');label.textContent=I18n.t('item.cloudscaleArmor');row.append(label);
+    if(SkyDragonRaid.stock('cloudscaleArmor'))button(row,I18n.t(SkyDragonRaid.armorEquipped?'inventory.talisman.unequip':'service.equip'),{type:'equipCloudscale'});
+    else{
+     const cost=document.createElement('p');cost.textContent=I18n.t('skyDragonRaid.forgeCost');row.append(cost);
+     button(row,I18n.t('skyDragonRaid.forge'),{type:'forgeCloudscale'},!SkyDragonRaid.canForge());
+    }
+    content.append(row);
+   }
    for(const id of WeaponStyles.ids){
     const row=document.createElement('section');row.className='camp-service-row';const title=document.createElement('h3');title.textContent=I18n.t('weapon.'+id+'.item');row.append(title);
     if(campServices.ownedWeapons.includes(id)){

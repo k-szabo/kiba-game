@@ -404,6 +404,18 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.ninjaCampSpoils"
     },
+    "inventoryItem.cloudDragonScale": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.cloudDragonScale"
+    },
+    "inventoryItem.cloudNinjaRing": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.cloudNinjaRing"
+    },
+    "inventoryItem.cloudscaleArmor": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.cloudscaleArmor"
+    },
     "inventoryItem.demonLordSoul": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.demonLordSoul"

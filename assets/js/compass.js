@@ -22,7 +22,7 @@ const Compass=(()=>{
  function objective(local){
   // A dungeon or an active side quest keeps its own immediate instructions.
   // Ordinary travel instead follows the persistent main-story milestones.
-  if(Prologue.active||FiaRitual.pendingEscape()||flags[3].includes('fiaRitualAccepted')&&!flags[3].includes('fiaSlain')||FiaVoidJourney.active()||DragonRaid.questRoute()||level.dragonRaid||level.dungeon||[samuraiCamp,shadowPrison,shadowArena,shadowDen,fiaChambers].includes(level))return local;
+  if(Prologue.active||FiaRitual.pendingEscape()||flags[3].includes('fiaRitualAccepted')&&!flags[3].includes('fiaSlain')||FiaVoidJourney.active()||DragonRaid.questRoute()||level.dragonRaid||level.skyDragonRaid||level.dungeon||[samuraiCamp,shadowPrison,shadowArena,shadowDen,fiaChambers].includes(level))return local;
   if(flags[3].includes(HannahRules.progress.defeated))return DungeonRun.storyObjective()||WatchtowerBalloon.objective()||FloatingIslands.objective()||ZigguratDescent.objective()||local;
   const target=mainTarget();
   if(level===target.map||level.ziggurat&&target.map===zigguratSummit)return local;

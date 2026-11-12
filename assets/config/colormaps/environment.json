@@ -10143,6 +10143,426 @@
         "dominantCoveragePercent": 99.9998
       }
     },
+    "assets/images/backgrounds/sky-raid-back-v1.webp": {
+      "sha256": "2bef7e73d786054ead306bd95fe326feed37ed4da7791e7f475a38594068477d",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "skyRaidBackBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#889ece",
+            "coveragePercent": 9.3659
+          },
+          {
+            "hex": "#7a90c1",
+            "coveragePercent": 9.1643
+          },
+          {
+            "hex": "#94aada",
+            "coveragePercent": 8.4611
+          },
+          {
+            "hex": "#8bb4f2",
+            "coveragePercent": 8.3625
+          },
+          {
+            "hex": "#6b82b3",
+            "coveragePercent": 7.9359
+          },
+          {
+            "hex": "#78a6ec",
+            "coveragePercent": 7.2173
+          },
+          {
+            "hex": "#9fb3e0",
+            "coveragePercent": 6.6873
+          },
+          {
+            "hex": "#cad4f2",
+            "coveragePercent": 6.6742
+          },
+          {
+            "hex": "#a8bce8",
+            "coveragePercent": 6.4012
+          },
+          {
+            "hex": "#b8c4e8",
+            "coveragePercent": 5.5728
+          },
+          {
+            "hex": "#6796e3",
+            "coveragePercent": 5.0227
+          },
+          {
+            "hex": "#b3cbf7",
+            "coveragePercent": 4.9176
+          },
+          {
+            "hex": "#5a71a1",
+            "coveragePercent": 4.8106
+          },
+          {
+            "hex": "#9ec1f7",
+            "coveragePercent": 4.3079
+          },
+          {
+            "hex": "#dde2f7",
+            "coveragePercent": 3.3647
+          },
+          {
+            "hex": "#f0f0fa",
+            "coveragePercent": 1.734
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#7fadf1",
+            "coveragePercent": 27.6833
+          },
+          {
+            "hex": "#75a2ea",
+            "coveragePercent": 27.069
+          },
+          {
+            "hex": "#6998e5",
+            "coveragePercent": 23.829
+          },
+          {
+            "hex": "#546e9e",
+            "coveragePercent": 10.5499
+          },
+          {
+            "hex": "#608edb",
+            "coveragePercent": 7.2401
+          },
+          {
+            "hex": "#6686c4",
+            "coveragePercent": 3.6287
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/sky-raid-harbor-v1.webp": {
+      "sha256": "63a8b808c7b21aa073866cc18cb5eb086159e29d9a3eccb6af41a868773a03f1",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "skyRaidHarborBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#b6cbf5",
+            "coveragePercent": 16.6048
+          },
+          {
+            "hex": "#9dbff4",
+            "coveragePercent": 12.9337
+          },
+          {
+            "hex": "#87b3f3",
+            "coveragePercent": 11.0629
+          },
+          {
+            "hex": "#d8def8",
+            "coveragePercent": 8.9771
+          },
+          {
+            "hex": "#6da2ef",
+            "coveragePercent": 8.9325
+          },
+          {
+            "hex": "#588de4",
+            "coveragePercent": 8.4897
+          },
+          {
+            "hex": "#42404e",
+            "coveragePercent": 4.4278
+          },
+          {
+            "hex": "#4d556c",
+            "coveragePercent": 4.2165
+          },
+          {
+            "hex": "#819ac9",
+            "coveragePercent": 4.1106
+          },
+          {
+            "hex": "#9eaed7",
+            "coveragePercent": 3.7565
+          },
+          {
+            "hex": "#626c8a",
+            "coveragePercent": 3.6089
+          },
+          {
+            "hex": "#6e83ad",
+            "coveragePercent": 3.4894
+          },
+          {
+            "hex": "#2e2932",
+            "coveragePercent": 2.4598
+          },
+          {
+            "hex": "#7a5d5e",
+            "coveragePercent": 2.4439
+          },
+          {
+            "hex": "#aa8793",
+            "coveragePercent": 2.3432
+          },
+          {
+            "hex": "#dba6c3",
+            "coveragePercent": 2.1428
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#669bec",
+            "coveragePercent": 36.0757
+          },
+          {
+            "hex": "#7caef4",
+            "coveragePercent": 33.4756
+          },
+          {
+            "hex": "#568ae1",
+            "coveragePercent": 25.4345
+          },
+          {
+            "hex": "#5776a9",
+            "coveragePercent": 3.2069
+          },
+          {
+            "hex": "#955155",
+            "coveragePercent": 1.1624
+          },
+          {
+            "hex": "#cb8080",
+            "coveragePercent": 0.645
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/sky-raid-pursuit-v1.webp": {
+      "sha256": "5f3c56abc11affb370dee3ed587a11ba3f185a4c7d236d8ce12d7aeb3a484501",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "skyRaidPursuitBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#aeaae2",
+            "coveragePercent": 13.1989
+          },
+          {
+            "hex": "#c0b3e0",
+            "coveragePercent": 11.9475
+          },
+          {
+            "hex": "#a39cd0",
+            "coveragePercent": 9.4456
+          },
+          {
+            "hex": "#938dc7",
+            "coveragePercent": 7.8821
+          },
+          {
+            "hex": "#cebbdf",
+            "coveragePercent": 7.2568
+          },
+          {
+            "hex": "#8da1e8",
+            "coveragePercent": 6.7481
+          },
+          {
+            "hex": "#9a91e3",
+            "coveragePercent": 5.5632
+          },
+          {
+            "hex": "#7f81dd",
+            "coveragePercent": 5.4347
+          },
+          {
+            "hex": "#5d7bda",
+            "coveragePercent": 5.3894
+          },
+          {
+            "hex": "#6b90e4",
+            "coveragePercent": 5.2679
+          },
+          {
+            "hex": "#baa7cf",
+            "coveragePercent": 4.9902
+          },
+          {
+            "hex": "#debacf",
+            "coveragePercent": 4.4952
+          },
+          {
+            "hex": "#7d7abe",
+            "coveragePercent": 3.8634
+          },
+          {
+            "hex": "#e1c9e1",
+            "coveragePercent": 3.2796
+          },
+          {
+            "hex": "#f5d3d3",
+            "coveragePercent": 3.0252
+          },
+          {
+            "hex": "#4d6fd0",
+            "coveragePercent": 2.2122
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#7497e7",
+            "coveragePercent": 22.1314
+          },
+          {
+            "hex": "#638ae3",
+            "coveragePercent": 20.014
+          },
+          {
+            "hex": "#567bda",
+            "coveragePercent": 17.4592
+          },
+          {
+            "hex": "#747ddb",
+            "coveragePercent": 15.6693
+          },
+          {
+            "hex": "#6276d6",
+            "coveragePercent": 14.6444
+          },
+          {
+            "hex": "#4a6dcf",
+            "coveragePercent": 10.0817
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/sky-raid-rift-v1.webp": {
+      "sha256": "1f57d85275597ef750d6d38902b83b851cb1f11daa6c7b0dc9a21212e959b32a",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "skyRaidRiftBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#443f6f",
+            "coveragePercent": 13.3362
+          },
+          {
+            "hex": "#50487e",
+            "coveragePercent": 12.5624
+          },
+          {
+            "hex": "#685c9e",
+            "coveragePercent": 12.3126
+          },
+          {
+            "hex": "#3b365f",
+            "coveragePercent": 12.1636
+          },
+          {
+            "hex": "#5c528f",
+            "coveragePercent": 11.1821
+          },
+          {
+            "hex": "#7768ae",
+            "coveragePercent": 9.5411
+          },
+          {
+            "hex": "#302e4d",
+            "coveragePercent": 8.8751
+          },
+          {
+            "hex": "#8879b9",
+            "coveragePercent": 4.8684
+          },
+          {
+            "hex": "#272339",
+            "coveragePercent": 4.0576
+          },
+          {
+            "hex": "#9c88ca",
+            "coveragePercent": 2.727
+          },
+          {
+            "hex": "#8865ca",
+            "coveragePercent": 2.5191
+          },
+          {
+            "hex": "#a173e0",
+            "coveragePercent": 1.6228
+          },
+          {
+            "hex": "#594652",
+            "coveragePercent": 1.4147
+          },
+          {
+            "hex": "#7a697b",
+            "coveragePercent": 1.3489
+          },
+          {
+            "hex": "#bd8bee",
+            "coveragePercent": 1.1538
+          },
+          {
+            "hex": "#e7b4fa",
+            "coveragePercent": 0.3144
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#534688",
+            "coveragePercent": 27.1423
+          },
+          {
+            "hex": "#604e9a",
+            "coveragePercent": 24.5305
+          },
+          {
+            "hex": "#6f58ae",
+            "coveragePercent": 20.9797
+          },
+          {
+            "hex": "#8361c5",
+            "coveragePercent": 13.9292
+          },
+          {
+            "hex": "#996bdc",
+            "coveragePercent": 8.9276
+          },
+          {
+            "hex": "#b679f3",
+            "coveragePercent": 4.4907
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
     "assets/images/backgrounds/slayer-arena-v1.png": {
       "sha256": "02a8a18d23ff9fe35d8739088fb4ada4d92f7594ac68b71fe4ca617a92542887",
       "width": 1774,

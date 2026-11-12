@@ -7,6 +7,7 @@ const DevItems=(()=>{
   const id=values?.item;
   if(typeof id!=='string'||!Object.hasOwn(ART_INVENTORY.items,id))return false;
   const item=ART_INVENTORY.items[id];
+  if(item.raidReward)return false;
   if(id==='foxfireKatana'&&!campServices.ownedWeapons.includes(id))campServices.ownedWeapons.push(id);
   if(item.stack){if(!Merchant.addStock(id))return false;updateHUD();return true;}
   if(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))return 'dev.item.owned';
@@ -23,7 +24,7 @@ const DevItems=(()=>{
  }
  function init(){
   DevTools.register({id:'inventory-item',labelKey:'dev.item.add',available,
-   fields:()=>[{id:'item',type:'select',labelKey:'dev.item',value:selected,options:Object.entries(ART_INVENTORY.items).map(([value,item])=>({value,label:item.name})),change:value=>{if(Object.hasOwn(ART_INVENTORY.items,value))selected=value;}}],run:add});
+   fields:()=>[{id:'item',type:'select',labelKey:'dev.item',value:selected,options:Object.entries(ART_INVENTORY.items).filter(([,item])=>!item.raidReward).map(([value,item])=>({value,label:item.name})),change:value=>{if(Object.hasOwn(ART_INVENTORY.items,value)&&!ART_INVENTORY.items[value].raidReward)selected=value;}}],run:add});
   DevTools.register({id:'coins',labelKey:'dev.coins.add',available,
    fields:()=>[{id:'amount',type:'number',labelKey:'dev.amount',value:amount,min:1,max:Number.MAX_SAFE_INTEGER}],run:addCoins});
  }
