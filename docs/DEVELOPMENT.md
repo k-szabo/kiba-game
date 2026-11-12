@@ -74,6 +74,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/config/bosses/*.json`, `assets/js/boss-catalog.js` | [Közös bosskatalógus](BOSS-CATALOG.md): bossenkénti sztori-/toronyalapértékek, profilok és grafikai függőségek; buildkor beágyazva. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
+| `scripts/runtime-modules.cjs` | A böngészős modulok betöltési sorrendje. A build, a forrásellenőrzés és a tesztkörnyezetek ezt a listát olvassák. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
 | `assets/css/style.css`, `assets/fonts/` | A kezelőfelület megjelenése és a [helyben tárolt betűk](TYPOGRAPHY.md). |

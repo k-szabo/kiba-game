@@ -1,3 +1,4 @@
+import runtimeModules from './runtime-modules.cjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -51,13 +52,11 @@ assert(synchronizeReleaseMarker(panel(section('0.9.1')),'0.9.1',labels.hu).inclu
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-current-release-'));
 try{
  for(const dir of ['scripts','docs','data','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
- for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/config/leaderboard.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
+ for(const file of ['scripts/build-game.mjs','scripts/runtime-modules.cjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/config/leaderboard.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
  fs.cpSync(path.join(root,'assets/config/bosses'),path.join(fixture,'assets/config/bosses'),{recursive:true});
  fs.cpSync(path.join(root,'assets/config/npcs'),path.join(fixture,'assets/config/npcs'),{recursive:true});
  fs.copyFileSync(path.join(root,'data/boss-classification.json'),path.join(fixture,'data/boss-classification.json'));
- const build=fs.readFileSync(path.join(root,'scripts/build-game.mjs'),'utf8');
- const modules=JSON.parse(build.match(/const files=(\[[^\]]+\]);/)[1].replaceAll("'",'"'));
- for(const name of modules)fs.writeFileSync(path.join(fixture,'assets/js',name+'.js'),'// build fixture\n');
+ for(const name of runtimeModules)fs.writeFileSync(path.join(fixture,'assets/js',name+'.js'),'// build fixture\n');
  const index=path.join(fixture,'index.html');fs.writeFileSync(index,stale);
  const run=(args=[],ok=true)=>{const result=spawnSync(process.execPath,[path.join(fixture,'scripts/build-game.mjs'),...args],{cwd:fixture,encoding:'utf8'});if(ok)assert.equal(result.status,0,result.stderr||result.stdout);else assert.notEqual(result.status,0);return result;};
  run();run(['--check']);const built=fs.readFileSync(index,'utf8');
