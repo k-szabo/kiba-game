@@ -7032,6 +7032,111 @@
         "dominantCoveragePercent": 99.9999
       }
     },
+    "assets/images/props/sky-raid-back-body-v1.png": {
+      "sha256": "22175523d60dfd4164024a334d374743d3cab082e6790edf343d6be6d250c389",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "skyRaidBackBody"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#476c76",
+            "coveragePercent": 11.7475
+          },
+          {
+            "hex": "#3c5a62",
+            "coveragePercent": 11.2371
+          },
+          {
+            "hex": "#4e818a",
+            "coveragePercent": 10.1238
+          },
+          {
+            "hex": "#5b97a1",
+            "coveragePercent": 9.0879
+          },
+          {
+            "hex": "#31454b",
+            "coveragePercent": 8.8523
+          },
+          {
+            "hex": "#757a7d",
+            "coveragePercent": 7.3222
+          },
+          {
+            "hex": "#666560",
+            "coveragePercent": 6.3455
+          },
+          {
+            "hex": "#71afb8",
+            "coveragePercent": 5.9286
+          },
+          {
+            "hex": "#898f93",
+            "coveragePercent": 5.842
+          },
+          {
+            "hex": "#4e4f49",
+            "coveragePercent": 4.8887
+          },
+          {
+            "hex": "#273133",
+            "coveragePercent": 4.7346
+          },
+          {
+            "hex": "#a2a3a3",
+            "coveragePercent": 4.0926
+          },
+          {
+            "hex": "#92c6cc",
+            "coveragePercent": 3.2538
+          },
+          {
+            "hex": "#c2bbb3",
+            "coveragePercent": 2.6583
+          },
+          {
+            "hex": "#d9d6ce",
+            "coveragePercent": 2.4376
+          },
+          {
+            "hex": "#f3efe8",
+            "coveragePercent": 1.4474
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#437d8b",
+            "coveragePercent": 40.4525
+          },
+          {
+            "hex": "#4f93a0",
+            "coveragePercent": 38.148
+          },
+          {
+            "hex": "#5dabb8",
+            "coveragePercent": 19.7766
+          },
+          {
+            "hex": "#9a744b",
+            "coveragePercent": 0.681
+          },
+          {
+            "hex": "#6e4690",
+            "coveragePercent": 0.6438
+          },
+          {
+            "hex": "#945ab4",
+            "coveragePercent": 0.2981
+          }
+        ],
+        "visibleSamples": 632994,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/props/sky-raid-props-v1.png": {
       "sha256": "21baa97d8475e95f482a03016066cd4590f98da2493fa40e293c729a5a4e22a6",
       "width": 2172,

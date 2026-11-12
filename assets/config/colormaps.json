@@ -93,13 +93,13 @@
     "npcs": 108,
     "objects": 139,
     "paletteGroups": 261,
-    "assets": 315,
+    "assets": 320,
     "codeColors": 175
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "1ceec3643c30b99d6b4738eac04acc17c599a370c6d1a79a1dcafc61dfdd1cad",
+      "sha256": "c6b3cae46e6230d5359e7224bf34e7bcb540d8103104fcf18745f0df864e1697",
       "counts": {
         "codeColors": 175
       }
@@ -114,10 +114,10 @@
     },
     {
       "file": "colormaps/environment.json",
-      "sha256": "6cf9da058e11af030f8357357bdc6520622f86cf524406a33c4010e126beb6ad",
+      "sha256": "fdd30267b76fb2c96746ea2751aa5de294c233b0c033a7a6fd1e0deef3a75953",
       "counts": {
         "paletteGroups": 11,
-        "assets": 124
+        "assets": 128
       }
     },
     {
@@ -200,10 +200,10 @@
     },
     {
       "file": "colormaps/shared.json",
-      "sha256": "2d54737918f0eaf7d84cfc8eba73213bdcd6ff7a9b038dfec5a7a45ff5d7a534",
+      "sha256": "1f265375fd621169675aa5d7c906f0ecc0babb3e32cfc5e2e82d47db25d21d76",
       "counts": {
         "paletteGroups": 47,
-        "assets": 28
+        "assets": 29
       }
     },
     {

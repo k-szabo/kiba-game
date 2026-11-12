@@ -2,8 +2,9 @@
 'use strict';
 const SkyDragonRaidRules=(()=>{
  const phases=Object.freeze(['harbor','pursuit','back','rift']);
- const tuning=Object.freeze({ballistaCount:3,ballistaHealth:3,harborShots:6,pursuitWaves:3,reikaHealth:3,
-  reikaVolleyDamage:8,backCultists:4,riftSeconds:120,riftHealth:1500,platformCount:6,platformWarning:1.25});
+ const tuning=Object.freeze({ballistaCount:3,ballistaHealth:3,harborShots:6,pursuitWaves:3,reikaHealth:5,
+  reikaVolleyDamage:8,backCultists:4,wardenHealth:160,riftSeconds:135,riftHealth:960,headDamageMultiplier:1.5,
+  platformCount:6,platformWarning:1.25});
  const rewards=Object.freeze({firstClearPoints:1,ringXP:1200,ringPoints:1,craftCost:3,spellReduction:.2});
  const positive=value=>Number.isFinite(value)&&value>0;
  const counter=value=>Number.isSafeInteger(value)&&value>=0;
@@ -58,7 +59,7 @@ const SkyDragonRaidRules=(()=>{
  }
  function hitDragon(state,amount,{withinReach=false}={}){
   if(!playable(state,'rift')||!state.grappled||!withinReach||!positive(amount))return state;
-  const hp=Math.max(0,state.hp-amount);
+  const hp=Math.max(0,state.hp-amount*tuning.headDamageMultiplier);
   return {...state,hp,outcome:hp===0?'cleared':null};
  }
  function update(state,dt,{paused=false}={}){

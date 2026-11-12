@@ -40,6 +40,11 @@ const ART_MANIFEST = {
  westheruSealArt:'assets/images/enemies/westheru-seal-v1.png',
  ninjaDungeonBackdrops:'assets/images/backgrounds/ninja-dungeon-v1.webp',
  skyRaidDragon:'assets/images/enemies/sky-raid-dragon-v1.png',
+ skyRaidHarborBackdrop:'assets/images/backgrounds/sky-raid-harbor-v1.webp',
+ skyRaidPursuitBackdrop:'assets/images/backgrounds/sky-raid-pursuit-v1.webp',
+ skyRaidBackBackdrop:'assets/images/backgrounds/sky-raid-back-v1.webp',
+ skyRaidRiftBackdrop:'assets/images/backgrounds/sky-raid-rift-v1.webp',
+ skyRaidBackBody:'assets/images/props/sky-raid-back-body-v1.png',
  skyRaidHatchlings:'assets/images/enemies/sky-raid-hatchlings-v1.png',
  skyRaidProps:'assets/images/props/sky-raid-props-v1.png',
  skyRaidItems:'assets/images/items/sky-raid-items-v1.png',
@@ -390,6 +395,8 @@ const ART_FOXFIRE={
  ]}
 };
 const ART_SKY_RAID={image:'skyRaidDragon',frames:Array.from({length:6},(_,index)=>({x:724*(index%3),y:362*Math.floor(index/3),w:724,h:362})),
+ backdrops:{harbor:'skyRaidHarborBackdrop',pursuit:'skyRaidPursuitBackdrop',back:'skyRaidBackBackdrop',rift:'skyRaidRiftBackdrop'},
+ body:'skyRaidBackBody',
  hatchlings:{image:'skyRaidHatchlings',frames:Array.from({length:4},(_,index)=>({x:543*index,y:135,w:543,h:450}))},
  props:{image:'skyRaidProps',ballista:[[0,0],[970,0],[970,220],[910,220],[910,724],[0,724]],
   ship:[[970,0],[2172,0],[2172,724],[910,724],[910,220],[970,220]]}};

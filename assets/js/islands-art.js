@@ -53,9 +53,9 @@ const IslandsArt=(()=>{
   if(FloatingIslandsRules.abducted(flags)&&!Grapple.owned())hook({x:level.hookPoint.x,y:level.hookPoint.y-25},52);
   if(!FloatingIslands.locked())Visuals.campPathMarker(level.returnPoint,I18n.t('descent.heights'));
  }
- function anchors(){
+ function anchors(points=level.grappleAnchors){
   const selected=Grapple.selection();
-  for(const anchor of level.grappleAnchors){
+  for(const anchor of points){
    const x=anchor.x+anchor.w/2,y=anchor.y+anchor.h/2,focus=selected?.id===anchor.id;
    ctx.save();ctx.strokeStyle='#49392b';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(x,y+16);ctx.lineTo(x,anchor.y+96);ctx.stroke();
    ctx.fillStyle='#8d7b5b';ctx.fillRect(x-14,anchor.y+86,28,18);ctx.strokeStyle=focus?'#fff0a8':'#ccac65';ctx.lineWidth=5;ctx.beginPath();ctx.arc(x,y,13,0,Math.PI*2);ctx.stroke();

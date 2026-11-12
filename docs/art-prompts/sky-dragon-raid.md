@@ -17,3 +17,12 @@ The production sheet uses the approved four-panel skyport, pursuit, dragon-back 
 ## Raid inventory rewards
 
 > Final inventory art from the approved three-item concept. True alpha and three evenly spaced cells. Left: turquoise curved scale with an ivory cloud marking. Center: aged bronze-and-silver signet ring with a turquoise cloud emblem. Right: turquoise lamellar shiba armor with pale lavender ties and gold fittings. Keep the entire silhouettes visible and separate. No cell outlines, labels, backdrop, mannequin or cast shadows.
+
+## Raid environments
+
+All four scenes use 16:9 viewport-framed paintings with collision and combat effects drawn separately. The approved environment concept is the reference for each image.
+
+- **Skyport**. Paint a Japanese floating-island port in daylight, with pagodas, brass moorings, rope bridges and distant waterfalls. Leave an open center for the dragon and separate ballista props.
+- **Pursuit**. Paint low-contrast afternoon cloud banks in azure and violet, with distant island spires at the edges. Leave the center open for the ship, dragon and hatchlings.
+- **On the dragon’s back**. Paint a high-altitude cloud sea with distant low pagoda silhouettes. For the separate transparent foreground strip, paint one immense turquoise dragon with a single tail to the left, a continuous scaled ridge, ivory spines and the horned head to the right. Add a trace of purple infection near the neck. Leave grapple rings and traversable ledges to the game.
+- **Splintering Isle**. Paint muted indigo storm clouds around a violet rift glow, with distant fractured islands, torii, maples and waterfalls. Keep the center free for the dragon, actual platforms and attack warnings.

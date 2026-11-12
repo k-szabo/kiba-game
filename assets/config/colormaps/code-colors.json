@@ -4948,51 +4948,62 @@
     "assets/js/sky-dragon-raid-rules.js": [],
     "assets/js/sky-dragon-raid.js": [
       {
+        "value": "#9ac2c1",
+        "lines": [
+          294
+        ],
+        "dynamic": false
+      },
+      {
         "value": "#a8e4ff",
         "lines": [
-          183
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#bc75ed",
         "lines": [
-          183
+          74,
+          187,
+          218
         ],
         "dynamic": false
       },
       {
         "value": "#bf74ff29",
         "lines": [
-          191
+          227
         ],
         "dynamic": false
       },
       {
         "value": "#bf74ff45",
         "lines": [
-          193
+          229
         ],
         "dynamic": false
       },
       {
         "value": "#d5a1ff",
         "lines": [
-          191
+          227,
+          250,
+          333
         ],
         "dynamic": false
       },
       {
         "value": "#e997f780",
         "lines": [
-          192
+          228
         ],
         "dynamic": false
       },
       {
         "value": "#fff1bc",
         "lines": [
-          235
+          307
         ],
         "dynamic": false
       }
