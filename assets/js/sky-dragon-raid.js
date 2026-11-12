@@ -5,6 +5,7 @@ const SkyDragonRaid=(()=>{
  const maps=createSkyDragonRaidMaps({makeLevel,ledge,zone});
  const firstClear='skyDragonRaidFirstClear',ringReward='skyDragonRaidRingTurnedIn';
  const crashDuration=1.65;
+ const hatchlingMoves={hover:['windup',.9],windup:['dive',.85],dive:['recover',1.2],recover:['hover',1.65]};
  let progress=rules.fresh(),attempt=null,clock=0,shotCooldown=0,target=0,pattern=0,cast=null,flightTime=0,reikaGuard=0,volley=0,crash=0;
  const active=()=>!!attempt&&level?.skyDragonRaid===attempt.phase;
  const available=()=>!Prologue.active&&flags[0].includes('ninjaClanRitualistReward')&&Grapple.owned();
@@ -23,21 +24,24 @@ const SkyDragonRaid=(()=>{
   initPlayer(map.start);player.hp=Math.min(hp||player.maxHp,player.maxHp);
   if(next.phase==='pursuit')spawnWave();
   if(next.phase==='back'){
-   enemies=map.cultists.map((point,index)=>spawn(point,index,index%2?'mage':'guard',54));
+   enemies=map.cultists.map((point,index)=>{
+    const caster=index%2===1;
+    return spawn(point,index,caster?'mage':'guard',tuning.backCultistHealth,caster?2.5:2);
+   });
    const {x,y}=map.headGuard;
    enemies.push({...spawn(map.headGuard,tuning.backCultists,'shield',tuning.wardenHealth),
     x:x-53,y:y-154,w:106,h:154,raidWarden:true,wardClock:.9,wardCast:null,wardRecover:0,wardPattern:0,face:-1});
   }
   keys.clear();pressed.clear();context=null;resetCamera();persist();updateHUD();return true;
  }
- function spawn(point,index,kind,hp){
+ function spawn(point,index,kind,hp,damageValue=4){
   return createEnemy({...point,id:'skyRaidEnemy'+index,kind,patrol:180,skyRaidEnemy:true,noReward:true,
-   grappleable:false,factionOverride:'shadowCult',combatStats:{hp,damage:4,xp:0}},index);
+   grappleable:false,factionOverride:'shadowCult',combatStats:{hp,damage:damageValue,xp:0}},index);
  }
  function spawnWave(){
   const count=2+attempt.waves;
   enemies=Array.from({length:count},(_,index)=>({...spawn({x:1110+index*200,y:940-index%2*82},index,'fly',28),
-   raidHatchling:true,raidClock:1.5+index*.65,raidMove:'hover'}));
+   raidHatchling:true,raidClock:1.9+index*.72,raidMove:'hover',raidHit:false}));
  }
  function updateEnemy(enemy,dt){
   if(enemy.raidWarden&&active()){updateWarden(enemy,dt);return true;}
@@ -45,20 +49,20 @@ const SkyDragonRaid=(()=>{
   if(attempt.outcome!==null)return true;
   enemy.animTime+=dt;enemy.stun=Math.max(0,enemy.stun-dt);
   if(enemy.stun>0)return true;
-  const next={hover:'windup',windup:'dive',dive:'hover'};
   enemy.raidClock-=dt;
   if(enemy.raidClock<=0){
    if(enemy.raidMove==='dive'&&Math.abs(enemy.x+enemy.w/2-level.reika.x)<100&&reikaGuard<=0){
-    attempt=rules.hitReika(attempt);reikaGuard=2.3;
+    attempt=rules.hitReika(attempt);reikaGuard=3.2;
    }
-   enemy.raidMove=next[enemy.raidMove];enemy.raidClock={hover:1.7,windup:.65,dive:.8}[enemy.raidMove];
+   [enemy.raidMove,enemy.raidClock]=hatchlingMoves[enemy.raidMove];enemy.raidHit=false;
   }
-  const diving=enemy.raidMove==='dive';
-  const x=diving?level.reika.x-enemy.w/2:enemy.origin,y=diving?level.reika.y-enemy.h-25:enemy.baseY;
+  const diving=enemy.raidMove==='dive',recovering=enemy.raidMove==='recover';
+  const x=diving||recovering?level.reika.x-enemy.w/2+(recovering?Math.sign(enemy.origin-level.reika.x)*48:0):enemy.origin;
+  const y=diving||recovering?level.reika.y-enemy.h-(diving?25:4):enemy.baseY;
   const speed=diving?490:180;
   enemy.x+=clamp(x-enemy.x,-speed*dt,speed*dt);enemy.y+=clamp(y-enemy.y,-speed*dt,speed*dt);
   enemy.face=Math.sign(x-enemy.x)||enemy.face;
-  if(diving&&overlap(player,enemy))damage(3,enemy.face,true);
+  if(diving&&!enemy.raidHit&&overlap(player,enemy))enemy.raidHit=damage(2,enemy.face,true);
   return true;
  }
  const warded=()=>enemies.slice(0,tuning.backCultists).some(e=>!e.dead);
@@ -70,7 +74,7 @@ const SkyDragonRaid=(()=>{
   if(enemy.wardClock>0)return;
   if(enemy.wardCast){
    const spell=enemy.wardCast;enemy.wardCast=null;enemy.wardClock=1.6;enemy.wardRecover=1.05;
-   if(overlap(player,spell))damage(spell.kind==='sweep'?4:5,enemy.face,spell.kind==='sweep',false,spell.kind==='sweep'?null:'spell');
+   if(overlap(player,spell))damage(spell.kind==='sweep'?3:4,enemy.face,spell.kind==='sweep',false,spell.kind==='sweep'?null:'spell');
    burst(spell.x+spell.w/2,spell.y+spell.h-15,'#bc75ed',22);return;
   }
   const center=enemy.x+enemy.w/2,feet=enemy.y+enemy.h;
@@ -78,7 +82,7 @@ const SkyDragonRaid=(()=>{
   const sweep=enemy.wardPattern++%2===0;
   enemy.wardCast=sweep?{kind:'sweep',x:enemy.face>0?center:center-220,y:feet-150,w:220,h:165}:
    {kind:'void',x:player.x+player.w/2-95,y:feet-170,w:190,h:185};
-  enemy.wardClock=sweep?.7:1.0;
+  enemy.wardClock=sweep?.95:1.1;
  }
  function finishPhase(){
   const result=rules.clearPhase(progress,attempt);
@@ -255,7 +259,7 @@ const SkyDragonRaid=(()=>{
   if(!enemy.raidHatchling)return false;
   const atlas=ART_SKY_RAID.hatchlings,image=Visuals.images[atlas.image];
   if(!image?.complete||!image.naturalWidth)return false;
-  const frame=atlas.frames[enemy.raidMove==='windup'?2:enemy.raidMove==='dive'?3:
+  const frame=atlas.frames[enemy.raidMove==='windup'||enemy.raidMove==='recover'?2:enemy.raidMove==='dive'?3:
    reducedMotion.matches?0:Math.floor(enemy.animTime*7)%2];
   ctx.save();ctx.translate(enemy.x+enemy.w/2,enemy.y+enemy.h/2);ctx.scale(-enemy.face,1);
   ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,-83,-66,166,138);ctx.restore();return true;
@@ -302,6 +306,12 @@ const SkyDragonRaid=(()=>{
   if(phase==='pursuit'){
    prop('ship',{x:200,y:1060},{x:1090,y:481},1.58);
    character(ART_WATCHTOWER.pilot,level.helm,128);character(ART_WATCHTOWER.sentinel,level.reika,135);
+   if(attempt.waves<tuning.pursuitWaves){
+    const {x,y}=level.reika;
+    HannahArt.nameplate(x,y,142,'ninjaClan.sentinel');
+    ctx.save();ctx.fillStyle='#0a172bcc';ctx.fillRect(x-38,y-157,76,6);
+    ctx.fillStyle='#90d9b2';ctx.fillRect(x-38,y-157,76*attempt.reikaHealth/tuning.reikaHealth,6);ctx.restore();
+   }
    if(volley){
     const t=1-volley/.5,x=level.reika.x+(2200-level.reika.x)*t,y=level.reika.y-93+(660-level.reika.y+93)*t;
     ctx.save();ctx.strokeStyle='#fff1bc';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(x-48,y+20);ctx.lineTo(x,y);ctx.stroke();ctx.restore();

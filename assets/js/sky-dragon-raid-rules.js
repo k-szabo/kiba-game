@@ -3,7 +3,7 @@
 const SkyDragonRaidRules=(()=>{
  const phases=Object.freeze(['harbor','pursuit','back','rift']);
  const tuning=Object.freeze({ballistaCount:3,ballistaHealth:3,harborShots:6,pursuitWaves:3,reikaHealth:5,
-  reikaVolleyDamage:8,backCultists:4,wardenHealth:160,riftSeconds:135,riftHealth:960,headDamageMultiplier:1.5,
+  reikaVolleyDamage:8,backCultists:4,backCultistHealth:36,wardenHealth:160,riftSeconds:135,riftHealth:960,headDamageMultiplier:1.5,
   platformCount:6,platformWarning:1.25});
  const rewards=Object.freeze({firstClearPoints:1,ringXP:1200,ringPoints:1,craftCost:3,spellReduction:.2});
  const positive=value=>Number.isFinite(value)&&value>0;
@@ -33,7 +33,7 @@ const SkyDragonRaidRules=(()=>{
  }
  function finishWave(state,index){
   if(!playable(state,'pursuit')||index!==state.waves||state.waves===tuning.pursuitWaves)return state;
-  return {...state,waves:state.waves+1};
+  return {...state,waves:state.waves+1,reikaHealth:Math.min(tuning.reikaHealth,state.reikaHealth+1)};
  }
  function hitReika(state){
   if(!playable(state,'pursuit')||state.waves===tuning.pursuitWaves)return state;

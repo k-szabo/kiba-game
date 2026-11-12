@@ -2,6 +2,7 @@
 'use strict';
 const Armor=(()=>{
  const K=100,playerK=300;
+ const spellProjectiles=new Set(['orb','magic','shadowBolt','holyArrow','holyLance','frostShard','ember']);
  const value=armor=>Number.isFinite(armor)&&armor>0?armor:0;
  function reduction(armor){const a=value(armor);return a/(a+K);}
  function damage(amount,armor=0){
@@ -12,5 +13,5 @@ const Armor=(()=>{
  }
  function playerReduction(armor){const a=value(armor);return a/(a+playerK);}
  function playerDamage(amount,armor=0){return Number.isFinite(amount)&&amount>0?amount*(playerK/(value(armor)+playerK)):0;}
- return Object.freeze({K,reduction,damage,playerK,playerReduction,playerDamage});
+ return Object.freeze({K,reduction,damage,playerK,playerReduction,playerDamage,spellProjectile:kind=>spellProjectiles.has(kind)});
 })();
