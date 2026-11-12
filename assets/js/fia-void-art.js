@@ -7,10 +7,8 @@ const FiaVoidArt=(()=>{
   return {scale,width,height,x:-(width-viewW)*clamp(camera/Math.max(1,level.width-viewW),0,1),top:level.start.y-cameraY-ground*scale};
  }
  function stamp(definition,index,x,feet,height,face=1){
-  const f=definition?.frames?.[index]||definition?.frames?.[0],image=Visuals.images[definition?.image];if(!f||!image?.complete||!image.naturalWidth)return;
-  const s=height/f.bodyHeight;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.translate(x,feet);ctx.scale(face,1);
-  if(f.outlines?.length){ctx.beginPath();for(const outline of f.outlines){outline.forEach(([px,py],i)=>ctx[i?'lineTo':'moveTo']((px-f.anchorX)*s,(py-f.anchorY)*s));ctx.closePath();}ctx.clip();}
-  ctx.drawImage(image,f.x,f.y,f.w,f.h,(f.x-f.anchorX)*s,(f.y-f.anchorY)*s,f.w*s,f.h*s);ctx.restore();
+  const frame=definition?.frames?.[index]||definition?.frames?.[0];
+  stampSprite(frame,definition?.image,x,feet,height,face,{outlines:frame?.outlines?.length?frame.outlines:null});
  }
  function backdrop(){
   const b=backgrounds[level.id];if(!b)return false;const image=Visuals.images[b[0]];ctx.fillStyle='#100d1b';ctx.fillRect(0,0,viewW,H);

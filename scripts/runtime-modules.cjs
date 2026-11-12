@@ -10,7 +10,7 @@ module.exports=Object.freeze([
   'grapple-rules', 'floating-islands-rules', 'floating-islands-maps',
   'watchtower-balloon-rules', 'watchtower-balloon-maps', 'ziggurat-descent-rules',
   'ziggurat-descent-maps', 'ziggurat-maps', 'levels', 'camp-services', 'serpent-relics',
-  'camp-health', 'art-data', 'shadow-ninja-art-data', 'watchtower-art-data',
+  'camp-health', 'sprite-art', 'art-data', 'shadow-ninja-art-data', 'watchtower-art-data',
   'ziggurat-descent-art-data', 'hannah-art-data', 'asset-cache', 'background-motion',
   'background-framing', 'boss-vfx', 'save-vault', 'graphics', 'armor', 'weapons',
   'duel-appearance', 'duel-rules', 'peer-session', 'weapon-equipment', 'weapon-selection',
@@ -30,5 +30,5 @@ module.exports=Object.freeze([
   'fullscreen', 'duel-mode', 'travel-atlas', 'tower-rewards', 'tower-rules',
   'tower-special-bosses', 'tower-boss-combat', 'tower-boss-art', 'tower-store',
   'tower-leaderboard-api', 'tower-mode', 'tower-leaderboard', 'menu-music', 'asset-loading',
-  'save-manager', 'game',
+  'save-manager', 'game-objectives', 'game-hud', 'game-interactions', 'game',
 ]);

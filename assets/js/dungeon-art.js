@@ -4,11 +4,8 @@ const DungeonArt=(()=>{
  const art=id=>id==='sectFall'?ART_CULT_DUNGEON:ART_DUNGEON;
  const roles={dungeonCaptain:'captain',dungeonNecromancer:'necromancer',dungeonCouncil:'council',cultTempleGuard:'templeGuard',woundedAngel:'woundedAngel',cultHighPriestess:'highPriestess'};
  function stamp(definition,index,x,feet,height,face=1){
-  const frame=definition?.frames?.[index]||definition?.frames?.[0]||definition,image=Visuals.images[frame?.image||definition?.image];
-  if(!frame||!image?.complete||!image.naturalWidth)return;
-  const scale=height/frame.bodyHeight;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.translate(x,feet);ctx.scale(face*(definition.facing||1),1);
-  if(frame.outlines){ctx.beginPath();for(const outline of frame.outlines){outline.forEach(([px,py],i)=>ctx[i?'lineTo':'moveTo']((px-frame.anchorX)*scale,(py-frame.anchorY)*scale));ctx.closePath();}ctx.clip();}
-  ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,(frame.x-frame.anchorX)*scale,(frame.y-frame.anchorY)*scale,frame.w*scale,frame.h*scale);ctx.restore();
+  const frame=definition?.frames?.[index]||definition?.frames?.[0]||definition;
+  stampSprite(frame,frame?.image||definition?.image,x,feet,height,face*(definition?.facing||1),{outlines:frame?.outlines});
  }
  function actors(){
   const out={};for(const [key,role]of Object.entries(roles)){
