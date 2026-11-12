@@ -3,12 +3,14 @@
   "id": "eclipse",
   "name": "text.lord.of.two.worlds.hidden.phase.iii",
   "group": "optional",
+  "classificationOrder": 13,
   "story": {
     "hp": 180,
     "w": 96,
     "h": 115
   },
   "tower": {
+    "order": 18,
     "baseHealth": 48,
     "name": "text.lord.of.two.worlds.hidden.phase.iii",
     "w": 110,

@@ -3,6 +3,7 @@
   "id": "whiteSerpent",
   "name": "serpent.white.name",
   "group": "optional",
+  "classificationOrder": 14,
   "story": {
     "realm": 0,
     "name": "serpent.white.name",
@@ -41,6 +42,7 @@
     }
   },
   "tower": {
+    "order": 19,
     "baseHealth": 44
   },
   "assets": [

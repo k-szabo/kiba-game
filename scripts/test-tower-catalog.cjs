@@ -2,12 +2,14 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.join(__dirname,'..'),context=vm.createContext({});
 vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(root,'assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
-const rules=context.rules,classified=JSON.parse(fs.readFileSync(path.join(root,'data/boss-classification.json'),'utf8'));
+const rules=context.rules,classified=Object.values(require('./test-only-bootstrap.cjs').bossData).sort((a,b)=>a.classificationOrder-b.classificationOrder);
 const locales=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/locales.json'),'utf8'));
 const plain=value=>JSON.parse(JSON.stringify(value));
 assert(Object.isFrozen(rules.bossCatalog));assert(Object.isFrozen(rules.bossPool));
 assert.equal(new Set(rules.bossPool).size,rules.bossPool.length,'No duplicate catalog IDs');
 assert.deepEqual([...rules.bossPool].sort(),classified.map(entry=>entry.id).sort(),'Every classified boss, including new entries, needs a tower adapter');
+assert.deepEqual([...rules.bossPool],classified.slice().sort((a,b)=>a.tower.order-b.tower.order).map(entry=>entry.id));
+assert.equal(classified.filter(entry=>entry.story.raidKind).length,9,'All Second Ziggurat bosses enter the rotation');
 const oldHealth={arenaCaptain:32,dungeonCaptain:36,cultTempleGuard:40,arenaSerpent:42,woundedAngel:38,dungeonCouncil:48,arenaCyclops:44};
 assert.deepEqual([...rules.bossPool].slice(0,7),Object.keys(oldHealth),'Existing roster order is retained');
 for(const entry of rules.bossCatalog){

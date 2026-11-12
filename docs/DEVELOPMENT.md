@@ -29,8 +29,10 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/bug-report.js` | Tally-hibajelentő űrlap, HU/EN hivatkozások és technikai mezők frissítése. |
 | `assets/js/dev-tools.js`, `assets/js/dev-session.js`, `assets/js/dev-*.js` | Rejtett fejlesztői panel, elkülönített tesztmód és a külön eszközök; [használat és bővítés](DEV-TOOLS.md). |
 | `assets/js/menu-music.js`, `assets/audio/` | A főmenü lazán betöltött zenéje és a közös hangkapcsoló; [működés](AUDIO.md). |
-| `assets/js/game.js` | Mozgás, kamera, interakciók, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
-| `assets/js/levels.js` | A négy birodalom pályái, objektumai és ellenfelei, illetve az [erdei menedék](FOREST-CAMP.md). |
+| `assets/js/game.js` | Mozgás, kamera, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
+| `assets/js/game-objectives.js`, `game-hud.js`, `game-interactions.js` | Kalandcélok, HUD és a pályán elérhető interakciók prioritási sorrendje. |
+| `assets/js/sprite-art.js` | Közös atlaszkivágás, talpponthoz igazítás, tükrözés és kontúrvágás. |
+| `assets/js/levels.js` | Pályák, objektumok és ellenfelek. A [JSON-katalógus terve](MAP-CATALOG.md) ismerteti az átköltöztetés sorrendjét. |
 | `assets/js/floating-islands*.js`, `grapple*.js`, `shadow-ninjas.js`, `islands-art.js`, `shadow-ninja-art-data.js` | A [lebegő szigetek](FLOATING-ISLANDS.md) történeti folytatása, sziámi nindzsák, fix pontokra célzó kampó, tartós mérföldkövek és natív grafikák. |
 | `assets/js/watchtower-balloon*.js`, `watchtower-art-data.js` | A [nindzsa őrtorony és ballonút](WATCHTOWER-BALLOON.md) sorrendi története, sérthetetlen kísérője, szakaszharcai és grafikai regisztrációja. |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
@@ -74,6 +76,7 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/config/release.json` | Közös játékverzió és stabil mentéskompatibilitási korszak. |
 | `assets/config/bosses/*.json`, `assets/js/boss-catalog.js` | [Közös bosskatalógus](BOSS-CATALOG.md): bossenkénti sztori-/toronyalapértékek, profilok és grafikai függőségek; buildkor beágyazva. |
 | `assets/js/runtime.js` | A Pagesen futó, egyetlen zárt játékmodul; a build generálja. |
+| `scripts/runtime-modules.cjs` | A böngészős modulok betöltési sorrendje. A build, a forrásellenőrzés és a tesztkörnyezetek ezt a listát olvassák. |
 | `scripts/build-game.mjs` | A forrásokból frissíti a futó modult és a fordításokat. |
 | `scripts/release.mjs`, `docs/releases.json` | Minden új kiadáshoz nyolckarakteres verziókód generálása és visszakeresése; lásd a [kiadási szabályokat](RELEASES.md). |
 | `assets/css/style.css`, `assets/fonts/` | A kezelőfelület megjelenése és a [helyben tárolt betűk](TYPOGRAPHY.md). |

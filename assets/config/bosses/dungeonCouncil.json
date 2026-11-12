@@ -3,6 +3,7 @@
   "id": "dungeonCouncil",
   "name": "dungeon.boss.council",
   "group": "optional",
+  "classificationOrder": 9,
   "story": {
     "name": "dungeon.boss.council",
     "floor": 2,
@@ -18,6 +19,7 @@
     ]
   },
   "tower": {
+    "order": 6,
     "baseHealth": 48
   },
   "assets": [

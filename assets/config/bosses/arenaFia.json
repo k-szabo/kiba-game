@@ -3,6 +3,7 @@
   "id": "arenaFia",
   "name": "arena.boss.fia",
   "group": "optional",
+  "classificationOrder": 27,
   "story": {
     "name": "arena.boss.fia",
     "w": 75,
@@ -18,6 +19,7 @@
     ]
   },
   "tower": {
+    "order": 27,
     "baseHealth": 40,
     "name": "arena.boss.fia",
     "w": 75,

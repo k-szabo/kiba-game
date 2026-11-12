@@ -1,17 +1,10 @@
 /* Durable first clears and the Mimic's per-attempt snapshot. */
 'use strict';
 const StoryRaidRules=(()=>{
- const encounters=Object.freeze([
-  {id:'mistSentry',kind:'duel'},
-  {id:'signalKeeper',kind:'reikaMarks'},
-  {id:'thirdClanLeader',kind:'duel',soul:'thirdClanLeaderSoul'},
-  {id:'siegeWarden',kind:'westheruShot'},
-  {id:'kibaBinder',kind:'duel'},
-  {id:'cultWarMarshal',kind:'duel',soul:'cultWarMarshalSoul'},
-  {id:'riftSentinel',kind:'duel'},
-  {id:'sanctuaryCustodian',kind:'duel'},
-  {id:'secondDemonLord',kind:'mimic',soul:'secondDemonLordSoul'}
- ].map((entry,index)=>Object.freeze({...entry,tier:Math.floor(index/3),clear:'storyRaidClear:'+entry.id})));
+ const encounters=Object.freeze(BossCatalog.ids.map(BossCatalog.get).filter(boss=>boss.story.raidOrder)
+  .sort((a,b)=>a.story.raidOrder-b.story.raidOrder).map(({id,name,story},index)=>Object.freeze({
+   id,name,kind:story.raidKind,soul:story.soul,tier:Math.floor(index/3),clear:'storyRaidClear:'+id
+  })));
  const started='storyRaidStarted',rescued='storyRaidHaruRescued',crossed='storyRaidHeavenReached';
  const milestones=Object.freeze([started,...encounters.map(boss=>boss.clear),rescued,crossed]);
  const rescueTiming=Object.freeze({crossing:1,collapse:2.8,end:4.15});
@@ -51,8 +44,8 @@ const StoryRaidRules=(()=>{
    attacks:Object.freeze({normal:Object.freeze({...normal}),heavy:Object.freeze({...heavy})}),
    gear:Object.freeze({...gear}),abilities:Object.freeze({...abilities})});
  }
- function startMimic(loadout){
-  return {loadout,phase:1,hp:loadout.stats.maxHp,maxHp:loadout.stats.maxHp,defeated:false};
+ function startMimic(loadout,maxHp=loadout.stats.maxHp){
+  return {loadout,phase:1,hp:maxHp,maxHp,defeated:false};
  }
  function hitMimic(attempt,amount){
   if(attempt.defeated||!Number.isFinite(amount)||amount<=0)return attempt;

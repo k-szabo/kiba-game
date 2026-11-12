@@ -60,15 +60,14 @@ const AssetLoading=(()=>{
    if(level?.id==='thirdClanCave')keys.push('thirdClanGuardianArt','thirdClanGuardianStagger','skyRaidProps');
    if(Number.isInteger(level?.storyRaidTier)){
     keys.push('skyRaidProps','watchtowerSentinelArt','westheruArt','haruElder');
-    if(level.storyRaidTier===0)keys.push('storyRaidMistSentry','storyRaidSignalKeeper','storyRaidClanLeader');
-    if(level.storyRaidTier===1)keys.push('storyRaidSiegeWarden','storyRaidKibaBinder','storyRaidWarMarshal');
-    if(level.storyRaidTier===2)keys.push('storyRaidRiftSentinel','storyRaidCustodian','storyRaidMimicPhase2','storyRaidGates','storyRaidReikaBrace','inventoryKatana','foxfireKatanaArt',...WeaponStyles.allIds.flatMap(weapon));
+    for(const {encounter} of level.arenas)keys.push(...BossCatalog.assets(encounter.id));
+    if(level.haru)keys.push('storyRaidGates','storyRaidReikaBrace',...WeaponStyles.allIds.flatMap(weapon));
    }
    if(level?.dungeon?.id==='ninjaClan'){
     keys.push('ninjaDungeonBackdrops','ninjaLeader','watchtowerSentinelArt','ninjaRitualist','ninjaCrossbow','ninjaAssassin','dungeonProps','ninjaClanItems');
     if(level.dungeon.floor===2)keys.push('ninjaRiftClosed');
    }
-   if(level?.id==='ninjaClanCamp')keys.push('ninjaDungeonBackdrops','watchtowerSentinelArt','ninjaCampSpecialists','westheruArt','akash','zenPriestess');
+   if(level?.id==='ninjaClanCamp')keys.push('ninjaDungeonBackdrops','skyRaidPursuitBackdrop','prisonTerrain','watchtowerSentinelArt','ninjaCampSpecialists','westheruArt','akash','zenPriestess');
    if(level?.skyDragonRaid){
     backdrop=ART_SKY_RAID.backdrops[level.skyDragonRaid];
     keys.push(backdrop,'skyRaidDragon','skyRaidProps','watchtowerSentinelArt','westheruArt',...shadowActors);

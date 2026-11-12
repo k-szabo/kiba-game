@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "secondDemonLord",
+  "name": "storyRaid.boss.secondDemonLord",
+  "group": "main",
+  "classificationOrder": 49,
+  "story": {
+    "w": 43,
+    "h": 69,
+    "speed": 285,
+    "range": 100,
+    "raidOrder": 9,
+    "raidKind": "mimic",
+    "soul": "secondDemonLordSoul"
+  },
+  "tower": {
+    "baseHealth": 56,
+    "order": 49
+  },
+  "assets": [
+    "storyRaidMimicPhase2",
+    "inventoryKatana",
+    "foxfireKatanaArt"
+  ]
+}

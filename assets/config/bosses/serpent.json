@@ -3,6 +3,7 @@
   "id": "serpent",
   "name": "yomi.serpent.name",
   "group": "optional",
+  "classificationOrder": 6,
   "story": {
     "realm": 1,
     "name": "yomi.serpent.name",
@@ -36,6 +37,7 @@
     }
   },
   "tower": {
+    "order": 13,
     "baseHealth": 44
   },
   "assets": [

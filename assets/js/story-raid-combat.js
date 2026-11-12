@@ -2,27 +2,15 @@
 'use strict';
 const StoryRaidCombat=(()=>{
  const rules=StoryRaidRules;
- const profiles=Object.freeze({
-  mistSentry:{hp:185,speed:170,damage:5,range:170,windup:.75,recovery:.65,moves:['fan','step']},
-  signalKeeper:{hp:3,speed:0,damage:6,range:0,windup:1,recovery:1,moves:['mirage']},
-  thirdClanLeader:{hp:425,speed:155,damage:7,range:215,windup:.86,recovery:.78,moves:['fan','fissure','step']},
-  siegeWarden:{hp:340,speed:113,damage:8,range:180,windup:1,recovery:.75,moves:['sweep','fissure']},
-  kibaBinder:{hp:310,speed:135,damage:7,range:205,windup:.9,recovery:.8,moves:['fissure','fan']},
-  cultWarMarshal:{hp:620,speed:150,damage:9,range:245,windup:.86,recovery:.7,moves:['sweep','step','fissure']},
-  riftSentinel:{hp:380,speed:235,damage:8,range:190,windup:.79,recovery:.68,moves:['step','fan']},
-  sanctuaryCustodian:{hp:510,speed:95,damage:10,range:245,windup:1.1,recovery:.78,moves:['sweep','fissure','fan']}
- });
- function start(arena,loadout){
+ function start(arena,loadout,towerHp){
   const id=arena.encounter.id,kind=arena.encounter.kind;
-  const mimic=kind==='mimic'?rules.startMimic(loadout):null;
-  const profile=mimic?null:profiles[id],maxHp=mimic?.maxHp??profile.hp;
-  const size=id==='riftSentinel'?[128,103]:id==='sanctuaryCustodian'||arena.encounter.soul?[110,152]:
-   id==='siegeWarden'?[100,130]:[78,115];
-  const [w,h]=mimic?[43,69]:size;
-  return {arena,id,kind,profile,mimic,x:arena.spawn.x-w/2,y:arena.spawn.y-h,w,h,hp:maxHp,maxHp,
+  const profile=BossCatalog.story(id),{w,h}=profile;
+  const mimic=kind==='mimic'?rules.startMimic(loadout,towerHp):null;
+  const maxHp=towerHp??mimic?.maxHp??profile.hp;
+  return {arena,id,raidBossId:id,kind,profile,mimic,x:arena.spawn.x-w/2,y:arena.spawn.y-h,w,h,hp:maxHp,maxHp,
    face:-1,clock:1.1,pattern:0,cast:null,hitFlash:0,animTime:0,walkSpeed:0,dead:false,
    guardCooldown:0,shieldRemaining:mimic?.loadout.gear.shield??0,shieldRecharge:0,
-   keeper:kind==='reikaMarks'?rules.startSignalKeeper():null,siege:kind==='westheruShot'?rules.startSiegeWarden():null};
+   keeper:kind==='reikaMarks'?rules.startSignalKeeper():null,siege:kind==='westheruShot'&&towerHp===undefined?rules.startSiegeWarden():null};
  }
  function chooseMove(foe,target){
   if(foe.mimic){
@@ -39,7 +27,7 @@ const StoryRaidCombat=(()=>{
  }
  function damage(foe,amount,{identity=null,reduce=hit=>hit}={}){
   if(foe.dead||foe.hitFlash>0||!Number.isFinite(amount)||amount<=0||foe.siege&&!foe.siege.shot)return false;
-  if(foe.keeper){
+  if(foe.keeper&&!foe.towerBoss){
    const next=rules.strikeSignalKeeper(foe.keeper,identity);
    if(next===foe.keeper)return false;
    foe.keeper=next;foe.hp=Math.max(0,foe.maxHp-next.interrupts);
@@ -53,8 +41,51 @@ const StoryRaidCombat=(()=>{
    }
    foe.mimic=next;foe.hp=next.hp;
   }else foe.hp=Math.max(0,foe.hp-amount);
-  foe.hitFlash=.18;foe.dead=foe.hp===0;
+  foe.hitFlash=.18;if(!foe.towerBoss)foe.dead=foe.hp===0;
   return true;
  }
- return Object.freeze({start,chooseMove,damage});
+ function hitTarget(foe){
+  if(!foe.keeper)return foe;
+  const point=foe.arena.decoys[foe.keeper.marked];
+  return point?{x:point.x-36,y:foe.y,w:72,h:foe.h}:null;
+ }
+ function telegraph(foe,spec,target){
+  const center=foe.x+foe.w/2,feet=foe.y+foe.h,px=target.x+target.w/2;
+  if(spec.move==='fissure'||spec.move==='mirage')return {...spec,x:px-96,y:feet-145,w:192,h:145,spell:true};
+  const w=foe.mimic?WeaponStyles.hitbox(foe.mimic.loadout.weapon,foe,foe.face).w:foe.profile.range;
+  const reach=spec.move==='step'?Math.max(300,w):w;
+  return {...spec,x:foe.face>0?center:center-reach,y:feet-foe.h-12,w:reach,h:foe.h+12,spell:spec.move==='fan'};
+ }
+ function tick(foe,dt,target){
+  foe.hitFlash=Math.max(0,foe.hitFlash-dt);foe.clock-=dt;foe.animTime+=dt;
+  foe.guardCooldown=Math.max(0,foe.guardCooldown-dt);
+  if(foe.shieldRecharge>0){
+   foe.shieldRecharge=Math.max(0,foe.shieldRecharge-dt);
+   if(!foe.shieldRecharge)foe.shieldRemaining=foe.mimic.loadout.gear.shield;
+  }
+  foe.strikeTime=Math.max(0,(foe.strikeTime||0)-dt);
+  if(foe.cast){
+   if(foe.clock>0)return null;
+   const cast=foe.cast;foe.cast=null;foe.clock=cast.recovery;
+   foe.strikeTime=.22;foe.lastMove=cast.move;
+   return cast;
+  }
+  const arena=foe.arena,delta=target.x+target.w/2-foe.x-foe.w/2;
+  foe.face=Math.sign(delta)||foe.face;
+  const range=foe.mimic?foe.profile.range:Math.max(90,foe.profile.range-25);
+  foe.walkSpeed=Math.abs(delta)>range?foe.face*foe.profile.speed:0;
+  foe.x=clamp(foe.x+foe.walkSpeed*dt,arena.x+22,arena.x+arena.w-foe.w-22);
+  if(foe.clock>0)return null;
+  if(foe.keeper){
+   if(foe.towerBoss){
+    foe.keeper=rules.markSignalKeeper(foe.keeper,foe.pattern%3);
+    foe.x=arena.decoys[foe.keeper.marked].x-foe.w/2;
+   }
+   else if(foe.keeper.marked===null)foe.keeper=rules.markSignalKeeper(foe.keeper,(foe.keeper.interrupts*2+1)%3);
+  }
+  foe.cast=telegraph(foe,chooseMove(foe,target),target);
+  foe.clock=foe.cast.windup;foe.walkSpeed=0;
+  return null;
+ }
+ return Object.freeze({start,chooseMove,damage,hitTarget,tick});
 })();

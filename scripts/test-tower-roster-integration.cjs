@@ -12,7 +12,7 @@ for(const [index,id]of catalog.entries()){
   AssetLoading.prepare();reads.clear();for(let i=0;i<120*36;i++){update(1/120);if(i%120===0)TowerMode.draw();}`);
  assert.deepEqual(JSON.parse(r('JSON.stringify([...reads].filter(key=>!planned.has(key)))')),[],id+' plans every future attack/phase/summon image before fighting');
  assert(r('target.active&&!target.dead'),id+' remains an independent combat actor');
- assert(r('target.cycles>0||target.parts?.some(p=>p.cycles>0)'),id+' performs attacks in the real tower loop');
+ assert(r('target.cycles>0||target.pattern>0||target.parts?.some(p=>p.cycles>0)'),id+' performs attacks in the real tower loop');
  r(`var invalid=[],drawn=0;for(const method of ['translate','moveTo','lineTo','rect','fillRect','strokeRect'])ctx[method]=(...values)=>{if(!values.every(Number.isFinite))invalid.push(method);};ctx.drawImage=(image,...values)=>{drawn++;if(!values.every(Number.isFinite))invalid.push('image');};TowerMode.draw();`);
  assert.equal(r('invalid.length'),0,id+' renders finite geometry');assert(r('drawn>0'));
  r('target.inv=0;');const before=r('target.hp');
@@ -20,9 +20,26 @@ for(const [index,id]of catalog.entries()){
  if(id==='dragonRaid'){
   r('for(const leg of TowerSpecialBosses.legs(target)){target.inv=0;target.legInv=0;resolveMeleeHit({kind:"heavy",amount:12,hit:leg});}');assert.equal(r('target.exposedRemaining'),6);
  }
+ if(id==='signalKeeper'){
+  r(`var fake=target.arena.decoys.find((_,i)=>i!==target.keeper.marked);
+   resolveMeleeHit({kind:'heavy',amount:4,hit:{x:fake.x-10,y:target.y,w:20,h:target.h}});`);
+  assert.equal(r('target.hp'),before,'Only the marked Signal Keeper takes damage');
+ }
+ if(id==='siegeWarden'){
+  r(`target.cast={};resolveMeleeHit({kind:'heavy',amount:4,hit:{...target}});`);
+  assert.equal(r('target.hp'),before,'The Siege Warden blocks damage during its cast');
+  r('target.cast=null');
+ }
  r('target.inv=0;resolveMeleeHit({kind:"heavy",amount:4,hit:{...target}});');
  assert(r('target.hp')<before,id+' receives shared weapon damage');
- r('target.hp=0;killEnemy(target);');assert(r('target.dead'),id+' dies without a story transition');assert.equal(r('TowerMode.phase'),'fight');
+ if(id==='secondDemonLord'){
+  assert.equal(r('target.mimic.loadout.weapon'),'katana');
+  assert.equal(r('target.mimic.loadout.stats.damage'),r('TowerMode.stats().damage'));
+  r('target.hitFlash=0;resolveMeleeHit({kind:"heavy",amount:1000,hit:{...target}});');
+  assert(r('!target.dead&&target.mimic.phase===2&&target.hp===target.maxHp'));
+  r('target.hitFlash=0;resolveMeleeHit({kind:"heavy",amount:1000,hit:{...target}});');
+ }else r('target.hp=0;killEnemy(target);');
+ assert(r('target.dead'),id+' dies without a story transition');assert.equal(r('TowerMode.phase'),'fight');
  assert.equal(r('JSON.stringify([saved,flags,defeated,progression,coins,visitedRests,window.__saveSnapshots])'),saved,id+' cannot change journey state');
  r('for(const e of [...enemies]){e.active=true;e.hp=0;killEnemy(e);}update(1/120);');assert.equal(r('TowerMode.phase'),'clear');assert.equal(r('TowerMode.snapshot().kills'),3,'Summons do not alter historical floor kill totals');
  r('const unlock=Date.now()+3000;Date.now=()=>unlock;TowerMode.claim(TowerRewards.choices(TowerMode.snapshot().seed,1)[0]);TowerMode.enterFloor();');assert.equal(r('TowerMode.phase'),'fight');

@@ -3,6 +3,7 @@
   "id": "balloonDragon",
   "name": "balloon.dragon",
   "group": "main",
+  "classificationOrder": 36,
   "story": {
     "w": 280,
     "h": 230,
@@ -14,6 +15,7 @@
     ]
   },
   "tower": {
+    "order": 36,
     "baseHealth": 54
   },
   "assets": [

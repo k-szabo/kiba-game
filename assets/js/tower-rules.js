@@ -4,10 +4,7 @@ const TowerRules=(()=>{
  const profile=Object.freeze({baseHp:20,clearHeal:2,checkpointEvery:5,maxEnemies:8});
  const layout=Object.freeze({width:1800,height:1000,groundY:760,spawnX:180});
  const weapons=Object.freeze(['katana','naginata','swordShield']),factions=Object.freeze(['japan','yomi','heaven','shadowCult']);
- // Every classified encounter has an explicit tower entry. Names reuse the
- // shared locale keys; catalog coverage is checked against classification JSON.
- // Keep the original seven first, then rotate through the complete roster.
- const bossCatalog=Object.freeze(["arenaCaptain","dungeonCaptain","cultTempleGuard","arenaSerpent","woundedAngel","dungeonCouncil","arenaCyclops","main-0","angel","cultist","campMaster","main-1","serpent","dungeonNecromancer","slayer","main-2","seraph","eclipse","whiteSerpent","wingedSerpent","madPriest","organist","jailer","prisonWarden","prisonHunter","cultHighPriestess","arenaFia","dragonRaid","voidLieutenant","voidDemon","hannah","voidGatekeeper","shadowNinjaLeader","watchtowerJailer","watchtowerSentinel","balloonDragon","westheruSeal","fiaRitual","prologueShadow","fiaVengeance"].map(id=>Object.freeze({id,name:BossCatalog.get(id).name,baseHealth:BossCatalog.tower(id).baseHealth})));
+ const bossCatalog=BossCatalog.towerRoster;
  const bossPool=Object.freeze(bossCatalog.map(entry=>entry.id));
  const bossCount=number=>integer(number,1)?number>=26?3:number>=11?2:1:null;
  const runKeys=Object.freeze(['seed','weapon','floor','cleared','kills','elapsed','checkpoint']),checkpointKeys=Object.freeze(['seed','weapon','cleared','kills','elapsed']);

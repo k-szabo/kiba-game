@@ -4,11 +4,8 @@ const DungeonArt=(()=>{
  const art=id=>id==='sectFall'?ART_CULT_DUNGEON:ART_DUNGEON;
  const roles={dungeonCaptain:'captain',dungeonNecromancer:'necromancer',dungeonCouncil:'council',cultTempleGuard:'templeGuard',woundedAngel:'woundedAngel',cultHighPriestess:'highPriestess'};
  function stamp(definition,index,x,feet,height,face=1){
-  const frame=definition?.frames?.[index]||definition?.frames?.[0]||definition,image=Visuals.images[frame?.image||definition?.image];
-  if(!frame||!image?.complete||!image.naturalWidth)return;
-  const scale=height/frame.bodyHeight;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.translate(x,feet);ctx.scale(face*(definition.facing||1),1);
-  if(frame.outlines){ctx.beginPath();for(const outline of frame.outlines){outline.forEach(([px,py],i)=>ctx[i?'lineTo':'moveTo']((px-frame.anchorX)*scale,(py-frame.anchorY)*scale));ctx.closePath();}ctx.clip();}
-  ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,(frame.x-frame.anchorX)*scale,(frame.y-frame.anchorY)*scale,frame.w*scale,frame.h*scale);ctx.restore();
+  const frame=definition?.frames?.[index]||definition?.frames?.[0]||definition;
+  stampSprite(frame,frame?.image||definition?.image,x,feet,height,face*(definition?.facing||1),{outlines:frame?.outlines});
  }
  function actors(){
   const out={};for(const [key,role]of Object.entries(roles)){
@@ -24,21 +21,68 @@ const DungeonArt=(()=>{
   if(masks.has(image))return masks.get(image);const surface=document.createElement('canvas');surface.width=image.naturalWidth;surface.height=image.naturalHeight;
   const paint=surface.getContext('2d');paint.drawImage(image,0,0);paint.globalCompositeOperation='destination-in';const fade=paint.createLinearGradient(0,0,surface.width,0);fade.addColorStop(0,'#fff0');fade.addColorStop(.06,'#fff');fade.addColorStop(1,'#fff');paint.fillStyle=fade;paint.fillRect(0,0,surface.width,surface.height);BackgroundMotion.alias(surface,image,{fade:.06});masks.set(image,surface);return surface;
  }
+ function ninjaPanel(image,panel){
+  const sw=Math.floor(image.naturalWidth/2),sh=Math.floor(image.naturalHeight/2);
+  const sx=panel%2*sw,sy=Math.floor(panel/2)*sh;
+  const camp=level.painting;
+  const scale=camp?camp.width/sw:Math.min(viewW/sw,H/sh);
+  const w=sw*scale,h=sh*scale;
+  const x=camp?camp.x-camera:(viewW-w)/2;
+  const y=camp?level.start.y-cameraY-h*camp.ground:(H-h)/2;
+  return {sx,sy,sw,sh,x,y,w,h};
+ }
+ function drawNinjaPanel(image,{sx,sy,sw,sh,x,y,w,h}){
+  const left=Math.max(0,x),right=Math.max(0,viewW-x-w);
+  const top=Math.max(0,y),bottom=Math.max(0,H-y-h);
+  const draw=(a,b,c,d,dx,dy,dw,dh)=>BackgroundMotion.draw(image,a,b,c,d,dx,dy,dw,dh);
+  // Reflect the adjacent painting at a viewport edge to continue its colors and contours.
+  for(const [margin,edge,end] of [[left,x,false],[right,x+w,true]])if(margin){
+   const strip=Math.min(sw*.15,margin*sw/w);
+   ctx.save();ctx.translate(edge,0);ctx.scale(-1,1);
+   draw(end?sx+sw-strip:sx,sy,strip,sh,end?-margin:0,y,margin,h);
+   ctx.restore();
+  }
+  for(const [margin,edge,end] of [[top,y,false],[bottom,y+h,true]])if(margin){
+   const strip=Math.min(sh*.15,margin*sh/h);
+   ctx.save();ctx.translate(0,edge);ctx.scale(1,-1);
+   draw(sx,end?sy+sh-strip:sy,sw,strip,x,end?-margin:0,w,margin);
+   ctx.restore();
+  }
+  draw(sx,sy,sw,sh,x,y,w,h);
+ }
+ const campSurfaces=new WeakMap();
+ function drawCampPanel(image,{sx,sy,sw,sh,x,y,w,h}){
+  let surface=campSurfaces.get(image);
+  if(!surface){
+   surface=document.createElement('canvas');surface.width=sw;surface.height=sh;
+   const paint=surface.getContext('2d');
+   paint.drawImage(image,sx,sy,sw,sh,0,0,sw,sh);
+   paint.globalCompositeOperation='destination-in';
+   for(const [end,start,size] of [[sw,0,.07],[0,sh,.06]]){
+    const fade=paint.createLinearGradient(0,0,end,start);
+    fade.addColorStop(0,'#fff0');fade.addColorStop(size,'#fff');
+    fade.addColorStop(1-size,'#fff');fade.addColorStop(1,'#fff0');
+    paint.fillStyle=fade;paint.fillRect(0,0,sw,sh);
+   }
+   campSurfaces.set(image,surface);
+  }
+  ctx.fillStyle='#15121c';ctx.fillRect(0,0,viewW,H);
+  BackgroundFraming.cover(Visuals.images.skyRaidPursuitBackdrop);
+  ctx.drawImage(surface,x,y,w,h);
+ }
  function backdrop(){
   const panel=level.dungeon?.id==='ninjaClan'?level.dungeon.floor:level.id==='ninjaClanCamp'?3:-1;
   if(panel>=0){
    const image=Visuals.images.ninjaDungeonBackdrops;
    if(!image?.complete||!image.naturalWidth)return false;
-   const width=Math.floor(image.naturalWidth/2),height=Math.floor(image.naturalHeight/2);
-   const scale=Math.max(viewW/width,H/height),w=width*scale,h=height*scale;
-   const pan=clamp(camera/Math.max(1,level.width-viewW),0,1);
-   const drawPanel=source=>BackgroundMotion.draw(source,panel%2*width,Math.floor(panel/2)*height,width,height,-(w-viewW)*pan,-(h-H)*.35,w,h);
-   drawPanel(image);
+   const frame=ninjaPanel(image,panel);
+   if(panel===3){drawCampPanel(image,frame);return true;}
+   drawNinjaPanel(image,frame);
    if(panel===2){
     const closed=Visuals.images.ninjaRiftClosed;
     const ritualist=enemies.find(e=>e.miniboss==='ninjaClanRitualist'&&e.phase==='banish');
     const alpha=DungeonRun.cleared(2)?1:ritualist&&!reducedMotion.matches?clamp(1-ritualist.clock/ritualist.phaseDuration,0,1):0;
-    if(alpha&&closed?.complete&&closed.naturalWidth){ctx.save();ctx.globalAlpha*=alpha;drawPanel(closed);ctx.restore();}
+    if(alpha&&closed?.complete&&closed.naturalWidth){ctx.save();ctx.globalAlpha*=alpha;drawNinjaPanel(closed,frame);ctx.restore();}
    }
    return true;
   }
@@ -55,14 +99,15 @@ const DungeonArt=(()=>{
   if(Prologue.active||state==='menu')return;
   if(level.id==='ninjaClanCamp'){
    const art={healer:ART_NINJA_CLAN.healer,smith:ART_NINJA_CLAN.smith,akash:ART_CAMP.akash};
-   for(const {id} of level.npcs){
-    const npc=DungeonRun.campNpc(id);if(!npc)continue;
-    const {x,y,name}=npc;
+   const residents=level.npcs.map(({id})=>DungeonRun.campNpc(id)).filter(Boolean);
+   const nearby=residents.filter(npc=>pointNear(npc,95,85)).sort((a,b)=>Math.abs(a.x-player.x-player.w/2)-Math.abs(b.x-player.x-player.w/2))[0];
+   for(const npc of residents){
+    const {id,x,y,name}=npc;
     if(art[npc.service||id])stamp(art[npc.service||id],0,x,y,126);
     else if(id==='reika')FiaVoidArt.stamp(ART_WATCHTOWER.sentinel,0,x,y,150,-1);
     else if(id==='zen')FiaVoidArt.stamp(ART_PRISON.zen,0,x,y,113,1);
     else if(id==='westheru')FiaVoidArt.stamp(ART_WATCHTOWER.pilot,0,x,y,110,-1);
-    HannahArt.nameplate(x,y,id==='reika'?150:126,name);
+    if(npc===nearby)HannahArt.nameplate(x,y,id==='reika'?150:126,name);
     if(id==='reika')CampArt.questMarker('reika',npc,150);
     if(id==='zen'&&PrisonQuest.ninjaSealReady())CampArt.questMarker('zen',npc,145);
    }

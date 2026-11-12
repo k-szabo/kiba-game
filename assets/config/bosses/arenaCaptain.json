@@ -3,6 +3,7 @@
   "id": "arenaCaptain",
   "name": "arena.boss.captain",
   "group": "optional",
+  "classificationOrder": 24,
   "story": {
     "name": "arena.boss.captain",
     "w": 88,
@@ -17,6 +18,7 @@
     ]
   },
   "tower": {
+    "order": 1,
     "baseHealth": 32
   },
   "assets": [

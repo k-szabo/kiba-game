@@ -2,6 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const read=name=>fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8');
 const context=vm.createContext({});
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);
 for(const name of ['story-raid-rules','story-raid-maps','story-raid-combat'])vm.runInContext(read(name),context);
 const rules=vm.runInContext('StoryRaidRules',context);
 let flags=[[],[],[],[]];

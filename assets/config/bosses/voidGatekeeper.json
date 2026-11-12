@@ -3,12 +3,14 @@
   "id": "voidGatekeeper",
   "name": "descent.gatekeeper",
   "group": "main",
+  "classificationOrder": 32,
   "story": {
     "hp": 2200,
     "w": 110,
     "h": 190
   },
   "tower": {
+    "order": 32,
     "baseHealth": 48
   },
   "assets": [

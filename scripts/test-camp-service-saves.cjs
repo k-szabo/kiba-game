@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
-for(const name of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','haru-follower','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','third-clan-rules','third-clan-maps','story-raid-rules','story-raid-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+require('./test-save-world.cjs')(context);
 const read=expression=>JSON.parse(vm.runInContext('JSON.stringify('+expression+')',context));
 const count=read('levels.length'),copy=value=>structuredClone(value),fresh=style=>({ownedWeapons:[style],weaponRank:0,armorRank:0,herbs:0,potions:0});
 const quest=['campQuestAccepted','mayorExecuted','guardian:campMaster','smithRescued','herbalistRescued','enchanterRescued','herbalistQuestAccepted'];

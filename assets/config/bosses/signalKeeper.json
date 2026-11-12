@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "id": "signalKeeper",
+  "name": "storyRaid.boss.signalKeeper",
+  "group": "main",
+  "classificationOrder": 42,
+  "story": {
+    "w": 78,
+    "h": 115,
+    "speed": 0,
+    "range": 0,
+    "raidOrder": 2,
+    "raidKind": "reikaMarks",
+    "hp": 3,
+    "damage": 6,
+    "windup": 1,
+    "recovery": 1,
+    "moves": [
+      "mirage"
+    ]
+  },
+  "tower": {
+    "baseHealth": 38,
+    "order": 42
+  },
+  "assets": [
+    "storyRaidSignalKeeper"
+  ]
+}

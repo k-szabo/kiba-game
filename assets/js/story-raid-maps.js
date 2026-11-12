@@ -18,7 +18,7 @@ function createStoryRaidMaps({makeLevel,ledge,rest,zone},cave){
    const restId=id+'Rest'+(index+1);
    const arena={x,y:floorY,w:1480,triggerX:x+110,restId,encounter,
     spawn:{x:x+1000,y:floorY},checkpoint:{x:x-145,y:floorY}};
-   rest(map,restId,arena.checkpoint.x,arena.checkpoint.y,'storyRaid.boss.'+encounter.id);
+   rest(map,restId,arena.checkpoint.x,arena.checkpoint.y,encounter.name);
    if(encounter.kind==='reikaMarks')arena.decoys=[440,760,1080].map(offset=>({x:x+offset,y:floorY}));
    if(encounter.kind==='westheruShot'){
     arena.signals=[310,740,1170].map(offset=>({x:x+offset,y:floorY}));

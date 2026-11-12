@@ -1,12 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
-import {spawnSync} from 'node:child_process';
 import {synchronizeEntry,synchronizeReleaseMarker} from './release-id.mjs';
 
-const root=fileURLToPath(new URL('../',import.meta.url));
+import {projectRoot as root,withReleaseFixture} from './test-release-fixture.mjs';
 const locales=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/locales.json'),'utf8'));
 const release=JSON.parse(fs.readFileSync(path.join(root,'assets/config/release.json'),'utf8'));
 const current=release.version,older='0.9.40_deadbeef',future='0.9.99_12345678';
@@ -48,27 +45,15 @@ assert(synchronizeReleaseMarker(panel(section('0.9.1')),'0.9.1',labels.hu).inclu
 
 // Prove the actual build --check path detects a stale marker even when all
 // runtime/cache IDs are current. This fixture never edits the real checkout.
-const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-current-release-'));
-try{
- for(const dir of ['scripts','docs','data','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
- for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','docs/releases.json','assets/config/release.json','assets/config/keybindings.json','assets/config/leaderboard.json','assets/i18n/locales.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
- fs.cpSync(path.join(root,'assets/config/bosses'),path.join(fixture,'assets/config/bosses'),{recursive:true});
- fs.cpSync(path.join(root,'assets/config/npcs'),path.join(fixture,'assets/config/npcs'),{recursive:true});
- fs.copyFileSync(path.join(root,'data/boss-classification.json'),path.join(fixture,'data/boss-classification.json'));
- const build=fs.readFileSync(path.join(root,'scripts/build-game.mjs'),'utf8');
- const modules=JSON.parse(build.match(/const files=(\[[^\]]+\]);/)[1].replaceAll("'",'"'));
- for(const name of modules)fs.writeFileSync(path.join(fixture,'assets/js',name+'.js'),'// build fixture\n');
+withReleaseFixture('kiba-current-release-',(fixture,run)=>{
  const index=path.join(fixture,'index.html');fs.writeFileSync(index,stale);
- const run=(args=[],ok=true)=>{const result=spawnSync(process.execPath,[path.join(fixture,'scripts/build-game.mjs'),...args],{cwd:fixture,encoding:'utf8'});if(ok)assert.equal(result.status,0,result.stderr||result.stdout);else assert.notEqual(result.status,0);return result;};
- run();run(['--check']);const built=fs.readFileSync(index,'utf8');
+ const build=(args=[],success=true)=>run('build-game.mjs',args,success);
+ build();build(['--check']);const built=fs.readFileSync(index,'utf8');
  assert(markerSection(built)[0][0].includes(current));
  const misplaced=built.replace(/\s*<span class="release-current">[^<]*<\/span>/,'').replace('<h3>'+older+'</h3>','<h3>'+older+' '+badge+'</h3>');
- fs.writeFileSync(index,misplaced);const staleCheck=run(['--check'],false);assert.match(staleCheck.stderr,/index\.html.*out of date/);
+ fs.writeFileSync(index,misplaced);const staleCheck=build(['--check'],false);assert.match(staleCheck.stderr,/index\.html.*out of date/);
  assert.equal(fs.readFileSync(index,'utf8'),misplaced,'Check mode must not repair silently');
- run();run(['--check']);assert.equal(fs.readFileSync(index,'utf8'),built);
- fs.writeFileSync(index,panel(section(older)));const missing=run(['--check'],false);assert.match(missing.stderr,/exactly one changelog section/);
-}finally{
- const resolved=path.resolve(fixture);assert.equal(path.dirname(resolved),path.resolve(os.tmpdir()));assert(path.basename(resolved).startsWith('kiba-current-release-'));
- fs.rmSync(resolved,{recursive:true,force:true});
-}
+ build();build(['--check']);assert.equal(fs.readFileSync(index,'utf8'),built);
+ fs.writeFileSync(index,panel(section(older)));const missing=build(['--check'],false);assert.match(missing.stderr,/exactly one changelog section/);
+});
 console.log('PASS: exact full-version current-release markers, HU/EN labels, duplicate cleanup, future builds, prefix isolation, immutable history, idempotence and actual build --check rejection of stale or missing release sections.');

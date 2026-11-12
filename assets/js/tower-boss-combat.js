@@ -11,7 +11,14 @@ const TowerBossCombat=(()=>{
   const type=id(spec),arena=spec.arena||level.arena,entry=TowerRules.bossCatalog.find(p=>p.id===type);
   if(!entry)throw new TypeError('Unknown tower boss: '+type);
   const input={...spec,arena,replay:true,noReward:true};let e;
-  if(TowerSpecialBosses.is(input))e=TowerSpecialBosses.create(input);
+  const raidKind=BossCatalog.story(type).raidKind;
+  if(raidKind){
+   const raidArena={...arena,encounter:{id:type,kind:raidKind},spawn:{x:spec.x,y:spec.y}};
+   if(raidKind==='reikaMarks')raidArena.decoys=[0,-115,115].map(offset=>({x:spec.x+offset,y:spec.y}));
+   const loadout=raidKind==='mimic'?StoryRaid.loadout():null;
+   e={...input,...StoryRaidCombat.start(raidArena,loadout,spec.maxHp),id:spec.id};
+   if(e.keeper)e.keeper=StoryRaidRules.markSignalKeeper(e.keeper,0);
+  }else if(TowerSpecialBosses.is(input))e=TowerSpecialBosses.create(input);
   else if(WatchtowerBalloonCombat.is(input))e=WatchtowerBalloonCombat.create(input);
   else if(serpentTypes[type])e=Serpents.create({...input,serpentType:serpentTypes[type]});
   else if(legacy.has(type)){
@@ -35,7 +42,10 @@ const TowerBossCombat=(()=>{
   if(!is(e)||e.dead||state!=='play'||!Number.isFinite(dt)||dt<=0)return;
   const bodies=new Set(enemies),shots=new Set(projectiles);
   scope(e,()=>{
-   if(TowerSpecialBosses.is(e))TowerSpecialBosses.update(e,dt*(e.towerSpeed||1));
+   if(e.raidBossId){
+    const cast=StoryRaidCombat.tick(e,dt*(e.towerSpeed||1),player);
+    if(cast&&overlap(player,cast))damage(cast.damage,e.face,!cast.spell,false,cast.spell?'spell':null);
+   }else if(TowerSpecialBosses.is(e))TowerSpecialBosses.update(e,dt*(e.towerSpeed||1));
    else if(WatchtowerBalloonCombat.is(e))WatchtowerBalloonCombat.update(e,dt*(e.towerSpeed||1));
    else if(id(e)==='organist'||id(e)==='jailer')ShadowRealm.updateMini(e,dt*(e.towerSpeed||1));
    else updateMiniboss(e,dt*(e.towerSpeed||1));
@@ -61,13 +71,23 @@ const TowerBossCombat=(()=>{
   if(!is(e)||e.dead)return false;
   if(TowerSpecialBosses.is(e))TowerSpecialBosses.defeat(e);
   else if(WatchtowerBalloonCombat.is(e))WatchtowerBalloonCombat.defeat(e);
-  else if(!legacy.has(id(e)))defeatMiniboss(e);
+  else if(!e.raidBossId&&!legacy.has(id(e)))defeatMiniboss(e);
   e.hp=0;e.dead=true;e.active=false;e.hazards=[];e.attackBoxes=[];e.echoes=[];e.spirits=[];
   for(const body of enemies)if(body.towerSummonOwner===e.id){body.dead=true;body.hp=0;}
   projectiles=projectiles.filter(p=>p.towerOwner!==e.id&&p.source!=='mini:'+e.id);return true;
  }
  function hit(e,box,amount,kind='normal'){
   if(!is(e)||e.dead||!e.active||e.inv>0)return false;
+  if(e.raidBossId){
+   const target=StoryRaidCombat.hitTarget(e);
+   if(!target||!overlap(box,target)||e.kind==='westheruShot'&&e.cast)return false;
+   const before=e.hp;
+   if(!StoryRaidCombat.damage(e,amount,{reduce:(hit,mirror)=>StoryRaid.reduceMimicDamage(e,hit,mirror)}))return false;
+   DevDamage.record('outgoing',e,before,e.hp);
+   if(e.hp<=0)defeat(e);
+   return true;
+  }
+  if(!overlap(box,e))return false;
   if(TowerSpecialBosses.is(e)){
    const result=TowerSpecialBosses.hit(e,amount,kind,box);if(!result?.handled||!result.connected&&result.damage<=0)return false;
    const before=e.hp;e.hp=Math.max(0,e.hp-result.damage);e.inv=.22;DevDamage.record('outgoing',e,before,e.hp);

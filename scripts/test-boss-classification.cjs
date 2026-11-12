@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),assert=require('node:assert/strict');
-const entries=JSON.parse(fs.readFileSync('data/boss-classification.json','utf8'));
+const entries=Object.values(require('./test-only-bootstrap.cjs').bossData).sort((a,b)=>a.classificationOrder-b.classificationOrder);
 const locales=JSON.parse(fs.readFileSync('assets/i18n/locales.json'));
 assert(entries.length>=30,'Catalog includes main and optional bosses');
 assert.equal(new Set(entries.map(e=>e.id)).size,entries.length,'Encounter IDs are unique');

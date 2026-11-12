@@ -42,7 +42,6 @@ const StoryRaid=(()=>{
  const entered=()=>flags[0].includes(rules.started);
  const pending=()=>rules.encounters[rules.checkpoint(flags)];
  const currentArena=()=>active()&&level.arenas.find(arena=>arena.encounter===pending());
- const name=encounter=>'storyRaid.boss.'+encounter.id;
  const reset=()=>{foe=null;rescueClock=null;};
  function record(id,beforeSave){
   const result=rules.advance(flags,id);
@@ -123,7 +122,7 @@ const StoryRaid=(()=>{
    abilities:{jump:abilities[0],dash:abilities[1],grapple:Grapple.owned(),dawnblade:Dawnblade.owned()}
   });
  }
- function reduceMimicDamage(amount,mirror){
+ function reduceMimicDamage(foe,amount,mirror){
   const direction=Math.sign(foe.x+foe.w/2-player.x-player.w/2);
   const guard=WeaponStyles.guard(mirror.weapon,amount,{face:foe.face,direction,grounded:true,
    attacking:!!foe.cast||foe.strikeTime>0,dashing:false,cooldown:foe.guardCooldown});
@@ -140,10 +139,10 @@ const StoryRaid=(()=>{
  function resolveHit(box,amount){
   if(!locked()||cinematic())return false;
   const identity=foe.keeper?.marked;
-  const target=foe.keeper?(identity==null?null:{x:foe.arena.decoys[identity].x-36,y:foe.y,w:72,h:foe.h}):foe;
+  const target=combat.hitTarget(foe);
   if(!target||!overlap(box,target))return false;
   const before=foe.hp;
-  if(combat.damage(foe,amount,{identity,reduce:reduceMimicDamage})){
+  if(combat.damage(foe,amount,{identity,reduce:(hit,mirror)=>reduceMimicDamage(foe,hit,mirror)})){
    DevDamage.record('outgoing',foe,before,foe.hp);
    burst(target.x+target.w/2,target.y+25,'#d4a8eb',12);
    if(foe.dead){
@@ -153,13 +152,6 @@ const StoryRaid=(()=>{
    }else updateHUD();
   }
   return true;
- }
- function telegraph(spec,target){
-  const center=foe.x+foe.w/2,feet=foe.y+foe.h,px=target.x+target.w/2;
-  if(spec.move==='fissure'||spec.move==='mirage')return {...spec,x:px-96,y:feet-145,w:192,h:145,spell:true};
-  const w=foe.mimic?WeaponStyles.hitbox(foe.mimic.loadout.weapon,foe,foe.face).w:foe.profile.range;
-  const reach=spec.move==='step'?Math.max(300,w):w;
-  return {...spec,x:foe.face>0?center:center-reach,y:feet-foe.h-12,w:reach,h:foe.h+12,spell:spec.move==='fan'};
  }
  function update(dt){
   if(!active()||state!=='play')return;
@@ -184,15 +176,8 @@ const StoryRaid=(()=>{
    foe=combat.start(arena,arena.encounter.kind==='mimic'?loadout():null);
    setCheckpoint(arena.restId);persist();updateHUD();
   }
-  const encounter=foe,arena=foe.arena;
+  const arena=foe.arena;
   player.x=clamp(player.x,arena.x+8,arena.x+arena.w-player.w-8);
-  foe.hitFlash=Math.max(0,foe.hitFlash-dt);foe.clock-=dt;foe.animTime+=dt;
-  foe.guardCooldown=Math.max(0,foe.guardCooldown-dt);
-  if(foe.shieldRecharge>0){
-   foe.shieldRecharge=Math.max(0,foe.shieldRecharge-dt);
-   if(!foe.shieldRecharge)foe.shieldRemaining=foe.mimic.loadout.gear.shield;
-  }
-  foe.strikeTime=Math.max(0,(foe.strikeTime||0)-dt);
   if(foe.shipTimer!=null){
    foe.shipTimer-=dt;
    if(foe.shipTimer<=0){
@@ -200,23 +185,8 @@ const StoryRaid=(()=>{
     burst(foe.x+foe.w/2,foe.y+55,'#ecc27e',32);tone(130,.2,'triangle',.04);
    }
   }
-  if(foe.cast){
-   if(foe.clock>0)return;
-   const cast=foe.cast;foe.cast=null;foe.clock=cast.recovery;
-   foe.strikeTime=.22;foe.lastMove=cast.move;
-   if(overlap(player,cast))damage(cast.damage,foe.face,!cast.spell,false,cast.spell?'spell':null);
-   return;
-  }
-  if(encounter!==foe)return;
-  const delta=player.x+player.w/2-foe.x-foe.w/2;
-  foe.face=Math.sign(delta)||foe.face;
-  const speed=foe.mimic?285:foe.profile.speed,range=foe.mimic?100:Math.max(90,foe.profile.range-25);
-  foe.walkSpeed=Math.abs(delta)>range?foe.face*speed:0;
-  foe.x=clamp(foe.x+foe.walkSpeed*dt,arena.x+22,arena.x+arena.w-foe.w-22);
-  if(foe.clock>0)return;
-  if(foe.keeper&&foe.keeper.marked===null)foe.keeper=rules.markSignalKeeper(foe.keeper,(foe.keeper.interrupts*2+1)%3);
-  foe.cast=telegraph(combat.chooseMove(foe,player),player);
-  foe.clock=foe.cast.windup;foe.walkSpeed=0;
+  const cast=combat.tick(foe,dt,player);
+  if(cast&&overlap(player,cast))damage(cast.damage,foe.face,!cast.spell,false,cast.spell?'spell':null);
  }
  function objective({remote=false}={}){
   if(active()&&DevSession.active&&!rules.available(flags))return {point:level.exitPoint,compass:false,text:'storyRaid.objective.guardian'};
@@ -226,7 +196,7 @@ const StoryRaid=(()=>{
    return remote?{remote:true,compass:false,name:'storyRaid.name',text:'storyRaid.objective.enter'}:null;
   }
   const arena=currentArena();
-  if(arena)return {point:arena.spawn,name:name(arena.encounter),
+  if(arena)return {point:arena.spawn,name:arena.encounter.name,
    text:locked()&&foe.keeper?.marked!=null?'storyRaid.objective.mark':'storyRaid.objective.guardian'};
   if(level.haru&&!rules.recoilFree(flags))return {point:level.haru,name:'Haru',text:'storyRaid.objective.haru'};
   return {point:level.exitPoint,name:level.nextLocation?SIDE_LOCATIONS[level.nextLocation].map.name:realms[2].name,
@@ -238,7 +208,7 @@ const StoryRaid=(()=>{
   $('bossHud').hidden=!showBoss;
   if(showBoss){
    const extra=foe.siege?' · '+I18n.format('storyRaid.beacons',[foe.arena.signals.filter((_,i)=>foe.siege.signals&(1<<i)).length]):'';
-   $('bossName').textContent=I18n.t(name(foe.arena.encounter))+extra;
+   $('bossName').textContent=I18n.t(foe.arena.encounter.name)+extra;
    $('bossHealth').style.width=100*foe.hp/foe.maxHp+'%';
   }
   return true;
@@ -248,7 +218,7 @@ const StoryRaid=(()=>{
   if(locked()&&!cinematic()){
    const arena=foe.arena;
    if(foe.cast)BossCues.box(foe.cast,BossCues.color);
-   drawEncounter();
+   drawEncounter(foe);
    if(foe.keeper){
     const x=arena.x+38;
     FiaVoidArt.stamp(ART_WATCHTOWER.sentinel,0,x,arena.y,120,1);
@@ -291,9 +261,9 @@ const StoryRaid=(()=>{
    if(!frame)HannahArt.nameplate(x,level.haru.y,110,'Haru');
   }
  }
- function drawEncounter(){
+ function drawEncounter(foe){
   const x=foe.x+foe.w/2,feet=foe.y+foe.h;
-  const frame=foe.cast?(foe.id==='kibaBinder'?0:3):foe.strikeTime>0?4:foe.hitFlash>0?5:
+  const frame=foe.cast?(foe.raidBossId==='kibaBinder'?0:3):foe.strikeTime>0?4:foe.hitFlash>0?5:
    foe.walkSpeed&&!reducedMotion.matches?1+Math.floor(foe.animTime*7)%2:0;
   if(foe.mimic?.phase===1){
    const style=foe.mimic.loadout.weapon,move=foe.cast?.move??(foe.strikeTime>0?foe.lastMove:null);
@@ -309,7 +279,7 @@ const StoryRaid=(()=>{
    }
    ctx.restore();return;
   }
-  const art=actorArt[foe.id];
+  const art=actorArt[foe.raidBossId];
   if(!art)return;
   if(foe.keeper){
    for(const [index,point] of foe.arena.decoys.entries()){
@@ -317,8 +287,8 @@ const StoryRaid=(()=>{
     FiaVoidArt.stamp(art,frame,point.x,point.y,foe.h,foe.face);ctx.restore();
    }
   }else{
-   if(foe.mimic)drawMimicWeapon(x,feet,frame);
-   if(foe.mimic)drawDistortedMimic(art,frame,x,feet);
+   if(foe.mimic)drawMimicWeapon(foe,x,feet,frame);
+   if(foe.mimic)drawDistortedMimic(foe,art,frame,x,feet);
    else FiaVoidArt.stamp(art,frame,x,feet,foe.h,foe.face);
    if(foe.mimic?.loadout.weapon==='swordShield'){
     ctx.save();ctx.filter='brightness(.75) hue-rotate(235deg)';
@@ -326,7 +296,7 @@ const StoryRaid=(()=>{
    }
   }
  }
- function drawDistortedMimic(art,frame,x,feet){
+ function drawDistortedMimic(foe,art,frame,x,feet){
   const pulse=foe.animTime%1.4;
   if(reducedMotion.matches||pulse>=.16){FiaVoidArt.stamp(art,frame,x,feet,132,foe.face);return;}
   const y=feet-105+Math.floor(pulse*25)*15;
@@ -335,7 +305,7 @@ const StoryRaid=(()=>{
    FiaVoidArt.stamp(art,frame,x+offset*foe.face,feet,132,foe.face);ctx.restore();
   }
  }
- function drawMimicWeapon(x,feet,frame){
+ function drawMimicWeapon(foe,x,feet,frame){
   const style=foe.mimic.loadout.weapon,prop=mimicWeapons[style],image=Visuals.images[prop.image];
   if(!image?.complete||!image.naturalWidth)return;
   const pose=actorArt.secondDemonLord.frames[frame],[gx,gy,angle]=mimicGrips[frame];
@@ -348,6 +318,6 @@ const StoryRaid=(()=>{
   const image=background();
   return !!image&&BackgroundFraming.cover(image,{ground:image.naturalHeight*.74,floor:level.start.y-cameraY,scaleFloor:0});
  }
- return Object.freeze({active,locked,cinematic,reset,context,interact,resolveHit,update,objective,hud,drawCues,backdrop,
+ return Object.freeze({active,locked,cinematic,reset,context,interact,resolveHit,update,objective,hud,drawCues,backdrop,drawEncounter,loadout,reduceMimicDamage,
   paintedFloor:()=>background()?.naturalWidth>0,get foe(){return foe;}});
 })();

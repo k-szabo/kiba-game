@@ -3,6 +3,7 @@
   "id": "woundedAngel",
   "name": "cultDungeon.boss.angel",
   "group": "optional",
+  "classificationOrder": 22,
   "story": {
     "name": "cultDungeon.boss.angel",
     "dungeon": "sectFall",
@@ -21,6 +22,7 @@
     ]
   },
   "tower": {
+    "order": 5,
     "baseHealth": 38
   },
   "assets": [

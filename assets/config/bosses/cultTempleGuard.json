@@ -3,6 +3,7 @@
   "id": "cultTempleGuard",
   "name": "cultDungeon.boss.guard",
   "group": "optional",
+  "classificationOrder": 21,
   "story": {
     "name": "cultDungeon.boss.guard",
     "dungeon": "sectFall",
@@ -21,6 +22,7 @@
     ]
   },
   "tower": {
+    "order": 3,
     "baseHealth": 40
   },
   "assets": [

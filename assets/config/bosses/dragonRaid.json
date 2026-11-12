@@ -3,6 +3,7 @@
   "id": "dragonRaid",
   "name": "fia.dragon.boss",
   "group": "optional",
+  "classificationOrder": 28,
   "story": {
     "hp": 1200,
     "w": 540,
@@ -24,6 +25,7 @@
     }
   },
   "tower": {
+    "order": 28,
     "baseHealth": 60,
     "name": "fia.dragon.boss",
     "w": 540,

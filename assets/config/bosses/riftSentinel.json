@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "riftSentinel",
+  "name": "storyRaid.boss.riftSentinel",
+  "group": "main",
+  "classificationOrder": 47,
+  "story": {
+    "w": 128,
+    "h": 103,
+    "speed": 235,
+    "range": 190,
+    "raidOrder": 7,
+    "raidKind": "duel",
+    "hp": 380,
+    "damage": 8,
+    "windup": 0.79,
+    "recovery": 0.68,
+    "moves": [
+      "step",
+      "fan"
+    ]
+  },
+  "tower": {
+    "baseHealth": 46,
+    "order": 47
+  },
+  "assets": [
+    "storyRaidRiftSentinel"
+  ]
+}

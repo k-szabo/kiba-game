@@ -21,7 +21,7 @@ function context(){
  for(const file of ['tower-rules','watchtower-balloon-combat','tower-boss-combat'])vm.runInContext(fs.readFileSync(path.join(root,'assets/js/'+file+'.js'),'utf8'),c);
  return {run:s=>vm.runInContext(s,c)};
 }
-const classification=JSON.parse(fs.readFileSync(path.join(root,'data/boss-classification.json'),'utf8'));
+const classification=Object.values(require('./test-only-bootstrap.cjs').bossData).sort((a,b)=>a.classificationOrder-b.classificationOrder);
 for(const type of types){
  const h=context(),r=h.run,entry=r(`TowerRules.bossCatalog.find(p=>p.id==='${type}')`);
  assert(entry&&classification.some(c=>c.id===type&&c.name===entry.name));

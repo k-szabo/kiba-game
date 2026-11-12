@@ -4,8 +4,8 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {webcrypto}=require('node:crypto');
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/save-vault.js'),'utf8');
-const levelSource=fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8')+'\n'+(fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/third-clan-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/third-clan-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/story-raid-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/story-raid-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8'));
-const levelContext=vm.createContext({I18n:{t:key=>key}});vm.runInContext(levelSource,levelContext);
+const loadSaveWorld=require('./test-save-world.cjs');
+const levelContext=vm.createContext({I18n:{t:key=>key}});loadSaveWorld(levelContext);
 const realmCount=vm.runInContext('levels.length',levelContext);
 const rules=vm.runInContext('PROGRESSION_RULES',levelContext);
 const worldArrays=(first=[])=>Array.from({length:realmCount},(_,index)=>first[index]?[...first[index]]:[]);
@@ -54,8 +54,7 @@ function storageEnvironment(){
 
 function client(env,release=current,{locks=true,crypto=webcrypto,history={},policy='reset-on-version-change',compatibility}={}){
  const context={TextEncoder,TextDecoder,Uint8Array,BigInt,location:{origin:'http://localhost',pathname:'/kiba-game/'},btoa,atob,crypto,indexedDB:env.indexedDB,localStorage:env.localStorage,navigator:locks?{locks:env.locks}:{},I18n:{t:key=>key},GAME_RELEASE:{version:release,savePolicy:policy,...(compatibility?{saveCompatibility:compatibility}:{}),bugfixHistory:history}};
- vm.createContext(context);vm.runInContext(levelSource,context);
- vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/camp-services.js'),'utf8'),context);
+ vm.createContext(context);loadSaveWorld(context);
  vm.runInContext(source+'\nglobalThis.vault=SaveVault;',context);
  return context;
 }

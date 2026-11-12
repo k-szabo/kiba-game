@@ -3,6 +3,7 @@
   "id": "cultHighPriestess",
   "name": "cultDungeon.boss.priestess",
   "group": "optional",
+  "classificationOrder": 23,
   "story": {
     "name": "cultDungeon.boss.priestess",
     "dungeon": "sectFall",
@@ -22,6 +23,7 @@
     ]
   },
   "tower": {
+    "order": 26,
     "baseHealth": 46
   },
   "assets": [

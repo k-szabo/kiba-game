@@ -4,6 +4,7 @@ const locale=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/i18n/loca
 const bindings=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/keybindings.json'),'utf8'));
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8'));
 const bossData=Object.fromEntries(fs.readdirSync(path.join(__dirname,'../assets/config/bosses')).filter(x=>x.endsWith('.json')).sort().map(x=>{const record=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/bosses',x),'utf8'));return [record.id,record];}));
+exports.bossData=bossData;
 exports.bossCatalog='const BOSS_DATA='+JSON.stringify(bossData)+';\n'+fs.readFileSync(path.join(__dirname,'../assets/js/boss-catalog.js'),'utf8');
 exports.before=`
 ${exports.bossCatalog}

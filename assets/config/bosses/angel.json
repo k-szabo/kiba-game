@@ -3,12 +3,14 @@
   "id": "angel",
   "name": "text.the.mad.elder.angel",
   "group": "optional",
+  "classificationOrder": 2,
   "story": {
     "hp": 36,
     "w": 68,
     "h": 94
   },
   "tower": {
+    "order": 9,
     "baseHealth": 36
   },
   "assets": [

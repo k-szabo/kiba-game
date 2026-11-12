@@ -3,12 +3,14 @@
   "id": "main-2",
   "name": "text.the.corrupted.seraph",
   "group": "main",
+  "classificationOrder": 11,
   "story": {
     "hp": 140,
     "w": 96,
     "h": 115
   },
   "tower": {
+    "order": 16,
     "baseHealth": 44,
     "name": "text.the.corrupted.seraph",
     "w": 100,
