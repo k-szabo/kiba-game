@@ -3,11 +3,8 @@
 const PrisonArt=(()=>{
  const art=()=>typeof ART_PRISON==='undefined'?null:ART_PRISON;
  function stamp(definition,index,x,feet,height,face=1){
-  const rect=definition?.frames?.[index],image=Visuals.images[definition?.image];
-  if(!rect||!image?.complete||!image.naturalWidth)return;
-  const s=height/rect.bodyHeight;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
-  ctx.translate(x,feet);ctx.scale(face*(definition.facing||1),1);
-  ctx.drawImage(image,rect.x,rect.y,rect.w,rect.h,(rect.x-rect.anchorX)*s,(rect.y-rect.anchorY)*s,rect.w*s,rect.h*s);ctx.restore();
+  const frame=definition?.frames?.[index];
+  stampSprite(frame,definition?.image,x,feet,height,face*(definition?.facing||1));
  }
  function portrait(definition){
   const frame=definition?.frames?.[0];if(!frame)return null;

@@ -4,14 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const validate=require('./test-save-validation.cjs');
 const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dungeon-rules.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-journey-rules.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-ritual-rules.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/dragon-raid.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/fia-void-maps.js'),'utf8'),context);
-vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-descent-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/ziggurat-maps.js'),'utf8'),context);
-vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);
-vm.runInContext((fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/floating-islands-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/watchtower-balloon-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/third-clan-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/third-clan-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/story-raid-rules.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/story-raid-maps.js'),'utf8')+'\n'+fs.readFileSync(path.join(__dirname,'../assets/js/levels.js'),'utf8')),context);
+require('./test-save-world.cjs')(context);
 const rewards=JSON.parse(vm.runInContext('JSON.stringify(BOSS_REWARDS)',context));
 const realmCount=vm.runInContext('levels.length',context),allRewards=(1<<rewards.length)-1;
 const start=JSON.parse(vm.runInContext('JSON.stringify(levels[2].rests[0])',context));

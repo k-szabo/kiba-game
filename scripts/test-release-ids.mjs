@@ -1,12 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
-import {spawnSync} from 'node:child_process';
 import {makeBugfix,makeRelease,prepareBugfix,prepareRelease,validateRegistry,validateRelease,synchronizeEntry,bugfixHistory} from './release-id.mjs';
 
-const root=fileURLToPath(new URL('../',import.meta.url));
+import {withReleaseFixture} from './test-release-fixture.mjs';
 const release={version:'0.9.10',savePolicy:'reset-on-version-change'},empty={schemaVersion:1,bugfixes:[],releases:[]};
 const metadata={baseVersion:'0.9.10',slug:'inventory-icon-contrast',summary:{hu:'Olvashatóbb tárgyikonok',en:'Readable item icons'},fixes:[{hu:'A sötét ikonok kontrasztja javult.',en:'Improved dark item icon contrast.'}]};
 const entry=makeBugfix(metadata);
@@ -52,22 +49,10 @@ assert.ok(!next.includes('_deadbeef'));
 
 // Exercise the actual CLI/build against an isolated miniature project. Never
 // rewrite this checkout's release, index, registry or generated runtime.
-const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-release-ids-'));
-try{
-  for(const dir of ['scripts','docs','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
-  for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json','assets/config/leaderboard.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
- fs.cpSync(path.join(root,'assets/config/bosses'),path.join(fixture,'assets/config/bosses'),{recursive:true});
- fs.cpSync(path.join(root,'assets/config/npcs'),path.join(fixture,'assets/config/npcs'),{recursive:true});
+withReleaseFixture('kiba-release-ids-',(fixture,run)=>{
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);
-  for(const module of ['boss-catalog','npc-catalog','i18n','keybindings','dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-ritual','fia-ritual-art','foxfire','fia-void-maps','fia-void-journey','void-encounter-rules','void-encounter','fia-void-art','dragon-raid','dragon-raid-art','dragon-raid-rules','sky-dragon-raid-rules','sky-dragon-raid-maps','third-clan-rules','third-clan-maps','story-raid-rules','story-raid-maps','haru-follower','grapple-rules','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','levels','camp-services','serpent-relics','camp-health','art-data','shadow-ninja-art-data','watchtower-art-data','ziggurat-descent-art-data','hannah-art-data','asset-cache','background-motion','background-framing','boss-vfx','save-vault','graphics','armor','weapons','duel-appearance','duel-rules','peer-session','weapon-equipment','weapon-selection','progression','serpents','shadow-ninjas','combat','camp-master','ziggurat-gatekeeper','prison-warden','prison-hunter','prison-quest','kitsune-quest','prison-art','kitsune-art','arena-combat','arena-challenge','arena-art','fia-quest','fia-conflict','fia-combat','fia-art','hannah-rules','hannah-combat','hannah-encounter','dawnblade','grapple','floating-islands','watchtower-balloon-combat','watchtower-balloon','watchtower-balloon-art','islands-art','ziggurat-descent','ziggurat-descent-art','hannah-art','ninja-dungeon-encounters','dungeon-combat','dungeon-run','sky-dragon-raid','third-clan','third-clan-art','story-raid-combat','story-raid','dungeon-art','doom-slayer','slayer-art','serpent-art','shadow-realm','shadow-animation','prologue','inventory','merchant','compass','slayer-dialog','bug-report','dev-session','dev-tools','dev-cache','dev-boss','dev-teleport','dev-level','dev-items','dev-abilities','dev-weapons','dev-immortality','combat-display','dev-damage','dev-log','dev-boss-health','camp-quest','camp-workshop','camp-herbs','camp-art','cursor','fullscreen','duel-mode','travel-atlas','tower-rewards','tower-rules','tower-special-bosses','tower-boss-combat','tower-boss-art','tower-store','tower-leaderboard-api','tower-mode','tower-leaderboard','menu-music','asset-loading','save-manager','game'])fs.writeFileSync(path.join(fixture,`assets/js/${module}.js`),`// ${module} fixture\n`);
-  const run=(script,args=[],ok=true)=>{
-    const result=spawnSync(process.execPath,[path.join(fixture,'scripts',script),...args],{cwd:fixture,encoding:'utf8'});
-    if(ok)assert.equal(result.status,0,result.stderr||result.stdout);
-    else assert.notEqual(result.status,0,result.stdout);
-    return result;
-  };
   run('build-game.mjs');run('build-game.mjs',['--check']);
   const dry=run('release.mjs',['bugfix','--metadata','metadata.json']);assert.match(dry.stdout,/DRY RUN/);
   assert.deepEqual(JSON.parse(fs.readFileSync(path.join(fixture,'assets/config/release.json'))),release);
@@ -120,9 +105,5 @@ try{
   assert.throws(()=>validateRelease({...readRelease(),saveCompatibility:'99.0.0'},registeredPolicy),/compatibility/);
   assert.throws(()=>validateRelease({...readRelease(),saveCompatibility:'0.9.13_ffffffff'},registeredPolicy),/compatibility/);
   write('docs/releases.json',empty);run('build-game.mjs',[],false);
-}finally{
-  const resolved=path.resolve(fixture),temp=path.resolve(os.tmpdir());
-  assert.equal(path.dirname(resolved),temp);assert.ok(path.basename(resolved).startsWith('kiba-release-ids-'));
-  fs.rmSync(resolved,{recursive:true,force:true});
-}
+});
 console.log('PASS: deterministic 8-character IDs for bugfix and feature releases, true hash collisions, registry integrity, dry-run/write/lookup CLI, versioned builds, and idempotent cache markers.');

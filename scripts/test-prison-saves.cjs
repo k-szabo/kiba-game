@@ -3,8 +3,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const validate=require('./test-save-validation.cjs'),release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/release.json'),'utf8')).version;
 const context=vm.createContext({I18n:{t:key=>key}});
-vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);
-for(const name of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','haru-follower','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','third-clan-rules','third-clan-maps','story-raid-rules','story-raid-maps','levels','camp-services'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+require('./test-save-world.cjs')(context);
 const read=expression=>JSON.parse(vm.runInContext('JSON.stringify('+expression+')',context)),copy=value=>structuredClone(value),count=read('levels.length');
 function fixture(stage='open',restIndex=0){
  const progress=['guardian:cultJailer','prisonOpen'];if(stage==='warden'||stage==='rescued')progress.push('guardian:prisonWarden');if(stage==='rescued')progress.push('zenRescued');

@@ -3,14 +3,9 @@
 const ArenaArt=(()=>{
  const art=()=>ART_ARENA;
  function stamp(definition,index,x,feet,height,face=1){
-  const frame=definition?.frames?.[index]||definition?.frames?.[0],image=Visuals.images[frame?.image||definition?.image];
-  if(!frame||!image?.complete||!image.naturalWidth)return;
-  const scale=height/frame.bodyHeight;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.translate(x,feet);ctx.scale(face*(definition.facing||1),1);
-  if(frame.outlines){
-   if(definition.intersectOutlines){for(const outline of frame.outlines){ctx.beginPath();outline.forEach(([px,py],i)=>ctx[i?'lineTo':'moveTo']((px-frame.anchorX)*scale,(py-frame.anchorY)*scale));ctx.closePath();ctx.clip();}}
-   else{ctx.beginPath();for(const outline of frame.outlines){outline.forEach(([px,py],i)=>ctx[i?'lineTo':'moveTo']((px-frame.anchorX)*scale,(py-frame.anchorY)*scale));ctx.closePath();}ctx.clip();}
-  }
-  ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,(frame.x-frame.anchorX)*scale,(frame.y-frame.anchorY)*scale,frame.w*scale,frame.h*scale);ctx.restore();
+  const frame=definition?.frames?.[index]||definition?.frames?.[0];
+  stampSprite(frame,frame?.image||definition?.image,x,feet,height,face*(definition?.facing||1),
+   {outlines:frame?.outlines,intersect:definition?.intersectOutlines});
  }
  function actors(){const definition=art().fia,frame=definition.frames[0],b=frame.visibleBounds;return {fiaCombat:{name:'fia.name',image:definition.image,rect:{...frame,x:b[0],y:b[1],w:b[2]-b[0],h:b[3]-b[1]}}};}
  const masks=new Map();

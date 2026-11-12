@@ -2,8 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const validate=require('./test-save-validation.cjs'),fixtures=require('./test-save-release.cjs');
 const definitions=vm.createContext({I18n:{t:key=>key}});
-vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,definitions);
-for(const name of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','third-clan-rules','third-clan-maps','story-raid-rules','story-raid-maps','levels'])vm.runInContext(fs.readFileSync('assets/js/'+name+'.js','utf8'),definitions);
+require('./test-save-world.cjs')(definitions);
 const get=source=>JSON.parse(JSON.stringify(vm.runInContext(source,definitions))),copy=value=>JSON.parse(JSON.stringify(value));
 const base=fixtures.fixture();Object.assign(base,{realm:3,location:'zigguratSummit',prologueComplete:true,abilities:[false,false],defeated:[true,true,true,true],flags:[['forestBell','villageBell'],['soulUpper','soulLower'],['dawnSeal','shadowEntered'],['dawnblade','guardian:Hannah','hannahDefeated']],visitedRests:[['start'],['start'],['start'],['start','zigguratSummitEntrance']],checkpoint:get('zigguratSummit.rests[0]')});base.progression.points=1;
 assert.doesNotThrow(()=>validate(base),'Compatible pre-descent Hannah save remains valid');
