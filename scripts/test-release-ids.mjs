@@ -54,11 +54,10 @@ assert.ok(!next.includes('_deadbeef'));
 // rewrite this checkout's release, index, registry or generated runtime.
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'kiba-release-ids-'));
 try{
-  for(const dir of ['scripts','docs','data','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
+  for(const dir of ['scripts','docs','assets/config','assets/i18n','assets/js'])fs.mkdirSync(path.join(fixture,dir),{recursive:true});
   for(const file of ['scripts/build-game.mjs','scripts/release-id.mjs','scripts/release.mjs','assets/i18n/locales.json','assets/config/keybindings.json','assets/config/leaderboard.json'])fs.copyFileSync(path.join(root,file),path.join(fixture,file));
  fs.cpSync(path.join(root,'assets/config/bosses'),path.join(fixture,'assets/config/bosses'),{recursive:true});
  fs.cpSync(path.join(root,'assets/config/npcs'),path.join(fixture,'assets/config/npcs'),{recursive:true});
- fs.copyFileSync(path.join(root,'data/boss-classification.json'),path.join(fixture,'data/boss-classification.json'));
   const write=(file,value)=>fs.writeFileSync(path.join(fixture,file),JSON.stringify(value,null,2)+'\n');
   write('assets/config/release.json',release);write('docs/releases.json',empty);write('metadata.json',metadata);
   fs.writeFileSync(path.join(fixture,'index.html'),html);

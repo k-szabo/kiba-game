@@ -3,6 +3,7 @@
   "id": "voidLieutenant",
   "name": "fia.void.lieutenant",
   "group": "optional",
+  "classificationOrder": 29,
   "story": {
     "hp": 1000,
     "w": 80,
@@ -10,6 +11,7 @@
     "absorptionRatio": 0.7
   },
   "tower": {
+    "order": 29,
     "baseHealth": 44,
     "name": "fia.void.lieutenant",
     "w": 80,

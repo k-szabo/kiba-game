@@ -3,6 +3,7 @@
   "id": "voidDemon",
   "name": "fia.void.demon",
   "group": "optional",
+  "classificationOrder": 30,
   "story": {
     "hp": 2000,
     "w": 150,
@@ -11,6 +12,7 @@
     "lifeStealMultiplier": 20
   },
   "tower": {
+    "order": 30,
     "baseHealth": 52,
     "name": "fia.void.demon",
     "w": 150,

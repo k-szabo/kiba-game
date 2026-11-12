@@ -3,6 +3,7 @@
   "id": "dungeonNecromancer",
   "name": "dungeon.boss.necromancer",
   "group": "optional",
+  "classificationOrder": 8,
   "story": {
     "name": "dungeon.boss.necromancer",
     "floor": 1,
@@ -18,6 +19,7 @@
     ]
   },
   "tower": {
+    "order": 14,
     "baseHealth": 40
   },
   "assets": [

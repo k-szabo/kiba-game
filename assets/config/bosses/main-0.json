@@ -3,6 +3,7 @@
   "id": "main-0",
   "name": "text.the.forest.oathbreaker",
   "group": "main",
+  "classificationOrder": 1,
   "story": {
     "hp": 28,
     "w": 96,
@@ -17,6 +18,7 @@
     }
   },
   "tower": {
+    "order": 8,
     "baseHealth": 34,
     "name": "text.the.forest.oathbreaker",
     "w": 96,

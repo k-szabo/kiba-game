@@ -3,12 +3,14 @@
   "id": "jailer",
   "name": "shadow.boss.jailer",
   "group": "optional",
+  "classificationOrder": 18,
   "story": {
     "hp": 75,
     "w": 82,
     "h": 110
   },
   "tower": {
+    "order": 23,
     "baseHealth": 42
   },
   "assets": [

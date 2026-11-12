@@ -3,12 +3,14 @@
   "id": "organist",
   "name": "shadow.boss.organist",
   "group": "optional",
+  "classificationOrder": 17,
   "story": {
     "hp": 105,
     "w": 250,
     "h": 210
   },
   "tower": {
+    "order": 22,
     "baseHealth": 40
   },
   "assets": [

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "mistSentry",
+  "name": "storyRaid.boss.mistSentry",
+  "group": "main",
+  "classificationOrder": 41,
+  "story": {
+    "w": 78,
+    "h": 115,
+    "speed": 170,
+    "range": 170,
+    "raidOrder": 1,
+    "raidKind": "duel",
+    "hp": 185,
+    "damage": 5,
+    "windup": 0.75,
+    "recovery": 0.65,
+    "moves": [
+      "fan",
+      "step"
+    ]
+  },
+  "tower": {
+    "baseHealth": 36,
+    "order": 41
+  },
+  "assets": [
+    "storyRaidMistSentry"
+  ]
+}

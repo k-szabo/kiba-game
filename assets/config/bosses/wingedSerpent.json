@@ -3,6 +3,7 @@
   "id": "wingedSerpent",
   "name": "serpent.winged.name",
   "group": "optional",
+  "classificationOrder": 15,
   "story": {
     "realm": 2,
     "name": "serpent.winged.name",
@@ -43,6 +44,7 @@
     }
   },
   "tower": {
+    "order": 20,
     "baseHealth": 46
   },
   "assets": [

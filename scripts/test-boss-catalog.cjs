@@ -1,13 +1,13 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const root=path.join(__dirname,'..'),classified=JSON.parse(fs.readFileSync(path.join(root,'data/boss-classification.json'),'utf8'));
+const root=path.join(__dirname,'..'),classified=Object.values(require('./test-only-bootstrap.cjs').bossData).sort((a,b)=>a.classificationOrder-b.classificationOrder);
 const dir=path.join(root,'assets/config/bosses'),files=fs.readdirSync(dir).filter(f=>f.endsWith('.json'));
 assert.equal(files.length,classified.length);
 const h=require('./test-harness.cjs')(),r=h.run;
 for(const record of classified){
  const data=JSON.parse(fs.readFileSync(path.join(dir,record.id+'.json'),'utf8'));
  assert.equal(data.id,record.id);assert.equal(data.name,record.name);assert.equal(data.schema,1);
- assert(data.story.hp>0&&data.tower.baseHealth>0);
+ assert((data.story.hp>0||data.story.raidKind==='mimic')&&data.tower.baseHealth>0);
  assert.equal(r(`BossCatalog.get('${record.id}').name`),record.name);
  assert.equal(r(`TowerRules.bossCatalog.find(b=>b.id==='${record.id}').baseHealth`),data.tower.baseHealth);
  for(const key of data.assets)assert(r(`Object.hasOwn(ART_MANIFEST,${JSON.stringify(key)})`),'Missing asset '+key);

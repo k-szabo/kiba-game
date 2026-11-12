@@ -3,12 +3,14 @@
   "id": "main-1",
   "name": "text.guardian.of.the.silent.river",
   "group": "main",
+  "classificationOrder": 5,
   "story": {
     "hp": 48,
     "w": 96,
     "h": 115
   },
   "tower": {
+    "order": 12,
     "baseHealth": 40,
     "name": "text.guardian.of.the.silent.river",
     "w": 140,

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "id": "sanctuaryCustodian",
+  "name": "storyRaid.boss.sanctuaryCustodian",
+  "group": "main",
+  "classificationOrder": 48,
+  "story": {
+    "w": 110,
+    "h": 152,
+    "speed": 95,
+    "range": 245,
+    "raidOrder": 8,
+    "raidKind": "duel",
+    "hp": 510,
+    "damage": 10,
+    "windup": 1.1,
+    "recovery": 0.78,
+    "moves": [
+      "sweep",
+      "fissure",
+      "fan"
+    ]
+  },
+  "tower": {
+    "baseHealth": 52,
+    "order": 48
+  },
+  "assets": [
+    "storyRaidCustodian"
+  ]
+}

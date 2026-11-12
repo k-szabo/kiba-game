@@ -3,12 +3,14 @@
   "id": "campMaster",
   "name": "camp.rescue.boss",
   "group": "optional",
+  "classificationOrder": 4,
   "story": {
     "hp": 100,
     "w": 90,
     "h": 150
   },
   "tower": {
+    "order": 11,
     "baseHealth": 40
   },
   "assets": [

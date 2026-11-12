@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "id": "thirdClanLeader",
+  "name": "storyRaid.boss.thirdClanLeader",
+  "group": "main",
+  "classificationOrder": 43,
+  "story": {
+    "w": 110,
+    "h": 152,
+    "speed": 155,
+    "range": 215,
+    "raidOrder": 3,
+    "raidKind": "duel",
+    "hp": 425,
+    "damage": 7,
+    "windup": 0.86,
+    "recovery": 0.78,
+    "moves": [
+      "fan",
+      "fissure",
+      "step"
+    ],
+    "soul": "thirdClanLeaderSoul"
+  },
+  "tower": {
+    "baseHealth": 48,
+    "order": 43
+  },
+  "assets": [
+    "storyRaidClanLeader"
+  ]
+}

@@ -3,6 +3,7 @@
   "id": "arenaCyclops",
   "name": "arena.boss.guards",
   "group": "optional",
+  "classificationOrder": 26,
   "story": {
     "name": "arena.boss.guards",
     "w": 400,
@@ -16,6 +17,7 @@
     ]
   },
   "tower": {
+    "order": 7,
     "baseHealth": 44
   },
   "assets": [

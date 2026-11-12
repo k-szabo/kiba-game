@@ -593,13 +593,15 @@ const NINJA_CLAN_FLOORS=Object.freeze([
 const ninjaCamp=makeLevel('ninjaClanCamp',2500,1400,{x:240,y:1020});
 ninjaCamp.name='ninjaClan.camp';
 ninjaCamp.boss={x:-10000,y:1020};
+ninjaCamp.painting={x:640,width:1050,ground:.84};
+const campStation=fraction=>Math.round(ninjaCamp.painting.x+ninjaCamp.painting.width*fraction);
 ninjaCamp.npcs=[
- {id:'reika',name:'ninjaClan.sentinel',x:685,y:1020},
- {id:'ninjaHealer',service:'healer',name:'ninjaClan.healer',x:965,y:1020},
- {id:'ninjaSmith',service:'smith',name:'ninjaClan.smith',x:1245,y:1020},
- {id:'akash',name:'merchant.name',x:1530,y:1020},
- {id:'zen',name:'zen.name',x:1815,y:1020},
- {id:'westheru',name:'balloon.pilot',x:2140,y:1020}
+ {id:'reika',name:'ninjaClan.sentinel',x:campStation(.43),y:1020},
+ {id:'ninjaHealer',service:'healer',name:'ninjaClan.healer',x:campStation(.62),y:1020},
+ {id:'ninjaSmith',service:'smith',name:'ninjaClan.smith',x:campStation(.17),y:1020},
+ {id:'akash',name:'merchant.name',x:campStation(.29),y:1020},
+ {id:'zen',name:'zen.name',x:campStation(.73),y:1020},
+ {id:'westheru',name:'balloon.pilot',x:campStation(.86),y:1020}
 ];
 ledge(ninjaCamp,'ninjaCampGround',0,1020,2500,'ground',250);
 rest(ninjaCamp,'ninjaCampArrival',430,1020,'ninjaClan.camp');

@@ -3,12 +3,14 @@
   "id": "cultist",
   "name": "text.the.ancient.cult.s.elder",
   "group": "optional",
+  "classificationOrder": 3,
   "story": {
     "hp": 42,
     "w": 68,
     "h": 94
   },
   "tower": {
+    "order": 10,
     "baseHealth": 36
   },
   "assets": [

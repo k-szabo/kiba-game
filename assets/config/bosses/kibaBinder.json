@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "kibaBinder",
+  "name": "storyRaid.boss.kibaBinder",
+  "group": "main",
+  "classificationOrder": 45,
+  "story": {
+    "w": 78,
+    "h": 115,
+    "speed": 135,
+    "range": 205,
+    "raidOrder": 5,
+    "raidKind": "duel",
+    "hp": 310,
+    "damage": 7,
+    "windup": 0.9,
+    "recovery": 0.8,
+    "moves": [
+      "fissure",
+      "fan"
+    ]
+  },
+  "tower": {
+    "baseHealth": 42,
+    "order": 45
+  },
+  "assets": [
+    "storyRaidKibaBinder"
+  ]
+}

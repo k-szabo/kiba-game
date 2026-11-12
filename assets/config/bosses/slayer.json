@@ -3,12 +3,14 @@
   "id": "slayer",
   "name": "slayer.name",
   "group": "optional",
+  "classificationOrder": 10,
   "story": {
     "hp": 260,
     "w": 76,
     "h": 112
   },
   "tower": {
+    "order": 15,
     "baseHealth": 48
   },
   "assets": [

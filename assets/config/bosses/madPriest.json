@@ -3,12 +3,14 @@
   "id": "madPriest",
   "name": "shadow.boss.priest",
   "group": "main",
+  "classificationOrder": 16,
   "story": {
     "hp": 180,
     "w": 96,
     "h": 115
   },
   "tower": {
+    "order": 21,
     "baseHealth": 46,
     "name": "shadow.boss.priest",
     "w": 95,

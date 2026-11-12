@@ -278,7 +278,7 @@ const Visuals = (() => {
       const row=ART_FRAMES.terrain[p.secretArea==='cultCave'?1:p.secretArea==='angelRuin'?2:realm===3?1:realm];
       if(p.broken)continue;
       if (state !== 'menu' && (p.x + p.w < camera - 100 || p.x > camera + viewW + 100 || p.y + p.h < cameraY - 140 || p.y > cameraY + H + 100)) continue;
-      if((level.tower||level.dungeon||[shadowPrison,shadowDen,shadowArena,fiaChambers,fiaRitual,voidForbidden].includes(level))&&PrisonArt.terrain(p))continue;
+      if((level.tower||level.dungeon||level.id==='ninjaClanCamp'||[shadowPrison,shadowDen,shadowArena,fiaChambers,fiaRitual,voidForbidden].includes(level))&&PrisonArt.terrain(p))continue;
       if((level===samuraiCamp||level===shadowUnderworld)&&CampArt.terrain(p))continue;
       const height = p.kind === 'ground' ? Math.max(130, p.h) : realm === 2||p.secretArea==='angelRuin' ? 90 : 70;
       const lift = 0;

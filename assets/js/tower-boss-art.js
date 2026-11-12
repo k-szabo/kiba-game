@@ -7,6 +7,7 @@ const TowerBossArt=(()=>{
  const frames=(image,list)=>({image,frames:list,intersectOutlines:true});
  function actor(e){
   if(!TowerBossCombat.is(e))return false;const type=TowerBossCombat.id(e),p=pose(e);
+  if(e.raidBossId){StoryRaid.drawEncounter(e);return true;}
   // Reuse the story presentation, including its spell layers. Native combat
   // clocks remain owned by the tower; these views neither tick nor write state.
   if(WatchtowerBalloonCombat.is(e))return WatchtowerBalloonArt.actor(e);
@@ -44,6 +45,11 @@ const TowerBossArt=(()=>{
  }
  function effects(e){
   if(!TowerBossCombat.is(e)||e.dead)return;
+  if(e.raidBossId){
+   if(e.cast)BossCues.box(e.cast,BossCues.color);
+   if(e.keeper||e.kind==='westheruShot'&&e.cast)BossVFX.marker(e.x+e.w/2,e.y-25,52,BossCues.color);
+   return;
+  }
   const type=TowerBossCombat.id(e);
   if(WatchtowerBalloonCombat.is(e)){WatchtowerBalloonArt.effects(e);return;}
   if(DungeonCombat.is(e)||Serpents.is(e)&&e.serpentType!=='lava'||type==='fiaVengeance'||type==='fiaRitual'||CampMaster.is(e)||PrisonWarden.is(e)||PrisonHunter.is(e)||FloatingIslands.is(e))return;

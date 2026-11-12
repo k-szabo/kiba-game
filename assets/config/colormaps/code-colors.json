@@ -10,6 +10,7 @@
     "assets/config/bosses/cultHighPriestess.json": [],
     "assets/config/bosses/cultist.json": [],
     "assets/config/bosses/cultTempleGuard.json": [],
+    "assets/config/bosses/cultWarMarshal.json": [],
     "assets/config/bosses/dragonRaid.json": [],
     "assets/config/bosses/dungeonCaptain.json": [],
     "assets/config/bosses/dungeonCouncil.json": [],
@@ -19,26 +20,34 @@
     "assets/config/bosses/fiaVengeance.json": [],
     "assets/config/bosses/hannah.json": [],
     "assets/config/bosses/jailer.json": [],
+    "assets/config/bosses/kibaBinder.json": [],
     "assets/config/bosses/madPriest.json": [],
     "assets/config/bosses/main-0.json": [],
     "assets/config/bosses/main-1.json": [],
     "assets/config/bosses/main-2.json": [],
+    "assets/config/bosses/mistSentry.json": [],
     "assets/config/bosses/organist.json": [],
     "assets/config/bosses/prisonHunter.json": [],
     "assets/config/bosses/prisonWarden.json": [],
     "assets/config/bosses/prologueShadow.json": [],
+    "assets/config/bosses/riftSentinel.json": [],
+    "assets/config/bosses/sanctuaryCustodian.json": [],
+    "assets/config/bosses/secondDemonLord.json": [],
     "assets/config/bosses/seraph.json": [],
     "assets/config/bosses/serpent.json": [
       {
         "value": "#ffa465",
         "lines": [
-          24
+          25
         ],
         "dynamic": false
       }
     ],
     "assets/config/bosses/shadowNinjaLeader.json": [],
+    "assets/config/bosses/siegeWarden.json": [],
+    "assets/config/bosses/signalKeeper.json": [],
     "assets/config/bosses/slayer.json": [],
+    "assets/config/bosses/thirdClanLeader.json": [],
     "assets/config/bosses/voidDemon.json": [],
     "assets/config/bosses/voidGatekeeper.json": [],
     "assets/config/bosses/voidLieutenant.json": [],
@@ -49,7 +58,7 @@
       {
         "value": "#b8e8ee",
         "lines": [
-          30
+          31
         ],
         "dynamic": false
       }
@@ -58,7 +67,7 @@
       {
         "value": "#ffe6a2",
         "lines": [
-          30
+          31
         ],
         "dynamic": false
       }
@@ -2927,28 +2936,33 @@
       {
         "value": "#15121c",
         "lines": [
-          46
+          72,
+          93
         ],
         "dynamic": false
       },
       {
         "value": "#d9bd80",
         "lines": [
-          71
+          119
         ],
         "dynamic": false
       },
       {
         "value": "#fff",
         "lines": [
-          25
+          25,
+          66,
+          67
         ],
         "dynamic": false
       },
       {
         "value": "#fff0",
         "lines": [
-          25
+          25,
+          66,
+          67
         ],
         "dynamic": false
       }
@@ -5131,43 +5145,43 @@
       {
         "value": "#b7a5ba",
         "lines": [
-          172
+          164
         ],
         "dynamic": false
       },
       {
         "value": "#c3b6ea",
         "lines": [
-          136
+          135
         ],
         "dynamic": false
       },
       {
         "value": "#d4a8eb",
         "lines": [
-          148
+          147
         ],
         "dynamic": false
       },
       {
         "value": "#ecc27e",
         "lines": [
-          200
+          185
         ],
         "dynamic": false
       },
       {
         "value": "#ffe0a9",
         "lines": [
-          272
+          242
         ],
         "dynamic": false
       },
       {
         "value": "#ffe1a2",
         "lines": [
-          257,
-          263
+          227,
+          233
         ],
         "dynamic": false
       }

@@ -3,12 +3,14 @@
   "id": "prologueShadow",
   "name": "prologue.boss",
   "group": "optional",
+  "classificationOrder": 38,
   "story": {
     "hp": 100000,
     "w": 460,
     "h": 440
   },
   "tower": {
+    "order": 39,
     "baseHealth": 60,
     "name": "prologue.boss",
     "w": 260,

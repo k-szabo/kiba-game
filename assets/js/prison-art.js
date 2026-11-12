@@ -43,7 +43,7 @@ const PrisonArt=(()=>{
   }ctx.restore();
  }
  function terrain(platform){
-  if(!level.tower&&!level.dungeon&&![shadowPrison,shadowDen,shadowArena,fiaChambers,fiaRitual,voidForbidden].includes(level))return false;
+  if(!level.tower&&!level.dungeon&&level.id!=='ninjaClanCamp'&&![shadowPrison,shadowDen,shadowArena,fiaChambers,fiaRitual,voidForbidden].includes(level))return false;
   const a=art()?.terrain,image=Visuals.images[a?.image];if(!a||!image?.complete||!image.naturalWidth)return false;
   const p=platform;ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
   const paint=(rect,x,y,s)=>ctx.drawImage(image,rect.x,rect.y,rect.w,rect.h,x,y-(rect.surfaceY-rect.y)*s,rect.w*s,rect.h*s);

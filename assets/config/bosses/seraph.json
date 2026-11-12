@@ -3,12 +3,14 @@
   "id": "seraph",
   "name": "text.angel.of.dawn.phase.i",
   "group": "optional",
+  "classificationOrder": 12,
   "story": {
     "hp": 140,
     "w": 96,
     "h": 115
   },
   "tower": {
+    "order": 17,
     "baseHealth": 42,
     "name": "text.angel.of.dawn.phase.i",
     "w": 100,

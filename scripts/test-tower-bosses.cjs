@@ -35,7 +35,7 @@ for(const seed of ['arenaCaptain','dungeonCaptain','cultTempleGuard','arenaSerpe
 for(const fps of [30,60,120]){
  const h=setup(13,25),r=h.run;assert.equal(r('enemies.filter(e=>e.towerBoss).length'),3);r('player.inv=999;');
  const positions=r('enemies.filter(e=>e.towerBoss).map(e=>e.x)');assert.equal(new Set(positions).size,3);
- for(let i=0;i<fps*3;i++)r('update(1/'+fps+')');assert(r('enemies.filter(e=>e.towerBoss).every(e=>e.active&&(e.cycles>0||e.parts?.some(p=>p.cycles>0)))'));
+ for(let i=0;i<fps*3;i++)r('update(1/'+fps+')');assert(r('enemies.filter(e=>e.towerBoss).every(e=>e.active&&(e.cycles>0||e.raidBossId&&e.pattern>0||e.parts?.some(p=>p.cycles>0)))'));
  r('pause()');const frozen=r('JSON.stringify([enemies,projectiles,TowerMode.snapshot()])');r('update(2)');assert.equal(r('JSON.stringify([enemies,projectiles,TowerMode.snapshot()])'),frozen);r('pause()');
  r('enemies.forEach(e=>{e.active=true;e.hp=0;killEnemy(e)});update(1/120)');assert.equal(r('TowerMode.phase'),'clear');assert.equal(r('TowerMode.snapshot().cleared'),26);assert.equal(r('TowerMode.snapshot().kills'),r('TowerRules.killsThrough(26)'));
 }

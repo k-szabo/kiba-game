@@ -3,12 +3,14 @@
   "id": "fiaVengeance",
   "name": "fia.name",
   "group": "optional",
+  "classificationOrder": 39,
   "story": {
     "hp": 900,
     "w": 76,
     "h": 140
   },
   "tower": {
+    "order": 40,
     "baseHealth": 52,
     "name": "fia.name",
     "w": 76,

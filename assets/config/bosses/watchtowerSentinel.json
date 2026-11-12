@@ -3,6 +3,7 @@
   "id": "watchtowerSentinel",
   "name": "watchtower.sentinel",
   "group": "main",
+  "classificationOrder": 35,
   "story": {
     "w": 72,
     "h": 118,
@@ -15,6 +16,7 @@
     ]
   },
   "tower": {
+    "order": 35,
     "baseHealth": 46
   },
   "assets": [

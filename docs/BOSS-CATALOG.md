@@ -1,13 +1,14 @@
 # Közös bosskatalógus
 
-Minden besorolt boss saját fájlt kap az `assets/config/bosses/` könyvtárban. A fájlnév és az `id` megegyezik a `data/boss-classification.json` azonosítójával. A `name` meglévő lokalizációs kulcs, nem külön játékosszöveg.
+Az `assets/config/bosses/` a közös bosskatalógus. Minden találkozásnak egy JSON-fájlja van, amelynek neve megegyezik az `id` mezővel. A `name` a magyar és az angol fordításhoz használt lokalizációs kulcs.
 
-- `story`: a történeti változat alap HP-ja, testmérete és az adott vezérlő adatvezérelt profilja. A kígyók támadásprofilja, Hannah fázisai, az őssárkány ciklusa és a void démon gyógyulása is innen ered.
-- `tower`: a torony alap HP-ja és a történetfüggetlen adapter saját mozgásprofilja. A torony szándékosan külön skálázást használ, a kampánybeli HP nem alkalmas az egységes felszerelésű kihíváshoz.
+- `classificationOrder` és `group`: a fejlesztői besorolás sorrendje és a találkozás kategóriája.
+- `story`: a történeti profil. A Második Zikkurat sorrendjét a `raidOrder`, a találkozás mechanikáját a `raidKind` adja meg. A Mimic a kampányban Momo aktuális maximális HP-ját másolja.
+- `tower`: a `baseHealth` az emeletszorzó előtti HP, az `order` a rotáció helye. A Torony a katalógus összes rekordjából építi fel a rotációt.
 - `assets`: az `ART_MANIFEST` képkulcsai, beleértve a boss saját effektjeit. Ezekből dolgozik a közös előtöltés és a torony grafikai függőséglistája.
 
 A build a JSON-fájlokat validálva beágyazza a runtime-ba; nincs új hálózati kérés vagy futás közbeni fájlbetöltés. A `BossCatalog` mélyen fagyasztott adatokat ad a vezérlőknek. A történeti események, mentésírások, jutalmak és az aktív támadási állapotgépek továbbra is a hozzájuk tartozó forrásmodulokban élnek.
 
-Új bossnál a besorolást, a saját JSON-fájlt és a szükséges vezérlő/renderer integrációt együtt kell hozzáadni. A fájl megléte önmagában nem hoz létre új harcot. A `scripts/test-boss-catalog.cjs` ellenőrzi a teljes besorolás lefedését, a képkulcsokat, a közös profilt és hogy egy adatváltoztatás a tényleges sztori-/toronykonstruktorban is megjelenik.
+Új bossnál a saját JSON-fájlt és a szükséges harci és grafikai integrációt együtt kell hozzáadni. A `scripts/test-boss-catalog.cjs` ellenőrzi a katalógus lefedését, a képkulcsokat, a közös profilt és az adatváltozás hatását a történeti és toronybeli bossokra.
 
 Tower health display is owned by `TowerMode.draw`: native serpent, prison warden, hunter and legacy miniboss renderers omit their campaign health panels for `towerBoss` actors, while keeping their attack cues. Numeric HP overlays the same common bar. The full roster is covered by `scripts/test-tower-vfx-parity.cjs`.

@@ -3,6 +3,7 @@
   "id": "westheruSeal",
   "name": "balloon.westheru",
   "group": "main",
+  "classificationOrder": 37,
   "story": {
     "w": 145,
     "h": 130,
@@ -16,6 +17,7 @@
     ]
   },
   "tower": {
+    "order": 37,
     "baseHealth": 50
   },
   "assets": [

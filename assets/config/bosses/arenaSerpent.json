@@ -3,6 +3,7 @@
   "id": "arenaSerpent",
   "name": "arena.boss.serpent",
   "group": "optional",
+  "classificationOrder": 25,
   "story": {
     "name": "arena.boss.serpent",
     "w": 380,
@@ -17,6 +18,7 @@
     ]
   },
   "tower": {
+    "order": 4,
     "baseHealth": 42
   },
   "assets": [

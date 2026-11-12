@@ -3,12 +3,14 @@
   "id": "shadowNinjaLeader",
   "name": "islands.ninjaLeader",
   "group": "main",
+  "classificationOrder": 33,
   "story": {
     "hp": 1800,
     "w": 70,
     "h": 112
   },
   "tower": {
+    "order": 33,
     "baseHealth": 44
   },
   "assets": [

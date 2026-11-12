@@ -30,7 +30,9 @@ A futam kilépésgombjai és a szünetmenü főmenügombja megerősítést kérn
 
 ## Bossválaszték és skálázás
 
-A seedhez rögzített választék 36 találkozást tartalmaz: a fő őrzőket, opcionális minibossokat, dungeon- és arénabossokat, a három kígyót, a raid sárkányát, a void harcosait, Hannah-t, a kapuőrt és a nindzsavezért, továbbá Árnyékot és Fia külön provokációs/rituálés változatait. A `data/boss-classification.json` és a toronykatalógus teljes ID- és névegyezését automatizált ellenőrzés védi. Az eredeti hét típus a katalógus elején maradt; egy teljes elsődleges rotáció minden típust sorra vesz, a párhuzamos bossok különböző típusok. A küklopsz találkozás továbbra is két önálló testet használ.
+A Torony az `assets/config/bosses/` közös katalógusából, a `tower.order` szerint állítja össze a 49 találkozást tartalmazó rotációt. A Második Zikkurat kilenc bossa a rotáció végén kapott helyet. Egy teljes rotáció minden típust sorra vesz, és az egyszerre megjelenő bossok különbözőek. A korábbi checkpointokból tovább lehet játszani, az új rotáció azonban más ellenfelet választhat az adott emeletre.
+
+A Jelőr valódi példányát jelölés mutatja, és csak az sebezhető. Az Ostromőr támadás közben védekezik. A Mimic a toronyfutam felszerelését és statjait másolja, és mindkét fázisa az emelethez skálázott HP-t használja.
 
 A bossok meglévő grafikái és felismerhető támadásai a torony sík arénájához igazodnak. Toronybeli alap HP-juk 32–60, az eredeti hét típus értéke változatlan. Emeletszorzójuk `1 + (emelet−1) × 0,1`. A sebzés a saját támadás alapértékének `0,5 + (emelet−1) × 0,0125` része; a mozgás és a támadási óra szorzója `1 + min(0,6; (emelet−1) × 0,0125)`. A sebesség legfeljebb 1,6-szoros. A közvetlen sebzés forráskontextusban, a lövedék sebzése és sebessége kilövéskor egyszer skálázódik; a régi dungeon-/arénavezérlők saját szorzóját az adapter nem alkalmazza még egyszer.
 

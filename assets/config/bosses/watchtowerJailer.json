@@ -3,6 +3,7 @@
   "id": "watchtowerJailer",
   "name": "watchtower.jailer",
   "group": "main",
+  "classificationOrder": 34,
   "story": {
     "w": 135,
     "h": 165,
@@ -14,6 +15,7 @@
     ]
   },
   "tower": {
+    "order": 34,
     "baseHealth": 46
   },
   "assets": [

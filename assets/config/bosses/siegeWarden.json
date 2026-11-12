@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "siegeWarden",
+  "name": "storyRaid.boss.siegeWarden",
+  "group": "main",
+  "classificationOrder": 44,
+  "story": {
+    "w": 100,
+    "h": 130,
+    "speed": 113,
+    "range": 180,
+    "raidOrder": 4,
+    "raidKind": "westheruShot",
+    "hp": 340,
+    "damage": 8,
+    "windup": 1,
+    "recovery": 0.75,
+    "moves": [
+      "sweep",
+      "fissure"
+    ]
+  },
+  "tower": {
+    "baseHealth": 44,
+    "order": 44
+  },
+  "assets": [
+    "storyRaidSiegeWarden"
+  ]
+}

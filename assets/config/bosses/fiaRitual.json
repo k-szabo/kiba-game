@@ -3,12 +3,14 @@
   "id": "fiaRitual",
   "name": "fia.name",
   "group": "optional",
+  "classificationOrder": 40,
   "story": {
     "hp": 1800,
     "w": 76,
     "h": 140
   },
   "tower": {
+    "order": 38,
     "baseHealth": 56,
     "name": "fia.name",
     "w": 76,

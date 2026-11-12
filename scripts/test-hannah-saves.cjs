@@ -6,6 +6,7 @@ const release=JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/config/r
 const registry=JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/releases.json'),'utf8'));
 const registeredHistory={};for(const {baseVersion,code} of [...registry.releases,...registry.bugfixes])(registeredHistory[baseVersion]??=[]).push(code);
 const definitions=vm.createContext({I18n:{t:key=>key}});
+vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,definitions);
 for(const file of ['dungeon-rules','fia-journey-rules','fia-ritual-rules','fia-void-maps','dragon-raid','haru-follower','floating-islands-rules','floating-islands-maps','watchtower-balloon-rules','watchtower-balloon-maps','ziggurat-descent-rules','ziggurat-descent-maps','ziggurat-maps','third-clan-rules','third-clan-maps','story-raid-rules','story-raid-maps','levels'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js',file+'.js'),'utf8'),definitions);
 const read=source=>copy(vm.runInContext(source,definitions));
 function baseline(){
