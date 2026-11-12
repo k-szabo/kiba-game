@@ -90,7 +90,21 @@ for(const fps of [30,60,120]){
   'skyRaidHarborBackdrop','skyRaidPursuitBackdrop','skyRaidBackBackdrop','skyRaidRiftBackdrop']);
  const keys=Object.keys(manifest).filter(k=>!staticAtlases.has(k)&&manifest[k].includes('/backgrounds/')&&!/Terrain$/.test(k)&&!k.endsWith('MotionPhaseB'));
  assert.deepEqual(Object.keys(authored).sort(),keys.sort(),'Every background, including hidden arenas and fallback panoramas, has a painted phase');
- for(const key of keys){const profile=authored[key],a=fs.readFileSync(path.join(__dirname,'..',manifest[key])),b=fs.readFileSync(path.join(__dirname,'..',manifest[profile.asset]));assert.equal(profile.sourceSize?.[0]??a.readUInt32BE(16),b.readUInt32BE(16),key+' registered native width');assert.equal(profile.sourceSize?.[1]??a.readUInt32BE(20),b.readUInt32BE(20),key+' registered native height');if(profile.sourceSize){assert(Math.abs(a.readUInt32BE(16)-b.readUInt32BE(16))<=1);assert(Math.abs(a.readUInt32BE(20)-b.readUInt32BE(20))<=1);}assert(profile.regions.length>0);}
+ function size(file){
+  const bytes=fs.readFileSync(path.join(__dirname,'..',file));
+  if(bytes.toString('ascii',12,16)==='IHDR')return [bytes.readUInt32BE(16),bytes.readUInt32BE(20)];
+  const header=bytes.toString('ascii',8,16);
+  if(header==='WEBPVP8X')return [1+bytes.readUIntLE(24,3),1+bytes.readUIntLE(27,3)];
+  if(header==='WEBPVP8 ')return [bytes.readUInt16LE(26)&0x3fff,bytes.readUInt16LE(28)&0x3fff];
+  if(header==='WEBPVP8L'){const dimensions=bytes.readUInt32LE(21);return [1+(dimensions&0x3fff),1+((dimensions>>>14)&0x3fff)];}
+  throw Error('Unknown background format: '+file);
+ }
+ for(const key of keys){
+  const profile=authored[key],original=size(manifest[key]),phase=size(manifest[profile.asset]);
+  assert.deepEqual(phase,Array.from(profile.sourceSize||original),key+' registered native dimensions');
+  if(profile.sourceSize)assert(original.every((value,i)=>Math.abs(value-phase[i])<=1),key+' phase matches original framing');
+  assert(profile.regions.length>0);
+ }
 }
 // QA-BGM-008: fully opaque hunter foreground releases the prison animation
 // pins while the original underlay still covers the bottom of the viewport.

@@ -379,6 +379,6 @@ const SkyDragonRaid=(()=>{
   return null;
  }
  const stock=id=>id==='cloudDragonScale'?rules.cloudScales(progress):id==='cloudNinjaRing'?+(progress.victories>0&&!progress.ringTurnedIn):id==='cloudscaleArmor'?+progress.armorOwned:0;
- return Object.freeze({active,available,snapshot,restore,clear(){attempt=null;crash=0;},crashing:()=>active()&&crash>0,context:getContext,interact,retry,anchorReached,anchors,update,updateEnemy,drawEnemy,hit,objective,hud,warnings,backdrop,scenery,
+ return Object.freeze({active,available,snapshot,restore,clear(){attempt=null;crash=0;},crashing:()=>active()&&crash>0,context:getContext,interact,retry,anchorReached,anchors,update,updateEnemy,drawEnemy,hit,objective,hud,warnings,backdrop,scenery,drawProp:prop,
   health,stock,canForge,forge,toggleArmor,get armorEquipped(){return progress.armorEquipped;}});
 })();

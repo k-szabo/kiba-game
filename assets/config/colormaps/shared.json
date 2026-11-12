@@ -5667,6 +5667,216 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/enemies/third-clan-guardian-stagger-v1.png": {
+      "sha256": "536f256f12437bb5d7d53a7bde2d7467994fbf5320548c2a2797941a080319a8",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "thirdClanGuardianStagger"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#483547",
+            "coveragePercent": 15.8979
+          },
+          {
+            "hex": "#332634",
+            "coveragePercent": 12.0114
+          },
+          {
+            "hex": "#614665",
+            "coveragePercent": 10.8131
+          },
+          {
+            "hex": "#7a587b",
+            "coveragePercent": 8.7764
+          },
+          {
+            "hex": "#62454b",
+            "coveragePercent": 8.5387
+          },
+          {
+            "hex": "#7f585c",
+            "coveragePercent": 8.0907
+          },
+          {
+            "hex": "#1e1620",
+            "coveragePercent": 7.3516
+          },
+          {
+            "hex": "#9a6c6c",
+            "coveragePercent": 6.4706
+          },
+          {
+            "hex": "#926c8f",
+            "coveragePercent": 6.4562
+          },
+          {
+            "hex": "#b6827a",
+            "coveragePercent": 4.4807
+          },
+          {
+            "hex": "#ab82a2",
+            "coveragePercent": 3.3691
+          },
+          {
+            "hex": "#cfa194",
+            "coveragePercent": 2.5847
+          },
+          {
+            "hex": "#ae51d6",
+            "coveragePercent": 1.5183
+          },
+          {
+            "hex": "#d281f4",
+            "coveragePercent": 1.4893
+          },
+          {
+            "hex": "#e6c1af",
+            "coveragePercent": 1.3438
+          },
+          {
+            "hex": "#f6e0ea",
+            "coveragePercent": 0.8075
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c870f0",
+            "coveragePercent": 24.1832
+          },
+          {
+            "hex": "#ac50d5",
+            "coveragePercent": 20.7224
+          },
+          {
+            "hex": "#914d54",
+            "coveragePercent": 17.841
+          },
+          {
+            "hex": "#b26564",
+            "coveragePercent": 17.3293
+          },
+          {
+            "hex": "#863b9a",
+            "coveragePercent": 12.2075
+          },
+          {
+            "hex": "#d18e6d",
+            "coveragePercent": 7.7165
+          }
+        ],
+        "visibleSamples": 658662,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/third-clan-guardian-v1.png": {
+      "sha256": "a09986807fb157012f5c4f670d779622e8acac2d0170d31aef30b31e3a042770",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "thirdClanGuardianArt"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4c3b48",
+            "coveragePercent": 18.619
+          },
+          {
+            "hex": "#3b2d39",
+            "coveragePercent": 12.5849
+          },
+          {
+            "hex": "#5a4857",
+            "coveragePercent": 12.3926
+          },
+          {
+            "hex": "#695465",
+            "coveragePercent": 8.8011
+          },
+          {
+            "hex": "#78606f",
+            "coveragePercent": 8.0037
+          },
+          {
+            "hex": "#896d81",
+            "coveragePercent": 6.7426
+          },
+          {
+            "hex": "#a17f7f",
+            "coveragePercent": 6.0388
+          },
+          {
+            "hex": "#291f29",
+            "coveragePercent": 5.6323
+          },
+          {
+            "hex": "#704b4e",
+            "coveragePercent": 5.3644
+          },
+          {
+            "hex": "#8f6664",
+            "coveragePercent": 5.247
+          },
+          {
+            "hex": "#b9958c",
+            "coveragePercent": 3.1237
+          },
+          {
+            "hex": "#ad77cd",
+            "coveragePercent": 2.4991
+          },
+          {
+            "hex": "#9559ba",
+            "coveragePercent": 1.5895
+          },
+          {
+            "hex": "#c497df",
+            "coveragePercent": 1.3252
+          },
+          {
+            "hex": "#d5b5a5",
+            "coveragePercent": 1.0319
+          },
+          {
+            "hex": "#e3c7eb",
+            "coveragePercent": 1.0043
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a05ccd",
+            "coveragePercent": 33.8169
+          },
+          {
+            "hex": "#b56fe0",
+            "coveragePercent": 22.604
+          },
+          {
+            "hex": "#8e4fb2",
+            "coveragePercent": 17.1903
+          },
+          {
+            "hex": "#8b4954",
+            "coveragePercent": 11.781
+          },
+          {
+            "hex": "#783f8f",
+            "coveragePercent": 9.0992
+          },
+          {
+            "hex": "#a45a61",
+            "coveragePercent": 5.5086
+          }
+        ],
+        "visibleSamples": 382498,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "assets/images/items/camp-herbs-brew-v1.png": {
       "sha256": "5be4943354c8b5170243991303c289e1bb6a190078b05ead388c17019641ea83",
       "width": 1774,

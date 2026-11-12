@@ -63,6 +63,7 @@ const DungeonArt=(()=>{
     else if(id==='zen')FiaVoidArt.stamp(ART_PRISON.zen,0,x,y,113,1);
     else if(id==='westheru')FiaVoidArt.stamp(ART_WATCHTOWER.pilot,0,x,y,110,-1);
     HannahArt.nameplate(x,y,id==='reika'?150:126,name);
+    if(id==='reika')CampArt.questMarker('reika',npc,150);
     if(id==='zen'&&PrisonQuest.ninjaSealReady())CampArt.questMarker('zen',npc,145);
    }
    return;

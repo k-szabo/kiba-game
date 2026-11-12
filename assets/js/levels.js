@@ -604,9 +604,11 @@ ninjaCamp.npcs=[
 ledge(ninjaCamp,'ninjaCampGround',0,1020,2500,'ground',250);
 rest(ninjaCamp,'ninjaCampArrival',430,1020,'ninjaClan.camp');
 ninjaCamp.skyport={x:2350,y:1020};
+ninjaCamp.thirdClanExit={x:1920,y:1020};
 ninjaCamp.returnPoint={x:120,y:1020};
 ninjaCamp.returnDestination={location:'stormIslands',...stormIslands.endPoint};
 zone(ninjaCamp,ninjaCamp.name,0,0,ninjaCamp.width,ninjaCamp.height);
+const {route:thirdClanPath,cave:thirdClanCave}=createThirdClanMaps({makeLevel,ledge,rest,zone});
 const DUNGEON_CATALOGUE=Object.freeze({
  yomiFall:Object.freeze({id:'yomiFall',realm:1,floors:DUNGEON_FLOORS,rewards:DUNGEON_REWARDS,entryMap:councilHall,entryPoint:councilHall.memoryScroll,name:'dungeon.name',title:'dungeon.scroll.title',intro:'dungeon.intro',victory:'dungeon.victory',prompt:'dungeon.scroll.prompt',returnPrompt:'dungeon.return'}),
  sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'}),
@@ -614,7 +616,7 @@ const DUNGEON_CATALOGUE=Object.freeze({
   entryLocation:'stormIslands',exitLocation:'ninjaClanCamp',title:'ninjaClan.name',prompt:'dungeon.next',returnPrompt:'dungeon.back'})
 });
 japan.progressFlags.push(ninjaClanRules.started,...ninjaClanRules.stages,...ninjaClanRules.rewards,ninjaClanRules.chest,ninjaClanRules.soul,
- 'ninjaCorruptedSeal','ninjaSealPurified','ninjaClanDebrief','skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn');
+ 'ninjaCorruptedSeal','ninjaSealPurified','ninjaClanDebrief','skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn',...ThirdClanRules.flagIds);
 floatingIslands.watchtowerEntrance={x:6800,y:1650};
 japan.progressFlags.push(...Object.values(WatchtowerBalloonRules.progress));
 const SIDE_LOCATIONS=Object.freeze({
@@ -622,6 +624,8 @@ const SIDE_LOCATIONS=Object.freeze({
   ...ninjaClanRules.requiredFlags,ninjaClanRules.started,...ninjaClanRules.stages.slice(0,i)
  ])})])),
  ninjaClanCamp:Object.freeze({map:ninjaCamp,realm:0,requiredFlags:Object.freeze([ninjaClanRules.rewards[2]])}),
+ thirdClanPath:Object.freeze({map:thirdClanPath,realm:0,requiredFlags:Object.freeze([ThirdClanRules.progress.accepted])}),
+ thirdClanCave:Object.freeze({map:thirdClanCave,realm:0,requiredFlags:Object.freeze([ThirdClanRules.progress.accepted,...ThirdClanRules.progress.ballistae])}),
  ninjaWatchtower:Object.freeze({map:ninjaWatchtower,realm:0,requiredFlags:Object.freeze(['islandsTrailReached'])}),
  balloonJourney:Object.freeze({map:balloonJourney,realm:0,requiredFlags:Object.freeze(['balloonJourneyStarted'])}),
  skyLanding:Object.freeze({map:skyLanding,realm:0,requiredFlags:Object.freeze(['balloonDragonDefeated'])}),

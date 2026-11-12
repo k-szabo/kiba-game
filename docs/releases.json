@@ -1982,6 +1982,22 @@
           "en": "A replayable four-phase raid starts at the ninja camp’s skyport, with a checkpoint at each phase. Daigo can forge spell-resistant armor from the scales you collect."
         }
       ]
+    },
+    {
+      "version": "0.9.80_07ba03f6",
+      "code": "07ba03f6",
+      "baseVersion": "0.9.80",
+      "slug": "third-clan-story-continuation",
+      "summary": {
+        "hu": "A harmadik klán ösvénye",
+        "en": "Path of the Third Clan"
+      },
+      "fixes": [
+        {
+          "hu": "Reika Haru nyomára küldi Momót. A lefelé vezető ösvényen három ballisztát kell kiiktatni, a barlang őrének páncélját pedig Westheru érkezése előtt kell áttörni.",
+          "en": "Reika sends Momo after Haru’s trail. Disable three ballistas on the descending path and break the cave guardian’s armor before Westheru arrives."
+        }
+      ]
     }
   ]
 }
