@@ -49,7 +49,8 @@ const AssetLoading=(()=>{
  function prepare(){
   const duel=typeof DuelMode!=='undefined'&&DuelMode.active,menu=!duel&&(state==='menu'||state==='saves'||state==='help'&&helpOrigin==='menu'),tower=!menu&&typeof TowerMode!=='undefined'&&TowerMode.active;
   let keys,mode=menu?'menu':duel?'duel':tower?'tower':'world';
-  backdrop=menu?'japanBackdrop':duel?'japanBackdrop':tower?'towerBackdrop':backgrounds[level?.id]||['japanBackdrop','yomiBackdrop','heavenBackdrop','shadowCultBackdrop'][typeof realm==='number'?realm:0];
+  const raidBackdrop=['storyRaidCaveBackdrop','storyRaidTerraceBackdrop','storyRaidSanctuaryBackdrop'][level?.storyRaidTier];
+  backdrop=menu?'japanBackdrop':duel?'japanBackdrop':tower?'towerBackdrop':raidBackdrop||backgrounds[level?.id]||['japanBackdrop','yomiBackdrop','heavenBackdrop','shadowCultBackdrop'][typeof realm==='number'?realm:0];
   if(menu)keys=['japanBackdrop','terrain','props'];
   else if(duel)keys=[...combat,...weapon('naginata'),...weapon('swordShield'),'japanBackdrop','yomiBackdrop','heavenBackdrop','shadowBackdrop'];
   else if(Prologue.active){mode='dream';backdrop='shadowBackdrop';keys=[...BossCatalog.assets('prologueShadow'),...list('shadowBackdrop shadowIdle shadowMelee shadowCast shadowDevour fxDarkMagic fxSlashes fxImpact fxFissure momoHeavy momoSlash momoRoom dialogueShadow dialogueJapan props')];}
@@ -57,6 +58,12 @@ const AssetLoading=(()=>{
    keys=[backdrop,...combat,...weapon(weaponStyle),...(maps[level?.id]||[])];
    if(level?.id==='thirdClanPath')keys.push(...shadowActors,'ninjaNinjutsu','skyRaidProps');
    if(level?.id==='thirdClanCave')keys.push('thirdClanGuardianArt','thirdClanGuardianStagger','skyRaidProps');
+   if(Number.isInteger(level?.storyRaidTier)){
+    keys.push('skyRaidProps','watchtowerSentinelArt','westheruArt','haruElder');
+    if(level.storyRaidTier===0)keys.push('storyRaidMistSentry','storyRaidSignalKeeper','storyRaidClanLeader');
+    if(level.storyRaidTier===1)keys.push('storyRaidSiegeWarden','storyRaidKibaBinder','storyRaidWarMarshal');
+    if(level.storyRaidTier===2)keys.push('storyRaidRiftSentinel','storyRaidCustodian','storyRaidMimicPhase2','storyRaidGates','storyRaidReikaBrace','inventoryKatana','foxfireKatanaArt',...WeaponStyles.allIds.flatMap(weapon));
+   }
    if(level?.dungeon?.id==='ninjaClan'){
     keys.push('ninjaDungeonBackdrops','ninjaLeader','watchtowerSentinelArt','ninjaRitualist','ninjaCrossbow','ninjaAssassin','dungeonProps','ninjaClanItems');
     if(level.dungeon.floor===2)keys.push('ninjaRiftClosed');

@@ -10983,6 +10983,636 @@
         "dominantCoveragePercent": 100.0002
       }
     },
+    "assets/images/backgrounds/story-raid-cave-motion-b-v1.webp": {
+      "sha256": "6cd9b8de878bb630bfeb1d7b9c78ca3f1e068e9a5b2d74ae9f86ef0c082ce734",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidCaveBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#38356c",
+            "coveragePercent": 12.4198
+          },
+          {
+            "hex": "#474086",
+            "coveragePercent": 11.955
+          },
+          {
+            "hex": "#2c2a55",
+            "coveragePercent": 11.7714
+          },
+          {
+            "hex": "#26203b",
+            "coveragePercent": 10.5364
+          },
+          {
+            "hex": "#5b4d9d",
+            "coveragePercent": 8.7547
+          },
+          {
+            "hex": "#1c1427",
+            "coveragePercent": 7.7677
+          },
+          {
+            "hex": "#6757c0",
+            "coveragePercent": 5.3732
+          },
+          {
+            "hex": "#5c3243",
+            "coveragePercent": 5.3465
+          },
+          {
+            "hex": "#896ca4",
+            "coveragePercent": 5.1847
+          },
+          {
+            "hex": "#795268",
+            "coveragePercent": 4.5771
+          },
+          {
+            "hex": "#0c0711",
+            "coveragePercent": 4.3006
+          },
+          {
+            "hex": "#886cdc",
+            "coveragePercent": 3.6062
+          },
+          {
+            "hex": "#b58fc4",
+            "coveragePercent": 3.0823
+          },
+          {
+            "hex": "#ca455b",
+            "coveragePercent": 2.3236
+          },
+          {
+            "hex": "#c58c7d",
+            "coveragePercent": 1.5599
+          },
+          {
+            "hex": "#e9c5dd",
+            "coveragePercent": 1.4407
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#433e8b",
+            "coveragePercent": 27.5388
+          },
+          {
+            "hex": "#5848a0",
+            "coveragePercent": 26.6927
+          },
+          {
+            "hex": "#6958c0",
+            "coveragePercent": 20.1961
+          },
+          {
+            "hex": "#8b69de",
+            "coveragePercent": 11.6089
+          },
+          {
+            "hex": "#9e3952",
+            "coveragePercent": 7.2984
+          },
+          {
+            "hex": "#dc5b65",
+            "coveragePercent": 6.6651
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/story-raid-cave-v1.webp": {
+      "sha256": "ac1ac45a847f7276d338a72c93e3e709fe9056292d03cddc66e4f6e3acdefdf2",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidCaveBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#272445",
+            "coveragePercent": 13.729
+          },
+          {
+            "hex": "#332f5f",
+            "coveragePercent": 13.5966
+          },
+          {
+            "hex": "#443b7b",
+            "coveragePercent": 13.2586
+          },
+          {
+            "hex": "#20182b",
+            "coveragePercent": 11.8966
+          },
+          {
+            "hex": "#55479f",
+            "coveragePercent": 7.5316
+          },
+          {
+            "hex": "#0f0a14",
+            "coveragePercent": 6.0577
+          },
+          {
+            "hex": "#6c5286",
+            "coveragePercent": 5.9704
+          },
+          {
+            "hex": "#553442",
+            "coveragePercent": 5.8975
+          },
+          {
+            "hex": "#705bc4",
+            "coveragePercent": 5.3697
+          },
+          {
+            "hex": "#8f6ea5",
+            "coveragePercent": 4.1216
+          },
+          {
+            "hex": "#9c78e2",
+            "coveragePercent": 2.612
+          },
+          {
+            "hex": "#c295ac",
+            "coveragePercent": 2.5845
+          },
+          {
+            "hex": "#8d324b",
+            "coveragePercent": 2.3289
+          },
+          {
+            "hex": "#976e66",
+            "coveragePercent": 1.9821
+          },
+          {
+            "hex": "#d94e5e",
+            "coveragePercent": 1.7351
+          },
+          {
+            "hex": "#e9c4dd",
+            "coveragePercent": 1.3281
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#4c3f90",
+            "coveragePercent": 39.9872
+          },
+          {
+            "hex": "#6652b3",
+            "coveragePercent": 28.5854
+          },
+          {
+            "hex": "#8a69da",
+            "coveragePercent": 15.2685
+          },
+          {
+            "hex": "#9a374e",
+            "coveragePercent": 7.8661
+          },
+          {
+            "hex": "#d8465c",
+            "coveragePercent": 5.6893
+          },
+          {
+            "hex": "#d97f69",
+            "coveragePercent": 2.6035
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/story-raid-sanctuary-motion-b-v1.webp": {
+      "sha256": "0fac3a2595663698dc96a91b91b35532b99a571cd6d02be2aee41162064c1bbf",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidSanctuaryBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#261d44",
+            "coveragePercent": 13.2146
+          },
+          {
+            "hex": "#342765",
+            "coveragePercent": 10.3566
+          },
+          {
+            "hex": "#1a1327",
+            "coveragePercent": 10.1439
+          },
+          {
+            "hex": "#6b4b89",
+            "coveragePercent": 9.488
+          },
+          {
+            "hex": "#463587",
+            "coveragePercent": 8.8065
+          },
+          {
+            "hex": "#8861a4",
+            "coveragePercent": 7.833
+          },
+          {
+            "hex": "#5a42b5",
+            "coveragePercent": 6.1589
+          },
+          {
+            "hex": "#7b57d7",
+            "coveragePercent": 5.7822
+          },
+          {
+            "hex": "#9e76e5",
+            "coveragePercent": 5.781
+          },
+          {
+            "hex": "#663646",
+            "coveragePercent": 4.9088
+          },
+          {
+            "hex": "#b27db3",
+            "coveragePercent": 4.3611
+          },
+          {
+            "hex": "#c897ef",
+            "coveragePercent": 3.8644
+          },
+          {
+            "hex": "#ac4965",
+            "coveragePercent": 3.2428
+          },
+          {
+            "hex": "#eab1b2",
+            "coveragePercent": 2.4061
+          },
+          {
+            "hex": "#d1887b",
+            "coveragePercent": 1.8336
+          },
+          {
+            "hex": "#f6cfed",
+            "coveragePercent": 1.8185
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#6549a1",
+            "coveragePercent": 26.7618
+          },
+          {
+            "hex": "#463592",
+            "coveragePercent": 23.2241
+          },
+          {
+            "hex": "#7552cf",
+            "coveragePercent": 21.9655
+          },
+          {
+            "hex": "#a16cea",
+            "coveragePercent": 14.4941
+          },
+          {
+            "hex": "#a03f61",
+            "coveragePercent": 9.2366
+          },
+          {
+            "hex": "#dc7771",
+            "coveragePercent": 4.3179
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/backgrounds/story-raid-sanctuary-v1.webp": {
+      "sha256": "79583cb03eb7106061edb1ab130b39c73d02676ed8501f63a923adfb9702c72a",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidSanctuaryBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#251e44",
+            "coveragePercent": 13.2035
+          },
+          {
+            "hex": "#352863",
+            "coveragePercent": 10.7244
+          },
+          {
+            "hex": "#1a1328",
+            "coveragePercent": 10.2611
+          },
+          {
+            "hex": "#634685",
+            "coveragePercent": 9.3634
+          },
+          {
+            "hex": "#825ca0",
+            "coveragePercent": 8.3773
+          },
+          {
+            "hex": "#42348b",
+            "coveragePercent": 8.336
+          },
+          {
+            "hex": "#8867dc",
+            "coveragePercent": 6.9609
+          },
+          {
+            "hex": "#6048bb",
+            "coveragePercent": 6.4956
+          },
+          {
+            "hex": "#b68ceb",
+            "coveragePercent": 5.7485
+          },
+          {
+            "hex": "#ac77b1",
+            "coveragePercent": 5.3015
+          },
+          {
+            "hex": "#60323e",
+            "coveragePercent": 4.0069
+          },
+          {
+            "hex": "#904d61",
+            "coveragePercent": 3.2839
+          },
+          {
+            "hex": "#e7acb1",
+            "coveragePercent": 2.587
+          },
+          {
+            "hex": "#efc4ec",
+            "coveragePercent": 2.2286
+          },
+          {
+            "hex": "#ce8b75",
+            "coveragePercent": 1.806
+          },
+          {
+            "hex": "#cc3b6e",
+            "coveragePercent": 1.3155
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#65499f",
+            "coveragePercent": 26.4589
+          },
+          {
+            "hex": "#453692",
+            "coveragePercent": 23.7844
+          },
+          {
+            "hex": "#7556cd",
+            "coveragePercent": 22.1416
+          },
+          {
+            "hex": "#9f6ee9",
+            "coveragePercent": 13.0553
+          },
+          {
+            "hex": "#a53e62",
+            "coveragePercent": 10.5131
+          },
+          {
+            "hex": "#dd826e",
+            "coveragePercent": 4.0466
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/backgrounds/story-raid-terrace-motion-b-v1.webp": {
+      "sha256": "aeacf157148faea2ab661d236e15db947499bed22cc1a428f1e8787f087129e1",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidTerraceBackdropMotionPhaseB"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#353c5f",
+            "coveragePercent": 13.7663
+          },
+          {
+            "hex": "#3d4a79",
+            "coveragePercent": 12.9667
+          },
+          {
+            "hex": "#505d91",
+            "coveragePercent": 11.653
+          },
+          {
+            "hex": "#2d3049",
+            "coveragePercent": 9.5489
+          },
+          {
+            "hex": "#6472ab",
+            "coveragePercent": 8.2873
+          },
+          {
+            "hex": "#56526e",
+            "coveragePercent": 7.9758
+          },
+          {
+            "hex": "#7c89c5",
+            "coveragePercent": 6.1708
+          },
+          {
+            "hex": "#7d6e8b",
+            "coveragePercent": 5.9285
+          },
+          {
+            "hex": "#9a88a6",
+            "coveragePercent": 5.1743
+          },
+          {
+            "hex": "#96a0d9",
+            "coveragePercent": 4.4422
+          },
+          {
+            "hex": "#231d2b",
+            "coveragePercent": 3.4447
+          },
+          {
+            "hex": "#7b3b4f",
+            "coveragePercent": 2.8245
+          },
+          {
+            "hex": "#b5b9ea",
+            "coveragePercent": 2.4016
+          },
+          {
+            "hex": "#c9a9b0",
+            "coveragePercent": 2.2486
+          },
+          {
+            "hex": "#d85f72",
+            "coveragePercent": 2.0762
+          },
+          {
+            "hex": "#efdbd6",
+            "coveragePercent": 1.0904
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#425287",
+            "coveragePercent": 33.7919
+          },
+          {
+            "hex": "#4d5e96",
+            "coveragePercent": 27.695
+          },
+          {
+            "hex": "#5a6ca8",
+            "coveragePercent": 18.6797
+          },
+          {
+            "hex": "#e35c77",
+            "coveragePercent": 9.3654
+          },
+          {
+            "hex": "#9c4059",
+            "coveragePercent": 8.9867
+          },
+          {
+            "hex": "#d89762",
+            "coveragePercent": 1.4812
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/backgrounds/story-raid-terrace-v1.webp": {
+      "sha256": "473c08044f63e4193d11e005fefe64d69bd61e5cad27fc3f79e71200b0d4ace3",
+      "width": 1672,
+      "height": 941,
+      "runtimeKeys": [
+        "storyRaidTerraceBackdrop"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#353e64",
+            "coveragePercent": 16.7641
+          },
+          {
+            "hex": "#292f4a",
+            "coveragePercent": 12.3967
+          },
+          {
+            "hex": "#404d7d",
+            "coveragePercent": 10.8017
+          },
+          {
+            "hex": "#555e8e",
+            "coveragePercent": 9.7842
+          },
+          {
+            "hex": "#636da3",
+            "coveragePercent": 7.0803
+          },
+          {
+            "hex": "#544f6a",
+            "coveragePercent": 7.0462
+          },
+          {
+            "hex": "#7480ba",
+            "coveragePercent": 5.7487
+          },
+          {
+            "hex": "#8b7894",
+            "coveragePercent": 5.5041
+          },
+          {
+            "hex": "#1f1d2a",
+            "coveragePercent": 5.316
+          },
+          {
+            "hex": "#8a94ce",
+            "coveragePercent": 4.6438
+          },
+          {
+            "hex": "#533341",
+            "coveragePercent": 3.6835
+          },
+          {
+            "hex": "#b79ba9",
+            "coveragePercent": 3.1748
+          },
+          {
+            "hex": "#aaaee2",
+            "coveragePercent": 2.5694
+          },
+          {
+            "hex": "#8e4b58",
+            "coveragePercent": 2.3478
+          },
+          {
+            "hex": "#dd5c6b",
+            "coveragePercent": 1.7559
+          },
+          {
+            "hex": "#ead1c8",
+            "coveragePercent": 1.3827
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#425185",
+            "coveragePercent": 29.0303
+          },
+          {
+            "hex": "#4c5b92",
+            "coveragePercent": 28.6643
+          },
+          {
+            "hex": "#5867a3",
+            "coveragePercent": 18.7263
+          },
+          {
+            "hex": "#9d3f55",
+            "coveragePercent": 10.7192
+          },
+          {
+            "hex": "#e2576f",
+            "coveragePercent": 10.4963
+          },
+          {
+            "hex": "#d4985f",
+            "coveragePercent": 2.3637
+          }
+        ],
+        "visibleSamples": 1573352,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/backgrounds/third-clan-cave-motion-b-v1.webp": {
       "sha256": "e8175540e72945bba888d6bc30049329ee08e1f7108f97364dacbdc792b4361b",
       "width": 1672,

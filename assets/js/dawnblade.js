@@ -5,6 +5,7 @@ const Dawnblade=(()=>{
  const owned=()=>typeof TowerMode!=='undefined'&&TowerMode.active?TowerMode.hasRelic('dawnblade'):flags[3].includes(HannahRules.progress.awakening);
  const ready=()=>owned()||HannahEncounter.finisherReady();
  const casting=()=>!!cast;
+ const recoilFree=()=>!(typeof TowerMode!=='undefined'&&TowerMode.active)&&StoryRaidRules.recoilFree(flags);
  function resetPlayer(){cast=null;}
  function resetJourney(){cast=null;cooldown=0;}
  function awaken(){cooldown=0;cast=null;}
@@ -26,7 +27,7 @@ const Dawnblade=(()=>{
   if(!current.impact&&current.elapsed>=.55){
    current.impact=true;
    // Recoil is the ability's cost, independent of armor and immunity frames.
-   player.hp=HannahRules.recoil(player.hp);
+   if(!recoilFree())player.hp=HannahRules.recoil(player.hp);
    const target=current.target;
    if(FiaRitual.breakReady())FiaRitual.breakChains();
    else if(target&&target.encounterToken===current.token&&HannahCombat.current(target)&&target.mode==='finisher')HannahCombat.finishWithUltimate(target);
@@ -42,7 +43,7 @@ const Dawnblade=(()=>{
   const node=$('dawnbladeStatus');if(!node)return;
   node.hidden=!ready()||state==='menu';if(node.hidden)return;
   node.textContent=I18n.t('ability.dawnblade')+' · '+Bindings.read('ultimate').map(bindingKeyLabel).join(' / ')+' · '+(cooldown>0?I18n.format('ability.dawnblade.cooldown',[Math.ceil(cooldown)]):I18n.t('ability.dawnblade.ready'));
-  node.title=I18n.t('ability.dawnblade.description');
+  node.title=I18n.t(recoilFree()?'storyRaid.dawnblade.description':'ability.dawnblade.description');
  }
  const status=()=>({owned:owned(),cooldown,casting:!!cast,progress:cast?Math.min(1,cast.elapsed/1.1):0,face:cast?.face});
  return Object.freeze({owned,ready,casting,activate,update,resetPlayer,resetJourney,awaken,hud,status});

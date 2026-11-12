@@ -22,8 +22,8 @@ const Compass=(()=>{
  function objective(local){
   // A dungeon or an active side quest keeps its own immediate instructions.
   // Ordinary travel instead follows the persistent main-story milestones.
-  if(Prologue.active||FiaRitual.pendingEscape()||flags[3].includes('fiaRitualAccepted')&&!flags[3].includes('fiaSlain')||FiaVoidJourney.active()||DragonRaid.questRoute()||level.dragonRaid||level.skyDragonRaid||level.dungeon||ThirdClan.isPath()||ThirdClan.isCave()||[samuraiCamp,shadowPrison,shadowArena,shadowDen,fiaChambers].includes(level))return local;
-  if(flags[3].includes(HannahRules.progress.defeated))return ThirdClan.objective({remote:true})||DungeonRun.storyObjective()||WatchtowerBalloon.objective()||FloatingIslands.objective()||ZigguratDescent.objective()||local;
+  if(Prologue.active||FiaRitual.pendingEscape()||flags[3].includes('fiaRitualAccepted')&&!flags[3].includes('fiaSlain')||FiaVoidJourney.active()||DragonRaid.questRoute()||level.dragonRaid||level.skyDragonRaid||level.dungeon||StoryRaid.active()||ThirdClan.isPath()||ThirdClan.isCave()||[samuraiCamp,shadowPrison,shadowArena,shadowDen,fiaChambers].includes(level))return local;
+  if(flags[3].includes(HannahRules.progress.defeated))return StoryRaid.objective({remote:true})||ThirdClan.objective({remote:true})||DungeonRun.storyObjective()||WatchtowerBalloon.objective()||FloatingIslands.objective()||ZigguratDescent.objective()||local;
   const target=mainTarget();
   if(level===target.map||level.ziggurat&&target.map===zigguratSummit)return local;
   if(level===levels[3]&&defeated[3])return {point:level.zigguratEntrance,name:'ziggurat.name',text:'ziggurat.objective.approach'};

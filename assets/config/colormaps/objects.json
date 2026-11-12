@@ -416,6 +416,18 @@
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.cloudscaleArmor"
     },
+    "inventoryItem.thirdClanLeaderSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.thirdClanLeaderSoul"
+    },
+    "inventoryItem.cultWarMarshalSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.cultWarMarshalSoul"
+    },
+    "inventoryItem.secondDemonLordSoul": {
+      "kind": "inventory-icon",
+      "paletteGroup": "object.inventoryItem.secondDemonLordSoul"
+    },
     "inventoryItem.demonLordSoul": {
       "kind": "inventory-icon",
       "paletteGroup": "object.inventoryItem.demonLordSoul"

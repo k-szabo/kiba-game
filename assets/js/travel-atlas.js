@@ -4,7 +4,7 @@ const TravelAtlas=(()=>{
  let selectedRealm=null,selectedArea=null,localMap=null;
  const make=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el;};
  const kindLabel=kind=>I18n.t(kind==='dungeon'?'travel.dungeonEntrance':kind==='raid'?'travel.atlas.raid':'travel.atlas.rest');
- const type=map=>map?.dungeon?'dungeon':map?.id==='dragonCatacombs'?'raid':'rest';
+ const type=map=>map?.dungeon?'dungeon':map?.id==='dragonCatacombs'||Number.isInteger(map?.storyRaidTier)?'raid':'rest';
  function areas(n){
   if(!levels[n]||!DevSession.active&&!realmUnlocked(n))return [];
   const groups=new Map();

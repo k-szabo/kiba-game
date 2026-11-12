@@ -54,7 +54,7 @@ r('flags[0].push(...Object.values(WatchtowerBalloonRules.progress));updateHUD();
 r("flags[0].push('ninjaClanRitualistReward','ninjaClanDebrief');updateHUD();");
 assert.equal(r('nextObjective().text'),'thirdClan.objective.reika');
 assert(r('nextObjective().remote'));
-r('flags[0].push(...ThirdClanRules.flagIds);updateHUD();');assert.equal(r('nextObjective().text'),'story.journeyEnd');
+r('flags[0].push(...ThirdClanRules.flagIds);updateHUD();');assert.equal(r('nextObjective().text'),'storyRaid.objective.enter');
 const local={point:{x:20,y:30},name:'Optional encounter',text:'Optional encounter'};
 h.sandbox.optionalObjective=local;r('level=shadowPrison');assert.equal(r('Compass.objective(optionalObjective)'),local,'Active prison objectives survive main-story completion');
 console.log('PASS: owned compass display, eight centered bearings/near cue, named objective transitions, hidden secrets, side-area idle, dream/menu hiding and paused/pure rendering.');

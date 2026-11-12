@@ -39,7 +39,7 @@ const CULT_DUNGEON_REWARDS=Object.freeze([
  Object.freeze({type:'woundedAngel',claim:'sectAngelReward',stage:'sectStage2Clear',xp:500,coins:130,points:1}),
  Object.freeze({type:'cultHighPriestess',claim:'sectPriestessReward',stage:'sectStage3Clear',xp:700,coins:220,points:1,soul:'highPriestessSoul'})
 ]);
-function bossBonusPoints(worldFlags=[]){return ['skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn'].reduce((sum,id)=>sum+(worldFlags?.[0]?.includes(id)?1:0),0)+(worldFlags?.[0]?.includes('ninjaSealPurified')?ZEN_PURIFICATION_POINTS:0)+(worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS],[0,NINJA_CLAN_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
+function bossBonusPoints(worldFlags=[]){return StoryRaidRules.bonusPoints(worldFlags)+['skyDragonRaidFirstClear','skyDragonRaidRingTurnedIn'].reduce((sum,id)=>sum+(worldFlags?.[0]?.includes(id)?1:0),0)+(worldFlags?.[0]?.includes('ninjaSealPurified')?ZEN_PURIFICATION_POINTS:0)+(worldFlags?.[3]?.includes('zenHymnPurified')?ZEN_PURIFICATION_POINTS:0)+['dragonRaidFirstClear','fiaDragonCompleted','fiaVoidCompleted'].reduce((sum,id)=>sum+(worldFlags?.[3]?.includes(id)?1:0),0)+(worldFlags?.[3]?.includes('hannahDefeated')?1:0)+(worldFlags?.[3]?.includes('zigguratGateCleared')?1:0)+(worldFlags?.[3]?.includes('fiaRewardClaimed')?1:0)+BOSS_REWARDS.reduce((sum,reward,index)=>sum+(Array.isArray(worldFlags?.[index])&&worldFlags[index].includes(reward.claim)?reward.points:0),0)+[[1,DUNGEON_REWARDS],[0,CULT_DUNGEON_REWARDS],[0,NINJA_CLAN_REWARDS]].reduce((sum,[realm,rewards])=>sum+rewards.reduce((n,reward)=>n+(worldFlags?.[realm]?.includes(reward.claim)?reward.points:0),0),0);}
 function makeLevel(id,width,height,start){return{id,width,height,start,platforms:[],rests:[],objects:[],gates:[],winds:[],hazards:[],enemies:[],zones:[]};}
 function ledge(l,id,x,y,w,kind='stone',h=28){l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground',baseX:x});}
 function rest(l,id,x,y,name){l.rests.push({id,x,y,name});}
@@ -609,6 +609,8 @@ ninjaCamp.returnPoint={x:120,y:1020};
 ninjaCamp.returnDestination={location:'stormIslands',...stormIslands.endPoint};
 zone(ninjaCamp,ninjaCamp.name,0,0,ninjaCamp.width,ninjaCamp.height);
 const {route:thirdClanPath,cave:thirdClanCave}=createThirdClanMaps({makeLevel,ledge,rest,zone});
+const storyRaidMaps=createStoryRaidMaps({makeLevel,ledge,rest,zone},thirdClanCave);
+japan.progressFlags.push(...StoryRaidRules.milestones);
 const DUNGEON_CATALOGUE=Object.freeze({
  yomiFall:Object.freeze({id:'yomiFall',realm:1,floors:DUNGEON_FLOORS,rewards:DUNGEON_REWARDS,entryMap:councilHall,entryPoint:councilHall.memoryScroll,name:'dungeon.name',title:'dungeon.scroll.title',intro:'dungeon.intro',victory:'dungeon.victory',prompt:'dungeon.scroll.prompt',returnPrompt:'dungeon.return'}),
  sectFall:Object.freeze({id:'sectFall',realm:0,floors:CULT_DUNGEON_FLOORS,rewards:CULT_DUNGEON_REWARDS,entryMap:japan,entryPoint:japan.cultPassage.ruinedGate,name:'cultDungeon.name',title:'cultDungeon.memory.title',intro:'cultDungeon.intro',victory:'cultDungeon.victory',prompt:'cultDungeon.enter',returnPrompt:'cultDungeon.return'}),
@@ -626,6 +628,8 @@ const SIDE_LOCATIONS=Object.freeze({
  ninjaClanCamp:Object.freeze({map:ninjaCamp,realm:0,requiredFlags:Object.freeze([ninjaClanRules.rewards[2]])}),
  thirdClanPath:Object.freeze({map:thirdClanPath,realm:0,requiredFlags:Object.freeze([ThirdClanRules.progress.accepted])}),
  thirdClanCave:Object.freeze({map:thirdClanCave,realm:0,requiredFlags:Object.freeze([ThirdClanRules.progress.accepted,...ThirdClanRules.progress.ballistae])}),
+ ...Object.fromEntries(storyRaidMaps.map((map,tier)=>[map.id,Object.freeze({map,realm:0,requiredFlags:Object.freeze(
+  tier?[StoryRaidRules.encounters[tier*3-1].clear]:[StoryRaidRules.started])})])),
  ninjaWatchtower:Object.freeze({map:ninjaWatchtower,realm:0,requiredFlags:Object.freeze(['islandsTrailReached'])}),
  balloonJourney:Object.freeze({map:balloonJourney,realm:0,requiredFlags:Object.freeze(['balloonJourneyStarted'])}),
  skyLanding:Object.freeze({map:skyLanding,realm:0,requiredFlags:Object.freeze(['balloonDragonDefeated'])}),

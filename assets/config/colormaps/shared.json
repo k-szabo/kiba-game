@@ -2020,6 +2020,309 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "object.inventoryItem.thirdClanLeaderSoul": {
+      "source": "assets/images/items/story-raid-souls-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.thirdClanLeaderSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#45287a",
+            "coveragePercent": 12.2798
+          },
+          {
+            "hex": "#582e92",
+            "coveragePercent": 12.0976
+          },
+          {
+            "hex": "#6e38ab",
+            "coveragePercent": 10.9592
+          },
+          {
+            "hex": "#8848c4",
+            "coveragePercent": 9.7651
+          },
+          {
+            "hex": "#372164",
+            "coveragePercent": 8.8724
+          },
+          {
+            "hex": "#a156df",
+            "coveragePercent": 7.4697
+          },
+          {
+            "hex": "#fcf6f9",
+            "coveragePercent": 5.9827
+          },
+          {
+            "hex": "#bc70e9",
+            "coveragePercent": 5.688
+          },
+          {
+            "hex": "#db92f4",
+            "coveragePercent": 4.3069
+          },
+          {
+            "hex": "#291749",
+            "coveragePercent": 4.1636
+          },
+          {
+            "hex": "#e9af73",
+            "coveragePercent": 3.6482
+          },
+          {
+            "hex": "#c68360",
+            "coveragePercent": 3.4357
+          },
+          {
+            "hex": "#9e5f54",
+            "coveragePercent": 3.1413
+          },
+          {
+            "hex": "#f0c5f7",
+            "coveragePercent": 3.0738
+          },
+          {
+            "hex": "#703c3a",
+            "coveragePercent": 2.6015
+          },
+          {
+            "hex": "#f8dba2",
+            "coveragePercent": 2.5146
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#542d90",
+            "coveragePercent": 26.9842
+          },
+          {
+            "hex": "#733ab0",
+            "coveragePercent": 25.2588
+          },
+          {
+            "hex": "#9650d4",
+            "coveragePercent": 21.0051
+          },
+          {
+            "hex": "#c06df0",
+            "coveragePercent": 11.8128
+          },
+          {
+            "hex": "#e7ac69",
+            "coveragePercent": 7.6042
+          },
+          {
+            "hex": "#aa6848",
+            "coveragePercent": 7.3349
+          }
+        ],
+        "visibleSamples": 180351,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "object.inventoryItem.cultWarMarshalSoul": {
+      "source": "assets/images/items/story-raid-souls-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.cultWarMarshalSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#521c29",
+            "coveragePercent": 17.6288
+          },
+          {
+            "hex": "#6b242b",
+            "coveragePercent": 12.2895
+          },
+          {
+            "hex": "#822c2f",
+            "coveragePercent": 11.4341
+          },
+          {
+            "hex": "#3b1520",
+            "coveragePercent": 10.0818
+          },
+          {
+            "hex": "#9a3033",
+            "coveragePercent": 7.6394
+          },
+          {
+            "hex": "#f6bf6c",
+            "coveragePercent": 5.5503
+          },
+          {
+            "hex": "#eda253",
+            "coveragePercent": 5.2779
+          },
+          {
+            "hex": "#b43f35",
+            "coveragePercent": 5.172
+          },
+          {
+            "hex": "#94512c",
+            "coveragePercent": 5.1481
+          },
+          {
+            "hex": "#dc8243",
+            "coveragePercent": 4.9227
+          },
+          {
+            "hex": "#b76e39",
+            "coveragePercent": 4.8262
+          },
+          {
+            "hex": "#d1573a",
+            "coveragePercent": 3.1311
+          },
+          {
+            "hex": "#fadc8a",
+            "coveragePercent": 2.9254
+          },
+          {
+            "hex": "#fcf1b5",
+            "coveragePercent": 1.6986
+          },
+          {
+            "hex": "#d09361",
+            "coveragePercent": 1.2577
+          },
+          {
+            "hex": "#fdfbe7",
+            "coveragePercent": 1.0164
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#902e31",
+            "coveragePercent": 28.8138
+          },
+          {
+            "hex": "#ce743f",
+            "coveragePercent": 16.8977
+          },
+          {
+            "hex": "#e99d53",
+            "coveragePercent": 15.4751
+          },
+          {
+            "hex": "#b74136",
+            "coveragePercent": 14.3574
+          },
+          {
+            "hex": "#f8c76f",
+            "coveragePercent": 12.5728
+          },
+          {
+            "hex": "#9d582f",
+            "coveragePercent": 11.8832
+          }
+        ],
+        "visibleSamples": 179102,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "object.inventoryItem.secondDemonLordSoul": {
+      "source": "assets/images/items/story-raid-souls-v1.png",
+      "frameMetadata": "ART_INVENTORY.items.secondDemonLordSoul",
+      "frameCount": 1,
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2d274f",
+            "coveragePercent": 18.5797
+          },
+          {
+            "hex": "#3b3164",
+            "coveragePercent": 16.0647
+          },
+          {
+            "hex": "#524073",
+            "coveragePercent": 13.6497
+          },
+          {
+            "hex": "#6a508e",
+            "coveragePercent": 10.0914
+          },
+          {
+            "hex": "#8a70a7",
+            "coveragePercent": 6.5882
+          },
+          {
+            "hex": "#c4a4a8",
+            "coveragePercent": 5.5541
+          },
+          {
+            "hex": "#fbf5f7",
+            "coveragePercent": 5.4797
+          },
+          {
+            "hex": "#221b38",
+            "coveragePercent": 4.3609
+          },
+          {
+            "hex": "#b389d6",
+            "coveragePercent": 3.9156
+          },
+          {
+            "hex": "#873fc9",
+            "coveragePercent": 2.6611
+          },
+          {
+            "hex": "#f4dabe",
+            "coveragePercent": 2.6238
+          },
+          {
+            "hex": "#ddb7ed",
+            "coveragePercent": 2.5534
+          },
+          {
+            "hex": "#a06947",
+            "coveragePercent": 2.3729
+          },
+          {
+            "hex": "#704334",
+            "coveragePercent": 2.2233
+          },
+          {
+            "hex": "#cc955e",
+            "coveragePercent": 1.7868
+          },
+          {
+            "hex": "#efc484",
+            "coveragePercent": 1.4948
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#573a90",
+            "coveragePercent": 35.7566
+          },
+          {
+            "hex": "#8041be",
+            "coveragePercent": 19.8248
+          },
+          {
+            "hex": "#965f3c",
+            "coveragePercent": 12.8587
+          },
+          {
+            "hex": "#bf8550",
+            "coveragePercent": 11.2662
+          },
+          {
+            "hex": "#b462e7",
+            "coveragePercent": 10.9053
+          },
+          {
+            "hex": "#e8b56d",
+            "coveragePercent": 9.3883
+          }
+        ],
+        "visibleSamples": 176156,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
     "object.inventoryItem.demonLordSoul": {
       "source": "assets/images/items/first-demon-lord-soul-v1.png",
       "frameMetadata": "ART_INVENTORY.items.demonLordSoul",
@@ -5667,6 +5970,943 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/enemies/story-raid-clan-leader-v1.png": {
+      "sha256": "c03047f057127c5e1d2c5ee6ff92b86dcca66013a2e03aca0dd58702f1889c0c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidClanLeader"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#634c5f",
+            "coveragePercent": 9.9054
+          },
+          {
+            "hex": "#332635",
+            "coveragePercent": 9.2946
+          },
+          {
+            "hex": "#503e51",
+            "coveragePercent": 8.9243
+          },
+          {
+            "hex": "#745b6d",
+            "coveragePercent": 8.5598
+          },
+          {
+            "hex": "#403142",
+            "coveragePercent": 8.457
+          },
+          {
+            "hex": "#291d2a",
+            "coveragePercent": 6.5257
+          },
+          {
+            "hex": "#8b6c73",
+            "coveragePercent": 6.4926
+          },
+          {
+            "hex": "#7c4352",
+            "coveragePercent": 6.4122
+          },
+          {
+            "hex": "#613444",
+            "coveragePercent": 6.3635
+          },
+          {
+            "hex": "#a67e7b",
+            "coveragePercent": 5.8344
+          },
+          {
+            "hex": "#4b2636",
+            "coveragePercent": 5.5055
+          },
+          {
+            "hex": "#bf978a",
+            "coveragePercent": 5.1381
+          },
+          {
+            "hex": "#9c4e5c",
+            "coveragePercent": 4.084
+          },
+          {
+            "hex": "#1b131f",
+            "coveragePercent": 3.5127
+          },
+          {
+            "hex": "#d7b3a0",
+            "coveragePercent": 3.2084
+          },
+          {
+            "hex": "#ead3c7",
+            "coveragePercent": 1.7819
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#974658",
+            "coveragePercent": 31.3889
+          },
+          {
+            "hex": "#884558",
+            "coveragePercent": 22.7552
+          },
+          {
+            "hex": "#a54e5e",
+            "coveragePercent": 21.1649
+          },
+          {
+            "hex": "#873c4f",
+            "coveragePercent": 17.4464
+          },
+          {
+            "hex": "#b55b66",
+            "coveragePercent": 6.6828
+          },
+          {
+            "hex": "#cf896f",
+            "coveragePercent": 0.5619
+          }
+        ],
+        "visibleSamples": 500411,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/story-raid-kiba-binder-v1.png": {
+      "sha256": "33312820443da8622dee19c558b15ac16fe5a3abeb96256a090e2d6dd92ea1d2",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidKibaBinder"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#423849",
+            "coveragePercent": 13.3308
+          },
+          {
+            "hex": "#605064",
+            "coveragePercent": 12.0079
+          },
+          {
+            "hex": "#504457",
+            "coveragePercent": 11.6878
+          },
+          {
+            "hex": "#755f75",
+            "coveragePercent": 10.0853
+          },
+          {
+            "hex": "#352c3c",
+            "coveragePercent": 8.4484
+          },
+          {
+            "hex": "#85668c",
+            "coveragePercent": 6.0428
+          },
+          {
+            "hex": "#977572",
+            "coveragePercent": 5.4384
+          },
+          {
+            "hex": "#9d79a2",
+            "coveragePercent": 5.2505
+          },
+          {
+            "hex": "#b48d80",
+            "coveragePercent": 4.5333
+          },
+          {
+            "hex": "#7b5d5b",
+            "coveragePercent": 4.3283
+          },
+          {
+            "hex": "#261f2f",
+            "coveragePercent": 3.6358
+          },
+          {
+            "hex": "#e1c1b3",
+            "coveragePercent": 3.6309
+          },
+          {
+            "hex": "#604543",
+            "coveragePercent": 3.4499
+          },
+          {
+            "hex": "#be9fa4",
+            "coveragePercent": 3.0881
+          },
+          {
+            "hex": "#d5ab93",
+            "coveragePercent": 2.867
+          },
+          {
+            "hex": "#f4e0ce",
+            "coveragePercent": 2.1749
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8c634a",
+            "coveragePercent": 32.2179
+          },
+          {
+            "hex": "#a97d5a",
+            "coveragePercent": 25.3801
+          },
+          {
+            "hex": "#c59468",
+            "coveragePercent": 22.8536
+          },
+          {
+            "hex": "#dbaa76",
+            "coveragePercent": 11.0836
+          },
+          {
+            "hex": "#904d7c",
+            "coveragePercent": 8.399
+          },
+          {
+            "hex": "#f4db77",
+            "coveragePercent": 0.0658
+          }
+        ],
+        "visibleSamples": 284444,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/story-raid-mimic-phase-2-v1.png": {
+      "sha256": "4456bc625f37e5d4b2ce013a99769cc0fdd65bf55710d8c690150985bc55d492",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidMimicPhase2"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#564359",
+            "coveragePercent": 13.092
+          },
+          {
+            "hex": "#654f67",
+            "coveragePercent": 12.6944
+          },
+          {
+            "hex": "#3b3044",
+            "coveragePercent": 11.2906
+          },
+          {
+            "hex": "#47394e",
+            "coveragePercent": 11.2328
+          },
+          {
+            "hex": "#2f2738",
+            "coveragePercent": 9.4776
+          },
+          {
+            "hex": "#78587d",
+            "coveragePercent": 6.714
+          },
+          {
+            "hex": "#957378",
+            "coveragePercent": 5.3329
+          },
+          {
+            "hex": "#ac8686",
+            "coveragePercent": 4.9143
+          },
+          {
+            "hex": "#201928",
+            "coveragePercent": 4.7899
+          },
+          {
+            "hex": "#7f6167",
+            "coveragePercent": 4.76
+          },
+          {
+            "hex": "#c29b93",
+            "coveragePercent": 3.9831
+          },
+          {
+            "hex": "#e4cabe",
+            "coveragePercent": 3.773
+          },
+          {
+            "hex": "#8f6395",
+            "coveragePercent": 2.9937
+          },
+          {
+            "hex": "#d5b3a6",
+            "coveragePercent": 2.9773
+          },
+          {
+            "hex": "#b07fbc",
+            "coveragePercent": 1.2551
+          },
+          {
+            "hex": "#d6a4e2",
+            "coveragePercent": 0.7194
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#724288",
+            "coveragePercent": 45.87
+          },
+          {
+            "hex": "#854e9a",
+            "coveragePercent": 28.9841
+          },
+          {
+            "hex": "#985aaf",
+            "coveragePercent": 17.4985
+          },
+          {
+            "hex": "#b06acb",
+            "coveragePercent": 6.4326
+          },
+          {
+            "hex": "#ad755a",
+            "coveragePercent": 0.6248
+          },
+          {
+            "hex": "#e8b177",
+            "coveragePercent": 0.59
+          }
+        ],
+        "visibleSamples": 442879,
+        "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/enemies/story-raid-mist-sentry-v1.png": {
+      "sha256": "c1a054c99bede558d16a165866948e89cca3fa24a03603205893777383e500d7",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidMistSentry"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#a48aa1",
+            "coveragePercent": 10.6554
+          },
+          {
+            "hex": "#947b90",
+            "coveragePercent": 10.4807
+          },
+          {
+            "hex": "#806a80",
+            "coveragePercent": 10.4774
+          },
+          {
+            "hex": "#6c5971",
+            "coveragePercent": 9.4687
+          },
+          {
+            "hex": "#5b4a62",
+            "coveragePercent": 8.197
+          },
+          {
+            "hex": "#b298ba",
+            "coveragePercent": 6.9305
+          },
+          {
+            "hex": "#c3aac9",
+            "coveragePercent": 6.343
+          },
+          {
+            "hex": "#4b3c52",
+            "coveragePercent": 5.4313
+          },
+          {
+            "hex": "#fbf2e4",
+            "coveragePercent": 5.2925
+          },
+          {
+            "hex": "#edd8ca",
+            "coveragePercent": 5.2077
+          },
+          {
+            "hex": "#d7beb7",
+            "coveragePercent": 5.1989
+          },
+          {
+            "hex": "#d4bcd7",
+            "coveragePercent": 4.7618
+          },
+          {
+            "hex": "#bfa4a1",
+            "coveragePercent": 4.3331
+          },
+          {
+            "hex": "#3a2c40",
+            "coveragePercent": 3.6998
+          },
+          {
+            "hex": "#25192a",
+            "coveragePercent": 1.8761
+          },
+          {
+            "hex": "#e8d5e7",
+            "coveragePercent": 1.646
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#544682",
+            "coveragePercent": 25.0
+          },
+          {
+            "hex": "#ce916c",
+            "coveragePercent": 25.0
+          },
+          {
+            "hex": "#996454",
+            "coveragePercent": 25.0
+          },
+          {
+            "hex": "#ae7655",
+            "coveragePercent": 25.0
+          }
+        ],
+        "visibleSamples": 395748,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/enemies/story-raid-rift-sentinel-v1.png": {
+      "sha256": "bcf8076ef15a17b0c6fc62d1a198ff3086986fefa79a5d9ede458c9fe478095c",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidRiftSentinel"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#5f4c69",
+            "coveragePercent": 13.4679
+          },
+          {
+            "hex": "#51415d",
+            "coveragePercent": 11.3841
+          },
+          {
+            "hex": "#725b75",
+            "coveragePercent": 10.8764
+          },
+          {
+            "hex": "#3c314a",
+            "coveragePercent": 10.3124
+          },
+          {
+            "hex": "#463953",
+            "coveragePercent": 9.1085
+          },
+          {
+            "hex": "#31293f",
+            "coveragePercent": 8.179
+          },
+          {
+            "hex": "#866b81",
+            "coveragePercent": 7.8062
+          },
+          {
+            "hex": "#9a7a8b",
+            "coveragePercent": 6.1886
+          },
+          {
+            "hex": "#a9889a",
+            "coveragePercent": 5.8626
+          },
+          {
+            "hex": "#bb98a2",
+            "coveragePercent": 4.5098
+          },
+          {
+            "hex": "#251e31",
+            "coveragePercent": 3.8964
+          },
+          {
+            "hex": "#cba7ad",
+            "coveragePercent": 3.2339
+          },
+          {
+            "hex": "#8c5fa3",
+            "coveragePercent": 1.9376
+          },
+          {
+            "hex": "#ddbab7",
+            "coveragePercent": 1.7973
+          },
+          {
+            "hex": "#b57dca",
+            "coveragePercent": 0.9235
+          },
+          {
+            "hex": "#e9c8d5",
+            "coveragePercent": 0.5161
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#673e89",
+            "coveragePercent": 34.8981
+          },
+          {
+            "hex": "#7d4a9d",
+            "coveragePercent": 30.3089
+          },
+          {
+            "hex": "#955ab8",
+            "coveragePercent": 23.786
+          },
+          {
+            "hex": "#b46ddb",
+            "coveragePercent": 10.7045
+          },
+          {
+            "hex": "#a46e5b",
+            "coveragePercent": 0.1628
+          },
+          {
+            "hex": "#e3af78",
+            "coveragePercent": 0.1396
+          }
+        ],
+        "visibleSamples": 343162,
+        "dominantCoveragePercent": 100.0003
+      }
+    },
+    "assets/images/enemies/story-raid-sanctuary-custodian-v1.png": {
+      "sha256": "c3e4f654649285fc10d202c449b04fd9ed2b3659d6a374e991cc6f73fa325432",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidCustodian"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#523f4c",
+            "coveragePercent": 12.7584
+          },
+          {
+            "hex": "#40323d",
+            "coveragePercent": 11.5157
+          },
+          {
+            "hex": "#31242c",
+            "coveragePercent": 10.5153
+          },
+          {
+            "hex": "#654f59",
+            "coveragePercent": 8.0634
+          },
+          {
+            "hex": "#85544c",
+            "coveragePercent": 7.3247
+          },
+          {
+            "hex": "#533430",
+            "coveragePercent": 6.9546
+          },
+          {
+            "hex": "#6d453c",
+            "coveragePercent": 6.7474
+          },
+          {
+            "hex": "#9e625c",
+            "coveragePercent": 6.613
+          },
+          {
+            "hex": "#1f151e",
+            "coveragePercent": 4.7456
+          },
+          {
+            "hex": "#7b656d",
+            "coveragePercent": 4.5961
+          },
+          {
+            "hex": "#b87c5d",
+            "coveragePercent": 4.4766
+          },
+          {
+            "hex": "#d3946a",
+            "coveragePercent": 4.1293
+          },
+          {
+            "hex": "#9a7c7f",
+            "coveragePercent": 3.5998
+          },
+          {
+            "hex": "#e8ae78",
+            "coveragePercent": 3.3977
+          },
+          {
+            "hex": "#bb9893",
+            "coveragePercent": 3.0867
+          },
+          {
+            "hex": "#ebc79f",
+            "coveragePercent": 1.4757
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#dd9c6b",
+            "coveragePercent": 19.834
+          },
+          {
+            "hex": "#8d5b40",
+            "coveragePercent": 18.9392
+          },
+          {
+            "hex": "#a9714f",
+            "coveragePercent": 18.6949
+          },
+          {
+            "hex": "#c5865d",
+            "coveragePercent": 18.528
+          },
+          {
+            "hex": "#9a5161",
+            "coveragePercent": 12.8024
+          },
+          {
+            "hex": "#eeb678",
+            "coveragePercent": 11.2015
+          }
+        ],
+        "visibleSamples": 370621,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/story-raid-siege-warden-v1.png": {
+      "sha256": "4d0bc94b0e06b2971788447d91992ea01c1e0f27112b8cf7aa0ecfbeefbedfa7",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidSiegeWarden"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#4e3c49",
+            "coveragePercent": 13.4546
+          },
+          {
+            "hex": "#5d475d",
+            "coveragePercent": 11.9632
+          },
+          {
+            "hex": "#3b2e3d",
+            "coveragePercent": 11.5214
+          },
+          {
+            "hex": "#735570",
+            "coveragePercent": 10.0801
+          },
+          {
+            "hex": "#6e524f",
+            "coveragePercent": 7.7423
+          },
+          {
+            "hex": "#2a202e",
+            "coveragePercent": 7.7312
+          },
+          {
+            "hex": "#89675b",
+            "coveragePercent": 6.2337
+          },
+          {
+            "hex": "#bc8f73",
+            "coveragePercent": 4.8323
+          },
+          {
+            "hex": "#a47b66",
+            "coveragePercent": 4.8159
+          },
+          {
+            "hex": "#d4a47f",
+            "coveragePercent": 4.3985
+          },
+          {
+            "hex": "#8c747e",
+            "coveragePercent": 4.004
+          },
+          {
+            "hex": "#19131e",
+            "coveragePercent": 3.285
+          },
+          {
+            "hex": "#e6ba90",
+            "coveragePercent": 3.1179
+          },
+          {
+            "hex": "#9b5e8a",
+            "coveragePercent": 2.8154
+          },
+          {
+            "hex": "#b58a9d",
+            "coveragePercent": 2.7604
+          },
+          {
+            "hex": "#f1d2ab",
+            "coveragePercent": 1.2441
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#c08c65",
+            "coveragePercent": 32.2726
+          },
+          {
+            "hex": "#dea776",
+            "coveragePercent": 26.8648
+          },
+          {
+            "hex": "#9b6c51",
+            "coveragePercent": 23.7118
+          },
+          {
+            "hex": "#89487a",
+            "coveragePercent": 8.3923
+          },
+          {
+            "hex": "#9f5588",
+            "coveragePercent": 6.9376
+          },
+          {
+            "hex": "#b4609a",
+            "coveragePercent": 1.8209
+          }
+        ],
+        "visibleSamples": 481429,
+        "dominantCoveragePercent": 100.0
+      }
+    },
+    "assets/images/enemies/story-raid-signal-keeper-v1.png": {
+      "sha256": "f13c4b810a77225ead4be43fc2c37c718b2a710b4391e33caf53dc31594ff3e1",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidSignalKeeper"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#534759",
+            "coveragePercent": 12.3705
+          },
+          {
+            "hex": "#443949",
+            "coveragePercent": 11.3857
+          },
+          {
+            "hex": "#7b6c83",
+            "coveragePercent": 10.3491
+          },
+          {
+            "hex": "#6e6075",
+            "coveragePercent": 10.3295
+          },
+          {
+            "hex": "#5f5468",
+            "coveragePercent": 10.0635
+          },
+          {
+            "hex": "#89778e",
+            "coveragePercent": 7.7731
+          },
+          {
+            "hex": "#352b39",
+            "coveragePercent": 6.6483
+          },
+          {
+            "hex": "#937f9b",
+            "coveragePercent": 5.5296
+          },
+          {
+            "hex": "#b397bf",
+            "coveragePercent": 4.4016
+          },
+          {
+            "hex": "#b1918c",
+            "coveragePercent": 4.3207
+          },
+          {
+            "hex": "#a289ae",
+            "coveragePercent": 3.4061
+          },
+          {
+            "hex": "#947370",
+            "coveragePercent": 3.3481
+          },
+          {
+            "hex": "#cfad9f",
+            "coveragePercent": 2.9787
+          },
+          {
+            "hex": "#765759",
+            "coveragePercent": 2.9357
+          },
+          {
+            "hex": "#241c27",
+            "coveragePercent": 2.3753
+          },
+          {
+            "hex": "#f1d2bd",
+            "coveragePercent": 1.7843
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8a4956",
+            "coveragePercent": 22.5039
+          },
+          {
+            "hex": "#b68361",
+            "coveragePercent": 20.9059
+          },
+          {
+            "hex": "#c6926b",
+            "coveragePercent": 19.4762
+          },
+          {
+            "hex": "#9f6b55",
+            "coveragePercent": 19.362
+          },
+          {
+            "hex": "#895c49",
+            "coveragePercent": 14.7543
+          },
+          {
+            "hex": "#d9a576",
+            "coveragePercent": 2.9977
+          }
+        ],
+        "visibleSamples": 330954,
+        "dominantCoveragePercent": 99.9998
+      }
+    },
+    "assets/images/enemies/story-raid-war-marshal-v1.png": {
+      "sha256": "030a14f186bab514dea86ff9fe9235007b4e9b1811fed8354a7e7db053ed9345",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidWarMarshal"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#664655",
+            "coveragePercent": 14.4673
+          },
+          {
+            "hex": "#523a47",
+            "coveragePercent": 13.7805
+          },
+          {
+            "hex": "#402f3c",
+            "coveragePercent": 12.1379
+          },
+          {
+            "hex": "#804e5a",
+            "coveragePercent": 10.3019
+          },
+          {
+            "hex": "#2f222f",
+            "coveragePercent": 8.941
+          },
+          {
+            "hex": "#9e5763",
+            "coveragePercent": 8.3533
+          },
+          {
+            "hex": "#a86f6b",
+            "coveragePercent": 5.6761
+          },
+          {
+            "hex": "#7f606b",
+            "coveragePercent": 5.5866
+          },
+          {
+            "hex": "#be8677",
+            "coveragePercent": 4.5241
+          },
+          {
+            "hex": "#d79e83",
+            "coveragePercent": 3.8132
+          },
+          {
+            "hex": "#ebb793",
+            "coveragePercent": 3.5066
+          },
+          {
+            "hex": "#1d1520",
+            "coveragePercent": 3.4192
+          },
+          {
+            "hex": "#987a80",
+            "coveragePercent": 2.2283
+          },
+          {
+            "hex": "#e4c7bc",
+            "coveragePercent": 1.4115
+          },
+          {
+            "hex": "#baa0a2",
+            "coveragePercent": 1.1517
+          },
+          {
+            "hex": "#f3e9e4",
+            "coveragePercent": 0.7007
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#a35562",
+            "coveragePercent": 30.9569
+          },
+          {
+            "hex": "#954e5e",
+            "coveragePercent": 23.9982
+          },
+          {
+            "hex": "#b05c68",
+            "coveragePercent": 17.409
+          },
+          {
+            "hex": "#874753",
+            "coveragePercent": 14.6592
+          },
+          {
+            "hex": "#bc7d62",
+            "coveragePercent": 7.5073
+          },
+          {
+            "hex": "#df9e76",
+            "coveragePercent": 5.4694
+          }
+        ],
+        "visibleSamples": 386424,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/enemies/third-clan-guardian-stagger-v1.png": {
       "sha256": "536f256f12437bb5d7d53a7bde2d7467994fbf5320548c2a2797941a080319a8",
       "width": 1536,
@@ -6822,6 +8062,111 @@
         "dominantCoveragePercent": 100.0
       }
     },
+    "assets/images/items/story-raid-souls-v1.png": {
+      "sha256": "7808ec96ca756a4c6dc12fd8c87ac94b1c4e263fd9ba50aafc22d6842ac3c971",
+      "width": 2172,
+      "height": 724,
+      "runtimeKeys": [
+        "storyRaidSouls"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#3f2d6c",
+            "coveragePercent": 11.5204
+          },
+          {
+            "hex": "#4d1b26",
+            "coveragePercent": 11.179
+          },
+          {
+            "hex": "#2b234d",
+            "coveragePercent": 10.172
+          },
+          {
+            "hex": "#802e2f",
+            "coveragePercent": 9.9294
+          },
+          {
+            "hex": "#592f95",
+            "coveragePercent": 6.9581
+          },
+          {
+            "hex": "#a94f37",
+            "coveragePercent": 6.2795
+          },
+          {
+            "hex": "#7d3fbd",
+            "coveragePercent": 5.6018
+          },
+          {
+            "hex": "#cf7f49",
+            "coveragePercent": 5.245
+          },
+          {
+            "hex": "#faf0f5",
+            "coveragePercent": 5.1169
+          },
+          {
+            "hex": "#604a78",
+            "coveragePercent": 5.0954
+          },
+          {
+            "hex": "#efb367",
+            "coveragePercent": 5.0759
+          },
+          {
+            "hex": "#a85de1",
+            "coveragePercent": 4.7691
+          },
+          {
+            "hex": "#86689f",
+            "coveragePercent": 3.6283
+          },
+          {
+            "hex": "#d99bf2",
+            "coveragePercent": 3.2119
+          },
+          {
+            "hex": "#f8dda2",
+            "coveragePercent": 3.1134
+          },
+          {
+            "hex": "#bf9bb0",
+            "coveragePercent": 3.1038
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#983b32",
+            "coveragePercent": 22.6171
+          },
+          {
+            "hex": "#5a3196",
+            "coveragePercent": 22.5251
+          },
+          {
+            "hex": "#c77543",
+            "coveragePercent": 15.5045
+          },
+          {
+            "hex": "#8545c3",
+            "coveragePercent": 15.1671
+          },
+          {
+            "hex": "#f0b566",
+            "coveragePercent": 14.1463
+          },
+          {
+            "hex": "#b665ea",
+            "coveragePercent": 10.0398
+          }
+        ],
+        "visibleSamples": 535609,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
     "assets/images/japan-clouds-v1.png": {
       "sha256": "3c56ff9bba2aea0ff0dbcaa43352c7e3631e989d2b2955c169e18f768d697b1a",
       "width": 1774,
@@ -7030,6 +8375,111 @@
         ],
         "visibleSamples": 479516,
         "dominantCoveragePercent": 100.0001
+      }
+    },
+    "assets/images/npcs/story-raid-reika-brace-v1.png": {
+      "sha256": "a7dca8218352e6a880cc94b2d8d57343daf0e5ce543c71b4b5bed474798d6ad8",
+      "width": 1536,
+      "height": 1024,
+      "runtimeKeys": [
+        "storyRaidReikaBrace"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#2c2737",
+            "coveragePercent": 10.708
+          },
+          {
+            "hex": "#34354b",
+            "coveragePercent": 9.2022
+          },
+          {
+            "hex": "#4c455b",
+            "coveragePercent": 8.7395
+          },
+          {
+            "hex": "#4d3b40",
+            "coveragePercent": 8.3195
+          },
+          {
+            "hex": "#856d7c",
+            "coveragePercent": 8.0286
+          },
+          {
+            "hex": "#6b566e",
+            "coveragePercent": 8.0183
+          },
+          {
+            "hex": "#69504d",
+            "coveragePercent": 7.0274
+          },
+          {
+            "hex": "#191828",
+            "coveragePercent": 6.5592
+          },
+          {
+            "hex": "#84645a",
+            "coveragePercent": 5.8491
+          },
+          {
+            "hex": "#cca685",
+            "coveragePercent": 4.7463
+          },
+          {
+            "hex": "#6b7f8c",
+            "coveragePercent": 4.6755
+          },
+          {
+            "hex": "#a68f85",
+            "coveragePercent": 4.5463
+          },
+          {
+            "hex": "#e7c09b",
+            "coveragePercent": 4.1053
+          },
+          {
+            "hex": "#a47e66",
+            "coveragePercent": 3.8824
+          },
+          {
+            "hex": "#4e6376",
+            "coveragePercent": 2.9154
+          },
+          {
+            "hex": "#f7dbbd",
+            "coveragePercent": 2.6769
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#8e613d",
+            "coveragePercent": 25.7634
+          },
+          {
+            "hex": "#a9774b",
+            "coveragePercent": 24.913
+          },
+          {
+            "hex": "#c4915b",
+            "coveragePercent": 24.4886
+          },
+          {
+            "hex": "#e4b372",
+            "coveragePercent": 23.3111
+          },
+          {
+            "hex": "#456686",
+            "coveragePercent": 1.0523
+          },
+          {
+            "hex": "#5583b8",
+            "coveragePercent": 0.4716
+          }
+        ],
+        "visibleSamples": 344998,
+        "dominantCoveragePercent": 99.9999
       }
     },
     "assets/images/props/camp-cedar-v1.png": {
@@ -7659,6 +9109,111 @@
           }
         ],
         "visibleSamples": 564323,
+        "dominantCoveragePercent": 99.9999
+      }
+    },
+    "assets/images/props/story-raid-gates-v1.png": {
+      "sha256": "ea7378cc372d83f6beb945782fe394d96a894d4dee5b9822beb1bb259b24cd28",
+      "width": 1774,
+      "height": 887,
+      "runtimeKeys": [
+        "storyRaidGates"
+      ],
+      "usage": "runtime",
+      "palette": {
+        "dominant": [
+          {
+            "hex": "#523c62",
+            "coveragePercent": 16.1533
+          },
+          {
+            "hex": "#6a4d75",
+            "coveragePercent": 14.541
+          },
+          {
+            "hex": "#3e2c47",
+            "coveragePercent": 11.1608
+          },
+          {
+            "hex": "#281c2c",
+            "coveragePercent": 8.1522
+          },
+          {
+            "hex": "#fbddcb",
+            "coveragePercent": 5.7324
+          },
+          {
+            "hex": "#c1a5db",
+            "coveragePercent": 5.4961
+          },
+          {
+            "hex": "#956987",
+            "coveragePercent": 5.3764
+          },
+          {
+            "hex": "#c88571",
+            "coveragePercent": 4.8927
+          },
+          {
+            "hex": "#8d575e",
+            "coveragePercent": 4.6134
+          },
+          {
+            "hex": "#e5c0d5",
+            "coveragePercent": 4.4332
+          },
+          {
+            "hex": "#6c4238",
+            "coveragePercent": 4.0023
+          },
+          {
+            "hex": "#eba45d",
+            "coveragePercent": 3.853
+          },
+          {
+            "hex": "#fdf9e9",
+            "coveragePercent": 3.7169
+          },
+          {
+            "hex": "#f7c88a",
+            "coveragePercent": 3.6639
+          },
+          {
+            "hex": "#b57146",
+            "coveragePercent": 3.3836
+          },
+          {
+            "hex": "#e0495c",
+            "coveragePercent": 0.8287
+          }
+        ],
+        "accents": [
+          {
+            "hex": "#ce8557",
+            "coveragePercent": 25.4582
+          },
+          {
+            "hex": "#eca45f",
+            "coveragePercent": 20.88
+          },
+          {
+            "hex": "#af6d47",
+            "coveragePercent": 18.2331
+          },
+          {
+            "hex": "#fac776",
+            "coveragePercent": 15.6043
+          },
+          {
+            "hex": "#924a4a",
+            "coveragePercent": 14.1686
+          },
+          {
+            "hex": "#e44d5e",
+            "coveragePercent": 5.6558
+          }
+        ],
+        "visibleSamples": 837037,
         "dominantCoveragePercent": 99.9999
       }
     },
