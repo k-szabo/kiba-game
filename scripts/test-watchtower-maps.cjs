@@ -2,15 +2,9 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const ctx=vm.createContext({});
 const mapDir=path.join(__dirname,'../assets/config/maps');ctx.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
-for(const name of ['grapple-rules','map-catalog','watchtower-balloon-maps'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
-const helpers={
- makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[],enemies:[],zones:[]}),
- ledge:(l,id,x,y,w,kind,h)=>l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground'}),
- rest:(l,id,x,y,name)=>l.rests.push({id,x,y,name}),
- foe:(l,id,x,y,kind,group,patrol)=>l.enemies.push({id,x,y,kind,group,patrol}),
- zone:(l,name,x,y,w,h)=>l.zones.push({name,x,y,w,h})
-};
-const maps=vm.runInContext('createWatchtowerBalloonMaps',ctx)(helpers),rules=vm.runInContext('GrappleRules',ctx),tower=maps.ninjaWatchtower;
+for(const name of ['grapple-rules','map-catalog'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
+const maps=Object.fromEntries(['ninjaWatchtower','balloonJourney','skyLanding','stormIslands'].map(id=>[id,vm.runInContext(`MapCatalog.build('${id}')`,ctx)]));
+const rules=vm.runInContext('GrappleRules',ctx),tower=maps.ninjaWatchtower;
 assert.equal(Object.keys(maps).length,4);
 for(const map of Object.values(maps)){
  assert(map.platforms.some(p=>map.start.x>=p.x&&map.start.x<p.x+p.w&&map.start.y===p.y),'Spawn has support: '+map.id);

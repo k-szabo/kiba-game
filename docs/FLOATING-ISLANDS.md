@@ -20,7 +20,7 @@ Work starts from main commit `563a053` on `FEATURE-floating-islands-shadow-ninja
 
 `assets/js/floating-islands-rules.js` provides additive realm-zero milestones gated by the existing realm-three arrival completion. Escape and kidnapping commit together; hook acquisition follows escape; the later trail milestone requires the hook. Transitions copy flags and reject replay.
 
-`assets/js/floating-islands-maps.js` defines the initial arena and three 400px uphill crossings. Gaps are 680px wide, with near-edge fixed rings inside hook range. Return rings at the far edge of each lower island support the downhill route; jump from the upper edge before grappling down so the body clears the departure platform. Existing arrival-map geometry is preserved.
+`assets/config/maps/floatingIslands.json` defines the initial arena and three 400px uphill crossings. Gaps are 680px wide, with near-edge fixed rings inside hook range. Return rings at the far edge of each lower island support the downhill route; jump from the upper edge before grappling down so the body clears the departure platform. Existing arrival-map geometry is preserved.
 
 The modules are integrated through the private generated runtime and canonical `SIDE_LOCATIONS` registry. The arrival conversation unlocks the entrance at `(3850,1100)` in `japanHeights`. The existing arrival map/rest coordinates are unchanged. The new map has three canonical rests and appears in normal discovered fast travel, the atlas, and developer teleport.
 

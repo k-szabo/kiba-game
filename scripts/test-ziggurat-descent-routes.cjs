@@ -2,15 +2,8 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const sandbox={};vm.createContext(sandbox);
 const mapDir='assets/config/maps';sandbox.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const value=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [value.id,value];}));
-vm.runInContext(fs.readFileSync('assets/js/map-catalog.js','utf8')+'\n'+fs.readFileSync('assets/js/haru-follower.js','utf8')+'\n'+fs.readFileSync('assets/js/ziggurat-descent-maps.js','utf8')+';globalThis.factory=createZigguratDescentMaps;globalThis.Follower=HaruFollower;',sandbox);
-const helpers={
- makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[],enemies:[],zones:[]}),
- ledge:(m,id,x,y,w,kind='stone',h=28)=>m.platforms.push({id,x,y,w,kind,h,drop:kind!=='ground'}),
- rest:(m,id,x,y,name)=>m.rests.push({id,x,y,name}),
- foe:(m,id,x,y,kind,group,patrol)=>m.enemies.push({id,x,y,kind,group,patrol}),
- zone:(m,name,x,y,w,h)=>m.zones.push({name,x,y,w,h})
-};
-const {zigguratDepths:depths,japanHeights:heights}=sandbox.factory(helpers);
+vm.runInContext(fs.readFileSync('assets/js/map-catalog.js','utf8')+'\n'+fs.readFileSync('assets/js/haru-follower.js','utf8')+';globalThis.Follower=HaruFollower;',sandbox);
+const depths=vm.runInContext("MapCatalog.build('zigguratDepths')",sandbox),heights=vm.runInContext("MapCatalog.build('japanHeights')",sandbox);
 const grounded=(m,p)=>m.platforms.some(f=>p.x>=f.x&&p.x<=f.x+f.w&&p.y===f.y);
 for(const map of [depths,heights]){
  assert(grounded(map,map.start),'Spawn is on a registered floor');

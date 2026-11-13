@@ -27,8 +27,10 @@ resident, service and arena markers before generic faction/role pairs.
 returns the distinct sprite and effect image keys. `createEnemy` records the
 resolved `npcCatalogId`; standard faction enemies take their base HP and body
 dimensions from their JSON `combat` fields. Realm multipliers, authored spawn
-overrides and specialized controllers retain precedence. Map geometry, actor
-animation, rewards and save flags continue to use their existing owners.
+overrides and specialized controllers retain precedence. Enemy placements and
+the rest of each physical map's authored geometry live in
+`assets/config/maps/*.json` (see [MAP-CATALOG.md](MAP-CATALOG.md)). Actor
+animation, rewards and save flags continue to use their gameplay owners.
 
 When adding a character, add its JSON and existing locale/art references, then
 run `node scripts/test-npc-catalog.cjs`. This checks actual map enemies and

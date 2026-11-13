@@ -5,7 +5,7 @@ A [Trello-kártya](https://trello.com/c/fNyKT8NN) Hannah történeti legyőzése
 ## Állapot és útvonal
 
 - `ziggurat-descent-rules.js`: másolással dolgozó mérföldkövek és mentési sorrendvalidálás.
-- `ziggurat-descent-maps.js`: két regisztrált oldalhelyszín, `zigguratDepths` a harmadik indexű birodalomban, `japanHeights` Japánban. A japán célpont `flagRealm:3` alapján kap jogosultságot.
+- `assets/config/maps/zigguratDepths.json` és `japanHeights.json`: a két regisztrált oldalhelyszín geometriája; a `zigguratDepths` a negyedik birodalomban, `japanHeights` Japánban van. A japán célpont `flagRealm:3` alapján kap jogosultságot.
 - `ziggurat-descent.js`: párbeszédek, interakciók, portál, célok, egyszeri jutalom és Haru átmeneti állapota.
 - `haru-follower.js`: talajhoz igazított, platformgráfot követő mozgás, 78 világpixel távolsággal; nincs önálló harc vagy sebződés.
 - `ziggurat-gatekeeper.js`: 2200 HP-s portálőr, söprés, szúrás, célzott lövedéklegyező és előre jelzett talajkitörés. Fél életerő alatt gyorsabb és sűrűbb támadások.

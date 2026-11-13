@@ -6,7 +6,7 @@ A negyedik birodalom folytatása három `SIDE_LOCATIONS` helyszín: `zigguratApp
 
 ## Modulok
 
-- `ziggurat-maps.js`: pályaépítő; a `levels.js` regisztrálja a pályákat és a pihenőket. A dev-teleport ugyanebből a katalógusból dolgozik.
+- A három helyszín statikus adatai az `assets/config/maps/zigguratApproach.json`, `zigguratInterior.json` és `zigguratSummit.json` fájlokban vannak. A `levels.js` regisztrálja őket, a dev-teleport ugyanazokat a megosztott pályapéldányokat használja.
 - `hannah-rules.js`: módosíthatatlan egyensúly és tiszta sebzési/fázisküszöb-szabályok.
 - `hannah-combat.js`: entitáshoz kötött harc, idézett ellenfelek, rögzített célzású támadások és Kiba-visszhangok.
 - `hannah-encounter.js`: útvonalak, párbeszédek, emelkedő padló, újrapróbálás és tartós történeti mérföldkövek.

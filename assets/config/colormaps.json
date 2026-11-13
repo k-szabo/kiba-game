@@ -94,14 +94,14 @@
     "objects": 142,
     "paletteGroups": 264,
     "assets": 344,
-    "codeColors": 196
+    "codeColors": 188
   },
   "parts": [
     {
       "file": "colormaps/code-colors.json",
-      "sha256": "5595d4653a763ef81fa6e4a5f02e93ae9e0612da04c0617bdc579825217b52ba",
+      "sha256": "dc2df885eed5a5dd536bf934c624249cc5c935a3f7cb2a59ca190c673e50c24b",
       "counts": {
-        "codeColors": 196
+        "codeColors": 188
       }
     },
     {

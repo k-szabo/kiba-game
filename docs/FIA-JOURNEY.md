@@ -105,8 +105,9 @@ harcot indítja, nem teljesíti a megbízást. A mentett visszaállítási horgo
 a rituálészobát is szigorúan validálja; vereségkor megmarad a kristály és
 a fertőzés, és a döntés újra meghozható.
 
-Modulok: `fia-void-maps.js`, `fia-void-journey.js`, `void-encounter-rules.js`,
-`void-encounter.js`, `fia-void-art.js`. A natív PNG-ket a regisztráló nem
+Modulok: `fia-void-journey.js`, `void-encounter-rules.js`,
+`void-encounter.js`, `fia-void-art.js`. A fizikai helyszínek geometriája az
+`assets/config/maps/` katalógusban van. A natív PNG-ket a regisztráló nem
 módosítja: komponensből származó körvonalak választják el a szomszédos
 atlaszpózokat. A hátterek apró, maszkolt animációkat használnak.
 
