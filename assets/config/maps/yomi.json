@@ -1,0 +1,904 @@
+{
+  "schemaVersion": 1,
+  "id": "yomi",
+  "width": 3300,
+  "height": 6250,
+  "start": {
+    "x": 1560,
+    "y": 450
+  },
+  "platforms": [
+    {
+      "id": "entry",
+      "x": 1170,
+      "y": 450,
+      "w": 980,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1170
+    },
+    {
+      "id": "first-left",
+      "x": 610,
+      "y": 730,
+      "w": 850,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 610
+    },
+    {
+      "id": "first-right",
+      "x": 1590,
+      "y": 1030,
+      "w": 1000,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1590
+    },
+    {
+      "id": "cage-left",
+      "x": 350,
+      "y": 1510,
+      "w": 1150,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 350
+    },
+    {
+      "id": "east-shelf",
+      "x": 1640,
+      "y": 1790,
+      "w": 1050,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1640
+    },
+    {
+      "id": "center-shelf",
+      "x": 1110,
+      "y": 2110,
+      "w": 1000,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1110
+    },
+    {
+      "id": "ash-shrine",
+      "x": 1220,
+      "y": 2700,
+      "w": 950,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1220
+    },
+    {
+      "id": "west-fire",
+      "x": 360,
+      "y": 3040,
+      "w": 1030,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 360
+    },
+    {
+      "id": "east-river",
+      "x": 1990,
+      "y": 3400,
+      "w": 900,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1990
+    },
+    {
+      "id": "cage-right",
+      "x": 2050,
+      "y": 3900,
+      "w": 1050,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2050
+    },
+    {
+      "id": "west-tomb",
+      "x": 440,
+      "y": 4230,
+      "w": 1200,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 440
+    },
+    {
+      "id": "deep-center",
+      "x": 1110,
+      "y": 4640,
+      "w": 1050,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1110
+    },
+    {
+      "id": "last-ledge",
+      "x": 1450,
+      "y": 5040,
+      "w": 1280,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1450
+    },
+    {
+      "id": "bottom",
+      "x": 220,
+      "y": 5800,
+      "w": 2860,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 220
+    },
+    {
+      "id": "rescue-left-stair",
+      "x": 1510,
+      "y": 1420,
+      "w": 180,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1510
+    },
+    {
+      "id": "river-lip",
+      "x": 1800,
+      "y": 3710,
+      "w": 120,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1800
+    },
+    {
+      "id": "veil-approach",
+      "x": 1600,
+      "y": 3900,
+      "w": 320,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1600
+    },
+    {
+      "id": "seal-return",
+      "x": 1320,
+      "y": 5180,
+      "w": 300,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1320
+    },
+    {
+      "id": "secret-tomb",
+      "x": 230,
+      "y": 2350,
+      "w": 600,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 230
+    },
+    {
+      "id": "secret-step",
+      "x": 680,
+      "y": 2240,
+      "w": 250,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 680
+    },
+    {
+      "id": "slayer-approach",
+      "x": 850,
+      "y": 450,
+      "w": 320,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 850,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step1",
+      "x": 820,
+      "y": 250,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 820,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step2",
+      "x": 470,
+      "y": 50,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 470,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step3",
+      "x": 820,
+      "y": -150,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 820,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step4",
+      "x": 470,
+      "y": -350,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 470,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step5",
+      "x": 820,
+      "y": -550,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 820,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step6",
+      "x": 470,
+      "y": -750,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 470,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step7",
+      "x": 820,
+      "y": -950,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 820,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step8",
+      "x": 470,
+      "y": -1150,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 470,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step9",
+      "x": 820,
+      "y": -1350,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 820,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-step10",
+      "x": 470,
+      "y": -1550,
+      "w": 270,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 470,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayer-arena",
+      "x": 100,
+      "y": -1700,
+      "w": 1500,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 100,
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "lava-island-0",
+      "x": 440,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 440,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-1",
+      "x": 790,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 790,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-2",
+      "x": 1140,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1140,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-3",
+      "x": 1490,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1490,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-4",
+      "x": 1840,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1840,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-5",
+      "x": 2190,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2190,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    },
+    {
+      "id": "lava-island-6",
+      "x": 2540,
+      "y": 5695,
+      "w": 275,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2540,
+      "bossPlatform": true,
+      "broken": false,
+      "crumble": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "start",
+      "x": 1530,
+      "y": 450,
+      "name": "A néma kút"
+    },
+    {
+      "id": "upper",
+      "x": 1810,
+      "y": 1790,
+      "name": "A hamu párkánya"
+    },
+    {
+      "id": "lower",
+      "x": 2470,
+      "y": 3900,
+      "name": "A néma folyó"
+    },
+    {
+      "id": "abyss",
+      "x": 1860,
+      "y": 5040,
+      "name": "A mélység pereme"
+    },
+    {
+      "id": "arena",
+      "x": 620,
+      "y": 5800,
+      "name": "A lélekfenék"
+    }
+  ],
+  "objects": [
+    {
+      "id": "soulUpper",
+      "type": "rescue",
+      "group": "upperSoul",
+      "x": 680,
+      "y": 1510,
+      "name": "Az emlékező lélek"
+    },
+    {
+      "id": "soulLower",
+      "type": "rescue",
+      "group": "lowerSoul",
+      "x": 2440,
+      "y": 3900,
+      "name": "A hazavágyó lélek"
+    },
+    {
+      "id": "tombMemory",
+      "type": "memory",
+      "x": 510,
+      "y": 2350,
+      "name": "A sírok emléke"
+    },
+    {
+      "id": "daisyPlush",
+      "type": "slayerLoot",
+      "x": 780,
+      "y": -1700,
+      "name": "Daisy plüssnyúl",
+      "guardian": "doomSlayer",
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "slayerCrossbow",
+      "type": "slayerLoot",
+      "x": 930,
+      "y": -1700,
+      "name": "A Démonölő számszeríja",
+      "guardian": "doomSlayer",
+      "secretArea": "slayerGrave",
+      "unmapped": true
+    },
+    {
+      "id": "councilKey",
+      "type": "councilKey",
+      "x": 1490,
+      "y": 5800,
+      "name": "4 tanácsos kulcsa",
+      "requiresFlag": "councilKeyEarned"
+    }
+  ],
+  "gates": [
+    {
+      "id": "shadowVeil",
+      "kind": "shadow",
+      "requiresDash": true,
+      "x": 1920,
+      "y": 3150,
+      "w": 55,
+      "h": 1060
+    },
+    {
+      "id": "lowerSoulRoof",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "x": 1920,
+      "y": 3650,
+      "w": 1380,
+      "h": 64
+    },
+    {
+      "id": "lowerSoulFloor",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "x": 1920,
+      "y": 4120,
+      "w": 1380,
+      "h": 90
+    },
+    {
+      "id": "abyssOath",
+      "kind": "souls",
+      "x": 0,
+      "y": 5300,
+      "w": 3300,
+      "h": 32
+    },
+    {
+      "id": "slayerSeal",
+      "kind": "fire",
+      "requiresDawnblade": true,
+      "x": 1120,
+      "y": -350,
+      "w": 50,
+      "h": 950,
+      "unmapped": true
+    },
+    {
+      "id": "councilGate",
+      "kind": "council",
+      "x": 2815,
+      "y": 2985,
+      "w": 70,
+      "h": 415
+    }
+  ],
+  "winds": [],
+  "hazards": [
+    {
+      "x": 520,
+      "y": 3025,
+      "w": 180,
+      "h": 15
+    },
+    {
+      "x": 2260,
+      "y": 3385,
+      "w": 150,
+      "h": 15
+    },
+    {
+      "x": 860,
+      "y": 4215,
+      "w": 160,
+      "h": 15
+    }
+  ],
+  "enemies": [
+    {
+      "id": "doomSlayer",
+      "x": 1250,
+      "y": -1700,
+      "kind": "guard",
+      "group": null,
+      "patrol": 65,
+      "miniboss": "slayer",
+      "name": "Démonölő",
+      "secretArea": "slayerGrave",
+      "factionOverride": "yomi"
+    },
+    {
+      "id": "soul-upper-a",
+      "x": 480,
+      "y": 1510,
+      "kind": "guard",
+      "group": "upperSoul",
+      "patrol": 60
+    },
+    {
+      "id": "soul-upper-b",
+      "x": 1040,
+      "y": 1510,
+      "kind": "archer",
+      "group": "upperSoul",
+      "patrol": 65
+    },
+    {
+      "id": "soul-lower-a",
+      "x": 2230,
+      "y": 3900,
+      "kind": "shield",
+      "group": "lowerSoul",
+      "patrol": 60
+    },
+    {
+      "id": "soul-lower-b",
+      "x": 2770,
+      "y": 3900,
+      "kind": "mage",
+      "group": "lowerSoul",
+      "patrol": 60
+    },
+    {
+      "id": "deep-0",
+      "x": 1770,
+      "y": 1030,
+      "kind": "guard",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-1",
+      "x": 1920,
+      "y": 1790,
+      "kind": "archer",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-2",
+      "x": 1470,
+      "y": 2110,
+      "kind": "shield",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-3",
+      "x": 690,
+      "y": 3040,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-4",
+      "x": 2570,
+      "y": 3400,
+      "kind": "guard",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-5",
+      "x": 1420,
+      "y": 4230,
+      "kind": "archer",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-6",
+      "x": 1780,
+      "y": 4640,
+      "kind": "shield",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "deep-7",
+      "x": 2370,
+      "y": 5040,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "bat-0",
+      "x": 1220,
+      "y": 600,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "bat-1",
+      "x": 1370,
+      "y": 1340,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "bat-2",
+      "x": 1720,
+      "y": 2480,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "bat-3",
+      "x": 1430,
+      "y": 3240,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "bat-4",
+      "x": 1830,
+      "y": 4380,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "bat-5",
+      "x": 990,
+      "y": 4950,
+      "kind": "fly",
+      "group": null,
+      "patrol": 120
+    },
+    {
+      "id": "akash-guard",
+      "x": 350,
+      "y": 2350,
+      "kind": "shield",
+      "group": "akash",
+      "patrol": 60
+    },
+    {
+      "id": "akash-mage",
+      "x": 785,
+      "y": 2350,
+      "kind": "mage",
+      "group": "akash",
+      "patrol": 15
+    }
+  ],
+  "zones": [
+    {
+      "name": "A néma kút",
+      "x": 0,
+      "y": 0,
+      "w": 3300,
+      "h": 1300
+    },
+    {
+      "name": "A fogoly emlék",
+      "x": 0,
+      "y": 1300,
+      "w": 3300,
+      "h": 900
+    },
+    {
+      "name": "Hamu és árnyék",
+      "x": 0,
+      "y": 2200,
+      "w": 3300,
+      "h": 950
+    },
+    {
+      "name": "A néma folyó",
+      "x": 0,
+      "y": 3150,
+      "w": 3300,
+      "h": 950
+    },
+    {
+      "name": "Az elfeledett sírok",
+      "x": 0,
+      "y": 4100,
+      "w": 3300,
+      "h": 1000
+    },
+    {
+      "name": "A világ feneke",
+      "x": 0,
+      "y": 5100,
+      "w": 3300,
+      "h": 1150
+    }
+  ],
+  "ability": {
+    "x": 1570,
+    "y": 2700,
+    "name": "A szellemlépés"
+  },
+  "progressFlags": [
+    "councilKeyEarned",
+    "councilGateOpen",
+    "serpentScale",
+    "akashRescued",
+    "compass",
+    "minimap",
+    "phoneCase",
+    "daisyPlush",
+    "slayerCrossbow",
+    "slayerSummoned",
+    "dungeonRunStarted",
+    "dungeonStage1Clear",
+    "dungeonStage2Clear",
+    "dungeonStage3Clear",
+    "dungeonChestClaimed",
+    "dungeonCaptainReward",
+    "dungeonNecromancerReward",
+    "dungeonCouncilReward",
+    "councilSoul",
+    "yomiGuardianSoul",
+    "bossRewardClaimed"
+  ],
+  "top": -2300,
+  "mapTop": 0,
+  "secrets": [
+    {
+      "id": "slayerGrave",
+      "name": "Yomi · A világ mélye",
+      "x": 100,
+      "y": -2300,
+      "w": 1500,
+      "h": 680,
+      "arena": {
+        "x": 100,
+        "y": -1700,
+        "w": 1500
+      },
+      "guardian": "doomSlayer",
+      "unmapped": true,
+      "silent": true
+    }
+  ],
+  "slayerGrave": {
+    "x": 850,
+    "y": -1700
+  },
+  "akash": {
+    "x": 710,
+    "y": 2350
+  },
+  "councilGate": {
+    "x": 2770,
+    "y": 3400,
+    "w": 420,
+    "h": 415
+  },
+  "arena": {
+    "x": 260,
+    "y": 5800,
+    "w": 2750,
+    "restId": "arena",
+    "triggerX": 1000
+  },
+  "boss": {
+    "x": 1430,
+    "y": 5800
+  },
+  "exit": {
+    "x": 2790,
+    "y": 5800
+  },
+  "catalogSnapshot": true
+}

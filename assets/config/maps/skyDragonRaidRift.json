@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "skyDragonRaidRift",
+  "width": 8800,
+  "height": 2100,
+  "start": {
+    "x": 250,
+    "y": 1510
+  },
+  "platforms": [
+    {
+      "id": "skyDragonRaidRift-ledge-0",
+      "x": 80,
+      "y": 1510,
+      "w": 480,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 80
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-1",
+      "x": 1180,
+      "y": 1350,
+      "w": 340,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1180
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-2",
+      "x": 2110,
+      "y": 1190,
+      "w": 350,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2110
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-3",
+      "x": 3050,
+      "y": 1330,
+      "w": 360,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3050
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-4",
+      "x": 4010,
+      "y": 1120,
+      "w": 360,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4010
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-5",
+      "x": 4970,
+      "y": 1290,
+      "w": 360,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4970
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-6",
+      "x": 5920,
+      "y": 1090,
+      "w": 365,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5920
+    },
+    {
+      "id": "skyDragonRaidRift-ledge-7",
+      "x": 6830,
+      "y": 980,
+      "w": 680,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6830
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "skyDragonRaid.rift",
+      "x": 0,
+      "y": 0,
+      "w": 8800,
+      "h": 2100
+    }
+  ],
+  "name": "skyDragonRaid.rift",
+  "boss": {
+    "x": -10000,
+    "y": 1510
+  },
+  "skyDragonRaid": "rift",
+  "returnDestination": {
+    "location": "ninjaClanCamp",
+    "x": 2350,
+    "y": 1020
+  },
+  "grappleAnchors": [
+    {
+      "id": "skyDragonRaidRift-ring-1",
+      "x": 1267,
+      "y": 1092,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-2",
+      "x": 2197,
+      "y": 932,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-3",
+      "x": 3137,
+      "y": 1072,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-4",
+      "x": 4097,
+      "y": 862,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-5",
+      "x": 5057,
+      "y": 1032,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-6",
+      "x": 6007,
+      "y": 832,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidRift-ring-7",
+      "x": 6917,
+      "y": 722,
+      "w": 36,
+      "h": 36
+    }
+  ],
+  "fracturePlatforms": [
+    "skyDragonRaidRift-ledge-1",
+    "skyDragonRaidRift-ledge-2",
+    "skyDragonRaidRift-ledge-3",
+    "skyDragonRaidRift-ledge-4",
+    "skyDragonRaidRift-ledge-5",
+    "skyDragonRaidRift-ledge-6"
+  ],
+  "headRing": "skyDragonRaidRift-ring-7",
+  "dragonHead": {
+    "x": 7290,
+    "y": 980
+  }
+}

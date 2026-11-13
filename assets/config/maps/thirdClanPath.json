@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "thirdClanPath",
+  "width": 6070,
+  "height": 3310,
+  "start": {
+    "x": 245,
+    "y": 625
+  },
+  "platforms": [
+    {
+      "id": "third-clan-shelf-0",
+      "x": 0,
+      "y": 625,
+      "w": 980,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "third-clan-shelf-1",
+      "x": 850,
+      "y": 950,
+      "w": 880,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 850
+    },
+    {
+      "id": "third-clan-shelf-2",
+      "x": 1580,
+      "y": 1275,
+      "w": 950,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1580
+    },
+    {
+      "id": "third-clan-shelf-3",
+      "x": 2390,
+      "y": 1600,
+      "w": 920,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2390
+    },
+    {
+      "id": "third-clan-shelf-4",
+      "x": 3140,
+      "y": 1930,
+      "w": 900,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3140
+    },
+    {
+      "id": "third-clan-shelf-5",
+      "x": 3890,
+      "y": 2260,
+      "w": 930,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3890
+    },
+    {
+      "id": "third-clan-shelf-6",
+      "x": 4650,
+      "y": 2590,
+      "w": 890,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4650
+    },
+    {
+      "id": "third-clan-shelf-7",
+      "x": 5410,
+      "y": 2900,
+      "w": 660,
+      "h": 66,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 5410
+    }
+  ],
+  "rests": [
+    {
+      "id": "thirdClanPathArrival",
+      "x": 270,
+      "y": 625,
+      "name": "thirdClan.rest.ledge"
+    },
+    {
+      "id": "thirdClanLowerLedge",
+      "x": 4000,
+      "y": 2260,
+      "name": "thirdClan.rest.lowerLedge"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "thirdClanCultist0",
+      "x": 1015,
+      "y": 950,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja0",
+      "x": 1485,
+      "y": 950,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "ninja",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 86,
+        "damage": 4,
+        "xp": 85
+      }
+    },
+    {
+      "id": "thirdClanCultist1",
+      "x": 1745,
+      "y": 1275,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja1",
+      "x": 2215,
+      "y": 1275,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "ninja",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 86,
+        "damage": 4,
+        "xp": 85
+      }
+    },
+    {
+      "id": "thirdClanCultist2",
+      "x": 2555,
+      "y": 1600,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja2",
+      "x": 3025,
+      "y": 1600,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "ninja",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 86,
+        "damage": 4,
+        "xp": 85
+      }
+    },
+    {
+      "id": "thirdClanCultist3",
+      "x": 3305,
+      "y": 1930,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja3",
+      "x": 3775,
+      "y": 1930,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "ninja",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 86,
+        "damage": 4,
+        "xp": 85
+      }
+    },
+    {
+      "id": "thirdClanCultist4",
+      "x": 4055,
+      "y": 2260,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja4",
+      "x": 4525,
+      "y": 2260,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "infected",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 104,
+        "damage": 4,
+        "xp": 85
+      }
+    },
+    {
+      "id": "thirdClanCultist5",
+      "x": 4815,
+      "y": 2590,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "patrol": 125,
+      "combatStats": {
+        "hp": 76,
+        "damage": 3.5,
+        "xp": 75
+      }
+    },
+    {
+      "id": "thirdClanNinja5",
+      "x": 5285,
+      "y": 2590,
+      "kind": "mage",
+      "shadowNinjaRole": "ninjutsu",
+      "dungeonSide": "infected",
+      "patrol": 120,
+      "combatStats": {
+        "hp": 104,
+        "damage": 4,
+        "xp": 85
+      }
+    }
+  ],
+  "zones": [
+    {
+      "name": "thirdClan.path",
+      "x": 0,
+      "y": 0,
+      "w": 6070,
+      "h": 3310
+    }
+  ],
+  "name": "thirdClan.path",
+  "returnPoint": {
+    "x": 125,
+    "y": 625
+  },
+  "caveEntrance": {
+    "x": 5865,
+    "y": 2900
+  },
+  "grappleAnchors": [
+    {
+      "id": "third-clan-anchor-0",
+      "x": 825,
+      "y": 435,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-1",
+      "x": 1575,
+      "y": 760,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-2",
+      "x": 2375,
+      "y": 1085,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-3",
+      "x": 3155,
+      "y": 1410,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-4",
+      "x": 3885,
+      "y": 1740,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-5",
+      "x": 4625,
+      "y": 2070,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "third-clan-anchor-6",
+      "x": 5385,
+      "y": 2380,
+      "w": 36,
+      "h": 36
+    }
+  ],
+  "ballistae": [
+    {
+      "id": "thirdClanBallistaWest",
+      "x": 1390,
+      "y": 950
+    },
+    {
+      "id": "thirdClanBallistaCenter",
+      "x": 2810,
+      "y": 1600
+    },
+    {
+      "id": "thirdClanBallistaEast",
+      "x": 4980,
+      "y": 2590
+    }
+  ],
+  "returnDestination": {
+    "location": "ninjaClanCamp",
+    "x": 1920,
+    "y": 1020
+  },
+  "boss": {
+    "x": -10000,
+    "y": 625
+  }
+}

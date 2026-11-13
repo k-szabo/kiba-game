@@ -48,9 +48,8 @@ const TowerMode=(()=>{
   syncWallet();checkpointWallet();
   currentSpec=TowerRules.floor(run.floor,run.seed);if(!currentSpec)return false;
   const preserveHp=stage==='clear',previousHp=player?.hp,layout=TowerRules.layout;
-  realm=currentSpec.realm;level=makeLevel('infiniteTower',layout.width,layout.height,{x:layout.spawnX,y:layout.groundY});level.tower=true;level.name='tower.name';level.enemyRealm=realm;
-  ledge(level,'towerGround',0,layout.groundY,layout.width,'ground',240);ledge(level,'towerLedgeLeft',460,640,190);ledge(level,'towerLedgeRight',1120,620,190);
-  level.grappleAnchors=[{id:'towerAnchorLeft',x:544,y:444,w:32,h:32},{id:'towerAnchorRight',x:1204,y:424,w:32,h:32}];
+  realm=currentSpec.realm;level=MapCatalog.build('infiniteTowerTemplate');level.id='infiniteTower';level.start={x:layout.spawnX,y:layout.groundY};level.tower=true;level.name='tower.name';level.enemyRealm=realm;
+  level.grappleAnchors=MAP_DATA.infiniteTowerTemplate.tower.anchors.map(anchor=>({...anchor}));
   level.arena={x:0,y:layout.groundY,w:layout.width};level.enemies=currentSpec.enemies;platforms=level.platforms;
   boss={dead:true,hp:0,x:-10000,y:0};bossStarted=false;projectiles=[];particles=[];drops=[];checkpoint={...level.start};
   stage='fight';Dawnblade.resetJourney();initPlayer(level.start);if(preserveHp&&Number.isFinite(previousHp))player.hp=Math.min(player.maxHp,previousHp);

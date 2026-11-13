@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const root=path.join(__dirname,'..'),context=vm.createContext({});
+const root=path.join(__dirname,'..'),context=vm.createContext({});context.MAP_DATA={infiniteTowerTemplate:JSON.parse(fs.readFileSync(path.join(root,'assets/config/maps/infiniteTowerTemplate.json'),'utf8'))};
 vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);vm.runInContext(fs.readFileSync(path.join(root,'assets/js/tower-rules.js'),'utf8')+';globalThis.rules=TowerRules;',context);
 const rules=context.rules,classified=Object.values(require('./test-only-bootstrap.cjs').bossData).sort((a,b)=>a.classificationOrder-b.classificationOrder);
 const locales=JSON.parse(fs.readFileSync(path.join(root,'assets/i18n/locales.json'),'utf8'));

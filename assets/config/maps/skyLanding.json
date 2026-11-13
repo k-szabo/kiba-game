@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "skyLanding",
+  "width": 2400,
+  "height": 1400,
+  "start": {
+    "x": 320,
+    "y": 1000
+  },
+  "platforms": [
+    {
+      "id": "sky-landing-ground",
+      "x": 0,
+      "y": 1000,
+      "w": 2400,
+      "h": 400,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "skyLandingMooring",
+      "x": 300,
+      "y": 1000,
+      "name": "balloon.rest.landing"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "westheruSeal",
+      "x": 1350,
+      "y": 1000,
+      "kind": "mage",
+      "group": null,
+      "patrol": 300,
+      "miniboss": "westheruSeal",
+      "name": "balloon.westheru",
+      "grappleable": false,
+      "arena": {
+        "x": 650,
+        "y": 1000,
+        "w": 1550,
+        "triggerX": 800,
+        "restId": "skyLandingMooring"
+      }
+    }
+  ],
+  "zones": [
+    {
+      "name": "balloon.landing",
+      "x": 0,
+      "y": 0,
+      "w": 2400,
+      "h": 1400
+    }
+  ],
+  "name": "balloon.landing",
+  "enemyRealm": 0,
+  "watchtowerBalloon": true,
+  "boss": {
+    "x": -2000,
+    "y": 1000
+  },
+  "grappleAnchors": [],
+  "arena": {
+    "x": 650,
+    "y": 1000,
+    "w": 1550,
+    "triggerX": 800,
+    "restId": "skyLandingMooring"
+  },
+  "pilotPoint": {
+    "x": 1350,
+    "y": 1000
+  },
+  "boardPoint": {
+    "x": 650,
+    "y": 1000
+  },
+  "returnPoint": {
+    "x": 650,
+    "y": 1000
+  },
+  "returnDestination": {
+    "location": "balloonJourney",
+    "x": 1650,
+    "y": 850
+  },
+  "arenaEncounters": [
+    {
+      "id": "westheruSeal",
+      "x": 1350,
+      "y": 1000,
+      "kind": "mage",
+      "group": null,
+      "patrol": 300,
+      "miniboss": "westheruSeal",
+      "name": "balloon.westheru",
+      "grappleable": false,
+      "arena": {
+        "x": 650,
+        "y": 1000,
+        "w": 1550,
+        "triggerX": 800,
+        "restId": "skyLandingMooring"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

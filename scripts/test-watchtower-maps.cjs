@@ -1,7 +1,8 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const ctx=vm.createContext({});
-for(const name of ['grapple-rules','watchtower-balloon-maps'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
+const mapDir=path.join(__dirname,'../assets/config/maps');ctx.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
+for(const name of ['grapple-rules','map-catalog','watchtower-balloon-maps'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),ctx);
 const helpers={
  makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[],enemies:[],zones:[]}),
  ledge:(l,id,x,y,w,kind,h)=>l.platforms.push({id,x,y,w,h,kind,drop:kind!=='ground'}),

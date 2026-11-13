@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "fiaRitual",
+  "width": 2200,
+  "height": 1100,
+  "start": {
+    "x": 210,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "ritual-floor",
+      "x": 0,
+      "y": 820,
+      "w": 2200,
+      "h": 280,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "fiaRitualRest",
+      "x": 370,
+      "y": 820,
+      "name": "fia.ritual.location"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "fia.ritual.location",
+      "x": 0,
+      "y": 0,
+      "w": 2200,
+      "h": 1100
+    }
+  ],
+  "name": "fia.ritual.location",
+  "enemyRealm": 3,
+  "fiaJourney": true,
+  "arena": {
+    "x": -2000,
+    "y": 820,
+    "w": 0
+  },
+  "boss": {
+    "x": -2000,
+    "y": 820
+  },
+  "returnPoint": {
+    "x": 100,
+    "y": 820
+  },
+  "returnDestination": {
+    "location": "fiaChambers",
+    "x": 1430,
+    "y": 820
+  },
+  "npcs": [
+    {
+      "id": "fia",
+      "x": 1550,
+      "y": 820,
+      "height": 136,
+      "name": "fia.name"
+    }
+  ],
+  "catalogSnapshot": true
+}

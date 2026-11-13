@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "id": "cultDungeon3",
+  "width": 6600,
+  "height": 1900,
+  "start": {
+    "x": 220,
+    "y": 800
+  },
+  "platforms": [
+    {
+      "id": "sect-sanctum-ground0",
+      "x": 0,
+      "y": 800,
+      "w": 1000,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "sect-sanctum-ground1120",
+      "x": 1120,
+      "y": 890,
+      "w": 1000,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1120
+    },
+    {
+      "id": "sect-sanctum-ground2240",
+      "x": 2240,
+      "y": 980,
+      "w": 1200,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2240
+    },
+    {
+      "id": "sect-sanctum-ground3560",
+      "x": 3560,
+      "y": 1070,
+      "w": 900,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3560
+    },
+    {
+      "id": "sect-sanctum-ground4580",
+      "x": 4580,
+      "y": 1160,
+      "w": 2020,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4580
+    }
+  ],
+  "rests": [
+    {
+      "id": "cultDungeon3Shrine",
+      "x": 4770,
+      "y": 1160,
+      "name": "cultDungeon.rest.sanctum"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "cultHighPriestess",
+      "miniboss": "cultHighPriestess",
+      "name": "cultDungeon.boss.priestess",
+      "kind": "guard",
+      "x": 5720,
+      "y": 1160,
+      "patrol": 300,
+      "arena": {
+        "x": 4940,
+        "y": 1160,
+        "w": 1500,
+        "restId": "cultDungeon3Shrine"
+      }
+    },
+    {
+      "id": "cultDungeon3-soldier0",
+      "x": 600,
+      "y": 800,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier1",
+      "x": 1300,
+      "y": 890,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier2",
+      "x": 1690,
+      "y": 890,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier3",
+      "x": 2400,
+      "y": 980,
+      "kind": "archer",
+      "factionOverride": "heaven",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier4",
+      "x": 2770,
+      "y": 980,
+      "kind": "shield",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier5",
+      "x": 3700,
+      "y": 1070,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon3-soldier6",
+      "x": 4100,
+      "y": 1070,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    }
+  ],
+  "zones": [
+    {
+      "name": "cultDungeon.floor.sanctum",
+      "x": 0,
+      "y": 0,
+      "w": 6600,
+      "h": 1900
+    }
+  ],
+  "name": "cultDungeon.floor.sanctum",
+  "enemyRealm": 3,
+  "dungeon": {
+    "id": "sectFall",
+    "floor": 2,
+    "stage": "sectStage3Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "cultDungeon3Entry",
+      "x": 220,
+      "y": 800,
+      "name": "cultDungeon.floor.sanctum",
+      "checkpointOnly": true
+    }
+  ],
+  "returnPoint": {
+    "x": 110,
+    "y": 800
+  },
+  "nextPoint": {
+    "x": 6480,
+    "y": 1160
+  },
+  "returnDestination": {
+    "realm": 0,
+    "x": 1150,
+    "y": 2620,
+    "w": 480,
+    "h": 365
+  },
+  "arena": {
+    "x": 4940,
+    "y": 1160,
+    "w": 1500,
+    "restId": "cultDungeon3Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1160
+  },
+  "arenaEncounters": [
+    {
+      "id": "cultHighPriestess",
+      "miniboss": "cultHighPriestess",
+      "name": "cultDungeon.boss.priestess",
+      "kind": "guard",
+      "x": 5720,
+      "y": 1160,
+      "patrol": 300,
+      "arena": {
+        "x": 4940,
+        "y": 1160,
+        "w": 1500,
+        "restId": "cultDungeon3Shrine"
+      }
+    }
+  ],
+  "rewardChest": {
+    "x": 6240,
+    "y": 1160
+  },
+  "catalogSnapshot": true
+}

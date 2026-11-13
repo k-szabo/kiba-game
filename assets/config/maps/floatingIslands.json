@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "floatingIslands",
+  "width": 7000,
+  "height": 3300,
+  "start": {
+    "x": 300,
+    "y": 2850
+  },
+  "platforms": [
+    {
+      "id": "floating-island-0",
+      "x": 0,
+      "y": 2850,
+      "w": 1800,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "floating-island-1",
+      "x": 2480,
+      "y": 2450,
+      "w": 1000,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2480
+    },
+    {
+      "id": "floating-island-2",
+      "x": 4160,
+      "y": 2050,
+      "w": 1000,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4160
+    },
+    {
+      "id": "floating-island-3",
+      "x": 5840,
+      "y": 1650,
+      "w": 1160,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 5840
+    }
+  ],
+  "rests": [
+    {
+      "id": "floatingIslandsArrival",
+      "x": 360,
+      "y": 2850,
+      "name": "islands.rest.arrival"
+    },
+    {
+      "id": "floatingIslandsPath",
+      "x": 2860,
+      "y": 2450,
+      "name": "islands.rest.path"
+    },
+    {
+      "id": "floatingIslandsWatchtower",
+      "x": 6500,
+      "y": 1650,
+      "name": "islands.rest.watchtower"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "shadowNinjaLeader",
+      "x": 1250,
+      "y": 2850,
+      "kind": "guard",
+      "group": null,
+      "patrol": 300,
+      "miniboss": "shadowNinjaLeader",
+      "name": "islands.ninjaLeader",
+      "arena": {
+        "x": 650,
+        "y": 2850,
+        "w": 1050,
+        "triggerX": 800,
+        "restId": "floatingIslandsArrival"
+      },
+      "grappleable": false
+    },
+    {
+      "id": "shadow-ninja-1-crossbow",
+      "x": 2780,
+      "y": 2450,
+      "kind": "archer",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "crossbow",
+      "name": "islands.ninja.crossbow",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-1-assassin",
+      "x": 3180,
+      "y": 2450,
+      "kind": "guard",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "assassin",
+      "name": "islands.ninja.assassin",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-2-shuriken",
+      "x": 4410,
+      "y": 2050,
+      "kind": "archer",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "shuriken",
+      "name": "islands.ninja.shuriken",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-2-ninjutsu",
+      "x": 4880,
+      "y": 2050,
+      "kind": "mage",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "ninjutsu",
+      "name": "islands.ninja.ninjutsu",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-3-assassin",
+      "x": 6080,
+      "y": 1650,
+      "kind": "guard",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "assassin",
+      "name": "islands.ninja.assassin",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-3-crossbow",
+      "x": 6410,
+      "y": 1650,
+      "kind": "archer",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "crossbow",
+      "name": "islands.ninja.crossbow",
+      "grappleable": true
+    },
+    {
+      "id": "shadow-ninja-3-ninjutsu",
+      "x": 6690,
+      "y": 1650,
+      "kind": "mage",
+      "group": null,
+      "patrol": 80,
+      "shadowNinjaRole": "ninjutsu",
+      "name": "islands.ninja.ninjutsu",
+      "grappleable": true
+    }
+  ],
+  "zones": [
+    {
+      "name": "islands.name",
+      "x": 0,
+      "y": 0,
+      "w": 1800,
+      "h": 3300
+    },
+    {
+      "name": "islands.name",
+      "x": 2480,
+      "y": 0,
+      "w": 1000,
+      "h": 3300
+    },
+    {
+      "name": "islands.name",
+      "x": 4160,
+      "y": 0,
+      "w": 1000,
+      "h": 3300
+    },
+    {
+      "name": "islands.name",
+      "x": 5840,
+      "y": 0,
+      "w": 1160,
+      "h": 3300
+    }
+  ],
+  "name": "islands.name",
+  "enemyRealm": 0,
+  "floatingIslands": true,
+  "boss": {
+    "x": -2000,
+    "y": 2850
+  },
+  "grappleAnchors": [
+    {
+      "id": "island-return-ring-0",
+      "x": 1736,
+      "y": 2754,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "id": "island-return-ring-1",
+      "x": 3416,
+      "y": 2354,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "id": "island-ring-1",
+      "x": 2512,
+      "y": 2354,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "id": "island-return-ring-2",
+      "x": 5096,
+      "y": 1954,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "id": "island-ring-2",
+      "x": 4192,
+      "y": 1954,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "id": "island-ring-3",
+      "x": 5872,
+      "y": 1554,
+      "w": 32,
+      "h": 32
+    }
+  ],
+  "returnPoint": {
+    "x": 120,
+    "y": 2850
+  },
+  "returnDestination": {
+    "location": "japanHeights",
+    "x": 3800,
+    "y": 1100
+  },
+  "hookPoint": {
+    "x": 1250,
+    "y": 2850
+  },
+  "trailPoint": {
+    "x": 6800,
+    "y": 1650
+  },
+  "arena": {
+    "x": 650,
+    "y": 2850,
+    "w": 1050,
+    "triggerX": 800,
+    "restId": "floatingIslandsArrival"
+  },
+  "arenaEncounters": [
+    {
+      "id": "shadowNinjaLeader",
+      "x": 1250,
+      "y": 2850,
+      "kind": "guard",
+      "group": null,
+      "patrol": 300,
+      "miniboss": "shadowNinjaLeader",
+      "name": "islands.ninjaLeader",
+      "arena": {
+        "x": 650,
+        "y": 2850,
+        "w": 1050,
+        "triggerX": 800,
+        "restId": "floatingIslandsArrival"
+      },
+      "grappleable": false
+    }
+  ],
+  "watchtowerEntrance": {
+    "x": 6800,
+    "y": 1650
+  },
+  "catalogSnapshot": true
+}

@@ -1,0 +1,1095 @@
+{
+  "schemaVersion": 1,
+  "id": "japan",
+  "width": 10400,
+  "height": 3100,
+  "start": {
+    "x": 260,
+    "y": 1000
+  },
+  "platforms": [
+    {
+      "id": "road0",
+      "x": 0,
+      "y": 1000,
+      "w": 1550,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "road1",
+      "x": 1680,
+      "y": 950,
+      "w": 1640,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1680
+    },
+    {
+      "id": "road2",
+      "x": 3400,
+      "y": 1000,
+      "w": 1500,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3400
+    },
+    {
+      "id": "road3",
+      "x": 5100,
+      "y": 920,
+      "w": 1400,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 5100
+    },
+    {
+      "id": "road4",
+      "x": 6740,
+      "y": 960,
+      "w": 1160,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 6740
+    },
+    {
+      "id": "road5",
+      "x": 8150,
+      "y": 1000,
+      "w": 2250,
+      "h": 190,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 8150
+    },
+    {
+      "id": "wind-step",
+      "x": 1980,
+      "y": 855,
+      "w": 150,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1980
+    },
+    {
+      "id": "wind-roof",
+      "x": 2160,
+      "y": 760,
+      "w": 370,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2160
+    },
+    {
+      "id": "forest-step",
+      "x": 3900,
+      "y": 905,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3900
+    },
+    {
+      "id": "forest-mid",
+      "x": 4090,
+      "y": 810,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4090
+    },
+    {
+      "id": "forest-bell",
+      "x": 4300,
+      "y": 715,
+      "w": 260,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4300
+    },
+    {
+      "id": "river-bridge",
+      "x": 4820,
+      "y": 835,
+      "w": 200,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4820
+    },
+    {
+      "id": "rice-bridge",
+      "x": 6530,
+      "y": 850,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6530
+    },
+    {
+      "id": "village-step",
+      "x": 6720,
+      "y": 855,
+      "w": 155,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6720
+    },
+    {
+      "id": "village-mid",
+      "x": 6930,
+      "y": 790,
+      "w": 170,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6930
+    },
+    {
+      "id": "village-bell",
+      "x": 7100,
+      "y": 715,
+      "w": 290,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 7100
+    },
+    {
+      "id": "bamboo-bridge",
+      "x": 7900,
+      "y": 840,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 7900
+    },
+    {
+      "id": "river-cave",
+      "x": 4850,
+      "y": 1390,
+      "w": 1550,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4850
+    },
+    {
+      "id": "cave-exit1",
+      "x": 6220,
+      "y": 1290,
+      "w": 160,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6220
+    },
+    {
+      "id": "cave-exit2",
+      "x": 6400,
+      "y": 1190,
+      "w": 160,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6400
+    },
+    {
+      "id": "cave-exit3",
+      "x": 6580,
+      "y": 1090,
+      "w": 160,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6580
+    },
+    {
+      "id": "forest-secret1",
+      "x": 3550,
+      "y": 800,
+      "w": 200,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3550
+    },
+    {
+      "id": "forest-secret2",
+      "x": 3720,
+      "y": 620,
+      "w": 230,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3720
+    },
+    {
+      "id": "tower-step1",
+      "x": 3490,
+      "y": 445,
+      "w": 140,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3490,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step2",
+      "x": 3250,
+      "y": 285,
+      "w": 120,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3250,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step3",
+      "x": 3030,
+      "y": 230,
+      "w": 130,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3030,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step4",
+      "x": 2810,
+      "y": 80,
+      "w": 150,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2810,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step5",
+      "x": 3000,
+      "y": -80,
+      "w": 150,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3000,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step6",
+      "x": 2780,
+      "y": -240,
+      "w": 150,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2780,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step7",
+      "x": 3010,
+      "y": -400,
+      "w": 160,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3010,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "tower-step8",
+      "x": 2780,
+      "y": -560,
+      "w": 160,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2780,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "halo-altar",
+      "x": 2510,
+      "y": -690,
+      "w": 510,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2510,
+      "secretArea": "angelRuin"
+    },
+    {
+      "id": "cult-mouth",
+      "x": 4530,
+      "y": 1510,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4530,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-stair1",
+      "x": 4200,
+      "y": 1680,
+      "w": 200,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4200,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-stair2",
+      "x": 3910,
+      "y": 1850,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3910,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-stair3",
+      "x": 3640,
+      "y": 2010,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3640,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "horn-vault",
+      "x": 2650,
+      "y": 2160,
+      "w": 950,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2650,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-passage-forecourt",
+      "x": 2485,
+      "y": 2160,
+      "w": 165,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2485,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-passage-landing",
+      "x": 2150,
+      "y": 2160,
+      "w": 270,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2150,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-passage-step1",
+      "x": 1810,
+      "y": 2310,
+      "w": 260,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1810,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-passage-step2",
+      "x": 1480,
+      "y": 2460,
+      "w": 250,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1480,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cult-passage-temple",
+      "x": 900,
+      "y": 2620,
+      "w": 650,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 900,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "white-serpent-entry",
+      "x": 6430,
+      "y": 1490,
+      "w": 210,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6430,
+      "secretArea": "whiteSerpentCave"
+    },
+    {
+      "id": "white-serpent-mouth",
+      "x": 6650,
+      "y": 1590,
+      "w": 210,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6650,
+      "secretArea": "whiteSerpentCave"
+    },
+    {
+      "id": "white-serpent-step",
+      "x": 6860,
+      "y": 1690,
+      "w": 220,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6860,
+      "secretArea": "whiteSerpentCave"
+    },
+    {
+      "id": "white-serpent-arena",
+      "x": 6770,
+      "y": 1790,
+      "w": 1700,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6770,
+      "secretArea": "whiteSerpentCave"
+    }
+  ],
+  "rests": [
+    {
+      "id": "start",
+      "x": 330,
+      "y": 1000,
+      "name": "A falu széle"
+    },
+    {
+      "id": "river",
+      "x": 3650,
+      "y": 1000,
+      "name": "A kettős ösvény"
+    },
+    {
+      "id": "fields",
+      "x": 5880,
+      "y": 920,
+      "name": "Rizsföldek"
+    },
+    {
+      "id": "temple",
+      "x": 8760,
+      "y": 1000,
+      "name": "A templom kapuja"
+    }
+  ],
+  "objects": [
+    {
+      "id": "forestBell",
+      "type": "bell",
+      "x": 4420,
+      "y": 715,
+      "name": "Az erdei harang"
+    },
+    {
+      "id": "villageBell",
+      "type": "bell",
+      "x": 7240,
+      "y": 715,
+      "name": "A falu harangja"
+    },
+    {
+      "id": "riverMemory",
+      "type": "memory",
+      "x": 5550,
+      "y": 1390,
+      "name": "Emlék a folyó alatt"
+    },
+    {
+      "id": "forestMemory",
+      "type": "memory",
+      "x": 3830,
+      "y": 620,
+      "name": "A lombok emléke"
+    },
+    {
+      "id": "angelHalo",
+      "type": "relic",
+      "x": 2600,
+      "y": -690,
+      "name": "Az angyali glória",
+      "secretArea": "angelRuin",
+      "guardian": "oldAngel"
+    },
+    {
+      "id": "demonHorn",
+      "type": "relic",
+      "x": 2760,
+      "y": 2160,
+      "name": "A démonlord szarva",
+      "secretArea": "cultCave",
+      "guardian": "oldCultist"
+    }
+  ],
+  "gates": [
+    {
+      "id": "root",
+      "kind": "root",
+      "x": 3100,
+      "y": 745,
+      "w": 65,
+      "h": 205
+    },
+    {
+      "id": "templeOath",
+      "kind": "bells",
+      "x": 8560,
+      "y": 0,
+      "w": 35,
+      "h": 3100
+    },
+    {
+      "id": "cultRoof",
+      "kind": "secretRock",
+      "x": 2420,
+      "y": 1740,
+      "w": 1200,
+      "h": 105,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultWestWall",
+      "kind": "shadow",
+      "requiresDash": true,
+      "x": 2420,
+      "y": 2000,
+      "w": 65,
+      "h": 160,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultWestWallUpper",
+      "kind": "secretRock",
+      "x": 2420,
+      "y": 1740,
+      "w": 65,
+      "h": 260,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultWestWallLower",
+      "kind": "secretRock",
+      "x": 2420,
+      "y": 2160,
+      "w": 65,
+      "h": 940,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultPassageRoof",
+      "kind": "secretRock",
+      "x": 800,
+      "y": 1740,
+      "w": 1620,
+      "h": 105,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultPassageWest",
+      "kind": "secretRock",
+      "x": 800,
+      "y": 1740,
+      "w": 65,
+      "h": 1360,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultPassageFoundation",
+      "kind": "secretRock",
+      "x": 800,
+      "y": 2820,
+      "w": 1685,
+      "h": 280,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultEastWall",
+      "kind": "secretRock",
+      "x": 3620,
+      "y": 1100,
+      "w": 35,
+      "h": 820,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultEntranceUpper",
+      "kind": "secretRock",
+      "x": 4450,
+      "y": 1000,
+      "w": 55,
+      "h": 190,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "cultEntrance",
+      "kind": "fragile",
+      "x": 4450,
+      "y": 1190,
+      "w": 55,
+      "h": 1910,
+      "secretArea": "cultCave"
+    },
+    {
+      "id": "whiteSerpentRoof",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "wallMaterial": "cult",
+      "x": 6900,
+      "y": 1430,
+      "w": 1570,
+      "h": 85,
+      "secretArea": "whiteSerpentCave"
+    }
+  ],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "oldAngel",
+      "x": 2800,
+      "y": -690,
+      "kind": "mage",
+      "group": null,
+      "patrol": 250,
+      "miniboss": "angel",
+      "name": "A megőrült öreg angyal",
+      "secretArea": "angelRuin",
+      "factionOverride": "heaven"
+    },
+    {
+      "id": "oldCultist",
+      "x": 3070,
+      "y": 2160,
+      "kind": "mage",
+      "group": null,
+      "patrol": 380,
+      "miniboss": "cultist",
+      "name": "Az ősi szekta vén mestere",
+      "secretArea": "cultCave",
+      "factionOverride": "japan"
+    },
+    {
+      "id": "road-0",
+      "x": 930,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-1",
+      "x": 1900,
+      "y": 950,
+      "kind": "archer",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-2",
+      "x": 2820,
+      "y": 950,
+      "kind": "shield",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-3",
+      "x": 3600,
+      "y": 1000,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-4",
+      "x": 4140,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-5",
+      "x": 4750,
+      "y": 1000,
+      "kind": "archer",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-6",
+      "x": 5450,
+      "y": 920,
+      "kind": "shield",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-7",
+      "x": 6200,
+      "y": 920,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-8",
+      "x": 6930,
+      "y": 960,
+      "kind": "guard",
+      "group": null,
+      "patrol": 40
+    },
+    {
+      "id": "road-9",
+      "x": 7550,
+      "y": 960,
+      "kind": "archer",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "road-10",
+      "x": 8390,
+      "y": 1000,
+      "kind": "shield",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "cave-guard",
+      "x": 5260,
+      "y": 1390,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "cave-bat",
+      "x": 6010,
+      "y": 1310,
+      "kind": "fly",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "tree-bat",
+      "x": 3900,
+      "y": 690,
+      "kind": "fly",
+      "group": null,
+      "patrol": 65
+    },
+    {
+      "id": "whiteSerpent",
+      "x": 7850,
+      "y": 1790,
+      "kind": "serpent",
+      "group": null,
+      "patrol": 550,
+      "serpentType": "white",
+      "miniboss": "whiteSerpent",
+      "name": "serpent.white.name",
+      "secretArea": "whiteSerpentCave"
+    }
+  ],
+  "zones": [
+    {
+      "name": "A köd erdeje",
+      "x": 0,
+      "y": 0,
+      "w": 3300,
+      "h": 1250
+    },
+    {
+      "name": "Az erdei harang",
+      "x": 3300,
+      "y": 0,
+      "w": 1600,
+      "h": 1200
+    },
+    {
+      "name": "A folyó alatti járat",
+      "x": 4800,
+      "y": 1150,
+      "w": 2200,
+      "h": 550
+    },
+    {
+      "name": "Folyó és rizsföldek",
+      "x": 4800,
+      "y": 0,
+      "w": 2000,
+      "h": 1150
+    },
+    {
+      "name": "A csendes falu",
+      "x": 6800,
+      "y": 0,
+      "w": 1500,
+      "h": 1150
+    },
+    {
+      "name": "A bambusztemplom",
+      "x": 8300,
+      "y": 0,
+      "w": 2100,
+      "h": 1200
+    }
+  ],
+  "top": -1100,
+  "ability": {
+    "x": 2340,
+    "y": 760,
+    "name": "A szél áldása"
+  },
+  "secrets": [
+    {
+      "id": "angelRuin",
+      "name": "Az ősi angyaltorony romjai",
+      "x": 2440,
+      "y": -1000,
+      "w": 1240,
+      "h": 1550,
+      "arena": {
+        "x": 2510,
+        "y": -690,
+        "w": 510
+      },
+      "guardian": "oldAngel",
+      "relic": "angelHalo"
+    },
+    {
+      "id": "cultCave",
+      "name": "Az elfeledett szekta barlangja",
+      "x": 800,
+      "y": 1740,
+      "w": 3330,
+      "h": 1320,
+      "arena": {
+        "x": 2650,
+        "y": 2160,
+        "w": 950
+      },
+      "guardian": "oldCultist",
+      "relic": "demonHorn"
+    },
+    {
+      "id": "whiteSerpentCave",
+      "name": "serpent.white.cave",
+      "x": 6400,
+      "y": 1430,
+      "w": 2100,
+      "h": 700,
+      "arena": {
+        "x": 6770,
+        "y": 1790,
+        "w": 1700,
+        "restId": "fields"
+      },
+      "guardian": "whiteSerpent"
+    }
+  ],
+  "cultPassage": {
+    "gateId": "cultWestWall",
+    "platformIds": [
+      "cult-passage-forecourt",
+      "cult-passage-landing",
+      "cult-passage-step1",
+      "cult-passage-step2",
+      "cult-passage-temple"
+    ],
+    "ruinedGate": {
+      "x": 1150,
+      "y": 2620,
+      "w": 480,
+      "h": 365
+    }
+  },
+  "arena": {
+    "x": 8770,
+    "y": 1000,
+    "w": 1550,
+    "restId": "temple",
+    "triggerX": 9120
+  },
+  "boss": {
+    "x": 9570,
+    "y": 1000
+  },
+  "exit": {
+    "x": 10000,
+    "y": 1000
+  },
+  "progressFlags": [
+    "whiteSerpentScale",
+    "triuneSerpentTalisman",
+    "daisyPlaced",
+    "campQuestAccepted",
+    "mayorExecuted",
+    "guardian:campMaster",
+    "smithRescued",
+    "herbalistRescued",
+    "enchanterRescued",
+    "herbalistQuestAccepted",
+    "campQuestCompleted",
+    "herbalistQuestTurnedIn",
+    "serpentRitualKnown",
+    "campMasterSoul",
+    "cultTempleDiscovered",
+    "sectRunStarted",
+    "sectStage1Clear",
+    "sectStage2Clear",
+    "sectStage3Clear",
+    "sectChestClaimed",
+    "sectGuardReward",
+    "sectAngelReward",
+    "sectPriestessReward",
+    "highPriestessSoul",
+    "islandsAmbushEscaped",
+    "haruAbducted",
+    "grapplingHook",
+    "islandsTrailReached",
+    "storyRaidStarted",
+    "storyRaidClear:mistSentry",
+    "storyRaidClear:signalKeeper",
+    "storyRaidClear:thirdClanLeader",
+    "storyRaidClear:siegeWarden",
+    "storyRaidClear:kibaBinder",
+    "storyRaidClear:cultWarMarshal",
+    "storyRaidClear:riftSentinel",
+    "storyRaidClear:sanctuaryCustodian",
+    "storyRaidClear:secondDemonLord",
+    "storyRaidHaruRescued",
+    "storyRaidHeavenReached",
+    "ninjaClanRunStarted",
+    "ninjaClanStage1Clear",
+    "ninjaClanStage2Clear",
+    "ninjaClanStage3Clear",
+    "ninjaClanLeaderReward",
+    "ninjaClanSentinelReward",
+    "ninjaClanRitualistReward",
+    "ninjaClanChestClaimed",
+    "ninjaClanLeaderSoul",
+    "ninjaCorruptedSeal",
+    "ninjaSealPurified",
+    "ninjaClanDebrief",
+    "skyDragonRaidFirstClear",
+    "skyDragonRaidRingTurnedIn",
+    "thirdClanAccepted",
+    "thirdClanBallistaWest",
+    "thirdClanBallistaCenter",
+    "thirdClanBallistaEast",
+    "thirdClanGuardianDefeated",
+    "thirdClanHaruTrailFound",
+    "watchtowerJailerDefeated",
+    "watchtowerCellKey",
+    "westheruRescued",
+    "watchtowerSentinelEscaped",
+    "balloonJourneyStarted",
+    "balloonWaspsCleared",
+    "balloonDragonDefeated",
+    "westheruRestored",
+    "balloonVortexArrived",
+    "westheruDeparted",
+    "oathbreakerSoul",
+    "bossRewardClaimed"
+  ],
+  "campEntrance": {
+    "x": 8870,
+    "y": 1000
+  },
+  "campRescueSteps": [
+    {
+      "id": "camp-route-1",
+      "x": 8920,
+      "y": 900,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 8920
+    },
+    {
+      "id": "camp-route-2",
+      "x": 9110,
+      "y": 800,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 9110
+    },
+    {
+      "id": "camp-route-3",
+      "x": 9300,
+      "y": 700,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 9300
+    },
+    {
+      "id": "camp-route-gate",
+      "x": 9490,
+      "y": 600,
+      "w": 520,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 9490
+    }
+  ],
+  "samuraiCampEntrance": {
+    "x": 9770,
+    "y": 600,
+    "name": "camp.rescue.name"
+  },
+  "catalogSnapshot": true
+}

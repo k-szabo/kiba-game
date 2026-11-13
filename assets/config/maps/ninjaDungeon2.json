@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "ninjaDungeon2",
+  "width": 4800,
+  "height": 1700,
+  "start": {
+    "x": 200,
+    "y": 1040
+  },
+  "platforms": [
+    {
+      "id": "ninjaDungeon2Ground0",
+      "x": 0,
+      "y": 1040,
+      "w": 1360,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "ninjaDungeon2Ground1470",
+      "x": 1470,
+      "y": 940,
+      "w": 850,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1470
+    },
+    {
+      "id": "ninjaDungeon2Ground2440",
+      "x": 2440,
+      "y": 1040,
+      "w": 2360,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2440
+    }
+  ],
+  "rests": [
+    {
+      "id": "ninjaDungeon2Shrine",
+      "x": 3110,
+      "y": 1040,
+      "name": "ninjaClan.courtyard"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "ninjaClanSentinel",
+      "miniboss": "ninjaClanSentinel",
+      "name": "ninjaClan.sentinel",
+      "kind": "guard",
+      "x": 4120,
+      "y": 1040,
+      "patrol": 300,
+      "arena": {
+        "x": 3260,
+        "y": 1040,
+        "w": 1400,
+        "restId": "ninjaDungeon2Shrine"
+      }
+    },
+    {
+      "id": "ninjaDungeon2Cult0",
+      "x": 250,
+      "y": 1040,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon2Ninja0",
+      "x": 500,
+      "y": 1040,
+      "kind": "guard",
+      "shadowNinjaRole": "assassin",
+      "dungeonEnemy": true,
+      "dungeonSide": "ninja",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon2Cult1",
+      "x": 1720,
+      "y": 940,
+      "kind": "archer",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon2Ninja1",
+      "x": 1970,
+      "y": 940,
+      "kind": "archer",
+      "shadowNinjaRole": "crossbow",
+      "dungeonEnemy": true,
+      "dungeonSide": "infected",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon2Cult2",
+      "x": 2690,
+      "y": 1040,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon2Ninja2",
+      "x": 2940,
+      "y": 1040,
+      "kind": "guard",
+      "shadowNinjaRole": "assassin",
+      "dungeonEnemy": true,
+      "dungeonSide": "ninja",
+      "patrol": 100
+    }
+  ],
+  "zones": [
+    {
+      "name": "ninjaClan.courtyard",
+      "x": 0,
+      "y": 0,
+      "w": 4800,
+      "h": 1700
+    }
+  ],
+  "name": "ninjaClan.courtyard",
+  "enemyRealm": 3,
+  "dungeon": {
+    "id": "ninjaClan",
+    "floor": 1,
+    "stage": "ninjaClanStage2Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "ninjaDungeon2Entry",
+      "x": 200,
+      "y": 1040,
+      "name": "ninjaClan.courtyard",
+      "checkpointOnly": true
+    }
+  ],
+  "arena": {
+    "x": 3260,
+    "y": 1040,
+    "w": 1400,
+    "restId": "ninjaDungeon2Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1040
+  },
+  "returnPoint": {
+    "x": 100,
+    "y": 1040
+  },
+  "nextPoint": {
+    "x": 4690,
+    "y": 1040
+  },
+  "returnDestination": {
+    "location": "stormIslands",
+    "x": 3340,
+    "y": 1300
+  },
+  "arenaEncounters": [
+    {
+      "id": "ninjaClanSentinel",
+      "miniboss": "ninjaClanSentinel",
+      "name": "ninjaClan.sentinel",
+      "kind": "guard",
+      "x": 4120,
+      "y": 1040,
+      "patrol": 300,
+      "arena": {
+        "x": 3260,
+        "y": 1040,
+        "w": 1400,
+        "restId": "ninjaDungeon2Shrine"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

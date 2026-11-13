@@ -3,6 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const root=path.join(__dirname,'..'),types=['watchtowerJailer','watchtowerSentinel','balloonDragon','westheruSeal'];
 function context(){
  const c=vm.createContext({console});
+ c.MAP_DATA={infiniteTowerTemplate:JSON.parse(fs.readFileSync(path.join(root,'assets/config/maps/infiniteTowerTemplate.json'),'utf8'))};
  vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,c);vm.runInContext(`
  var level={tower:true,width:1800,arena:{x:0,y:760,w:1800,triggerX:0}},state='play',enemies=[],projectiles=[],flags=[[],[],[],[]],storyWrites=0;
  var player={x:200,y:690,w:42,h:70,hp:10000},TowerMode={running:true};

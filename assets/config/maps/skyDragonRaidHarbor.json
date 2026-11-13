@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "skyDragonRaidHarbor",
+  "width": 3500,
+  "height": 1800,
+  "start": {
+    "x": 220,
+    "y": 1240
+  },
+  "platforms": [
+    {
+      "id": "skyport-deck",
+      "x": 0,
+      "y": 1240,
+      "w": 3500,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "skyDragonRaid.harbor",
+      "x": 0,
+      "y": 0,
+      "w": 3500,
+      "h": 1800
+    }
+  ],
+  "name": "skyDragonRaid.harbor",
+  "boss": {
+    "x": -10000,
+    "y": 1240
+  },
+  "skyDragonRaid": "harbor",
+  "returnDestination": {
+    "location": "ninjaClanCamp",
+    "x": 2350,
+    "y": 1020
+  },
+  "grappleAnchors": [
+    {
+      "id": "skyport-west-crane",
+      "x": 1092,
+      "y": 1012,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyport-east-crane",
+      "x": 2092,
+      "y": 1012,
+      "w": 36,
+      "h": 36
+    }
+  ],
+  "ballistas": [
+    {
+      "x": 640,
+      "y": 1240
+    },
+    {
+      "x": 1650,
+      "y": 1240
+    },
+    {
+      "x": 2660,
+      "y": 1240
+    }
+  ],
+  "returnPoint": {
+    "x": 120,
+    "y": 1240
+  },
+  "boardPoint": {
+    "x": 3250,
+    "y": 1240
+  }
+}

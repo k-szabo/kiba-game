@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "id": "cultDungeon1",
+  "width": 6600,
+  "height": 1800,
+  "start": {
+    "x": 220,
+    "y": 1120
+  },
+  "platforms": [
+    {
+      "id": "sect-forecourt-ground0",
+      "x": 0,
+      "y": 1120,
+      "w": 1500,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "sect-forecourt-ground1620",
+      "x": 1620,
+      "y": 1040,
+      "w": 1780,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1620
+    },
+    {
+      "id": "sect-forecourt-ground3520",
+      "x": 3520,
+      "y": 1120,
+      "w": 3080,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3520
+    },
+    {
+      "id": "sect-watch-step",
+      "x": 650,
+      "y": 970,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 650
+    },
+    {
+      "id": "sect-watch-gallery",
+      "x": 1000,
+      "y": 860,
+      "w": 400,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1000
+    },
+    {
+      "id": "sect-watch-return",
+      "x": 1510,
+      "y": 900,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1510
+    }
+  ],
+  "rests": [
+    {
+      "id": "cultDungeon1Shrine",
+      "x": 4750,
+      "y": 1120,
+      "name": "cultDungeon.rest.forecourt"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "cultTempleGuard",
+      "miniboss": "cultTempleGuard",
+      "name": "cultDungeon.boss.guard",
+      "kind": "guard",
+      "x": 5750,
+      "y": 1120,
+      "patrol": 300,
+      "arena": {
+        "x": 4920,
+        "y": 1120,
+        "w": 1550,
+        "restId": "cultDungeon1Shrine"
+      }
+    },
+    {
+      "id": "cultDungeon1-soldier0",
+      "x": 650,
+      "y": 1120,
+      "kind": "shield",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier1",
+      "x": 940,
+      "y": 1120,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier2",
+      "x": 1950,
+      "y": 1040,
+      "kind": "archer",
+      "factionOverride": "heaven",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier3",
+      "x": 2240,
+      "y": 1040,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier4",
+      "x": 3660,
+      "y": 1120,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier5",
+      "x": 3950,
+      "y": 1120,
+      "kind": "shield",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon1-soldier6",
+      "x": 4300,
+      "y": 1120,
+      "kind": "guard",
+      "factionOverride": "heaven",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    }
+  ],
+  "zones": [
+    {
+      "name": "cultDungeon.floor.forecourt",
+      "x": 0,
+      "y": 0,
+      "w": 6600,
+      "h": 1800
+    }
+  ],
+  "name": "cultDungeon.floor.forecourt",
+  "enemyRealm": 3,
+  "dungeon": {
+    "id": "sectFall",
+    "floor": 0,
+    "stage": "sectStage1Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "cultDungeon1Entry",
+      "x": 220,
+      "y": 1120,
+      "name": "cultDungeon.floor.forecourt",
+      "checkpointOnly": true
+    }
+  ],
+  "returnPoint": {
+    "x": 110,
+    "y": 1120
+  },
+  "nextPoint": {
+    "x": 6480,
+    "y": 1120
+  },
+  "returnDestination": {
+    "realm": 0,
+    "x": 1150,
+    "y": 2620,
+    "w": 480,
+    "h": 365
+  },
+  "arena": {
+    "x": 4920,
+    "y": 1120,
+    "w": 1550,
+    "restId": "cultDungeon1Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1120
+  },
+  "arenaEncounters": [
+    {
+      "id": "cultTempleGuard",
+      "miniboss": "cultTempleGuard",
+      "name": "cultDungeon.boss.guard",
+      "kind": "guard",
+      "x": 5750,
+      "y": 1120,
+      "patrol": 300,
+      "arena": {
+        "x": 4920,
+        "y": 1120,
+        "w": 1550,
+        "restId": "cultDungeon1Shrine"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

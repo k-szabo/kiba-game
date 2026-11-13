@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "japanHeights",
+  "width": 4200,
+  "height": 1500,
+  "start": {
+    "x": 320,
+    "y": 1100
+  },
+  "platforms": [
+    {
+      "id": "heights-main-ground",
+      "x": 0,
+      "y": 1100,
+      "w": 4200,
+      "h": 400,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "heights-view-0",
+      "x": 1100,
+      "y": 1020,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1100
+    },
+    {
+      "id": "heights-view-1",
+      "x": 1360,
+      "y": 940,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1360
+    },
+    {
+      "id": "heights-view-2",
+      "x": 1620,
+      "y": 860,
+      "w": 540,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1620
+    },
+    {
+      "id": "heights-view-3",
+      "x": 2070,
+      "y": 940,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2070
+    },
+    {
+      "id": "heights-view-4",
+      "x": 2330,
+      "y": 1020,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2330
+    }
+  ],
+  "rests": [
+    {
+      "id": "japanHeightsArrival",
+      "x": 500,
+      "y": 1100,
+      "name": "descent.rest.heights"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "descent.heights",
+      "x": 0,
+      "y": 0,
+      "w": 4200,
+      "h": 1500
+    }
+  ],
+  "name": "descent.heights",
+  "enemyRealm": 0,
+  "descent": true,
+  "peaceful": true,
+  "boss": {
+    "x": -2000,
+    "y": 1100
+  },
+  "arena": {
+    "x": -2000,
+    "y": 1100,
+    "w": 0
+  },
+  "returnPoint": {
+    "x": 180,
+    "y": 1100
+  },
+  "returnDestination": {
+    "location": "zigguratDepths",
+    "x": 3380,
+    "y": 2920
+  },
+  "haruPoint": {
+    "x": 3200,
+    "y": 1100
+  },
+  "islandsEntrance": {
+    "x": 3850,
+    "y": 1100
+  },
+  "catalogSnapshot": true
+}

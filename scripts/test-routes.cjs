@@ -1,8 +1,11 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert');
 const bootstrap=require('./test-only-bootstrap.cjs');
+const mapDir=require('node:path').join(__dirname,'../assets/config/maps');
+const mapData=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const record=JSON.parse(fs.readFileSync(require('node:path').join(mapDir,name),'utf8'));return [record.id,record];}));
 const elements=new Map();function el(){return{hidden:false,textContent:'',innerHTML:'',style:{},dataset:{},className:'',children:[],classList:{add(){},remove(){},contains(){return false}},setAttribute(){},querySelectorAll(){return[]},querySelector(){return{scrollTop:0}},getContext:()=>draw,replaceChildren(){this.children=[]},append(...x){this.children.push(...x)},prepend(){},focus(){},addEventListener(){}};}
 const draw=new Proxy({createLinearGradient(){return{addColorStop(){}}},createRadialGradient(){return{addColorStop(){}}}},{get(t,k){return t[k]||(()=>{})}});
 const storage=new Map(),sandbox={console,Math,Set,JSON,Image:class{complete=true;naturalWidth=1536;naturalHeight=1024;addEventListener(){}},document:{addEventListener(){},getElementById(id){if(!elements.has(id))elements.set(id,el());return elements.get(id);},createElement:el,querySelectorAll(){return[]}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},innerWidth:1280,innerHeight:720,devicePixelRatio:1,addEventListener(){},matchMedia:()=>({matches:false}),requestAnimationFrame(){}};
+sandbox.MAP_DATA=mapData;
 sandbox.window=sandbox;sandbox.document.getElementById('world').getContext=()=>draw;vm.createContext(sandbox);
 const path=require('node:path');
 const runtimeModules=require('./runtime-modules.cjs');

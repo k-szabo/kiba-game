@@ -2,7 +2,8 @@
 'use strict';
 const TowerRules=(()=>{
  const profile=Object.freeze({baseHp:20,clearHeal:2,checkpointEvery:5,maxEnemies:8});
- const layout=Object.freeze({width:1800,height:1000,groundY:760,spawnX:180});
+ const towerTemplate=MAP_DATA.infiniteTowerTemplate;
+ const layout=Object.freeze({width:towerTemplate.width,height:towerTemplate.height,groundY:towerTemplate.platforms[0].y,spawnX:towerTemplate.start.x});
  const weapons=Object.freeze(['katana','naginata','swordShield']),factions=Object.freeze(['japan','yomi','heaven','shadowCult']);
  const bossCatalog=BossCatalog.towerRoster;
  const bossPool=Object.freeze(bossCatalog.map(entry=>entry.id));

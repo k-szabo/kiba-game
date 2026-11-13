@@ -4,8 +4,10 @@ const fs=require('node:fs');
 const vm=require('node:vm');
 const path=require('node:path');
 const read=name=>fs.readFileSync(path.join(__dirname,'../assets/js',name+'.js'),'utf8');
-const {raid,grapple,createMaps}=vm.runInNewContext(['sky-dragon-raid-rules','sky-dragon-raid-maps','grapple-rules'].map(read).join('\n')+
- '\n({raid:SkyDragonRaidRules,grapple:GrappleRules,createMaps:createSkyDragonRaidMaps})');
+const mapDir=path.join(__dirname,'../assets/config/maps'),mapData=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
+const context=vm.createContext({MAP_DATA:mapData});
+vm.runInContext(['sky-dragon-raid-rules','grapple-rules','map-catalog','sky-dragon-raid-maps'].map(read).join('\n'),context);
+const {raid,grapple,createMaps}=vm.runInContext('({raid:SkyDragonRaidRules,grapple:GrappleRules,createMaps:createSkyDragonRaidMaps})',context);
 const {tuning,rewards}=raid;
 
 function clear(encounter){
@@ -98,8 +100,7 @@ assert.equal(ring.points,rewards.ringPoints);
 assert.equal(raid.turnInRing(ring.progress),null);
 assert.equal(fresh.victories,0,'Transitions must preserve the input snapshot');
 
-const maps=createMaps({makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[]}),
- ledge:(map,id,x,y,w,kind,h)=>map.platforms.push({id,x,y,w,h}),zone:()=>{}});
+const maps=createMaps();
 assert.equal(maps.harbor.ballistas.length,tuning.ballistaCount);
 assert.equal(maps.back.cultists.length,tuning.backCultists);
 assert.equal(maps.rift.fracturePlatforms.length,tuning.platformCount);

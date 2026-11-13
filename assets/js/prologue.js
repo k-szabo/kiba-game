@@ -2,8 +2,7 @@
 'use strict';
 const Prologue=(()=>{
   const FLOOR=720,ARENA_LEFT=2940,ARENA_RIGHT=4230,SHADOW_X=3790,MAX_HP=BossCatalog.story('prologueShadow').hp;
-  const dream=makeLevel('dream',4500,1000,{x:240,y:FLOOR});
-  ledge(dream,'silent-path',0,FLOOR,4500,'ground',280);
+  const dream=MapCatalog.build('dream');
   let phase='off',clock=0,battleTime=0,zoom=1,castIndex=0,heartbeat=0;
   let hazards=[],bolts=[],auto=null,cast=null;
   let animationTime=0,castVisual=null,deathPose=null,currentPose={clip:'idle',frame:0},previousPose=null,blendClock=.12;

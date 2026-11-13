@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "shadowArena",
+  "width": 2900,
+  "height": 2100,
+  "start": {
+    "x": 260,
+    "y": 1700
+  },
+  "platforms": [
+    {
+      "id": "shadow-arena-ground",
+      "x": 0,
+      "y": 1700,
+      "w": 2900,
+      "h": 400,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "shadowArenaEntrance",
+      "x": 260,
+      "y": 1700,
+      "name": "arena.rest"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "arena.name",
+      "x": 0,
+      "y": 0,
+      "w": 2900,
+      "h": 2100
+    }
+  ],
+  "name": "arena.name",
+  "enemyRealm": 3,
+  "returnPoint": {
+    "x": 100,
+    "y": 1700
+  },
+  "challengePoint": {
+    "x": 460,
+    "y": 1700
+  },
+  "returnDestination": {
+    "location": "shadowDen",
+    "x": 430,
+    "y": 820
+  },
+  "arena": {
+    "x": 600,
+    "y": 1700,
+    "w": 1700,
+    "restId": "shadowArenaEntrance"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 1700
+  },
+  "arenaEncounters": [
+    {
+      "id": "arenaCaptain",
+      "miniboss": "arenaCaptain",
+      "name": "arena.boss.captain",
+      "x": 1750,
+      "y": 1700,
+      "kind": "guard",
+      "patrol": 500,
+      "arena": {
+        "x": 600,
+        "y": 1700,
+        "w": 1700,
+        "restId": "shadowArenaEntrance"
+      }
+    },
+    {
+      "id": "arenaSerpent",
+      "miniboss": "arenaSerpent",
+      "name": "arena.boss.serpent",
+      "x": 1700,
+      "y": 1700,
+      "kind": "guard",
+      "patrol": 500,
+      "arena": {
+        "x": 600,
+        "y": 1700,
+        "w": 1700,
+        "restId": "shadowArenaEntrance"
+      }
+    },
+    {
+      "id": "arenaCyclops",
+      "miniboss": "arenaCyclops",
+      "name": "arena.boss.guards",
+      "x": 1550,
+      "y": 1700,
+      "kind": "guard",
+      "patrol": 500,
+      "arena": {
+        "x": 600,
+        "y": 1700,
+        "w": 1700,
+        "restId": "shadowArenaEntrance"
+      }
+    },
+    {
+      "id": "arenaFia",
+      "miniboss": "arenaFia",
+      "name": "arena.boss.fia",
+      "x": 1850,
+      "y": 1700,
+      "kind": "guard",
+      "patrol": 500,
+      "arena": {
+        "x": 600,
+        "y": 1700,
+        "w": 1700,
+        "restId": "shadowArenaEntrance"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

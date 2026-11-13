@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "id": "heaven",
+  "width": 5250,
+  "height": 6650,
+  "start": {
+    "x": 350,
+    "y": 6300
+  },
+  "platforms": [
+    {
+      "id": "cloud-base",
+      "x": 80,
+      "y": 6300,
+      "w": 2900,
+      "h": 90,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 80
+    },
+    {
+      "id": "first-island",
+      "x": 470,
+      "y": 5370,
+      "w": 520,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 470
+    },
+    {
+      "id": "first-arc1",
+      "x": 1120,
+      "y": 5230,
+      "w": 240,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1120
+    },
+    {
+      "id": "second-launch",
+      "x": 1700,
+      "y": 4960,
+      "w": 510,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1700
+    },
+    {
+      "id": "second-island",
+      "x": 1720,
+      "y": 4120,
+      "w": 510,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1720
+    },
+    {
+      "id": "second-arc1",
+      "x": 1390,
+      "y": 3990,
+      "w": 230,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1390
+    },
+    {
+      "id": "third-launch",
+      "x": 550,
+      "y": 3750,
+      "w": 380,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 550
+    },
+    {
+      "id": "third-island",
+      "x": 470,
+      "y": 2770,
+      "w": 540,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 470
+    },
+    {
+      "id": "third-arc1",
+      "x": 1120,
+      "y": 2630,
+      "w": 220,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1120
+    },
+    {
+      "id": "third-arc2",
+      "x": 1400,
+      "y": 2470,
+      "w": 230,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1400
+    },
+    {
+      "id": "fourth-launch",
+      "x": 1740,
+      "y": 2340,
+      "w": 540,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1740
+    },
+    {
+      "id": "fourth-island",
+      "x": 1740,
+      "y": 1470,
+      "w": 520,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1740
+    },
+    {
+      "id": "dawn-arena",
+      "x": 1090,
+      "y": 850,
+      "w": 1920,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1090
+    },
+    {
+      "id": "father-island",
+      "x": 1210,
+      "y": 260,
+      "w": 660,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 1210
+    },
+    {
+      "id": "sky-memory",
+      "x": 2310,
+      "y": 3970,
+      "w": 480,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 2310
+    },
+    {
+      "id": "lower-secret",
+      "x": 2360,
+      "y": 5630,
+      "w": 520,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 2360
+    },
+    {
+      "id": "moving-cloud",
+      "x": 1410,
+      "y": 5080,
+      "w": 210,
+      "h": 32,
+      "kind": "moving",
+      "drop": true,
+      "baseX": 1410,
+      "range": 70,
+      "speed": 0.7,
+      "phase": 0.8
+    },
+    {
+      "id": "moving-cloud-west",
+      "x": 1110,
+      "y": 3860,
+      "w": 230,
+      "h": 32,
+      "kind": "moving",
+      "drop": true,
+      "baseX": 1110,
+      "range": 55,
+      "speed": 0.85,
+      "phase": 0.2
+    },
+    {
+      "id": "winged-serpent-bridge1",
+      "x": 2380,
+      "y": 2340,
+      "w": 280,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 2380,
+      "secretArea": "wingedSerpentRoost"
+    },
+    {
+      "id": "winged-serpent-bridge2",
+      "x": 2760,
+      "y": 2340,
+      "w": 280,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 2760,
+      "secretArea": "wingedSerpentRoost"
+    },
+    {
+      "id": "winged-serpent-bridge3",
+      "x": 3140,
+      "y": 2420,
+      "w": 280,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 3140,
+      "secretArea": "wingedSerpentRoost"
+    },
+    {
+      "id": "winged-serpent-arena",
+      "x": 3500,
+      "y": 2500,
+      "w": 1600,
+      "h": 38,
+      "kind": "cloud",
+      "drop": true,
+      "baseX": 3500,
+      "secretArea": "wingedSerpentRoost"
+    }
+  ],
+  "rests": [
+    {
+      "id": "start",
+      "x": 420,
+      "y": 6300,
+      "name": "A felhők kapuja"
+    },
+    {
+      "id": "third",
+      "x": 930,
+      "y": 2770,
+      "name": "A csillagok hídja"
+    },
+    {
+      "id": "arena",
+      "x": 1600,
+      "y": 850,
+      "name": "Az utolsó eskü"
+    }
+  ],
+  "objects": [
+    {
+      "id": "skyMemory",
+      "type": "memory",
+      "x": 2620,
+      "y": 3970,
+      "name": "Az ég emléke"
+    },
+    {
+      "id": "cloudMemory",
+      "type": "memory",
+      "x": 2630,
+      "y": 5630,
+      "name": "A felhők emléke"
+    }
+  ],
+  "gates": [
+    {
+      "id": "memorySeal",
+      "kind": "fire",
+      "x": 2280,
+      "y": 3730,
+      "w": 35,
+      "h": 290
+    },
+    {
+      "id": "dawnSeal",
+      "kind": "fire",
+      "x": 0,
+      "y": 1050,
+      "w": 3200,
+      "h": 28
+    }
+  ],
+  "winds": [
+    {
+      "id": "wind1",
+      "x": 550,
+      "y": 5330,
+      "w": 170,
+      "h": 970
+    },
+    {
+      "id": "wind2",
+      "x": 1800,
+      "y": 4080,
+      "w": 170,
+      "h": 900
+    },
+    {
+      "id": "wind3",
+      "x": 620,
+      "y": 2730,
+      "w": 170,
+      "h": 1040
+    },
+    {
+      "id": "wind4",
+      "x": 1910,
+      "y": 1430,
+      "w": 170,
+      "h": 930
+    },
+    {
+      "id": "wind5",
+      "x": 1910,
+      "y": 680,
+      "w": 170,
+      "h": 800
+    },
+    {
+      "id": "homeWind",
+      "x": 1390,
+      "y": 170,
+      "w": 160,
+      "h": 700,
+      "afterBoss": true
+    }
+  ],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "cloud-0",
+      "x": 1200,
+      "y": 5230,
+      "kind": "guard",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "cloud-1",
+      "x": 1850,
+      "y": 4960,
+      "kind": "archer",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "cloud-2",
+      "x": 1510,
+      "y": 3990,
+      "kind": "shield",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "cloud-3",
+      "x": 1220,
+      "y": 2630,
+      "kind": "mage",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "cloud-4",
+      "x": 1510,
+      "y": 2470,
+      "kind": "guard",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "cloud-5",
+      "x": 2110,
+      "y": 2340,
+      "kind": "archer",
+      "group": null,
+      "patrol": 35
+    },
+    {
+      "id": "skybat-0",
+      "x": 1240,
+      "y": 5500,
+      "kind": "fly",
+      "group": null,
+      "patrol": 110
+    },
+    {
+      "id": "skybat-1",
+      "x": 1580,
+      "y": 4600,
+      "kind": "fly",
+      "group": null,
+      "patrol": 110
+    },
+    {
+      "id": "skybat-2",
+      "x": 970,
+      "y": 3500,
+      "kind": "fly",
+      "group": null,
+      "patrol": 110
+    },
+    {
+      "id": "skybat-3",
+      "x": 1370,
+      "y": 2900,
+      "kind": "fly",
+      "group": null,
+      "patrol": 110
+    },
+    {
+      "id": "skybat-4",
+      "x": 1650,
+      "y": 1960,
+      "kind": "fly",
+      "group": null,
+      "patrol": 110
+    },
+    {
+      "id": "wingedSerpent",
+      "x": 4470,
+      "y": 2500,
+      "kind": "serpent",
+      "group": null,
+      "patrol": 550,
+      "serpentType": "winged",
+      "miniboss": "wingedSerpent",
+      "name": "serpent.winged.name",
+      "secretArea": "wingedSerpentRoost",
+      "factionOverride": "heaven"
+    }
+  ],
+  "zones": [
+    {
+      "name": "A felhők kapuja",
+      "x": 0,
+      "y": 5450,
+      "w": 3200,
+      "h": 1200
+    },
+    {
+      "name": "A szél lépcsői",
+      "x": 0,
+      "y": 4250,
+      "w": 3200,
+      "h": 1200
+    },
+    {
+      "name": "A napudvar",
+      "x": 0,
+      "y": 3150,
+      "w": 3200,
+      "h": 1100
+    },
+    {
+      "name": "A csillagok hídja",
+      "x": 0,
+      "y": 2200,
+      "w": 3200,
+      "h": 950
+    },
+    {
+      "name": "A hajnal pereme",
+      "x": 0,
+      "y": 1100,
+      "w": 3200,
+      "h": 1100
+    },
+    {
+      "name": "Az ég teteje",
+      "x": 0,
+      "y": 0,
+      "w": 3200,
+      "h": 1100
+    }
+  ],
+  "progressFlags": [
+    "eclipseRelic",
+    "wingedSerpentScale",
+    "shadowEntered",
+    "seraphSoul",
+    "bossRewardClaimed"
+  ],
+  "arena": {
+    "x": 1120,
+    "y": 850,
+    "w": 1880,
+    "restId": "arena",
+    "triggerX": 2050
+  },
+  "boss": {
+    "x": 2560,
+    "y": 850
+  },
+  "father": {
+    "x": 1570,
+    "y": 260
+  },
+  "secrets": [
+    {
+      "id": "wingedSerpentRoost",
+      "name": "serpent.winged.roost",
+      "x": 3070,
+      "y": 1940,
+      "w": 2100,
+      "h": 800,
+      "arena": {
+        "x": 3500,
+        "y": 2500,
+        "w": 1600,
+        "restId": "third"
+      },
+      "guardian": "wingedSerpent"
+    }
+  ],
+  "catalogSnapshot": true
+}

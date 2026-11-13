@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "id": "cultDungeon2",
+  "width": 6600,
+  "height": 2000,
+  "start": {
+    "x": 220,
+    "y": 1600
+  },
+  "platforms": [
+    {
+      "id": "sect-hall-ground0",
+      "x": 0,
+      "y": 1600,
+      "w": 900,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "sect-hall-ground1020",
+      "x": 1020,
+      "y": 1500,
+      "w": 300,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1020
+    },
+    {
+      "id": "sect-hall-ground1440",
+      "x": 1440,
+      "y": 1400,
+      "w": 900,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1440
+    },
+    {
+      "id": "sect-hall-ground2460",
+      "x": 2460,
+      "y": 1300,
+      "w": 300,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2460
+    },
+    {
+      "id": "sect-hall-ground2880",
+      "x": 2880,
+      "y": 1200,
+      "w": 1000,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2880
+    },
+    {
+      "id": "sect-hall-ground4000",
+      "x": 4000,
+      "y": 1100,
+      "w": 300,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4000
+    },
+    {
+      "id": "sect-hall-ground4420",
+      "x": 4420,
+      "y": 1000,
+      "w": 2180,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4420
+    }
+  ],
+  "rests": [
+    {
+      "id": "cultDungeon2Shrine",
+      "x": 4700,
+      "y": 1000,
+      "name": "cultDungeon.rest.hall"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "woundedAngel",
+      "miniboss": "woundedAngel",
+      "name": "cultDungeon.boss.angel",
+      "kind": "guard",
+      "x": 5650,
+      "y": 1000,
+      "patrol": 300,
+      "arena": {
+        "x": 4900,
+        "y": 1000,
+        "w": 1550,
+        "restId": "cultDungeon2Shrine"
+      }
+    },
+    {
+      "id": "cultDungeon2-soldier0",
+      "x": 550,
+      "y": 1600,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon2-soldier1",
+      "x": 1600,
+      "y": 1400,
+      "kind": "archer",
+      "factionOverride": "heaven",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon2-soldier2",
+      "x": 1940,
+      "y": 1400,
+      "kind": "shield",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon2-soldier3",
+      "x": 3010,
+      "y": 1200,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon2-soldier4",
+      "x": 3350,
+      "y": 1200,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "sect",
+      "patrol": 230
+    },
+    {
+      "id": "cultDungeon2-soldier5",
+      "x": 4030,
+      "y": 1100,
+      "kind": "guard",
+      "factionOverride": "heaven",
+      "dungeonEnemy": true,
+      "dungeonSide": "alliance",
+      "patrol": 230
+    }
+  ],
+  "zones": [
+    {
+      "name": "cultDungeon.floor.hall",
+      "x": 0,
+      "y": 0,
+      "w": 6600,
+      "h": 2000
+    }
+  ],
+  "name": "cultDungeon.floor.hall",
+  "enemyRealm": 3,
+  "dungeon": {
+    "id": "sectFall",
+    "floor": 1,
+    "stage": "sectStage2Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "cultDungeon2Entry",
+      "x": 220,
+      "y": 1600,
+      "name": "cultDungeon.floor.hall",
+      "checkpointOnly": true
+    }
+  ],
+  "returnPoint": {
+    "x": 110,
+    "y": 1600
+  },
+  "nextPoint": {
+    "x": 6480,
+    "y": 1000
+  },
+  "returnDestination": {
+    "realm": 0,
+    "x": 1150,
+    "y": 2620,
+    "w": 480,
+    "h": 365
+  },
+  "arena": {
+    "x": 4900,
+    "y": 1000,
+    "w": 1550,
+    "restId": "cultDungeon2Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1000
+  },
+  "arenaEncounters": [
+    {
+      "id": "woundedAngel",
+      "miniboss": "woundedAngel",
+      "name": "cultDungeon.boss.angel",
+      "kind": "guard",
+      "x": 5650,
+      "y": 1000,
+      "patrol": 300,
+      "arena": {
+        "x": 4900,
+        "y": 1000,
+        "w": 1550,
+        "restId": "cultDungeon2Shrine"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

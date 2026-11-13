@@ -1,6 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const context=vm.createContext({console});
+const mapDir=path.join(__dirname,'../assets/config/maps');context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.startsWith('duelArena')&&name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
 for(const file of ['weapons','duel-rules'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js',file+'.js'),'utf8'),context,{filename:file+'.js'});
 const rules=vm.runInContext('DuelRules',context),neutral=()=>({move:0,jump:false,drop:false,dash:false,attack:false,heavy:false});
 const controls=extra=>({...neutral(),...extra});

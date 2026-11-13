@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "herbalHut",
+  "width": 1500,
+  "height": 1080,
+  "start": {
+    "x": 260,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "herbalHut-floor",
+      "x": 0,
+      "y": 820,
+      "w": 1500,
+      "h": 260,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "herbalHut",
+      "x": 1120,
+      "y": 820,
+      "name": "service.herbal.name"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "service.herbal.name",
+      "x": 0,
+      "y": 0,
+      "w": 1500,
+      "h": 1080
+    }
+  ],
+  "name": "service.herbal.name",
+  "service": "herbal",
+  "returnPoint": {
+    "x": 160,
+    "y": 820
+  },
+  "returnDestination": {
+    "location": "forestCamp",
+    "x": 1980,
+    "y": 820
+  },
+  "servicePoint": {
+    "x": 880,
+    "y": 820,
+    "name": "service.herbal.name"
+  },
+  "arena": {
+    "x": -1000,
+    "y": 820,
+    "w": 0,
+    "restId": "herbalHut"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 820
+  },
+  "catalogSnapshot": true
+}

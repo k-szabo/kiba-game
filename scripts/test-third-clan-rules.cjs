@@ -1,7 +1,9 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const context=vm.createContext({});
-for(const name of ['third-clan-rules','third-clan-maps']){
+const mapDir=path.join(__dirname,'../assets/config/maps');
+context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8').replace(/^\uFEFF/,''));return [map.id,map];}));
+for(const name of ['third-clan-rules','map-catalog','third-clan-maps']){
  vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 }
 const rules=vm.runInContext('ThirdClanRules',context),{progress}=rules;

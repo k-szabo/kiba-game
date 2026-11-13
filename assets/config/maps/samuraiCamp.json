@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "id": "samuraiCamp",
+  "width": 4400,
+  "height": 1600,
+  "start": {
+    "x": 220,
+    "y": 1000
+  },
+  "platforms": [
+    {
+      "id": "samurai-approach",
+      "x": 0,
+      "y": 1000,
+      "w": 1170,
+      "h": 600,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "samurai-courtyard",
+      "x": 1300,
+      "y": 1080,
+      "w": 1320,
+      "h": 600,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1300
+    },
+    {
+      "id": "samurai-command-ground",
+      "x": 2750,
+      "y": 1000,
+      "w": 1650,
+      "h": 600,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2750
+    },
+    {
+      "id": "samurai-roof-step",
+      "x": 760,
+      "y": 900,
+      "w": 190,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 760
+    },
+    {
+      "id": "samurai-west-roof",
+      "x": 950,
+      "y": 800,
+      "w": 250,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 950
+    },
+    {
+      "id": "samurai-roof-watch",
+      "x": 1270,
+      "y": 800,
+      "w": 250,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1270
+    },
+    {
+      "id": "samurai-roof-descent",
+      "x": 1450,
+      "y": 900,
+      "w": 220,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1450
+    },
+    {
+      "id": "samurai-store-step",
+      "x": 1750,
+      "y": 980,
+      "w": 180,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1750
+    },
+    {
+      "id": "samurai-store-roof",
+      "x": 1960,
+      "y": 880,
+      "w": 220,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1960
+    },
+    {
+      "id": "samurai-cell-balcony",
+      "x": 2200,
+      "y": 780,
+      "w": 250,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2200
+    },
+    {
+      "id": "samurai-east-step",
+      "x": 2635,
+      "y": 980,
+      "w": 105,
+      "h": 24,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2635
+    }
+  ],
+  "rests": [
+    {
+      "id": "samuraiCampEntrance",
+      "x": 330,
+      "y": 1000,
+      "name": "camp.rescue.shrine"
+    },
+    {
+      "id": "samuraiCampCourt",
+      "x": 2950,
+      "y": 1000,
+      "name": "camp.rescue.court"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "camp-approach-guard",
+      "x": 620,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100
+    },
+    {
+      "id": "camp-roof-archer",
+      "x": 1370,
+      "y": 800,
+      "kind": "archer",
+      "group": null,
+      "patrol": 70
+    },
+    {
+      "id": "camp-courtyard-shield",
+      "x": 1550,
+      "y": 1080,
+      "kind": "shield",
+      "group": null,
+      "patrol": 100
+    },
+    {
+      "id": "camp-store-archer",
+      "x": 2040,
+      "y": 880,
+      "kind": "archer",
+      "group": null,
+      "patrol": 55
+    },
+    {
+      "id": "camp-courtyard-guard",
+      "x": 2440,
+      "y": 1080,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100
+    },
+    {
+      "id": "camp-command-shield",
+      "x": 3100,
+      "y": 1000,
+      "kind": "shield",
+      "group": null,
+      "patrol": 90
+    },
+    {
+      "id": "campMaster",
+      "x": 3790,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 360,
+      "miniboss": "campMaster",
+      "name": "camp.rescue.boss",
+      "secretArea": "campMasterCourt",
+      "factionOverride": "japan"
+    }
+  ],
+  "zones": [
+    {
+      "name": "camp.rescue.name",
+      "x": 0,
+      "y": 0,
+      "w": 4400,
+      "h": 1600
+    }
+  ],
+  "name": "camp.rescue.name",
+  "entrance": {
+    "x": 150,
+    "y": 1000
+  },
+  "returnPoint": {
+    "x": 150,
+    "y": 1000
+  },
+  "returnDestination": {
+    "location": null,
+    "x": 9770,
+    "y": 600
+  },
+  "arena": {
+    "x": 3260,
+    "y": 1000,
+    "w": 1060,
+    "restId": "samuraiCampCourt"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 1000
+  },
+  "secrets": [
+    {
+      "id": "campMasterCourt",
+      "name": "camp.rescue.name",
+      "x": 3230,
+      "y": 650,
+      "w": 1110,
+      "h": 500,
+      "arena": {
+        "x": 3260,
+        "y": 1000,
+        "w": 1060,
+        "restId": "samuraiCampCourt"
+      },
+      "guardian": "campMaster",
+      "public": true
+    }
+  ],
+  "cages": [
+    {
+      "id": "smith",
+      "x": 1060,
+      "y": 800,
+      "name": "camp.npc.smith.name",
+      "flag": "smithRescued",
+      "requiresFlag": "guardian:campMaster"
+    },
+    {
+      "id": "herbalist",
+      "x": 2320,
+      "y": 780,
+      "name": "camp.npc.herbalist.name",
+      "flag": "herbalistRescued",
+      "requiresFlag": "guardian:campMaster"
+    },
+    {
+      "id": "enchanter",
+      "x": 3090,
+      "y": 1000,
+      "name": "camp.npc.enchanter.name",
+      "flag": "enchanterRescued",
+      "requiresFlag": "guardian:campMaster"
+    }
+  ],
+  "mayor": {
+    "x": 3960,
+    "y": 1000,
+    "name": "camp.rescue.mayor"
+  },
+  "catalogSnapshot": true
+}

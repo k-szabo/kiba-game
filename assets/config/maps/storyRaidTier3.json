@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "storyRaidTier3",
+  "width": 5790,
+  "height": 1550,
+  "start": {
+    "x": 210,
+    "y": 1060
+  },
+  "platforms": [
+    {
+      "id": "storyRaidTier3-floor",
+      "x": 0,
+      "y": 1060,
+      "w": 5790,
+      "h": 280,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "storyRaidTier3Rest1",
+      "x": 295,
+      "y": 1060,
+      "name": "storyRaid.boss.riftSentinel"
+    },
+    {
+      "id": "storyRaidTier3Rest2",
+      "x": 2085,
+      "y": 1060,
+      "name": "storyRaid.boss.sanctuaryCustodian"
+    },
+    {
+      "id": "storyRaidTier3Rest3",
+      "x": 3875,
+      "y": 1060,
+      "name": "storyRaid.boss.secondDemonLord"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "storyRaid.tier.3",
+      "x": 0,
+      "y": 0,
+      "w": 5790,
+      "h": 1550
+    }
+  ],
+  "name": "storyRaid.tier.3",
+  "boss": {
+    "x": -10000,
+    "y": 1060
+  },
+  "storyRaidTier": 2,
+  "returnPoint": {
+    "x": 115,
+    "y": 1060
+  },
+  "exitPoint": {
+    "x": 5675,
+    "y": 1060
+  },
+  "arenas": [
+    {
+      "x": 440,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 550,
+      "restId": "storyRaidTier3Rest1",
+      "encounter": {
+        "id": "riftSentinel",
+        "name": "storyRaid.boss.riftSentinel",
+        "kind": "duel",
+        "tier": 2,
+        "clear": "storyRaidClear:riftSentinel"
+      },
+      "spawn": {
+        "x": 1440,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 295,
+        "y": 1060
+      }
+    },
+    {
+      "x": 2230,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 2340,
+      "restId": "storyRaidTier3Rest2",
+      "encounter": {
+        "id": "sanctuaryCustodian",
+        "name": "storyRaid.boss.sanctuaryCustodian",
+        "kind": "duel",
+        "tier": 2,
+        "clear": "storyRaidClear:sanctuaryCustodian"
+      },
+      "spawn": {
+        "x": 3230,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 2085,
+        "y": 1060
+      }
+    },
+    {
+      "x": 4020,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 4130,
+      "restId": "storyRaidTier3Rest3",
+      "encounter": {
+        "id": "secondDemonLord",
+        "name": "storyRaid.boss.secondDemonLord",
+        "kind": "mimic",
+        "soul": "secondDemonLordSoul",
+        "tier": 2,
+        "clear": "storyRaidClear:secondDemonLord"
+      },
+      "spawn": {
+        "x": 5020,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 3875,
+        "y": 1060
+      }
+    }
+  ],
+  "returnDestination": {
+    "location": "storyRaidTier2",
+    "x": 5675,
+    "y": 1060
+  },
+  "haru": {
+    "x": 5550,
+    "y": 1060
+  },
+  "catalogSnapshot": true
+}

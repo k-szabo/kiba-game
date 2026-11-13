@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "id": "storyRaidTier1",
+  "width": 5790,
+  "height": 1550,
+  "start": {
+    "x": 210,
+    "y": 1060
+  },
+  "platforms": [
+    {
+      "id": "storyRaidTier1-floor",
+      "x": 0,
+      "y": 1060,
+      "w": 5790,
+      "h": 280,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "storyRaidTier1Rest1",
+      "x": 295,
+      "y": 1060,
+      "name": "storyRaid.boss.mistSentry"
+    },
+    {
+      "id": "storyRaidTier1Rest2",
+      "x": 2085,
+      "y": 1060,
+      "name": "storyRaid.boss.signalKeeper"
+    },
+    {
+      "id": "storyRaidTier1Rest3",
+      "x": 3875,
+      "y": 1060,
+      "name": "storyRaid.boss.thirdClanLeader"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "storyRaid.tier.1",
+      "x": 0,
+      "y": 0,
+      "w": 5790,
+      "h": 1550
+    }
+  ],
+  "name": "storyRaid.tier.1",
+  "boss": {
+    "x": -10000,
+    "y": 1060
+  },
+  "storyRaidTier": 0,
+  "returnPoint": {
+    "x": 115,
+    "y": 1060
+  },
+  "exitPoint": {
+    "x": 5675,
+    "y": 1060
+  },
+  "arenas": [
+    {
+      "x": 440,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 550,
+      "restId": "storyRaidTier1Rest1",
+      "encounter": {
+        "id": "mistSentry",
+        "name": "storyRaid.boss.mistSentry",
+        "kind": "duel",
+        "tier": 0,
+        "clear": "storyRaidClear:mistSentry"
+      },
+      "spawn": {
+        "x": 1440,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 295,
+        "y": 1060
+      }
+    },
+    {
+      "x": 2230,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 2340,
+      "restId": "storyRaidTier1Rest2",
+      "encounter": {
+        "id": "signalKeeper",
+        "name": "storyRaid.boss.signalKeeper",
+        "kind": "reikaMarks",
+        "tier": 0,
+        "clear": "storyRaidClear:signalKeeper"
+      },
+      "spawn": {
+        "x": 3230,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 2085,
+        "y": 1060
+      },
+      "decoys": [
+        {
+          "x": 2670,
+          "y": 1060
+        },
+        {
+          "x": 2990,
+          "y": 1060
+        },
+        {
+          "x": 3310,
+          "y": 1060
+        }
+      ]
+    },
+    {
+      "x": 4020,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 4130,
+      "restId": "storyRaidTier1Rest3",
+      "encounter": {
+        "id": "thirdClanLeader",
+        "name": "storyRaid.boss.thirdClanLeader",
+        "kind": "duel",
+        "soul": "thirdClanLeaderSoul",
+        "tier": 0,
+        "clear": "storyRaidClear:thirdClanLeader"
+      },
+      "spawn": {
+        "x": 5020,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 3875,
+        "y": 1060
+      }
+    }
+  ],
+  "returnDestination": {
+    "location": "thirdClanCave",
+    "x": 2400,
+    "y": 1030
+  },
+  "nextLocation": "storyRaidTier2",
+  "catalogSnapshot": true
+}

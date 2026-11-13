@@ -3,7 +3,8 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const read=name=>fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8');
 const context=vm.createContext({});
 vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);
-for(const name of ['story-raid-rules','story-raid-maps','story-raid-combat'])vm.runInContext(read(name),context);
+const mapDir=path.join(__dirname,'../assets/config/maps');context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const value=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [value.id,value];}));
+for(const name of ['story-raid-rules','map-catalog','story-raid-maps','story-raid-combat'])vm.runInContext(read(name),context);
 const rules=vm.runInContext('StoryRaidRules',context);
 let flags=[[],[],[],[]];
 assert(rules.validate(flags),'Pre-raid saves do not need any new fields');
