@@ -99,14 +99,22 @@ for(const [tier,map] of maps.entries()){
 }
 const combat=vm.runInContext('StoryRaidCombat',context);
 const mimicBoss=combat.start(maps[2].arenas[2],copy);
-assert.equal(mimicBoss.maxHp,42,'The second demon lord has a 50% health buffer over the mirrored loadout');
-assert.equal(combat.chooseMove(mimicBoss,{x:mimicBoss.x+80,w:43}).damage,copy.stats.damage*copy.attacks.normal.damageScale);
+assert.equal(mimicBoss.maxHp,34,'The second demon lord has a modest health buffer over the mirrored loadout');
+assert.equal(mimicBoss.profile.speed,185,'The Mimic moves at a readable boss pace');
+const normalStrike=combat.chooseMove(mimicBoss,{x:mimicBoss.x+80,w:43});
+assert.equal(normalStrike.move,'normal');assert(normalStrike.windup>=combat.mimicTuning.normalWindup);assert(normalStrike.recovery>=combat.mimicTuning.normalRecovery);
+assert(normalStrike.damage<=copy.stats.maxHp*combat.mimicTuning.maxHitFraction,'No Mimic hit can remove more than one quarter of Momo’s maximum health');
+const secondStrike=combat.chooseMove(mimicBoss,{x:mimicBoss.x+80,w:43});assert.equal(secondStrike.move,'normal');
+const heavyStrike=combat.chooseMove(mimicBoss,{x:mimicBoss.x+80,w:43});assert.equal(heavyStrike.move,'heavy');assert(heavyStrike.windup>=combat.mimicTuning.heavyWindup);assert(heavyStrike.recovery>=combat.mimicTuning.heavyRecovery);assert(heavyStrike.damage<=copy.stats.maxHp*combat.mimicTuning.maxHitFraction,'The mirrored heavy attack also cannot one-shot Momo');
+const phaseTwoBoss=combat.start(maps[2].arenas[2],copy);phaseTwoBoss.mimic=rules.startMimic(copy,34);phaseTwoBoss.mimic.phase=2;phaseTwoBoss.pattern=3;
+const fissure=combat.chooseMove(phaseTwoBoss,{x:phaseTwoBoss.x+80,w:43});assert.equal(fissure.move,'fissure');assert(fissure.windup>=1.2);
+assert.equal(mimicBoss.maxHp,34,'Boss HP remains stable through attack selection');
 assert(combat.damage(mimicBoss,100,{reduce:(amount,mirror)=>amount/(1+mirror.stats.armor/100)}));
 assert.equal(mimicBoss.mimic.phase,2);
 assert(!mimicBoss.dead);
 assert(!combat.damage(mimicBoss,100),'The new phase has a brief hit guard');
 mimicBoss.hitFlash=0;
-assert(combat.damage(mimicBoss,42)&&mimicBoss.dead);
+assert(combat.damage(mimicBoss,34)&&mimicBoss.dead);
 const siegeBoss=combat.start(maps[1].arenas[0]);
 assert(!combat.damage(siegeBoss,9999),'Attacks cannot bypass Westheru’s shot');
 for(const index of [2,0,1])siegeBoss.siege=rules.lightSignal(siegeBoss.siege,index);

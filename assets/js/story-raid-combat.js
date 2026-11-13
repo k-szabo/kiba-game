@@ -2,10 +2,13 @@
 'use strict';
 const StoryRaidCombat=(()=>{
  const rules=StoryRaidRules;
+ const mimicTuning=Object.freeze({healthMultiplier:1.2,damageMultiplier:.5,maxHitFraction:.25,
+  normalWindup:.55,heavyWindup:.8,stepWindup:.65,fissureWindup:1.25,
+  normalRecovery:.55,heavyRecovery:.75,stepRecovery:.85,fissureRecovery:.8});
  function start(arena,loadout,towerHp){
   const id=arena.encounter.id,kind=arena.encounter.kind;
   const profile=BossCatalog.story(id),{w,h}=profile;
-  const mimic=kind==='mimic'?rules.startMimic(loadout,towerHp??Math.ceil(loadout.stats.maxHp*1.5)):null;
+  const mimic=kind==='mimic'?rules.startMimic(loadout,towerHp??Math.ceil(loadout.stats.maxHp*mimicTuning.healthMultiplier)):null;
   const maxHp=towerHp??mimic?.maxHp??profile.hp;
   return {arena,id,raidBossId:id,kind,profile,mimic,x:arena.spawn.x-w/2,y:arena.spawn.y-h,w,h,hp:maxHp,maxHp,
    face:-1,clock:1.1,pattern:0,cast:null,hitFlash:0,animTime:0,walkSpeed:0,dead:false,
@@ -18,9 +21,10 @@ const StoryRaidCombat=(()=>{
    const move=foe.mimic.phase===2&&i%4===3?'fissure':
     dist>200&&loadout.abilities.dash?'step':i%3===2?'heavy':'normal';
    const profile=loadout.attacks[move]||loadout.attacks.heavy;
-   return {move,windup:move==='fissure'?1.02:Math.max(.24,profile.impact),
-    recovery:move==='step'?loadout.stats.dashCooldown:Math.max(.22,profile.duration-profile.impact),
-    damage:loadout.stats.damage*profile.damageScale};
+   const windup=move==='fissure'?mimicTuning.fissureWindup:move==='heavy'?Math.max(mimicTuning.heavyWindup,profile.impact*1.6):move==='step'?mimicTuning.stepWindup:Math.max(mimicTuning.normalWindup,profile.impact*1.6);
+   const recovery=move==='fissure'?mimicTuning.fissureRecovery:move==='heavy'?Math.max(mimicTuning.heavyRecovery,profile.duration-profile.impact):move==='step'?Math.max(mimicTuning.stepRecovery,loadout.stats.dashCooldown):Math.max(mimicTuning.normalRecovery,profile.duration-profile.impact);
+   return {move,windup,recovery,
+    damage:Math.min(loadout.stats.damage*profile.damageScale*mimicTuning.damageMultiplier,loadout.stats.maxHp*mimicTuning.maxHitFraction)};
   }
   const p=foe.profile,move=p.moves[foe.pattern++%p.moves.length];
   return {move,windup:p.windup,recovery:p.recovery,damage:p.damage};
@@ -87,5 +91,5 @@ const StoryRaidCombat=(()=>{
   foe.clock=foe.cast.windup;foe.walkSpeed=0;
   return null;
  }
- return Object.freeze({start,chooseMove,damage,hitTarget,tick});
+ return Object.freeze({start,chooseMove,damage,hitTarget,tick,mimicTuning});
 })();
