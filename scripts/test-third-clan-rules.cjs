@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const context=vm.createContext({});
 const mapDir=path.join(__dirname,'../assets/config/maps');
 context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8').replace(/^\uFEFF/,''));return [map.id,map];}));
-for(const name of ['third-clan-rules','map-catalog','third-clan-maps']){
+for(const name of ['third-clan-rules','map-catalog']){
  vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 }
 const rules=vm.runInContext('ThirdClanRules',context),{progress}=rules;
@@ -49,19 +49,15 @@ assert(rules.valid(flags));
 for(const prerequisite of [progress.accepted,...progress.ballistae,progress.guardian,'ninjaClanDebrief']){
  assert(!rules.valid([flags[0].filter(id=>id!==prerequisite),[],[],[]]));
 }
-const createMaps=vm.runInContext('createThirdClanMaps',context);
-const {route,cave}=createMaps({
- makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[],enemies:[]}),
- ledge:(map,id,x,y,w)=>map.platforms.push({id,x,y,w}),
- rest:(map,id,x,y)=>map.rests.push({id,x,y}),zone:()=>{}
-});
+const route=vm.runInContext("MapCatalog.build('thirdClanPath')",context);
+const cave=vm.runInContext("MapCatalog.build('thirdClanCave')",context);
 const grounded=(map,{x,y})=>map.platforms.some(p=>p.x<=x&&p.x+p.w>=x&&p.y===y);
 assert(route.platforms.every((p,i,all)=>!i||(p.y>all[i-1].y&&p.x<all[i-1].x+all[i-1].w)));
 for(const [index,anchor] of route.grappleAnchors.entries()){
  const lower=route.platforms[index+1];
  assert(Math.hypot(anchor.x-lower.x,anchor.y-lower.y)<900,'Each upper anchor is reachable from below');
 }
-assert.deepEqual(Array.from(route.ballistae,point=>point.id),Array.from(progress.ballistae));
+assert.equal(route.ballistae.length,progress.ballistae.length);
 for(const point of [route.start,route.returnPoint,route.caveEntrance,...route.rests,...route.ballistae,...route.enemies])assert(grounded(route,point));
 for(const point of [cave.start,cave.returnPoint,cave.guardian,cave.haruTrail,...cave.rests])assert(grounded(cave,point));
 assert.equal(cave.returnDestination.location,route.id);

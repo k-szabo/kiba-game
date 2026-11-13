@@ -4,7 +4,7 @@ const read=name=>fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js')
 const context=vm.createContext({});
 vm.runInContext(require('./test-only-bootstrap.cjs').bossCatalog,context);
 const mapDir=path.join(__dirname,'../assets/config/maps');context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const value=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [value.id,value];}));
-for(const name of ['story-raid-rules','map-catalog','story-raid-maps','story-raid-combat'])vm.runInContext(read(name),context);
+for(const name of ['story-raid-rules','map-catalog','story-raid-combat'])vm.runInContext(read(name),context);
 const rules=vm.runInContext('StoryRaidRules',context);
 let flags=[[],[],[],[]];
 assert(rules.validate(flags),'Pre-raid saves do not need any new fields');
@@ -79,12 +79,8 @@ for(const index of [1,1,0])siege=rules.lightSignal(siege,index);
 assert.equal(rules.fireWestheru(siege),siege,'Repeated use of a signal cannot replace the third signal');
 siege=rules.fireWestheru(rules.lightSignal(siege,2));
 assert(siege.shot);assert.equal(rules.fireWestheru(siege),siege);
-const cave={id:'thirdClanCave',haruTrail:{x:2400,y:1030}};
-const maps=vm.runInContext('createStoryRaidMaps',context)({
- makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[]}),
- ledge:(map,id,x,y,w)=>map.platforms.push({id,x,y,w}),
- rest:(map,id,x,y,name)=>map.rests.push({id,x,y,name}),zone:()=>{}
-},cave);
+const cave=vm.runInContext("MapCatalog.build('thirdClanCave')",context);
+const maps=[1,2,3].map(tier=>vm.runInContext(`MapCatalog.build('storyRaidTier${tier}')`,context));
 const grounded=(map,{x,y})=>map.platforms.some(platform=>x>=platform.x&&x<=platform.x+platform.w&&y===platform.y);
 for(const [tier,map] of maps.entries()){
  assert.equal(map.storyRaidTier,tier);

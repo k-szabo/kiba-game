@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const context=vm.createContext({});
 const path=require('node:path'),mapDir=path.join(__dirname,'../assets/config/maps');context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
-for(const name of ['grapple-rules','floating-islands-rules','map-catalog','floating-islands-maps'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+for(const name of ['grapple-rules','floating-islands-rules','map-catalog'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 const grapple=vm.runInContext('GrappleRules',context),story=vm.runInContext('FloatingIslandsRules',context);
 const wall={id:'wall',x:450,y:0,w:40,h:400},enemy={id:'small',x:650,y:100,w:40,h:60,grappleable:true};
 assert.equal(grapple.target({x:0,y:120},1,{terrain:[wall],enemies:[enemy]}),null,'A wall blocks enemy pulling');
@@ -41,13 +41,7 @@ const reached=story.transition(hook.flags,'reachTrail');assert(reached.ok&&story
 assert(!story.validate([['grapplingHook'],[],[],['zigguratReturnCompleted']]),'Out-of-order acquisition is invalid');
 assert(!story.validate([['haruAbducted'],[],[],['zigguratReturnCompleted']]),'Kidnapping and escape must commit together');
 assert(story.shouldEscape(700,1000));assert(story.shouldEscape(0,1000));assert(!story.shouldEscape(701,1000));assert(!story.shouldEscape(10,NaN));
-const map=vm.runInContext(`createFloatingIslandMaps({
- makeLevel:(id,width,height,start)=>({id,width,height,start,platforms:[],rests:[],enemies:[],zones:[]}),
- ledge:(m,id,x,y,w,kind,h)=>m.platforms.push({id,x,y,w,kind,h}),
- rest:(m,id,x,y,name)=>m.rests.push({id,x,y,name}),
- foe:(m,id,x,y,kind)=>m.enemies.push({id,x,y,kind}),
- zone:(m,name,x,y,w,h)=>m.zones.push({name,x,y,w,h})
-})`,context);
+const map=vm.runInContext("MapCatalog.build('floatingIslands')",context);
 const maxJumpRise=(590**2+650**2)/(2*1550);
 for(let i=1;i<map.platforms.length;i++){
  const left=map.platforms[i-1],right=map.platforms[i],origin={x:left.x+left.w-20,y:left.y-35};

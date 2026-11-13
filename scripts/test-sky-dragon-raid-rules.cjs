@@ -6,8 +6,8 @@ const path=require('node:path');
 const read=name=>fs.readFileSync(path.join(__dirname,'../assets/js',name+'.js'),'utf8');
 const mapDir=path.join(__dirname,'../assets/config/maps'),mapData=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
 const context=vm.createContext({MAP_DATA:mapData});
-vm.runInContext(['sky-dragon-raid-rules','grapple-rules','map-catalog','sky-dragon-raid-maps'].map(read).join('\n'),context);
-const {raid,grapple,createMaps}=vm.runInContext('({raid:SkyDragonRaidRules,grapple:GrappleRules,createMaps:createSkyDragonRaidMaps})',context);
+vm.runInContext(['sky-dragon-raid-rules','grapple-rules','map-catalog'].map(read).join('\n'),context);
+const {raid,grapple}=vm.runInContext('({raid:SkyDragonRaidRules,grapple:GrappleRules})',context);
 const {tuning,rewards}=raid;
 
 function clear(encounter){
@@ -100,7 +100,10 @@ assert.equal(ring.points,rewards.ringPoints);
 assert.equal(raid.turnInRing(ring.progress),null);
 assert.equal(fresh.victories,0,'Transitions must preserve the input snapshot');
 
-const maps=createMaps();
+const maps=Object.fromEntries(['harbor','pursuit','back','rift'].map(phase=>{
+ const id='skyDragonRaid'+phase[0].toUpperCase()+phase.slice(1);
+ return [phase,vm.runInContext(`MapCatalog.build('${id}')`,context)];
+}));
 assert.equal(maps.harbor.ballistas.length,tuning.ballistaCount);
 assert.equal(maps.back.cultists.length,tuning.backCultists);
 assert.equal(maps.rift.fracturePlatforms.length,tuning.platformCount);

@@ -97,7 +97,8 @@ Momo **J-vel nyolcképkockás kardcsapást** indít. A kard tényleges vágásak
 
 ## Forrás
 
-- **assets/js/levels.js**: a három pálya, szigetek, pihenők, mellékutak, kapuk, szélfolyamok és ellenfelek.
+- **assets/config/maps/*.json**: a fő pályák, oldalhelyszínek, platformok, pihenők, mellékutak, kapuk, szélfolyamok és ellenfélpozíciók. A [`MAP-CATALOG.md`](MAP-CATALOG.md) ismerteti az adat- és kódhatárokat.
+- **assets/js/levels.js**: közös pályapéldányok létrehozása és a fő/oldalhelyszínek, dungeonök és jutalmak regisztrálása.
 - **assets/js/game.js**: mozgás, harc, kétirányú kamera, küldetések, térkép, mentés és rajzolás.
 - **assets/js/graphics.js**: képek betöltése, tájak, textúrázott terep, ellenfélpózok és grafikai effektek.
 - **assets/js/art-data.js**: képútvonalak, sprite-kivágások és illesztési pontok.

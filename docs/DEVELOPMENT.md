@@ -32,7 +32,8 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/game.js` | Mozgás, kamera, térkép, közös [dialógusrendszer](DIALOGUE.md) és a fő játékciklus. |
 | `assets/js/game-objectives.js`, `game-hud.js`, `game-interactions.js` | Kalandcélok, HUD és a pályán elérhető interakciók prioritási sorrendje. |
 | `assets/js/sprite-art.js` | Közös atlaszkivágás, talpponthoz igazítás, tükrözés és kontúrvágás. |
-| `assets/js/levels.js` | Pályák, objektumok és ellenfelek. A [JSON-katalógus terve](MAP-CATALOG.md) ismerteti az átköltöztetés sorrendjét. |
+| `assets/config/maps/*.json`, `assets/js/map-catalog.js` | A fizikai pályák statikus adatai JSON-ban; a build validálja és a runtime-ba ágyazza őket. A [mapkatalógus](MAP-CATALOG.md) leírja a határokat és az ellenőrzést. |
+| `assets/js/levels.js` | A JSON-adatokból megosztott pályapéldányokat épít, regisztrálja a fő- és oldalhelyszíneket, dungeonöket és jutalmakat. |
 | `assets/js/floating-islands*.js`, `grapple*.js`, `shadow-ninjas.js`, `islands-art.js`, `shadow-ninja-art-data.js` | A [lebegő szigetek](FLOATING-ISLANDS.md) történeti folytatása, sziámi nindzsák, fix pontokra célzó kampó, tartós mérföldkövek és natív grafikák. |
 | `assets/js/watchtower-balloon*.js`, `watchtower-art-data.js` | A [nindzsa őrtorony és ballonút](WATCHTOWER-BALLOON.md) sorrendi története, sérthetetlen kísérője, szakaszharcai és grafikai regisztrációja. |
 | `assets/js/shadow-realm.js` | A [negyedik birodalom](SHADOW-REALM.md) harca, oltára, börtönkulcsa és történeti belépése. |
@@ -63,9 +64,9 @@ A támogatott felület asztali böngésző, billentyűzettel és egérrel, legal
 | `assets/js/keybindings.js`, `assets/config/keybindings.json` | Alapbillentyűk, UK/FR profilok, egyéni átállítások és JSON import/export. |
 | `assets/js/fia-quest.js`, `fia-conflict.js`, `fia-combat.js`, `fia-art.js` | Fia második megbízása, visszaállítható provokáció, tartós ellenségesség és passzív pajzs; [spoileres referencia](FIA-JOURNEY.md). |
 | `assets/js/fia-journey-rules.js`, `dragon-raid-rules.js`, `dragon-raid.js`, `dragon-raid-art.js` | Fia harmadik megbízása, háromszakaszos őssárkányrajtaütés, ismételhető és egyszeri jutalmak, natív rajzolás; [referencia](FIA-JOURNEY.md). |
-| `assets/js/fia-void-maps.js`, `fia-void-journey.js`, `void-encounter-rules.js`, `void-encounter.js`, `fia-void-art.js` | Fia negyedik megbízása, alvilági szolgáltatások és a void-hasadék harca; [referencia](FIA-JOURNEY.md). |
+| `assets/js/fia-void-journey.js`, `void-encounter-rules.js`, `void-encounter.js`, `fia-void-art.js` | Fia negyedik megbízása, alvilági szolgáltatások és a void-hasadék harca; a helyszínek a mapkatalógusban vannak; [referencia](FIA-JOURNEY.md). |
 | `assets/js/fia-ritual-rules.js`, `fia-ritual.js`, `fia-ritual-art.js` | Fia ötödik megbízása, a végső rituálé, ritka jutalomfegyver és menthető menekülési tiltás; [referencia](FIA-JOURNEY.md). |
-| `assets/js/ziggurat-maps.js`, `hannah-rules.js`, `hannah-combat.js`, `hannah-encounter.js`, `dawnblade.js`, `hannah-art.js` | Háromrészes zikkurat, Hannah harca, Haru kiszabadítása, Hajnalkard és tartós jutalmak; [spoileres referencia](ZIGGURAT.md). |
+| `assets/js/hannah-rules.js`, `hannah-combat.js`, `hannah-encounter.js`, `dawnblade.js`, `hannah-art.js` | Háromrészes zikkurat, Hannah harca, Haru kiszabadítása, Hajnalkard és tartós jutalmak; a helyszínek a mapkatalógusban vannak; [spoileres referencia](ZIGGURAT.md). |
 | `assets/js/background-framing.js` | Az érintett festett belső terek és panorámák nézethez igazított, képarányt tartó méretezése; az animációt továbbra is a `background-motion.js` kezeli. |
 | `assets/js/duel-rules.js`, `peer-session.js`, `duel-mode.js` | Mentéstől független párbajszimuláció, újrahasználható WebRTC-kapcsolat és két megnyert menetes mérkőzés; [hálózati referencia](MULTIPLAYER.md). |
 | `assets/js/tower-rules.js`, `tower-store.js`, `tower-mode.js`, `tower-boss-combat.js`, `tower-special-bosses.js`, `tower-boss-art.js` | Külön [végtelen torony](ENDLESS-TOWER.md), teljes bossválaszték történeti események nélkül, determinisztikus nehezedés, öt emeletenkénti checkpoint és a kalandtól elkülönített helyi rekord. |
