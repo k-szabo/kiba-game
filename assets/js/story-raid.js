@@ -271,11 +271,11 @@ const StoryRaid=(()=>{
    if(move==='normal'||move==='heavy'){
     const profile=foe.mimic.loadout.attacks[move];
     const elapsed=foe.cast?profile.impact*clamp(1-foe.clock/foe.cast.windup,0,1):profile.impact+(.22-foe.strikeTime);
-    Visuals.momoSlash(x,feet,96,elapsed/WeaponStyles.profile(style).tempo,foe.face,move,style);
+    Visuals.momoSlash(x,feet,170,elapsed/WeaponStyles.profile(style).tempo,foe.face,move,style);
    }else{
-    if(style==='naginata')Visuals.momoCarry(x,feet,96,foe.face,style);
-    drawMomo(x,feet,96,foe.walkSpeed?(foe.face>0?1:2):0,reducedMotion.matches?0:Math.floor(foe.animTime*8)%6,foe.face);
-    if(style==='swordShield')Visuals.momoCarry(x,feet,96,foe.face,style);
+    if(style==='naginata')Visuals.momoCarry(x,feet,170,foe.face,style);
+    drawMomo(x,feet,170,foe.walkSpeed?(foe.face>0?1:2):0,reducedMotion.matches?0:Math.floor(foe.animTime*8)%6,foe.face);
+    if(style==='swordShield')Visuals.momoCarry(x,feet,170,foe.face,style);
    }
    ctx.restore();return;
   }
@@ -284,32 +284,32 @@ const StoryRaid=(()=>{
   if(foe.keeper){
    for(const [index,point] of foe.arena.decoys.entries()){
     ctx.save();ctx.globalAlpha=foe.keeper.marked===null||foe.keeper.marked===index?1:.48;
-    FiaVoidArt.stamp(art,frame,point.x,point.y,foe.h,foe.face);ctx.restore();
+    FiaVoidArt.stamp(art,frame,point.x,point.y,Math.max(185,foe.h*1.35),foe.face);ctx.restore();
    }
   }else{
    if(foe.mimic)drawMimicWeapon(foe,x,feet,frame);
    if(foe.mimic)drawDistortedMimic(foe,art,frame,x,feet);
-   else FiaVoidArt.stamp(art,frame,x,feet,foe.h,foe.face);
+   else FiaVoidArt.stamp(art,frame,x,feet,Math.max(185,foe.h*1.35),foe.face);
    if(foe.mimic?.loadout.weapon==='swordShield'){
     ctx.save();ctx.filter='brightness(.75) hue-rotate(235deg)';
-    Visuals.momoCarry(x,feet,132,foe.face,'swordShield');ctx.restore();
+    Visuals.momoCarry(x,feet,190,foe.face,'swordShield');ctx.restore();
    }
   }
  }
  function drawDistortedMimic(foe,art,frame,x,feet){
   const pulse=foe.animTime%1.4;
-  if(reducedMotion.matches||pulse>=.16){FiaVoidArt.stamp(art,frame,x,feet,132,foe.face);return;}
-  const y=feet-105+Math.floor(pulse*25)*15;
+  if(reducedMotion.matches||pulse>=.16){FiaVoidArt.stamp(art,frame,x,feet,190,foe.face);return;}
+  const y=feet-155+Math.floor(pulse*25)*22;
   for(const [top,bottom,offset] of [[feet-175,y,0],[y,y+9,5],[y+9,feet+12,0]]){
    ctx.save();ctx.beginPath();ctx.rect(x-175,top,350,bottom-top);ctx.clip();
-   FiaVoidArt.stamp(art,frame,x+offset*foe.face,feet,132,foe.face);ctx.restore();
+   FiaVoidArt.stamp(art,frame,x+offset*foe.face,feet,190,foe.face);ctx.restore();
   }
  }
  function drawMimicWeapon(foe,x,feet,frame){
   const style=foe.mimic.loadout.weapon,prop=mimicWeapons[style],image=Visuals.images[prop.image];
   if(!image?.complete||!image.naturalWidth)return;
   const pose=actorArt.secondDemonLord.frames[frame],[gx,gy,angle]=mimicGrips[frame];
-  const body=132/pose.bodyHeight,scale=(style==='naginata'?222:126)/prop.length;
+  const body=190/pose.bodyHeight,scale=(style==='naginata'?222:126)/prop.length;
   ctx.save();ctx.filter='brightness(.73) hue-rotate(230deg)';ctx.translate(x,feet);ctx.scale(foe.face,1);
   ctx.translate((pose.x+gx-pose.anchorX)*body,(pose.y+gy-pose.anchorY)*body);
   ctx.rotate(angle-prop.angle);ctx.scale(scale,scale);ctx.drawImage(image,-prop.gripX,-prop.gripY);ctx.restore();

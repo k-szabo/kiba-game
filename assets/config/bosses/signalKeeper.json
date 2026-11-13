@@ -12,9 +12,9 @@
     "raidOrder": 2,
     "raidKind": "reikaMarks",
     "hp": 3,
-    "damage": 6,
-    "windup": 1,
-    "recovery": 1,
+    "damage": 8,
+    "windup": 0.78,
+    "recovery": 0.62,
     "moves": [
       "mirage"
     ]

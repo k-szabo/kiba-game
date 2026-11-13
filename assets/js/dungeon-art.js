@@ -100,17 +100,18 @@ const DungeonArt=(()=>{
   if(level.id==='ninjaClanCamp'){
    const art={healer:ART_NINJA_CLAN.healer,smith:ART_NINJA_CLAN.smith,akash:ART_CAMP.akash};
    const residents=level.npcs.map(({id})=>DungeonRun.campNpc(id)).filter(Boolean);
-   const nearby=residents.filter(npc=>pointNear(npc,95,85)).sort((a,b)=>Math.abs(a.x-player.x-player.w/2)-Math.abs(b.x-player.x-player.w/2))[0];
    for(const npc of residents){
     const {id,x,y,name}=npc;
     if(art[npc.service||id])stamp(art[npc.service||id],0,x,y,126);
     else if(id==='reika')FiaVoidArt.stamp(ART_WATCHTOWER.sentinel,0,x,y,150,-1);
     else if(id==='zen')FiaVoidArt.stamp(ART_PRISON.zen,0,x,y,113,1);
     else if(id==='westheru')FiaVoidArt.stamp(ART_WATCHTOWER.pilot,0,x,y,110,-1);
-    if(npc===nearby)HannahArt.nameplate(x,y,id==='reika'?150:126,name);
+    if(visiblePoint({x,y},180))HannahArt.nameplate(x,y,id==='reika'?150:126,name);
     if(id==='reika')CampArt.questMarker('reika',npc,150);
     if(id==='zen'&&PrisonQuest.ninjaSealReady())CampArt.questMarker('zen',npc,145);
    }
+   Visuals.campPathMarker(level.returnPoint,I18n.t('balloon.stormIslands'));
+   if(SkyDragonRaid.available())Visuals.campPathMarker(level.skyport,I18n.t('skyDragonRaid.name'));
    return;
   }
   if(level===councilHall){stamp(ART_DUNGEON.props.scroll,0,level.memoryScroll.x,level.memoryScroll.y-8,75);BossVFX.marker(level.memoryScroll.x,level.memoryScroll.y-4,95,'#d9bd80');return;}

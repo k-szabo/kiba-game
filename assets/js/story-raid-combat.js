@@ -5,7 +5,7 @@ const StoryRaidCombat=(()=>{
  function start(arena,loadout,towerHp){
   const id=arena.encounter.id,kind=arena.encounter.kind;
   const profile=BossCatalog.story(id),{w,h}=profile;
-  const mimic=kind==='mimic'?rules.startMimic(loadout,towerHp):null;
+  const mimic=kind==='mimic'?rules.startMimic(loadout,towerHp??Math.ceil(loadout.stats.maxHp*1.5)):null;
   const maxHp=towerHp??mimic?.maxHp??profile.hp;
   return {arena,id,raidBossId:id,kind,profile,mimic,x:arena.spawn.x-w/2,y:arena.spawn.y-h,w,h,hp:maxHp,maxHp,
    face:-1,clock:1.1,pattern:0,cast:null,hitFlash:0,animTime:0,walkSpeed:0,dead:false,

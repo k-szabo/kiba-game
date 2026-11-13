@@ -25,6 +25,11 @@ const Inventory=(()=>{
   const talismanArt=catalogue[talisman];image($('inventoryTalismanArt'),equippedTalisman&&talismanArt?Visuals.images[talismanArt.image]:null,talismanArt,{w:108,h:108});
   $('inventoryTalisman').disabled=!equippedTalisman;$('inventoryTalismanName').textContent=equippedTalisman?I18n.t(talismanArt.name):'—';
   $('inventoryTalisman').setAttribute('aria-label',I18n.t('inventory.talisman.slot')+(equippedTalisman?' · '+I18n.t(talismanArt.name):''));
+  const armor=catalogue.cloudscaleArmor,owned=quantity('cloudscaleArmor')>0;
+  $('inventoryArmorLabel').textContent=I18n.t(armor.name);
+  image($('inventoryArmorArt'),owned?Visuals.images[armor.image]:null,armor,{w:108,h:108});
+  $('inventoryArmor').disabled=!owned;$('inventoryArmorName').textContent=owned?I18n.t(armor.name)+' · '+I18n.t(SkyDragonRaid.armorEquipped?'inventory.equipped':'service.equip'):'—';
+  $('inventoryArmor').setAttribute('aria-label',I18n.t(armor.name)+(owned?' · '+I18n.t('inventory.equipped'):''));
   image($('inventoryMomo'),Visuals.images.inventoryMomoPortrait,ART_INVENTORY.momo,{w:384,h:416});
   const weaponArt=ART_INVENTORY[weaponStyle];
   image($('inventoryWeaponArt'),Visuals.images[weaponArt.image],weaponArt,{w:108,h:144});
@@ -116,7 +121,7 @@ const Inventory=(()=>{
  }
  function init(){
   if(initialized)return;initialized=true;
-  $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');$('inventoryTalisman').onclick=()=>{if(equippedTalisman)choose('equippedTalisman');};
+  $('inventoryButton').onclick=open;$('closeInventory').onclick=close;$('inventoryWeapon').onclick=()=>choose('weapon');$('inventoryTalisman').onclick=()=>{if(equippedTalisman)choose('equippedTalisman');};$('inventoryArmor').onclick=()=>{if(quantity('cloudscaleArmor'))choose('cloudscaleArmor');};
   $('useInventoryItem').onclick=()=>{
    if(state!=='inventory')return;
    const style=weaponStyleFor(selected);

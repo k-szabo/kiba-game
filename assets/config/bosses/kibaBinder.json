@@ -7,17 +7,18 @@
   "story": {
     "w": 78,
     "h": 115,
-    "speed": 135,
+    "speed": 155,
     "range": 205,
     "raidOrder": 5,
     "raidKind": "duel",
-    "hp": 310,
-    "damage": 7,
-    "windup": 0.9,
-    "recovery": 0.8,
+    "hp": 500,
+    "damage": 9,
+    "windup": 0.75,
+    "recovery": 0.55,
     "moves": [
       "fissure",
-      "fan"
+      "fan",
+      "step"
     ]
   },
   "tower": {

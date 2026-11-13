@@ -7,17 +7,18 @@
   "story": {
     "w": 100,
     "h": 130,
-    "speed": 113,
+    "speed": 138,
     "range": 180,
     "raidOrder": 4,
     "raidKind": "westheruShot",
-    "hp": 340,
-    "damage": 8,
-    "windup": 1,
-    "recovery": 0.75,
+    "hp": 520,
+    "damage": 10,
+    "windup": 0.82,
+    "recovery": 0.58,
     "moves": [
       "sweep",
-      "fissure"
+      "fissure",
+      "step"
     ]
   },
   "tower": {

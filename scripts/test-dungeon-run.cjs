@@ -45,8 +45,8 @@ function current(h){return h.run('JSON.stringify([dungeonState,flags,progression
  r('initPlayer(level.rewardChest);interact();');
  assert.equal(r('DungeonRun.stock("ninjaCampSpoils")'),1);
  next(h);assert.equal(r('level.id'),'ninjaClanCamp');
- r('initPlayer(DungeonRun.campNpc("healer"));player.hp=1;interact();');
- assert.equal(r('player.hp'),r('player.maxHp'));
+ r('initPlayer(DungeonRun.campNpc("healer"));player.hp=1;coins=30;interact();');
+ assert.equal(r('state'),'shop');assert.equal(r('Merchant.provider().id'),'healer');assert(r('Merchant.purchase("healingBrew")'));r('Merchant.close();state="play";');assert(r('Merchant.useBrew()'));assert.equal(r('player.hp'),4);
  r('initPlayer(DungeonRun.campNpc("smith"));coins=20000;interact();');
  for(let rank=0;rank<10;rank++)assert(r('CampWorkshop.action({type:"forgeWeapon"})'));
  assert.equal(r('campServices.weaponRank'),10);

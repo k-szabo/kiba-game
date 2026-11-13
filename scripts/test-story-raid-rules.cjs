@@ -99,14 +99,14 @@ for(const [tier,map] of maps.entries()){
 }
 const combat=vm.runInContext('StoryRaidCombat',context);
 const mimicBoss=combat.start(maps[2].arenas[2],copy);
-assert.equal(mimicBoss.maxHp,28);
+assert.equal(mimicBoss.maxHp,42,'The second demon lord has a 50% health buffer over the mirrored loadout');
 assert.equal(combat.chooseMove(mimicBoss,{x:mimicBoss.x+80,w:43}).damage,copy.stats.damage*copy.attacks.normal.damageScale);
 assert(combat.damage(mimicBoss,100,{reduce:(amount,mirror)=>amount/(1+mirror.stats.armor/100)}));
 assert.equal(mimicBoss.mimic.phase,2);
 assert(!mimicBoss.dead);
 assert(!combat.damage(mimicBoss,100),'The new phase has a brief hit guard');
 mimicBoss.hitFlash=0;
-assert(combat.damage(mimicBoss,28)&&mimicBoss.dead);
+assert(combat.damage(mimicBoss,42)&&mimicBoss.dead);
 const siegeBoss=combat.start(maps[1].arenas[0]);
 assert(!combat.damage(siegeBoss,9999),'Attacks cannot bypass Westheru’s shot');
 for(const index of [2,0,1])siegeBoss.siege=rules.lightSignal(siegeBoss.siege,index);

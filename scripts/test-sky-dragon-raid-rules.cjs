@@ -40,7 +40,7 @@ const pursuit=raid.start('pursuit',1);
 assert.equal(raid.finishWave(pursuit,1),pursuit);
 assert.equal(raid.reachDragon(pursuit),pursuit);
 const wounded=raid.hitReika(raid.hitReika(pursuit));
-assert.equal(raid.finishWave(wounded,0).reikaHealth,tuning.reikaHealth-1);
+assert.equal(raid.finishWave(wounded,0).reikaHealth,tuning.reikaHealth-2,'Clearing a hatchling wave must not restore Reika health');
 assert.equal(raid.finishWave(pursuit,0).reikaHealth,tuning.reikaHealth);
 let undefended=pursuit;
 for(let hit=0;hit<tuning.reikaHealth;hit++)undefended=raid.hitReika(undefended);

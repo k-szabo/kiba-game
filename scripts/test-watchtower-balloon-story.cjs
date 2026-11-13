@@ -46,6 +46,12 @@ assert.equal(r('level.id'),'ninjaClanCamp');
 assert.equal(r('Inventory.quantity("ninjaClanLeaderSoul")'),1);
 assert.equal(r('Inventory.quantity("ninjaCorruptedSeal")'),1);
 assert.equal(r('Inventory.quantity("ninjaCampSpoils")'),1);
+r('initPlayer(DungeonRun.campNpc("healer"));coins=100;campServices.potions=0;');
+assert(r('DungeonRun.interact(DungeonRun.context())'),'The ninja camp healer opens a shop');
+assert.equal(r('state'),'shop');assert.equal(r('Merchant.provider().id'),'healer');
+assert.equal(r('Merchant.provider().products.healingBrew.price'),30);
+assert(r('Merchant.purchase("healingBrew")'));assert.equal(r('campServices.potions'),0);assert.equal(r('ninjaHealerBrews'),1);assert.equal(r('Merchant.stock("healingBrew")'),1);assert.equal(r('coins'),70);
+r('Merchant.close();player.hp=player.maxHp-1;state="play";');assert(r('Merchant.canUseBrew()'),'Ninja healer brews are available to quick use');assert(r('Merchant.useBrew()'));assert.equal(r('player.hp'),r('player.maxHp'));assert.equal(r('ninjaHealerBrews'),0);
 r('initPlayer(level.npcs.find(npc=>npc.id==="reika"));interact();');h.dismiss();
 assert(r('flags[0].includes("ninjaClanDebrief")'));
 r("flags[1].push('akashRescued');flags[3].push('guardian:cultJailer','prisonOpen','guardian:prisonWarden','zenRescued');initPlayer(level.npcs.find(npc=>npc.id==='zen'));interact();");
@@ -104,6 +110,7 @@ r('SkyDragonRaid.restore({...captureProgress().skyDragonRaid,run:3,victories:3})
 assert(r('SkyDragonRaid.forge()'));assert(!r('SkyDragonRaid.forge()'));
 assert.equal(r('Inventory.quantity("cloudDragonScale")'),0);assert.equal(r('Inventory.quantity("cloudscaleArmor")'),1);
 assert(r('SkyDragonRaid.toggleArmor()'));validate(r('captureProgress()'));
+r('state="play";Inventory.open();');assert.equal(h.elements.get('inventoryArmor').disabled,false);assert.equal(h.elements.get('inventoryArmorLabel').textContent,r("I18n.t('item.cloudscaleArmor')"));r('Inventory.close();');
 r('CampWorkshop.close();persist();mainMenu();startGame(true);');assert(r('SkyDragonRaid.armorEquipped'));
 r('player.hp=20;player.inv=0;damage(10,0,false,true,"spell");');assert.equal(r('player.hp'),12);
 r('player.hp=20;player.inv=0;damage(10,0,false,true);');assert.equal(r('player.hp'),10);
@@ -158,7 +165,7 @@ for(let i=0;i<3;i++){
 }
 walkIntoArena();hitRaidFoe();
 interactAt(r('level.exitPoint.x'),r('level.exitPoint.y'));assert.equal(r('level.id'),'storyRaidTier2');
-walkIntoArena();hitRaidFoe();assert.equal(r('StoryRaid.foe.hp'),340);
+walkIntoArena();hitRaidFoe();assert.equal(r('StoryRaid.foe.hp'),520);
 for(let index=0;index<3;index++){
  r(`player.x=StoryRaid.foe.arena.signals[${index}].x-player.w/2;interact();`);
 }
