@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "skyDragonRaidPursuit",
+  "width": 3100,
+  "height": 1600,
+  "start": {
+    "x": 340,
+    "y": 1060
+  },
+  "platforms": [
+    {
+      "id": "sky-ship-deck",
+      "x": 200,
+      "y": 1060,
+      "w": 1560,
+      "h": 90,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 200
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "skyDragonRaid.pursuit",
+      "x": 0,
+      "y": 0,
+      "w": 3100,
+      "h": 1600
+    }
+  ],
+  "name": "skyDragonRaid.pursuit",
+  "boss": {
+    "x": -10000,
+    "y": 1060
+  },
+  "skyDragonRaid": "pursuit",
+  "returnDestination": {
+    "location": "ninjaClanCamp",
+    "x": 2350,
+    "y": 1020
+  },
+  "grappleAnchors": [
+    {
+      "id": "sky-dragon-boarding",
+      "x": 2292,
+      "y": 867,
+      "w": 36,
+      "h": 36,
+      "disabled": true
+    }
+  ],
+  "helm": {
+    "x": 440,
+    "y": 1060
+  },
+  "reika": {
+    "x": 1440,
+    "y": 1060
+  },
+  "boardingRing": "sky-dragon-boarding"
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "id": "balloonJourney",
+  "width": 2000,
+  "height": 1200,
+  "start": {
+    "x": 420,
+    "y": 850
+  },
+  "platforms": [
+    {
+      "id": "balloon-deck",
+      "x": 220,
+      "y": 850,
+      "w": 1560,
+      "h": 110,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 220
+    }
+  ],
+  "rests": [
+    {
+      "id": "balloonDeck",
+      "x": 400,
+      "y": 850,
+      "name": "balloon.rest.deck"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "balloon.journey",
+      "x": 0,
+      "y": 0,
+      "w": 2000,
+      "h": 1200
+    }
+  ],
+  "name": "balloon.journey",
+  "enemyRealm": 0,
+  "watchtowerBalloon": true,
+  "boss": {
+    "x": -2000,
+    "y": 850
+  },
+  "grappleAnchors": [],
+  "arena": {
+    "x": 240,
+    "y": 850,
+    "w": 1520,
+    "triggerX": 240,
+    "restId": "balloonDeck"
+  },
+  "balloon": true,
+  "pilotPoint": {
+    "x": 340,
+    "y": 850
+  },
+  "returnPoint": {
+    "x": 320,
+    "y": 850
+  },
+  "returnDestination": {
+    "location": "ninjaWatchtower",
+    "x": 3160,
+    "y": 400
+  },
+  "arrivalPoint": {
+    "x": 1650,
+    "y": 850
+  },
+  "arenaEncounters": [
+    {
+      "id": "balloonDragon",
+      "miniboss": "balloonDragon",
+      "x": 1400,
+      "y": 850,
+      "name": "balloon.dragon",
+      "arena": {
+        "x": 240,
+        "y": 850,
+        "w": 1520,
+        "triggerX": 240,
+        "restId": "balloonDeck"
+      },
+      "grappleable": false
+    }
+  ],
+  "catalogSnapshot": true
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "zigguratSummit",
+  "width": 3000,
+  "height": 1800,
+  "start": {
+    "x": 260,
+    "y": 1400
+  },
+  "platforms": [
+    {
+      "id": "ziggurat-summit-ground",
+      "x": 0,
+      "y": 1400,
+      "w": 3000,
+      "h": 400,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "zigguratSummitEntrance",
+      "x": 260,
+      "y": 1400,
+      "name": "ziggurat.rest.summit"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "Hannah",
+      "x": 1800,
+      "y": 1400,
+      "kind": "guard",
+      "group": null,
+      "patrol": 500,
+      "miniboss": "hannah",
+      "name": "ziggurat.hannah",
+      "secretArea": "hannahCourt",
+      "arena": {
+        "x": 620,
+        "y": 1400,
+        "w": 1800,
+        "triggerX": 850,
+        "restId": "zigguratSummitEntrance"
+      }
+    }
+  ],
+  "zones": [
+    {
+      "name": "ziggurat.summit",
+      "x": 0,
+      "y": 0,
+      "w": 3000,
+      "h": 1800
+    }
+  ],
+  "name": "ziggurat.summit",
+  "ziggurat": "summit",
+  "enemyRealm": 3,
+  "boss": {
+    "x": -1000,
+    "y": 1400
+  },
+  "returnPoint": {
+    "x": 120,
+    "y": 1400
+  },
+  "returnDestination": {
+    "location": "zigguratInterior",
+    "x": 1500,
+    "y": 440
+  },
+  "arena": {
+    "x": 620,
+    "y": 1400,
+    "w": 1800,
+    "triggerX": 850,
+    "restId": "zigguratSummitEntrance"
+  },
+  "roof": {
+    "x": 600,
+    "y": 800,
+    "w": 1840,
+    "h": 70
+  },
+  "secrets": [
+    {
+      "id": "hannahCourt",
+      "name": "ziggurat.hannah",
+      "x": 600,
+      "y": 780,
+      "w": 1840,
+      "h": 650,
+      "arena": {
+        "x": 620,
+        "y": 1400,
+        "w": 1800,
+        "triggerX": 850,
+        "restId": "zigguratSummitEntrance"
+      },
+      "guardian": "Hannah",
+      "public": true
+    }
+  ],
+  "arenaEncounters": [
+    {
+      "id": "Hannah",
+      "x": 1800,
+      "y": 1400,
+      "kind": "guard",
+      "group": null,
+      "patrol": 500,
+      "miniboss": "hannah",
+      "name": "ziggurat.hannah",
+      "secretArea": "hannahCourt",
+      "arena": {
+        "x": 620,
+        "y": 1400,
+        "w": 1800,
+        "triggerX": 850,
+        "restId": "zigguratSummitEntrance"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

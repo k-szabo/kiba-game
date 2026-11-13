@@ -17,7 +17,7 @@ for(const [controller,ids] of Object.entries({DungeonCombat:['dungeonCaptain','d
  for(const id of ids)assert(r(`${controller}.profiles['${id}']===BossCatalog.story('${id}')`));
 // A changed authored value must affect the actual constructor and the tower
 // floor generator in a fresh VM; the config is not documentation-only.
-const context=vm.createContext({console});const changed=Object.fromEntries(files.map(file=>{const b=JSON.parse(fs.readFileSync(path.join(dir,file),'utf8'));return [b.id,b];}));
+const context=vm.createContext({console});context.MAP_DATA={infiniteTowerTemplate:JSON.parse(fs.readFileSync(path.join(root,'assets/config/maps/infiniteTowerTemplate.json'),'utf8'))};const changed=Object.fromEntries(files.map(file=>{const b=JSON.parse(fs.readFileSync(path.join(dir,file),'utf8'));return [b.id,b];}));
 changed.watchtowerJailer.story.hp=1873;changed.watchtowerJailer.tower.baseHealth=47;
 changed['main-0'].story.w=123;changed['main-0'].story.h=177;
 changed.angel.story.w=99;changed.angel.story.h=166;

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "id": "shadowUnderworld",
+  "width": 1600,
+  "height": 2400,
+  "start": {
+    "x": 170,
+    "y": 636
+  },
+  "platforms": [
+    {
+      "id": "underworld-floor-0",
+      "x": 0,
+      "y": 636,
+      "w": 1600,
+      "h": 40,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 0
+    },
+    {
+      "id": "underworld-floor-1",
+      "x": 0,
+      "y": 1337,
+      "w": 1600,
+      "h": 40,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 0
+    },
+    {
+      "id": "underworld-floor-2",
+      "x": 0,
+      "y": 2021,
+      "w": 1600,
+      "h": 40,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 0
+    },
+    {
+      "id": "underworld-step-0",
+      "x": 1350,
+      "y": 770,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1350
+    },
+    {
+      "id": "underworld-step-1",
+      "x": 1110,
+      "y": 900,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1110
+    },
+    {
+      "id": "underworld-step-2",
+      "x": 870,
+      "y": 1030,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 870
+    },
+    {
+      "id": "underworld-step-3",
+      "x": 630,
+      "y": 1160,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 630
+    },
+    {
+      "id": "underworld-step-4",
+      "x": 300,
+      "y": 1470,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 300
+    },
+    {
+      "id": "underworld-step-5",
+      "x": 540,
+      "y": 1600,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 540
+    },
+    {
+      "id": "underworld-step-6",
+      "x": 780,
+      "y": 1730,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 780
+    },
+    {
+      "id": "underworld-step-7",
+      "x": 1020,
+      "y": 1860,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1020
+    }
+  ],
+  "rests": [
+    {
+      "id": "underworldMarket",
+      "x": 330,
+      "y": 636,
+      "name": "fia.void.underworld"
+    },
+    {
+      "id": "underworldForge",
+      "x": 1100,
+      "y": 2021,
+      "name": "fia.void.smith"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "fia.void.underworld",
+      "x": 0,
+      "y": 0,
+      "w": 1600,
+      "h": 2400
+    }
+  ],
+  "name": "fia.void.underworld",
+  "enemyRealm": 3,
+  "fiaJourney": true,
+  "arena": {
+    "x": -2000,
+    "y": 636,
+    "w": 0
+  },
+  "boss": {
+    "x": -2000,
+    "y": 636
+  },
+  "returnPoint": {
+    "x": 100,
+    "y": 636
+  },
+  "returnDestination": {
+    "location": "shadowDen",
+    "x": 1800,
+    "y": 820
+  },
+  "npcs": [
+    {
+      "id": "underworldTrader",
+      "service": "trader",
+      "x": 700,
+      "y": 636,
+      "height": 128,
+      "name": "fia.void.trader"
+    },
+    {
+      "id": "underworldCook",
+      "service": "cook",
+      "x": 1050,
+      "y": 1337,
+      "height": 128,
+      "name": "fia.void.cook"
+    },
+    {
+      "id": "underworldSmith",
+      "service": "smith",
+      "x": 650,
+      "y": 2021,
+      "height": 132,
+      "name": "fia.void.smith"
+    }
+  ],
+  "residents": [
+    {
+      "id": "shadowNinja",
+      "x": 1180,
+      "y": 636,
+      "height": 126,
+      "name": "fia.ninja.name",
+      "dialogue": "fia.ninja.dialogue"
+    },
+    {
+      "id": "shadowThief",
+      "x": 420,
+      "y": 2021,
+      "height": 118,
+      "name": "fia.thief.name",
+      "dialogue": "fia.thief.dialogue"
+    }
+  ],
+  "guards": [
+    {
+      "id": "void-entry-guard-0",
+      "x": 1260,
+      "y": 2021,
+      "height": 180,
+      "name": "arena.boss.guards"
+    },
+    {
+      "id": "void-entry-guard-1",
+      "x": 1410,
+      "y": 2021,
+      "height": 180,
+      "name": "arena.boss.guards"
+    }
+  ],
+  "forbiddenEntrance": {
+    "x": 1460,
+    "y": 2021
+  },
+  "catalogSnapshot": true
+}

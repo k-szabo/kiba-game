@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "skyDragonRaidBack",
+  "width": 6150,
+  "height": 1900,
+  "start": {
+    "x": 260,
+    "y": 1340
+  },
+  "platforms": [
+    {
+      "id": "skyDragonRaidBack-ledge-0",
+      "x": 100,
+      "y": 1340,
+      "w": 460,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 100
+    },
+    {
+      "id": "skyDragonRaidBack-ledge-1",
+      "x": 1190,
+      "y": 1180,
+      "w": 400,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1190
+    },
+    {
+      "id": "skyDragonRaidBack-ledge-2",
+      "x": 2240,
+      "y": 1020,
+      "w": 430,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2240
+    },
+    {
+      "id": "skyDragonRaidBack-ledge-3",
+      "x": 3280,
+      "y": 1190,
+      "w": 400,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3280
+    },
+    {
+      "id": "skyDragonRaidBack-ledge-4",
+      "x": 4300,
+      "y": 1020,
+      "w": 470,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4300
+    },
+    {
+      "id": "skyDragonRaidBack-ledge-5",
+      "x": 5380,
+      "y": 885,
+      "w": 650,
+      "h": 48,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5380
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "skyDragonRaid.back",
+      "x": 0,
+      "y": 0,
+      "w": 6150,
+      "h": 1900
+    }
+  ],
+  "name": "skyDragonRaid.back",
+  "boss": {
+    "x": -10000,
+    "y": 1340
+  },
+  "skyDragonRaid": "back",
+  "returnDestination": {
+    "location": "ninjaClanCamp",
+    "x": 2350,
+    "y": 1020
+  },
+  "grappleAnchors": [
+    {
+      "id": "skyDragonRaidBack-ring-1",
+      "x": 1277,
+      "y": 922,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidBack-ring-2",
+      "x": 2327,
+      "y": 762,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidBack-ring-3",
+      "x": 3367,
+      "y": 932,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidBack-ring-4",
+      "x": 4387,
+      "y": 762,
+      "w": 36,
+      "h": 36
+    },
+    {
+      "id": "skyDragonRaidBack-ring-5",
+      "x": 5467,
+      "y": 627,
+      "w": 36,
+      "h": 36
+    }
+  ],
+  "cultists": [
+    {
+      "x": 1500,
+      "y": 1180
+    },
+    {
+      "x": 2580,
+      "y": 1020
+    },
+    {
+      "x": 3590,
+      "y": 1190
+    },
+    {
+      "x": 4680,
+      "y": 1020
+    }
+  ],
+  "headGuard": {
+    "x": 5780,
+    "y": 885
+  }
+}

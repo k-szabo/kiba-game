@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "forestCamp",
+  "width": 2800,
+  "height": 1080,
+  "start": {
+    "x": 280,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "camp-ground",
+      "x": 0,
+      "y": 820,
+      "w": 2800,
+      "h": 260,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "forestCamp",
+      "x": 1250,
+      "y": 820,
+      "name": "A tábor szentélye"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "Erdei menedék",
+      "x": 0,
+      "y": 0,
+      "w": 2800,
+      "h": 1080
+    }
+  ],
+  "returnPoint": {
+    "x": 180,
+    "y": 820
+  },
+  "daisy": {
+    "x": 1130,
+    "y": 820,
+    "height": 64
+  },
+  "arena": {
+    "x": -1000,
+    "y": 820,
+    "w": 0,
+    "restId": "forestCamp"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 820
+  },
+  "npcs": [
+    {
+      "id": "akash",
+      "x": 930,
+      "y": 820,
+      "name": "merchant.name",
+      "dialogue": "merchant.greeting",
+      "image": "akash",
+      "height": 148,
+      "merchant": true,
+      "requiresFlag": {
+        "realm": 1,
+        "id": "akashRescued"
+      }
+    },
+    {
+      "id": "daichi",
+      "x": 620,
+      "y": 820,
+      "name": "camp.npc.daichi.name",
+      "dialogue": "camp.npc.daichi.dialogue",
+      "image": "campDaichi",
+      "height": 100
+    },
+    {
+      "id": "natsu",
+      "x": 1710,
+      "y": 820,
+      "name": "camp.npc.natsu.name",
+      "dialogue": "camp.npc.natsu.dialogue",
+      "image": "campNatsu",
+      "height": 96
+    },
+    {
+      "id": "sora",
+      "x": 2310,
+      "y": 820,
+      "name": "camp.npc.sora.name",
+      "dialogue": "camp.npc.sora.dialogue",
+      "image": "campSora",
+      "height": 72
+    },
+    {
+      "id": "zen",
+      "x": 1390,
+      "y": 820,
+      "name": "zen.name",
+      "dialogue": "zen.camp.dialogue",
+      "image": "zenPriestess",
+      "height": 103,
+      "requiresFlag": {
+        "realm": 3,
+        "id": "zenRescued"
+      }
+    }
+  ],
+  "serviceEntrances": [
+    {
+      "id": "forgeInterior",
+      "x": 1520,
+      "y": 820,
+      "name": "service.forge.name",
+      "requiresFlag": {
+        "realm": 0,
+        "id": "smithRescued"
+      }
+    },
+    {
+      "id": "herbalHut",
+      "x": 1980,
+      "y": 820,
+      "name": "service.herbal.name",
+      "requiresFlag": {
+        "realm": 0,
+        "id": "herbalistRescued"
+      }
+    },
+    {
+      "id": "mysticTent",
+      "x": 2530,
+      "y": 820,
+      "name": "service.mystic.name",
+      "requiresFlag": {
+        "realm": 0,
+        "id": "enchanterRescued"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

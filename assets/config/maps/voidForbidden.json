@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "voidForbidden",
+  "width": 3400,
+  "height": 1250,
+  "start": {
+    "x": 170,
+    "y": 940
+  },
+  "platforms": [
+    {
+      "id": "void-floor",
+      "x": 0,
+      "y": 940,
+      "w": 3400,
+      "h": 310,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "voidThreshold",
+      "x": 330,
+      "y": 940,
+      "name": "fia.void.forbidden"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "rift-keeper-0",
+      "x": 800,
+      "y": 940,
+      "kind": "guard",
+      "patrol": 250,
+      "voidKeeperRole": "blade",
+      "name": "fia.void.blade"
+    },
+    {
+      "id": "rift-keeper-1",
+      "x": 1120,
+      "y": 940,
+      "kind": "archer",
+      "patrol": 250,
+      "voidKeeperRole": "bow",
+      "name": "fia.void.bow"
+    },
+    {
+      "id": "rift-keeper-2",
+      "x": 1450,
+      "y": 940,
+      "kind": "mage",
+      "patrol": 250,
+      "voidKeeperRole": "mage",
+      "name": "fia.void.mage"
+    }
+  ],
+  "zones": [
+    {
+      "name": "fia.void.forbidden",
+      "x": 0,
+      "y": 0,
+      "w": 3400,
+      "h": 1250
+    }
+  ],
+  "name": "fia.void.forbidden",
+  "enemyRealm": 3,
+  "fiaJourney": true,
+  "arena": {
+    "x": -2000,
+    "y": 940,
+    "w": 0
+  },
+  "boss": {
+    "x": -2000,
+    "y": 940
+  },
+  "returnPoint": {
+    "x": 100,
+    "y": 940
+  },
+  "returnDestination": {
+    "location": "shadowUnderworld",
+    "x": 1460,
+    "y": 2021
+  },
+  "voidArena": {
+    "x": 1450,
+    "y": 940,
+    "w": 1850
+  },
+  "rift": {
+    "x": 2700,
+    "y": 940
+  },
+  "keepers": [
+    {
+      "x": 800,
+      "y": 940,
+      "role": "blade"
+    },
+    {
+      "x": 1120,
+      "y": 940,
+      "role": "bow"
+    },
+    {
+      "x": 1450,
+      "y": 940,
+      "role": "mage"
+    }
+  ],
+  "catalogSnapshot": true
+}

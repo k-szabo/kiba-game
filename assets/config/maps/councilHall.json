@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "councilHall",
+  "width": 2400,
+  "height": 1100,
+  "start": {
+    "x": 230,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "council-floor",
+      "x": 0,
+      "y": 820,
+      "w": 2400,
+      "h": 280,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "A Négy Tanácsos Csarnoka",
+      "x": 0,
+      "y": 0,
+      "w": 2400,
+      "h": 1100
+    }
+  ],
+  "returnPoint": {
+    "x": 140,
+    "y": 820
+  },
+  "inscription": {
+    "x": 2060,
+    "y": 820
+  },
+  "arena": {
+    "x": -10000,
+    "y": 820,
+    "w": 0,
+    "restId": "arena"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 820
+  },
+  "memoryScroll": {
+    "x": 1850,
+    "y": 820
+  }
+}

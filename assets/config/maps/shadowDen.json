@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "shadowDen",
+  "width": 2800,
+  "height": 1080,
+  "start": {
+    "x": 260,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "shadow-den-ground",
+      "x": 0,
+      "y": 820,
+      "w": 2800,
+      "h": 260,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "shadowDenCamp",
+      "x": 1240,
+      "y": 820,
+      "name": "fia.den.rest"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "fia.den.name",
+      "x": 0,
+      "y": 0,
+      "w": 2800,
+      "h": 1080
+    }
+  ],
+  "name": "fia.den.name",
+  "enemyRealm": 3,
+  "returnPoint": {
+    "x": 150,
+    "y": 820
+  },
+  "returnDestination": {
+    "realm": 3,
+    "restId": "cathedral",
+    "x": 10960,
+    "y": 1200
+  },
+  "arena": {
+    "x": -1000,
+    "y": 820,
+    "w": 0,
+    "restId": "shadowDenCamp"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 820
+  },
+  "npcs": [
+    {
+      "id": "fia",
+      "x": 2110,
+      "y": 820,
+      "name": "fia.name",
+      "dialogue": "fia.den.dialogue",
+      "image": "fia",
+      "height": 136,
+      "requiresFlag": {
+        "realm": 3,
+        "id": "fiaRescued"
+      }
+    },
+    {
+      "id": "shadowNinja",
+      "x": 740,
+      "y": 820,
+      "name": "fia.ninja.name",
+      "dialogue": "fia.ninja.dialogue",
+      "image": "shadowNinja",
+      "height": 126
+    },
+    {
+      "id": "shadowThief",
+      "x": 1640,
+      "y": 820,
+      "name": "fia.thief.name",
+      "dialogue": "fia.thief.dialogue",
+      "image": "shadowThief",
+      "height": 118
+    }
+  ],
+  "arenaEntrance": {
+    "x": 430,
+    "y": 820
+  },
+  "chambersEntrance": {
+    "x": 2470,
+    "y": 820
+  },
+  "underworldEntrance": {
+    "x": 1800,
+    "y": 820
+  },
+  "catalogSnapshot": true
+}

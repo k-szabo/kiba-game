@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "id": "shadowRealm",
+  "width": 11200,
+  "height": 2600,
+  "start": {
+    "x": 300,
+    "y": 1400
+  },
+  "platforms": [
+    {
+      "id": "shore",
+      "x": 0,
+      "y": 1400,
+      "w": 1900,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "cloister",
+      "x": 2120,
+      "y": 1400,
+      "w": 1650,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2120
+    },
+    {
+      "id": "altar-road",
+      "x": 4000,
+      "y": 1280,
+      "w": 1600,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4000
+    },
+    {
+      "id": "temple-road",
+      "x": 5810,
+      "y": 1400,
+      "w": 1750,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 5810
+    },
+    {
+      "id": "temple-approach",
+      "x": 7560,
+      "y": 1400,
+      "w": 1200,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 7560
+    },
+    {
+      "id": "cathedral",
+      "x": 8950,
+      "y": 1200,
+      "w": 2250,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 8950
+    },
+    {
+      "id": "prison-court",
+      "x": 5810,
+      "y": 2200,
+      "w": 1750,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 5810
+    },
+    {
+      "id": "prison-hall",
+      "x": 7560,
+      "y": 2200,
+      "w": 1200,
+      "h": 220,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 7560
+    },
+    {
+      "id": "shore-bridge",
+      "x": 1830,
+      "y": 1280,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1830
+    },
+    {
+      "id": "cloister-bridge",
+      "x": 3660,
+      "y": 1200,
+      "w": 420,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3660
+    },
+    {
+      "id": "altar-descent",
+      "x": 5600,
+      "y": 1280,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5600
+    },
+    {
+      "id": "cathedral-step",
+      "x": 8760,
+      "y": 1300,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 8760
+    },
+    {
+      "id": "prison-balcony",
+      "x": 6240,
+      "y": 2010,
+      "w": 460,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6240
+    },
+    {
+      "id": "prison-loft",
+      "x": 6830,
+      "y": 1880,
+      "w": 420,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6830
+    },
+    {
+      "id": "gallery-step1",
+      "x": 3150,
+      "y": 1220,
+      "w": 190,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3150,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "gallery-step2",
+      "x": 2910,
+      "y": 1060,
+      "w": 170,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2910,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "gallery-step3",
+      "x": 3140,
+      "y": 900,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3140,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "gallery-step4",
+      "x": 2910,
+      "y": 740,
+      "w": 170,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2910,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "gallery-step5",
+      "x": 3140,
+      "y": 580,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3140,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "organ-loft",
+      "x": 2510,
+      "y": 420,
+      "w": 1200,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2510,
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "prison-stair-1",
+      "x": 5600,
+      "y": 1500,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5600
+    },
+    {
+      "id": "prison-stair-2",
+      "x": 5470,
+      "y": 1600,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5470
+    },
+    {
+      "id": "prison-stair-3",
+      "x": 5600,
+      "y": 1700,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5600
+    },
+    {
+      "id": "prison-stair-4",
+      "x": 5470,
+      "y": 1800,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5470
+    },
+    {
+      "id": "prison-stair-5",
+      "x": 5600,
+      "y": 1900,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5600
+    },
+    {
+      "id": "prison-stair-6",
+      "x": 5470,
+      "y": 2000,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5470
+    },
+    {
+      "id": "prison-stair-7",
+      "x": 5600,
+      "y": 2100,
+      "w": 210,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 5600
+    },
+    {
+      "id": "temple-branch-step1",
+      "x": 6210,
+      "y": 1300,
+      "w": 220,
+      "h": 18,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6210
+    },
+    {
+      "id": "temple-branch-step2",
+      "x": 6500,
+      "y": 1215,
+      "w": 240,
+      "h": 18,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6500
+    },
+    {
+      "id": "temple-branch-span",
+      "x": 6830,
+      "y": 1130,
+      "w": 300,
+      "h": 18,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 6830
+    },
+    {
+      "id": "temple-branch-step3",
+      "x": 7210,
+      "y": 1215,
+      "w": 240,
+      "h": 18,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 7210
+    },
+    {
+      "id": "temple-branch-return",
+      "x": 7270,
+      "y": 1300,
+      "w": 220,
+      "h": 18,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 7270
+    }
+  ],
+  "rests": [
+    {
+      "id": "start",
+      "x": 350,
+      "y": 1400,
+      "name": "A kihunyt part"
+    },
+    {
+      "id": "altar",
+      "x": 4700,
+      "y": 1280,
+      "name": "Árnyékoltár"
+    },
+    {
+      "id": "prison",
+      "x": 6100,
+      "y": 2200,
+      "name": "A néma börtön"
+    },
+    {
+      "id": "cathedral",
+      "x": 9180,
+      "y": 1200,
+      "name": "Az elnémult katedrális"
+    }
+  ],
+  "objects": [
+    {
+      "id": "prisonTrace",
+      "type": "shadowTrace",
+      "x": 8290,
+      "y": 1400,
+      "name": "HARU"
+    },
+    {
+      "id": "prisonKey",
+      "type": "shadowItem",
+      "x": 7070,
+      "y": 2200,
+      "name": "Börtönkulcs",
+      "guardian": "cultJailer"
+    },
+    {
+      "id": "corruptedHymn",
+      "type": "shadowItem",
+      "x": 2730,
+      "y": 420,
+      "name": "Megrontott szent ének",
+      "guardian": "madOrganist",
+      "secretArea": "organLoft"
+    }
+  ],
+  "gates": [
+    {
+      "id": "prisonDoor",
+      "kind": "prison",
+      "x": 7500,
+      "y": 1760,
+      "w": 60,
+      "h": 440
+    },
+    {
+      "id": "prisonRoof",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "wallMaterial": "cult",
+      "x": 7500,
+      "y": 1720,
+      "w": 1340,
+      "h": 100
+    },
+    {
+      "id": "prisonEastWall",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "wallMaterial": "cult",
+      "x": 8760,
+      "y": 1720,
+      "w": 80,
+      "h": 480
+    },
+    {
+      "id": "prisonFoundation",
+      "kind": "secretRock",
+      "terrainBarrier": true,
+      "wallMaterial": "cult",
+      "x": 7500,
+      "y": 2200,
+      "w": 1340,
+      "h": 600
+    }
+  ],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "cultist-0",
+      "x": 950,
+      "y": 1400,
+      "kind": "guard",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista kardforgató"
+    },
+    {
+      "id": "cultist-1",
+      "x": 1500,
+      "y": 1400,
+      "kind": "archer",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista íjász"
+    },
+    {
+      "id": "cultist-2",
+      "x": 2460,
+      "y": 1400,
+      "kind": "shield",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista pajzsos"
+    },
+    {
+      "id": "cultist-3",
+      "x": 3460,
+      "y": 1400,
+      "kind": "mage",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista varázsló"
+    },
+    {
+      "id": "cultist-4",
+      "x": 4280,
+      "y": 1280,
+      "kind": "guard",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista kardforgató"
+    },
+    {
+      "id": "cultist-5",
+      "x": 5160,
+      "y": 1280,
+      "kind": "archer",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista íjász"
+    },
+    {
+      "id": "cultist-6",
+      "x": 6000,
+      "y": 1400,
+      "kind": "shield",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista pajzsos"
+    },
+    {
+      "id": "cultist-7",
+      "x": 7890,
+      "y": 1400,
+      "kind": "mage",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista varázsló"
+    },
+    {
+      "id": "cultist-8",
+      "x": 8480,
+      "y": 1400,
+      "kind": "guard",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista kardforgató"
+    },
+    {
+      "id": "cultist-9",
+      "x": 9280,
+      "y": 1200,
+      "kind": "archer",
+      "group": null,
+      "patrol": 60,
+      "name": "Kultista íjász"
+    },
+    {
+      "id": "temple-branch-archer",
+      "x": 6580,
+      "y": 1215,
+      "kind": "archer",
+      "group": null,
+      "patrol": 95,
+      "name": "Kultista íjász"
+    },
+    {
+      "id": "temple-branch-mage",
+      "x": 7040,
+      "y": 1130,
+      "kind": "mage",
+      "group": null,
+      "patrol": 75,
+      "name": "Kultista varázsló"
+    },
+    {
+      "id": "madOrganist",
+      "x": 3300,
+      "y": 420,
+      "kind": "mage",
+      "group": null,
+      "patrol": 0,
+      "miniboss": "organist",
+      "name": "Őrült orgonista",
+      "secretArea": "organLoft"
+    },
+    {
+      "id": "cultJailer",
+      "x": 7040,
+      "y": 2200,
+      "kind": "guard",
+      "group": null,
+      "patrol": 250,
+      "miniboss": "jailer",
+      "name": "Kultista börtönőr",
+      "secretArea": "prisonCourt"
+    }
+  ],
+  "zones": [
+    {
+      "name": "A kihunyt part",
+      "x": 0,
+      "y": 650,
+      "w": 3900,
+      "h": 1950
+    },
+    {
+      "name": "Árnyékoltár",
+      "x": 3900,
+      "y": 650,
+      "w": 1900,
+      "h": 1950
+    },
+    {
+      "name": "Az elnémult katedrális",
+      "x": 5800,
+      "y": 650,
+      "w": 3100,
+      "h": 1090
+    },
+    {
+      "name": "A néma börtön",
+      "x": 5400,
+      "y": 1740,
+      "w": 3500,
+      "h": 860
+    },
+    {
+      "name": "Az elnémult katedrális",
+      "x": 8900,
+      "y": 0,
+      "w": 2300,
+      "h": 2600
+    }
+  ],
+  "altar": {
+    "x": 4700,
+    "y": 1280
+  },
+  "prisonDoor": {
+    "x": 7520,
+    "y": 2200
+  },
+  "prisonTrace": {
+    "x": 8290,
+    "y": 1400
+  },
+  "secrets": [
+    {
+      "id": "organLoft",
+      "name": "Az elfeledett karzat",
+      "x": 2460,
+      "y": 0,
+      "w": 1300,
+      "h": 650,
+      "arena": {
+        "x": 2510,
+        "y": 420,
+        "w": 1200
+      },
+      "guardian": "madOrganist"
+    },
+    {
+      "id": "prisonCourt",
+      "name": "A néma börtön",
+      "x": 6300,
+      "y": 1750,
+      "w": 1230,
+      "h": 550,
+      "arena": {
+        "x": 6410,
+        "y": 2200,
+        "w": 1110
+      },
+      "guardian": "cultJailer",
+      "public": true
+    }
+  ],
+  "progressFlags": [
+    "shadowAltar",
+    "prisonOpen",
+    "prisonTrace",
+    "prisonKey",
+    "corruptedHymn",
+    "guardian:prisonWarden",
+    "zenRescued",
+    "zenHymnPurified",
+    "guardian:prisonHunter",
+    "fiaSeen",
+    "fiaRescued",
+    "fiaMissed",
+    "fiaDragonAccepted",
+    "dragonRaidFirstClear",
+    "dragonEyes",
+    "fiaDragonCompleted",
+    "fiaVoidAccepted",
+    "voidDemonDefeated",
+    "rawVoidCrystal",
+    "fiaVoidCompleted",
+    "underworldTraderMet",
+    "underworldCookMet",
+    "underworldSmithMet",
+    "fiaRitualAccepted",
+    "fiaWhiteCalled",
+    "fiaRedCalled",
+    "fiaAttendantsSacrificed",
+    "fiaRitualCompleted",
+    "foxfireKatana",
+    "fiaEscapeCompleted",
+    "fiaChambersHeard",
+    "fiaTalismanAccepted",
+    "priestessTalisman",
+    "fiaTalismanCompleted",
+    "fiaSlain",
+    "fiaRewardClaimed",
+    "kitsuneSoul",
+    "kibaShield",
+    "arenaQuestAccepted",
+    "arenaRewardCaptain",
+    "arenaRewardSerpent",
+    "arenaRewardGuards",
+    "arenaSerpentScale",
+    "arenaChampion",
+    "zigguratDescentAccepted",
+    "zigguratGateCleared",
+    "guardian:VoidGatekeeper",
+    "japanHeightsReached",
+    "zigguratReturnCompleted",
+    "dawnblade",
+    "hannahDefeated",
+    "hannahFiaRescue",
+    "demonLordSoul",
+    "demonLordHeart",
+    "demonLordHeartGiven",
+    "discovered:hannahCourt",
+    "guardian:Hannah",
+    "madPriestSoul",
+    "bossRewardClaimed"
+  ],
+  "arena": {
+    "x": 9400,
+    "y": 1200,
+    "w": 1780,
+    "triggerX": 9660,
+    "restId": "cathedral"
+  },
+  "boss": {
+    "x": 10450,
+    "y": 1200
+  },
+  "denEntrance": {
+    "x": 11000,
+    "y": 1200
+  },
+  "zigguratEntrance": {
+    "x": 10680,
+    "y": 1200
+  },
+  "catalogSnapshot": true
+}

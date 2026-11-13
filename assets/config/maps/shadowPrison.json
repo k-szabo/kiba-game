@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "id": "shadowPrison",
+  "width": 5400,
+  "height": 2720,
+  "start": {
+    "x": 240,
+    "y": 1000
+  },
+  "platforms": [
+    {
+      "id": "prison-entry-floor",
+      "x": 0,
+      "y": 1000,
+      "w": 1180,
+      "h": 760,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "prison-cell-floor",
+      "x": 1320,
+      "y": 1080,
+      "w": 1130,
+      "h": 760,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1320
+    },
+    {
+      "id": "prison-depths-floor",
+      "x": 2580,
+      "y": 1040,
+      "w": 2020,
+      "h": 760,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2580
+    },
+    {
+      "id": "prison-watch-step",
+      "x": 680,
+      "y": 880,
+      "w": 200,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 680
+    },
+    {
+      "id": "prison-watch-balcony",
+      "x": 900,
+      "y": 760,
+      "w": 430,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 900
+    },
+    {
+      "id": "prison-cell-step",
+      "x": 1550,
+      "y": 1000,
+      "w": 220,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1550
+    },
+    {
+      "id": "prison-upper-cells",
+      "x": 1800,
+      "y": 880,
+      "w": 430,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1800
+    },
+    {
+      "id": "prison-east-step",
+      "x": 2380,
+      "y": 1000,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2380
+    },
+    {
+      "id": "prison-vigil",
+      "x": 2820,
+      "y": 920,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2820
+    },
+    {
+      "id": "prison-deep-stair-1",
+      "x": 4630,
+      "y": 1120,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-2",
+      "x": 4890,
+      "y": 1220,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-3",
+      "x": 4630,
+      "y": 1320,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-4",
+      "x": 4890,
+      "y": 1420,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-5",
+      "x": 4630,
+      "y": 1520,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-6",
+      "x": 4890,
+      "y": 1620,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-7",
+      "x": 4630,
+      "y": 1720,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-8",
+      "x": 4890,
+      "y": 1820,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-9",
+      "x": 4630,
+      "y": 1920,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-10",
+      "x": 4890,
+      "y": 2020,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-11",
+      "x": 4630,
+      "y": 2120,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-deep-stair-12",
+      "x": 4890,
+      "y": 2220,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4890
+    },
+    {
+      "id": "prison-deep-stair-13",
+      "x": 4630,
+      "y": 2320,
+      "w": 210,
+      "h": 30,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 4630
+    },
+    {
+      "id": "prison-lower-floor",
+      "x": 2450,
+      "y": 2360,
+      "w": 2950,
+      "h": 360,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2450
+    }
+  ],
+  "rests": [
+    {
+      "id": "shadowPrisonEntrance",
+      "x": 320,
+      "y": 1000,
+      "name": "zen.prison.start"
+    },
+    {
+      "id": "shadowPrisonCourt",
+      "x": 3060,
+      "y": 1040,
+      "name": "zen.prison.wardenRest"
+    },
+    {
+      "id": "shadowPrisonDepths",
+      "x": 4500,
+      "y": 2360,
+      "name": "fia.prison.rest"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "prison-forgotten-1",
+      "x": 600,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100,
+      "undead": true,
+      "factionOverride": "shadowCult",
+      "name": "zen.enemy.undead"
+    },
+    {
+      "id": "prison-cult-archer",
+      "x": 1110,
+      "y": 760,
+      "kind": "archer",
+      "group": null,
+      "patrol": 70,
+      "undead": false,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "prison-forgotten-2",
+      "x": 1530,
+      "y": 1080,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100,
+      "undead": true,
+      "factionOverride": "shadowCult",
+      "name": "zen.enemy.undead"
+    },
+    {
+      "id": "prison-cult-shield",
+      "x": 2030,
+      "y": 1080,
+      "kind": "shield",
+      "group": null,
+      "patrol": 110,
+      "undead": false,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "prison-cult-mage",
+      "x": 1980,
+      "y": 880,
+      "kind": "mage",
+      "group": null,
+      "patrol": 65,
+      "undead": false,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "prison-forgotten-3",
+      "x": 2720,
+      "y": 1040,
+      "kind": "guard",
+      "group": null,
+      "patrol": 95,
+      "undead": true,
+      "factionOverride": "shadowCult",
+      "name": "zen.enemy.undead"
+    },
+    {
+      "id": "prison-forgotten-4",
+      "x": 2860,
+      "y": 920,
+      "kind": "guard",
+      "group": null,
+      "patrol": 55,
+      "undead": true,
+      "factionOverride": "shadowCult",
+      "name": "zen.enemy.undead"
+    },
+    {
+      "id": "prisonWarden",
+      "x": 3850,
+      "y": 1040,
+      "kind": "guard",
+      "group": null,
+      "patrol": 350,
+      "miniboss": "prisonWarden",
+      "name": "zen.warden.name",
+      "secretArea": "prisonWardenCourt"
+    },
+    {
+      "id": "prisonHunter",
+      "x": 3640,
+      "y": 2360,
+      "kind": "guard",
+      "group": null,
+      "patrol": 360,
+      "miniboss": "prisonHunter",
+      "name": "fia.hunter.name",
+      "secretArea": "prisonHunterCourt",
+      "factionOverride": "shadowCult"
+    }
+  ],
+  "zones": [
+    {
+      "name": "zen.prison.name",
+      "x": 0,
+      "y": 0,
+      "w": 5400,
+      "h": 1900
+    },
+    {
+      "name": "fia.prison.rest",
+      "x": 0,
+      "y": 1900,
+      "w": 5400,
+      "h": 820
+    }
+  ],
+  "name": "zen.prison.name",
+  "enemyRealm": 3,
+  "returnPoint": {
+    "x": 160,
+    "y": 1000
+  },
+  "returnDestination": {
+    "realm": 3,
+    "restId": "prison",
+    "x": 7730,
+    "y": 2200
+  },
+  "arena": {
+    "x": 3250,
+    "y": 1040,
+    "w": 1050,
+    "restId": "shadowPrisonCourt"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 1040
+  },
+  "zen": {
+    "x": 4430,
+    "y": 1040
+  },
+  "secrets": [
+    {
+      "id": "prisonWardenCourt",
+      "name": "zen.warden.name",
+      "x": 3230,
+      "y": 660,
+      "w": 1090,
+      "h": 450,
+      "arena": {
+        "x": 3250,
+        "y": 1040,
+        "w": 1050,
+        "restId": "shadowPrisonCourt"
+      },
+      "guardian": "prisonWarden",
+      "public": true
+    },
+    {
+      "id": "prisonHunterCourt",
+      "name": "fia.hunter.name",
+      "x": 3010,
+      "y": 1980,
+      "w": 1350,
+      "h": 450,
+      "arena": {
+        "x": 3030,
+        "y": 2360,
+        "w": 1310,
+        "restId": "shadowPrisonDepths"
+      },
+      "guardian": "prisonHunter",
+      "public": true
+    }
+  ],
+  "hunterArena": {
+    "x": 3030,
+    "y": 2360,
+    "w": 1310,
+    "restId": "shadowPrisonDepths"
+  },
+  "fia": {
+    "x": 2670,
+    "y": 2360
+  },
+  "fiaDetection": {
+    "x": 2470,
+    "y": 2110,
+    "w": 520,
+    "h": 290
+  },
+  "catalogSnapshot": true
+}

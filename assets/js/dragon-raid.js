@@ -1,24 +1,5 @@
 /* A repeatable three-part raid; only its run and rewards survive a reload. */
 'use strict';
-function createDragonRaidMap({makeLevel,ledge,rest,zone}){
- const map=makeLevel('dragonCatacombs',12100,1650,{x:200,y:1300});
- map.name='fia.dragon.location';map.enemyRealm=3;map.dragonRaid=true;
- map.arena={x:-2000,y:1300,w:0};map.boss={x:-2000,y:1300};
- map.returnPoint={x:120,y:1300};map.returnDestination={location:'zigguratInterior',x:320,y:1700};
- rest(map,'dragonRaidEntrance',240,1300,'fia.dragon.hall');
- ledge(map,'dragon-hall-floor',0,1300,3500,'ground',300);
- const steps=[[650,1170,260],[920,1040,260],[1200,910,280],[1480,780,280],[1780,650,280],[2100,780,280],[2400,910,280],[2700,1040,280]];
- steps.forEach(([x,y,w],i)=>ledge(map,'dragon-wing-'+i,x,y,w,'stone'));
- map.chains=[{x:1030,y:1040},{x:1590,y:780},{x:1900,y:650},{x:2510,y:910}];
- ledge(map,'dragon-back',4100,900,3650,'ground',60);
- map.tumors=[{x:4930,y:900},{x:5860,y:900},{x:6800,y:900}];
- map.manifestations=[{x:5400,y:900},{x:7250,y:900}];
- map.headPoint={x:7640,y:900};
- ledge(map,'dragon-vault-floor',8500,1300,3600,'ground',300);
- for(const [i,x]of [8980,9700,10420,11140].entries())ledge(map,'dragon-vault-cover-'+i,x,1150,180,'stone');
- zone(map,'fia.dragon.hall',0,0,3500,1650);zone(map,'fia.dragon.flight',4000,0,3900,1650);zone(map,'fia.dragon.vault',8500,0,3600,1650);
- return map;
-}
 const DragonRaid=(()=>{
  let attempt=null,attackClock=0,warning=null,impact=null,serial=0,pattern=0,engaged=false,recovery=0,collapseClock=0,headX=10250,headY=0,hitCooldowns=new Map();
  const active=()=>level?.dragonRaid===true&&!Prologue.active;

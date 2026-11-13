@@ -3,12 +3,7 @@
 const DuelRules=(()=>{
  const clone=value=>JSON.parse(JSON.stringify(value));
  const freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
- const arenas=freeze([
-  {id:0,realm:0,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:340,y:450,w:180,h:28,drop:true},{x:760,y:450,w:180,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:1,realm:1,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:300,y:470,w:160,h:28,drop:true},{x:820,y:470,w:160,h:28,drop:true},{x:560,y:345,w:160,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:2,realm:2,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:320,y:465,w:200,h:28,drop:true},{x:760,y:465,w:200,h:28,drop:true},{x:560,y:320,w:160,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]},
-  {id:3,realm:3,width:1280,height:720,fallY:900,platforms:[{x:80,y:620,w:1120,h:60},{x:250,y:460,w:190,h:28,drop:true},{x:840,y:460,w:190,h:28,drop:true},{x:545,y:355,w:190,h:28,drop:true}],spawns:[{x:240,y:551},{x:997,y:551}]}
- ]);
+ const arenas=freeze(Object.values(MAP_DATA).filter(map=>map.duel).map(map=>map.duel).sort((a,b)=>a.id-b.id));
  const inputKeys=['move','jump','drop','dash','attack','heavy'];
  const neutral=()=>({move:0,jump:false,drop:false,dash:false,attack:false,heavy:false});
  const record=value=>!!value&&typeof value==='object'&&!Array.isArray(value);

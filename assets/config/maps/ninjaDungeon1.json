@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "ninjaDungeon1",
+  "width": 4800,
+  "height": 1700,
+  "start": {
+    "x": 200,
+    "y": 850
+  },
+  "platforms": [
+    {
+      "id": "ninjaDungeon1Ground0",
+      "x": 0,
+      "y": 850,
+      "w": 950,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "ninjaDungeon1Ground1060",
+      "x": 1060,
+      "y": 980,
+      "w": 940,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1060
+    },
+    {
+      "id": "ninjaDungeon1Ground2120",
+      "x": 2120,
+      "y": 1110,
+      "w": 2680,
+      "h": 240,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2120
+    }
+  ],
+  "rests": [
+    {
+      "id": "ninjaDungeon1Shrine",
+      "x": 3110,
+      "y": 1110,
+      "name": "ninjaClan.stockade"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "ninjaClanLeader",
+      "miniboss": "ninjaClanLeader",
+      "name": "islands.ninjaLeader",
+      "kind": "guard",
+      "x": 4120,
+      "y": 1110,
+      "patrol": 300,
+      "arena": {
+        "x": 3260,
+        "y": 1110,
+        "w": 1400,
+        "restId": "ninjaDungeon1Shrine"
+      }
+    },
+    {
+      "id": "ninjaDungeon1Cult0",
+      "x": 250,
+      "y": 850,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon1Ninja0",
+      "x": 500,
+      "y": 850,
+      "kind": "guard",
+      "shadowNinjaRole": "assassin",
+      "dungeonEnemy": true,
+      "dungeonSide": "ninja",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon1Cult1",
+      "x": 1310,
+      "y": 980,
+      "kind": "archer",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon1Ninja1",
+      "x": 1560,
+      "y": 980,
+      "kind": "archer",
+      "shadowNinjaRole": "crossbow",
+      "dungeonEnemy": true,
+      "dungeonSide": "ninja",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon1Cult2",
+      "x": 2370,
+      "y": 1110,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "cult",
+      "patrol": 100
+    },
+    {
+      "id": "ninjaDungeon1Ninja2",
+      "x": 2620,
+      "y": 1110,
+      "kind": "guard",
+      "shadowNinjaRole": "assassin",
+      "dungeonEnemy": true,
+      "dungeonSide": "ninja",
+      "patrol": 100
+    }
+  ],
+  "zones": [
+    {
+      "name": "ninjaClan.stockade",
+      "x": 0,
+      "y": 0,
+      "w": 4800,
+      "h": 1700
+    }
+  ],
+  "name": "ninjaClan.stockade",
+  "enemyRealm": 3,
+  "dungeon": {
+    "id": "ninjaClan",
+    "floor": 0,
+    "stage": "ninjaClanStage1Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "ninjaDungeon1Entry",
+      "x": 200,
+      "y": 850,
+      "name": "ninjaClan.stockade",
+      "checkpointOnly": true
+    }
+  ],
+  "arena": {
+    "x": 3260,
+    "y": 1110,
+    "w": 1400,
+    "restId": "ninjaDungeon1Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1110
+  },
+  "returnPoint": {
+    "x": 100,
+    "y": 850
+  },
+  "nextPoint": {
+    "x": 4690,
+    "y": 1110
+  },
+  "returnDestination": {
+    "location": "stormIslands",
+    "x": 3340,
+    "y": 1300
+  },
+  "arenaEncounters": [
+    {
+      "id": "ninjaClanLeader",
+      "miniboss": "ninjaClanLeader",
+      "name": "islands.ninjaLeader",
+      "kind": "guard",
+      "x": 4120,
+      "y": 1110,
+      "patrol": 300,
+      "arena": {
+        "x": 3260,
+        "y": 1110,
+        "w": 1400,
+        "restId": "ninjaDungeon1Shrine"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

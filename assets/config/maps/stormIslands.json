@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "id": "stormIslands",
+  "width": 3600,
+  "height": 1800,
+  "start": {
+    "x": 300,
+    "y": 1300
+  },
+  "platforms": [
+    {
+      "id": "storm-arrival-ground",
+      "x": 0,
+      "y": 1300,
+      "w": 3600,
+      "h": 500,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "storm-terrace-0",
+      "x": 950,
+      "y": 1210,
+      "w": 360,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 950
+    },
+    {
+      "id": "storm-terrace-1",
+      "x": 1250,
+      "y": 1120,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1250
+    },
+    {
+      "id": "storm-terrace-2",
+      "x": 1600,
+      "y": 1030,
+      "w": 700,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1600
+    },
+    {
+      "id": "storm-terrace-3",
+      "x": 2250,
+      "y": 1120,
+      "w": 400,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2250
+    },
+    {
+      "id": "storm-terrace-4",
+      "x": 2600,
+      "y": 1210,
+      "w": 360,
+      "h": 32,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2600
+    }
+  ],
+  "rests": [
+    {
+      "id": "stormIslandsArrival",
+      "x": 380,
+      "y": 1300,
+      "name": "balloon.rest.storm"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "storm-ninja-0",
+      "x": 1050,
+      "y": 1210,
+      "kind": "archer",
+      "group": null,
+      "patrol": 100,
+      "shadowNinjaRole": "crossbow",
+      "name": "islands.ninja.crossbow",
+      "grappleable": true
+    },
+    {
+      "id": "storm-ninja-1",
+      "x": 1800,
+      "y": 1030,
+      "kind": "mage",
+      "group": null,
+      "patrol": 100,
+      "shadowNinjaRole": "ninjutsu",
+      "name": "islands.ninja.ninjutsu",
+      "grappleable": true
+    },
+    {
+      "id": "storm-ninja-2",
+      "x": 2900,
+      "y": 1300,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100,
+      "shadowNinjaRole": "assassin",
+      "name": "islands.ninja.assassin",
+      "grappleable": true
+    },
+    {
+      "id": "storm-cultist-0",
+      "x": 750,
+      "y": 1300,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "shadowCult",
+      "grappleable": true,
+      "combatStats": {
+        "hp": 100,
+        "damage": 3,
+        "xp": 65
+      }
+    },
+    {
+      "id": "storm-cultist-1",
+      "x": 2400,
+      "y": 1300,
+      "kind": "archer",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "shadowCult",
+      "grappleable": true,
+      "combatStats": {
+        "hp": 100,
+        "damage": 3,
+        "xp": 65
+      }
+    },
+    {
+      "id": "storm-cultist-2",
+      "x": 3200,
+      "y": 1300,
+      "kind": "mage",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "shadowCult",
+      "grappleable": true,
+      "combatStats": {
+        "hp": 100,
+        "damage": 3,
+        "xp": 65
+      }
+    }
+  ],
+  "zones": [
+    {
+      "name": "balloon.stormIslands",
+      "x": 0,
+      "y": 0,
+      "w": 3600,
+      "h": 1800
+    }
+  ],
+  "name": "balloon.stormIslands",
+  "enemyRealm": 0,
+  "watchtowerBalloon": true,
+  "boss": {
+    "x": -2000,
+    "y": 1300
+  },
+  "grappleAnchors": [],
+  "arena": {
+    "x": -2000,
+    "y": 1300,
+    "w": 0
+  },
+  "returnPoint": {
+    "x": 180,
+    "y": 1300
+  },
+  "returnDestination": {
+    "location": "skyLanding",
+    "x": 280,
+    "y": 1000
+  },
+  "endPoint": {
+    "x": 3340,
+    "y": 1300
+  },
+  "arenaEncounters": [],
+  "catalogSnapshot": true
+}

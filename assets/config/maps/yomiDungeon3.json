@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "id": "yomiDungeon3",
+  "width": 6200,
+  "height": 1800,
+  "start": {
+    "x": 220,
+    "y": 1200
+  },
+  "platforms": [
+    {
+      "id": "dungeon-thrones-ground0",
+      "x": 0,
+      "y": 1200,
+      "w": 1000,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "dungeon-thrones-ground1120",
+      "x": 1120,
+      "y": 1120,
+      "w": 1100,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1120
+    },
+    {
+      "id": "dungeon-thrones-ground2340",
+      "x": 2340,
+      "y": 1200,
+      "w": 1300,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 2340
+    },
+    {
+      "id": "dungeon-thrones-ground3760",
+      "x": 3760,
+      "y": 1200,
+      "w": 2440,
+      "h": 230,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3760
+    }
+  ],
+  "rests": [
+    {
+      "id": "yomiDungeon3Shrine",
+      "x": 4210,
+      "y": 1200,
+      "name": "dungeon.rest.thrones"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "dungeonCouncil",
+      "miniboss": "dungeonCouncil",
+      "name": "dungeon.boss.council",
+      "kind": "guard",
+      "x": 5300,
+      "y": 1200,
+      "patrol": 300,
+      "arena": {
+        "x": 4400,
+        "y": 1200,
+        "w": 1650,
+        "restId": "yomiDungeon3Shrine"
+      }
+    },
+    {
+      "id": "yomiDungeon3-soldier0",
+      "x": 600,
+      "y": 1200,
+      "kind": "shield",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier1",
+      "x": 830,
+      "y": 1200,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier2",
+      "x": 1460,
+      "y": 1120,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier3",
+      "x": 1750,
+      "y": 1120,
+      "kind": "archer",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier4",
+      "x": 2640,
+      "y": 1200,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier5",
+      "x": 2920,
+      "y": 1200,
+      "kind": "shield",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier6",
+      "x": 3400,
+      "y": 1200,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon3-soldier7",
+      "x": 3920,
+      "y": 1200,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    }
+  ],
+  "zones": [
+    {
+      "name": "dungeon.floor.thrones",
+      "x": 0,
+      "y": 0,
+      "w": 6200,
+      "h": 1800
+    }
+  ],
+  "name": "dungeon.floor.thrones",
+  "enemyRealm": 1,
+  "dungeon": {
+    "id": "yomiFall",
+    "floor": 2,
+    "stage": "dungeonStage3Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "yomiDungeon3Entry",
+      "x": 220,
+      "y": 1200,
+      "name": "dungeon.floor.thrones",
+      "checkpointOnly": true
+    }
+  ],
+  "returnPoint": {
+    "x": 110,
+    "y": 1200
+  },
+  "nextPoint": {
+    "x": 6060,
+    "y": 1200
+  },
+  "returnDestination": {
+    "location": "councilHall"
+  },
+  "arena": {
+    "x": 4400,
+    "y": 1200,
+    "w": 1650,
+    "restId": "yomiDungeon3Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1200
+  },
+  "arenaEncounters": [
+    {
+      "id": "dungeonCouncil",
+      "miniboss": "dungeonCouncil",
+      "name": "dungeon.boss.council",
+      "kind": "guard",
+      "x": 5300,
+      "y": 1200,
+      "patrol": 300,
+      "arena": {
+        "x": 4400,
+        "y": 1200,
+        "w": 1650,
+        "restId": "yomiDungeon3Shrine"
+      }
+    }
+  ],
+  "rewardChest": {
+    "x": 5950,
+    "y": 1200
+  },
+  "catalogSnapshot": true
+}

@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "id": "yomiDungeon2",
+  "width": 4200,
+  "height": 2100,
+  "start": {
+    "x": 220,
+    "y": 650
+  },
+  "platforms": [
+    {
+      "id": "dungeon-crypt-entry",
+      "x": 0,
+      "y": 650,
+      "w": 900,
+      "h": 150,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "crypt-step1",
+      "x": 1020,
+      "y": 740,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1020
+    },
+    {
+      "id": "crypt-gallery1",
+      "x": 1360,
+      "y": 830,
+      "w": 900,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1360
+    },
+    {
+      "id": "crypt-step2",
+      "x": 2380,
+      "y": 920,
+      "w": 220,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2380
+    },
+    {
+      "id": "crypt-gallery2",
+      "x": 2720,
+      "y": 1010,
+      "w": 900,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2720
+    },
+    {
+      "id": "crypt-turn",
+      "x": 3740,
+      "y": 1100,
+      "w": 240,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3740
+    },
+    {
+      "id": "crypt-descent1",
+      "x": 3140,
+      "y": 1190,
+      "w": 630,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3140
+    },
+    {
+      "id": "crypt-descent2",
+      "x": 2520,
+      "y": 1280,
+      "w": 500,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2520
+    },
+    {
+      "id": "crypt-descent3",
+      "x": 1880,
+      "y": 1370,
+      "w": 520,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1880
+    },
+    {
+      "id": "crypt-descent4",
+      "x": 1240,
+      "y": 1460,
+      "w": 520,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1240
+    },
+    {
+      "id": "dungeon-crypt-depths",
+      "x": 0,
+      "y": 1550,
+      "w": 2000,
+      "h": 400,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "yomiDungeon2Shrine",
+      "x": 1830,
+      "y": 1550,
+      "name": "dungeon.rest.crypt"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "dungeonNecromancer",
+      "miniboss": "dungeonNecromancer",
+      "name": "dungeon.boss.necromancer",
+      "kind": "guard",
+      "x": 650,
+      "y": 1550,
+      "patrol": 300,
+      "arena": {
+        "x": 80,
+        "y": 1550,
+        "w": 1500,
+        "restId": "yomiDungeon2Shrine"
+      }
+    },
+    {
+      "id": "yomiDungeon2-soldier0",
+      "x": 600,
+      "y": 650,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier1",
+      "x": 1540,
+      "y": 830,
+      "kind": "mage",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier2",
+      "x": 1820,
+      "y": 830,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier3",
+      "x": 2920,
+      "y": 1010,
+      "kind": "guard",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier4",
+      "x": 3200,
+      "y": 1010,
+      "kind": "archer",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier5",
+      "x": 2710,
+      "y": 1280,
+      "kind": "guard",
+      "factionOverride": "shadowCult",
+      "dungeonEnemy": true,
+      "dungeonSide": "shadowCult",
+      "patrol": 260
+    },
+    {
+      "id": "yomiDungeon2-soldier6",
+      "x": 2050,
+      "y": 1370,
+      "kind": "shield",
+      "factionOverride": "japan",
+      "dungeonEnemy": true,
+      "dungeonSide": "japan",
+      "patrol": 260
+    }
+  ],
+  "zones": [
+    {
+      "name": "dungeon.floor.crypt",
+      "x": 0,
+      "y": 0,
+      "w": 4200,
+      "h": 2100
+    }
+  ],
+  "name": "dungeon.floor.crypt",
+  "enemyRealm": 1,
+  "dungeon": {
+    "id": "yomiFall",
+    "floor": 1,
+    "stage": "dungeonStage2Clear"
+  },
+  "checkpoints": [
+    {
+      "id": "yomiDungeon2Entry",
+      "x": 220,
+      "y": 650,
+      "name": "dungeon.floor.crypt",
+      "checkpointOnly": true
+    }
+  ],
+  "returnPoint": {
+    "x": 110,
+    "y": 650
+  },
+  "nextPoint": {
+    "x": 130,
+    "y": 1550
+  },
+  "returnDestination": {
+    "location": "councilHall"
+  },
+  "arena": {
+    "x": 80,
+    "y": 1550,
+    "w": 1500,
+    "restId": "yomiDungeon2Shrine"
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1550
+  },
+  "arenaEncounters": [
+    {
+      "id": "dungeonNecromancer",
+      "miniboss": "dungeonNecromancer",
+      "name": "dungeon.boss.necromancer",
+      "kind": "guard",
+      "x": 650,
+      "y": 1550,
+      "patrol": 300,
+      "arena": {
+        "x": 80,
+        "y": 1550,
+        "w": 1500,
+        "restId": "yomiDungeon2Shrine"
+      }
+    }
+  ],
+  "catalogSnapshot": true
+}

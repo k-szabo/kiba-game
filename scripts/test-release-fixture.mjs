@@ -21,7 +21,7 @@ function prepareFixture(fixture){
     fs.mkdirSync(path.dirname(target),{recursive:true});
     fs.copyFileSync(path.join(projectRoot,file),target);
   }
-  for(const directory of ['assets/config/bosses','assets/config/npcs']){
+  for(const directory of ['assets/config/bosses','assets/config/npcs','assets/config/maps']){
     fs.cpSync(path.join(projectRoot,directory),path.join(fixture,directory),{recursive:true});
   }
   const sources=path.join(fixture,'assets/js');

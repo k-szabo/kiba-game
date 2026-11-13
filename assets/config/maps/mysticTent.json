@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "mysticTent",
+  "width": 1500,
+  "height": 1080,
+  "start": {
+    "x": 260,
+    "y": 820
+  },
+  "platforms": [
+    {
+      "id": "mysticTent-floor",
+      "x": 0,
+      "y": 820,
+      "w": 1500,
+      "h": 260,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "mysticTent",
+      "x": 1120,
+      "y": 820,
+      "name": "service.mystic.name"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "service.mystic.name",
+      "x": 0,
+      "y": 0,
+      "w": 1500,
+      "h": 1080
+    }
+  ],
+  "name": "service.mystic.name",
+  "service": "mystic",
+  "returnPoint": {
+    "x": 160,
+    "y": 820
+  },
+  "returnDestination": {
+    "location": "forestCamp",
+    "x": 2530,
+    "y": 820
+  },
+  "servicePoint": {
+    "x": 880,
+    "y": 820,
+    "name": "service.mystic.name"
+  },
+  "arena": {
+    "x": -1000,
+    "y": 820,
+    "w": 0,
+    "restId": "mysticTent"
+  },
+  "boss": {
+    "x": -1000,
+    "y": 820
+  },
+  "catalogSnapshot": true
+}

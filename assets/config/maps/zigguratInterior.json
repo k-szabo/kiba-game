@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "id": "zigguratInterior",
+  "width": 2700,
+  "height": 2800,
+  "start": {
+    "x": 320,
+    "y": 1700
+  },
+  "platforms": [
+    {
+      "id": "ziggurat-interior-entry",
+      "x": 0,
+      "y": 1700,
+      "w": 1600,
+      "h": 180,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "ziggurat-interior-ascent-1",
+      "x": 800,
+      "y": 1610,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-2",
+      "x": 1070,
+      "y": 1520,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-3",
+      "x": 800,
+      "y": 1430,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-4",
+      "x": 1070,
+      "y": 1340,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-5",
+      "x": 800,
+      "y": 1250,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-6",
+      "x": 1070,
+      "y": 1160,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-7",
+      "x": 800,
+      "y": 1070,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-8",
+      "x": 1070,
+      "y": 980,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-9",
+      "x": 800,
+      "y": 890,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-10",
+      "x": 1070,
+      "y": 800,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-11",
+      "x": 800,
+      "y": 710,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-12",
+      "x": 1070,
+      "y": 620,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-ascent-13",
+      "x": 800,
+      "y": 530,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 800
+    },
+    {
+      "id": "ziggurat-interior-ascent-14",
+      "x": 1070,
+      "y": 440,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1070
+    },
+    {
+      "id": "ziggurat-interior-upper",
+      "x": 700,
+      "y": 440,
+      "w": 1100,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 700
+    },
+    {
+      "id": "ziggurat-interior-descent-1",
+      "x": 1650,
+      "y": 1790,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1650
+    },
+    {
+      "id": "ziggurat-interior-descent-2",
+      "x": 1920,
+      "y": 1880,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1920
+    },
+    {
+      "id": "ziggurat-interior-descent-3",
+      "x": 1650,
+      "y": 1970,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1650
+    },
+    {
+      "id": "ziggurat-interior-descent-4",
+      "x": 1920,
+      "y": 2060,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1920
+    },
+    {
+      "id": "ziggurat-interior-descent-5",
+      "x": 1650,
+      "y": 2150,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1650
+    },
+    {
+      "id": "ziggurat-interior-descent-6",
+      "x": 1920,
+      "y": 2240,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1920
+    },
+    {
+      "id": "ziggurat-interior-descent-7",
+      "x": 1650,
+      "y": 2330,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1650
+    },
+    {
+      "id": "ziggurat-interior-depths",
+      "x": 1450,
+      "y": 2420,
+      "w": 1150,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1450
+    }
+  ],
+  "rests": [
+    {
+      "id": "zigguratInteriorEntrance",
+      "x": 320,
+      "y": 1700,
+      "name": "ziggurat.rest.interior"
+    },
+    {
+      "id": "zigguratInteriorUpper",
+      "x": 820,
+      "y": 440,
+      "name": "ziggurat.rest.upper"
+    },
+    {
+      "id": "zigguratInteriorDepths",
+      "x": 2350,
+      "y": 2420,
+      "name": "ziggurat.rest.depths"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "zigguratInterior-entry-guard",
+      "x": 650,
+      "y": 1700,
+      "kind": "guard",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratInterior-entry-demon",
+      "x": 1390,
+      "y": 1700,
+      "kind": "mage",
+      "group": null,
+      "patrol": 90,
+      "factionOverride": "yomi"
+    },
+    {
+      "id": "zigguratInterior-upper-shield",
+      "x": 1720,
+      "y": 440,
+      "kind": "shield",
+      "group": null,
+      "patrol": 60,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratInterior-depth-stair-demon",
+      "x": 2000,
+      "y": 1880,
+      "kind": "guard",
+      "group": null,
+      "patrol": 45,
+      "factionOverride": "yomi"
+    },
+    {
+      "id": "zigguratInterior-depths-mage",
+      "x": 2210,
+      "y": 2420,
+      "kind": "mage",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratInterior-depths-demon",
+      "x": 1660,
+      "y": 2420,
+      "kind": "shield",
+      "group": null,
+      "patrol": 100,
+      "factionOverride": "yomi"
+    }
+  ],
+  "zones": [
+    {
+      "name": "ziggurat.interior",
+      "x": 0,
+      "y": 0,
+      "w": 2700,
+      "h": 2800
+    }
+  ],
+  "name": "ziggurat.interior",
+  "ziggurat": "interior",
+  "enemyRealm": 3,
+  "boss": {
+    "x": -1000,
+    "y": 1700
+  },
+  "returnPoint": {
+    "x": 120,
+    "y": 1700
+  },
+  "returnDestination": {
+    "location": "zigguratApproach",
+    "x": 4920,
+    "y": 1000
+  },
+  "nextPoint": {
+    "x": 1500,
+    "y": 440
+  },
+  "nextDestination": {
+    "location": "zigguratSummit"
+  },
+  "arena": {
+    "x": -1000,
+    "y": 1700,
+    "w": 0,
+    "restId": "zigguratInteriorEntrance"
+  },
+  "dragonRaidEntrance": {
+    "x": 1250,
+    "y": 1700
+  },
+  "descentEntrance": {
+    "x": 1840,
+    "y": 2420
+  },
+  "catalogSnapshot": true
+}

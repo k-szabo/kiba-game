@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "storyRaidTier2",
+  "width": 5790,
+  "height": 1550,
+  "start": {
+    "x": 210,
+    "y": 1060
+  },
+  "platforms": [
+    {
+      "id": "storyRaidTier2-floor",
+      "x": 0,
+      "y": 1060,
+      "w": 5790,
+      "h": 280,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "storyRaidTier2Rest1",
+      "x": 295,
+      "y": 1060,
+      "name": "storyRaid.boss.siegeWarden"
+    },
+    {
+      "id": "storyRaidTier2Rest2",
+      "x": 2085,
+      "y": 1060,
+      "name": "storyRaid.boss.kibaBinder"
+    },
+    {
+      "id": "storyRaidTier2Rest3",
+      "x": 3875,
+      "y": 1060,
+      "name": "storyRaid.boss.cultWarMarshal"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "storyRaid.tier.2",
+      "x": 0,
+      "y": 0,
+      "w": 5790,
+      "h": 1550
+    }
+  ],
+  "name": "storyRaid.tier.2",
+  "boss": {
+    "x": -10000,
+    "y": 1060
+  },
+  "storyRaidTier": 1,
+  "returnPoint": {
+    "x": 115,
+    "y": 1060
+  },
+  "exitPoint": {
+    "x": 5675,
+    "y": 1060
+  },
+  "arenas": [
+    {
+      "x": 440,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 550,
+      "restId": "storyRaidTier2Rest1",
+      "encounter": {
+        "id": "siegeWarden",
+        "name": "storyRaid.boss.siegeWarden",
+        "kind": "westheruShot",
+        "tier": 1,
+        "clear": "storyRaidClear:siegeWarden"
+      },
+      "spawn": {
+        "x": 1440,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 295,
+        "y": 1060
+      },
+      "signals": [
+        {
+          "x": 750,
+          "y": 1060
+        },
+        {
+          "x": 1180,
+          "y": 1060
+        },
+        {
+          "x": 1610,
+          "y": 1060
+        }
+      ],
+      "shipAnchor": {
+        "x": 635,
+        "y": 850
+      }
+    },
+    {
+      "x": 2230,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 2340,
+      "restId": "storyRaidTier2Rest2",
+      "encounter": {
+        "id": "kibaBinder",
+        "name": "storyRaid.boss.kibaBinder",
+        "kind": "duel",
+        "tier": 1,
+        "clear": "storyRaidClear:kibaBinder"
+      },
+      "spawn": {
+        "x": 3230,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 2085,
+        "y": 1060
+      }
+    },
+    {
+      "x": 4020,
+      "y": 1060,
+      "w": 1480,
+      "triggerX": 4130,
+      "restId": "storyRaidTier2Rest3",
+      "encounter": {
+        "id": "cultWarMarshal",
+        "name": "storyRaid.boss.cultWarMarshal",
+        "kind": "duel",
+        "soul": "cultWarMarshalSoul",
+        "tier": 1,
+        "clear": "storyRaidClear:cultWarMarshal"
+      },
+      "spawn": {
+        "x": 5020,
+        "y": 1060
+      },
+      "checkpoint": {
+        "x": 3875,
+        "y": 1060
+      }
+    }
+  ],
+  "returnDestination": {
+    "location": "storyRaidTier1",
+    "x": 5675,
+    "y": 1060
+  },
+  "nextLocation": "storyRaidTier3",
+  "catalogSnapshot": true
+}

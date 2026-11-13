@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "id": "duelArena2",
+  "name": null,
+  "width": 1280,
+  "height": 720,
+  "start": {
+    "x": 240,
+    "y": 551
+  },
+  "platforms": [
+    {
+      "id": "duel-2-0",
+      "x": 80,
+      "y": 620,
+      "w": 1120,
+      "h": 60,
+      "kind": "ground"
+    },
+    {
+      "id": "duel-2-1",
+      "x": 320,
+      "y": 465,
+      "w": 200,
+      "h": 28,
+      "drop": true,
+      "kind": "stone"
+    },
+    {
+      "id": "duel-2-2",
+      "x": 760,
+      "y": 465,
+      "w": 200,
+      "h": 28,
+      "drop": true,
+      "kind": "stone"
+    },
+    {
+      "id": "duel-2-3",
+      "x": 560,
+      "y": 320,
+      "w": 160,
+      "h": 28,
+      "drop": true,
+      "kind": "stone"
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [],
+  "duel": {
+    "id": 2,
+    "realm": 2,
+    "width": 1280,
+    "height": 720,
+    "fallY": 900,
+    "platforms": [
+      {
+        "x": 80,
+        "y": 620,
+        "w": 1120,
+        "h": 60
+      },
+      {
+        "x": 320,
+        "y": 465,
+        "w": 200,
+        "h": 28,
+        "drop": true
+      },
+      {
+        "x": 760,
+        "y": 465,
+        "w": 200,
+        "h": 28,
+        "drop": true
+      },
+      {
+        "x": 560,
+        "y": 320,
+        "w": 160,
+        "h": 28,
+        "drop": true
+      }
+    ],
+    "spawns": [
+      {
+        "x": 240,
+        "y": 551
+      },
+      {
+        "x": 997,
+        "y": 551
+      }
+    ]
+  },
+  "catalogSnapshot": true
+}

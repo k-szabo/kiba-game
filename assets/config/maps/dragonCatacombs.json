@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "dragonCatacombs",
+  "width": 12100,
+  "height": 1650,
+  "start": {
+    "x": 200,
+    "y": 1300
+  },
+  "platforms": [
+    {
+      "id": "dragon-hall-floor",
+      "x": 0,
+      "y": 1300,
+      "w": 3500,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "dragon-wing-0",
+      "x": 650,
+      "y": 1170,
+      "w": 260,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 650
+    },
+    {
+      "id": "dragon-wing-1",
+      "x": 920,
+      "y": 1040,
+      "w": 260,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 920
+    },
+    {
+      "id": "dragon-wing-2",
+      "x": 1200,
+      "y": 910,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1200
+    },
+    {
+      "id": "dragon-wing-3",
+      "x": 1480,
+      "y": 780,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1480
+    },
+    {
+      "id": "dragon-wing-4",
+      "x": 1780,
+      "y": 650,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1780
+    },
+    {
+      "id": "dragon-wing-5",
+      "x": 2100,
+      "y": 780,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2100
+    },
+    {
+      "id": "dragon-wing-6",
+      "x": 2400,
+      "y": 910,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2400
+    },
+    {
+      "id": "dragon-wing-7",
+      "x": 2700,
+      "y": 1040,
+      "w": 280,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 2700
+    },
+    {
+      "id": "dragon-back",
+      "x": 4100,
+      "y": 900,
+      "w": 3650,
+      "h": 60,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 4100
+    },
+    {
+      "id": "dragon-vault-floor",
+      "x": 8500,
+      "y": 1300,
+      "w": 3600,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 8500
+    },
+    {
+      "id": "dragon-vault-cover-0",
+      "x": 8980,
+      "y": 1150,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 8980
+    },
+    {
+      "id": "dragon-vault-cover-1",
+      "x": 9700,
+      "y": 1150,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 9700
+    },
+    {
+      "id": "dragon-vault-cover-2",
+      "x": 10420,
+      "y": 1150,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 10420
+    },
+    {
+      "id": "dragon-vault-cover-3",
+      "x": 11140,
+      "y": 1150,
+      "w": 180,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 11140
+    }
+  ],
+  "rests": [
+    {
+      "id": "dragonRaidEntrance",
+      "x": 240,
+      "y": 1300,
+      "name": "fia.dragon.hall"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "fia.dragon.hall",
+      "x": 0,
+      "y": 0,
+      "w": 3500,
+      "h": 1650
+    },
+    {
+      "name": "fia.dragon.flight",
+      "x": 4000,
+      "y": 0,
+      "w": 3900,
+      "h": 1650
+    },
+    {
+      "name": "fia.dragon.vault",
+      "x": 8500,
+      "y": 0,
+      "w": 3600,
+      "h": 1650
+    }
+  ],
+  "name": "fia.dragon.location",
+  "enemyRealm": 3,
+  "dragonRaid": true,
+  "arena": {
+    "x": -2000,
+    "y": 1300,
+    "w": 0
+  },
+  "boss": {
+    "x": -2000,
+    "y": 1300
+  },
+  "returnPoint": {
+    "x": 120,
+    "y": 1300
+  },
+  "returnDestination": {
+    "location": "zigguratInterior",
+    "x": 320,
+    "y": 1700
+  },
+  "chains": [
+    {
+      "x": 1030,
+      "y": 1040
+    },
+    {
+      "x": 1590,
+      "y": 780
+    },
+    {
+      "x": 1900,
+      "y": 650
+    },
+    {
+      "x": 2510,
+      "y": 910
+    }
+  ],
+  "tumors": [
+    {
+      "x": 4930,
+      "y": 900
+    },
+    {
+      "x": 5860,
+      "y": 900
+    },
+    {
+      "x": 6800,
+      "y": 900
+    }
+  ],
+  "manifestations": [
+    {
+      "x": 5400,
+      "y": 900
+    },
+    {
+      "x": 7250,
+      "y": 900
+    }
+  ],
+  "headPoint": {
+    "x": 7640,
+    "y": 900
+  },
+  "catalogSnapshot": true
+}

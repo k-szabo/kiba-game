@@ -1,7 +1,8 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const context=vm.createContext({});
-for(const name of ['grapple-rules','floating-islands-rules','floating-islands-maps'])vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
+const path=require('node:path'),mapDir=path.join(__dirname,'../assets/config/maps');context.MAP_DATA=Object.fromEntries(fs.readdirSync(mapDir).filter(name=>name.endsWith('.json')).map(name=>{const map=JSON.parse(fs.readFileSync(path.join(mapDir,name),'utf8'));return [map.id,map];}));
+for(const name of ['grapple-rules','floating-islands-rules','map-catalog','floating-islands-maps'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../assets/js/'+name+'.js'),'utf8'),context);
 const grapple=vm.runInContext('GrappleRules',context),story=vm.runInContext('FloatingIslandsRules',context);
 const wall={id:'wall',x:450,y:0,w:40,h:400},enemy={id:'small',x:650,y:100,w:40,h:60,grappleable:true};
 assert.equal(grapple.target({x:0,y:120},1,{terrain:[wall],enemies:[enemy]}),null,'A wall blocks enemy pulling');

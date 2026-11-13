@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "catalogSnapshot": true,
+  "id": "thirdClanCave",
+  "width": 2690,
+  "height": 1430,
+  "start": {
+    "x": 300,
+    "y": 1030
+  },
+  "platforms": [
+    {
+      "id": "third-clan-cave-floor",
+      "x": 0,
+      "y": 1030,
+      "w": 2690,
+      "h": 300,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "thirdClanCaveThreshold",
+      "x": 330,
+      "y": 1030,
+      "name": "thirdClan.rest.threshold"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "thirdClan.cave",
+      "x": 0,
+      "y": 0,
+      "w": 2690,
+      "h": 1430
+    }
+  ],
+  "name": "thirdClan.cave",
+  "returnPoint": {
+    "x": 130,
+    "y": 1030
+  },
+  "haruTrail": {
+    "x": 2400,
+    "y": 1030
+  },
+  "returnDestination": {
+    "location": "thirdClanPath",
+    "x": 5865,
+    "y": 2900
+  },
+  "guardian": {
+    "x": 1590,
+    "y": 1030,
+    "triggerX": 770,
+    "left": 650,
+    "right": 2170
+  },
+  "boss": {
+    "x": -10000,
+    "y": 1030
+  }
+}

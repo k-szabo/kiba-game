@@ -2,7 +2,7 @@
 'use strict';
 const SkyDragonRaid=(()=>{
  const rules=SkyDragonRaidRules,{tuning}=rules;
- const maps=createSkyDragonRaidMaps({makeLevel,ledge,zone});
+ const maps=Object.fromEntries(['harbor','pursuit','back','rift'].map(phase=>[phase,MapCatalog.build('skyDragonRaid'+phase[0].toUpperCase()+phase.slice(1))]));
  const firstClear='skyDragonRaidFirstClear',ringReward='skyDragonRaidRingTurnedIn';
  const crashDuration=1.65;
  const hatchlingMoves={hover:['windup',.9],windup:['dive',.85],dive:['recover',1.2],recover:['hover',1.65]};

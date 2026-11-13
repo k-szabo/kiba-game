@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "ninjaClanCamp",
+  "width": 2500,
+  "height": 1400,
+  "start": {
+    "x": 240,
+    "y": 1020
+  },
+  "platforms": [
+    {
+      "id": "ninjaCampGround",
+      "x": 0,
+      "y": 1020,
+      "w": 2500,
+      "h": 250,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    }
+  ],
+  "rests": [
+    {
+      "id": "ninjaCampArrival",
+      "x": 430,
+      "y": 1020,
+      "name": "ninjaClan.camp"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [
+    {
+      "name": "ninjaClan.camp",
+      "x": 0,
+      "y": 0,
+      "w": 2500,
+      "h": 1400
+    }
+  ],
+  "name": "ninjaClan.camp",
+  "boss": {
+    "x": -10000,
+    "y": 1020
+  },
+  "painting": {
+    "x": 640,
+    "width": 1050,
+    "ground": 0.84
+  },
+  "npcs": [
+    {
+      "id": "reika",
+      "name": "ninjaClan.sentinel",
+      "x": 1092,
+      "y": 1020
+    },
+    {
+      "id": "ninjaHealer",
+      "service": "healer",
+      "name": "ninjaClan.healer",
+      "x": 1291,
+      "y": 1020
+    },
+    {
+      "id": "ninjaSmith",
+      "service": "smith",
+      "name": "ninjaClan.smith",
+      "x": 819,
+      "y": 1020
+    },
+    {
+      "id": "akash",
+      "name": "merchant.name",
+      "x": 945,
+      "y": 1020
+    },
+    {
+      "id": "zen",
+      "name": "zen.name",
+      "x": 1407,
+      "y": 1020
+    },
+    {
+      "id": "westheru",
+      "name": "balloon.pilot",
+      "x": 1543,
+      "y": 1020
+    }
+  ],
+  "skyport": {
+    "x": 2350,
+    "y": 1020
+  },
+  "thirdClanExit": {
+    "x": 1920,
+    "y": 1020
+  },
+  "returnPoint": {
+    "x": 120,
+    "y": 1020
+  },
+  "returnDestination": {
+    "location": "stormIslands",
+    "x": 3340,
+    "y": 1300
+  },
+  "catalogSnapshot": true
+}

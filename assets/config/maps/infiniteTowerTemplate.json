@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "infiniteTowerTemplate",
+  "name": "tower.name",
+  "width": 1800,
+  "height": 1000,
+  "start": {
+    "x": 180,
+    "y": 760
+  },
+  "platforms": [
+    {
+      "id": "towerGround",
+      "x": 0,
+      "y": 760,
+      "w": 1800,
+      "h": 240,
+      "kind": "ground"
+    },
+    {
+      "id": "towerLedgeLeft",
+      "x": 460,
+      "y": 640,
+      "w": 190,
+      "h": 28,
+      "kind": "stone"
+    },
+    {
+      "id": "towerLedgeRight",
+      "x": 1120,
+      "y": 620,
+      "w": 190,
+      "h": 28,
+      "kind": "stone"
+    }
+  ],
+  "rests": [],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [],
+  "zones": [],
+  "tower": {
+    "fallY": 1000,
+    "anchors": [
+      {
+        "id": "towerAnchorLeft",
+        "x": 544,
+        "y": 444,
+        "w": 32,
+        "h": 32
+      },
+      {
+        "id": "towerAnchorRight",
+        "x": 1204,
+        "y": 424,
+        "w": 32,
+        "h": 32
+      }
+    ]
+  },
+  "catalogSnapshot": true
+}

@@ -2014,6 +2014,22 @@
           "en": "Haru’s trail leads to a three-stage story raid with nine bosses and checkpoints between encounters. Reika and Westheru take part in the battles."
         }
       ]
+    },
+    {
+      "version": "0.9.82_97647ded",
+      "code": "97647ded",
+      "baseVersion": "0.9.82",
+      "slug": "json-map-catalog",
+      "summary": {
+        "hu": "Pályák JSON-katalógusból",
+        "en": "Maps from a JSON catalog"
+      },
+      "fixes": [
+        {
+          "hu": "A fő pályák, táborok, belső terek, dungeonök, raidek, párbaj- és toronyarénák adatai közös JSON-katalógusokba kerültek. A build ellenőrzi a katalógusokat, a játék pedig ezekből állítja össze a pályákat.",
+          "en": "Map data for the main realms, camps, interiors, dungeons, raids, duel arenas and the tower is now maintained in shared JSON catalogs. The build validates these catalogs, and the game assembles its maps from them."
+        }
+      ]
     }
   ]
 }

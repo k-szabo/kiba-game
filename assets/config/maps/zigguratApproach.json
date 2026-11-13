@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "zigguratApproach",
+  "width": 5200,
+  "height": 1400,
+  "start": {
+    "x": 260,
+    "y": 1000
+  },
+  "platforms": [
+    {
+      "id": "ziggurat-approach-west",
+      "x": 0,
+      "y": 1000,
+      "w": 1600,
+      "h": 180,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 0
+    },
+    {
+      "id": "ziggurat-approach-middle",
+      "x": 1760,
+      "y": 1000,
+      "w": 1500,
+      "h": 180,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 1760
+    },
+    {
+      "id": "ziggurat-approach-east",
+      "x": 3420,
+      "y": 1000,
+      "w": 1780,
+      "h": 180,
+      "kind": "ground",
+      "drop": false,
+      "baseX": 3420
+    },
+    {
+      "id": "ziggurat-approach-west-bridge",
+      "x": 1510,
+      "y": 910,
+      "w": 360,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 1510
+    },
+    {
+      "id": "ziggurat-approach-east-bridge",
+      "x": 3150,
+      "y": 910,
+      "w": 380,
+      "h": 28,
+      "kind": "stone",
+      "drop": true,
+      "baseX": 3150
+    }
+  ],
+  "rests": [
+    {
+      "id": "zigguratApproachEntrance",
+      "x": 320,
+      "y": 1000,
+      "name": "ziggurat.rest.approach"
+    },
+    {
+      "id": "zigguratApproachGate",
+      "x": 4300,
+      "y": 1000,
+      "name": "ziggurat.rest.gate"
+    }
+  ],
+  "objects": [],
+  "gates": [],
+  "winds": [],
+  "hazards": [],
+  "enemies": [
+    {
+      "id": "zigguratApproach-west-guard",
+      "x": 760,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 130,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratApproach-west-archer",
+      "x": 1240,
+      "y": 1000,
+      "kind": "archer",
+      "group": null,
+      "patrol": 90,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratApproach-middle-demon",
+      "x": 2140,
+      "y": 1000,
+      "kind": "guard",
+      "group": null,
+      "patrol": 150,
+      "factionOverride": "yomi"
+    },
+    {
+      "id": "zigguratApproach-middle-shield",
+      "x": 2700,
+      "y": 1000,
+      "kind": "shield",
+      "group": null,
+      "patrol": 130,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratApproach-east-mage",
+      "x": 3780,
+      "y": 1000,
+      "kind": "mage",
+      "group": null,
+      "patrol": 85,
+      "factionOverride": "shadowCult"
+    },
+    {
+      "id": "zigguratApproach-east-demon",
+      "x": 4570,
+      "y": 1000,
+      "kind": "shield",
+      "group": null,
+      "patrol": 130,
+      "factionOverride": "yomi"
+    }
+  ],
+  "zones": [
+    {
+      "name": "ziggurat.approach",
+      "x": 0,
+      "y": 0,
+      "w": 5200,
+      "h": 1400
+    }
+  ],
+  "name": "ziggurat.approach",
+  "ziggurat": "approach",
+  "enemyRealm": 3,
+  "boss": {
+    "x": -1000,
+    "y": 1000
+  },
+  "returnPoint": {
+    "x": 120,
+    "y": 1000
+  },
+  "returnDestination": {
+    "realm": 3,
+    "restId": "cathedral",
+    "x": 10680,
+    "y": 1200
+  },
+  "nextPoint": {
+    "x": 4920,
+    "y": 1000
+  },
+  "nextDestination": {
+    "location": "zigguratInterior"
+  },
+  "arena": {
+    "x": -1000,
+    "y": 1000,
+    "w": 0,
+    "restId": "zigguratApproachEntrance"
+  },
+  "catalogSnapshot": true
+}
