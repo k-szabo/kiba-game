@@ -7,7 +7,7 @@
   "story": {
     "w": 43,
     "h": 69,
-    "speed": 285,
+    "speed": 185,
     "range": 100,
     "raidOrder": 9,
     "raidKind": "mimic",

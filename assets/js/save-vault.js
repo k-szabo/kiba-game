@@ -28,6 +28,7 @@ const SaveVault=(()=>{
   if(data.location!=null&&(typeof data.location!=='string'||!Object.hasOwn(SIDE_LOCATIONS,data.location)))throw Error('Invalid save location');
   if(!['coins','meatCount','teaCount'].every(key=>integer(data[key],0,Number.MAX_SAFE_INTEGER)))throw Error('Invalid merchant inventory');
   const chickenCount=Object.hasOwn(data,'chickenCount')?data.chickenCount:0;if(!integer(chickenCount,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid chicken inventory');
+  const ninjaBrews=Object.hasOwn(data,'ninjaHealerBrews')?data.ninjaHealerBrews:0;if(!integer(ninjaBrews,0,Number.MAX_SAFE_INTEGER))throw Error('Invalid ninja healer stock');
   if(data.quickHeal!==null&&!['roastMeat','tea','healingBrew','roastChicken'].includes(data.quickHeal))throw Error('Invalid quick healing item');
   const sellable=Object.keys(MERCHANT_SALES).filter(id=>!MERCHANT_SALES[id].stack);
   if(!Array.isArray(data.soldItems)||data.soldItems.length>sellable.length||new Set(data.soldItems).size!==data.soldItems.length||data.soldItems.some(id=>typeof id!=='string'||!sellable.includes(id)))throw Error('Invalid sold inventory');
@@ -77,7 +78,7 @@ const SaveVault=(()=>{
    if((data.prologueComplete===false||data.weaponChoicePending===true)&&(service.ownedWeapons.length!==1||service.ownedWeapons[0]!=='katana'||service.weaponRank||service.armorRank||service.herbs||service.potions))throw Error('Invalid dream equipment');
   }
   if((data.weaponStyle==='foxfireKatana'||hasHannah('foxfireKatana'))&&!Object.hasOwn(data,'campServices'))throw Error('Invalid relic weapon state');
-  if(data.quickHeal==='healingBrew'&&!hasCampFlag('herbalistQuestAccepted'))throw Error('Invalid quick healing progress');
+  if(data.quickHeal==='healingBrew'&&!hasCampFlag('herbalistQuestAccepted')&&!ninjaBrews)throw Error('Invalid quick healing progress');
   const rescued=data.flags[1].includes('akashRescued');
   if(rescued&&!data.defeated[0]||!rescued&&(!hasHannah('underworldCookMet')&&(data.meatCount>0||data.teaCount>0)||data.flags[1].some(id=>['compass','minimap','phoneCase'].includes(id))))throw Error('Invalid merchant progress');
   if(data.soldItems.some(id=>!rescued&&!hasHannah('underworldTraderMet')||!data.flags[MERCHANT_SALES[id].realm].includes(id)))throw Error('Invalid sold inventory');

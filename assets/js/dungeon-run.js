@@ -162,12 +162,12 @@ const DungeonRun=(()=>{
    if(candidate.id!==actual.id)return false;
    if(actual.id==='akash')return Merchant.open();
    if(actual.id==='smith')return CampWorkshop.open('forge');
+   if(actual.id==='healer')return Merchant.open();
    if(actual.id==='reika'){
     if(!flags[0].includes('ninjaClanDebrief')){flags[0].push('ninjaClanDebrief');persist();}
     story('ninjaClan.camp','ninjaClan.sentinel','ninjaClan.reikaCamp',null,{right:'reika',speaker:'reika'});return true;
    }
-   if(player.hp>=player.maxHp)return false;
-   player.hp=player.maxHp;updateHUD();persist();return true;
+   return false;
   }
   if(actual.type==='dungeonScroll')return (!candidate.id||candidate.id===actual.id)&&menu();if(actual.type==='dungeonChest')return openChest();if(actual.type==='dungeonLeave')return leave();
   if(actual.type==='dungeonExit')return CampQuest.enter(definition().exitLocation);

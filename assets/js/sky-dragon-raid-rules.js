@@ -33,7 +33,7 @@ const SkyDragonRaidRules=(()=>{
  }
  function finishWave(state,index){
   if(!playable(state,'pursuit')||index!==state.waves||state.waves===tuning.pursuitWaves)return state;
-  return {...state,waves:state.waves+1,reikaHealth:Math.min(tuning.reikaHealth,state.reikaHealth+1)};
+  return {...state,waves:state.waves+1};
  }
  function hitReika(state){
   if(!playable(state,'pursuit')||state.waves===tuning.pursuitWaves)return state;

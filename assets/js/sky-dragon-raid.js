@@ -307,6 +307,7 @@ const SkyDragonRaid=(()=>{
   IslandsArt.anchors(anchors(level.grappleAnchors).filter(anchor=>!anchor.disabled));
   if(phase==='harbor'){
    harborDeck();level.ballistas.forEach((point,index)=>prop('ballista',point,{x:435,y:684},.28,attempt.ballistas[index]===0));
+   if(attempt.outcome==='cleared')Visuals.campPathMarker(level.boardPoint,I18n.t('skyDragonRaid.board'));
   }
   if(phase==='pursuit'){
    prop('ship',{x:200,y:1060},{x:1090,y:481},1.58);

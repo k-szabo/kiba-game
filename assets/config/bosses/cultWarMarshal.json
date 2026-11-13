@@ -7,18 +7,19 @@
   "story": {
     "w": 110,
     "h": 152,
-    "speed": 150,
+    "speed": 170,
     "range": 245,
     "raidOrder": 6,
     "raidKind": "duel",
-    "hp": 620,
-    "damage": 9,
-    "windup": 0.86,
-    "recovery": 0.7,
+    "hp": 850,
+    "damage": 11,
+    "windup": 0.7,
+    "recovery": 0.52,
     "moves": [
       "sweep",
       "step",
-      "fissure"
+      "fissure",
+      "fan"
     ],
     "soul": "cultWarMarshalSoul"
   },

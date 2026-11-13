@@ -14,7 +14,7 @@ const Merchant=(()=>{
  const rescued=()=>flags[1].includes('akashRescued');
  const dungeonItem=id=>typeof DungeonRules!=='undefined'&&Object.hasOwn(DungeonRules.items,id);
  const consumed=id=>{const by=ART_INVENTORY.items[id]?.consumedBy;return !!by&&flags[by.realm].includes(by.id);};
- const stock=id=>id==='dragonScale'?FiaJourneyRules.quantity(fiaJourney):dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
+ const stock=id=>id==='dragonScale'?FiaJourneyRules.quantity(fiaJourney):dungeonItem(id)?DungeonRun.stock(id):id==='roastMeat'?meatCount:id==='tea'?teaCount:id==='forestHerb'?campServices.herbs:id==='healingBrew'?campServices.potions+ninjaHealerBrews:id==='roastChicken'?chickenCount:flags[1].includes(id)&&!soldItems.includes(id)&&!consumed(id)?1:0;
  function selectAvailable(){if(!healingItems.includes(quickHeal)||!stock(quickHeal))quickHeal=healingItems.find(id=>stock(id)>0)??null;return quickHeal;}
  function selectQuick(id){
   if(state!=='inventory'||!healingItems.includes(id)||!stock(id))return false;
@@ -34,6 +34,7 @@ const Merchant=(()=>{
  const ninjaCatalogue=Object.freeze({...catalogue,roastChicken:cookCatalogue.roastChicken});
  const provider=()=>{
   if(DungeonRun.campProvider('akash'))return {id:'akash',products:ninjaCatalogue,title:'merchant.shop.title'};
+  if(DungeonRun.campProvider('healer'))return {id:'healer',products:{healingBrew:Object.freeze({price:30,stack:true})},title:'ninjaClan.healer'};
   const npc=FiaVoidJourney.provider();
   if(npc&&['cook','trader'].includes(npc.service))return {id:npc.service,products:npc.service==='cook'?cookCatalogue:{},title:npc.name};
   return level===forestCamp&&rescued()&&pointNear(vendor(),95,85)?{id:'akash',products:catalogue,title:'merchant.shop.title'}:null;
@@ -54,8 +55,11 @@ const Merchant=(()=>{
   if(state!=='shop'||$('shop').hidden||!nearVendor()||!Object.hasOwn(provider().products,id))return false;
   const product=provider().products[id];
   if(!product.stack&&stock(id))return false;
-  if(coins<product.price||product.stack&&stock(id)===Number.MAX_SAFE_INTEGER)return false;
-  coins-=product.price;if(product.stack)addStock(id);else{if(!flags[1].includes(id))flags[1].push(id);soldItems=soldItems.filter(item=>item!==id);}
+  if(coins<product.price||product.stack&&stock(id)>=Number.MAX_SAFE_INTEGER)return false;
+  coins-=product.price;
+  if(id==='healingBrew'&&provider().id==='healer')ninjaHealerBrews++;
+  else if(product.stack)addStock(id);
+  else{if(!flags[1].includes(id))flags[1].push(id);soldItems=soldItems.filter(item=>item!==id);}
   persist();updateHUD();render();$('shopStatus').textContent=I18n.t('merchant.purchased');return true;
  }
  function salePrice(id){return Object.hasOwn(MERCHANT_SALES,id)?MERCHANT_SALES[id].price:0;}
@@ -84,11 +88,12 @@ const Merchant=(()=>{
   if(state!==(fromInventory?'inventory':'play')||!canDrink())return false;
   teaCount--;selectAvailable();teaElapsed=0;teaPulses=3;persist();updateHUD();if(fromInventory)Inventory.render();toast(I18n.t('merchant.tea.started'));return true;
  }
- function canUseBrew(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&campServices.potions>0;}
+ function canUseBrew(){return !Prologue.active&&!!player&&player.hp>0&&player.hp<player.maxHp&&stock('healingBrew')>0;}
  function useBrew(fromInventory=false){
   if(state!==(fromInventory?'inventory':'play')||!canUseBrew())return false;
   const before=player.hp;
-  campServices.potions--;player.hp=Math.min(player.maxHp,player.hp+CampServiceRules.profile.brewHeal);selectAvailable();
+  if(campServices.potions)campServices.potions--;else ninjaHealerBrews--;
+  player.hp=Math.min(player.maxHp,player.hp+CampServiceRules.profile.brewHeal);selectAvailable();
   persist();updateHUD();if(fromInventory)Inventory.render();
   toast(I18n.format('merchant.health.up',[CampHealth.number(player.hp-before)]));return true;
  }
@@ -123,7 +128,7 @@ const Merchant=(()=>{
  }
  function open(){
   if(state!=='play'||!nearVendor())return false;
-  if(provider().id!=='akash'&&!FiaVoidJourney.meet(provider().id))return false;
+  if(!['akash','healer'].includes(provider().id)&&!FiaVoidJourney.meet(provider().id))return false;
   returnFocus=document.activeElement;keys.clear();pressed.clear();state='shop';$('shop').hidden=false;render();$('shop').querySelector('.shop-panel').scrollTop=0;
   const focusTarget=$('shopItems').querySelector('button:not([disabled])')||$('closeShop');
   if(typeof focusTarget.focus==='function')focusTarget.focus({preventScroll:true});return true;

@@ -11,14 +11,15 @@
     "range": 245,
     "raidOrder": 8,
     "raidKind": "duel",
-    "hp": 510,
-    "damage": 10,
-    "windup": 1.1,
-    "recovery": 0.78,
+    "hp": 760,
+    "damage": 12,
+    "windup": 0.88,
+    "recovery": 0.56,
     "moves": [
       "sweep",
       "fissure",
-      "fan"
+      "fan",
+      "step"
     ]
   },
   "tower": {
