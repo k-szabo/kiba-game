@@ -134,7 +134,7 @@
 #towerExitConfirm{z-index:160;background:#061019dc;padding:24px;overflow:auto}
 .tower-exit-panel p{font-size:18px;color:#fff0cf}.tower-exit-panel button:disabled{opacity:.45;cursor:wait}
 .tower-panel button:disabled{opacity:.45;cursor:not-allowed}.tower-powers button{text-align:left;line-height:1.5}.tower-stock{display:grid;gap:12px}.tower-stock>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:12px;border:1px solid #bd9a5980}.tower-stock b{grid-column:1/-1;line-height:1.4}.tower-stock button{min-height:44px;padding:8px 12px;background:#243c45;color:#fff0cf;border:1px solid #bd9a59;border-radius:4px;font:inherit}.tower-stock button:focus-visible{outline:3px solid #ffe4a2;outline-offset:3px}.tower-panel h3{color:#ffe4a2}
-.inventory-shell{width:min(1000px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:#11232bf7;border:1px solid #c9b27b;border-radius:14px;padding:0 22px 22px;color:#f5edda;box-shadow:0 22px 65px #000a;scrollbar-gutter:stable;line-height:1.6}
+.inventory-shell{width:min(1320px,100%);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:#11232bf7;border:1px solid #c9b27b;border-radius:14px;padding:0 22px 22px;color:#f5edda;box-shadow:0 22px 65px #000a;scrollbar-gutter:stable;line-height:1.6}
 .inventory-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:#11232b;border-bottom:1px solid #c9b27b66}
 .inventory-header h2{font:32px var(--font-story);margin:3px 0 0;line-height:1.25;color:#fff0c8}
 .inventory-header .eyebrow{color:#e2cfab;letter-spacing:1px}

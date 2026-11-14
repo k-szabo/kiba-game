@@ -52,7 +52,7 @@ const SaveVault=(()=>{
   if(hasHannah('demonLordHeartGiven')&&(!hasHannah('demonLordHeart')||!hasHannah('fiaRescued')))throw Error('Invalid demon lord gift');
   const camp=data.flags[0],hasCampFlag=id=>camp.includes(id);
   if(!ThirdClanRules.valid(data.flags))throw Error('Invalid third-clan progress');
-  if(!StoryRaidRules.validate(data.flags)||storyRaidMaps.some(map=>map.arenas.some((arena,index)=>
+  if(!StoryRaidRules.validate(data.flags)||!StoryRaidRules.copyReplay(data.storyRaidReplay,data.flags)||storyRaidMaps.some(map=>map.arenas.some((arena,index)=>
     index>0&&data.visitedRests[0].includes(arena.restId)&&!hasCampFlag(map.arenas[index-1].encounter.clear))))throw Error('Invalid story raid progress');
   const raid=data.skyDragonRaid;
   if(Object.hasOwn(data,'skyDragonRaid')&&(!SkyDragonRaidRules.validProgress(raid)||raid.run===0||!data.prologueComplete||!data.defeated[0]||

@@ -10,7 +10,7 @@ const Inventory=(()=>{
  const itemArt=id=>weaponStyleFor(id)?ART_INVENTORY[weaponStyleFor(id)]:catalogue[id];
  const itemName=id=>id==='equippedTalisman'?I18n.t(catalogue[talisman].name):weaponStyleFor(id)?weaponName(weaponStyleFor(id)):I18n.t(catalogue[id].name);
  function quantity(id){const style=weaponStyleFor(id);if(style)return style!==weaponStyle&&campServices.ownedWeapons.includes(style)?1:0;const item=catalogue[id];if(!item||id==='foxfireKatana'&&weaponStyle==='foxfireKatana'||id===talisman&&equippedTalisman===talisman)return 0;if(item.raidReward)return SkyDragonRaid.stock(id);if(item.storyRaidSoul)return StoryRaidRules.soulOwned(flags,id)?1:0;if(item.stack)return Merchant.stock(id);return !soldItems.includes(id)&&flags[item.realm].includes(id)&&!(item.consumedBy&&flags[item.consumedBy.realm].includes(item.consumedBy.id))?1:0;}
- function contents(){return [...ids.filter(id=>quantity(id)>0),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
+ function contents(){return [...ids.filter(id=>quantity(id)>0&&!(id==='cloudscaleArmor'&&SkyDragonRaid.armorEquipped)),...WeaponStyles.ids.filter(style=>style!==weaponStyle&&campServices.ownedWeapons.includes(style)).map(style=>'weapon-'+style)];}
  function image(canvas,image,rect,size){
   const ratio=size?Math.max(1,Math.min(3,window.devicePixelRatio||1)):1;
   if(size){canvas.width=Math.round(size.w*ratio);canvas.height=Math.round(size.h*ratio);}
