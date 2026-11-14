@@ -35,15 +35,23 @@ const StoryRaid=(()=>{
   {x:330,y:0,w:890,h:1010,anchorX:782,anchorY:1000,bodyHeight:995}
  ]};
  const background=()=>active()?Visuals.images[backgrounds[level.storyRaidTier]]:null;
- let foe=null,rescueClock=null;
+ let foe=null,rescueClock=null,replay=rules.freshReplay();
  const active=()=>Number.isInteger(level?.storyRaidTier)&&!Prologue.active;
  const cinematic=()=>active()&&rescueClock!==null;
  const locked=()=>active()&&(cinematic()||!!foe&&!foe.dead);
  const entered=()=>flags[0].includes(rules.started);
- const pending=()=>rules.encounters[rules.checkpoint(flags)];
+ const replaying=()=>replay.active;
+ const pending=()=>replaying()?rules.encounters[replay.index]||null:rules.encounters[rules.checkpoint(flags)];
  const currentArena=()=>active()&&level.arenas.find(arena=>arena.encounter===pending());
- const reset=()=>{foe=null;rescueClock=null;};
+ function reset(){
+  foe=null;rescueClock=null;
+ }
  function record(id,beforeSave){
+  if(replaying()){
+   if(rules.encounters[replay.index]?.clear!==id)return false;
+   replay={active:replay.index+1<rules.encounters.length,index:replay.index+1};if(!replay.active)replay=rules.freshReplay();
+   beforeSave?.();persist();updateHUD();return true;
+  }
   const result=rules.advance(flags,id);
   if(!result)return false;
   flags[0]=result.japan;progression.points+=result.points;
@@ -94,6 +102,8 @@ const StoryRaid=(()=>{
   if(candidate.type!==current?.type)return false;
   switch(current.type){
    case 'storyRaidEnter':
+    if(replaying())return resume();
+    if(entered()&&rules.recoilFree(flags)&&rules.checkpoint(flags)===-1){replay={active:true,index:0};persist();return enter(storyRaidMaps[0]);}
     if(entered())return resume();
     story('storyRaid.name','ninjaClan.sentinel','storyRaid.intro',()=>{
      if(record(rules.started))enter(storyRaidMaps[0]);
@@ -318,6 +328,7 @@ const StoryRaid=(()=>{
   const image=background();
   return !!image&&BackgroundFraming.cover(image,{ground:image.naturalHeight*.74,floor:level.start.y-cameraY,scaleFloor:0});
  }
- return Object.freeze({active,locked,cinematic,reset,context,interact,resolveHit,update,objective,hud,drawCues,backdrop,drawEncounter,loadout,reduceMimicDamage,
+ function restore(value){replay=rules.copyReplay(value,flags)||rules.freshReplay();}
+ return Object.freeze({active,locked,cinematic,reset,context,interact,resolveHit,update,objective,hud,drawCues,backdrop,drawEncounter,loadout,reduceMimicDamage,restore,snapshot:()=>({...replay}),
   paintedFloor:()=>background()?.naturalWidth>0,get foe(){return foe;}});
 })();

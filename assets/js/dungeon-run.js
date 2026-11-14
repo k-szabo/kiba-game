@@ -14,7 +14,7 @@ const DungeonRun=(()=>{
  const owns=(id,which=dungeonId())=>flags[definition(which).realm].includes(id);
  const runId=(id=dungeonId())=>DungeonRules.runInfo(dungeonState,id)?.run??0;
  const cleared=(index,id=dungeonId())=>owns(definition(id).rewards[index]?.stage,id);
- const friendly=e=>level.dungeon?.id==='ninjaClan'&&e.dungeonSide==='ninja'&&owns('ninjaClanSentinelReward','ninjaClan');
+ const friendly=e=>level.dungeon?.id==='ninjaClan'&&e.dungeonSide==='ninja'&&owns(DungeonRules.definitions.ninjaClan.stages[1],'ninjaClan');
  function campNpc(id){
   if(Prologue.active||level.id!=='ninjaClanCamp')return null;
   if(id==='reika'&&StoryRaidRules.recoilFree(flags))return null;

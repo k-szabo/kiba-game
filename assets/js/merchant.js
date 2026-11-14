@@ -111,7 +111,7 @@ const Merchant=(()=>{
   $('shopTitle').textContent=I18n.t(shop.title);$('shopIntro').textContent=I18n.t(shop.id==='akash'?'merchant.greeting':shop.title);
   $('shopCoins').textContent=I18n.t('merchant.coins')+': '+coins;
   $('closeShop').textContent=I18n.t('inventory.close');$('shopStatus').textContent='';
-  $('shopSell').hidden=shop.id==='cook';$('shopSell').textContent=I18n.t(shop.id==='trader'?'merchant.trader.sell':'merchant.sell.title');
+  $('shopSell').hidden=['cook','healer'].includes(shop.id);$('shopSell').textContent=I18n.t(shop.id==='trader'?'merchant.trader.sell':'merchant.sell.title');
   const grid=$('shopItems');grid.replaceChildren();
   for(const [id,product]of Object.entries(shop.products)){
    const card=document.createElement('section');card.className='shop-item';

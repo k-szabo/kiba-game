@@ -7,6 +7,7 @@ const StoryRaidRules=(()=>{
   })));
  const started='storyRaidStarted',rescued='storyRaidHaruRescued',crossed='storyRaidHeavenReached';
  const milestones=Object.freeze([started,...encounters.map(boss=>boss.clear),rescued,crossed]);
+ const freshReplay=()=>({active:false,index:0});
  const rescueTiming=Object.freeze({crossing:1,collapse:2.8,end:4.15});
  const has=(flags,id)=>flags?.[0]?.includes(id)===true;
  const available=flags=>has(flags,'thirdClanHaruTrailFound')&&flags?.[3]?.includes('dawnblade')===true;
@@ -22,6 +23,12 @@ const StoryRaidRules=(()=>{
  function checkpoint(flags){
   if(!validate(flags)||!has(flags,started))return null;
   return encounters.findIndex(boss=>!has(flags,boss.clear));
+ }
+ function copyReplay(value,flags){
+  if(value===undefined||value===null)return freshReplay();
+  if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length!==2||typeof value.active!=='boolean'||!Number.isSafeInteger(value.index))return null;
+  if(value.active)return checkpoint(flags)===-1&&has(flags,crossed)&&value.index>=0&&value.index<encounters.length?{active:true,index:value.index}:null;
+  return value.index===0?freshReplay():null;
  }
  function advance(flags,id){
   if(typeof id!=='string'||next(flags)!==id)return null;
@@ -65,6 +72,6 @@ const StoryRaidRules=(()=>{
   return Number.isInteger(index)&&index>=0&&index<3&&!attempt.shot?{...attempt,signals:attempt.signals|(1<<index)}:attempt;
  }
  function fireWestheru(attempt){return attempt.signals===0b111&&!attempt.shot?{...attempt,shot:true}:attempt;}
- return Object.freeze({encounters,milestones,started,rescued,crossed,available,validate,next,checkpoint,advance,bonusPoints,soulOwned,recoilFree,rescueFrame,
+ return Object.freeze({encounters,milestones,started,rescued,crossed,available,validate,next,checkpoint,advance,bonusPoints,soulOwned,recoilFree,rescueFrame,freshReplay,copyReplay,
   snapshotMimic,startMimic,hitMimic,startSignalKeeper,markSignalKeeper,strikeSignalKeeper,startSiegeWarden,lightSignal,fireWestheru});
 })();
